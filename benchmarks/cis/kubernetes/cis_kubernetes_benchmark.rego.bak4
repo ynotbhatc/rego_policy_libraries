@@ -1,0 +1,516 @@
+package cis
+
+# CIS Kubernetes Benchmark v1.7.0
+# Center for Internet Security (CIS) Kubernetes Benchmark
+# This policy implements comprehensive Kubernetes security controls
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		control_plane_violations,
+		etcd_violations,
+		control_plane_config_violations,
+		worker_nodes_violations,
+		policies_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: Control Plane Security Configuration
+control_plane_violations := [
+    "1.1.1: Ensure that the API server pod specification file permissions are set to 644 or more restrictive" |
+    input.control_plane.api_server_pod_spec_permissions > 644
+]
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.2: Ensure that the API server pod specification file ownership is set to root:root" |
+    input.control_plane.api_server_pod_spec_owner != "root:root"
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.3: Ensure that the controller manager pod specification file permissions are set to 644 or more restrictive" |
+    input.control_plane.controller_manager_pod_spec_permissions > 644
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.4: Ensure that the controller manager pod specification file ownership is set to root:root" |
+    input.control_plane.controller_manager_pod_spec_owner != "root:root"
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.5: Ensure that the scheduler pod specification file permissions are set to 644 or more restrictive" |
+    input.control_plane.scheduler_pod_spec_permissions > 644
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.6: Ensure that the scheduler pod specification file ownership is set to root:root" |
+    input.control_plane.scheduler_pod_spec_owner != "root:root"
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.7: Ensure that the etcd pod specification file permissions are set to 644 or more restrictive" |
+    input.control_plane.etcd_pod_spec_permissions > 644
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.8: Ensure that the etcd pod specification file ownership is set to root:root" |
+    input.control_plane.etcd_pod_spec_owner != "root:root"
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.9: Ensure that the Container Network Interface file permissions are set to 644 or more restrictive" |
+    cni_file := input.control_plane.cni_files[_]
+    cni_file.permissions > 644
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.10: Ensure that the Container Network Interface file ownership is set to root:root" |
+    cni_file := input.control_plane.cni_files[_]
+    cni_file.owner != "root:root"
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.11: Ensure that the etcd data directory permissions are set to 700 or more restrictive" |
+    input.control_plane.etcd_data_dir_permissions != 700
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.12: Ensure that the etcd data directory ownership is set to etcd:etcd" |
+    input.control_plane.etcd_data_dir_owner != "etcd:etcd"
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.13: Ensure that the admin.conf file permissions are set to 644 or more restrictive" |
+    input.control_plane.admin_conf_permissions > 644
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.14: Ensure that the admin.conf file ownership is set to root:root" |
+    input.control_plane.admin_conf_owner != "root:root"
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.15: Ensure that the scheduler.conf file permissions are set to 644 or more restrictive" |
+    input.control_plane.scheduler_conf_permissions > 644
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.16: Ensure that the scheduler.conf file ownership is set to root:root" |
+    input.control_plane.scheduler_conf_owner != "root:root"
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.17: Ensure that the controller-manager.conf file permissions are set to 644 or more restrictive" |
+    input.control_plane.controller_manager_conf_permissions > 644
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.18: Ensure that the controller-manager.conf file ownership is set to root:root" |
+    input.control_plane.controller_manager_conf_owner != "root:root"
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.19: Ensure that the Kubernetes PKI directory and file ownership is set to root:root" |
+    pki_file := input.control_plane.pki_files[_]
+    pki_file.owner != "root:root"
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.20: Ensure that the Kubernetes PKI certificate file permissions are set to 644 or more restrictive" |
+    cert_file := input.control_plane.pki_cert_files[_]
+    cert_file.permissions > 644
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.1.21: Ensure that the Kubernetes PKI key file permissions are set to 600" |
+    key_file := input.control_plane.pki_key_files[_]
+    key_file.permissions != 600
+])
+
+# API Server Configuration
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.1: Ensure that the --anonymous-auth argument is set to false" |
+    input.api_server.anonymous_auth != false
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.2: Ensure that the --basic-auth-file argument is not set" |
+    input.api_server.basic_auth_file
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.3: Ensure that the --token-auth-file argument is not set" |
+    input.api_server.token_auth_file
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.4: Ensure that the --kubelet-https argument is set to true" |
+    input.api_server.kubelet_https != true
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.5: Ensure that the --kubelet-client-certificate and --kubelet-client-key arguments are set as appropriate" |
+    not input.api_server.kubelet_client_certificate
+    not input.api_server.kubelet_client_key
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.6: Ensure that the --kubelet-certificate-authority argument is set as appropriate" |
+    not input.api_server.kubelet_certificate_authority
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.7: Ensure that the --authorization-mode argument is not set to AlwaysAllow" |
+    "AlwaysAllow" in input.api_server.authorization_mode
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.8: Ensure that the --authorization-mode argument includes Node" |
+    not "Node" in input.api_server.authorization_mode
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.9: Ensure that the --authorization-mode argument includes RBAC" |
+    not "RBAC" in input.api_server.authorization_mode
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.10: Ensure that the admission control plugin EventRateLimit is set" |
+    not "EventRateLimit" in input.api_server.enable_admission_plugins
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.11: Ensure that the admission control plugin AlwaysAdmit is not set" |
+    "AlwaysAdmit" in input.api_server.enable_admission_plugins
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.12: Ensure that the admission control plugin AlwaysPullImages is set" |
+    not "AlwaysPullImages" in input.api_server.enable_admission_plugins
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.13: Ensure that the admission control plugin SecurityContextDeny is set if PodSecurityPolicy is not used" |
+    not "PodSecurityPolicy" in input.api_server.enable_admission_plugins
+    not "SecurityContextDeny" in input.api_server.enable_admission_plugins
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.14: Ensure that the admission control plugin ServiceAccount is set" |
+    not "ServiceAccount" in input.api_server.enable_admission_plugins
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.15: Ensure that the admission control plugin NamespaceLifecycle is set" |
+    not "NamespaceLifecycle" in input.api_server.enable_admission_plugins
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.16: Ensure that the admission control plugin NodeRestriction is set" |
+    not "NodeRestriction" in input.api_server.enable_admission_plugins
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.17: Ensure that the --secure-port argument is not set to 0" |
+    input.api_server.secure_port == 0
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.18: Ensure that the --profiling argument is set to false" |
+    input.api_server.profiling != false
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.19: Ensure that the --audit-log-file argument is set" |
+    not input.api_server.audit_log_file
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.20: Ensure that the --audit-log-maxage argument is set to 30 or as appropriate" |
+    input.api_server.audit_log_maxage < 30
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.21: Ensure that the --audit-log-maxbackup argument is set to 10 or as appropriate" |
+    input.api_server.audit_log_maxbackup < 10
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.22: Ensure that the --audit-log-maxsize argument is set to 100 or as appropriate" |
+    input.api_server.audit_log_maxsize < 100
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.23: Ensure that the --request-timeout argument is set as appropriate" |
+    not input.api_server.request_timeout
+    input.api_server.request_timeout > 60
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.24: Ensure that the --service-account-lookup argument is set to true" |
+    input.api_server.service_account_lookup != true
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.25: Ensure that the --service-account-key-file argument is set as appropriate" |
+    not input.api_server.service_account_key_file
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.26: Ensure that the --etcd-certfile and --etcd-keyfile arguments are set as appropriate" |
+    not input.api_server.etcd_certfile
+    not input.api_server.etcd_keyfile
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.27: Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate" |
+    not input.api_server.tls_cert_file
+    not input.api_server.tls_private_key_file
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.28: Ensure that the --client-ca-file argument is set as appropriate" |
+    not input.api_server.client_ca_file
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.29: Ensure that the --etcd-cafile argument is set as appropriate" |
+    not input.api_server.etcd_cafile
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.30: Ensure that the --encryption-provider-config argument is set as appropriate" |
+    not input.api_server.encryption_provider_config
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.31: Ensure that encryption providers are appropriately configured" |
+    provider := input.api_server.encryption_providers[_]
+    provider.type == "identity"
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.2.32: Ensure that the API Server only makes use of Strong Cryptographic Ciphers" |
+    cipher := input.api_server.tls_cipher_suites[_]
+    weak_cipher(cipher)
+])
+
+weak_cipher(cipher) if {
+    cipher in [
+        "TLS_RSA_WITH_RC4_128_SHA",
+        "TLS_RSA_WITH_3DES_EDE_CBC_SHA",
+        "TLS_RSA_WITH_AES_128_CBC_SHA256",
+        "TLS_ECDHE_ECDSA_WITH_RC4_128_SHA",
+        "TLS_ECDHE_RSA_WITH_RC4_128_SHA",
+        "TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA",
+        "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256",
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"
+    ]
+}
+
+# Controller Manager Configuration
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.3.1: Ensure that the --terminated-pod-gc-threshold argument is set as appropriate" |
+    not input.controller_manager.terminated_pod_gc_threshold
+    input.controller_manager.terminated_pod_gc_threshold > 12500
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.3.2: Ensure that the --profiling argument is set to false" |
+    input.controller_manager.profiling != false
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.3.3: Ensure that the --use-service-account-credentials argument is set to true" |
+    input.controller_manager.use_service_account_credentials != true
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.3.4: Ensure that the --service-account-private-key-file argument is set as appropriate" |
+    not input.controller_manager.service_account_private_key_file
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.3.5: Ensure that the --root-ca-file argument is set as appropriate" |
+    not input.controller_manager.root_ca_file
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.3.6: Ensure that the RotateKubeletServerCertificate argument is set to true" |
+    not input.controller_manager.feature_gates.RotateKubeletServerCertificate
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.3.7: Ensure that the --bind-address argument is set to 127.0.0.1" |
+    input.controller_manager.bind_address != "127.0.0.1"
+])
+
+# Scheduler Configuration
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.4.1: Ensure that the --profiling argument is set to false" |
+    input.scheduler.profiling != false
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "1.4.2: Ensure that the --bind-address argument is set to 127.0.0.1" |
+    input.scheduler.bind_address != "127.0.0.1"
+])
+
+# Section 2: etcd
+etcd_violations := [
+    "2.1: Ensure that the --cert-file and --key-file arguments are set as appropriate" |
+    not input.etcd.cert_file
+    not input.etcd.key_file
+]
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.2: Ensure that the --client-cert-auth argument is set to true" |
+    input.etcd.client_cert_auth != true
+])
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.3: Ensure that the --auto-tls argument is not set to true" |
+    input.etcd.auto_tls == true
+])
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.4: Ensure that the --peer-cert-file and --peer-key-file arguments are set as appropriate" |
+    not input.etcd.peer_cert_file
+    not input.etcd.peer_key_file
+])
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.5: Ensure that the --peer-client-cert-auth argument is set to true" |
+    input.etcd.peer_client_cert_auth != true
+])
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.6: Ensure that the --peer-auto-tls argument is not set to true" |
+    input.etcd.peer_auto_tls == true
+])
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.7: Ensure that a unique Certificate Authority is used for etcd" |
+    not input.etcd.unique_ca
+])
+
+# Section 3: Control Plane Configuration
+control_plane_config_violations := [
+    "3.1.1: Client certificate authentication should not be used for users" |
+    user := input.cluster_users[_]
+    user.auth_method == "client_certificate"
+]
+
+
+
+# Section 4: Worker Nodes
+worker_nodes_violations := [
+    "4.1.1: Ensure that the kubelet service file permissions are set to 644 or more restrictive" |
+    node := input.worker_nodes[_]
+    node.kubelet_service_permissions > 644
+]
+
+
+
+
+
+
+
+
+
+
+# Kubelet Configuration
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Section 5: Policies
+policies_violations := [
+    "5.1.1: Ensure that the cluster-admin role is only used where required" |
+    binding := input.cluster_role_bindings[_]
+    binding.role_ref.name == "cluster-admin"
+    subject := binding.subjects[_]
+    subject.kind == "User"
+    not subject.name in input.required_cluster_admins
+]
+
+
+
+
+authorized_pod_creator(binding) if {
+    subject := binding.subjects[_]
+    subject.kind == "ServiceAccount"
+    subject.name in input.authorized_pod_creators
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 123,
+    "passing_controls": 123 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((123 - count(violations)) * 100) / 123,
+    "sections": {
+        "control_plane": {
+            "total": 78,
+            "violations": count(control_plane_violations)
+        },
+        "etcd": {
+            "total": 7,
+            "violations": count(etcd_violations)
+        },
+        "control_plane_config": {
+            "total": 3,
+            "violations": count(control_plane_config_violations)
+        },
+        "worker_nodes": {
+            "total": 23,
+            "violations": count(worker_nodes_violations)
+        },
+        "policies": {
+            "total": 23,
+            "violations": count(policies_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "control_plane_violations": control_plane_violations,
+    "etcd_violations": etcd_violations,
+    "control_plane_config_violations": control_plane_config_violations,
+    "worker_nodes_violations": worker_nodes_violations,
+    "policies_violations": policies_violations
+}

@@ -1,0 +1,1999 @@
+package cis
+
+# CIS Red Hat Enterprise Linux 10 Benchmark v1.0.0 (Draft)
+# Center for Internet Security (CIS) Red Hat Enterprise Linux 10 Benchmark
+# This policy implements comprehensive RHEL 10 security controls with next-generation features
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := array.concat(
+    array.concat(
+        array.concat(
+            array.concat(
+                array.concat(
+                    array.concat(
+                        array.concat(
+                            initial_setup_violations,
+                            services_violations
+                        ),
+                        network_violations
+                    ),
+                    logging_violations
+                ),
+                access_auth_violations
+            ),
+            system_maintenance_violations
+        ),
+        container_security_violations
+    ),
+    systemd_security_violations
+)
+
+# Section 1: Initial Setup (Enhanced for RHEL 10)
+initial_setup_violations := [
+    "1.1.1.1: Ensure mounting of squashfs filesystems is disabled" |
+    not filesystem_disabled("squashfs")
+]
+
+filesystem_disabled(fs_type) if {
+    modprobe_config := input.ansible_facts.ansible_modprobe_config[_]
+    modprobe_config.filesystem == fs_type
+    modprobe_config.state == "disabled"
+}
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.1.2: Ensure mounting of udf filesystems is disabled" |
+    not filesystem_disabled("udf")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.1.3: Ensure mounting of erofs filesystems is disabled" |
+    not filesystem_disabled("erofs")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.1.4: Ensure mounting of jffs2 filesystems is disabled" |
+    not filesystem_disabled("jffs2")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.2.1: Ensure /tmp is a separate partition" |
+    not separate_partition_exists("/tmp")
+])
+
+separate_partition_exists(mount_point) if {
+    mount := input.ansible_facts.ansible_mounts[_]
+    mount.mount == mount_point
+}
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.2.2: Ensure nodev option set on /tmp partition" |
+    separate_partition_exists("/tmp")
+    not mount_option_set("/tmp", "nodev")
+])
+
+mount_option_set(mount_point, option) if {
+    mount := input.ansible_facts.ansible_mounts[_]
+    mount.mount == mount_point
+    option in mount.options
+}
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.2.3: Ensure noexec option set on /tmp partition" |
+    separate_partition_exists("/tmp")
+    not mount_option_set("/tmp", "noexec")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.2.4: Ensure nosuid option set on /tmp partition" |
+    separate_partition_exists("/tmp")
+    not mount_option_set("/tmp", "nosuid")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.2.5: Ensure /tmp is configured with tmpfs" |
+    not tmpfs_configured("/tmp")
+])
+
+tmpfs_configured(mount_point) if {
+    mount := input.ansible_facts.ansible_mounts[_]
+    mount.mount == mount_point
+    mount.fstype == "tmpfs"
+}
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.3.1: Ensure /var is a separate partition" |
+    not separate_partition_exists("/var")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.3.2: Ensure nodev option set on /var partition" |
+    separate_partition_exists("/var")
+    not mount_option_set("/var", "nodev")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.3.3: Ensure nosuid option set on /var partition" |
+    separate_partition_exists("/var")
+    not mount_option_set("/var", "nosuid")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.4.1: Ensure /var/tmp is a separate partition" |
+    not separate_partition_exists("/var/tmp")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.4.2: Ensure nodev option set on /var/tmp partition" |
+    separate_partition_exists("/var/tmp")
+    not mount_option_set("/var/tmp", "nodev")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.4.3: Ensure noexec option set on /var/tmp partition" |
+    separate_partition_exists("/var/tmp")
+    not mount_option_set("/var/tmp", "noexec")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.4.4: Ensure nosuid option set on /var/tmp partition" |
+    separate_partition_exists("/var/tmp")
+    not mount_option_set("/var/tmp", "nosuid")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.5.1: Ensure /var/log is a separate partition" |
+    not separate_partition_exists("/var/log")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.5.2: Ensure nodev option set on /var/log partition" |
+    separate_partition_exists("/var/log")
+    not mount_option_set("/var/log", "nodev")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.5.3: Ensure noexec option set on /var/log partition" |
+    separate_partition_exists("/var/log")
+    not mount_option_set("/var/log", "noexec")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.5.4: Ensure nosuid option set on /var/log partition" |
+    separate_partition_exists("/var/log")
+    not mount_option_set("/var/log", "nosuid")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.6.1: Ensure /var/log/audit is a separate partition" |
+    not separate_partition_exists("/var/log/audit")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.6.2: Ensure nodev option set on /var/log/audit partition" |
+    separate_partition_exists("/var/log/audit")
+    not mount_option_set("/var/log/audit", "nodev")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.6.3: Ensure noexec option set on /var/log/audit partition" |
+    separate_partition_exists("/var/log/audit")
+    not mount_option_set("/var/log/audit", "noexec")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.6.4: Ensure nosuid option set on /var/log/audit partition" |
+    separate_partition_exists("/var/log/audit")
+    not mount_option_set("/var/log/audit", "nosuid")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.7.1: Ensure /home is a separate partition" |
+    not separate_partition_exists("/home")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.7.2: Ensure nodev option set on /home partition" |
+    separate_partition_exists("/home")
+    not mount_option_set("/home", "nodev")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.7.3: Ensure nosuid option set on /home partition" |
+    separate_partition_exists("/home")
+    not mount_option_set("/home", "nosuid")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.8.1: Ensure nodev option set on /dev/shm partition" |
+    not mount_option_set("/dev/shm", "nodev")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.8.2: Ensure noexec option set on /dev/shm partition" |
+    not mount_option_set("/dev/shm", "noexec")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.8.3: Ensure nosuid option set on /dev/shm partition" |
+    not mount_option_set("/dev/shm", "nosuid")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.9: Ensure nodev option set on removable media partitions" |
+    mount := input.ansible_facts.ansible_mounts[_]
+    removable_media_mount(mount.mount)
+    not "nodev" in mount.options
+])
+
+removable_media_mount(mount_point) if {
+    startswith(mount_point, "/media")
+}
+
+removable_media_mount(mount_point) if {
+    startswith(mount_point, "/mnt")
+}
+
+removable_media_mount(mount_point) if {
+    startswith(mount_point, "/run/media")
+}
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.10: Ensure noexec option set on removable media partitions" |
+    mount := input.ansible_facts.ansible_mounts[_]
+    removable_media_mount(mount.mount)
+    not "noexec" in mount.options
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.11: Ensure nosuid option set on removable media partitions" |
+    mount := input.ansible_facts.ansible_mounts[_]
+    removable_media_mount(mount.mount)
+    not "nosuid" in mount.options
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.12: Ensure sticky bit is set on all world-writable directories" |
+    file := input.ansible_facts.world_writable_files[_]
+    file.isdir == true
+    not file.sticky_bit
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.13: Disable Automounting" |
+    service := input.ansible_facts.ansible_services["autofs"]
+    service.state == "running"
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.1.14: Disable USB Storage" |
+    not filesystem_disabled("usb-storage")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.2.1: Ensure Red Hat Subscription Manager connection is configured" |
+    not input.ansible_facts.rhsm_configured
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.2.2: Disable the rhnsd Daemon" |
+    service := input.ansible_facts.ansible_services["rhnsd"]
+    service.state == "running"
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.2.3: Ensure DNF automatic updates are configured" |
+    not input.ansible_facts.dnf_automatic_configured
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.3.1: Ensure AIDE is installed" |
+    not package_installed("aide")
+])
+
+package_installed(package_name) if {
+    pkg := input.ansible_facts.ansible_packages[package_name]
+    pkg.version
+}
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.3.2: Ensure filesystem integrity is regularly checked" |
+    not input.ansible_facts.aide_cron_configured
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.3.3: Ensure cryptographic integrity verification" |
+    not input.ansible_facts.fscrypt_enabled
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.4.1: Ensure bootloader password is set" |
+    not input.ansible_facts.grub_password_set
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.4.2: Ensure bootloader config files are configured" |
+    not grub_config_secure
+])
+
+grub_config_secure if {
+    grub := input.ansible_facts.grub_config
+    grub.owner == "root"
+    grub.group == "root"
+    grub.mode == "0600"
+}
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.4.3: Ensure authentication required for single user mode" |
+    not input.ansible_facts.single_user_auth_required
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.4.4: Ensure UEFI Secure Boot is enabled" |
+    not input.ansible_facts.uefi_secure_boot_enabled
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.5.1: Ensure core dumps are restricted" |
+    not core_dumps_restricted
+])
+
+core_dumps_restricted if {
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["fs.suid_dumpable"] == "0"
+}
+
+core_dumps_restricted if {
+    limits := input.ansible_facts.security_limits
+    limit := limits[_]
+    limit.domain == "*"
+    limit.limit_type == "hard"
+    limit.limit_item == "core"
+    limit.value == "0"
+}
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.5.2: Ensure address space layout randomization (ASLR) is enabled" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["kernel.randomize_va_space"] != "2"
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.5.3: Ensure ptrace_scope is restricted" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["kernel.yama.ptrace_scope"] != "1"
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.5.4: Ensure kernel.kptr_restrict is set" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["kernel.kptr_restrict"] != "2"
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.1.1: Ensure SELinux is installed" |
+    not package_installed("libselinux")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.1.2: Ensure SELinux is not disabled in bootloader configuration" |
+    input.ansible_facts.selinux_disabled_in_grub == true
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.1.3: Ensure SELinux policy is configured" |
+    selinux := input.ansible_facts.ansible_selinux
+    not selinux.config_mode in ["enforcing", "permissive"]
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.1.4: Ensure the SELinux mode is not disabled" |
+    selinux := input.ansible_facts.ansible_selinux
+    selinux.mode == "disabled"
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.1.5: Ensure the SELinux mode is enforcing" |
+    selinux := input.ansible_facts.ansible_selinux
+    selinux.mode != "enforcing"
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.1.6: Ensure no unconfined services exist" |
+    service := input.ansible_facts.selinux_unconfined_services[_]
+    service.unconfined == true
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.1.7: Ensure SETroubleshoot is not installed" |
+    package_installed("setroubleshoot")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.1.8: Ensure the MCS Translation Service (mcstrans) is not installed" |
+    package_installed("mcstrans")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.2.1: Ensure AppArmor is installed" |
+    not package_installed("apparmor")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.2.2: Ensure AppArmor is enabled in the bootloader configuration" |
+    not input.ansible_facts.apparmor_enabled_in_grub
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.2.3: Ensure all AppArmor Profiles are in enforce or complain mode" |
+    profile := input.ansible_facts.apparmor_profiles[_]
+    not profile.mode in ["enforce", "complain"]
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.6.2.4: Ensure all AppArmor Profiles are enforcing" |
+    profile := input.ansible_facts.apparmor_profiles[_]
+    profile.mode != "enforce"
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.7.1: Ensure message of the day is configured properly" |
+    not input.ansible_facts.motd_configured
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.7.2: Ensure local login warning banner is configured properly" |
+    not input.ansible_facts.issue_configured
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.7.3: Ensure remote login warning banner is configured properly" |
+    not input.ansible_facts.issue_net_configured
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.7.4: Ensure permissions on /etc/motd are configured" |
+    file := input.ansible_facts.file_permissions["/etc/motd"]
+    not file_permissions_secure(file, "root", "root", "644")
+])
+
+file_permissions_secure(file, expected_owner, expected_group, expected_mode) if {
+    file.owner == expected_owner
+    file.group == expected_group
+    file.mode == expected_mode
+}
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.7.5: Ensure permissions on /etc/issue are configured" |
+    file := input.ansible_facts.file_permissions["/etc/issue"]
+    not file_permissions_secure(file, "root", "root", "644")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.7.6: Ensure permissions on /etc/issue.net are configured" |
+    file := input.ansible_facts.file_permissions["/etc/issue.net"]
+    not file_permissions_secure(file, "root", "root", "644")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.8.1: Ensure GNOME Display Manager is removed" |
+    package_installed("gdm")
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.8.2: Ensure GDM login banner is configured" |
+    package_installed("gdm")
+    not input.ansible_facts.gdm_banner_configured
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.8.3: Ensure GDM disable-user-list option is enabled" |
+    package_installed("gdm")
+    not input.ansible_facts.gdm_disable_user_list
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.8.4: Ensure GDM screen locks when the user is idle" |
+    package_installed("gdm")
+    not input.ansible_facts.gdm_screen_lock_enabled
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.8.5: Ensure GDM screen locks cannot be overridden" |
+    package_installed("gdm")
+    input.ansible_facts.gdm_screen_lock_override_allowed == true
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.8.6: Ensure GDM automatic mounting of removable media is disabled" |
+    package_installed("gdm")
+    input.ansible_facts.gdm_automount_enabled == true
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.8.7: Ensure GDM disabling automatic mounting of removable media is not overridden" |
+    package_installed("gdm")
+    input.ansible_facts.gdm_automount_override_allowed == true
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.8.8: Ensure GDM autorun-never is enabled" |
+    package_installed("gdm")
+    input.ansible_facts.gdm_autorun_never != true
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.8.9: Ensure GDM autorun-never is not overridden" |
+    package_installed("gdm")
+    input.ansible_facts.gdm_autorun_never_override_allowed == true
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.8.10: Ensure XDCMP is not enabled" |
+    package_installed("gdm")
+    input.ansible_facts.gdm_xdmcp_enabled == true
+])
+
+initial_setup_violations := array.concat(initial_setup_violations, [
+    "1.9: Ensure updates, patches, and additional security software are installed" |
+    count(input.ansible_facts.security_updates) > 0
+])
+
+# Section 2: Services (Enhanced for RHEL 10)
+services_violations := [
+    "2.1.1: Ensure xinetd is not installed" |
+    package_installed("xinetd")
+]
+
+services_violations := array.concat(services_violations, [
+    "2.1.2: Ensure xorg-x11-server-common is not installed" |
+    package_installed("xorg-x11-server-common")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.3: Ensure Avahi Server is not installed" |
+    package_installed("avahi-autoipd")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.4: Ensure CUPS is not installed" |
+    package_installed("cups")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.5: Ensure DHCP Server is not installed" |
+    package_installed("dhcp-server")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.6: Ensure DNS Server is not installed" |
+    package_installed("bind")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.7: Ensure dnsmasq is not installed" |
+    package_installed("dnsmasq")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.8: Ensure Samba is not installed" |
+    package_installed("samba")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.9: Ensure FTP Server is not installed" |
+    package_installed("vsftpd")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.10: Ensure HTTP server is not installed" |
+    package_installed("httpd")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.11: Ensure IMAP and POP3 server is not installed" |
+    package_installed("dovecot")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.12: Ensure Samba is not installed" |
+    package_installed("samba")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.13: Ensure HTTP Proxy Server is not installed" |
+    package_installed("squid")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.14: Ensure net-snmp is not installed" |
+    package_installed("net-snmp")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.15: Ensure NIS Server is not installed" |
+    package_installed("ypserv")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.16: Ensure telnet-server is not installed" |
+    package_installed("telnet-server")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.17: Ensure mail transfer agent is configured for local-only mode" |
+    not mta_local_only_configured
+])
+
+mta_local_only_configured if {
+    postfix := input.ansible_facts.postfix_config
+    postfix.inet_interfaces == "localhost"
+}
+
+services_violations := array.concat(services_violations, [
+    "2.1.18: Ensure rsync service is not installed" |
+    package_installed("rsync-daemon")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.19: Ensure NFS utils are not installed or the nfs-server service is masked" |
+    package_installed("nfs-utils")
+    service := input.ansible_facts.ansible_services["nfs-server"]
+    service.enabled == true
+])
+
+services_violations := array.concat(services_violations, [
+    "2.1.20: Ensure rpcbind service is not installed" |
+    package_installed("rpcbind")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.2.1: Ensure NIS Client is not installed" |
+    package_installed("ypbind")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.2.2: Ensure rsh client is not installed" |
+    package_installed("rsh")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.2.3: Ensure talk client is not installed" |
+    package_installed("talk")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.2.4: Ensure telnet client is not installed" |
+    package_installed("telnet")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.2.5: Ensure LDAP client is not installed" |
+    package_installed("openldap-clients")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.2.6: Ensure tftp client is not installed" |
+    package_installed("tftp")
+])
+
+services_violations := array.concat(services_violations, [
+    "2.2.7: Ensure FTP client is not installed" |
+    package_installed("ftp")
+])
+
+# Section 3: Network Configuration (Enhanced for RHEL 10)
+network_violations := [
+    "3.1.1: Verify if IPv6 is enabled on the system" |
+    ipv6_enabled
+    not ipv6_properly_configured
+]
+
+ipv6_enabled if {
+    interfaces := input.ansible_facts.ansible_interfaces
+    interface := interfaces[_]
+    interface.ipv6
+    count(interface.ipv6) > 0
+}
+
+ipv6_properly_configured if {
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv6.conf.all.disable_ipv6"] == "0"
+    sysctl["net.ipv6.conf.default.disable_ipv6"] == "0"
+}
+
+network_violations := array.concat(network_violations, [
+    "3.1.2: Ensure wireless interfaces are disabled" |
+    interface := input.ansible_facts.ansible_interfaces[_]
+    wireless_interface(interface)
+])
+
+wireless_interface(interface) if {
+    startswith(interface, "wlan")
+}
+
+wireless_interface(interface) if {
+    startswith(interface, "wifi")
+}
+
+network_violations := array.concat(network_violations, [
+    "3.1.3: Ensure bluetooth services are not in use" |
+    service := input.ansible_facts.ansible_services["bluetooth"]
+    service.enabled == true
+])
+
+network_violations := array.concat(network_violations, [
+    "3.2.1: Ensure packet redirect sending is disabled" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv4.conf.all.send_redirects"] != "0"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.2.2: Ensure IP forwarding is disabled" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv4.ip_forward"] != "0"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.3.1: Ensure source routed packets are not accepted" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv4.conf.all.accept_source_route"] != "0"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.3.2: Ensure ICMP redirects are not accepted" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv4.conf.all.accept_redirects"] != "0"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.3.3: Ensure secure ICMP redirects are not accepted" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv4.conf.all.secure_redirects"] != "0"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.3.4: Ensure suspicious packets are logged" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv4.conf.all.log_martians"] != "1"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.3.5: Ensure broadcast ICMP requests are ignored" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv4.icmp_echo_ignore_broadcasts"] != "1"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.3.6: Ensure bogus ICMP responses are ignored" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv4.icmp_ignore_bogus_error_responses"] != "1"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.3.7: Ensure Reverse Path Filtering is enabled" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv4.conf.all.rp_filter"] != "1"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.3.8: Ensure TCP SYN Cookies is enabled" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv4.tcp_syncookies"] != "1"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.3.9: Ensure IPv6 router advertisements are not accepted" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv6.conf.all.accept_ra"] != "0"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.3.10: Ensure IPv6 redirects are not accepted" |
+    sysctl := input.ansible_facts.ansible_sysctl
+    sysctl["net.ipv6.conf.all.accept_redirects"] != "0"
+])
+
+network_violations := array.concat(network_violations, [
+    "3.4.1: Ensure DCCP is disabled" |
+    not protocol_disabled("dccp")
+])
+
+protocol_disabled(protocol) if {
+    modprobe_config := input.ansible_facts.ansible_modprobe_config[_]
+    modprobe_config.protocol == protocol
+    modprobe_config.state == "disabled"
+}
+
+network_violations := array.concat(network_violations, [
+    "3.4.2: Ensure SCTP is disabled" |
+    not protocol_disabled("sctp")
+])
+
+network_violations := array.concat(network_violations, [
+    "3.4.3: Ensure RDS is disabled" |
+    not protocol_disabled("rds")
+])
+
+network_violations := array.concat(network_violations, [
+    "3.4.4: Ensure TIPC is disabled" |
+    not protocol_disabled("tipc")
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.1.1: Ensure firewalld is installed" |
+    not package_installed("firewalld")
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.1.2: Ensure iptables-services not installed with firewalld" |
+    package_installed("firewalld")
+    package_installed("iptables-services")
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.1.3: Ensure nftables either not installed or masked with firewalld" |
+    package_installed("firewalld")
+    package_installed("nftables")
+    service := input.ansible_facts.ansible_services["nftables"]
+    service.enabled == true
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.1.4: Ensure firewalld service enabled and running" |
+    service := input.ansible_facts.ansible_services["firewalld"]
+    service.state != "running"
+    service.enabled != true
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.1.5: Ensure firewalld default zone is set" |
+    firewalld := input.ansible_facts.firewalld_config
+    not firewalld.default_zone
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.1.6: Ensure network interfaces are assigned to appropriate zone" |
+    interface := input.ansible_facts.ansible_interfaces[_]
+    not interface_zone_assigned(interface)
+])
+
+interface_zone_assigned(interface) if {
+    firewalld := input.ansible_facts.firewalld_config
+    zone := firewalld.zones[_]
+    interface in zone.interfaces
+}
+
+network_violations := array.concat(network_violations, [
+    "3.5.1.7: Ensure firewalld drops unnecessary services and ports" |
+    firewalld := input.ansible_facts.firewalld_config
+    zone := firewalld.zones[_]
+    service := zone.services[_]
+    not necessary_service(service)
+])
+
+necessary_service(service) if {
+    service in ["ssh", "dhcpv6-client"]
+}
+
+network_violations := array.concat(network_violations, [
+    "3.5.2.1: Ensure nftables is installed" |
+    not package_installed("nftables")
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.2.2: Ensure firewalld is either not installed or masked with nftables" |
+    package_installed("nftables")
+    package_installed("firewalld")
+    service := input.ansible_facts.ansible_services["firewalld"]
+    service.enabled == true
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.2.3: Ensure iptables-services not installed with nftables" |
+    package_installed("nftables")
+    package_installed("iptables-services")
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.2.4: Ensure iptables are flushed with nftables" |
+    not input.ansible_facts.iptables_flushed_for_nftables
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.2.5: Ensure an nftables table exists" |
+    nftables := input.ansible_facts.nftables_config
+    count(nftables.tables) == 0
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.2.6: Ensure nftables base chains exist" |
+    not nftables_base_chains_exist
+])
+
+nftables_base_chains_exist if {
+    nftables := input.ansible_facts.nftables_config
+    table := nftables.tables[_]
+    "input" in table.chains
+    "forward" in table.chains
+    "output" in table.chains
+}
+
+network_violations := array.concat(network_violations, [
+    "3.5.2.7: Ensure nftables loopback traffic is configured" |
+    not nftables_loopback_configured
+])
+
+nftables_loopback_configured if {
+    nftables := input.ansible_facts.nftables_config
+    rule := nftables.rules[_]
+    rule.interface == "lo"
+    rule.action == "accept"
+}
+
+network_violations := array.concat(network_violations, [
+    "3.5.2.8: Ensure nftables outbound and established connections are configured" |
+    not nftables_outbound_configured
+])
+
+nftables_outbound_configured if {
+    nftables := input.ansible_facts.nftables_config
+    rule := nftables.rules[_]
+    rule.connection_state in ["established", "related"]
+    rule.action == "accept"
+}
+
+network_violations := array.concat(network_violations, [
+    "3.5.2.9: Ensure nftables default deny firewall policy" |
+    not nftables_default_deny_configured
+])
+
+nftables_default_deny_configured if {
+    nftables := input.ansible_facts.nftables_config
+    table := nftables.tables[_]
+    table.input_policy == "drop"
+    table.forward_policy == "drop"
+    table.output_policy == "drop"
+}
+
+network_violations := array.concat(network_violations, [
+    "3.5.2.10: Ensure nftables service is enabled" |
+    service := input.ansible_facts.ansible_services["nftables"]
+    service.enabled != true
+])
+
+network_violations := array.concat(network_violations, [
+    "3.5.2.11: Ensure nftables rules are permanent" |
+    not input.ansible_facts.nftables_rules_permanent
+])
+
+# Section 4: Logging and Auditing (Enhanced for RHEL 10)
+logging_violations := [
+    "4.1.1.1: Ensure auditd is installed" |
+    not package_installed("audit")
+]
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.1.2: Ensure auditd service is enabled and running" |
+    service := input.ansible_facts.ansible_services["auditd"]
+    service.state != "running"
+    service.enabled != true
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.1.3: Ensure auditing for processes that start prior to auditd is enabled" |
+    not input.ansible_facts.audit_grub_configured
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.1.4: Ensure audit_backlog_limit is sufficient" |
+    grub := input.ansible_facts.grub_config
+    grub.audit_backlog_limit < 8192
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.2.1: Ensure audit log storage size is configured" |
+    auditd := input.ansible_facts.auditd_config
+    not auditd.max_log_file
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.2.2: Ensure audit logs are not automatically deleted" |
+    auditd := input.ansible_facts.auditd_config
+    auditd.max_log_file_action == "delete"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.2.3: Ensure system is disabled when audit logs are full" |
+    auditd := input.ansible_facts.auditd_config
+    auditd.space_left_action != "email"
+    auditd.action_mail_acct != "root"
+    auditd.admin_space_left_action != "halt"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.1: Ensure changes to system administration scope (sudoers) is collected" |
+    not audit_rule_exists("-w /etc/sudoers -p wa -k scope")
+])
+
+audit_rule_exists(rule) if {
+    audit_rules := input.ansible_facts.audit_rules
+    rule in audit_rules
+}
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.2: Ensure actions as another user are always logged" |
+    not audit_rule_exists("-a always,exit -F arch=b64 -C euid!=uid -F auid!=unset -S execve -k user_emulation")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.3: Ensure events that modify the sudo log file are collected" |
+    not audit_rule_exists("-w /var/log/sudo.log -p wa -k sudo_log_file")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.4: Ensure events that modify date and time information are collected" |
+    not audit_rule_exists("-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -k time-change")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.5: Ensure events that modify the system's network environment are collected" |
+    not audit_rule_exists("-a always,exit -F arch=b64 -S sethostname,setdomainname -k system-locale")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.6: Ensure use of privileged commands is collected" |
+    privileged_command := input.ansible_facts.privileged_commands[_]
+    not audit_rule_exists(sprintf("-a always,exit -F path=%s -F perm=x -F auid>=1000 -F auid!=unset -k privileged", [privileged_command]))
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.7: Ensure unsuccessful unauthorized file access attempts are collected" |
+    not audit_rule_exists("-a always,exit -F arch=b64 -S open,truncate,ftruncate,creat,openat -F exit=-EACCES -F auid>=1000 -F auid!=unset -k access")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.8: Ensure events that modify user/group information are collected" |
+    not audit_rule_exists("-w /etc/group -p wa -k identity")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.9: Ensure discretionary access control permission modification events are collected" |
+    not audit_rule_exists("-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -k perm_mod")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.10: Ensure successful file system mounts are collected" |
+    not audit_rule_exists("-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.11: Ensure session initiation information is collected" |
+    not audit_rule_exists("-w /var/run/utmp -p wa -k session")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.12: Ensure login and logout events are collected" |
+    not audit_rule_exists("-w /var/log/lastlog -p wa -k logins")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.13: Ensure file deletion events by users are collected" |
+    not audit_rule_exists("-a always,exit -F arch=b64 -S rename,unlink,unlinkat,renameat -F auid>=1000 -F auid!=unset -k delete")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.14: Ensure events that modify the system's Mandatory Access Controls are collected" |
+    not audit_rule_exists("-w /etc/selinux/ -p wa -k MAC-policy")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.15: Ensure successful and unsuccessful attempts to use the chcon command are collected" |
+    not audit_rule_exists("-a always,exit -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -k perm_chng")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.16: Ensure successful and unsuccessful attempts to use the setfacl command are collected" |
+    not audit_rule_exists("-a always,exit -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -k perm_chng")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.17: Ensure successful and unsuccessful attempts to use the chacl command are collected" |
+    not audit_rule_exists("-a always,exit -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -k perm_chng")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.18: Ensure successful and unsuccessful attempts to use the usermod command are collected" |
+    not audit_rule_exists("-a always,exit -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -k usermod")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.19: Ensure kernel module loading and unloading is collected" |
+    not audit_rule_exists("-a always,exit -F arch=b64 -S init_module,delete_module -k modules")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3.20: Ensure the audit configuration is immutable" |
+    not audit_rule_exists("-e 2")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.4.1: Ensure the running and on disk configuration is the same" |
+    not input.ansible_facts.auditd_config_synced
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.1.1: Ensure rsyslog is installed" |
+    not package_installed("rsyslog")
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.1.2: Ensure rsyslog Service is enabled and running" |
+    service := input.ansible_facts.ansible_services["rsyslog"]
+    service.state != "running"
+    service.enabled != true
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.1.3: Ensure journald is configured to send logs to rsyslog" |
+    journald := input.ansible_facts.journald_config
+    journald.ForwardToSyslog != "yes"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.1.4: Ensure rsyslog default file permissions configured" |
+    rsyslog := input.ansible_facts.rsyslog_config
+    rsyslog.FileCreateMode != "0640"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.1.5: Ensure logging is configured" |
+    not input.ansible_facts.rsyslog_logging_configured
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.1.6: Ensure rsyslog is configured to send logs to a remote log host" |
+    not input.ansible_facts.rsyslog_remote_configured
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.2.1: Ensure journald is configured to send logs to rsyslog" |
+    journald := input.ansible_facts.journald_config
+    journald.ForwardToSyslog != "yes"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.2.2: Ensure journald is configured to compress large log files" |
+    journald := input.ansible_facts.journald_config
+    journald.Compress != "yes"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.2.3: Ensure journald is configured to write logfiles to persistent disk" |
+    journald := input.ansible_facts.journald_config
+    journald.Storage != "persistent"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.2.4: Ensure journald is not configured to receive logs from a remote client" |
+    journald := input.ansible_facts.journald_config
+    journald.ForwardToSyslog == "yes"
+    input.ansible_facts.systemd_journal_remote_enabled
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.3: Ensure permissions on all logfiles are configured" |
+    log_file := input.ansible_facts.log_files[_]
+    not log_file_permissions_secure(log_file)
+])
+
+log_file_permissions_secure(log_file) if {
+    log_file.mode <= "640"
+    log_file.owner == "root"
+}
+
+# Section 5: Access, Authentication and Authorization (Enhanced for RHEL 10)
+access_auth_violations := [
+    "5.1.1: Ensure cron daemon is enabled and running" |
+    service := input.ansible_facts.ansible_services["crond"]
+    service.state != "running"
+    service.enabled != true
+]
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.1.2: Ensure permissions on /etc/crontab are configured" |
+    file := input.ansible_facts.file_permissions["/etc/crontab"]
+    not file_permissions_secure(file, "root", "root", "600")
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.1.3: Ensure permissions on /etc/cron.hourly are configured" |
+    file := input.ansible_facts.file_permissions["/etc/cron.hourly"]
+    not file_permissions_secure(file, "root", "root", "700")
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.1.4: Ensure permissions on /etc/cron.daily are configured" |
+    file := input.ansible_facts.file_permissions["/etc/cron.daily"]
+    not file_permissions_secure(file, "root", "root", "700")
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.1.5: Ensure permissions on /etc/cron.weekly are configured" |
+    file := input.ansible_facts.file_permissions["/etc/cron.weekly"]
+    not file_permissions_secure(file, "root", "root", "700")
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.1.6: Ensure permissions on /etc/cron.monthly are configured" |
+    file := input.ansible_facts.file_permissions["/etc/cron.monthly"]
+    not file_permissions_secure(file, "root", "root", "700")
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.1.7: Ensure permissions on /etc/cron.d are configured" |
+    file := input.ansible_facts.file_permissions["/etc/cron.d"]
+    not file_permissions_secure(file, "root", "root", "700")
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.1.8: Ensure cron is restricted to authorized users" |
+    not cron_access_restricted
+])
+
+cron_access_restricted if {
+    file_exists("/etc/cron.deny")
+    not file_exists("/etc/cron.allow")
+}
+
+cron_access_restricted if {
+    file_exists("/etc/cron.allow")
+    file := input.ansible_facts.file_permissions["/etc/cron.allow"]
+    file_permissions_secure(file, "root", "root", "600")
+}
+
+file_exists(filepath) if {
+    input.ansible_facts.file_permissions[filepath]
+}
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.1.9: Ensure at is restricted to authorized users" |
+    not at_access_restricted
+])
+
+at_access_restricted if {
+    file_exists("/etc/at.deny")
+    not file_exists("/etc/at.allow")
+}
+
+at_access_restricted if {
+    file_exists("/etc/at.allow")
+    file := input.ansible_facts.file_permissions["/etc/at.allow"]
+    file_permissions_secure(file, "root", "root", "600")
+}
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.1: Ensure permissions on /etc/ssh/sshd_config are configured" |
+    file := input.ansible_facts.file_permissions["/etc/ssh/sshd_config"]
+    not file_permissions_secure(file, "root", "root", "600")
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.2: Ensure permissions on SSH private host key files are configured" |
+    key_file := input.ansible_facts.ssh_host_keys[_]
+    key_file.private == true
+    not file_permissions_secure(key_file, "root", "root", "600")
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.3: Ensure permissions on SSH public host key files are configured" |
+    key_file := input.ansible_facts.ssh_host_keys[_]
+    key_file.private == false
+    not file_permissions_secure(key_file, "root", "root", "644")
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.4: Ensure SSH access is limited" |
+    ssh := input.ansible_facts.ssh_config
+    not ssh_access_limited(ssh)
+])
+
+ssh_access_limited(ssh) if {
+    ssh.AllowUsers
+}
+
+ssh_access_limited(ssh) if {
+    ssh.AllowGroups
+}
+
+ssh_access_limited(ssh) if {
+    ssh.DenyUsers
+}
+
+ssh_access_limited(ssh) if {
+    ssh.DenyGroups
+}
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.5: Ensure SSH LogLevel is appropriate" |
+    ssh := input.ansible_facts.ssh_config
+    not ssh.LogLevel in ["VERBOSE", "INFO"]
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.6: Ensure SSH PAM is enabled" |
+    ssh := input.ansible_facts.ssh_config
+    ssh.UsePAM != "yes"
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.7: Ensure SSH root login is disabled" |
+    ssh := input.ansible_facts.ssh_config
+    ssh.PermitRootLogin != "no"
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.8: Ensure SSH HostbasedAuthentication is disabled" |
+    ssh := input.ansible_facts.ssh_config
+    ssh.HostbasedAuthentication != "no"
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.9: Ensure SSH PermitEmptyPasswords is disabled" |
+    ssh := input.ansible_facts.ssh_config
+    ssh.PermitEmptyPasswords != "no"
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.10: Ensure SSH PermitUserEnvironment is disabled" |
+    ssh := input.ansible_facts.ssh_config
+    ssh.PermitUserEnvironment != "no"
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.11: Ensure SSH IgnoreRhosts is enabled" |
+    ssh := input.ansible_facts.ssh_config
+    ssh.IgnoreRhosts != "yes"
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.12: Ensure SSH X11 forwarding is disabled" |
+    ssh := input.ansible_facts.ssh_config
+    ssh.X11Forwarding != "no"
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.13: Ensure only strong Ciphers are used" |
+    ssh := input.ansible_facts.ssh_config
+    cipher := ssh.Ciphers[_]
+    weak_ssh_cipher(cipher)
+])
+
+weak_ssh_cipher(cipher) if {
+    weak_ciphers := [
+        "3des-cbc", "aes128-cbc", "aes192-cbc", "aes256-cbc",
+        "arcfour", "arcfour128", "arcfour256", "blowfish-cbc",
+        "cast128-cbc", "rijndael-cbc@lysator.liu.se"
+    ]
+    cipher in weak_ciphers
+}
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.14: Ensure only strong MAC algorithms are used" |
+    ssh := input.ansible_facts.ssh_config
+    mac := ssh.MACs[_]
+    weak_ssh_mac(mac)
+])
+
+weak_ssh_mac(mac) if {
+    weak_macs := [
+        "hmac-md5", "hmac-md5-96", "hmac-ripemd160",
+        "hmac-sha1", "hmac-sha1-96", "umac-64@openssh.com",
+        "umac-128@openssh.com", "hmac-md5-etm@openssh.com",
+        "hmac-md5-96-etm@openssh.com", "hmac-ripemd160-etm@openssh.com",
+        "hmac-sha1-etm@openssh.com", "hmac-sha1-96-etm@openssh.com",
+        "umac-64-etm@openssh.com", "umac-128-etm@openssh.com"
+    ]
+    mac in weak_macs
+}
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.15: Ensure only strong Key Exchange algorithms are used" |
+    ssh := input.ansible_facts.ssh_config
+    kex := ssh.KexAlgorithms[_]
+    weak_ssh_kex(kex)
+])
+
+weak_ssh_kex(kex) if {
+    weak_kexs := [
+        "diffie-hellman-group1-sha1", "diffie-hellman-group14-sha1",
+        "diffie-hellman-group-exchange-sha1"
+    ]
+    kex in weak_kexs
+}
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.16: Ensure SSH Idle Timeout Interval is configured" |
+    ssh := input.ansible_facts.ssh_config
+    not ssh.ClientAliveInterval
+    ssh.ClientAliveInterval > 900
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.17: Ensure SSH LoginGraceTime is set to one minute or less" |
+    ssh := input.ansible_facts.ssh_config
+    not ssh.LoginGraceTime
+    ssh.LoginGraceTime > 60
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.18: Ensure SSH warning banner is configured" |
+    ssh := input.ansible_facts.ssh_config
+    not ssh.Banner
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.19: Ensure SSH MaxAuthTries is set to 4 or less" |
+    ssh := input.ansible_facts.ssh_config
+    not ssh.MaxAuthTries
+    ssh.MaxAuthTries > 4
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.20: Ensure SSH MaxStartups is configured" |
+    ssh := input.ansible_facts.ssh_config
+    not ssh.MaxStartups
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.21: Ensure SSH MaxSessions is limited" |
+    ssh := input.ansible_facts.ssh_config
+    not ssh.MaxSessions
+    ssh.MaxSessions > 10
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.2.22: Ensure SSH crypto_policy is not set to legacy" |
+    ssh := input.ansible_facts.ssh_config
+    ssh.crypto_policy == "LEGACY"
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.3.1: Create custom authselect profile" |
+    not input.ansible_facts.authselect_custom_profile
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.3.2: Ensure authselect includes with-faillock" |
+    authselect := input.ansible_facts.authselect_config
+    not "with-faillock" in authselect.features
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.3.3: Ensure pam_faillock is configured" |
+    not pam_faillock_configured
+])
+
+pam_faillock_configured if {
+    pam := input.ansible_facts.pam_config
+    pam.faillock.deny <= 5
+    pam.faillock.unlock_time >= 900
+}
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.3.4: Ensure pam_pwquality is configured" |
+    not pam_pwquality_configured
+])
+
+pam_pwquality_configured if {
+    pam := input.ansible_facts.pam_config
+    pam.pwquality.minlen >= 14
+    pam.pwquality.minclass >= 4
+}
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.4.1: Ensure password creation requirements are configured" |
+    pwquality := input.ansible_facts.pwquality_config
+    pwquality.minlen < 14
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.4.2: Ensure lockout for failed password attempts is configured" |
+    not password_lockout_configured
+])
+
+password_lockout_configured if {
+    pam := input.ansible_facts.pam_config
+    pam.faillock.configured == true
+}
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.4.3: Ensure password reuse is limited" |
+    pam := input.ansible_facts.pam_config
+    pam.pwhistory.remember < 5
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.4.4: Ensure password hashing algorithm is SHA-512 or stronger" |
+    pam := input.ansible_facts.pam_config
+    not pam.password_hash in ["sha512", "yescrypt"]
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.5.1.1: Ensure minimum days between password changes is configured" |
+    login_defs := input.ansible_facts.login_defs
+    login_defs.PASS_MIN_DAYS < 1
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.5.1.2: Ensure password expiration is 365 days or less" |
+    login_defs := input.ansible_facts.login_defs
+    login_defs.PASS_MAX_DAYS > 365
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.5.1.3: Ensure password expiration warning days is 7 or more" |
+    login_defs := input.ansible_facts.login_defs
+    login_defs.PASS_WARN_AGE < 7
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.5.1.4: Ensure inactive password lock is 30 days or less" |
+    useradd := input.ansible_facts.useradd_defaults
+    useradd.INACTIVE > 30
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.5.1.5: Ensure all users last password change date is in the past" |
+    user := input.ansible_facts.users[_]
+    user.password_last_changed > input.ansible_facts.current_date
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.5.2: Ensure system accounts are secured" |
+    user := input.ansible_facts.users[_]
+    user.uid < 1000
+    user.uid != 0
+    system_account_not_secured(user)
+])
+
+system_account_not_secured(user) if {
+    not user.shell in ["/sbin/nologin", "/usr/sbin/nologin", "/bin/false"]
+}
+
+system_account_not_secured(user) if {
+    user.password != "!!"
+    user.password != "*"
+}
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.5.3: Ensure default group for the root account is GID 0" |
+    root_user := input.ansible_facts.users["root"]
+    root_user.gid != 0
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.5.4: Ensure default user umask is 027 or more restrictive" |
+    umask := input.ansible_facts.default_umask
+    to_number(umask) < 27
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.5.5: Ensure default user shell timeout is 900 seconds or less" |
+    not shell_timeout_configured
+])
+
+shell_timeout_configured if {
+    timeout := input.ansible_facts.shell_timeout
+    timeout <= 900
+}
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.6: Ensure root login is restricted to system console" |
+    not input.ansible_facts.root_login_restricted
+])
+
+access_auth_violations := array.concat(access_auth_violations, [
+    "5.7: Ensure access to the su command is restricted" |
+    not su_access_restricted
+])
+
+su_access_restricted if {
+    pam := input.ansible_facts.pam_config
+    pam.su_restricted == true
+}
+
+# Section 6: System Maintenance (Enhanced for RHEL 10)
+system_maintenance_violations := [
+    "6.1.1: Audit system file permissions" |
+    file := input.ansible_facts.system_files[_]
+    not system_file_permissions_correct(file)
+]
+
+system_file_permissions_correct(file) if {
+    file.permissions_correct == true
+}
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.2: Ensure permissions on /etc/passwd are configured" |
+    file := input.ansible_facts.file_permissions["/etc/passwd"]
+    not file_permissions_secure(file, "root", "root", "644")
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.3: Ensure permissions on /etc/passwd- are configured" |
+    file := input.ansible_facts.file_permissions["/etc/passwd-"]
+    not file_permissions_secure(file, "root", "root", "644")
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.4: Ensure permissions on /etc/shadow are configured" |
+    file := input.ansible_facts.file_permissions["/etc/shadow"]
+    not file_permissions_secure(file, "root", "shadow", "640")
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.5: Ensure permissions on /etc/shadow- are configured" |
+    file := input.ansible_facts.file_permissions["/etc/shadow-"]
+    not file_permissions_secure(file, "root", "shadow", "640")
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.6: Ensure permissions on /etc/gshadow are configured" |
+    file := input.ansible_facts.file_permissions["/etc/gshadow"]
+    not file_permissions_secure(file, "root", "shadow", "640")
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.7: Ensure permissions on /etc/gshadow- are configured" |
+    file := input.ansible_facts.file_permissions["/etc/gshadow-"]
+    not file_permissions_secure(file, "root", "shadow", "640")
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.8: Ensure permissions on /etc/group are configured" |
+    file := input.ansible_facts.file_permissions["/etc/group"]
+    not file_permissions_secure(file, "root", "root", "644")
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.9: Ensure permissions on /etc/group- are configured" |
+    file := input.ansible_facts.file_permissions["/etc/group-"]
+    not file_permissions_secure(file, "root", "root", "644")
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.10: Ensure no world writable files exist" |
+    count(input.ansible_facts.world_writable_files) > 0
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.11: Ensure no unowned files or directories exist" |
+    count(input.ansible_facts.unowned_files) > 0
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.12: Ensure no ungrouped files or directories exist" |
+    count(input.ansible_facts.ungrouped_files) > 0
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.13: Audit SUID executables" |
+    count(input.ansible_facts.suid_files) > input.expected_suid_files
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.1.14: Audit SGID executables" |
+    count(input.ansible_facts.sgid_files) > input.expected_sgid_files
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.1: Ensure accounts in /etc/passwd use shadowed passwords" |
+    user := input.ansible_facts.passwd_users[_]
+    user.password != "x"
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.2: Ensure /etc/shadow password fields are not empty" |
+    user := input.ansible_facts.shadow_users[_]
+    user.password == ""
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.3: Ensure all groups in /etc/passwd exist in /etc/group" |
+    user := input.ansible_facts.passwd_users[_]
+    not group_exists(user.gid)
+])
+
+group_exists(gid) if {
+    group := input.ansible_facts.groups[_]
+    group.gid == gid
+}
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.4: Ensure shadow group is empty" |
+    group := input.ansible_facts.groups["shadow"]
+    count(group.members) > 0
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.5: Ensure no duplicate UIDs exist" |
+    user1 := input.ansible_facts.users[_]
+    user2 := input.ansible_facts.users[_]
+    user1.name != user2.name
+    user1.uid == user2.uid
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.6: Ensure no duplicate GIDs exist" |
+    group1 := input.ansible_facts.groups[_]
+    group2 := input.ansible_facts.groups[_]
+    group1.name != group2.name
+    group1.gid == group2.gid
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.7: Ensure no duplicate user names exist" |
+    user1 := input.ansible_facts.users[_]
+    user2 := input.ansible_facts.users[_]
+    user1.name == user2.name
+    user1.uid != user2.uid
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.8: Ensure no duplicate group names exist" |
+    group1 := input.ansible_facts.groups[_]
+    group2 := input.ansible_facts.groups[_]
+    group1.name == group2.name
+    group1.gid != group2.gid
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.9: Ensure root PATH Integrity" |
+    not root_path_secure
+])
+
+root_path_secure if {
+    path := input.ansible_facts.root_path
+    not "." in path.directories
+    not "" in path.directories
+    directory := path.directories[_]
+    directory_secure(directory)
+}
+
+directory_secure(directory) if {
+    dir_info := input.ansible_facts.directory_permissions[directory]
+    dir_info.owner == "root"
+    not dir_info.world_writable
+}
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.10: Ensure root is the only UID 0 account" |
+    user := input.ansible_facts.users[_]
+    user.uid == 0
+    user.name != "root"
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.11: Ensure local interactive user home directories exist" |
+    user := input.ansible_facts.interactive_users[_]
+    not directory_exists(user.home_directory)
+])
+
+directory_exists(path) if {
+    input.ansible_facts.directory_permissions[path]
+}
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.12: Ensure local interactive users own their home directories" |
+    user := input.ansible_facts.interactive_users[_]
+    directory_exists(user.home_directory)
+    dir_info := input.ansible_facts.directory_permissions[user.home_directory]
+    dir_info.owner != user.name
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.13: Ensure local interactive user home directories are mode 750 or more restrictive" |
+    user := input.ansible_facts.interactive_users[_]
+    directory_exists(user.home_directory)
+    dir_info := input.ansible_facts.directory_permissions[user.home_directory]
+    to_number(dir_info.mode) > 750
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.14: Ensure no local interactive user has .netrc files" |
+    user := input.ansible_facts.interactive_users[_]
+    file_exists(sprintf("%s/.netrc", [user.home_directory]))
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.15: Ensure no local interactive user has .forward files" |
+    user := input.ansible_facts.interactive_users[_]
+    file_exists(sprintf("%s/.forward", [user.home_directory]))
+])
+
+system_maintenance_violations := array.concat(system_maintenance_violations, [
+    "6.2.16: Ensure no local interactive user has .rhosts files" |
+    user := input.ansible_facts.interactive_users[_]
+    file_exists(sprintf("%s/.rhosts", [user.home_directory]))
+])
+
+# Section 7: Container Security (New for RHEL 10)
+container_security_violations := [
+    "7.1.1: Ensure Podman is configured securely" |
+    not podman_configured_securely
+]
+
+podman_configured_securely if {
+    podman := input.ansible_facts.podman_config
+    podman.rootless_mode == true
+    podman.seccomp_enabled == true
+}
+
+container_security_violations := array.concat(container_security_violations, [
+    "7.1.2: Ensure container images are from trusted registries" |
+    container := input.ansible_facts.running_containers[_]
+    not trusted_registry(container.image)
+])
+
+trusted_registry(image) if {
+    trusted_registries := input.ansible_facts.trusted_registries
+    registry := trusted_registries[_]
+    startswith(image, registry)
+}
+
+container_security_violations := array.concat(container_security_violations, [
+    "7.1.3: Ensure container runtime security profiles are enabled" |
+    container := input.ansible_facts.running_containers[_]
+    not container.security_profile_enabled
+])
+
+container_security_violations := array.concat(container_security_violations, [
+    "7.1.4: Ensure containers do not run as root" |
+    container := input.ansible_facts.running_containers[_]
+    container.user == "root"
+])
+
+container_security_violations := array.concat(container_security_violations, [
+    "7.1.5: Ensure container capabilities are restricted" |
+    container := input.ansible_facts.running_containers[_]
+    dangerous_capability := container.capabilities[_]
+    dangerous_capability in ["SYS_ADMIN", "NET_ADMIN", "SYS_MODULE"]
+])
+
+container_security_violations := array.concat(container_security_violations, [
+    "7.2.1: Ensure CRI-O is configured securely" |
+    crio := input.ansible_facts.crio_config
+    crio.default_ulimits == null
+])
+
+container_security_violations := array.concat(container_security_violations, [
+    "7.2.2: Ensure container network policies are configured" |
+    not container_network_policies_configured
+])
+
+container_network_policies_configured if {
+    podman := input.ansible_facts.podman_config
+    podman.network_policy_enabled == true
+}
+
+# Section 8: Systemd Security (New for RHEL 10)
+systemd_security_violations := [
+    "8.1.1: Ensure systemd services use User= directive" |
+    service := input.ansible_facts.systemd_services[_]
+    service.custom == true
+    not service.user_directive
+]
+
+systemd_security_violations := array.concat(systemd_security_violations, [
+    "8.1.2: Ensure systemd services use NoNewPrivileges=yes" |
+    service := input.ansible_facts.systemd_services[_]
+    service.custom == true
+    service.no_new_privileges != true
+])
+
+systemd_security_violations := array.concat(systemd_security_violations, [
+    "8.1.3: Ensure systemd services use PrivateTmp=yes" |
+    service := input.ansible_facts.systemd_services[_]
+    service.custom == true
+    service.private_tmp != true
+])
+
+systemd_security_violations := array.concat(systemd_security_violations, [
+    "8.1.4: Ensure systemd services use ProtectSystem=strict" |
+    service := input.ansible_facts.systemd_services[_]
+    service.custom == true
+    service.protect_system != "strict"
+])
+
+systemd_security_violations := array.concat(systemd_security_violations, [
+    "8.1.5: Ensure systemd services use ProtectHome=yes" |
+    service := input.ansible_facts.systemd_services[_]
+    service.custom == true
+    service.protect_home != true
+])
+
+systemd_security_violations := array.concat(systemd_security_violations, [
+    "8.2.1: Ensure systemd-resolved is configured securely" |
+    resolved := input.ansible_facts.systemd_resolved_config
+    resolved.dns_over_tls != true
+])
+
+systemd_security_violations := array.concat(systemd_security_violations, [
+    "8.2.2: Ensure systemd-networkd is configured securely" |
+    networkd := input.ansible_facts.systemd_networkd_config
+    networkd.ip_forwarding_enabled == true
+])
+
+systemd_security_violations := array.concat(systemd_security_violations, [
+    "8.3.1: Ensure systemd-logind is configured securely" |
+    logind := input.ansible_facts.systemd_logind_config
+    logind.kill_user_processes != true
+])
+
+systemd_security_violations := array.concat(systemd_security_violations, [
+    "8.3.2: Ensure systemd user sessions are secured" |
+    logind := input.ansible_facts.systemd_logind_config
+    logind.sessions_max == null
+    logind.sessions_max > 1024
+])
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 312,
+    "passing_controls": 312 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((312 - count(violations)) * 100) / 312,
+    "sections": {
+        "initial_setup": {
+            "total": 78,
+            "violations": count(initial_setup_violations)
+        },
+        "services": {
+            "total": 28,
+            "violations": count(services_violations)
+        },
+        "network": {
+            "total": 35,
+            "violations": count(network_violations)
+        },
+        "logging": {
+            "total": 46,
+            "violations": count(logging_violations)
+        },
+        "access_auth": {
+            "total": 68,
+            "violations": count(access_auth_violations)
+        },
+        "system_maintenance": {
+            "total": 55,
+            "violations": count(system_maintenance_violations)
+        },
+        "container_security": {
+            "total": 9,
+            "violations": count(container_security_violations)
+        },
+        "systemd_security": {
+            "total": 8,
+            "violations": count(systemd_security_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "initial_setup_violations": initial_setup_violations,
+    "services_violations": services_violations,
+    "network_violations": network_violations,
+    "logging_violations": logging_violations,
+    "access_auth_violations": access_auth_violations,
+    "system_maintenance_violations": system_maintenance_violations,
+    "container_security_violations": container_security_violations,
+    "systemd_security_violations": systemd_security_violations
+}

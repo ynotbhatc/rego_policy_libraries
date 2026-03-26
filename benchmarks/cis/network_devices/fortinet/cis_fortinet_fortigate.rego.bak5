@@ -1,0 +1,574 @@
+package cis
+
+# CIS Fortinet FortiGate Benchmark v1.3.0
+# Center for Internet Security (CIS) Fortinet FortiGate Benchmark
+# This policy implements comprehensive Fortinet FortiGate security controls
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		system_settings_violations,
+		administration_violations,
+		logging_violations,
+		network_violations,
+		firewall_violations,
+		vpn_violations,
+		wireless_violations,
+		security_fabric_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: System Settings
+system_settings_violations := [
+    "1.1: Ensure 'admin-https-ssl-versions' is set to 'tlsv1-2'" |
+    input.fortigate_config.system.global.admin_https_ssl_versions != "tlsv1-2"
+]
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.2: Ensure 'admin-https-ssl-ciphersuites' are configured securely" |
+    ciphersuites := input.fortigate_config.system.global.admin_https_ssl_ciphersuites
+    not ciphersuites
+    weak_cipher_suite_configured(ciphersuites)
+])
+
+weak_cipher_suite_configured(ciphersuites) if {
+    weak_ciphers := [
+        "TLS-RSA-WITH-RC4-128-SHA",
+        "TLS-RSA-WITH-3DES-EDE-CBC-SHA",
+        "TLS-RSA-WITH-AES-128-CBC-SHA",
+        "TLS-RSA-WITH-AES-256-CBC-SHA"
+    ]
+    cipher := weak_ciphers[_]
+    contains(ciphersuites, cipher)
+}
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.3: Ensure 'admin-ssh-v1' is disabled" |
+    input.fortigate_config.system.global.admin_ssh_v1 == "enable"
+])
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.4: Ensure 'admin-telnet' is disabled" |
+    input.fortigate_config.system.global.admin_telnet == "enable"
+])
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.5: Ensure 'hostname' is set" |
+    not input.fortigate_config.system.global.hostname
+    input.fortigate_config.system.global.hostname == "FortiGate"
+])
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.6: Ensure 'timezone' is set correctly" |
+    not input.fortigate_config.system.global.timezone
+])
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.7: Ensure 'admin-sport' is not set to default port 443" |
+    input.fortigate_config.system.global.admin_sport == 443
+])
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.8: Ensure 'admin-ssh-port' is not set to default port 22" |
+    input.fortigate_config.system.global.admin_ssh_port == 22
+])
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.9: Ensure 'strong-crypto' is enabled" |
+    input.fortigate_config.system.global.strong_crypto != "enable"
+])
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.10: Ensure 'admin-concurrent' is set to an appropriate value" |
+    concurrent := input.fortigate_config.system.global.admin_concurrent
+    not concurrent
+    concurrent > 5
+])
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.11: Ensure 'admin-lockout-threshold' is set" |
+    lockout := input.fortigate_config.system.global.admin_lockout_threshold
+    not lockout
+    lockout > 5
+])
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.12: Ensure 'admin-lockout-duration' is set to at least 60 seconds" |
+    duration := input.fortigate_config.system.global.admin_lockout_duration
+    not duration
+    duration < 60
+])
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.13: Ensure 'gui-display-hostname' is enabled" |
+    input.fortigate_config.system.global.gui_display_hostname != "enable"
+])
+
+system_settings_violations := array.concat(system_settings_violations, [
+    "1.14: Ensure 'banner' is configured" |
+    not input.fortigate_config.system.global.pre_login_banner
+])
+
+# Section 2: Administration
+administration_violations := [
+    "2.1: Ensure that administrator account names do not indicate administrative privilege" |
+    admin := input.fortigate_config.system.admin[_]
+    admin_name_indicates_privilege(admin.name)
+]
+
+admin_name_indicates_privilege(name) if {
+    privileged_names := ["admin", "administrator", "root", "superuser"]
+    privileged_name := privileged_names[_]
+    contains(lower(name), privileged_name)
+}
+
+administration_violations := array.concat(administration_violations, [
+    "2.2: Ensure 'accprofile' does not grant unnecessary administrative privileges" |
+    profile := input.fortigate_config.system.accprofile[_]
+    profile.name != "super_admin"
+    profile.secfabgrp == "read-write"
+])
+
+administration_violations := array.concat(administration_violations, [
+    "2.3: Ensure administrator 'password' conforms to complexity requirements" |
+    not password_complexity_configured
+])
+
+password_complexity_configured if {
+    policy := input.fortigate_config.system.password_policy
+    policy.min_lower_case_letter >= 1
+    policy.min_upper_case_letter >= 1
+    policy.min_non_alphanumeric >= 1
+    policy.min_number >= 1
+}
+
+administration_violations := array.concat(administration_violations, [
+    "2.4: Ensure 'password-policy' minimum length is configured" |
+    policy := input.fortigate_config.system.password_policy
+    not policy.minimum_length
+    policy.minimum_length < 8
+])
+
+administration_violations := array.concat(administration_violations, [
+    "2.5: Ensure 'two-factor' authentication is enabled for administrators" |
+    admin := input.fortigate_config.system.admin[_]
+    not admin.two_factor
+])
+
+administration_violations := array.concat(administration_violations, [
+    "2.6: Ensure 'idle-timeout' is set for administrators" |
+    admin := input.fortigate_config.system.admin[_]
+    not admin.idle_timeout
+    admin.idle_timeout > 15
+])
+
+administration_violations := array.concat(administration_violations, [
+    "2.7: Ensure 'trusthost' is configured for each administrator" |
+    admin := input.fortigate_config.system.admin[_]
+    not admin.trusthost
+])
+
+administration_violations := array.concat(administration_violations, [
+    "2.8: Ensure 'admin-https-pki-required' is enabled" |
+    input.fortigate_config.system.global.admin_https_pki_required != "enable"
+])
+
+administration_violations := array.concat(administration_violations, [
+    "2.9: Ensure remote authentication is configured" |
+    not remote_auth_configured
+])
+
+remote_auth_configured if {
+    count(input.fortigate_config.user.radius) > 0
+}
+
+remote_auth_configured if {
+    count(input.fortigate_config.user.ldap) > 0
+}
+
+administration_violations := array.concat(administration_violations, [
+    "2.10: Ensure administrator access is logged" |
+    not admin_logging_configured
+])
+
+admin_logging_configured if {
+    log_setting := input.fortigate_config.log.setting
+    log_setting.status == "enable"
+    log_setting.eventlogging == "enable"
+}
+
+# Section 3: Logging
+logging_violations := [
+    "3.1: Ensure 'central-management' logging is enabled" |
+    input.fortigate_config.log.fortiguard.status != "enable"
+]
+
+logging_violations := array.concat(logging_violations, [
+    "3.2: Ensure local 'disk' logging is configured" |
+    disk_log := input.fortigate_config.log.disk.setting
+    disk_log.status != "enable"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.3: Ensure 'syslogd' logging is configured for remote logging" |
+    syslog := input.fortigate_config.log.syslogd.setting
+    syslog.status != "enable"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.4: Ensure logging of administrative access is configured" |
+    eventlog := input.fortigate_config.log.eventfilter
+    eventlog.admin != "enable"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.5: Ensure NTP is configured for time synchronization" |
+    ntp := input.fortigate_config.system.ntp
+    ntp.status != "enable"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.6: Ensure NTP server authentication is configured" |
+    ntp := input.fortigate_config.system.ntp
+    server := ntp.ntpserver[_]
+    not server.authentication
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.7: Ensure log retention policies are configured" |
+    disk_setting := input.fortigate_config.log.disk.setting
+    not disk_setting.max_log_file_size
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.8: Ensure security events are logged" |
+    eventlog := input.fortigate_config.log.eventfilter
+    eventlog.security != "enable"
+])
+
+# Section 4: Network
+network_violations := [
+    "4.1: Ensure 'set-device-identification' is disabled on WAN interfaces" |
+    interface := input.fortigate_config.system.interface[_]
+    interface.type == "physical"
+    interface.device_identification == "enable"
+]
+
+network_violations := array.concat(network_violations, [
+    "4.2: Ensure 'lldp' transmission and reception is disabled on WAN interfaces" |
+    interface := input.fortigate_config.system.interface[_]
+    interface.role == "wan"
+    interface.lldp_transmission == "enable"
+])
+
+network_violations := array.concat(network_violations, [
+    "4.3: Ensure DHCP Server is disabled on WAN interfaces" |
+    interface := input.fortigate_config.system.interface[_]
+    interface.role == "wan"
+    interface.dhcp_relay_service == "enable"
+])
+
+network_violations := array.concat(network_violations, [
+    "4.4: Ensure 'ping' access is disabled on WAN interfaces" |
+    interface := input.fortigate_config.system.interface[_]
+    interface.role == "wan"
+    interface.ping == "enable"
+])
+
+network_violations := array.concat(network_violations, [
+    "4.5: Ensure 'HTTP', 'HTTPS', 'SSH' administrative access is disabled on WAN interfaces" |
+    interface := input.fortigate_config.system.interface[_]
+    interface.role == "wan"
+    admin_access_enabled(interface.allowaccess)
+])
+
+admin_access_enabled(allowaccess) if {
+    contains(allowaccess, "http")
+}
+
+admin_access_enabled(allowaccess) if {
+    contains(allowaccess, "https")
+}
+
+admin_access_enabled(allowaccess) if {
+    contains(allowaccess, "ssh")
+}
+
+network_violations := array.concat(network_violations, [
+    "4.6: Ensure 'SNMP' access is disabled on WAN interfaces" |
+    interface := input.fortigate_config.system.interface[_]
+    interface.role == "wan"
+    contains(interface.allowaccess, "snmp")
+])
+
+network_violations := array.concat(network_violations, [
+    "4.7: Ensure FortiGate interfaces have anti-replay protection enabled" |
+    interface := input.fortigate_config.system.interface[_]
+    interface.type == "tunnel"
+    not interface.anti_replay
+])
+
+network_violations := array.concat(network_violations, [
+    "4.8: Ensure DHCP server settings are secure" |
+    dhcp := input.fortigate_config.system.dhcp.server[_]
+    not dhcp.domain
+])
+
+# Section 5: Firewall
+firewall_violations := [
+    "5.1: Ensure default deny firewall policy exists for each zone" |
+    not default_deny_policy_exists
+]
+
+default_deny_policy_exists if {
+    policy := input.fortigate_config.firewall.policy[_]
+    policy.srcintf[_] == "any"
+    policy.dstintf[_] == "any"
+    policy.action == "deny"
+}
+
+firewall_violations := array.concat(firewall_violations, [
+    "5.2: Ensure firewall policy logging is enabled for denied traffic" |
+    policy := input.fortigate_config.firewall.policy[_]
+    policy.action == "deny"
+    policy.logtraffic != "all"
+])
+
+firewall_violations := array.concat(firewall_violations, [
+    "5.3: Ensure DLP profiles are enabled and configured" |
+    not dlp_configured
+])
+
+dlp_configured if {
+    count(input.fortigate_config.dlp.profile) > 0
+}
+
+firewall_violations := array.concat(firewall_violations, [
+    "5.4: Ensure application control profiles are configured" |
+    not app_control_configured
+])
+
+app_control_configured if {
+    count(input.fortigate_config.application.list) > 0
+}
+
+firewall_violations := array.concat(firewall_violations, [
+    "5.5: Ensure antivirus profiles are configured and enabled" |
+    not antivirus_configured
+])
+
+antivirus_configured if {
+    av_profile := input.fortigate_config.antivirus.profile[_]
+    av_profile.scan_mode != "disable"
+}
+
+firewall_violations := array.concat(firewall_violations, [
+    "5.6: Ensure web filter profiles are configured" |
+    not webfilter_configured
+])
+
+webfilter_configured if {
+    count(input.fortigate_config.webfilter.profile) > 0
+}
+
+firewall_violations := array.concat(firewall_violations, [
+    "5.7: Ensure IPS profiles are configured and enabled" |
+    not ips_configured
+])
+
+ips_configured if {
+    ips_profile := input.fortigate_config.ips.sensor[_]
+    entry := ips_profile.entries[_]
+    entry.action != "pass"
+}
+
+firewall_violations := array.concat(firewall_violations, [
+    "5.8: Ensure DNS filter profiles are configured" |
+    not dns_filter_configured
+])
+
+dns_filter_configured if {
+    count(input.fortigate_config.dnsfilter.profile) > 0
+}
+
+firewall_violations := array.concat(firewall_violations, [
+    "5.9: Ensure SSL/SSH inspection profiles are configured" |
+    not ssl_ssh_inspection_configured
+])
+
+ssl_ssh_inspection_configured if {
+    count(input.fortigate_config.firewall.ssl_ssh_profile) > 0
+}
+
+# Section 6: VPN
+vpn_violations := [
+    "6.1: Ensure 'enc-algorithm' is set to AES for IPSec VPNs" |
+    vpn := input.fortigate_config.vpn.ipsec.phase1_interface[_]
+    not contains(vpn.proposal, "aes")
+]
+
+vpn_violations := array.concat(vpn_violations, [
+    "6.2: Ensure 'authentication' is set to SHA for IPSec VPNs" |
+    vpn := input.fortigate_config.vpn.ipsec.phase1_interface[_]
+    not contains(vpn.proposal, "sha")
+])
+
+vpn_violations := array.concat(vpn_violations, [
+    "6.3: Ensure 'dhgrp' (Diffie-Hellman group) is set to 14 or higher" |
+    vpn := input.fortigate_config.vpn.ipsec.phase1_interface[_]
+    dhgrp := vpn.dhgrp
+    to_number(dhgrp) < 14
+])
+
+vpn_violations := array.concat(vpn_violations, [
+    "6.4: Ensure dead peer detection (DPD) is enabled for IPSec VPNs" |
+    vpn := input.fortigate_config.vpn.ipsec.phase1_interface[_]
+    vpn.dpd != "enable"
+])
+
+vpn_violations := array.concat(vpn_violations, [
+    "6.5: Ensure 'replay' protection is enabled for IPSec VPNs" |
+    vpn := input.fortigate_config.vpn.ipsec.phase1_interface[_]
+    vpn.anti_replay != "enable"
+])
+
+vpn_violations := array.concat(vpn_violations, [
+    "6.6: Ensure SSL VPN settings are configured securely" |
+    sslvpn := input.fortigate_config.vpn.ssl.settings
+    sslvpn.ssl_max_proto_ver != "tlsv1-2"
+])
+
+vpn_violations := array.concat(vpn_violations, [
+    "6.7: Ensure SSL VPN portal access is restricted" |
+    portal := input.fortigate_config.vpn.ssl.web.portal[_]
+    not portal.limit_user_logins
+])
+
+vpn_violations := array.concat(vpn_violations, [
+    "6.8: Ensure 'two-factor' authentication is enabled for SSL VPN" |
+    portal := input.fortigate_config.vpn.ssl.web.portal[_]
+    not portal.two_factor
+])
+
+# Section 7: Wireless
+wireless_violations := [
+    "7.1: Ensure wireless networks use WPA2/WPA3 encryption" |
+    ssid := input.fortigate_config.wireless_controller.vap[_]
+    not ssid.security in ["wpa2-only-enterprise", "wpa2-only-personal", "wpa3-enterprise", "wpa3-sae"]
+]
+
+wireless_violations := array.concat(wireless_violations, [
+    "7.2: Ensure wireless guest networks are properly segmented" |
+    ssid := input.fortigate_config.wireless_controller.vap[_]
+    contains(ssid.ssid, "guest")
+    not ssid.security_exempt_list
+])
+
+wireless_violations := array.concat(wireless_violations, [
+    "7.3: Ensure wireless networks have appropriate access controls" |
+    ssid := input.fortigate_config.wireless_controller.vap[_]
+    not ssid.schedule
+])
+
+wireless_violations := array.concat(wireless_violations, [
+    "7.4: Ensure rogue AP detection is enabled" |
+    not rogue_ap_detection_enabled
+])
+
+rogue_ap_detection_enabled if {
+    wtp_profile := input.fortigate_config.wireless_controller.wtp_profile[_]
+    wtp_profile.radio_1.rogue_scan == "enable"
+}
+
+# Section 8: Security Fabric
+security_fabric_violations := [
+    "8.1: Ensure FortiGuard services are enabled and configured" |
+    fortiguard := input.fortigate_config.system.fortiguard
+    fortiguard.antispam != "enable"
+]
+
+security_fabric_violations := array.concat(security_fabric_violations, [
+    "8.2: Ensure security fabric is configured for multi-device management" |
+    fabric := input.fortigate_config.system.csf
+    fabric.status != "enable"
+])
+
+security_fabric_violations := array.concat(security_fabric_violations, [
+    "8.3: Ensure FortiGate is configured to receive security updates" |
+    fortiguard := input.fortigate_config.system.fortiguard
+    fortiguard.update_server_location != "automatic"
+])
+
+security_fabric_violations := array.concat(security_fabric_violations, [
+    "8.4: Ensure intrusion protection signature updates are automatic" |
+    update := input.fortigate_config.system.autoupdate.schedule
+    update.status != "enable"
+])
+
+security_fabric_violations := array.concat(security_fabric_violations, [
+    "8.5: Ensure Security Fabric Analytics is enabled" |
+    analytics := input.fortigate_config.system.settings
+    analytics.gui_security_profile_display != "enable"
+])
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 73,
+    "passing_controls": 73 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((73 - count(violations)) * 100) / 73,
+    "sections": {
+        "system_settings": {
+            "total": 14,
+            "violations": count(system_settings_violations)
+        },
+        "administration": {
+            "total": 10,
+            "violations": count(administration_violations)
+        },
+        "logging": {
+            "total": 8,
+            "violations": count(logging_violations)
+        },
+        "network": {
+            "total": 8,
+            "violations": count(network_violations)
+        },
+        "firewall": {
+            "total": 9,
+            "violations": count(firewall_violations)
+        },
+        "vpn": {
+            "total": 8,
+            "violations": count(vpn_violations)
+        },
+        "wireless": {
+            "total": 4,
+            "violations": count(wireless_violations)
+        },
+        "security_fabric": {
+            "total": 5,
+            "violations": count(security_fabric_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "system_settings_violations": system_settings_violations,
+    "administration_violations": administration_violations,
+    "logging_violations": logging_violations,
+    "network_violations": network_violations,
+    "firewall_violations": firewall_violations,
+    "vpn_violations": vpn_violations,
+    "wireless_violations": wireless_violations,
+    "security_fabric_violations": security_fabric_violations
+}

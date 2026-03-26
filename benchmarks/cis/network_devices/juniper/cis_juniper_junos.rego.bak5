@@ -1,0 +1,463 @@
+package cis
+
+# CIS Juniper JunOS Benchmark v2.1.0
+# Center for Internet Security (CIS) Juniper JunOS Benchmark
+# This policy implements comprehensive Juniper JunOS security controls
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		management_plane_violations,
+		control_plane_violations,
+		data_plane_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: Management Plane Security
+management_plane_violations := [
+    "1.1.1: Ensure root authentication is configured" |
+    not root_authentication_configured
+]
+
+root_authentication_configured if {
+    user := input.junos_config.system.login.user[_]
+    user.name == "root"
+    user.authentication
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.1.2: Ensure 'system login class super-user' permissions are restricted" |
+    class := input.junos_config.system.login.class[_]
+    class.name == "super-user"
+    permission := class.permissions[_]
+    permission == "all"
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.1.3: Ensure individual user accounts are configured" |
+    count(input.junos_config.system.login.user) < 2
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.1.4: Ensure 'system login user authentication encrypted-password' is configured" |
+    user := input.junos_config.system.login.user[_]
+    user.name != "root"
+    not user.authentication.encrypted_password
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.2.1: Ensure 'system services ssh' is configured securely" |
+    not ssh_configured_securely
+])
+
+ssh_configured_securely if {
+    ssh := input.junos_config.system.services.ssh
+    ssh.protocol_version == "v2"
+    ssh.root_login == "deny"
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.2.2: Ensure 'system services ssh root-login deny' is configured" |
+    input.junos_config.system.services.ssh.root_login != "deny"
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.2.3: Ensure 'system services ssh protocol-version v2' is configured" |
+    input.junos_config.system.services.ssh.protocol_version != "v2"
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.2.4: Ensure 'system services ssh max-authentication-attempts' is configured" |
+    not input.junos_config.system.services.ssh.max_authentication_attempts
+    input.junos_config.system.services.ssh.max_authentication_attempts > 3
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.2.5: Ensure 'system services ssh connection-limit' is configured" |
+    not input.junos_config.system.services.ssh.connection_limit
+    input.junos_config.system.services.ssh.connection_limit > 10
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.3.1: Ensure 'system services telnet' is disabled" |
+    input.junos_config.system.services.telnet
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.3.2: Ensure 'system services ftp' is disabled" |
+    input.junos_config.system.services.ftp
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.3.3: Ensure 'system services finger' is disabled" |
+    input.junos_config.system.services.finger
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.3.4: Ensure 'system services web-management' is configured securely or disabled" |
+    web_mgmt := input.junos_config.system.services.web_management
+    web_mgmt
+    not web_mgmt.https
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.4.1: Ensure 'system login message' is configured" |
+    not input.junos_config.system.login.message
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.4.2: Ensure 'system login announcement' is configured" |
+    not input.junos_config.system.login.announcement
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.5.1: Ensure console idle-timeout is configured" |
+    not input.junos_config.system.login.idle_timeout
+    input.junos_config.system.login.idle_timeout > 10
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.5.2: Ensure 'system login retry-options' is configured" |
+    not input.junos_config.system.login.retry_options
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.6.1: Ensure 'system syslog host' is configured" |
+    count(input.junos_config.system.syslog.host) == 0
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.6.2: Ensure 'system syslog file' is configured for security events" |
+    not security_syslog_configured
+])
+
+security_syslog_configured if {
+    file := input.junos_config.system.syslog.file[_]
+    file.name == "security"
+    facility := file.contents[_]
+    facility.name == "authorization"
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.6.3: Ensure 'system syslog archive' is configured" |
+    not input.junos_config.system.syslog.archive
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.7.1: Ensure NTP is configured with authentication" |
+    not ntp_authentication_configured
+])
+
+ntp_authentication_configured if {
+    ntp := input.junos_config.system.ntp
+    ntp.authentication_key
+    ntp.trusted_key
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.7.2: Ensure 'system ntp server' is configured" |
+    count(input.junos_config.system.ntp.server) == 0
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.7.3: Ensure 'system ntp restrict' is configured" |
+    not input.junos_config.system.ntp.restrict
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.8.1: Ensure SNMP community strings are not default" |
+    community := input.junos_config.snmp.community[_]
+    community.name in ["public", "private"]
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.8.2: Ensure SNMP access is restricted" |
+    community := input.junos_config.snmp.community[_]
+    community.authorization != "read-only"
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.8.3: Ensure 'snmp location' is configured" |
+    not input.junos_config.snmp.location
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.8.4: Ensure 'snmp contact' is configured" |
+    not input.junos_config.snmp.contact
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.9.1: Ensure RADIUS authentication is configured" |
+    not radius_configured
+])
+
+radius_configured if {
+    count(input.junos_config.system.radius_server) > 0
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.9.2: Ensure TACPLUS authentication is configured" |
+    not tacplus_configured
+])
+
+tacplus_configured if {
+    count(input.junos_config.system.tacplus_server) > 0
+}
+
+# Section 2: Control Plane Security
+control_plane_violations := [
+    "2.1.1: Ensure control plane traffic is protected with a filter" |
+    not control_plane_filter_configured
+]
+
+control_plane_filter_configured if {
+    filter := input.junos_config.firewall.family.inet.filter[_]
+    filter.name == "CONTROL_PLANE_FILTER"
+    lo0 := input.junos_config.interfaces.lo0
+    lo0.unit["0"].family.inet.filter.input == "CONTROL_PLANE_FILTER"
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.2: Ensure routing protocol authentication is configured" |
+    not routing_protocol_auth_configured
+])
+
+routing_protocol_auth_configured if {
+    ospf := input.junos_config.protocols.ospf
+    ospf.area["0.0.0.0"].authentication.simple_password
+}
+
+routing_protocol_auth_configured if {
+    bgp := input.junos_config.protocols.bgp
+    group := bgp.group[_]
+    group.authentication_key
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.2.1: Ensure BGP authentication is configured for all peers" |
+    group := input.junos_config.protocols.bgp.group[_]
+    not group.authentication_key
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.2.2: Ensure BGP session limits are configured" |
+    group := input.junos_config.protocols.bgp.group[_]
+    not group.maximum_session
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.2.3: Ensure BGP prefix limits are configured" |
+    group := input.junos_config.protocols.bgp.group[_]
+    family := group.family.inet.unicast
+    not family.prefix_limit
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.3.1: Ensure OSPF authentication is configured" |
+    area := input.junos_config.protocols.ospf.area[_]
+    interface := area.interface[_]
+    not interface.authentication
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.3.2: Ensure OSPF area authentication is configured" |
+    area := input.junos_config.protocols.ospf.area[_]
+    not area.authentication
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.4.1: Ensure LDP authentication is configured" |
+    ldp := input.junos_config.protocols.ldp
+    session := ldp.session[_]
+    not session.authentication_key
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.4.2: Ensure RSVP authentication is configured" |
+    rsvp := input.junos_config.protocols.rsvp
+    neighbor := rsvp.neighbor[_]
+    not neighbor.authentication_key
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.5.1: Ensure PIM authentication is configured" |
+    pim := input.junos_config.protocols.pim
+    interface := pim.interface[_]
+    not interface.authentication_key
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.6.1: Ensure unused protocols are disabled" |
+    input.junos_config.protocols.l2tp
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.6.2: Ensure unused routing protocols are disabled" |
+    input.junos_config.protocols.rip
+])
+
+# Section 3: Data Plane Security
+data_plane_violations := [
+    "3.1.1: Ensure ingress filtering is applied on all external interfaces" |
+    interface := input.external_interfaces[_]
+    unit := interface.unit["0"]
+    not unit.family.inet.filter.input
+]
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.1.2: Ensure egress filtering is applied on all external interfaces" |
+    interface := input.external_interfaces[_]
+    unit := interface.unit["0"]
+    not unit.family.inet.filter.output
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.1.3: Ensure anti-spoofing filters are configured" |
+    not anti_spoofing_configured
+])
+
+anti_spoofing_configured if {
+    filter := input.junos_config.firewall.family.inet.filter[_]
+    filter.name == "ANTI_SPOOFING"
+    term := filter.term[_]
+    term.from.source_address == "0.0.0.0/8"
+    term.then == "discard"
+}
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.2.1: Ensure VLAN interfaces have appropriate security" |
+    vlan := input.junos_config.vlans[_]
+    not vlan.l3_interface
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.2.2: Ensure storm control is configured on access interfaces" |
+    interface := input.access_interfaces[_]
+    ethernet_switching := interface.unit["0"].family.ethernet_switching
+    not ethernet_switching.storm_control
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.2.3: Ensure port security is configured on access interfaces" |
+    interface := input.access_interfaces[_]
+    ethernet_switching := interface.unit["0"].family.ethernet_switching
+    not ethernet_switching.port_security
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.3.1: Ensure spanning tree BPDU protection is configured" |
+    not spanning_tree_protection_configured
+])
+
+spanning_tree_protection_configured if {
+    input.junos_config.protocols.rstp.bpdu_block_on_edge == true
+}
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.3.2: Ensure root protection is configured on access interfaces" |
+    interface := input.access_interfaces[_]
+    stp_interface := input.junos_config.protocols.rstp.interface[interface.name]
+    not stp_interface.edge
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.4.1: Ensure DHCP snooping is configured" |
+    vlan := input.junos_config.vlans[_]
+    not vlan.forwarding_options.dhcp_security
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.4.2: Ensure DAI (Dynamic ARP Inspection) is configured" |
+    vlan := input.junos_config.vlans[_]
+    not vlan.forwarding_options.dhcp_security.arp_inspection
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.5.1: Ensure IP source guard is configured" |
+    interface := input.access_interfaces[_]
+    ethernet_switching := interface.unit["0"].family.ethernet_switching
+    not ethernet_switching.ip_source_guard
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.6.1: Ensure MAC address learning limit is configured" |
+    interface := input.access_interfaces[_]
+    ethernet_switching := interface.unit["0"].family.ethernet_switching
+    not ethernet_switching.mac_table_aging_time
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.7.1: Ensure unused interfaces are disabled" |
+    interface := input.junos_config.interfaces[_]
+    not interface.disable
+    not interface_in_use(interface.name)
+])
+
+interface_in_use(interface_name) if {
+    interface := input.used_interfaces[_]
+    interface == interface_name
+}
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.7.2: Ensure unused VLANs are removed" |
+    vlan := input.junos_config.vlans[_]
+    not vlan_in_use(vlan.name)
+])
+
+vlan_in_use(vlan_name) if {
+    vlan := input.used_vlans[_]
+    vlan == vlan_name
+}
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.8.1: Ensure firewall filters log denied traffic" |
+    filter := input.junos_config.firewall.family.inet.filter[_]
+    term := filter.term[_]
+    term.then == "discard"
+    not term.then.log
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.8.2: Ensure rate limiting is configured for control traffic" |
+    filter := input.junos_config.firewall.family.inet.filter[_]
+    term := filter.term[_]
+    contains(term.name, "CONTROL")
+    not term.then.policer
+])
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 78,
+    "passing_controls": 78 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((78 - count(violations)) * 100) / 78,
+    "sections": {
+        "management_plane": {
+            "total": 44,
+            "violations": count(management_plane_violations)
+        },
+        "control_plane": {
+            "total": 18,
+            "violations": count(control_plane_violations)
+        },
+        "data_plane": {
+            "total": 16,
+            "violations": count(data_plane_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "management_plane_violations": management_plane_violations,
+    "control_plane_violations": control_plane_violations,
+    "data_plane_violations": data_plane_violations
+}

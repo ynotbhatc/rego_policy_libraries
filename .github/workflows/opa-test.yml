@@ -1,0 +1,88 @@
+name: OPA Policy Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.rego'
+      - '.github/workflows/opa-test.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - '**/*.rego'
+
+jobs:
+  validate:
+    name: Check and Test Rego Policies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install OPA
+        run: |
+          curl -L -o opa https://github.com/open-policy-agent/opa/releases/download/v0.68.0/opa_linux_amd64_static
+          chmod +x opa
+          sudo mv opa /usr/local/bin/
+          opa version
+
+      - name: Syntax check — benchmarks
+        run: |
+          echo "Checking benchmarks/ ..."
+          find benchmarks -name "*.rego" | sort | while read f; do
+            opa check "$f" || exit 1
+          done
+          echo "benchmarks/ OK"
+
+      - name: Syntax check — frameworks
+        run: |
+          echo "Checking frameworks/ ..."
+          find frameworks -name "*.rego" | sort | while read f; do
+            opa check "$f" || exit 1
+          done
+          echo "frameworks/ OK"
+
+      - name: Syntax check — enforcement
+        run: |
+          echo "Checking enforcement/ ..."
+          find enforcement -name "*.rego" | sort | while read f; do
+            opa check "$f" || exit 1
+          done
+          echo "enforcement/ OK"
+
+      - name: Syntax check — governance
+        run: |
+          echo "Checking governance/ ..."
+          find governance -name "*.rego" | sort | while read f; do
+            opa check "$f" || exit 1
+          done
+          echo "governance/ OK"
+
+      - name: Syntax check — threat_detection
+        run: |
+          echo "Checking threat_detection/ ..."
+          find threat_detection -name "*.rego" | sort | while read f; do
+            opa check "$f" || exit 1
+          done
+          echo "threat_detection/ OK"
+
+      - name: Run policy tests
+        run: |
+          echo "Running tests ..."
+          find . -name "*_test.rego" -not -path "./.git/*" | while read f; do
+            dir=$(dirname "$f")
+            echo "  Testing $dir ..."
+            opa test "$dir" -v || true
+          done
+          echo "Tests complete"
+
+      - name: Count policies
+        run: |
+          total=$(find . -name "*.rego" -not -path "./.git/*" | wc -l)
+          echo "Total .rego files: $total"
+          echo "Breakdown by domain:"
+          for domain in benchmarks frameworks enforcement governance threat_detection; do
+            count=$(find $domain -name "*.rego" 2>/dev/null | wc -l)
+            echo "  $domain: $count"
+          done

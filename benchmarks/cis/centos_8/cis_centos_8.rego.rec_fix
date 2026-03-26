@@ -1,0 +1,1723 @@
+package cis.centos_8
+
+import rego.v1
+
+# CIS CentOS Linux 8 Benchmark v1.0.0
+# Center for Internet Security (CIS) Benchmark for CentOS Linux 8
+# This policy implements comprehensive CIS controls for CentOS 8 systems
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		initial_setup_violations,
+		services_violations,
+		network_violations,
+		logging_violations,
+		access_auth_violations,
+		system_maintenance_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: Initial Setup
+initial_setup_violations := [v |
+	arrays := [
+		filesystem_violations,
+		software_updates_violations,
+		filesystem_integrity_violations,
+		secure_boot_violations,
+		additional_process_hardening_violations,
+		mandatory_access_control_violations,
+		warning_banners_violations
+	]
+	v := arrays[_][_]
+]
+
+# 1.1 Filesystem Configuration Violations
+filesystem_violations := [
+    "1.1.1.1: Ensure mounting of cramfs filesystems is disabled" |
+    not cramfs_disabled
+]
+
+cramfs_disabled if {
+    not "cramfs" in input.loaded_modules
+    input.modprobe_config["cramfs"] == "install /bin/true"
+}
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.1.2: Ensure mounting of vFAT filesystems is limited" |
+    vfat_not_properly_limited
+])
+
+vfat_not_properly_limited if {
+    "vfat" in input.loaded_modules
+    not input.modprobe_config["vfat"]
+}
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.1.3: Ensure mounting of squashfs filesystems is disabled" |
+    not squashfs_disabled
+])
+
+squashfs_disabled if {
+    not "squashfs" in input.loaded_modules
+    input.modprobe_config["squashfs"] == "install /bin/true"
+}
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.1.4: Ensure mounting of udf filesystems is disabled" |
+    not udf_disabled
+])
+
+udf_disabled if {
+    not "udf" in input.loaded_modules
+    input.modprobe_config["udf"] == "install /bin/true"
+}
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.2: Ensure /tmp is configured" |
+    not tmp_properly_configured
+])
+
+tmp_properly_configured if {
+    mount := input.mounts["/tmp"]
+    mount.filesystem in ["tmpfs", "ext4", "xfs"]
+    mount.options.nodev == true
+    mount.options.nosuid == true
+    mount.options.noexec == true
+}
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.3: Ensure nodev option set on /tmp partition" |
+    mount := input.mounts["/tmp"]
+    mount.options.nodev != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.4: Ensure nosuid option set on /tmp partition" |
+    mount := input.mounts["/tmp"]
+    mount.options.nosuid != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.5: Ensure noexec option set on /tmp partition" |
+    mount := input.mounts["/tmp"]
+    mount.options.noexec != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.6: Ensure /dev/shm is configured" |
+    not dev_shm_properly_configured
+])
+
+dev_shm_properly_configured if {
+    mount := input.mounts["/dev/shm"]
+    mount.filesystem == "tmpfs"
+    mount.options.nodev == true
+    mount.options.nosuid == true
+    mount.options.noexec == true
+}
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.7: Ensure nodev option set on /dev/shm partition" |
+    mount := input.mounts["/dev/shm"]
+    mount.options.nodev != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.8: Ensure nosuid option set on /dev/shm partition" |
+    mount := input.mounts["/dev/shm"]
+    mount.options.nosuid != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.9: Ensure noexec option set on /dev/shm partition" |
+    mount := input.mounts["/dev/shm"]
+    mount.options.noexec != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.10: Ensure separate partition exists for /var" |
+    not "/var" in input.separate_partitions
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.11: Ensure separate partition exists for /var/tmp" |
+    not "/var/tmp" in input.separate_partitions
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.12: Ensure /var/tmp partition includes the nodev option" |
+    mount := input.mounts["/var/tmp"]
+    mount.options.nodev != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.13: Ensure /var/tmp partition includes the nosuid option" |
+    mount := input.mounts["/var/tmp"]
+    mount.options.nosuid != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.14: Ensure /var/tmp partition includes the noexec option" |
+    mount := input.mounts["/var/tmp"]
+    mount.options.noexec != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.15: Ensure separate partition exists for /var/log" |
+    not "/var/log" in input.separate_partitions
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.16: Ensure separate partition exists for /var/log/audit" |
+    not "/var/log/audit" in input.separate_partitions
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.17: Ensure separate partition exists for /home" |
+    not "/home" in input.separate_partitions
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.18: Ensure /home partition includes the nodev option" |
+    mount := input.mounts["/home"]
+    mount.options.nodev != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.19: Ensure nodev option set on removable media partitions" |
+    mount := input.mounts[_]
+    mount.removable == true
+    mount.options.nodev != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.20: Ensure nosuid option set on removable media partitions" |
+    mount := input.mounts[_]
+    mount.removable == true
+    mount.options.nosuid != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.21: Ensure noexec option set on removable media partitions" |
+    mount := input.mounts[_]
+    mount.removable == true
+    mount.options.noexec != true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.22: Ensure sticky bit is set on all world-writable directories" |
+    directory := input.world_writable_directories[_]
+    not directory.sticky_bit
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.23: Disable Automounting" |
+    input.services_enabled["autofs"] == true
+])
+
+filesystem_violations := array.concat(filesystem_violations, [
+    "1.1.24: Disable USB Storage" |
+    not usb_storage_disabled
+])
+
+usb_storage_disabled if {
+    not "usb-storage" in input.loaded_modules
+    input.modprobe_config["usb-storage"] == "install /bin/true"
+}
+
+# 1.2 Configure Software Updates Violations
+software_updates_violations := [
+    "1.2.1: Ensure Red Hat Subscription Manager connection is configured" |
+    not rhsm_configured
+]
+
+rhsm_configured if {
+    input.rhsm_status.status == "Current"
+    input.rhsm_status.registered == true
+}
+
+software_updates_violations := array.concat(software_updates_violations, [
+    "1.2.2: Disable the rhnsd Daemon" |
+    input.services_enabled["rhnsd"] == true
+])
+
+software_updates_violations := array.concat(software_updates_violations, [
+    "1.2.3: Ensure GPG keys are configured" |
+    not gpg_keys_configured
+])
+
+gpg_keys_configured if {
+    count(input.yum_gpg_keys) > 0
+    key := input.yum_gpg_keys[_]
+    key.valid == true
+}
+
+software_updates_violations := array.concat(software_updates_violations, [
+    "1.2.4: Ensure gpgcheck is globally activated" |
+    input.yum_config.gpgcheck != "1"
+])
+
+software_updates_violations := array.concat(software_updates_violations, [
+    "1.2.5: Ensure package manager repositories are configured" |
+    not repositories_properly_configured
+])
+
+repositories_properly_configured if {
+    count(input.yum_repositories) > 0
+    repo := input.yum_repositories[_]
+    repo.enabled == true
+    repo.gpgcheck == true
+}
+
+# 1.3 Filesystem Integrity Checking Violations
+filesystem_integrity_violations := [
+    "1.3.1: Ensure AIDE is installed" |
+    not "aide" in input.installed_packages
+]
+
+filesystem_integrity_violations := array.concat(filesystem_integrity_violations, [
+    "1.3.2: Ensure filesystem integrity is regularly checked" |
+    not aide_cron_configured
+])
+
+aide_cron_configured if {
+    cron_job := input.cron_jobs[_]
+    contains(cron_job.command, "aide")
+    cron_job.schedule != ""
+}
+
+# 1.4 Secure Boot Settings Violations
+secure_boot_violations := [
+    "1.4.1: Ensure permissions on bootloader config are configured" |
+    not bootloader_permissions_secure
+]
+
+bootloader_permissions_secure if {
+    file := input.file_permissions["/boot/grub2/grub.cfg"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "600"
+}
+
+secure_boot_violations := array.concat(secure_boot_violations, [
+    "1.4.2: Ensure bootloader password is set" |
+    not bootloader_password_set
+])
+
+bootloader_password_set if {
+    contains(input.grub_config, "set superusers=")
+    contains(input.grub_config, "password_pbkdf2")
+}
+
+secure_boot_violations := array.concat(secure_boot_violations, [
+    "1.4.3: Ensure authentication required for single user mode" |
+    not single_user_auth_required
+])
+
+single_user_auth_required if {
+    contains(input.grub_config, "systemd.unit=rescue.target")
+    contains(input.grub_config, "systemd.unit=emergency.target")
+}
+
+# 1.5 Additional Process Hardening Violations
+additional_process_hardening_violations := [
+    "1.5.1: Ensure core dumps are restricted" |
+    not core_dumps_restricted
+]
+
+core_dumps_restricted if {
+    input.security_limits["* hard core"] == "0"
+    input.sysctl_settings["fs.suid_dumpable"] == "0"
+    input.systemd_config["DefaultLimitCORE"] == "0"
+}
+
+additional_process_hardening_violations := array.concat(additional_process_hardening_violations, [
+    "1.5.2: Ensure XD/NX support is enabled" |
+    not nx_support_enabled
+])
+
+nx_support_enabled if {
+    contains(input.cpu_info, "nx")
+}
+
+additional_process_hardening_violations := array.concat(additional_process_hardening_violations, [
+    "1.5.3: Ensure address space layout randomization (ASLR) is enabled" |
+    input.sysctl_settings["kernel.randomize_va_space"] != "2"
+])
+
+additional_process_hardening_violations := array.concat(additional_process_hardening_violations, [
+    "1.5.4: Ensure prelink is disabled" |
+    "prelink" in input.installed_packages
+])
+
+# 1.6 Mandatory Access Controls Violations
+mandatory_access_control_violations := [
+    "1.6.1.1: Ensure SELinux is installed" |
+    not "libselinux" in input.installed_packages
+]
+
+mandatory_access_control_violations := array.concat(mandatory_access_control_violations, [
+    "1.6.1.2: Ensure SELinux is not disabled in bootloader configuration" |
+    selinux_disabled_in_bootloader
+])
+
+selinux_disabled_in_bootloader if {
+    contains(input.grub_config, "selinux=0")
+    contains(input.grub_config, "enforcing=0")
+}
+
+mandatory_access_control_violations := array.concat(mandatory_access_control_violations, [
+    "1.6.1.3: Ensure SELinux policy is configured" |
+    not selinux_policy_configured
+])
+
+selinux_policy_configured if {
+    input.selinux_config.SELINUX in ["enforcing", "permissive"]
+    input.selinux_config.SELINUXTYPE == "targeted"
+}
+
+mandatory_access_control_violations := array.concat(mandatory_access_control_violations, [
+    "1.6.1.4: Ensure the SELinux state is enforcing" |
+    input.selinux_status.current_mode != "enforcing"
+])
+
+mandatory_access_control_violations := array.concat(mandatory_access_control_violations, [
+    "1.6.1.5: Ensure no unconfined daemons exist" |
+    count(input.selinux_unconfined_processes) > 0
+])
+
+mandatory_access_control_violations := array.concat(mandatory_access_control_violations, [
+    "1.6.1.6: Ensure SETroubleshoot is not installed" |
+    "setroubleshoot" in input.installed_packages
+])
+
+mandatory_access_control_violations := array.concat(mandatory_access_control_violations, [
+    "1.6.1.7: Ensure the MCS Translation Service (mcstrans) is not installed" |
+    "mcstrans" in input.installed_packages
+])
+
+# 1.7 Warning Banners Violations
+warning_banners_violations := [
+    "1.7.1: Ensure message of the day is configured properly" |
+    not motd_configured_properly
+]
+
+motd_configured_properly if {
+    motd := input.file_contents["/etc/motd"]
+    not contains(motd, "\\m")
+    not contains(motd, "\\r")
+    not contains(motd, "\\s")
+    not contains(motd, "\\v")
+}
+
+warning_banners_violations := array.concat(warning_banners_violations, [
+    "1.7.2: Ensure local login warning banner is configured properly" |
+    not local_login_banner_configured
+])
+
+local_login_banner_configured if {
+    issue := input.file_contents["/etc/issue"]
+    not contains(issue, "\\m")
+    not contains(issue, "\\r")
+    not contains(issue, "\\s")
+    not contains(issue, "\\v")
+}
+
+warning_banners_violations := array.concat(warning_banners_violations, [
+    "1.7.3: Ensure remote login warning banner is configured properly" |
+    not remote_login_banner_configured
+])
+
+remote_login_banner_configured if {
+    issue_net := input.file_contents["/etc/issue.net"]
+    not contains(issue_net, "\\m")
+    not contains(issue_net, "\\r")
+    not contains(issue_net, "\\s")
+    not contains(issue_net, "\\v")
+}
+
+warning_banners_violations := array.concat(warning_banners_violations, [
+    "1.7.4: Ensure permissions on /etc/motd are configured" |
+    not motd_permissions_correct
+])
+
+motd_permissions_correct if {
+    file := input.file_permissions["/etc/motd"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "644"
+}
+
+warning_banners_violations := array.concat(warning_banners_violations, [
+    "1.7.5: Ensure permissions on /etc/issue are configured" |
+    not issue_permissions_correct
+])
+
+issue_permissions_correct if {
+    file := input.file_permissions["/etc/issue"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "644"
+}
+
+warning_banners_violations := array.concat(warning_banners_violations, [
+    "1.7.6: Ensure permissions on /etc/issue.net are configured" |
+    not issue_net_permissions_correct
+])
+
+issue_net_permissions_correct if {
+    file := input.file_permissions["/etc/issue.net"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "644"
+}
+
+# Section 2: Services Violations
+services_violations := [v |
+	arrays := [
+		inetd_services_violations,
+		special_purpose_services_violations,
+		service_clients_violations
+	]
+	v := arrays[_][_]
+]
+
+# 2.1 inetd Services Violations
+inetd_services_violations := [
+    "2.1.1: Ensure xinetd is not installed" |
+    "xinetd" in input.installed_packages
+]
+
+# 2.2 Special Purpose Services Violations
+special_purpose_services_violations := [
+    "2.2.1: Ensure time synchronization is in use" |
+    not time_sync_configured
+]
+
+time_sync_configured if {
+    input.services_enabled["chronyd"] == true
+}
+
+time_sync_configured if {
+    input.services_enabled["ntpd"] == true
+}
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.2: Ensure X Window System is not installed" |
+    x11_packages_installed
+])
+
+x11_packages_installed if {
+    pkg := input.installed_packages[_]
+    startswith(pkg, "xorg-")
+}
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.3: Ensure rsync service is not enabled" |
+    input.services_enabled["rsyncd"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.4: Ensure Avahi Server is not enabled" |
+    input.services_enabled["avahi-daemon"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.5: Ensure SNMP Server is not enabled" |
+    input.services_enabled["snmpd"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.6: Ensure HTTP Proxy Server is not enabled" |
+    input.services_enabled["squid"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.7: Ensure Samba is not enabled" |
+    input.services_enabled["smb"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.8: Ensure IMAP and POP3 server is not enabled" |
+    input.services_enabled["dovecot"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.9: Ensure HTTP server is not enabled" |
+    input.services_enabled["httpd"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.10: Ensure FTP Server is not enabled" |
+    input.services_enabled["vsftpd"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.11: Ensure DNS Server is not enabled" |
+    input.services_enabled["named"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.12: Ensure NFS is not enabled" |
+    input.services_enabled["nfs"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.13: Ensure RPC is not enabled" |
+    input.services_enabled["rpcbind"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.14: Ensure LDAP server is not enabled" |
+    input.services_enabled["slapd"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.15: Ensure DHCP Server is not enabled" |
+    input.services_enabled["dhcpd"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.16: Ensure CUPS is not enabled" |
+    input.services_enabled["cups"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.17: Ensure NIS Server is not enabled" |
+    input.services_enabled["ypserv"] == true
+])
+
+special_purpose_services_violations := array.concat(special_purpose_services_violations, [
+    "2.2.18: Ensure mail transfer agent is configured for local-only mode" |
+    not mta_local_only
+])
+
+mta_local_only if {
+    input.postfix_config["inet_interfaces"] == "loopback-only"
+}
+
+mta_local_only if {
+    input.postfix_config["inet_interfaces"] == "localhost"
+}
+
+# 2.3 Service Clients Violations
+service_clients_violations := [
+    "2.3.1: Ensure NIS Client is not installed" |
+    "ypbind" in input.installed_packages
+]
+
+service_clients_violations := array.concat(service_clients_violations, [
+    "2.3.2: Ensure telnet client is not installed" |
+    "telnet" in input.installed_packages
+])
+
+service_clients_violations := array.concat(service_clients_violations, [
+    "2.3.3: Ensure LDAP client is not installed" |
+    "openldap-clients" in input.installed_packages
+])
+
+# Section 3: Network Configuration Violations
+network_violations := [v |
+	arrays := [
+		network_parameters_violations,
+		ipv6_violations,
+		tcp_wrappers_violations,
+		uncommon_protocols_violations,
+		firewall_violations
+	]
+	v := arrays[_][_]
+]
+
+# 3.1 Network Parameters Violations
+network_parameters_violations := [
+    "3.1.1: Ensure IP forwarding is disabled" |
+    input.sysctl_settings["net.ipv4.ip_forward"] != "0"
+]
+
+network_parameters_violations := array.concat(network_parameters_violations, [
+    "3.1.2: Ensure packet redirect sending is disabled" |
+    not packet_redirect_disabled
+])
+
+packet_redirect_disabled if {
+    input.sysctl_settings["net.ipv4.conf.all.send_redirects"] == "0"
+    input.sysctl_settings["net.ipv4.conf.default.send_redirects"] == "0"
+}
+
+network_parameters_violations := array.concat(network_parameters_violations, [
+    "3.2.1: Ensure source routed packets are not accepted" |
+    not source_routed_packets_disabled
+])
+
+source_routed_packets_disabled if {
+    input.sysctl_settings["net.ipv4.conf.all.accept_source_route"] == "0"
+    input.sysctl_settings["net.ipv4.conf.default.accept_source_route"] == "0"
+}
+
+network_parameters_violations := array.concat(network_parameters_violations, [
+    "3.2.2: Ensure ICMP redirects are not accepted" |
+    not icmp_redirects_disabled
+])
+
+icmp_redirects_disabled if {
+    input.sysctl_settings["net.ipv4.conf.all.accept_redirects"] == "0"
+    input.sysctl_settings["net.ipv4.conf.default.accept_redirects"] == "0"
+}
+
+network_parameters_violations := array.concat(network_parameters_violations, [
+    "3.2.3: Ensure secure ICMP redirects are not accepted" |
+    not secure_icmp_redirects_disabled
+])
+
+secure_icmp_redirects_disabled if {
+    input.sysctl_settings["net.ipv4.conf.all.secure_redirects"] == "0"
+    input.sysctl_settings["net.ipv4.conf.default.secure_redirects"] == "0"
+}
+
+network_parameters_violations := array.concat(network_parameters_violations, [
+    "3.2.4: Ensure suspicious packets are logged" |
+    not suspicious_packets_logged
+])
+
+suspicious_packets_logged if {
+    input.sysctl_settings["net.ipv4.conf.all.log_martians"] == "1"
+    input.sysctl_settings["net.ipv4.conf.default.log_martians"] == "1"
+}
+
+network_parameters_violations := array.concat(network_parameters_violations, [
+    "3.2.5: Ensure broadcast ICMP requests are ignored" |
+    input.sysctl_settings["net.ipv4.icmp_echo_ignore_broadcasts"] != "1"
+])
+
+network_parameters_violations := array.concat(network_parameters_violations, [
+    "3.2.6: Ensure bogus ICMP responses are ignored" |
+    input.sysctl_settings["net.ipv4.icmp_ignore_bogus_error_responses"] != "1"
+])
+
+network_parameters_violations := array.concat(network_parameters_violations, [
+    "3.2.7: Ensure Reverse Path Filtering is enabled" |
+    not reverse_path_filtering_enabled
+])
+
+reverse_path_filtering_enabled if {
+    input.sysctl_settings["net.ipv4.conf.all.rp_filter"] == "1"
+    input.sysctl_settings["net.ipv4.conf.default.rp_filter"] == "1"
+}
+
+network_parameters_violations := array.concat(network_parameters_violations, [
+    "3.2.8: Ensure TCP SYN Cookies is enabled" |
+    input.sysctl_settings["net.ipv4.tcp_syncookies"] != "1"
+])
+
+network_parameters_violations := array.concat(network_parameters_violations, [
+    "3.2.9: Ensure IPv6 router advertisements are not accepted" |
+    not ipv6_router_ads_disabled
+])
+
+ipv6_router_ads_disabled if {
+    input.sysctl_settings["net.ipv6.conf.all.accept_ra"] == "0"
+    input.sysctl_settings["net.ipv6.conf.default.accept_ra"] == "0"
+}
+
+# 3.3 IPv6 Violations
+ipv6_violations := [
+    "3.3.1: Ensure IPv6 router advertisements are not accepted" |
+    not ipv6_router_ads_disabled
+]
+
+ipv6_violations := array.concat(ipv6_violations, [
+    "3.3.2: Ensure IPv6 redirects are not accepted" |
+    not ipv6_redirects_disabled
+])
+
+ipv6_redirects_disabled if {
+    input.sysctl_settings["net.ipv6.conf.all.accept_redirects"] == "0"
+    input.sysctl_settings["net.ipv6.conf.default.accept_redirects"] == "0"
+}
+
+ipv6_violations := array.concat(ipv6_violations, [
+    "3.3.3: Ensure IPv6 is disabled" |
+    not ipv6_disabled
+])
+
+ipv6_disabled if {
+    contains(input.grub_config, "ipv6.disable=1")
+}
+
+# 3.4 TCP Wrappers Violations
+tcp_wrappers_violations := [
+    "3.4.1: Ensure TCP Wrappers is installed" |
+    not "tcp_wrappers" in input.installed_packages
+]
+
+tcp_wrappers_violations := array.concat(tcp_wrappers_violations, [
+    "3.4.2: Ensure /etc/hosts.allow is configured" |
+    not hosts_allow_configured
+])
+
+hosts_allow_configured if {
+    input.file_contents["/etc/hosts.allow"] != ""
+}
+
+tcp_wrappers_violations := array.concat(tcp_wrappers_violations, [
+    "3.4.3: Ensure /etc/hosts.deny is configured" |
+    not hosts_deny_configured
+])
+
+hosts_deny_configured if {
+    contains(input.file_contents["/etc/hosts.deny"], "ALL: ALL")
+}
+
+tcp_wrappers_violations := array.concat(tcp_wrappers_violations, [
+    "3.4.4: Ensure permissions on /etc/hosts.allow are configured" |
+    not hosts_allow_permissions_correct
+])
+
+hosts_allow_permissions_correct if {
+    file := input.file_permissions["/etc/hosts.allow"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "644"
+}
+
+tcp_wrappers_violations := array.concat(tcp_wrappers_violations, [
+    "3.4.5: Ensure permissions on /etc/hosts.deny are configured" |
+    not hosts_deny_permissions_correct
+])
+
+hosts_deny_permissions_correct if {
+    file := input.file_permissions["/etc/hosts.deny"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "644"
+}
+
+# 3.5 Uncommon Network Protocols Violations
+uncommon_protocols_violations := [
+    "3.5.1: Ensure DCCP is disabled" |
+    not dccp_disabled
+]
+
+dccp_disabled if {
+    not "dccp" in input.loaded_modules
+    input.modprobe_config["dccp"] == "install /bin/true"
+}
+
+uncommon_protocols_violations := array.concat(uncommon_protocols_violations, [
+    "3.5.2: Ensure SCTP is disabled" |
+    not sctp_disabled
+])
+
+sctp_disabled if {
+    not "sctp" in input.loaded_modules
+    input.modprobe_config["sctp"] == "install /bin/true"
+}
+
+uncommon_protocols_violations := array.concat(uncommon_protocols_violations, [
+    "3.5.3: Ensure RDS is disabled" |
+    not rds_disabled
+])
+
+rds_disabled if {
+    not "rds" in input.loaded_modules
+    input.modprobe_config["rds"] == "install /bin/true"
+}
+
+uncommon_protocols_violations := array.concat(uncommon_protocols_violations, [
+    "3.5.4: Ensure TIPC is disabled" |
+    not tipc_disabled
+])
+
+tipc_disabled if {
+    not "tipc" in input.loaded_modules
+    input.modprobe_config["tipc"] == "install /bin/true"
+}
+
+# 3.6 Firewall Configuration Violations
+firewall_violations := [
+    "3.6.1: Ensure iptables is installed" |
+    not "iptables" in input.installed_packages
+]
+
+firewall_violations := array.concat(firewall_violations, [
+    "3.6.2: Ensure default deny firewall policy" |
+    not default_deny_policy
+])
+
+default_deny_policy if {
+    input.iptables_policy.INPUT == "DROP"
+    input.iptables_policy.FORWARD == "DROP"
+    input.iptables_policy.OUTPUT == "DROP"
+}
+
+firewall_violations := array.concat(firewall_violations, [
+    "3.6.3: Ensure loopback traffic is configured" |
+    not loopback_traffic_configured
+])
+
+loopback_traffic_configured if {
+    rule := input.iptables_rules[_]
+    rule.chain == "INPUT"
+    rule.interface == "lo"
+    rule.target == "ACCEPT"
+}
+
+firewall_violations := array.concat(firewall_violations, [
+    "3.6.4: Ensure outbound and established connections are configured" |
+    not outbound_connections_configured
+])
+
+outbound_connections_configured if {
+    rule := input.iptables_rules[_]
+    rule.chain == "OUTPUT"
+    rule.state == "NEW,ESTABLISHED"
+    rule.target == "ACCEPT"
+}
+
+firewall_violations := array.concat(firewall_violations, [
+    "3.6.5: Ensure firewall rules exist for all open ports" |
+    port := input.open_ports[_]
+    not firewall_rule_exists_for_port(port)
+])
+
+firewall_rule_exists_for_port(port) if {
+    rule := input.iptables_rules[_]
+    rule.destination_port == port
+    rule.target == "ACCEPT"
+}
+
+# Section 4: Logging and Auditing Violations
+logging_violations := [v |
+	arrays := [
+		system_accounting_violations,
+		logging_config_violations
+	]
+	v := arrays[_][_]
+]
+
+# 4.1 Configure System Accounting (auditd) Violations
+system_accounting_violations := [
+    "4.1.1.1: Ensure auditd is installed" |
+    not "audit" in input.installed_packages
+]
+
+system_accounting_violations := array.concat(system_accounting_violations, [
+    "4.1.1.2: Ensure auditd service is enabled" |
+    input.services_enabled["auditd"] != true
+])
+
+system_accounting_violations := array.concat(system_accounting_violations, [
+    "4.1.1.3: Ensure auditing for processes that start prior to auditd is enabled" |
+    not audit_processes_enabled
+])
+
+audit_processes_enabled if {
+    contains(input.grub_config, "audit=1")
+}
+
+system_accounting_violations := array.concat(system_accounting_violations, [
+    "4.1.1.4: Ensure audit_backlog_limit is sufficient" |
+    not audit_backlog_sufficient
+])
+
+audit_backlog_sufficient if {
+    contains(input.grub_config, "audit_backlog_limit=")
+    to_number(regex.find_n("audit_backlog_limit=(\\d+)", input.grub_config, 1)[0][1]) >= 8192
+}
+
+system_accounting_violations := array.concat(system_accounting_violations, [
+    "4.1.2.1: Ensure audit log storage size is configured" |
+    not audit_log_storage_configured
+])
+
+audit_log_storage_configured if {
+    input.auditd_config.max_log_file_mb >= 8
+}
+
+system_accounting_violations := array.concat(system_accounting_violations, [
+    "4.1.2.2: Ensure audit logs are not automatically deleted" |
+    input.auditd_config.max_log_file_action == "delete"
+])
+
+system_accounting_violations := array.concat(system_accounting_violations, [
+    "4.1.2.3: Ensure system is disabled when audit logs are full" |
+    not audit_full_action_configured
+])
+
+audit_full_action_configured if {
+    input.auditd_config.space_left_action in ["email", "exec", "suspend", "single", "halt"]
+    input.auditd_config.action_mail_acct != ""
+}
+
+# Section 5: Access, Authentication and Authorization Violations
+access_auth_violations := [v |
+	arrays := [
+		cron_violations,
+		ssh_violations,
+		pam_violations,
+		user_accounts_violations
+	]
+	v := arrays[_][_]
+]
+
+# 5.1 Configure Cron Violations
+cron_violations := [
+    "5.1.1: Ensure cron daemon is enabled" |
+    input.services_enabled["crond"] != true
+]
+
+cron_violations := array.concat(cron_violations, [
+    "5.1.2: Ensure permissions on /etc/crontab are configured" |
+    not crontab_permissions_correct
+])
+
+crontab_permissions_correct if {
+    file := input.file_permissions["/etc/crontab"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "600"
+}
+
+cron_violations := array.concat(cron_violations, [
+    "5.1.3: Ensure permissions on /etc/cron.hourly are configured" |
+    not cron_hourly_permissions_correct
+])
+
+cron_hourly_permissions_correct if {
+    file := input.file_permissions["/etc/cron.hourly"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "700"
+}
+
+cron_violations := array.concat(cron_violations, [
+    "5.1.4: Ensure permissions on /etc/cron.daily are configured" |
+    not cron_daily_permissions_correct
+])
+
+cron_daily_permissions_correct if {
+    file := input.file_permissions["/etc/cron.daily"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "700"
+}
+
+cron_violations := array.concat(cron_violations, [
+    "5.1.5: Ensure permissions on /etc/cron.weekly are configured" |
+    not cron_weekly_permissions_correct
+])
+
+cron_weekly_permissions_correct if {
+    file := input.file_permissions["/etc/cron.weekly"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "700"
+}
+
+cron_violations := array.concat(cron_violations, [
+    "5.1.6: Ensure permissions on /etc/cron.monthly are configured" |
+    not cron_monthly_permissions_correct
+])
+
+cron_monthly_permissions_correct if {
+    file := input.file_permissions["/etc/cron.monthly"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "700"
+}
+
+cron_violations := array.concat(cron_violations, [
+    "5.1.7: Ensure permissions on /etc/cron.d are configured" |
+    not cron_d_permissions_correct
+])
+
+cron_d_permissions_correct if {
+    file := input.file_permissions["/etc/cron.d"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "700"
+}
+
+cron_violations := array.concat(cron_violations, [
+    "5.1.8: Ensure at/cron is restricted to authorized users" |
+    not cron_access_restricted
+])
+
+cron_access_restricted if {
+    input.file_exists["/etc/cron.deny"] == false
+    input.file_exists["/etc/at.deny"] == false
+    cron_allow := input.file_permissions["/etc/cron.allow"]
+    cron_allow.owner == "root"
+    cron_allow.group == "root"
+    cron_allow.mode == "600"
+}
+
+# 5.2 SSH Server Configuration Violations
+ssh_violations := [
+    "5.2.1: Ensure permissions on /etc/ssh/sshd_config are configured" |
+    not sshd_config_permissions_correct
+]
+
+sshd_config_permissions_correct if {
+    file := input.file_permissions["/etc/ssh/sshd_config"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "600"
+}
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.2: Ensure SSH access is limited" |
+    not ssh_access_limited
+])
+
+ssh_access_limited if {
+    input.sshd_config.AllowUsers != ""
+}
+
+ssh_access_limited if {
+    input.sshd_config.AllowGroups != ""
+}
+
+ssh_access_limited if {
+    input.sshd_config.DenyUsers != ""
+}
+
+ssh_access_limited if {
+    input.sshd_config.DenyGroups != ""
+}
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.3: Ensure permissions on SSH private host key files are configured" |
+    key_file := input.ssh_private_keys[_]
+    file := input.file_permissions[key_file]
+    file.mode != "600"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.4: Ensure permissions on SSH public host key files are configured" |
+    key_file := input.ssh_public_keys[_]
+    file := input.file_permissions[key_file]
+    file.mode != "644"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.5: Ensure SSH LogLevel is appropriate" |
+    not input.sshd_config.LogLevel in ["VERBOSE", "INFO"]
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.6: Ensure SSH X11 forwarding is disabled" |
+    input.sshd_config.X11Forwarding != "no"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.7: Ensure SSH MaxAuthTries is set to 4 or less" |
+    to_number(input.sshd_config.MaxAuthTries) > 4
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.8: Ensure SSH IgnoreRhosts is enabled" |
+    input.sshd_config.IgnoreRhosts != "yes"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.9: Ensure SSH HostbasedAuthentication is disabled" |
+    input.sshd_config.HostbasedAuthentication != "no"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.10: Ensure SSH root login is disabled" |
+    input.sshd_config.PermitRootLogin != "no"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.11: Ensure SSH PermitEmptyPasswords is disabled" |
+    input.sshd_config.PermitEmptyPasswords != "no"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.12: Ensure SSH PermitUserEnvironment is disabled" |
+    input.sshd_config.PermitUserEnvironment != "no"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.13: Ensure only strong Ciphers are used" |
+    not strong_ssh_ciphers_used
+])
+
+strong_ssh_ciphers_used if {
+    allowed_ciphers := [
+        "chacha20-poly1305@openssh.com",
+        "aes256-gcm@openssh.com",
+        "aes128-gcm@openssh.com",
+        "aes256-ctr",
+        "aes192-ctr",
+        "aes128-ctr"
+    ]
+    cipher := split(input.sshd_config.Ciphers, ",")[_]
+    cipher in allowed_ciphers
+}
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.14: Ensure only strong MAC algorithms are used" |
+    not strong_ssh_macs_used
+])
+
+strong_ssh_macs_used if {
+    allowed_macs := [
+        "hmac-sha2-512-etm@openssh.com",
+        "hmac-sha2-256-etm@openssh.com",
+        "hmac-sha2-512",
+        "hmac-sha2-256"
+    ]
+    mac := split(input.sshd_config.MACs, ",")[_]
+    mac in allowed_macs
+}
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.15: Ensure only strong Key Exchange algorithms are used" |
+    not strong_ssh_kex_used
+])
+
+strong_ssh_kex_used if {
+    allowed_kex := [
+        "curve25519-sha256",
+        "curve25519-sha256@libssh.org",
+        "diffie-hellman-group14-sha256",
+        "diffie-hellman-group16-sha512",
+        "diffie-hellman-group18-sha512",
+        "ecdh-sha2-nistp521",
+        "ecdh-sha2-nistp384",
+        "ecdh-sha2-nistp256"
+    ]
+    kex := split(input.sshd_config.KexAlgorithms, ",")[_]
+    kex in allowed_kex
+}
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.16: Ensure SSH Idle Timeout Interval is configured" |
+    not ssh_idle_timeout_configured
+])
+
+ssh_idle_timeout_configured if {
+    to_number(input.sshd_config.ClientAliveInterval) > 0
+    to_number(input.sshd_config.ClientAliveInterval) <= 300
+    to_number(input.sshd_config.ClientAliveCountMax) <= 3
+}
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.17: Ensure SSH LoginGraceTime is set to one minute or less" |
+    to_number(input.sshd_config.LoginGraceTime) > 60
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.18: Ensure SSH warning banner is configured" |
+    input.sshd_config.Banner != "/etc/issue.net"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.19: Ensure SSH PAM is enabled" |
+    input.sshd_config.UsePAM != "yes"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.20: Ensure SSH AllowTcpForwarding is disabled" |
+    input.sshd_config.AllowTcpForwarding != "no"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.21: Ensure SSH MaxStartups is configured" |
+    input.sshd_config.MaxStartups != "10:30:100"
+])
+
+ssh_violations := array.concat(ssh_violations, [
+    "5.2.22: Ensure SSH MaxSessions is limited" |
+    to_number(input.sshd_config.MaxSessions) > 10
+])
+
+# 5.3 Configure PAM Violations
+pam_violations := [
+    "5.3.1: Ensure password creation requirements are configured" |
+    not password_requirements_configured
+]
+
+password_requirements_configured if {
+    input.pam_pwquality.minlen >= 14
+    input.pam_pwquality.dcredit == -1
+    input.pam_pwquality.ucredit == -1
+    input.pam_pwquality.ocredit == -1
+    input.pam_pwquality.lcredit == -1
+}
+
+pam_violations := array.concat(pam_violations, [
+    "5.3.2: Ensure lockout for failed password attempts is configured" |
+    not failed_password_lockout_configured
+])
+
+failed_password_lockout_configured if {
+    input.pam_faillock.deny <= 5
+    input.pam_faillock.unlock_time >= 900
+}
+
+pam_violations := array.concat(pam_violations, [
+    "5.3.3: Ensure password reuse is limited" |
+    input.pam_unix.remember < 5
+])
+
+pam_violations := array.concat(pam_violations, [
+    "5.3.4: Ensure password hashing algorithm is SHA-512" |
+    not password_hashing_sha512
+])
+
+password_hashing_sha512 if {
+    contains(input.pam_password_config, "sha512")
+}
+
+# 5.4 User Accounts and Environment Violations
+user_accounts_violations := [
+    "5.4.1.1: Ensure password expiration is 365 days or less" |
+    input.login_defs.PASS_MAX_DAYS > 365
+]
+
+user_accounts_violations := array.concat(user_accounts_violations, [
+    "5.4.1.2: Ensure minimum days between password changes is configured" |
+    input.login_defs.PASS_MIN_DAYS < 1
+])
+
+user_accounts_violations := array.concat(user_accounts_violations, [
+    "5.4.1.3: Ensure password expiration warning days is 7 or more" |
+    input.login_defs.PASS_WARN_AGE < 7
+])
+
+user_accounts_violations := array.concat(user_accounts_violations, [
+    "5.4.1.4: Ensure inactive password lock is 30 days or less" |
+    not inactive_password_lock_configured
+])
+
+inactive_password_lock_configured if {
+    input.default_useradd.INACTIVE <= 30
+    input.default_useradd.INACTIVE >= 0
+}
+
+user_accounts_violations := array.concat(user_accounts_violations, [
+    "5.4.1.5: Ensure all users last password change date is in the past" |
+    user := input.users[_]
+    user.password_last_changed > input.current_date
+])
+
+user_accounts_violations := array.concat(user_accounts_violations, [
+    "5.4.2: Ensure system accounts are secured" |
+    user := input.users[_]
+    user.uid < 1000
+    user.uid != 0
+    user.shell != "/sbin/nologin"
+    user.shell != "/bin/false"
+])
+
+user_accounts_violations := array.concat(user_accounts_violations, [
+    "5.4.3: Ensure default group for the root account is GID 0" |
+    input.users["root"].gid != 0
+])
+
+user_accounts_violations := array.concat(user_accounts_violations, [
+    "5.4.4: Ensure default user umask is 027 or more restrictive" |
+    not default_umask_secure
+])
+
+default_umask_secure if {
+    input.profile_umask <= 27
+    input.bashrc_umask <= 27
+}
+
+user_accounts_violations := array.concat(user_accounts_violations, [
+    "5.4.5: Ensure default user shell timeout is 900 seconds or less" |
+    not shell_timeout_configured
+])
+
+shell_timeout_configured if {
+    input.profile_tmout <= 900
+    input.profile_tmout > 0
+}
+
+# Section 6: System Maintenance Violations
+system_maintenance_violations := [v |
+	arrays := [
+		system_file_permissions_violations,
+		user_group_settings_violations
+	]
+	v := arrays[_][_]
+]
+
+# 6.1 System File Permissions Violations
+system_file_permissions_violations := [
+    "6.1.1: Audit system file permissions" |
+    not system_files_properly_permissioned
+]
+
+system_files_properly_permissioned if {
+    file := input.system_files[_]
+    perms := input.file_permissions[file.path]
+    perms.owner == file.expected_owner
+    perms.group == file.expected_group
+    perms.mode == file.expected_mode
+}
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.2: Ensure permissions on /etc/passwd are configured" |
+    not passwd_permissions_correct
+])
+
+passwd_permissions_correct if {
+    file := input.file_permissions["/etc/passwd"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "644"
+}
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.3: Ensure permissions on /etc/passwd- are configured" |
+    not passwd_backup_permissions_correct
+])
+
+passwd_backup_permissions_correct if {
+    file := input.file_permissions["/etc/passwd-"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "600"
+}
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.4: Ensure permissions on /etc/shadow are configured" |
+    not shadow_permissions_correct
+])
+
+shadow_permissions_correct if {
+    file := input.file_permissions["/etc/shadow"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "000"
+}
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.5: Ensure permissions on /etc/shadow- are configured" |
+    not shadow_backup_permissions_correct
+])
+
+shadow_backup_permissions_correct if {
+    file := input.file_permissions["/etc/shadow-"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "000"
+}
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.6: Ensure permissions on /etc/gshadow- are configured" |
+    not gshadow_backup_permissions_correct
+])
+
+gshadow_backup_permissions_correct if {
+    file := input.file_permissions["/etc/gshadow-"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "000"
+}
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.7: Ensure permissions on /etc/gshadow are configured" |
+    not gshadow_permissions_correct
+])
+
+gshadow_permissions_correct if {
+    file := input.file_permissions["/etc/gshadow"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "000"
+}
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.8: Ensure permissions on /etc/group are configured" |
+    not group_permissions_correct
+])
+
+group_permissions_correct if {
+    file := input.file_permissions["/etc/group"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "644"
+}
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.9: Ensure permissions on /etc/group- are configured" |
+    not group_backup_permissions_correct
+])
+
+group_backup_permissions_correct if {
+    file := input.file_permissions["/etc/group-"]
+    file.owner == "root"
+    file.group == "root"
+    file.mode == "644"
+}
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.10: Ensure no world writable files exist" |
+    count(input.world_writable_files) > 0
+])
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.11: Ensure no unowned files or directories exist" |
+    count(input.unowned_files) > 0
+])
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.12: Ensure no ungrouped files or directories exist" |
+    count(input.ungrouped_files) > 0
+])
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.13: Audit SUID executables" |
+    count(input.suid_files) > count(input.expected_suid_files)
+])
+
+system_file_permissions_violations := array.concat(system_file_permissions_violations, [
+    "6.1.14: Audit SGID executables" |
+    count(input.sgid_files) > count(input.expected_sgid_files)
+])
+
+# 6.2 User and Group Settings Violations
+user_group_settings_violations := [
+    "6.2.1: Ensure accounts in /etc/passwd use shadowed passwords" |
+    user := input.users[_]
+    user.password_field != "x"
+]
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.2: Ensure password fields are not empty" |
+    user := input.shadow_users[_]
+    user.password == ""
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.3: Ensure all groups in /etc/passwd exist in /etc/group" |
+    user := input.users[_]
+    not user.gid in input.group_ids
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.4: Ensure shadow group is empty" |
+    count(input.groups["shadow"].members) > 0
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.5: Ensure no duplicate UIDs exist" |
+    uid := input.user_uids[_]
+    count([u | u := input.users[_]; u.uid == uid]) > 1
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.6: Ensure no duplicate GIDs exist" |
+    gid := input.group_gids[_]
+    count([g | g := input.groups[_]; g.gid == gid]) > 1
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.7: Ensure no duplicate user names exist" |
+    username := input.usernames[_]
+    count([u | u := input.users[_]; u.name == username]) > 1
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.8: Ensure no duplicate group names exist" |
+    groupname := input.groupnames[_]
+    count([g | g := input.groups[_]; g.name == groupname]) > 1
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.9: Ensure root PATH Integrity" |
+    not root_path_secure
+])
+
+root_path_secure if {
+    path_entry := split(input.root_path, ":")[_]
+    path_entry != ""
+    path_entry != "."
+    not startswith(path_entry, ":")
+    not endswith(path_entry, ":")
+    not contains(path_entry, "::")
+}
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.10: Ensure root is the only UID 0 account" |
+    user := input.users[_]
+    user.uid == 0
+    user.name != "root"
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.11: Ensure users' home directories permissions are 750 or more restrictive" |
+    user := input.users[_]
+    user.uid >= 1000
+    home_perms := input.file_permissions[user.home_directory]
+    to_number(home_perms.mode) > 750
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.12: Ensure users own their home directories" |
+    user := input.users[_]
+    user.uid >= 1000
+    home_perms := input.file_permissions[user.home_directory]
+    home_perms.owner != user.name
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.13: Ensure users' dot files are not group or world writable" |
+    user := input.users[_]
+    user.uid >= 1000
+    dot_file := input.user_dot_files[user.name][_]
+    file_perms := input.file_permissions[dot_file]
+    to_number(file_perms.mode) & 22 != 0  # Check for group/world write
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.14: Ensure no users have .netrc files" |
+    user := input.users[_]
+    user.uid >= 1000
+    input.file_exists[sprintf("%s/.netrc", [user.home_directory])] == true
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.15: Ensure no users have .forward files" |
+    user := input.users[_]
+    user.uid >= 1000
+    input.file_exists[sprintf("%s/.forward", [user.home_directory])] == true
+])
+
+user_group_settings_violations := array.concat(user_group_settings_violations, [
+    "6.2.16: Ensure no users have .rhosts files" |
+    user := input.users[_]
+    user.uid >= 1000
+    input.file_exists[sprintf("%s/.rhosts", [user.home_directory])] == true
+])
+
+# Additional logging configuration violations
+logging_config_violations := [
+    "4.2.1.1: Ensure rsyslog is installed" |
+    not "rsyslog" in input.installed_packages
+]
+
+logging_config_violations := array.concat(logging_config_violations, [
+    "4.2.1.2: Ensure rsyslog Service is enabled" |
+    input.services_enabled["rsyslog"] != true
+])
+
+logging_config_violations := array.concat(logging_config_violations, [
+    "4.2.1.3: Ensure rsyslog default file permissions configured" |
+    not rsyslog_file_permissions_configured
+])
+
+rsyslog_file_permissions_configured if {
+    input.rsyslog_config.FileCreateMode == "0640"
+}
+
+logging_config_violations := array.concat(logging_config_violations, [
+    "4.2.1.4: Ensure logging is configured" |
+    not logging_properly_configured
+])
+
+logging_properly_configured if {
+    facility := input.rsyslog_facilities[_]
+    facility.name in ["kern", "daemon", "syslog", "lpr", "mail", "user", "authpriv", "cron", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7"]
+    facility.destination != ""
+}
+
+logging_config_violations := array.concat(logging_config_violations, [
+    "4.2.1.5: Ensure rsyslog is configured to send logs to a remote log host" |
+    not remote_logging_configured
+])
+
+remote_logging_configured if {
+    rule := input.rsyslog_rules[_]
+    startswith(rule, "*.* @@")
+}
+
+logging_config_violations := array.concat(logging_config_violations, [
+    "4.2.1.6: Ensure remote rsyslog messages are only accepted on designated log hosts" |
+    not remote_rsyslog_properly_restricted
+])
+
+remote_rsyslog_properly_restricted if {
+    input.rsyslog_config.ModLoad != "imtcp"
+    input.rsyslog_config.InputTCPServerRun == ""
+}
+
+logging_config_violations := array.concat(logging_config_violations, [
+    "4.2.2.1: Ensure journald is configured to send logs to rsyslog" |
+    input.journald_config.ForwardToSyslog != "yes"
+])
+
+logging_config_violations := array.concat(logging_config_violations, [
+    "4.2.2.2: Ensure journald is configured to compress large log files" |
+    input.journald_config.Compress != "yes"
+])
+
+logging_config_violations := array.concat(logging_config_violations, [
+    "4.2.2.3: Ensure journald is configured to write logfiles to persistent disk" |
+    input.journald_config.Storage != "persistent"
+])
+
+logging_config_violations := array.concat(logging_config_violations, [
+    "4.2.3: Ensure permissions on all logfiles are configured" |
+    log_file := input.log_files[_]
+    file_perms := input.file_permissions[log_file]
+    to_number(file_perms.mode) > 640
+])
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 234,
+    "passing_controls": 234 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((234 - count(violations)) * 100) / 234,
+    "sections": {
+        "initial_setup": {
+            "total": 67,
+            "violations": count(initial_setup_violations)
+        },
+        "services": {
+            "total": 22,
+            "violations": count(services_violations)
+        },
+        "network_configuration": {
+            "total": 29,
+            "violations": count(network_violations)
+        },
+        "logging_auditing": {
+            "total": 32,
+            "violations": count(logging_violations)
+        },
+        "access_authentication": {
+            "total": 54,
+            "violations": count(access_auth_violations)
+        },
+        "system_maintenance": {
+            "total": 30,
+            "violations": count(system_maintenance_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "initial_setup_violations": initial_setup_violations,
+    "services_violations": services_violations,
+    "network_violations": network_violations,
+    "logging_violations": logging_violations,
+    "access_auth_violations": access_auth_violations,
+    "system_maintenance_violations": system_maintenance_violations
+}

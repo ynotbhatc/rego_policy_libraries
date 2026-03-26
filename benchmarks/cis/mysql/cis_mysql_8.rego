@@ -1,0 +1,1167 @@
+package cis.mysql_8
+
+import rego.v1
+
+# CIS MySQL 8.0 Benchmark v1.0.0
+# This policy implements the CIS benchmarks for MySQL 8.0 Community and Enterprise Server
+# Reference: https://www.cisecurity.org/benchmark/mysql
+
+# Main compliance evaluation
+compliant if {
+	count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		installation_violations,
+		mysql_configuration_violations,
+		filesystem_permissions_violations,
+		general_violations,
+		mysql_permissions_violations,
+		auditing_logging_violations,
+		authentication_violations,
+		network_violations,
+		replication_violations
+	]
+	v := arrays[_][_]
+]
+
+# Generate compliance report
+compliance_report := {
+	"benchmark": "CIS MySQL 8.0 Benchmark v1.0.0",
+	"timestamp": time.now_ns(),
+	"total_controls": 156,
+	"compliant": compliant,
+	"violations_count": count(violations),
+	"violations": violations,
+	"sections": {
+		"installation": {
+			"violations": count(installation_violations),
+			"controls": 8
+		},
+		"mysql_configuration": {
+			"violations": count(mysql_configuration_violations),
+			"controls": 22
+		},
+		"filesystem_permissions": {
+			"violations": count(filesystem_permissions_violations),
+			"controls": 12
+		},
+		"general": {
+			"violations": count(general_violations),
+			"controls": 28
+		},
+		"mysql_permissions": {
+			"violations": count(mysql_permissions_violations),
+			"controls": 18
+		},
+		"auditing_logging": {
+			"violations": count(auditing_logging_violations),
+			"controls": 24
+		},
+		"authentication": {
+			"violations": count(authentication_violations),
+			"controls": 16
+		},
+		"network": {
+			"violations": count(network_violations),
+			"controls": 14
+		},
+		"replication": {
+			"violations": count(replication_violations),
+			"controls": 14
+		}
+	}
+}
+
+# Section 1: Installation and Planning
+installation_violations := [v |
+	arrays := [
+		["1.1: Place Databases on Non-System Partitions" | not databases_on_non_system_partitions],
+		["1.2: Use Dedicated Least Privileged Account for MySQL Daemon/Service" | not dedicated_mysql_account],
+		["1.3: Disable MySQL Command History" | not mysql_history_disabled],
+		["1.4: Verify That the MYSQL_PWD Environment Variable Is Not In Use" | not mysql_pwd_not_used],
+		["1.5: Disable Interactive Login" | not interactive_login_disabled],
+		["1.6: Verify That 'MYSQL_PWD' Is Not Set In Users' Profiles" | not mysql_pwd_not_in_profiles],
+		["1.7: Verify That the 'mysql' Database Is Not Accessible by Unauthorized Users" | not mysql_db_access_restricted],
+		["1.8: Place MySQL Logs on Non-System Partitions" | not logs_on_non_system_partitions]
+	]
+	v := arrays[_][_]
+]
+
+databases_on_non_system_partitions if {
+	datadir := input.mysql.config.datadir
+	not startswith(datadir, "/")
+	not startswith(datadir, "/var")
+	not startswith(datadir, "/usr")
+}
+
+dedicated_mysql_account if {
+	user := input.mysql.process.user
+	user == "mysql"
+	group := input.mysql.process.group
+	group == "mysql"
+}
+
+mysql_history_disabled if {
+	input.mysql.config.disable_mysql_history == true
+}
+
+mysql_pwd_not_used if {
+	not input.mysql.environment.mysql_pwd_set
+}
+
+interactive_login_disabled if {
+	shell := input.mysql.user_account.shell
+	shell in ["/bin/false", "/sbin/nologin", "/usr/sbin/nologin"]
+}
+
+mysql_pwd_not_in_profiles if {
+	profiles := input.mysql.user_profiles
+	count([p | p := profiles[_]; contains(p.content, "MYSQL_PWD")]) == 0
+}
+
+mysql_db_access_restricted if {
+	privileges := input.mysql.database_privileges.mysql_db
+	unauthorized_users := [u | u := privileges[_]; not u.user in ["mysql.sys", "mysql.session", "mysql.infoschema"]]
+	count(unauthorized_users) == 0
+}
+
+logs_on_non_system_partitions if {
+	log_bin := input.mysql.config.log_bin
+	general_log_file := input.mysql.config.general_log_file
+	slow_query_log_file := input.mysql.config.slow_query_log_file
+	
+	not startswith(log_bin, "/")
+	not startswith(general_log_file, "/var")
+	not startswith(slow_query_log_file, "/var")
+}
+
+# Section 2: MySQL Configuration
+mysql_configuration_violations := [v |
+	arrays := [
+		["2.1: Ensure 'local_infile' Is Disabled" | not local_infile_disabled],
+		["2.2: Ensure 'mysqld' Is Not Started with '--skip-grant-tables'" | not skip_grant_tables_disabled],
+		["2.3: Ensure 'mysqld' Is Not Started with '--skip-networking'" | not skip_networking_disabled],
+		["2.4: Ensure 'mysqld' Is Not Started with '--skip-show-database'" | not skip_show_database_disabled],
+		["2.5: Ensure 'symbolic-links' Is Disabled" | not symbolic_links_disabled],
+		["2.6: Ensure 'secure_file_priv' Is Not Empty" | not secure_file_priv_set],
+		["2.7: Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES'" | not strict_trans_tables_enabled],
+		["2.8: Ensure 'sql_mode' Contains 'ERROR_FOR_DIVISION_BY_ZERO'" | not error_for_division_by_zero],
+		["2.9: Ensure 'sql_mode' Contains 'NO_AUTO_CREATE_USER'" | not no_auto_create_user],
+		["2.10: Ensure 'sql_mode' Contains 'NO_ENGINE_SUBSTITUTION'" | not no_engine_substitution],
+		["2.11: Ensure 'sql_mode' Contains 'ONLY_FULL_GROUP_BY'" | not only_full_group_by],
+		["2.12: Ensure 'sql_mode' Contains 'NO_AUTO_VALUE_ON_ZERO'" | not no_auto_value_on_zero],
+		["2.13: Ensure Password Complexity Is In Place" | not password_complexity_enabled],
+		["2.14: Ensure Password Reuse Is Limited" | not password_reuse_limited],
+		["2.15: Ensure Password Expiration Is Less Than Or Equal To 90 Days" | not password_expiration_90_days],
+		["2.16: Ensure 'default_password_lifetime' Is Less Than Or Equal To 90" | not default_password_lifetime_90],
+		["2.17: Ensure 'validate_password_length' Is Configured" | not password_length_configured],
+		["2.18: Ensure 'validate_password_mixed_case_count' Is Configured" | not mixed_case_count_configured],
+		["2.19: Ensure 'validate_password_number_count' Is Configured" | not number_count_configured],
+		["2.20: Ensure 'validate_password_special_char_count' Is Configured" | not special_char_count_configured],
+		["2.21: Ensure No Wildcards In User Hostnames" | not no_wildcards_in_hostnames],
+		["2.22: Ensure No Anonymous Accounts Exist" | not no_anonymous_accounts]
+	]
+	v := arrays[_][_]
+]
+
+local_infile_disabled if {
+	input.mysql.config.local_infile == "OFF"
+}
+
+skip_grant_tables_disabled if {
+	not input.mysql.startup_options.skip_grant_tables
+}
+
+skip_networking_disabled if {
+	not input.mysql.startup_options.skip_networking
+}
+
+skip_show_database_disabled if {
+	not input.mysql.startup_options.skip_show_database
+}
+
+symbolic_links_disabled if {
+	input.mysql.config.symbolic_links == "OFF"
+}
+
+secure_file_priv_set if {
+	secure_file_priv := input.mysql.config.secure_file_priv
+	secure_file_priv != ""
+	secure_file_priv != "NULL"
+}
+
+strict_trans_tables_enabled if {
+	sql_mode := input.mysql.config.sql_mode
+	contains(sql_mode, "STRICT_TRANS_TABLES")
+}
+
+error_for_division_by_zero if {
+	sql_mode := input.mysql.config.sql_mode
+	contains(sql_mode, "ERROR_FOR_DIVISION_BY_ZERO")
+}
+
+no_auto_create_user if {
+	sql_mode := input.mysql.config.sql_mode
+	contains(sql_mode, "NO_AUTO_CREATE_USER")
+}
+
+no_engine_substitution if {
+	sql_mode := input.mysql.config.sql_mode
+	contains(sql_mode, "NO_ENGINE_SUBSTITUTION")
+}
+
+only_full_group_by if {
+	sql_mode := input.mysql.config.sql_mode
+	contains(sql_mode, "ONLY_FULL_GROUP_BY")
+}
+
+no_auto_value_on_zero if {
+	sql_mode := input.mysql.config.sql_mode
+	contains(sql_mode, "NO_AUTO_VALUE_ON_ZERO")
+}
+
+password_complexity_enabled if {
+	input.mysql.config.validate_password_policy == "MEDIUM"
+}
+
+password_reuse_limited if {
+	input.mysql.config.password_history >= 5
+}
+
+password_expiration_90_days if {
+	input.mysql.config.password_expiration <= 90
+	input.mysql.config.password_expiration > 0
+}
+
+default_password_lifetime_90 if {
+	input.mysql.config.default_password_lifetime <= 90
+	input.mysql.config.default_password_lifetime > 0
+}
+
+password_length_configured if {
+	input.mysql.config.validate_password_length >= 8
+}
+
+mixed_case_count_configured if {
+	input.mysql.config.validate_password_mixed_case_count >= 1
+}
+
+number_count_configured if {
+	input.mysql.config.validate_password_number_count >= 1
+}
+
+special_char_count_configured if {
+	input.mysql.config.validate_password_special_char_count >= 1
+}
+
+no_wildcards_in_hostnames if {
+	users := input.mysql.users
+	wildcard_users := [u | u := users[_]; contains(u.host, "%")]
+	count(wildcard_users) == 0
+}
+
+no_anonymous_accounts if {
+	users := input.mysql.users
+	anonymous_users := [u | u := users[_]; u.user == ""]
+	count(anonymous_users) == 0
+}
+
+# Section 3: File System Permissions
+filesystem_permissions_violations := [v |
+	arrays := [
+		["3.1: Ensure 'datadir' Has Appropriate Permissions" | not datadir_permissions_correct],
+		["3.2: Ensure 'log_bin_basename' Files Have Appropriate Permissions" | not log_bin_permissions_correct],
+		["3.3: Ensure 'log_error' Has Appropriate Permissions" | not log_error_permissions_correct],
+		["3.4: Ensure 'slow_query_log' Has Appropriate Permissions" | not slow_query_log_permissions_correct],
+		["3.5: Ensure 'relay_log_basename' Files Have Appropriate Permissions" | not relay_log_permissions_correct],
+		["3.6: Ensure 'general_log_file' Has Appropriate Permissions" | not general_log_permissions_correct],
+		["3.7: Ensure SSL Key Files Have Appropriate Permissions" | not ssl_key_permissions_correct],
+		["3.8: Ensure SSL Certificate Files Have Appropriate Permissions" | not ssl_cert_permissions_correct],
+		["3.9: Ensure 'plugin_dir' Has Appropriate Permissions" | not plugin_dir_permissions_correct],
+		["3.10: Ensure 'mysql' Directory Has Appropriate Permissions" | not mysql_dir_permissions_correct],
+		["3.11: Ensure 'mysql' Binary Has Appropriate Permissions" | not mysql_binary_permissions_correct],
+		["3.12: Ensure 'mysqld' Binary Has Appropriate Permissions" | not mysqld_binary_permissions_correct]
+	]
+	v := arrays[_][_]
+]
+
+datadir_permissions_correct if {
+	perms := input.mysql.file_permissions.datadir
+	perms.owner == "mysql"
+	perms.group == "mysql"
+	perms.mode == "750"
+}
+
+log_bin_permissions_correct if {
+	perms := input.mysql.file_permissions.log_bin_basename
+	perms.owner == "mysql"
+	perms.group == "mysql"
+	perms.mode == "660"
+}
+
+log_error_permissions_correct if {
+	perms := input.mysql.file_permissions.log_error
+	perms.owner == "mysql"
+	perms.group == "mysql"
+	perms.mode == "660"
+}
+
+slow_query_log_permissions_correct if {
+	perms := input.mysql.file_permissions.slow_query_log
+	perms.owner == "mysql"
+	perms.group == "mysql"
+	perms.mode == "660"
+}
+
+relay_log_permissions_correct if {
+	perms := input.mysql.file_permissions.relay_log_basename
+	perms.owner == "mysql"
+	perms.group == "mysql"
+	perms.mode == "660"
+}
+
+general_log_permissions_correct if {
+	perms := input.mysql.file_permissions.general_log_file
+	perms.owner == "mysql"
+	perms.group == "mysql"
+	perms.mode == "660"
+}
+
+ssl_key_permissions_correct if {
+	perms := input.mysql.file_permissions.ssl_key
+	perms.owner == "mysql"
+	perms.group == "mysql"
+	perms.mode == "600"
+}
+
+ssl_cert_permissions_correct if {
+	perms := input.mysql.file_permissions.ssl_cert
+	perms.owner == "mysql"
+	perms.group == "mysql"
+	perms.mode == "644"
+}
+
+plugin_dir_permissions_correct if {
+	perms := input.mysql.file_permissions.plugin_dir
+	perms.owner == "mysql"
+	perms.group == "mysql"
+	perms.mode == "755"
+}
+
+mysql_dir_permissions_correct if {
+	perms := input.mysql.file_permissions.mysql_dir
+	perms.owner == "mysql"
+	perms.group == "mysql"
+	perms.mode == "755"
+}
+
+mysql_binary_permissions_correct if {
+	perms := input.mysql.file_permissions.mysql_binary
+	perms.owner == "root"
+	perms.group == "mysql"
+	perms.mode == "755"
+}
+
+mysqld_binary_permissions_correct if {
+	perms := input.mysql.file_permissions.mysqld_binary
+	perms.owner == "root"
+	perms.group == "mysql"
+	perms.mode == "755"
+}
+
+# Section 4: General
+general_violations := [v |
+	arrays := [
+		["4.1: Ensure Latest Security Patches Are Applied" | not security_patches_applied],
+		["4.2: Ensure the 'test' Database Is Not Installed" | not mysql_test_db_removed],
+		["4.3: Ensure 'old_passwords' Is Not Used" | not old_passwords_disabled],
+		["4.4: Ensure 'safe-user-create' Is Enabled" | not safe_user_create_enabled],
+		["4.5: Ensure 'skip-symbolic-links' Is Enabled" | not skip_symbolic_links_enabled],
+		["4.6: Ensure 'secure-auth' Is Enabled" | not secure_auth_enabled],
+		["4.7: Ensure 'skip-show-database' Is Enabled" | not skip_show_database_enabled],
+		["4.8: Ensure 'local-infile' Is Disabled" | not local_infile_config_disabled],
+		["4.9: Ensure 'mysqld' Is Not Started with '--skip-grant-tables'" | not skip_grant_tables_config_disabled],
+		["4.10: Ensure MySQL Is Run Under a Sandbox" | not mysql_sandbox_enabled],
+		["4.11: Ensure 'allow-suspicious-udfs' Is Set to 'FALSE'" | not allow_suspicious_udfs_disabled],
+		["4.12: Ensure 'automatic_sp_privileges' Is Disabled" | not automatic_sp_privileges_disabled],
+		["4.13: Ensure SQL_MODE Contains 'STRICT_TRANS_TABLES'" | not sql_mode_strict_trans_tables],
+		["4.14: Ensure 'log-raw' Is Disabled" | not log_raw_disabled],
+		["4.15: Ensure 'password_lifetime' Is Less Than Or Equal To 90" | not password_lifetime_90],
+		["4.16: Ensure 'password_reuse_interval' Is Greater Than Or Equal To 365" | not password_reuse_interval_365],
+		["4.17: Ensure 'password_require_current' Is Enabled" | not password_require_current_enabled],
+		["4.18: Ensure 'default_table_encryption' Is Set to 'ON'" | not default_table_encryption_on],
+		["4.19: Ensure 'table_encryption_privilege_check' Is Set to 'ON'" | not table_encryption_privilege_check_on],
+		["4.20: Ensure 'audit_log_policy' Is Set to 'ALL'" | not audit_log_policy_all],
+		["4.21: Ensure 'audit_log_rotate_on_size' Is Configured" | not audit_log_rotate_configured],
+		["4.22: Ensure 'audit_log_format' Is Set to 'JSON'" | not audit_log_format_json],
+		["4.23: Ensure 'binlog_encryption' Is Enabled" | not binlog_encryption_enabled],
+		["4.24: Ensure 'binlog_row_image' Is Set to 'FULL'" | not binlog_row_image_full],
+		["4.25: Ensure 'log_slave_updates' Is Enabled" | not log_slave_updates_enabled],
+		["4.26: Ensure 'master_info_repository' Is Set to 'TABLE'" | not master_info_repository_table],
+		["4.27: Ensure 'relay_log_info_repository' Is Set to 'TABLE'" | not relay_log_info_repository_table],
+		["4.28: Ensure Binary and Relay Logs Are Encrypted" | not binary_relay_logs_encrypted]
+	]
+	v := arrays[_][_]
+]
+
+security_patches_applied if {
+	current_version := input.mysql.version.current
+	latest_version := input.mysql.version.latest_security
+	current_version == latest_version
+}
+
+mysql_test_db_removed if {
+	databases := input.mysql.databases
+	test_db := [db | db := databases[_]; db.name == "test"]
+	count(test_db) == 0
+}
+
+old_passwords_disabled if {
+	input.mysql.config.old_passwords == 0
+}
+
+safe_user_create_enabled if {
+	input.mysql.config.safe_user_create == "ON"
+}
+
+skip_symbolic_links_enabled if {
+	input.mysql.config.skip_symbolic_links == "ON"
+}
+
+secure_auth_enabled if {
+	input.mysql.config.secure_auth == "ON"
+}
+
+skip_show_database_enabled if {
+	input.mysql.config.skip_show_database == "ON"
+}
+
+local_infile_config_disabled if {
+	input.mysql.config.local_infile == "OFF"
+}
+
+skip_grant_tables_config_disabled if {
+	not input.mysql.config.skip_grant_tables
+}
+
+mysql_sandbox_enabled if {
+	input.mysql.config.sandbox_mode == "ON"
+}
+
+allow_suspicious_udfs_disabled if {
+	input.mysql.config.allow_suspicious_udfs == "FALSE"
+}
+
+automatic_sp_privileges_disabled if {
+	input.mysql.config.automatic_sp_privileges == "OFF"
+}
+
+sql_mode_strict_trans_tables if {
+	sql_mode := input.mysql.config.sql_mode
+	contains(sql_mode, "STRICT_TRANS_TABLES")
+}
+
+log_raw_disabled if {
+	input.mysql.config.log_raw == "OFF"
+}
+
+password_lifetime_90 if {
+	input.mysql.config.password_lifetime <= 90
+}
+
+password_reuse_interval_365 if {
+	input.mysql.config.password_reuse_interval >= 365
+}
+
+password_require_current_enabled if {
+	input.mysql.config.password_require_current == "ON"
+}
+
+default_table_encryption_on if {
+	input.mysql.config.default_table_encryption == "ON"
+}
+
+table_encryption_privilege_check_on if {
+	input.mysql.config.table_encryption_privilege_check == "ON"
+}
+
+audit_log_policy_all if {
+	input.mysql.config.audit_log_policy == "ALL"
+}
+
+audit_log_rotate_configured if {
+	rotate_size := input.mysql.config.audit_log_rotate_on_size
+	rotate_size > 0
+	rotate_size <= 1073741824 # 1GB
+}
+
+audit_log_format_json if {
+	input.mysql.config.audit_log_format == "JSON"
+}
+
+binlog_encryption_enabled if {
+	input.mysql.config.binlog_encryption == "ON"
+}
+
+binlog_row_image_full if {
+	input.mysql.config.binlog_row_image == "FULL"
+}
+
+log_slave_updates_enabled if {
+	input.mysql.config.log_slave_updates == "ON"
+}
+
+master_info_repository_table if {
+	input.mysql.config.master_info_repository == "TABLE"
+}
+
+relay_log_info_repository_table if {
+	input.mysql.config.relay_log_info_repository == "TABLE"
+}
+
+binary_relay_logs_encrypted if {
+	input.mysql.config.binlog_encryption == "ON"
+	input.mysql.config.binlog_rotate_encryption_master_key_at_startup == "ON"
+}
+
+# Section 5: MySQL Permissions
+mysql_permissions_violations := [v |
+	arrays := [
+		["5.1: Ensure Only Administrative Users Have Full Database Access" | not admin_users_only_full_access],
+		["5.2: Ensure 'file_priv' Is Not Set to 'Y' for Non-Administrative Users" | not file_priv_restricted],
+		["5.3: Ensure 'process_priv' Is Not Set to 'Y' for Non-Administrative Users" | not process_priv_restricted],
+		["5.4: Ensure 'super_priv' Is Not Set to 'Y' for Non-Administrative Users" | not super_priv_restricted],
+		["5.5: Ensure 'shutdown_priv' Is Not Set to 'Y' for Non-Administrative Users" | not shutdown_priv_restricted],
+		["5.6: Ensure 'create_user_priv' Is Not Set to 'Y' for Non-Administrative Users" | not create_user_priv_restricted],
+		["5.7: Ensure 'grant_priv' Is Not Set to 'Y' for Non-Administrative Users" | not grant_priv_restricted],
+		["5.8: Ensure 'repl_slave_priv' Is Not Set to 'Y' for Non-Administrative Users" | not repl_slave_priv_restricted],
+		["5.9: Ensure DML/DDL Grants Are Limited to Specific Databases and Users" | not dml_ddl_grants_limited],
+		["5.10: Ensure No Users Have Wildcard Hostnames" | not no_wildcard_hostnames],
+		["5.11: Ensure No Anonymous Accounts Exist" | not no_anonymous_user_accounts],
+		["5.12: Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES' for All Users" | not users_strict_trans_tables],
+		["5.13: Ensure MySQL Users' Passwords Are Strong" | not users_strong_passwords],
+		["5.14: Ensure No Users Have Empty Passwords" | not no_empty_passwords],
+		["5.15: Ensure No Duplicate MySQL User Accounts Exist" | not no_duplicate_users],
+		["5.16: Ensure Password Expiration Is Set For All Users" | not password_expiration_set],
+		["5.17: Ensure All Users Are Assigned to Appropriate Roles" | not users_assigned_roles],
+		["5.18: Ensure Administrative Users Are Separated From Application Users" | not admin_app_users_separated]
+	]
+	v := arrays[_][_]
+]
+
+admin_users_only_full_access if {
+	users := input.mysql.users
+	full_access_users := [u | u := users[_]; u.privileges.all_privileges == "Y"]
+	non_admin_full_access := [u | u := full_access_users[_]; not u.user in ["root", "mysql.sys"]]
+	count(non_admin_full_access) == 0
+}
+
+file_priv_restricted if {
+	users := input.mysql.users
+	file_priv_users := [u | u := users[_]; u.privileges.file_priv == "Y"]
+	non_admin_file_priv := [u | u := file_priv_users[_]; not u.user in ["root", "mysql.sys"]]
+	count(non_admin_file_priv) == 0
+}
+
+process_priv_restricted if {
+	users := input.mysql.users
+	process_priv_users := [u | u := users[_]; u.privileges.process_priv == "Y"]
+	non_admin_process_priv := [u | u := process_priv_users[_]; not u.user in ["root", "mysql.sys"]]
+	count(non_admin_process_priv) == 0
+}
+
+super_priv_restricted if {
+	users := input.mysql.users
+	super_priv_users := [u | u := users[_]; u.privileges.super_priv == "Y"]
+	non_admin_super_priv := [u | u := super_priv_users[_]; not u.user in ["root", "mysql.sys"]]
+	count(non_admin_super_priv) == 0
+}
+
+shutdown_priv_restricted if {
+	users := input.mysql.users
+	shutdown_priv_users := [u | u := users[_]; u.privileges.shutdown_priv == "Y"]
+	non_admin_shutdown_priv := [u | u := shutdown_priv_users[_]; not u.user in ["root", "mysql.sys"]]
+	count(non_admin_shutdown_priv) == 0
+}
+
+create_user_priv_restricted if {
+	users := input.mysql.users
+	create_user_priv_users := [u | u := users[_]; u.privileges.create_user_priv == "Y"]
+	non_admin_create_user_priv := [u | u := create_user_priv_users[_]; not u.user in ["root", "mysql.sys"]]
+	count(non_admin_create_user_priv) == 0
+}
+
+grant_priv_restricted if {
+	users := input.mysql.users
+	grant_priv_users := [u | u := users[_]; u.privileges.grant_priv == "Y"]
+	non_admin_grant_priv := [u | u := grant_priv_users[_]; not u.user in ["root", "mysql.sys"]]
+	count(non_admin_grant_priv) == 0
+}
+
+repl_slave_priv_restricted if {
+	users := input.mysql.users
+	repl_slave_priv_users := [u | u := users[_]; u.privileges.repl_slave_priv == "Y"]
+	non_replication_users := [u | u := repl_slave_priv_users[_]; not contains(u.user, "repl")]
+	count(non_replication_users) == 0
+}
+
+dml_ddl_grants_limited if {
+	database_grants := input.mysql.database_grants
+	wildcard_grants := [g | g := database_grants[_]; g.db == "*"]
+	count(wildcard_grants) == 0
+}
+
+no_wildcard_hostnames if {
+	users := input.mysql.users
+	wildcard_hosts := [u | u := users[_]; contains(u.host, "%")]
+	count(wildcard_hosts) == 0
+}
+
+no_anonymous_user_accounts if {
+	users := input.mysql.users
+	anonymous_users := [u | u := users[_]; u.user == ""]
+	count(anonymous_users) == 0
+}
+
+users_strict_trans_tables if {
+	users := input.mysql.users
+	users_without_strict := [u | u := users[_]; not contains(u.sql_mode, "STRICT_TRANS_TABLES")]
+	count(users_without_strict) == 0
+}
+
+users_strong_passwords if {
+	users := input.mysql.users
+	weak_password_users := [u | u := users[_]; u.password_strength == "weak"]
+	count(weak_password_users) == 0
+}
+
+no_empty_passwords if {
+	users := input.mysql.users
+	empty_password_users := [u | u := users[_]; u.password == ""]
+	count(empty_password_users) == 0
+}
+
+no_duplicate_users if {
+	users := input.mysql.users
+	user_host_pairs := [sprintf("%s@%s", [u.user, u.host]) | u := users[_]]
+	unique_pairs := {pair | pair := user_host_pairs[_]}
+	count(user_host_pairs) == count(unique_pairs)
+}
+
+password_expiration_set if {
+	users := input.mysql.users
+	users_no_expiration := [u | u := users[_]; u.password_lifetime == 0]
+	count(users_no_expiration) == 0
+}
+
+users_assigned_roles if {
+	users := input.mysql.users
+	users_no_roles := [u | u := users[_]; count(u.roles) == 0; u.user != "root"]
+	count(users_no_roles) == 0
+}
+
+admin_app_users_separated if {
+	users := input.mysql.users
+	admin_users := [u | u := users[_]; u.user_type == "admin"]
+	app_users := [u | u := users[_]; u.user_type == "application"]
+	
+	admin_app_overlap := [u | u := admin_users[_]; u.user in [app.user | app := app_users[_]]]
+	count(admin_app_overlap) == 0
+}
+
+# Section 6: Auditing and Logging
+auditing_logging_violations := [v |
+	arrays := [
+		["6.1: Ensure 'log_error' Is Not Empty" | not log_error_configured],
+		["6.2: Ensure Log Files Are Stored on a Non-System Partition" | not log_files_non_system_partition],
+		["6.3: Ensure 'log_error_verbosity' Is Not Set to '1'" | not log_error_verbosity_adequate],
+		["6.4: Ensure 'log_warnings' Is Set to '2'" | not log_warnings_level_2],
+		["6.5: Ensure 'log_raw' Is Set to 'OFF'" | not log_raw_off],
+		["6.6: Ensure audit_log_policy Is Set to log logins" | not audit_log_policy_logins],
+		["6.7: Ensure audit_log_connection_policy Is Not Set to 'NONE'" | not audit_log_connection_policy_set],
+		["6.8: Ensure audit_log_exclude_accounts Is Configured Correctly" | not audit_log_exclude_accounts_configured],
+		["6.9: Ensure audit_log_include_accounts Is Configured Correctly" | not audit_log_include_accounts_configured],
+		["6.10: Ensure Logs Are Rotated" | not logs_rotated],
+		["6.11: Ensure Log Files Are Not Stored in '/tmp'" | not log_files_not_tmp],
+		["6.12: Ensure 'general_log_file' Is Set to a Non-Default Location" | not general_log_file_non_default],
+		["6.13: Ensure 'general_log' Is Disabled" | not general_log_disabled],
+		["6.14: Ensure 'slow_query_log' Is Enabled" | not slow_query_log_enabled],
+		["6.15: Ensure 'slow_query_log_file' Is Set" | not slow_query_log_file_set],
+		["6.16: Ensure 'long_query_time' Is Set to 10 or Less" | not long_query_time_10],
+		["6.17: Ensure 'log_queries_not_using_indexes' Is Enabled" | not log_queries_not_using_indexes_enabled],
+		["6.18: Ensure 'log_throttle_queries_not_using_indexes' Is Set to 0" | not log_throttle_queries_disabled],
+		["6.19: Ensure Binary Logging Is Enabled" | not binary_logging_enabled],
+		["6.20: Ensure 'binlog_format' Is Set to 'ROW'" | not binlog_format_row],
+		["6.21: Ensure 'sync_binlog' Is Set to 1" | not sync_binlog_1],
+		["6.22: Ensure 'expire_logs_days' Is Set to 30 or Less" | not expire_logs_days_30],
+		["6.23: Ensure 'max_binlog_size' Is Set" | not max_binlog_size_set],
+		["6.24: Ensure audit plugin Is Active" | not audit_plugin_active]
+	]
+	v := arrays[_][_]
+]
+
+log_error_configured if {
+	log_error := input.mysql.config.log_error
+	log_error != ""
+	log_error != "stderr"
+}
+
+log_files_non_system_partition if {
+	log_error := input.mysql.config.log_error
+	general_log_file := input.mysql.config.general_log_file
+	slow_query_log_file := input.mysql.config.slow_query_log_file
+	
+	not startswith(log_error, "/var")
+	not startswith(general_log_file, "/var")
+	not startswith(slow_query_log_file, "/var")
+}
+
+log_error_verbosity_adequate if {
+	input.mysql.config.log_error_verbosity >= 2
+}
+
+log_warnings_level_2 if {
+	input.mysql.config.log_warnings == 2
+}
+
+log_raw_off if {
+	input.mysql.config.log_raw == "OFF"
+}
+
+audit_log_policy_logins if {
+	policy := input.mysql.config.audit_log_policy
+	policy in ["LOGINS", "ALL", "QUERIES"]
+}
+
+audit_log_connection_policy_set if {
+	input.mysql.config.audit_log_connection_policy != "NONE"
+}
+
+audit_log_exclude_accounts_configured if {
+	exclude_accounts := input.mysql.config.audit_log_exclude_accounts
+	# Should exclude system accounts but not user accounts
+	"mysql.sys@localhost" in exclude_accounts
+}
+
+audit_log_include_accounts_configured if {
+	include_accounts := input.mysql.config.audit_log_include_accounts
+	# Should include critical user accounts
+	count(include_accounts) > 0
+}
+
+logs_rotated if {
+	log_rotation := input.mysql.log_rotation
+	log_rotation.enabled == true
+	log_rotation.max_size > 0
+}
+
+log_files_not_tmp if {
+	log_error := input.mysql.config.log_error
+	general_log_file := input.mysql.config.general_log_file
+	slow_query_log_file := input.mysql.config.slow_query_log_file
+	
+	not startswith(log_error, "/tmp")
+	not startswith(general_log_file, "/tmp")
+	not startswith(slow_query_log_file, "/tmp")
+}
+
+general_log_file_non_default if {
+	general_log_file := input.mysql.config.general_log_file
+	not endswith(general_log_file, "general.log")
+}
+
+general_log_disabled if {
+	input.mysql.config.general_log == "OFF"
+}
+
+slow_query_log_enabled if {
+	input.mysql.config.slow_query_log == "ON"
+}
+
+slow_query_log_file_set if {
+	slow_query_log_file := input.mysql.config.slow_query_log_file
+	slow_query_log_file != ""
+}
+
+long_query_time_10 if {
+	input.mysql.config.long_query_time <= 10
+}
+
+log_queries_not_using_indexes_enabled if {
+	input.mysql.config.log_queries_not_using_indexes == "ON"
+}
+
+log_throttle_queries_disabled if {
+	input.mysql.config.log_throttle_queries_not_using_indexes == 0
+}
+
+binary_logging_enabled if {
+	input.mysql.config.log_bin != ""
+}
+
+binlog_format_row if {
+	input.mysql.config.binlog_format == "ROW"
+}
+
+sync_binlog_1 if {
+	input.mysql.config.sync_binlog == 1
+}
+
+expire_logs_days_30 if {
+	input.mysql.config.expire_logs_days <= 30
+	input.mysql.config.expire_logs_days > 0
+}
+
+max_binlog_size_set if {
+	input.mysql.config.max_binlog_size > 0
+}
+
+audit_plugin_active if {
+	plugins := input.mysql.plugins
+	audit_plugins := [p | p := plugins[_]; p.name == "audit_log"; p.status == "ACTIVE"]
+	count(audit_plugins) > 0
+}
+
+# Section 7: Authentication
+authentication_violations := [v |
+	arrays := [
+		["7.1: Ensure Password Validation Plugin Is Installed and Active" | not password_validation_plugin_active],
+		["7.2: Ensure Password Complexity Is Configured" | not password_complexity_configured],
+		["7.3: Ensure Password Policy Is in Force" | not password_policy_enforced],
+		["7.4: Ensure Password Reuse Is Limited" | not password_reuse_limited_auth],
+		["7.5: Ensure Password Expiration Is in Force" | not password_expiration_enforced],
+		["7.6: Ensure MySQL Passwords Are Not Stored in History" | not passwords_not_in_history],
+		["7.7: Ensure No Users Have Wildcard Hostnames" | not no_wildcard_hostnames_auth],
+		["7.8: Ensure No Anonymous Accounts Exist" | not no_anonymous_accounts_auth],
+		["7.9: Ensure All Users Are Assigned to Roles" | not all_users_assigned_roles],
+		["7.10: Ensure Default Roles Are Set for All Users" | not default_roles_set],
+		["7.11: Ensure Password Lifetime Is Set" | not password_lifetime_set],
+		["7.12: Ensure Account Locking Is Configured" | not account_locking_configured],
+		["7.13: Ensure 'default_authentication_plugin' Is Set" | not default_authentication_plugin_set],
+		["7.14: Ensure SHA256 Password Authentication Plugin Is Used" | not sha256_password_plugin_used],
+		["7.15: Ensure Caching SHA2 Authentication Plugin Is Used" | not caching_sha2_plugin_used],
+		["7.16: Ensure Connection Control Plugin Is Installed and Active" | not connection_control_plugin_active]
+	]
+	v := arrays[_][_]
+]
+
+password_validation_plugin_active if {
+	plugins := input.mysql.plugins
+	validation_plugins := [p | p := plugins[_]; p.name == "validate_password"; p.status == "ACTIVE"]
+	count(validation_plugins) > 0
+}
+
+password_complexity_configured if {
+	input.mysql.config.validate_password_policy in ["MEDIUM", "STRONG"]
+	input.mysql.config.validate_password_length >= 8
+	input.mysql.config.validate_password_mixed_case_count >= 1
+	input.mysql.config.validate_password_number_count >= 1
+	input.mysql.config.validate_password_special_char_count >= 1
+}
+
+password_policy_enforced if {
+	input.mysql.config.validate_password_check_user_name == "ON"
+	input.mysql.config.validate_password_dictionary_file != ""
+}
+
+password_reuse_limited_auth if {
+	input.mysql.config.password_history >= 5
+	input.mysql.config.password_reuse_interval >= 365
+}
+
+password_expiration_enforced if {
+	input.mysql.config.default_password_lifetime <= 90
+	input.mysql.config.default_password_lifetime > 0
+}
+
+passwords_not_in_history if {
+	history_length := input.mysql.config.password_history
+	history_length >= 5
+}
+
+no_wildcard_hostnames_auth if {
+	users := input.mysql.users
+	wildcard_users := [u | u := users[_]; contains(u.host, "%")]
+	count(wildcard_users) == 0
+}
+
+no_anonymous_accounts_auth if {
+	users := input.mysql.users
+	anonymous_users := [u | u := users[_]; u.user == ""]
+	count(anonymous_users) == 0
+}
+
+all_users_assigned_roles if {
+	users := input.mysql.users
+	users_without_roles := [u | u := users[_]; count(u.roles) == 0; u.user != "root"]
+	count(users_without_roles) == 0
+}
+
+default_roles_set if {
+	users := input.mysql.users
+	users_without_default_roles := [u | u := users[_]; count(u.default_roles) == 0; u.user != "root"]
+	count(users_without_default_roles) == 0
+}
+
+password_lifetime_set if {
+	users := input.mysql.users
+	users_no_lifetime := [u | u := users[_]; u.password_lifetime == 0; u.user != "root"]
+	count(users_no_lifetime) == 0
+}
+
+account_locking_configured if {
+	input.mysql.config.failed_login_attempts <= 5
+	input.mysql.config.password_lock_time >= 3600
+}
+
+default_authentication_plugin_set if {
+	plugin := input.mysql.config.default_authentication_plugin
+	plugin in ["caching_sha2_password", "sha256_password"]
+}
+
+sha256_password_plugin_used if {
+	plugins := input.mysql.plugins
+	sha256_plugins := [p | p := plugins[_]; p.name == "sha256_password"; p.status == "ACTIVE"]
+	count(sha256_plugins) > 0
+}
+
+caching_sha2_plugin_used if {
+	plugins := input.mysql.plugins
+	caching_sha2_plugins := [p | p := plugins[_]; p.name == "caching_sha2_password"; p.status == "ACTIVE"]
+	count(caching_sha2_plugins) > 0
+}
+
+connection_control_plugin_active if {
+	plugins := input.mysql.plugins
+	connection_control_plugins := [p | p := plugins[_]; startswith(p.name, "CONNECTION_CONTROL"); p.status == "ACTIVE"]
+	count(connection_control_plugins) >= 2
+}
+
+# Section 8: Network
+network_violations := [v |
+	arrays := [
+		["8.1: Ensure 'bind_address' Is Set to a Specific Interface" | not bind_address_specific],
+		["8.2: Ensure 'port' Is Set to a Non-Default Value" | not port_non_default],
+		["8.3: Ensure 'skip_networking' Is Disabled" | not skip_networking_disabled_network],
+		["8.4: Ensure 'skip_name_resolve' Is Enabled" | not skip_name_resolve_enabled],
+		["8.5: Ensure SSL Is Configured and Enabled" | not ssl_configured_enabled],
+		["8.6: Ensure 'ssl_type' Is Set to 'ANY', 'X509', or 'SPECIFIED' for All Users" | not ssl_type_configured],
+		["8.7: Ensure Certificates Are Valid" | not certificates_valid],
+		["8.8: Ensure SSL Certificates Use Strong Cryptographic Algorithms" | not ssl_strong_crypto],
+		["8.9: Ensure 'require_secure_transport' Is Enabled" | not require_secure_transport_enabled],
+		["8.10: Ensure 'tls_version' Contains Secure TLS Versions" | not tls_version_secure],
+		["8.11: Ensure 'ssl_cipher' Is Configured with Secure Ciphers" | not ssl_cipher_secure],
+		["8.12: Ensure Connection Limits Are Set" | not connection_limits_set],
+		["8.13: Ensure 'connect_timeout' Is Set to 10 or Less" | not connect_timeout_10],
+		["8.14: Ensure 'interactive_timeout' and 'wait_timeout' Are Set" | not timeout_values_set]
+	]
+	v := arrays[_][_]
+]
+
+bind_address_specific if {
+	bind_address := input.mysql.config.bind_address
+	bind_address != "0.0.0.0"
+	bind_address != "::"
+	bind_address != "*"
+}
+
+port_non_default if {
+	input.mysql.config.port != 3306
+}
+
+skip_networking_disabled_network if {
+	not input.mysql.config.skip_networking
+}
+
+skip_name_resolve_enabled if {
+	input.mysql.config.skip_name_resolve == "ON"
+}
+
+ssl_configured_enabled if {
+	input.mysql.config.ssl_cert != ""
+	input.mysql.config.ssl_key != ""
+	input.mysql.config.ssl_ca != ""
+	input.mysql.ssl.enabled == true
+}
+
+ssl_type_configured if {
+	users := input.mysql.users
+	users_without_ssl := [u | u := users[_]; not u.ssl_type in ["ANY", "X509", "SPECIFIED"]; u.user != "mysql.sys"]
+	count(users_without_ssl) == 0
+}
+
+certificates_valid if {
+	ssl_config := input.mysql.ssl
+	ssl_config.certificate_valid == true
+	ssl_config.certificate_expires_after > 86400000000000 # 24 hours in nanoseconds
+}
+
+ssl_strong_crypto if {
+	ssl_config := input.mysql.ssl
+	ssl_config.key_size >= 2048
+	ssl_config.signature_algorithm in ["SHA256", "SHA384", "SHA512"]
+}
+
+require_secure_transport_enabled if {
+	input.mysql.config.require_secure_transport == "ON"
+}
+
+tls_version_secure if {
+	tls_version := input.mysql.config.tls_version
+	secure_versions := ["TLSv1.2", "TLSv1.3"]
+	supported_versions := split(tls_version, ",")
+	secure_version_found := [v | v := supported_versions[_]; v in secure_versions]
+	count(secure_version_found) > 0
+}
+
+ssl_cipher_secure if {
+	ssl_cipher := input.mysql.config.ssl_cipher
+	# Ensure no weak ciphers
+	not contains(ssl_cipher, "DES")
+	not contains(ssl_cipher, "RC4")
+	not contains(ssl_cipher, "MD5")
+}
+
+connection_limits_set if {
+	input.mysql.config.max_connections > 0
+	input.mysql.config.max_user_connections > 0
+}
+
+connect_timeout_10 if {
+	input.mysql.config.connect_timeout <= 10
+}
+
+timeout_values_set if {
+	input.mysql.config.interactive_timeout > 0
+	input.mysql.config.wait_timeout > 0
+	input.mysql.config.interactive_timeout <= 28800 # 8 hours
+	input.mysql.config.wait_timeout <= 28800 # 8 hours
+}
+
+# Section 9: Replication
+replication_violations := [v |
+	arrays := [
+		["9.1: Ensure Replication Traffic Is Secured" | not replication_traffic_secured],
+		["9.2: Ensure 'master_ssl_verify_server_cert' Is Set to 'ON'" | not master_ssl_verify_server_cert_on],
+		["9.3: Ensure 'master_ssl_ca' Is Set on Slaves" | not master_ssl_ca_set],
+		["9.4: Ensure 'master_ssl_capath' Is Set on Slaves" | not master_ssl_capath_set],
+		["9.5: Ensure 'master_ssl_cert' Is Set on Slaves" | not master_ssl_cert_set],
+		["9.6: Ensure 'master_ssl_key' Is Set on Slaves" | not master_ssl_key_set],
+		["9.7: Ensure 'master_ssl_crl' Is Set on Slaves" | not master_ssl_crl_set],
+		["9.8: Ensure 'master_ssl_crlpath' Is Set on Slaves" | not master_ssl_crlpath_set],
+		["9.9: Ensure 'slave_ssl_verify_server_cert' Is Set to 'ON'" | not slave_ssl_verify_server_cert_on],
+		["9.10: Ensure Replication User Has Limited Privileges" | not replication_user_limited_privileges],
+		["9.11: Ensure 'log_slave_updates' Is Enabled" | not log_slave_updates_enabled_repl],
+		["9.12: Ensure 'slave_compressed_protocol' Is Disabled" | not slave_compressed_protocol_disabled],
+		["9.13: Ensure 'gtid_mode' Is Enabled" | not gtid_mode_enabled],
+		["9.14: Ensure 'enforce_gtid_consistency' Is Enabled" | not enforce_gtid_consistency_enabled]
+	]
+	v := arrays[_][_]
+]
+
+replication_traffic_secured if {
+	replication := input.mysql.replication
+	replication.ssl_enabled == true
+	replication.ssl_cert != ""
+	replication.ssl_key != ""
+}
+
+master_ssl_verify_server_cert_on if {
+	not input.mysql.replication.is_slave
+}
+
+master_ssl_verify_server_cert_on if {
+	input.mysql.replication.is_slave
+	input.mysql.config.master_ssl_verify_server_cert == "ON"
+}
+
+master_ssl_ca_set if {
+	not input.mysql.replication.is_slave
+}
+
+master_ssl_ca_set if {
+	input.mysql.replication.is_slave
+	input.mysql.config.master_ssl_ca != ""
+}
+
+master_ssl_capath_set if {
+	not input.mysql.replication.is_slave
+}
+
+master_ssl_capath_set if {
+	input.mysql.replication.is_slave
+	input.mysql.config.master_ssl_capath != ""
+}
+
+master_ssl_cert_set if {
+	not input.mysql.replication.is_slave
+}
+
+master_ssl_cert_set if {
+	input.mysql.replication.is_slave
+	input.mysql.config.master_ssl_cert != ""
+}
+
+master_ssl_key_set if {
+	not input.mysql.replication.is_slave
+}
+
+master_ssl_key_set if {
+	input.mysql.replication.is_slave
+	input.mysql.config.master_ssl_key != ""
+}
+
+master_ssl_crl_set if {
+	not input.mysql.replication.is_slave
+}
+
+master_ssl_crl_set if {
+	input.mysql.replication.is_slave
+	input.mysql.config.master_ssl_crl != ""
+}
+
+master_ssl_crlpath_set if {
+	not input.mysql.replication.is_slave
+}
+
+master_ssl_crlpath_set if {
+	input.mysql.replication.is_slave
+	input.mysql.config.master_ssl_crlpath != ""
+}
+
+slave_ssl_verify_server_cert_on if {
+	not input.mysql.replication.is_slave
+}
+
+slave_ssl_verify_server_cert_on if {
+	input.mysql.replication.is_slave
+	input.mysql.config.slave_ssl_verify_server_cert == "ON"
+}
+
+replication_user_limited_privileges if {
+	replication_users := input.mysql.replication.users
+	super_priv_users := [u | u := replication_users[_]; u.privileges.super_priv == "Y"]
+	file_priv_users := [u | u := replication_users[_]; u.privileges.file_priv == "Y"]
+	process_priv_users := [u | u := replication_users[_]; u.privileges.process_priv == "Y"]
+	excessive_priv_users := array.concat(super_priv_users, array.concat(file_priv_users, process_priv_users))
+	count(excessive_priv_users) == 0
+}
+
+log_slave_updates_enabled_repl if {
+	input.mysql.config.log_slave_updates == "ON"
+}
+
+slave_compressed_protocol_disabled if {
+	input.mysql.config.slave_compressed_protocol == "OFF"
+}
+
+gtid_mode_enabled if {
+	input.mysql.config.gtid_mode == "ON"
+}
+
+enforce_gtid_consistency_enabled if {
+	input.mysql.config.enforce_gtid_consistency == "ON"
+}

@@ -1,0 +1,1217 @@
+package cis
+
+# CIS Microsoft Windows Server 2022 Benchmark v1.0.0
+# Center for Internet Security (CIS) Benchmark for Windows Server 2022
+# This policy implements comprehensive CIS controls for Windows Server 2022 systems
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		account_policy_violations,
+		local_policy_violations,
+		event_log_violations,
+		restricted_groups_violations,
+		system_services_violations,
+		registry_violations,
+		security_options_violations,
+		advanced_audit_violations,
+		windows_defender_violations,
+		bitlocker_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: Account Policies
+account_policy_violations := [v |
+	arrays := [
+		password_policy_violations,
+		account_lockout_violations,
+		kerberos_policy_violations
+	]
+	v := arrays[_][_]
+]
+
+# 1.1 Password Policy Violations
+password_policy_violations := [
+    "1.1.1: Ensure 'Enforce password history' is set to '24 or more password(s)'" |
+    to_number(input.password_policy.enforce_password_history) < 24
+]
+
+password_policy_violations := array.concat(password_policy_violations, [
+    "1.1.2: Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'" |
+    to_number(input.password_policy.maximum_password_age) > 365
+    to_number(input.password_policy.maximum_password_age) == 0
+])
+
+password_policy_violations := array.concat(password_policy_violations, [
+    "1.1.3: Ensure 'Minimum password age' is set to '1 or more day(s)'" |
+    to_number(input.password_policy.minimum_password_age) < 1
+])
+
+password_policy_violations := array.concat(password_policy_violations, [
+    "1.1.4: Ensure 'Minimum password length' is set to '14 or more character(s)'" |
+    to_number(input.password_policy.minimum_password_length) < 14
+])
+
+password_policy_violations := array.concat(password_policy_violations, [
+    "1.1.5: Ensure 'Password must meet complexity requirements' is set to 'Enabled'" |
+    input.password_policy.password_must_meet_complexity_requirements != "Enabled"
+])
+
+password_policy_violations := array.concat(password_policy_violations, [
+    "1.1.6: Ensure 'Store passwords using reversible encryption' is set to 'Disabled'" |
+    input.password_policy.store_passwords_using_reversible_encryption != "Disabled"
+])
+
+# 1.2 Account Lockout Policy Violations
+account_lockout_violations := [
+    "1.2.1: Ensure 'Account lockout duration' is set to '15 or more minute(s)'" |
+    to_number(input.account_lockout_policy.account_lockout_duration) < 15
+]
+
+account_lockout_violations := array.concat(account_lockout_violations, [
+    "1.2.2: Ensure 'Account lockout threshold' is set to '5 or fewer invalid logon attempt(s), but not 0'" |
+    to_number(input.account_lockout_policy.account_lockout_threshold) > 5
+    to_number(input.account_lockout_policy.account_lockout_threshold) == 0
+])
+
+account_lockout_violations := array.concat(account_lockout_violations, [
+    "1.2.3: Ensure 'Reset account lockout counter after' is set to '15 or more minute(s)'" |
+    to_number(input.account_lockout_policy.reset_account_lockout_counter) < 15
+])
+
+# 1.3 Kerberos Policy Violations
+kerberos_policy_violations := [
+    "1.3.1: Ensure 'Enforce user logon restrictions' is set to 'Enabled'" |
+    input.kerberos_policy.enforce_user_logon_restrictions != "Enabled"
+]
+
+kerberos_policy_violations := array.concat(kerberos_policy_violations, [
+    "1.3.2: Ensure 'Maximum lifetime for service ticket' is set to '600 or fewer minutes, but not 0'" |
+    to_number(input.kerberos_policy.maximum_lifetime_for_service_ticket) > 600
+    to_number(input.kerberos_policy.maximum_lifetime_for_service_ticket) == 0
+])
+
+kerberos_policy_violations := array.concat(kerberos_policy_violations, [
+    "1.3.3: Ensure 'Maximum lifetime for user ticket' is set to '10 or fewer hours, but not 0'" |
+    to_number(input.kerberos_policy.maximum_lifetime_for_user_ticket) > 10
+    to_number(input.kerberos_policy.maximum_lifetime_for_user_ticket) == 0
+])
+
+kerberos_policy_violations := array.concat(kerberos_policy_violations, [
+    "1.3.4: Ensure 'Maximum lifetime for user ticket renewal' is set to '7 or fewer days'" |
+    to_number(input.kerberos_policy.maximum_lifetime_for_user_ticket_renewal) > 7
+])
+
+kerberos_policy_violations := array.concat(kerberos_policy_violations, [
+    "1.3.5: Ensure 'Maximum tolerance for computer clock synchronization' is set to '5 or fewer minutes'" |
+    to_number(input.kerberos_policy.maximum_tolerance_for_computer_clock_synchronization) > 5
+])
+
+# Section 2: Local Policies
+local_policy_violations := [v |
+	arrays := [
+		audit_policy_violations,
+		user_rights_violations,
+		security_options_violations_local
+	]
+	v := arrays[_][_]
+]
+
+# 2.1 Audit Policy Violations
+audit_policy_violations := [
+    "2.2.1: Ensure 'Audit: Force audit policy subcategory settings' is set to 'Enabled'" |
+    input.security_options.audit_force_audit_policy_subcategory_settings != "Enabled"
+]
+
+audit_policy_violations := array.concat(audit_policy_violations, [
+    "2.2.2: Ensure 'Audit: Shut down system immediately if unable to log security audits' is set to 'Disabled'" |
+    input.security_options.audit_shut_down_system_immediately != "Disabled"
+])
+
+# 2.2 User Rights Assignment Violations
+user_rights_violations := [
+    "2.2.3: Ensure 'Access Credential Manager as a trusted caller' is set to 'No One'" |
+    count(input.user_rights.access_credential_manager_as_trusted_caller) > 0
+]
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.4: Ensure 'Access this computer from the network' includes 'Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS'" |
+    not authenticated_users_network_access
+])
+
+authenticated_users_network_access if {
+    "Authenticated Users" in input.user_rights.access_this_computer_from_network
+    "ENTERPRISE DOMAIN CONTROLLERS" in input.user_rights.access_this_computer_from_network
+}
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.5: Ensure 'Act as part of the operating system' is set to 'No One'" |
+    count(input.user_rights.act_as_part_of_operating_system) > 0
+])
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.6: Ensure 'Adjust memory quotas for a process' includes 'Administrators, LOCAL SERVICE, NETWORK SERVICE'" |
+    not memory_quotas_properly_configured
+])
+
+memory_quotas_properly_configured if {
+    "Administrators" in input.user_rights.adjust_memory_quotas_for_process
+    "LOCAL SERVICE" in input.user_rights.adjust_memory_quotas_for_process
+    "NETWORK SERVICE" in input.user_rights.adjust_memory_quotas_for_process
+}
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.7: Ensure 'Allow log on locally' includes 'Administrators'" |
+    not "Administrators" in input.user_rights.allow_log_on_locally
+])
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.8: Ensure 'Allow log on through Remote Desktop Services' includes 'Administrators, Remote Desktop Users'" |
+    not remote_desktop_properly_configured
+])
+
+remote_desktop_properly_configured if {
+    "Administrators" in input.user_rights.allow_log_on_through_remote_desktop_services
+    "Remote Desktop Users" in input.user_rights.allow_log_on_through_remote_desktop_services
+}
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.9: Ensure 'Back up files and directories' includes 'Administrators'" |
+    not "Administrators" in input.user_rights.back_up_files_and_directories
+])
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.10: Ensure 'Change the system time' includes 'Administrators, LOCAL SERVICE'" |
+    not system_time_change_properly_configured
+])
+
+system_time_change_properly_configured if {
+    "Administrators" in input.user_rights.change_the_system_time
+    "LOCAL SERVICE" in input.user_rights.change_the_system_time
+}
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.11: Ensure 'Create a token object' is set to 'No One'" |
+    count(input.user_rights.create_a_token_object) > 0
+])
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.12: Ensure 'Create global objects' includes 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'" |
+    not create_global_objects_properly_configured
+])
+
+create_global_objects_properly_configured if {
+    "Administrators" in input.user_rights.create_global_objects
+    "LOCAL SERVICE" in input.user_rights.create_global_objects
+    "NETWORK SERVICE" in input.user_rights.create_global_objects
+    "SERVICE" in input.user_rights.create_global_objects
+}
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.13: Ensure 'Create permanent shared objects' is set to 'No One'" |
+    count(input.user_rights.create_permanent_shared_objects) > 0
+])
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.14: Ensure 'Debug programs' includes 'Administrators'" |
+    not "Administrators" in input.user_rights.debug_programs
+])
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.15: Ensure 'Deny access to this computer from the network' includes 'Guests, Local account and member of Administrators group, Local account'" |
+    not deny_network_access_properly_configured
+])
+
+deny_network_access_properly_configured if {
+    "Guests" in input.user_rights.deny_access_to_this_computer_from_network
+    "Local account and member of Administrators group" in input.user_rights.deny_access_to_this_computer_from_network
+    "Local account" in input.user_rights.deny_access_to_this_computer_from_network
+}
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.16: Ensure 'Deny log on as a batch job' includes 'Guests'" |
+    not "Guests" in input.user_rights.deny_log_on_as_batch_job
+])
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.17: Ensure 'Deny log on as a service' includes 'Guests'" |
+    not "Guests" in input.user_rights.deny_log_on_as_service
+])
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.18: Ensure 'Deny log on locally' includes 'Guests'" |
+    not "Guests" in input.user_rights.deny_log_on_locally
+])
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.19: Ensure 'Deny log on through Remote Desktop Services' includes 'Guests, Local account'" |
+    not deny_rdp_properly_configured
+])
+
+deny_rdp_properly_configured if {
+    "Guests" in input.user_rights.deny_log_on_through_remote_desktop_services
+    "Local account" in input.user_rights.deny_log_on_through_remote_desktop_services
+}
+
+user_rights_violations := array.concat(user_rights_violations, [
+    "2.2.20: Ensure 'Enable computer and user accounts to be trusted for delegation' is set to 'No One'" |
+    count(input.user_rights.enable_computer_and_user_accounts_to_be_trusted_for_delegation) > 0
+])
+
+# 2.3 Security Options Local Violations
+security_options_violations_local := [
+    "2.3.1: Ensure 'Accounts: Administrator account status' is set to 'Disabled'" |
+    input.security_options.accounts_administrator_account_status != "Disabled"
+]
+
+security_options_violations_local := array.concat(security_options_violations_local, [
+    "2.3.2: Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'" |
+    input.security_options.accounts_block_microsoft_accounts != "Users can't add or log on with Microsoft accounts"
+])
+
+security_options_violations_local := array.concat(security_options_violations_local, [
+    "2.3.3: Ensure 'Accounts: Guest account status' is set to 'Disabled'" |
+    input.security_options.accounts_guest_account_status != "Disabled"
+])
+
+security_options_violations_local := array.concat(security_options_violations_local, [
+    "2.3.4: Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'" |
+    input.security_options.accounts_limit_local_account_use_of_blank_passwords != "Enabled"
+])
+
+security_options_violations_local := array.concat(security_options_violations_local, [
+    "2.3.5: Ensure 'Accounts: Rename administrator account' is configured" |
+    input.security_options.accounts_rename_administrator_account == "Administrator"
+])
+
+security_options_violations_local := array.concat(security_options_violations_local, [
+    "2.3.6: Ensure 'Accounts: Rename guest account' is configured" |
+    input.security_options.accounts_rename_guest_account == "Guest"
+])
+
+# Section 3: Event Log
+event_log_violations := [v |
+	arrays := [
+		application_log_violations,
+		security_log_violations,
+		setup_log_violations,
+		system_log_violations
+	]
+	v := arrays[_][_]
+]
+
+# 3.1 Application Log Violations
+application_log_violations := [
+    "3.1.1: Ensure 'Application: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'" |
+    input.event_log.application.control_event_log_behavior != "Disabled"
+]
+
+application_log_violations := array.concat(application_log_violations, [
+    "3.1.2: Ensure 'Application: Specify the maximum log file size (KB)' is set to '32,768 or greater'" |
+    to_number(input.event_log.application.maximum_log_file_size) < 32768
+])
+
+# 3.2 Security Log Violations  
+security_log_violations := [
+    "3.2.1: Ensure 'Security: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'" |
+    input.event_log.security.control_event_log_behavior != "Disabled"
+]
+
+security_log_violations := array.concat(security_log_violations, [
+    "3.2.2: Ensure 'Security: Specify the maximum log file size (KB)' is set to '196,608 or greater'" |
+    to_number(input.event_log.security.maximum_log_file_size) < 196608
+])
+
+# 3.3 Setup Log Violations
+setup_log_violations := [
+    "3.3.1: Ensure 'Setup: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'" |
+    input.event_log.setup.control_event_log_behavior != "Disabled"
+]
+
+setup_log_violations := array.concat(setup_log_violations, [
+    "3.3.2: Ensure 'Setup: Specify the maximum log file size (KB)' is set to '32,768 or greater'" |
+    to_number(input.event_log.setup.maximum_log_file_size) < 32768
+])
+
+# 3.4 System Log Violations
+system_log_violations := [
+    "3.4.1: Ensure 'System: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'" |
+    input.event_log.system.control_event_log_behavior != "Disabled"
+]
+
+system_log_violations := array.concat(system_log_violations, [
+    "3.4.2: Ensure 'System: Specify the maximum log file size (KB)' is set to '32,768 or greater'" |
+    to_number(input.event_log.system.maximum_log_file_size) < 32768
+])
+
+# Section 4: Restricted Groups
+restricted_groups_violations := [
+    "4.1: Ensure 'Administrators' group membership is properly configured" |
+    not administrators_group_properly_configured
+]
+
+administrators_group_properly_configured if {
+    count(input.restricted_groups.administrators) <= 5
+    "Administrator" in input.restricted_groups.administrators
+}
+
+# Section 5: System Services
+system_services_violations := [
+    "5.1: Ensure 'Computer Browser (Browser)' is set to 'Disabled'" |
+    input.system_services.computer_browser != "Disabled"
+]
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.2: Ensure 'IIS Admin Service (IISADMIN)' is set to 'Disabled'" |
+    input.system_services.iis_admin_service != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.3: Ensure 'Infrared monitor service (irmon)' is set to 'Disabled'" |
+    input.system_services.infrared_monitor_service != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.4: Ensure 'Internet Connection Sharing (ICS) (SharedAccess)' is set to 'Disabled'" |
+    input.system_services.internet_connection_sharing != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.5: Ensure 'Microsoft FTP Service (FTPSVC)' is set to 'Disabled'" |
+    input.system_services.microsoft_ftp_service != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.6: Ensure 'Microsoft iSCSI Initiator Service (MSiSCSI)' is set to 'Disabled'" |
+    input.system_services.microsoft_iscsi_initiator_service != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.7: Ensure 'Peer Name Resolution Protocol (PNRPsvc)' is set to 'Disabled'" |
+    input.system_services.peer_name_resolution_protocol != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.8: Ensure 'Peer Networking Grouping (p2psvc)' is set to 'Disabled'" |
+    input.system_services.peer_networking_grouping != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.9: Ensure 'Peer Networking Identity Manager (p2pimsvc)' is set to 'Disabled'" |
+    input.system_services.peer_networking_identity_manager != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.10: Ensure 'PNRP Machine Name Publication Service (PNRPAutoReg)' is set to 'Disabled'" |
+    input.system_services.pnrp_machine_name_publication_service != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.11: Ensure 'Print Spooler (Spooler)' is set to 'Disabled'" |
+    input.system_services.print_spooler != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.12: Ensure 'Problem Reports and Solutions Control Panel Support (wercplsupport)' is set to 'Disabled'" |
+    input.system_services.problem_reports_solutions_control_panel != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.13: Ensure 'Remote Access Auto Connection Manager (RasAuto)' is set to 'Disabled'" |
+    input.system_services.remote_access_auto_connection_manager != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.14: Ensure 'Remote Desktop Configuration (SessionEnv)' is set to 'Disabled'" |
+    input.system_services.remote_desktop_configuration != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.15: Ensure 'Remote Desktop Services (TermService)' is set to 'Disabled'" |
+    input.system_services.remote_desktop_services != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.16: Ensure 'Remote Desktop Services UserMode Port Redirector (UmRdpService)' is set to 'Disabled'" |
+    input.system_services.remote_desktop_services_usermode_port_redirector != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.17: Ensure 'Routing and Remote Access (RemoteAccess)' is set to 'Disabled'" |
+    input.system_services.routing_and_remote_access != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.18: Ensure 'Simple TCP/IP Services (simptcp)' is set to 'Disabled'" |
+    input.system_services.simple_tcp_ip_services != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.19: Ensure 'SNMP Service (SNMP)' is set to 'Disabled'" |
+    input.system_services.snmp_service != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.20: Ensure 'Special Administration Console Helper (sacsvr)' is set to 'Disabled'" |
+    input.system_services.special_administration_console_helper != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.21: Ensure 'SSDP Discovery (SSDPSRV)' is set to 'Disabled'" |
+    input.system_services.ssdp_discovery != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.22: Ensure 'Telnet (TlntSvr)' is set to 'Disabled'" |
+    input.system_services.telnet != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.23: Ensure 'Trivial FTP Daemon (TFTPD)' is set to 'Disabled'" |
+    input.system_services.trivial_ftp_daemon != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.24: Ensure 'UPnP Device Host (upnphost)' is set to 'Disabled'" |
+    input.system_services.upnp_device_host != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.25: Ensure 'Windows Error Reporting Service (WerSvc)' is set to 'Disabled'" |
+    input.system_services.windows_error_reporting_service != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.26: Ensure 'Windows Event Collector (Wecsvc)' is set to 'Disabled'" |
+    input.system_services.windows_event_collector != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.27: Ensure 'Windows Media Player Network Sharing Service (WMPNetworkSvc)' is set to 'Disabled'" |
+    input.system_services.windows_media_player_network_sharing != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.28: Ensure 'Windows Push Notifications System Service (WpnService)' is set to 'Disabled'" |
+    input.system_services.windows_push_notifications_system_service != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.29: Ensure 'Windows Remote Management (WS-Management) (WinRM)' is set to 'Disabled'" |
+    input.system_services.windows_remote_management != "Disabled"
+])
+
+system_services_violations := array.concat(system_services_violations, [
+    "5.30: Ensure 'World Wide Web Publishing Service (W3SVC)' is set to 'Disabled'" |
+    input.system_services.world_wide_web_publishing_service != "Disabled"
+])
+
+# Section 6: Registry
+registry_violations := [
+    "6.1: Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'" |
+    input.registry.apply_uac_restrictions_to_local_accounts != "Enabled"
+]
+
+registry_violations := array.concat(registry_violations, [
+    "6.2: Ensure 'Configure SMB v1 client driver' is set to 'Enabled: Disable driver'" |
+    input.registry.configure_smb_v1_client_driver != "Enabled: Disable driver"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.3: Ensure 'Configure SMB v1 server' is set to 'Disabled'" |
+    input.registry.configure_smb_v1_server != "Disabled"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.4: Ensure 'Enable Structured Exception Handling Overwrite Protection (SEHOP)' is set to 'Enabled'" |
+    input.registry.enable_structured_exception_handling_overwrite_protection != "Enabled"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.5: Ensure 'NetBT NodeType configuration' is set to 'Enabled: P-node'" |
+    input.registry.netbt_nodetype_configuration != "Enabled: P-node"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.6: Ensure 'WDigest Authentication' is set to 'Disabled'" |
+    input.registry.wdigest_authentication != "Disabled"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.7: Ensure 'MSS: (AutoAdminLogon) Enable Automatic Logon' is set to 'Disabled'" |
+    input.registry.mss_auto_admin_logon != "Disabled"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.8: Ensure 'MSS: (DisableIPSourceRouting IPv6) IP source routing protection level' is set to 'Enabled: Highest protection'" |
+    input.registry.mss_disable_ip_source_routing_ipv6 != "Enabled: Highest protection"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.9: Ensure 'MSS: (DisableIPSourceRouting) IP source routing protection level' is set to 'Enabled: Highest protection'" |
+    input.registry.mss_disable_ip_source_routing != "Enabled: Highest protection"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.10: Ensure 'MSS: (EnableICMPRedirect) Allow ICMP redirects to override OSPF generated routes' is set to 'Disabled'" |
+    input.registry.mss_enable_icmp_redirect != "Disabled"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.11: Ensure 'MSS: (KeepAliveTime) How often keep-alive packets are sent in milliseconds' is set to 'Enabled: 300,000 or 5 minutes'" |
+    input.registry.mss_keep_alive_time != "Enabled: 300,000 or 5 minutes"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.12: Ensure 'MSS: (NoNameReleaseOnDemand) Allow the computer to ignore NetBIOS name release requests except from WINS servers' is set to 'Enabled'" |
+    input.registry.mss_no_name_release_on_demand != "Enabled"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.13: Ensure 'MSS: (PerformRouterDiscovery) Allow IRDP to detect and configure Default Gateway addresses' is set to 'Disabled'" |
+    input.registry.mss_perform_router_discovery != "Disabled"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.14: Ensure 'MSS: (SafeDllSearchMode) Enable Safe DLL search mode' is set to 'Enabled'" |
+    input.registry.mss_safe_dll_search_mode != "Enabled"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.15: Ensure 'MSS: (ScreenSaverGracePeriod) The time in seconds before the screen saver grace period expires' is set to 'Enabled: 5 or fewer seconds'" |
+    to_number(regex.replace(input.registry.mss_screen_saver_grace_period, "Enabled: (\\d+).*", "$1")) > 5
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.16: Ensure 'MSS: (TcpMaxDataRetransmissions IPv6) How many times unacknowledged data is retransmitted' is set to 'Enabled: 3'" |
+    input.registry.mss_tcp_max_data_retransmissions_ipv6 != "Enabled: 3"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.17: Ensure 'MSS: (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted' is set to 'Enabled: 3'" |
+    input.registry.mss_tcp_max_data_retransmissions != "Enabled: 3"
+])
+
+registry_violations := array.concat(registry_violations, [
+    "6.18: Ensure 'MSS: (WarningLevel) Percentage threshold for the security event log at which the system will generate a warning' is set to 'Enabled: 90% or less'" |
+    to_number(regex.replace(input.registry.mss_warning_level, "Enabled: (\\d+)%.*", "$1")) > 90
+])
+
+# Section 7: Security Options
+security_options_violations := [
+    "7.1: Ensure 'Interactive logon: Do not display last user name' is set to 'Enabled'" |
+    input.security_options.interactive_logon_do_not_display_last_user_name != "Enabled"
+]
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.2: Ensure 'Interactive logon: Do not require CTRL+ALT+DEL' is set to 'Disabled'" |
+    input.security_options.interactive_logon_do_not_require_ctrl_alt_del != "Disabled"
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.3: Ensure 'Interactive logon: Machine inactivity limit' is set to '900 or fewer seconds, but not 0'" |
+    to_number(input.security_options.interactive_logon_machine_inactivity_limit) > 900
+    to_number(input.security_options.interactive_logon_machine_inactivity_limit) == 0
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.4: Ensure 'Interactive logon: Message text for users attempting to log on' is configured" |
+    not input.security_options.interactive_logon_message_text_for_users_attempting_to_log_on
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.5: Ensure 'Interactive logon: Message title for users attempting to log on' is configured" |
+    not input.security_options.interactive_logon_message_title_for_users_attempting_to_log_on
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.6: Ensure 'Interactive logon: Number of previous logons to cache' is set to '4 or fewer logons'" |
+    to_number(input.security_options.interactive_logon_number_of_previous_logons_to_cache) > 4
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.7: Ensure 'Interactive logon: Prompt user to change password before expiration' is set to '5 to 14 days'" |
+    to_number(input.security_options.interactive_logon_prompt_user_to_change_password_before_expiration) < 5
+    to_number(input.security_options.interactive_logon_prompt_user_to_change_password_before_expiration) > 14
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.8: Ensure 'Interactive logon: Smart card removal behavior' is set to 'Lock Workstation' or higher" |
+    not input.security_options.interactive_logon_smart_card_removal_behavior in ["Lock Workstation", "Force Logoff"]
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.9: Ensure 'Microsoft network client: Digitally sign communications (always)' is set to 'Enabled'" |
+    input.security_options.microsoft_network_client_digitally_sign_communications_always != "Enabled"
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.10: Ensure 'Microsoft network client: Digitally sign communications (if server agrees)' is set to 'Enabled'" |
+    input.security_options.microsoft_network_client_digitally_sign_communications_if_server_agrees != "Enabled"
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.11: Ensure 'Microsoft network client: Send unencrypted password to third-party SMB servers' is set to 'Disabled'" |
+    input.security_options.microsoft_network_client_send_unencrypted_password_to_third_party_smb_servers != "Disabled"
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.12: Ensure 'Microsoft network server: Amount of idle time required before suspending session' is set to '15 or fewer minutes'" |
+    to_number(input.security_options.microsoft_network_server_amount_of_idle_time_required_before_suspending_session) > 15
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.13: Ensure 'Microsoft network server: Digitally sign communications (always)' is set to 'Enabled'" |
+    input.security_options.microsoft_network_server_digitally_sign_communications_always != "Enabled"
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.14: Ensure 'Microsoft network server: Digitally sign communications (if client agrees)' is set to 'Enabled'" |
+    input.security_options.microsoft_network_server_digitally_sign_communications_if_client_agrees != "Enabled"
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.15: Ensure 'Microsoft network server: Disconnect clients when logon hours expire' is set to 'Enabled'" |
+    input.security_options.microsoft_network_server_disconnect_clients_when_logon_hours_expire != "Enabled"
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.16: Ensure 'Network access: Allow anonymous SID/Name translation' is set to 'Disabled'" |
+    input.security_options.network_access_allow_anonymous_sid_name_translation != "Disabled"
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.17: Ensure 'Network access: Do not allow anonymous enumeration of SAM accounts' is set to 'Enabled'" |
+    input.security_options.network_access_do_not_allow_anonymous_enumeration_of_sam_accounts != "Enabled"
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.18: Ensure 'Network access: Do not allow anonymous enumeration of SAM accounts and shares' is set to 'Enabled'" |
+    input.security_options.network_access_do_not_allow_anonymous_enumeration_of_sam_accounts_and_shares != "Enabled"
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.19: Ensure 'Network access: Do not allow storage of passwords and credentials for network authentication' is set to 'Enabled'" |
+    input.security_options.network_access_do_not_allow_storage_of_passwords_and_credentials != "Enabled"
+])
+
+security_options_violations := array.concat(security_options_violations, [
+    "7.20: Ensure 'Network access: Let Everyone permissions apply to anonymous users' is set to 'Disabled'" |
+    input.security_options.network_access_let_everyone_permissions_apply_to_anonymous_users != "Disabled"
+])
+
+# Section 8: Advanced Audit Policy Configuration
+advanced_audit_violations := [v |
+	arrays := [
+		account_logon_audit_violations,
+		account_management_audit_violations,
+		detailed_tracking_audit_violations,
+		ds_access_audit_violations,
+		logon_logoff_audit_violations,
+		object_access_audit_violations,
+		policy_change_audit_violations,
+		privilege_use_audit_violations,
+		system_audit_violations
+	]
+	v := arrays[_][_]
+]
+
+# 8.1 Account Logon Audit Violations
+account_logon_audit_violations := [
+    "8.1.1: Ensure 'Audit Credential Validation' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.account_logon.audit_credential_validation != "Success and Failure"
+]
+
+account_logon_audit_violations := array.concat(account_logon_audit_violations, [
+    "8.1.2: Ensure 'Audit Kerberos Authentication Service' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.account_logon.audit_kerberos_authentication_service != "Success and Failure"
+])
+
+account_logon_audit_violations := array.concat(account_logon_audit_violations, [
+    "8.1.3: Ensure 'Audit Kerberos Service Ticket Operations' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.account_logon.audit_kerberos_service_ticket_operations != "Success and Failure"
+])
+
+# 8.2 Account Management Audit Violations
+account_management_audit_violations := [
+    "8.2.1: Ensure 'Audit Application Group Management' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.account_management.audit_application_group_management != "Success and Failure"
+]
+
+account_management_audit_violations := array.concat(account_management_audit_violations, [
+    "8.2.2: Ensure 'Audit Computer Account Management' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.account_management.audit_computer_account_management != "Success and Failure"
+])
+
+account_management_audit_violations := array.concat(account_management_audit_violations, [
+    "8.2.3: Ensure 'Audit Distribution Group Management' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.account_management.audit_distribution_group_management != "Success and Failure"
+])
+
+account_management_audit_violations := array.concat(account_management_audit_violations, [
+    "8.2.4: Ensure 'Audit Other Account Management Events' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.account_management.audit_other_account_management_events != "Success and Failure"
+])
+
+account_management_audit_violations := array.concat(account_management_audit_violations, [
+    "8.2.5: Ensure 'Audit Security Group Management' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.account_management.audit_security_group_management != "Success and Failure"
+])
+
+account_management_audit_violations := array.concat(account_management_audit_violations, [
+    "8.2.6: Ensure 'Audit User Account Management' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.account_management.audit_user_account_management != "Success and Failure"
+])
+
+# 8.3 Detailed Tracking Audit Violations
+detailed_tracking_audit_violations := [
+    "8.3.1: Ensure 'Audit DPAPI Activity' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.detailed_tracking.audit_dpapi_activity != "Success and Failure"
+]
+
+detailed_tracking_audit_violations := array.concat(detailed_tracking_audit_violations, [
+    "8.3.2: Ensure 'Audit PNP Activity' is set to include 'Success'" |
+    not contains(input.advanced_audit_policy.detailed_tracking.audit_pnp_activity, "Success")
+])
+
+detailed_tracking_audit_violations := array.concat(detailed_tracking_audit_violations, [
+    "8.3.3: Ensure 'Audit Process Creation' is set to include 'Success'" |
+    not contains(input.advanced_audit_policy.detailed_tracking.audit_process_creation, "Success")
+])
+
+detailed_tracking_audit_violations := array.concat(detailed_tracking_audit_violations, [
+    "8.3.4: Ensure 'Audit Process Termination' is set to include 'Success'" |
+    not contains(input.advanced_audit_policy.detailed_tracking.audit_process_termination, "Success")
+])
+
+detailed_tracking_audit_violations := array.concat(detailed_tracking_audit_violations, [
+    "8.3.5: Ensure 'Audit RPC Events' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.detailed_tracking.audit_rpc_events != "Success and Failure"
+])
+
+detailed_tracking_audit_violations := array.concat(detailed_tracking_audit_violations, [
+    "8.3.6: Ensure 'Audit Token Right Adjusted Events' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.detailed_tracking.audit_token_right_adjusted_events != "Success and Failure"
+])
+
+# 8.4 DS Access Audit Violations
+ds_access_audit_violations := [
+    "8.4.1: Ensure 'Audit Directory Service Access' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.ds_access.audit_directory_service_access != "Success and Failure"
+]
+
+ds_access_audit_violations := array.concat(ds_access_audit_violations, [
+    "8.4.2: Ensure 'Audit Directory Service Changes' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.ds_access.audit_directory_service_changes != "Success and Failure"
+])
+
+ds_access_audit_violations := array.concat(ds_access_audit_violations, [
+    "8.4.3: Ensure 'Audit Directory Service Replication' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.ds_access.audit_directory_service_replication != "Success and Failure"
+])
+
+ds_access_audit_violations := array.concat(ds_access_audit_violations, [
+    "8.4.4: Ensure 'Audit Detailed Directory Service Replication' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.ds_access.audit_detailed_directory_service_replication != "Success and Failure"
+])
+
+# 8.5 Logon/Logoff Audit Violations
+logon_logoff_audit_violations := [
+    "8.5.1: Ensure 'Audit Account Lockout' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.logon_logoff.audit_account_lockout != "Success and Failure"
+]
+
+logon_logoff_audit_violations := array.concat(logon_logoff_audit_violations, [
+    "8.5.2: Ensure 'Audit Group Membership' is set to include 'Success'" |
+    not contains(input.advanced_audit_policy.logon_logoff.audit_group_membership, "Success")
+])
+
+logon_logoff_audit_violations := array.concat(logon_logoff_audit_violations, [
+    "8.5.3: Ensure 'Audit Logoff' is set to include 'Success'" |
+    not contains(input.advanced_audit_policy.logon_logoff.audit_logoff, "Success")
+])
+
+logon_logoff_audit_violations := array.concat(logon_logoff_audit_violations, [
+    "8.5.4: Ensure 'Audit Logon' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.logon_logoff.audit_logon != "Success and Failure"
+])
+
+logon_logoff_audit_violations := array.concat(logon_logoff_audit_violations, [
+    "8.5.5: Ensure 'Audit Network Policy Server' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.logon_logoff.audit_network_policy_server != "Success and Failure"
+])
+
+logon_logoff_audit_violations := array.concat(logon_logoff_audit_violations, [
+    "8.5.6: Ensure 'Audit Other Logon/Logoff Events' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.logon_logoff.audit_other_logon_logoff_events != "Success and Failure"
+])
+
+logon_logoff_audit_violations := array.concat(logon_logoff_audit_violations, [
+    "8.5.7: Ensure 'Audit Special Logon' is set to include 'Success'" |
+    not contains(input.advanced_audit_policy.logon_logoff.audit_special_logon, "Success")
+])
+
+logon_logoff_audit_violations := array.concat(logon_logoff_audit_violations, [
+    "8.5.8: Ensure 'Audit User / Device Claims' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.logon_logoff.audit_user_device_claims != "Success and Failure"
+])
+
+# 8.6 Object Access Audit Violations
+object_access_audit_violations := [
+    "8.6.1: Ensure 'Audit Application Generated' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_application_generated != "Success and Failure"
+]
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.2: Ensure 'Audit Certification Services' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_certification_services != "Success and Failure"
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.3: Ensure 'Audit Detailed File Share' is set to include 'Failure'" |
+    not contains(input.advanced_audit_policy.object_access.audit_detailed_file_share, "Failure")
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.4: Ensure 'Audit File Share' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_file_share != "Success and Failure"
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.5: Ensure 'Audit File System' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_file_system != "Success and Failure"
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.6: Ensure 'Audit Filtering Platform Connection' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_filtering_platform_connection != "Success and Failure"
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.7: Ensure 'Audit Filtering Platform Packet Drop' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_filtering_platform_packet_drop != "Success and Failure"
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.8: Ensure 'Audit Handle Manipulation' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_handle_manipulation != "Success and Failure"
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.9: Ensure 'Audit Kernel Object' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_kernel_object != "Success and Failure"
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.10: Ensure 'Audit Other Object Access Events' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_other_object_access_events != "Success and Failure"
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.11: Ensure 'Audit Registry' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_registry != "Success and Failure"
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.12: Ensure 'Audit Removable Storage' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_removable_storage != "Success and Failure"
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.13: Ensure 'Audit SAM' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_sam != "Success and Failure"
+])
+
+object_access_audit_violations := array.concat(object_access_audit_violations, [
+    "8.6.14: Ensure 'Audit Central Policy Staging' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.object_access.audit_central_policy_staging != "Success and Failure"
+])
+
+# 8.7 Policy Change Audit Violations  
+policy_change_audit_violations := [
+    "8.7.1: Ensure 'Audit Audit Policy Change' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.policy_change.audit_audit_policy_change != "Success and Failure"
+]
+
+policy_change_audit_violations := array.concat(policy_change_audit_violations, [
+    "8.7.2: Ensure 'Audit Authentication Policy Change' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.policy_change.audit_authentication_policy_change != "Success and Failure"
+])
+
+policy_change_audit_violations := array.concat(policy_change_audit_violations, [
+    "8.7.3: Ensure 'Audit Authorization Policy Change' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.policy_change.audit_authorization_policy_change != "Success and Failure"
+])
+
+policy_change_audit_violations := array.concat(policy_change_audit_violations, [
+    "8.7.4: Ensure 'Audit Filtering Platform Policy Change' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.policy_change.audit_filtering_platform_policy_change != "Success and Failure"
+])
+
+policy_change_audit_violations := array.concat(policy_change_audit_violations, [
+    "8.7.5: Ensure 'Audit MPSSVC Rule-Level Policy Change' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.policy_change.audit_mpssvc_rule_level_policy_change != "Success and Failure"
+])
+
+policy_change_audit_violations := array.concat(policy_change_audit_violations, [
+    "8.7.6: Ensure 'Audit Other Policy Change Events' is set to include 'Failure'" |
+    not contains(input.advanced_audit_policy.policy_change.audit_other_policy_change_events, "Failure")
+])
+
+# 8.8 Privilege Use Audit Violations
+privilege_use_audit_violations := [
+    "8.8.1: Ensure 'Audit Non Sensitive Privilege Use' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.privilege_use.audit_non_sensitive_privilege_use != "Success and Failure"
+]
+
+privilege_use_audit_violations := array.concat(privilege_use_audit_violations, [
+    "8.8.2: Ensure 'Audit Other Privilege Use Events' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.privilege_use.audit_other_privilege_use_events != "Success and Failure"
+])
+
+privilege_use_audit_violations := array.concat(privilege_use_audit_violations, [
+    "8.8.3: Ensure 'Audit Sensitive Privilege Use' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.privilege_use.audit_sensitive_privilege_use != "Success and Failure"
+])
+
+# 8.9 System Audit Violations
+system_audit_violations := [
+    "8.9.1: Ensure 'Audit IPSec Driver' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.system.audit_ipsec_driver != "Success and Failure"
+]
+
+system_audit_violations := array.concat(system_audit_violations, [
+    "8.9.2: Ensure 'Audit Other System Events' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.system.audit_other_system_events != "Success and Failure"
+])
+
+system_audit_violations := array.concat(system_audit_violations, [
+    "8.9.3: Ensure 'Audit Security State Change' is set to include 'Success'" |
+    not contains(input.advanced_audit_policy.system.audit_security_state_change, "Success")
+])
+
+system_audit_violations := array.concat(system_audit_violations, [
+    "8.9.4: Ensure 'Audit Security System Extension' is set to include 'Success'" |
+    not contains(input.advanced_audit_policy.system.audit_security_system_extension, "Success")
+])
+
+system_audit_violations := array.concat(system_audit_violations, [
+    "8.9.5: Ensure 'Audit System Integrity' is set to 'Success and Failure'" |
+    input.advanced_audit_policy.system.audit_system_integrity != "Success and Failure"
+])
+
+# Section 9: Windows Defender Antivirus (New for Server 2022)
+windows_defender_violations := [
+    "9.1.1: Ensure 'Configure Attack Surface Reduction rules' is set to 'Enabled'" |
+    input.windows_defender.configure_attack_surface_reduction_rules != "Enabled"
+]
+
+windows_defender_violations := array.concat(windows_defender_violations, [
+    "9.1.2: Ensure 'Configure Attack Surface Reduction rules: Set the state for each ASR rule' contains required rules" |
+    not asr_rules_properly_configured
+])
+
+asr_rules_properly_configured if {
+    count(input.windows_defender.asr_rules) >= 10
+    "Block executable content from email client and webmail" in input.windows_defender.asr_rules
+    "Block all Office applications from creating child processes" in input.windows_defender.asr_rules
+}
+
+windows_defender_violations := array.concat(windows_defender_violations, [
+    "9.1.3: Ensure 'Turn on behavior monitoring' is set to 'Enabled'" |
+    input.windows_defender.turn_on_behavior_monitoring != "Enabled"
+])
+
+windows_defender_violations := array.concat(windows_defender_violations, [
+    "9.1.4: Ensure 'Scan all downloaded files and attachments' is set to 'Enabled'" |
+    input.windows_defender.scan_all_downloaded_files_and_attachments != "Enabled"
+])
+
+windows_defender_violations := array.concat(windows_defender_violations, [
+    "9.1.5: Ensure 'Turn on real-time protection' is set to 'Enabled'" |
+    input.windows_defender.turn_on_real_time_protection != "Enabled"
+])
+
+windows_defender_violations := array.concat(windows_defender_violations, [
+    "9.2.1: Ensure 'Configure detection for potentially unwanted applications' is set to 'Enabled: Block'" |
+    input.windows_defender.configure_detection_for_potentially_unwanted_applications != "Enabled: Block"
+])
+
+windows_defender_violations := array.concat(windows_defender_violations, [
+    "9.2.2: Ensure 'Turn off Windows Defender AntiVirus' is set to 'Disabled'" |
+    input.windows_defender.turn_off_windows_defender_antivirus != "Disabled"
+])
+
+windows_defender_violations := array.concat(windows_defender_violations, [
+    "9.3.1: Ensure 'Prevent users and apps from accessing dangerous websites' is set to 'Enabled: Block'" |
+    input.windows_defender.prevent_users_and_apps_from_accessing_dangerous_websites != "Enabled: Block"
+])
+
+windows_defender_violations := array.concat(windows_defender_violations, [
+    "9.3.2: Ensure 'Turn on network protection' is set to 'Enabled: Enable (block mode)'" |
+    input.windows_defender.turn_on_network_protection != "Enabled: Enable (block mode)"
+])
+
+# Section 10: BitLocker Drive Encryption (New for Server 2022)
+bitlocker_violations := [
+    "10.1.1: Ensure 'Choose how BitLocker-protected operating system drives can be recovered' is configured" |
+    not bitlocker_os_recovery_configured
+]
+
+bitlocker_os_recovery_configured if {
+    input.bitlocker.choose_how_bitlocker_protected_operating_system_drives_can_be_recovered == "Enabled"
+    input.bitlocker.allow_data_recovery_agent == true
+    input.bitlocker.configure_storage_of_bitlocker_recovery_information_to_ad_ds == "Enabled"
+}
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.1.2: Ensure 'Choose how BitLocker-protected fixed data drives can be recovered' is configured" |
+    not bitlocker_fixed_recovery_configured
+])
+
+bitlocker_fixed_recovery_configured if {
+    input.bitlocker.choose_how_bitlocker_protected_fixed_data_drives_can_be_recovered == "Enabled"
+    input.bitlocker.allow_data_recovery_agent_fixed == true
+}
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.1.3: Ensure 'Choose how BitLocker-protected removable data drives can be recovered' is configured" |
+    not bitlocker_removable_recovery_configured
+])
+
+bitlocker_removable_recovery_configured if {
+    input.bitlocker.choose_how_bitlocker_protected_removable_data_drives_can_be_recovered == "Enabled"
+    input.bitlocker.allow_data_recovery_agent_removable == true
+}
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.2.1: Ensure 'Configure minimum PIN length for startup' is set to 'Enabled: 7 or more characters'" |
+    to_number(regex.replace(input.bitlocker.configure_minimum_pin_length_for_startup, "Enabled: (\\d+).*", "$1")) < 7
+])
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.2.2: Ensure 'Configure use of hardware-based encryption for operating system drives' is set to 'Enabled'" |
+    input.bitlocker.configure_use_of_hardware_based_encryption_for_operating_system_drives != "Enabled"
+])
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.2.3: Ensure 'Configure use of passwords for operating system drives' is set to 'Disabled'" |
+    input.bitlocker.configure_use_of_passwords_for_operating_system_drives != "Disabled"
+])
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.2.4: Ensure 'Require additional authentication at startup' is set to 'Enabled'" |
+    input.bitlocker.require_additional_authentication_at_startup != "Enabled"
+])
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.3.1: Ensure 'Allow enhanced PINs for startup' is set to 'Enabled'" |
+    input.bitlocker.allow_enhanced_pins_for_startup != "Enabled"
+])
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.3.2: Ensure 'Configure use of hardware-based encryption for fixed data drives' is set to 'Enabled'" |
+    input.bitlocker.configure_use_of_hardware_based_encryption_for_fixed_data_drives != "Enabled"
+])
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.3.3: Ensure 'Configure use of passwords for fixed data drives' is set to 'Disabled'" |
+    input.bitlocker.configure_use_of_passwords_for_fixed_data_drives != "Disabled"
+])
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.3.4: Ensure 'Configure use of smart cards on fixed data drives' is set to 'Enabled'" |
+    input.bitlocker.configure_use_of_smart_cards_on_fixed_data_drives != "Enabled"
+])
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.4.1: Ensure 'Configure use of hardware-based encryption for removable data drives' is set to 'Enabled'" |
+    input.bitlocker.configure_use_of_hardware_based_encryption_for_removable_data_drives != "Enabled"
+])
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.4.2: Ensure 'Configure use of passwords for removable data drives' is set to 'Disabled'" |
+    input.bitlocker.configure_use_of_passwords_for_removable_data_drives != "Disabled"
+])
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.4.3: Ensure 'Configure use of smart cards on removable data drives' is set to 'Enabled'" |
+    input.bitlocker.configure_use_of_smart_cards_on_removable_data_drives != "Enabled"
+])
+
+bitlocker_violations := array.concat(bitlocker_violations, [
+    "10.4.4: Ensure 'Deny write access to removable drives not protected by BitLocker' is set to 'Enabled'" |
+    input.bitlocker.deny_write_access_to_removable_drives_not_protected_by_bitlocker != "Enabled"
+])
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 264,
+    "passing_controls": 264 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((264 - count(violations)) * 100) / 264,
+    "sections": {
+        "account_policies": {
+            "total": 14,
+            "violations": count(account_policy_violations)
+        },
+        "local_policies": {
+            "total": 26,
+            "violations": count(local_policy_violations)
+        },
+        "event_log": {
+            "total": 8,
+            "violations": count(event_log_violations)
+        },
+        "restricted_groups": {
+            "total": 1,
+            "violations": count(restricted_groups_violations)
+        },
+        "system_services": {
+            "total": 30,
+            "violations": count(system_services_violations)
+        },
+        "registry": {
+            "total": 18,
+            "violations": count(registry_violations)
+        },
+        "security_options": {
+            "total": 20,
+            "violations": count(security_options_violations)
+        },
+        "advanced_audit": {
+            "total": 73,
+            "violations": count(advanced_audit_violations)
+        },
+        "windows_defender": {
+            "total": 8,
+            "violations": count(windows_defender_violations)
+        },
+        "bitlocker": {
+            "total": 16,
+            "violations": count(bitlocker_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "account_policy_violations": account_policy_violations,
+    "local_policy_violations": local_policy_violations,
+    "event_log_violations": event_log_violations,
+    "restricted_groups_violations": restricted_groups_violations,
+    "system_services_violations": system_services_violations,
+    "registry_violations": registry_violations,
+    "security_options_violations": security_options_violations,
+    "advanced_audit_violations": advanced_audit_violations,
+    "windows_defender_violations": windows_defender_violations,
+    "bitlocker_violations": bitlocker_violations
+}

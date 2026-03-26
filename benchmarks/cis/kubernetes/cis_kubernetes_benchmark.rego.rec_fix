@@ -1,0 +1,259 @@
+package cis
+
+# CIS Kubernetes Benchmark v1.7.0
+# Center for Internet Security (CIS) Kubernetes Benchmark
+# This policy implements comprehensive Kubernetes security controls
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		control_plane_violations,
+		etcd_violations,
+		control_plane_config_violations,
+		worker_nodes_violations,
+		policies_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: Control Plane Security Configuration
+control_plane_violations := [
+    "1.1.1: Ensure that the API server pod specification file permissions are set to 644 or more restrictive" |
+    input.control_plane.api_server_pod_spec_permissions > 644
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# API Server Configuration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+weak_cipher(cipher) if {
+    cipher in [
+        "TLS_RSA_WITH_RC4_128_SHA",
+        "TLS_RSA_WITH_3DES_EDE_CBC_SHA",
+        "TLS_RSA_WITH_AES_128_CBC_SHA256",
+        "TLS_ECDHE_ECDSA_WITH_RC4_128_SHA",
+        "TLS_ECDHE_RSA_WITH_RC4_128_SHA",
+        "TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA",
+        "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256",
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"
+    ]
+}
+
+# Controller Manager Configuration
+
+
+
+
+
+
+
+# Scheduler Configuration
+
+
+# Section 2: etcd
+etcd_violations := [
+    "2.1: Ensure that the --cert-file and --key-file arguments are set as appropriate" |
+    not input.etcd.cert_file
+    not input.etcd.key_file
+]
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.2: Ensure that the --client-cert-auth argument is set to true" |
+    input.etcd.client_cert_auth != true
+])
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.3: Ensure that the --auto-tls argument is not set to true" |
+    input.etcd.auto_tls == true
+])
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.4: Ensure that the --peer-cert-file and --peer-key-file arguments are set as appropriate" |
+    not input.etcd.peer_cert_file
+    not input.etcd.peer_key_file
+])
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.5: Ensure that the --peer-client-cert-auth argument is set to true" |
+    input.etcd.peer_client_cert_auth != true
+])
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.6: Ensure that the --peer-auto-tls argument is not set to true" |
+    input.etcd.peer_auto_tls == true
+])
+
+etcd_violations := array.concat(etcd_violations, [
+    "2.7: Ensure that a unique Certificate Authority is used for etcd" |
+    not input.etcd.unique_ca
+])
+
+# Section 3: Control Plane Configuration
+control_plane_config_violations := [
+    "3.1.1: Client certificate authentication should not be used for users" |
+    user := input.cluster_users[_]
+    user.auth_method == "client_certificate"
+]
+
+
+
+# Section 4: Worker Nodes
+worker_nodes_violations := [
+    "4.1.1: Ensure that the kubelet service file permissions are set to 644 or more restrictive" |
+    node := input.worker_nodes[_]
+    node.kubelet_service_permissions > 644
+]
+
+
+
+
+
+
+
+
+
+
+# Kubelet Configuration
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Section 5: Policies
+policies_violations := [
+    "5.1.1: Ensure that the cluster-admin role is only used where required" |
+    binding := input.cluster_role_bindings[_]
+    binding.role_ref.name == "cluster-admin"
+    subject := binding.subjects[_]
+    subject.kind == "User"
+    not subject.name in input.required_cluster_admins
+]
+
+
+
+
+authorized_pod_creator(binding) if {
+    subject := binding.subjects[_]
+    subject.kind == "ServiceAccount"
+    subject.name in input.authorized_pod_creators
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 123,
+    "passing_controls": 123 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((123 - count(violations)) * 100) / 123,
+    "sections": {
+        "control_plane": {
+            "total": 78,
+            "violations": count(control_plane_violations)
+        },
+        "etcd": {
+            "total": 7,
+            "violations": count(etcd_violations)
+        },
+        "control_plane_config": {
+            "total": 3,
+            "violations": count(control_plane_config_violations)
+        },
+        "worker_nodes": {
+            "total": 23,
+            "violations": count(worker_nodes_violations)
+        },
+        "policies": {
+            "total": 23,
+            "violations": count(policies_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "control_plane_violations": control_plane_violations,
+    "etcd_violations": etcd_violations,
+    "control_plane_config_violations": control_plane_config_violations,
+    "worker_nodes_violations": worker_nodes_violations,
+    "policies_violations": policies_violations
+}

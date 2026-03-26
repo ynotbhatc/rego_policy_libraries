@@ -1,0 +1,639 @@
+package sox.itgc
+
+import rego.v1
+
+# SOX IT General Controls (ITGC)
+# Core IT infrastructure controls supporting financial reporting systems
+
+# IT General Controls Compliance Assessment
+itgc_compliant if {
+    access_controls_compliant
+    change_management_compliant
+    computer_operations_compliant
+    system_development_compliant
+    data_center_operations_compliant
+    backup_recovery_compliant
+}
+
+# Access Controls (ITGC-AC)
+access_controls_compliant if {
+    data.sox.itgc.access_controls.implemented
+    logical_access_controls_effective
+    privileged_access_controlled
+    access_reviews_current
+    segregation_of_duties_enforced
+}
+
+logical_access_controls_effective if {
+    data.sox.itgc.logical_access.unique_user_ids.required
+    data.sox.itgc.logical_access.strong_authentication.enforced
+    data.sox.itgc.logical_access.password_policy.compliant
+    data.sox.itgc.logical_access.session_management.secure
+    data.sox.itgc.logical_access.account_lockout.configured
+}
+
+privileged_access_controlled if {
+    data.sox.itgc.privileged_access.admin_accounts.monitored
+    data.sox.itgc.privileged_access.elevated_permissions.justified
+    data.sox.itgc.privileged_access.access_logging.comprehensive
+    data.sox.itgc.privileged_access.approval_workflow.documented
+}
+
+access_reviews_current if {
+    data.sox.itgc.access_reviews.quarterly_review.completed
+    data.sox.itgc.access_reviews.terminated_users.removed_timely
+    data.sox.itgc.access_reviews.role_changes.updated_promptly
+    data.sox.itgc.access_reviews.exceptions.documented
+}
+
+segregation_of_duties_enforced if {
+    data.sox.itgc.segregation_of_duties.development_production.separated
+    data.sox.itgc.segregation_of_duties.financial_it.separated
+    data.sox.itgc.segregation_of_duties.conflicting_roles.prevented
+    data.sox.itgc.segregation_of_duties.compensating_controls.implemented
+}
+
+# Change Management (ITGC-CM)
+change_management_compliant if {
+    data.sox.itgc.change_management.controlled
+    change_approval_process_effective
+    change_testing_comprehensive
+    emergency_changes_controlled
+    change_documentation_complete
+}
+
+change_approval_process_effective if {
+    data.sox.itgc.change_approval.business_approval.required
+    data.sox.itgc.change_approval.technical_approval.required
+    data.sox.itgc.change_approval.security_review.completed
+    data.sox.itgc.change_approval.impact_assessment.documented
+    data.sox.itgc.change_approval.rollback_plan.prepared
+}
+
+change_testing_comprehensive if {
+    data.sox.itgc.change_testing.development_testing.completed
+    data.sox.itgc.change_testing.user_acceptance_testing.passed
+    data.sox.itgc.change_testing.performance_testing.satisfactory
+    data.sox.itgc.change_testing.security_testing.passed
+    data.sox.itgc.change_testing.regression_testing.completed
+}
+
+emergency_changes_controlled if {
+    data.sox.itgc.emergency_changes.approval_process.expedited
+    data.sox.itgc.emergency_changes.documentation.post_implementation
+    data.sox.itgc.emergency_changes.review_process.timely
+    data.sox.itgc.emergency_changes.permanent_fix.implemented
+}
+
+change_documentation_complete if {
+    data.sox.itgc.change_documentation.requirements.documented
+    data.sox.itgc.change_documentation.design_specifications.complete
+    data.sox.itgc.change_documentation.test_results.recorded
+    data.sox.itgc.change_documentation.implementation_guide.available
+}
+
+# Computer Operations (ITGC-CO)
+computer_operations_compliant if {
+    data.sox.itgc.computer_operations.monitored
+    system_monitoring_effective
+    incident_management_robust
+    capacity_management_adequate
+    performance_monitoring_continuous
+}
+
+system_monitoring_effective if {
+    data.sox.itgc.system_monitoring.availability_monitoring.real_time
+    data.sox.itgc.system_monitoring.performance_monitoring.continuous
+    data.sox.itgc.system_monitoring.error_monitoring.automated
+    data.sox.itgc.system_monitoring.security_monitoring.comprehensive
+    data.sox.itgc.system_monitoring.alerting.immediate
+}
+
+incident_management_robust if {
+    data.sox.itgc.incident_management.incident_detection.automated
+    data.sox.itgc.incident_management.response_procedures.documented
+    data.sox.itgc.incident_management.escalation_process.defined
+    data.sox.itgc.incident_management.resolution_tracking.maintained
+    data.sox.itgc.incident_management.post_incident_review.conducted
+}
+
+capacity_management_adequate if {
+    data.sox.itgc.capacity_management.capacity_planning.annual
+    data.sox.itgc.capacity_management.resource_monitoring.continuous
+    data.sox.itgc.capacity_management.growth_projections.documented
+    data.sox.itgc.capacity_management.scalability_testing.periodic
+}
+
+performance_monitoring_continuous if {
+    data.sox.itgc.performance_monitoring.response_time.monitored
+    data.sox.itgc.performance_monitoring.throughput.measured
+    data.sox.itgc.performance_monitoring.resource_utilization.tracked
+    data.sox.itgc.performance_monitoring.trend_analysis.performed
+}
+
+# System Development (ITGC-SD)
+system_development_compliant if {
+    data.sox.itgc.system_development.secure
+    sdlc_process_defined
+    security_requirements_integrated
+    code_review_mandatory
+    deployment_process_controlled
+}
+
+sdlc_process_defined if {
+    data.sox.itgc.sdlc.methodology.documented
+    data.sox.itgc.sdlc.phases.clearly_defined
+    data.sox.itgc.sdlc.deliverables.specified
+    data.sox.itgc.sdlc.quality_gates.implemented
+    data.sox.itgc.sdlc.approval_checkpoints.required
+}
+
+security_requirements_integrated if {
+    data.sox.itgc.security_requirements.threat_modeling.conducted
+    data.sox.itgc.security_requirements.security_controls.designed
+    data.sox.itgc.security_requirements.vulnerability_assessment.performed
+    data.sox.itgc.security_requirements.penetration_testing.completed
+}
+
+code_review_mandatory if {
+    data.sox.itgc.code_review.peer_review.required
+    data.sox.itgc.code_review.security_review.mandatory
+    data.sox.itgc.code_review.automated_scanning.performed
+    data.sox.itgc.code_review.findings_remediation.tracked
+}
+
+deployment_process_controlled if {
+    data.sox.itgc.deployment.automated_deployment.implemented
+    data.sox.itgc.deployment.environment_consistency.maintained
+    data.sox.itgc.deployment.rollback_capability.tested
+    data.sox.itgc.deployment.deployment_verification.automated
+}
+
+# Data Center Operations (ITGC-DCO)
+data_center_operations_compliant if {
+    data.sox.itgc.data_center_operations.controlled
+    physical_security_adequate
+    environmental_controls_effective
+    power_systems_redundant
+    network_infrastructure_secure
+}
+
+physical_security_adequate if {
+    data.sox.itgc.physical_security.access_controls.multi_factor
+    data.sox.itgc.physical_security.visitor_management.controlled
+    data.sox.itgc.physical_security.surveillance.comprehensive
+    data.sox.itgc.physical_security.access_logging.complete
+    data.sox.itgc.physical_security.security_guards.present
+}
+
+environmental_controls_effective if {
+    data.sox.itgc.environmental.temperature_control.monitored
+    data.sox.itgc.environmental.humidity_control.maintained
+    data.sox.itgc.environmental.fire_suppression.tested
+    data.sox.itgc.environmental.water_detection.implemented
+    data.sox.itgc.environmental.air_quality.monitored
+}
+
+power_systems_redundant if {
+    data.sox.itgc.power_systems.ups_systems.redundant
+    data.sox.itgc.power_systems.backup_generators.tested
+    data.sox.itgc.power_systems.power_monitoring.continuous
+    data.sox.itgc.power_systems.load_balancing.implemented
+}
+
+network_infrastructure_secure if {
+    data.sox.itgc.network.network_segmentation.implemented
+    data.sox.itgc.network.firewall_management.controlled
+    data.sox.itgc.network.intrusion_detection.deployed
+    data.sox.itgc.network.network_monitoring.comprehensive
+}
+
+# Backup and Recovery (ITGC-BR)
+backup_recovery_compliant if {
+    data.sox.itgc.backup_recovery.tested
+    backup_procedures_comprehensive
+    recovery_procedures_tested
+    disaster_recovery_planned
+    business_continuity_ensured
+}
+
+backup_procedures_comprehensive if {
+    data.sox.itgc.backup.backup_frequency.appropriate
+    data.sox.itgc.backup.backup_verification.automated
+    data.sox.itgc.backup.offsite_storage.implemented
+    data.sox.itgc.backup.backup_encryption.enforced
+    data.sox.itgc.backup.retention_policy.documented
+}
+
+recovery_procedures_tested if {
+    data.sox.itgc.recovery.recovery_testing.quarterly
+    data.sox.itgc.recovery.recovery_time_objectives.met
+    data.sox.itgc.recovery.recovery_point_objectives.achieved
+    data.sox.itgc.recovery.recovery_documentation.current
+}
+
+disaster_recovery_planned if {
+    data.sox.itgc.disaster_recovery.dr_plan.documented
+    data.sox.itgc.disaster_recovery.dr_site.configured
+    data.sox.itgc.disaster_recovery.dr_testing.annual
+    data.sox.itgc.disaster_recovery.communication_plan.defined
+}
+
+business_continuity_ensured if {
+    data.sox.itgc.business_continuity.bcp_plan.documented
+    data.sox.itgc.business_continuity.impact_analysis.current
+    data.sox.itgc.business_continuity.alternative_processes.defined
+    data.sox.itgc.business_continuity.staff_training.conducted
+}
+
+# Financial Application-Specific ITGC
+financial_application_itgc_compliant if {
+    financial_system_access_controlled
+    financial_data_integrity_maintained
+    financial_processing_controls_effective
+    financial_reporting_systems_secure
+}
+
+financial_system_access_controlled if {
+    data.sox.financial_systems.access_controls.role_based
+    data.sox.financial_systems.privileged_access.restricted
+    data.sox.financial_systems.access_monitoring.real_time
+    data.sox.financial_systems.access_certification.quarterly
+}
+
+financial_data_integrity_maintained if {
+    data.sox.financial_data.data_validation.comprehensive
+    data.sox.financial_data.data_reconciliation.automated
+    data.sox.financial_data.data_archival.secure
+    data.sox.financial_data.data_retention.compliant
+}
+
+financial_processing_controls_effective if {
+    data.sox.financial_processing.transaction_processing.controlled
+    data.sox.financial_processing.batch_processing.monitored
+    data.sox.financial_processing.exception_handling.documented
+    data.sox.financial_processing.processing_completeness.verified
+}
+
+financial_reporting_systems_secure if {
+    data.sox.financial_reporting.report_generation.controlled
+    data.sox.financial_reporting.report_distribution.authorized
+    data.sox.financial_reporting.report_archival.secure
+    data.sox.financial_reporting.report_integrity.maintained
+}
+
+# ITGC Compliance Score Calculation
+itgc_compliance_score := score if {
+    components := [
+        access_controls_score,
+        change_management_score,
+        computer_operations_score,
+        system_development_score,
+        data_center_operations_score,
+        backup_recovery_score,
+        financial_application_score
+    ]
+    score := (sum(components) / count(components)) * 100
+}
+
+# Individual component scores
+access_controls_score := score if {
+    checks := [
+        logical_access_controls_effective,
+        privileged_access_controlled,
+        access_reviews_current,
+        segregation_of_duties_enforced
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+change_management_score := score if {
+    checks := [
+        change_approval_process_effective,
+        change_testing_comprehensive,
+        emergency_changes_controlled,
+        change_documentation_complete
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+computer_operations_score := score if {
+    checks := [
+        system_monitoring_effective,
+        incident_management_robust,
+        capacity_management_adequate,
+        performance_monitoring_continuous
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+system_development_score := score if {
+    checks := [
+        sdlc_process_defined,
+        security_requirements_integrated,
+        code_review_mandatory,
+        deployment_process_controlled
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+data_center_operations_score := score if {
+    checks := [
+        physical_security_adequate,
+        environmental_controls_effective,
+        power_systems_redundant,
+        network_infrastructure_secure
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+backup_recovery_score := score if {
+    checks := [
+        backup_procedures_comprehensive,
+        recovery_procedures_tested,
+        disaster_recovery_planned,
+        business_continuity_ensured
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+financial_application_score := score if {
+    checks := [
+        financial_system_access_controlled,
+        financial_data_integrity_maintained,
+        financial_processing_controls_effective,
+        financial_reporting_systems_secure
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+# ITGC Risk Assessment
+itgc_risk_level := "LOW" if {
+    itgc_compliance_score >= 90
+}
+
+itgc_risk_level := "MEDIUM" if {
+    itgc_compliance_score >= 75
+    itgc_compliance_score < 90
+}
+
+itgc_risk_level := "HIGH" if {
+    itgc_compliance_score >= 60
+    itgc_compliance_score < 75
+}
+
+itgc_risk_level := "CRITICAL" if {
+    itgc_compliance_score < 60
+}
+
+# ITGC Control Effectiveness Assessment
+itgc_control_effectiveness := effectiveness if {
+    effectiveness := {
+        "access_controls": {
+            "effectiveness": access_controls_score * 100,
+            "status": _get_control_status(access_controls_score),
+            "key_findings": _get_access_control_findings()
+        },
+        "change_management": {
+            "effectiveness": change_management_score * 100,
+            "status": _get_control_status(change_management_score),
+            "key_findings": _get_change_management_findings()
+        },
+        "computer_operations": {
+            "effectiveness": computer_operations_score * 100,
+            "status": _get_control_status(computer_operations_score),
+            "key_findings": _get_computer_operations_findings()
+        },
+        "system_development": {
+            "effectiveness": system_development_score * 100,
+            "status": _get_control_status(system_development_score),
+            "key_findings": _get_system_development_findings()
+        },
+        "data_center_operations": {
+            "effectiveness": data_center_operations_score * 100,
+            "status": _get_control_status(data_center_operations_score),
+            "key_findings": _get_data_center_findings()
+        },
+        "backup_recovery": {
+            "effectiveness": backup_recovery_score * 100,
+            "status": _get_control_status(backup_recovery_score),
+            "key_findings": _get_backup_recovery_findings()
+        },
+        "financial_applications": {
+            "effectiveness": financial_application_score * 100,
+            "status": _get_control_status(financial_application_score),
+            "key_findings": _get_financial_application_findings()
+        }
+    }
+}
+
+# Helper functions for control status
+_get_control_status(score) := "EFFECTIVE" if {
+    score >= 0.9
+}
+
+_get_control_status(score) := "PARTIALLY_EFFECTIVE" if {
+    score >= 0.7
+    score < 0.9
+}
+
+_get_control_status(score) := "INEFFECTIVE" if {
+    score < 0.7
+}
+
+# Findings generation functions
+default _get_access_control_findings := []
+
+_get_access_control_findings() := findings if {
+    findings := array.concat(
+        array.concat(
+            array.concat(
+                [finding |
+                    not logical_access_controls_effective
+                    finding := "Logical access controls require strengthening"
+                ],
+                [finding |
+                    not privileged_access_controlled
+                    finding := "Privileged access management needs improvement"
+                ]
+            ),
+            [finding |
+                not access_reviews_current
+                finding := "Access review processes are not current"
+            ]
+        ),
+        [finding |
+            not segregation_of_duties_enforced
+            finding := "Segregation of duties enforcement is inadequate"
+        ]
+    )
+}
+
+default _get_change_management_findings := []
+
+_get_change_management_findings() := findings if {
+    findings := array.concat(
+        array.concat(
+            array.concat(
+                [finding |
+                    not change_approval_process_effective
+                    finding := "Change approval process needs enhancement"
+                ],
+                [finding |
+                    not change_testing_comprehensive
+                    finding := "Change testing procedures are incomplete"
+                ]
+            ),
+            [finding |
+                not emergency_changes_controlled
+                finding := "Emergency change controls are insufficient"
+            ]
+        ),
+        [finding |
+            not change_documentation_complete
+            finding := "Change documentation is incomplete"
+        ]
+    )
+}
+
+default _get_computer_operations_findings := []
+
+_get_computer_operations_findings() := findings if {
+    findings := array.concat(
+        array.concat(
+            array.concat(
+                [finding |
+                    not system_monitoring_effective
+                    finding := "System monitoring capabilities need improvement"
+                ],
+                [finding |
+                    not incident_management_robust
+                    finding := "Incident management process requires strengthening"
+                ]
+            ),
+            [finding |
+                not capacity_management_adequate
+                finding := "Capacity management practices are inadequate"
+            ]
+        ),
+        [finding |
+            not performance_monitoring_continuous
+            finding := "Performance monitoring is not continuous"
+        ]
+    )
+}
+
+default _get_system_development_findings := []
+
+_get_system_development_findings() := findings if {
+    findings := array.concat(
+        array.concat(
+            array.concat(
+                [finding |
+                    not sdlc_process_defined
+                    finding := "SDLC process definition is incomplete"
+                ],
+                [finding |
+                    not security_requirements_integrated
+                    finding := "Security requirements integration is insufficient"
+                ]
+            ),
+            [finding |
+                not code_review_mandatory
+                finding := "Code review process is not mandatory"
+            ]
+        ),
+        [finding |
+            not deployment_process_controlled
+            finding := "Deployment process controls are inadequate"
+        ]
+    )
+}
+
+default _get_data_center_findings := []
+
+_get_data_center_findings() := findings if {
+    findings := array.concat(
+        array.concat(
+            array.concat(
+                [finding |
+                    not physical_security_adequate
+                    finding := "Physical security controls need improvement"
+                ],
+                [finding |
+                    not environmental_controls_effective
+                    finding := "Environmental controls are not effective"
+                ]
+            ),
+            [finding |
+                not power_systems_redundant
+                finding := "Power systems redundancy is insufficient"
+            ]
+        ),
+        [finding |
+            not network_infrastructure_secure
+            finding := "Network infrastructure security requires enhancement"
+        ]
+    )
+}
+
+default _get_backup_recovery_findings := []
+
+_get_backup_recovery_findings() := findings if {
+    findings := array.concat(
+        array.concat(
+            array.concat(
+                [finding |
+                    not backup_procedures_comprehensive
+                    finding := "Backup procedures are not comprehensive"
+                ],
+                [finding |
+                    not recovery_procedures_tested
+                    finding := "Recovery procedures testing is inadequate"
+                ]
+            ),
+            [finding |
+                not disaster_recovery_planned
+                finding := "Disaster recovery planning is incomplete"
+            ]
+        ),
+        [finding |
+            not business_continuity_ensured
+            finding := "Business continuity assurance is insufficient"
+        ]
+    )
+}
+
+default _get_financial_application_findings := []
+
+_get_financial_application_findings() := findings if {
+    findings := array.concat(
+        array.concat(
+            array.concat(
+                [finding |
+                    not financial_system_access_controlled
+                    finding := "Financial system access controls need strengthening"
+                ],
+                [finding |
+                    not financial_data_integrity_maintained
+                    finding := "Financial data integrity controls are inadequate"
+                ]
+            ),
+            [finding |
+                not financial_processing_controls_effective
+                finding := "Financial processing controls are not effective"
+            ]
+        ),
+        [finding |
+            not financial_reporting_systems_secure
+            finding := "Financial reporting system security needs improvement"
+        ]
+    )
+}

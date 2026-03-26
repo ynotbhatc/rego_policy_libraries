@@ -1,0 +1,491 @@
+package cis
+
+# CIS Arista EOS Benchmark v1.2.0
+# Center for Internet Security (CIS) Arista EOS Benchmark
+# This policy implements comprehensive Arista EOS security controls
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		management_plane_violations,
+		control_plane_violations,
+		data_plane_violations,
+		logging_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: Management Plane Security
+management_plane_violations := [
+    "1.1.1: Ensure AAA authentication is configured" |
+    not aaa_authentication_configured
+]
+
+aaa_authentication_configured if {
+    auth_method := input.eos_config.aaa.authentication.default[_]
+    auth_method != "none"
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.1.2: Ensure AAA authorization is configured" |
+    not aaa_authorization_configured
+])
+
+aaa_authorization_configured if {
+    input.eos_config.aaa.authorization.exec.default
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.1.3: Ensure AAA accounting is configured" |
+    not aaa_accounting_configured
+])
+
+aaa_accounting_configured if {
+    input.eos_config.aaa.accounting.exec.default
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.2.1: Ensure local user accounts use strong passwords" |
+    user := input.eos_config.username[_]
+    not user.secret
+    user.role != "network-admin"
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.2.2: Ensure the enable secret is configured" |
+    not input.eos_config.enable.secret
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.2.3: Ensure no username is configured with a privilege level of 15" |
+    user := input.eos_config.username[_]
+    user.privilege == 15
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.3.1: Ensure the banner login is configured" |
+    not input.eos_config.banner.login
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.3.2: Ensure the banner exec is configured" |
+    not input.eos_config.banner.exec
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.3.3: Ensure the banner motd is configured" |
+    not input.eos_config.banner.motd
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.4.1: Ensure 'transport input ssh' is configured for line vty" |
+    not vty_ssh_only_configured
+])
+
+vty_ssh_only_configured if {
+    management_console := input.eos_config.management.console
+    management_console.idle_timeout
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.4.2: Ensure 'exec-timeout' is configured for line vty" |
+    not vty_timeout_configured
+])
+
+vty_timeout_configured if {
+    console := input.eos_config.management.console
+    console.idle_timeout
+    console.idle_timeout <= 10
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.5.1: Ensure SSH version 2 is configured" |
+    input.eos_config.management.ssh.server_version != "2"
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.5.2: Ensure SSH idle timeout is configured" |
+    ssh := input.eos_config.management.ssh
+    not ssh.idle_timeout
+    ssh.idle_timeout > 300
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.5.3: Ensure SSH authentication retries is limited" |
+    ssh := input.eos_config.management.ssh
+    not ssh.authentication.retries
+    ssh.authentication.retries > 3
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.5.4: Ensure SSH host key algorithms are secure" |
+    ssh := input.eos_config.management.ssh
+    key_algorithm := ssh.server.host_key_algorithms[_]
+    weak_ssh_algorithm(key_algorithm)
+])
+
+weak_ssh_algorithm(algorithm) if {
+    weak_algorithms := ["ssh-dss", "ssh-rsa-sha1", "ecdsa-sha2-nistp256"]
+    algorithm in weak_algorithms
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.6.1: Ensure SNMP community strings are not set to public/private" |
+    community := input.eos_config.snmp_server.community[_]
+    community.name in ["public", "private"]
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.6.2: Ensure SNMP is configured with read-only access" |
+    community := input.eos_config.snmp_server.community[_]
+    community.access == "rw"
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.6.3: Ensure SNMP location is configured" |
+    not input.eos_config.snmp_server.location
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.6.4: Ensure SNMP contact is configured" |
+    not input.eos_config.snmp_server.contact
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.7.1: Ensure NTP authentication is configured" |
+    ntp := input.eos_config.ntp
+    not ntp.authenticate
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.7.2: Ensure NTP authentication keys are configured" |
+    ntp := input.eos_config.ntp
+    count(ntp.authentication_key) == 0
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.7.3: Ensure NTP trusted keys are configured" |
+    ntp := input.eos_config.ntp
+    count(ntp.trusted_key) == 0
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.7.4: Ensure NTP servers are configured with authentication" |
+    server := input.eos_config.ntp.server[_]
+    not server.key
+])
+
+# Section 2: Control Plane Security
+control_plane_violations := [
+    "2.1.1: Ensure IP source routing is disabled" |
+    input.eos_config.ip.source_route == true
+]
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.2: Ensure ICMP redirects are disabled on all interfaces" |
+    interface := input.eos_config.interface[_]
+    interface.ip.redirects == true
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.3: Ensure proxy ARP is disabled on all interfaces" |
+    interface := input.eos_config.interface[_]
+    interface.ip.proxy_arp == true
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.4: Ensure directed broadcast is disabled on all interfaces" |
+    interface := input.eos_config.interface[_]
+    interface.ip.directed_broadcast == true
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.5: Ensure mask reply is disabled on all interfaces" |
+    interface := input.eos_config.interface[_]
+    interface.ip.mask_reply == true
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.2.1: Ensure unused services are disabled" |
+    service := input.eos_config.service[_]
+    service.name in ["finger", "tcp-small-servers", "udp-small-servers"]
+    service.enabled == true
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.2.2: Ensure HTTP server is disabled" |
+    management_api := input.eos_config.management.api.http_commands
+    management_api.shutdown != true
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.2.3: Ensure LLDP is configured securely" |
+    lldp := input.eos_config.lldp
+    not lldp.management_address
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.3.1: Ensure BGP authentication is configured" |
+    neighbor := input.eos_config.router.bgp.neighbor[_]
+    not neighbor.password
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.3.2: Ensure BGP maximum prefix limits are configured" |
+    neighbor := input.eos_config.router.bgp.neighbor[_]
+    address_family := neighbor.address_family.ipv4.unicast
+    not address_family.maximum_routes
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.3.3: Ensure OSPF authentication is configured" |
+    area := input.eos_config.router.ospf.area[_]
+    interface := area.interface[_]
+    not interface.authentication
+])
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.4.1: Ensure control plane protection is configured" |
+    not control_plane_protection_configured
+])
+
+control_plane_protection_configured if {
+    copp := input.eos_config.control_plane
+    copp.service_policy.input
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.4.2: Ensure CPU protection policies are applied" |
+    not cpu_protection_configured
+])
+
+cpu_protection_configured if {
+    policy := input.eos_config.policy_map[_]
+    policy.class[_].police
+}
+
+# Section 3: Data Plane Security
+data_plane_violations := [
+    "3.1.1: Ensure ingress filtering is applied on all external interfaces" |
+    interface := input.external_interfaces[_]
+    not interface.access_group.in
+]
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.1.2: Ensure egress filtering is applied on all external interfaces" |
+    interface := input.external_interfaces[_]
+    not interface.access_group.out
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.1.3: Ensure anti-spoofing ACLs are configured" |
+    not anti_spoofing_acl_configured
+])
+
+anti_spoofing_acl_configured if {
+    acl := input.eos_config.ip.access_list.extended[_]
+    acl.name == "ANTI_SPOOFING"
+    rule := acl.rule[_]
+    rule.source == "10.0.0.0/8"
+    rule.action == "deny"
+}
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.2.1: Ensure VLAN access ports are configured with port security" |
+    interface := input.access_interfaces[_]
+    not interface.switchport.port_security
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.2.2: Ensure port security maximum MAC addresses is configured" |
+    interface := input.access_interfaces[_]
+    interface.switchport.port_security
+    port_sec := interface.switchport.port_security
+    not port_sec.maximum
+    port_sec.maximum > 3
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.2.3: Ensure port security violation action is configured" |
+    interface := input.access_interfaces[_]
+    interface.switchport.port_security
+    port_sec := interface.switchport.port_security
+    port_sec.violation != "shutdown"
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.3.1: Ensure spanning tree BPDU guard is enabled on all access ports" |
+    interface := input.access_interfaces[_]
+    not interface.spanning_tree.bpduguard
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.3.2: Ensure spanning tree root guard is enabled" |
+    interface := input.access_interfaces[_]
+    not interface.spanning_tree.guard.root
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.3.3: Ensure spanning tree loop guard is enabled on non-designated ports" |
+    interface := input.trunk_interfaces[_]
+    not interface.spanning_tree.guard.loop
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.4.1: Ensure DHCP snooping is enabled" |
+    not dhcp_snooping_configured
+])
+
+dhcp_snooping_configured if {
+    input.eos_config.ip.dhcp.snooping == true
+}
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.4.2: Ensure DHCP snooping trust is configured on uplink ports" |
+    interface := input.uplink_interfaces[_]
+    not interface.ip.dhcp.snooping.trust
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.5.1: Ensure Dynamic ARP Inspection is enabled" |
+    not dynamic_arp_inspection_configured
+])
+
+dynamic_arp_inspection_configured if {
+    vlan := input.eos_config.ip.arp.inspection.vlan[_]
+    vlan.enabled == true
+}
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.5.2: Ensure ARP inspection trust is configured on uplink ports" |
+    interface := input.uplink_interfaces[_]
+    not interface.ip.arp.inspection.trust
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.6.1: Ensure unused interfaces are shutdown" |
+    interface := input.eos_config.interface[_]
+    not interface.shutdown
+    not interface_in_use(interface.name)
+])
+
+interface_in_use(interface_name) if {
+    used_interface := input.used_interfaces[_]
+    used_interface == interface_name
+}
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.6.2: Ensure unused VLANs are removed" |
+    vlan := input.eos_config.vlan[_]
+    not vlan_in_use(vlan.id)
+])
+
+vlan_in_use(vlan_id) if {
+    used_vlan := input.used_vlans[_]
+    used_vlan == vlan_id
+}
+
+# Section 4: Logging and Monitoring
+logging_violations := [
+    "4.1.1: Ensure logging is enabled" |
+    not input.eos_config.logging.on
+]
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.2: Ensure logging buffer size is configured appropriately" |
+    buffer := input.eos_config.logging.buffered
+    not buffer.size
+    buffer.size < 32768
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.3: Ensure console logging is set to appropriate level" |
+    console := input.eos_config.logging.console
+    not console.level
+    not console.level in ["critical", "errors", "warnings"]
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.4: Ensure remote logging is configured" |
+    count(input.eos_config.logging.host) == 0
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.5: Ensure logging trap level is configured" |
+    trap := input.eos_config.logging.trap
+    not trap.level
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.1.6: Ensure service timestamps are configured" |
+    timestamps := input.eos_config.service.timestamps
+    not timestamps.log.datetime
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.1: Ensure event monitoring is configured" |
+    not event_monitoring_configured
+])
+
+event_monitoring_configured if {
+    input.eos_config.event_monitor.enabled == true
+}
+
+logging_violations := array.concat(logging_violations, [
+    "4.2.2: Ensure SNMP monitoring is configured securely" |
+    snmp := input.eos_config.snmp_server
+    trap_source := snmp.trap_source
+    not trap_source
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.3.1: Ensure log file rotation is configured" |
+    logging := input.eos_config.logging
+    not logging.persistent.size
+])
+
+logging_violations := array.concat(logging_violations, [
+    "4.3.2: Ensure log synchronization is configured" |
+    not input.eos_config.logging.synchronous
+])
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 74,
+    "passing_controls": 74 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((74 - count(violations)) * 100) / 74,
+    "sections": {
+        "management_plane": {
+            "total": 32,
+            "violations": count(management_plane_violations)
+        },
+        "control_plane": {
+            "total": 18,
+            "violations": count(control_plane_violations)
+        },
+        "data_plane": {
+            "total": 14,
+            "violations": count(data_plane_violations)
+        },
+        "logging": {
+            "total": 10,
+            "violations": count(logging_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "management_plane_violations": management_plane_violations,
+    "control_plane_violations": control_plane_violations,
+    "data_plane_violations": data_plane_violations,
+    "logging_violations": logging_violations
+}

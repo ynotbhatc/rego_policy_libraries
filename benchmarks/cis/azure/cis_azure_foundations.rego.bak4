@@ -1,0 +1,757 @@
+package cis
+
+# CIS Microsoft Azure Foundations Benchmark v1.5.0
+# Center for Internet Security (CIS) Azure Foundations Benchmark
+# This policy implements comprehensive Azure security controls
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		identity_access_violations,
+		security_center_violations,
+		storage_violations,
+		database_violations,
+		logging_violations,
+		networking_violations,
+		virtual_machines_violations,
+		key_vault_violations,
+		app_service_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: Identity and Access Management
+identity_access_violations := [
+    "1.1: Ensure that multi-factor authentication is enabled for all privileged users" |
+    user := input.aad_users[_]
+    user.privileged == true
+    not user.mfa_enabled
+]
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.2: Ensure that multi-factor authentication is enabled for all non-privileged users" |
+    user := input.aad_users[_]
+    user.privileged == false
+    not user.mfa_enabled
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.3: Ensure that there are no guest users" |
+    user := input.aad_users[_]
+    user.user_type == "Guest"
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.4: Ensure that 'Allow users to remember multi-factor authentication on devices they trust' is 'Disabled'" |
+    input.mfa_settings.remember_mfa_on_trusted_devices == true
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.5: Ensure that 'Number of methods required to reset' is set to '2'" |
+    input.password_reset_policy.number_of_methods_required != 2
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.6: Ensure that 'Number of days before users are asked to re-confirm their authentication information' is not set to '0'" |
+    input.mfa_settings.days_before_reconfirm == 0
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.7: Ensure that 'Notify users on password resets' is set to 'Yes'" |
+    input.password_reset_policy.notify_users_on_password_resets == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.8: Ensure that 'Notify all admins when other admins reset their password' is set to 'Yes'" |
+    input.password_reset_policy.notify_admins_on_admin_password_reset == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.9: Ensure that 'Users can consent to apps accessing company data on their behalf' is set to 'No'" |
+    input.user_consent_settings.users_can_consent_to_apps == true
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.10: Ensure that 'Users can add gallery apps to their Access Panel' is set to 'No'" |
+    input.user_settings.users_can_add_gallery_apps == true
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.11: Ensure that 'Users can register applications' is set to 'No'" |
+    input.user_settings.users_can_register_applications == true
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.12: Ensure that 'Guest users permissions are limited' is set to 'Yes'" |
+    input.guest_user_settings.guest_users_permissions_limited == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.13: Ensure that 'Members can invite' is set to 'No'" |
+    input.external_collaboration_settings.members_can_invite == true
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.14: Ensure that 'Guests can invite' is set to 'No'" |
+    input.external_collaboration_settings.guests_can_invite == true
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.15: Ensure that 'Restrict access to Azure AD administration portal' is set to 'Yes'" |
+    input.user_settings.restrict_non_admin_users == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.16: Ensure that 'LinkedIn account connections' is set to 'No'" |
+    input.user_settings.linkedin_account_connections == true
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.17: Ensure that 'Users can create security groups' is set to 'No'" |
+    input.group_settings.users_can_create_security_groups == true
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.18: Ensure that 'Users who can manage security groups' is set to 'None'" |
+    input.group_settings.users_can_manage_security_groups != "None"
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.19: Ensure that 'Users can create Office 365 groups' is set to 'No'" |
+    input.group_settings.users_can_create_office365_groups == true
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.20: Ensure that 'Require Multi-Factor Auth to join devices' is set to 'Yes'" |
+    input.device_settings.require_mfa_to_join_devices == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.21: Ensure that no custom subscription owner roles are created" |
+    role := input.custom_roles[_]
+    action := role.permissions.actions[_]
+    action == "*"
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.22: Ensure that a Custom Role is assigned for administering resource locks" |
+    not resource_lock_admin_role_exists
+])
+
+resource_lock_admin_role_exists if {
+    role := input.custom_roles[_]
+    contains(role.role_name, "Lock")
+    action := role.permissions.actions[_]
+    contains(action, "Microsoft.Authorization/locks")
+}
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.23: Ensure that 'Subscription leaving Azure AD tenant' and 'Subscription entering Azure AD tenant' is set to 'Permit no one'" |
+    input.tenant_settings.subscription_leaving_tenant != "PermitNoOne"
+])
+
+# Section 2: Microsoft Defender for Cloud
+security_center_violations := [
+    "2.1: Ensure that Microsoft Defender for Cloud is set to 'On' for Servers" |
+    plan := input.defender_plans[_]
+    plan.resource_type == "VirtualMachines"
+    plan.pricing_tier != "Standard"
+]
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.2: Ensure that Microsoft Defender for Cloud is set to 'On' for App Service" |
+    plan := input.defender_plans[_]
+    plan.resource_type == "AppServices"
+    plan.pricing_tier != "Standard"
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.3: Ensure that Microsoft Defender for Cloud is set to 'On' for Azure SQL database servers" |
+    plan := input.defender_plans[_]
+    plan.resource_type == "SqlServers"
+    plan.pricing_tier != "Standard"
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.4: Ensure that Microsoft Defender for Cloud is set to 'On' for SQL servers on machines" |
+    plan := input.defender_plans[_]
+    plan.resource_type == "SqlServerVirtualMachines"
+    plan.pricing_tier != "Standard"
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.5: Ensure that Microsoft Defender for Cloud is set to 'On' for Open-source relational databases" |
+    plan := input.defender_plans[_]
+    plan.resource_type == "OpenSourceRelationalDatabases"
+    plan.pricing_tier != "Standard"
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.6: Ensure that Microsoft Defender for Cloud is set to 'On' for Azure Cosmos DB" |
+    plan := input.defender_plans[_]
+    plan.resource_type == "CosmosDb"
+    plan.pricing_tier != "Standard"
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.7: Ensure that Microsoft Defender for Cloud is set to 'On' for Storage" |
+    plan := input.defender_plans[_]
+    plan.resource_type == "StorageAccounts"
+    plan.pricing_tier != "Standard"
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.8: Ensure that Microsoft Defender for Cloud is set to 'On' for Kubernetes" |
+    plan := input.defender_plans[_]
+    plan.resource_type == "KubernetesService"
+    plan.pricing_tier != "Standard"
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.9: Ensure that Microsoft Defender for Cloud is set to 'On' for Container Registries" |
+    plan := input.defender_plans[_]
+    plan.resource_type == "ContainerRegistry"
+    plan.pricing_tier != "Standard"
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.10: Ensure that Microsoft Defender for Cloud is set to 'On' for Key Vault" |
+    plan := input.defender_plans[_]
+    plan.resource_type == "KeyVaults"
+    plan.pricing_tier != "Standard"
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.11: Ensure that 'Automatic provisioning of monitoring agent' is set to 'On'" |
+    input.security_center.auto_provisioning_log_analytics != "On"
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.12: Ensure that Microsoft Defender for Cloud Apps integration with Microsoft Defender for Cloud is selected" |
+    input.security_center.mcas_integration_enabled != true
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.13: Ensure that Microsoft Defender for Endpoint integration with Microsoft Defender for Cloud is selected" |
+    input.security_center.wdatp_integration_enabled != true
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.14: Ensure that 'Additional email addresses' is configured with a security contact email" |
+    not input.security_center.security_contact_email
+])
+
+security_center_violations := array.concat(security_center_violations, [
+    "2.15: Ensure that 'Notify about alerts with the following severity' is set to 'High'" |
+    input.security_center.alert_notifications_min_severity != "High"
+])
+
+# Section 3: Storage Accounts
+storage_violations := [
+    "3.1: Ensure that 'Secure transfer required' is set to 'Enabled'" |
+    account := input.storage_accounts[_]
+    account.https_traffic_only_enabled != true
+]
+
+storage_violations := array.concat(storage_violations, [
+    "3.2: Ensure that 'Enable key rotation reminders' is enabled for each storage account" |
+    account := input.storage_accounts[_]
+    not account.key_rotation_reminders_enabled
+])
+
+storage_violations := array.concat(storage_violations, [
+    "3.3: Ensure storage logging is enabled for Queue service for read, write, and delete requests" |
+    account := input.storage_accounts[_]
+    queue_logging := account.queue_service_logging
+    not queue_logging.read_enabled
+])
+
+storage_violations := array.concat(storage_violations, [
+    "3.4: Ensure storage logging is enabled for Table service for read, write, and delete requests" |
+    account := input.storage_accounts[_]
+    table_logging := account.table_service_logging
+    not table_logging.read_enabled
+])
+
+storage_violations := array.concat(storage_violations, [
+    "3.5: Ensure that 'Public access level' is disabled for storage accounts" |
+    account := input.storage_accounts[_]
+    account.allow_blob_public_access == true
+])
+
+storage_violations := array.concat(storage_violations, [
+    "3.6: Ensure default network access rule for Storage Accounts is set to deny" |
+    account := input.storage_accounts[_]
+    account.network_rules.default_action != "Deny"
+])
+
+storage_violations := array.concat(storage_violations, [
+    "3.7: Ensure 'Trusted Microsoft Services' is enabled for Storage Account access" |
+    account := input.storage_accounts[_]
+    not account.network_rules.bypass_azure_services
+])
+
+storage_violations := array.concat(storage_violations, [
+    "3.8: Ensure that 'Infrastructure double encryption' is enabled on Storage Accounts" |
+    account := input.storage_accounts[_]
+    not account.require_infrastructure_encryption
+])
+
+storage_violations := array.concat(storage_violations, [
+    "3.9: Ensure soft delete is enabled for Azure Storage" |
+    account := input.storage_accounts[_]
+    not account.blob_soft_delete_enabled
+])
+
+storage_violations := array.concat(storage_violations, [
+    "3.10: Ensure storage for critical data are encrypted with Customer Managed Key" |
+    account := input.storage_accounts[_]
+    account.encryption_key_source != "Microsoft.Keyvault"
+    critical_data_storage(account)
+])
+
+critical_data_storage(account) if {
+    contains(lower(account.name), "prod")
+}
+
+critical_data_storage(account) if {
+    contains(lower(account.name), "critical")
+}
+
+# Section 4: Database Services
+database_violations := [
+    "4.1: Ensure that 'Auditing' is set to 'On' for SQL servers" |
+    server := input.sql_servers[_]
+    not server.auditing_enabled
+]
+
+database_violations := array.concat(database_violations, [
+    "4.2: Ensure that 'AuditActionGroups' in 'auditing' policy for a SQL server is set properly" |
+    server := input.sql_servers[_]
+    required_groups := {
+        "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
+        "FAILED_DATABASE_AUTHENTICATION_GROUP",
+        "BATCH_COMPLETED_GROUP"
+    }
+    configured_groups := {group | group := server.audit_action_groups[_]}
+    count(required_groups - configured_groups) > 0
+])
+
+database_violations := array.concat(database_violations, [
+    "4.3: Ensure that 'Auditing' Retention is 'greater than 90 days' for SQL servers" |
+    server := input.sql_servers[_]
+    server.audit_retention_days < 90
+])
+
+database_violations := array.concat(database_violations, [
+    "4.4: Ensure that 'Advanced Threat Protection' (ATP) on a SQL server is set to 'Enabled'" |
+    server := input.sql_servers[_]
+    not server.advanced_threat_protection_enabled
+])
+
+database_violations := array.concat(database_violations, [
+    "4.5: Ensure that 'Vulnerability Assessment' on a SQL server is set to 'Enabled'" |
+    server := input.sql_servers[_]
+    not server.vulnerability_assessment_enabled
+])
+
+database_violations := array.concat(database_violations, [
+    "4.6: Ensure that VA setting 'Send scan reports to' is configured for a SQL server" |
+    server := input.sql_servers[_]
+    server.vulnerability_assessment_enabled
+    not server.va_scan_reports_email
+])
+
+database_violations := array.concat(database_violations, [
+    "4.7: Ensure that VA setting 'Also send email notifications to admins and subscription owners' is set for each SQL Server" |
+    server := input.sql_servers[_]
+    server.vulnerability_assessment_enabled
+    not server.va_email_admins
+])
+
+database_violations := array.concat(database_violations, [
+    "4.8: Ensure that VA setting 'Periodic recurring scans' is set to 'On' for each SQL Server" |
+    server := input.sql_servers[_]
+    server.vulnerability_assessment_enabled
+    not server.va_periodic_scans_enabled
+])
+
+database_violations := array.concat(database_violations, [
+    "4.9: Ensure that 'Allow access to Azure services' for PostgreSQL Database Server is disabled" |
+    server := input.postgresql_servers[_]
+    rule := server.firewall_rules[_]
+    rule.start_ip_address == "0.0.0.0"
+    rule.end_ip_address == "0.0.0.0"
+])
+
+database_violations := array.concat(database_violations, [
+    "4.10: Ensure server parameter 'log_checkpoints' is set to 'ON' for PostgreSQL Database Server" |
+    server := input.postgresql_servers[_]
+    config := server.configurations[_]
+    config.name == "log_checkpoints"
+    config.value != "on"
+])
+
+database_violations := array.concat(database_violations, [
+    "4.11: Ensure server parameter 'log_connections' is set to 'ON' for PostgreSQL Database Server" |
+    server := input.postgresql_servers[_]
+    config := server.configurations[_]
+    config.name == "log_connections"
+    config.value != "on"
+])
+
+database_violations := array.concat(database_violations, [
+    "4.12: Ensure server parameter 'log_disconnections' is set to 'ON' for PostgreSQL Database Server" |
+    server := input.postgresql_servers[_]
+    config := server.configurations[_]
+    config.name == "log_disconnections"
+    config.value != "on"
+])
+
+database_violations := array.concat(database_violations, [
+    "4.13: Ensure server parameter 'connection_throttling' is set to 'ON' for PostgreSQL Database Server" |
+    server := input.postgresql_servers[_]
+    config := server.configurations[_]
+    config.name == "connection_throttling"
+    config.value != "on"
+])
+
+database_violations := array.concat(database_violations, [
+    "4.14: Ensure server parameter 'log_retention_days' is greater than 3 days for PostgreSQL Database Server" |
+    server := input.postgresql_servers[_]
+    config := server.configurations[_]
+    config.name == "log_retention_days"
+    to_number(config.value) <= 3
+])
+
+database_violations := array.concat(database_violations, [
+    "4.15: Ensure 'Allow access to Azure services' for MySQL Database Server is disabled" |
+    server := input.mysql_servers[_]
+    rule := server.firewall_rules[_]
+    rule.start_ip_address == "0.0.0.0"
+    rule.end_ip_address == "0.0.0.0"
+])
+
+database_violations := array.concat(database_violations, [
+    "4.16: Ensure server parameter 'slow_query_log' is set to 'ON' for MySQL Database Server" |
+    server := input.mysql_servers[_]
+    config := server.configurations[_]
+    config.name == "slow_query_log"
+    config.value != "ON"
+])
+
+database_violations := array.concat(database_violations, [
+    "4.17: Ensure server parameter 'audit_log_enabled' is set to 'ON' for MySQL Database Server" |
+    server := input.mysql_servers[_]
+    config := server.configurations[_]
+    config.name == "audit_log_enabled"
+    config.value != "ON"
+])
+
+# Section 5: Logging and Monitoring
+logging_violations := [
+    "5.1: Ensure that a 'Diagnostic Setting' exists for Subscription Activity Logs" |
+    not input.activity_log_diagnostic_setting.enabled
+]
+
+logging_violations := array.concat(logging_violations, [
+    "5.2: Ensure that Activity Log Retention is set 365 days or greater" |
+    input.activity_log_retention_days < 365
+])
+
+logging_violations := array.concat(logging_violations, [
+    "5.3: Ensure audit profile captures all the activities" |
+    required_categories := {
+        "Administrative",
+        "Security",
+        "ServiceHealth",
+        "Alert",
+        "Recommendation",
+        "Policy",
+        "Autoscale",
+        "ResourceHealth"
+    }
+    configured_categories := {cat | cat := input.activity_log_diagnostic_setting.log_categories[_]}
+    count(required_categories - configured_categories) > 0
+])
+
+logging_violations := array.concat(logging_violations, [
+    "5.4: Ensure the storage container storing the activity logs is not publicly accessible" |
+    container := input.storage_containers[_]
+    container.stores_activity_logs == true
+    container.public_access != "None"
+])
+
+logging_violations := array.concat(logging_violations, [
+    "5.5: Ensure that logging for Azure KeyVault is 'Enabled'" |
+    vault := input.key_vaults[_]
+    not vault.diagnostic_settings_enabled
+])
+
+# Section 6: Networking
+networking_violations := [
+    "6.1: Ensure that RDP access is restricted from the internet" |
+    nsg := input.network_security_groups[_]
+    rule := nsg.security_rules[_]
+    rule.direction == "Inbound"
+    rule.access == "Allow"
+    rule.destination_port_range == "3389"
+    "0.0.0.0/0" in rule.source_address_prefixes
+]
+
+networking_violations := array.concat(networking_violations, [
+    "6.2: Ensure that SSH access is restricted from the internet" |
+    nsg := input.network_security_groups[_]
+    rule := nsg.security_rules[_]
+    rule.direction == "Inbound"
+    rule.access == "Allow"
+    rule.destination_port_range == "22"
+    "0.0.0.0/0" in rule.source_address_prefixes
+])
+
+networking_violations := array.concat(networking_violations, [
+    "6.3: Ensure no SQL Databases allow ingress 0.0.0.0/0 (ANY IP)" |
+    server := input.sql_servers[_]
+    rule := server.firewall_rules[_]
+    rule.start_ip_address == "0.0.0.0"
+    rule.end_ip_address == "255.255.255.255"
+])
+
+networking_violations := array.concat(networking_violations, [
+    "6.4: Ensure that Network Watcher is 'Enabled'" |
+    region := input.regions[_]
+    not region.network_watcher_enabled
+])
+
+networking_violations := array.concat(networking_violations, [
+    "6.5: Ensure that Network Security Group Flow Log retention period is 'greater than or equal to 90 days'" |
+    flow_log := input.network_watcher_flow_logs[_]
+    flow_log.retention_policy.days < 90
+])
+
+networking_violations := array.concat(networking_violations, [
+    "6.6: Ensure that Network Security Group Flow Log retention period is 'greater than or equal to 90 days'" |
+    flow_log := input.network_watcher_flow_logs[_]
+    not flow_log.retention_policy.enabled
+])
+
+# Section 7: Virtual Machines
+virtual_machines_violations := [
+    "7.1: Ensure Virtual Machines are utilizing Managed Disks" |
+    vm := input.virtual_machines[_]
+    disk := vm.storage_profile.os_disk
+    not disk.managed_disk
+]
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "7.2: Ensure that 'OS and Data' disks are encrypted with CMK" |
+    vm := input.virtual_machines[_]
+    disk := vm.storage_profile.data_disks[_]
+    disk.encryption_settings.enabled != true
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "7.3: Ensure that 'Unattached disks' are encrypted with CMK" |
+    disk := input.unattached_disks[_]
+    disk.encryption_settings.enabled != true
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "7.4: Ensure that only approved extensions are installed" |
+    vm := input.virtual_machines[_]
+    extension := vm.extensions[_]
+    not extension.name in input.approved_vm_extensions
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "7.5: Ensure that the endpoint protection for all Virtual Machines is installed" |
+    vm := input.virtual_machines[_]
+    not vm.endpoint_protection_installed
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "7.6: Ensure that VHD's are encrypted" |
+    vhd := input.vhds[_]
+    not vhd.encrypted
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "7.7: Ensure that 'Automatic OS Upgrades' are enabled" |
+    scale_set := input.virtual_machine_scale_sets[_]
+    not scale_set.upgrade_policy.automatic_os_upgrade_policy.enable_automatic_os_upgrade
+])
+
+# Section 8: Key Vault
+key_vault_violations := [
+    "8.1: Ensure that the expiration date is set on all keys" |
+    vault := input.key_vaults[_]
+    key := vault.keys[_]
+    not key.expiration_date
+]
+
+key_vault_violations := array.concat(key_vault_violations, [
+    "8.2: Ensure that the expiration date is set on all Secrets" |
+    vault := input.key_vaults[_]
+    secret := vault.secrets[_]
+    not secret.expiration_date
+])
+
+key_vault_violations := array.concat(key_vault_violations, [
+    "8.3: Ensure that Resource Locks are set for mission critical Azure resources" |
+    resource := input.critical_resources[_]
+    not resource.resource_lock
+])
+
+key_vault_violations := array.concat(key_vault_violations, [
+    "8.4: Ensure the key vault is recoverable" |
+    vault := input.key_vaults[_]
+    not vault.soft_delete_enabled
+])
+
+key_vault_violations := array.concat(key_vault_violations, [
+    "8.5: Enable role-based access control (RBAC) within Azure Kubernetes Service" |
+    cluster := input.aks_clusters[_]
+    not cluster.enable_rbac
+])
+
+key_vault_violations := array.concat(key_vault_violations, [
+    "8.6: Ensure that Azure Key Vault logging is enabled" |
+    vault := input.key_vaults[_]
+    not vault.diagnostic_logs_enabled
+])
+
+key_vault_violations := array.concat(key_vault_violations, [
+    "8.7: Ensure that 'Purge protection' is enabled" |
+    vault := input.key_vaults[_]
+    not vault.purge_protection_enabled
+])
+
+# Section 9: AppService
+app_service_violations := [
+    "9.1: Ensure App Service Authentication is set on Azure App Service" |
+    app := input.app_services[_]
+    not app.authentication_enabled
+]
+
+app_service_violations := array.concat(app_service_violations, [
+    "9.2: Ensure web app redirects all HTTP traffic to HTTPS in Azure App Service" |
+    app := input.app_services[_]
+    not app.https_only
+])
+
+app_service_violations := array.concat(app_service_violations, [
+    "9.3: Ensure web app is using the latest version of TLS encryption" |
+    app := input.app_services[_]
+    app.min_tls_version != "1.2"
+])
+
+app_service_violations := array.concat(app_service_violations, [
+    "9.4: Ensure the web app has 'Client Certificates (Incoming client certificates)' set to 'On'" |
+    app := input.app_services[_]
+    not app.client_cert_enabled
+])
+
+app_service_violations := array.concat(app_service_violations, [
+    "9.5: Ensure that Register with Azure Active Directory is enabled on App Service" |
+    app := input.app_services[_]
+    not app.managed_service_identity_enabled
+])
+
+app_service_violations := array.concat(app_service_violations, [
+    "9.6: Ensure that 'PHP version' is the latest, if used to run the web app" |
+    app := input.app_services[_]
+    app.site_config.php_version
+    not startswith(app.site_config.php_version, "8.")
+])
+
+app_service_violations := array.concat(app_service_violations, [
+    "9.7: Ensure that 'Python version' is the latest, if used to run the web app" |
+    app := input.app_services[_]
+    app.site_config.python_version
+    not startswith(app.site_config.python_version, "3.9")
+])
+
+app_service_violations := array.concat(app_service_violations, [
+    "9.8: Ensure that 'Java version' is the latest, if used to run the web app" |
+    app := input.app_services[_]
+    app.site_config.java_version
+    not startswith(app.site_config.java_version, "11")
+])
+
+app_service_violations := array.concat(app_service_violations, [
+    "9.9: Ensure that 'HTTP Version' is the latest, if used to run the web app" |
+    app := input.app_services[_]
+    app.site_config.http20_enabled != true
+])
+
+app_service_violations := array.concat(app_service_violations, [
+    "9.10: Ensure FTP deployments are disabled" |
+    app := input.app_services[_]
+    app.site_config.ftp_state != "Disabled"
+])
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 128,
+    "passing_controls": 128 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((128 - count(violations)) * 100) / 128,
+    "sections": {
+        "identity_access": {
+            "total": 23,
+            "violations": count(identity_access_violations)
+        },
+        "security_center": {
+            "total": 15,
+            "violations": count(security_center_violations)
+        },
+        "storage": {
+            "total": 10,
+            "violations": count(storage_violations)
+        },
+        "database": {
+            "total": 17,
+            "violations": count(database_violations)
+        },
+        "logging": {
+            "total": 5,
+            "violations": count(logging_violations)
+        },
+        "networking": {
+            "total": 6,
+            "violations": count(networking_violations)
+        },
+        "virtual_machines": {
+            "total": 7,
+            "violations": count(virtual_machines_violations)
+        },
+        "key_vault": {
+            "total": 7,
+            "violations": count(key_vault_violations)
+        },
+        "app_service": {
+            "total": 10,
+            "violations": count(app_service_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "identity_access_violations": identity_access_violations,
+    "security_center_violations": security_center_violations,
+    "storage_violations": storage_violations,
+    "database_violations": database_violations,
+    "logging_violations": logging_violations,
+    "networking_violations": networking_violations,
+    "virtual_machines_violations": virtual_machines_violations,
+    "key_vault_violations": key_vault_violations,
+    "app_service_violations": app_service_violations
+}

@@ -1,0 +1,714 @@
+package cis
+
+# CIS Docker Benchmark v1.4.0
+# Center for Internet Security (CIS) Docker Benchmark
+# This policy implements comprehensive Docker security controls
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		host_config_violations,
+		docker_daemon_violations,
+		daemon_config_violations,
+		container_images_violations,
+		container_runtime_violations,
+		docker_security_violations,
+		swarm_config_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: Host Configuration
+host_config_violations := [
+    "1.1.1: Ensure a separate partition for containers has been created" |
+    not input.host.separate_partition_exists
+]
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.1.2: Ensure only trusted users are allowed to control Docker daemon" |
+    user := input.host.docker_group_members[_]
+    not user in input.host.trusted_users
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.1.3: Ensure auditing is configured for the Docker daemon" |
+    not input.host.docker_daemon_audited
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.1.4: Ensure auditing is configured for Docker files and directories - /var/lib/docker" |
+    not input.host.audit_rules["/var/lib/docker"]
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.1.5: Ensure auditing is configured for Docker files and directories - /etc/docker" |
+    not input.host.audit_rules["/etc/docker"]
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.1.6: Ensure auditing is configured for Docker files and directories - docker.service" |
+    not input.host.audit_rules["docker.service"]
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.1.7: Ensure auditing is configured for Docker files and directories - docker.socket" |
+    not input.host.audit_rules["docker.socket"]
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.1.8: Ensure auditing is configured for Docker files and directories - /etc/default/docker" |
+    not input.host.audit_rules["/etc/default/docker"]
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.1.9: Ensure auditing is configured for Docker files and directories - /etc/sysconfig/docker" |
+    not input.host.audit_rules["/etc/sysconfig/docker"]
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.1.10: Ensure auditing is configured for Docker files and directories - /etc/docker/daemon.json" |
+    not input.host.audit_rules["/etc/docker/daemon.json"]
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.1.11: Ensure auditing is configured for Docker files and directories - /usr/bin/containerd" |
+    not input.host.audit_rules["/usr/bin/containerd"]
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.1.12: Ensure auditing is configured for Docker files and directories - /usr/bin/runc" |
+    not input.host.audit_rules["/usr/bin/runc"]
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.2.1: Ensure the container host has been Hardened" |
+    not input.host.hardened
+])
+
+host_config_violations := array.concat(host_config_violations, [
+    "1.2.2: Ensure that the version of Docker is up to date" |
+    not input.docker.version_up_to_date
+])
+
+# Section 2: Docker daemon configuration
+docker_daemon_violations := [
+    "2.1: Ensure network traffic is restricted between containers on the default bridge" |
+    input.docker.daemon_config.icc == true
+]
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.2: Ensure the logging level is set to 'info'" |
+    input.docker.daemon_config.log_level != "info"
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.3: Ensure Docker is allowed to make changes to iptables" |
+    input.docker.daemon_config.iptables == false
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.4: Ensure insecure registries are not used" |
+    count(input.docker.daemon_config.insecure_registries) > 0
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.5: Ensure aufs storage driver is not used" |
+    input.docker.daemon_config.storage_driver == "aufs"
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.6: Ensure TLS authentication for Docker daemon is configured" |
+    not input.docker.daemon_config.tls
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.7: Ensure the default ulimit is configured appropriately" |
+    not input.docker.daemon_config.default_ulimits
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.8: Enable user namespace support" |
+    not input.docker.daemon_config.userns_remap
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.9: Ensure the default cgroup usage has been confirmed" |
+    input.docker.daemon_config.cgroup_parent != "docker"
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.10: Ensure base device size is not changed until needed" |
+    input.docker.daemon_config.storage_opts["dm.basesize"]
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.11: Ensure that authorization for Docker client commands is enabled" |
+    not input.docker.daemon_config.authorization_plugins
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.12: Ensure centralized and remote logging is configured" |
+    not input.docker.daemon_config.log_driver
+    input.docker.daemon_config.log_driver == "json-file"
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.13: Ensure live restore is enabled" |
+    not input.docker.daemon_config.live_restore
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.14: Ensure Userland Proxy is disabled" |
+    input.docker.daemon_config.userland_proxy == true
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.15: Ensure that a daemon-wide custom seccomp profile is applied if appropriate" |
+    not input.docker.daemon_config.seccomp_profile
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.16: Ensure that experimental features are not implemented in production" |
+    input.docker.daemon_config.experimental == true
+])
+
+docker_daemon_violations := array.concat(docker_daemon_violations, [
+    "2.17: Ensure containers are restricted from acquiring new privileges" |
+    not input.docker.daemon_config.no_new_privileges
+])
+
+# Section 3: Docker daemon configuration files
+daemon_config_violations := [
+    "3.1: Ensure that the docker.service file ownership is set to root:root" |
+    input.host.file_permissions["docker.service"].owner != "root"
+    input.host.file_permissions["docker.service"].group != "root"
+]
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.2: Ensure that docker.service file permissions are appropriately set" |
+    input.host.file_permissions["docker.service"].mode != "644"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.3: Ensure that docker.socket file ownership is set to root:root" |
+    input.host.file_permissions["docker.socket"].owner != "root"
+    input.host.file_permissions["docker.socket"].group != "root"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.4: Ensure that docker.socket file permissions are set to 644 or more restrictive" |
+    to_number(input.host.file_permissions["docker.socket"].mode) > 644
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.5: Ensure that the /etc/docker directory ownership is set to root:root" |
+    input.host.file_permissions["/etc/docker"].owner != "root"
+    input.host.file_permissions["/etc/docker"].group != "root"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.6: Ensure that /etc/docker directory permissions are set to 755 or more restrictive" |
+    to_number(input.host.file_permissions["/etc/docker"].mode) > 755
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.7: Ensure that registry certificate file ownership is set to root:root" |
+    cert := input.host.registry_certificates[_]
+    cert.owner != "root"
+    cert.group != "root"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.8: Ensure that registry certificate file permissions are set to 444 or more restrictive" |
+    cert := input.host.registry_certificates[_]
+    to_number(cert.mode) > 444
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.9: Ensure that TLS CA certificate file ownership is set to root:root" |
+    input.host.file_permissions["ca.pem"].owner != "root"
+    input.host.file_permissions["ca.pem"].group != "root"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.10: Ensure that TLS CA certificate file permissions are set to 444 or more restrictive" |
+    to_number(input.host.file_permissions["ca.pem"].mode) > 444
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.11: Ensure that Docker server certificate file ownership is set to root:root" |
+    input.host.file_permissions["server-cert.pem"].owner != "root"
+    input.host.file_permissions["server-cert.pem"].group != "root"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.12: Ensure that the Docker server certificate file permissions are set to 444 or more restrictive" |
+    to_number(input.host.file_permissions["server-cert.pem"].mode) > 444
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.13: Ensure that the Docker server certificate key file ownership is set to root:root" |
+    input.host.file_permissions["server-key.pem"].owner != "root"
+    input.host.file_permissions["server-key.pem"].group != "root"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.14: Ensure that the Docker server certificate key file permissions are set to 400" |
+    input.host.file_permissions["server-key.pem"].mode != "400"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.15: Ensure that the Docker socket file ownership is set to root:docker" |
+    input.host.file_permissions["docker.sock"].owner != "root"
+    input.host.file_permissions["docker.sock"].group != "docker"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.16: Ensure that the Docker socket file permissions are set to 660 or more restrictive" |
+    to_number(input.host.file_permissions["docker.sock"].mode) > 660
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.17: Ensure that the daemon.json file ownership is set to root:root" |
+    input.host.file_permissions["daemon.json"].owner != "root"
+    input.host.file_permissions["daemon.json"].group != "root"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.18: Ensure that daemon.json file permissions are set to 644 or more restrictive" |
+    to_number(input.host.file_permissions["daemon.json"].mode) > 644
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.19: Ensure that the /etc/default/docker file ownership is set to root:root" |
+    input.host.file_permissions["/etc/default/docker"].owner != "root"
+    input.host.file_permissions["/etc/default/docker"].group != "root"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.20: Ensure that the /etc/sysconfig/docker file permissions are set to 644 or more restrictive" |
+    to_number(input.host.file_permissions["/etc/sysconfig/docker"].mode) > 644
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.21: Ensure that the /etc/sysconfig/docker file ownership is set to root:root" |
+    input.host.file_permissions["/etc/sysconfig/docker"].owner != "root"
+    input.host.file_permissions["/etc/sysconfig/docker"].group != "root"
+])
+
+daemon_config_violations := array.concat(daemon_config_violations, [
+    "3.22: Ensure that the /etc/default/docker file permissions are set to 644 or more restrictive" |
+    to_number(input.host.file_permissions["/etc/default/docker"].mode) > 644
+])
+
+# Section 4: Container Images and Build File
+container_images_violations := [
+    "4.1: Ensure that a user for the container has been created" |
+    image := input.container_images[_]
+    not image.user_created
+]
+
+container_images_violations := array.concat(container_images_violations, [
+    "4.2: Ensure that containers use only trusted base images" |
+    image := input.container_images[_]
+    not image.trusted_base_image
+])
+
+container_images_violations := array.concat(container_images_violations, [
+    "4.3: Ensure that unnecessary packages are not installed in the container" |
+    image := input.container_images[_]
+    image.has_unnecessary_packages
+])
+
+container_images_violations := array.concat(container_images_violations, [
+    "4.4: Ensure images are scanned and rebuilt to include security patches" |
+    image := input.container_images[_]
+    not image.security_scanned
+])
+
+container_images_violations := array.concat(container_images_violations, [
+    "4.5: Ensure Content trust for Docker is Enabled" |
+    not input.docker.content_trust_enabled
+])
+
+container_images_violations := array.concat(container_images_violations, [
+    "4.6: Ensure that HEALTHCHECK instructions have been added to container images" |
+    image := input.container_images[_]
+    not image.has_healthcheck
+])
+
+container_images_violations := array.concat(container_images_violations, [
+    "4.7: Ensure update instructions are not used alone in the Dockerfile" |
+    image := input.container_images[_]
+    dockerfile_line := image.dockerfile_instructions[_]
+    dockerfile_line.instruction == "RUN"
+    contains(dockerfile_line.args, "apt-get update")
+    not contains(dockerfile_line.args, "apt-get install")
+])
+
+container_images_violations := array.concat(container_images_violations, [
+    "4.8: Ensure setuid and setgid permissions are removed from the images" |
+    image := input.container_images[_]
+    file := image.files[_]
+    file.setuid == true
+])
+
+container_images_violations := array.concat(container_images_violations, [
+    "4.9: Ensure that COPY is used instead of ADD in Dockerfiles" |
+    image := input.container_images[_]
+    dockerfile_line := image.dockerfile_instructions[_]
+    dockerfile_line.instruction == "ADD"
+    not dockerfile_line.archive_extraction_needed
+])
+
+container_images_violations := array.concat(container_images_violations, [
+    "4.10: Ensure secrets are not stored in Dockerfiles" |
+    image := input.container_images[_]
+    dockerfile_line := image.dockerfile_instructions[_]
+    contains(dockerfile_line.args, "password")
+])
+
+container_images_violations := array.concat(container_images_violations, [
+    "4.11: Ensure only verified packages are installed" |
+    image := input.container_images[_]
+    docker_package := image.packages[_]
+    not docker_package.verified
+])
+
+# Section 5: Container Runtime
+container_runtime_violations := [
+    "5.1: Ensure that, if applicable, an AppArmor Profile is enabled" |
+    container := input.running_containers[_]
+    container.security_opts.apparmor == "unconfined"
+]
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.2: Ensure that, if applicable, SELinux security options are set" |
+    container := input.running_containers[_]
+    not container.security_opts.selinux
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.3: Ensure that Linux Kernel Capabilities are restricted within containers" |
+    container := input.running_containers[_]
+    cap := container.cap_add[_]
+    dangerous_capability(cap)
+])
+
+dangerous_capability(cap) if {
+    cap in ["SYS_ADMIN", "NET_ADMIN", "SYS_TIME", "SYS_MODULE"]
+}
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.4: Ensure that privileged containers are not used" |
+    container := input.running_containers[_]
+    container.privileged == true
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.5: Ensure sensitive host system directories are not mounted on containers" |
+    container := input.running_containers[_]
+    mount := container.mounts[_]
+    sensitive_host_directory(mount.source)
+])
+
+sensitive_host_directory(path) if {
+    path in ["/", "/boot", "/dev", "/etc", "/lib", "/proc", "/sys", "/usr"]
+}
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.6: Ensure sshd is not run within containers" |
+    container := input.running_containers[_]
+    process := container.processes[_]
+    contains(process.command, "sshd")
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.7: Ensure privileged ports are not mapped within containers" |
+    container := input.running_containers[_]
+    port := container.port_bindings[_]
+    to_number(port.host_port) < 1024
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.8: Ensure that only needed ports are open on the container" |
+    container := input.running_containers[_]
+    count(container.exposed_ports) > container.needed_ports_count
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.9: Ensure that the host's network namespace is not shared" |
+    container := input.running_containers[_]
+    container.network_mode == "host"
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.10: Ensure that the memory usage for containers is limited" |
+    container := input.running_containers[_]
+    not container.memory_limit
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.11: Ensure that CPU priority is set appropriately on containers" |
+    container := input.running_containers[_]
+    not container.cpu_shares
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.12: Ensure that the container's root filesystem is mounted as read only" |
+    container := input.running_containers[_]
+    not container.read_only_root_filesystem
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.13: Ensure that incoming container traffic is bound to a specific host interface" |
+    container := input.running_containers[_]
+    port := container.port_bindings[_]
+    port.host_ip == "0.0.0.0"
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.14: Ensure that the 'on-failure' container restart policy is set to '5'" |
+    container := input.running_containers[_]
+    container.restart_policy.name == "on-failure"
+    container.restart_policy.maximum_retry_count != 5
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.15: Ensure that the host's process namespace is not shared" |
+    container := input.running_containers[_]
+    container.pid_mode == "host"
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.16: Ensure that the host's IPC namespace is not shared" |
+    container := input.running_containers[_]
+    container.ipc_mode == "host"
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.17: Ensure that host devices are not directly exposed to containers" |
+    container := input.running_containers[_]
+    count(container.devices) > 0
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.18: Ensure that the default ulimit is overridden at runtime if needed" |
+    container := input.running_containers[_]
+    not container.ulimits
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.19: Ensure mount propagation mode is not set to shared" |
+    container := input.running_containers[_]
+    mount := container.mounts[_]
+    mount.propagation == "shared"
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.20: Ensure that the host's UTS namespace is not shared" |
+    container := input.running_containers[_]
+    container.uts_mode == "host"
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.21: Ensure the default seccomp profile is not Disabled" |
+    container := input.running_containers[_]
+    container.security_opts.seccomp == "unconfined"
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.22: Ensure that docker exec commands are not used with the privileged option" |
+    exec_instance := input.docker_exec_instances[_]
+    exec_instance.privileged == true
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.23: Ensure that docker exec commands are not used with the user=root option" |
+    exec_instance := input.docker_exec_instances[_]
+    exec_instance.user == "root"
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.24: Ensure that cgroup usage is confirmed" |
+    container := input.running_containers[_]
+    not container.cgroup_parent
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.25: Ensure that the container is restricted from acquiring additional privileges" |
+    container := input.running_containers[_]
+    not container.no_new_privileges
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.26: Ensure that container health is checked at runtime" |
+    container := input.running_containers[_]
+    not container.health_check
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.27: Ensure that Docker commands always make use of the latest version of their image" |
+    container := input.running_containers[_]
+    contains(container.image, ":latest")
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.28: Ensure that the PIDs cgroup limit is used" |
+    container := input.running_containers[_]
+    not container.pids_limit
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.29: Ensure that Docker's default bridge 'docker0' is not used" |
+    container := input.running_containers[_]
+    container.network_settings.bridge == "docker0"
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.30: Ensure that the host's user namespaces are not shared" |
+    container := input.running_containers[_]
+    container.user_ns_mode == "host"
+])
+
+container_runtime_violations := array.concat(container_runtime_violations, [
+    "5.31: Ensure that the Docker socket is not mounted inside any containers" |
+    container := input.running_containers[_]
+    mount := container.mounts[_]
+    mount.source == "/var/run/docker.sock"
+])
+
+# Section 6: Docker Security Operations
+docker_security_violations := [
+    "6.1: Ensure that image sprawl is avoided" |
+    count(input.container_images) > input.recommended_max_images
+]
+
+docker_security_violations := array.concat(docker_security_violations, [
+    "6.2: Ensure that container sprawl is avoided" |
+    count(input.running_containers) > input.recommended_max_containers
+])
+
+# Section 7: Docker Swarm Configuration
+swarm_config_violations := [
+    "7.1: Ensure swarm mode is not Enabled, if not needed" |
+    input.docker.swarm_mode.enabled == true
+    not input.docker.swarm_mode.needed
+]
+
+swarm_config_violations := array.concat(swarm_config_violations, [
+    "7.2: Ensure that the minimum number of manager nodes have been created in a swarm" |
+    input.docker.swarm_mode.enabled == true
+    input.docker.swarm_mode.manager_nodes < 3
+])
+
+swarm_config_violations := array.concat(swarm_config_violations, [
+    "7.3: Ensure that swarm services are bound to a specific host interface" |
+    input.docker.swarm_mode.enabled == true
+    service := input.docker.swarm_services[_]
+    port := service.ports[_]
+    not port.published_port_host_ip
+])
+
+swarm_config_violations := array.concat(swarm_config_violations, [
+    "7.4: Ensure that all Docker swarm overlay networks are encrypted" |
+    input.docker.swarm_mode.enabled == true
+    network := input.docker.swarm_networks[_]
+    network.driver == "overlay"
+    not network.encrypted
+])
+
+swarm_config_violations := array.concat(swarm_config_violations, [
+    "7.5: Ensure that Docker's secret management commands are used for managing secrets in a swarm cluster" |
+    input.docker.swarm_mode.enabled == true
+    service := input.docker.swarm_services[_]
+    env := service.environment_variables[_]
+    contains(lower(env.name), "password")
+    not service.uses_docker_secrets
+])
+
+swarm_config_violations := array.concat(swarm_config_violations, [
+    "7.6: Ensure that swarm manager is run in auto-lock mode" |
+    input.docker.swarm_mode.enabled == true
+    not input.docker.swarm_mode.auto_lock_enabled
+])
+
+swarm_config_violations := array.concat(swarm_config_violations, [
+    "7.7: Ensure that the swarm manager auto-lock key is rotated periodically" |
+    input.docker.swarm_mode.enabled == true
+    input.docker.swarm_mode.auto_lock_key_age_days > 90
+])
+
+swarm_config_violations := array.concat(swarm_config_violations, [
+    "7.8: Ensure that node certificates are rotated as appropriate" |
+    input.docker.swarm_mode.enabled == true
+    input.docker.swarm_mode.cert_expiry_hours < 168  # 7 days
+])
+
+swarm_config_violations := array.concat(swarm_config_violations, [
+    "7.9: Ensure that CA root certificate and key are rotated as appropriate" |
+    input.docker.swarm_mode.enabled == true
+    input.docker.swarm_mode.ca_cert_age_days > 365
+])
+
+swarm_config_violations := array.concat(swarm_config_violations, [
+    "7.10: Ensure that management plane traffic is separated from data plane traffic" |
+    input.docker.swarm_mode.enabled == true
+    not input.docker.swarm_mode.management_plane_separated
+])
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 108,
+    "passing_controls": 108 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((108 - count(violations)) * 100) / 108,
+    "sections": {
+        "host_config": {
+            "total": 14,
+            "violations": count(host_config_violations)
+        },
+        "docker_daemon": {
+            "total": 17,
+            "violations": count(docker_daemon_violations)
+        },
+        "daemon_config": {
+            "total": 22,
+            "violations": count(daemon_config_violations)
+        },
+        "container_images": {
+            "total": 11,
+            "violations": count(container_images_violations)
+        },
+        "container_runtime": {
+            "total": 31,
+            "violations": count(container_runtime_violations)
+        },
+        "docker_security": {
+            "total": 2,
+            "violations": count(docker_security_violations)
+        },
+        "swarm_config": {
+            "total": 10,
+            "violations": count(swarm_config_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "host_config_violations": host_config_violations,
+    "docker_daemon_violations": docker_daemon_violations,
+    "daemon_config_violations": daemon_config_violations,
+    "container_images_violations": container_images_violations,
+    "container_runtime_violations": container_runtime_violations,
+    "docker_security_violations": docker_security_violations,
+    "swarm_config_violations": swarm_config_violations
+}

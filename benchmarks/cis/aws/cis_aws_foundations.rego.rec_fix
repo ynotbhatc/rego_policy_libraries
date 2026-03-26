@@ -1,0 +1,550 @@
+package cis
+
+# CIS Amazon Web Services Foundations Benchmark v1.5.0
+# Center for Internet Security (CIS) AWS Foundations Benchmark
+# This policy implements comprehensive AWS security controls
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		identity_access_violations,
+		logging_violations,
+		monitoring_violations,
+		networking_violations,
+		storage_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: Identity and Access Management
+identity_access_violations := [
+    "1.1: Avoid the use of 'root' account" |
+    input.aws_account_summary.account_access_keys_present == 1
+]
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.2: Ensure MFA is enabled for all IAM users" |
+    user := input.iam_users[_]
+    not user.mfa_enabled
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.3: Ensure credentials unused for 90 days or greater are disabled" |
+    user := input.iam_users[_]
+    credential := user.access_keys[_]
+    credential.days_since_last_used > 90
+    credential.status == "Active"
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.4: Ensure access keys are rotated every 90 days or less" |
+    user := input.iam_users[_]
+    key := user.access_keys[_]
+    key.age_days > 90
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.5: Ensure IAM password policy requires minimum length of 14 or greater" |
+    input.password_policy.minimum_password_length < 14
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.6: Ensure IAM password policy prevents password reuse" |
+    input.password_policy.password_reuse_prevention < 24
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.7: Ensure IAM password policy requires uppercase characters" |
+    input.password_policy.require_uppercase_characters == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.8: Ensure IAM password policy requires lowercase characters" |
+    input.password_policy.require_lowercase_characters == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.9: Ensure IAM password policy requires symbols" |
+    input.password_policy.require_symbols == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.10: Ensure IAM password policy requires numbers" |
+    input.password_policy.require_numbers == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.11: Ensure IAM password policy expires passwords within 90 days or less" |
+    input.password_policy.max_password_age > 90
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.12: Ensure no root user access key exists" |
+    count(input.root_access_keys) > 0
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.13: Ensure MFA is enabled for the root user" |
+    input.root_user.mfa_enabled == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.14: Ensure hardware MFA is enabled for the root user" |
+    input.root_user.hardware_mfa_enabled == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.15: Ensure security questions are registered in the AWS account" |
+    input.account_security_questions_registered == false
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.16: Ensure IAM policies that allow full '*:*' administrative privileges are not attached" |
+    policy := input.iam_policies[_]
+    statement := policy.policy_document.Statement[_]
+    statement.Effect == "Allow"
+    statement.Action == "*"
+    statement.Resource == "*"
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.17: Ensure a support role has been created to manage incidents" |
+    not support_role_exists
+])
+
+support_role_exists if {
+    role := input.iam_roles[_]
+    contains(lower(role.role_name), "support")
+    policy := role.attached_policies[_]
+    policy.policy_name == "AWSSupportAccess"
+}
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.18: Ensure IAM instance roles are used for AWS resource access from instances" |
+    instance := input.ec2_instances[_]
+    not instance.iam_instance_profile
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.19: Ensure that all the expired SSL/TLS certificates stored in AWS IAM are removed" |
+    cert := input.server_certificates[_]
+    cert.expired == true
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.20: Ensure that IAM Access analyzer is enabled" |
+    not input.access_analyzer.enabled
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.21: Ensure that IAM users are managed centrally via identity federation or AWS Organizations SSO" |
+    count(input.federated_users) == 0
+    count(input.iam_users) > 0
+])
+
+# Section 2: Storage
+storage_violations := [
+    "2.1.1: Ensure S3 bucket access logging is enabled on the CloudTrail S3 bucket" |
+    bucket := input.s3_buckets[_]
+    bucket.is_cloudtrail_bucket == true
+    not bucket.access_logging_enabled
+]
+
+storage_violations := array.concat(storage_violations, [
+    "2.1.2: Ensure S3 bucket used to store CloudTrail logs is not publicly accessible" |
+    bucket := input.s3_buckets[_]
+    bucket.is_cloudtrail_bucket == true
+    bucket.public_access_block == false
+])
+
+storage_violations := array.concat(storage_violations, [
+    "2.1.3: Ensure the S3 bucket used to store CloudTrail logs has Object Lock enabled" |
+    bucket := input.s3_buckets[_]
+    bucket.is_cloudtrail_bucket == true
+    not bucket.object_lock_enabled
+])
+
+storage_violations := array.concat(storage_violations, [
+    "2.1.4: Ensure rotation for customer created KMS keys is enabled" |
+    key := input.kms_keys[_]
+    key.customer_managed == true
+    not key.rotation_enabled
+])
+
+storage_violations := array.concat(storage_violations, [
+    "2.2.1: Ensure EBS volume encryption is enabled" |
+    volume := input.ebs_volumes[_]
+    not volume.encrypted
+])
+
+storage_violations := array.concat(storage_violations, [
+    "2.2.2: Ensure RDS instances are encrypted" |
+    instance := input.rds_instances[_]
+    not instance.storage_encrypted
+])
+
+storage_violations := array.concat(storage_violations, [
+    "2.2.3: Ensure that encryption is enabled for RDS Clusters" |
+    cluster := input.rds_clusters[_]
+    not cluster.storage_encrypted
+])
+
+# Section 3: Logging
+logging_violations := [
+    "3.1: Ensure CloudTrail is enabled in all regions" |
+    not input.cloudtrail.multi_region_enabled
+]
+
+logging_violations := array.concat(logging_violations, [
+    "3.2: Ensure CloudTrail log file validation is enabled" |
+    not input.cloudtrail.log_file_validation_enabled
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.3: Ensure the S3 bucket CloudTrail logs to is not publicly accessible" |
+    bucket := input.s3_buckets[_]
+    bucket.name == input.cloudtrail.s3_bucket_name
+    bucket.public_read == true
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.4: Ensure CloudTrail trails are integrated with CloudWatch Logs" |
+    not input.cloudtrail.cloudwatch_logs_group_arn
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.5: Ensure AWS Config is enabled in all regions" |
+    region := input.regions[_]
+    not region.config_enabled
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.6: Ensure S3 bucket access logging is enabled on the CloudTrail S3 bucket" |
+    bucket := input.s3_buckets[_]
+    bucket.name == input.cloudtrail.s3_bucket_name
+    not bucket.access_logging_enabled
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.7: Ensure CloudTrail logs are encrypted at rest using KMS CMKs" |
+    not input.cloudtrail.kms_key_id
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.8: Ensure rotation for customer created KMS keys is enabled" |
+    key := input.kms_keys[_]
+    key.key_id == input.cloudtrail.kms_key_id
+    not key.rotation_enabled
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.9: Ensure VPC flow logging is enabled in all VPCs" |
+    vpc := input.vpcs[_]
+    not vpc.flow_logs_enabled
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.10: Ensure that Object-level logging for write events is enabled for S3 bucket" |
+    bucket := input.s3_buckets[_]
+    not bucket.object_level_logging_write
+])
+
+logging_violations := array.concat(logging_violations, [
+    "3.11: Ensure that Object-level logging for read events is enabled for S3 bucket" |
+    bucket := input.s3_buckets[_]
+    not bucket.object_level_logging_read
+])
+
+# Section 4: Monitoring
+monitoring_violations := [
+    "4.1: Ensure a log metric filter and alarm exist for unauthorized API calls" |
+    not unauthorized_api_calls_alarm_exists
+]
+
+unauthorized_api_calls_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "ERROR")
+    contains(filter.filter_pattern, "Denied")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.2: Ensure a log metric filter and alarm exist for Management Console sign-in without MFA" |
+    not console_signin_without_mfa_alarm_exists
+])
+
+console_signin_without_mfa_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "ConsoleLogin")
+    contains(filter.filter_pattern, "MfaUsed")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.3: Ensure a log metric filter and alarm exist for usage of 'root' account" |
+    not root_account_usage_alarm_exists
+])
+
+root_account_usage_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "root")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.4: Ensure a log metric filter and alarm exist for IAM policy changes" |
+    not iam_policy_changes_alarm_exists
+])
+
+iam_policy_changes_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "DeleteGroupPolicy")
+    contains(filter.filter_pattern, "DeleteRolePolicy")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.5: Ensure a log metric filter and alarm exist for CloudTrail configuration changes" |
+    not cloudtrail_config_changes_alarm_exists
+])
+
+cloudtrail_config_changes_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "CreateTrail")
+    contains(filter.filter_pattern, "UpdateTrail")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.6: Ensure a log metric filter and alarm exist for AWS Management Console authentication failures" |
+    not console_auth_failures_alarm_exists
+])
+
+console_auth_failures_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "ConsoleLogin")
+    contains(filter.filter_pattern, "Failed")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.7: Ensure a log metric filter and alarm exist for disabling or scheduled deletion of customer created CMKs" |
+    not cmk_deletion_alarm_exists
+])
+
+cmk_deletion_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "DisableKey")
+    contains(filter.filter_pattern, "ScheduleKeyDeletion")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.8: Ensure a log metric filter and alarm exist for S3 bucket policy changes" |
+    not s3_bucket_policy_changes_alarm_exists
+])
+
+s3_bucket_policy_changes_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "PutBucketAcl")
+    contains(filter.filter_pattern, "PutBucketPolicy")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.9: Ensure a log metric filter and alarm exist for AWS Config configuration changes" |
+    not config_changes_alarm_exists
+])
+
+config_changes_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "PutConfigurationRecorder")
+    contains(filter.filter_pattern, "StopConfigurationRecorder")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.10: Ensure a log metric filter and alarm exist for security group changes" |
+    not security_group_changes_alarm_exists
+])
+
+security_group_changes_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "AuthorizeSecurityGroupIngress")
+    contains(filter.filter_pattern, "AuthorizeSecurityGroupEgress")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.11: Ensure a log metric filter and alarm exist for changes to Network Access Control Lists (NACL)" |
+    not nacl_changes_alarm_exists
+])
+
+nacl_changes_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "CreateNetworkAcl")
+    contains(filter.filter_pattern, "CreateNetworkAclEntry")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.12: Ensure a log metric filter and alarm exist for changes to network gateways" |
+    not network_gateway_changes_alarm_exists
+])
+
+network_gateway_changes_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "CreateCustomerGateway")
+    contains(filter.filter_pattern, "DeleteCustomerGateway")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.13: Ensure a log metric filter and alarm exist for route table changes" |
+    not route_table_changes_alarm_exists
+])
+
+route_table_changes_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "CreateRoute")
+    contains(filter.filter_pattern, "CreateRouteTable")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.14: Ensure a log metric filter and alarm exist for VPC changes" |
+    not vpc_changes_alarm_exists
+])
+
+vpc_changes_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "CreateVpc")
+    contains(filter.filter_pattern, "DeleteVpc")
+    alarm.metric_name == filter.metric_name
+}
+
+monitoring_violations := array.concat(monitoring_violations, [
+    "4.15: Ensure a log metric filter and alarm exist for AWS Organizations changes" |
+    not organizations_changes_alarm_exists
+])
+
+organizations_changes_alarm_exists if {
+    alarm := input.cloudwatch_alarms[_]
+    filter := input.cloudwatch_log_metric_filters[_]
+    contains(filter.filter_pattern, "AcceptHandshake")
+    contains(filter.filter_pattern, "AttachPolicy")
+    alarm.metric_name == filter.metric_name
+}
+
+# Section 5: Networking
+networking_violations := [
+    "5.1: Ensure no Network ACLs allow ingress from 0.0.0.0/0 to remote server administration ports" |
+    nacl := input.network_acls[_]
+    entry := nacl.entries[_]
+    entry.rule_action == "allow"
+    entry.cidr_block == "0.0.0.0/0"
+    admin_port_range(entry.port_range)
+]
+
+admin_port_range(port_range) if {
+    port_range.from <= 22
+    port_range.to >= 22
+}
+
+admin_port_range(port_range) if {
+    port_range.from <= 3389
+    port_range.to >= 3389
+}
+
+networking_violations := array.concat(networking_violations, [
+    "5.2: Ensure no security groups allow ingress from 0.0.0.0/0 to remote server administration ports" |
+    sg := input.security_groups[_]
+    rule := sg.ingress_rules[_]
+    rule.cidr_blocks[_] == "0.0.0.0/0"
+    admin_port_in_rule(rule)
+])
+
+admin_port_in_rule(rule) if {
+    rule.from_port <= 22
+    rule.to_port >= 22
+}
+
+admin_port_in_rule(rule) if {
+    rule.from_port <= 3389
+    rule.to_port >= 3389
+}
+
+networking_violations := array.concat(networking_violations, [
+    "5.3: Ensure the default security group of every VPC restricts all traffic" |
+    vpc := input.vpcs[_]
+    sg := vpc.default_security_group
+    count(sg.ingress_rules) > 0
+])
+
+networking_violations := array.concat(networking_violations, [
+    "5.4: Ensure routing tables for VPC peering are 'least access'" |
+    vpc := input.vpcs[_]
+    peering := vpc.peering_connections[_]
+    route := peering.routes[_]
+    route.destination_cidr_block == "0.0.0.0/0"
+])
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 69,
+    "passing_controls": 69 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((69 - count(violations)) * 100) / 69,
+    "sections": {
+        "identity_access": {
+            "total": 21,
+            "violations": count(identity_access_violations)
+        },
+        "storage": {
+            "total": 8,
+            "violations": count(storage_violations)
+        },
+        "logging": {
+            "total": 11,
+            "violations": count(logging_violations)
+        },
+        "monitoring": {
+            "total": 15,
+            "violations": count(monitoring_violations)
+        },
+        "networking": {
+            "total": 4,
+            "violations": count(networking_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "identity_access_violations": identity_access_violations,
+    "storage_violations": storage_violations,
+    "logging_violations": logging_violations,
+    "monitoring_violations": monitoring_violations,
+    "networking_violations": networking_violations
+}

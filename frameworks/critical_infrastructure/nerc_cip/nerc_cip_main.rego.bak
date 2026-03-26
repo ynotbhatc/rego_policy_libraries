@@ -1,0 +1,1041 @@
+package nerc.cip.main
+
+import rego.v1
+
+# NERC CIP (Critical Infrastructure Protection) Standards Implementation
+# Compliance framework for Bulk Electric System (BES) cybersecurity
+# Covers CIP-002 through CIP-015 standards
+
+# Main NERC CIP compliance evaluation
+nerc_cip_compliant if {
+    bes_cyber_system_categorization_compliant  # CIP-002
+    cyber_security_organization_compliant      # CIP-003
+    personnel_risk_assessment_compliant        # CIP-004
+    electronic_security_perimeter_compliant    # CIP-005
+    physical_security_compliant                # CIP-006
+    system_security_management_compliant       # CIP-007
+    incident_response_compliant                # CIP-008
+    recovery_plans_compliant                   # CIP-009
+    configuration_change_management_compliant  # CIP-010
+    information_protection_compliant           # CIP-011
+    security_control_testing_compliant         # CIP-013
+    supply_chain_risk_management_compliant     # CIP-013
+    communications_compliant                   # CIP-012
+}
+
+# CIP-002: BES Cyber System Categorization
+# Requirement: Identify and categorize BES Cyber Systems and their associated BES Cyber Assets
+bes_cyber_system_categorization_compliant if {
+    all_bes_cyber_systems_identified
+    all_bes_cyber_systems_categorized
+    categorization_criteria_documented
+    annual_review_performed
+}
+
+all_bes_cyber_systems_identified if {
+    # All BES Cyber Systems must be identified and documented
+    count(input.bes_cyber_systems) > 0
+    all([system |
+        system := input.bes_cyber_systems[_]
+        system.system_id
+        system.system_name
+        system.functional_obligations
+        system.cyber_assets
+    ])
+}
+
+all_bes_cyber_systems_categorized if {
+    # Each BES Cyber System must have an impact categorization
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        not valid_impact_categorization(system.impact_categorization)
+    ]
+    count(violations) == 0
+}
+
+valid_impact_categorization(categorization) if {
+    categorization in ["high", "medium", "low"]
+}
+
+categorization_criteria_documented if {
+    input.categorization_documentation.criteria_defined == true
+    input.categorization_documentation.methodology_documented == true
+    input.categorization_documentation.rationale_provided == true
+}
+
+annual_review_performed if {
+    last_review_ns := time.parse_rfc3339_ns(input.categorization_documentation.last_review_date)
+    review_age_days := time.diff(time.now_ns(), last_review_ns, "days", "nanoseconds")
+    review_age_days <= 365
+}
+
+# CIP-003: Cyber Security Organization
+# Requirement: Establish cyber security management controls
+cyber_security_organization_compliant if {
+    cybersecurity_leadership_designated
+    cybersecurity_policies_established
+    information_sharing_plan_exists
+    delegated_authority_documented
+}
+
+cybersecurity_leadership_designated if {
+    input.cybersecurity_organization.senior_manager.designated == true
+    input.cybersecurity_organization.senior_manager.authority_documented == true
+    input.cybersecurity_organization.senior_manager.responsibilities_defined == true
+}
+
+cybersecurity_policies_established if {
+    input.cybersecurity_organization.policies.documented == true
+    input.cybersecurity_organization.policies.approved == true
+    policy_age_days := time.diff(time.now_ns(), input.cybersecurity_organization.policies.last_review_date, "days", "nanoseconds")
+    policy_age_days <= 1095  # 3 years
+}
+
+information_sharing_plan_exists if {
+    input.cybersecurity_organization.information_sharing_plan.documented == true
+    input.cybersecurity_organization.information_sharing_plan.contacts_current == true
+}
+
+delegated_authority_documented if {
+    input.cybersecurity_organization.delegated_authority.documented == true
+    input.cybersecurity_organization.delegated_authority.current == true
+}
+
+# CIP-004: Personnel & Training
+# Requirement: Personnel risk assessments and cyber security training
+personnel_risk_assessment_compliant if {
+    personnel_risk_assessments_current
+    cybersecurity_training_completed
+    access_authorization_managed
+    personnel_change_notifications_timely
+}
+
+personnel_risk_assessments_current if {
+    violations := [person |
+        person := input.personnel[_]
+        requires_risk_assessment(person)
+        not risk_assessment_current(person)
+    ]
+    count(violations) == 0
+}
+
+requires_risk_assessment(person) if {
+    person.access_level in ["authorized_unescorted_physical_access", "authorized_electronic_access", "authorized_cyber_asset_access"]
+}
+
+risk_assessment_current(person) if {
+    person.risk_assessment.completed == true
+    assessment_age_days := time.diff(time.now_ns(), person.risk_assessment.completion_date, "days", "nanoseconds")
+    assessment_age_days <= assessment_validity_period(person.access_level)
+}
+
+assessment_validity_period("authorized_unescorted_physical_access") := 2555  # 7 years
+assessment_validity_period("authorized_electronic_access") := 2555           # 7 years
+assessment_validity_period("authorized_cyber_asset_access") := 2555          # 7 years
+
+cybersecurity_training_completed if {
+    violations := [person |
+        person := input.personnel[_]
+        requires_cybersecurity_training(person)
+        not training_current(person)
+    ]
+    count(violations) == 0
+}
+
+requires_cybersecurity_training(person) if {
+    person.access_level in ["authorized_electronic_access", "authorized_cyber_asset_access"]
+}
+
+training_current(person) if {
+    person.cybersecurity_training.completed == true
+    training_age_days := time.diff(time.now_ns(), person.cybersecurity_training.completion_date, "days", "nanoseconds")
+    training_age_days <= 455  # 15 months
+}
+
+access_authorization_managed if {
+    violations := [person |
+        person := input.personnel[_]
+        person.employment_status == "terminated"
+        not access_revoked_timely(person)
+    ]
+    count(violations) == 0
+}
+
+access_revoked_timely(person) if {
+    person.access_revocation.completed == true
+    revocation_hours := time.diff(person.termination_date, person.access_revocation.completion_date, "hours", "nanoseconds")
+    revocation_hours <= 24  # By end of next business day
+}
+
+personnel_change_notifications_timely if {
+    violations := [change |
+        change := input.personnel_changes[_]
+        change.requires_notification == true
+        not notification_timely(change)
+    ]
+    count(violations) == 0
+}
+
+notification_timely(change) if {
+    change.notification.completed == true
+    notification_days := time.diff(change.change_date, change.notification.completion_date, "days", "nanoseconds")
+    notification_days <= 7  # Within 7 days
+}
+
+# CIP-005: Electronic Security Perimeters
+# Requirement: Manage electronic access to BES Cyber Systems
+electronic_security_perimeter_compliant if {
+    electronic_security_perimeters_documented
+    electronic_access_points_controlled
+    remote_access_managed
+    electronic_access_monitoring_enabled
+}
+
+electronic_security_perimeters_documented if {
+    high_impact_systems := [system | 
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization == "high"
+    ]
+    
+    medium_impact_systems := [system |
+        system := input.bes_cyber_systems[_] 
+        system.impact_categorization == "medium"
+    ]
+    
+    # All high and medium impact systems must have documented ESPs
+    required_systems := array.concat(high_impact_systems, medium_impact_systems)
+    
+    violations := [system |
+        system := required_systems[_]
+        not esp_documented(system)
+    ]
+    count(violations) == 0
+}
+
+esp_documented(system) if {
+    esp := input.electronic_security_perimeters[system.system_id]
+    esp.documented == true
+    esp.boundary_defined == true
+    esp.electronic_access_points_identified == true
+}
+
+electronic_access_points_controlled if {
+    violations := [eap |
+        eap := input.electronic_access_points[_]
+        not eap_controls_adequate(eap)
+    ]
+    count(violations) == 0
+}
+
+eap_controls_adequate(eap) if {
+    eap.access_control.enabled == true
+    eap.access_control.authentication_required == true
+    eap.access_control.authorization_verified == true
+    eap.monitoring.enabled == true
+    eap.logging.enabled == true
+}
+
+remote_access_managed if {
+    violations := [access |
+        access := input.remote_access_sessions[_]
+        not remote_access_controls_adequate(access)
+    ]
+    count(violations) == 0
+}
+
+remote_access_controls_adequate(access) if {
+    access.multi_factor_authentication == true
+    access.encryption_enabled == true
+    access.session_monitoring == true
+    access.termination_controls == true
+}
+
+electronic_access_monitoring_enabled if {
+    all([esp |
+        esp := input.electronic_security_perimeters[_]
+        esp.monitoring.enabled == true
+        esp.monitoring.logging_enabled == true
+        esp.monitoring.alerting_configured == true
+    ])
+}
+
+# CIP-006: Physical Security of BES Cyber Systems
+# Requirement: Manage physical access to BES Cyber Systems
+physical_security_compliant if {
+    physical_security_perimeters_defined
+    physical_access_controls_implemented
+    visitor_control_program_established
+    physical_access_monitoring_enabled
+}
+
+physical_security_perimeters_defined if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not physical_security_perimeter_defined(system)
+    ]
+    count(violations) == 0
+}
+
+physical_security_perimeter_defined(system) if {
+    psp := input.physical_security_perimeters[system.system_id]
+    psp.boundary_defined == true
+    psp.access_points_identified == true
+    psp.controls_documented == true
+}
+
+physical_access_controls_implemented if {
+    violations := [control |
+        control := input.physical_access_controls[_]
+        not physical_access_control_adequate(control)
+    ]
+    count(violations) == 0
+}
+
+physical_access_control_adequate(control) if {
+    control.authentication_required == true
+    control.authorization_verified == true
+    control.monitoring_enabled == true
+    control.logging_enabled == true
+    control.visitor_escort_required == true
+}
+
+visitor_control_program_established if {
+    input.visitor_control_program.documented == true
+    input.visitor_control_program.escort_procedures == true
+    input.visitor_control_program.access_logging == true
+    input.visitor_control_program.identification_required == true
+}
+
+physical_access_monitoring_enabled if {
+    all([location |
+        location := input.physical_locations[_]
+        location.monitoring.enabled == true
+        location.monitoring.recording_enabled == true
+        location.monitoring.retention_adequate == true
+    ])
+}
+
+# CIP-007: Systems Security Management
+# Requirement: Manage the security of BES Cyber Systems
+system_security_management_compliant if {
+    security_patch_management_implemented
+    logical_network_accessible_ports_managed
+    malicious_code_prevention_implemented
+    security_event_monitoring_enabled
+    system_access_controls_implemented
+}
+
+security_patch_management_implemented if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not patch_management_adequate(system)
+    ]
+    count(violations) == 0
+}
+
+patch_management_adequate(system) if {
+    patch_mgmt := input.patch_management[system.system_id]
+    patch_mgmt.process_documented == true
+    patch_mgmt.vulnerability_assessment_performed == true
+    patch_mgmt.patch_installation_tracking == true
+    patch_mgmt.emergency_procedures_defined == true
+}
+
+logical_network_accessible_ports_managed if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not network_ports_managed(system)
+    ]
+    count(violations) == 0
+}
+
+network_ports_managed(system) if {
+    port_mgmt := input.network_port_management[system.system_id]
+    port_mgmt.ports_documented == true
+    port_mgmt.unnecessary_ports_disabled == true
+    port_mgmt.port_review_current == true
+}
+
+malicious_code_prevention_implemented if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not malicious_code_protection_adequate(system)
+    ]
+    count(violations) == 0
+}
+
+malicious_code_protection_adequate(system) if {
+    protection := input.malicious_code_protection[system.system_id]
+    protection.antivirus_installed == true
+    protection.signatures_current == true
+    protection.scanning_enabled == true
+    protection.alternate_controls_documented == true
+}
+
+security_event_monitoring_enabled if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not security_monitoring_adequate(system)
+    ]
+    count(violations) == 0
+}
+
+security_monitoring_adequate(system) if {
+    monitoring := input.security_monitoring[system.system_id]
+    monitoring.logging_enabled == true
+    monitoring.log_retention_adequate == true
+    monitoring.event_correlation == true
+    monitoring.alerting_configured == true
+}
+
+system_access_controls_implemented if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not access_controls_adequate(system)
+    ]
+    count(violations) == 0
+}
+
+access_controls_adequate(system) if {
+    access_ctrl := input.system_access_controls[system.system_id]
+    access_ctrl.user_authentication == true
+    access_ctrl.account_management == true
+    access_ctrl.password_policy_enforced == true
+    access_ctrl.session_management == true
+}
+
+# CIP-008: Incident Reporting and Response Planning
+# Requirement: Incident response plans for cyber security incidents
+incident_response_compliant if {
+    incident_response_plan_documented
+    incident_reporting_procedures_established
+    incident_response_testing_performed
+    incident_response_team_trained
+}
+
+incident_response_plan_documented if {
+    input.incident_response_plan.documented == true
+    input.incident_response_plan.approved == true
+    plan_age_days := time.diff(time.now_ns(), input.incident_response_plan.last_review_date, "days", "nanoseconds")
+    plan_age_days <= 455  # 15 months
+}
+
+incident_reporting_procedures_established if {
+    input.incident_reporting.procedures_documented == true
+    input.incident_reporting.contact_information_current == true
+    input.incident_reporting.reporting_criteria_defined == true
+    input.incident_reporting.escalation_procedures_defined == true
+}
+
+incident_response_testing_performed if {
+    test_age_days := time.diff(time.now_ns(), input.incident_response_testing.last_test_date, "days", "nanoseconds")
+    test_age_days <= 455  # 15 months
+    input.incident_response_testing.test_documented == true
+    input.incident_response_testing.lessons_learned_captured == true
+}
+
+incident_response_team_trained if {
+    violations := [member |
+        member := input.incident_response_team[_]
+        not incident_response_training_current(member)
+    ]
+    count(violations) == 0
+}
+
+incident_response_training_current(member) if {
+    member.training.completed == true
+    training_age_days := time.diff(time.now_ns(), member.training.completion_date, "days", "nanoseconds")
+    training_age_days <= 455  # 15 months
+}
+
+# CIP-009: Recovery Plans for BES Cyber Systems
+# Requirement: Recovery plans to restore BES Cyber Systems
+recovery_plans_compliant if {
+    recovery_plans_documented
+    backup_procedures_implemented
+    recovery_testing_performed
+    recovery_plan_maintenance_current
+}
+
+recovery_plans_documented if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not recovery_plan_exists(system)
+    ]
+    count(violations) == 0
+}
+
+recovery_plan_exists(system) if {
+    plan := input.recovery_plans[system.system_id]
+    plan.documented == true
+    plan.procedures_defined == true
+    plan.contact_information_current == true
+    plan.recovery_time_objectives_defined == true
+}
+
+backup_procedures_implemented if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not backup_procedures_adequate(system)
+    ]
+    count(violations) == 0
+}
+
+backup_procedures_adequate(system) if {
+    backup := input.backup_procedures[system.system_id]
+    backup.procedures_documented == true
+    backup.backup_schedule_defined == true
+    backup.backup_testing_performed == true
+    backup.offsite_storage_implemented == true
+}
+
+recovery_testing_performed if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not recovery_testing_current(system)
+    ]
+    count(violations) == 0
+}
+
+recovery_testing_current(system) if {
+    testing := input.recovery_testing[system.system_id]
+    testing.last_test_date
+    test_age_days := time.diff(time.now_ns(), testing.last_test_date, "days", "nanoseconds")
+    test_age_days <= 455  # 15 months
+    testing.test_documented == true
+    testing.issues_resolved == true
+}
+
+recovery_plan_maintenance_current if {
+    violations := [plan |
+        plan := input.recovery_plans[_]
+        not recovery_plan_current(plan)
+    ]
+    count(violations) == 0
+}
+
+recovery_plan_current(plan) if {
+    plan_age_days := time.diff(time.now_ns(), plan.last_review_date, "days", "nanoseconds")
+    plan_age_days <= 455  # 15 months
+}
+
+# CIP-010: Configuration Change Management and Vulnerability Assessments
+# Requirement: Manage baseline configurations and vulnerability assessments
+configuration_change_management_compliant if {
+    baseline_configurations_established
+    configuration_change_control_implemented
+    vulnerability_assessments_performed
+    configuration_monitoring_enabled
+}
+
+baseline_configurations_established if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not baseline_configuration_exists(system)
+    ]
+    count(violations) == 0
+}
+
+baseline_configuration_exists(system) if {
+    baseline := input.baseline_configurations[system.system_id]
+    baseline.documented == true
+    baseline.current == true
+    baseline.authorized == true
+    baseline.change_controlled == true
+}
+
+configuration_change_control_implemented if {
+    violations := [change |
+        change := input.configuration_changes[_]
+        not change_control_adequate(change)
+    ]
+    count(violations) == 0
+}
+
+change_control_adequate(change) if {
+    change.approval_required == true
+    change.approval_documented == true
+    change.testing_performed == true
+    change.implementation_documented == true
+    change.rollback_plan_defined == true
+}
+
+vulnerability_assessments_performed if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not vulnerability_assessment_current(system)
+    ]
+    count(violations) == 0
+}
+
+vulnerability_assessment_current(system) if {
+    assessment := input.vulnerability_assessments[system.system_id]
+    assessment_age_days := time.diff(time.now_ns(), assessment.completion_date, "days", "nanoseconds")
+    assessment_age_days <= assessment_frequency_days(system.impact_categorization)
+    assessment.documented == true
+    assessment.remediation_plan_exists == true
+}
+
+assessment_frequency_days("high") := 455    # 15 months
+assessment_frequency_days("medium") := 455  # 15 months
+
+configuration_monitoring_enabled if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not configuration_monitoring_adequate(system)
+    ]
+    count(violations) == 0
+}
+
+configuration_monitoring_adequate(system) if {
+    monitoring := input.configuration_monitoring[system.system_id]
+    monitoring.enabled == true
+    monitoring.change_detection == true
+    monitoring.alerting_configured == true
+    monitoring.baseline_comparison == true
+}
+
+# CIP-011: Information Protection
+# Requirement: Protect BES Cyber System Information
+information_protection_compliant if {
+    bes_cyber_system_information_identified
+    information_protection_procedures_implemented
+    information_access_controls_enforced
+    information_disposal_procedures_implemented
+}
+
+bes_cyber_system_information_identified if {
+    input.bes_cyber_system_information.inventory_maintained == true
+    input.bes_cyber_system_information.classification_performed == true
+    input.bes_cyber_system_information.handling_procedures_defined == true
+}
+
+information_protection_procedures_implemented if {
+    input.information_protection.procedures_documented == true
+    input.information_protection.storage_controls_implemented == true
+    input.information_protection.transmission_controls_implemented == true
+    input.information_protection.access_controls_enforced == true
+}
+
+information_access_controls_enforced if {
+    violations := [access |
+        access := input.information_access[_]
+        not information_access_adequate(access)
+    ]
+    count(violations) == 0
+}
+
+information_access_adequate(access) if {
+    access.authorization_documented == true
+    access.need_to_know_verified == true
+    access.access_review_performed == true
+    access.access_termination_timely == true
+}
+
+information_disposal_procedures_implemented if {
+    input.information_disposal.procedures_documented == true
+    input.information_disposal.secure_deletion_methods == true
+    input.information_disposal.disposal_documentation == true
+    input.information_disposal.media_sanitization == true
+}
+
+# CIP-012: Communications between Control Centers
+# Requirement: Protect communications between Control Centers
+communications_compliant if {
+    control_center_communications_identified
+    communication_protection_implemented
+    communication_monitoring_enabled
+    communication_contingency_plans_established
+}
+
+control_center_communications_identified if {
+    input.control_center_communications.inventory_maintained == true
+    input.control_center_communications.criticality_assessed == true
+    input.control_center_communications.protection_requirements_defined == true
+}
+
+communication_protection_implemented if {
+    violations := [comm |
+        comm := input.control_center_communications.links[_]
+        not communication_protection_adequate(comm)
+    ]
+    count(violations) == 0
+}
+
+communication_protection_adequate(comm) if {
+    comm.encryption_enabled == true
+    comm.authentication_implemented == true
+    comm.integrity_protection == true
+    comm.availability_protection == true
+}
+
+communication_monitoring_enabled if {
+    input.communication_monitoring.enabled == true
+    input.communication_monitoring.logging_implemented == true
+    input.communication_monitoring.anomaly_detection == true
+    input.communication_monitoring.alerting_configured == true
+}
+
+communication_contingency_plans_established if {
+    input.communication_contingency.plans_documented == true
+    input.communication_contingency.backup_communications == true
+    input.communication_contingency.testing_performed == true
+    input.communication_contingency.recovery_procedures == true
+}
+
+# CIP-013: Supply Chain Risk Management
+# Requirement: Mitigate cyber security risks in supply chain
+supply_chain_risk_management_compliant if {
+    supply_chain_cyber_security_plan_implemented
+    vendor_risk_assessments_performed
+    supply_chain_monitoring_implemented
+    incident_response_coordination_established
+}
+
+supply_chain_cyber_security_plan_implemented if {
+    input.supply_chain_plan.documented == true
+    input.supply_chain_plan.approved == true
+    input.supply_chain_plan.current == true
+    input.supply_chain_plan.vendor_requirements_defined == true
+}
+
+vendor_risk_assessments_performed if {
+    violations := [vendor |
+        vendor := input.vendors[_]
+        vendor.criticality_level in ["high", "medium"]
+        not vendor_risk_assessment_current(vendor)
+    ]
+    count(violations) == 0
+}
+
+vendor_risk_assessment_current(vendor) if {
+    assessment := input.vendor_risk_assessments[vendor.vendor_id]
+    assessment.completed == true
+    assessment_age_days := time.diff(time.now_ns(), assessment.completion_date, "days", "nanoseconds")
+    assessment_age_days <= 1095  # 3 years
+    assessment.risks_identified == true
+    assessment.mitigation_plan_exists == true
+}
+
+supply_chain_monitoring_implemented if {
+    input.supply_chain_monitoring.enabled == true
+    input.supply_chain_monitoring.threat_intelligence == true
+    input.supply_chain_monitoring.vulnerability_tracking == true
+    input.supply_chain_monitoring.incident_detection == true
+}
+
+incident_response_coordination_established if {
+    input.supply_chain_incident_response.procedures_documented == true
+    input.supply_chain_incident_response.vendor_contacts_current == true
+    input.supply_chain_incident_response.information_sharing_agreements == true
+    input.supply_chain_incident_response.coordination_tested == true
+}
+
+# CIP-013: Security Control Testing (Additional requirement)
+# Requirement: Test security controls for BES Cyber Systems
+security_control_testing_compliant if {
+    security_control_testing_program_established
+    penetration_testing_performed
+    vulnerability_testing_performed
+    security_control_validation_documented
+}
+
+security_control_testing_program_established if {
+    input.security_control_testing_program.documented == true
+    input.security_control_testing_program.approved == true
+    input.security_control_testing_program.scope_defined == true
+    input.security_control_testing_program.frequency_defined == true
+}
+
+penetration_testing_performed if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization == "high"
+        not penetration_testing_current(system)
+    ]
+    count(violations) == 0
+}
+
+penetration_testing_current(system) if {
+    testing := input.penetration_testing[system.system_id]
+    test_age_days := time.diff(time.now_ns(), testing.completion_date, "days", "nanoseconds")
+    test_age_days <= 1095  # 3 years
+    testing.documented == true
+    testing.findings_addressed == true
+}
+
+vulnerability_testing_performed if {
+    violations := [system |
+        system := input.bes_cyber_systems[_]
+        system.impact_categorization in ["high", "medium"]
+        not vulnerability_testing_current(system)
+    ]
+    count(violations) == 0
+}
+
+vulnerability_testing_current(system) if {
+    testing := input.vulnerability_testing[system.system_id]
+    test_age_days := time.diff(time.now_ns(), testing.completion_date, "days", "nanoseconds")
+    test_age_days <= 455  # 15 months
+    testing.documented == true
+    testing.remediation_planned == true
+}
+
+security_control_validation_documented if {
+    input.security_control_validation.procedures_documented == true
+    input.security_control_validation.results_documented == true
+    input.security_control_validation.deficiencies_tracked == true
+    input.security_control_validation.corrective_actions_planned == true
+}
+
+# NERC CIP Compliance Scoring
+nerc_cip_compliance_score := score if {
+    total_checks := 13
+    passed_checks := count([check |
+        checks := [
+            bes_cyber_system_categorization_compliant,
+            cyber_security_organization_compliant,
+            personnel_risk_assessment_compliant,
+            electronic_security_perimeter_compliant,
+            physical_security_compliant,
+            system_security_management_compliant,
+            incident_response_compliant,
+            recovery_plans_compliant,
+            configuration_change_management_compliant,
+            information_protection_compliant,
+            communications_compliant,
+            supply_chain_risk_management_compliant,
+            security_control_testing_compliant
+        ]
+        check := checks[_]
+        check == true
+    ])
+    score := (passed_checks * 100) / total_checks
+}
+
+# NERC CIP Violations and Remediation
+nerc_cip_violations := violations if {
+    all_violations := [
+        categorization_violations,
+        organization_violations,
+        personnel_violations,
+        security_perimeter_violations,
+        physical_security_violations,
+        system_security_violations,
+        incident_response_violations,
+        recovery_violations,
+        configuration_violations,
+        information_protection_violations,
+        communications_violations,
+        supply_chain_violations,
+        testing_violations
+    ]
+    violations := [violation | 
+        violation_list := all_violations[_]
+        violation := violation_list[_]
+    ]
+}
+
+categorization_violations := [violation |
+    not all_bes_cyber_systems_categorized
+    violation := {
+        "standard": "CIP-002",
+        "requirement": "BES Cyber System Categorization",
+        "severity": "high",
+        "description": "BES Cyber Systems not properly categorized",
+        "remediation": "Complete categorization of all BES Cyber Systems with documented rationale"
+    }
+]
+
+organization_violations := [violation |
+    not cybersecurity_leadership_designated
+    violation := {
+        "standard": "CIP-003",
+        "requirement": "Cyber Security Organization",
+        "severity": "high",
+        "description": "Cybersecurity leadership not properly designated",
+        "remediation": "Designate cybersecurity senior manager with documented authority"
+    }
+]
+
+personnel_violations := [violation |
+    not personnel_risk_assessments_current
+    violation := {
+        "standard": "CIP-004",
+        "requirement": "Personnel Risk Assessment",
+        "severity": "high",
+        "description": "Personnel risk assessments not current",
+        "remediation": "Complete risk assessments for all personnel with BES Cyber System access"
+    }
+]
+
+security_perimeter_violations := [violation |
+    not electronic_security_perimeters_documented
+    violation := {
+        "standard": "CIP-005",
+        "requirement": "Electronic Security Perimeters",
+        "severity": "critical",
+        "description": "Electronic Security Perimeters not properly documented",
+        "remediation": "Document and implement Electronic Security Perimeters for all applicable systems"
+    }
+]
+
+physical_security_violations := [violation |
+    not physical_security_perimeters_defined
+    violation := {
+        "standard": "CIP-006",
+        "requirement": "Physical Security",
+        "severity": "high",
+        "description": "Physical Security Perimeters not properly defined",
+        "remediation": "Define and implement Physical Security Perimeters with appropriate controls"
+    }
+]
+
+system_security_violations := [violation |
+    not security_patch_management_implemented
+    violation := {
+        "standard": "CIP-007",
+        "requirement": "Systems Security Management",
+        "severity": "critical",
+        "description": "Security patch management not implemented",
+        "remediation": "Implement comprehensive security patch management process"
+    }
+]
+
+incident_response_violations := [violation |
+    not incident_response_plan_documented
+    violation := {
+        "standard": "CIP-008",
+        "requirement": "Incident Response",
+        "severity": "high",
+        "description": "Incident response plan not documented or current",
+        "remediation": "Develop and maintain current incident response plan with regular testing"
+    }
+]
+
+recovery_violations := [violation |
+    not recovery_plans_documented
+    violation := {
+        "standard": "CIP-009",
+        "requirement": "Recovery Plans",
+        "severity": "high",
+        "description": "Recovery plans not documented",
+        "remediation": "Develop recovery plans for all applicable BES Cyber Systems"
+    }
+]
+
+configuration_violations := [violation |
+    not baseline_configurations_established
+    violation := {
+        "standard": "CIP-010",
+        "requirement": "Configuration Change Management",
+        "severity": "medium",
+        "description": "Baseline configurations not established",
+        "remediation": "Establish and maintain baseline configurations for all applicable systems"
+    }
+]
+
+information_protection_violations := [violation |
+    not bes_cyber_system_information_identified
+    violation := {
+        "standard": "CIP-011",
+        "requirement": "Information Protection",
+        "severity": "medium",
+        "description": "BES Cyber System information not properly identified and protected",
+        "remediation": "Identify and implement protection procedures for BES Cyber System information"
+    }
+]
+
+communications_violations := [violation |
+    not control_center_communications_identified
+    violation := {
+        "standard": "CIP-012",
+        "requirement": "Communications Protection",
+        "severity": "medium",
+        "description": "Control Center communications not properly protected",
+        "remediation": "Implement protection for Control Center communications"
+    }
+]
+
+supply_chain_violations := [violation |
+    not supply_chain_cyber_security_plan_implemented
+    violation := {
+        "standard": "CIP-013",
+        "requirement": "Supply Chain Risk Management",
+        "severity": "high",
+        "description": "Supply chain cyber security plan not implemented",
+        "remediation": "Implement supply chain cyber security plan with vendor risk management"
+    }
+]
+
+testing_violations := [violation |
+    not security_control_testing_program_established
+    violation := {
+        "standard": "CIP-013",
+        "requirement": "Security Control Testing",
+        "severity": "medium",
+        "description": "Security control testing program not established",
+        "remediation": "Establish security control testing program with regular validation"
+    }
+]
+
+# Compliance Level Determination
+nerc_cip_compliance_level := "COMPLIANT" if {
+    nerc_cip_compliance_score >= 95
+    count(critical_violations) == 0
+}
+
+nerc_cip_compliance_level := "SUBSTANTIALLY_COMPLIANT" if {
+    nerc_cip_compliance_score >= 85
+    nerc_cip_compliance_score < 95
+    count(critical_violations) == 0
+}
+
+nerc_cip_compliance_level := "PARTIALLY_COMPLIANT" if {
+    nerc_cip_compliance_score >= 70
+    nerc_cip_compliance_score < 85
+}
+
+nerc_cip_compliance_level := "NON_COMPLIANT" if {
+    nerc_cip_compliance_score < 70
+}
+
+nerc_cip_compliance_level := "NON_COMPLIANT" if {
+    count(critical_violations) > 0
+}
+
+critical_violations := [violation |
+    violation := nerc_cip_violations[_]
+    violation.severity == "critical"
+]
+
+# Policy Metadata
+nerc_cip_metadata := {
+    "policy_name": "NERC CIP Critical Infrastructure Protection Standards",
+    "version": "1.0",
+    "effective_date": "2024-01-01",
+    "last_updated": "2025-01-06",
+    "policy_owner": "Chief Information Security Officer",
+    "regulatory_authority": "North American Electric Reliability Corporation (NERC)",
+    "applicable_standards": [
+        "CIP-002", "CIP-003", "CIP-004", "CIP-005", "CIP-006", 
+        "CIP-007", "CIP-008", "CIP-009", "CIP-010", "CIP-011", 
+        "CIP-012", "CIP-013"
+    ],
+    "enforcement_level": "mandatory",
+    "review_frequency": "annual",
+    "audit_requirements": "NERC CIP compliance audits",
+    "penalties": "Financial penalties up to $1M per day per violation"
+}

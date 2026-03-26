@@ -1,0 +1,569 @@
+package sox.application_controls
+
+import rego.v1
+
+# SOX Application Controls for Financial Systems
+# Controls specific to financial applications and data processing
+
+# Overall Application Controls Compliance
+application_controls_compliant if {
+    input_controls_effective
+    processing_controls_accurate
+    output_controls_complete
+    data_integrity_maintained
+    error_handling_robust
+    transaction_logging_complete
+}
+
+# Input Controls
+input_controls_effective if {
+    data.sox.application_controls.input_validation.comprehensive
+    input_validation_comprehensive
+    data_entry_controls_adequate
+    authorization_controls_proper
+    input_completeness_verified
+}
+
+input_validation_comprehensive if {
+    data.sox.input_validation.data_type_validation.enforced
+    data.sox.input_validation.format_validation.comprehensive
+    data.sox.input_validation.range_validation.implemented
+    data.sox.input_validation.business_rule_validation.active
+    data.sox.input_validation.cross_field_validation.configured
+}
+
+data_entry_controls_adequate if {
+    data.sox.data_entry.mandatory_field_validation.enforced
+    data.sox.data_entry.duplicate_detection.automated
+    data.sox.data_entry.real_time_validation.enabled
+    data.sox.data_entry.error_highlighting.implemented
+    data.sox.data_entry.confirmation_screens.required
+}
+
+authorization_controls_proper if {
+    data.sox.authorization.transaction_authorization.required
+    data.sox.authorization.authorization_limits.enforced
+    data.sox.authorization.maker_checker.implemented
+    data.sox.authorization.authorization_matrix.current
+    data.sox.authorization.override_controls.restricted
+}
+
+input_completeness_verified if {
+    data.sox.input_completeness.batch_totals.verified
+    data.sox.input_completeness.record_counts.validated
+    data.sox.input_completeness.hash_totals.checked
+    data.sox.input_completeness.missing_data.identified
+}
+
+# Processing Controls
+processing_controls_accurate if {
+    data.sox.application_controls.processing_controls.accurate
+    calculation_controls_reliable
+    sequence_controls_maintained
+    processing_completeness_ensured
+    exception_processing_controlled
+}
+
+calculation_controls_reliable if {
+    data.sox.calculation_controls.arithmetic_accuracy.verified
+    data.sox.calculation_controls.rounding_rules.consistent
+    data.sox.calculation_controls.formula_validation.automated
+    data.sox.calculation_controls.calculation_logs.maintained
+    data.sox.calculation_controls.recalculation_procedures.documented
+}
+
+sequence_controls_maintained if {
+    data.sox.sequence_controls.transaction_sequencing.verified
+    data.sox.sequence_controls.batch_sequencing.controlled
+    data.sox.sequence_controls.missing_sequences.detected
+    data.sox.sequence_controls.duplicate_sequences.prevented
+}
+
+processing_completeness_ensured if {
+    data.sox.processing_completeness.all_records_processed.verified
+    data.sox.processing_completeness.processing_totals.reconciled
+    data.sox.processing_completeness.incomplete_processing.detected
+    data.sox.processing_completeness.reprocessing_controls.implemented
+}
+
+exception_processing_controlled if {
+    data.sox.exception_processing.exception_identification.automated
+    data.sox.exception_processing.exception_handling.documented
+    data.sox.exception_processing.exception_resolution.tracked
+    data.sox.exception_processing.exception_reporting.comprehensive
+}
+
+# Output Controls
+output_controls_complete if {
+    data.sox.application_controls.output_controls.complete
+    output_distribution_controlled
+    output_completeness_verified
+    output_accuracy_validated
+    output_authorization_required
+}
+
+output_distribution_controlled if {
+    data.sox.output_distribution.authorized_recipients.verified
+    data.sox.output_distribution.distribution_lists.current
+    data.sox.output_distribution.sensitive_output.protected
+    data.sox.output_distribution.transmission_security.enforced
+}
+
+output_completeness_verified if {
+    data.sox.output_completeness.output_totals.reconciled
+    data.sox.output_completeness.page_numbering.sequential
+    data.sox.output_completeness.record_counts.verified
+    data.sox.output_completeness.missing_output.detected
+}
+
+output_accuracy_validated if {
+    data.sox.output_accuracy.format_validation.automated
+    data.sox.output_accuracy.content_validation.performed
+    data.sox.output_accuracy.cross_reference_checks.completed
+    data.sox.output_accuracy.reasonableness_tests.conducted
+}
+
+output_authorization_required if {
+    data.sox.output_authorization.report_approval.required
+    data.sox.output_authorization.release_authorization.documented
+    data.sox.output_authorization.approval_matrix.current
+    data.sox.output_authorization.authorization_logs.maintained
+}
+
+# Data Integrity Controls
+data_integrity_maintained if {
+    data.sox.application_controls.data_integrity.maintained
+    database_integrity_controls_active
+    data_transmission_integrity_protected
+    data_storage_integrity_verified
+    referential_integrity_enforced
+}
+
+database_integrity_controls_active if {
+    data.sox.database_integrity.constraint_enforcement.active
+    data.sox.database_integrity.trigger_validation.implemented
+    data.sox.database_integrity.stored_procedure_controls.enforced
+    data.sox.database_integrity.transaction_rollback.automatic
+    data.sox.database_integrity.deadlock_resolution.automated
+}
+
+data_transmission_integrity_protected if {
+    data.sox.transmission_integrity.checksum_validation.implemented
+    data.sox.transmission_integrity.encryption_in_transit.enforced
+    data.sox.transmission_integrity.transmission_logs.comprehensive
+    data.sox.transmission_integrity.retransmission_controls.automated
+}
+
+data_storage_integrity_verified if {
+    data.sox.storage_integrity.data_corruption_detection.active
+    data.sox.storage_integrity.backup_integrity_verification.automated
+    data.sox.storage_integrity.storage_monitoring.continuous
+    data.sox.storage_integrity.integrity_reporting.regular
+}
+
+referential_integrity_enforced if {
+    data.sox.referential_integrity.foreign_key_constraints.enforced
+    data.sox.referential_integrity.cascade_operations.controlled
+    data.sox.referential_integrity.orphaned_records.prevented
+    data.sox.referential_integrity.integrity_checks.automated
+}
+
+# Error Handling and Logging
+error_handling_robust if {
+    data.sox.application_controls.error_handling.robust
+    error_detection_comprehensive
+    error_reporting_detailed
+    error_correction_controlled
+    error_prevention_proactive
+}
+
+error_detection_comprehensive if {
+    data.sox.error_detection.real_time_validation.enabled
+    data.sox.error_detection.batch_validation.comprehensive
+    data.sox.error_detection.cross_system_validation.implemented
+    data.sox.error_detection.business_rule_validation.active
+}
+
+error_reporting_detailed if {
+    data.sox.error_reporting.error_classification.detailed
+    data.sox.error_reporting.error_severity.assigned
+    data.sox.error_reporting.error_tracking.comprehensive
+    data.sox.error_reporting.error_escalation.automated
+}
+
+error_correction_controlled if {
+    data.sox.error_correction.correction_authorization.required
+    data.sox.error_correction.correction_validation.enforced
+    data.sox.error_correction.correction_logging.complete
+    data.sox.error_correction.correction_approval.documented
+}
+
+error_prevention_proactive if {
+    data.sox.error_prevention.preventive_controls.implemented
+    data.sox.error_prevention.trend_analysis.performed
+    data.sox.error_prevention.root_cause_analysis.conducted
+    data.sox.error_prevention.process_improvement.continuous
+}
+
+# Transaction Logging and Audit Trails
+transaction_logging_complete if {
+    data.sox.application_controls.transaction_logging.complete
+    audit_trail_comprehensive
+    transaction_traceability_maintained
+    log_integrity_protected
+    log_retention_compliant
+}
+
+audit_trail_comprehensive if {
+    data.sox.audit_trail.transaction_logging.complete
+    data.sox.audit_trail.user_activity_logging.comprehensive
+    data.sox.audit_trail.system_event_logging.detailed
+    data.sox.audit_trail.data_change_logging.tracked
+    data.sox.audit_trail.access_logging.monitored
+}
+
+transaction_traceability_maintained if {
+    data.sox.transaction_traceability.unique_transaction_ids.assigned
+    data.sox.transaction_traceability.transaction_timeline.maintained
+    data.sox.transaction_traceability.source_documentation.linked
+    data.sox.transaction_traceability.approval_trail.documented
+}
+
+log_integrity_protected if {
+    data.sox.log_integrity.log_tampering_prevention.implemented
+    data.sox.log_integrity.log_encryption.enforced
+    data.sox.log_integrity.log_backup.automated
+    data.sox.log_integrity.log_verification.periodic
+}
+
+log_retention_compliant if {
+    data.sox.log_retention.retention_period.compliant
+    data.sox.log_retention.archive_procedures.documented
+    data.sox.log_retention.retrieval_procedures.tested
+    data.sox.log_retention.disposal_procedures.secure
+}
+
+# Financial Application-Specific Controls
+financial_application_controls_effective if {
+    general_ledger_controls_adequate
+    accounts_payable_controls_robust
+    accounts_receivable_controls_complete
+    payroll_controls_comprehensive
+    treasury_controls_secure
+}
+
+# General Ledger Controls
+general_ledger_controls_adequate if {
+    data.sox.general_ledger.journal_entry_controls.enforced
+    data.sox.general_ledger.chart_of_accounts.maintained
+    data.sox.general_ledger.period_end_controls.automated
+    data.sox.general_ledger.reconciliation_controls.comprehensive
+    data.sox.general_ledger.reporting_controls.accurate
+}
+
+# Accounts Payable Controls
+accounts_payable_controls_robust if {
+    data.sox.accounts_payable.three_way_matching.enforced
+    data.sox.accounts_payable.vendor_master_controls.maintained
+    data.sox.accounts_payable.duplicate_payment_prevention.automated
+    data.sox.accounts_payable.payment_authorization.required
+    data.sox.accounts_payable.cash_disbursement_controls.secure
+}
+
+# Accounts Receivable Controls
+accounts_receivable_controls_complete if {
+    data.sox.accounts_receivable.invoice_generation_controls.automated
+    data.sox.accounts_receivable.credit_limit_controls.enforced
+    data.sox.accounts_receivable.collection_controls.managed
+    data.sox.accounts_receivable.bad_debt_controls.documented
+    data.sox.accounts_receivable.cash_receipt_controls.secure
+}
+
+# Payroll Controls
+payroll_controls_comprehensive if {
+    data.sox.payroll.employee_master_controls.maintained
+    data.sox.payroll.time_recording_controls.accurate
+    data.sox.payroll.payroll_calculation_controls.verified
+    data.sox.payroll.payroll_authorization_controls.enforced
+    data.sox.payroll.payroll_distribution_controls.secure
+}
+
+# Treasury Controls
+treasury_controls_secure if {
+    data.sox.treasury.cash_management_controls.comprehensive
+    data.sox.treasury.investment_controls.authorized
+    data.sox.treasury.bank_reconciliation_controls.automated
+    data.sox.treasury.foreign_exchange_controls.managed
+    data.sox.treasury.debt_management_controls.monitored
+}
+
+# Application Controls Scoring
+application_controls_score := score if {
+    components := [
+        input_controls_score,
+        processing_controls_score,
+        output_controls_score,
+        data_integrity_score,
+        error_handling_score,
+        transaction_logging_score,
+        financial_application_score
+    ]
+    score := (sum(components) / count(components)) * 100
+}
+
+# Individual component scores
+input_controls_score := score if {
+    checks := [
+        input_validation_comprehensive,
+        data_entry_controls_adequate,
+        authorization_controls_proper,
+        input_completeness_verified
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+processing_controls_score := score if {
+    checks := [
+        calculation_controls_reliable,
+        sequence_controls_maintained,
+        processing_completeness_ensured,
+        exception_processing_controlled
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+output_controls_score := score if {
+    checks := [
+        output_distribution_controlled,
+        output_completeness_verified,
+        output_accuracy_validated,
+        output_authorization_required
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+data_integrity_score := score if {
+    checks := [
+        database_integrity_controls_active,
+        data_transmission_integrity_protected,
+        data_storage_integrity_verified,
+        referential_integrity_enforced
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+error_handling_score := score if {
+    checks := [
+        error_detection_comprehensive,
+        error_reporting_detailed,
+        error_correction_controlled,
+        error_prevention_proactive
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+transaction_logging_score := score if {
+    checks := [
+        audit_trail_comprehensive,
+        transaction_traceability_maintained,
+        log_integrity_protected,
+        log_retention_compliant
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+financial_application_score := score if {
+    checks := [
+        general_ledger_controls_adequate,
+        accounts_payable_controls_robust,
+        accounts_receivable_controls_complete,
+        payroll_controls_comprehensive,
+        treasury_controls_secure
+    ]
+    passed := count([check | check := checks[_]; check == true])
+    score := passed / count(checks)
+}
+
+# Application Controls Risk Assessment
+application_controls_risk_level := "LOW" if {
+    application_controls_score >= 90
+}
+
+application_controls_risk_level := "MEDIUM" if {
+    application_controls_score >= 75
+    application_controls_score < 90
+}
+
+application_controls_risk_level := "HIGH" if {
+    application_controls_score >= 60
+    application_controls_score < 75
+}
+
+application_controls_risk_level := "CRITICAL" if {
+    application_controls_score < 60
+}
+
+# Application Controls Effectiveness Summary
+application_controls_effectiveness := effectiveness if {
+    effectiveness := {
+        "overall_score": application_controls_score,
+        "risk_level": application_controls_risk_level,
+        "control_categories": {
+            "input_controls": {
+                "score": input_controls_score * 100,
+                "effectiveness": _get_effectiveness_rating(input_controls_score),
+                "key_findings": get_input_control_findings
+            },
+            "processing_controls": {
+                "score": processing_controls_score * 100,
+                "effectiveness": _get_effectiveness_rating(processing_controls_score),
+                "key_findings": get_processing_control_findings
+            },
+            "output_controls": {
+                "score": output_controls_score * 100,
+                "effectiveness": _get_effectiveness_rating(output_controls_score),
+                "key_findings": get_output_control_findings
+            },
+            "data_integrity": {
+                "score": data_integrity_score * 100,
+                "effectiveness": _get_effectiveness_rating(data_integrity_score),
+                "key_findings": get_data_integrity_findings
+            },
+            "error_handling": {
+                "score": error_handling_score * 100,
+                "effectiveness": _get_effectiveness_rating(error_handling_score),
+                "key_findings": get_error_handling_findings
+            },
+            "transaction_logging": {
+                "score": transaction_logging_score * 100,
+                "effectiveness": _get_effectiveness_rating(transaction_logging_score),
+                "key_findings": get_transaction_logging_findings
+            },
+            "financial_applications": {
+                "score": financial_application_score * 100,
+                "effectiveness": _get_effectiveness_rating(financial_application_score),
+                "key_findings": get_financial_application_findings
+            }
+        }
+    }
+}
+
+# Helper function for effectiveness rating
+_get_effectiveness_rating(score) := "EFFECTIVE" if {
+    score >= 0.9
+}
+
+_get_effectiveness_rating(score) := "PARTIALLY_EFFECTIVE" if {
+    score >= 0.7
+    score < 0.9
+}
+
+_get_effectiveness_rating(score) := "INEFFECTIVE" if {
+    score < 0.7
+}
+
+# Findings functions
+get_input_control_findings := findings if {
+    findings := [finding |
+        checks := [
+            {"check": input_validation_comprehensive, "message": "Input validation controls need comprehensive implementation"},
+            {"check": data_entry_controls_adequate, "message": "Data entry controls require enhancement"},
+            {"check": authorization_controls_proper, "message": "Authorization controls need proper implementation"},
+            {"check": input_completeness_verified, "message": "Input completeness verification is inadequate"}
+        ]
+        check := checks[_]
+        not check.check
+        finding := check.message
+    ]
+}
+
+get_processing_control_findings := findings if {
+    findings := [finding |
+        checks := [
+            {"check": calculation_controls_reliable, "message": "Calculation controls reliability needs improvement"},
+            {"check": sequence_controls_maintained, "message": "Sequence controls maintenance is inadequate"},
+            {"check": processing_completeness_ensured, "message": "Processing completeness assurance is insufficient"},
+            {"check": exception_processing_controlled, "message": "Exception processing controls need strengthening"}
+        ]
+        check := checks[_]
+        not check.check
+        finding := check.message
+    ]
+}
+
+get_output_control_findings := findings if {
+    findings := [finding |
+        checks := [
+            {"check": output_distribution_controlled, "message": "Output distribution controls need enhancement"},
+            {"check": output_completeness_verified, "message": "Output completeness verification is inadequate"},
+            {"check": output_accuracy_validated, "message": "Output accuracy validation needs improvement"},
+            {"check": output_authorization_required, "message": "Output authorization requirements are insufficient"}
+        ]
+        check := checks[_]
+        not check.check
+        finding := check.message
+    ]
+}
+
+get_data_integrity_findings := findings if {
+    findings := [finding |
+        checks := [
+            {"check": database_integrity_controls_active, "message": "Database integrity controls need activation"},
+            {"check": data_transmission_integrity_protected, "message": "Data transmission integrity protection is inadequate"},
+            {"check": data_storage_integrity_verified, "message": "Data storage integrity verification needs improvement"},
+            {"check": referential_integrity_enforced, "message": "Referential integrity enforcement is insufficient"}
+        ]
+        check := checks[_]
+        not check.check
+        finding := check.message
+    ]
+}
+
+get_error_handling_findings := findings if {
+    findings := [finding |
+        checks := [
+            {"check": error_detection_comprehensive, "message": "Error detection capabilities need comprehensive implementation"},
+            {"check": error_reporting_detailed, "message": "Error reporting detail level is inadequate"},
+            {"check": error_correction_controlled, "message": "Error correction controls need strengthening"},
+            {"check": error_prevention_proactive, "message": "Proactive error prevention measures are insufficient"}
+        ]
+        check := checks[_]
+        not check.check
+        finding := check.message
+    ]
+}
+
+get_transaction_logging_findings := findings if {
+    findings := [finding |
+        checks := [
+            {"check": audit_trail_comprehensive, "message": "Comprehensive audit trail implementation is needed"},
+            {"check": transaction_traceability_maintained, "message": "Transaction traceability maintenance is inadequate"},
+            {"check": log_integrity_protected, "message": "Log integrity protection needs enhancement"},
+            {"check": log_retention_compliant, "message": "Log retention compliance is insufficient"}
+        ]
+        check := checks[_]
+        not check.check
+        finding := check.message
+    ]
+}
+
+get_financial_application_findings := findings if {
+    findings := [finding |
+        checks := [
+            {"check": general_ledger_controls_adequate, "message": "General ledger controls need improvement"},
+            {"check": accounts_payable_controls_robust, "message": "Accounts payable controls require strengthening"},
+            {"check": accounts_receivable_controls_complete, "message": "Accounts receivable controls need completion"},
+            {"check": payroll_controls_comprehensive, "message": "Payroll controls need comprehensive implementation"},
+            {"check": treasury_controls_secure, "message": "Treasury controls security needs enhancement"}
+        ]
+        check := checks[_]
+        not check.check
+        finding := check.message
+    ]
+}

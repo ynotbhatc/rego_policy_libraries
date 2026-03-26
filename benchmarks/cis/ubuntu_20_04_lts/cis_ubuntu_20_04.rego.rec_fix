@@ -1,0 +1,1042 @@
+package cis.ubuntu_20_04
+
+import rego.v1
+
+# CIS Ubuntu Linux 20.04 LTS Benchmark v1.1.0
+# Center for Internet Security (CIS) Benchmark for Ubuntu Linux 20.04 LTS
+# This policy implements comprehensive CIS controls for Ubuntu 20.04 LTS systems
+
+import future.keywords.contains
+import future.keywords.if
+import future.keywords.in
+
+# Main compliance evaluation
+default compliant := false
+
+compliant if {
+    count(violations) == 0
+}
+
+# Collect all violations
+violations := [v |
+	arrays := [
+		initial_setup_violations,
+		services_violations,
+		network_violations,
+		logging_violations,
+		access_auth_violations,
+		system_maintenance_violations
+	]
+	v := arrays[_][_]
+]
+
+# 1. Initial Setup Violations
+initial_setup_violations := violations if {
+    violations := [
+        violation |
+        some violation in filesystem_violations
+    ] + [
+        violation |
+        some violation in configure_software_violations
+    ] + [
+        violation |
+        some violation in secure_boot_violations
+    ]
+}
+
+# 1.1 Filesystem Configuration
+filesystem_violations := violations if {
+    violations := [
+        # 1.1.1 Disable unused filesystems
+        {
+            "control": "1.1.1.1",
+            "title": "Ensure mounting of cramfs filesystems is disabled",
+            "severity": "high",
+            "message": "cramfs filesystem is not disabled"
+        } |
+        not cramfs_disabled
+    ] + [
+        {
+            "control": "1.1.1.2",
+            "title": "Ensure mounting of freevxfs filesystems is disabled", 
+            "severity": "high",
+            "message": "freevxfs filesystem is not disabled"
+        } |
+        not freevxfs_disabled
+    ] + [
+        {
+            "control": "1.1.1.3",
+            "title": "Ensure mounting of jffs2 filesystems is disabled",
+            "severity": "high", 
+            "message": "jffs2 filesystem is not disabled"
+        } |
+        not jffs2_disabled
+    ] + [
+        {
+            "control": "1.1.1.4",
+            "title": "Ensure mounting of hfs filesystems is disabled",
+            "severity": "medium",
+            "message": "hfs filesystem is not disabled"
+        } |
+        not hfs_disabled
+    ] + [
+        {
+            "control": "1.1.1.5", 
+            "title": "Ensure mounting of hfsplus filesystems is disabled",
+            "severity": "medium",
+            "message": "hfsplus filesystem is not disabled"
+        } |
+        not hfsplus_disabled
+    ] + [
+        # 1.1.2-1.1.20 Partition mounting options
+        {
+            "control": "1.1.2",
+            "title": "Ensure /tmp is configured",
+            "severity": "high",
+            "message": "/tmp partition is not properly configured"
+        } |
+        not tmp_partition_configured
+    ] + [
+        {
+            "control": "1.1.3",
+            "title": "Ensure nodev option set on /tmp partition",
+            "severity": "high",
+            "message": "/tmp partition missing nodev option"
+        } |
+        not tmp_nodev_set
+    ] + [
+        {
+            "control": "1.1.4",
+            "title": "Ensure nosuid option set on /tmp partition",
+            "severity": "high",
+            "message": "/tmp partition missing nosuid option"  
+        } |
+        not tmp_nosuid_set
+    ] + [
+        {
+            "control": "1.1.5",
+            "title": "Ensure noexec option set on /tmp partition",
+            "severity": "high",
+            "message": "/tmp partition missing noexec option"
+        } |
+        not tmp_noexec_set
+    ]
+}
+
+# Filesystem checks
+cramfs_disabled if {
+    not "cramfs" in input.ansible_facts.ansible_kernel_modules
+}
+
+freevxfs_disabled if {
+    not "freevxfs" in input.ansible_facts.ansible_kernel_modules  
+}
+
+jffs2_disabled if {
+    not "jffs2" in input.ansible_facts.ansible_kernel_modules
+}
+
+hfs_disabled if {
+    not "hfs" in input.ansible_facts.ansible_kernel_modules
+}
+
+hfsplus_disabled if {
+    not "hfsplus" in input.ansible_facts.ansible_kernel_modules
+}
+
+# Partition configuration checks
+tmp_partition_configured if {
+    some mount in input.ansible_facts.ansible_mounts
+    mount.mount == "/tmp"
+}
+
+tmp_nodev_set if {
+    some mount in input.ansible_facts.ansible_mounts
+    mount.mount == "/tmp"
+    "nodev" in mount.options
+}
+
+tmp_nosuid_set if {
+    some mount in input.ansible_facts.ansible_mounts
+    mount.mount == "/tmp"
+    "nosuid" in mount.options
+}
+
+tmp_noexec_set if {
+    some mount in input.ansible_facts.ansible_mounts
+    mount.mount == "/tmp"
+    "noexec" in mount.options
+}
+
+# 1.2 Configure Software Updates
+configure_software_violations := violations if {
+    violations := [
+        {
+            "control": "1.2.1",
+            "title": "Ensure package manager repositories are configured",
+            "severity": "medium",
+            "message": "Package manager repositories not properly configured"
+        } |
+        not package_repos_configured
+    ] + [
+        {
+            "control": "1.2.2",
+            "title": "Ensure GPG keys are configured",
+            "severity": "high",
+            "message": "GPG keys for package verification not configured"
+        } |
+        not gpg_keys_configured
+    ]
+}
+
+package_repos_configured if {
+    input.ansible_facts.ansible_pkg_mgr == "apt"
+    count(input.ansible_facts.ansible_apt_repositories) > 0
+}
+
+gpg_keys_configured if {
+    input.gpg_keys_count > 0
+}
+
+# 1.3 Secure Boot Settings  
+secure_boot_violations := violations if {
+    violations := [
+        {
+            "control": "1.3.1",
+            "title": "Ensure sudo is installed",
+            "severity": "critical",
+            "message": "sudo package is not installed"
+        } |
+        not sudo_installed
+    ] + [
+        {
+            "control": "1.3.2",
+            "title": "Ensure sudo commands use pty",
+            "severity": "medium", 
+            "message": "sudo not configured to use pty"
+        } |
+        not sudo_use_pty
+    ] + [
+        {
+            "control": "1.3.3",
+            "title": "Ensure sudo log file exists",
+            "severity": "medium",
+            "message": "sudo log file not configured"
+        } |
+        not sudo_log_configured
+    ]
+}
+
+sudo_installed if {
+    "sudo" in input.ansible_facts.ansible_packages
+}
+
+sudo_use_pty if {
+    input.sudo_config.use_pty == true
+}
+
+sudo_log_configured if {
+    input.sudo_config.logfile != ""
+}
+
+# 2. Services Violations
+services_violations := violations if {
+    violations := [
+        violation |
+        some violation in inetd_violations
+    ] + [
+        violation |
+        some violation in special_purpose_violations  
+    ]
+}
+
+# 2.1 inetd Services
+inetd_violations := violations if {
+    violations := [
+        {
+            "control": "2.1.1",
+            "title": "Ensure xinetd is not installed",
+            "severity": "high",
+            "message": "xinetd service is installed"
+        } |
+        xinetd_installed
+    ] + [
+        {
+            "control": "2.1.2", 
+            "title": "Ensure openbsd-inetd is not installed",
+            "severity": "high",
+            "message": "openbsd-inetd service is installed"
+        } |
+        openbsd_inetd_installed
+    ]
+}
+
+xinetd_installed if {
+    "xinetd" in input.ansible_facts.ansible_packages
+}
+
+openbsd_inetd_installed if {
+    "openbsd-inetd" in input.ansible_facts.ansible_packages
+}
+
+# 2.2 Special Purpose Services
+special_purpose_violations := violations if {
+    violations := [
+        {
+            "control": "2.2.1",
+            "title": "Ensure X Window System is not installed",
+            "severity": "medium",
+            "message": "X Window System packages are installed"
+        } |
+        x11_installed
+    ] + [
+        {
+            "control": "2.2.2",
+            "title": "Ensure Avahi Server is not installed",
+            "severity": "medium",
+            "message": "Avahi daemon is installed"
+        } |
+        avahi_installed
+    ] + [
+        {
+            "control": "2.2.3",
+            "title": "Ensure CUPS is not installed",
+            "severity": "low",
+            "message": "CUPS print server is installed"
+        } |
+        cups_installed
+    ] + [
+        {
+            "control": "2.2.4",
+            "title": "Ensure DHCP Server is not installed",
+            "severity": "high",
+            "message": "DHCP server is installed"
+        } |
+        dhcp_server_installed
+    ] + [
+        {
+            "control": "2.2.5",
+            "title": "Ensure LDAP server is not installed", 
+            "severity": "medium",
+            "message": "LDAP server is installed"
+        } |
+        ldap_server_installed
+    ] + [
+        {
+            "control": "2.2.6",
+            "title": "Ensure NFS is not installed",
+            "severity": "medium",
+            "message": "NFS server is installed"
+        } |
+        nfs_installed
+    ] + [
+        {
+            "control": "2.2.7",
+            "title": "Ensure DNS Server is not installed",
+            "severity": "medium", 
+            "message": "DNS server is installed"
+        } |
+        dns_server_installed
+    ] + [
+        {
+            "control": "2.2.8",
+            "title": "Ensure FTP Server is not installed",
+            "severity": "high",
+            "message": "FTP server is installed"
+        } |
+        ftp_server_installed
+    ]
+}
+
+x11_installed if {
+    some pkg in ["xserver-xorg", "xorg", "x11-common"]
+    pkg in input.ansible_facts.ansible_packages
+}
+
+avahi_installed if {
+    "avahi-daemon" in input.ansible_facts.ansible_packages
+}
+
+cups_installed if {
+    "cups" in input.ansible_facts.ansible_packages
+}
+
+dhcp_server_installed if {
+    some pkg in ["isc-dhcp-server", "dhcp3-server"]
+    pkg in input.ansible_facts.ansible_packages
+}
+
+ldap_server_installed if {
+    "slapd" in input.ansible_facts.ansible_packages
+}
+
+nfs_installed if {
+    "nfs-kernel-server" in input.ansible_facts.ansible_packages
+}
+
+dns_server_installed if {
+    some pkg in ["bind9", "dnsmasq"]
+    pkg in input.ansible_facts.ansible_packages
+}
+
+ftp_server_installed if {
+    some pkg in ["vsftpd", "proftpd"]
+    pkg in input.ansible_facts.ansible_packages
+}
+
+# 3. Network Configuration Violations
+network_violations := violations if {
+    violations := [
+        violation |
+        some violation in network_params_violations
+    ] + [
+        violation |
+        some violation in host_router_violations
+    ] + [
+        violation |
+        some violation in firewall_violations
+    ]
+}
+
+# 3.1 Network Parameters
+network_params_violations := violations if {
+    violations := [
+        {
+            "control": "3.1.1",
+            "title": "Ensure IP forwarding is disabled",
+            "severity": "high",
+            "message": "IP forwarding is enabled"
+        } |
+        ip_forwarding_enabled
+    ] + [
+        {
+            "control": "3.1.2",
+            "title": "Ensure packet redirect sending is disabled",
+            "severity": "medium",
+            "message": "Packet redirect sending is enabled"  
+        } |
+        packet_redirect_enabled
+    ]
+}
+
+ip_forwarding_enabled if {
+    input.network_config.ip_forward == "1"
+}
+
+packet_redirect_enabled if {
+    input.network_config.send_redirects == "1"
+}
+
+# 3.2 Network Parameters (Host and Router)
+host_router_violations := violations if {
+    violations := [
+        {
+            "control": "3.2.1",
+            "title": "Ensure source routed packets are not accepted",
+            "severity": "high",
+            "message": "Source routed packets are accepted"
+        } |
+        source_routed_accepted
+    ] + [
+        {
+            "control": "3.2.2",
+            "title": "Ensure ICMP redirects are not accepted",
+            "severity": "medium",
+            "message": "ICMP redirects are accepted"
+        } |
+        icmp_redirects_accepted
+    ] + [
+        {
+            "control": "3.2.3",
+            "title": "Ensure secure ICMP redirects are not accepted",
+            "severity": "medium",
+            "message": "Secure ICMP redirects are accepted"
+        } |
+        secure_icmp_redirects_accepted
+    ] + [
+        {
+            "control": "3.2.4",
+            "title": "Ensure suspicious packets are logged",
+            "severity": "medium",
+            "message": "Suspicious packets are not logged"
+        } |
+        not suspicious_packets_logged
+    ]
+}
+
+source_routed_accepted if {
+    input.network_config.accept_source_route == "1"
+}
+
+icmp_redirects_accepted if {
+    input.network_config.accept_redirects == "1"
+}
+
+secure_icmp_redirects_accepted if {
+    input.network_config.secure_redirects == "1"
+}
+
+suspicious_packets_logged if {
+    input.network_config.log_martians == "1"
+}
+
+# 3.3 Firewall Configuration
+firewall_violations := violations if {
+    violations := [
+        {
+            "control": "3.5.1.1",
+            "title": "Ensure ufw is installed", 
+            "severity": "critical",
+            "message": "ufw firewall is not installed"
+        } |
+        not ufw_installed
+    ] + [
+        {
+            "control": "3.5.1.2",
+            "title": "Ensure iptables-persistent is not installed with ufw",
+            "severity": "medium",
+            "message": "iptables-persistent conflicts with ufw"
+        } |
+        iptables_persistent_with_ufw
+    ] + [
+        {
+            "control": "3.5.1.3",
+            "title": "Ensure ufw service is enabled",
+            "severity": "high",
+            "message": "ufw service is not enabled"
+        } |
+        not ufw_enabled
+    ] + [
+        {
+            "control": "3.5.1.4",
+            "title": "Ensure loopback traffic is configured",
+            "severity": "high",
+            "message": "Loopback traffic not properly configured"
+        } |
+        not loopback_configured
+    ]
+}
+
+ufw_installed if {
+    "ufw" in input.ansible_facts.ansible_packages
+}
+
+iptables_persistent_with_ufw if {
+    "ufw" in input.ansible_facts.ansible_packages
+    "iptables-persistent" in input.ansible_facts.ansible_packages
+}
+
+ufw_enabled if {
+    input.ufw_status == "active"
+}
+
+loopback_configured if {
+    input.ufw_rules.loopback_in == "ALLOW"
+    input.ufw_rules.loopback_out == "ALLOW"
+}
+
+# 4. Logging and Auditing Violations
+logging_violations := violations if {
+    violations := [
+        violation |
+        some violation in rsyslog_violations
+    ] + [
+        violation |
+        some violation in auditd_violations
+    ]
+}
+
+# 4.1 Configure System Accounting (auditd)
+auditd_violations := violations if {
+    violations := [
+        {
+            "control": "4.1.1.1",
+            "title": "Ensure auditd is installed",
+            "severity": "critical",
+            "message": "auditd is not installed"
+        } |
+        not auditd_installed
+    ] + [
+        {
+            "control": "4.1.1.2", 
+            "title": "Ensure auditd service is enabled",
+            "severity": "high",
+            "message": "auditd service is not enabled"
+        } |
+        not auditd_enabled
+    ] + [
+        {
+            "control": "4.1.2.1",
+            "title": "Ensure audit log storage size is configured",
+            "severity": "medium",
+            "message": "Audit log storage size not configured"
+        } |
+        not audit_log_size_configured
+    ]
+}
+
+auditd_installed if {
+    "auditd" in input.ansible_facts.ansible_packages
+}
+
+auditd_enabled if {
+    input.ansible_facts.ansible_services["auditd"].state == "running"
+    input.ansible_facts.ansible_services["auditd"].enabled == true
+}
+
+audit_log_size_configured if {
+    input.auditd_config.max_log_file_mb > 0
+}
+
+# 4.2 Configure rsyslog
+rsyslog_violations := violations if {
+    violations := [
+        {
+            "control": "4.2.1.1",
+            "title": "Ensure rsyslog is installed",
+            "severity": "high",
+            "message": "rsyslog is not installed"
+        } |
+        not rsyslog_installed
+    ] + [
+        {
+            "control": "4.2.1.2",
+            "title": "Ensure rsyslog Service is enabled",
+            "severity": "high", 
+            "message": "rsyslog service is not enabled"
+        } |
+        not rsyslog_enabled
+    ] + [
+        {
+            "control": "4.2.1.3",
+            "title": "Ensure logging is configured",
+            "severity": "medium",
+            "message": "Logging is not properly configured"
+        } |
+        not logging_configured
+    ]
+}
+
+rsyslog_installed if {
+    "rsyslog" in input.ansible_facts.ansible_packages
+}
+
+rsyslog_enabled if {
+    input.ansible_facts.ansible_services["rsyslog"].state == "running"
+    input.ansible_facts.ansible_services["rsyslog"].enabled == true
+}
+
+logging_configured if {
+    count(input.rsyslog_config.rules) > 0
+}
+
+# 5. Access, Authentication and Authorization Violations  
+access_auth_violations := violations if {
+    violations := [
+        violation |
+        some violation in cron_violations
+    ] + [
+        violation |
+        some violation in ssh_violations
+    ] + [
+        violation |
+        some violation in pam_violations
+    ]
+}
+
+# 5.1 Configure cron
+cron_violations := violations if {
+    violations := [
+        {
+            "control": "5.1.1",
+            "title": "Ensure cron daemon is enabled",
+            "severity": "medium",
+            "message": "cron daemon is not enabled"
+        } |
+        not cron_enabled
+    ] + [
+        {
+            "control": "5.1.2",
+            "title": "Ensure permissions on /etc/crontab are configured",
+            "severity": "high",
+            "message": "/etc/crontab permissions are not secure"
+        } |
+        not crontab_permissions_secure
+    ]
+}
+
+cron_enabled if {
+    input.ansible_facts.ansible_services["cron"].state == "running"
+    input.ansible_facts.ansible_services["cron"].enabled == true
+}
+
+crontab_permissions_secure if {
+    input.file_permissions["/etc/crontab"].mode == "0600"
+    input.file_permissions["/etc/crontab"].owner == "root"
+    input.file_permissions["/etc/crontab"].group == "root"
+}
+
+# 5.2 SSH Server Configuration
+ssh_violations := violations if {
+    violations := [
+        {
+            "control": "5.2.1",
+            "title": "Ensure permissions on /etc/ssh/sshd_config are configured",
+            "severity": "high",
+            "message": "sshd_config permissions are not secure"
+        } |
+        not sshd_config_permissions_secure
+    ] + [
+        {
+            "control": "5.2.2",
+            "title": "Ensure permissions on SSH private host key files are configured",
+            "severity": "critical",
+            "message": "SSH private key permissions are not secure"
+        } |
+        not ssh_private_keys_secure
+    ] + [
+        {
+            "control": "5.2.3",
+            "title": "Ensure permissions on SSH public host key files are configured",
+            "severity": "medium",
+            "message": "SSH public key permissions are not secure"
+        } |
+        not ssh_public_keys_secure
+    ] + [
+        {
+            "control": "5.2.4",
+            "title": "Ensure SSH access is limited", 
+            "severity": "high",
+            "message": "SSH access is not properly limited"
+        } |
+        not ssh_access_limited
+    ] + [
+        {
+            "control": "5.2.5",
+            "title": "Ensure SSH LogLevel is appropriate",
+            "severity": "medium",
+            "message": "SSH LogLevel is not appropriate"
+        } |
+        not ssh_loglevel_appropriate
+    ] + [
+        {
+            "control": "5.2.6",
+            "title": "Ensure SSH X11 forwarding is disabled",
+            "severity": "medium",
+            "message": "SSH X11 forwarding is enabled"
+        } |
+        ssh_x11_forwarding_enabled
+    ] + [
+        {
+            "control": "5.2.7",
+            "title": "Ensure SSH MaxAuthTries is set to 4 or less",
+            "severity": "medium",
+            "message": "SSH MaxAuthTries is too high"
+        } |
+        ssh_max_auth_tries_high
+    ] + [
+        {
+            "control": "5.2.8",
+            "title": "Ensure SSH IgnoreRhosts is enabled",
+            "severity": "medium",
+            "message": "SSH IgnoreRhosts is not enabled"
+        } |
+        not ssh_ignore_rhosts
+    ] + [
+        {
+            "control": "5.2.9",
+            "title": "Ensure SSH HostbasedAuthentication is disabled",
+            "severity": "high",
+            "message": "SSH HostbasedAuthentication is enabled"
+        } |
+        ssh_hostbased_auth_enabled
+    ] + [
+        {
+            "control": "5.2.10", 
+            "title": "Ensure SSH root login is disabled",
+            "severity": "critical",
+            "message": "SSH root login is enabled"
+        } |
+        ssh_root_login_enabled
+    ] + [
+        {
+            "control": "5.2.11",
+            "title": "Ensure SSH PermitEmptyPasswords is disabled",
+            "severity": "critical",
+            "message": "SSH allows empty passwords"
+        } |
+        ssh_empty_passwords_allowed
+    ] + [
+        {
+            "control": "5.2.12",
+            "title": "Ensure SSH PermitUserEnvironment is disabled",
+            "severity": "medium",
+            "message": "SSH PermitUserEnvironment is enabled"
+        } |
+        ssh_permit_user_env_enabled
+    ]
+}
+
+sshd_config_permissions_secure if {
+    input.file_permissions["/etc/ssh/sshd_config"].mode == "0600"
+    input.file_permissions["/etc/ssh/sshd_config"].owner == "root"
+}
+
+ssh_private_keys_secure if {
+    count([key | 
+        key := input.ssh_host_keys[_]
+        key.private == true
+        key.mode != "0600"
+    ]) == 0
+}
+
+ssh_public_keys_secure if {
+    count([key |
+        key := input.ssh_host_keys[_] 
+        key.private == false
+        key.mode != "0644"
+    ]) == 0
+}
+
+ssh_access_limited if {
+    count(input.ssh_config.allowed_users) > 0
+}
+
+ssh_loglevel_appropriate if {
+    input.ssh_config.log_level in ["VERBOSE", "INFO"]
+}
+
+ssh_x11_forwarding_enabled if {
+    input.ssh_config.x11_forwarding == "yes"
+}
+
+ssh_max_auth_tries_high if {
+    to_number(input.ssh_config.max_auth_tries) > 4
+}
+
+ssh_ignore_rhosts if {
+    input.ssh_config.ignore_rhosts == "yes"
+}
+
+ssh_hostbased_auth_enabled if {
+    input.ssh_config.hostbased_authentication == "yes"
+}
+
+ssh_root_login_enabled if {
+    input.ssh_config.permit_root_login != "no"
+}
+
+ssh_empty_passwords_allowed if {
+    input.ssh_config.permit_empty_passwords == "yes"
+}
+
+ssh_permit_user_env_enabled if {
+    input.ssh_config.permit_user_environment == "yes"
+}
+
+# 5.3 Configure PAM
+pam_violations := violations if {
+    violations := [
+        {
+            "control": "5.3.1",
+            "title": "Ensure password creation requirements are configured",
+            "severity": "high",
+            "message": "Password creation requirements not configured"
+        } |
+        not password_requirements_configured
+    ] + [
+        {
+            "control": "5.3.2",
+            "title": "Ensure lockout for failed password attempts is configured",
+            "severity": "high", 
+            "message": "Account lockout not configured"
+        } |
+        not account_lockout_configured
+    ] + [
+        {
+            "control": "5.3.3",
+            "title": "Ensure password reuse is limited",
+            "severity": "medium",
+            "message": "Password reuse is not limited"
+        } |
+        not password_reuse_limited
+    ] + [
+        {
+            "control": "5.3.4",
+            "title": "Ensure password hashing algorithm is SHA-512",
+            "severity": "high",
+            "message": "Password hashing algorithm is not SHA-512"
+        } |
+        not password_hashing_sha512
+    ]
+}
+
+password_requirements_configured if {
+    input.pam_config.pwquality.minlen >= 14
+    input.pam_config.pwquality.dcredit <= -1
+    input.pam_config.pwquality.ucredit <= -1
+    input.pam_config.pwquality.ocredit <= -1
+    input.pam_config.pwquality.lcredit <= -1
+}
+
+account_lockout_configured if {
+    input.pam_config.faillock.deny <= 5
+    input.pam_config.faillock.unlock_time >= 900
+}
+
+password_reuse_limited if {
+    input.pam_config.pwhistory.remember >= 5
+}
+
+password_hashing_sha512 if {
+    input.pam_config.password.hash_algorithm == "sha512"
+}
+
+# 6. System Maintenance Violations
+system_maintenance_violations := violations if {
+    violations := [
+        violation |
+        some violation in user_account_violations
+    ] + [
+        violation |
+        some violation in user_group_violations
+    ]
+}
+
+# 6.1 System File Permissions
+user_account_violations := violations if {
+    violations := [
+        {
+            "control": "6.1.1",
+            "title": "Audit system file permissions",
+            "severity": "high",
+            "message": "System files have incorrect permissions"
+        } |
+        not system_file_permissions_correct
+    ] + [
+        {
+            "control": "6.1.2",
+            "title": "Ensure permissions on /etc/passwd are configured",
+            "severity": "critical",
+            "message": "/etc/passwd permissions are not secure"
+        } |
+        not passwd_permissions_secure
+    ] + [
+        {
+            "control": "6.1.3",
+            "title": "Ensure permissions on /etc/shadow are configured",
+            "severity": "critical",
+            "message": "/etc/shadow permissions are not secure"
+        } |
+        not shadow_permissions_secure
+    ] + [
+        {
+            "control": "6.1.4",
+            "title": "Ensure permissions on /etc/group are configured",
+            "severity": "high",
+            "message": "/etc/group permissions are not secure"
+        } |
+        not group_permissions_secure
+    ]
+}
+
+system_file_permissions_correct if {
+    count(input.system_file_issues) == 0
+}
+
+passwd_permissions_secure if {
+    input.file_permissions["/etc/passwd"].mode == "0644"
+    input.file_permissions["/etc/passwd"].owner == "root"
+    input.file_permissions["/etc/passwd"].group == "root"
+}
+
+shadow_permissions_secure if {
+    input.file_permissions["/etc/shadow"].mode == "0640"
+    input.file_permissions["/etc/shadow"].owner == "root"
+    input.file_permissions["/etc/shadow"].group == "shadow"
+}
+
+group_permissions_secure if {
+    input.file_permissions["/etc/group"].mode == "0644"
+    input.file_permissions["/etc/group"].owner == "root"
+    input.file_permissions["/etc/group"].group == "root"
+}
+
+# 6.2 User and Group Settings
+user_group_violations := violations if {
+    violations := [
+        {
+            "control": "6.2.1",
+            "title": "Ensure password fields are not empty",
+            "severity": "critical",
+            "message": "Users with empty password fields found"
+        } |
+        users_with_empty_passwords
+    ] + [
+        {
+            "control": "6.2.2",
+            "title": "Ensure no legacy '+' entries exist in /etc/passwd",
+            "severity": "high",
+            "message": "Legacy '+' entries found in /etc/passwd"
+        } |
+        legacy_passwd_entries
+    ] + [
+        {
+            "control": "6.2.3",
+            "title": "Ensure all users' home directories exist",
+            "severity": "medium",
+            "message": "Users with missing home directories found"
+        } |
+        users_missing_home_dirs
+    ] + [
+        {
+            "control": "6.2.4",
+            "title": "Ensure users' home directories permissions are 750 or more restrictive",
+            "severity": "high",
+            "message": "Users' home directories have excessive permissions"
+        } |
+        home_dirs_excessive_permissions
+    ] + [
+        {
+            "control": "6.2.5",
+            "title": "Ensure users own their home directories",
+            "severity": "medium",
+            "message": "Users do not own their home directories"
+        } |
+        users_dont_own_home_dirs
+    ]
+}
+
+users_with_empty_passwords if {
+    count(input.users_empty_passwords) > 0
+}
+
+legacy_passwd_entries if {
+    count(input.legacy_passwd_entries) > 0
+}
+
+users_missing_home_dirs if {
+    count(input.users_missing_home_dirs) > 0
+}
+
+home_dirs_excessive_permissions if {
+    count(input.home_dirs_excessive_perms) > 0
+}
+
+users_dont_own_home_dirs if {
+    count(input.users_dont_own_home) > 0
+}
+
+# Generate compliance summary
+compliance_summary := {
+    "total_controls": 150,
+    "compliant_controls": total_controls - count(violations),
+    "violations": count(violations),
+    "compliance_percentage": ((total_controls - count(violations)) / total_controls) * 100,
+    "critical_violations": count([v | v := violations[_]; v.severity == "critical"]),
+    "high_violations": count([v | v := violations[_]; v.severity == "high"]),
+    "medium_violations": count([v | v := violations[_]; v.severity == "medium"]),
+    "low_violations": count([v | v := violations[_]; v.severity == "low"])
+}
+
+total_controls := 150

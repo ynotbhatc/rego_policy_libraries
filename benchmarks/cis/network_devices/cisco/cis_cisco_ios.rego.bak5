@@ -1,0 +1,633 @@
+package cis
+
+# CIS Cisco IOS Benchmark v4.1.0
+# Center for Internet Security (CIS) Cisco IOS Benchmark
+# This policy implements comprehensive Cisco IOS security controls
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		management_plane_violations,
+		control_plane_violations,
+		data_plane_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: Management Plane
+management_plane_violations := [
+    "1.1.1: Ensure 'aaa new-model' is configured" |
+    not aaa_new_model_configured
+]
+
+aaa_new_model_configured if {
+    "aaa new-model" in input.cisco_config
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.1.2: Ensure 'aaa authentication login' is configured" |
+    not aaa_authentication_login_configured
+])
+
+aaa_authentication_login_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "aaa authentication login default")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.1.3: Ensure 'aaa authorization exec' is configured" |
+    not aaa_authorization_exec_configured
+])
+
+aaa_authorization_exec_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "aaa authorization exec default")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.1.4: Ensure 'aaa accounting exec' is configured" |
+    not aaa_accounting_exec_configured
+])
+
+aaa_accounting_exec_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "aaa accounting exec default")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.1.5: Ensure 'aaa accounting commands' is configured" |
+    not aaa_accounting_commands_configured
+])
+
+aaa_accounting_commands_configured if {
+    config_line := input.cisco_config[_]
+    regex.match("aaa accounting commands \\d+ default", config_line)
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.1.6: Ensure 'aaa accounting connection' is configured" |
+    not aaa_accounting_connection_configured
+])
+
+aaa_accounting_connection_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "aaa accounting connection default")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.1.7: Ensure 'aaa accounting system' is configured" |
+    not aaa_accounting_system_configured
+])
+
+aaa_accounting_system_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "aaa accounting system default")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.2.1: Ensure 'username secret' is configured for local users" |
+    user := input.local_users[_]
+    not regex.match("username .* secret", user.config)
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.2.2: Ensure 'username privilege 15' is not configured" |
+    user := input.local_users[_]
+    contains(user.config, "privilege 15")
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.3.1: Ensure 'enable secret' is configured" |
+    not enable_secret_configured
+])
+
+enable_secret_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "enable secret")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.3.2: Ensure 'enable password' is not configured" |
+    config_line := input.cisco_config[_]
+    startswith(config_line, "enable password")
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.3.3: Ensure 'service password-encryption' is configured" |
+    not service_password_encryption_configured
+])
+
+service_password_encryption_configured if {
+    "service password-encryption" in input.cisco_config
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.4.1: Ensure 'banner motd' is configured" |
+    not banner_motd_configured
+])
+
+banner_motd_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "banner motd")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.4.2: Ensure 'banner login' is configured" |
+    not banner_login_configured
+])
+
+banner_login_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "banner login")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.4.3: Ensure 'banner exec' is configured" |
+    not banner_exec_configured
+])
+
+banner_exec_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "banner exec")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.5.1: Ensure 'transport input ssh' is configured for 'line vty'" |
+    not vty_transport_ssh_only
+])
+
+vty_transport_ssh_only if {
+    vty_line := input.vty_config[_]
+    vty_line == "transport input ssh"
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.5.2: Ensure 'exec-timeout' is configured for 'line vty'" |
+    not vty_exec_timeout_configured
+])
+
+vty_exec_timeout_configured if {
+    vty_line := input.vty_config[_]
+    startswith(vty_line, "exec-timeout")
+    not contains(vty_line, "exec-timeout 0 0")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.5.3: Ensure 'logging synchronous' is configured for 'line vty'" |
+    not vty_logging_synchronous_configured
+])
+
+vty_logging_synchronous_configured if {
+    vty_line := input.vty_config[_]
+    vty_line == "logging synchronous"
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.5.4: Ensure 'access-class' is configured for 'line vty'" |
+    not vty_access_class_configured
+])
+
+vty_access_class_configured if {
+    vty_line := input.vty_config[_]
+    startswith(vty_line, "access-class")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.6.1: Ensure 'exec-timeout' is configured for 'line console'" |
+    not console_exec_timeout_configured
+])
+
+console_exec_timeout_configured if {
+    console_line := input.console_config[_]
+    startswith(console_line, "exec-timeout")
+    not contains(console_line, "exec-timeout 0 0")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.6.2: Ensure 'logging synchronous' is configured for 'line console'" |
+    not console_logging_synchronous_configured
+])
+
+console_logging_synchronous_configured if {
+    console_line := input.console_config[_]
+    console_line == "logging synchronous"
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.7.1: Ensure 'ip ssh version 2' is configured" |
+    not ssh_version_2_configured
+])
+
+ssh_version_2_configured if {
+    "ip ssh version 2" in input.cisco_config
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.7.2: Ensure 'ip ssh time-out' is configured to 60 seconds or less" |
+    not ssh_timeout_configured
+])
+
+ssh_timeout_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "ip ssh time-out")
+    parts := split(config_line, " ")
+    timeout := to_number(parts[3])
+    timeout <= 60
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.7.3: Ensure 'ip ssh authentication-retries' is configured to 3 or less" |
+    not ssh_auth_retries_configured
+])
+
+ssh_auth_retries_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "ip ssh authentication-retries")
+    parts := split(config_line, " ")
+    retries := to_number(parts[3])
+    retries <= 3
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.8.1: Ensure 'logging on' is configured" |
+    not logging_on_configured
+])
+
+logging_on_configured if {
+    "logging on" in input.cisco_config
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.8.2: Ensure 'logging buffered' is configured" |
+    not logging_buffered_configured
+])
+
+logging_buffered_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "logging buffered")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.8.3: Ensure 'logging console critical' is configured" |
+    not logging_console_configured
+])
+
+logging_console_configured if {
+    config_line := input.cisco_config[_]
+    regex.match("logging console (critical|alerts|emergencies)", config_line)
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.8.4: Ensure 'logging host' is configured" |
+    not logging_host_configured
+])
+
+logging_host_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "logging host")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.8.5: Ensure 'logging trap informational' is configured" |
+    not logging_trap_configured
+])
+
+logging_trap_configured if {
+    config_line := input.cisco_config[_]
+    regex.match("logging trap (informational|warnings|notifications|errors|critical|alerts|emergencies)", config_line)
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.8.6: Ensure 'service timestamps log datetime' is configured" |
+    not service_timestamps_log_configured
+])
+
+service_timestamps_log_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "service timestamps log datetime")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.8.7: Ensure 'service timestamps debug datetime' is configured" |
+    not service_timestamps_debug_configured
+])
+
+service_timestamps_debug_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "service timestamps debug datetime")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.9.1: Ensure 'ntp authenticate' is configured" |
+    not ntp_authenticate_configured
+])
+
+ntp_authenticate_configured if {
+    "ntp authenticate" in input.cisco_config
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.9.2: Ensure 'ntp authentication-key' is configured" |
+    not ntp_authentication_key_configured
+])
+
+ntp_authentication_key_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "ntp authentication-key")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.9.3: Ensure 'ntp trusted-key' is configured" |
+    not ntp_trusted_key_configured
+])
+
+ntp_trusted_key_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "ntp trusted-key")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.9.4: Ensure 'ntp server' is configured with 'key' option" |
+    not ntp_server_with_key_configured
+])
+
+ntp_server_with_key_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "ntp server")
+    contains(config_line, "key")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.10.1: Ensure SNMP community strings are not set to public/private" |
+    community := input.snmp_communities[_]
+    community.string in ["public", "private"]
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.10.2: Ensure SNMP community strings are configured with RO access" |
+    community := input.snmp_communities[_]
+    community.access == "RW"
+])
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.10.3: Ensure 'snmp-server location' is configured" |
+    not snmp_server_location_configured
+])
+
+snmp_server_location_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "snmp-server location")
+}
+
+management_plane_violations := array.concat(management_plane_violations, [
+    "1.10.4: Ensure 'snmp-server contact' is configured" |
+    not snmp_server_contact_configured
+])
+
+snmp_server_contact_configured if {
+    config_line := input.cisco_config[_]
+    startswith(config_line, "snmp-server contact")
+}
+
+# Section 2: Control Plane
+control_plane_violations := [
+    "2.1.1: Ensure 'no service finger' is configured" |
+    not service_finger_disabled
+]
+
+service_finger_disabled if {
+    "no service finger" in input.cisco_config
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.2: Ensure 'no service pad' is configured" |
+    not service_pad_disabled
+])
+
+service_pad_disabled if {
+    "no service pad" in input.cisco_config
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.3: Ensure 'no service udp-small-servers' is configured" |
+    not service_udp_small_servers_disabled
+])
+
+service_udp_small_servers_disabled if {
+    "no service udp-small-servers" in input.cisco_config
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.4: Ensure 'no service tcp-small-servers' is configured" |
+    not service_tcp_small_servers_disabled
+])
+
+service_tcp_small_servers_disabled if {
+    "no service tcp-small-servers" in input.cisco_config
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.5: Ensure 'no cdp run' is configured" |
+    not cdp_disabled
+])
+
+cdp_disabled if {
+    "no cdp run" in input.cisco_config
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.6: Ensure 'no lldp run' is configured" |
+    not lldp_disabled
+])
+
+lldp_disabled if {
+    "no lldp run" in input.cisco_config
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.7: Ensure 'no service dhcp' is configured" |
+    not service_dhcp_disabled
+])
+
+service_dhcp_disabled if {
+    "no service dhcp" in input.cisco_config
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.8: Ensure 'no ip bootp server' is configured" |
+    not ip_bootp_server_disabled
+])
+
+ip_bootp_server_disabled if {
+    "no ip bootp server" in input.cisco_config
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.9: Ensure 'no ip http server' is configured" |
+    not ip_http_server_disabled
+])
+
+ip_http_server_disabled if {
+    "no ip http server" in input.cisco_config
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.1.10: Ensure 'no ip http secure-server' is configured if not required" |
+    not ip_http_secure_server_disabled
+])
+
+ip_http_secure_server_disabled if {
+    "no ip http secure-server" in input.cisco_config
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.2.1: Ensure 'ip access-list extended' is configured for infrastructure protection" |
+    not infrastructure_acl_configured
+])
+
+infrastructure_acl_configured if {
+    acl := input.access_lists[_]
+    acl.type == "extended"
+    acl.name == "INFRASTRUCTURE_ACL"
+}
+
+control_plane_violations := array.concat(control_plane_violations, [
+    "2.2.2: Ensure 'control-plane' is configured" |
+    not control_plane_configured
+])
+
+control_plane_configured if {
+    "control-plane" in input.cisco_config
+}
+
+# Section 3: Data Plane
+data_plane_violations := [
+    "3.1.1: Ensure 'no ip source-route' is configured" |
+    not ip_source_route_disabled
+]
+
+ip_source_route_disabled if {
+    "no ip source-route" in input.cisco_config
+}
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.1.2: Ensure 'no ip proxy-arp' is configured on all interfaces" |
+    interface := input.interfaces[_]
+    not contains(interface.config, "no ip proxy-arp")
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.1.3: Ensure 'no ip unreachables' is configured on all interfaces" |
+    interface := input.interfaces[_]
+    not contains(interface.config, "no ip unreachables")
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.1.4: Ensure 'no ip mask-reply' is configured on all interfaces" |
+    interface := input.interfaces[_]
+    not contains(interface.config, "no ip mask-reply")
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.1.5: Ensure 'no ip redirects' is configured on all interfaces" |
+    interface := input.interfaces[_]
+    not contains(interface.config, "no ip redirects")
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.1.6: Ensure 'no ip directed-broadcast' is configured on all interfaces" |
+    interface := input.interfaces[_]
+    not contains(interface.config, "no ip directed-broadcast")
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.2.1: Ensure an ingress filter is applied on all external interfaces" |
+    interface := input.external_interfaces[_]
+    not interface.ingress_acl
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.2.2: Ensure an egress filter is applied on all external interfaces" |
+    interface := input.external_interfaces[_]
+    not interface.egress_acl
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.2.3: Ensure 'ip verify unicast source reachable-via rx' is configured on all external interfaces" |
+    interface := input.external_interfaces[_]
+    not contains(interface.config, "ip verify unicast source reachable-via rx")
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.3.1: Ensure 'switchport port-security' is configured on all access ports" |
+    interface := input.access_interfaces[_]
+    not contains(interface.config, "switchport port-security")
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.3.2: Ensure 'switchport port-security maximum' is configured appropriately" |
+    interface := input.access_interfaces[_]
+    contains(interface.config, "switchport port-security")
+    not regex.match("switchport port-security maximum [1-3]", interface.config)
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.3.3: Ensure 'switchport port-security violation shutdown' is configured" |
+    interface := input.access_interfaces[_]
+    contains(interface.config, "switchport port-security")
+    not contains(interface.config, "switchport port-security violation shutdown")
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.4.1: Ensure root guard is enabled on all access ports" |
+    interface := input.access_interfaces[_]
+    not contains(interface.config, "spanning-tree guard root")
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.4.2: Ensure loop guard is enabled on all non-designated ports" |
+    interface := input.trunk_interfaces[_]
+    not contains(interface.config, "spanning-tree guard loop")
+])
+
+data_plane_violations := array.concat(data_plane_violations, [
+    "3.4.3: Ensure BPDU guard is enabled on all access ports" |
+    interface := input.access_interfaces[_]
+    not contains(interface.config, "spanning-tree bpduguard enable")
+])
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 72,
+    "passing_controls": 72 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((72 - count(violations)) * 100) / 72,
+    "sections": {
+        "management_plane": {
+            "total": 45,
+            "violations": count(management_plane_violations)
+        },
+        "control_plane": {
+            "total": 12,
+            "violations": count(control_plane_violations)
+        },
+        "data_plane": {
+            "total": 15,
+            "violations": count(data_plane_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "management_plane_violations": management_plane_violations,
+    "control_plane_violations": control_plane_violations,
+    "data_plane_violations": data_plane_violations
+}

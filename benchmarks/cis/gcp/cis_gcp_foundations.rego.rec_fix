@@ -1,0 +1,653 @@
+package cis
+
+# CIS Google Cloud Platform Foundation Benchmark v1.3.0
+# Center for Internet Security (CIS) GCP Foundation Benchmark
+# This policy implements comprehensive GCP security controls
+
+import rego.v1
+
+# Main compliance rule - all controls must pass
+compliant if {
+    count(violations) == 0
+}
+
+# Aggregate all violations across sections
+violations := [v |
+	arrays := [
+		identity_access_violations,
+		logging_violations,
+		networking_violations,
+		virtual_machines_violations,
+		storage_violations,
+		sql_violations,
+		bigquery_violations
+	]
+	v := arrays[_][_]
+]
+
+# Section 1: Identity and Access Management
+identity_access_violations := [
+    "1.1: Ensure that corporate login credentials are used" |
+    user := input.iam_users[_]
+    endswith(user.email, "@gmail.com")
+]
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.2: Ensure that multi-factor authentication is enabled for all non-service accounts" |
+    user := input.iam_users[_]
+    not user.is_service_account
+    not user.mfa_enabled
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.3: Ensure that there are only GCP-managed service account keys for each service account" |
+    sa := input.service_accounts[_]
+    key := sa.keys[_]
+    key.key_type == "USER_MANAGED"
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.4: Ensure that ServiceAccount has no Admin privileges" |
+    binding := input.iam_bindings[_]
+    member := binding.members[_]
+    startswith(member, "serviceAccount:")
+    admin_role(binding.role)
+])
+
+admin_role(role) if {
+    role == "roles/owner"
+}
+
+admin_role(role) if {
+    role == "roles/editor"
+}
+
+admin_role(role) if {
+    contains(role, "admin")
+}
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.5: Ensure that IAM users are not assigned the Service Account User or Service Account Token Creator roles at project level" |
+    binding := input.iam_bindings[_]
+    member := binding.members[_]
+    startswith(member, "user:")
+    service_account_role(binding.role)
+])
+
+service_account_role(role) if {
+    role == "roles/iam.serviceAccountUser"
+}
+
+service_account_role(role) if {
+    role == "roles/iam.serviceAccountTokenCreator"
+}
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.6: Ensure that IAM users are not assigned Service Account Admin or Service Account Key Admin roles at project level" |
+    binding := input.iam_bindings[_]
+    member := binding.members[_]
+    startswith(member, "user:")
+    service_account_admin_role(binding.role)
+])
+
+service_account_admin_role(role) if {
+    role == "roles/iam.serviceAccountAdmin"
+}
+
+service_account_admin_role(role) if {
+    role == "roles/iam.serviceAccountKeyAdmin"
+}
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.7: Ensure user-managed/external keys for service accounts are rotated every 90 days or less" |
+    sa := input.service_accounts[_]
+    key := sa.keys[_]
+    key.key_type == "USER_MANAGED"
+    key.age_days > 90
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.8: Ensure that Separation of duties is enforced while assigning service account related roles to users" |
+    user := input.iam_users[_]
+    user_roles := [binding.role | binding := input.iam_bindings[_]; user.email in binding.members]
+    separation_of_duties_violation(user_roles)
+])
+
+separation_of_duties_violation(roles) if {
+    "roles/iam.serviceAccountAdmin" in roles
+    "roles/iam.serviceAccountUser" in roles
+}
+
+separation_of_duties_violation(roles) if {
+    "roles/iam.serviceAccountAdmin" in roles
+    "roles/iam.serviceAccountKeyAdmin" in roles
+}
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.9: Ensure that Cloud KMS cryptokeys are not anonymously or publicly accessible" |
+    binding := input.kms_key_bindings[_]
+    member := binding.members[_]
+    anonymous_or_public_member(member)
+])
+
+anonymous_or_public_member(member) if {
+    member == "allUsers"
+}
+
+anonymous_or_public_member(member) if {
+    member == "allAuthenticatedUsers"
+}
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.10: Ensure KMS encryption keys are rotated within a period of 90 days" |
+    key := input.kms_crypto_keys[_]
+    key.rotation_period_seconds > 7776000  # 90 days in seconds
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.11: Ensure that Separation of duties is enforced while assigning KMS related roles to users" |
+    user := input.iam_users[_]
+    user_roles := [binding.role | binding := input.iam_bindings[_]; user.email in binding.members]
+    kms_separation_of_duties_violation(user_roles)
+])
+
+kms_separation_of_duties_violation(roles) if {
+    "roles/cloudkms.admin" in roles
+    some kms_crypto_role in roles
+    kms_crypto_role != "roles/cloudkms.admin"
+    startswith(kms_crypto_role, "roles/cloudkms.crypto")
+}
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.12: Ensure API keys are not created for a project" |
+    count(input.api_keys) > 0
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.13: Ensure API keys are restricted to use by only specified Hosts and Apps" |
+    key := input.api_keys[_]
+    not key.restrictions.browser_key_restrictions
+    not key.restrictions.server_key_restrictions
+    not key.restrictions.android_key_restrictions
+    not key.restrictions.ios_key_restrictions
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.14: Ensure API keys are restricted to only APIs that application needs access" |
+    key := input.api_keys[_]
+    not key.restrictions.api_targets
+])
+
+identity_access_violations := array.concat(identity_access_violations, [
+    "1.15: Ensure API keys are rotated every 90 days" |
+    key := input.api_keys[_]
+    key.age_days > 90
+])
+
+# Section 2: Logging and Monitoring
+logging_violations := [
+    "2.1: Ensure that Cloud Audit Logging is configured properly across all services and all users from a project" |
+    service := input.audit_config.services[_]
+    audit_log_config := service.audit_log_configs[_]
+    audit_log_config.log_type != "ADMIN_READ"
+]
+
+logging_violations := array.concat(logging_violations, [
+    "2.2: Ensure that sinks are configured for all log entries" |
+    not input.logging_sinks.configured_for_all_logs
+])
+
+logging_violations := array.concat(logging_violations, [
+    "2.3: Ensure that retention policies on log buckets are configured using Bucket Lock" |
+    bucket := input.log_buckets[_]
+    not bucket.retention_policy.is_locked
+])
+
+logging_violations := array.concat(logging_violations, [
+    "2.4: Ensure log metric filter and alerts exist for project ownership assignments/changes" |
+    not project_ownership_alert_exists
+])
+
+project_ownership_alert_exists if {
+    filter := input.log_metric_filters[_]
+    contains(filter.filter, "protoPayload.serviceName=\"cloudresourcemanager.googleapis.com\"")
+    contains(filter.filter, "ProjectOwnership")
+    alert := input.alert_policies[_]
+    alert.conditions[_].condition_threshold.filter == sprintf("resource.type=\"gce_project\" AND metric.type=\"logging.googleapis.com/user/%s\"", [filter.name])
+}
+
+logging_violations := array.concat(logging_violations, [
+    "2.5: Ensure that the log metric filter and alerts exist for Audit Configuration Changes" |
+    not audit_config_change_alert_exists
+])
+
+audit_config_change_alert_exists if {
+    filter := input.log_metric_filters[_]
+    contains(filter.filter, "protoPayload.serviceName=\"cloudresourcemanager.googleapis.com\"")
+    contains(filter.filter, "SetIamPolicy")
+    alert := input.alert_policies[_]
+    alert.conditions[_].condition_threshold.filter == sprintf("resource.type=\"gce_project\" AND metric.type=\"logging.googleapis.com/user/%s\"", [filter.name])
+}
+
+logging_violations := array.concat(logging_violations, [
+    "2.6: Ensure that the log metric filter and alerts exist for Custom Role changes" |
+    not custom_role_changes_alert_exists
+])
+
+custom_role_changes_alert_exists if {
+    filter := input.log_metric_filters[_]
+    contains(filter.filter, "resource.type=\"iam_role\"")
+    contains(filter.filter, "protoPayload.methodName=\"google.iam.admin.v1.CreateRole\"")
+    alert := input.alert_policies[_]
+    alert.conditions[_].condition_threshold.filter == sprintf("resource.type=\"gce_project\" AND metric.type=\"logging.googleapis.com/user/%s\"", [filter.name])
+}
+
+logging_violations := array.concat(logging_violations, [
+    "2.7: Ensure that the log metric filter and alerts exist for VPC Network Firewall rule changes" |
+    not firewall_rule_changes_alert_exists
+])
+
+firewall_rule_changes_alert_exists if {
+    filter := input.log_metric_filters[_]
+    contains(filter.filter, "resource.type=\"gce_firewall_rule\"")
+    contains(filter.filter, "protoPayload.methodName=\"v1.compute.firewalls.insert\"")
+    alert := input.alert_policies[_]
+    alert.conditions[_].condition_threshold.filter == sprintf("resource.type=\"gce_project\" AND metric.type=\"logging.googleapis.com/user/%s\"", [filter.name])
+}
+
+logging_violations := array.concat(logging_violations, [
+    "2.8: Ensure that the log metric filter and alerts exist for VPC network route changes" |
+    not network_route_changes_alert_exists
+])
+
+network_route_changes_alert_exists if {
+    filter := input.log_metric_filters[_]
+    contains(filter.filter, "resource.type=\"gce_route\"")
+    contains(filter.filter, "protoPayload.methodName=\"v1.compute.routes.insert\"")
+    alert := input.alert_policies[_]
+    alert.conditions[_].condition_threshold.filter == sprintf("resource.type=\"gce_project\" AND metric.type=\"logging.googleapis.com/user/%s\"", [filter.name])
+}
+
+logging_violations := array.concat(logging_violations, [
+    "2.9: Ensure that the log metric filter and alerts exist for VPC network changes" |
+    not vpc_network_changes_alert_exists
+])
+
+vpc_network_changes_alert_exists if {
+    filter := input.log_metric_filters[_]
+    contains(filter.filter, "resource.type=\"gce_network\"")
+    contains(filter.filter, "protoPayload.methodName=\"v1.compute.networks.insert\"")
+    alert := input.alert_policies[_]
+    alert.conditions[_].condition_threshold.filter == sprintf("resource.type=\"gce_project\" AND metric.type=\"logging.googleapis.com/user/%s\"", [filter.name])
+}
+
+logging_violations := array.concat(logging_violations, [
+    "2.10: Ensure that the log metric filter and alerts exist for Cloud Storage IAM permission changes" |
+    not storage_iam_changes_alert_exists
+])
+
+storage_iam_changes_alert_exists if {
+    filter := input.log_metric_filters[_]
+    contains(filter.filter, "resource.type=\"gcs_bucket\"")
+    contains(filter.filter, "protoPayload.methodName=\"storage.setIamPermissions\"")
+    alert := input.alert_policies[_]
+    alert.conditions[_].condition_threshold.filter == sprintf("resource.type=\"gce_project\" AND metric.type=\"logging.googleapis.com/user/%s\"", [filter.name])
+}
+
+logging_violations := array.concat(logging_violations, [
+    "2.11: Ensure that the log metric filter and alerts exist for SQL instance configuration changes" |
+    not sql_instance_changes_alert_exists
+])
+
+sql_instance_changes_alert_exists if {
+    filter := input.log_metric_filters[_]
+    contains(filter.filter, "protoPayload.serviceName=\"sqladmin.googleapis.com\"")
+    contains(filter.filter, "protoPayload.methodName=\"cloudsql.instances.update\"")
+    alert := input.alert_policies[_]
+    alert.conditions[_].condition_threshold.filter == sprintf("resource.type=\"gce_project\" AND metric.type=\"logging.googleapis.com/user/%s\"", [filter.name])
+}
+
+# Section 3: Networking
+networking_violations := [
+    "3.1: Ensure that the default network does not exist in a project" |
+    network := input.vpc_networks[_]
+    network.name == "default"
+]
+
+networking_violations := array.concat(networking_violations, [
+    "3.2: Ensure legacy networks do not exist for a project" |
+    network := input.vpc_networks[_]
+    network.routing_mode == "LEGACY"
+])
+
+networking_violations := array.concat(networking_violations, [
+    "3.3: Ensure that DNSSEC is enabled for Cloud DNS" |
+    zone := input.dns_managed_zones[_]
+    not zone.dnssec_config.state == "on"
+])
+
+networking_violations := array.concat(networking_violations, [
+    "3.4: Ensure that RSASHA1 is not used for the key-signing key in Cloud DNS DNSSEC" |
+    zone := input.dns_managed_zones[_]
+    zone.dnssec_config.state == "on"
+    key := zone.dnssec_config.default_key_specs[_]
+    key.key_type == "keySigning"
+    key.algorithm == "rsasha1"
+])
+
+networking_violations := array.concat(networking_violations, [
+    "3.5: Ensure that RSASHA1 is not used for the zone-signing key in Cloud DNS DNSSEC" |
+    zone := input.dns_managed_zones[_]
+    zone.dnssec_config.state == "on"
+    key := zone.dnssec_config.default_key_specs[_]
+    key.key_type == "zoneSigning"
+    key.algorithm == "rsasha1"
+])
+
+networking_violations := array.concat(networking_violations, [
+    "3.6: Ensure that SSH access is restricted from the internet" |
+    firewall := input.firewall_rules[_]
+    firewall.direction == "INGRESS"
+    "0.0.0.0/0" in firewall.source_ranges
+    "tcp:22" in firewall.allowed[_].ports
+])
+
+networking_violations := array.concat(networking_violations, [
+    "3.7: Ensure that RDP access is restricted from the internet" |
+    firewall := input.firewall_rules[_]
+    firewall.direction == "INGRESS"
+    "0.0.0.0/0" in firewall.source_ranges
+    "tcp:3389" in firewall.allowed[_].ports
+])
+
+networking_violations := array.concat(networking_violations, [
+    "3.8: Ensure that VPC Flow Logs is enabled for every subnet in a VPC Network" |
+    subnet := input.subnets[_]
+    not subnet.enable_flow_logs
+])
+
+networking_violations := array.concat(networking_violations, [
+    "3.9: Ensure no HTTPS or SSL proxy load balancers permit SSL policies with weak cipher suites" |
+    lb := input.https_proxy_load_balancers[_]
+    policy := lb.ssl_policy
+    weak_cipher_suite(policy.profile, policy.min_tls_version)
+])
+
+weak_cipher_suite(profile, min_tls_version) if {
+    profile == "COMPATIBLE"
+}
+
+weak_cipher_suite(profile, min_tls_version) if {
+    profile == "MODERN"
+    min_tls_version != "TLS_1_2"
+}
+
+# Section 4: Virtual Machines
+virtual_machines_violations := [
+    "4.1: Ensure that instances are not configured to use the default service account" |
+    instance := input.compute_instances[_]
+    sa := instance.service_accounts[_]
+    endswith(sa.email, "-compute@developer.gserviceaccount.com")
+]
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "4.2: Ensure that instances are not configured to use the default service account with full access to all Cloud APIs" |
+    instance := input.compute_instances[_]
+    sa := instance.service_accounts[_]
+    endswith(sa.email, "-compute@developer.gserviceaccount.com")
+    "https://www.googleapis.com/auth/cloud-platform" in sa.scopes
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "4.3: Ensure 'Block Project-wide SSH keys' is enabled for VM instances" |
+    instance := input.compute_instances[_]
+    not instance.metadata.items["block-project-ssh-keys"] == "true"
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "4.4: Ensure oslogin is enabled for a Project" |
+    not input.project_metadata.common_instance_metadata.items["enable-oslogin"] == "TRUE"
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "4.5: Ensure 'Enable connecting to serial ports' is not enabled for VM Instance" |
+    instance := input.compute_instances[_]
+    instance.metadata.items["serial-port-enable"] == "true"
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "4.6: Ensure that IP forwarding is not enabled on Instances" |
+    instance := input.compute_instances[_]
+    instance.can_ip_forward == true
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "4.7: Ensure VM disks for critical VMs are encrypted with Customer-Supplied Encryption Keys (CSEK)" |
+    instance := input.compute_instances[_]
+    instance.critical == true
+    disk := instance.disks[_]
+    not disk.disk_encryption_key.sha256
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "4.8: Ensure Compute instances are launched with Shielded VM enabled" |
+    instance := input.compute_instances[_]
+    not instance.shielded_instance_config.enable_secure_boot
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "4.9: Ensure that Compute instances do not have public IP addresses" |
+    instance := input.compute_instances[_]
+    nic := instance.network_interfaces[_]
+    nic.access_configs[_].nat_ip
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "4.10: Ensure that App Engine applications enforce HTTPS connections" |
+    app := input.app_engine_applications[_]
+    version := app.versions[_]
+    handler := version.handlers[_]
+    handler.security_level != "secure_always"
+])
+
+virtual_machines_violations := array.concat(virtual_machines_violations, [
+    "4.11: Ensure that Compute instances have Confidential Computing enabled" |
+    instance := input.compute_instances[_]
+    instance.confidential_instance_config.enable_confidential_compute != true
+])
+
+# Section 5: Storage
+storage_violations := [
+    "5.1: Ensure that Cloud Storage bucket is not anonymously or publicly accessible" |
+    bucket := input.storage_buckets[_]
+    binding := bucket.iam_bindings[_]
+    member := binding.members[_]
+    anonymous_or_public_member(member)
+]
+
+storage_violations := array.concat(storage_violations, [
+    "5.2: Ensure that Cloud Storage buckets have uniform bucket-level access enabled" |
+    bucket := input.storage_buckets[_]
+    not bucket.uniform_bucket_level_access.enabled
+])
+
+storage_violations := array.concat(storage_violations, [
+    "5.3: Ensure that logging is enabled for Cloud Trail buckets" |
+    bucket := input.storage_buckets[_]
+    bucket.is_log_bucket == true
+    not bucket.logging.log_bucket
+])
+
+storage_violations := array.concat(storage_violations, [
+    "5.4: Ensure that retention policies on log buckets are configured using Bucket Lock" |
+    bucket := input.storage_buckets[_]
+    bucket.is_log_bucket == true
+    not bucket.retention_policy.is_locked
+])
+
+# Section 6: Cloud SQL Database Services
+sql_violations := [
+    "6.1: Ensure that a MySQL database instance does not allow anyone to connect with administrative privileges" |
+    instance := input.sql_instances[_]
+    instance.database_version == "MYSQL_8_0"
+    user := instance.users[_]
+    user.name == "root"
+    user.host == "%"
+]
+
+sql_violations := array.concat(sql_violations, [
+    "6.2: Ensure that the 'local_infile' database flag for a Cloud SQL Mysql instance is set to 'off'" |
+    instance := input.sql_instances[_]
+    startswith(instance.database_version, "MYSQL")
+    flag := instance.settings.database_flags[_]
+    flag.name == "local_infile"
+    flag.value == "on"
+])
+
+sql_violations := array.concat(sql_violations, [
+    "6.3: Ensure that the 'log_checkpoints' database flag for Cloud SQL PostgreSQL instance is set to 'on'" |
+    instance := input.sql_instances[_]
+    startswith(instance.database_version, "POSTGRES")
+    flag := instance.settings.database_flags[_]
+    flag.name == "log_checkpoints"
+    flag.value == "off"
+])
+
+sql_violations := array.concat(sql_violations, [
+    "6.4: Ensure that the 'log_connections' database flag for Cloud SQL PostgreSQL instance is set to 'on'" |
+    instance := input.sql_instances[_]
+    startswith(instance.database_version, "POSTGRES")
+    flag := instance.settings.database_flags[_]
+    flag.name == "log_connections"
+    flag.value == "off"
+])
+
+sql_violations := array.concat(sql_violations, [
+    "6.5: Ensure that the 'log_disconnections' database flag for Cloud SQL PostgreSQL instance is set to 'on'" |
+    instance := input.sql_instances[_]
+    startswith(instance.database_version, "POSTGRES")
+    flag := instance.settings.database_flags[_]
+    flag.name == "log_disconnections"
+    flag.value == "off"
+])
+
+sql_violations := array.concat(sql_violations, [
+    "6.6: Ensure that the 'log_lock_waits' database flag for Cloud SQL PostgreSQL instance is set to 'on'" |
+    instance := input.sql_instances[_]
+    startswith(instance.database_version, "POSTGRES")
+    flag := instance.settings.database_flags[_]
+    flag.name == "log_lock_waits"
+    flag.value == "off"
+])
+
+sql_violations := array.concat(sql_violations, [
+    "6.7: Ensure that the 'log_temp_files' database flag for Cloud SQL PostgreSQL instance is set to '0'" |
+    instance := input.sql_instances[_]
+    startswith(instance.database_version, "POSTGRES")
+    flag := instance.settings.database_flags[_]
+    flag.name == "log_temp_files"
+    to_number(flag.value) != 0
+])
+
+sql_violations := array.concat(sql_violations, [
+    "6.8: Ensure that the 'log_min_duration_statement' database flag for Cloud SQL PostgreSQL instance is set to '-1'" |
+    instance := input.sql_instances[_]
+    startswith(instance.database_version, "POSTGRES")
+    flag := instance.settings.database_flags[_]
+    flag.name == "log_min_duration_statement"
+    flag.value != "-1"
+])
+
+sql_violations := array.concat(sql_violations, [
+    "6.9: Ensure that Cloud SQL database instances are not open to the world" |
+    instance := input.sql_instances[_]
+    network := instance.settings.ip_configuration.authorized_networks[_]
+    network.value == "0.0.0.0/0"
+])
+
+sql_violations := array.concat(sql_violations, [
+    "6.10: Ensure that Cloud SQL database instances do not have public IPs" |
+    instance := input.sql_instances[_]
+    instance.settings.ip_configuration.ipv4_enabled == true
+])
+
+sql_violations := array.concat(sql_violations, [
+    "6.11: Ensure that Cloud SQL database instances require SSL" |
+    instance := input.sql_instances[_]
+    not instance.settings.ip_configuration.require_ssl
+])
+
+sql_violations := array.concat(sql_violations, [
+    "6.12: Ensure that Cloud SQL database instances are configured with automated backups" |
+    instance := input.sql_instances[_]
+    not instance.settings.backup_configuration.enabled
+])
+
+# Section 7: BigQuery
+bigquery_violations := [
+    "7.1: Ensure that BigQuery datasets are not anonymously or publicly accessible" |
+    dataset := input.bigquery_datasets[_]
+    access := dataset.access[_]
+    access.special_group == "allAuthenticatedUsers"
+]
+
+bigquery_violations := array.concat(bigquery_violations, [
+    "7.2: Ensure that all BigQuery Tables are encrypted with Customer-managed encryption key (CMEK)" |
+    table := input.bigquery_tables[_]
+    not table.encryption_configuration.kms_key_name
+])
+
+bigquery_violations := array.concat(bigquery_violations, [
+    "7.3: Ensure that a Default Customer-managed encryption key (CMEK) is specified for all BigQuery Data Sets" |
+    dataset := input.bigquery_datasets[_]
+    not dataset.default_encryption_configuration.kms_key_name
+])
+
+# Compliance summary for reporting
+compliance_summary := {
+    "total_controls": 102,
+    "passing_controls": 102 - count(violations),
+    "failing_controls": count(violations),
+    "compliance_percentage": ((102 - count(violations)) * 100) / 102,
+    "sections": {
+        "identity_access": {
+            "total": 15,
+            "violations": count(identity_access_violations)
+        },
+        "logging": {
+            "total": 11,
+            "violations": count(logging_violations)
+        },
+        "networking": {
+            "total": 9,
+            "violations": count(networking_violations)
+        },
+        "virtual_machines": {
+            "total": 11,
+            "violations": count(virtual_machines_violations)
+        },
+        "storage": {
+            "total": 4,
+            "violations": count(storage_violations)
+        },
+        "sql": {
+            "total": 12,
+            "violations": count(sql_violations)
+        },
+        "bigquery": {
+            "total": 3,
+            "violations": count(bigquery_violations)
+        }
+    }
+}
+
+# Detailed findings for remediation
+detailed_findings := {
+    "identity_access_violations": identity_access_violations,
+    "logging_violations": logging_violations,
+    "networking_violations": networking_violations,
+    "virtual_machines_violations": virtual_machines_violations,
+    "storage_violations": storage_violations,
+    "sql_violations": sql_violations,
+    "bigquery_violations": bigquery_violations
+}
