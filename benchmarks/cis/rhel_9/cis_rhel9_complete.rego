@@ -21,6 +21,13 @@ import data.cis_rhel9.cron
 import data.cis_rhel9.boot_security
 import data.cis_rhel9.initial_setup
 
+# Extended hardening modules (STIG / NIST / EDA drift detection)
+# These supplement the 338 CIS controls but are not part of CIS RHEL 9 v2.0.0.
+# They are evaluated separately so the CIS compliance score is not affected.
+import data.cis_rhel9.storage_encryption
+import data.cis_rhel9.certificate_validation
+import data.cis_rhel9.authorized_keys
+
 # =============================================================================
 # MAIN COMPLIANCE RULE
 # =============================================================================
@@ -349,4 +356,88 @@ executive_summary := {
 	"total_violations": count(all_violations),
 	"critical_issues": count(critical_risks),
 	"top_priorities": [rec | some rec in generate_recommendations; rec.priority == "critical"],
+}
+
+# =============================================================================
+# EXTENDED HARDENING (STIG / NIST / EDA drift detection)
+# Separate from the 338-control CIS score — does not affect `compliant`.
+# Sources: DISA STIG RHEL 9, NIST SP 800-53 SC-13/SC-17/SC-28/IA-3/IA-5
+# =============================================================================
+
+extended_violations := array.concat(
+	array.concat(
+		[v | some v in storage_encryption.violations],
+		[v | some v in certificate_validation.violations],
+	),
+	[v | some v in authorized_keys.violations],
+)
+
+# True when all extended hardening checks pass
+hardening_compliant if {
+	storage_encryption.compliant
+	certificate_validation.compliant
+	authorized_keys.compliant
+}
+
+# True when both CIS baseline AND extended hardening pass
+fully_hardened_compliant if {
+	compliant
+	hardening_compliant
+}
+
+extended_hardening_summary := {
+	"hardening_compliant": hardening_compliant,
+	"fully_hardened_compliant": fully_hardened_compliant,
+	"extended_violation_count": count(extended_violations),
+	"modules": {
+		"storage_encryption": {
+			"compliant": storage_encryption.compliant,
+			"violations": count(storage_encryption.violations),
+			"standards": ["STIG RHEL-09-231xxx", "STIG RHEL-09-672xxx", "NIST SC-28"],
+		},
+		"certificate_validation": {
+			"compliant": certificate_validation.compliant,
+			"violations": count(certificate_validation.violations),
+			"standards": ["NIST SC-17", "NIST IA-5", "CIS 1.8"],
+		},
+		"authorized_keys": {
+			"compliant": authorized_keys.compliant,
+			"violations": count(authorized_keys.violations),
+			"standards": ["CIS 5.2", "STIG RHEL-09-255xxx", "NIST IA-3"],
+		},
+	},
+}
+
+# Recommendations for extended hardening violations
+generate_recommendations contains recommendation if {
+	not storage_encryption.compliant
+	recommendation := {
+		"priority": "critical",
+		"section": "Storage Encryption",
+		"issue": sprintf("%d storage encryption violations found", [count(storage_encryption.violations)]),
+		"action": "Enable LUKS encryption on data partitions, encrypt swap, verify FIPS mode",
+		"controls": "STIG RHEL-09-231xxx / NIST SC-28",
+	}
+}
+
+generate_recommendations contains recommendation if {
+	not certificate_validation.compliant
+	recommendation := {
+		"priority": "high",
+		"section": "Certificate and PKI",
+		"issue": sprintf("%d certificate violations found", [count(certificate_validation.violations)]),
+		"action": "Renew expired/expiring certificates, remove weak keys, audit trust store",
+		"controls": "NIST SC-17 / IA-5 / CIS 1.8",
+	}
+}
+
+generate_recommendations contains recommendation if {
+	not authorized_keys.compliant
+	recommendation := {
+		"priority": "critical",
+		"section": "SSH Authorized Keys",
+		"issue": sprintf("%d authorized_keys violations found", [count(authorized_keys.violations)]),
+		"action": "Remove unauthorized keys, fix permissions, enforce approved-key baseline",
+		"controls": "CIS 5.2 / STIG RHEL-09-255xxx / NIST IA-3",
+	}
 }
