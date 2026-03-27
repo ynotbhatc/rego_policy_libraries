@@ -373,6 +373,8 @@ extended_violations := array.concat(
 )
 
 # True when all extended hardening checks pass
+default hardening_compliant := false
+
 hardening_compliant if {
 	storage_encryption.compliant
 	certificate_validation.compliant
@@ -380,6 +382,8 @@ hardening_compliant if {
 }
 
 # True when both CIS baseline AND extended hardening pass
+default fully_hardened_compliant := false
+
 fully_hardened_compliant if {
 	compliant
 	hardening_compliant
