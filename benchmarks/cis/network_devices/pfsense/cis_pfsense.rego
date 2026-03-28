@@ -331,7 +331,7 @@ captive_portal_disabled if {
 }
 
 captive_portal_disabled if {
-    every zone, config in input.captiveportal {
+    every _, config in input.captiveportal {
         config.enable == "0"
     }
 }
@@ -365,14 +365,17 @@ compliant if {
 
 total_controls := 22
 
+_overall_compliance := "PASS" if { compliant }
+_overall_compliance := "FAIL" if { not compliant }
+
 compliance_assessment := {
-    "compliant": compliant,
+    "compliant": count(violations) == 0,
     "summary": {
         "total_controls":        total_controls,
         "passing_controls":      total_controls - count(violations),
         "failing_controls":      count(violations),
         "compliance_percentage": ((total_controls - count(violations)) * 100) / total_controls,
-        "overall_compliance":    "PASS" if compliant else "FAIL",
+        "overall_compliance":    _overall_compliance,
     },
     "violations": violations,
     "section_compliance": {
@@ -383,9 +386,9 @@ compliance_assessment := {
         "5_packages":         count(section_5_violations) == 0,
     },
     "device_info": {
-        "hostname": input.system.hostname if input.system.hostname else "unknown",
-        "domain":   input.system.domain   if input.system.domain   else "unknown",
-        "version":  input.version         if input.version         else "unknown",
-        "platform": input.platform        if input.platform        else "pfsense",
+        "hostname": object.get(input.system, "hostname", "unknown"),
+        "domain":   object.get(input.system, "domain",   "unknown"),
+        "version":  object.get(input,        "version",  "unknown"),
+        "platform": object.get(input,        "platform", "pfsense"),
     },
 }

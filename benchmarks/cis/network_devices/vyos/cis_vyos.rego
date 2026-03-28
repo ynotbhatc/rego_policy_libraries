@@ -261,7 +261,7 @@ default_user_secured if {
 
 # 4.1.2  All users have encrypted passwords (not plaintext)
 all_users_encrypted if {
-    every username, user in input.system.login.user {
+    every _, user in input.system.login.user {
         user.authentication["encrypted-password"]
         not user.authentication["plaintext-password"]
     }
@@ -269,7 +269,7 @@ all_users_encrypted if {
 
 # 4.1.3  No operator-level users with admin capabilities beyond their role
 operator_accounts_scoped if {
-    every username, user in input.system.login.user {
+    every _, user in input.system.login.user {
         user.level == "admin"   # all accounts explicitly admin or operator
     }
 }
@@ -350,14 +350,17 @@ compliant if {
 
 total_controls := 20
 
+_overall_compliance := "PASS" if { compliant }
+_overall_compliance := "FAIL" if { not compliant }
+
 compliance_assessment := {
-    "compliant": compliant,
+    "compliant": count(violations) == 0,
     "summary": {
         "total_controls":        total_controls,
         "passing_controls":      total_controls - count(violations),
         "failing_controls":      count(violations),
         "compliance_percentage": ((total_controls - count(violations)) * 100) / total_controls,
-        "overall_compliance":    "PASS" if compliant else "FAIL",
+        "overall_compliance":    _overall_compliance,
     },
     "violations": violations,
     "section_compliance": {
@@ -368,9 +371,9 @@ compliance_assessment := {
         "5_system_hardening":  count(section_5_violations) == 0,
     },
     "device_info": {
-        "hostname":  input.system["host-name"] if input.system["host-name"] else "unknown",
-        "version":   input.version             if input.version             else "unknown",
-        "platform":  "vyos",
-        "timezone":  input.system["time-zone"] if input.system["time-zone"] else "unknown",
+        "hostname": object.get(input.system, "host-name", "unknown"),
+        "version":  object.get(input, "version", "unknown"),
+        "platform": "vyos",
+        "timezone": object.get(input.system, "time-zone", "unknown"),
     },
 }
