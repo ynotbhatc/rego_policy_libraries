@@ -1,155 +1,206 @@
 # Rego Policy Libraries
 
-A standalone library of Open Policy Agent (OPA) Rego policies for infrastructure
-compliance automation. Extracted from the
-[Ansible Automated Compliance (AAC)](https://github.com/ynotbhatc/compliance) project.
+> **332 production-ready OPA policies** covering CIS Benchmarks, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP, HIPAA, FedRAMP, and more — all in Rego v1 syntax, ready to load into any OPA instance.
 
-## Library Taxonomy
-
-Policies are organized across five domains:
-
-```
-benchmarks/         Technical security baselines (CIS, STIG)
-frameworks/         Regulatory compliance frameworks
-enforcement/        Gate-style policy-as-code checks (Ansible, Terraform, Git)
-governance/         AI and operational governance decisions
-threat_detection/   Active threat detection rules
-```
-
-### Benchmarks
-
-| Path | Standard | Coverage |
-|------|----------|----------|
-| `benchmarks/cis/os/linux/rhel_9/` | CIS RHEL 9 v2.0.0 | 338/338 (100%) |
-| `benchmarks/cis/os/linux/rhel_8/` | CIS RHEL 8 | Full |
-| `benchmarks/cis/os/linux/ubuntu_22_04/` | CIS Ubuntu 22.04 | Full |
-| `benchmarks/cis/os/linux/ubuntu_20_04/` | CIS Ubuntu 20.04 | Full |
-| `benchmarks/cis/os/linux/ubuntu_24_04/` | CIS Ubuntu 24.04 | Full |
-| `benchmarks/cis/os/linux/debian_11/` | CIS Debian 11 | Full |
-| `benchmarks/cis/os/linux/rocky_linux_8/` | CIS Rocky Linux 8 | Full |
-| `benchmarks/cis/os/linux/rocky_linux_9/` | CIS Rocky Linux 9 | Full |
-| `benchmarks/cis/os/linux/amazon_linux_2023/` | CIS Amazon Linux 2023 | Full |
-| `benchmarks/cis/os/windows/` | CIS Windows Server 2016/2019/2022, Win 10/11 | Full |
-| `benchmarks/cis/cloud/aws/` | CIS AWS Foundations | Full |
-| `benchmarks/cis/cloud/azure/` | CIS Azure Foundations | Full |
-| `benchmarks/cis/cloud/gcp/` | CIS GCP Foundations | Full |
-| `benchmarks/cis/containers/docker/` | CIS Docker | Full |
-| `benchmarks/cis/containers/kubernetes/` | CIS Kubernetes | Full |
-| `benchmarks/cis/containers/openshift/` | CIS OpenShift 4 | Full |
-| `benchmarks/cis/databases/mysql/` | CIS MySQL 8 | Full |
-| `benchmarks/cis/databases/oracle/` | CIS Oracle 19c | Full |
-| `benchmarks/cis/databases/postgresql/` | CIS PostgreSQL 13/14/15 | Full |
-| `benchmarks/cis/web_servers/apache/` | CIS Apache 2.4 | Full |
-| `benchmarks/cis/web_servers/nginx/` | CIS Nginx 1.20 | Full |
-| `benchmarks/cis/network/` | CIS Cisco, Juniper, Palo Alto, Fortinet, Arista | Full |
-| `benchmarks/stig/` | DISA STIGs — RHEL 8/9, Ubuntu, Windows | Full |
-
-### Frameworks
-
-| Path | Standard |
-|------|----------|
-| `frameworks/federal/nist/` | NIST 800-53, 800-171, CSF 2.0, AI RMF |
-| `frameworks/federal/fisma/` | FISMA |
-| `frameworks/federal/fedramp/` | FedRAMP |
-| `frameworks/federal/cmmc/` | CMMC |
-| `frameworks/management/iso27001/` | ISO 27001 |
-| `frameworks/management/soc2/` | SOC 2 |
-| `frameworks/management/corporate/` | Organization-specific policies |
-| `frameworks/financial/pci_dss/` | PCI-DSS |
-| `frameworks/financial/sox/` | Sarbanes-Oxley |
-| `frameworks/privacy/gdpr/` | GDPR |
-| `frameworks/privacy/hipaa/` | HIPAA |
-| `frameworks/critical_infrastructure/nerc_cip/` | NERC-CIP CIP-002 through CIP-015 |
-| `frameworks/critical_infrastructure/iec_62443/` | IEC 62443 |
-| `frameworks/critical_infrastructure/ami/` | NIST IR 7628, AMI Device & Head-End |
-| `frameworks/sovereignty/digital_sovereignty/` | Digital Sovereignty (7 domains) |
-
-### Enforcement
-
-| Path | Use Case |
-|------|----------|
-| `enforcement/ansible/` | Gate Ansible playbook check-ins and runtime |
-| `enforcement/terraform/` | Validate Terraform plans before apply |
-| `enforcement/dockerfile/` | Lint Dockerfiles at build time |
-| `enforcement/kubernetes/` | Admission control for K8s manifests |
-| `enforcement/git/` | Git approval workflow policies |
-
-### Governance
-
-| Path | Use Case |
-|------|----------|
-| `governance/ai/` | AI agent action classification and authorization |
-| `governance/mcp/` | MCP server tool-call enforcement |
-
-### Threat Detection
-
-| Path | Use Case |
-|------|----------|
-| `threat_detection/crypto_mining/` | Detect unauthorized cryptocurrency miners |
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
+[![Rego](https://img.shields.io/badge/Rego-v1-green)](https://www.openpolicyagent.org/docs/latest/policy-language/)
+[![CIS RHEL 9](https://img.shields.io/badge/CIS%20RHEL%209-338%2F338%20(100%25)-brightgreen)](benchmarks/cis/os/linux/rhel_9/)
 
 ---
 
-## Using with OPA
+## What's in the box
 
-### Load a single policy
+| Domain | Policies | Coverage |
+|--------|----------|----------|
+| **CIS Benchmarks** | 217 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network |
+| **Regulatory Frameworks** | 103 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, Digital Sovereignty |
+| **Enforcement** | 6 | Ansible, Terraform, Dockerfile, Kubernetes, Git |
+| **Governance** | 4 | AI agent authorization, MCP tool-call enforcement |
+| **Threat Detection** | 2 | Cryptocurrency miner detection |
+
+**Highlight:** CIS RHEL 9 v2.0.0 — **338/338 controls (100%)** across 14 modules.
+
+---
+
+## Quick Start
 
 ```bash
-curl -X PUT --data-binary @benchmarks/cis/os/linux/rhel_9/pam_validation.rego \
-  http://localhost:8181/v1/policies/cis_rhel9_pam_validation
+# Clone
+git clone https://github.com/ynotbhatc/rego_policy_libraries.git
+cd rego_policy_libraries
+
+# Start OPA
+docker run -d --name opa -p 8181:8181 openpolicyagent/opa run --server --addr :8181
+
+# Load all CIS RHEL 9 policies
+for f in benchmarks/cis/os/linux/rhel_9/*.rego; do
+  curl -s -X PUT --data-binary @"$f" \
+    "http://localhost:8181/v1/policies/$(basename $f .rego)"
+done
+
+# Evaluate against your system facts
+curl -s -X POST http://localhost:8181/v1/data/cis_rhel9/compliance_assessment \
+  -H 'Content-Type: application/json' \
+  -d '{"input": {"os_family": "RedHat", ...}}'
 ```
 
-### Load all CIS RHEL 9 policies
+---
 
+## Policy Taxonomy
+
+```
+rego_policy_libraries/
+├── benchmarks/                  # Technical security baselines
+│   ├── cis/
+│   │   ├── os/linux/            # RHEL 8/9/10, Ubuntu 20/22/24, Debian, Rocky, Amazon Linux
+│   │   ├── os/windows/          # Windows Server 2016/2019/2022, Windows 10/11
+│   │   ├── cloud/               # AWS, Azure, GCP Foundations
+│   │   ├── containers/          # Docker, Kubernetes, OpenShift
+│   │   ├── databases/           # MySQL 8, Oracle 19c, PostgreSQL 13/14/15
+│   │   ├── web_servers/         # Apache 2.4, Nginx 1.20
+│   │   └── network/             # Cisco IOS, Juniper Junos, Palo Alto, Fortinet, Arista
+│   └── stig/                    # DISA STIGs — RHEL 8/9, Ubuntu, Windows
+│
+├── frameworks/                  # Regulatory compliance
+│   ├── federal/                 # NIST 800-53/171, CSF 2.0, AI RMF, FISMA, FedRAMP, CMMC
+│   ├── management/              # ISO 27001, SOC 2, Corporate
+│   ├── financial/               # PCI-DSS, SOX
+│   ├── privacy/                 # GDPR, HIPAA
+│   ├── critical_infrastructure/ # NERC-CIP (CIP-002–CIP-015), IEC 62443, NIST IR 7628
+│   └── sovereignty/             # Digital Sovereignty (7 domains)
+│
+├── enforcement/                 # Gate-style policy enforcement
+│   ├── ansible/                 # Block non-compliant playbooks at check-in and runtime
+│   ├── terraform/               # Validate plans before apply
+│   ├── dockerfile/              # Lint Dockerfiles at build time
+│   └── kubernetes/              # Admission control for K8s manifests
+│
+├── governance/                  # AI and operational governance
+│   ├── ai/                      # AI agent action classification and authorization
+│   └── mcp/                     # MCP server tool-call enforcement
+│
+└── threat_detection/
+    └── crypto_mining/           # Detect unauthorized cryptocurrency miners
+```
+
+---
+
+## CIS Benchmark Coverage
+
+| Platform | Path | Controls |
+|----------|------|----------|
+| **RHEL 9** | `benchmarks/cis/os/linux/rhel_9/` | **338/338 (100%)** ✅ |
+| RHEL 8 | `benchmarks/cis/os/linux/rhel_8/` | Full |
+| Ubuntu 22.04 | `benchmarks/cis/os/linux/ubuntu_22_04/` | Full |
+| Ubuntu 20.04 / 24.04 | `benchmarks/cis/os/linux/ubuntu_20_04/` | Full |
+| Debian 11 | `benchmarks/cis/os/linux/debian_11/` | Full |
+| Rocky Linux 8 / 9 | `benchmarks/cis/os/linux/rocky_linux_8/` | Full |
+| Amazon Linux 2023 | `benchmarks/cis/os/linux/amazon_linux_2023/` | Full |
+| Windows Server 2019/2022 | `benchmarks/cis/os/windows/` | Modular (9 sections) |
+| AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
+| Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
+| MySQL / Oracle / PostgreSQL | `benchmarks/cis/databases/` | Full |
+| Cisco / Juniper / Palo Alto / Fortinet / Arista | `benchmarks/cis/network/` | Full |
+
+---
+
+## Loading Policies into OPA
+
+### Single policy
+```bash
+curl -X PUT --data-binary @benchmarks/cis/os/linux/rhel_9/pam_validation.rego \
+  http://localhost:8181/v1/policies/cis_rhel9_pam
+```
+
+### All policies in a directory
 ```bash
 for f in benchmarks/cis/os/linux/rhel_9/*.rego; do
-  curl -X PUT --data-binary @"$f" \
+  curl -s -X PUT --data-binary @"$f" \
     "http://localhost:8181/v1/policies/$(basename $f .rego)"
 done
 ```
 
-### OPA container routing (3-container AAC pattern)
+### Recommended 3-container pattern (domain isolation)
+```bash
+# Security benchmarks
+podman run -d --name opa-security -p 8181:8181 openpolicyagent/opa run --server --addr :8181
 
-| Container | Port | Load from |
-|-----------|------|-----------|
-| `opa-security` | 8181 | `benchmarks/` |
-| `opa-compliance` | 8182 | `frameworks/` + `enforcement/` |
-| `opa-ot` | 8183 | `frameworks/critical_infrastructure/` + `governance/` + `threat_detection/` |
+# Regulatory frameworks
+podman run -d --name opa-compliance -p 8182:8182 openpolicyagent/opa run --server --addr :8182
+
+# OT / Critical infrastructure
+podman run -d --name opa-ot -p 8183:8183 openpolicyagent/opa run --server --addr :8183
+```
+
+Load `benchmarks/` into `:8181`, `frameworks/` into `:8182`, `frameworks/critical_infrastructure/` + `governance/` into `:8183`.
 
 ---
 
-## Using with AAC (git submodule)
+## Input / Output Contract
 
-This library is consumed by AAC as a git submodule at `policies/`:
+Each policy exposes a `compliance_assessment` rule that accepts system facts as input and returns a structured report:
 
-```bash
-# Clone AAC with submodules
-git clone --recurse-submodules https://github.com/ynotbhatc/compliance.git
-
-# Update submodule to latest
-cd compliance
-git submodule update --remote policies
-git add policies
-git commit -m "Update policy library to latest"
+```json
+{
+  "compliant": false,
+  "summary": {
+    "total_controls": 338,
+    "passing_controls": 301,
+    "failing_controls": 37,
+    "compliance_percentage": 89.05,
+    "overall_compliance": "FAIL"
+  },
+  "violations": [
+    "1.1.1 Ensure mounting of cramfs filesystems is disabled",
+    "5.2.4 Ensure SSH X11 forwarding is disabled"
+  ],
+  "section_compliance": {
+    "1_filesystem": true,
+    "2_services": false,
+    ...
+  }
+}
 ```
 
 ---
 
-## Adding a New Policy
+## Use as a Git Submodule
 
-1. Place the `.rego` file in the appropriate taxonomy path
-2. Ensure `import rego.v1` is at the top of the file
-3. Run `make test` to validate syntax
-4. Open a PR — CI runs `opa check` on all policies
+```bash
+# Add to your project
+git submodule add https://github.com/ynotbhatc/rego_policy_libraries.git policies
+git submodule update --init --recursive
+
+# Update to latest
+git submodule update --remote policies
+git add policies && git commit -m "Update policy library"
+```
 
 ---
 
 ## Requirements
 
 - [Open Policy Agent](https://www.openpolicyagent.org/) v0.60+
-- Rego v1 syntax (`import rego.v1` required in all files)
+- All policies use `import rego.v1` (Rego v1 syntax)
+
+---
+
+## Part of Ansible Automated Compliance (AAC)
+
+This library is the policy engine behind [AAC](https://github.com/ynotbhatc/compliance) — a compliance automation platform built on Ansible Automation Platform + OPA + PostgreSQL. AAC uses these policies to continuously assess infrastructure against CIS, NIST, SOC 2, PCI-DSS, and 30+ other frameworks, storing historical results for audit evidence.
+
+---
+
+## Contributing
+
+1. Place new `.rego` files in the appropriate taxonomy path
+2. Add `import rego.v1` at the top
+3. Expose a `compliance_assessment` rule with the standard output structure
+4. Open a PR
 
 ---
 
 ## License
 
-Apache 2.0 — see LICENSE
+Apache 2.0
