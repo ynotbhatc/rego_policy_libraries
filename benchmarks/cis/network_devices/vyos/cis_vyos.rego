@@ -171,14 +171,14 @@ wan_firewall_applied if {
     some iface, config in input.interfaces.ethernet
     config.description
     lower(config.description) == "wan"
-    config.firewall.in.name
+    config.firewall["in"].name
 }
 
 wan_firewall_applied if {
     some iface, config in input.interfaces.ethernet
     config.description
     lower(config.description) == "wan"
-    config.firewall.local.name
+    config.firewall["local"].name
 }
 
 # 3.1.3  At least one ruleset uses default-action drop
