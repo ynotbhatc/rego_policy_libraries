@@ -6,250 +6,225 @@ import rego.v1
 # CMMC 2.0 — Master Compliance Orchestrator
 # Cybersecurity Maturity Model Certification
 # DoD Defense Federal Acquisition Regulation Supplement (DFARS)
+# NIST SP 800-171 Rev 2 — 14 Domains, 110 Practices
 #
 # Domains:
-#   AC  — Access Control         (22 practices)
-#   AU  — Audit & Accountability (9 practices)
-#   AT  — Awareness & Training   (3 practices)
-#   CM  — Configuration Mgmt     (9 practices)
-#   IA  — Identification & Auth  (11 practices)
-#   IR  — Incident Response      (3 practices)
-#   MA  — Maintenance            (6 practices)
-#   MP  — Media Protection       (9 practices)
-#   PS  — Personnel Security     (2 practices)
-#   PE  — Physical Protection    (6 practices)
-#   RE  — Recovery               (4 practices)
-#   RM  — Risk Management        (3 practices)
-#   CA  — Security Assessment    (4 practices)
-#   SC  — System & Comm Protect  (16 practices)
-#   SI  — System & Info Integrity (7 practices)
+#   3.1  AC  — Access Control                  (22 practices, L1+L2)
+#   3.2  AT  — Awareness & Training            (3 practices,  L2)
+#   3.3  AU  — Audit & Accountability          (9 practices,  L2)
+#   3.4  CM  — Configuration Management        (9 practices,  L2)
+#   3.5  IA  — Identification & Authentication (11 practices, L1+L2)
+#   3.6  IR  — Incident Response               (3 practices,  L2)
+#   3.7  MA  — Maintenance                     (6 practices,  L2)
+#   3.8  MP  — Media Protection                (9 practices,  L2)
+#   3.9  PS  — Personnel Security              (2 practices,  L2)
+#   3.10 PE  — Physical Protection             (6 practices,  L1+L2)
+#   3.11 RM  — Risk Assessment                 (3 practices,  L2)
+#   3.12 CA  — Security Assessment             (4 practices,  L2)
+#   3.13 SC  — System & Comm. Protection       (16 practices, L1+L2)
+#   3.14 SI  — System & Info. Integrity        (7 practices,  L1+L2)
 # =============================================================================
 
 # ---------------------------------------------------------------------------
-# Sub-domain reports (available where modules are loaded)
+# Domain compliance reports (delegated to submodules)
 # ---------------------------------------------------------------------------
 
-ac_report := data.cmmc.access_control.compliance_report
-cm_report := data.cmmc.configuration_management.compliance_report
-ir_report := data.cmmc.incident_response.compliance_report
+ac_report  := data.cmmc.access_control.compliance_report
+at_report  := data.cmmc.awareness_training.compliance_report
+au_report  := data.cmmc.audit_accountability.compliance_report
+cm_report  := data.cmmc.configuration_management.compliance_report
+ia_report  := data.cmmc.identification_authentication.compliance_report
+ir_report  := data.cmmc.incident_response.compliance_report
+ma_report  := data.cmmc.maintenance.compliance_report
+mp_report  := data.cmmc.media_protection.compliance_report
+ps_report  := data.cmmc.personnel_security.compliance_report
+pe_report  := data.cmmc.physical_protection.compliance_report
+rm_report  := data.cmmc.risk_assessment.compliance_report
+ca_report  := data.cmmc.security_assessment.compliance_report
+sc_report  := data.cmmc.system_communications_protection.compliance_report
+si_report  := data.cmmc.system_information_integrity.compliance_report
 
 # ---------------------------------------------------------------------------
-# Identification & Authentication (IA) — inline
+# Aggregate violations across all 14 domains
 # ---------------------------------------------------------------------------
 
-violation_ia contains msg if {
-    input.cmmc_level >= 1
-    not input.authentication.unique_ids_for_all_users
-    msg := "CMMC IA.L1-3.5.1: Users do not have unique identifiers. All CUI system users must have unique IDs."
-}
+# Convert set-based violations (legacy modules) to arrays
+ac_violations  := [v | some v in data.cmmc.access_control.violations]
+cm_violations  := [v | some v in data.cmmc.configuration_management.violations]
+ir_violations  := [v | some v in data.cmmc.incident_response.violations]
 
-violation_ia contains msg if {
-    input.cmmc_level >= 1
-    not input.authentication.authenticators_managed
-    msg := "CMMC IA.L1-3.5.2: Authenticators (passwords, tokens, keys) are not managed. Authenticator management is required."
-}
+# New modules expose violations as arrays via compliance_report
+at_violations  := at_report.violations
+au_violations  := au_report.violations
+ia_violations  := ia_report.violations
+ma_violations  := ma_report.violations
+mp_violations  := mp_report.violations
+ps_violations  := ps_report.violations
+pe_violations  := pe_report.violations
+rm_violations  := rm_report.violations
+ca_violations  := ca_report.violations
+sc_violations  := sc_report.violations
+si_violations  := si_report.violations
 
-violation_ia contains msg if {
-    input.cmmc_level >= 2
-    not input.authentication.mfa_for_privileged_accounts
-    msg := "CMMC IA.L2-3.5.3: MFA is not required for privileged accounts. Level 2 requires MFA for privileged and non-local access."
-}
+# Aggregate in pairs (array.concat takes exactly 2 args)
+violations_ac_at := array.concat(ac_violations, at_violations)
+violations_au_cm := array.concat(au_violations, cm_violations)
+violations_ia_ir := array.concat(ia_violations, ir_violations)
+violations_ma_mp := array.concat(ma_violations, mp_violations)
+violations_ps_pe := array.concat(ps_violations, pe_violations)
+violations_rm_ca := array.concat(rm_violations, ca_violations)
+violations_sc_si := array.concat(sc_violations, si_violations)
 
-violation_ia contains msg if {
-    input.cmmc_level >= 2
-    not input.authentication.mfa_for_non_local_access
-    msg := "CMMC IA.L2-3.5.3: MFA is not required for non-local (remote) access. Level 2 requires MFA for all remote access."
-}
+violations_group1 := array.concat(violations_ac_at, violations_au_cm)
+violations_group2 := array.concat(violations_ia_ir, violations_ma_mp)
+violations_group3 := array.concat(violations_ps_pe, violations_rm_ca)
 
-violation_ia contains msg if {
-    input.cmmc_level >= 2
-    input.authentication.password_min_length < 12
-    msg := sprintf(
-        "CMMC IA.L2-3.5.7: Minimum password length is %v characters. NIST 800-171 guidance recommends at least 12 characters.",
-        [input.authentication.password_min_length]
-    )
-}
+violations_half1 := array.concat(violations_group1, violations_group2)
+violations_half2 := array.concat(violations_group3, violations_sc_si)
 
-# ---------------------------------------------------------------------------
-# System & Information Integrity (SI) — inline
-# ---------------------------------------------------------------------------
-
-violation_si contains msg if {
-    input.cmmc_level >= 1
-    some system in input.systems
-    not system.malware_protection_enabled
-    msg := sprintf(
-        "CMMC SI.L1-3.14.2: System '%v' does not have malware protection enabled. Anti-malware is required at all CMMC levels.",
-        [system.name]
-    )
-}
-
-violation_si contains msg if {
-    input.cmmc_level >= 1
-    some system in input.systems
-    system.malware_protection_enabled
-    system.malware_definitions_age_days > 1
-    msg := sprintf(
-        "CMMC SI.L1-3.14.2: Malware definitions on '%v' are %v days old. Definitions must be updated at least daily.",
-        [system.name, system.malware_definitions_age_days]
-    )
-}
-
-violation_si contains msg if {
-    input.cmmc_level >= 2
-    some system in input.systems
-    system.pending_security_patches > 0
-    msg := sprintf(
-        "CMMC SI.L2-3.14.4: System '%v' has %v pending security patches. Patches must be applied within risk-based timeframes.",
-        [system.name, system.pending_security_patches]
-    )
-}
-
-violation_si contains msg if {
-    input.cmmc_level >= 2
-    not input.monitoring.security_alerts_monitored
-    msg := "CMMC SI.L2-3.14.6: Security alerts and advisories are not monitored. Subscribe to threat intelligence feeds and monitor for advisories."
-}
+all_violations := array.concat(violations_half1, violations_half2)
 
 # ---------------------------------------------------------------------------
-# System & Communications Protection (SC) — inline
+# Domain compliance booleans
 # ---------------------------------------------------------------------------
 
-violation_sc contains msg if {
-    input.cmmc_level >= 1
-    not input.network.cui_network_monitored
-    msg := "CMMC SC.L1-3.13.1: CUI network communications are not monitored. Monitor and control all CUI system communications."
-}
+default ac_compliant := false
+ac_compliant if ac_report.compliant == true
 
-violation_sc contains msg if {
-    input.cmmc_level >= 2
-    not input.network.network_segmentation
-    msg := "CMMC SC.L2-3.13.3: CUI systems are not segmented from other networks. Separate user functionality from system management."
-}
+default at_compliant := false
+at_compliant if at_report.compliant == true
 
-violation_sc contains msg if {
-    input.cmmc_level >= 2
-    not input.network.deny_by_default_firewall
-    msg := "CMMC SC.L2-3.13.6: Firewall is not configured with deny-by-default. Only explicitly permitted communications should be allowed."
-}
+default au_compliant := false
+au_compliant if au_report.compliant == true
 
-violation_sc contains msg if {
-    input.cmmc_level >= 2
-    not input.network.cui_encrypted_in_transit
-    msg := "CMMC SC.L2-3.13.8: CUI is not encrypted in transit. FIPS 140-2 validated encryption is required for CUI transmission."
-}
+default cm_compliant := false
+cm_compliant if cm_report.compliant == true
 
-violation_sc contains msg if {
-    input.cmmc_level >= 2
-    not input.network.fips_140_2_compliant_crypto
-    msg := "CMMC SC.L2-3.13.10: Cryptographic mechanisms are not FIPS 140-2 validated. FIPS validation is required for CUI protection."
-}
+default ia_compliant := false
+ia_compliant if ia_report.compliant == true
 
-# ---------------------------------------------------------------------------
-# Risk Management (RM) — inline
-# ---------------------------------------------------------------------------
+default ir_compliant := false
+ir_compliant if ir_report.compliant == true
 
-violation_rm contains msg if {
-    input.cmmc_level >= 2
-    not input.risk.periodic_risk_assessments
-    msg := "CMMC RM.L2-3.11.1: Periodic risk assessments are not conducted. Risk assessments must be performed regularly for CUI systems."
-}
+default ma_compliant := false
+ma_compliant if ma_report.compliant == true
 
-violation_rm contains msg if {
-    input.cmmc_level >= 2
-    not input.risk.vulnerability_scanning_enabled
-    msg := "CMMC RM.L2-3.11.2: Vulnerability scanning is not enabled. Regularly scan CUI systems and remediate vulnerabilities."
-}
+default mp_compliant := false
+mp_compliant if mp_report.compliant == true
 
-violation_rm contains msg if {
-    input.cmmc_level >= 2
-    input.risk.vulnerability_scan_age_days > 30
-    msg := sprintf(
-        "CMMC RM.L2-3.11.2: Last vulnerability scan was %v days ago. Scan at least monthly.",
-        [input.risk.vulnerability_scan_age_days]
-    )
-}
+default ps_compliant := false
+ps_compliant if ps_report.compliant == true
 
-# ---------------------------------------------------------------------------
-# Aggregate all violations
-# ---------------------------------------------------------------------------
+default pe_compliant := false
+pe_compliant if pe_report.compliant == true
 
-all_violations := array.concat(
-    array.concat(
-        [v | some v in data.cmmc.access_control.violations],
-        [v | some v in data.cmmc.configuration_management.violations]
-    ),
-    array.concat(
-        array.concat(
-            [v | some v in data.cmmc.incident_response.violations],
-            [v | some v in violation_ia]
-        ),
-        array.concat(
-            array.concat(
-                [v | some v in violation_si],
-                [v | some v in violation_sc]
-            ),
-            [v | some v in violation_rm]
-        )
-    )
-)
+default rm_compliant := false
+rm_compliant if rm_report.compliant == true
+
+default ca_compliant := false
+ca_compliant if ca_report.compliant == true
+
+default sc_compliant := false
+sc_compliant if sc_report.compliant == true
+
+default si_compliant := false
+si_compliant if si_report.compliant == true
 
 # ---------------------------------------------------------------------------
 # Scoring
 # ---------------------------------------------------------------------------
 
-cmmc_compliant if { count(all_violations) == 0 }
+domain_results := [
+    ac_compliant,
+    at_compliant,
+    au_compliant,
+    cm_compliant,
+    ia_compliant,
+    ir_compliant,
+    ma_compliant,
+    mp_compliant,
+    ps_compliant,
+    pe_compliant,
+    rm_compliant,
+    ca_compliant,
+    sc_compliant,
+    si_compliant,
+]
 
-total_domain_checks := 6
-passing_domains := count([d |
-    d := [
-        ac_report.compliant,
-        cm_report.compliant,
-        ir_report.compliant,
-        count(violation_ia) == 0,
-        count(violation_si) == 0,
-        count(violation_sc) == 0,
-    ][_]
-    d == true
-])
+passing_domains  := count([d | some d in domain_results; d == true])
+total_domains    := 14
 
-compliance_score := round((passing_domains / total_domain_checks) * 100)
+compliance_score := round((passing_domains / total_domains) * 100)
+
+# ---------------------------------------------------------------------------
+# Practice counts across all domains
+# ---------------------------------------------------------------------------
+
+total_practices := 110   # NIST SP 800-171 Rev 2 total
+
+practices_passing := sum([ac_report.passing, at_report.passing, au_report.passing,
+    cm_report.passing, ia_report.passing, ir_report.passing, ma_report.passing,
+    mp_report.passing, ps_report.passing, pe_report.passing, rm_report.passing,
+    ca_report.passing, sc_report.passing, si_report.passing])
+
+practices_failing := total_practices - practices_passing
+
+# ---------------------------------------------------------------------------
+# Overall compliance
+# ---------------------------------------------------------------------------
+
+default cmmc_level_1_compliant := false
+cmmc_level_1_compliant if {
+    # Level 1 practices: AC (3.1.1-3.1.2), IA (3.5.1-3.5.2),
+    #                    MP (none at L1), PE (3.10.1-3.10.2),
+    #                    SC (3.13.1, 3.13.5), SI (3.14.1-3.14.5)
+    ac_report.compliant == true
+    ia_report.compliant == true
+    pe_report.compliant == true
+    sc_report.compliant == true
+    si_report.compliant == true
+}
+
+default cmmc_level_2_compliant := false
+cmmc_level_2_compliant if count(all_violations) == 0
+
+default compliant := false
+compliant if count(all_violations) == 0
 
 # ---------------------------------------------------------------------------
 # Full report
 # ---------------------------------------------------------------------------
 
 cmmc_compliance_report := {
-    "standard":         "CMMC 2.0",
-    "regulation":       "32 CFR Part 170 / DFARS 252.204-7021",
-    "target_level":     input.cmmc_level,
-    "compliant":        cmmc_compliant,
-    "compliance_score": compliance_score,
-    "total_violations": count(all_violations),
-    "violations":       all_violations,
+    "standard":              "CMMC 2.0",
+    "regulation":            "32 CFR Part 170 / DFARS 252.204-7021",
+    "nist_sp":               "NIST SP 800-171 Rev 2",
+    "compliant":             compliant,
+    "level_1_compliant":     cmmc_level_1_compliant,
+    "level_2_compliant":     cmmc_level_2_compliant,
+    "compliance_score":      compliance_score,
+    "total_domains":         total_domains,
+    "domains_passing":       passing_domains,
+    "domains_failing":       total_domains - passing_domains,
+    "total_practices":       total_practices,
+    "practices_passing":     practices_passing,
+    "practices_failing":     practices_failing,
+    "total_violations":      count(all_violations),
+    "violations":            all_violations,
     "domains": {
-        "access_control":            ac_report,
-        "configuration_management":  cm_report,
-        "incident_response":         ir_report,
-        "identification_authentication": {
-            "compliant":       count(violation_ia) == 0,
-            "violation_count": count(violation_ia),
-            "violations":      violation_ia,
-        },
-        "system_integrity": {
-            "compliant":       count(violation_si) == 0,
-            "violation_count": count(violation_si),
-            "violations":      violation_si,
-        },
-        "communications_protection": {
-            "compliant":       count(violation_sc) == 0,
-            "violation_count": count(violation_sc),
-            "violations":      violation_sc,
-        },
-        "risk_management": {
-            "compliant":       count(violation_rm) == 0,
-            "violation_count": count(violation_rm),
-            "violations":      violation_rm,
-        },
+        "3.1_access_control":                   ac_report,
+        "3.2_awareness_training":               at_report,
+        "3.3_audit_accountability":             au_report,
+        "3.4_configuration_management":         cm_report,
+        "3.5_identification_authentication":    ia_report,
+        "3.6_incident_response":                ir_report,
+        "3.7_maintenance":                      ma_report,
+        "3.8_media_protection":                 mp_report,
+        "3.9_personnel_security":               ps_report,
+        "3.10_physical_protection":             pe_report,
+        "3.11_risk_assessment":                 rm_report,
+        "3.12_security_assessment":             ca_report,
+        "3.13_system_communications":           sc_report,
+        "3.14_system_information_integrity":    si_report,
     },
 }
