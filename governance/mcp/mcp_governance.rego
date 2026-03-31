@@ -50,8 +50,20 @@ approved_template_ids := {
     27, 28,                # Load OPA policies, deploy OPA containers
     29,                    # AMI full compliance audit
     30, 31,                # Deploy smart meter containers, Grafana dashboard
+    32, 33, 34, 35,        # Sentinel: TF validate, Ansible validate, runtime block, audit sweep
+    36, 37,                # Sentinel: AI controls, seed templates
     38, 39,                # Sentinel preflight, demo stability setup
+    40,                    # AAC - Rotate MCP Token
     41, 42, 43,            # AMI: NIST, device, head-end
+    45, 46, 47, 48,        # Build compliance EE, Sentinel TF bad/good, Ansible good
+    53, 57,                # DS: seed workflow, assessment
+    101,                   # NERC/AMI - Generate Audit PDF
+    106,                   # DS - Generate Audit PDF
+    107, 108, 109, 110,    # Network devices: VyOS/OPNsense deploy, CIS VyOS/pfSense
+    111, 112, 113, 114,    # Seed workflows: CIS/Nightly/NERC-AMI, PostgreSQL init
+    115,                   # IEC 62443 Assessment
+    116,                   # CIP-010 Baseline Capture/Check
+    117,                   # CIP-008 Incident Response Evidence
 }
 
 # Tools that are always blocked regardless of context
