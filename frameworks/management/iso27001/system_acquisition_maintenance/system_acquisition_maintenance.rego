@@ -185,7 +185,7 @@ acceptance_testing if {
 # =============================================================================
 
 # A.14.3.1 - Protection of test data
-test_data_protection if {
+data_protection_control if {
 	# Production data should not be used in test environments
 	input.test_data.production_data_not_used_for_testing == true
 
@@ -208,7 +208,7 @@ test_data_controls_adequate if {
 }
 
 # Test data generation
-test_data_generation if {
+data_generation_control if {
 	input.test_data.synthetic_data.available == true
 	input.test_data.synthetic_data.realistic_for_testing == true
 	input.test_data.generators.approved_tools == true
@@ -268,7 +268,7 @@ security_in_development if {
 compliant if {
 	information_systems_security
 	security_in_development
-	test_data_protection
+	data_protection_control
 }
 
 # Detailed compliance reporting
@@ -290,8 +290,8 @@ compliance_details := {
 		"acceptance_testing": acceptance_testing,
 	},
 	"test_data": {
-		"protection": test_data_protection,
-		"generation": test_data_generation,
+		"protection": data_protection_control,
+		"generation": data_generation_control,
 	},
 	"devsecops": {
 		"cicd_security": cicd_security,
