@@ -57,6 +57,8 @@ extract_approver(msg) := approver if {
 }
 
 # Validation: Check if approval is required but missing
+default requires_approval := false
+
 requires_approval if {
     affects_protected_paths
     not approved
@@ -82,6 +84,8 @@ decision := {
 }
 
 # Helper: Get affected protected paths
+default affected_protected_paths := []
+
 affected_protected_paths := paths if {
     paths := [file |
         some file in input.changed_files
