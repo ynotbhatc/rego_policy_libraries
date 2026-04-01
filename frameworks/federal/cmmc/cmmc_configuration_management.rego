@@ -122,4 +122,5 @@ compliance_report := {
     "compliant":       compliant,
     "violation_count": count(violations),
     "violations":      violations,
+    "passing":         9 - count(violations),
 }

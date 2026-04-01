@@ -215,4 +215,5 @@ compliance_report := {
     "violations":      violations,
     "level_1_passing": count(level_1_violations) == 0,
     "level_2_passing": count(level_2_violations) == 0,
+    "passing":         22 - count(violations),
 }
