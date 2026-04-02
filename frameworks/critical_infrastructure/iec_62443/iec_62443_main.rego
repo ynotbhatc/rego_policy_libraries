@@ -1,380 +1,256 @@
-package iec_62443
+package iec_62443_main
 
 import rego.v1
 
 # =============================================================================
-# IEC 62443 — Industrial Automation and Control Systems Security
-# International standard for OT/ICS cybersecurity
+# IEC 62443 — Industrial Automation and Control Systems (IACS) Security
+# Main Orchestrator — Aggregates All Parts and Foundational Requirements
 #
-# Structure:
-#   Part 2-1: Security management system requirements
-#   Part 2-4: Security program requirements for IACS service providers
-#   Part 3-2: Security risk assessment for system design
-#   Part 3-3: System security requirements and security levels
+# Standard: IEC 62443 (series)
+# Full Title: Security for industrial automation and control systems
+# Publisher: International Electrotechnical Commission (IEC)
+# Scope: OT/ICS/SCADA cybersecurity for industrial environments
 #
-# Security Levels (SL):
+# Coverage:
+#   Part 2-1 — Security Management System (CSMS)          [part2_security_management.rego]
+#   Part 2-3 — Patch Management                           [part2_patch_management.rego]
+#   Part 2-4 — IACS Service Provider Requirements         [part2_service_provider.rego]
+#   Part 3-2 — Security Risk Assessment for System Design [part3_risk_assessment.rego]
+#   Part 3-3 FR 1 — Identification & Authentication       [fr1_identification_authentication.rego]
+#   Part 3-3 FR 2 — Use Control                           [fr2_use_control.rego]
+#   Part 3-3 FR 3 — System Integrity                      [fr3_system_integrity.rego]
+#   Part 3-3 FR 4 — Data Confidentiality                  [fr4_data_confidentiality.rego]
+#   Part 3-3 FR 5 — Restricted Data Flow                  [fr5_restricted_data_flow.rego]
+#   Part 3-3 FR 6 — Timely Response to Events             [fr6_timely_response.rego]
+#   Part 3-3 FR 7 — Resource Availability                 [fr7_resource_availability.rego]
+#
+# Security Levels:
 #   SL 1 — Protection against casual or coincidental violation
 #   SL 2 — Protection against intentional violation with simple means
-#   SL 3 — Protection against sophisticated attacks
-#   SL 4 — Protection against state-sponsored attacks
+#   SL 3 — Protection against sophisticated attacks (nation-state capable actors)
+#   SL 4 — Protection against state-sponsored, highly motivated, well-resourced attacks
 #
-# Foundational Requirements (FR):
-#   FR 1 — Identification & Authentication Control (IAC)
-#   FR 2 — Use Control (UC)
-#   FR 3 — System Integrity (SI)
-#   FR 4 — Data Confidentiality (DC)
-#   FR 5 — Restricted Data Flow (RDF)
-#   FR 6 — Timely Response to Events (TRE)
-#   FR 7 — Resource Availability (RA)
-#
-# Input shape:
-#   input.ics_systems[]         - industrial control systems
-#   input.zones[]               - network zones/cells
-#   input.conduits[]            - communication conduits between zones
-#   input.target_sl             - target security level (1-4)
-#   input.authentication        - authentication controls
-#   input.network               - network controls
-#   input.monitoring            - monitoring controls
-#   input.patch_management      - patch/update management
+# OPA Endpoint: POST http://192.168.4.62:8183/v1/data/iec_62443_main
 # =============================================================================
 
-# ---------------------------------------------------------------------------
-# FR 1 — Identification & Authentication Control (IAC)
-# ---------------------------------------------------------------------------
-
-violation_fr1 contains msg if {
-    some system in input.ics_systems
-    not system.unique_identification
-    msg := sprintf(
-        "IEC 62443 FR1 (IAC): ICS system '%v' does not enforce unique user identification. All users and devices must have unique identifiers.",
-        [system.name]
-    )
-}
-
-violation_fr1 contains msg if {
-    input.target_sl >= 2
-    some system in input.ics_systems
-    not system.mfa_enabled
-    msg := sprintf(
-        "IEC 62443 FR1 SL2 (IAC): ICS system '%v' does not enforce multi-factor authentication. MFA is required at Security Level 2+.",
-        [system.name]
-    )
-}
-
-violation_fr1 contains msg if {
-    input.target_sl >= 2
-    some system in input.ics_systems
-    system.default_credentials_unchanged
-    msg := sprintf(
-        "IEC 62443 FR1 SL2 (IAC): ICS system '%v' uses unchanged default credentials. Default credentials are a critical vulnerability in OT environments.",
-        [system.name]
-    )
-}
-
-violation_fr1 contains msg if {
-    input.target_sl >= 3
-    not input.authentication.pki_or_certificate_based
-    msg := "IEC 62443 FR1 SL3 (IAC): PKI or certificate-based authentication is not implemented. Required at Security Level 3+ for strong identity assurance."
-}
+import data.iec_62443.fr1
+import data.iec_62443.fr2
+import data.iec_62443.fr3
+import data.iec_62443.fr4
+import data.iec_62443.fr5
+import data.iec_62443.fr6
+import data.iec_62443.fr7
+import data.iec_62443.part2_1
+import data.iec_62443.part2_3
+import data.iec_62443.part2_4
+import data.iec_62443.part3_2
 
 # ---------------------------------------------------------------------------
-# FR 2 — Use Control (UC)
+# All violations aggregated across all parts and FRs
 # ---------------------------------------------------------------------------
 
-violation_fr2 contains msg if {
-    some system in input.ics_systems
-    not system.least_privilege_enforced
-    msg := sprintf(
-        "IEC 62443 FR2 (UC): ICS system '%v' does not enforce least privilege. Users must only have access required for their function.",
-        [system.name]
-    )
-}
-
-violation_fr2 contains msg if {
-    input.target_sl >= 2
-    not input.authentication.audit_trail_for_privileged_access
-    msg := "IEC 62443 FR2 SL2 (UC): Privileged access is not audited. All privileged operations on ICS must be logged."
-}
-
-violation_fr2 contains msg if {
-    some system in input.ics_systems
-    system.remote_access_enabled
-    not system.remote_access_controlled
-    msg := sprintf(
-        "IEC 62443 FR2 (UC): ICS system '%v' has uncontrolled remote access. Remote access to ICS must be explicitly authorized and controlled.",
-        [system.name]
-    )
-}
-
-# ---------------------------------------------------------------------------
-# FR 3 — System Integrity (SI)
-# ---------------------------------------------------------------------------
-
-violation_fr3 contains msg if {
-    some system in input.ics_systems
-    not system.communication_integrity
-    msg := sprintf(
-        "IEC 62443 FR3 (SI): ICS system '%v' does not enforce communication integrity. Messages must be protected against unauthorized modification.",
-        [system.name]
-    )
-}
-
-violation_fr3 contains msg if {
-    input.target_sl >= 2
-    some system in input.ics_systems
-    not system.malware_protection
-    not system.application_whitelisting
-    msg := sprintf(
-        "IEC 62443 FR3 SL2 (SI): ICS system '%v' has no malware protection or application whitelisting. One of these controls is required at SL2.",
-        [system.name]
-    )
-}
-
-violation_fr3 contains msg if {
-    input.target_sl >= 2
-    some system in input.ics_systems
-    system.firmware_integrity_checking == false
-    msg := sprintf(
-        "IEC 62443 FR3 SL2 (SI): ICS system '%v' does not verify firmware integrity. Firmware integrity checking is required at SL2.",
-        [system.name]
-    )
-}
-
-violation_fr3 contains msg if {
-    not input.patch_management.process_documented
-    msg := "IEC 62443 FR3 (SI): No patch management process for ICS. Security patches must be evaluated and applied in a timely manner."
-}
-
-violation_fr3 contains msg if {
-    input.patch_management.process_documented
-    input.patch_management.max_patch_delay_days > 90
-    msg := sprintf(
-        "IEC 62443 FR3 (SI): Critical ICS patches are delayed up to %v days. Evaluate and apply critical patches within 30 days.",
-        [input.patch_management.max_patch_delay_days]
-    )
-}
-
-# ---------------------------------------------------------------------------
-# FR 4 — Data Confidentiality (DC)
-# ---------------------------------------------------------------------------
-
-violation_fr4 contains msg if {
-    input.target_sl >= 2
-    some system in input.ics_systems
-    system.sensitive_data_transmitted
-    not system.data_encrypted_in_transit
-    msg := sprintf(
-        "IEC 62443 FR4 SL2 (DC): ICS system '%v' transmits sensitive data without encryption. Encrypt all sensitive ICS communications.",
-        [system.name]
-    )
-}
-
-violation_fr4 contains msg if {
-    input.target_sl >= 2
-    some system in input.ics_systems
-    not system.data_at_rest_protected
-    msg := sprintf(
-        "IEC 62443 FR4 SL2 (DC): ICS system '%v' does not protect data at rest. Configuration and operational data must be protected.",
-        [system.name]
-    )
-}
-
-# ---------------------------------------------------------------------------
-# FR 5 — Restricted Data Flow (RDF) — Zone and Conduit Model
-# ---------------------------------------------------------------------------
-
-violation_fr5 contains msg if {
-    count(input.zones) == 0
-    msg := "IEC 62443 FR5 (RDF): No network zones defined. IEC 62443 requires network segmentation using zones and conduits."
-}
-
-violation_fr5 contains msg if {
-    some zone in input.zones
-    not zone.security_level_defined
-    msg := sprintf(
-        "IEC 62443 FR5 (RDF): Zone '%v' does not have a defined security level. Each zone must have an assigned SL.",
-        [zone.name]
-    )
-}
-
-violation_fr5 contains msg if {
-    some conduit in input.conduits
-    not conduit.firewall_or_dmz
-    msg := sprintf(
-        "IEC 62443 FR5 (RDF): Conduit between zones '%v' and '%v' has no firewall or DMZ. All zone boundaries must be protected.",
-        [conduit.source_zone, conduit.dest_zone]
-    )
-}
-
-violation_fr5 contains msg if {
-    some conduit in input.conduits
-    conduit.source_zone == "corporate_it"
-    conduit.dest_zone == "ics_control"
-    not conduit.unidirectional_gateway
-    msg := "IEC 62443 FR5 (RDF): IT/OT boundary between corporate and ICS control zone lacks a unidirectional gateway (data diode). This is a critical segmentation requirement."
-}
-
-violation_fr5 contains msg if {
-    not input.network.it_ot_segmentation
-    msg := "IEC 62443 FR5 (RDF): IT and OT networks are not segmented. Industrial control systems must be isolated from corporate IT networks."
-}
-
-violation_fr5 contains msg if {
-    input.network.direct_internet_connectivity_to_ics
-    msg := "IEC 62443 FR5 (RDF): ICS systems have direct Internet connectivity. ICS must not be directly Internet-accessible."
-}
-
-# ---------------------------------------------------------------------------
-# FR 6 — Timely Response to Events (TRE)
-# ---------------------------------------------------------------------------
-
-violation_fr6 contains msg if {
-    some system in input.ics_systems
-    not system.audit_logging_enabled
-    msg := sprintf(
-        "IEC 62443 FR6 (TRE): ICS system '%v' does not have audit logging enabled. Security events must be logged for timely response.",
-        [system.name]
-    )
-}
-
-violation_fr6 contains msg if {
-    not input.monitoring.security_event_monitoring
-    msg := "IEC 62443 FR6 (TRE): No security event monitoring for ICS. Real-time monitoring is required to enable timely response to incidents."
-}
-
-violation_fr6 contains msg if {
-    not input.monitoring.incident_response_plan_for_ics
-    msg := "IEC 62443 FR6 (TRE): No ICS-specific incident response plan. OT/ICS incidents require specialized response procedures distinct from IT IR plans."
-}
-
-violation_fr6 contains msg if {
-    input.monitoring.ics_log_retention_days < 90
-    msg := sprintf(
-        "IEC 62443 FR6 (TRE): ICS audit logs are retained for only %v days. Retain ICS security logs for at least 90 days.",
-        [input.monitoring.ics_log_retention_days]
-    )
-}
-
-# ---------------------------------------------------------------------------
-# FR 7 — Resource Availability (RA)
-# ---------------------------------------------------------------------------
-
-violation_fr7 contains msg if {
-    some system in input.ics_systems
-    not system.high_availability_configured
-    system.criticality == "high"
-    msg := sprintf(
-        "IEC 62443 FR7 (RA): High-criticality ICS system '%v' does not have high availability configured. Redundancy is required for critical systems.",
-        [system.name]
-    )
-}
-
-violation_fr7 contains msg if {
-    not input.monitoring.dos_protection
-    msg := "IEC 62443 FR7 (RA): No DoS protection for ICS network. ICS systems must be protected against denial-of-service attacks."
-}
-
-violation_fr7 contains msg if {
-    not input.patch_management.tested_before_deployment
-    msg := "IEC 62443 FR7 (RA): ICS patches are not tested before deployment. Untested patches can cause availability failures in critical systems."
-}
-
-# ---------------------------------------------------------------------------
-# IACS Service Provider Requirements (Part 2-4)
-# ---------------------------------------------------------------------------
-
-violation_service_provider contains msg if {
-    input.is_iacs_service_provider == true
-    not input.service_provider.security_program_documented
-    msg := "IEC 62443-2-4: IACS service provider has no documented security program. Service providers must have a formal security management program."
-}
-
-violation_service_provider contains msg if {
-    input.is_iacs_service_provider == true
-    not input.service_provider.customer_security_requirements_reviewed
-    msg := "IEC 62443-2-4: IACS service provider has not reviewed customer security requirements. Provider must align with customer security requirements."
-}
-
-# ---------------------------------------------------------------------------
-# Aggregate
-# ---------------------------------------------------------------------------
-
-all_violations := array.concat(
+part2_violations := array.concat(
     array.concat(
-        [v | some v in violation_fr1],
-        [v | some v in violation_fr2]
+        [v | some v in part2_1.violations],
+        [v | some v in part2_3.violations]
     ),
-    array.concat(
-        array.concat(
-            [v | some v in violation_fr3],
-            [v | some v in violation_fr4]
-        ),
-        array.concat(
-            array.concat(
-                [v | some v in violation_fr5],
-                [v | some v in violation_fr6]
-            ),
-            array.concat(
-                [v | some v in violation_fr7],
-                [v | some v in violation_service_provider]
-            )
-        )
-    )
+    [v | some v in part2_4.violations]
 )
+
+part3_violations_fr1_fr2 := array.concat(
+    [v | some v in fr1.violations],
+    [v | some v in fr2.violations]
+)
+
+part3_violations_fr3_fr4 := array.concat(
+    [v | some v in fr3.violations],
+    [v | some v in fr4.violations]
+)
+
+part3_violations_fr5_fr6 := array.concat(
+    [v | some v in fr5.violations],
+    [v | some v in fr6.violations]
+)
+
+part3_violations_fr7_risk := array.concat(
+    [v | some v in fr7.violations],
+    [v | some v in part3_2.violations]
+)
+
+part3_violations_group1 := array.concat(
+    part3_violations_fr1_fr2,
+    part3_violations_fr3_fr4
+)
+
+part3_violations_group2 := array.concat(
+    part3_violations_fr5_fr6,
+    part3_violations_fr7_risk
+)
+
+part3_violations := array.concat(
+    part3_violations_group1,
+    part3_violations_group2
+)
+
+all_violations := array.concat(part2_violations, part3_violations)
+
+# ---------------------------------------------------------------------------
+# Top-level compliance
+# ---------------------------------------------------------------------------
+
+default iec_62443_compliant := false
 
 iec_62443_compliant if { count(all_violations) == 0 }
 
-passing_requirements := count([fr |
+# ---------------------------------------------------------------------------
+# FR-level compliance flags
+# ---------------------------------------------------------------------------
+
+default fr1_compliant := false
+default fr2_compliant := false
+default fr3_compliant := false
+default fr4_compliant := false
+default fr5_compliant := false
+default fr6_compliant := false
+default fr7_compliant := false
+
+fr1_compliant if { fr1.compliant }
+fr2_compliant if { fr2.compliant }
+fr3_compliant if { fr3.compliant }
+fr4_compliant if { fr4.compliant }
+fr5_compliant if { fr5.compliant }
+fr6_compliant if { fr6.compliant }
+fr7_compliant if { fr7.compliant }
+
+# ---------------------------------------------------------------------------
+# Part 2 compliance flags
+# ---------------------------------------------------------------------------
+
+default part2_1_compliant := false
+default part2_3_compliant := false
+default part2_4_compliant := false
+default part3_2_compliant := false
+
+part2_1_compliant if { part2_1.compliant }
+part2_3_compliant if { part2_3.compliant }
+part2_4_compliant if { part2_4.compliant }
+part3_2_compliant if { part3_2.compliant }
+
+# ---------------------------------------------------------------------------
+# Compliance scoring
+# ---------------------------------------------------------------------------
+
+passing_frs := count([fr |
     fr := [
-        count(violation_fr1) == 0,
-        count(violation_fr2) == 0,
-        count(violation_fr3) == 0,
-        count(violation_fr4) == 0,
-        count(violation_fr5) == 0,
-        count(violation_fr6) == 0,
-        count(violation_fr7) == 0,
+        fr1_compliant,
+        fr2_compliant,
+        fr3_compliant,
+        fr4_compliant,
+        fr5_compliant,
+        fr6_compliant,
+        fr7_compliant,
     ][_]
     fr == true
 ])
 
-compliance_score := round((passing_requirements / 7) * 100)
+# Total SRs across all FRs: FR1=13, FR2=12, FR3=9, FR4=3, FR5=4, FR6=2, FR7=8 = 51
+total_srs := 51
+
+passing_srs := (
+    fr1.compliance_report.passing_srs +
+    fr2.compliance_report.passing_srs +
+    fr3.compliance_report.passing_srs +
+    fr4.compliance_report.passing_srs +
+    fr5.compliance_report.passing_srs +
+    fr6.compliance_report.passing_srs +
+    fr7.compliance_report.passing_srs
+)
+
+sr_compliance_score := round((passing_srs / total_srs) * 100)
+
+fr_compliance_score := round((passing_frs / 7) * 100)
+
+# ---------------------------------------------------------------------------
+# Complete compliance report
+# ---------------------------------------------------------------------------
 
 iec_62443_compliance_report := {
-    "standard":         "IEC 62443",
-    "full_title":       "Industrial Automation and Control Systems Security",
-    "target_sl":        input.target_sl,
-    "compliant":        iec_62443_compliant,
-    "compliance_score": compliance_score,
-    "total_violations": count(all_violations),
-    "violations":       all_violations,
-    "foundational_requirements": {
+    "standard":             "IEC 62443",
+    "full_title":           "Security for Industrial Automation and Control Systems",
+    "target_sl":            input.target_sl,
+    "compliant":            iec_62443_compliant,
+    "total_violations":     count(all_violations),
+    "fr_compliance_score":  fr_compliance_score,
+    "sr_compliance_score":  sr_compliance_score,
+    "passing_frs":          passing_frs,
+    "total_frs":            7,
+    "passing_srs":          passing_srs,
+    "total_srs":            total_srs,
+
+    "part3_3_foundational_requirements": {
         "FR1_identification_authentication": {
-            "compliant": count(violation_fr1) == 0,
-            "violations": violation_fr1,
+            "compliant":   fr1_compliant,
+            "total_srs":   13,
+            "passing_srs": fr1.compliance_report.passing_srs,
+            "violations":  fr1.violations,
         },
         "FR2_use_control": {
-            "compliant": count(violation_fr2) == 0,
-            "violations": violation_fr2,
+            "compliant":   fr2_compliant,
+            "total_srs":   12,
+            "passing_srs": fr2.compliance_report.passing_srs,
+            "violations":  fr2.violations,
         },
         "FR3_system_integrity": {
-            "compliant": count(violation_fr3) == 0,
-            "violations": violation_fr3,
+            "compliant":   fr3_compliant,
+            "total_srs":   9,
+            "passing_srs": fr3.compliance_report.passing_srs,
+            "violations":  fr3.violations,
         },
         "FR4_data_confidentiality": {
-            "compliant": count(violation_fr4) == 0,
-            "violations": violation_fr4,
+            "compliant":   fr4_compliant,
+            "total_srs":   3,
+            "passing_srs": fr4.compliance_report.passing_srs,
+            "violations":  fr4.violations,
         },
         "FR5_restricted_data_flow": {
-            "compliant": count(violation_fr5) == 0,
-            "violations": violation_fr5,
+            "compliant":   fr5_compliant,
+            "total_srs":   4,
+            "passing_srs": fr5.compliance_report.passing_srs,
+            "violations":  fr5.violations,
         },
         "FR6_timely_response": {
-            "compliant": count(violation_fr6) == 0,
-            "violations": violation_fr6,
+            "compliant":   fr6_compliant,
+            "total_srs":   2,
+            "passing_srs": fr6.compliance_report.passing_srs,
+            "violations":  fr6.violations,
         },
         "FR7_resource_availability": {
-            "compliant": count(violation_fr7) == 0,
-            "violations": violation_fr7,
+            "compliant":   fr7_compliant,
+            "total_srs":   8,
+            "passing_srs": fr7.compliance_report.passing_srs,
+            "violations":  fr7.violations,
         },
     },
+
+    "part2_management_requirements": {
+        "part2_1_security_management": {
+            "compliant":   part2_1_compliant,
+            "violations":  part2_1.violations,
+        },
+        "part2_3_patch_management": {
+            "compliant":   part2_3_compliant,
+            "violations":  part2_3.violations,
+        },
+        "part2_4_service_provider": {
+            "compliant":   part2_4_compliant,
+            "violations":  part2_4.violations,
+        },
+    },
+
+    "part3_2_risk_assessment": {
+        "compliant":   part3_2_compliant,
+        "violations":  part3_2.violations,
+    },
+
+    "all_violations": all_violations,
 }
