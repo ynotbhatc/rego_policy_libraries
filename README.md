@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> **343 production-ready OPA policies** covering CIS Benchmarks, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP, IEC 62443, HIPAA, FedRAMP, and more — all in Rego v1 syntax, ready to load into any OPA instance.
+> **363 production-ready OPA policies** covering CIS Benchmarks, DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP, IEC 62443, HIPAA, FedRAMP, and more — all in Rego v1 syntax, ready to load into any OPA instance.
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
@@ -13,7 +13,7 @@
 
 | Domain | Policies | Coverage |
 |--------|----------|----------|
-| **CIS Benchmarks** | 217 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network |
+| **CIS Benchmarks + DISA STIGs** | 237 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network + RHEL 8/9 & Windows 2022 STIGs |
 | **Regulatory Frameworks** | 114 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, Digital Sovereignty |
 | **Enforcement** | 6 | Ansible, Terraform, Dockerfile, Kubernetes, Git |
 | **Governance** | 4 | AI agent authorization, MCP tool-call enforcement |
