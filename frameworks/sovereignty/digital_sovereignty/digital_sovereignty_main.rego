@@ -5,7 +5,9 @@ import rego.v1
 import data.digital_sovereignty.ai_sovereignty
 import data.digital_sovereignty.breach_notification_sovereignty
 import data.digital_sovereignty.cryptographic_sovereignty
+import data.digital_sovereignty.cyber_resilience_sovereignty
 import data.digital_sovereignty.data_residency
+import data.digital_sovereignty.dora_sovereignty
 import data.digital_sovereignty.geopolitical_sovereignty
 import data.digital_sovereignty.infrastructure_sovereignty
 import data.digital_sovereignty.network_sovereignty
@@ -37,6 +39,8 @@ network_sovereignty_compliant if { network_sovereignty.compliant }
 ai_sovereignty_compliant if { ai_sovereignty.compliant }
 breach_notification_sovereignty_compliant if { breach_notification_sovereignty.compliant }
 geopolitical_sovereignty_compliant if { geopolitical_sovereignty.compliant }
+dora_sovereignty_compliant if { dora_sovereignty.compliant }
+cyber_resilience_sovereignty_compliant if { cyber_resilience_sovereignty.compliant }
 
 # =============================================================================
 # OVERALL COMPLIANCE
@@ -54,6 +58,8 @@ overall_compliant if {
 	ai_sovereignty_compliant
 	breach_notification_sovereignty_compliant
 	geopolitical_sovereignty_compliant
+	dora_sovereignty_compliant
+	cyber_resilience_sovereignty_compliant
 }
 
 # =============================================================================
@@ -71,12 +77,14 @@ domains_passing := count([d |
 		ai_sovereignty_compliant,
 		breach_notification_sovereignty_compliant,
 		geopolitical_sovereignty_compliant,
+		dora_sovereignty_compliant,
+		cyber_resilience_sovereignty_compliant,
 	]
 	d := domains[_]
 	d == true
 ])
 
-sovereignty_score := (domains_passing * 100) / 9
+sovereignty_score := (domains_passing * 100) / 11
 
 # =============================================================================
 # VIOLATION AGGREGATION
@@ -93,14 +101,18 @@ all_violations := violations if {
 	a_ai := [v | v := ai_sovereignty.violations[_]]
 	a_bn := [v | v := breach_notification_sovereignty.violations[_]]
 	a_gt := [v | v := geopolitical_sovereignty.violations[_]]
-	v_dr_cs := array.concat(a_dr, a_cs)
-	v_is_ss := array.concat(a_is, a_ss)
-	v_os_ns := array.concat(a_os, a_ns)
+	a_dr_s := [v | v := dora_sovereignty.violations[_]]
+	a_cr := [v | v := cyber_resilience_sovereignty.violations[_]]
+	v_dr_cs  := array.concat(a_dr, a_cs)
+	v_is_ss  := array.concat(a_is, a_ss)
+	v_os_ns  := array.concat(a_os, a_ns)
 	v_first  := array.concat(v_dr_cs, v_is_ss)
 	v_second := array.concat(v_os_ns, a_ai)
 	v_third  := array.concat(a_bn, a_gt)
+	v_fourth := array.concat(a_dr_s, a_cr)
 	v_all    := array.concat(v_first, v_second)
-	violations := array.concat(v_all, v_third)
+	v_base   := array.concat(v_all, v_third)
+	violations := array.concat(v_base, v_fourth)
 }
 
 critical_violations := [v | v := all_violations[_]; v.severity == "critical"]
@@ -140,7 +152,7 @@ report := {
 	"sovereignty_level": sovereignty_level,
 	"sovereignty_score": sovereignty_score,
 	"domains_passing": domains_passing,
-	"domains_total": 9,
+	"domains_total": 11,
 	"domains": {
 		"data_residency": {
 			"compliant": data_residency_compliant,
@@ -178,6 +190,14 @@ report := {
 			"compliant": geopolitical_sovereignty_compliant,
 			"details": geopolitical_sovereignty.report,
 		},
+		"dora_sovereignty": {
+			"compliant": dora_sovereignty_compliant,
+			"details": dora_sovereignty.report,
+		},
+		"cyber_resilience_sovereignty": {
+			"compliant": cyber_resilience_sovereignty_compliant,
+			"details": cyber_resilience_sovereignty.report,
+		},
 	},
 	"violation_summary": {
 		"total": count(all_violations),
@@ -188,6 +208,11 @@ report := {
 	"applicable_frameworks": [
 		"ENISA European Digital Sovereignty",
 		"GAIA-X Trust Framework",
+		"DORA — EU Regulation 2022/2554",
+		"EU Cyber Resilience Act (CRA) 2024/2847",
+		"NIST SP 800-160 Vol. 2 (Cyber Resiliency Engineering)",
+		"NIST CSF 2.0",
+		"ISO 22301 (Business Continuity Management)",
 		"FedRAMP High / GovCloud",
 		"BSI C5 (Germany)",
 		"NCSC Cloud Security Principles (UK)",
