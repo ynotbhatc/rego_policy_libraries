@@ -41,6 +41,26 @@ read_only_tools := {
     "api_users_read", "api_users_list",
 }
 
+# ---------------------------------------------------------------------------
+# Option 1 — Name-based registry (survives ID reassignment across reinstalls)
+# Seed playbooks push {str(id): name} to OPA after template creation:
+#   PUT http://<opa-compliance>:8182/v1/data/aac/templates/<group>
+# Any registered template whose name starts with "AAC_" is automatically approved.
+# ---------------------------------------------------------------------------
+
+# Flatten all registered template groups into a single id → name lookup
+_registered_name(tid) := name if {
+    some _group, templates in data.aac.templates
+    some id_str, name in templates
+    tid == to_number(id_str)
+}
+
+_has_registered_name(tid) if { _registered_name(tid) }
+
+# ---------------------------------------------------------------------------
+# Option 2 — ID allowlist (legacy fallback for templates not yet synced to OPA)
+# ---------------------------------------------------------------------------
+
 # Job templates explicitly approved for AI launch
 approved_template_ids := {
     10, 11, 12, 13,        # CIS assessments (RHEL 9/8, Ubuntu, Windows)
@@ -104,6 +124,12 @@ risk_level := "blocked" if { input.tool in blocked_tools }
 
 risk_level := "low" if {
     input.tool in {"run_job", "api_job_templates_launch_create"}
+    name := _registered_name(_template_id)
+    startswith(name, "AAC_")
+}
+
+risk_level := "low" if {
+    input.tool in {"run_job", "api_job_templates_launch_create"}
     template_id := _template_id
     template_id in approved_template_ids
 }
@@ -156,7 +182,17 @@ reason := msg if {
     allow
     risk_level == "low"
     tid := _template_id
-    msg := sprintf("Job launch approved — template %v is in the compliance assessment allowlist", [tid])
+    name := _registered_name(tid)
+    startswith(name, "AAC_")
+    msg := sprintf("Job launch approved — '%v' (id: %v) is a registered AAC template", [name, tid])
+}
+
+reason := msg if {
+    allow
+    risk_level == "low"
+    tid := _template_id
+    not _has_registered_name(tid)
+    msg := sprintf("Job launch approved — template %v is in the legacy ID allowlist", [tid])
 }
 
 reason := "Project sync — allowed with logging" if {
