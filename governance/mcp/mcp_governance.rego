@@ -64,6 +64,7 @@ approved_template_ids := {
     115,                   # IEC 62443 Assessment
     116,                   # CIP-010 Baseline Capture/Check
     117,                   # CIP-008 Incident Response Evidence
+    102, 103, 104, 105,    # Sentinel: runtime block, audit sweep, AI governance, preflight
     121,                   # AAC - Seed Golden Image Workflow
     122, 123, 124,         # Golden Image: Check, Rollback, Notify Help Desk
     125,                   # AAC - Golden Image Enforcement (workflow)
