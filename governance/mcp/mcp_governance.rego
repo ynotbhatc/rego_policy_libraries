@@ -64,6 +64,9 @@ approved_template_ids := {
     115,                   # IEC 62443 Assessment
     116,                   # CIP-010 Baseline Capture/Check
     117,                   # CIP-008 Incident Response Evidence
+    121,                   # AAC - Seed Golden Image Workflow
+    122, 123, 124,         # Golden Image: Check, Rollback, Notify Help Desk
+    125,                   # AAC - Golden Image Enforcement (workflow)
 }
 
 # Tools that are always blocked regardless of context
@@ -107,6 +110,20 @@ risk_level := "medium" if {
     input.tool in {"sync_project", "api_projects_update_create"}
 }
 
+# Demo/setup scaffold operations — allowed but logged
+risk_level := "medium" if {
+    input.tool in {
+        "api_job_templates_create",
+        "api_job_templates_credentials_create",
+        "api_workflow_job_templates_create",
+        "api_workflow_job_template_nodes_create",
+        "api_workflow_job_template_nodes_success_nodes_create",
+        "api_workflow_job_template_nodes_failure_nodes_create",
+        "api_workflow_job_template_nodes_always_nodes_create",
+        "api_workflow_job_templates_launch_create",
+    }
+}
+
 # ---------------------------------------------------------------------------
 # Allow/deny decision
 # ---------------------------------------------------------------------------
@@ -143,6 +160,13 @@ reason := msg if {
 reason := "Project sync — allowed with logging" if {
     allow
     risk_level == "medium"
+    input.tool in {"sync_project", "api_projects_update_create"}
+}
+
+reason := "Demo scaffold operation — allowed with logging" if {
+    allow
+    risk_level == "medium"
+    not input.tool in {"sync_project", "api_projects_update_create"}
 }
 
 reason := msg if {
