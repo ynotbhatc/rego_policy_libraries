@@ -67,6 +67,7 @@ approved_template_ids := {
     121,                   # AAC - Seed Golden Image Workflow
     122, 123, 124,         # Golden Image: Check, Rollback, Notify Help Desk
     125,                   # AAC - Golden Image Enforcement (workflow)
+    126,                   # AAC - Demo: Introduce Drift
 }
 
 # Tools that are always blocked regardless of context
