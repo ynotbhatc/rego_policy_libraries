@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="7fdd8b57bc74ab1a" />
+  <title>Rego Policy Libraries — Open Policy Agent Compliance Library</title>
+  <meta name="description" content="Open Policy Agent (OPA) Rego policy library for CIS benchmarks, NIST, ISO 27001, SOC 2, NERC-CIP, DORA, NIS2, PCI-DSS, Digital Sovereignty, and AI governance. Policy-as-Code compliance at enterprise scale.">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 860px; margin: 60px auto; padding: 0 24px; color: #24292f; }
+    h1 { font-size: 2em; border-bottom: 1px solid #d0d7de; padding-bottom: 12px; }
+    h2 { font-size: 1.3em; margin-top: 32px; }
+    a { color: #0969da; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .badge { display: inline-block; background: #1f6feb; color: white; border-radius: 4px; padding: 3px 10px; font-size: 0.85em; margin-right: 6px; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+    th { background: #f6f8fa; text-align: left; padding: 8px 12px; border: 1px solid #d0d7de; }
+    td { padding: 8px 12px; border: 1px solid #d0d7de; }
+    tr:nth-child(even) { background: #f6f8fa; }
+    .hero { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 24px; margin: 24px 0; }
+    code { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 4px; padding: 2px 6px; font-size: 0.9em; }
+    pre { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+  <h1>Rego Policy Libraries</h1>
+  <p>
+    <span class="badge">Open Policy Agent</span>
+    <span class="badge">Policy-as-Code</span>
+    <span class="badge">Compliance</span>
+  </p>
+
+  <div class="hero">
+    <strong>Open source Rego policy library for enterprise compliance automation.</strong><br>
+    Covers CIS benchmarks, NIST, ISO 27001, SOC 2, NERC-CIP, DORA, NIS2, PCI-DSS, Digital Sovereignty, and AI governance — all in auditable, extensible Rego v1 syntax.
+  </div>
+
+  <p>
+    Part of the <strong>Ansible Automated Compliance (AAC)</strong> platform — Policy-as-Code compliance at enterprise scale, built on Ansible Automation Platform and Open Policy Agent.
+  </p>
+
+  <p>
+    <a href="https://github.com/ynotbhatc/rego_policy_libraries">View on GitHub →</a>
+  </p>
+
+  <h2>Framework Coverage</h2>
+  <table>
+    <tr><th>Framework</th><th>Category</th><th>OPA Container</th></tr>
+    <tr><td>CIS Benchmarks (RHEL 9, Ubuntu, Windows, AWS)</td><td>Security</td><td>opa-security :8181</td></tr>
+    <tr><td>DISA STIGs</td><td>Security</td><td>opa-security :8181</td></tr>
+    <tr><td>NIST 800-53 / FedRAMP / FISMA / CMMC</td><td>Federal</td><td>opa-security :8181</td></tr>
+    <tr><td>ISO 27001 / SOC 2 / PCI-DSS / SOX</td><td>Compliance</td><td>opa-compliance :8182</td></tr>
+    <tr><td>GDPR / HIPAA / Privacy</td><td>Privacy</td><td>opa-compliance :8182</td></tr>
+    <tr><td>DORA / NIS2 / Digital Sovereignty</td><td>Sovereignty</td><td>opa-compliance :8182</td></tr>
+    <tr><td>NERC-CIP (CIP-002 through CIP-015)</td><td>Critical Infrastructure</td><td>opa-ot :8183</td></tr>
+    <tr><td>AMI / NIST IR 7628 / IEC 62443</td><td>OT / Smart Grid</td><td>opa-ot :8183</td></tr>
+    <tr><td>AI Governance / MCP Enforcement</td><td>AI / Governance</td><td>opa-ot :8183</td></tr>
+    <tr><td>Ansible / Terraform / Git Enforcement</td><td>Pipeline</td><td>opa-compliance :8182</td></tr>
+  </table>
+
+  <h2>Quick Start</h2>
+  <pre>git clone https://github.com/ynotbhatc/rego_policy_libraries.git
+
+# Load a policy into OPA
+curl -X PUT --data-binary @benchmarks/cis/os/linux/rhel_9/cis_rhel9_complete.rego \
+  http://localhost:8181/v1/policies/cis_rhel9_complete
+
+# Query compliance
+curl -X POST http://localhost:8181/v1/data/cis_rhel9/compliance_assessment \
+  -H 'Content-Type: application/json' -d @your_facts.json</pre>
+
+  <h2>Policy Library Structure</h2>
+  <table>
+    <tr><th>Directory</th><th>Contents</th></tr>
+    <tr><td><code>benchmarks/cis/</code></td><td>CIS benchmark policies — 200+ files</td></tr>
+    <tr><td><code>benchmarks/stig/</code></td><td>DISA STIG policies</td></tr>
+    <tr><td><code>frameworks/federal/</code></td><td>NIST, FISMA, FedRAMP, CMMC</td></tr>
+    <tr><td><code>frameworks/management/</code></td><td>ISO 27001, SOC 2, Corporate</td></tr>
+    <tr><td><code>frameworks/financial/</code></td><td>PCI-DSS, SOX</td></tr>
+    <tr><td><code>frameworks/privacy/</code></td><td>GDPR, HIPAA</td></tr>
+    <tr><td><code>frameworks/critical_infrastructure/</code></td><td>NERC-CIP, AMI, IEC 62443</td></tr>
+    <tr><td><code>frameworks/sovereignty/</code></td><td>Digital Sovereignty (11 domains)</td></tr>
+    <tr><td><code>enforcement/</code></td><td>Ansible, Terraform, Git pipeline enforcement</td></tr>
+    <tr><td><code>governance/</code></td><td>AI governance, MCP enforcement</td></tr>
+    <tr><td><code>threat_detection/</code></td><td>Threat and anomaly detection policies</td></tr>
+  </table>
+
+  <h2>Links</h2>
+  <ul>
+    <li><a href="https://github.com/ynotbhatc/rego_policy_libraries">GitHub Repository</a></li>
+    <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/CHANGELOG.md">Changelog</a></li>
+    <li><a href="https://www.openpolicyagent.org/">Open Policy Agent</a></li>
+  </ul>
+
+  <hr>
+  <p style="color:#656d76; font-size:0.85em;">
+    Rego Policy Libraries — Part of the Ansible Automated Compliance (AAC) project.<br>
+    All policies use Rego v1 syntax. Requires OPA 0.60+.
+  </p>
+
+</body>
+</html>
