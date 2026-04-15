@@ -89,6 +89,8 @@ approved_template_ids := {
     122, 123, 124,         # Golden Image: Check, Rollback, Notify Help Desk
     125,                   # AAC - Golden Image Enforcement (workflow)
     126,                   # AAC - Demo: Introduce Drift
+    160, 165,              # Golden Image: Reset Demo, Manage RHPDS Demo Host
+    166, 167,              # CAF 4.0: Fact Collection, Assessment and Store
 }
 
 # Tools that are always blocked regardless of context
