@@ -23,22 +23,27 @@ import rego.v1
 #       content-based attack mitigation at all inputs
 # ---------------------------------------------------------------------------
 
+default _b4a_ot_it_separated := false
 _b4a_ot_it_separated if {
     input.system_security.network_segmentation.ot_it_separated == true
 }
 
+default _b4a_dmz_configured := false
 _b4a_dmz_configured if {
     input.system_security.network_segmentation.dmz_configured == true
 }
 
+default _b4a_internet_blocked_from_critical := false
 _b4a_internet_blocked_from_critical if {
     input.system_security.network_segmentation.internet_routing_blocked_from_critical == true
 }
 
+default _b4a_input_validation := false
 _b4a_input_validation if {
     input.system_security.network_segmentation.input_validation_enforced == true
 }
 
+default _b4a_fully_achieved := false
 _b4a_fully_achieved if {
     _b4a_ot_it_separated
     _b4a_dmz_configured
@@ -46,6 +51,7 @@ _b4a_fully_achieved if {
     _b4a_input_validation
 }
 
+default _b4a_partially_achieved := false
 _b4a_partially_achieved if {
     _b4a_ot_it_separated
     _b4a_internet_blocked_from_critical
@@ -78,26 +84,32 @@ co_b4a_details := {
 # Score thresholds: Achieved >= 90%, Partially >= 70%
 # ---------------------------------------------------------------------------
 
+default _b4b_cis_score_strong := false
 _b4b_cis_score_strong if {
     input.system_security.secure_configuration.baseline_compliance_pct >= 90
 }
 
+default _b4b_cis_score_acceptable := false
 _b4b_cis_score_acceptable if {
     input.system_security.secure_configuration.baseline_compliance_pct >= 70
 }
 
+default _b4b_default_accounts_disabled := false
 _b4b_default_accounts_disabled if {
     input.system_security.secure_configuration.default_accounts_disabled == true
 }
 
+default _b4b_software_allowlisting := false
 _b4b_software_allowlisting if {
     input.system_security.secure_configuration.software_allowlisting == true
 }
 
+default _b4b_config_drift_monitored := false
 _b4b_config_drift_monitored if {
     input.system_security.secure_configuration.config_drift_monitoring == true
 }
 
+default _b4b_fully_achieved := false
 _b4b_fully_achieved if {
     _b4b_cis_score_strong
     _b4b_default_accounts_disabled
@@ -105,6 +117,7 @@ _b4b_fully_achieved if {
     _b4b_config_drift_monitored
 }
 
+default _b4b_partially_achieved := false
 _b4b_partially_achieved if {
     _b4b_cis_score_acceptable
     _b4b_default_accounts_disabled
@@ -136,26 +149,32 @@ co_b4b_details := {
 #       only authorised software installed
 # ---------------------------------------------------------------------------
 
+default _b4c_admin_from_paw := false
 _b4c_admin_from_paw if {
     input.system_security.secure_management.admin_from_paw_only == true
 }
 
+default _b4c_malware_deployed := false
 _b4c_malware_deployed if {
     input.system_security.secure_management.malware_protection == true
 }
 
+default _b4c_malware_signatures_current := false
 _b4c_malware_signatures_current if {
     input.system_security.secure_management.malware_signatures_days <= 2
 }
 
+default _b4c_malware_signatures_acceptable := false
 _b4c_malware_signatures_acceptable if {
     input.system_security.secure_management.malware_signatures_days <= 7
 }
 
+default _b4c_no_unauth_software := false
 _b4c_no_unauth_software if {
     input.system_security.secure_management.unauthorised_software_count == 0
 }
 
+default _b4c_fully_achieved := false
 _b4c_fully_achieved if {
     _b4c_admin_from_paw
     _b4c_malware_deployed
@@ -163,6 +182,7 @@ _b4c_fully_achieved if {
     _b4c_no_unauth_software
 }
 
+default _b4c_partially_achieved := false
 _b4c_partially_achieved if {
     _b4c_malware_deployed
     _b4c_malware_signatures_acceptable
@@ -193,34 +213,42 @@ co_b4c_details := {
 #       testing, maximise use of supported software/firmware/hardware
 # ---------------------------------------------------------------------------
 
+default _b4d_critical_patches_current := false
 _b4d_critical_patches_current if {
     input.system_security.vulnerability_management.critical_patch_age_days <= 14
 }
 
+default _b4d_critical_patches_acceptable := false
 _b4d_critical_patches_acceptable if {
     input.system_security.vulnerability_management.critical_patch_age_days <= 30
 }
 
+default _b4d_vuln_scan_recent := false
 _b4d_vuln_scan_recent if {
     input.system_security.vulnerability_management.vuln_scan_age_days <= 7
 }
 
+default _b4d_vuln_scan_acceptable := false
 _b4d_vuln_scan_acceptable if {
     input.system_security.vulnerability_management.vuln_scan_age_days <= 30
 }
 
+default _b4d_no_eol_software := false
 _b4d_no_eol_software if {
     input.system_security.vulnerability_management.eol_software_count == 0
 }
 
+default _b4d_eol_low := false
 _b4d_eol_low if {
     input.system_security.vulnerability_management.eol_software_count <= 2
 }
 
+default _b4d_pentest_recent := false
 _b4d_pentest_recent if {
     input.system_security.vulnerability_management.pentest_age_days <= 365
 }
 
+default _b4d_fully_achieved := false
 _b4d_fully_achieved if {
     _b4d_critical_patches_current
     _b4d_vuln_scan_recent
@@ -228,6 +256,7 @@ _b4d_fully_achieved if {
     _b4d_pentest_recent
 }
 
+default _b4d_partially_achieved := false
 _b4d_partially_achieved if {
     _b4d_critical_patches_acceptable
     _b4d_vuln_scan_acceptable

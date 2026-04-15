@@ -23,28 +23,34 @@ import rego.v1
 #       certificates valid and current
 # ---------------------------------------------------------------------------
 
+default _b3b_all_links_encrypted := false
 _b3b_all_links_encrypted if {
     input.data_in_transit.all_links_encrypted == true
 }
 
+default _b3b_tls_min_version_strong := false
 _b3b_tls_min_version_strong if {
     tls_ver := input.data_in_transit.tls_min_version
     tls_ver in ["1.2", "1.3"]
 }
 
+default _b3b_tls_version_acceptable := false
 _b3b_tls_version_acceptable if {
     tls_ver := input.data_in_transit.tls_min_version
     tls_ver in ["1.1", "1.2", "1.3"]
 }
 
+default _b3b_no_unencrypted_protocols := false
 _b3b_no_unencrypted_protocols if {
     count(input.data_in_transit.unencrypted_protocols_in_use) == 0
 }
 
+default _b3b_cert_valid := false
 _b3b_cert_valid if {
     input.data_in_transit.cert_validity_days_remaining > 30
 }
 
+default _b3b_fully_achieved := false
 _b3b_fully_achieved if {
     _b3b_all_links_encrypted
     _b3b_tls_min_version_strong
@@ -52,6 +58,7 @@ _b3b_fully_achieved if {
     _b3b_cert_valid
 }
 
+default _b3b_partially_achieved := false
 _b3b_partially_achieved if {
     _b3b_tls_version_acceptable
     _b3b_cert_valid
@@ -83,34 +90,42 @@ co_b3b_details := {
 #       backup restore tested, backup integrity verified
 # ---------------------------------------------------------------------------
 
+default _b3c_encryption_at_rest := false
 _b3c_encryption_at_rest if {
     input.stored_data.encryption_at_rest == true
 }
 
+default _b3c_backup_exists := false
 _b3c_backup_exists if {
     input.stored_data.backup_exists == true
 }
 
+default _b3c_backup_recent := false
 _b3c_backup_recent if {
     input.stored_data.backup_age_days <= 1
 }
 
+default _b3c_backup_acceptable_age := false
 _b3c_backup_acceptable_age if {
     input.stored_data.backup_age_days <= 7
 }
 
+default _b3c_backup_segregated := false
 _b3c_backup_segregated if {
     input.stored_data.backup_segregated == true
 }
 
+default _b3c_restore_tested := false
 _b3c_restore_tested if {
     input.stored_data.restore_test_days <= 30
 }
 
+default _b3c_restore_tested_annually := false
 _b3c_restore_tested_annually if {
     input.stored_data.restore_test_days <= 365
 }
 
+default _b3c_fully_achieved := false
 _b3c_fully_achieved if {
     _b3c_encryption_at_rest
     _b3c_backup_exists
@@ -119,6 +134,7 @@ _b3c_fully_achieved if {
     _b3c_restore_tested
 }
 
+default _b3c_partially_achieved := false
 _b3c_partially_achieved if {
     _b3c_encryption_at_rest
     _b3c_backup_exists
@@ -151,22 +167,27 @@ co_b3c_details := {
 #       devices configured to platform security best practice
 # ---------------------------------------------------------------------------
 
+default _b3d_mdm_enrolled := false
 _b3d_mdm_enrolled if {
     input.mobile_data.mdm_enrolled == true
 }
 
+default _b3d_device_encrypted := false
 _b3d_device_encrypted if {
     input.mobile_data.device_encryption == true
 }
 
+default _b3d_remote_wipe := false
 _b3d_remote_wipe if {
     input.mobile_data.remote_wipe_configured == true
 }
 
+default _b3d_data_minimised := false
 _b3d_data_minimised if {
     input.mobile_data.data_minimised == true
 }
 
+default _b3d_fully_achieved := false
 _b3d_fully_achieved if {
     _b3d_mdm_enrolled
     _b3d_device_encrypted
@@ -174,6 +195,7 @@ _b3d_fully_achieved if {
     _b3d_data_minimised
 }
 
+default _b3d_partially_achieved := false
 _b3d_partially_achieved if {
     _b3d_mdm_enrolled
     _b3d_device_encrypted

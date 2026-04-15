@@ -23,26 +23,32 @@ import rego.v1
 #       no internet routing from critical systems
 # ---------------------------------------------------------------------------
 
+default _b5b_essential_fn_isolated := false
 _b5b_essential_fn_isolated if {
     input.resilience.network_segregation.essential_function_isolated == true
 }
 
+default _b5b_business_system_separated := false
 _b5b_business_system_separated if {
     input.resilience.network_segregation.business_system_separated == true
 }
 
+default _b5b_redundant_paths := false
 _b5b_redundant_paths if {
     input.resilience.network_segregation.redundant_paths == true
 }
 
+default _b5b_no_internet_from_critical := false
 _b5b_no_internet_from_critical if {
     input.resilience.network_segregation.no_internet_from_critical == true
 }
 
+default _b5b_geographic_redundancy := false
 _b5b_geographic_redundancy if {
     input.resilience.network_segregation.geographic_redundancy == true
 }
 
+default _b5b_fully_achieved := false
 _b5b_fully_achieved if {
     _b5b_essential_fn_isolated
     _b5b_business_system_separated
@@ -51,6 +57,7 @@ _b5b_fully_achieved if {
     _b5b_geographic_redundancy
 }
 
+default _b5b_partially_achieved := false
 _b5b_partially_achieved if {
     _b5b_essential_fn_isolated
     _b5b_business_system_separated
@@ -83,38 +90,47 @@ co_b5b_details := {
 #       restoration tested at defined frequency
 # ---------------------------------------------------------------------------
 
+default _b5c_comprehensive_coverage := false
 _b5c_comprehensive_coverage if {
     input.resilience.backups.comprehensive_coverage == true
 }
 
+default _b5c_automated := false
 _b5c_automated if {
     input.resilience.backups.automated == true
 }
 
+default _b5c_backup_recent := false
 _b5c_backup_recent if {
     input.resilience.backups.backup_age_hours <= 24
 }
 
+default _b5c_backup_acceptable_age := false
 _b5c_backup_acceptable_age if {
     input.resilience.backups.backup_age_hours <= 168
 }
 
+default _b5c_offline_backup := false
 _b5c_offline_backup if {
     input.resilience.backups.offline_backup_exists == true
 }
 
+default _b5c_ransomware_resilient := false
 _b5c_ransomware_resilient if {
     input.resilience.backups.ransomware_resilient == true
 }
 
+default _b5c_restore_tested := false
 _b5c_restore_tested if {
     input.resilience.backups.restore_test_age_days <= 30
 }
 
+default _b5c_restore_tested_annually := false
 _b5c_restore_tested_annually if {
     input.resilience.backups.restore_test_age_days <= 365
 }
 
+default _b5c_fully_achieved := false
 _b5c_fully_achieved if {
     _b5c_comprehensive_coverage
     _b5c_automated
@@ -124,6 +140,7 @@ _b5c_fully_achieved if {
     _b5c_restore_tested
 }
 
+default _b5c_partially_achieved := false
 _b5c_partially_achieved if {
     _b5c_automated
     _b5c_backup_acceptable_age
