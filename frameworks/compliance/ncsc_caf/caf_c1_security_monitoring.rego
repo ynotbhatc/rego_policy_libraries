@@ -6,13 +6,14 @@ import rego.v1
 # Objective C — Detecting Cyber Security Events
 # Principle C1 — Security Monitoring
 #
-# Contributing Outcomes covered (automatable subset):
+# Contributing Outcomes covered:
 #   C1.a — Sources and Tools for Logging and Monitoring
 #   C1.b — Securing Logs
 #   C1.c — Generating Alerts
+#   C1.d — Triage of Alerts
+#   C1.f — Threat Intelligence
 #
-# Note: C1.d (Triage of Alerts), C1.e (Personnel Skills), C1.f (Threat Intel)
-# are partially/non-automatable and handled separately.
+# Note: C1.e (Personnel Skills) is non-automatable and handled separately.
 #
 # Scoring: "achieved" | "partially_achieved" | "not_achieved"
 
@@ -238,6 +239,144 @@ co_c1c_details := {
 }
 
 # ---------------------------------------------------------------------------
+# C1.d — Triage of Alerts
+# IGPs: Documented process for triaging security alerts, alerts reviewed
+#       promptly with defined SLA, SOAR/ticketing integrated so no alerts
+#       are missed, mean time to triage tracked, false positives tuned
+# ---------------------------------------------------------------------------
+
+default _c1d_process_documented := false
+_c1d_process_documented if {
+    input.security_monitoring.alert_triage.process_documented == true
+}
+
+default _c1d_mean_triage_fast := false
+_c1d_mean_triage_fast if {
+    input.security_monitoring.alert_triage.mean_triage_hours <= 4
+}
+
+default _c1d_mean_triage_acceptable := false
+_c1d_mean_triage_acceptable if {
+    input.security_monitoring.alert_triage.mean_triage_hours <= 24
+}
+
+default _c1d_ticketing_integrated := false
+_c1d_ticketing_integrated if {
+    input.security_monitoring.alert_triage.ticketing_integrated == true
+}
+
+default _c1d_sla_defined := false
+_c1d_sla_defined if {
+    input.security_monitoring.alert_triage.triage_sla_defined == true
+}
+
+default _c1d_fully_achieved := false
+_c1d_fully_achieved if {
+    _c1d_process_documented
+    _c1d_mean_triage_fast
+    _c1d_ticketing_integrated
+    _c1d_sla_defined
+}
+
+default _c1d_partially_achieved := false
+_c1d_partially_achieved if {
+    _c1d_process_documented
+    _c1d_mean_triage_acceptable
+    _c1d_ticketing_integrated
+}
+
+default co_c1d_achievement := "not_achieved"
+
+co_c1d_achievement := "achieved" if { _c1d_fully_achieved }
+
+co_c1d_achievement := "partially_achieved" if {
+    not _c1d_fully_achieved
+    _c1d_partially_achieved
+}
+
+co_c1d_details := {
+    "process_documented": _c1d_process_documented,
+    "mean_triage_hours": object.get(input, ["security_monitoring", "alert_triage", "mean_triage_hours"], 9999),
+    "mean_triage_fast": _c1d_mean_triage_fast,
+    "ticketing_integrated": _c1d_ticketing_integrated,
+    "triage_sla_defined": _c1d_sla_defined,
+    "achievement": co_c1d_achievement,
+}
+
+# ---------------------------------------------------------------------------
+# C1.f — Threat Intelligence
+# IGPs: Threat intelligence feeds sourced from relevant, authoritative
+#       sources (e.g., NCSC, ISACs), feeds reviewed regularly by analysts,
+#       intelligence integrated with SIEM/detection tooling, feeds updated
+#       at least daily
+# ---------------------------------------------------------------------------
+
+default _c1f_feeds_configured := false
+_c1f_feeds_configured if {
+    input.security_monitoring.threat_intel.feeds_configured == true
+}
+
+default _c1f_feed_count_sufficient := false
+_c1f_feed_count_sufficient if {
+    input.security_monitoring.threat_intel.feed_count >= 2
+}
+
+default _c1f_feeds_current := false
+_c1f_feeds_current if {
+    input.security_monitoring.threat_intel.last_update_hours <= 24
+}
+
+default _c1f_feeds_acceptable := false
+_c1f_feeds_acceptable if {
+    input.security_monitoring.threat_intel.last_update_hours <= 72
+}
+
+default _c1f_analyst_reviewed := false
+_c1f_analyst_reviewed if {
+    input.security_monitoring.threat_intel.analyst_reviewed == true
+}
+
+default _c1f_siem_integrated := false
+_c1f_siem_integrated if {
+    input.security_monitoring.threat_intel.integrated_with_siem == true
+}
+
+default _c1f_fully_achieved := false
+_c1f_fully_achieved if {
+    _c1f_feeds_configured
+    _c1f_feed_count_sufficient
+    _c1f_feeds_current
+    _c1f_analyst_reviewed
+    _c1f_siem_integrated
+}
+
+default _c1f_partially_achieved := false
+_c1f_partially_achieved if {
+    _c1f_feeds_configured
+    _c1f_feeds_acceptable
+}
+
+default co_c1f_achievement := "not_achieved"
+
+co_c1f_achievement := "achieved" if { _c1f_fully_achieved }
+
+co_c1f_achievement := "partially_achieved" if {
+    not _c1f_fully_achieved
+    _c1f_partially_achieved
+}
+
+co_c1f_details := {
+    "feeds_configured": _c1f_feeds_configured,
+    "feed_count": object.get(input, ["security_monitoring", "threat_intel", "feed_count"], 0),
+    "feed_count_sufficient": _c1f_feed_count_sufficient,
+    "last_update_hours": object.get(input, ["security_monitoring", "threat_intel", "last_update_hours"], 9999),
+    "feeds_current": _c1f_feeds_current,
+    "analyst_reviewed": _c1f_analyst_reviewed,
+    "siem_integrated": _c1f_siem_integrated,
+    "achievement": co_c1f_achievement,
+}
+
+# ---------------------------------------------------------------------------
 # Objective-level rollup
 # ---------------------------------------------------------------------------
 
@@ -247,12 +386,14 @@ c1_compliant if {
     co_c1a_achievement == "achieved"
     co_c1b_achievement == "achieved"
     co_c1c_achievement == "achieved"
+    co_c1d_achievement == "achieved"
+    co_c1f_achievement == "achieved"
 }
 
 c1_achievement_counts := {
-    "achieved": count([co | some co in [co_c1a_achievement, co_c1b_achievement, co_c1c_achievement]; co == "achieved"]),
-    "partially_achieved": count([co | some co in [co_c1a_achievement, co_c1b_achievement, co_c1c_achievement]; co == "partially_achieved"]),
-    "not_achieved": count([co | some co in [co_c1a_achievement, co_c1b_achievement, co_c1c_achievement]; co == "not_achieved"]),
+    "achieved": count([co | some co in [co_c1a_achievement, co_c1b_achievement, co_c1c_achievement, co_c1d_achievement, co_c1f_achievement]; co == "achieved"]),
+    "partially_achieved": count([co | some co in [co_c1a_achievement, co_c1b_achievement, co_c1c_achievement, co_c1d_achievement, co_c1f_achievement]; co == "partially_achieved"]),
+    "not_achieved": count([co | some co in [co_c1a_achievement, co_c1b_achievement, co_c1c_achievement, co_c1d_achievement, co_c1f_achievement]; co == "not_achieved"]),
 }
 
 compliance_report := {
@@ -264,5 +405,7 @@ compliance_report := {
         "C1.a": co_c1a_details,
         "C1.b": co_c1b_details,
         "C1.c": co_c1c_details,
+        "C1.d": co_c1d_details,
+        "C1.f": co_c1f_details,
     },
 }

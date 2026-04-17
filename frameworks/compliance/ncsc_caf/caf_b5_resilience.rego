@@ -6,14 +6,85 @@ import rego.v1
 # Objective B — Protecting Against Cyber Attack
 # Principle B5 — Resilient Networks and Systems
 #
-# Contributing Outcomes covered (automatable):
+# Contributing Outcomes covered:
+#   B5.a — Resilience Preparation (BC/DR plans, exercises)
 #   B5.b — Design for Resilience
 #   B5.c — Backups
 #
-# Note: B5.a (Resilience Preparation — BC/DR plans and exercises) is
-# partially automatable and handled separately.
-#
 # Scoring: "achieved" | "partially_achieved" | "not_achieved"
+
+# ---------------------------------------------------------------------------
+# B5.a — Resilience Preparation
+# IGPs: BC/DR plans documented for all essential functions, plans include
+#       comms/escalation and recovery objectives (RTO/RPO), plans reviewed
+#       annually, plans tested/exercised at defined frequency
+# ---------------------------------------------------------------------------
+
+default _b5a_plan_exists := false
+_b5a_plan_exists if {
+    input.resilience.bc_dr_plan.exists == true
+}
+
+default _b5a_plan_current := false
+_b5a_plan_current if {
+    input.resilience.bc_dr_plan.last_review_days <= 365
+}
+
+default _b5a_plan_acceptable_age := false
+_b5a_plan_acceptable_age if {
+    input.resilience.bc_dr_plan.last_review_days <= 730
+}
+
+default _b5a_covers_essential_functions := false
+_b5a_covers_essential_functions if {
+    input.resilience.bc_dr_plan.covers_essential_functions == true
+}
+
+default _b5a_tested := false
+_b5a_tested if {
+    input.resilience.bc_dr_plan.tested_days <= 365
+}
+
+default _b5a_rto_rpo_defined := false
+_b5a_rto_rpo_defined if {
+    input.resilience.bc_dr_plan.rto_rpo_defined == true
+}
+
+default _b5a_fully_achieved := false
+_b5a_fully_achieved if {
+    _b5a_plan_exists
+    _b5a_plan_current
+    _b5a_covers_essential_functions
+    _b5a_tested
+    _b5a_rto_rpo_defined
+}
+
+default _b5a_partially_achieved := false
+_b5a_partially_achieved if {
+    _b5a_plan_exists
+    _b5a_plan_acceptable_age
+    _b5a_covers_essential_functions
+}
+
+default co_b5a_achievement := "not_achieved"
+
+co_b5a_achievement := "achieved" if { _b5a_fully_achieved }
+
+co_b5a_achievement := "partially_achieved" if {
+    not _b5a_fully_achieved
+    _b5a_partially_achieved
+}
+
+co_b5a_details := {
+    "plan_exists": _b5a_plan_exists,
+    "last_review_days": object.get(input, ["resilience", "bc_dr_plan", "last_review_days"], 9999),
+    "plan_current": _b5a_plan_current,
+    "covers_essential_functions": _b5a_covers_essential_functions,
+    "tested_days": object.get(input, ["resilience", "bc_dr_plan", "tested_days"], 9999),
+    "tested_annually": _b5a_tested,
+    "rto_rpo_defined": _b5a_rto_rpo_defined,
+    "achievement": co_b5a_achievement,
+}
 
 # ---------------------------------------------------------------------------
 # B5.b — Design for Resilience
@@ -175,14 +246,15 @@ co_b5c_details := {
 default b5_compliant := false
 
 b5_compliant if {
+    co_b5a_achievement == "achieved"
     co_b5b_achievement == "achieved"
     co_b5c_achievement == "achieved"
 }
 
 b5_achievement_counts := {
-    "achieved": count([co | some co in [co_b5b_achievement, co_b5c_achievement]; co == "achieved"]),
-    "partially_achieved": count([co | some co in [co_b5b_achievement, co_b5c_achievement]; co == "partially_achieved"]),
-    "not_achieved": count([co | some co in [co_b5b_achievement, co_b5c_achievement]; co == "not_achieved"]),
+    "achieved": count([co | some co in [co_b5a_achievement, co_b5b_achievement, co_b5c_achievement]; co == "achieved"]),
+    "partially_achieved": count([co | some co in [co_b5a_achievement, co_b5b_achievement, co_b5c_achievement]; co == "partially_achieved"]),
+    "not_achieved": count([co | some co in [co_b5a_achievement, co_b5b_achievement, co_b5c_achievement]; co == "not_achieved"]),
 }
 
 compliance_report := {
@@ -191,6 +263,7 @@ compliance_report := {
     "compliant": b5_compliant,
     "achievement_counts": b5_achievement_counts,
     "contributing_outcomes": {
+        "B5.a": co_b5a_details,
         "B5.b": co_b5b_details,
         "B5.c": co_b5c_details,
     },
