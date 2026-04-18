@@ -11,14 +11,21 @@ import rego.v1
 # Input:
 #   {
 #     "hostname":      "web-prod-01",
-#     "framework":     "cis_rhel9",
-#     "violations":    ["CIS 1.1.1: ...", ...],
+#     "framework":     "cis_rhel9",          # or nerc_cip | ami | digital_sovereignty | ...
+#     "violations":    ["CIS 1.1.1: ...", ...],  # may also be objects for digital_sovereignty
 #     "debt_age_days": 0
 #   }
 #
 # Output (POST /v1/data/technical_debt/scoring/debt_report):
 #   { hostname, framework, total_violations, total_effort_hours,
 #     debt_score, critical_count, high_count, by_category, items: [...] }
+#
+# Debt categories:
+#   security               — generic security hygiene (CIS, NIST hardening)
+#   compliance             — regulatory & audit controls (ISO 27001, NIST 800-53, NCSC CAF)
+#   operational            — operational hygiene (patching, config drift)
+#   critical_infrastructure — NERC-CIP and AMI 2.0 / NIST IR 7628 violations
+#   sovereignty            — Digital Sovereignty controls (data residency, legal exposure, etc.)
 # =============================================================================
 
 # ---------------------------------------------------------------------------
@@ -33,7 +40,7 @@ default high_count         := 0
 # Effort catalog
 #
 # effort_hours: median hours to remediate one violation of this type
-# category:     security | compliance | operational
+# category:     security | compliance | operational | critical_infrastructure | sovereignty
 # complexity:   quick_win (<4h) | moderate (4-16h) | complex (>16h)
 # severity:     CRITICAL | HIGH | MEDIUM | LOW
 # ---------------------------------------------------------------------------
@@ -70,22 +77,24 @@ effort_catalog := {
 
     # ── NERC CIP ─────────────────────────────────────────────────────────────
     # Keyed by standard ID "CIP-XXX" extracted from "CIP-007 R2: ..."
+    # Category is critical_infrastructure — these are BES asset compliance items,
+    # not generic security/compliance debt.
     "nerc_cip": {
-        "CIP-002": {"hours": 16.0, "category": "compliance",  "complexity": "complex",  "severity": "CRITICAL"},
-        "CIP-003": {"hours": 24.0, "category": "compliance",  "complexity": "complex",  "severity": "CRITICAL"},
-        "CIP-004": {"hours": 8.0,  "category": "compliance",  "complexity": "moderate", "severity": "HIGH"},
-        "CIP-005": {"hours": 24.0, "category": "security",    "complexity": "complex",  "severity": "CRITICAL"},
-        "CIP-006": {"hours": 16.0, "category": "security",    "complexity": "complex",  "severity": "HIGH"},
-        "CIP-007": {"hours": 16.0, "category": "security",    "complexity": "moderate", "severity": "HIGH"},
-        "CIP-008": {"hours": 12.0, "category": "compliance",  "complexity": "moderate", "severity": "HIGH"},
-        "CIP-009": {"hours": 8.0,  "category": "operational", "complexity": "moderate", "severity": "HIGH"},
-        "CIP-010": {"hours": 12.0, "category": "operational", "complexity": "moderate", "severity": "HIGH"},
-        "CIP-011": {"hours": 8.0,  "category": "security",    "complexity": "moderate", "severity": "HIGH"},
-        "CIP-012": {"hours": 16.0, "category": "security",    "complexity": "complex",  "severity": "HIGH"},
-        "CIP-013": {"hours": 16.0, "category": "compliance",  "complexity": "complex",  "severity": "HIGH"},
-        "CIP-014": {"hours": 20.0, "category": "security",    "complexity": "complex",  "severity": "CRITICAL"},
-        "CIP-015": {"hours": 20.0, "category": "security",    "complexity": "complex",  "severity": "HIGH"},
-        "_default": {"hours": 12.0, "category": "compliance", "complexity": "moderate", "severity": "HIGH"}
+        "CIP-002": {"hours": 16.0, "category": "critical_infrastructure", "complexity": "complex",  "severity": "CRITICAL"},
+        "CIP-003": {"hours": 24.0, "category": "critical_infrastructure", "complexity": "complex",  "severity": "CRITICAL"},
+        "CIP-004": {"hours": 8.0,  "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"},
+        "CIP-005": {"hours": 24.0, "category": "critical_infrastructure", "complexity": "complex",  "severity": "CRITICAL"},
+        "CIP-006": {"hours": 16.0, "category": "critical_infrastructure", "complexity": "complex",  "severity": "HIGH"},
+        "CIP-007": {"hours": 16.0, "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"},
+        "CIP-008": {"hours": 12.0, "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"},
+        "CIP-009": {"hours": 8.0,  "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"},
+        "CIP-010": {"hours": 12.0, "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"},
+        "CIP-011": {"hours": 8.0,  "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"},
+        "CIP-012": {"hours": 16.0, "category": "critical_infrastructure", "complexity": "complex",  "severity": "HIGH"},
+        "CIP-013": {"hours": 16.0, "category": "critical_infrastructure", "complexity": "complex",  "severity": "HIGH"},
+        "CIP-014": {"hours": 20.0, "category": "critical_infrastructure", "complexity": "complex",  "severity": "CRITICAL"},
+        "CIP-015": {"hours": 20.0, "category": "critical_infrastructure", "complexity": "complex",  "severity": "HIGH"},
+        "_default": {"hours": 12.0, "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"}
     },
 
     # ── NIST 800-53 ──────────────────────────────────────────────────────────
@@ -138,11 +147,86 @@ effort_catalog := {
         "C": {"hours": 4.0, "category": "compliance",  "complexity": "moderate", "severity": "HIGH"},
         "D": {"hours": 6.0, "category": "operational", "complexity": "moderate", "severity": "HIGH"},
         "_default": {"hours": 6.0, "category": "compliance", "complexity": "moderate", "severity": "HIGH"}
+    },
+
+    # ── AMI 2.0 / NIST IR 7628 ───────────────────────────────────────────────
+    # Keyed by SG control family "SG.AC", "SG.CM", etc.
+    # Violations are strings like "SG.AC-1: Access control policy..."
+    # Category is critical_infrastructure — AMI systems are BES assets.
+    "ami": {
+        "SG.AC": {"hours": 8.0,  "category": "critical_infrastructure", "complexity": "moderate", "severity": "CRITICAL"},
+        "SG.AU": {"hours": 6.0,  "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"},
+        "SG.CM": {"hours": 8.0,  "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"},
+        "SG.IA": {"hours": 10.0, "category": "critical_infrastructure", "complexity": "moderate", "severity": "CRITICAL"},
+        "SG.IR": {"hours": 12.0, "category": "critical_infrastructure", "complexity": "complex",  "severity": "HIGH"},
+        "SG.MA": {"hours": 6.0,  "category": "critical_infrastructure", "complexity": "moderate", "severity": "MEDIUM"},
+        "SG.MP": {"hours": 8.0,  "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"},
+        "SG.PE": {"hours": 12.0, "category": "critical_infrastructure", "complexity": "complex",  "severity": "HIGH"},
+        "SG.PL": {"hours": 8.0,  "category": "critical_infrastructure", "complexity": "moderate", "severity": "MEDIUM"},
+        "SG.RA": {"hours": 10.0, "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"},
+        "SG.SA": {"hours": 12.0, "category": "critical_infrastructure", "complexity": "complex",  "severity": "HIGH"},
+        "SG.SC": {"hours": 10.0, "category": "critical_infrastructure", "complexity": "moderate", "severity": "CRITICAL"},
+        "SG.SI": {"hours": 8.0,  "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"},
+        "_default": {"hours": 8.0, "category": "critical_infrastructure", "complexity": "moderate", "severity": "HIGH"}
+    },
+
+    # ── Digital Sovereignty ───────────────────────────────────────────────────
+    # Violations are OBJECTS from OPA: {control, domain, severity, description, remediation}
+    # Keyed by domain prefix extracted from the "control" field:
+    #   IS   — Infrastructure Sovereignty (cloud legal exposure, hardware supply chain)
+    #   NS   — Network Sovereignty (DNS, CDN, BGP under foreign jurisdiction)
+    #   SS   — Software Sovereignty (open-source dependency, vendor lock-in)
+    #   OS   — Operational Sovereignty (support, key management, audit rights)
+    #   CS   — Cryptographic Sovereignty (algorithm choice, key custody, FIPS)
+    #   DR   — Data Residency (physical location, cross-border transfer)
+    #   CR   — Cyber Resilience Sovereignty (incident response, recovery autonomy)
+    #   GT   — Geopolitical Sovereignty (sanctions, export controls)
+    #   AI   — AI/ML Sovereignty (model provenance, training data jurisdiction)
+    #   BN   — Business Network Sovereignty (supply chain, third-party dependency)
+    #   DORA — DORA operational resilience requirements (EU financial sector)
+    # Category is sovereignty for all — this is a distinct dimension from security/compliance.
+    "digital_sovereignty": {
+        "IS":   {"hours": 24.0, "category": "sovereignty", "complexity": "complex",  "severity": "CRITICAL"},
+        "NS":   {"hours": 16.0, "category": "sovereignty", "complexity": "complex",  "severity": "HIGH"},
+        "SS":   {"hours": 20.0, "category": "sovereignty", "complexity": "complex",  "severity": "HIGH"},
+        "OS":   {"hours": 12.0, "category": "sovereignty", "complexity": "moderate", "severity": "HIGH"},
+        "CS":   {"hours": 16.0, "category": "sovereignty", "complexity": "complex",  "severity": "CRITICAL"},
+        "DR":   {"hours": 20.0, "category": "sovereignty", "complexity": "complex",  "severity": "CRITICAL"},
+        "CR":   {"hours": 12.0, "category": "sovereignty", "complexity": "moderate", "severity": "HIGH"},
+        "GT":   {"hours": 8.0,  "category": "sovereignty", "complexity": "moderate", "severity": "HIGH"},
+        "AI":   {"hours": 16.0, "category": "sovereignty", "complexity": "complex",  "severity": "HIGH"},
+        "BN":   {"hours": 8.0,  "category": "sovereignty", "complexity": "moderate", "severity": "MEDIUM"},
+        "DORA": {"hours": 24.0, "category": "sovereignty", "complexity": "complex",  "severity": "CRITICAL"},
+        "_default": {"hours": 16.0, "category": "sovereignty", "complexity": "complex", "severity": "HIGH"}
     }
 }
 
 # Global fallback used when framework is unknown
 _global_default := {"hours": 2.0, "category": "compliance", "complexity": "moderate", "severity": "MEDIUM"}
+
+# ---------------------------------------------------------------------------
+# Violation normalizer
+#
+# Digital Sovereignty violations are OPA objects with structured fields.
+# All other frameworks produce plain strings.
+# _violation_as_string normalises to a string for storage in PostgreSQL.
+# ---------------------------------------------------------------------------
+
+_violation_as_string(v) := v if { is_string(v) }
+
+_violation_as_string(v) := s if {
+    not is_string(v)
+    v.control
+    v.description
+    s := sprintf("%s: %s", [v.control, v.description])
+}
+
+_violation_as_string(v) := s if {
+    not is_string(v)
+    v.control
+    not v.description
+    s := v.control
+}
 
 # ---------------------------------------------------------------------------
 # Framework-specific key extractors
@@ -151,6 +235,7 @@ _global_default := {"hours": 2.0, "category": "compliance", "complexity": "moder
 
 # CIS RHEL 9: "CIS 5.2.1: ..." → "5.2"
 _cis_key(violation) := key if {
+    is_string(violation)
     parts       := split(violation, " ")
     count(parts) >= 2
     parts[0]    == "CIS"
@@ -161,38 +246,59 @@ _cis_key(violation) := key if {
 
 # NERC CIP: "CIP-007 R2: ..." → "CIP-007"
 _nerc_key(violation) := key if {
+    is_string(violation)
     parts      := split(violation, " ")
     count(parts) >= 1
     startswith(parts[0], "CIP-")
-    # Strip any trailing requirement suffix (e.g. "CIP-007:" → "CIP-007")
     key        := trim_right(parts[0], ":")
 }
 
 # NIST 800-53: "AC-2: ..." → "AC"
 _nist_key(violation) := key if {
+    is_string(violation)
     parts     := split(violation, "-")
     count(parts) >= 2
     family    := parts[0]
-    # Family should be 2-3 uppercase letters
     regex.match(`^[A-Z]{2,3}$`, family)
     key       := family
 }
 
 # ISO 27001: "A.9.1.1: ..." → "A.9"
 _iso_key(violation) := key if {
+    is_string(violation)
     startswith(violation, "A.")
     parts     := split(violation, ".")
     count(parts) >= 2
-    # Handle two-digit section numbers (A.10, A.11 ...)
     key       := concat(".", [parts[0], parts[1]])
 }
 
 # NCSC CAF: "B2.a: ..." or "C1.b achieved/not_achieved" → "B"
 _caf_key(violation) := key if {
+    is_string(violation)
     count(violation) >= 1
     first := substring(violation, 0, 1)
     regex.match(`^[A-D]$`, first)
     key   := first
+}
+
+# AMI / NIST IR 7628: "SG.AC-1: ..." → "SG.AC"
+_ami_key(violation) := key if {
+    is_string(violation)
+    startswith(violation, "SG.")
+    # Remove "SG." prefix, split on "-", take first part = control family
+    rest          := substring(violation, 3, count(violation))
+    family_parts  := split(rest, "-")
+    count(family_parts) >= 1
+    key           := concat(".", ["SG", family_parts[0]])
+}
+
+# Digital Sovereignty: object with "control" field "IS-001" → "IS", "DORA-001" → "DORA"
+_ds_key(violation) := key if {
+    not is_string(violation)
+    violation.control
+    ctrl_parts := split(violation.control, "-")
+    count(ctrl_parts) >= 2
+    key        := ctrl_parts[0]
 }
 
 # ---------------------------------------------------------------------------
@@ -280,6 +386,38 @@ get_estimate("ncsc_caf", violation) := effort_catalog.ncsc_caf["_default"] if {
     not effort_catalog.ncsc_caf[key]
 }
 
+# AMI / NIST IR 7628 — specific match
+get_estimate("ami", violation) := estimate if {
+    key      := _ami_key(violation)
+    estimate := effort_catalog.ami[key]
+}
+
+# AMI — default
+get_estimate("ami", violation) := effort_catalog.ami["_default"] if {
+    not _ami_key(violation)
+}
+
+get_estimate("ami", violation) := effort_catalog.ami["_default"] if {
+    key := _ami_key(violation)
+    not effort_catalog.ami[key]
+}
+
+# Digital Sovereignty — specific match (object violations)
+get_estimate("digital_sovereignty", violation) := estimate if {
+    key      := _ds_key(violation)
+    estimate := effort_catalog.digital_sovereignty[key]
+}
+
+# Digital Sovereignty — default (key not in catalog)
+get_estimate("digital_sovereignty", violation) := effort_catalog.digital_sovereignty["_default"] if {
+    not _ds_key(violation)
+}
+
+get_estimate("digital_sovereignty", violation) := effort_catalog.digital_sovereignty["_default"] if {
+    key := _ds_key(violation)
+    not effort_catalog.digital_sovereignty[key]
+}
+
 # Unknown framework — global fallback
 get_estimate(framework, _violation) := _global_default if {
     not effort_catalog[framework]
@@ -290,6 +428,9 @@ get_estimate(framework, _violation) := _global_default if {
 # ---------------------------------------------------------------------------
 _severity_weight := {"CRITICAL": 4.0, "HIGH": 2.0, "MEDIUM": 1.0, "LOW": 0.5}
 
+# Normalise severity from object violations (lowercase) to uppercase
+_norm_severity(s) := upper(s)
+
 # ---------------------------------------------------------------------------
 # Age multiplier — older unresolved debt scores higher
 # ---------------------------------------------------------------------------
@@ -299,24 +440,32 @@ _age_mult(days) := 1.0  if { days < 30 }
 
 # ---------------------------------------------------------------------------
 # Scored debt items — one per violation
+# Handles both string violations (all frameworks) and object violations (DS).
 # ---------------------------------------------------------------------------
 debt_items contains item if {
     some violation in input.violations
-    violation != ""
-    estimate  := get_estimate(input.framework, violation)
-    age       := object.get(input, "debt_age_days", 0)
-    weight    := _severity_weight[estimate.severity]
-    mult      := _age_mult(age)
-    pscore    := weight * mult * (estimate.hours / 4.0)
+    violation_str := _violation_as_string(violation)
+    violation_str != ""
+    estimate      := get_estimate(input.framework, violation)
+    age           := object.get(input, "debt_age_days", 0)
+
+    # For object violations (DS), use the object's own severity if present.
+    # For string violations, use the catalog severity.
+    raw_sev  := object.get(violation, "severity", estimate.severity)
+    severity := _norm_severity(raw_sev)
+
+    weight   := object.get(_severity_weight, severity, 1.0)
+    mult     := _age_mult(age)
+    pscore   := weight * mult * (estimate.hours / 4.0)
 
     item := {
         "hostname":       input.hostname,
         "framework":      input.framework,
-        "violation":      violation,
+        "violation":      violation_str,
         "effort_hours":   estimate.hours,
         "debt_category":  estimate.category,
         "complexity":     estimate.complexity,
-        "severity":       estimate.severity,
+        "severity":       severity,
         "priority_score": pscore,
         "debt_age_days":  age
     }
@@ -342,11 +491,11 @@ critical_count := count([item | some item in debt_items; item.severity == "CRITI
 high_count := count([item | some item in debt_items; item.severity == "HIGH"])
 
 debt_by_category[cat] := totals if {
-    some cat in {"security", "compliance", "operational"}
+    some cat in {"security", "compliance", "operational", "critical_infrastructure", "sovereignty"}
     cat_items := [item | some item in debt_items; item.debt_category == cat]
     totals := {
-        "item_count":    count(cat_items),
-        "effort_hours":  sum([i.effort_hours | some i in cat_items]),
+        "item_count":     count(cat_items),
+        "effort_hours":   sum([i.effort_hours | some i in cat_items]),
         "priority_score": sum([i.priority_score | some i in cat_items])
     }
 }
@@ -359,15 +508,15 @@ default debt_report := {}
 debt_report := report if {
     count(input.violations) > 0
     report := {
-        "hostname":           input.hostname,
-        "framework":          input.framework,
+        "hostname":             input.hostname,
+        "framework":            input.framework,
         "assessment_timestamp": time.now_ns(),
-        "total_violations":   count(input.violations),
-        "total_effort_hours": total_effort_hours,
-        "debt_score":         debt_score,
-        "critical_count":     critical_count,
-        "high_count":         high_count,
-        "by_category":        debt_by_category,
-        "items":              [item | some item in debt_items]
+        "total_violations":     count(input.violations),
+        "total_effort_hours":   total_effort_hours,
+        "debt_score":           debt_score,
+        "critical_count":       critical_count,
+        "high_count":           high_count,
+        "by_category":          debt_by_category,
+        "items":                [item | some item in debt_items]
     }
 }
