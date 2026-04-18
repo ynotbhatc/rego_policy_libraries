@@ -207,13 +207,17 @@ _global_default := {"hours": 2.0, "category": "compliance", "complexity": "moder
 # ---------------------------------------------------------------------------
 # Violation normalizer
 #
-# Digital Sovereignty violations are OPA objects with structured fields.
-# All other frameworks produce plain strings.
-# _violation_as_string normalises to a string for storage in PostgreSQL.
+# Handles multiple violation shapes from different compliance playbooks:
+#   1. Plain string:    "CIS 5.2.1: Ensure SSH root login is disabled"
+#   2. DS object:       {control: "IS-001", description: "...", domain: "..."}
+#   3. CIS DB object:   {control_id: "1.1.2.1", severity: "medium", description: "..."}
+#
+# _violation_as_string normalises all forms to a string for storage + key extraction.
 # ---------------------------------------------------------------------------
 
 _violation_as_string(v) := v if { is_string(v) }
 
+# Object with "control" field (Digital Sovereignty and similar)
 _violation_as_string(v) := s if {
     not is_string(v)
     v.control
@@ -228,6 +232,23 @@ _violation_as_string(v) := s if {
     s := v.control
 }
 
+# Object with "control_id" field (CIS DB schema — {control_id, severity, description})
+_violation_as_string(v) := s if {
+    not is_string(v)
+    not v.control
+    v.control_id
+    v.description
+    s := sprintf("%s: %s", [v.control_id, v.description])
+}
+
+_violation_as_string(v) := s if {
+    not is_string(v)
+    not v.control
+    v.control_id
+    not v.description
+    s := v.control_id
+}
+
 # ---------------------------------------------------------------------------
 # Framework-specific key extractors
 # Each returns undefined if the violation string doesn't match the pattern.
@@ -240,6 +261,15 @@ _cis_key(violation) := key if {
     count(parts) >= 2
     parts[0]    == "CIS"
     ctrl_parts  := split(parts[1], ".")
+    count(ctrl_parts) >= 2
+    key         := concat(".", [ctrl_parts[0], ctrl_parts[1]])
+}
+
+# CIS RHEL 9 object: {control_id: "1.1.2.1", ...} → "1.1"
+_cis_key(violation) := key if {
+    not is_string(violation)
+    violation.control_id
+    ctrl_parts  := split(violation.control_id, ".")
     count(ctrl_parts) >= 2
     key         := concat(".", [ctrl_parts[0], ctrl_parts[1]])
 }
