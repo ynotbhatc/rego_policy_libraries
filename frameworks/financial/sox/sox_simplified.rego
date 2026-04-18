@@ -1,4 +1,4 @@
-package sox.main
+package sox.simplified
 
 import rego.v1
 
@@ -6,6 +6,8 @@ import rego.v1
 # Main policy for SOX compliance assessment
 
 # Overall SOX compliance evaluation
+default sox_compliant := false
+
 sox_compliant if {
     section_302_compliant
     section_404_compliant
@@ -14,6 +16,8 @@ sox_compliant if {
 }
 
 # Section 302: Corporate Responsibility for Financial Reports
+default section_302_compliant := false
+
 section_302_compliant if {
     input.sox.section_302.ceo_certification.provided
     input.sox.section_302.cfo_certification.provided
@@ -22,6 +26,8 @@ section_302_compliant if {
 }
 
 # Section 404: Management Assessment of Internal Controls
+default section_404_compliant := false
+
 section_404_compliant if {
     input.sox.section_404.management_assessment.completed
     input.sox.section_404.internal_controls.designed_effectively
@@ -30,6 +36,8 @@ section_404_compliant if {
 }
 
 # Section 409: Real-time Issuer Disclosures
+default section_409_compliant := false
+
 section_409_compliant if {
     input.sox.section_409.material_events.disclosed_timely
     input.sox.section_409.disclosure_process.automated
@@ -37,6 +45,8 @@ section_409_compliant if {
 }
 
 # IT General Controls (ITGC) Compliance
+default itgc_compliant := false
+
 itgc_compliant if {
     input.sox.itgc.access_controls.implemented
     input.sox.itgc.change_management.controlled

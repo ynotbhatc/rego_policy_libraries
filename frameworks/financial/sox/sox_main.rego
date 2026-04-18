@@ -6,6 +6,8 @@ import rego.v1
 # Main aggregation policy for SOX compliance assessment
 
 # Overall SOX compliance evaluation
+default sox_compliant := false
+
 sox_compliant if {
     section_302_compliant
     section_404_compliant
@@ -14,6 +16,8 @@ sox_compliant if {
 }
 
 # Section 302: Corporate Responsibility for Financial Reports
+default section_302_compliant := false
+
 section_302_compliant if {
     data.sox.section_302.ceo_certification.provided
     data.sox.section_302.cfo_certification.provided
@@ -22,6 +26,8 @@ section_302_compliant if {
 }
 
 # Section 404: Management Assessment of Internal Controls
+default section_404_compliant := false
+
 section_404_compliant if {
     data.sox.section_404.management_assessment.completed
     data.sox.section_404.internal_controls.designed_effectively
@@ -30,6 +36,8 @@ section_404_compliant if {
 }
 
 # Section 409: Real-time Issuer Disclosures
+default section_409_compliant := false
+
 section_409_compliant if {
     data.sox.section_409.material_events.disclosed_timely
     data.sox.section_409.disclosure_process.automated
@@ -37,6 +45,8 @@ section_409_compliant if {
 }
 
 # Management Assessment Framework
+default management_assessment_compliant := false
+
 management_assessment_compliant if {
     data.sox.management.assessment_framework.documented
     data.sox.management.testing_procedures.comprehensive
