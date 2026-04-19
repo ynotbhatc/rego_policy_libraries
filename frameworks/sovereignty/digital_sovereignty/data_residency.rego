@@ -158,7 +158,7 @@ data_flow_inventory_maintained if {
 	input.data_flow_inventory.maintained == true
 	input.data_flow_inventory.last_review_date
 	review_ns := time.parse_rfc3339_ns(input.data_flow_inventory.last_review_date)
-	age_days := (time.now_ns() - review_ns) / (24 * 60 * 60 * 1000000000)
+	age_days := (time.now_ns() - review_ns) / (((24 * 60) * 60) * 1000000000)
 	age_days <= 365
 }
 

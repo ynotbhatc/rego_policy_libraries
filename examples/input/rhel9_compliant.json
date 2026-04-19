@@ -1,0 +1,24 @@
+{
+  "os_family": "RedHat",
+  "os_version": "9.3",
+  "modules": {
+    "cramfs":   { "loaded": false },
+    "freevxfs": { "loaded": false },
+    "jffs2":    { "loaded": false },
+    "hfs":      { "loaded": false }
+  },
+  "files": {
+    "/etc/ssh/sshd_config": {
+      "mode":  "0600",
+      "owner": "root",
+      "group": "root"
+    }
+  },
+  "ssh_config": {
+    "X11Forwarding":        "no",
+    "MaxAuthTries":         "4",
+    "PermitRootLogin":      "no",
+    "PermitUserEnvironment": "no",
+    "Banner":               "/etc/issue.net"
+  }
+}

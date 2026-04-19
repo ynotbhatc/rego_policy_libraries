@@ -51,9 +51,7 @@ all_filesystem_modules_disabled if {
 partition_violations contains violation if {
 	some partition in input.separate_partitions.analysis
 	not partition.is_separate_partition
-	violation := sprintf("CIS 1.1.2.x: Required partition '%s' is not a separate partition", [
-		partition.mount_point,
-	])
+	violation := sprintf("CIS 1.1.2.x: Required partition '%s' is not a separate partition", [partition.mount_point])
 }
 
 partition_violations contains violation if {
@@ -158,9 +156,7 @@ usb_storage_violation contains violation if {
 usb_storage_violation contains violation if {
 	input.usb_storage.disabled == false
 	input.usb_storage.status != "disabled"
-	violation := sprintf("CIS 1.1.1.8: USB storage module is not disabled (status: %s)", [
-		input.usb_storage.status,
-	])
+	violation := sprintf("CIS 1.1.1.8: USB storage module is not disabled (status: %s)", [input.usb_storage.status])
 }
 
 # =============================================================================
@@ -215,4 +211,3 @@ report := {
 	"non_compliant_partitions": non_compliant_partitions,
 	"collection_timestamp": input.collection_timestamp,
 }
-

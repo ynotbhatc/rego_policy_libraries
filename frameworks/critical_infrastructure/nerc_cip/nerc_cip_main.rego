@@ -425,32 +425,32 @@ all_violations := array.concat(
 				array.concat(
 					array.concat(
 						[v | v := organization_violations[_]],
-						[v | v := personnel_violations[_]]
+						[v | v := personnel_violations[_]],
 					),
 					array.concat(
 						[v | v := security_perimeter_violations[_]],
-						[v | v := physical_security_violations[_]]
-					)
+						[v | v := physical_security_violations[_]],
+					),
 				),
 				array.concat(
 					[v | v := system_security_violations[_]],
-					[v | v := incident_response_violations[_]]
-				)
+					[v | v := incident_response_violations[_]],
+				),
 			),
 			array.concat(
 				[v | v := recovery_plan_violations[_]],
-				[v | v := config_management_violations[_]]
-			)
+				[v | v := config_management_violations[_]],
+			),
 		),
 		array.concat(
 			[v | v := information_protection_violations[_]],
 			array.concat(
 				[v | v := comms_protection_violations[_]],
-				[v | v := supply_chain_violations[_]]
-			)
-		)
+				[v | v := supply_chain_violations[_]],
+			),
+		),
 	),
-	[]
+	[],
 )
 
 nerc_cip_violations := all_violations
@@ -507,9 +507,7 @@ report := {
 		"CIP-014": {"title": "Physical Security of Transmission Stations", "compliant": cip_014_compliant},
 		"CIP-015": {"title": "Internal Network Security Monitoring", "compliant": cip_015_compliant},
 	},
-	"violation_summary": {
-		"total": count(all_violations),
-	},
+	"violation_summary": {"total": count(all_violations)},
 	"metadata": {
 		"policy_name": "NERC CIP Critical Infrastructure Protection Standards",
 		"version": "3.0",

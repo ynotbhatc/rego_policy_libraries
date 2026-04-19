@@ -18,13 +18,13 @@ violations := array.concat(
 						postgresql_violations,
 						array.concat(
 							photon_os_violations,
-							performance_charts_violations
-						)
-					)
-				)
-			)
-		)
-	)
+							performance_charts_violations,
+						),
+					),
+				),
+			),
+		),
+	),
 )
 
 compliant if {
@@ -52,7 +52,7 @@ vcenter_server_violations := [msg |
 		{"msg": "1.17 Ensure vCenter Server disaster recovery is configured", "condition": vcenter_dr_configured},
 		{"msg": "1.18 Ensure vCenter Server inventory management is secured", "condition": vcenter_inventory_management_secure},
 		{"msg": "1.19 Ensure vCenter Server API access is properly secured", "condition": vcenter_api_access_secure},
-		{"msg": "1.20 Ensure vCenter Server licensing is properly managed", "condition": vcenter_licensing_managed}
+		{"msg": "1.20 Ensure vCenter Server licensing is properly managed", "condition": vcenter_licensing_managed},
 	]
 	m := msgs[_]
 	not m.condition
@@ -72,7 +72,7 @@ sso_violations := [msg |
 		{"msg": "2.9 Ensure SSO global permissions are reviewed and minimized", "condition": sso_global_permissions_minimized},
 		{"msg": "2.10 Ensure SSO solution user certificates are managed properly", "condition": sso_solution_user_certs_managed},
 		{"msg": "2.11 Ensure SSO IdP discovery is configured securely", "condition": sso_idp_discovery_secure},
-		{"msg": "2.12 Ensure SSO smart card authentication is configured properly", "condition": sso_smart_card_auth_configured}
+		{"msg": "2.12 Ensure SSO smart card authentication is configured properly", "condition": sso_smart_card_auth_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -88,7 +88,7 @@ vsphere_client_violations := [msg |
 		{"msg": "3.5 Ensure vSphere Client content security policy is configured", "condition": vsphere_client_csp_configured},
 		{"msg": "3.6 Ensure vSphere Client HTTP security headers are configured", "condition": vsphere_client_security_headers_configured},
 		{"msg": "3.7 Ensure vSphere Client authentication mechanisms are secure", "condition": vsphere_client_auth_secure},
-		{"msg": "3.8 Ensure vSphere Client cookie security is configured", "condition": vsphere_client_cookie_security_configured}
+		{"msg": "3.8 Ensure vSphere Client cookie security is configured", "condition": vsphere_client_cookie_security_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -102,7 +102,7 @@ inventory_service_violations := [msg |
 		{"msg": "4.3 Ensure Inventory Service SSL/TLS configuration is secure", "condition": inventory_service_ssl_secure},
 		{"msg": "4.4 Ensure Inventory Service database connections are secured", "condition": inventory_service_database_secure},
 		{"msg": "4.5 Ensure Inventory Service performance monitoring is configured", "condition": inventory_service_performance_monitoring_configured},
-		{"msg": "4.6 Ensure Inventory Service backup procedures are in place", "condition": inventory_service_backup_configured}
+		{"msg": "4.6 Ensure Inventory Service backup procedures are in place", "condition": inventory_service_backup_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -115,7 +115,7 @@ lookup_service_violations := [msg |
 		{"msg": "5.2 Ensure Lookup Service logging is configured appropriately", "condition": lookup_service_logging_configured},
 		{"msg": "5.3 Ensure Lookup Service registration security is configured", "condition": lookup_service_registration_secure},
 		{"msg": "5.4 Ensure Lookup Service access controls are properly configured", "condition": lookup_service_access_controls_configured},
-		{"msg": "5.5 Ensure Lookup Service endpoint security is configured", "condition": lookup_service_endpoint_security_configured}
+		{"msg": "5.5 Ensure Lookup Service endpoint security is configured", "condition": lookup_service_endpoint_security_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -131,7 +131,7 @@ postgresql_violations := [msg |
 		{"msg": "6.5 Ensure PostgreSQL SSL/TLS configuration is secure", "condition": postgresql_ssl_secure},
 		{"msg": "6.6 Ensure PostgreSQL backup and recovery procedures are in place", "condition": postgresql_backup_configured},
 		{"msg": "6.7 Ensure PostgreSQL performance monitoring is configured", "condition": postgresql_performance_monitoring_configured},
-		{"msg": "6.8 Ensure PostgreSQL audit logging is enabled", "condition": postgresql_audit_logging_enabled}
+		{"msg": "6.8 Ensure PostgreSQL audit logging is enabled", "condition": postgresql_audit_logging_enabled},
 	]
 	m := msgs[_]
 	not m.condition
@@ -149,7 +149,7 @@ photon_os_violations := [msg |
 		{"msg": "7.7 Ensure Photon OS user account security is configured", "condition": photon_user_account_security_configured},
 		{"msg": "7.8 Ensure Photon OS audit logging is enabled", "condition": photon_audit_logging_enabled},
 		{"msg": "7.9 Ensure Photon OS kernel security parameters are configured", "condition": photon_kernel_security_configured},
-		{"msg": "7.10 Ensure Photon OS filesystem security is configured", "condition": photon_filesystem_security_configured}
+		{"msg": "7.10 Ensure Photon OS filesystem security is configured", "condition": photon_filesystem_security_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -161,7 +161,7 @@ performance_charts_violations := [msg |
 		{"msg": "8.1 Ensure Performance Charts service logging is configured", "condition": performance_charts_logging_configured},
 		{"msg": "8.2 Ensure Performance Charts service SSL/TLS is configured securely", "condition": performance_charts_ssl_secure},
 		{"msg": "8.3 Ensure Performance Charts service access controls are configured", "condition": performance_charts_access_controls_configured},
-		{"msg": "8.4 Ensure Performance Charts service database security is configured", "condition": performance_charts_database_secure}
+		{"msg": "8.4 Ensure Performance Charts service database security is configured", "condition": performance_charts_database_secure},
 	]
 	m := msgs[_]
 	not m.condition
@@ -626,5 +626,5 @@ findings := [{
 	"severity": "HIGH",
 	"details": sprintf("Found %d configuration violations across vCenter security domains", [count(violations)]),
 	"violations": violations,
-	"remediation": "Review and implement the recommended VMware vCenter security configurations including proper service account management, SSL/TLS hardening, authentication and authorization controls, comprehensive logging and monitoring, database security, operating system hardening, and performance monitoring security"
+	"remediation": "Review and implement the recommended VMware vCenter security configurations including proper service account management, SSL/TLS hardening, authentication and authorization controls, comprehensive logging and monitoring, database security, operating system hardening, and performance monitoring security",
 }]

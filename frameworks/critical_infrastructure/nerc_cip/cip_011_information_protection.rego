@@ -73,7 +73,7 @@ bcsi_access_need_to_know if {
 bcsi_access_reviewed if {
 	violations := [person |
 		person := input.bcsi_access_list[_]
-		review_age_days := (time.now_ns() - person.last_review_date) / (24 * 60 * 60 * 1000000000)
+		review_age_days := (time.now_ns() - person.last_review_date) / (((24 * 60) * 60) * 1000000000)
 		review_age_days > 455
 	]
 	count(violations) == 0

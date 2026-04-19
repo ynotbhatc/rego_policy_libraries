@@ -8,14 +8,14 @@ import rego.v1
 
 # Import all validation modules
 import data.cis_windows_server_2019.account_policies
-import data.cis_windows_server_2019.local_policies
+import data.cis_windows_server_2019.advanced_audit
+import data.cis_windows_server_2019.bitlocker
 import data.cis_windows_server_2019.event_log
-import data.cis_windows_server_2019.system_services
+import data.cis_windows_server_2019.local_policies
 import data.cis_windows_server_2019.registry
 import data.cis_windows_server_2019.security_options
-import data.cis_windows_server_2019.advanced_audit
+import data.cis_windows_server_2019.system_services
 import data.cis_windows_server_2019.windows_defender
-import data.cis_windows_server_2019.bitlocker
 
 # =============================================================================
 # MAIN COMPLIANCE RULE

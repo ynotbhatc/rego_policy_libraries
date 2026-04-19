@@ -1,0 +1,50 @@
+{
+  "impact_level": "moderate",
+  "cloud_service": {
+    "penetration_test_annual": true,
+    "incident_response_plan_approved": true
+  },
+  "authorization": {
+    "fedramp_authorized": true,
+    "authorization_type": "ATO",
+    "ato_expiry_days": 180,
+    "assessed_by_3pao": true,
+    "last_3pao_assessment_days": 120,
+    "in_process": false
+  },
+  "cryptography": {
+    "fips_140_validated": true,
+    "fips_validation_level": 2,
+    "algorithms_in_use": ["AES-256", "SHA-256", "RSA-3072"]
+  },
+  "data_residency": {
+    "storage_locations":    [{ "region": "us-east-1", "us_territory": true }],
+    "processing_locations": [{ "region": "us-east-1", "us_territory": true }]
+  },
+  "personnel": [
+    {
+      "name": "ops-admin",
+      "admin_access": true,
+      "us_person": true,
+      "background_check_completed": true
+    }
+  ],
+  "continuous_monitoring": {
+    "program_documented": true,
+    "monthly_vulnerability_scans": true,
+    "last_vulnerability_scan_days": 5,
+    "monthly_os_scan": true,
+    "web_app_scan_enabled": true,
+    "database_scan_enabled": true,
+    "high_vulnerabilities_open_days": 10,
+    "critical_vulnerabilities_open_days": 3,
+    "monthly_ato_report_submitted": true
+  },
+  "supply_chain": {
+    "risk_management_plan": true,
+    "components": [
+      { "name": "nginx",    "provenance_verified": true },
+      { "name": "postgres", "provenance_verified": true }
+    ]
+  }
+}

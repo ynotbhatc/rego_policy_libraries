@@ -177,8 +177,9 @@ tls_minimum_version_enforced if {
 	count(violations) == 0
 }
 
-tls_version_acceptable(version) if { version == "1.3" }
-tls_version_acceptable(version) if { version == "1.2" }
+tls_version_acceptable(version) if version == "1.3"
+
+tls_version_acceptable(version) if version == "1.2"
 
 # No weak cipher suites
 no_weak_cipher_suites if {

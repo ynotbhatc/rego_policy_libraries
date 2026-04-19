@@ -15,9 +15,11 @@ default compliant := false
 # RHEL-08-010000 | V-230221 | CAT I - SELinux must be enforcing
 default selinux_enforcing := false
 
-selinux_enforcing if { input.selinux.status == "enforcing" }
+selinux_enforcing if input.selinux.status == "enforcing"
 
-status_rhel_08_010000 := "Not_a_Finding" if { selinux_enforcing } else := "Open"
+status_rhel_08_010000 := "Not_a_Finding" if selinux_enforcing
+
+else := "Open"
 
 finding_rhel_08_010000 := {
 	"vuln_id": "V-230221",
@@ -31,9 +33,11 @@ finding_rhel_08_010000 := {
 # RHEL-08-010010 | V-230222 | CAT I - SELinux policy must be targeted
 default selinux_targeted := false
 
-selinux_targeted if { input.selinux.policy == "targeted" }
+selinux_targeted if input.selinux.policy == "targeted"
 
-status_rhel_08_010010 := "Not_a_Finding" if { selinux_targeted } else := "Open"
+status_rhel_08_010010 := "Not_a_Finding" if selinux_targeted
+
+else := "Open"
 
 finding_rhel_08_010010 := {
 	"vuln_id": "V-230222",
@@ -47,9 +51,11 @@ finding_rhel_08_010010 := {
 # RHEL-08-010020 | V-230223 | CAT I - FIPS must be enabled
 default fips_mode := false
 
-fips_mode if { input.fips_mode == true }
+fips_mode if input.fips_mode == true
 
-status_rhel_08_010020 := "Not_a_Finding" if { fips_mode } else := "Open"
+status_rhel_08_010020 := "Not_a_Finding" if fips_mode
+
+else := "Open"
 
 finding_rhel_08_010020 := {
 	"vuln_id": "V-230223",
@@ -63,9 +69,11 @@ finding_rhel_08_010020 := {
 # RHEL-08-010030 | V-230224 | CAT I - GRUB password required
 default grub_password := false
 
-grub_password if { input.grub_config.password_set == true }
+grub_password if input.grub_config.password_set == true
 
-status_rhel_08_010030 := "Not_a_Finding" if { grub_password } else := "Open"
+status_rhel_08_010030 := "Not_a_Finding" if grub_password
+
+else := "Open"
 
 finding_rhel_08_010030 := {
 	"vuln_id": "V-230224",
@@ -79,9 +87,11 @@ finding_rhel_08_010030 := {
 # RHEL-08-010040 | V-230225 | CAT I - Ctrl-Alt-Delete must be disabled
 default ctrl_alt_del := false
 
-ctrl_alt_del if { input.services["ctrl-alt-del.target"] == "masked" }
+ctrl_alt_del if input.services["ctrl-alt-del.target"] == "masked"
 
-status_rhel_08_010040 := "Not_a_Finding" if { ctrl_alt_del } else := "Open"
+status_rhel_08_010040 := "Not_a_Finding" if ctrl_alt_del
+
+else := "Open"
 
 finding_rhel_08_010040 := {
 	"vuln_id": "V-230225",
@@ -95,9 +105,11 @@ finding_rhel_08_010040 := {
 # RHEL-08-010050 | V-230226 | CAT I - DoD Root CA must be installed
 default dod_root_ca := false
 
-dod_root_ca if { input.certificates.dod_root_ca_installed == true }
+dod_root_ca if input.certificates.dod_root_ca_installed == true
 
-status_rhel_08_010050 := "Not_a_Finding" if { dod_root_ca } else := "Open"
+status_rhel_08_010050 := "Not_a_Finding" if dod_root_ca
+
+else := "Open"
 
 finding_rhel_08_010050 := {
 	"vuln_id": "V-230226",
@@ -115,10 +127,13 @@ finding_rhel_08_010050 := {
 # RHEL-08-010060 | V-230227 | CAT II - Crypto policy must not be LEGACY
 default no_legacy_crypto := false
 
-no_legacy_crypto if { input.crypto_policy != "LEGACY" }
-no_legacy_crypto if { not input.crypto_policy }
+no_legacy_crypto if input.crypto_policy != "LEGACY"
 
-status_rhel_08_010060 := "Not_a_Finding" if { no_legacy_crypto } else := "Open"
+no_legacy_crypto if not input.crypto_policy
+
+status_rhel_08_010060 := "Not_a_Finding" if no_legacy_crypto
+
+else := "Open"
 
 finding_rhel_08_010060 := {
 	"vuln_id": "V-230227",
@@ -132,10 +147,13 @@ finding_rhel_08_010060 := {
 # RHEL-08-010070 | V-230228 | CAT II - Login banner required
 default login_banner := false
 
-login_banner if { contains(input.login_banner.issue, "U.S. Government") }
-login_banner if { contains(input.login_banner.issue, "authorized users") }
+login_banner if contains(input.login_banner.issue, "U.S. Government")
 
-status_rhel_08_010070 := "Not_a_Finding" if { login_banner } else := "Open"
+login_banner if contains(input.login_banner.issue, "authorized users")
+
+status_rhel_08_010070 := "Not_a_Finding" if login_banner
+
+else := "Open"
 
 finding_rhel_08_010070 := {
 	"vuln_id": "V-230228",
@@ -149,9 +167,11 @@ finding_rhel_08_010070 := {
 # RHEL-08-010080 | V-230229 | CAT II - ASLR must be enabled
 default aslr_enabled := false
 
-aslr_enabled if { input.kernel_params["kernel.randomize_va_space"] == "2" }
+aslr_enabled if input.kernel_params["kernel.randomize_va_space"] == "2"
 
-status_rhel_08_010080 := "Not_a_Finding" if { aslr_enabled } else := "Open"
+status_rhel_08_010080 := "Not_a_Finding" if aslr_enabled
+
+else := "Open"
 
 finding_rhel_08_010080 := {
 	"vuln_id": "V-230229",
@@ -165,9 +185,11 @@ finding_rhel_08_010080 := {
 # RHEL-08-010090 | V-230230 | CAT II - dmesg restrict must be 1
 default dmesg_restrict := false
 
-dmesg_restrict if { input.kernel_params["kernel.dmesg_restrict"] == "1" }
+dmesg_restrict if input.kernel_params["kernel.dmesg_restrict"] == "1"
 
-status_rhel_08_010090 := "Not_a_Finding" if { dmesg_restrict } else := "Open"
+status_rhel_08_010090 := "Not_a_Finding" if dmesg_restrict
+
+else := "Open"
 
 finding_rhel_08_010090 := {
 	"vuln_id": "V-230230",
@@ -181,10 +203,13 @@ finding_rhel_08_010090 := {
 # RHEL-08-010100 | V-230231 | CAT II - USB storage must be disabled
 default usb_storage_disabled := false
 
-usb_storage_disabled if { input.kernel_modules["usb-storage"].blacklisted == true }
-usb_storage_disabled if { input.kernel_modules["usb-storage"].status == "disabled" }
+usb_storage_disabled if input.kernel_modules["usb-storage"].blacklisted == true
 
-status_rhel_08_010100 := "Not_a_Finding" if { usb_storage_disabled } else := "Open"
+usb_storage_disabled if input.kernel_modules["usb-storage"].status == "disabled"
+
+status_rhel_08_010100 := "Not_a_Finding" if usb_storage_disabled
+
+else := "Open"
 
 finding_rhel_08_010100 := {
 	"vuln_id": "V-230231",
@@ -198,9 +223,11 @@ finding_rhel_08_010100 := {
 # RHEL-08-010110 | V-230232 | CAT II - AIDE must be installed
 default aide_installed := false
 
-aide_installed if { input.packages.aide == true }
+aide_installed if input.packages.aide == true
 
-status_rhel_08_010110 := "Not_a_Finding" if { aide_installed } else := "Open"
+status_rhel_08_010110 := "Not_a_Finding" if aide_installed
+
+else := "Open"
 
 finding_rhel_08_010110 := {
 	"vuln_id": "V-230232",
@@ -214,9 +241,11 @@ finding_rhel_08_010110 := {
 # RHEL-08-010120 | V-230233 | CAT II - AIDE cron job must exist
 default aide_cron := false
 
-aide_cron if { input.aide_config.cron_job == true }
+aide_cron if input.aide_config.cron_job == true
 
-status_rhel_08_010120 := "Not_a_Finding" if { aide_cron } else := "Open"
+status_rhel_08_010120 := "Not_a_Finding" if aide_cron
+
+else := "Open"
 
 finding_rhel_08_010120 := {
 	"vuln_id": "V-230233",
@@ -235,7 +264,9 @@ tmp_separate if {
 	mount.mount == "/tmp"
 }
 
-status_rhel_08_010130 := "Not_a_Finding" if { tmp_separate } else := "Open"
+status_rhel_08_010130 := "Not_a_Finding" if tmp_separate
+
+else := "Open"
 
 finding_rhel_08_010130 := {
 	"vuln_id": "V-230234",
@@ -254,7 +285,9 @@ var_log_separate if {
 	mount.mount == "/var/log"
 }
 
-status_rhel_08_010140 := "Not_a_Finding" if { var_log_separate } else := "Open"
+status_rhel_08_010140 := "Not_a_Finding" if var_log_separate
+
+else := "Open"
 
 finding_rhel_08_010140 := {
 	"vuln_id": "V-230235",
@@ -273,7 +306,9 @@ var_log_audit_separate if {
 	mount.mount == "/var/log/audit"
 }
 
-status_rhel_08_010150 := "Not_a_Finding" if { var_log_audit_separate } else := "Open"
+status_rhel_08_010150 := "Not_a_Finding" if var_log_audit_separate
+
+else := "Open"
 
 finding_rhel_08_010150 := {
 	"vuln_id": "V-230236",
@@ -322,7 +357,7 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
-compliant if { count(open_cat_i) == 0 }
+compliant if count(open_cat_i) == 0
 
 compliance_report := {
 	"module": "configuration_management",

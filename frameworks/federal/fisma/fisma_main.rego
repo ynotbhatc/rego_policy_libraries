@@ -402,7 +402,7 @@ fisma_violations := violations if {
 		not rmf_step_2_categorize_compliant
 		violation := {
 			"rmf_step": "RMF-C",
-			"step_name": "Categorize", 
+			"step_name": "Categorize",
 			"severity": "critical",
 			"description": "System security categorization is incomplete or incorrect",
 			"remediation": "Complete FIPS 199 categorization and obtain required approvals",
@@ -490,6 +490,7 @@ fisma_compliance_level := "NON_COMPLIANT" if {
 authorization_status := "AUTHORIZED" if {
 	input.fisma.authorize.decision.authorizing_official_decision == "authorize"
 	input.fisma.authorize.decision.authorization_expiration_date != ""
+
 	# Check if authorization is not expired (simplified check)
 	input.fisma.authorize.decision.authorization_current == true
 }
@@ -512,7 +513,7 @@ authorization_status := "EXPIRED" if {
 	input.fisma.authorize.decision.authorization_current == false
 }
 
-# FISMA Assessment Report  
+# FISMA Assessment Report
 fisma_assessment := {
 	"compliance_status": fisma_compliant == true,
 	"compliance_score": fisma_compliance_score,
@@ -525,7 +526,7 @@ fisma_assessment := {
 			"description": "Essential activities to prepare the organization to manage security and privacy risks",
 		},
 		{
-			"step": "RMF-C", 
+			"step": "RMF-C",
 			"name": "Categorize",
 			"compliant": rmf_step_2_categorize_compliant == true,
 			"description": "Categorize the system and information processed, stored, and transmitted",
@@ -538,7 +539,7 @@ fisma_assessment := {
 		},
 		{
 			"step": "RMF-I",
-			"name": "Implement", 
+			"name": "Implement",
 			"compliant": rmf_step_4_implement_compliant == true,
 			"description": "Implement the controls and document how controls are deployed",
 		},
@@ -570,7 +571,7 @@ fisma_metadata := {
 	"framework_name": "Federal Information Security Modernization Act (FISMA)",
 	"version": "2014",
 	"implementation_standard": "NIST Risk Management Framework (RMF)",
-	"control_catalog": "NIST SP 800-53 Revision 5", 
+	"control_catalog": "NIST SP 800-53 Revision 5",
 	"last_updated": "2025-01-06",
 	"regulatory_authority": "Office of Management and Budget (OMB)",
 	"applicable_entities": ["Federal agencies", "Federal contractors", "Federal information systems"],

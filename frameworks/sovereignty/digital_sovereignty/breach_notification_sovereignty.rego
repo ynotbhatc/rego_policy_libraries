@@ -46,7 +46,7 @@ early_warning_timeline_compliant if {
 notification_procedure_documented if {
 	input.breach_notification.policy_documented == true
 	tested_ns := time.parse_rfc3339_ns(input.breach_notification.procedure_tested_date)
-	max_age_ns := input.breach_notification.procedure_test_frequency_days * 24 * 3600 * 1000000000
+	max_age_ns := ((input.breach_notification.procedure_test_frequency_days * 24) * 3600) * 1000000000
 	tested_ns >= time.now_ns() - max_age_ns
 }
 

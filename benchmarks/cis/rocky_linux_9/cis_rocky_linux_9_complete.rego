@@ -7,19 +7,19 @@ package cis_rocky_linux_9
 import rego.v1
 
 # Import all validation modules (will be created)
-import data.cis_rocky_linux_9.filesystem
-import data.cis_rocky_linux_9.initial_setup
-import data.cis_rocky_linux_9.services
-import data.cis_rocky_linux_9.network
-import data.cis_rocky_linux_9.logging
 import data.cis_rocky_linux_9.auditd
-import data.cis_rocky_linux_9.ssh
-import data.cis_rocky_linux_9.pam
-import data.cis_rocky_linux_9.sudo
-import data.cis_rocky_linux_9.selinux
-import data.cis_rocky_linux_9.user_group
 import data.cis_rocky_linux_9.cron
 import data.cis_rocky_linux_9.file_permissions
+import data.cis_rocky_linux_9.filesystem
+import data.cis_rocky_linux_9.initial_setup
+import data.cis_rocky_linux_9.logging
+import data.cis_rocky_linux_9.network
+import data.cis_rocky_linux_9.pam
+import data.cis_rocky_linux_9.selinux
+import data.cis_rocky_linux_9.services
+import data.cis_rocky_linux_9.ssh
+import data.cis_rocky_linux_9.sudo
+import data.cis_rocky_linux_9.user_group
 
 # =============================================================================
 # MAIN COMPLIANCE RULE

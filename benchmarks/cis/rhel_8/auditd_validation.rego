@@ -18,7 +18,7 @@ violations := array.concat(
 
 # CIS 4.1.1.1: audit package installed
 service_violations contains "CIS 4.1.1.1: audit package not installed" if {
-	not input.packages["audit"]
+	not input.packages.audit
 }
 
 # CIS 4.1.1.2: auditd service enabled and running

@@ -9,15 +9,15 @@ package stig.rhel_9
 
 import rego.v1
 
-import data.stig.rhel_9.configuration_management
-import data.stig.rhel_9.services
-import data.stig.rhel_9.software_integrity
-import data.stig.rhel_9.file_permissions
-import data.stig.rhel_9.audit_logging
-import data.stig.rhel_9.ssh_config
 import data.stig.rhel_9.account_auth
+import data.stig.rhel_9.audit_logging
+import data.stig.rhel_9.configuration_management
+import data.stig.rhel_9.file_permissions
 import data.stig.rhel_9.network
 import data.stig.rhel_9.pki_crypto
+import data.stig.rhel_9.services
+import data.stig.rhel_9.software_integrity
+import data.stig.rhel_9.ssh_config
 
 # =============================================================================
 # MODULE FINDING SETS

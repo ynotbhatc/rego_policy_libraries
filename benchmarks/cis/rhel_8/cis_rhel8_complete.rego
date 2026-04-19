@@ -7,19 +7,19 @@ package cis_rhel8
 import rego.v1
 
 # Import all validation modules (will be created)
-import data.cis_rhel8.filesystem
-import data.cis_rhel8.initial_setup
-import data.cis_rhel8.services
-import data.cis_rhel8.network
-import data.cis_rhel8.logging
 import data.cis_rhel8.auditd
-import data.cis_rhel8.ssh
-import data.cis_rhel8.pam
-import data.cis_rhel8.sudo
-import data.cis_rhel8.selinux
-import data.cis_rhel8.user_group
 import data.cis_rhel8.cron
 import data.cis_rhel8.file_permissions
+import data.cis_rhel8.filesystem
+import data.cis_rhel8.initial_setup
+import data.cis_rhel8.logging
+import data.cis_rhel8.network
+import data.cis_rhel8.pam
+import data.cis_rhel8.selinux
+import data.cis_rhel8.services
+import data.cis_rhel8.ssh
+import data.cis_rhel8.sudo
+import data.cis_rhel8.user_group
 
 # =============================================================================
 # MAIN COMPLIANCE RULE

@@ -1,0 +1,30 @@
+name: Dependency Review
+
+on:
+  pull_request:
+    branches: [main]
+
+# Only needs read access to the repo contents and the ability to write
+# a comment on the PR with the review summary.
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  dependency-review:
+    name: Review dependency changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Dependency Review
+        # actions/dependency-review-action v4.5.0
+        # Scans for known vulnerabilities in GitHub Actions versions being added/changed.
+        uses: actions/dependency-review-action@ce28f5bb42b1c8bdb2a1c3690d527b4f09514ffa
+        with:
+          # Fail only on high/critical vulnerabilities
+          fail-on-severity: high
+          # Allow GPL/LGPL in this Apache-licensed project since we have no binaries
+          allow-licenses: Apache-2.0, MIT, BSD-2-Clause, BSD-3-Clause, ISC

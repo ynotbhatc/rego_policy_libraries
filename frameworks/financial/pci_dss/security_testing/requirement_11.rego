@@ -182,9 +182,7 @@ pci_requirement_11_findings := {
 		"policies_established": security_testing_policies_established,
 		"roles_defined": security_testing_roles_defined,
 	},
-	"requirement_11_2": {
-		"wireless_ap_testing": wireless_access_point_testing,
-	},
+	"requirement_11_2": {"wireless_ap_testing": wireless_access_point_testing},
 	"requirement_11_3": {
 		"internal_scanning": internal_vulnerability_scanning,
 		"external_scanning_asv": external_vulnerability_scanning,
@@ -199,9 +197,7 @@ pci_requirement_11_findings := {
 		"ids_ips": ids_ips_deployed,
 		"file_integrity_monitoring": file_integrity_monitoring,
 	},
-	"requirement_11_6": {
-		"payment_page_integrity": payment_page_integrity,
-	},
+	"requirement_11_6": {"payment_page_integrity": payment_page_integrity},
 	"overall_score": pci_requirement_11_score,
 	"overall_compliant": pci_requirement_11_compliant,
 }

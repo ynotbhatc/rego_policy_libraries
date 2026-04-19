@@ -8,9 +8,11 @@ import rego.v1
 
 default compliant := false
 
-svc_disabled(svc) if { input.services[svc] == "Disabled" }
-svc_disabled(svc) if { input.services[svc] == "Stopped" }
-svc_disabled(svc) if { not input.services[svc] }
+svc_disabled(svc) if input.services[svc] == "Disabled"
+
+svc_disabled(svc) if input.services[svc] == "Stopped"
+
+svc_disabled(svc) if not input.services[svc]
 
 # =============================================================================
 # CAT I
@@ -18,10 +20,15 @@ svc_disabled(svc) if { not input.services[svc] }
 
 # WN22-00-000100 | V-254260 | CAT I - Telnet client must not be installed
 default no_telnet := false
-no_telnet if { input.windows_features.TelnetClient.installed == false }
-no_telnet if { not input.windows_features.TelnetClient }
 
-status_wn22_000100 := "Not_a_Finding" if { no_telnet } else := "Open"
+no_telnet if input.windows_features.TelnetClient.installed == false
+
+no_telnet if not input.windows_features.TelnetClient
+
+status_wn22_000100 := "Not_a_Finding" if no_telnet
+
+else := "Open"
+
 finding_wn22_000100 := {
 	"vuln_id": "V-254260",
 	"stig_id": "WN22-00-000100",
@@ -33,10 +40,15 @@ finding_wn22_000100 := {
 
 # WN22-00-000110 | V-254261 | CAT I - SNMP service must not be installed
 default no_snmp := false
-no_snmp if { input.windows_features.SNMP.installed == false }
-no_snmp if { not input.windows_features.SNMP }
 
-status_wn22_000110 := "Not_a_Finding" if { no_snmp } else := "Open"
+no_snmp if input.windows_features.SNMP.installed == false
+
+no_snmp if not input.windows_features.SNMP
+
+status_wn22_000110 := "Not_a_Finding" if no_snmp
+
+else := "Open"
+
 finding_wn22_000110 := {
 	"vuln_id": "V-254261",
 	"stig_id": "WN22-00-000110",
@@ -48,10 +60,15 @@ finding_wn22_000110 := {
 
 # WN22-00-000120 | V-254262 | CAT I - IIS must not be installed unless required
 default iis_controlled := false
-iis_controlled if { input.windows_features.Web_Server.installed == false }
-iis_controlled if { input.windows_features.Web_Server.required == true }
 
-status_wn22_000120 := "Not_a_Finding" if { iis_controlled } else := "Open"
+iis_controlled if input.windows_features.Web_Server.installed == false
+
+iis_controlled if input.windows_features.Web_Server.required == true
+
+status_wn22_000120 := "Not_a_Finding" if iis_controlled
+
+else := "Open"
+
 finding_wn22_000120 := {
 	"vuln_id": "V-254262",
 	"stig_id": "WN22-00-000120",
@@ -67,14 +84,19 @@ finding_wn22_000120 := {
 
 # WN22-AU-000010 | V-254270 | CAT II - Credential Validation must be audited
 default audit_credential_validation := false
+
 audit_credential_validation if {
 	input.audit_policy.CredentialValidation == "Success and Failure"
 }
+
 audit_credential_validation if {
 	input.audit_policy.CredentialValidation == "Success, Failure"
 }
 
-status_wn22_au_000010 := "Not_a_Finding" if { audit_credential_validation } else := "Open"
+status_wn22_au_000010 := "Not_a_Finding" if audit_credential_validation
+
+else := "Open"
+
 finding_wn22_au_000010 := {
 	"vuln_id": "V-254270",
 	"stig_id": "WN22-AU-000010",
@@ -86,10 +108,15 @@ finding_wn22_au_000010 := {
 
 # WN22-AU-000020 | V-254271 | CAT II - Logon/Logoff must be audited
 default audit_logon := false
-audit_logon if { input.audit_policy.Logon == "Success and Failure" }
-audit_logon if { input.audit_policy.Logon == "Success, Failure" }
 
-status_wn22_au_000020 := "Not_a_Finding" if { audit_logon } else := "Open"
+audit_logon if input.audit_policy.Logon == "Success and Failure"
+
+audit_logon if input.audit_policy.Logon == "Success, Failure"
+
+status_wn22_au_000020 := "Not_a_Finding" if audit_logon
+
+else := "Open"
+
 finding_wn22_au_000020 := {
 	"vuln_id": "V-254271",
 	"stig_id": "WN22-AU-000020",
@@ -101,10 +128,15 @@ finding_wn22_au_000020 := {
 
 # WN22-AU-000030 | V-254272 | CAT II - Object Access must be audited
 default audit_object_access := false
-audit_object_access if { input.audit_policy.ObjectAccess == "Success and Failure" }
-audit_object_access if { input.audit_policy.ObjectAccess == "Failure" }
 
-status_wn22_au_000030 := "Not_a_Finding" if { audit_object_access } else := "Open"
+audit_object_access if input.audit_policy.ObjectAccess == "Success and Failure"
+
+audit_object_access if input.audit_policy.ObjectAccess == "Failure"
+
+status_wn22_au_000030 := "Not_a_Finding" if audit_object_access
+
+else := "Open"
+
 finding_wn22_au_000030 := {
 	"vuln_id": "V-254272",
 	"stig_id": "WN22-AU-000030",
@@ -116,10 +148,15 @@ finding_wn22_au_000030 := {
 
 # WN22-AU-000040 | V-254273 | CAT II - Policy Change must be audited
 default audit_policy_change := false
-audit_policy_change if { input.audit_policy.PolicyChange == "Success" }
-audit_policy_change if { input.audit_policy.PolicyChange == "Success and Failure" }
 
-status_wn22_au_000040 := "Not_a_Finding" if { audit_policy_change } else := "Open"
+audit_policy_change if input.audit_policy.PolicyChange == "Success"
+
+audit_policy_change if input.audit_policy.PolicyChange == "Success and Failure"
+
+status_wn22_au_000040 := "Not_a_Finding" if audit_policy_change
+
+else := "Open"
+
 finding_wn22_au_000040 := {
 	"vuln_id": "V-254273",
 	"stig_id": "WN22-AU-000040",
@@ -131,10 +168,15 @@ finding_wn22_au_000040 := {
 
 # WN22-AU-000050 | V-254274 | CAT II - Privilege Use must be audited
 default audit_privilege_use := false
-audit_privilege_use if { input.audit_policy.PrivilegeUse == "Success and Failure" }
-audit_privilege_use if { input.audit_policy.PrivilegeUse == "Failure" }
 
-status_wn22_au_000050 := "Not_a_Finding" if { audit_privilege_use } else := "Open"
+audit_privilege_use if input.audit_policy.PrivilegeUse == "Success and Failure"
+
+audit_privilege_use if input.audit_policy.PrivilegeUse == "Failure"
+
+status_wn22_au_000050 := "Not_a_Finding" if audit_privilege_use
+
+else := "Open"
+
 finding_wn22_au_000050 := {
 	"vuln_id": "V-254274",
 	"stig_id": "WN22-AU-000050",
@@ -146,9 +188,13 @@ finding_wn22_au_000050 := {
 
 # WN22-AU-000060 | V-254275 | CAT II - System events must be audited
 default audit_system := false
-audit_system if { input.audit_policy.System == "Success and Failure" }
 
-status_wn22_au_000060 := "Not_a_Finding" if { audit_system } else := "Open"
+audit_system if input.audit_policy.System == "Success and Failure"
+
+status_wn22_au_000060 := "Not_a_Finding" if audit_system
+
+else := "Open"
+
 finding_wn22_au_000060 := {
 	"vuln_id": "V-254275",
 	"stig_id": "WN22-AU-000060",
@@ -160,9 +206,13 @@ finding_wn22_au_000060 := {
 
 # WN22-AU-000070 | V-254276 | CAT II - Account Management must be audited
 default audit_account_mgmt := false
-audit_account_mgmt if { input.audit_policy.AccountManagement == "Success and Failure" }
 
-status_wn22_au_000070 := "Not_a_Finding" if { audit_account_mgmt } else := "Open"
+audit_account_mgmt if input.audit_policy.AccountManagement == "Success and Failure"
+
+status_wn22_au_000070 := "Not_a_Finding" if audit_account_mgmt
+
+else := "Open"
+
 finding_wn22_au_000070 := {
 	"vuln_id": "V-254276",
 	"stig_id": "WN22-AU-000070",
@@ -174,10 +224,15 @@ finding_wn22_au_000070 := {
 
 # WN22-AU-000080 | V-254277 | CAT II - Process Creation must be audited
 default audit_process_creation := false
-audit_process_creation if { input.audit_policy.ProcessCreation == "Success" }
-audit_process_creation if { input.audit_policy.ProcessCreation == "Success and Failure" }
 
-status_wn22_au_000080 := "Not_a_Finding" if { audit_process_creation } else := "Open"
+audit_process_creation if input.audit_policy.ProcessCreation == "Success"
+
+audit_process_creation if input.audit_policy.ProcessCreation == "Success and Failure"
+
+status_wn22_au_000080 := "Not_a_Finding" if audit_process_creation
+
+else := "Open"
+
 finding_wn22_au_000080 := {
 	"vuln_id": "V-254277",
 	"stig_id": "WN22-AU-000080",
@@ -189,11 +244,17 @@ finding_wn22_au_000080 := {
 
 # WN22-AU-000090 | V-254278 | CAT II - Directory Service Access must be audited
 default audit_directory_access := false
-audit_directory_access if { input.audit_policy.DirectoryServiceAccess == "Success and Failure" }
-audit_directory_access if { input.audit_policy.DirectoryServiceAccess == "Failure" }
-audit_directory_access if { not input.system_info.is_domain_controller }  # Only required on DCs
 
-status_wn22_au_000090 := "Not_a_Finding" if { audit_directory_access } else := "Open"
+audit_directory_access if input.audit_policy.DirectoryServiceAccess == "Success and Failure"
+
+audit_directory_access if input.audit_policy.DirectoryServiceAccess == "Failure"
+
+audit_directory_access if not input.system_info.is_domain_controller # Only required on DCs
+
+status_wn22_au_000090 := "Not_a_Finding" if audit_directory_access
+
+else := "Open"
+
 finding_wn22_au_000090 := {
 	"vuln_id": "V-254278",
 	"stig_id": "WN22-AU-000090",
@@ -205,11 +266,15 @@ finding_wn22_au_000090 := {
 
 # WN22-SO-000040 | V-254285 | CAT II - Event log size: Security (196608 KB)
 default security_log_size := false
+
 security_log_size if {
 	input.event_logs.Security.max_size >= 196608
 }
 
-status_wn22_so_000040 := "Not_a_Finding" if { security_log_size } else := "Open"
+status_wn22_so_000040 := "Not_a_Finding" if security_log_size
+
+else := "Open"
+
 finding_wn22_so_000040 := {
 	"vuln_id": "V-254285",
 	"stig_id": "WN22-SO-000040",
@@ -221,11 +286,15 @@ finding_wn22_so_000040 := {
 
 # WN22-SO-000050 | V-254286 | CAT II - Event log size: Application (32768 KB)
 default application_log_size := false
+
 application_log_size if {
 	input.event_logs.Application.max_size >= 32768
 }
 
-status_wn22_so_000050 := "Not_a_Finding" if { application_log_size } else := "Open"
+status_wn22_so_000050 := "Not_a_Finding" if application_log_size
+
+else := "Open"
+
 finding_wn22_so_000050 := {
 	"vuln_id": "V-254286",
 	"stig_id": "WN22-SO-000050",
@@ -271,7 +340,7 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
-compliant if { count(open_cat_i) == 0 }
+compliant if count(open_cat_i) == 0
 
 compliance_report := {
 	"module": "services_audit",

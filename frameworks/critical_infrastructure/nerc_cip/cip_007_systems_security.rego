@@ -75,7 +75,7 @@ security_patch_evaluation_timely if {
 
 patch_evaluated_timely(patch) if {
 	patch.evaluation.completed == true
-	evaluation_age_days := (patch.evaluation.completion_date - patch.availability_date) / (24 * 60 * 60 * 1000000000)
+	evaluation_age_days := (patch.evaluation.completion_date - patch.availability_date) / (((24 * 60) * 60) * 1000000000)
 	evaluation_age_days <= 35
 }
 
@@ -166,7 +166,7 @@ security_event_alerting if {
 # R4.3 - Review security event logs at least every 15 calendar months
 security_log_review_current if {
 	last_review_ns := time.parse_rfc3339_ns(input.security_event_alerting.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 

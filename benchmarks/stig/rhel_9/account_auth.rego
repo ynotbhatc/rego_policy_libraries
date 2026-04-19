@@ -24,7 +24,9 @@ mfa_enabled if {
 	input.pam_config.sssd_mfa == true
 }
 
-status_rhel_09_611010 := "Not_a_Finding" if { mfa_enabled } else := "Open"
+status_rhel_09_611010 := "Not_a_Finding" if mfa_enabled
+
+else := "Open"
 
 finding_rhel_09_611010 := {
 	"vuln_id": "V-258050",
@@ -47,7 +49,9 @@ password_sha512 if {
 	input.pam_config.password_hash == "sha512"
 }
 
-status_rhel_09_611015 := "Not_a_Finding" if { password_sha512 } else := "Open"
+status_rhel_09_611015 := "Not_a_Finding" if password_sha512
+
+else := "Open"
 
 finding_rhel_09_611015 := {
 	"vuln_id": "V-258051",
@@ -67,7 +71,9 @@ account_lockout_enabled if {
 	input.pam_config.lockout_attempts > 0
 }
 
-status_rhel_09_611020 := "Not_a_Finding" if { account_lockout_enabled } else := "Open"
+status_rhel_09_611020 := "Not_a_Finding" if account_lockout_enabled
+
+else := "Open"
 
 finding_rhel_09_611020 := {
 	"vuln_id": "V-258052",
@@ -90,7 +96,9 @@ no_empty_password_hashes if {
 	not input.local_accounts_with_empty_passwords
 }
 
-status_rhel_09_611025 := "Not_a_Finding" if { no_empty_password_hashes } else := "Open"
+status_rhel_09_611025 := "Not_a_Finding" if no_empty_password_hashes
+
+else := "Open"
 
 finding_rhel_09_611025 := {
 	"vuln_id": "V-258053",
@@ -113,7 +121,9 @@ password_minlen if {
 	input.password_policy.minlen >= 15
 }
 
-status_rhel_09_611030 := "Not_a_Finding" if { password_minlen } else := "Open"
+status_rhel_09_611030 := "Not_a_Finding" if password_minlen
+
+else := "Open"
 
 finding_rhel_09_611030 := {
 	"vuln_id": "V-258054",
@@ -136,7 +146,9 @@ password_uppercase if {
 	input.password_policy.minclass >= 4
 }
 
-status_rhel_09_611035 := "Not_a_Finding" if { password_uppercase } else := "Open"
+status_rhel_09_611035 := "Not_a_Finding" if password_uppercase
+
+else := "Open"
 
 finding_rhel_09_611035 := {
 	"vuln_id": "V-258055",
@@ -159,7 +171,9 @@ password_lowercase if {
 	input.password_policy.minclass >= 4
 }
 
-status_rhel_09_611040 := "Not_a_Finding" if { password_lowercase } else := "Open"
+status_rhel_09_611040 := "Not_a_Finding" if password_lowercase
+
+else := "Open"
 
 finding_rhel_09_611040 := {
 	"vuln_id": "V-258056",
@@ -182,7 +196,9 @@ password_numeric if {
 	input.password_policy.minclass >= 4
 }
 
-status_rhel_09_611045 := "Not_a_Finding" if { password_numeric } else := "Open"
+status_rhel_09_611045 := "Not_a_Finding" if password_numeric
+
+else := "Open"
 
 finding_rhel_09_611045 := {
 	"vuln_id": "V-258057",
@@ -201,7 +217,9 @@ password_special if {
 	input.password_policy.ocredit <= -1
 }
 
-status_rhel_09_611050 := "Not_a_Finding" if { password_special } else := "Open"
+status_rhel_09_611050 := "Not_a_Finding" if password_special
+
+else := "Open"
 
 finding_rhel_09_611050 := {
 	"vuln_id": "V-258058",
@@ -221,7 +239,9 @@ password_maxage if {
 	input.password_policy.maxdays > 0
 }
 
-status_rhel_09_611055 := "Not_a_Finding" if { password_maxage } else := "Open"
+status_rhel_09_611055 := "Not_a_Finding" if password_maxage
+
+else := "Open"
 
 finding_rhel_09_611055 := {
 	"vuln_id": "V-258059",
@@ -240,7 +260,9 @@ password_minage if {
 	input.password_policy.mindays >= 1
 }
 
-status_rhel_09_611060 := "Not_a_Finding" if { password_minage } else := "Open"
+status_rhel_09_611060 := "Not_a_Finding" if password_minage
+
+else := "Open"
 
 finding_rhel_09_611060 := {
 	"vuln_id": "V-258060",
@@ -259,7 +281,9 @@ password_history if {
 	input.password_policy.remember >= 5
 }
 
-status_rhel_09_611065 := "Not_a_Finding" if { password_history } else := "Open"
+status_rhel_09_611065 := "Not_a_Finding" if password_history
+
+else := "Open"
 
 finding_rhel_09_611065 := {
 	"vuln_id": "V-258061",
@@ -275,10 +299,12 @@ finding_rhel_09_611065 := {
 default lockout_duration_ok := false
 
 lockout_duration_ok if {
-	input.pam_config.lockout_time >= 900  # 900 seconds = 15 minutes
+	input.pam_config.lockout_time >= 900 # 900 seconds = 15 minutes
 }
 
-status_rhel_09_611070 := "Not_a_Finding" if { lockout_duration_ok } else := "Open"
+status_rhel_09_611070 := "Not_a_Finding" if lockout_duration_ok
+
+else := "Open"
 
 finding_rhel_09_611070 := {
 	"vuln_id": "V-258062",
@@ -298,7 +324,9 @@ inactive_lock_ok if {
 	input.password_policy.inactive_days >= 0
 }
 
-status_rhel_09_611075 := "Not_a_Finding" if { inactive_lock_ok } else := "Open"
+status_rhel_09_611075 := "Not_a_Finding" if inactive_lock_ok
+
+else := "Open"
 
 finding_rhel_09_611075 := {
 	"vuln_id": "V-258063",
@@ -317,7 +345,9 @@ password_warn_age if {
 	input.password_policy.warn_age >= 7
 }
 
-status_rhel_09_611080 := "Not_a_Finding" if { password_warn_age } else := "Open"
+status_rhel_09_611080 := "Not_a_Finding" if password_warn_age
+
+else := "Open"
 
 finding_rhel_09_611080 := {
 	"vuln_id": "V-258064",
@@ -340,7 +370,9 @@ no_duplicate_uids if {
 	not input.duplicate_uids
 }
 
-status_rhel_09_611085 := "Not_a_Finding" if { no_duplicate_uids } else := "Open"
+status_rhel_09_611085 := "Not_a_Finding" if no_duplicate_uids
+
+else := "Open"
 
 finding_rhel_09_611085 := {
 	"vuln_id": "V-258065",
@@ -363,7 +395,9 @@ no_duplicate_gids if {
 	not input.duplicate_gids
 }
 
-status_rhel_09_611090 := "Not_a_Finding" if { no_duplicate_gids } else := "Open"
+status_rhel_09_611090 := "Not_a_Finding" if no_duplicate_gids
+
+else := "Open"
 
 finding_rhel_09_611090 := {
 	"vuln_id": "V-258066",
@@ -386,7 +420,9 @@ all_groups_valid if {
 	not input.invalid_group_references
 }
 
-status_rhel_09_611095 := "Not_a_Finding" if { all_groups_valid } else := "Open"
+status_rhel_09_611095 := "Not_a_Finding" if all_groups_valid
+
+else := "Open"
 
 finding_rhel_09_611095 := {
 	"vuln_id": "V-258067",

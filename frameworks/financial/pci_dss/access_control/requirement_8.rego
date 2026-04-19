@@ -198,9 +198,7 @@ pci_requirement_8_findings := {
 		"system_secure": mfa_system_secure,
 		"replay_resistant": mfa_not_susceptible_to_replay,
 	},
-	"requirement_8_6": {
-		"system_accounts": system_application_accounts,
-	},
+	"requirement_8_6": {"system_accounts": system_application_accounts},
 	"overall_score": pci_requirement_8_score,
 	"overall_compliant": pci_requirement_8_compliant,
 }

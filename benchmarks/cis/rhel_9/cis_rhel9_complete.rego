@@ -6,27 +6,27 @@ package cis_rhel9
 
 import rego.v1
 
-import data.cis_rhel9.filesystem
-import data.cis_rhel9.logging
-import data.cis_rhel9.file_permissions
-import data.cis_rhel9.services
-import data.cis_rhel9.network
-import data.cis_rhel9.ssh
 import data.cis_rhel9.auditd
-import data.cis_rhel9.pam
-import data.cis_rhel9.sudo
-import data.cis_rhel9.selinux
-import data.cis_rhel9.user_group
-import data.cis_rhel9.cron
 import data.cis_rhel9.boot_security
+import data.cis_rhel9.cron
+import data.cis_rhel9.file_permissions
+import data.cis_rhel9.filesystem
 import data.cis_rhel9.initial_setup
+import data.cis_rhel9.logging
+import data.cis_rhel9.network
+import data.cis_rhel9.pam
+import data.cis_rhel9.selinux
+import data.cis_rhel9.services
+import data.cis_rhel9.ssh
+import data.cis_rhel9.sudo
+import data.cis_rhel9.user_group
 
 # Extended hardening modules (STIG / NIST / EDA drift detection)
 # These supplement the 338 CIS controls but are not part of CIS RHEL 9 v2.0.0.
 # They are evaluated separately so the CIS compliance score is not affected.
-import data.cis_rhel9.storage_encryption
-import data.cis_rhel9.certificate_validation
 import data.cis_rhel9.authorized_keys
+import data.cis_rhel9.certificate_validation
+import data.cis_rhel9.storage_encryption
 
 # =============================================================================
 # MAIN COMPLIANCE RULE

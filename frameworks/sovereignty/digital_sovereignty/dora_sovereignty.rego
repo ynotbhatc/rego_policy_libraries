@@ -55,14 +55,14 @@ import rego.v1
 ict_risk_framework_documented if {
 	input.dora.ict_risk_management_framework_documented == true
 	reviewed_ns := time.parse_rfc3339_ns(input.dora.ict_risk_framework_reviewed_date)
-	max_age_ns := input.dora.ict_risk_framework_review_frequency_days * 24 * 3600 * 1000000000
+	max_age_ns := ((input.dora.ict_risk_framework_review_frequency_days * 24) * 3600) * 1000000000
 	reviewed_ns >= time.now_ns() - max_age_ns
 }
 
 ict_asset_register_current if {
 	input.dora.ict_asset_register_maintained == true
 	reviewed_ns := time.parse_rfc3339_ns(input.dora.ict_asset_register_reviewed_date)
-	max_age_ns := input.dora.ict_asset_register_review_frequency_days * 24 * 3600 * 1000000000
+	max_age_ns := ((input.dora.ict_asset_register_review_frequency_days * 24) * 3600) * 1000000000
 	reviewed_ns >= time.now_ns() - max_age_ns
 }
 
@@ -74,7 +74,7 @@ rto_rpo_defined if {
 business_continuity_current if {
 	input.dora.business_continuity_plan_documented == true
 	tested_ns := time.parse_rfc3339_ns(input.dora.business_continuity_tested_date)
-	max_age_ns := input.dora.business_continuity_test_frequency_days * 24 * 3600 * 1000000000
+	max_age_ns := ((input.dora.business_continuity_test_frequency_days * 24) * 3600) * 1000000000
 	tested_ns >= time.now_ns() - max_age_ns
 }
 
@@ -103,7 +103,7 @@ intermediate_report_compliant if {
 digital_resilience_testing_current if {
 	input.dora.digital_resilience_testing_conducted == true
 	tested_ns := time.parse_rfc3339_ns(input.dora.digital_resilience_test_date)
-	max_age_ns := input.dora.digital_resilience_test_frequency_days * 24 * 3600 * 1000000000
+	max_age_ns := ((input.dora.digital_resilience_test_frequency_days * 24) * 3600) * 1000000000
 	tested_ns >= time.now_ns() - max_age_ns
 }
 
@@ -116,7 +116,7 @@ tlpt_compliant if {
 	input.dora.tlpt_required == true
 	input.dora.tlpt_conducted == true
 	tested_ns := time.parse_rfc3339_ns(input.dora.tlpt_date)
-	max_age_years_ns := input.dora.tlpt_frequency_years * 365 * 24 * 3600 * 1000000000
+	max_age_years_ns := (((input.dora.tlpt_frequency_years * 365) * 24) * 3600) * 1000000000
 	tested_ns >= time.now_ns() - max_age_years_ns
 }
 
@@ -168,118 +168,118 @@ concentration_risk_acceptable if {
 violations contains v if {
 	not ict_risk_framework_documented
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-001",
-		"severity":     "critical",
-		"description":  "ICT risk management framework not documented or not reviewed within required frequency (DORA Art. 5.2)",
-		"remediation":  "Document and regularly review the ICT risk management framework; assign a named ICT risk owner",
+		"domain": "dora_sovereignty",
+		"control": "DORA-001",
+		"severity": "critical",
+		"description": "ICT risk management framework not documented or not reviewed within required frequency (DORA Art. 5.2)",
+		"remediation": "Document and regularly review the ICT risk management framework; assign a named ICT risk owner",
 	}
 }
 
 violations contains v if {
 	not ict_asset_register_current
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-002",
-		"severity":     "high",
-		"description":  "ICT asset register not maintained or not reviewed within required frequency (DORA Art. 8)",
-		"remediation":  "Maintain a current ICT asset register covering hardware, software, data, and third-party services; review on defined schedule",
+		"domain": "dora_sovereignty",
+		"control": "DORA-002",
+		"severity": "high",
+		"description": "ICT asset register not maintained or not reviewed within required frequency (DORA Art. 8)",
+		"remediation": "Maintain a current ICT asset register covering hardware, software, data, and third-party services; review on defined schedule",
 	}
 }
 
 violations contains v if {
 	not rto_rpo_defined
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-003",
-		"severity":     "critical",
-		"description":  "Recovery Time Objective (RTO) or Recovery Point Objective (RPO) not defined (DORA Art. 12)",
-		"remediation":  "Define, document, and test RTO and RPO for all critical ICT systems; align with business impact analysis",
+		"domain": "dora_sovereignty",
+		"control": "DORA-003",
+		"severity": "critical",
+		"description": "Recovery Time Objective (RTO) or Recovery Point Objective (RPO) not defined (DORA Art. 12)",
+		"remediation": "Define, document, and test RTO and RPO for all critical ICT systems; align with business impact analysis",
 	}
 }
 
 violations contains v if {
 	not business_continuity_current
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-004",
-		"severity":     "critical",
-		"description":  "Business continuity plan not documented or not tested within required frequency (DORA Art. 11)",
-		"remediation":  "Document, test, and update the ICT business continuity plan on at least an annual basis; record test outcomes",
+		"domain": "dora_sovereignty",
+		"control": "DORA-004",
+		"severity": "critical",
+		"description": "Business continuity plan not documented or not tested within required frequency (DORA Art. 11)",
+		"remediation": "Document, test, and update the ICT business continuity plan on at least an annual basis; record test outcomes",
 	}
 }
 
 violations contains v if {
 	not major_incident_criteria_defined
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-005",
-		"severity":     "high",
-		"description":  "Major incident classification criteria not defined (DORA Art. 18)",
-		"remediation":  "Define major incident classification thresholds covering impact, duration, geographic spread, and data loss; align with DORA Annex I",
+		"domain": "dora_sovereignty",
+		"control": "DORA-005",
+		"severity": "high",
+		"description": "Major incident classification criteria not defined (DORA Art. 18)",
+		"remediation": "Define major incident classification thresholds covering impact, duration, geographic spread, and data loss; align with DORA Annex I",
 	}
 }
 
 violations contains v if {
 	not initial_notification_compliant
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-006",
-		"severity":     "critical",
-		"description":  concat("", [
+		"domain": "dora_sovereignty",
+		"control": "DORA-006",
+		"severity": "critical",
+		"description": concat("", [
 			"Initial major incident notification timeline exceeds 4 hours: ",
 			format_int(input.dora.initial_notification_timeline_hours, 10),
 			"h (DORA Art. 19.3(a) requires ≤4h)",
 		]),
-		"remediation":  "Implement automated alerting to competent authority within 4 hours of major incident classification; test via tabletop exercises",
+		"remediation": "Implement automated alerting to competent authority within 4 hours of major incident classification; test via tabletop exercises",
 	}
 }
 
 violations contains v if {
 	not intermediate_report_compliant
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-007",
-		"severity":     "high",
-		"description":  concat("", [
+		"domain": "dora_sovereignty",
+		"control": "DORA-007",
+		"severity": "high",
+		"description": concat("", [
 			"Intermediate incident report timeline exceeds 72 hours: ",
 			format_int(input.dora.intermediate_report_timeline_hours, 10),
 			"h (DORA Art. 19.3(b) requires ≤72h)",
 		]),
-		"remediation":  "Establish incident reporting workflow with intermediate report SLA of 72 hours including cause analysis and containment status",
+		"remediation": "Establish incident reporting workflow with intermediate report SLA of 72 hours including cause analysis and containment status",
 	}
 }
 
 violations contains v if {
 	not digital_resilience_testing_current
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-008",
-		"severity":     "high",
-		"description":  "Annual digital operational resilience testing not conducted or overdue (DORA Art. 25)",
-		"remediation":  "Conduct annual basic digital resilience tests covering vulnerability assessments, scenario-based tests, and network security assessments",
+		"domain": "dora_sovereignty",
+		"control": "DORA-008",
+		"severity": "high",
+		"description": "Annual digital operational resilience testing not conducted or overdue (DORA Art. 25)",
+		"remediation": "Conduct annual basic digital resilience tests covering vulnerability assessments, scenario-based tests, and network security assessments",
 	}
 }
 
 violations contains v if {
 	not tlpt_compliant
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-009",
-		"severity":     "critical",
-		"description":  "Threat-Led Penetration Test (TLPT) required but not conducted within required frequency (DORA Art. 26)",
-		"remediation":  "Engage a qualified TLPT provider to conduct threat-led penetration testing every 3 years; coordinate with competent authority",
+		"domain": "dora_sovereignty",
+		"control": "DORA-009",
+		"severity": "critical",
+		"description": "Threat-Led Penetration Test (TLPT) required but not conducted within required frequency (DORA Art. 26)",
+		"remediation": "Engage a qualified TLPT provider to conduct threat-led penetration testing every 3 years; coordinate with competent authority",
 	}
 }
 
 violations contains v if {
 	not critical_ict_register_maintained
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-010",
-		"severity":     "high",
-		"description":  "Critical ICT third-party provider register not maintained (DORA Art. 28)",
-		"remediation":  "Maintain a register of all critical ICT service providers; report to competent authority annually",
+		"domain": "dora_sovereignty",
+		"control": "DORA-010",
+		"severity": "high",
+		"description": "Critical ICT third-party provider register not maintained (DORA Art. 28)",
+		"remediation": "Maintain a register of all critical ICT service providers; report to competent authority annually",
 	}
 }
 
@@ -288,15 +288,15 @@ violations contains v if {
 	some provider in input.dora.critical_ict_providers
 	provider.exit_strategy_documented != true
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-011",
-		"severity":     "high",
-		"description":  concat("", [
+		"domain": "dora_sovereignty",
+		"control": "DORA-011",
+		"severity": "high",
+		"description": concat("", [
 			"No documented exit strategy for critical ICT provider: ",
 			provider.provider_name,
 			" (DORA Art. 28)",
 		]),
-		"remediation":  "Document a tested exit strategy for each critical ICT provider including data migration, service continuity, and transition timeline",
+		"remediation": "Document a tested exit strategy for each critical ICT provider including data migration, service continuity, and transition timeline",
 	}
 }
 
@@ -305,14 +305,14 @@ violations contains v if {
 	some provider in input.dora.critical_ict_providers
 	provider.contractual_requirements_met != true
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-012",
-		"severity":     "high",
-		"description":  concat("", [
+		"domain": "dora_sovereignty",
+		"control": "DORA-012",
+		"severity": "high",
+		"description": concat("", [
 			"ICT provider contract does not meet DORA Art. 30 requirements: ",
 			provider.provider_name,
 		]),
-		"remediation":  "Update ICT service contracts to include Art. 30 requirements: audit rights, SLAs, incident notification, data location, and exit provisions",
+		"remediation": "Update ICT service contracts to include Art. 30 requirements: audit rights, SLAs, incident notification, data location, and exit provisions",
 	}
 }
 
@@ -321,10 +321,10 @@ violations contains v if {
 	some provider in input.dora.critical_ict_providers
 	provider.pct_critical_functions > input.dora.concentration_risk_threshold_pct
 	v := {
-		"domain":       "dora_sovereignty",
-		"control":      "DORA-013",
-		"severity":     "high",
-		"description":  concat("", [
+		"domain": "dora_sovereignty",
+		"control": "DORA-013",
+		"severity": "high",
+		"description": concat("", [
 			"ICT concentration risk: ",
 			provider.provider_name,
 			" handles ",
@@ -333,7 +333,7 @@ violations contains v if {
 			format_int(input.dora.concentration_risk_threshold_pct, 10),
 			"% (DORA Art. 30)",
 		]),
-		"remediation":  "Implement multi-provider strategy to reduce concentration; develop alternative sourcing plan for critical ICT functions",
+		"remediation": "Implement multi-provider strategy to reduce concentration; develop alternative sourcing plan for critical ICT functions",
 	}
 }
 
@@ -360,23 +360,23 @@ compliant if {
 }
 
 report := {
-	"domain":    "DORA — Digital Operational Resilience Act",
+	"domain": "DORA — Digital Operational Resilience Act",
 	"compliant": compliant,
 	"controls": {
-		"DORA-001_ict_risk_framework":          ict_risk_framework_documented,
-		"DORA-002_ict_asset_register":          ict_asset_register_current,
-		"DORA-003_rto_rpo_defined":             rto_rpo_defined,
-		"DORA-004_business_continuity_tested":  business_continuity_current,
-		"DORA-005_incident_classification":     major_incident_criteria_defined,
-		"DORA-006_initial_notification_4h":     initial_notification_compliant,
-		"DORA-007_intermediate_report_72h":     intermediate_report_compliant,
-		"DORA-008_resilience_testing_annual":   digital_resilience_testing_current,
-		"DORA-009_tlpt_compliant":              tlpt_compliant,
-		"DORA-010_critical_ict_register":       critical_ict_register_maintained,
-		"DORA-011_exit_strategies":             all_providers_have_exit_strategy,
-		"DORA-012_contractual_requirements":    all_providers_meet_contractual_requirements,
-		"DORA-013_concentration_risk":          concentration_risk_acceptable,
+		"DORA-001_ict_risk_framework": ict_risk_framework_documented,
+		"DORA-002_ict_asset_register": ict_asset_register_current,
+		"DORA-003_rto_rpo_defined": rto_rpo_defined,
+		"DORA-004_business_continuity_tested": business_continuity_current,
+		"DORA-005_incident_classification": major_incident_criteria_defined,
+		"DORA-006_initial_notification_4h": initial_notification_compliant,
+		"DORA-007_intermediate_report_72h": intermediate_report_compliant,
+		"DORA-008_resilience_testing_annual": digital_resilience_testing_current,
+		"DORA-009_tlpt_compliant": tlpt_compliant,
+		"DORA-010_critical_ict_register": critical_ict_register_maintained,
+		"DORA-011_exit_strategies": all_providers_have_exit_strategy,
+		"DORA-012_contractual_requirements": all_providers_meet_contractual_requirements,
+		"DORA-013_concentration_risk": concentration_risk_acceptable,
 	},
-	"violations":      violations,
+	"violations": violations,
 	"violation_count": count(violations),
 }

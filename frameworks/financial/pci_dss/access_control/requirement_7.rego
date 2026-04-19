@@ -153,9 +153,7 @@ pci_requirement_7_findings := {
 		"user_access_reviews": user_access_reviews,
 		"system_accounts": application_system_accounts_managed,
 	},
-	"requirement_7_3": {
-		"access_control_system": access_control_system,
-	},
+	"requirement_7_3": {"access_control_system": access_control_system},
 	"overall_score": pci_requirement_7_score,
 	"overall_compliant": pci_requirement_7_compliant,
 }

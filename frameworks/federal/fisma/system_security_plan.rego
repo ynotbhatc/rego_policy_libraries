@@ -127,6 +127,7 @@ control_implementation_details_provided if {
 	every control in input.ssp.controls.implemented_controls {
 		control.responsible_role != ""
 		control.implementation_guidance != ""
+
 		# Parameters filled if control has parameters
 		control_parameters_valid(control)
 	}
@@ -148,6 +149,7 @@ control_responsibility_assigned if {
 	every control in input.ssp.controls.implemented_controls {
 		control.responsibility in ["system_specific", "common", "hybrid"]
 		control.responsible_entity != ""
+
 		# Common controls must reference provider
 		control_provider_valid(control)
 	}

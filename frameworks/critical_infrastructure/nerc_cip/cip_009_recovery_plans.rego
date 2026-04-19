@@ -93,7 +93,7 @@ recovery_plans_current if {
 }
 
 recovery_plan_current(plan) if {
-	plan_age_days := (time.now_ns() - plan.last_review_date) / (24 * 60 * 60 * 1000000000)
+	plan_age_days := (time.now_ns() - plan.last_review_date) / (((24 * 60) * 60) * 1000000000)
 	plan_age_days <= 455
 }
 
@@ -101,7 +101,7 @@ recovery_plan_current(plan) if {
 post_event_plan_updates if {
 	every event in input.qualifying_recovery_events {
 		event.plan_review_triggered == true
-		update_age_days := (event.plan_review_completion_date - event.event_date) / (24 * 60 * 60 * 1000000000)
+		update_age_days := (event.plan_review_completion_date - event.event_date) / (((24 * 60) * 60) * 1000000000)
 		update_age_days <= 90
 	}
 }
@@ -132,7 +132,7 @@ recovery_testing_performed if {
 recovery_testing_current(system) if {
 	testing := input.recovery_testing[system.system_id]
 	testing.last_test_date
-	test_age_days := (time.now_ns() - testing.last_test_date) / (24 * 60 * 60 * 1000000000)
+	test_age_days := (time.now_ns() - testing.last_test_date) / (((24 * 60) * 60) * 1000000000)
 	test_age_days <= 455
 	testing.test_documented == true
 	testing.issues_resolved == true
@@ -150,7 +150,7 @@ backup_testing_performed if {
 
 backup_test_current(system) if {
 	backup := input.backup_procedures[system.system_id]
-	backup_test_age_days := (time.now_ns() - backup.last_test_date) / (24 * 60 * 60 * 1000000000)
+	backup_test_age_days := (time.now_ns() - backup.last_test_date) / (((24 * 60) * 60) * 1000000000)
 	backup_test_age_days <= 455
 	backup.test_documented == true
 	backup.restoration_verified == true
@@ -160,7 +160,7 @@ backup_test_current(system) if {
 activation_criteria_tested if {
 	input.recovery_plans.activation_criteria_tested == true
 	last_test_ns := time.parse_rfc3339_ns(input.recovery_plans.last_activation_test_date)
-	test_age_days := (time.now_ns() - last_test_ns) / (24 * 60 * 60 * 1000000000)
+	test_age_days := (time.now_ns() - last_test_ns) / (((24 * 60) * 60) * 1000000000)
 	test_age_days <= 455
 }
 

@@ -30,17 +30,27 @@ import data.digital_sovereignty.software_sovereignty
 # DOMAIN COMPLIANCE STATUS
 # =============================================================================
 
-data_residency_compliant if { data_residency.compliant }
-cryptographic_sovereignty_compliant if { cryptographic_sovereignty.compliant }
-infrastructure_sovereignty_compliant if { infrastructure_sovereignty.compliant }
-software_sovereignty_compliant if { software_sovereignty.compliant }
-operational_sovereignty_compliant if { operational_sovereignty.compliant }
-network_sovereignty_compliant if { network_sovereignty.compliant }
-ai_sovereignty_compliant if { ai_sovereignty.compliant }
-breach_notification_sovereignty_compliant if { breach_notification_sovereignty.compliant }
-geopolitical_sovereignty_compliant if { geopolitical_sovereignty.compliant }
-dora_sovereignty_compliant if { dora_sovereignty.compliant }
-cyber_resilience_sovereignty_compliant if { cyber_resilience_sovereignty.compliant }
+data_residency_compliant if data_residency.compliant
+
+cryptographic_sovereignty_compliant if cryptographic_sovereignty.compliant
+
+infrastructure_sovereignty_compliant if infrastructure_sovereignty.compliant
+
+software_sovereignty_compliant if software_sovereignty.compliant
+
+operational_sovereignty_compliant if operational_sovereignty.compliant
+
+network_sovereignty_compliant if network_sovereignty.compliant
+
+ai_sovereignty_compliant if ai_sovereignty.compliant
+
+breach_notification_sovereignty_compliant if breach_notification_sovereignty.compliant
+
+geopolitical_sovereignty_compliant if geopolitical_sovereignty.compliant
+
+dora_sovereignty_compliant if dora_sovereignty.compliant
+
+cyber_resilience_sovereignty_compliant if cyber_resilience_sovereignty.compliant
 
 # =============================================================================
 # OVERALL COMPLIANCE
@@ -103,20 +113,22 @@ all_violations := violations if {
 	a_gt := [v | v := geopolitical_sovereignty.violations[_]]
 	a_dr_s := [v | v := dora_sovereignty.violations[_]]
 	a_cr := [v | v := cyber_resilience_sovereignty.violations[_]]
-	v_dr_cs  := array.concat(a_dr, a_cs)
-	v_is_ss  := array.concat(a_is, a_ss)
-	v_os_ns  := array.concat(a_os, a_ns)
-	v_first  := array.concat(v_dr_cs, v_is_ss)
+	v_dr_cs := array.concat(a_dr, a_cs)
+	v_is_ss := array.concat(a_is, a_ss)
+	v_os_ns := array.concat(a_os, a_ns)
+	v_first := array.concat(v_dr_cs, v_is_ss)
 	v_second := array.concat(v_os_ns, a_ai)
-	v_third  := array.concat(a_bn, a_gt)
+	v_third := array.concat(a_bn, a_gt)
 	v_fourth := array.concat(a_dr_s, a_cr)
-	v_all    := array.concat(v_first, v_second)
-	v_base   := array.concat(v_all, v_third)
+	v_all := array.concat(v_first, v_second)
+	v_base := array.concat(v_all, v_third)
 	violations := array.concat(v_base, v_fourth)
 }
 
 critical_violations := [v | v := all_violations[_]; v.severity == "critical"]
+
 high_violations := [v | v := all_violations[_]; v.severity == "high"]
+
 medium_violations := [v | v := all_violations[_]; v.severity == "medium"]
 
 # =============================================================================

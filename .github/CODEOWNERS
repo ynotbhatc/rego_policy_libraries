@@ -1,0 +1,18 @@
+# CODEOWNERS
+# Each line is a file pattern followed by one or more owners.
+# Owners are automatically requested for review when someone opens a PR
+# that modifies files matching the pattern.
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Repository-wide default owner
+*                                       @ynotbhatc
+
+# GitHub Actions workflows
+.github/                                @ynotbhatc
+
+# Core tooling & docs
+Makefile                                @ynotbhatc
+README.md                               @ynotbhatc
+CHANGELOG.md                            @ynotbhatc
+CONTRIBUTING.md                         @ynotbhatc
+LICENSE                                 @ynotbhatc

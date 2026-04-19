@@ -24,7 +24,9 @@ no_world_writable_files if {
 	not input.file_permissions.world_writable_files
 }
 
-status_rhel_09_232010 := "Not_a_Finding" if { no_world_writable_files } else := "Open"
+status_rhel_09_232010 := "Not_a_Finding" if no_world_writable_files
+
+else := "Open"
 
 finding_rhel_09_232010 := {
 	"vuln_id": "V-257870",
@@ -47,7 +49,9 @@ no_unowned_files if {
 	not input.file_permissions.unowned_files
 }
 
-status_rhel_09_232015 := "Not_a_Finding" if { no_unowned_files } else := "Open"
+status_rhel_09_232015 := "Not_a_Finding" if no_unowned_files
+
+else := "Open"
 
 finding_rhel_09_232015 := {
 	"vuln_id": "V-257871",
@@ -70,7 +74,9 @@ no_ungrouped_files if {
 	not input.file_permissions.ungrouped_files
 }
 
-status_rhel_09_232020 := "Not_a_Finding" if { no_ungrouped_files } else := "Open"
+status_rhel_09_232020 := "Not_a_Finding" if no_ungrouped_files
+
+else := "Open"
 
 finding_rhel_09_232020 := {
 	"vuln_id": "V-257872",
@@ -104,7 +110,9 @@ passwd_permissions_ok if {
 	input.file_permissions.etc_passwd.mode == "644"
 }
 
-status_rhel_09_232025 := "Not_a_Finding" if { passwd_permissions_ok } else := "Open"
+status_rhel_09_232025 := "Not_a_Finding" if passwd_permissions_ok
+
+else := "Open"
 
 finding_rhel_09_232025 := {
 	"vuln_id": "V-257873",
@@ -131,7 +139,9 @@ shadow_permissions_ok if {
 	input.file_permissions.etc_shadow.mode == "0"
 }
 
-status_rhel_09_232030 := "Not_a_Finding" if { shadow_permissions_ok } else := "Open"
+status_rhel_09_232030 := "Not_a_Finding" if shadow_permissions_ok
+
+else := "Open"
 
 finding_rhel_09_232030 := {
 	"vuln_id": "V-257874",
@@ -154,7 +164,9 @@ group_permissions_ok if {
 	input.file_permissions.etc_group.mode == "644"
 }
 
-status_rhel_09_232035 := "Not_a_Finding" if { group_permissions_ok } else := "Open"
+status_rhel_09_232035 := "Not_a_Finding" if group_permissions_ok
+
+else := "Open"
 
 finding_rhel_09_232035 := {
 	"vuln_id": "V-257875",
@@ -177,7 +189,9 @@ gshadow_permissions_ok if {
 	input.file_permissions.etc_gshadow.mode == "000"
 }
 
-status_rhel_09_232040 := "Not_a_Finding" if { gshadow_permissions_ok } else := "Open"
+status_rhel_09_232040 := "Not_a_Finding" if gshadow_permissions_ok
+
+else := "Open"
 
 finding_rhel_09_232040 := {
 	"vuln_id": "V-257876",
@@ -200,7 +214,9 @@ suid_files_reviewed if {
 	not input.file_permissions.undocumented_suid_files
 }
 
-status_rhel_09_232045 := "Not_a_Finding" if { suid_files_reviewed } else := "Open"
+status_rhel_09_232045 := "Not_a_Finding" if suid_files_reviewed
+
+else := "Open"
 
 finding_rhel_09_232045 := {
 	"vuln_id": "V-257877",
@@ -219,7 +235,9 @@ lib_permissions_ok if {
 	input.file_permissions.library_files_ok == true
 }
 
-status_rhel_09_232050 := "Not_a_Finding" if { lib_permissions_ok } else := "Open"
+status_rhel_09_232050 := "Not_a_Finding" if lib_permissions_ok
+
+else := "Open"
 
 finding_rhel_09_232050 := {
 	"vuln_id": "V-257878",
@@ -238,7 +256,9 @@ lib_dirs_owned_root if {
 	input.file_permissions.library_dirs_owned_root == true
 }
 
-status_rhel_09_232055 := "Not_a_Finding" if { lib_dirs_owned_root } else := "Open"
+status_rhel_09_232055 := "Not_a_Finding" if lib_dirs_owned_root
+
+else := "Open"
 
 finding_rhel_09_232055 := {
 	"vuln_id": "V-257879",
@@ -257,7 +277,9 @@ sys_commands_permissions_ok if {
 	input.file_permissions.system_commands_ok == true
 }
 
-status_rhel_09_232060 := "Not_a_Finding" if { sys_commands_permissions_ok } else := "Open"
+status_rhel_09_232060 := "Not_a_Finding" if sys_commands_permissions_ok
+
+else := "Open"
 
 finding_rhel_09_232060 := {
 	"vuln_id": "V-257880",
@@ -280,7 +302,9 @@ home_dir_permissions_ok if {
 	not input.file_permissions.insecure_home_dirs
 }
 
-status_rhel_09_232065 := "Not_a_Finding" if { home_dir_permissions_ok } else := "Open"
+status_rhel_09_232065 := "Not_a_Finding" if home_dir_permissions_ok
+
+else := "Open"
 
 finding_rhel_09_232065 := {
 	"vuln_id": "V-257881",
@@ -307,7 +331,9 @@ cron_allow_permissions_ok if {
 	not input.cron_allow.file_exists
 }
 
-status_rhel_09_232070 := "Not_a_Finding" if { cron_allow_permissions_ok } else := "Open"
+status_rhel_09_232070 := "Not_a_Finding" if cron_allow_permissions_ok
+
+else := "Open"
 
 finding_rhel_09_232070 := {
 	"vuln_id": "V-257882",

@@ -17,7 +17,7 @@ cookie_consent_mechanism if {
 	input.cookies.consent.mechanism.implemented == true
 	input.cookies.consent.mechanism.prior_to_placement == true
 	input.cookies.consent.mechanism.clearly_displayed == true
-	input.cookies.consent.mechanism.cookie_wall.not_used == true  # Pre-ticking / no cookie walls
+	input.cookies.consent.mechanism.cookie_wall.not_used == true # Pre-ticking / no cookie walls
 	input.cookies.consent.mechanism.decline_as_easy_as_accept == true
 }
 

@@ -7,20 +7,20 @@ package cis_debian_11
 import rego.v1
 
 # Import all validation modules
+import data.cis_debian_11.apparmor
+import data.cis_debian_11.auditd
+import data.cis_debian_11.boot_security
+import data.cis_debian_11.cron
+import data.cis_debian_11.file_permissions
 import data.cis_debian_11.filesystem
 import data.cis_debian_11.initial_setup
-import data.cis_debian_11.services
-import data.cis_debian_11.network
 import data.cis_debian_11.logging
-import data.cis_debian_11.auditd
-import data.cis_debian_11.ssh
+import data.cis_debian_11.network
 import data.cis_debian_11.pam
+import data.cis_debian_11.services
+import data.cis_debian_11.ssh
 import data.cis_debian_11.sudo
-import data.cis_debian_11.apparmor
 import data.cis_debian_11.user_group
-import data.cis_debian_11.cron
-import data.cis_debian_11.boot_security
-import data.cis_debian_11.file_permissions
 
 # =============================================================================
 # OVERALL COMPLIANCE STATUS

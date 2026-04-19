@@ -40,10 +40,13 @@ pkg_absent(pkg) if {
 # telnet server must not be installed
 default telnet_server_absent := false
 
-telnet_server_absent if { pkg_absent("telnet-server") }
-telnet_server_absent if { pkg_absent("telnetd") }
+telnet_server_absent if pkg_absent("telnet-server")
 
-status_rhel_09_291010 := "Not_a_Finding" if { telnet_server_absent } else := "Open"
+telnet_server_absent if pkg_absent("telnetd")
+
+status_rhel_09_291010 := "Not_a_Finding" if telnet_server_absent
+
+else := "Open"
 
 finding_rhel_09_291010 := {
 	"vuln_id": "V-257931",
@@ -58,10 +61,13 @@ finding_rhel_09_291010 := {
 # rsh-server must not be installed
 default rsh_server_absent := false
 
-rsh_server_absent if { pkg_absent("rsh-server") }
-rsh_server_absent if { pkg_absent("rshd") }
+rsh_server_absent if pkg_absent("rsh-server")
 
-status_rhel_09_291015 := "Not_a_Finding" if { rsh_server_absent } else := "Open"
+rsh_server_absent if pkg_absent("rshd")
+
+status_rhel_09_291015 := "Not_a_Finding" if rsh_server_absent
+
+else := "Open"
 
 finding_rhel_09_291015 := {
 	"vuln_id": "V-257932",
@@ -76,9 +82,11 @@ finding_rhel_09_291015 := {
 # ypserv (NIS server) must not be installed
 default ypserv_absent := false
 
-ypserv_absent if { pkg_absent("ypserv") }
+ypserv_absent if pkg_absent("ypserv")
 
-status_rhel_09_291020 := "Not_a_Finding" if { ypserv_absent } else := "Open"
+status_rhel_09_291020 := "Not_a_Finding" if ypserv_absent
+
+else := "Open"
 
 finding_rhel_09_291020 := {
 	"vuln_id": "V-257933",
@@ -93,9 +101,11 @@ finding_rhel_09_291020 := {
 # TFTP server must not be installed
 default tftp_server_absent := false
 
-tftp_server_absent if { pkg_absent("tftp-server") }
+tftp_server_absent if pkg_absent("tftp-server")
 
-status_rhel_09_291025 := "Not_a_Finding" if { tftp_server_absent } else := "Open"
+status_rhel_09_291025 := "Not_a_Finding" if tftp_server_absent
+
+else := "Open"
 
 finding_rhel_09_291025 := {
 	"vuln_id": "V-257934",
@@ -119,7 +129,9 @@ ftp_server_disabled if {
 	service_disabled("ftpd")
 }
 
-status_rhel_09_291030 := "Not_a_Finding" if { ftp_server_disabled } else := "Open"
+status_rhel_09_291030 := "Not_a_Finding" if ftp_server_disabled
+
+else := "Open"
 
 finding_rhel_09_291030 := {
 	"vuln_id": "V-257935",
@@ -138,9 +150,11 @@ finding_rhel_09_291030 := {
 # autofs must be disabled
 default autofs_disabled := false
 
-autofs_disabled if { service_disabled("autofs") }
+autofs_disabled if service_disabled("autofs")
 
-status_rhel_09_291035 := "Not_a_Finding" if { autofs_disabled } else := "Open"
+status_rhel_09_291035 := "Not_a_Finding" if autofs_disabled
+
+else := "Open"
 
 finding_rhel_09_291035 := {
 	"vuln_id": "V-257936",
@@ -155,9 +169,11 @@ finding_rhel_09_291035 := {
 # xinetd must not be installed
 default xinetd_absent := false
 
-xinetd_absent if { pkg_absent("xinetd") }
+xinetd_absent if pkg_absent("xinetd")
 
-status_rhel_09_291040 := "Not_a_Finding" if { xinetd_absent } else := "Open"
+status_rhel_09_291040 := "Not_a_Finding" if xinetd_absent
+
+else := "Open"
 
 finding_rhel_09_291040 := {
 	"vuln_id": "V-257937",
@@ -172,10 +188,13 @@ finding_rhel_09_291040 := {
 # Bluetooth must be disabled
 default bluetooth_disabled := false
 
-bluetooth_disabled if { service_disabled("bluetooth") }
-bluetooth_disabled if { input.kernel_modules["bluetooth"].blacklisted == true }
+bluetooth_disabled if service_disabled("bluetooth")
 
-status_rhel_09_291045 := "Not_a_Finding" if { bluetooth_disabled } else := "Open"
+bluetooth_disabled if input.kernel_modules.bluetooth.blacklisted == true
+
+status_rhel_09_291045 := "Not_a_Finding" if bluetooth_disabled
+
+else := "Open"
 
 finding_rhel_09_291045 := {
 	"vuln_id": "V-257938",
@@ -190,9 +209,11 @@ finding_rhel_09_291045 := {
 # Avahi daemon must be disabled
 default avahi_disabled := false
 
-avahi_disabled if { service_disabled("avahi-daemon") }
+avahi_disabled if service_disabled("avahi-daemon")
 
-status_rhel_09_291050 := "Not_a_Finding" if { avahi_disabled } else := "Open"
+status_rhel_09_291050 := "Not_a_Finding" if avahi_disabled
+
+else := "Open"
 
 finding_rhel_09_291050 := {
 	"vuln_id": "V-257939",
@@ -207,10 +228,13 @@ finding_rhel_09_291050 := {
 # SNMP server must not be running
 default snmp_disabled := false
 
-snmp_disabled if { service_disabled("snmpd") }
-snmp_disabled if { pkg_absent("net-snmp") }
+snmp_disabled if service_disabled("snmpd")
 
-status_rhel_09_291055 := "Not_a_Finding" if { snmp_disabled } else := "Open"
+snmp_disabled if pkg_absent("net-snmp")
+
+status_rhel_09_291055 := "Not_a_Finding" if snmp_disabled
+
+else := "Open"
 
 finding_rhel_09_291055 := {
 	"vuln_id": "V-257940",
@@ -225,10 +249,13 @@ finding_rhel_09_291055 := {
 # NFS server must not be running unless required
 default nfs_disabled := false
 
-nfs_disabled if { service_disabled("nfs-server") }
-nfs_disabled if { service_disabled("nfsd") }
+nfs_disabled if service_disabled("nfs-server")
 
-status_rhel_09_291060 := "Not_a_Finding" if { nfs_disabled } else := "Open"
+nfs_disabled if service_disabled("nfsd")
+
+status_rhel_09_291060 := "Not_a_Finding" if nfs_disabled
+
+else := "Open"
 
 finding_rhel_09_291060 := {
 	"vuln_id": "V-257941",
@@ -243,9 +270,11 @@ finding_rhel_09_291060 := {
 # Print server (CUPS) must be disabled
 default cups_disabled := false
 
-cups_disabled if { service_disabled("cups") }
+cups_disabled if service_disabled("cups")
 
-status_rhel_09_291065 := "Not_a_Finding" if { cups_disabled } else := "Open"
+status_rhel_09_291065 := "Not_a_Finding" if cups_disabled
+
+else := "Open"
 
 finding_rhel_09_291065 := {
 	"vuln_id": "V-257942",
@@ -260,10 +289,13 @@ finding_rhel_09_291065 := {
 # DNS server must not be running unless required
 default dns_disabled := false
 
-dns_disabled if { service_disabled("named") }
-dns_disabled if { pkg_absent("bind") }
+dns_disabled if service_disabled("named")
 
-status_rhel_09_291070 := "Not_a_Finding" if { dns_disabled } else := "Open"
+dns_disabled if pkg_absent("bind")
+
+status_rhel_09_291070 := "Not_a_Finding" if dns_disabled
+
+else := "Open"
 
 finding_rhel_09_291070 := {
 	"vuln_id": "V-257943",
@@ -278,10 +310,13 @@ finding_rhel_09_291070 := {
 # DHCP server must not be running unless required
 default dhcp_disabled := false
 
-dhcp_disabled if { service_disabled("dhcpd") }
-dhcp_disabled if { pkg_absent("dhcp-server") }
+dhcp_disabled if service_disabled("dhcpd")
 
-status_rhel_09_291075 := "Not_a_Finding" if { dhcp_disabled } else := "Open"
+dhcp_disabled if pkg_absent("dhcp-server")
+
+status_rhel_09_291075 := "Not_a_Finding" if dhcp_disabled
+
+else := "Open"
 
 finding_rhel_09_291075 := {
 	"vuln_id": "V-257944",
@@ -296,10 +331,13 @@ finding_rhel_09_291075 := {
 # HTTP server (Apache) must not be running unless required
 default httpd_disabled := false
 
-httpd_disabled if { service_disabled("httpd") }
-httpd_disabled if { pkg_absent("httpd") }
+httpd_disabled if service_disabled("httpd")
 
-status_rhel_09_291080 := "Not_a_Finding" if { httpd_disabled } else := "Open"
+httpd_disabled if pkg_absent("httpd")
+
+status_rhel_09_291080 := "Not_a_Finding" if httpd_disabled
+
+else := "Open"
 
 finding_rhel_09_291080 := {
 	"vuln_id": "V-257945",
@@ -314,10 +352,13 @@ finding_rhel_09_291080 := {
 # Samba server must not be running unless required
 default smb_disabled := false
 
-smb_disabled if { service_disabled("smb") }
-smb_disabled if { pkg_absent("samba") }
+smb_disabled if service_disabled("smb")
 
-status_rhel_09_291085 := "Not_a_Finding" if { smb_disabled } else := "Open"
+smb_disabled if pkg_absent("samba")
+
+status_rhel_09_291085 := "Not_a_Finding" if smb_disabled
+
+else := "Open"
 
 finding_rhel_09_291085 := {
 	"vuln_id": "V-257946",
@@ -332,10 +373,13 @@ finding_rhel_09_291085 := {
 # Squid proxy server must not be running unless required
 default squid_disabled := false
 
-squid_disabled if { service_disabled("squid") }
-squid_disabled if { pkg_absent("squid") }
+squid_disabled if service_disabled("squid")
 
-status_rhel_09_291090 := "Not_a_Finding" if { squid_disabled } else := "Open"
+squid_disabled if pkg_absent("squid")
+
+status_rhel_09_291090 := "Not_a_Finding" if squid_disabled
+
+else := "Open"
 
 finding_rhel_09_291090 := {
 	"vuln_id": "V-257947",
@@ -350,10 +394,13 @@ finding_rhel_09_291090 := {
 # rsync daemon must not be running
 default rsync_disabled := false
 
-rsync_disabled if { service_disabled("rsyncd") }
-rsync_disabled if { pkg_absent("rsync-daemon") }
+rsync_disabled if service_disabled("rsyncd")
 
-status_rhel_09_291095 := "Not_a_Finding" if { rsync_disabled } else := "Open"
+rsync_disabled if pkg_absent("rsync-daemon")
+
+status_rhel_09_291095 := "Not_a_Finding" if rsync_disabled
+
+else := "Open"
 
 finding_rhel_09_291095 := {
 	"vuln_id": "V-257948",

@@ -236,12 +236,16 @@ See the main repository documentation for Ansible integration examples.
 ## Testing
 
 ```bash
-# Test policies
-opa test policies/cis_oracle/
+# Syntax-check oracle policies
+opa check benchmarks/cis/databases/oracle_legacy/
 
-# Evaluate with mock data
-opa eval --data policies/cis_oracle/ \
-  --input test_data/oracle_compliant.json \
+# Run the full suite of checks and tests
+make check
+
+# Evaluate with mock data against the complete report
+opa eval \
+  --data benchmarks/cis/databases/oracle_legacy/ \
+  --input examples/input/oracle_compliant.json \
   'data.cis_oracle.report'
 ```
 

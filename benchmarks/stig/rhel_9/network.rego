@@ -28,7 +28,9 @@ firewall_active if {
 	input.services.nftables == "active"
 }
 
-status_rhel_09_251010 := "Not_a_Finding" if { firewall_active } else := "Open"
+status_rhel_09_251010 := "Not_a_Finding" if firewall_active
+
+else := "Open"
 
 finding_rhel_09_251010 := {
 	"vuln_id": "V-258100",
@@ -52,7 +54,9 @@ ip_forwarding_disabled if {
 	input.kernel_params["net.ipv4.ip_forward"] == "0"
 }
 
-status_rhel_09_251015 := "Not_a_Finding" if { ip_forwarding_disabled } else := "Open"
+status_rhel_09_251015 := "Not_a_Finding" if ip_forwarding_disabled
+
+else := "Open"
 
 finding_rhel_09_251015 := {
 	"vuln_id": "V-258101",
@@ -76,7 +80,9 @@ icmp_redirect_accept_disabled if {
 	input.kernel_params["net.ipv4.conf.default.accept_redirects"] == "0"
 }
 
-status_rhel_09_251020 := "Not_a_Finding" if { icmp_redirect_accept_disabled } else := "Open"
+status_rhel_09_251020 := "Not_a_Finding" if icmp_redirect_accept_disabled
+
+else := "Open"
 
 finding_rhel_09_251020 := {
 	"vuln_id": "V-258102",
@@ -96,7 +102,9 @@ icmp_redirect_send_disabled if {
 	input.kernel_params["net.ipv4.conf.default.send_redirects"] == "0"
 }
 
-status_rhel_09_251025 := "Not_a_Finding" if { icmp_redirect_send_disabled } else := "Open"
+status_rhel_09_251025 := "Not_a_Finding" if icmp_redirect_send_disabled
+
+else := "Open"
 
 finding_rhel_09_251025 := {
 	"vuln_id": "V-258103",
@@ -116,7 +124,9 @@ source_routing_disabled if {
 	input.kernel_params["net.ipv4.conf.default.accept_source_route"] == "0"
 }
 
-status_rhel_09_251030 := "Not_a_Finding" if { source_routing_disabled } else := "Open"
+status_rhel_09_251030 := "Not_a_Finding" if source_routing_disabled
+
+else := "Open"
 
 finding_rhel_09_251030 := {
 	"vuln_id": "V-258104",
@@ -135,7 +145,9 @@ icmp_bogus_error_responses if {
 	input.kernel_params["net.ipv4.icmp_ignore_bogus_error_responses"] == "1"
 }
 
-status_rhel_09_251035 := "Not_a_Finding" if { icmp_bogus_error_responses } else := "Open"
+status_rhel_09_251035 := "Not_a_Finding" if icmp_bogus_error_responses
+
+else := "Open"
 
 finding_rhel_09_251035 := {
 	"vuln_id": "V-258105",
@@ -154,7 +166,9 @@ tcp_syncookies_enabled if {
 	input.kernel_params["net.ipv4.tcp_syncookies"] == "1"
 }
 
-status_rhel_09_251040 := "Not_a_Finding" if { tcp_syncookies_enabled } else := "Open"
+status_rhel_09_251040 := "Not_a_Finding" if tcp_syncookies_enabled
+
+else := "Open"
 
 finding_rhel_09_251040 := {
 	"vuln_id": "V-258106",
@@ -177,7 +191,9 @@ rp_filter_enabled if {
 	input.kernel_params["net.ipv4.conf.all.rp_filter"] == "2"
 }
 
-status_rhel_09_251045 := "Not_a_Finding" if { rp_filter_enabled } else := "Open"
+status_rhel_09_251045 := "Not_a_Finding" if rp_filter_enabled
+
+else := "Open"
 
 finding_rhel_09_251045 := {
 	"vuln_id": "V-258107",
@@ -207,7 +223,9 @@ ipv6_disabled_or_configured if {
 	input.kernel_params["net.ipv6.conf.all.accept_source_route"] == "0"
 }
 
-status_rhel_09_251050 := "Not_a_Finding" if { ipv6_disabled_or_configured } else := "Open"
+status_rhel_09_251050 := "Not_a_Finding" if ipv6_disabled_or_configured
+
+else := "Open"
 
 finding_rhel_09_251050 := {
 	"vuln_id": "V-258108",
@@ -234,7 +252,9 @@ wireless_disabled if {
 	not input.wireless_interfaces
 }
 
-status_rhel_09_251055 := "Not_a_Finding" if { wireless_disabled } else := "Open"
+status_rhel_09_251055 := "Not_a_Finding" if wireless_disabled
+
+else := "Open"
 
 finding_rhel_09_251055 := {
 	"vuln_id": "V-258109",
@@ -250,14 +270,16 @@ finding_rhel_09_251055 := {
 default bluetooth_module_disabled := false
 
 bluetooth_module_disabled if {
-	input.kernel_modules["bluetooth"].blacklisted == true
+	input.kernel_modules.bluetooth.blacklisted == true
 }
 
 bluetooth_module_disabled if {
-	input.kernel_modules["bluetooth"].status == "disabled"
+	input.kernel_modules.bluetooth.status == "disabled"
 }
 
-status_rhel_09_251060 := "Not_a_Finding" if { bluetooth_module_disabled } else := "Open"
+status_rhel_09_251060 := "Not_a_Finding" if bluetooth_module_disabled
+
+else := "Open"
 
 finding_rhel_09_251060 := {
 	"vuln_id": "V-258110",
@@ -280,7 +302,9 @@ no_promiscuous_interfaces if {
 	not input.promiscuous_interfaces
 }
 
-status_rhel_09_251065 := "Not_a_Finding" if { no_promiscuous_interfaces } else := "Open"
+status_rhel_09_251065 := "Not_a_Finding" if no_promiscuous_interfaces
+
+else := "Open"
 
 finding_rhel_09_251065 := {
 	"vuln_id": "V-258111",

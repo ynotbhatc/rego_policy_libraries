@@ -7,20 +7,20 @@ package cis_ubuntu_22_04
 import rego.v1
 
 # Import all validation modules
+import data.cis_ubuntu_22_04.apparmor
+import data.cis_ubuntu_22_04.auditd
+import data.cis_ubuntu_22_04.boot_security
+import data.cis_ubuntu_22_04.cron
+import data.cis_ubuntu_22_04.file_permissions
 import data.cis_ubuntu_22_04.filesystem
 import data.cis_ubuntu_22_04.initial_setup
-import data.cis_ubuntu_22_04.services
-import data.cis_ubuntu_22_04.network
 import data.cis_ubuntu_22_04.logging
-import data.cis_ubuntu_22_04.auditd
-import data.cis_ubuntu_22_04.ssh
+import data.cis_ubuntu_22_04.network
 import data.cis_ubuntu_22_04.pam
+import data.cis_ubuntu_22_04.services
+import data.cis_ubuntu_22_04.ssh
 import data.cis_ubuntu_22_04.sudo
-import data.cis_ubuntu_22_04.apparmor
 import data.cis_ubuntu_22_04.user_group
-import data.cis_ubuntu_22_04.cron
-import data.cis_ubuntu_22_04.boot_security
-import data.cis_ubuntu_22_04.file_permissions
 
 # =============================================================================
 # OVERALL COMPLIANCE STATUS

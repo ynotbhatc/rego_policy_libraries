@@ -88,7 +88,7 @@ all_findings := [
 
 open_findings := [f | some f in all_findings; f.status == "Open"]
 
-compliant := true if {
+compliant if {
 	count(open_findings) == 0
 } else := false
 
@@ -112,4 +112,6 @@ stig_assessment := {
 	"open_findings_details": open_findings,
 }
 
-compliance_status := "Compliant" if compliant else := "Non-Compliant"
+compliance_status := "Compliant" if compliant
+
+else := "Non-Compliant"

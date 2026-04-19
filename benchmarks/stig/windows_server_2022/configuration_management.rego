@@ -14,10 +14,15 @@ default compliant := false
 
 # WN22-00-000005 | V-254238 | CAT I - Domain-joined: Trusted Platform Module must be used
 default tpm_enabled := false
-tpm_enabled if { input.security_config.tpm_enabled == true }
-tpm_enabled if { input.security_config.tpm_version >= "2.0" }
 
-status_wn22_000005 := "Not_a_Finding" if { tpm_enabled } else := "Open"
+tpm_enabled if input.security_config.tpm_enabled == true
+
+tpm_enabled if input.security_config.tpm_version >= "2.0"
+
+status_wn22_000005 := "Not_a_Finding" if tpm_enabled
+
+else := "Open"
+
 finding_wn22_000005 := {
 	"vuln_id": "V-254238",
 	"stig_id": "WN22-00-000005",
@@ -29,9 +34,13 @@ finding_wn22_000005 := {
 
 # WN22-00-000010 | V-254239 | CAT I - BitLocker must be enabled for OS drive
 default bitlocker_enabled := false
-bitlocker_enabled if { input.security_config.bitlocker_os_drive == true }
 
-status_wn22_000010 := "Not_a_Finding" if { bitlocker_enabled } else := "Open"
+bitlocker_enabled if input.security_config.bitlocker_os_drive == true
+
+status_wn22_000010 := "Not_a_Finding" if bitlocker_enabled
+
+else := "Open"
+
 finding_wn22_000010 := {
 	"vuln_id": "V-254239",
 	"stig_id": "WN22-00-000010",
@@ -43,10 +52,15 @@ finding_wn22_000010 := {
 
 # WN22-00-000015 | V-254240 | CAT I - Administrator account must be renamed
 default admin_renamed := false
-admin_renamed if { input.local_accounts.Administrator.name != "Administrator" }
-admin_renamed if { input.security_policy.RenameAdministratorAccount != "" }
 
-status_wn22_000015 := "Not_a_Finding" if { admin_renamed } else := "Open"
+admin_renamed if input.local_accounts.Administrator.name != "Administrator"
+
+admin_renamed if input.security_policy.RenameAdministratorAccount != ""
+
+status_wn22_000015 := "Not_a_Finding" if admin_renamed
+
+else := "Open"
+
 finding_wn22_000015 := {
 	"vuln_id": "V-254240",
 	"stig_id": "WN22-00-000015",
@@ -58,10 +72,15 @@ finding_wn22_000015 := {
 
 # WN22-00-000020 | V-254241 | CAT I - Guest account must be disabled
 default guest_disabled := false
-guest_disabled if { input.local_accounts.Guest.enabled == false }
-guest_disabled if { input.security_policy.GuestAccount.enabled == false }
 
-status_wn22_000020 := "Not_a_Finding" if { guest_disabled } else := "Open"
+guest_disabled if input.local_accounts.Guest.enabled == false
+
+guest_disabled if input.security_policy.GuestAccount.enabled == false
+
+status_wn22_000020 := "Not_a_Finding" if guest_disabled
+
+else := "Open"
+
 finding_wn22_000020 := {
 	"vuln_id": "V-254241",
 	"stig_id": "WN22-00-000020",
@@ -73,10 +92,15 @@ finding_wn22_000020 := {
 
 # WN22-00-000025 | V-254242 | CAT I - Reversible password encryption must be disabled
 default no_reversible_passwords := false
-no_reversible_passwords if { input.security_policy.ClearTextPassword == 0 }
-no_reversible_passwords if { input.security_policy.ClearTextPassword == false }
 
-status_wn22_000025 := "Not_a_Finding" if { no_reversible_passwords } else := "Open"
+no_reversible_passwords if input.security_policy.ClearTextPassword == 0
+
+no_reversible_passwords if input.security_policy.ClearTextPassword == false
+
+status_wn22_000025 := "Not_a_Finding" if no_reversible_passwords
+
+else := "Open"
+
 finding_wn22_000025 := {
 	"vuln_id": "V-254242",
 	"stig_id": "WN22-00-000025",
@@ -88,12 +112,16 @@ finding_wn22_000025 := {
 
 # WN22-AC-000070 | V-254253 | CAT I - Account lockout must be 3 or less
 default account_lockout := false
+
 account_lockout if {
 	input.security_policy.LockoutBadCount <= 3
 	input.security_policy.LockoutBadCount > 0
 }
 
-status_wn22_ac_000070 := "Not_a_Finding" if { account_lockout } else := "Open"
+status_wn22_ac_000070 := "Not_a_Finding" if account_lockout
+
+else := "Open"
+
 finding_wn22_ac_000070 := {
 	"vuln_id": "V-254253",
 	"stig_id": "WN22-AC-000070",
@@ -109,10 +137,15 @@ finding_wn22_ac_000070 := {
 
 # WN22-00-000030 | V-254243 | CAT II - DoD warning banner must be configured
 default warning_banner := false
-warning_banner if { contains(input.security_policy.LegalNoticeText, "U.S. Government") }
-warning_banner if { contains(input.security_policy.LegalNoticeText, "authorized users") }
 
-status_wn22_000030 := "Not_a_Finding" if { warning_banner } else := "Open"
+warning_banner if contains(input.security_policy.LegalNoticeText, "U.S. Government")
+
+warning_banner if contains(input.security_policy.LegalNoticeText, "authorized users")
+
+status_wn22_000030 := "Not_a_Finding" if warning_banner
+
+else := "Open"
+
 finding_wn22_000030 := {
 	"vuln_id": "V-254243",
 	"stig_id": "WN22-00-000030",
@@ -124,9 +157,13 @@ finding_wn22_000030 := {
 
 # WN22-00-000035 | V-254244 | CAT II - Legal notice caption must be set
 default warning_banner_caption := false
-warning_banner_caption if { input.security_policy.LegalNoticeCaption != "" }
 
-status_wn22_000035 := "Not_a_Finding" if { warning_banner_caption } else := "Open"
+warning_banner_caption if input.security_policy.LegalNoticeCaption != ""
+
+status_wn22_000035 := "Not_a_Finding" if warning_banner_caption
+
+else := "Open"
+
 finding_wn22_000035 := {
 	"vuln_id": "V-254244",
 	"stig_id": "WN22-00-000035",
@@ -138,9 +175,13 @@ finding_wn22_000035 := {
 
 # WN22-00-000040 | V-254245 | CAT II - Credential Guard must be enabled
 default credential_guard := false
-credential_guard if { input.security_config.credential_guard_enabled == true }
 
-status_wn22_000040 := "Not_a_Finding" if { credential_guard } else := "Open"
+credential_guard if input.security_config.credential_guard_enabled == true
+
+status_wn22_000040 := "Not_a_Finding" if credential_guard
+
+else := "Open"
+
 finding_wn22_000040 := {
 	"vuln_id": "V-254245",
 	"stig_id": "WN22-00-000040",
@@ -152,9 +193,13 @@ finding_wn22_000040 := {
 
 # WN22-AC-000020 | V-254248 | CAT II - Password minimum length must be 14+
 default password_min_length := false
-password_min_length if { input.security_policy.MinimumPasswordLength >= 14 }
 
-status_wn22_ac_000020 := "Not_a_Finding" if { password_min_length } else := "Open"
+password_min_length if input.security_policy.MinimumPasswordLength >= 14
+
+status_wn22_ac_000020 := "Not_a_Finding" if password_min_length
+
+else := "Open"
+
 finding_wn22_ac_000020 := {
 	"vuln_id": "V-254248",
 	"stig_id": "WN22-AC-000020",
@@ -166,10 +211,15 @@ finding_wn22_ac_000020 := {
 
 # WN22-AC-000030 | V-254249 | CAT II - Password complexity must be enabled
 default password_complexity := false
-password_complexity if { input.security_policy.PasswordComplexity == 1 }
-password_complexity if { input.security_policy.PasswordComplexity == true }
 
-status_wn22_ac_000030 := "Not_a_Finding" if { password_complexity } else := "Open"
+password_complexity if input.security_policy.PasswordComplexity == 1
+
+password_complexity if input.security_policy.PasswordComplexity == true
+
+status_wn22_ac_000030 := "Not_a_Finding" if password_complexity
+
+else := "Open"
+
 finding_wn22_ac_000030 := {
 	"vuln_id": "V-254249",
 	"stig_id": "WN22-AC-000030",
@@ -181,12 +231,16 @@ finding_wn22_ac_000030 := {
 
 # WN22-AC-000040 | V-254250 | CAT II - Password max age must be 60 days
 default password_max_age := false
+
 password_max_age if {
 	input.security_policy.MaximumPasswordAge <= 60
 	input.security_policy.MaximumPasswordAge > 0
 }
 
-status_wn22_ac_000040 := "Not_a_Finding" if { password_max_age } else := "Open"
+status_wn22_ac_000040 := "Not_a_Finding" if password_max_age
+
+else := "Open"
+
 finding_wn22_ac_000040 := {
 	"vuln_id": "V-254250",
 	"stig_id": "WN22-AC-000040",
@@ -198,9 +252,13 @@ finding_wn22_ac_000040 := {
 
 # WN22-AC-000050 | V-254251 | CAT II - Password min age must be 1 day
 default password_min_age := false
-password_min_age if { input.security_policy.MinimumPasswordAge >= 1 }
 
-status_wn22_ac_000050 := "Not_a_Finding" if { password_min_age } else := "Open"
+password_min_age if input.security_policy.MinimumPasswordAge >= 1
+
+status_wn22_ac_000050 := "Not_a_Finding" if password_min_age
+
+else := "Open"
+
 finding_wn22_ac_000050 := {
 	"vuln_id": "V-254251",
 	"stig_id": "WN22-AC-000050",
@@ -212,9 +270,13 @@ finding_wn22_ac_000050 := {
 
 # WN22-AC-000060 | V-254252 | CAT II - Password history must be 24
 default password_history := false
-password_history if { input.security_policy.PasswordHistorySize >= 24 }
 
-status_wn22_ac_000060 := "Not_a_Finding" if { password_history } else := "Open"
+password_history if input.security_policy.PasswordHistorySize >= 24
+
+status_wn22_ac_000060 := "Not_a_Finding" if password_history
+
+else := "Open"
+
 finding_wn22_ac_000060 := {
 	"vuln_id": "V-254252",
 	"stig_id": "WN22-AC-000060",
@@ -226,9 +288,13 @@ finding_wn22_ac_000060 := {
 
 # WN22-AC-000080 | V-254254 | CAT II - Account lockout reset time must be 15 minutes
 default lockout_reset := false
-lockout_reset if { input.security_policy.ResetLockoutCount >= 15 }
 
-status_wn22_ac_000080 := "Not_a_Finding" if { lockout_reset } else := "Open"
+lockout_reset if input.security_policy.ResetLockoutCount >= 15
+
+status_wn22_ac_000080 := "Not_a_Finding" if lockout_reset
+
+else := "Open"
+
 finding_wn22_ac_000080 := {
 	"vuln_id": "V-254254",
 	"stig_id": "WN22-AC-000080",
@@ -240,10 +306,15 @@ finding_wn22_ac_000080 := {
 
 # WN22-AC-000090 | V-254255 | CAT II - Lockout duration must be 15 minutes
 default lockout_duration := false
-lockout_duration if { input.security_policy.LockoutDuration >= 15 }
-lockout_duration if { input.security_policy.LockoutDuration == 0 }  # 0 = forever
 
-status_wn22_ac_000090 := "Not_a_Finding" if { lockout_duration } else := "Open"
+lockout_duration if input.security_policy.LockoutDuration >= 15
+
+lockout_duration if input.security_policy.LockoutDuration == 0 # 0 = forever
+
+status_wn22_ac_000090 := "Not_a_Finding" if lockout_duration
+
+else := "Open"
+
 finding_wn22_ac_000090 := {
 	"vuln_id": "V-254255",
 	"stig_id": "WN22-AC-000090",
@@ -291,7 +362,7 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
-compliant if { count(open_cat_i) == 0 }
+compliant if count(open_cat_i) == 0
 
 compliance_report := {
 	"module": "configuration_management",

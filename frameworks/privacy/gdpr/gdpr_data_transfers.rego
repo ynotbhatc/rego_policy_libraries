@@ -41,7 +41,7 @@ adequacy_countries := {
 	"Republic of Korea",
 	"Switzerland",
 	"United Kingdom",
-	"United States",  # EU-US Data Privacy Framework (since 2023)
+	"United States", # EU-US Data Privacy Framework (since 2023)
 	"Uruguay",
 }
 

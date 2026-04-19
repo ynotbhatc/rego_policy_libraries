@@ -25,13 +25,13 @@ default valid := false
 
 _top := input["geisa-application-manifest"]
 
-_manifest := input["geisa-application-manifest"]["manifest"]
+_manifest := input["geisa-application-manifest"].manifest
 
 # ─── Key existence helper ─────────────────────────────────────────────────────
 # OPA's "x in obj" checks VALUES, not keys.
 # Use object.keys() to correctly test for key presence.
 
-_has_key(obj, key) if { key in object.keys(obj) }
+_has_key(obj, key) if key in object.keys(obj)
 
 # ─── Type / format helpers ────────────────────────────────────────────────────
 
@@ -49,9 +49,9 @@ _valid_fixed_version(v) if {
 }
 
 # Fixed version or null (GEISA-LEE / GEISA-VEE)
-_valid_fixed_version_or_null(v) if { _valid_fixed_version(v) }
+_valid_fixed_version_or_null(v) if _valid_fixed_version(v)
 
-_valid_fixed_version_or_null(v) if { v == null }
+_valid_fixed_version_or_null(v) if v == null
 
 # Application version: X.Y.Z with optional suffix (e.g. "1.0.0-beta")
 _valid_app_version(v) if {
@@ -114,7 +114,7 @@ violations contains "geisa-application-manifest: missing required field 'manifes
 violations contains "geisa-application-manifest.manifest: must be an object" if {
 	is_object(_top)
 	_has_key(_top, "manifest")
-	not is_object(_top["manifest"])
+	not is_object(_top.manifest)
 }
 
 # 1.5 Top-level signature required
@@ -124,10 +124,10 @@ violations contains "geisa-application-manifest: missing required field 'signatu
 }
 
 # 1.6 Top-level signature must be a valid SHA-256
-violations contains sprintf("geisa-application-manifest.signature: must be a 64-character hex string, got %d characters", [count(_top["signature"])]) if {
+violations contains sprintf("geisa-application-manifest.signature: must be a 64-character hex string, got %d characters", [count(_top.signature)]) if {
 	is_object(_top)
 	_has_key(_top, "signature")
-	not _valid_sha256(_top["signature"])
+	not _valid_sha256(_top.signature)
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -172,21 +172,21 @@ violations contains "manifest.app-id: must be a string with at least 4 character
 violations contains "manifest.author: must be a string with at least 4 characters" if {
 	is_object(_manifest)
 	_has_key(_manifest, "author")
-	not _valid_string_min(_manifest["author"], 4)
+	not _valid_string_min(_manifest.author, 4)
 }
 
 # 3.3 name: string, minLength 4
 violations contains "manifest.name: must be a string with at least 4 characters" if {
 	is_object(_manifest)
 	_has_key(_manifest, "name")
-	not _valid_string_min(_manifest["name"], 4)
+	not _valid_string_min(_manifest.name, 4)
 }
 
 # 3.4 description: must be a string
 violations contains "manifest.description: must be a string" if {
 	is_object(_manifest)
 	_has_key(_manifest, "description")
-	not is_string(_manifest["description"])
+	not is_string(_manifest.description)
 }
 
 # 3.5 app-version: string matching X.Y.Z pattern
@@ -225,13 +225,13 @@ violations contains sprintf("manifest.api-access.%s: must be a boolean", [field]
 violations contains "manifest.artifacts: must be an array" if {
 	is_object(_manifest)
 	_has_key(_manifest, "artifacts")
-	not is_array(_manifest["artifacts"])
+	not is_array(_manifest.artifacts)
 }
 
 violations contains "manifest.artifacts: must contain at least 1 item" if {
 	is_object(_manifest)
-	is_array(_manifest["artifacts"])
-	count(_manifest["artifacts"]) < 1
+	is_array(_manifest.artifacts)
+	count(_manifest.artifacts) < 1
 }
 
 # 3.10 external-dependencies: must be an array
@@ -260,13 +260,13 @@ violations contains "manifest.default-configuration: must be an object" if {
 # Section 4 — compatibility validation
 # ═══════════════════════════════════════════════════════════════════════════════
 
-_compat := _manifest["compatibility"]
+_compat := _manifest.compatibility
 
 # 4.1 compatibility must be an object
 violations contains "manifest.compatibility: must be an object" if {
 	is_object(_manifest)
 	_has_key(_manifest, "compatibility")
-	not is_object(_manifest["compatibility"])
+	not is_object(_manifest.compatibility)
 }
 
 # 4.2 GEISA-API: fixedVersion X.Y.Z
@@ -313,13 +313,13 @@ violations contains sprintf("manifest.compatibility.toolchain-version: '%v' is n
 # Section 5 — resources validation
 # ═══════════════════════════════════════════════════════════════════════════════
 
-_resources := _manifest["resources"]
+_resources := _manifest.resources
 
 # 5.1 resources must be an object
 violations contains "manifest.resources: must be an object" if {
 	is_object(_manifest)
 	_has_key(_manifest, "resources")
-	not is_object(_manifest["resources"])
+	not is_object(_manifest.resources)
 }
 
 # 5.2 app-ram: integer >= 1
@@ -359,7 +359,7 @@ violations contains "manifest.resources.threads: must be an integer >= 1" if {
 	is_object(_manifest)
 	is_object(_resources)
 	_has_key(_resources, "threads")
-	not _valid_int_min(_resources["threads"], 1)
+	not _valid_int_min(_resources.threads, 1)
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -436,7 +436,7 @@ violations contains "manifest.default-launch-strategy.watchdog: must be a boolea
 	is_object(_manifest)
 	is_object(_launch)
 	_has_key(_launch, "watchdog")
-	not is_boolean(_launch["watchdog"])
+	not is_boolean(_launch.watchdog)
 }
 
 # 6.10 start-string (optional): string
@@ -464,8 +464,8 @@ _artifact_required_fields := {"image-name", "image-type", "image-size", "uncompr
 # 7.1 Required fields presence
 violations contains sprintf("manifest.artifacts[%d]: missing required field '%s'", [i, field]) if {
 	is_object(_manifest)
-	is_array(_manifest["artifacts"])
-	some i, art in _manifest["artifacts"]
+	is_array(_manifest.artifacts)
+	some i, art in _manifest.artifacts
 	some field in _artifact_required_fields
 	not _has_key(art, field)
 }
@@ -473,8 +473,8 @@ violations contains sprintf("manifest.artifacts[%d]: missing required field '%s'
 # 7.2 image-name: string, length 4–256
 violations contains sprintf("manifest.artifacts[%d].image-name: must be a string between 4 and 256 characters", [i]) if {
 	is_object(_manifest)
-	is_array(_manifest["artifacts"])
-	some i, art in _manifest["artifacts"]
+	is_array(_manifest.artifacts)
+	some i, art in _manifest.artifacts
 	_has_key(art, "image-name")
 	not _valid_string_range(art["image-name"], 4, 256)
 }
@@ -482,8 +482,8 @@ violations contains sprintf("manifest.artifacts[%d].image-name: must be a string
 # 7.3 image-type: must be "appoverlay"
 violations contains sprintf("manifest.artifacts[%d].image-type: must be 'appoverlay', got '%v'", [i, art["image-type"]]) if {
 	is_object(_manifest)
-	is_array(_manifest["artifacts"])
-	some i, art in _manifest["artifacts"]
+	is_array(_manifest.artifacts)
+	some i, art in _manifest.artifacts
 	_has_key(art, "image-type")
 	art["image-type"] != "appoverlay"
 }
@@ -491,8 +491,8 @@ violations contains sprintf("manifest.artifacts[%d].image-type: must be 'appover
 # 7.4 image-size: integer >= 1
 violations contains sprintf("manifest.artifacts[%d].image-size: must be an integer >= 1", [i]) if {
 	is_object(_manifest)
-	is_array(_manifest["artifacts"])
-	some i, art in _manifest["artifacts"]
+	is_array(_manifest.artifacts)
+	some i, art in _manifest.artifacts
 	_has_key(art, "image-size")
 	not _valid_int_min(art["image-size"], 1)
 }
@@ -500,8 +500,8 @@ violations contains sprintf("manifest.artifacts[%d].image-size: must be an integ
 # 7.5 uncompressed-size: integer >= 1
 violations contains sprintf("manifest.artifacts[%d].uncompressed-size: must be an integer >= 1", [i]) if {
 	is_object(_manifest)
-	is_array(_manifest["artifacts"])
-	some i, art in _manifest["artifacts"]
+	is_array(_manifest.artifacts)
+	some i, art in _manifest.artifacts
 	_has_key(art, "uncompressed-size")
 	not _valid_int_min(art["uncompressed-size"], 1)
 }
@@ -509,23 +509,23 @@ violations contains sprintf("manifest.artifacts[%d].uncompressed-size: must be a
 # 7.6 artifact signature: valid SHA-256
 violations contains sprintf("manifest.artifacts[%d].signature: must be a 64-character hex string", [i]) if {
 	is_object(_manifest)
-	is_array(_manifest["artifacts"])
-	some i, art in _manifest["artifacts"]
+	is_array(_manifest.artifacts)
+	some i, art in _manifest.artifacts
 	_has_key(art, "signature")
-	not _valid_sha256(art["signature"])
+	not _valid_sha256(art.signature)
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Section 8 — communication validation (optional fields validated if present)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-_comm := _manifest["communication"]
+_comm := _manifest.communication
 
 # 8.1 communication must be an object
 violations contains "manifest.communication: must be an object" if {
 	is_object(_manifest)
 	_has_key(_manifest, "communication")
-	not is_object(_manifest["communication"])
+	not is_object(_manifest.communication)
 }
 
 # 8.2 FAN (optional): boolean
@@ -533,7 +533,7 @@ violations contains "manifest.communication.FAN: must be a boolean" if {
 	is_object(_manifest)
 	is_object(_comm)
 	_has_key(_comm, "FAN")
-	not is_boolean(_comm["FAN"])
+	not is_boolean(_comm.FAN)
 }
 
 # 8.3 HAN (optional): boolean
@@ -541,7 +541,7 @@ violations contains "manifest.communication.HAN: must be a boolean" if {
 	is_object(_manifest)
 	is_object(_comm)
 	_has_key(_comm, "HAN")
-	not is_boolean(_comm["HAN"])
+	not is_boolean(_comm.HAN)
 }
 
 # 8.4 messaging.daily-messages: required if messaging present, integer >= 0
@@ -549,17 +549,17 @@ violations contains "manifest.communication.messaging: missing required field 'd
 	is_object(_manifest)
 	is_object(_comm)
 	_has_key(_comm, "messaging")
-	is_object(_comm["messaging"])
-	not _has_key(_comm["messaging"], "daily-messages")
+	is_object(_comm.messaging)
+	not _has_key(_comm.messaging, "daily-messages")
 }
 
 violations contains "manifest.communication.messaging.daily-messages: must be an integer >= 0" if {
 	is_object(_manifest)
 	is_object(_comm)
 	_has_key(_comm, "messaging")
-	is_object(_comm["messaging"])
-	_has_key(_comm["messaging"], "daily-messages")
-	not _valid_int_min(_comm["messaging"]["daily-messages"], 0)
+	is_object(_comm.messaging)
+	_has_key(_comm.messaging, "daily-messages")
+	not _valid_int_min(_comm.messaging["daily-messages"], 0)
 }
 
 # 8.5 networkAccessRequirements — operator / internet / local
@@ -601,7 +601,7 @@ violations contains sprintf("manifest.communication.%s.inbound: '%s' does not ma
 	_has_key(_comm, iface)
 	is_object(_comm[iface])
 	_has_key(_comm[iface], "inbound")
-	some tap in _comm[iface]["inbound"]
+	some tap in _comm[iface].inbound
 	not _valid_tap(tap)
 }
 
@@ -612,7 +612,7 @@ violations contains sprintf("manifest.communication.%s.outbound: '%s' does not m
 	_has_key(_comm, iface)
 	is_object(_comm[iface])
 	_has_key(_comm[iface], "outbound")
-	some tap in _comm[iface]["outbound"]
+	some tap in _comm[iface].outbound
 	not _valid_tap(tap)
 }
 
@@ -620,15 +620,15 @@ violations contains sprintf("manifest.communication.%s.outbound: '%s' does not m
 # Output
 # ═══════════════════════════════════════════════════════════════════════════════
 
-valid if { count(violations) == 0 }
+valid if count(violations) == 0
 
 validation_report := {
 	"valid": valid,
 	"violation_count": count(violations),
 	"violations": violations,
 	"app_id": _manifest["app-id"],
-	"app_name": _manifest["name"],
-	"author": _manifest["author"],
+	"app_name": _manifest.name,
+	"author": _manifest.author,
 	"app_version": _manifest["app-version"],
 	"manifest_version": _manifest["manifest-version"],
 }

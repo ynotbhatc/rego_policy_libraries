@@ -58,7 +58,7 @@ incident_classification_process if {
 # R2.1 - Review, update, and communicate the plan within 15 calendar months
 incident_response_plan_current if {
 	last_review_ns := time.parse_rfc3339_ns(input.incident_response_plan.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 
@@ -66,7 +66,7 @@ incident_response_plan_current if {
 incident_triggered_plan_updates if {
 	every incident in input.reportable_cyber_incidents {
 		incident.plan_review_triggered == true
-		update_age_days := (incident.plan_review_completion_date - incident.incident_date) / (24 * 60 * 60 * 1000000000)
+		update_age_days := (incident.plan_review_completion_date - incident.incident_date) / (((24 * 60) * 60) * 1000000000)
 		update_age_days <= 90
 	}
 }
@@ -88,7 +88,7 @@ plan_communicated_to_personnel if {
 # (actual events or tabletop exercise count)
 incident_response_testing_performed if {
 	last_test_ns := time.parse_rfc3339_ns(input.incident_response_testing.last_test_date)
-	test_age_days := (time.now_ns() - last_test_ns) / (24 * 60 * 60 * 1000000000)
+	test_age_days := (time.now_ns() - last_test_ns) / (((24 * 60) * 60) * 1000000000)
 	test_age_days <= 455
 }
 
@@ -120,7 +120,7 @@ incident_response_team_trained if {
 
 incident_response_training_current(member) if {
 	member.training.completed == true
-	training_age_days := (time.now_ns() - member.training.completion_date) / (24 * 60 * 60 * 1000000000)
+	training_age_days := (time.now_ns() - member.training.completion_date) / (((24 * 60) * 60) * 1000000000)
 	training_age_days <= 455 # 15 calendar months
 }
 

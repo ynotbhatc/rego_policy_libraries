@@ -11,6 +11,10 @@ on:
     paths:
       - '**/*.rego'
 
+# Least-privilege permissions — this workflow only needs read access
+permissions:
+  contents: read
+
 jobs:
   validate:
     name: Check and Test Rego Policies
@@ -18,14 +22,42 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Install OPA
         run: |
-          curl -L -o opa https://github.com/open-policy-agent/opa/releases/download/v0.68.0/opa_linux_amd64_static
+          curl -fsSL -o opa \
+            https://github.com/open-policy-agent/opa/releases/download/v0.68.0/opa_linux_amd64_static
+          curl -fsSL -o opa.sha256 \
+            https://github.com/open-policy-agent/opa/releases/download/v0.68.0/opa_linux_amd64_static.sha256
+          # Verify checksum — filename in the .sha256 file is 'opa_linux_amd64_static', rename accordingly
+          cp opa opa_linux_amd64_static
+          sha256sum --check opa.sha256
+          rm opa_linux_amd64_static opa.sha256
           chmod +x opa
           sudo mv opa /usr/local/bin/
           opa version
+
+      - name: Formatting check
+        run: |
+          echo "Checking Rego formatting ..."
+          exit_code=0
+          for f in $(find . -name "*.rego" -not -path "./.git/*" | sort); do
+            result=$(opa fmt --fail "$f" 2>&1)
+            rc=$?
+            if [ $rc -ne 0 ]; then
+              if echo "$result" | grep -q "result is invalid"; then
+                echo "  SKIP (opa fmt bug — reserved keyword in field name): $f"
+              else
+                echo "  FAIL (needs formatting): $f  →  run: opa fmt -w $f"
+                exit_code=1
+              fi
+            else
+              echo "  OK: $f"
+            fi
+          done
+          exit $exit_code
 
       - name: Syntax check — benchmarks
         run: |
@@ -70,12 +102,14 @@ jobs:
       - name: Run policy tests
         run: |
           echo "Running tests ..."
-          find . -name "*_test.rego" -not -path "./.git/*" | while read f; do
+          exit_code=0
+          for f in $(find . -name "*_test.rego" -not -path "./.git/*"); do
             dir=$(dirname "$f")
             echo "  Testing $dir ..."
-            opa test "$dir" -v || true
+            opa test "$dir" -v || exit_code=1
           done
           echo "Tests complete"
+          exit $exit_code
 
       - name: Count policies
         run: |
@@ -86,3 +120,4 @@ jobs:
             count=$(find $domain -name "*.rego" 2>/dev/null | wc -l)
             echo "  $domain: $count"
           done
+

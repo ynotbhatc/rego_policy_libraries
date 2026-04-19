@@ -24,7 +24,9 @@ fips_hashing if {
 	input.crypto_policy == "FIPS"
 }
 
-status_rhel_09_671010 := "Not_a_Finding" if { fips_hashing } else := "Open"
+status_rhel_09_671010 := "Not_a_Finding" if fips_hashing
+
+else := "Open"
 
 finding_rhel_09_671010 := {
 	"vuln_id": "V-258150",
@@ -52,7 +54,9 @@ dod_pki_enabled if {
 	input.pam_config.pkcs11_enabled == true
 }
 
-status_rhel_09_671015 := "Not_a_Finding" if { dod_pki_enabled } else := "Open"
+status_rhel_09_671015 := "Not_a_Finding" if dod_pki_enabled
+
+else := "Open"
 
 finding_rhel_09_671015 := {
 	"vuln_id": "V-258151",
@@ -75,7 +79,9 @@ cert_revocation_check if {
 	input.pki_config.crl_checking == true
 }
 
-status_rhel_09_671020 := "Not_a_Finding" if { cert_revocation_check } else := "Open"
+status_rhel_09_671020 := "Not_a_Finding" if cert_revocation_check
+
+else := "Open"
 
 finding_rhel_09_671020 := {
 	"vuln_id": "V-258152",
@@ -94,7 +100,9 @@ dod_ca_trusted if {
 	input.certificates.dod_root_ca_installed == true
 }
 
-status_rhel_09_672010 := "Not_a_Finding" if { dod_ca_trusted } else := "Open"
+status_rhel_09_672010 := "Not_a_Finding" if dod_ca_trusted
+
+else := "Open"
 
 finding_rhel_09_672010 := {
 	"vuln_id": "V-258155",
@@ -121,7 +129,9 @@ fips_crypto_policy if {
 	input.crypto_policy == "FIPS:OSPP"
 }
 
-status_rhel_09_672015 := "Not_a_Finding" if { fips_crypto_policy } else := "Open"
+status_rhel_09_672015 := "Not_a_Finding" if fips_crypto_policy
+
+else := "Open"
 
 finding_rhel_09_672015 := {
 	"vuln_id": "V-258156",
@@ -144,7 +154,9 @@ crypto_policy_not_overridden if {
 	not input.crypto_policy_overrides
 }
 
-status_rhel_09_672020 := "Not_a_Finding" if { crypto_policy_not_overridden } else := "Open"
+status_rhel_09_672020 := "Not_a_Finding" if crypto_policy_not_overridden
+
+else := "Open"
 
 finding_rhel_09_672020 := {
 	"vuln_id": "V-258157",
@@ -167,7 +179,9 @@ sssd_cert_auth if {
 	input.sssd_config.piv_enabled == true
 }
 
-status_rhel_09_672025 := "Not_a_Finding" if { sssd_cert_auth } else := "Open"
+status_rhel_09_672025 := "Not_a_Finding" if sssd_cert_auth
+
+else := "Open"
 
 finding_rhel_09_672025 := {
 	"vuln_id": "V-258158",
@@ -190,7 +204,9 @@ no_expired_certs if {
 	not input.certificates.expired_certs
 }
 
-status_rhel_09_672030 := "Not_a_Finding" if { no_expired_certs } else := "Open"
+status_rhel_09_672030 := "Not_a_Finding" if no_expired_certs
+
+else := "Open"
 
 finding_rhel_09_672030 := {
 	"vuln_id": "V-258159",
@@ -213,7 +229,9 @@ pam_pki_configured if {
 	input.pam_config.sssd_pki == true
 }
 
-status_rhel_09_672035 := "Not_a_Finding" if { pam_pki_configured } else := "Open"
+status_rhel_09_672035 := "Not_a_Finding" if pam_pki_configured
+
+else := "Open"
 
 finding_rhel_09_672035 := {
 	"vuln_id": "V-258160",
@@ -232,7 +250,9 @@ smartcard_lock_on_removal if {
 	input.pam_config.smartcard_removal_lock == true
 }
 
-status_rhel_09_672040 := "Not_a_Finding" if { smartcard_lock_on_removal } else := "Open"
+status_rhel_09_672040 := "Not_a_Finding" if smartcard_lock_on_removal
+
+else := "Open"
 
 finding_rhel_09_672040 := {
 	"vuln_id": "V-258161",
@@ -255,7 +275,9 @@ cert_user_mapping if {
 	input.pam_config.cert_mapping_configured == true
 }
 
-status_rhel_09_672045 := "Not_a_Finding" if { cert_user_mapping } else := "Open"
+status_rhel_09_672045 := "Not_a_Finding" if cert_user_mapping
+
+else := "Open"
 
 finding_rhel_09_672045 := {
 	"vuln_id": "V-258162",
@@ -278,7 +300,9 @@ openssl_system_policy if {
 	not input.openssl_config.legacy_override
 }
 
-status_rhel_09_672050 := "Not_a_Finding" if { openssl_system_policy } else := "Open"
+status_rhel_09_672050 := "Not_a_Finding" if openssl_system_policy
+
+else := "Open"
 
 finding_rhel_09_672050 := {
 	"vuln_id": "V-258163",

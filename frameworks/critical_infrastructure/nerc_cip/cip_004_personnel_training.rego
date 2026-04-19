@@ -23,7 +23,7 @@ security_awareness_program if {
 
 security_awareness_current if {
 	last_ns := time.parse_rfc3339_ns(input.security_awareness.last_reinforcement_date)
-	age_days := (time.now_ns() - last_ns) / (24 * 60 * 60 * 1000000000)
+	age_days := (time.now_ns() - last_ns) / (((24 * 60) * 60) * 1000000000)
 	age_days <= 92 # roughly 1 quarter
 }
 
@@ -61,7 +61,7 @@ requires_cybersecurity_training(person) if {
 
 training_current(person) if {
 	person.cyber_security_training.initial_completed == true
-	training_age_days := (time.now_ns() - person.cyber_security_training.last_completion_date) / (24 * 60 * 60 * 1000000000)
+	training_age_days := (time.now_ns() - person.cyber_security_training.last_completion_date) / (((24 * 60) * 60) * 1000000000)
 	training_age_days <= 365 # annual
 }
 
@@ -99,7 +99,7 @@ requires_risk_assessment(person) if {
 
 risk_assessment_current(person) if {
 	person.risk_assessment.completed == true
-	assessment_age_days := (time.now_ns() - person.risk_assessment.completion_date) / (24 * 60 * 60 * 1000000000)
+	assessment_age_days := (time.now_ns() - person.risk_assessment.completion_date) / (((24 * 60) * 60) * 1000000000)
 	assessment_age_days <= 2555 # 7 years
 }
 
@@ -152,7 +152,7 @@ access_authorization_reviewed if {
 	violations := [person |
 		person := input.personnel[_]
 		person.access_level in ["authorized_electronic_access", "authorized_unescorted_physical_access"]
-		review_age_days := (time.now_ns() - person.access_authorization.last_review_date) / (24 * 60 * 60 * 1000000000)
+		review_age_days := (time.now_ns() - person.access_authorization.last_review_date) / (((24 * 60) * 60) * 1000000000)
 		review_age_days > 455
 	]
 	count(violations) == 0

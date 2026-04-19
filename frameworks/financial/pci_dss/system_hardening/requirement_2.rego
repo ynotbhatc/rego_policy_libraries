@@ -186,12 +186,8 @@ pci_requirement_2_findings := {
 		"network_devices": network_device_hardening_complete,
 		"hardening_standards_applied": hardening_standards_applied,
 	},
-	"requirement_2_2_7": {
-		"non_console_admin_encrypted": non_console_admin_access_encrypted,
-	},
-	"requirement_2_3": {
-		"wireless_security": wireless_security_configured,
-	},
+	"requirement_2_2_7": {"non_console_admin_encrypted": non_console_admin_access_encrypted},
+	"requirement_2_3": {"wireless_security": wireless_security_configured},
 	"overall_score": pci_requirement_2_score,
 	"overall_compliant": pci_requirement_2_compliant,
 }

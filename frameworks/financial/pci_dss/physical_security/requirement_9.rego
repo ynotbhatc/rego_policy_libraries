@@ -182,9 +182,7 @@ pci_requirement_9_findings := {
 		"media_destruction": media_destruction,
 		"disk_destruction": disk_destruction,
 	},
-	"requirement_9_5": {
-		"poi_device_protection": poi_device_protection,
-	},
+	"requirement_9_5": {"poi_device_protection": poi_device_protection},
 	"overall_score": pci_requirement_9_score,
 	"overall_compliant": pci_requirement_9_compliant,
 }

@@ -26,7 +26,7 @@ violations := array.concat(
 # =============================================================================
 
 service_violations contains "CIS 4.1.1.1: audit package not installed" if {
-	not input.packages["audit"]
+	not input.packages.audit
 }
 
 # =============================================================================
@@ -107,34 +107,28 @@ required_rules := [
 	"-a always,exit -F arch=b64 -S clock_settime -F a0=0x0 -k time-change",
 	"-a always,exit -F arch=b32 -S clock_settime -F a0=0x0 -k time-change",
 	"-w /etc/localtime -p wa -k time-change",
-
 	# User/Group changes (4.1.3.2)
 	"-w /etc/group -p wa -k identity",
 	"-w /etc/passwd -p wa -k identity",
 	"-w /etc/gshadow -p wa -k identity",
 	"-w /etc/shadow -p wa -k identity",
 	"-w /etc/security/opasswd -p wa -k identity",
-
 	# System network environment (4.1.3.3)
 	"-a always,exit -F arch=b64 -S sethostname,setdomainname -k system-locale",
 	"-a always,exit -F arch=b32 -S sethostname,setdomainname -k system-locale",
 	"-w /etc/issue -p wa -k system-locale",
 	"-w /etc/issue.net -p wa -k system-locale",
 	"-w /etc/hosts -p wa -k system-locale",
-
 	# MAC policy (4.1.3.4)
 	"-w /etc/selinux -p wa -k MAC-policy",
 	"-w /usr/share/selinux -p wa -k MAC-policy",
-
 	# Login/logout events (4.1.3.5)
 	"-w /var/log/lastlog -p wa -k logins",
 	"-w /var/run/faillock -p wa -k logins",
-
 	# Session initiation (4.1.3.6)
 	"-w /var/run/utmp -p wa -k session",
 	"-w /var/log/wtmp -p wa -k logins",
 	"-w /var/log/btmp -p wa -k logins",
-
 	# Discretionary Access Control (DAC) permission changes (4.1.3.7)
 	"-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -k perm_mod",
 	"-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -k perm_mod",
@@ -142,31 +136,25 @@ required_rules := [
 	"-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -k perm_mod",
 	"-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -k perm_mod",
 	"-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -k perm_mod",
-
 	# Unauthorized access attempts (4.1.3.8)
 	"-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -k access",
 	"-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -k access",
 	"-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -k access",
 	"-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -k access",
-
 	# Privileged commands monitoring (4.1.3.9) - simplified check
 	# Note: Full implementation requires discovering all SUID/SGID binaries
 
 	# Successful file system mounts (4.1.3.10)
 	"-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts",
 	"-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts",
-
 	# File deletion events (4.1.3.11)
 	"-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -k delete",
 	"-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -k delete",
-
 	# sudoers changes (4.1.3.12)
 	"-w /etc/sudoers -p wa -k scope",
 	"-w /etc/sudoers.d -p wa -k scope",
-
 	# sudo log file (4.1.3.13)
 	"-w /var/log/sudo.log -p wa -k actions",
-
 	# Kernel modules (4.1.3.14)
 	"-w /sbin/insmod -p x -k modules",
 	"-w /sbin/rmmod -p x -k modules",
@@ -184,6 +172,7 @@ rules_violations contains sprintf("CIS 4.1.3.x: Missing or incomplete audit rule
 # Helper: Check if a rule exists (with some flexibility for formatting)
 rule_exists(required_rule) if {
 	some active_rule in input.auditd.active_rules
+
 	# Normalize spaces and compare
 	normalized_required := regex.replace(required_rule, `\s+`, " ")
 	normalized_active := regex.replace(active_rule, `\s+`, " ")

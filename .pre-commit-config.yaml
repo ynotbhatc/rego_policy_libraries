@@ -1,0 +1,33 @@
+repos:
+  # General hygiene hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer
+        exclude: \.html$
+      - id: trailing-whitespace
+        exclude: \.md$
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: mixed-line-ending
+        args: [--fix=lf]
+
+  # OPA syntax check + formatting (requires `opa` on PATH)
+  - repo: local
+    hooks:
+      - id: opa-check
+        name: OPA syntax check
+        language: system
+        entry: bash -c 'failed=0; for f in "$@"; do opa check "$f" || failed=1; done; exit $failed'
+        types: [file]
+        files: \.rego$
+        pass_filenames: true
+
+      - id: opa-fmt
+        name: OPA format check
+        language: system
+        entry: bash -c 'failed=0; for f in "$@"; do opa fmt --fail "$f" || { echo "Run: opa fmt -w $f"; failed=1; }; done; exit $failed'
+        types: [file]
+        files: \.rego$
+        pass_filenames: true

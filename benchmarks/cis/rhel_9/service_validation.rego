@@ -58,17 +58,13 @@ time_sync_violations contains violation if {
 
 time_sync_violations contains violation if {
 	not input.time_synchronization.compliant
-	violation := sprintf("CIS 2.1.1: Time synchronization not properly configured (active services: %d)", [
-		count([s | some s in input.time_synchronization.services; s.active]),
-	])
+	violation := sprintf("CIS 2.1.1: Time synchronization not properly configured (active services: %d)", [count([s | some s in input.time_synchronization.services; s.active])])
 }
 
 # Multiple time sync services running (conflict)
 time_sync_violations contains violation if {
 	count([s | some s in input.time_synchronization.services; s.active]) > 1
-	violation := sprintf("CIS 2.1.1: Multiple time synchronization services active (should only have one): %v", [
-		[name | some s in input.time_synchronization.services; s.active; name := s.service],
-	])
+	violation := sprintf("CIS 2.1.1: Multiple time synchronization services active (should only have one): %v", [[name | some s in input.time_synchronization.services; s.active; name := s.service]])
 }
 
 # =============================================================================
@@ -311,4 +307,3 @@ report := {
 	"mta_info": mta_info,
 	"collection_timestamp": input.collection_timestamp,
 }
-

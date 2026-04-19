@@ -26,7 +26,9 @@ auditd_active if {
 	input.services.auditd == "active"
 }
 
-status_rhel_09_653010 := "Not_a_Finding" if { auditd_active } else := "Open"
+status_rhel_09_653010 := "Not_a_Finding" if auditd_active
+
+else := "Open"
 
 finding_rhel_09_653010 := {
 	"vuln_id": "V-258010",
@@ -46,7 +48,9 @@ audit_storage_ok if {
 	input.auditd_config.max_log_file_action != "IGNORE"
 }
 
-status_rhel_09_653015 := "Not_a_Finding" if { audit_storage_ok } else := "Open"
+status_rhel_09_653015 := "Not_a_Finding" if audit_storage_ok
+
+else := "Open"
 
 finding_rhel_09_653015 := {
 	"vuln_id": "V-258011",
@@ -73,7 +77,9 @@ audit_log_dir_permissions_ok if {
 	input.auditd_config.log_dir_permissions == "750"
 }
 
-status_rhel_09_653020 := "Not_a_Finding" if { audit_log_dir_permissions_ok } else := "Open"
+status_rhel_09_653020 := "Not_a_Finding" if audit_log_dir_permissions_ok
+
+else := "Open"
 
 finding_rhel_09_653020 := {
 	"vuln_id": "V-258012",
@@ -94,7 +100,9 @@ admin_space_left_action_ok if {
 	action != "IGNORE"
 }
 
-status_rhel_09_653025 := "Not_a_Finding" if { admin_space_left_action_ok } else := "Open"
+status_rhel_09_653025 := "Not_a_Finding" if admin_space_left_action_ok
+
+else := "Open"
 
 finding_rhel_09_653025 := {
 	"vuln_id": "V-258013",
@@ -119,7 +127,9 @@ space_left_action_ok if {
 	action == "syslog"
 }
 
-status_rhel_09_653030 := "Not_a_Finding" if { space_left_action_ok } else := "Open"
+status_rhel_09_653030 := "Not_a_Finding" if space_left_action_ok
+
+else := "Open"
 
 finding_rhel_09_653030 := {
 	"vuln_id": "V-258014",
@@ -138,7 +148,9 @@ audit_execve_b64 if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S execve")
 }
 
-status_rhel_09_654010 := "Not_a_Finding" if { audit_execve_b64 } else := "Open"
+status_rhel_09_654010 := "Not_a_Finding" if audit_execve_b64
+
+else := "Open"
 
 finding_rhel_09_654010 := {
 	"vuln_id": "V-258015",
@@ -157,7 +169,9 @@ audit_execve_b32 if {
 	audit_rule_exists("-a always,exit -F arch=b32 -S execve")
 }
 
-status_rhel_09_654015 := "Not_a_Finding" if { audit_execve_b32 } else := "Open"
+status_rhel_09_654015 := "Not_a_Finding" if audit_execve_b32
+
+else := "Open"
 
 finding_rhel_09_654015 := {
 	"vuln_id": "V-258016",
@@ -176,7 +190,9 @@ audit_chown if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S chown")
 }
 
-status_rhel_09_654020 := "Not_a_Finding" if { audit_chown } else := "Open"
+status_rhel_09_654020 := "Not_a_Finding" if audit_chown
+
+else := "Open"
 
 finding_rhel_09_654020 := {
 	"vuln_id": "V-258017",
@@ -195,7 +211,9 @@ audit_chmod if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S chmod")
 }
 
-status_rhel_09_654025 := "Not_a_Finding" if { audit_chmod } else := "Open"
+status_rhel_09_654025 := "Not_a_Finding" if audit_chmod
+
+else := "Open"
 
 finding_rhel_09_654025 := {
 	"vuln_id": "V-258018",
@@ -214,7 +232,9 @@ audit_setxattr if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S setxattr")
 }
 
-status_rhel_09_654030 := "Not_a_Finding" if { audit_setxattr } else := "Open"
+status_rhel_09_654030 := "Not_a_Finding" if audit_setxattr
+
+else := "Open"
 
 finding_rhel_09_654030 := {
 	"vuln_id": "V-258019",
@@ -239,7 +259,9 @@ audit_open_failure if {
 	audit_rule_exists("EPERM")
 }
 
-status_rhel_09_654035 := "Not_a_Finding" if { audit_open_failure } else := "Open"
+status_rhel_09_654035 := "Not_a_Finding" if audit_open_failure
+
+else := "Open"
 
 finding_rhel_09_654035 := {
 	"vuln_id": "V-258020",
@@ -258,7 +280,9 @@ audit_sudoers if {
 	audit_rule_exists("-w /etc/sudoers")
 }
 
-status_rhel_09_654040 := "Not_a_Finding" if { audit_sudoers } else := "Open"
+status_rhel_09_654040 := "Not_a_Finding" if audit_sudoers
+
+else := "Open"
 
 finding_rhel_09_654040 := {
 	"vuln_id": "V-258021",
@@ -277,7 +301,9 @@ audit_passwd_file if {
 	audit_rule_exists("-w /etc/passwd")
 }
 
-status_rhel_09_654045 := "Not_a_Finding" if { audit_passwd_file } else := "Open"
+status_rhel_09_654045 := "Not_a_Finding" if audit_passwd_file
+
+else := "Open"
 
 finding_rhel_09_654045 := {
 	"vuln_id": "V-258022",
@@ -300,7 +326,9 @@ audit_privileged_cmds if {
 	audit_rule_exists("privileged")
 }
 
-status_rhel_09_654050 := "Not_a_Finding" if { audit_privileged_cmds } else := "Open"
+status_rhel_09_654050 := "Not_a_Finding" if audit_privileged_cmds
+
+else := "Open"
 
 finding_rhel_09_654050 := {
 	"vuln_id": "V-258023",
@@ -319,7 +347,9 @@ audit_mount if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S mount")
 }
 
-status_rhel_09_654055 := "Not_a_Finding" if { audit_mount } else := "Open"
+status_rhel_09_654055 := "Not_a_Finding" if audit_mount
+
+else := "Open"
 
 finding_rhel_09_654055 := {
 	"vuln_id": "V-258024",
@@ -342,7 +372,9 @@ audit_modules if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S init_module")
 }
 
-status_rhel_09_654060 := "Not_a_Finding" if { audit_modules } else := "Open"
+status_rhel_09_654060 := "Not_a_Finding" if audit_modules
+
+else := "Open"
 
 finding_rhel_09_654060 := {
 	"vuln_id": "V-258025",
@@ -361,7 +393,9 @@ audit_rules_immutable if {
 	audit_rule_exists("-e 2")
 }
 
-status_rhel_09_654065 := "Not_a_Finding" if { audit_rules_immutable } else := "Open"
+status_rhel_09_654065 := "Not_a_Finding" if audit_rules_immutable
+
+else := "Open"
 
 finding_rhel_09_654065 := {
 	"vuln_id": "V-258026",

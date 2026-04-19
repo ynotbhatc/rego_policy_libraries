@@ -107,7 +107,7 @@ bgp_route_filtering if {
 # BGP peers must be reviewed
 bgp_peers_reviewed if {
 	last_review_ns := time.parse_rfc3339_ns(input.bgp_configuration.peer_list_reviewed_date)
-	age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	age_days <= 180
 }
 

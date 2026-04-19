@@ -1,0 +1,32 @@
+root = true
+
+[*]
+charset             = utf-8
+end_of_line         = lf
+indent_style        = space
+indent_size         = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Rego policies — 4-space indent (matches opa fmt default)
+[*.rego]
+indent_style        = space
+indent_size         = 4
+
+# YAML — 2-space indent (GitHub Actions / pre-commit)
+[*.{yml,yaml}]
+indent_style        = space
+indent_size         = 2
+
+# Makefiles require hard tabs
+[Makefile]
+indent_style        = tab
+
+# Markdown — preserve trailing spaces (two spaces = line break in some renderers)
+[*.md]
+trim_trailing_whitespace = false
+
+# JSON
+[*.json]
+indent_style        = space
+indent_size         = 2

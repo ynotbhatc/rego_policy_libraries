@@ -55,7 +55,7 @@ sbom_maintained if {
 
 sbom_current if {
 	last_update_ns := time.parse_rfc3339_ns(input.sbom.last_updated)
-	age_days := (time.now_ns() - last_update_ns) / (24 * 60 * 60 * 1000000000)
+	age_days := (time.now_ns() - last_update_ns) / (((24 * 60) * 60) * 1000000000)
 	age_days <= 30 # SBOM must be updated monthly
 }
 
@@ -180,7 +180,7 @@ dependencies_pinned if {
 dependency_vulnerability_scanning if {
 	input.dependency_management.vulnerability_scanning.enabled == true
 	last_scan_ns := time.parse_rfc3339_ns(input.dependency_management.vulnerability_scanning.last_scan_date)
-	scan_age_days := (time.now_ns() - last_scan_ns) / (24 * 60 * 60 * 1000000000)
+	scan_age_days := (time.now_ns() - last_scan_ns) / (((24 * 60) * 60) * 1000000000)
 	scan_age_days <= 7
 }
 

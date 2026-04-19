@@ -40,7 +40,7 @@ risk_assessment_methodology_adequate if {
 # Re-perform the assessment within 30 calendar months of last assessment
 risk_assessment_current if {
 	last_assessment_ns := time.parse_rfc3339_ns(input.transmission_risk_assessment.last_assessment_date)
-	assessment_age_days := (time.now_ns() - last_assessment_ns) / (24 * 60 * 60 * 1000000000)
+	assessment_age_days := (time.now_ns() - last_assessment_ns) / (((24 * 60) * 60) * 1000000000)
 	assessment_age_days <= 912 # 30 calendar months
 }
 
@@ -48,7 +48,7 @@ risk_assessment_current if {
 assessment_updated_after_changes if {
 	every change in input.transmission_topology_changes {
 		change.assessment_triggered == true
-		update_age_days := (change.assessment_completion_date - change.change_date) / (24 * 60 * 60 * 1000000000)
+		update_age_days := (change.assessment_completion_date - change.change_date) / (((24 * 60) * 60) * 1000000000)
 		update_age_days <= 60
 	}
 }
@@ -72,7 +72,7 @@ third_party_verification_performed if {
 third_party_verification_timely if {
 	input.transmission_risk_assessment.third_party_verification.timely == true
 	last_verify_ns := time.parse_rfc3339_ns(input.transmission_risk_assessment.third_party_verification.last_verification_date)
-	verify_age_days := (time.now_ns() - last_verify_ns) / (24 * 60 * 60 * 1000000000)
+	verify_age_days := (time.now_ns() - last_verify_ns) / (((24 * 60) * 60) * 1000000000)
 	verify_age_days <= 912 # aligned with assessment frequency
 }
 
@@ -184,7 +184,7 @@ plan_implementation_timely if {
 plan_implemented_timely(station) if {
 	plan := input.station_security_plans[station.station_id]
 	plan.implementation_completed == true
-	implementation_months := (plan.implementation_date - input.transmission_risk_assessment.third_party_verification.last_verification_date) / (30 * 24 * 60 * 60 * 1000000000)
+	implementation_months := (plan.implementation_date - input.transmission_risk_assessment.third_party_verification.last_verification_date) / ((((30 * 24) * 60) * 60) * 1000000000)
 	implementation_months <= 12
 }
 
@@ -208,7 +208,7 @@ security_plans_reviewed if {
 plan_review_current(station) if {
 	plan := input.station_security_plans[station.station_id]
 	plan.last_review_date
-	review_age_days := (time.now_ns() - plan.last_review_date) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - plan.last_review_date) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 1095 # 36 calendar months
 }
 
@@ -243,8 +243,9 @@ plan_third_party_reviewed(station) if {
 	plan.third_party_review.unaffiliated == true
 	plan.third_party_review.relevant_expertise == true
 	plan.third_party_review.documented == true
+
 	# Review must occur within 60 days of plan completion
-	review_age_days := (plan.third_party_review.date - plan.initial_completion_date) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (plan.third_party_review.date - plan.initial_completion_date) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 60
 }
 

@@ -19,15 +19,15 @@ import rego.v1
 required_tags := {"Environment", "Owner", "CostCenter"}
 
 violations contains msg if {
-    some change in input.resource_changes
-    change.change.actions != ["delete"]           # tags don't matter for deletions
-    some required_tag in required_tags
-    tags := object.get(change.change.after, "tags", {})
-    not tags[required_tag]
-    msg := sprintf(
-        "SENTINEL-TF-001: Resource '%v' (%v) is missing required tag '%v'",
-        [change.address, change.type, required_tag]
-    )
+	some change in input.resource_changes
+	change.change.actions != ["delete"] # tags don't matter for deletions
+	some required_tag in required_tags
+	tags := object.get(change.change.after, "tags", {})
+	not tags[required_tag]
+	msg := sprintf(
+		"SENTINEL-TF-001: Resource '%v' (%v) is missing required tag '%v'",
+		[change.address, change.type, required_tag],
+	)
 }
 
 # =============================================================================
@@ -38,34 +38,34 @@ sensitive_ports := {22, 3389, 5432, 3306, 1433, 6379, 27017}
 
 # aws_security_group inline ingress rules
 violations contains msg if {
-    some change in input.resource_changes
-    change.change.actions != ["delete"]
-    change.type == "aws_security_group"
-    some rule in object.get(change.change.after, "ingress", [])
-    rule.cidr_blocks[_] == "0.0.0.0/0"
-    some port in sensitive_ports
-    rule.from_port <= port
-    rule.to_port >= port
-    msg := sprintf(
-        "SENTINEL-TF-002: Security group '%v' exposes sensitive port %v to 0.0.0.0/0",
-        [change.address, port]
-    )
+	some change in input.resource_changes
+	change.change.actions != ["delete"]
+	change.type == "aws_security_group"
+	some rule in object.get(change.change.after, "ingress", [])
+	rule.cidr_blocks[_] == "0.0.0.0/0"
+	some port in sensitive_ports
+	rule.from_port <= port
+	rule.to_port >= port
+	msg := sprintf(
+		"SENTINEL-TF-002: Security group '%v' exposes sensitive port %v to 0.0.0.0/0",
+		[change.address, port],
+	)
 }
 
 # aws_security_group_rule resources
 violations contains msg if {
-    some change in input.resource_changes
-    change.change.actions != ["delete"]
-    change.type == "aws_security_group_rule"
-    object.get(change.change.after, "type", "") == "ingress"
-    change.change.after.cidr_blocks[_] == "0.0.0.0/0"
-    some port in sensitive_ports
-    change.change.after.from_port <= port
-    change.change.after.to_port >= port
-    msg := sprintf(
-        "SENTINEL-TF-002: Security group rule '%v' exposes sensitive port %v to 0.0.0.0/0",
-        [change.address, port]
-    )
+	some change in input.resource_changes
+	change.change.actions != ["delete"]
+	change.type == "aws_security_group_rule"
+	object.get(change.change.after, "type", "") == "ingress"
+	change.change.after.cidr_blocks[_] == "0.0.0.0/0"
+	some port in sensitive_ports
+	change.change.after.from_port <= port
+	change.change.after.to_port >= port
+	msg := sprintf(
+		"SENTINEL-TF-002: Security group rule '%v' exposes sensitive port %v to 0.0.0.0/0",
+		[change.address, port],
+	)
 }
 
 # =============================================================================
@@ -75,15 +75,15 @@ violations contains msg if {
 approved_regions := {"us-east-1", "us-east-2", "us-west-2", "eu-west-1"}
 
 violations contains msg if {
-    some change in input.resource_changes
-    change.change.actions != ["delete"]
-    region := object.get(change.change.after, "region", "")
-    region != ""
-    not approved_regions[region]
-    msg := sprintf(
-        "SENTINEL-TF-003: Resource '%v' uses unapproved region '%v' (allowed: %v)",
-        [change.address, region, concat(", ", approved_regions)]
-    )
+	some change in input.resource_changes
+	change.change.actions != ["delete"]
+	region := object.get(change.change.after, "region", "")
+	region != ""
+	not approved_regions[region]
+	msg := sprintf(
+		"SENTINEL-TF-003: Resource '%v' uses unapproved region '%v' (allowed: %v)",
+		[change.address, region, concat(", ", approved_regions)],
+	)
 }
 
 # =============================================================================
@@ -93,13 +93,13 @@ violations contains msg if {
 default allow := false
 
 allow if {
-    count(violations) == 0
+	count(violations) == 0
 }
 
 result := {
-    "policy":          "Sentinel — Terraform Plan",
-    "allow":           allow,
-    "violation_count": count(violations),
-    "violations":      [v | some v in violations],
-    "required_tags":   [t | some t in required_tags],
+	"policy": "Sentinel — Terraform Plan",
+	"allow": allow,
+	"violation_count": count(violations),
+	"violations": [v | some v in violations],
+	"required_tags": [t | some t in required_tags],
 }

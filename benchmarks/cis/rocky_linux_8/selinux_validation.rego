@@ -74,8 +74,10 @@ violations contains msg if {
 	input.selinux.installed
 	selinux_enabled
 	count(input.selinux.unconfined_services) > 0
-	msg := sprintf("CIS 1.6.1.6: Found %d unconfined services: %s",
-		[count(input.selinux.unconfined_services), concat(", ", input.selinux.unconfined_services)])
+	msg := sprintf(
+		"CIS 1.6.1.6: Found %d unconfined services: %s",
+		[count(input.selinux.unconfined_services), concat(", ", input.selinux.unconfined_services)],
+	)
 }
 
 # CIS 1.6.1.7: SETroubleshoot not installed
@@ -95,8 +97,10 @@ violations contains msg if {
 	input.selinux.installed
 	selinux_enabled
 	count(input.selinux.files_with_incorrect_context) > 0
-	msg := sprintf("CIS 1.6: Found %d files with incorrect SELinux context",
-		[count(input.selinux.files_with_incorrect_context)])
+	msg := sprintf(
+		"CIS 1.6: Found %d files with incorrect SELinux context",
+		[count(input.selinux.files_with_incorrect_context)],
+	)
 }
 
 # High number of denials
@@ -105,8 +109,10 @@ violations contains msg if {
 	selinux_enforcing
 	input.selinux.recent_denials
 	count(input.selinux.recent_denials) > 100
-	msg := sprintf("CIS 1.6: High number of SELinux denials (%d) - review /var/log/audit/audit.log",
-		[count(input.selinux.recent_denials)])
+	msg := sprintf(
+		"CIS 1.6: High number of SELinux denials (%d) - review /var/log/audit/audit.log",
+		[count(input.selinux.recent_denials)],
+	)
 }
 
 compliant if {

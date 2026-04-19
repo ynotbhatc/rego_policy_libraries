@@ -34,9 +34,11 @@ all_bes_cyber_systems_categorized if {
 	count(violations) == 0
 }
 
-valid_impact_categorization(cat) if { cat == "high" }
-valid_impact_categorization(cat) if { cat == "medium" }
-valid_impact_categorization(cat) if { cat == "low" }
+valid_impact_categorization(cat) if cat == "high"
+
+valid_impact_categorization(cat) if cat == "medium"
+
+valid_impact_categorization(cat) if cat == "low"
 
 # High Impact BES Cyber Systems — Attachment 1, Criterion 2
 high_impact_criteria_documented if {
@@ -86,7 +88,7 @@ categorization_criteria_documented if {
 # at least every 15 calendar months
 annual_review_performed if {
 	last_review_ns := time.parse_rfc3339_ns(input.categorization_documentation.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455 # 15 calendar months
 }
 
@@ -106,7 +108,7 @@ review_triggered_by_changes if {
 cip_senior_manager_approval if {
 	input.categorization_documentation.cip_senior_manager_approved == true
 	approval_ns := time.parse_rfc3339_ns(input.categorization_documentation.approval_date)
-	approval_age_days := (time.now_ns() - approval_ns) / (24 * 60 * 60 * 1000000000)
+	approval_age_days := (time.now_ns() - approval_ns) / (((24 * 60) * 60) * 1000000000)
 	approval_age_days <= 365
 }
 

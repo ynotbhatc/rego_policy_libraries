@@ -13,10 +13,15 @@ default compliant := false
 
 # RHEL-08-040000 (network) | V-230505 | CAT I - Firewall must be active
 default firewall_active := false
-firewall_active if { input.firewall.active == true }
-firewall_active if { input.services.firewalld == "active" }
 
-status_rhel_08_n_040000 := "Not_a_Finding" if { firewall_active } else := "Open"
+firewall_active if input.firewall.active == true
+
+firewall_active if input.services.firewalld == "active"
+
+status_rhel_08_n_040000 := "Not_a_Finding" if firewall_active
+
+else := "Open"
+
 finding_rhel_08_n_040000 := {
 	"vuln_id": "V-230505",
 	"stig_id": "RHEL-08-040100",
@@ -28,9 +33,13 @@ finding_rhel_08_n_040000 := {
 
 # RHEL-08-040110 | V-230506 | CAT I - IP forwarding must be disabled
 default ip_forward_disabled := false
-ip_forward_disabled if { input.kernel_params["net.ipv4.ip_forward"] == "0" }
 
-status_rhel_08_040110 := "Not_a_Finding" if { ip_forward_disabled } else := "Open"
+ip_forward_disabled if input.kernel_params["net.ipv4.ip_forward"] == "0"
+
+status_rhel_08_040110 := "Not_a_Finding" if ip_forward_disabled
+
+else := "Open"
+
 finding_rhel_08_040110 := {
 	"vuln_id": "V-230506",
 	"stig_id": "RHEL-08-040110",
@@ -46,12 +55,16 @@ finding_rhel_08_040110 := {
 
 # RHEL-08-040120 | V-230507 | CAT II - No ICMP redirects accepted
 default no_icmp_redirects := false
+
 no_icmp_redirects if {
 	input.kernel_params["net.ipv4.conf.all.accept_redirects"] == "0"
 	input.kernel_params["net.ipv4.conf.default.accept_redirects"] == "0"
 }
 
-status_rhel_08_040120 := "Not_a_Finding" if { no_icmp_redirects } else := "Open"
+status_rhel_08_040120 := "Not_a_Finding" if no_icmp_redirects
+
+else := "Open"
+
 finding_rhel_08_040120 := {
 	"vuln_id": "V-230507",
 	"stig_id": "RHEL-08-040120",
@@ -63,11 +76,15 @@ finding_rhel_08_040120 := {
 
 # RHEL-08-040130 | V-230508 | CAT II - No ICMP redirects sent
 default no_icmp_send := false
+
 no_icmp_send if {
 	input.kernel_params["net.ipv4.conf.all.send_redirects"] == "0"
 }
 
-status_rhel_08_040130 := "Not_a_Finding" if { no_icmp_send } else := "Open"
+status_rhel_08_040130 := "Not_a_Finding" if no_icmp_send
+
+else := "Open"
+
 finding_rhel_08_040130 := {
 	"vuln_id": "V-230508",
 	"stig_id": "RHEL-08-040130",
@@ -79,11 +96,15 @@ finding_rhel_08_040130 := {
 
 # RHEL-08-040140 | V-230509 | CAT II - Source routing disabled
 default no_source_routing := false
+
 no_source_routing if {
 	input.kernel_params["net.ipv4.conf.all.accept_source_route"] == "0"
 }
 
-status_rhel_08_040140 := "Not_a_Finding" if { no_source_routing } else := "Open"
+status_rhel_08_040140 := "Not_a_Finding" if no_source_routing
+
+else := "Open"
+
 finding_rhel_08_040140 := {
 	"vuln_id": "V-230509",
 	"stig_id": "RHEL-08-040140",
@@ -95,9 +116,13 @@ finding_rhel_08_040140 := {
 
 # RHEL-08-040150 | V-230510 | CAT II - TCP syncookies enabled
 default tcp_syncookies := false
-tcp_syncookies if { input.kernel_params["net.ipv4.tcp_syncookies"] == "1" }
 
-status_rhel_08_040150 := "Not_a_Finding" if { tcp_syncookies } else := "Open"
+tcp_syncookies if input.kernel_params["net.ipv4.tcp_syncookies"] == "1"
+
+status_rhel_08_040150 := "Not_a_Finding" if tcp_syncookies
+
+else := "Open"
+
 finding_rhel_08_040150 := {
 	"vuln_id": "V-230510",
 	"stig_id": "RHEL-08-040150",
@@ -109,10 +134,15 @@ finding_rhel_08_040150 := {
 
 # RHEL-08-040155 | V-230511 | CAT II - Bluetooth disabled
 default no_bluetooth := false
-no_bluetooth if { input.kernel_modules["bluetooth"].blacklisted == true }
-no_bluetooth if { input.services.bluetooth == "inactive" }
 
-status_rhel_08_040155 := "Not_a_Finding" if { no_bluetooth } else := "Open"
+no_bluetooth if input.kernel_modules.bluetooth.blacklisted == true
+
+no_bluetooth if input.services.bluetooth == "inactive"
+
+status_rhel_08_040155 := "Not_a_Finding" if no_bluetooth
+
+else := "Open"
+
 finding_rhel_08_040155 := {
 	"vuln_id": "V-230511",
 	"stig_id": "RHEL-08-040155",
@@ -124,10 +154,15 @@ finding_rhel_08_040155 := {
 
 # RHEL-08-040157 | V-230512 | CAT II - Wireless disabled
 default no_wireless := false
-no_wireless if { not input.wireless_interfaces }
-no_wireless if { count(input.wireless_interfaces) == 0 }
 
-status_rhel_08_040157 := "Not_a_Finding" if { no_wireless } else := "Open"
+no_wireless if not input.wireless_interfaces
+
+no_wireless if count(input.wireless_interfaces) == 0
+
+status_rhel_08_040157 := "Not_a_Finding" if no_wireless
+
+else := "Open"
+
 finding_rhel_08_040157 := {
 	"vuln_id": "V-230512",
 	"stig_id": "RHEL-08-040157",
@@ -139,10 +174,15 @@ finding_rhel_08_040157 := {
 
 # RHEL-08-040158 | V-230513 | CAT II - Reverse path filter
 default rp_filter := false
-rp_filter if { input.kernel_params["net.ipv4.conf.all.rp_filter"] == "1" }
-rp_filter if { input.kernel_params["net.ipv4.conf.all.rp_filter"] == "2" }
 
-status_rhel_08_040158 := "Not_a_Finding" if { rp_filter } else := "Open"
+rp_filter if input.kernel_params["net.ipv4.conf.all.rp_filter"] == "1"
+
+rp_filter if input.kernel_params["net.ipv4.conf.all.rp_filter"] == "2"
+
+status_rhel_08_040158 := "Not_a_Finding" if rp_filter
+
+else := "Open"
+
 finding_rhel_08_040158 := {
 	"vuln_id": "V-230513",
 	"stig_id": "RHEL-08-040158",
@@ -183,7 +223,7 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
-compliant if { count(open_cat_i) == 0 }
+compliant if count(open_cat_i) == 0
 
 compliance_report := {
 	"module": "network",

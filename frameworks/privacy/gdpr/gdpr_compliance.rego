@@ -252,9 +252,7 @@ report := {
 		"dpo_requirements": dpo_requirements,
 		"records_of_processing": records_of_processing,
 	},
-	"incident_management": {
-		"breach_notification": breach_notification,
-	},
+	"incident_management": {"breach_notification": breach_notification},
 	"international_transfers": international_transfers,
 	"technical_measures": {
 		"encryption_pseudonymisation": encryption_pseudonymisation,

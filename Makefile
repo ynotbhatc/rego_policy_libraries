@@ -3,33 +3,66 @@
 
 OPA ?= opa
 
-.PHONY: test lint check load-security load-compliance load-ot help
+.PHONY: test lint fmt fmt-check check load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
-	@echo "  make test          Run all opa tests (policy + test files)"
-	@echo "  make lint          Check syntax of all .rego files"
-	@echo "  make check         lint + test"
+	@echo "  make fmt           Auto-format all .rego files in-place (opa fmt -w)"
+	@echo "  make fmt-check     Check formatting without modifying files"
+	@echo "  make lint          Syntax-check all .rego files (opa check)"
+	@echo "  make test          Run all opa tests (*_test.rego files)"
+	@echo "  make check         fmt-check + lint + test"
 	@echo "  make load-security    Load benchmarks into opa-security (:8181)"
 	@echo "  make load-compliance  Load frameworks into opa-compliance (:8182)"
 	@echo "  make load-ot          Load OT policies into opa-ot (:8183)"
 	@echo "  make load-all         Load all three containers"
 
-lint:
-	@echo "=== Checking syntax of all .rego files ==="
+fmt:
+	@echo "=== Formatting all .rego files ==="
 	@find . -name "*.rego" -not -path "./.git/*" | sort | while read f; do \
-	  $(OPA) check "$$f" 2>&1 && echo "  OK: $$f" || echo "  FAIL: $$f"; \
+	  $(OPA) fmt -w "$$f" && echo "  Formatted: $$f"; \
 	done
 	@echo "Done."
 
+fmt-check:
+	@echo "=== Checking Rego formatting ==="
+	@exit_code=0; \
+	for f in $$(find . -name "*.rego" -not -path "./.git/*" | sort); do \
+	  result=$$( $(OPA) fmt --fail "$$f" 2>&1 ); \
+	  rc=$$?; \
+	  if [ $$rc -ne 0 ]; then \
+	    if echo "$$result" | grep -q "result is invalid"; then \
+	      echo "  SKIP (opa fmt bug — reserved keyword in field name): $$f"; \
+	    else \
+	      echo "  FAIL (needs formatting): $$f  ->  run: make fmt"; exit_code=1; \
+	    fi; \
+	  else \
+	    echo "  OK: $$f"; \
+	  fi; \
+	done; \
+	echo "Done."; \
+	exit $$exit_code
+
+lint:
+	@echo "=== Checking syntax of all .rego files ==="
+	@exit_code=0; \
+	for f in $$(find . -name "*.rego" -not -path "./.git/*" | sort); do \
+	  $(OPA) check "$$f" 2>&1 && echo "  OK: $$f" || { echo "  FAIL: $$f"; exit_code=1; }; \
+	done; \
+	echo "Done."; \
+	exit $$exit_code
+
 test:
 	@echo "=== Running OPA tests ==="
-	@find . -name "*_test.rego" -not -path "./.git/*" | while read f; do \
+	@exit_code=0; \
+	for f in $$(find . -name "*_test.rego" -not -path "./.git/*"); do \
 	  dir=$$(dirname $$f); \
-	  $(OPA) test $$dir -v 2>&1; \
-	done
+	  echo "  Testing $$dir ..."; \
+	  $(OPA) test "$$dir" -v 2>&1 || exit_code=1; \
+	done; \
+	exit $$exit_code
 
-check: lint test
+check: fmt-check lint test
 
 OPA_SECURITY_URL  ?= http://localhost:8181
 OPA_COMPLIANCE_URL ?= http://localhost:8182

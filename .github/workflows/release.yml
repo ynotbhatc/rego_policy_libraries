@@ -1,0 +1,62 @@
+name: Release
+
+# Triggered when a version tag is pushed (e.g. v1.2.0)
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+permissions:
+  contents: write   # needed to create a GitHub Release
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Install OPA
+        run: |
+          curl -fsSL -o opa \
+            https://github.com/open-policy-agent/opa/releases/download/v0.68.0/opa_linux_amd64_static
+          curl -fsSL -o opa.sha256 \
+            https://github.com/open-policy-agent/opa/releases/download/v0.68.0/opa_linux_amd64_static.sha256
+          cp opa opa_linux_amd64_static
+          sha256sum --check opa.sha256
+          rm opa_linux_amd64_static opa.sha256
+          chmod +x opa
+          sudo mv opa /usr/local/bin/
+          opa version
+
+      - name: Build OPA policy bundle
+        run: |
+          opa build \
+            benchmarks frameworks enforcement governance threat_detection \
+            --output policy-bundle.tar.gz
+          echo "Bundle size: $(du -h policy-bundle.tar.gz | cut -f1)"
+
+      - name: Extract release notes from CHANGELOG
+        id: changelog
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          # Extract the section for this tag from CHANGELOG.md
+          # Looks for ## [TAG] ... up to the next ## [ heading
+          NOTES=$(awk "/^## \[${TAG#v}\]/{found=1; next} found && /^## \[/{exit} found{print}" CHANGELOG.md)
+          if [ -z "$NOTES" ]; then
+            NOTES="See CHANGELOG.md for details."
+          fi
+          # Write to a temp file to handle multiline content
+          echo "$NOTES" > /tmp/release-notes.md
+          echo "notes_file=/tmp/release-notes.md" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        # softprops/action-gh-release v2.2.1
+        uses: softprops/action-gh-release@c062e08bd532815e2082a7e09ce9571a6d1ce2b0
+        with:
+          body_path: ${{ steps.changelog.outputs.notes_file }}
+          files: policy-bundle.tar.gz
+          fail_on_unmatched_files: true

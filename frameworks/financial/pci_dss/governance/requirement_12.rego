@@ -264,9 +264,7 @@ pci_requirement_12_findings := {
 		"information_security_policy": information_security_policy,
 		"security_roles_defined": security_roles_defined,
 	},
-	"requirement_12_2": {
-		"acceptable_use_policy": acceptable_use_policy,
-	},
+	"requirement_12_2": {"acceptable_use_policy": acceptable_use_policy},
 	"requirement_12_3": {
 		"risk_management": risk_management_program,
 		"targeted_risk_analysis": targeted_risk_analysis,
@@ -284,9 +282,7 @@ pci_requirement_12_findings := {
 		"awareness_program": security_awareness_program,
 		"targeted_training": targeted_security_training,
 	},
-	"requirement_12_7": {
-		"personnel_screening": personnel_screening,
-	},
+	"requirement_12_7": {"personnel_screening": personnel_screening},
 	"requirement_12_8_9": {
 		"third_party_risk": third_party_risk_management,
 		"third_party_acknowledgment": third_party_acknowledgment,

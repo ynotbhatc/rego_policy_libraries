@@ -1,0 +1,33 @@
+# =============================================================================
+# .gitignore — Rego Policy Libraries
+# =============================================================================
+
+# OPA artifacts
+*.bundle
+bundle.tar.gz
+policy-bundle.tar.gz
+opa                        # local binary if downloaded here instead of /usr/local/bin
+.opa/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Python (used in Makefile load-* targets)
+__pycache__/
+*.pyc
+*.pyo
+
+# Test output
+test-results/
+coverage/
+
+# Temporary files
+*.tmp
+*.bak
+tmp/

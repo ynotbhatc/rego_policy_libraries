@@ -1,0 +1,22 @@
+{
+  "action": "view_compliance_report",
+  "ai_system": {
+    "id": "claude-code-v1",
+    "role": "ai_analyst",
+    "enabled": true,
+    "production_access": false
+  },
+  "context": {
+    "environment": "staging",
+    "require_maintenance_window": false,
+    "scope_limit": null,
+    "rate_limit": null,
+    "blocked_operations": []
+  },
+  "approval": {
+    "obtained": false,
+    "approvers_count": 0
+  },
+  "justification": "",
+  "trace_id": "550e8400-e29b-41d4-a716-446655440000"
+}

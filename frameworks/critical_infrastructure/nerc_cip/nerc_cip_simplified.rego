@@ -268,8 +268,8 @@ nerc_cip_simple_test := {
 
 # Detailed Assessment Report
 nerc_cip_assessment := {
-		"compliance_score": nerc_cip_compliance_score,
-		"compliance_level": nerc_cip_compliance_level,
+	"compliance_score": nerc_cip_compliance_score,
+	"compliance_level": nerc_cip_compliance_level,
 }
 
 # Policy Metadata

@@ -35,9 +35,7 @@ installation_violations contains violation if {
 	not startswith(input.oracle_version.version, "19c")
 	not startswith(input.oracle_version.version, "21c")
 	not startswith(input.oracle_version.version, "23c")
-	violation := sprintf("CIS 1.1: Oracle version %s is not a recommended version (use 19c, 21c, or 23c)", [
-		input.oracle_version.version,
-	])
+	violation := sprintf("CIS 1.1: Oracle version %s is not a recommended version (use 19c, 21c, or 23c)", [input.oracle_version.version])
 }
 
 installation_violations contains violation if {
@@ -51,16 +49,12 @@ installation_violations contains violation if {
 
 installation_violations contains violation if {
 	input.critical_patches.days_since_last_patch > 90
-	violation := sprintf("CIS 1.1: Last patch was applied %d days ago (should be < 90 days)", [
-		input.critical_patches.days_since_last_patch,
-	])
+	violation := sprintf("CIS 1.1: Last patch was applied %d days ago (should be < 90 days)", [input.critical_patches.days_since_last_patch])
 }
 
 installation_violations contains violation if {
 	input.critical_patches.critical_missing > 0
-	violation := sprintf("CIS 1.1: %d critical security patches are missing", [
-		input.critical_patches.critical_missing,
-	])
+	violation := sprintf("CIS 1.1: %d critical security patches are missing", [input.critical_patches.critical_missing])
 }
 
 # =============================================================================
@@ -70,24 +64,18 @@ installation_violations contains violation if {
 installation_violations contains violation if {
 	input.oracle_home.permissions
 	not regex.match("^[0-7][0-5][0-5]$", input.oracle_home.permissions)
-	violation := sprintf("CIS 1.1: ORACLE_HOME permissions %s are too permissive (should be 755 or stricter)", [
-		input.oracle_home.permissions,
-	])
+	violation := sprintf("CIS 1.1: ORACLE_HOME permissions %s are too permissive (should be 755 or stricter)", [input.oracle_home.permissions])
 }
 
 installation_violations contains violation if {
 	input.oracle_home.owner != "oracle"
-	violation := sprintf("CIS 1.1: ORACLE_HOME owner is '%s' (should be 'oracle')", [
-		input.oracle_home.owner,
-	])
+	violation := sprintf("CIS 1.1: ORACLE_HOME owner is '%s' (should be 'oracle')", [input.oracle_home.owner])
 }
 
 installation_violations contains violation if {
 	not contains(input.oracle_home.group, "dba")
 	not contains(input.oracle_home.group, "oinstall")
-	violation := sprintf("CIS 1.1: ORACLE_HOME group is '%s' (should be 'dba' or 'oinstall')", [
-		input.oracle_home.group,
-	])
+	violation := sprintf("CIS 1.1: ORACLE_HOME group is '%s' (should be 'dba' or 'oinstall')", [input.oracle_home.group])
 }
 
 # =============================================================================
@@ -103,9 +91,7 @@ installation_violations contains violation if {
 	input.oracle_inventory.exists
 	input.oracle_inventory.permissions
 	not regex.match("^[0-7][0-5][0-5]$", input.oracle_inventory.permissions)
-	violation := sprintf("CIS 1.1: Oracle inventory permissions %s are too permissive", [
-		input.oracle_inventory.permissions,
-	])
+	violation := sprintf("CIS 1.1: Oracle inventory permissions %s are too permissive", [input.oracle_inventory.permissions])
 }
 
 # =============================================================================

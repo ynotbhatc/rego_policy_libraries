@@ -26,9 +26,7 @@ listener_violations contains violation if {
 	some listener in input.listeners
 	some service in listener.services
 	contains(lower(service), "extproc")
-	violation := sprintf("CIS 2.1.1: Listener '%s' has 'extproc' service enabled (CRITICAL: allows arbitrary code execution)", [
-		listener.name,
-	])
+	violation := sprintf("CIS 2.1.1: Listener '%s' has 'extproc' service enabled (CRITICAL: allows arbitrary code execution)", [listener.name])
 }
 
 listener_violations contains violation if {
@@ -62,18 +60,14 @@ listener_violations contains violation if {
 listener_violations contains violation if {
 	some listener in input.listeners
 	not listener.logging_enabled
-	violation := sprintf("CIS 2.1.3: Listener '%s' does not have logging enabled", [
-		listener.name,
-	])
+	violation := sprintf("CIS 2.1.3: Listener '%s' does not have logging enabled", [listener.name])
 }
 
 listener_violations contains violation if {
 	some listener in input.listeners
 	listener.logging_enabled
 	listener.log_directory == ""
-	violation := sprintf("CIS 2.1.3: Listener '%s' logging directory is not configured", [
-		listener.name,
-	])
+	violation := sprintf("CIS 2.1.3: Listener '%s' logging directory is not configured", [listener.name])
 }
 
 # =============================================================================
@@ -83,9 +77,7 @@ listener_violations contains violation if {
 listener_violations contains violation if {
 	some listener in input.listeners
 	listener.port == 1521
-	violation := sprintf("CIS 2.1.4: Listener '%s' is using default port 1521 (security through obscurity)", [
-		listener.name,
-	])
+	violation := sprintf("CIS 2.1.4: Listener '%s' is using default port 1521 (security through obscurity)", [listener.name])
 }
 
 # =============================================================================
@@ -95,9 +87,7 @@ listener_violations contains violation if {
 listener_violations contains violation if {
 	some listener in input.listeners
 	listener.password_protected == false
-	violation := sprintf("CIS 2.1.5: Listener '%s' is not password protected", [
-		listener.name,
-	])
+	violation := sprintf("CIS 2.1.5: Listener '%s' is not password protected", [listener.name])
 }
 
 listener_violations contains violation if {
@@ -117,9 +107,7 @@ listener_violations contains violation if {
 listener_violations contains violation if {
 	some listener in input.listeners
 	listener.valid_node_checking_enabled == false
-	violation := sprintf("CIS 2.1.6: Listener '%s' does not have VALID_NODE_CHECKING enabled", [
-		listener.name,
-	])
+	violation := sprintf("CIS 2.1.6: Listener '%s' does not have VALID_NODE_CHECKING enabled", [listener.name])
 }
 
 # =============================================================================
@@ -129,16 +117,12 @@ listener_violations contains violation if {
 listener_violations contains violation if {
 	input.listener_ora.file_permissions
 	not regex.match("^[0-6][0-4][0-0]$", input.listener_ora.file_permissions)
-	violation := sprintf("CIS 2.1: listener.ora has insecure permissions %s (should be 640 or stricter)", [
-		input.listener_ora.file_permissions,
-	])
+	violation := sprintf("CIS 2.1: listener.ora has insecure permissions %s (should be 640 or stricter)", [input.listener_ora.file_permissions])
 }
 
 listener_violations contains violation if {
 	input.listener_ora.owner != "oracle"
-	violation := sprintf("CIS 2.1: listener.ora owner is '%s' (should be 'oracle')", [
-		input.listener_ora.owner,
-	])
+	violation := sprintf("CIS 2.1: listener.ora owner is '%s' (should be 'oracle')", [input.listener_ora.owner])
 }
 
 # =============================================================================

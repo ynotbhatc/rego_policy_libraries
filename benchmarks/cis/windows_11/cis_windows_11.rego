@@ -24,7 +24,7 @@ violations := [v |
 		administrative_templates_violations,
 		windows_defender_violations,
 		windows_firewall_violations,
-		advanced_audit_violations
+		advanced_audit_violations,
 	]
 	v := arrays[_][_]
 ]
@@ -40,56 +40,56 @@ compliance_report := {
 	"sections": {
 		"account_policies": {
 			"violations": count(account_policies_violations),
-			"controls": 9
+			"controls": 9,
 		},
 		"local_policies": {
 			"violations": count(local_policies_violations),
-			"controls": 28
+			"controls": 28,
 		},
 		"event_log": {
 			"violations": count(event_log_violations),
-			"controls": 15
+			"controls": 15,
 		},
 		"restricted_groups": {
 			"violations": count(restricted_groups_violations),
-			"controls": 3
+			"controls": 3,
 		},
 		"system_services": {
 			"violations": count(system_services_violations),
-			"controls": 45
+			"controls": 45,
 		},
 		"registry": {
 			"violations": count(registry_violations),
-			"controls": 87
+			"controls": 87,
 		},
 		"file_system": {
 			"violations": count(file_system_violations),
-			"controls": 12
+			"controls": 12,
 		},
 		"administrative_templates": {
 			"violations": count(administrative_templates_violations),
-			"controls": 52
+			"controls": 52,
 		},
 		"windows_defender": {
 			"violations": count(windows_defender_violations),
-			"controls": 8
+			"controls": 8,
 		},
 		"windows_firewall": {
 			"violations": count(windows_firewall_violations),
-			"controls": 6
+			"controls": 6,
 		},
 		"advanced_audit": {
 			"violations": count(advanced_audit_violations),
-			"controls": 2
-		}
-	}
+			"controls": 2,
+		},
+	},
 }
 
 # Section 1: Account Policies
 account_policies_violations := [v |
 	arrays := [
 		password_violations,
-		account_lockout_violations
+		account_lockout_violations,
 	]
 	v := arrays[_][_]
 ]
@@ -102,7 +102,7 @@ password_violations := [v |
 		["1.1.3: Minimum password age - 1 day or more" | not min_password_age_1],
 		["1.1.4: Minimum password length - 14 characters or more" | not min_password_length_14],
 		["1.1.5: Password must meet complexity requirements - Enabled" | not password_complexity_enabled],
-		["1.1.6: Store passwords using reversible encryption - Disabled" | not reversible_encryption_disabled]
+		["1.1.6: Store passwords using reversible encryption - Disabled" | not reversible_encryption_disabled],
 	]
 	v := arrays[_][_]
 ]
@@ -137,7 +137,7 @@ account_lockout_violations := [v |
 	arrays := [
 		["1.2.1: Account lockout duration - 15 minutes or more" | not lockout_duration_15],
 		["1.2.2: Account lockout threshold - 5 invalid attempts or fewer" | not lockout_threshold_5],
-		["1.2.3: Reset account lockout counter after - 15 minutes or more" | not lockout_counter_reset_15]
+		["1.2.3: Reset account lockout counter after - 15 minutes or more" | not lockout_counter_reset_15],
 	]
 	v := arrays[_][_]
 ]
@@ -160,7 +160,7 @@ local_policies_violations := [v |
 	arrays := [
 		audit_policy_violations,
 		user_rights_violations,
-		security_options_violations
+		security_options_violations,
 	]
 	v := arrays[_][_]
 ]
@@ -176,7 +176,7 @@ audit_policy_violations := [v |
 		["2.2.6: Audit policy change - Success, Failure" | not audit_policy_change_enabled],
 		["2.2.7: Audit privilege use - Failure" | not audit_privilege_use_enabled],
 		["2.2.8: Audit process tracking - No Auditing" | not audit_process_tracking_disabled],
-		["2.2.9: Audit system events - Success, Failure" | not audit_system_events_enabled]
+		["2.2.9: Audit system events - Success, Failure" | not audit_system_events_enabled],
 	]
 	v := arrays[_][_]
 ]
@@ -251,7 +251,7 @@ user_rights_violations := [v |
 		["2.3.1.16: Deny log on as a batch job - Guests" | not deny_batch_job_configured],
 		["2.3.1.17: Deny log on as a service - No One" | not deny_service_logon_none],
 		["2.3.1.18: Deny log on locally - Guests" | not deny_local_logon_configured],
-		["2.3.1.19: Deny log on through Remote Desktop Services - Guests Local account" | not deny_rdp_configured]
+		["2.3.1.19: Deny log on through Remote Desktop Services - Guests Local account" | not deny_rdp_configured],
 	]
 	v := arrays[_][_]
 ]
@@ -368,7 +368,7 @@ security_options_violations := [v |
 		["2.4.7: Audit: Shut down system immediately if unable to log security audits - Disabled" | not audit_shutdown_disabled],
 		["2.4.8: DCOM: Enable Distributed COM on this computer - Enabled" | not dcom_enabled],
 		["2.4.9: Devices: Allowed to format and eject removable media - Administrators" | not removable_media_restricted],
-		["2.4.10: Devices: Prevent users from installing printer drivers - Enabled" | not printer_drivers_restricted]
+		["2.4.10: Devices: Prevent users from installing printer drivers - Enabled" | not printer_drivers_restricted],
 	]
 	v := arrays[_][_]
 ]
@@ -418,7 +418,7 @@ event_log_violations := [v |
 	arrays := [
 		application_log_violations,
 		security_log_violations,
-		system_log_violations
+		system_log_violations,
 	]
 	v := arrays[_][_]
 ]
@@ -430,7 +430,7 @@ application_log_violations := [v |
 		["3.1.2: Application: Maximum Log Size - 32 768 KB or greater" | not app_log_size_adequate],
 		["3.1.3: Application: Specify the maximum log file size - 32 768 KB or greater" | not app_log_max_size_adequate],
 		["3.1.4: Application: Restrict Guest access to Application event log - Enabled" | not app_log_guest_restricted],
-		["3.1.5: Application: Retention method for Application event log - As needed" | not app_log_retention_as_needed]
+		["3.1.5: Application: Retention method for Application event log - As needed" | not app_log_retention_as_needed],
 	]
 	v := arrays[_][_]
 ]
@@ -462,7 +462,7 @@ security_log_violations := [v |
 		["3.2.2: Security: Maximum Log Size - 196 608 KB or greater" | not sec_log_size_adequate],
 		["3.2.3: Security: Specify the maximum log file size - 196 608 KB or greater" | not sec_log_max_size_adequate],
 		["3.2.4: Security: Restrict Guest access to Security event log - Enabled" | not sec_log_guest_restricted],
-		["3.2.5: Security: Retention method for Security event log - As needed" | not sec_log_retention_as_needed]
+		["3.2.5: Security: Retention method for Security event log - As needed" | not sec_log_retention_as_needed],
 	]
 	v := arrays[_][_]
 ]
@@ -494,7 +494,7 @@ system_log_violations := [v |
 		["3.3.2: System: Maximum Log Size - 32 768 KB or greater" | not sys_log_size_adequate],
 		["3.3.3: System: Specify the maximum log file size - 32 768 KB or greater" | not sys_log_max_size_adequate],
 		["3.3.4: System: Restrict Guest access to System event log - Enabled" | not sys_log_guest_restricted],
-		["3.3.5: System: Retention method for System event log - As needed" | not sys_log_retention_as_needed]
+		["3.3.5: System: Retention method for System event log - As needed" | not sys_log_retention_as_needed],
 	]
 	v := arrays[_][_]
 ]
@@ -524,7 +524,7 @@ restricted_groups_violations := [v |
 	arrays := [
 		["4.1: Configure 'Administrators' - Only necessary accounts" | not administrators_group_restricted],
 		["4.2: Configure 'Remote Desktop Users' - Only necessary accounts" | not rdp_users_restricted],
-		["4.3: Configure 'Power Users' - Empty or necessary accounts only" | not power_users_restricted]
+		["4.3: Configure 'Power Users' - Empty or necessary accounts only" | not power_users_restricted],
 	]
 	v := arrays[_][_]
 ]
@@ -592,7 +592,7 @@ system_services_violations := [v |
 		["5.42: Remote Access Auto Connection Manager - Disabled" | not ras_auto_disabled],
 		["5.43: Remote Access Connection Manager - Disabled" | not ras_connection_disabled],
 		["5.44: Remote Desktop Configuration - Manual" | not rd_config_manual],
-		["5.45: Remote Desktop Services - Disabled" | not rd_services_disabled]
+		["5.45: Remote Desktop Services - Disabled" | not rd_services_disabled],
 	]
 	v := arrays[_][_]
 ]
@@ -810,7 +810,7 @@ registry_violations := [v |
 		["6.17: Configure Windows spotlight on lock screen - Disabled" | not spotlight_lockscreen_disabled],
 		["6.18: Do not suggest third-party content in Windows spotlight - Enabled" | not spotlight_thirdparty_disabled],
 		["6.19: Turn off all Windows spotlight features - Enabled" | not spotlight_all_disabled],
-		["6.20: Turn off Windows spotlight on Settings - Enabled" | not spotlight_settings_disabled]
+		["6.20: Turn off Windows spotlight on Settings - Enabled" | not spotlight_settings_disabled],
 	]
 	v := arrays[_][_]
 ]
@@ -909,7 +909,7 @@ file_system_violations := [v |
 		["7.3.1: Registry Editor - Administrators only" | not regedit_access_restricted],
 		["7.3.2: Command Prompt - Users: Access allowed" | not cmd_access_allowed],
 		["7.3.3: Control Panel - Users: Access allowed" | not control_panel_access_allowed],
-		["7.3.4: Run command - Users: Access allowed" | not run_command_access_allowed]
+		["7.3.4: Run command - Users: Access allowed" | not run_command_access_allowed],
 	]
 	v := arrays[_][_]
 ]
@@ -988,7 +988,7 @@ run_command_access_allowed if {
 administrative_templates_violations := [v |
 	arrays := [
 		computer_config_violations,
-		user_config_violations
+		user_config_violations,
 	]
 	v := arrays[_][_]
 ]
@@ -1021,7 +1021,7 @@ computer_config_violations := [v |
 		["8.1.23: Configure system restore point creation frequency - Enabled" | not system_restore_frequency_enabled],
 		["8.1.24: Turn off access to the Store - Enabled" | not store_access_disabled],
 		["8.1.25: Turn off the Store application - Enabled" | not store_application_disabled],
-		["8.1.26: Turn off Automatic Download and Install of updates - Disabled" | not automatic_updates_enabled]
+		["8.1.26: Turn off Automatic Download and Install of updates - Disabled" | not automatic_updates_enabled],
 	]
 	v := arrays[_][_]
 ]
@@ -1164,7 +1164,7 @@ user_config_violations := [v |
 		["8.2.23: Turn off all location privacy settings - Enabled" | not location_privacy_disabled],
 		["8.2.24: Configure Authenticated Proxy usage for Connected User Experience and Telemetry - Enabled: Disable Authenticated Proxy usage" | not authenticated_proxy_disabled],
 		["8.2.25: Do not show feedback notifications - Enabled" | not feedback_notifications_disabled],
-		["8.2.26: Turn off Automatic Download and Install of updates - Disabled" | not user_automatic_updates_enabled]
+		["8.2.26: Turn off Automatic Download and Install of updates - Disabled" | not user_automatic_updates_enabled],
 	]
 	v := arrays[_][_]
 ]
@@ -1283,7 +1283,7 @@ windows_defender_violations := [v |
 		["9.5: Scan all downloaded files and attachments - Enabled" | not scan_downloads_enabled],
 		["9.6: Turn on behavior monitoring - Enabled" | not behavior_monitoring_enabled],
 		["9.7: Turn on process scanning whenever real-time protection is enabled - Enabled" | not process_scanning_enabled],
-		["9.8: Configure local setting override for reporting to Microsoft MAPS - Disabled" | not maps_override_disabled]
+		["9.8: Configure local setting override for reporting to Microsoft MAPS - Disabled" | not maps_override_disabled],
 	]
 	v := arrays[_][_]
 ]
@@ -1330,7 +1330,7 @@ windows_firewall_violations := [v |
 	arrays := [
 		domain_firewall_violations,
 		private_firewall_violations,
-		public_firewall_violations
+		public_firewall_violations,
 	]
 	v := arrays[_][_]
 ]
@@ -1339,7 +1339,7 @@ windows_firewall_violations := [v |
 domain_firewall_violations := [v |
 	arrays := [
 		["10.1.1: Domain Profile: Firewall state - On" | not domain_firewall_on],
-		["10.1.2: Domain Profile: Inbound connections - Block (default)" | not domain_inbound_block]
+		["10.1.2: Domain Profile: Inbound connections - Block (default)" | not domain_inbound_block],
 	]
 	v := arrays[_][_]
 ]
@@ -1356,7 +1356,7 @@ domain_inbound_block if {
 private_firewall_violations := [v |
 	arrays := [
 		["10.2.1: Private Profile: Firewall state - On" | not private_firewall_on],
-		["10.2.2: Private Profile: Inbound connections - Block (default)" | not private_inbound_block]
+		["10.2.2: Private Profile: Inbound connections - Block (default)" | not private_inbound_block],
 	]
 	v := arrays[_][_]
 ]
@@ -1373,7 +1373,7 @@ private_inbound_block if {
 public_firewall_violations := [v |
 	arrays := [
 		["10.3.1: Public Profile: Firewall state - On" | not public_firewall_on],
-		["10.3.2: Public Profile: Inbound connections - Block (default)" | not public_inbound_block]
+		["10.3.2: Public Profile: Inbound connections - Block (default)" | not public_inbound_block],
 	]
 	v := arrays[_][_]
 ]
@@ -1390,7 +1390,7 @@ public_inbound_block if {
 advanced_audit_violations := [v |
 	arrays := [
 		["11.1: Audit Policy: Account Logon: Credential Validation - Success and Failure" | not credential_validation_audit],
-		["11.2: Audit Policy: Account Management: User Account Management - Success and Failure" | not user_account_mgmt_audit]
+		["11.2: Audit Policy: Account Management: User Account Management - Success and Failure" | not user_account_mgmt_audit],
 	]
 	v := arrays[_][_]
 ]

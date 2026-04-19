@@ -48,11 +48,19 @@ domains_passing := count([d |
 ])
 
 # Individual safeguard scores (from security rule)
-_admin_score := 1 if { security_rule.administrative_safeguards_compliant } else := 0
-_phys_score := 1 if { security_rule.physical_safeguards_compliant } else := 0
-_tech_score := 1 if { security_rule.technical_safeguards_compliant } else := 0
+_admin_score := 1 if security_rule.administrative_safeguards_compliant
 
-security_safeguards_score := ((_admin_score + _phys_score + _tech_score) * 100) / 3
+else := 0
+
+_phys_score := 1 if security_rule.physical_safeguards_compliant
+
+else := 0
+
+_tech_score := 1 if security_rule.technical_safeguards_compliant
+
+else := 0
+
+security_safeguards_score := (((_admin_score + _phys_score) + _tech_score) * 100) / 3
 
 # =============================================================================
 # FULL COMPLIANCE REPORT

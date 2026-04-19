@@ -89,7 +89,7 @@ communication_monitoring_enabled if {
 # Review communication link logs regularly
 communication_log_review if {
 	last_review_ns := time.parse_rfc3339_ns(input.communication_monitoring.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 35 # align with CIP-007 review frequency
 }
 
@@ -123,14 +123,14 @@ backup_communication_protected if {
 # Review communication security plan at least every 15 calendar months
 communication_plan_current if {
 	last_review_ns := time.parse_rfc3339_ns(input.control_center_communications.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 
 # Test communication protection methods
 communication_protection_tested if {
 	last_test_ns := time.parse_rfc3339_ns(input.control_center_communications.last_test_date)
-	test_age_days := (time.now_ns() - last_test_ns) / (24 * 60 * 60 * 1000000000)
+	test_age_days := (time.now_ns() - last_test_ns) / (((24 * 60) * 60) * 1000000000)
 	test_age_days <= 455
 	input.control_center_communications.test_documented == true
 }

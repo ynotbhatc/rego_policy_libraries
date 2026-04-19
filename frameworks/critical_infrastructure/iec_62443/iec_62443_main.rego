@@ -50,46 +50,46 @@ import data.iec_62443.part3_2
 # ---------------------------------------------------------------------------
 
 part2_violations := array.concat(
-    array.concat(
-        [v | some v in part2_1.violations],
-        [v | some v in part2_3.violations]
-    ),
-    [v | some v in part2_4.violations]
+	array.concat(
+		[v | some v in part2_1.violations],
+		[v | some v in part2_3.violations],
+	),
+	[v | some v in part2_4.violations],
 )
 
 part3_violations_fr1_fr2 := array.concat(
-    [v | some v in fr1.violations],
-    [v | some v in fr2.violations]
+	[v | some v in fr1.violations],
+	[v | some v in fr2.violations],
 )
 
 part3_violations_fr3_fr4 := array.concat(
-    [v | some v in fr3.violations],
-    [v | some v in fr4.violations]
+	[v | some v in fr3.violations],
+	[v | some v in fr4.violations],
 )
 
 part3_violations_fr5_fr6 := array.concat(
-    [v | some v in fr5.violations],
-    [v | some v in fr6.violations]
+	[v | some v in fr5.violations],
+	[v | some v in fr6.violations],
 )
 
 part3_violations_fr7_risk := array.concat(
-    [v | some v in fr7.violations],
-    [v | some v in part3_2.violations]
+	[v | some v in fr7.violations],
+	[v | some v in part3_2.violations],
 )
 
 part3_violations_group1 := array.concat(
-    part3_violations_fr1_fr2,
-    part3_violations_fr3_fr4
+	part3_violations_fr1_fr2,
+	part3_violations_fr3_fr4,
 )
 
 part3_violations_group2 := array.concat(
-    part3_violations_fr5_fr6,
-    part3_violations_fr7_risk
+	part3_violations_fr5_fr6,
+	part3_violations_fr7_risk,
 )
 
 part3_violations := array.concat(
-    part3_violations_group1,
-    part3_violations_group2
+	part3_violations_group1,
+	part3_violations_group2,
 )
 
 all_violations := array.concat(part2_violations, part3_violations)
@@ -100,71 +100,81 @@ all_violations := array.concat(part2_violations, part3_violations)
 
 default iec_62443_compliant := false
 
-iec_62443_compliant if { count(all_violations) == 0 }
+iec_62443_compliant if count(all_violations) == 0
 
 # ---------------------------------------------------------------------------
 # FR-level compliance flags
 # ---------------------------------------------------------------------------
 
 default fr1_compliant := false
+
 default fr2_compliant := false
+
 default fr3_compliant := false
+
 default fr4_compliant := false
+
 default fr5_compliant := false
+
 default fr6_compliant := false
+
 default fr7_compliant := false
 
-fr1_compliant if { fr1.compliant }
-fr2_compliant if { fr2.compliant }
-fr3_compliant if { fr3.compliant }
-fr4_compliant if { fr4.compliant }
-fr5_compliant if { fr5.compliant }
-fr6_compliant if { fr6.compliant }
-fr7_compliant if { fr7.compliant }
+fr1_compliant if fr1.compliant
+
+fr2_compliant if fr2.compliant
+
+fr3_compliant if fr3.compliant
+
+fr4_compliant if fr4.compliant
+
+fr5_compliant if fr5.compliant
+
+fr6_compliant if fr6.compliant
+
+fr7_compliant if fr7.compliant
 
 # ---------------------------------------------------------------------------
 # Part 2 compliance flags
 # ---------------------------------------------------------------------------
 
 default part2_1_compliant := false
+
 default part2_3_compliant := false
+
 default part2_4_compliant := false
+
 default part3_2_compliant := false
 
-part2_1_compliant if { part2_1.compliant }
-part2_3_compliant if { part2_3.compliant }
-part2_4_compliant if { part2_4.compliant }
-part3_2_compliant if { part3_2.compliant }
+part2_1_compliant if part2_1.compliant
+
+part2_3_compliant if part2_3.compliant
+
+part2_4_compliant if part2_4.compliant
+
+part3_2_compliant if part3_2.compliant
 
 # ---------------------------------------------------------------------------
 # Compliance scoring
 # ---------------------------------------------------------------------------
 
 passing_frs := count([fr |
-    fr := [
-        fr1_compliant,
-        fr2_compliant,
-        fr3_compliant,
-        fr4_compliant,
-        fr5_compliant,
-        fr6_compliant,
-        fr7_compliant,
-    ][_]
-    fr == true
+	fr := [
+		fr1_compliant,
+		fr2_compliant,
+		fr3_compliant,
+		fr4_compliant,
+		fr5_compliant,
+		fr6_compliant,
+		fr7_compliant,
+	][_]
+	fr == true
 ])
 
 # Total SRs across all FRs: FR1=13, FR2=12, FR3=9, FR4=3, FR5=4, FR6=2, FR7=8 = 51
 total_srs := 51
 
-passing_srs := (
-    fr1.compliance_report.passing_srs +
-    fr2.compliance_report.passing_srs +
-    fr3.compliance_report.passing_srs +
-    fr4.compliance_report.passing_srs +
-    fr5.compliance_report.passing_srs +
-    fr6.compliance_report.passing_srs +
-    fr7.compliance_report.passing_srs
-)
+passing_srs := (((((fr1.compliance_report.passing_srs + fr2.compliance_report.passing_srs) + fr3.compliance_report.passing_srs) + fr4.compliance_report.passing_srs) + fr5.compliance_report.passing_srs) + fr6.compliance_report.passing_srs) + fr7.compliance_report.passing_srs
 
 sr_compliance_score := round((passing_srs / total_srs) * 100)
 
@@ -175,82 +185,78 @@ fr_compliance_score := round((passing_frs / 7) * 100)
 # ---------------------------------------------------------------------------
 
 iec_62443_compliance_report := {
-    "standard":             "IEC 62443",
-    "full_title":           "Security for Industrial Automation and Control Systems",
-    "target_sl":            input.target_sl,
-    "compliant":            iec_62443_compliant,
-    "total_violations":     count(all_violations),
-    "fr_compliance_score":  fr_compliance_score,
-    "sr_compliance_score":  sr_compliance_score,
-    "passing_frs":          passing_frs,
-    "total_frs":            7,
-    "passing_srs":          passing_srs,
-    "total_srs":            total_srs,
-
-    "part3_3_foundational_requirements": {
-        "FR1_identification_authentication": {
-            "compliant":   fr1_compliant,
-            "total_srs":   13,
-            "passing_srs": fr1.compliance_report.passing_srs,
-            "violations":  fr1.violations,
-        },
-        "FR2_use_control": {
-            "compliant":   fr2_compliant,
-            "total_srs":   12,
-            "passing_srs": fr2.compliance_report.passing_srs,
-            "violations":  fr2.violations,
-        },
-        "FR3_system_integrity": {
-            "compliant":   fr3_compliant,
-            "total_srs":   9,
-            "passing_srs": fr3.compliance_report.passing_srs,
-            "violations":  fr3.violations,
-        },
-        "FR4_data_confidentiality": {
-            "compliant":   fr4_compliant,
-            "total_srs":   3,
-            "passing_srs": fr4.compliance_report.passing_srs,
-            "violations":  fr4.violations,
-        },
-        "FR5_restricted_data_flow": {
-            "compliant":   fr5_compliant,
-            "total_srs":   4,
-            "passing_srs": fr5.compliance_report.passing_srs,
-            "violations":  fr5.violations,
-        },
-        "FR6_timely_response": {
-            "compliant":   fr6_compliant,
-            "total_srs":   2,
-            "passing_srs": fr6.compliance_report.passing_srs,
-            "violations":  fr6.violations,
-        },
-        "FR7_resource_availability": {
-            "compliant":   fr7_compliant,
-            "total_srs":   8,
-            "passing_srs": fr7.compliance_report.passing_srs,
-            "violations":  fr7.violations,
-        },
-    },
-
-    "part2_management_requirements": {
-        "part2_1_security_management": {
-            "compliant":   part2_1_compliant,
-            "violations":  part2_1.violations,
-        },
-        "part2_3_patch_management": {
-            "compliant":   part2_3_compliant,
-            "violations":  part2_3.violations,
-        },
-        "part2_4_service_provider": {
-            "compliant":   part2_4_compliant,
-            "violations":  part2_4.violations,
-        },
-    },
-
-    "part3_2_risk_assessment": {
-        "compliant":   part3_2_compliant,
-        "violations":  part3_2.violations,
-    },
-
-    "all_violations": all_violations,
+	"standard": "IEC 62443",
+	"full_title": "Security for Industrial Automation and Control Systems",
+	"target_sl": input.target_sl,
+	"compliant": iec_62443_compliant,
+	"total_violations": count(all_violations),
+	"fr_compliance_score": fr_compliance_score,
+	"sr_compliance_score": sr_compliance_score,
+	"passing_frs": passing_frs,
+	"total_frs": 7,
+	"passing_srs": passing_srs,
+	"total_srs": total_srs,
+	"part3_3_foundational_requirements": {
+		"FR1_identification_authentication": {
+			"compliant": fr1_compliant,
+			"total_srs": 13,
+			"passing_srs": fr1.compliance_report.passing_srs,
+			"violations": fr1.violations,
+		},
+		"FR2_use_control": {
+			"compliant": fr2_compliant,
+			"total_srs": 12,
+			"passing_srs": fr2.compliance_report.passing_srs,
+			"violations": fr2.violations,
+		},
+		"FR3_system_integrity": {
+			"compliant": fr3_compliant,
+			"total_srs": 9,
+			"passing_srs": fr3.compliance_report.passing_srs,
+			"violations": fr3.violations,
+		},
+		"FR4_data_confidentiality": {
+			"compliant": fr4_compliant,
+			"total_srs": 3,
+			"passing_srs": fr4.compliance_report.passing_srs,
+			"violations": fr4.violations,
+		},
+		"FR5_restricted_data_flow": {
+			"compliant": fr5_compliant,
+			"total_srs": 4,
+			"passing_srs": fr5.compliance_report.passing_srs,
+			"violations": fr5.violations,
+		},
+		"FR6_timely_response": {
+			"compliant": fr6_compliant,
+			"total_srs": 2,
+			"passing_srs": fr6.compliance_report.passing_srs,
+			"violations": fr6.violations,
+		},
+		"FR7_resource_availability": {
+			"compliant": fr7_compliant,
+			"total_srs": 8,
+			"passing_srs": fr7.compliance_report.passing_srs,
+			"violations": fr7.violations,
+		},
+	},
+	"part2_management_requirements": {
+		"part2_1_security_management": {
+			"compliant": part2_1_compliant,
+			"violations": part2_1.violations,
+		},
+		"part2_3_patch_management": {
+			"compliant": part2_3_compliant,
+			"violations": part2_3.violations,
+		},
+		"part2_4_service_provider": {
+			"compliant": part2_4_compliant,
+			"violations": part2_4.violations,
+		},
+	},
+	"part3_2_risk_assessment": {
+		"compliant": part3_2_compliant,
+		"violations": part3_2.violations,
+	},
+	"all_violations": all_violations,
 }

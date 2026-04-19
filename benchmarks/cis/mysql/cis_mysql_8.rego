@@ -22,7 +22,7 @@ violations := [v |
 		auditing_logging_violations,
 		authentication_violations,
 		network_violations,
-		replication_violations
+		replication_violations,
 	]
 	v := arrays[_][_]
 ]
@@ -38,41 +38,41 @@ compliance_report := {
 	"sections": {
 		"installation": {
 			"violations": count(installation_violations),
-			"controls": 8
+			"controls": 8,
 		},
 		"mysql_configuration": {
 			"violations": count(mysql_configuration_violations),
-			"controls": 22
+			"controls": 22,
 		},
 		"filesystem_permissions": {
 			"violations": count(filesystem_permissions_violations),
-			"controls": 12
+			"controls": 12,
 		},
 		"general": {
 			"violations": count(general_violations),
-			"controls": 28
+			"controls": 28,
 		},
 		"mysql_permissions": {
 			"violations": count(mysql_permissions_violations),
-			"controls": 18
+			"controls": 18,
 		},
 		"auditing_logging": {
 			"violations": count(auditing_logging_violations),
-			"controls": 24
+			"controls": 24,
 		},
 		"authentication": {
 			"violations": count(authentication_violations),
-			"controls": 16
+			"controls": 16,
 		},
 		"network": {
 			"violations": count(network_violations),
-			"controls": 14
+			"controls": 14,
 		},
 		"replication": {
 			"violations": count(replication_violations),
-			"controls": 14
-		}
-	}
+			"controls": 14,
+		},
+	},
 }
 
 # Section 1: Installation and Planning
@@ -85,7 +85,7 @@ installation_violations := [v |
 		["1.5: Disable Interactive Login" | not interactive_login_disabled],
 		["1.6: Verify That 'MYSQL_PWD' Is Not Set In Users' Profiles" | not mysql_pwd_not_in_profiles],
 		["1.7: Verify That the 'mysql' Database Is Not Accessible by Unauthorized Users" | not mysql_db_access_restricted],
-		["1.8: Place MySQL Logs on Non-System Partitions" | not logs_on_non_system_partitions]
+		["1.8: Place MySQL Logs on Non-System Partitions" | not logs_on_non_system_partitions],
 	]
 	v := arrays[_][_]
 ]
@@ -132,7 +132,7 @@ logs_on_non_system_partitions if {
 	log_bin := input.mysql.config.log_bin
 	general_log_file := input.mysql.config.general_log_file
 	slow_query_log_file := input.mysql.config.slow_query_log_file
-	
+
 	not startswith(log_bin, "/")
 	not startswith(general_log_file, "/var")
 	not startswith(slow_query_log_file, "/var")
@@ -162,7 +162,7 @@ mysql_configuration_violations := [v |
 		["2.19: Ensure 'validate_password_number_count' Is Configured" | not number_count_configured],
 		["2.20: Ensure 'validate_password_special_char_count' Is Configured" | not special_char_count_configured],
 		["2.21: Ensure No Wildcards In User Hostnames" | not no_wildcards_in_hostnames],
-		["2.22: Ensure No Anonymous Accounts Exist" | not no_anonymous_accounts]
+		["2.22: Ensure No Anonymous Accounts Exist" | not no_anonymous_accounts],
 	]
 	v := arrays[_][_]
 ]
@@ -283,7 +283,7 @@ filesystem_permissions_violations := [v |
 		["3.9: Ensure 'plugin_dir' Has Appropriate Permissions" | not plugin_dir_permissions_correct],
 		["3.10: Ensure 'mysql' Directory Has Appropriate Permissions" | not mysql_dir_permissions_correct],
 		["3.11: Ensure 'mysql' Binary Has Appropriate Permissions" | not mysql_binary_permissions_correct],
-		["3.12: Ensure 'mysqld' Binary Has Appropriate Permissions" | not mysqld_binary_permissions_correct]
+		["3.12: Ensure 'mysqld' Binary Has Appropriate Permissions" | not mysqld_binary_permissions_correct],
 	]
 	v := arrays[_][_]
 ]
@@ -402,7 +402,7 @@ general_violations := [v |
 		["4.25: Ensure 'log_slave_updates' Is Enabled" | not log_slave_updates_enabled],
 		["4.26: Ensure 'master_info_repository' Is Set to 'TABLE'" | not master_info_repository_table],
 		["4.27: Ensure 'relay_log_info_repository' Is Set to 'TABLE'" | not relay_log_info_repository_table],
-		["4.28: Ensure Binary and Relay Logs Are Encrypted" | not binary_relay_logs_encrypted]
+		["4.28: Ensure Binary and Relay Logs Are Encrypted" | not binary_relay_logs_encrypted],
 	]
 	v := arrays[_][_]
 ]
@@ -547,7 +547,7 @@ mysql_permissions_violations := [v |
 		["5.15: Ensure No Duplicate MySQL User Accounts Exist" | not no_duplicate_users],
 		["5.16: Ensure Password Expiration Is Set For All Users" | not password_expiration_set],
 		["5.17: Ensure All Users Are Assigned to Appropriate Roles" | not users_assigned_roles],
-		["5.18: Ensure Administrative Users Are Separated From Application Users" | not admin_app_users_separated]
+		["5.18: Ensure Administrative Users Are Separated From Application Users" | not admin_app_users_separated],
 	]
 	v := arrays[_][_]
 ]
@@ -667,7 +667,7 @@ admin_app_users_separated if {
 	users := input.mysql.users
 	admin_users := [u | u := users[_]; u.user_type == "admin"]
 	app_users := [u | u := users[_]; u.user_type == "application"]
-	
+
 	admin_app_overlap := [u | u := admin_users[_]; u.user in [app.user | app := app_users[_]]]
 	count(admin_app_overlap) == 0
 }
@@ -698,7 +698,7 @@ auditing_logging_violations := [v |
 		["6.21: Ensure 'sync_binlog' Is Set to 1" | not sync_binlog_1],
 		["6.22: Ensure 'expire_logs_days' Is Set to 30 or Less" | not expire_logs_days_30],
 		["6.23: Ensure 'max_binlog_size' Is Set" | not max_binlog_size_set],
-		["6.24: Ensure audit plugin Is Active" | not audit_plugin_active]
+		["6.24: Ensure audit plugin Is Active" | not audit_plugin_active],
 	]
 	v := arrays[_][_]
 ]
@@ -713,7 +713,7 @@ log_files_non_system_partition if {
 	log_error := input.mysql.config.log_error
 	general_log_file := input.mysql.config.general_log_file
 	slow_query_log_file := input.mysql.config.slow_query_log_file
-	
+
 	not startswith(log_error, "/var")
 	not startswith(general_log_file, "/var")
 	not startswith(slow_query_log_file, "/var")
@@ -742,12 +742,14 @@ audit_log_connection_policy_set if {
 
 audit_log_exclude_accounts_configured if {
 	exclude_accounts := input.mysql.config.audit_log_exclude_accounts
+
 	# Should exclude system accounts but not user accounts
 	"mysql.sys@localhost" in exclude_accounts
 }
 
 audit_log_include_accounts_configured if {
 	include_accounts := input.mysql.config.audit_log_include_accounts
+
 	# Should include critical user accounts
 	count(include_accounts) > 0
 }
@@ -762,7 +764,7 @@ log_files_not_tmp if {
 	log_error := input.mysql.config.log_error
 	general_log_file := input.mysql.config.general_log_file
 	slow_query_log_file := input.mysql.config.slow_query_log_file
-	
+
 	not startswith(log_error, "/tmp")
 	not startswith(general_log_file, "/tmp")
 	not startswith(slow_query_log_file, "/tmp")
@@ -843,7 +845,7 @@ authentication_violations := [v |
 		["7.13: Ensure 'default_authentication_plugin' Is Set" | not default_authentication_plugin_set],
 		["7.14: Ensure SHA256 Password Authentication Plugin Is Used" | not sha256_password_plugin_used],
 		["7.15: Ensure Caching SHA2 Authentication Plugin Is Used" | not caching_sha2_plugin_used],
-		["7.16: Ensure Connection Control Plugin Is Installed and Active" | not connection_control_plugin_active]
+		["7.16: Ensure Connection Control Plugin Is Installed and Active" | not connection_control_plugin_active],
 	]
 	v := arrays[_][_]
 ]
@@ -956,7 +958,7 @@ network_violations := [v |
 		["8.11: Ensure 'ssl_cipher' Is Configured with Secure Ciphers" | not ssl_cipher_secure],
 		["8.12: Ensure Connection Limits Are Set" | not connection_limits_set],
 		["8.13: Ensure 'connect_timeout' Is Set to 10 or Less" | not connect_timeout_10],
-		["8.14: Ensure 'interactive_timeout' and 'wait_timeout' Are Set" | not timeout_values_set]
+		["8.14: Ensure 'interactive_timeout' and 'wait_timeout' Are Set" | not timeout_values_set],
 	]
 	v := arrays[_][_]
 ]
@@ -1019,6 +1021,7 @@ tls_version_secure if {
 
 ssl_cipher_secure if {
 	ssl_cipher := input.mysql.config.ssl_cipher
+
 	# Ensure no weak ciphers
 	not contains(ssl_cipher, "DES")
 	not contains(ssl_cipher, "RC4")
@@ -1057,7 +1060,7 @@ replication_violations := [v |
 		["9.11: Ensure 'log_slave_updates' Is Enabled" | not log_slave_updates_enabled_repl],
 		["9.12: Ensure 'slave_compressed_protocol' Is Disabled" | not slave_compressed_protocol_disabled],
 		["9.13: Ensure 'gtid_mode' Is Enabled" | not gtid_mode_enabled],
-		["9.14: Ensure 'enforce_gtid_consistency' Is Enabled" | not enforce_gtid_consistency_enabled]
+		["9.14: Ensure 'enforce_gtid_consistency' Is Enabled" | not enforce_gtid_consistency_enabled],
 	]
 	v := arrays[_][_]
 ]

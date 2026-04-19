@@ -37,6 +37,7 @@ baseline_configuration_exists(system) if {
 	baseline.current == true
 	baseline.authorized == true
 	baseline.change_controlled == true
+
 	# Baseline must include: OS/firmware, commercially available software, custom software,
 	# logical network accessible ports, security patches
 	baseline.includes_os_firmware == true
@@ -99,7 +100,7 @@ configuration_monitoring_timely if {
 		system.impact_categorization in ["high", "medium"]
 		sys_monitoring := input.configuration_monitoring[system.system_id]
 		sys_monitoring.last_review_date
-		review_age_days := (time.now_ns() - sys_monitoring.last_review_date) / (24 * 60 * 60 * 1000000000)
+		review_age_days := (time.now_ns() - sys_monitoring.last_review_date) / (((24 * 60) * 60) * 1000000000)
 		review_age_days <= 35
 	}
 }
@@ -120,7 +121,7 @@ vulnerability_assessments_performed if {
 
 vulnerability_assessment_current(system) if {
 	assessment := input.vulnerability_assessments[system.system_id]
-	assessment_age_days := (time.now_ns() - assessment.completion_date) / (24 * 60 * 60 * 1000000000)
+	assessment_age_days := (time.now_ns() - assessment.completion_date) / (((24 * 60) * 60) * 1000000000)
 	assessment_age_days <= 455 # 15 calendar months
 	assessment.documented == true
 	assessment.remediation_plan_exists == true

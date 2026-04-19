@@ -23,7 +23,7 @@ physical_security_plan_documented if {
 
 physical_security_plan_current if {
 	last_review_ns := time.parse_rfc3339_ns(input.physical_security_plan.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455 # 15 calendar months
 }
 
@@ -81,7 +81,7 @@ visitor_control_program_established if {
 
 visitor_log_reviewed if {
 	last_review_ns := time.parse_rfc3339_ns(input.visitor_control_program.last_log_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 90
 }
 
@@ -153,7 +153,7 @@ pca_physically_protected if {
 # R3 - Perform quarterly reviews of Physical Security Plan and access controls
 quarterly_review_performed if {
 	last_review_ns := time.parse_rfc3339_ns(input.physical_security_plan.last_quarterly_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 92
 }
 
@@ -162,7 +162,7 @@ physical_access_authorization_reviewed if {
 	violations := [person |
 		person := input.personnel[_]
 		person.access_level == "authorized_unescorted_physical_access"
-		review_age_days := (time.now_ns() - person.physical_access_authorization.last_review_date) / (24 * 60 * 60 * 1000000000)
+		review_age_days := (time.now_ns() - person.physical_access_authorization.last_review_date) / (((24 * 60) * 60) * 1000000000)
 		review_age_days > 455
 	]
 	count(violations) == 0

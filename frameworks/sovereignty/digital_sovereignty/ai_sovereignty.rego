@@ -207,7 +207,7 @@ ai_bias_audit_conducted if {
 	input.ai_bias_fairness.bias_audit_policy_documented == true
 	input.ai_bias_fairness.audit_findings_documented == true
 	input.ai_bias_fairness.remediation_process_documented == true
-	max_age_ns := input.ai_bias_fairness.audit_frequency_days * 24 * 3600 * 1000000000
+	max_age_ns := ((input.ai_bias_fairness.audit_frequency_days * 24) * 3600) * 1000000000
 	audit_ns := time.parse_rfc3339_ns(input.ai_bias_fairness.last_audit_date)
 	audit_ns >= time.now_ns() - max_age_ns
 }

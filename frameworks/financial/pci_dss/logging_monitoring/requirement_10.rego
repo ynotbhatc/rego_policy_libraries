@@ -228,9 +228,7 @@ pci_requirement_10_findings := {
 		"periodic_review": periodic_log_review,
 		"exceptions_followed_up": log_exceptions_followed_up,
 	},
-	"requirement_10_5": {
-		"retention_12_months": log_retention,
-	},
+	"requirement_10_5": {"retention_12_months": log_retention},
 	"requirement_10_6": {
 		"time_synchronization": time_synchronization,
 		"time_data_protected": time_data_protected,

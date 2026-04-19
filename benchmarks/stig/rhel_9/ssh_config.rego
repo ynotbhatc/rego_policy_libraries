@@ -50,7 +50,9 @@ ssh_no_root_login if {
 	lower(input.ssh_config.PermitRootLogin) == "forced-commands-only"
 }
 
-status_rhel_09_255010 := "Not_a_Finding" if { ssh_no_root_login } else := "Open"
+status_rhel_09_255010 := "Not_a_Finding" if ssh_no_root_login
+
+else := "Open"
 
 finding_rhel_09_255010 := {
 	"vuln_id": "V-257985",
@@ -70,10 +72,12 @@ ssh_protocol_2 if {
 }
 
 ssh_protocol_2 if {
-	not input.ssh_config.Protocol  # Protocol 2 is default in OpenSSH 7+
+	not input.ssh_config.Protocol # Protocol 2 is default in OpenSSH 7+
 }
 
-status_rhel_09_255015 := "Not_a_Finding" if { ssh_protocol_2 } else := "Open"
+status_rhel_09_255015 := "Not_a_Finding" if ssh_protocol_2
+
+else := "Open"
 
 finding_rhel_09_255015 := {
 	"vuln_id": "V-257986",
@@ -95,7 +99,9 @@ ssh_fips_ciphers if {
 	count(ciphers) > 0
 }
 
-status_rhel_09_255020 := "Not_a_Finding" if { ssh_fips_ciphers } else := "Open"
+status_rhel_09_255020 := "Not_a_Finding" if ssh_fips_ciphers
+
+else := "Open"
 
 finding_rhel_09_255020 := {
 	"vuln_id": "V-257987",
@@ -121,7 +127,9 @@ ssh_fips_macs if {
 	count(macs) > 0
 }
 
-status_rhel_09_255025 := "Not_a_Finding" if { ssh_fips_macs } else := "Open"
+status_rhel_09_255025 := "Not_a_Finding" if ssh_fips_macs
+
+else := "Open"
 
 finding_rhel_09_255025 := {
 	"vuln_id": "V-257988",
@@ -140,7 +148,9 @@ ssh_no_empty_passwords if {
 	lower(input.ssh_config.PermitEmptyPasswords) == "no"
 }
 
-status_rhel_09_255030 := "Not_a_Finding" if { ssh_no_empty_passwords } else := "Open"
+status_rhel_09_255030 := "Not_a_Finding" if ssh_no_empty_passwords
+
+else := "Open"
 
 finding_rhel_09_255030 := {
 	"vuln_id": "V-257989",
@@ -159,7 +169,9 @@ ssh_no_hostbased_auth if {
 	lower(input.ssh_config.HostbasedAuthentication) == "no"
 }
 
-status_rhel_09_255035 := "Not_a_Finding" if { ssh_no_hostbased_auth } else := "Open"
+status_rhel_09_255035 := "Not_a_Finding" if ssh_no_hostbased_auth
+
+else := "Open"
 
 finding_rhel_09_255035 := {
 	"vuln_id": "V-257990",
@@ -179,7 +191,9 @@ ssh_max_auth_tries_ok if {
 	tries <= 4
 }
 
-status_rhel_09_255040 := "Not_a_Finding" if { ssh_max_auth_tries_ok } else := "Open"
+status_rhel_09_255040 := "Not_a_Finding" if ssh_max_auth_tries_ok
+
+else := "Open"
 
 finding_rhel_09_255040 := {
 	"vuln_id": "V-257991",
@@ -200,7 +214,9 @@ ssh_client_alive_interval_ok if {
 	interval > 0
 }
 
-status_rhel_09_255045 := "Not_a_Finding" if { ssh_client_alive_interval_ok } else := "Open"
+status_rhel_09_255045 := "Not_a_Finding" if ssh_client_alive_interval_ok
+
+else := "Open"
 
 finding_rhel_09_255045 := {
 	"vuln_id": "V-257992",
@@ -220,7 +236,9 @@ ssh_client_alive_count_ok if {
 	count_max <= 1
 }
 
-status_rhel_09_255050 := "Not_a_Finding" if { ssh_client_alive_count_ok } else := "Open"
+status_rhel_09_255050 := "Not_a_Finding" if ssh_client_alive_count_ok
+
+else := "Open"
 
 finding_rhel_09_255050 := {
 	"vuln_id": "V-257993",
@@ -239,7 +257,9 @@ ssh_strict_modes if {
 	lower(input.ssh_config.StrictModes) == "yes"
 }
 
-status_rhel_09_255055 := "Not_a_Finding" if { ssh_strict_modes } else := "Open"
+status_rhel_09_255055 := "Not_a_Finding" if ssh_strict_modes
+
+else := "Open"
 
 finding_rhel_09_255055 := {
 	"vuln_id": "V-257994",
@@ -258,7 +278,9 @@ ssh_no_compression if {
 	lower(input.ssh_config.Compression) == "no"
 }
 
-status_rhel_09_255060 := "Not_a_Finding" if { ssh_no_compression } else := "Open"
+status_rhel_09_255060 := "Not_a_Finding" if ssh_no_compression
+
+else := "Open"
 
 finding_rhel_09_255060 := {
 	"vuln_id": "V-257995",
@@ -277,7 +299,9 @@ ssh_ignore_rhosts if {
 	lower(input.ssh_config.IgnoreRhosts) == "yes"
 }
 
-status_rhel_09_255065 := "Not_a_Finding" if { ssh_ignore_rhosts } else := "Open"
+status_rhel_09_255065 := "Not_a_Finding" if ssh_ignore_rhosts
+
+else := "Open"
 
 finding_rhel_09_255065 := {
 	"vuln_id": "V-257996",
@@ -296,7 +320,9 @@ ssh_ignore_user_known_hosts if {
 	lower(input.ssh_config.IgnoreUserKnownHosts) == "yes"
 }
 
-status_rhel_09_255070 := "Not_a_Finding" if { ssh_ignore_user_known_hosts } else := "Open"
+status_rhel_09_255070 := "Not_a_Finding" if ssh_ignore_user_known_hosts
+
+else := "Open"
 
 finding_rhel_09_255070 := {
 	"vuln_id": "V-257997",
@@ -315,7 +341,9 @@ ssh_use_pam if {
 	lower(input.ssh_config.UsePAM) == "yes"
 }
 
-status_rhel_09_255075 := "Not_a_Finding" if { ssh_use_pam } else := "Open"
+status_rhel_09_255075 := "Not_a_Finding" if ssh_use_pam
+
+else := "Open"
 
 finding_rhel_09_255075 := {
 	"vuln_id": "V-257998",
@@ -334,7 +362,9 @@ ssh_print_last_log if {
 	lower(input.ssh_config.PrintLastLog) == "yes"
 }
 
-status_rhel_09_255080 := "Not_a_Finding" if { ssh_print_last_log } else := "Open"
+status_rhel_09_255080 := "Not_a_Finding" if ssh_print_last_log
+
+else := "Open"
 
 finding_rhel_09_255080 := {
 	"vuln_id": "V-257999",
@@ -353,7 +383,9 @@ ssh_no_x11 if {
 	lower(input.ssh_config.X11Forwarding) == "no"
 }
 
-status_rhel_09_255085 := "Not_a_Finding" if { ssh_no_x11 } else := "Open"
+status_rhel_09_255085 := "Not_a_Finding" if ssh_no_x11
+
+else := "Open"
 
 finding_rhel_09_255085 := {
 	"vuln_id": "V-258000",

@@ -18,9 +18,7 @@ violations := array.concat(
 # CIS 3.x: Kernel sysctl parameters
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.non_compliant_params
-	msg := sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s", [
-		param.parameter, param.current_value, param.expected_value, param.description,
-	])
+	msg := sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s", [param.parameter, param.current_value, param.expected_value, param.description])
 }
 
 sysctl_violations contains msg if {
