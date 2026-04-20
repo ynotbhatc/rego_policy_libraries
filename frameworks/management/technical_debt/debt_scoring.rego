@@ -469,6 +469,32 @@ _age_mult(days) := 1.25 if { days >= 30; days < 90 }
 _age_mult(days) := 1.0  if { days < 30 }
 
 # ---------------------------------------------------------------------------
+# Violation severity extractor
+#
+# object.get() requires its first argument to be an object (OPA type-checks
+# at runtime and returns undefined — not the default — when given a string).
+# Use explicit Rego clauses instead so string violations fall through to the
+# catalog default and object violations use their own severity field.
+# ---------------------------------------------------------------------------
+
+# Object violation with severity field (DS, CIS-DB-schema objects)
+_violation_sev(violation, _default) := violation.severity if {
+    not is_string(violation)
+    violation.severity
+}
+
+# String violation → use catalog default
+_violation_sev(violation, _default) := _default if {
+    is_string(violation)
+}
+
+# Object violation without severity field → use catalog default
+_violation_sev(violation, _default) := _default if {
+    not is_string(violation)
+    not violation.severity
+}
+
+# ---------------------------------------------------------------------------
 # Scored debt items — one per violation
 # Handles both string violations (all frameworks) and object violations (DS).
 # ---------------------------------------------------------------------------
@@ -481,7 +507,7 @@ debt_items contains item if {
 
     # For object violations (DS), use the object's own severity if present.
     # For string violations, use the catalog severity.
-    raw_sev  := object.get(violation, "severity", estimate.severity)
+    raw_sev  := _violation_sev(violation, estimate.severity)
     severity := _norm_severity(raw_sev)
 
     weight   := object.get(_severity_weight, severity, 1.0)
