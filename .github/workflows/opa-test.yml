@@ -26,13 +26,14 @@ jobs:
       - name: Install OPA
         run: |
           OPA_VERSION=v0.68.0
-          curl -L -o opa \
+          # Download under the original filename so sha256sum -c can find it
+          curl -L -o opa_linux_amd64_static \
             "https://github.com/open-policy-agent/opa/releases/download/${OPA_VERSION}/opa_linux_amd64_static"
           curl -L -o opa.sha256 \
             "https://github.com/open-policy-agent/opa/releases/download/${OPA_VERSION}/opa_linux_amd64_static.sha256"
           sha256sum -c opa.sha256
-          chmod +x opa
-          sudo mv opa /usr/local/bin/
+          chmod +x opa_linux_amd64_static
+          sudo mv opa_linux_amd64_static /usr/local/bin/opa
           rm -f opa.sha256
           opa version
 
