@@ -17,17 +17,25 @@ help:
 
 lint:
 	@echo "=== Checking syntax of all .rego files ==="
-	@find . -name "*.rego" -not -path "./.git/*" | sort | while read f; do \
-	  $(OPA) check "$$f" 2>&1 && echo "  OK: $$f" || echo "  FAIL: $$f"; \
-	done
-	@echo "Done."
+	@RC=0; \
+	for f in $$(find . -name "*.rego" -not -path "./.git/*" | sort); do \
+	  if $(OPA) check "$$f" 2>&1; then \
+	    echo "  OK: $$f"; \
+	  else \
+	    echo "  FAIL: $$f"; \
+	    RC=1; \
+	  fi; \
+	done; \
+	exit $$RC
 
 test:
 	@echo "=== Running OPA tests ==="
-	@find . -name "*_test.rego" -not -path "./.git/*" | while read f; do \
+	@RC=0; \
+	for f in $$(find . -name "*_test.rego" -not -path "./.git/*"); do \
 	  dir=$$(dirname $$f); \
-	  $(OPA) test $$dir -v 2>&1; \
-	done
+	  $(OPA) test $$dir -v 2>&1 || RC=1; \
+	done; \
+	exit $$RC
 
 check: lint test
 
