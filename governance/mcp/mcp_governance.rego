@@ -39,6 +39,14 @@ read_only_tools := {
     "api_credentials_read", "api_credentials_list",
     "api_organizations_read", "api_organizations_list",
     "api_users_read", "api_users_list",
+    "api_workflow_job_templates_read", "api_workflow_job_templates_list",
+    "api_workflow_job_templates_launch_read",
+    "api_workflow_jobs_read", "api_workflow_jobs_list",
+    "api_workflow_job_nodes_read", "api_workflow_job_nodes_list",
+    "api_workflow_job_template_nodes_read", "api_workflow_job_template_nodes_list",
+    "api_execution_environments_read", "api_execution_environments_list",
+    "api_schedules_read", "api_schedules_list",
+    "api_unified_job_templates_list", "api_unified_jobs_list",
 }
 
 # ---------------------------------------------------------------------------
