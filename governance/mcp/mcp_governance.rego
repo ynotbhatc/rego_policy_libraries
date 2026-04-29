@@ -42,6 +42,7 @@ read_only_tools := {
     "api_workflow_job_templates_read", "api_workflow_job_templates_list",
     "api_workflow_job_templates_launch_read",
     "api_workflow_jobs_read", "api_workflow_jobs_list",
+    "api_workflow_jobs_workflow_nodes_list",
     "api_workflow_job_nodes_read", "api_workflow_job_nodes_list",
     "api_workflow_job_template_nodes_read", "api_workflow_job_template_nodes_list",
     "api_execution_environments_read", "api_execution_environments_list",
