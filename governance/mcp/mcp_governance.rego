@@ -48,6 +48,7 @@ read_only_tools := {
     "api_execution_environments_read", "api_execution_environments_list",
     "api_schedules_read", "api_schedules_list",
     "api_unified_job_templates_list", "api_unified_jobs_list",
+    "api_job_templates_survey_spec_list",
 }
 
 # ---------------------------------------------------------------------------
@@ -154,6 +155,7 @@ risk_level := "medium" if {
     input.tool in {
         "api_job_templates_create",
         "api_job_templates_credentials_create",
+        "api_job_templates_survey_spec_create",
         "api_workflow_job_templates_create",
         "api_workflow_job_template_nodes_create",
         "api_workflow_job_template_nodes_success_nodes_create",
