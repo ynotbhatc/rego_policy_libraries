@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> **363 production-ready OPA policies** covering CIS Benchmarks, DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP, IEC 62443, HIPAA, FedRAMP, and more — all in Rego v1 syntax, ready to load into any OPA instance.
+> **396 production-ready OPA policies** covering CIS Benchmarks, DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP, IEC 62443, HIPAA, FedRAMP, and more — all in Rego v1 syntax, ready to load into any OPA instance.
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
@@ -13,11 +13,11 @@
 
 | Domain | Policies | Coverage |
 |--------|----------|----------|
-| **CIS Benchmarks + DISA STIGs** | 237 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network + RHEL 8/9 & Windows 2022 STIGs |
-| **Regulatory Frameworks** | 114 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, Digital Sovereignty |
+| **CIS Benchmarks + DISA STIGs** | 238 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network + RHEL 8/9 & Windows 2022 STIGs |
+| **Regulatory Frameworks** | 145 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty |
 | **Enforcement** | 6 | Ansible, Terraform, Dockerfile, Kubernetes, Git |
-| **Governance** | 4 | AI agent authorization, MCP tool-call enforcement |
-| **Threat Detection** | 2 | Cryptocurrency miner detection |
+| **Governance** | 6 | AI agent authorization, MCP tool-call enforcement, GEISA |
+| **Threat Detection** | 1 | Cryptocurrency miner detection |
 
 **Highlight:** CIS RHEL 9 v2.0.0 — **338/338 controls (100%)** across 14 modules.
 
@@ -63,10 +63,11 @@ rego_policy_libraries/
 │   └── stig/                    # DISA STIGs — RHEL 8/9, Ubuntu, Windows
 │
 ├── frameworks/                  # Regulatory compliance
-│   ├── federal/                 # NIST 800-53/171, CSF 2.0, AI RMF, FISMA, FedRAMP, CMMC
-│   ├── management/              # ISO 27001, SOC 2, Corporate
-│   ├── financial/               # PCI-DSS, SOX
-│   ├── privacy/                 # GDPR, HIPAA
+│   ├── federal/                 # NIST 800-53/171/800-82, CSF 2.0, AI RMF, FISMA, FedRAMP, CMMC
+│   ├── management/              # ISO 27001, SOC 2, Corporate, NCSC CAF 4.0
+│   ├── financial/               # PCI-DSS, SOX, SWIFT CSP, NY DFS, SEC Cyber
+│   ├── privacy/                 # GDPR, HIPAA, HITRUST, CFR Part 11, TISAX
+│   ├── regulatory/              # DORA, NIS2
 │   ├── critical_infrastructure/ # NERC-CIP (CIP-002–CIP-015), IEC 62443, NIST IR 7628
 │   └── sovereignty/             # Digital Sovereignty (7 domains)
 │
