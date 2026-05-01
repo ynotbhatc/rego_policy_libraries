@@ -70,6 +70,28 @@ This library gives you a **complete, working policy set on day one**, covering 2
 
 ## Quick Start
 
+### Option A — OCI bundle (recommended for production)
+
+Pull the pre-built bundle directly from GitHub Container Registry — no clone needed:
+
+```bash
+# Pull the full 397-policy bundle (632 KB)
+oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest
+
+# Start OPA with the bundle
+podman run -d --name opa -p 8181:8181 \
+  -v "$(pwd)/bundle.tar.gz:/bundle.tar.gz:ro" \
+  openpolicyagent/opa:1.10.0 run --server --addr :8181 --bundle /bundle.tar.gz
+```
+
+Versioned tags are available: `ghcr.io/ynotbhatc/rego_policy_libraries:v1.0.0`
+
+Install `oras`: https://oras.land/docs/installation
+
+---
+
+### Option B — Git clone
+
 ```bash
 # Clone
 git clone https://github.com/ynotbhatc/rego_policy_libraries.git

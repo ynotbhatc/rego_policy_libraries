@@ -1,0 +1,94 @@
+name: Publish OPA bundle to GHCR
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write   # required for ghcr.io push
+
+jobs:
+  publish:
+    name: Build and push OPA bundle
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install OPA ${{ env.OPA_VERSION }}
+        env:
+          OPA_VERSION: "1.10.0"
+        run: |
+          curl -sL -o opa \
+            "https://github.com/open-policy-agent/opa/releases/download/v${OPA_VERSION}/opa_linux_amd64_static"
+          chmod +x opa
+          sudo mv opa /usr/local/bin/opa
+          opa version
+
+      - name: Install oras ${{ env.ORAS_VERSION }}
+        env:
+          ORAS_VERSION: "1.2.2"
+        run: |
+          curl -sL "https://github.com/oras-project/oras/releases/download/v${ORAS_VERSION}/oras_${ORAS_VERSION}_linux_amd64.tar.gz" \
+            | tar -xz -C /tmp/ oras
+          sudo mv /tmp/oras /usr/local/bin/oras
+          oras version
+
+      - name: Determine image tag
+        id: tag
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            TAG="${{ github.ref_name }}"
+          else
+            TAG="latest"
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Image: ghcr.io/${{ github.repository_owner }}/rego_policy_libraries:$TAG"
+
+      - name: Build OPA bundle
+        run: |
+          opa build \
+            benchmarks/ \
+            frameworks/ \
+            enforcement/ \
+            governance/ \
+            threat_detection/ \
+            --output bundle.tar.gz
+          echo "Bundle size: $(du -sh bundle.tar.gz)"
+          echo "Rego files: $(tar -tzf bundle.tar.gz | grep -c '\.rego')"
+
+      - name: Login to GHCR
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | oras login ghcr.io \
+            -u "${{ github.actor }}" \
+            --password-stdin
+
+      - name: Push OPA bundle to GHCR
+        run: |
+          oras push \
+            "ghcr.io/${{ github.repository_owner }}/rego_policy_libraries:${{ steps.tag.outputs.tag }}" \
+            --artifact-type "application/vnd.opa.bundle" \
+            bundle.tar.gz:application/vnd.opa.bundle.layer.v1.tar+gzip \
+            --annotation "org.opencontainers.image.title=Rego Policy Libraries" \
+            --annotation "org.opencontainers.image.description=397 production-ready OPA policies: CIS Benchmarks, NERC-CIP, IEC 62443, ISO 27001, SOC 2, NIST, and 50+ frameworks" \
+            --annotation "org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}" \
+            --annotation "org.opencontainers.image.url=${{ github.server_url }}/${{ github.repository }}" \
+            --annotation "org.opencontainers.image.version=${{ steps.tag.outputs.tag }}" \
+            --annotation "org.opencontainers.image.licenses=Apache-2.0" \
+            --annotation "org.opencontainers.image.revision=${{ github.sha }}"
+
+      - name: Summary
+        run: |
+          echo "## OPA Bundle Published" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Tag:** \`${{ steps.tag.outputs.tag }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Digest:** $(oras manifest fetch ghcr.io/${{ github.repository_owner }}/rego_policy_libraries:${{ steps.tag.outputs.tag }} | python3 -c 'import json,sys; print(json.load(sys.stdin).get(\"config\",{}).get(\"digest\",\"see GHCR\"))')" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Pull this bundle" >> "$GITHUB_STEP_SUMMARY"
+          echo '```bash' >> "$GITHUB_STEP_SUMMARY"
+          echo "oras pull ghcr.io/${{ github.repository_owner }}/rego_policy_libraries:${{ steps.tag.outputs.tag }}" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
