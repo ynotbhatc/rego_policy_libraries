@@ -1,0 +1,74 @@
+name: Publish to opcr.io
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Build and push OPA bundle to opcr.io
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install OPA
+        run: |
+          curl -L -o opa https://github.com/open-policy-agent/opa/releases/download/v1.10.0/opa_linux_amd64_static
+          chmod +x opa
+          sudo mv opa /usr/local/bin/opa
+          opa version
+
+      - name: Determine image tag
+        id: tag
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            TAG="${{ github.ref_name }}"
+          else
+            TAG="latest"
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Publishing as: $TAG"
+
+      - name: Build OPA bundle
+        run: |
+          opa build \
+            benchmarks/ \
+            frameworks/ \
+            enforcement/ \
+            governance/ \
+            threat_detection/ \
+            -o bundle.tar.gz
+          echo "Bundle size: $(du -sh bundle.tar.gz)"
+
+      - name: Push to opcr.io
+        env:
+          OPCR_TOKEN: ${{ secrets.OPCR_TOKEN }}
+        run: |
+          # Install oras (OCI Registry As Storage) for pushing OPA bundles
+          ORAS_VERSION="1.2.0"
+          curl -LO "https://github.com/oras-project/oras/releases/download/v${ORAS_VERSION}/oras_${ORAS_VERSION}_linux_amd64.tar.gz"
+          tar -xzf "oras_${ORAS_VERSION}_linux_amd64.tar.gz"
+          sudo mv oras /usr/local/bin/oras
+
+          # Login to opcr.io
+          echo "$OPCR_TOKEN" | oras login opcr.io \
+            --username "${{ secrets.OPCR_USERNAME }}" \
+            --password-stdin
+
+          # Push bundle as OCI artifact
+          oras push \
+            "opcr.io/ynotbhatc/rego_policy_libraries:${{ steps.tag.outputs.tag }}" \
+            --artifact-type "application/vnd.opa.bundle" \
+            bundle.tar.gz:application/vnd.opa.bundle.layer.v1.tar+gzip
+
+          echo "Published: opcr.io/ynotbhatc/rego_policy_libraries:${{ steps.tag.outputs.tag }}"
+          echo ""
+          echo "Pull with:"
+          echo "  opa pull opcr.io/ynotbhatc/rego_policy_libraries:${{ steps.tag.outputs.tag }}"
