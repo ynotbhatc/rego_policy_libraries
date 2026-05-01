@@ -6,6 +6,51 @@
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
 [![Rego](https://img.shields.io/badge/Rego-v1-green)](https://www.openpolicyagent.org/docs/latest/policy-language/)
 [![CIS RHEL 9](https://img.shields.io/badge/CIS%20RHEL%209-338%2F338%20(100%25)-brightgreen)](benchmarks/cis/os/linux/rhel_9/)
+[![GitHub Stars](https://img.shields.io/github/stars/ynotbhatc/rego_policy_libraries?style=social)](https://github.com/ynotbhatc/rego_policy_libraries/stargazers)
+
+---
+
+## Why this repo?
+
+Writing compliance policies from scratch is expensive and error-prone. A typical enterprise deploying OPA for CIS RHEL 9 alone needs 338 individual control checks — and that's one framework for one OS.
+
+This library gives you a **complete, working policy set on day one**, covering 22 platforms, 50+ regulatory frameworks, and every major compliance standard from CIS and DISA STIGs to NERC-CIP and IEC 62443. All policies:
+
+- Use **Rego v1 syntax** (`import rego.v1`) — no deprecation warnings, forward-compatible
+- Return **structured JSON reports** (compliant, score, violations list) — wire directly to dashboards or CI
+- Are **independently loadable** — use one framework or all 396 policies; no coupling
+- Are **Apache 2.0 licensed** — use commercially without restriction
+
+> **Why not build your own?** You can — but CIS RHEL 9 alone has 338 controls across 14 sections. NERC-CIP covers 14 standards (CIP-002 through CIP-015) with 200+ requirements. IEC 62443 adds 51 System Requirements across 7 Foundational Requirements. Starting from scratch takes months. This library is that months-of-work already done.
+
+---
+
+## Coverage at a glance
+
+| Standard / Framework | Path | Controls / Requirements |
+|---------------------|------|------------------------|
+| **CIS RHEL 9 v2.0.0** | `benchmarks/cis/os/linux/rhel_9/` | **338/338 (100%)** ✅ |
+| CIS RHEL 8 | `benchmarks/cis/os/linux/rhel_8/` | Full |
+| CIS Ubuntu 22.04/24.04/20.04 | `benchmarks/cis/os/linux/ubuntu_*/` | Full |
+| CIS Windows Server 2019/2022 | `benchmarks/cis/os/windows/` | 9 sections |
+| CIS AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
+| CIS Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
+| DISA STIG RHEL 8/9, Ubuntu, Windows | `benchmarks/stig/` | Full |
+| NIST 800-53 rev5 | `frameworks/federal/nist_800_53/` | All control families |
+| NIST 800-82 (OT) | `frameworks/federal/nist_800_82/` | Full |
+| FISMA / FedRAMP / CMMC | `frameworks/federal/` | Full |
+| ISO 27001:2022 | `frameworks/management/iso27001/` | Full ISMS |
+| SOC 2 Type II | `frameworks/management/soc2/` | All TSCs |
+| PCI-DSS v4.0 | `frameworks/financial/pci_dss/` | All 12 requirements |
+| SOX ITGC | `frameworks/financial/sox/` | Full |
+| HIPAA | `frameworks/privacy/hipaa/` | Full |
+| GDPR | `frameworks/privacy/gdpr/` | Full |
+| NERC-CIP (CIP-002 – CIP-015) | `frameworks/critical_infrastructure/nerc_cip/` | 14 standards |
+| IEC 62443 (all parts) | `frameworks/critical_infrastructure/iec_62443/` | 51 SRs, SL 1–4 |
+| NIST IR 7628 (AMI / Smart Grid) | `frameworks/critical_infrastructure/ami/` | Full |
+| DORA / NIS2 | `frameworks/regulatory/` | Full |
+| NCSC CAF 4.0 | `frameworks/management/ncsc_caf/` | 23 Cyber Outcomes |
+| Digital Sovereignty | `frameworks/sovereignty/` | 7 domains |
 
 ---
 

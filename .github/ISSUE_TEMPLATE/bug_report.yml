@@ -1,0 +1,59 @@
+name: Bug report
+description: Report an incorrect policy evaluation, wrong control mapping, or Rego error
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please describe the issue as specifically as possible. Include the policy file, control ID, and what you expected vs. what you got.
+
+  - type: input
+    id: policy_file
+    attributes:
+      label: Policy file
+      description: e.g. `benchmarks/cis/os/linux/rhel_9/pam_validation.rego`
+      placeholder: "path/to/policy.rego"
+    validations:
+      required: true
+
+  - type: input
+    id: control_id
+    attributes:
+      label: Control ID (if applicable)
+      description: e.g. "CIS 5.3.2", "CIP-007 R2", "SR 1.3"
+      placeholder: "CIS 5.3.2"
+
+  - type: textarea
+    id: input_data
+    attributes:
+      label: Input data that triggers the bug
+      description: Paste the JSON input that causes the incorrect result
+      render: json
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: What should the policy return?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      description: What does the policy actually return? Include the full OPA response.
+      render: json
+    validations:
+      required: true
+
+  - type: input
+    id: opa_version
+    attributes:
+      label: OPA version
+      description: Output of `opa version`
+      placeholder: "OPA 1.10.0 ..."
+    validations:
+      required: true

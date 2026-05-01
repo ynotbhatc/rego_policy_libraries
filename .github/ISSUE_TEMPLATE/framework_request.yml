@@ -1,0 +1,60 @@
+name: Framework request
+description: Request a new compliance framework or standard
+labels: ["enhancement", "new-framework"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for requesting a new framework. Providing the information below helps us prioritize and implement it correctly.
+
+  - type: input
+    id: framework_name
+    attributes:
+      label: Framework name and version
+      description: e.g. "CIS Amazon Linux 2023 v1.0.0", "NIST SP 800-171 Rev 3"
+      placeholder: "Framework name and version"
+    validations:
+      required: true
+
+  - type: input
+    id: source_document
+    attributes:
+      label: Source document URL
+      description: Link to the public standard, benchmark PDF, or reference page
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      description: Which policy taxonomy does this fall under?
+      options:
+        - CIS Benchmark
+        - DISA STIG
+        - Federal (NIST, FISMA, FedRAMP, CMMC)
+        - Management (ISO, SOC 2, NCSC CAF)
+        - Financial (PCI-DSS, SOX, SWIFT)
+        - Privacy (GDPR, HIPAA)
+        - Critical Infrastructure (NERC-CIP, IEC 62443)
+        - Regulatory (DORA, NIS2)
+        - Enforcement (Ansible, Terraform, K8s)
+        - Governance / AI
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case (optional)
+      description: Brief description of your use case — helps with prioritization
+      placeholder: "We need to assess RHEL 9 hosts against this standard for a FedRAMP moderate authorization..."
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I'm willing to contribute a draft Rego policy for this framework
