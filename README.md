@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> **396 production-ready OPA policies** covering CIS Benchmarks, DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP, IEC 62443, HIPAA, FedRAMP, and more — all in Rego v1 syntax, ready to load into any OPA instance.
+> **444 production-ready OPA policies** covering CIS Benchmarks, DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP, IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, and more — all in Rego v1 syntax, ready to load into any OPA instance.
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
@@ -51,6 +51,11 @@ This library gives you a **complete, working policy set on day one**, covering 2
 | DORA / NIS2 | `frameworks/regulatory/` | Full |
 | NCSC CAF 4.0 | `frameworks/management/ncsc_caf/` | 23 Cyber Outcomes |
 | Digital Sovereignty | `frameworks/sovereignty/` | 7 domains |
+| **CSA CCM v4.0** | `frameworks/management/csa_ccm/` | 16 domains, 197 controls |
+| **ISO/IEC 27701:2019** | `frameworks/privacy/iso27701/` | PIMS, PII Controller, PII Processor, DSR |
+| **NIST SP 800-171 Rev 3** | `frameworks/federal/nist/sp_800_171/` | 14 families, 110 CUI requirements |
+| **CCPA / CPRA** | `frameworks/privacy/ccpa/` | Consumer rights, sensitive PI, data practices |
+| **EU AI Act (2024/1689)** | `governance/eu_ai_act/` | Prohibited, High-Risk, Transparency, GPAI, Governance |
 
 ---
 
@@ -59,9 +64,9 @@ This library gives you a **complete, working policy set on day one**, covering 2
 | Domain | Policies | Coverage |
 |--------|----------|----------|
 | **CIS Benchmarks + DISA STIGs** | 238 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network + RHEL 8/9 & Windows 2022 STIGs |
-| **Regulatory Frameworks** | 145 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty |
+| **Regulatory Frameworks** | 186 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, **CSA CCM v4.0**, **ISO 27701**, **NIST SP 800-171 r3**, **CCPA/CPRA** |
 | **Enforcement** | 6 | Ansible, Terraform, Dockerfile, Kubernetes, Git |
-| **Governance** | 6 | AI agent authorization, MCP tool-call enforcement, GEISA |
+| **Governance** | 13 | AI agent authorization, MCP tool-call enforcement, GEISA, **EU AI Act (Regulation 2024/1689)** |
 | **Threat Detection** | 1 | Cryptocurrency miner detection |
 
 **Highlight:** CIS RHEL 9 v2.0.0 — **338/338 controls (100%)** across 14 modules.
