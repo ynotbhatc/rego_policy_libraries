@@ -1,6 +1,6 @@
 package cis_rhel8.filesystem
 
-# CIS RHEL 8 Benchmark v3.0.0 - Section 1.1: Filesystem Configuration
+# CIS RHEL 8 Benchmark v4.0.0 - Section 1.1: Filesystem Configuration
 # Validates filesystem configuration: disabled modules, partitions, mount options
 
 import rego.v1
@@ -109,5 +109,5 @@ report := {
 	"non_compliant_modules": non_compliant_modules,
 	"non_compliant_partitions": non_compliant_partitions,
 	"section": "1.1 Filesystem Configuration",
-	"benchmark": "CIS RHEL 8 v3.0.0",
+	"benchmark": "CIS RHEL 8 v4.0.0",
 }

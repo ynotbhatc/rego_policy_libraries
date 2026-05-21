@@ -3,6 +3,12 @@ package cis
 # CIS Juniper JunOS Benchmark v2.1.0
 # Center for Internet Security (CIS) Juniper JunOS Benchmark
 # This policy implements comprehensive Juniper JunOS security controls
+#
+# DEPRECATION NOTICE: CIS has scheduled this benchmark for archival due to
+# lack of Subject Matter Expert support. Customers should monitor
+# https://www.cisecurity.org/cis-benchmarks for updated status.
+# Controls remain valid for existing JunOS deployments but will not receive
+# further updates from CIS.
 
 import rego.v1
 

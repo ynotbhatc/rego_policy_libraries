@@ -1,6 +1,6 @@
 package cis_rocky_linux_8.file_permissions
 
-# CIS Rocky Linux 8 Benchmark v2.0.0 - Section 6.1: System File Permissions
+# CIS Rocky Linux 8 Benchmark v3.0.0 - Section 6.1: System File Permissions
 
 import rego.v1
 
@@ -134,5 +134,5 @@ report := {
 		"non_compliant_critical_files": input.critical_files.non_compliant_count,
 	},
 	"section": "6.1 System File Permissions",
-	"benchmark": "CIS Rocky Linux 8 v2.0.0",
+	"benchmark": "CIS Rocky Linux 8 v3.0.0",
 }

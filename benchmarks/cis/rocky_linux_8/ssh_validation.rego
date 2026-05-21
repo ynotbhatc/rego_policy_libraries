@@ -1,6 +1,6 @@
 package cis_rocky_linux_8.ssh
 
-# CIS Rocky Linux 8 Benchmark v2.0.0 - Section 5.2: SSH Server Configuration
+# CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.2: SSH Server Configuration
 # Validates SSH daemon configuration for security hardening
 
 import rego.v1
@@ -222,5 +222,5 @@ report := {
 	"crypto_violations": count(crypto_violations),
 	"controls_checked": 21,
 	"section": "5.2 SSH Server Configuration",
-	"benchmark": "CIS Rocky Linux 8 v2.0.0",
+	"benchmark": "CIS Rocky Linux 8 v3.0.0",
 }

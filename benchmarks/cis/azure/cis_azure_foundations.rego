@@ -1,8 +1,9 @@
 package cis
 
-# CIS Microsoft Azure Foundations Benchmark v1.5.0
+# CIS Microsoft Azure Foundations Benchmark v3.0.0
 # Center for Internet Security (CIS) Azure Foundations Benchmark
 # This policy implements comprehensive Azure security controls
+# v3.0.0 (Feb 2025): 15 new controls, 50+ changes, 100+ total controls across 9 sections
 
 import rego.v1
 

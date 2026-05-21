@@ -1,6 +1,6 @@
 package cis_debian_11.services
 
-# CIS Debian Linux 11 Benchmark v1.0.0 - Sections 2.1.x, 2.2.x, 2.3.x: Service Configuration
+# CIS Debian Linux 11 Benchmark v2.0.0 - Sections 2.1.x, 2.2.x, 2.3.x: Service Configuration
 
 import rego.v1
 
@@ -176,5 +176,5 @@ report := {
 	"package_violations": count(package_violations),
 	"controls_checked": 18,
 	"section": "2.1-2.3 Service Configuration",
-	"benchmark": "CIS Debian 11 v1.0.0",
+	"benchmark": "CIS Debian 11 v2.0.0",
 }

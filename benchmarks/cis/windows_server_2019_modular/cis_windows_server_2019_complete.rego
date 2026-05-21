@@ -1,6 +1,6 @@
 package cis_windows_server_2019
 
-# CIS Microsoft Windows Server 2022 Benchmark v1.0.0 - Complete Validation
+# CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Complete Validation
 # MODULAR architecture with validation modules
 # Coverage: ~400+ controls
 

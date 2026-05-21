@@ -1,6 +1,6 @@
 package cis_debian_11.ssh
 
-# CIS Debian Linux 11 Benchmark v1.0.0 - Section 5.2: Configure SSH Server
+# CIS Debian Linux 11 Benchmark v2.0.0 - Section 5.2: Configure SSH Server
 
 import rego.v1
 
@@ -211,5 +211,5 @@ report := {
 	"permission_violations": count(permission_violations),
 	"controls_checked": 22,
 	"section": "5.2 Configure SSH Server",
-	"benchmark": "CIS Debian 11 v1.0.0",
+	"benchmark": "CIS Debian 11 v2.0.0",
 }

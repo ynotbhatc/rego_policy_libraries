@@ -1,6 +1,6 @@
 package cis_rocky_linux_8.network
 
-# CIS Rocky Linux 8 Benchmark v2.0.0 - Sections 3.1/3.2/3.3: Network Configuration
+# CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration
 # Validates kernel network parameters, IP forwarding, ICMP settings, and IPv6
 
 import rego.v1
@@ -161,5 +161,5 @@ report := {
 	},
 	"firewall": {"type": input.firewall.type, "active": input.firewall.active},
 	"section": "3.1-3.3 Network Configuration",
-	"benchmark": "CIS Rocky Linux 8 v2.0.0",
+	"benchmark": "CIS Rocky Linux 8 v3.0.0",
 }

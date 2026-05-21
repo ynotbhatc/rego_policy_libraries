@@ -28,6 +28,10 @@ import data.cis_rhel9.storage_encryption
 import data.cis_rhel9.certificate_validation
 import data.cis_rhel9.authorized_keys
 
+# CIS Level 2 additional controls
+# Activated when input.profile == "level2"
+import data.cis_rhel9.l2
+
 # =============================================================================
 # MAIN COMPLIANCE RULE
 # =============================================================================
@@ -348,12 +352,41 @@ overall_status := "compliant" if {
 	compliant
 } else := "non_compliant"
 
+# ---------------------------------------------------------------------------
+# PROFILE SELECTOR
+# Set input.profile = "level2" to include Level 2 additional controls.
+# Defaults to "level1" (338 controls). Level 2 adds 37 additional controls.
+# ---------------------------------------------------------------------------
+
+profile := input.profile if {
+	input.profile in {"level1", "level2"}
+} else := "level1"
+
+l2_violations_active := [v | some v in l2.violations] if {
+	profile == "level2"
+} else := []
+
+l2_compliant if {
+	profile == "level2"
+	l2.compliant
+}
+
+l2_compliant if {
+	profile == "level1"
+}
+
+default l2_compliant := false
+
 executive_summary := {
 	"overall_status": overall_status,
+	"profile": profile,
 	"compliance_score": compliance_percentage,
 	"sections_evaluated": total_sections,
 	"sections_compliant": compliant_sections,
 	"total_violations": count(all_violations),
+	"l1_violations": count(all_violations),
+	"l2_violations": count(l2_violations_active),
+	"l2_compliant": l2_compliant,
 	"critical_issues": count(critical_risks),
 	"top_priorities": [rec | some rec in generate_recommendations; rec.priority == "critical"],
 }

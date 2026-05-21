@@ -2,7 +2,7 @@ package cis_ubuntu_22_04
 
 # CIS Ubuntu 22.04 LTS Benchmark - Complete Compliance Assessment
 # Master orchestrator that aggregates all modular validation policies
-# Benchmark Version: CIS Ubuntu Linux 22.04 LTS Benchmark v1.0.0
+# Benchmark Version: CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0
 
 import rego.v1
 
@@ -21,6 +21,10 @@ import data.cis_ubuntu_22_04.user_group
 import data.cis_ubuntu_22_04.cron
 import data.cis_ubuntu_22_04.boot_security
 import data.cis_ubuntu_22_04.file_permissions
+
+# CIS Level 2 additional controls
+# Activated when input.profile == "level2"
+import data.cis_ubuntu_22_04.l2
 
 # =============================================================================
 # OVERALL COMPLIANCE STATUS
@@ -145,7 +149,7 @@ module_status := [
 
 compliance_assessment := {
 	"assessment_metadata": {
-		"benchmark": "CIS Ubuntu Linux 22.04 LTS Benchmark v1.1.0",
+		"benchmark": "CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0",
 		"target_platform": "Ubuntu 22.04 LTS",
 		"assessment_time": time.now_ns(),
 		"hostname": input.system_info.hostname,
@@ -168,3 +172,28 @@ compliance_assessment := {
 # Estimated ~400+ CIS Ubuntu 22.04 controls
 # Currently using stub modules (pass by default) - ready for full implementation
 total_controls_covered := 400
+
+# =============================================================================
+# PROFILE SELECTOR (Level 1 / Level 2)
+# Set input.profile = "level2" to include Level 2 additional controls.
+# Defaults to "level1". Level 2 adds 38 additional controls.
+# =============================================================================
+
+profile := input.profile if {
+	input.profile in {"level1", "level2"}
+} else := "level1"
+
+l2_violations_active := [v | some v in l2.violations] if {
+	profile == "level2"
+} else := []
+
+l2_compliant if {
+	profile == "level2"
+	l2.compliant
+}
+
+l2_compliant if {
+	profile == "level1"
+}
+
+default l2_compliant := false

@@ -1,6 +1,6 @@
 package cis_ubuntu_22_04.auditd
 
-# CIS Ubuntu 22.04 LTS Benchmark v1.0.0 - Section 4.1: Configure System Accounting (auditd)
+# CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)
 
 import rego.v1
 
@@ -192,5 +192,5 @@ report := {
 	"controls_checked": 38,
 	"rules_checked": count(required_rules),
 	"section": "4.1 Configure System Accounting (auditd)",
-	"benchmark": "CIS Ubuntu 22.04 v1.0.0",
+	"benchmark": "CIS Ubuntu 22.04 v3.0.0",
 }

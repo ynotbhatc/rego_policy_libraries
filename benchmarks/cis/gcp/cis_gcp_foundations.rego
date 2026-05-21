@@ -1,8 +1,9 @@
 package cis
 
-# CIS Google Cloud Platform Foundation Benchmark v1.3.0
+# CIS Google Cloud Platform Foundation Benchmark v4.0.0
 # Center for Internet Security (CIS) GCP Foundation Benchmark
 # This policy implements comprehensive GCP security controls
+# v4.0.0 (May 2025): 7 sections — IAM, Logging, Networking, VMs, Storage, Cloud SQL, BigQuery
 
 import rego.v1
 

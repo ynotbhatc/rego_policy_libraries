@@ -1,6 +1,6 @@
 package cis_rhel8.logging
 
-# CIS RHEL 8 Benchmark v3.0.0 - Section 4.2: Logging Configuration
+# CIS RHEL 8 Benchmark v4.0.0 - Section 4.2: Logging Configuration
 # Validates rsyslog, journald, and log file permissions
 
 import rego.v1
@@ -118,5 +118,5 @@ report := {
 		"forward_to_syslog": input.journald.forward_to_syslog,
 	},
 	"section": "4.2 Logging Configuration",
-	"benchmark": "CIS RHEL 8 v3.0.0",
+	"benchmark": "CIS RHEL 8 v4.0.0",
 }

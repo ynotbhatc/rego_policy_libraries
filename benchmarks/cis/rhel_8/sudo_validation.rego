@@ -1,6 +1,6 @@
 package cis_rhel8.sudo
 
-# CIS RHEL 8 Benchmark v3.0.0 - Section 5.3: Configure privilege escalation
+# CIS RHEL 8 Benchmark v4.0.0 - Section 5.3: Configure privilege escalation
 # Sudo configuration validation
 
 import rego.v1
@@ -123,5 +123,5 @@ report := {
 	"total_violations": count(violations),
 	"controls_checked": 8,
 	"section": "5.3 Configure Privilege Escalation",
-	"benchmark": "CIS RHEL 8 v3.0.0",
+	"benchmark": "CIS RHEL 8 v4.0.0",
 }

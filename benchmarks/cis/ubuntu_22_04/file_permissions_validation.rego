@@ -1,6 +1,6 @@
 package cis_ubuntu_22_04.file_permissions
 
-# CIS Ubuntu 22.04 LTS Benchmark v1.0.0 - Section 6.1: System File Permissions
+# CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 6.1: System File Permissions
 
 import rego.v1
 
@@ -150,5 +150,5 @@ report := {
 		"non_compliant_critical_files": input.critical_files.non_compliant_count,
 	},
 	"section": "6.1 System File Permissions",
-	"benchmark": "CIS Ubuntu 22.04 v1.0.0",
+	"benchmark": "CIS Ubuntu 22.04 v3.0.0",
 }

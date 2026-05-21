@@ -1,6 +1,6 @@
 package cis_rocky_linux_8
 
-# CIS Rocky Linux 8 Benchmark v2.0.0 - Complete Validation
+# CIS Rocky Linux 8 Benchmark v3.0.0 - Complete Validation
 # MODULAR architecture with validation modules
 # Coverage: ~300+ controls
 

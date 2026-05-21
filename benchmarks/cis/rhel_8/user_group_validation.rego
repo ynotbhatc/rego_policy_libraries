@@ -1,6 +1,6 @@
 package cis_rhel8.user_group
 
-# CIS RHEL 8 Benchmark v3.0.0 - Section 6.2: User and Group Settings
+# CIS RHEL 8 Benchmark v4.0.0 - Section 6.2: User and Group Settings
 
 import rego.v1
 
@@ -162,5 +162,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 16,
 	"section": "6.2 User and Group Settings",
-	"benchmark": "CIS RHEL 8 v3.0.0",
+	"benchmark": "CIS RHEL 8 v4.0.0",
 }

@@ -1,6 +1,6 @@
 package cis_windows_server_2022
 
-# CIS Microsoft Windows Server 2022 Benchmark v1.0.0 - Complete Validation
+# CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Complete Validation
 # MODULAR architecture with validation modules
 # Coverage: ~400+ controls
 
@@ -16,6 +16,10 @@ import data.cis_windows_server_2022.security_options
 import data.cis_windows_server_2022.advanced_audit
 import data.cis_windows_server_2022.windows_defender
 import data.cis_windows_server_2022.bitlocker
+
+# CIS Level 2 additional controls
+# Activated when input.profile == "level2"
+import data.cis_windows_server_2022.l2
 
 # =============================================================================
 # MAIN COMPLIANCE RULE
@@ -180,3 +184,28 @@ generate_recommendations := [recommendation |
 		"remediation": sprintf("Review and implement CIS Windows Server 2022 control: %s", [violation]),
 	}
 ]
+
+# =============================================================================
+# PROFILE SELECTOR (Level 1 / Level 2)
+# Set input.profile = "level2" to include Level 2 additional controls.
+# Defaults to "level1". Level 2 adds 42 additional controls.
+# =============================================================================
+
+profile := input.profile if {
+	input.profile in {"level1", "level2"}
+} else := "level1"
+
+l2_violations_active := [v | some v in l2.violations] if {
+	profile == "level2"
+} else := []
+
+l2_compliant if {
+	profile == "level2"
+	l2.compliant
+}
+
+l2_compliant if {
+	profile == "level1"
+}
+
+default l2_compliant := false

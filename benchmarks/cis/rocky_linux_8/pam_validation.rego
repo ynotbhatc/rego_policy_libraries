@@ -1,6 +1,6 @@
 package cis_rocky_linux_8.pam
 
-# CIS Rocky Linux 8 Benchmark v2.0.0 - Section 5.4/5.5: PAM and User Accounts
+# CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.4/5.5: PAM and User Accounts
 # Password Authentication Module configuration validation
 
 import rego.v1
@@ -206,5 +206,5 @@ report := {
 	"total_violations": count(violations),
 	"controls_checked": 17,
 	"section": "5.4-5.5 PAM and User Accounts",
-	"benchmark": "CIS Rocky Linux 8 v2.0.0",
+	"benchmark": "CIS Rocky Linux 8 v3.0.0",
 }

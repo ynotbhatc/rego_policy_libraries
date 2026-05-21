@@ -1,6 +1,6 @@
 package cis
 
-# CIS Amazon Web Services Foundations Benchmark v1.5.0
+# CIS Amazon Web Services Foundations Benchmark v7.0.0
 # Center for Internet Security (CIS) AWS Foundations Benchmark
 # This policy implements comprehensive AWS security controls
 

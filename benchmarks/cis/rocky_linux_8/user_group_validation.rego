@@ -1,6 +1,6 @@
 package cis_rocky_linux_8.user_group
 
-# CIS Rocky Linux 8 Benchmark v2.0.0 - Section 6.2: User and Group Settings
+# CIS Rocky Linux 8 Benchmark v3.0.0 - Section 6.2: User and Group Settings
 
 import rego.v1
 
@@ -162,5 +162,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 16,
 	"section": "6.2 User and Group Settings",
-	"benchmark": "CIS Rocky Linux 8 v2.0.0",
+	"benchmark": "CIS Rocky Linux 8 v3.0.0",
 }

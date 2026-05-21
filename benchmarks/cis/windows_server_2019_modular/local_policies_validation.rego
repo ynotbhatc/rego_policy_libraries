@@ -1,6 +1,6 @@
 package cis_windows_server_2019.local_policies
 
-# CIS Windows Server 2019 Benchmark v3.0.0 - Section 2.2: User Rights Assignment
+# CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.2: User Rights Assignment
 
 import rego.v1
 
@@ -143,5 +143,5 @@ report := {
 	"security_settings_violations": count(security_settings_violations),
 	"controls_checked": 20,
 	"section": "2.2 User Rights Assignment",
-	"benchmark": "CIS Windows Server 2019 v3.0.0",
+	"benchmark": "CIS Windows Server 2019 v4.0.0",
 }

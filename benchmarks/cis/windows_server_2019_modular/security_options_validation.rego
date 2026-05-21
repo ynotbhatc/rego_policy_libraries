@@ -1,6 +1,6 @@
 package cis_windows_server_2019.security_options
 
-# CIS Windows Server 2019 Benchmark v3.0.0 - Section 2.3: Security Options
+# CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.3: Security Options
 
 import rego.v1
 
@@ -171,5 +171,5 @@ report := {
 	"uac_violations": count(uac_violations),
 	"controls_checked": 22,
 	"section": "2.3 Security Options",
-	"benchmark": "CIS Windows Server 2019 v3.0.0",
+	"benchmark": "CIS Windows Server 2019 v4.0.0",
 }

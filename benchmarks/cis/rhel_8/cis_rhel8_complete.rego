@@ -1,6 +1,6 @@
 package cis_rhel8
 
-# CIS RHEL 8 Benchmark v2.0.0 - Complete Validation
+# CIS RHEL 8 Benchmark v4.0.0 - Complete Validation
 # MODULAR architecture with validation modules
 # Coverage: ~300+ controls
 
@@ -20,6 +20,10 @@ import data.cis_rhel8.selinux
 import data.cis_rhel8.user_group
 import data.cis_rhel8.cron
 import data.cis_rhel8.file_permissions
+
+# CIS Level 2 additional controls
+# Activated when input.profile == "level2"
+import data.cis_rhel8.l2
 
 # =============================================================================
 # MAIN COMPLIANCE RULE
@@ -212,3 +216,35 @@ generate_recommendations := [recommendation |
 		"remediation": sprintf("Review and implement CIS RHEL 8 control %s: %s", [violation.control, violation.title]),
 	}
 ]
+
+# =============================================================================
+# PROFILE SELECTOR (Level 1 / Level 2)
+# Set input.profile = "level2" to include Level 2 additional controls.
+# Defaults to "level1". Level 2 adds 36 additional controls.
+# =============================================================================
+
+profile := input.profile if {
+	input.profile in {"level1", "level2"}
+} else := "level1"
+
+l2_violations_active := [v | some v in l2.violations] if {
+	profile == "level2"
+} else := []
+
+l2_compliant if {
+	profile == "level2"
+	l2.compliant
+}
+
+l2_compliant if {
+	profile == "level1"
+}
+
+default l2_compliant := false
+
+l2_executive_summary := {
+	"profile":       profile,
+	"l1_violations": total_violations,
+	"l2_violations": count(l2_violations_active),
+	"l2_compliant":  l2_compliant,
+}

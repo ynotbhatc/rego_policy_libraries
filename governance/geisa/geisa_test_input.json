@@ -1,0 +1,70 @@
+{
+  "input": {
+    "manifest": {
+      "applicationId": "com.example.app",
+      "version": "0.1.0",
+      "runtime": {
+        "type": "native-linux",
+        "cpuArchitecture": "x86_64"
+      },
+      "entrypoint": {
+        "command": "./geisa-app",
+        "args": ["com.example.app", "127.0.0.1", "1883"]
+      },
+      "permissions": {
+        "mqtt": {
+          "publish": [
+            "geisa/api/platform/discovery/req/com.example.app"
+          ],
+          "subscribe": [
+            "geisa/api/platform/discovery/rsp/com.example.app"
+          ]
+        }
+      },
+      "geisa": {
+        "apiVersion": "1.0",
+        "uses": ["platform-discovery"]
+      }
+    },
+    "discovery_response": {
+      "status_code": 1,
+      "status_message": "OK",
+      "geisa_version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "pillars": {
+        "api": true,
+        "adm": true,
+        "lee": true,
+        "vee": false
+      },
+      "device": {
+        "manufacturer": "ExampleGrid",
+        "model": "GEISA-Meter-DevKit",
+        "serial_number": "SN123456"
+      }
+    },
+    "lwm2m": {
+      "registered": true,
+      "version": "1.1",
+      "registered_objects": [
+        "/1/0", "/2/0", "/3/0", "/4/0", "/5/0",
+        "/6/0", "/7/0", "/9/0", "/31024/0"
+      ],
+      "object9": {
+        "pkg_name": "com.example.app",
+        "update_state": 4,
+        "update_result": 1,
+        "activation_state": 1
+      }
+    },
+    "container": {
+      "runtime": "lxc",
+      "runtime_version": "4.0.12",
+      "isolated": true,
+      "network_mode": "host-shared"
+    }
+  }
+}

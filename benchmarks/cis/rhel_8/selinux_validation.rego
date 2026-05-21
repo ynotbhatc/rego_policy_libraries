@@ -1,6 +1,6 @@
 package cis_rhel8.selinux
 
-# CIS RHEL 8 Benchmark v3.0.0 - Section 1.6: Mandatory Access Controls (SELinux)
+# CIS RHEL 8 Benchmark v4.0.0 - Section 1.6: Mandatory Access Controls (SELinux)
 
 import rego.v1
 
@@ -119,5 +119,5 @@ report := {
 	"total_violations": count(violations),
 	"controls_checked": 8,
 	"section": "1.6 Mandatory Access Controls",
-	"benchmark": "CIS RHEL 8 v3.0.0",
+	"benchmark": "CIS RHEL 8 v4.0.0",
 }

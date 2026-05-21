@@ -1,6 +1,6 @@
 package cis
 
-# CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0  
+# CIS Microsoft Windows 10 Enterprise Benchmark v4.0.0  
 # Center for Internet Security (CIS) Benchmark for Windows 10 Enterprise
 # This policy implements comprehensive CIS controls for Windows 10 workstations
 

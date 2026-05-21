@@ -1,6 +1,6 @@
 package cis_windows_server_2022.registry
 
-# CIS Windows Server 2022 Benchmark v3.0.0 - Section 18: Administrative Templates (Registry)
+# CIS Windows Server 2022 Benchmark v5.0.0 - Section 18: Administrative Templates (Registry)
 
 import rego.v1
 
@@ -177,5 +177,5 @@ report := {
 	"system_violations": count(system_violations),
 	"controls_checked": 22,
 	"section": "18 Administrative Templates (Registry)",
-	"benchmark": "CIS Windows Server 2022 v3.0.0",
+	"benchmark": "CIS Windows Server 2022 v5.0.0",
 }

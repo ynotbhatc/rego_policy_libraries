@@ -1,6 +1,6 @@
 package cis_rocky_linux_8.cron
 
-# CIS Rocky Linux 8 Benchmark v2.0.0 - Section 5.1: Configure time-based job schedulers
+# CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers
 
 import rego.v1
 
@@ -141,5 +141,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 9,
 	"section": "5.1 Configure time-based job schedulers",
-	"benchmark": "CIS Rocky Linux 8 v2.0.0",
+	"benchmark": "CIS Rocky Linux 8 v3.0.0",
 }

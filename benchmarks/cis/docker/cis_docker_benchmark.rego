@@ -1,6 +1,6 @@
 package cis
 
-# CIS Docker Benchmark v1.4.0
+# CIS Docker Benchmark v1.8.0
 # Center for Internet Security (CIS) Docker Benchmark
 # This policy implements comprehensive Docker security controls
 

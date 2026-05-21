@@ -1,6 +1,6 @@
 package cis_ubuntu_20_04.services
 
-# CIS Ubuntu 20.04 LTS Benchmark v1.1.0 - Sections 2.1.x, 2.2.x, 2.3.x: Service Configuration
+# CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 2.1.x, 2.2.x, 2.3.x: Service Configuration
 
 import rego.v1
 
@@ -176,5 +176,5 @@ report := {
 	"package_violations": count(package_violations),
 	"controls_checked": 18,
 	"section": "2.1-2.3 Service Configuration",
-	"benchmark": "CIS Ubuntu 20.04 v1.1.0",
+	"benchmark": "CIS Ubuntu 20.04 v3.0.0",
 }

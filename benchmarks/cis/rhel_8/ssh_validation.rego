@@ -1,6 +1,6 @@
 package cis_rhel8.ssh
 
-# CIS RHEL 8 Benchmark v3.0.0 - Section 5.2: SSH Server Configuration
+# CIS RHEL 8 Benchmark v4.0.0 - Section 5.2: SSH Server Configuration
 # Validates SSH daemon configuration for security hardening
 
 import rego.v1
@@ -146,16 +146,11 @@ crypto_violations contains sprintf("CIS 5.2.13: Weak SSH MAC '%s' is allowed", [
 }
 
 # CIS 5.2.14 - Key exchange algorithms
-weak_kex := {
-	"diffie-hellman-group1-sha1",
-	"diffie-hellman-group14-sha1",
-	"diffie-hellman-group-exchange-sha1",
-}
-
-crypto_violations contains sprintf("CIS 5.2.14: Weak SSH KexAlgorithm '%s' is allowed", [kex]) if {
-	kex_str := sshd_config["kexalgorithms"]
-	some kex in split(kex_str, ",")
-	kex in weak_kex
+# NOTE: In CIS RHEL 8 v4.0.0 this control was removed — KexAlgorithms are
+# governed by the system-wide crypto policy (update-crypto-policies). Validate
+# via crypto policy check rather than inspecting sshd_config directly.
+crypto_violations contains "CIS 5.2.14: System-wide crypto policy not applied to SSH (crypto-policies package required)" if {
+	not input.ssh.crypto_policy_applied
 }
 
 # CIS 5.2.15 - Idle timeout
@@ -222,5 +217,5 @@ report := {
 	"crypto_violations": count(crypto_violations),
 	"controls_checked": 21,
 	"section": "5.2 SSH Server Configuration",
-	"benchmark": "CIS RHEL 8 v3.0.0",
+	"benchmark": "CIS RHEL 8 v4.0.0",
 }
