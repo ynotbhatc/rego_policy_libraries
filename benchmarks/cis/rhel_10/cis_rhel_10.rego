@@ -1,6 +1,6 @@
 package cis.rhel_10
 
-# CIS Red Hat Enterprise Linux 10 Benchmark v1.0.0 (Draft)
+# CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft)
 # Center for Internet Security (CIS) Red Hat Enterprise Linux 10 Benchmark
 # This policy implements comprehensive RHEL 10 security controls with next-generation features
 

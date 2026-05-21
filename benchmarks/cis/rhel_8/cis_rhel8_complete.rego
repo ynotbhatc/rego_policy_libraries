@@ -1,6 +1,6 @@
 package cis_rhel8
 
-# CIS RHEL 8 Benchmark v2.0.0 - Complete Validation
+# CIS RHEL 8 Benchmark v4.0.0 - Complete Validation
 # MODULAR architecture with validation modules
 # Coverage: ~300+ controls
 

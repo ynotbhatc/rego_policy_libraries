@@ -2,7 +2,7 @@ package cis.apache_2_4
 
 import rego.v1
 
-# CIS Apache HTTP Server 2.4 Benchmark v1.4.0
+# CIS Apache HTTP Server 2.4 Benchmark v2.3.0
 # This policy implements the CIS benchmarks for Apache HTTP Server 2.4
 # Reference: https://www.cisecurity.org/benchmark/apache_http_server
 
@@ -28,7 +28,7 @@ violations := [v |
 
 # Generate compliance report
 compliance_report := {
-	"benchmark": "CIS Apache HTTP Server 2.4 Benchmark v1.4.0",
+	"benchmark": "CIS Apache HTTP Server 2.4 Benchmark v2.3.0",
 	"timestamp": time.now_ns(),
 	"total_controls": 142,
 	"compliant": compliant,

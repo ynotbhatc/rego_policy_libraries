@@ -2,7 +2,7 @@ package cis.oracle_19c
 
 import rego.v1
 
-# CIS Oracle Database 19c Benchmark v1.1.0
+# CIS Oracle Database 19c Benchmark v2.0.0
 # This policy implements the CIS benchmarks for Oracle Database 19c
 # Reference: https://www.cisecurity.org/benchmark/oracle_database
 
@@ -28,7 +28,7 @@ violations := [v |
 
 # Generate compliance report
 compliance_report := {
-	"benchmark": "CIS Oracle Database 19c Benchmark v1.1.0",
+	"benchmark": "CIS Oracle Database 19c Benchmark v2.0.0",
 	"timestamp": time.now_ns(),
 	"total_controls": 178,
 	"compliant": compliant,

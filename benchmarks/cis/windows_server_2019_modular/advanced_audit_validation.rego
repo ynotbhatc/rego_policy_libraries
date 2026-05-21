@@ -1,6 +1,6 @@
 package cis_windows_server_2019.advanced_audit
 
-# CIS Windows Server 2019 Benchmark v3.0.0 - Section 17: Advanced Audit Policy Configuration
+# CIS Windows Server 2019 Benchmark v4.0.0 - Section 17: Advanced Audit Policy Configuration
 
 import rego.v1
 
@@ -218,5 +218,5 @@ report := {
 	"system_violations": count(system_violations),
 	"controls_checked": 36,
 	"section": "17 Advanced Audit Policy Configuration",
-	"benchmark": "CIS Windows Server 2019 v3.0.0",
+	"benchmark": "CIS Windows Server 2019 v4.0.0",
 }

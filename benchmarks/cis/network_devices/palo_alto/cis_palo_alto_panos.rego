@@ -1,6 +1,6 @@
 package cis
 
-# CIS Palo Alto PAN-OS Benchmark v1.1.0
+# CIS Palo Alto PAN-OS Benchmark v1.2.0
 # Center for Internet Security (CIS) Palo Alto PAN-OS Benchmark
 # This policy implements comprehensive Palo Alto Networks PAN-OS security controls
 

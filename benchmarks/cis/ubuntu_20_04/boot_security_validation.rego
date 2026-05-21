@@ -1,6 +1,6 @@
 package cis_ubuntu_20_04.boot_security
 
-# CIS Ubuntu 20.04 LTS Benchmark v1.1.0 - Sections 1.3-1.5: Boot Security and Process Hardening
+# CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 1.3-1.5: Boot Security and Process Hardening
 
 import rego.v1
 
@@ -109,5 +109,5 @@ report := {
 	"process_hardening_violations": count(process_hardening_violations),
 	"controls_checked": 12,
 	"section": "1.3-1.5 Boot Security and Process Hardening",
-	"benchmark": "CIS Ubuntu 20.04 v1.1.0",
+	"benchmark": "CIS Ubuntu 20.04 v3.0.0",
 }

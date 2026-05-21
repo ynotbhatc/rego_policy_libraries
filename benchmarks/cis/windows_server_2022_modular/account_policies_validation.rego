@@ -1,6 +1,6 @@
 package cis_windows_server_2022.account_policies
 
-# CIS Windows Server 2022 Benchmark v3.0.0 - Section 1: Account Policies
+# CIS Windows Server 2022 Benchmark v5.0.0 - Section 1: Account Policies
 
 import rego.v1
 
@@ -100,5 +100,5 @@ report := {
 	"lockout_policy_violations": count(lockout_policy_violations),
 	"controls_checked": 11,
 	"section": "1 Account Policies",
-	"benchmark": "CIS Windows Server 2022 v3.0.0",
+	"benchmark": "CIS Windows Server 2022 v5.0.0",
 }

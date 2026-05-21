@@ -1,6 +1,6 @@
 package cis_rhel8.auditd
 
-# CIS RHEL 8 Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)
+# CIS RHEL 8 Benchmark v4.0.0 - Section 4.1: Configure System Accounting (auditd)
 # Validates auditd service, configuration, and audit rules
 
 import rego.v1
@@ -202,5 +202,5 @@ report := {
 	"controls_checked": 40,
 	"rules_checked": count(required_rules),
 	"section": "4.1 Configure System Accounting (auditd)",
-	"benchmark": "CIS RHEL 8 v3.0.0",
+	"benchmark": "CIS RHEL 8 v4.0.0",
 }

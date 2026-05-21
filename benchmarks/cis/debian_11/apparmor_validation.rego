@@ -1,6 +1,6 @@
 package cis_debian_11.apparmor
 
-# CIS Debian Linux 11 Benchmark v1.0.0 - Section 1.6: Mandatory Access Controls
+# CIS Debian Linux 11 Benchmark v2.0.0 - Section 1.6: Mandatory Access Controls
 # Ubuntu uses AppArmor instead of SELinux
 
 import rego.v1
@@ -93,5 +93,5 @@ report := {
 	"apparmor_status": apparmor_status,
 	"controls_checked": 4,
 	"section": "1.6 Mandatory Access Controls (AppArmor)",
-	"benchmark": "CIS Debian 11 v1.0.0",
+	"benchmark": "CIS Debian 11 v2.0.0",
 }

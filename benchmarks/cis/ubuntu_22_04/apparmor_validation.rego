@@ -1,6 +1,6 @@
 package cis_ubuntu_22_04.apparmor
 
-# CIS Ubuntu 22.04 LTS Benchmark v1.0.0 - Section 1.6: Mandatory Access Controls
+# CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 1.6: Mandatory Access Controls
 # Ubuntu uses AppArmor instead of SELinux
 
 import rego.v1
@@ -93,5 +93,5 @@ report := {
 	"apparmor_status": apparmor_status,
 	"controls_checked": 4,
 	"section": "1.6 Mandatory Access Controls (AppArmor)",
-	"benchmark": "CIS Ubuntu 22.04 v1.0.0",
+	"benchmark": "CIS Ubuntu 22.04 v3.0.0",
 }

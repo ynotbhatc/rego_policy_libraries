@@ -2,7 +2,7 @@ package cis.postgresql_15
 
 import rego.v1
 
-# CIS PostgreSQL 15 Benchmark v1.0.0
+# CIS PostgreSQL 15 Benchmark v1.2.0
 # This policy implements the CIS benchmarks for PostgreSQL 15 Database Server
 # Reference: https://www.cisecurity.org/benchmark/postgresql
 
@@ -28,7 +28,7 @@ violations := [v |
 
 # Generate compliance report
 compliance_report := {
-	"benchmark": "CIS PostgreSQL 15 Benchmark v1.0.0",
+	"benchmark": "CIS PostgreSQL 15 Benchmark v1.2.0",
 	"timestamp": time.now_ns(),
 	"total_controls": 172,
 	"compliant": compliant,

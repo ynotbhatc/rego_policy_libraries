@@ -1,6 +1,6 @@
 package cis_windows_server_2022.bitlocker
 
-# CIS Windows Server 2022 Benchmark v3.0.0 - Section 18.10.9: BitLocker Drive Encryption
+# CIS Windows Server 2022 Benchmark v5.0.0 - Section 18.10.9: BitLocker Drive Encryption
 
 import rego.v1
 
@@ -121,5 +121,5 @@ report := {
 	},
 	"controls_checked": 13,
 	"section": "18.10.9 BitLocker Drive Encryption",
-	"benchmark": "CIS Windows Server 2022 v3.0.0",
+	"benchmark": "CIS Windows Server 2022 v5.0.0",
 }

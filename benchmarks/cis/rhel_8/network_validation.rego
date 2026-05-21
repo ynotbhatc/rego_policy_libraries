@@ -1,6 +1,6 @@
 package cis_rhel8.network
 
-# CIS RHEL 8 Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration
+# CIS RHEL 8 Benchmark v4.0.0 - Sections 3.1/3.2/3.3: Network Configuration
 # Validates kernel network parameters, IP forwarding, ICMP settings, and IPv6
 
 import rego.v1
@@ -126,13 +126,24 @@ network_interface_violations contains sprintf("CIS 3.3.2: %d wireless interfaces
 	not input.wireless_interfaces.compliant
 }
 
-# CIS 3.5.x: Firewall active
-network_interface_violations contains sprintf("CIS 3.5.x: No active firewall detected (type: %s)", [input.firewall.type]) if {
+# CIS 3.5.1.1 (v4.0.0): Firewall active
+network_interface_violations contains sprintf("CIS 3.5.1.1: No active firewall detected (type: %s)", [input.firewall.type]) if {
 	not input.firewall.active
 }
 
-network_interface_violations contains "CIS 3.5.x: Using legacy iptables instead of firewalld or nftables" if {
+# CIS 3.5.1.1 (v4.0.0): firewalld is the required solution on RHEL 8
+network_interface_violations contains "CIS 3.5.1.1: firewalld is required — legacy iptables-services must not be used" if {
 	input.firewall.type == "iptables"
+}
+
+network_interface_violations contains "CIS 3.5.1.1: firewalld is not the active firewall solution" if {
+	input.firewall.active
+	input.firewall.type != "firewalld"
+}
+
+network_interface_violations contains "CIS 3.5.1.2: iptables-services package must not be installed alongside firewalld" if {
+	input.firewall.iptables_services_installed
+	input.firewall.type == "firewalld"
 }
 
 # Risk assessment
@@ -161,5 +172,5 @@ report := {
 	},
 	"firewall": {"type": input.firewall.type, "active": input.firewall.active},
 	"section": "3.1-3.3 Network Configuration",
-	"benchmark": "CIS RHEL 8 v3.0.0",
+	"benchmark": "CIS RHEL 8 v4.0.0",
 }

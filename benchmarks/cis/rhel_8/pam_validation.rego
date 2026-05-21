@@ -1,6 +1,6 @@
 package cis_rhel8.pam
 
-# CIS RHEL 8 Benchmark v3.0.0 - Section 5.4/5.5: PAM and User Accounts
+# CIS RHEL 8 Benchmark v4.0.0 - Section 5.4/5.5: PAM and User Accounts
 # Password Authentication Module configuration validation
 
 import rego.v1
@@ -111,6 +111,18 @@ violations contains msg if {
 	msg := "CIS 5.4.4: Password hashing algorithm not set to SHA-512"
 }
 
+# CIS 5.4.3.1: pam_pwhistory enforce_for_root (added in v4.0.0)
+violations contains msg if {
+	not check_pam_file("system_auth", "pam_pwhistory.so")
+	msg := "CIS 5.4.3.1: pam_pwhistory not configured in system-auth"
+}
+
+violations contains msg if {
+	check_pam_file("system_auth", "pam_pwhistory.so")
+	not check_pam_file("system_auth", "enforce_for_root")
+	msg := "CIS 5.4.3.1: pam_pwhistory enforce_for_root not set — root password history not enforced"
+}
+
 # CIS 5.5.1.1: PASS_MIN_DAYS
 violations contains msg if {
 	input.pam.pass_min_days
@@ -206,5 +218,5 @@ report := {
 	"total_violations": count(violations),
 	"controls_checked": 17,
 	"section": "5.4-5.5 PAM and User Accounts",
-	"benchmark": "CIS RHEL 8 v3.0.0",
+	"benchmark": "CIS RHEL 8 v4.0.0",
 }

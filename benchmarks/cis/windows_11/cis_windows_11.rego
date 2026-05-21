@@ -2,7 +2,7 @@ package cis.windows_11
 
 import rego.v1
 
-# CIS Microsoft Windows 11 Enterprise Benchmark v1.0.0
+# CIS Microsoft Windows 11 Enterprise Benchmark v5.0.1
 # This policy implements the CIS benchmarks for Windows 11 Enterprise environments
 # Reference: https://www.cisecurity.org/benchmark/microsoft_windows_11
 
@@ -31,7 +31,7 @@ violations := [v |
 
 # Generate compliance report
 compliance_report := {
-	"benchmark": "CIS Microsoft Windows 11 Enterprise Benchmark v1.0.0",
+	"benchmark": "CIS Microsoft Windows 11 Enterprise Benchmark v5.0.1",
 	"timestamp": time.now_ns(),
 	"total_controls": 267,
 	"compliant": compliant,

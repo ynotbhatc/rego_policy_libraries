@@ -1,6 +1,6 @@
 package cis_windows_server_2019.system_services
 
-# CIS Windows Server 2019 Benchmark v3.0.0 - Section 5: System Services
+# CIS Windows Server 2019 Benchmark v4.0.0 - Section 5: System Services
 
 import rego.v1
 
@@ -202,5 +202,5 @@ report := {
 	"running_service_violations": count(running_service_violations),
 	"controls_checked": 26,
 	"section": "5 System Services",
-	"benchmark": "CIS Windows Server 2019 v3.0.0",
+	"benchmark": "CIS Windows Server 2019 v4.0.0",
 }

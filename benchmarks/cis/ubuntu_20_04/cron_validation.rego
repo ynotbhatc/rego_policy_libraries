@@ -1,6 +1,6 @@
 package cis_ubuntu_20_04.cron
 
-# CIS Ubuntu 20.04 LTS Benchmark v1.1.0 - Section 5.1: Configure time-based job schedulers
+# CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers
 
 import rego.v1
 
@@ -141,5 +141,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 9,
 	"section": "5.1 Configure time-based job schedulers",
-	"benchmark": "CIS Ubuntu 20.04 v1.1.0",
+	"benchmark": "CIS Ubuntu 20.04 v3.0.0",
 }

@@ -2,7 +2,7 @@ package cis.mysql_8
 
 import rego.v1
 
-# CIS MySQL 8.0 Benchmark v1.0.0
+# CIS MySQL 8.0 Benchmark v1.2.0
 # This policy implements the CIS benchmarks for MySQL 8.0 Community and Enterprise Server
 # Reference: https://www.cisecurity.org/benchmark/mysql
 
@@ -29,7 +29,7 @@ violations := [v |
 
 # Generate compliance report
 compliance_report := {
-	"benchmark": "CIS MySQL 8.0 Benchmark v1.0.0",
+	"benchmark": "CIS MySQL 8.0 Benchmark v1.2.0",
 	"timestamp": time.now_ns(),
 	"total_controls": 156,
 	"compliant": compliant,

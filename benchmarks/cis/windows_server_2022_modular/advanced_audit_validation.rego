@@ -1,6 +1,6 @@
 package cis_windows_server_2022.advanced_audit
 
-# CIS Windows Server 2022 Benchmark v3.0.0 - Section 17: Advanced Audit Policy Configuration
+# CIS Windows Server 2022 Benchmark v5.0.0 - Section 17: Advanced Audit Policy Configuration
 
 import rego.v1
 
@@ -218,5 +218,5 @@ report := {
 	"system_violations": count(system_violations),
 	"controls_checked": 36,
 	"section": "17 Advanced Audit Policy Configuration",
-	"benchmark": "CIS Windows Server 2022 v3.0.0",
+	"benchmark": "CIS Windows Server 2022 v5.0.0",
 }

@@ -2,7 +2,7 @@ package cis_debian_11
 
 # CIS Debian 11 Benchmark - Complete Compliance Assessment
 # Master orchestrator that aggregates all modular validation policies
-# Benchmark Version: CIS Debian Linux 11 Benchmark v1.0.0
+# Benchmark Version: CIS Debian Linux 11 Benchmark v2.0.0
 
 import rego.v1
 
@@ -145,7 +145,7 @@ module_status := [
 
 compliance_assessment := {
 	"assessment_metadata": {
-		"benchmark": "CIS Debian Linux 11 LTS Benchmark v1.1.0",
+		"benchmark": "CIS Debian Linux 11 LTS Benchmark v2.0.0",
 		"target_platform": "Debian 11 LTS",
 		"assessment_time": time.now_ns(),
 		"hostname": input.system_info.hostname,

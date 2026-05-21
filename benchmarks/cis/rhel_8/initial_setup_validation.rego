@@ -1,6 +1,6 @@
 package cis_rhel8.initial_setup
 
-# CIS RHEL 8 Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup
+# CIS RHEL 8 Benchmark v4.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup
 
 import rego.v1
 
@@ -220,5 +220,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 22,
 	"section": "1.2, 1.7-1.9 Initial System Setup",
-	"benchmark": "CIS RHEL 8 v3.0.0",
+	"benchmark": "CIS RHEL 8 v4.0.0",
 }

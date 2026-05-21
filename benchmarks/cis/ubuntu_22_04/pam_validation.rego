@@ -1,6 +1,6 @@
 package cis_ubuntu_22_04.pam
 
-# CIS Ubuntu 22.04 LTS Benchmark v1.0.0 - Sections 5.4-5.5: PAM and Password Policies
+# CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 5.4-5.5: PAM and Password Policies
 
 import rego.v1
 
@@ -147,5 +147,5 @@ report := {
 	"account_violations": count(account_violations),
 	"controls_checked": 17,
 	"section": "5.4-5.5 PAM and Password Policies",
-	"benchmark": "CIS Ubuntu 22.04 v1.0.0",
+	"benchmark": "CIS Ubuntu 22.04 v3.0.0",
 }

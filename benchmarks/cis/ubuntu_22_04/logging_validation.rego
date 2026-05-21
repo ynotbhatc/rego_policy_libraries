@@ -1,6 +1,6 @@
 package cis_ubuntu_22_04.logging
 
-# CIS Ubuntu 22.04 LTS Benchmark v1.0.0 - Section 4.2: Logging Configuration
+# CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 4.2: Logging Configuration
 
 import rego.v1
 
@@ -130,5 +130,5 @@ report := {
 		"forward_to_syslog": input.journald.forward_to_syslog,
 	},
 	"section": "4.2 Logging Configuration",
-	"benchmark": "CIS Ubuntu 22.04 v1.0.0",
+	"benchmark": "CIS Ubuntu 22.04 v3.0.0",
 }

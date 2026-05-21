@@ -1,6 +1,6 @@
 package cis
 
-# CIS Kubernetes Benchmark v1.7.0
+# CIS Kubernetes Benchmark v2.0.0
 # Center for Internet Security (CIS) Kubernetes Benchmark
 # This policy implements comprehensive Kubernetes security controls
 

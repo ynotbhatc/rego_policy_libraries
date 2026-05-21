@@ -1,6 +1,6 @@
 package cis_windows_server_2022.event_log
 
-# CIS Windows Server 2022 Benchmark v3.0.0 - Section 18.9: Event Log Configuration
+# CIS Windows Server 2022 Benchmark v5.0.0 - Section 18.9: Event Log Configuration
 
 import rego.v1
 
@@ -95,5 +95,5 @@ report := {
 	},
 	"controls_checked": 9,
 	"section": "18.9.26 Event Log Service",
-	"benchmark": "CIS Windows Server 2022 v3.0.0",
+	"benchmark": "CIS Windows Server 2022 v5.0.0",
 }

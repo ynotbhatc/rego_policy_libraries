@@ -1,6 +1,6 @@
 package cis_ubuntu_20_04.ssh
 
-# CIS Ubuntu 20.04 LTS Benchmark v1.1.0 - Section 5.2: Configure SSH Server
+# CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 5.2: Configure SSH Server
 
 import rego.v1
 
@@ -211,5 +211,5 @@ report := {
 	"permission_violations": count(permission_violations),
 	"controls_checked": 22,
 	"section": "5.2 Configure SSH Server",
-	"benchmark": "CIS Ubuntu 20.04 v1.1.0",
+	"benchmark": "CIS Ubuntu 20.04 v3.0.0",
 }

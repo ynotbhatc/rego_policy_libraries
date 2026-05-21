@@ -1,6 +1,6 @@
 package cis_ubuntu_20_04.sudo
 
-# CIS Ubuntu 20.04 LTS Benchmark v1.1.0 - Section 5.3: Configure Sudo
+# CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 5.3: Configure Sudo
 
 import rego.v1
 
@@ -83,5 +83,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 8,
 	"section": "5.3 Configure Sudo",
-	"benchmark": "CIS Ubuntu 20.04 v1.1.0",
+	"benchmark": "CIS Ubuntu 20.04 v3.0.0",
 }

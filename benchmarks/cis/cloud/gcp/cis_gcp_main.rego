@@ -2,8 +2,8 @@ package cis_gcp.main
 
 import rego.v1
 
-# CIS Google Cloud Platform Foundation Benchmark v2.0.0
-# Published: March 2023
+# CIS Google Cloud Platform Foundation Benchmark v4.0.0
+# Published: May 2025
 #
 # Covers GCP services and configurations across:
 #   1. IAM                     — Identity and Access Management

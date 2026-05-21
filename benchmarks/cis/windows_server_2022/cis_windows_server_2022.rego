@@ -1,6 +1,6 @@
 package cis
 
-# CIS Microsoft Windows Server 2022 Benchmark v1.0.0
+# CIS Microsoft Windows Server 2022 Benchmark v5.0.0
 # Center for Internet Security (CIS) Benchmark for Windows Server 2022
 # This policy implements comprehensive CIS controls for Windows Server 2022 systems
 

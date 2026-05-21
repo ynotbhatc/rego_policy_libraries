@@ -1,6 +1,6 @@
 package cis_windows_server_2019.bitlocker
 
-# CIS Windows Server 2019 Benchmark v3.0.0 - Section 18.10.9: BitLocker Drive Encryption
+# CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.9: BitLocker Drive Encryption
 
 import rego.v1
 
@@ -121,5 +121,5 @@ report := {
 	},
 	"controls_checked": 13,
 	"section": "18.10.9 BitLocker Drive Encryption",
-	"benchmark": "CIS Windows Server 2019 v3.0.0",
+	"benchmark": "CIS Windows Server 2019 v4.0.0",
 }

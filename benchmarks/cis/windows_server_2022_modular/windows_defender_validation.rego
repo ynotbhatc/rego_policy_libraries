@@ -1,6 +1,6 @@
 package cis_windows_server_2022.windows_defender
 
-# CIS Windows Server 2022 Benchmark v3.0.0 - Section 18.10.42: Windows Defender Antivirus
+# CIS Windows Server 2022 Benchmark v5.0.0 - Section 18.10.42: Windows Defender Antivirus
 
 import rego.v1
 
@@ -155,5 +155,5 @@ report := {
 	},
 	"controls_checked": 18,
 	"section": "18.10.42 Windows Defender / 9 Windows Firewall",
-	"benchmark": "CIS Windows Server 2022 v3.0.0",
+	"benchmark": "CIS Windows Server 2022 v5.0.0",
 }

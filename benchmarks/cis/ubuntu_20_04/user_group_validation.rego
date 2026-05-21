@@ -1,6 +1,6 @@
 package cis_ubuntu_20_04.user_group
 
-# CIS Ubuntu 20.04 LTS Benchmark v1.1.0 - Section 6.2: User and Group Settings
+# CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 6.2: User and Group Settings
 
 import rego.v1
 
@@ -157,5 +157,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 16,
 	"section": "6.2 User and Group Settings",
-	"benchmark": "CIS Ubuntu 20.04 v1.1.0",
+	"benchmark": "CIS Ubuntu 20.04 v3.0.0",
 }
