@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> **444 production-ready OPA policies** covering CIS Benchmarks, DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP, IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, and more — all in Rego v1 syntax, ready to load into any OPA instance.
+> **461 production-ready OPA policies** covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA instance.
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
@@ -18,7 +18,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 
 - Use **Rego v1 syntax** (`import rego.v1`) — no deprecation warnings, forward-compatible
 - Return **structured JSON reports** (compliant, score, violations list) — wire directly to dashboards or CI
-- Are **independently loadable** — use one framework or all 396 policies; no coupling
+- Are **independently loadable** — use one framework or all 461 policies; no coupling
 - Are **Apache 2.0 licensed** — use commercially without restriction
 
 > **Why not build your own?** You can — but CIS RHEL 9 alone has 338 controls across 14 sections. NERC-CIP covers 14 standards (CIP-002 through CIP-015) with 200+ requirements. IEC 62443 adds 51 System Requirements across 7 Foundational Requirements. Starting from scratch takes months. This library is that months-of-work already done.
@@ -63,10 +63,10 @@ This library gives you a **complete, working policy set on day one**, covering 2
 
 | Domain | Policies | Coverage |
 |--------|----------|----------|
-| **CIS Benchmarks + DISA STIGs** | 238 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network + RHEL 8/9 & Windows 2022 STIGs |
-| **Regulatory Frameworks** | 186 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, **CSA CCM v4.0**, **ISO 27701**, **NIST SP 800-171 r3**, **CCPA/CPRA** |
-| **Enforcement** | 6 | Ansible, Terraform, Dockerfile, Kubernetes, Git |
-| **Governance** | 13 | AI agent authorization, MCP tool-call enforcement, GEISA, **EU AI Act (Regulation 2024/1689)** |
+| **CIS Benchmarks + DISA STIGs** | 246 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network + RHEL 8/9 & Windows 2022 STIGs. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
+| **Regulatory Frameworks** | 186 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA |
+| **Enforcement** | 9 | Ansible, Terraform, Dockerfile, Kubernetes admission, Git approval/playbook docs, **CI/CD pipeline gating**, **SLSA supply-chain governance** |
+| **Governance** | 19 | AI agent authorization, MCP tool-call enforcement, GEISA (API/ADM/LEE/VEE), **EU AI Act (Regulation 2024/1689)** suite, **OIDC token validation**, **FinOps tagging** |
 | **Threat Detection** | 1 | Cryptocurrency miner detection |
 
 **Highlight:** CIS RHEL 9 v2.0.0 — **338/338 controls (100%)** across 14 modules.
@@ -80,7 +80,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 Pull the pre-built bundle directly from GitHub Container Registry — no clone needed:
 
 ```bash
-# Pull the full 397-policy bundle (632 KB)
+# Pull the full 461-policy bundle
 oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest
 
 # Start OPA with the bundle
@@ -147,11 +147,18 @@ rego_policy_libraries/
 │   ├── ansible/                 # Block non-compliant playbooks at check-in and runtime
 │   ├── terraform/               # Validate plans before apply
 │   ├── dockerfile/              # Lint Dockerfiles at build time
-│   └── kubernetes/              # Admission control for K8s manifests
+│   ├── kubernetes/              # Admission control for K8s manifests
+│   ├── git/                     # Approval and playbook-documentation policies
+│   ├── cicd/                    # CI/CD pipeline gating
+│   └── supply_chain/            # SLSA-style supply-chain governance
 │
 ├── governance/                  # AI and operational governance
 │   ├── ai/                      # AI agent action classification and authorization
-│   └── mcp/                     # MCP server tool-call enforcement
+│   ├── mcp/                     # MCP server tool-call enforcement
+│   ├── eu_ai_act/               # EU AI Act (Regulation 2024/1689) — prohibited, high-risk, GPAI, transparency
+│   ├── geisa/                   # GEISA runtime compliance (API, ADM, LEE, VEE)
+│   ├── oidc/                    # OIDC token validation for portal/MCP access control
+│   └── finops/                  # Resource tagging policies
 │
 └── threat_detection/
     └── crypto_mining/           # Detect unauthorized cryptocurrency miners
@@ -226,6 +233,8 @@ Full library for IEC 62443 Industrial Automation and Control Systems (IACS) Secu
 Full library covering all active CIP standards (CIP-002 through CIP-015) in `frameworks/critical_infrastructure/nerc_cip/`.
 
 **OPA endpoint:** `POST /v1/data/nerc_cip_main`
+
+**Data sources:** Every `input.*` field used by the 14 CIP policies is documented in [`frameworks/critical_infrastructure/nerc_cip/DATA_SOURCES.md`](frameworks/critical_infrastructure/nerc_cip/DATA_SOURCES.md) — each entry lists the real-world source system (GRC, CMDB, LMS, PACS, SIEM, INSM platform, vulnerability scanner, etc.), the collection method (Ansible module or REST endpoint), and whether the integration is currently live or stubbed.
 
 ---
 
