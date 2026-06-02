@@ -179,6 +179,7 @@ rego_policy_libraries/
 | Amazon Linux 2023 | `benchmarks/cis/os/linux/amazon_linux_2023/` | Full |
 | Windows Server 2019/2022 | `benchmarks/cis/os/windows/` | Modular (9 sections) |
 | AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
+| **Microsoft 365** | `benchmarks/cis/m365/` | **Foundations v4.0.0 (95 controls)** ✅ |
 | Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
 | MySQL / Oracle / PostgreSQL | `benchmarks/cis/databases/` | Full |
 | Cisco / Juniper / Palo Alto / Fortinet / Arista | `benchmarks/cis/network/` | Full |

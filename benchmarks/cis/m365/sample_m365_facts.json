@@ -1,0 +1,189 @@
+{
+  "tenant_id": "contoso.onmicrosoft.com",
+  "collected_at": "2026-06-01T12:00:00Z",
+  "entra": {
+    "users": [
+      {
+        "user_principal_name": "alice@contoso.onmicrosoft.com",
+        "assigned_roles": ["Global Administrator"],
+        "on_premises_sync_enabled": false,
+        "is_break_glass": false,
+        "assigned_licenses": ["AAD_PREMIUM_P2"],
+        "per_user_mfa_state": "Disabled",
+        "mfa_enforced_via_ca": true
+      },
+      {
+        "user_principal_name": "breakglass-1@contoso.onmicrosoft.com",
+        "assigned_roles": ["Global Administrator"],
+        "on_premises_sync_enabled": false,
+        "is_break_glass": true,
+        "assigned_licenses": [],
+        "per_user_mfa_state": "Disabled",
+        "mfa_enforced_via_ca": true
+      },
+      {
+        "user_principal_name": "breakglass-2@contoso.onmicrosoft.com",
+        "assigned_roles": ["Global Administrator"],
+        "on_premises_sync_enabled": false,
+        "is_break_glass": true,
+        "assigned_licenses": [],
+        "per_user_mfa_state": "Disabled",
+        "mfa_enforced_via_ca": true
+      }
+    ],
+    "groups": [
+      {"display_name": "M365 All Users", "visibility": "Public", "is_approved": true}
+    ],
+    "password_policy": {"password_validity_period_in_days": 2147483647},
+    "idle_session_timeout_minutes": 180,
+    "user_consent": {"allow_user_consent_for_apps": false},
+    "user_settings": {
+      "allow_users_register_apps": false,
+      "restrict_non_admin_tenant_creation": true,
+      "restrict_admin_center_access": true,
+      "restrict_my_groups": true,
+      "linkedin_account_connections": "Disabled"
+    },
+    "group_settings": {"allow_users_create_security_groups": false},
+    "dynamic_groups": {"guest_users_group_exists": true},
+    "company_branding": {"show_keep_me_signed_in": false},
+    "external_collaboration": {"invitation_policy": "allow_specific_domains"},
+    "security_defaults": {"enabled": false},
+    "conditional_access": {
+      "legacy_auth_blocked": true,
+      "policies": [
+        {"name": "Require MFA - All Users", "requires_mfa_for_all_users": true}
+      ]
+    },
+    "authentication_methods": {"authenticator_number_matching": true},
+    "password_protection": {"custom_banned_passwords": ["Contoso", "Spring2026"]}
+  },
+  "forms": {"phishing_protection_enabled": true},
+  "exchange": {
+    "shared_mailboxes": [
+      {"user_principal_name": "info@contoso.onmicrosoft.com", "account_enabled": false}
+    ],
+    "sharing_policy": {"calendar_external": false},
+    "accepted_domains": [
+      {
+        "domain_name": "contoso.com",
+        "authoritative": true,
+        "spf_record_published": true,
+        "dkim_enabled": true,
+        "dmarc_policy": "reject"
+      }
+    ],
+    "org_config": {
+      "audit_disabled": false,
+      "external_in_outlook_enabled": true,
+      "smtp_auth_disabled": true,
+      "oauth2_client_profile_enabled": true,
+      "mailtips_all_tips_enabled": true,
+      "customer_lockbox_enabled": true,
+      "plus_addressing_enabled": true
+    },
+    "mailboxes": [
+      {
+        "user_principal_name": "alice@contoso.onmicrosoft.com",
+        "license_tier": "E5",
+        "audit_enabled": true,
+        "audit_log_age_limit_days": 365
+      }
+    ],
+    "outbound_spam_policy": {"auto_forwarding_mode": "Off"},
+    "transport_rules": [],
+    "role_assignment_policy": {"my_marketplace_apps_assigned": false},
+    "owa_mailbox_policy": {"additional_storage_providers_available": false}
+  },
+  "defender": {
+    "safe_links": {"enable_for_office_apps": true},
+    "malware_filter": {
+      "common_attachment_types_filter_enabled": true,
+      "enable_internal_sender_admin_notifications": true
+    },
+    "safe_attachments": {
+      "policy_enabled": true,
+      "enable_for_spo_odb_teams": true
+    },
+    "spam_policy": {"notify_outbound_spam_recipients": true},
+    "antiphish_policies": [
+      {"name": "Default", "enable_first_contact_safety_tips": true}
+    ],
+    "reports": {
+      "spoofed_domains_reviewed_weekly": true,
+      "restricted_entities_reviewed_weekly": true
+    },
+    "priority_account_protection": {"enabled": true}
+  },
+  "purview": {
+    "audit_log_search_enabled": true,
+    "role_group_changes_reviewed_weekly": true,
+    "dlp": {"enabled_for_teams": true, "pii_policy_enabled": true},
+    "sensitivity_labels_published_for_spo": true,
+    "sensitivity_labels_required_on_spo_files": true,
+    "insider_risk_policies": [{"name": "Data theft by departing users"}],
+    "alert_policies": [
+      {"name": "User performed an Exchange admin activity", "enabled": true},
+      {"name": "Unusual external user file activity", "enabled": true},
+      {"name": "Elevation of Exchange admin privilege", "enabled": true},
+      {"name": "Tenant restriction policy modification", "enabled": true},
+      {"name": "New consent grants to applications", "enabled": true}
+    ],
+    "audit_retention_days": 365
+  },
+  "sharepoint": {
+    "tenant": {
+      "legacy_auth_protocols_enabled": false,
+      "aad_b2b_integration_enabled": true,
+      "sharing_capability": "ExistingExternalUserSharingOnly",
+      "prevent_external_users_from_resharing": true,
+      "sharing_domain_restriction_mode": "AllowList",
+      "default_sharing_link_type": "Internal",
+      "external_user_expiration_required": true
+    }
+  },
+  "onedrive": {
+    "tenant": {"sharing_capability": "ExistingExternalUserSharingOnly"}
+  },
+  "teams": {
+    "client_settings": {
+      "allow_box": false,
+      "allow_dropbox": false,
+      "allow_google_drive": false,
+      "allow_share_file": false
+    },
+    "federation": {"allow_federated_users": true, "allowed_domains_only": true},
+    "meeting_policy": {
+      "allow_anonymous_users_to_join_meeting": false,
+      "allow_anonymous_users_to_start_meeting": false,
+      "auto_admitted_users": "OrganizerOnly",
+      "allow_pstn_users_to_bypass_lobby": false,
+      "meeting_chat_enabled_type": "Enabled",
+      "designated_presenter_role_mode": "OrganizerOnlyUserOverride",
+      "allow_external_participant_give_request_control": false
+    },
+    "messaging_policy": {"allow_security_end_user_reporting": true}
+  },
+  "intune": {
+    "device_compliance_policies": [
+      {
+        "name": "iOS - corporate",
+        "platform": "iOS",
+        "password_minimum_length": 8,
+        "encryption_required": true,
+        "password_minutes_of_inactivity_before_lock": 15,
+        "password_required_type": "alphanumeric",
+        "password_sign_in_failure_count_before_factory_reset": 10
+      },
+      {
+        "name": "Android - corporate",
+        "platform": "Android",
+        "password_minimum_length": 8,
+        "encryption_required": true,
+        "password_minutes_of_inactivity_before_lock": 15,
+        "password_required_type": "alphanumeric",
+        "password_sign_in_failure_count_before_factory_reset": 10
+      }
+    ]
+  }
+}
