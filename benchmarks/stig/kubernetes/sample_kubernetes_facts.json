@@ -1,0 +1,70 @@
+{
+  "api_server": {
+    "anonymous_auth_enabled": false,
+    "audit_log_path": "/var/log/kubernetes/audit/audit.log",
+    "audit_policy_file": "/etc/kubernetes/audit-policy.yaml",
+    "audit_log_max_age": 90,
+    "audit_log_max_size": 100,
+    "authorization_modes": ["Node", "RBAC"],
+    "encryption_provider_config_set": true,
+    "enable_admission_plugins": [
+      "NodeRestriction",
+      "PodSecurity",
+      "NamespaceLifecycle",
+      "ServiceAccount",
+      "MutatingAdmissionWebhook",
+      "ValidatingAdmissionWebhook"
+    ],
+    "profiling_enabled": false
+  },
+  "kubelet": {
+    "anonymous_auth_enabled": false,
+    "readonly_port": 0,
+    "client_ca_file": "/etc/kubernetes/pki/ca.crt",
+    "tls_min_version": "VersionTLS12",
+    "event_qps": 5,
+    "streaming_connection_idle_timeout_seconds": 1800
+  },
+  "etcd": {
+    "client_cert_auth_enabled": true,
+    "peer_client_cert_auth_enabled": true
+  },
+  "scheduler": {
+    "profiling_enabled": false
+  },
+  "controller_manager": {
+    "profiling_enabled": false,
+    "service_account_private_key_file": "/etc/kubernetes/pki/sa.key"
+  },
+  "kubeconfig": {
+    "insecure_skip_tls_verify": false
+  },
+  "rbac": {
+    "cluster_role_bindings": [
+      {
+        "role_name": "cluster-admin",
+        "subjects": [
+          {"kind": "User", "name": "admin@example.com", "namespace": ""}
+        ]
+      }
+    ]
+  },
+  "pods": [
+    {
+      "namespace": "default",
+      "spec": {
+        "host_network": false,
+        "containers": [
+          {"security_context": {"privileged": false}}
+        ]
+      }
+    }
+  ],
+  "namespaces": [
+    {"name": "default", "is_system": false, "has_default_deny_netpol": true, "default_sa_automount_token": false},
+    {"name": "kube-system", "is_system": true, "has_default_deny_netpol": false, "default_sa_automount_token": false}
+  ],
+  "workloads": {
+    "kubernetes_dashboard_installed": false
+  }
+}

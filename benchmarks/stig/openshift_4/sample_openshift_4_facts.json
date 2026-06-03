@@ -1,0 +1,87 @@
+{
+  "cluster": {
+    "fips_enabled": true,
+    "kubeadmin_user_exists": false,
+    "disconnected_install": false,
+    "telemetry_enabled": true
+  },
+  "etcd": {
+    "encryption_at_rest_enabled": true,
+    "encryption_type": "aescbc"
+  },
+  "api_server": {
+    "audit_profile": "WriteRequestBodies"
+  },
+  "oauth": {
+    "identity_providers": [
+      {"type": "OpenID", "name": "corporate-idp"}
+    ],
+    "access_token_max_age_seconds": 86400,
+    "access_token_inactivity_timeout_seconds": 900
+  },
+  "console": {
+    "session_timeout_minutes": 15
+  },
+  "scc": {
+    "bindings": [
+      {
+        "scc_name": "privileged",
+        "subjects": [
+          {"kind": "ServiceAccount", "name": "default", "namespace": "openshift-monitoring"}
+        ]
+      },
+      {
+        "scc_name": "restricted-v2",
+        "subjects": [
+          {"kind": "ServiceAccount", "name": "default", "namespace": "myapp"}
+        ]
+      }
+    ]
+  },
+  "operators": {
+    "cluster_logging": {"installed": true, "health": "Healthy"},
+    "cluster_monitoring": {"installed": true, "health": "Healthy"}
+  },
+  "image_registry": {
+    "tls_enabled": true
+  },
+  "ingress": {
+    "default_certificate_self_signed": false
+  },
+  "operator_hub": {
+    "enabled_sources": ["redhat-operators", "certified-operators"]
+  },
+  "image_policy": {
+    "signature_verification_enabled": true
+  },
+  "machine_config_pools": [
+    {"name": "master", "degraded": false, "updated": true},
+    {"name": "worker", "degraded": false, "updated": true}
+  ],
+  "certificates": [
+    {"name": "kube-apiserver-lb-signer", "days_until_expiry": 365},
+    {"name": "ingress-operator-signer", "days_until_expiry": 365}
+  ],
+  "cluster_logging": {
+    "retention_days": 90
+  },
+  "namespaces": [
+    {"name": "openshift-monitoring", "has_default_deny_netpol": false, "pod_security_enforce_level": "privileged"},
+    {"name": "kube-system", "has_default_deny_netpol": false, "pod_security_enforce_level": "privileged"},
+    {"name": "default", "has_default_deny_netpol": false, "pod_security_enforce_level": "privileged"},
+    {"name": "myapp", "has_default_deny_netpol": true, "pod_security_enforce_level": "restricted"}
+  ],
+  "pods": [
+    {
+      "namespace": "myapp",
+      "spec": {
+        "containers": [
+          {"security_context": {"run_as_user": 1000}}
+        ]
+      }
+    }
+  ],
+  "workloads": {
+    "kubernetes_dashboard_installed": false
+  }
+}
