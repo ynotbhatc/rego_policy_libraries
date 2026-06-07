@@ -16,6 +16,7 @@ protected_paths := {
 
 # Users authorized to approve changes
 authorized_approvers := {
+    "ynotbha@aisle-five.com",
     "tcoulter@example.com",
     "john.doe@example.com",
     "security-team@example.com",
