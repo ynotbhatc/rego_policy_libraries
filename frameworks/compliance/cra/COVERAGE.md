@@ -1,6 +1,6 @@
 ---
 title: EU Cyber Resilience Act (CRA) — Policy Coverage
-version: v0.4
+version: v0.5
 date: 2026-06-26
 authors:
   - Tim Coulter
@@ -18,9 +18,9 @@ authors:
 
 ## Summary
 
-This library implements **15 policy modules** across the major CRA chapters covering all five categories of economic operator (manufacturer, authorised representative, importer, distributor, online marketplace) plus the new "open-source software steward" category, the Article 23 FOSS exclusion boundary, and the deepest annex content checks (Annex I, II, IV, VII).
+This library implements **17 policy modules** across the major CRA chapters covering all five categories of economic operator (manufacturer, authorised representative, importer, distributor, online marketplace) plus the new "open-source software steward" category, the Article 23 FOSS exclusion boundary, the deepest annex content checks (Annex I, II, IV, VII), and **two evidence-integration bridges** that re-frame existing SLSA supply-chain + ISO 27001 cryptography findings as CRA citations — no double-attestation required.
 
-**Total**: **217 distinct control checks** across 15 modules, surfaced at a single endpoint:
+**Total**: **244 distinct control checks** across 17 modules, surfaced at a single endpoint:
 
 ```
 POST <opa>/v1/data/cra/main/compliance_report
@@ -28,7 +28,7 @@ POST <opa>/v1/data/cra/main/compliance_report
 
 Returns the standard AAC contract shape `{framework, compliant, total_controls, violations, violation_count, module_summary}` so it's interchangeable with every other framework in the library.
 
-**Test coverage**: 54 unit tests, full repository `opa test` at 129/129 passing.
+**Test coverage**: 65 unit tests, full repository `opa test` at 139/139 passing.
 
 ---
 
@@ -157,6 +157,8 @@ Honest scoping — the framework is a self-assessment tool, not a magic complian
 | 13 | `cra.substantial_modification` | Article 11 | 13 | Documented + published assessment criteria; conformity reassessment after substantial mod; modifier assumes Art.13 obligations; risk assessment update on new connectivity / cryptographic-primitive change / SBOM change; technical documentation update; Declaration reissued; user notification of security-relevant changes; support period recommitment; annual review of assessment criteria |
 | 14 | `cra.online_marketplace` | Article 22 | 13 | **Threshold-gated** (marketplace provider + offers PDE products); single point of contact for authorities + end users; cooperation; **48h authority takedown order action**; trader identity verification + CRA attestation; random checks (≥ 1% sample); manufacturer notification + listing removal on non-compliance; affected-buyer notification; consumer reporting channel; documented CRA process |
 | 15 | `cra.foss_exclusion` | Article 23 + Recitals 15-18 | 8 | **Boundary check** — returns `exempt = true` for non-commercial OSS, zero violations. Detects mis-claims: paid support / license fees / commercial SaaS / donation-funded full-time devs / integration into commercial products. Requires documented + annually-reviewed exemption basis |
+| 16 | `cra.supply_chain_evidence` | **Evidence bridge** — re-uses `data.supply_chain.slsa` | 14 | Consumes SLSA findings (SBOM completeness, machine-readable format, signing, CVE policy, provenance) and re-frames them in CRA citation form. The same evidence powers both an SLSA report and a CRA report — no double-attestation. Connects: Annex I.6 (integrity), Annex II.1 (SBOM), Annex II.4 (CVE disclosure), Art.13(6) (third-party diligence), Art.11 (substantial-modification SBOM refresh), Annex VII.3 (provenance in technical documentation) |
+| 17 | `cra.crypto_evidence` | **Evidence bridge** — re-uses `data.iso27001.cryptography` | 13 | Consumes ISO 27001 A.10 crypto findings (policy, key management, generation, distribution, usage, destruction) and re-frames them as CRA Annex I.5 / I.6 / I.4 citations. Adds CRA-specific weak-cipher + deprecated-protocol + anti-rollback + hardware-backed-key-storage rules that ISO 27001 leaves implicit |
 
 ---
 
@@ -263,6 +265,89 @@ The framework flags: `Art.11 (Annex I.1 interaction): New network connectivity a
 
 ---
 
+## Cross-framework mapping
+
+Most organisations that have CRA exposure also maintain compliance against the framework set below. The same input fact (MFA enforced, encryption at rest, SBOM published, etc.) can satisfy a CRA control AND a NIST CSF / ISO 27001 / NIST 800-53 / NIS2 control simultaneously. This mapping converts the "82 new CRA controls to track" framing into "you already cover 60-70% via existing programs."
+
+The right-hand columns are the **specific control or article reference** from each adjacent framework — not a fuzzy "see also."
+
+### CRA Annex I Part I — Essential cybersecurity requirements
+
+| CRA control | ISO 27001:2022 | NIST CSF 2.0 | NIST 800-53 Rev 5 | NIS2 | Implementation evidence reuse |
+|---|---|---|---|---|---|
+| Annex I.1(a) — Security by design / threat model | A.5.7, A.8.25 | PR.IP-2 (SDLC) | SA-11, SA-15, RA-3 | Art.21(2)(a) risk analysis | Manual attestation |
+| Annex I.2(a) — Secure default configuration | A.8.9 | PR.IP-1 (baseline) | CM-2, CM-6 | Art.21(2)(i) hygiene | CIS Benchmarks for the runtime OS |
+| Annex I.3(a/b) — Security updates separable + automatic | A.8.32 | PR.IP-12 (vuln mgmt) | SI-2 | Art.21(2)(b) incident handling | CICD pipeline + SLSA provenance |
+| Annex I.4 — State-of-the-art authentication | A.5.16, A.5.17, A.8.5 | PR.AC-7 | IA-2, IA-2(1)(2) | Art.21(2)(j) MFA | `cra.crypto_evidence` + governance/oidc |
+| Annex I.5(a) — Data at rest encryption | A.8.24 | PR.DS-1 | SC-28, SC-28(1) | Art.21(2)(h) cryptography | `cra.crypto_evidence` (ISO 27001 A.10) |
+| Annex I.5(b) — Data in transit encryption | A.8.24 | PR.DS-2 | SC-8, SC-8(1) | Art.21(2)(h) | `cra.crypto_evidence` |
+| Annex I.6(a) — Code/config integrity (signing) | A.8.6 | PR.DS-6 | SC-13, SI-7 | Art.21(2)(e) secure dev | `cra.supply_chain_evidence` (SLSA signing) |
+| Annex I.6(b) — Tamper detection / anti-rollback | A.8.31 | PR.DS-6 | SI-7(1), SC-7 | Art.21(2)(e) | `cra.crypto_evidence` |
+| Annex I.7 — Data minimisation | A.8.10, A.8.11 | PR.DS-5 | SA-8(5) | (GDPR Art.5(1)(c) overlap) | GDPR framework |
+| Annex I.8 — Availability / DoS protection | A.8.6, A.5.30 | PR.IP-9 (continuity) | SC-5, CP-2 | Art.21(2)(c) continuity | NIS2 + ISO 22301 |
+| Annex I.9 — Attack-surface reduction | A.8.9, A.8.27 | PR.IP-1 | CM-7, CM-7(1) | Art.21(2)(a) | CIS Benchmarks |
+| Annex I.10 — Exploitation mitigation | A.8.30 | PR.PT-3 | SI-16, SI-2(6) | Art.21(2)(e) | OS hardening (CIS) |
+| Annex I.11 — Security event logging | A.8.15, A.8.16 | DE.AE-3, DE.CM-1 | AU-2, AU-3, AU-6 | Art.21(2)(b) | NIST CSF Detect + NIST 800-53 AU |
+
+### CRA Annex I Part II — Vulnerability handling
+
+| CRA control | ISO 27001:2022 | NIST CSF 2.0 | NIST 800-53 Rev 5 | NIS2 | Implementation evidence reuse |
+|---|---|---|---|---|---|
+| Annex II.1 — SBOM maintained, machine-readable, components documented | A.8.30 | ID.RA-1, PR.IP-2 | SR-4, SR-4(1)(3) | Art.21(2)(d) supply chain | `cra.supply_chain_evidence` (SLSA SBOM) |
+| Annex II.2 — Remediation process, security updates free, ≥5yr support | A.8.8 | PR.IP-12, RS.MI-3 | SI-2, RA-5 | Art.21(2)(b) | `cra.supply_chain_evidence` (CVE policy) |
+| Annex II.3 — Regular vulnerability testing | A.8.29 | DE.CM-8 | RA-5, CA-8 | Art.21(2)(f) effectiveness | SLSA + pen-test evidence |
+| Annex II.4 — Public disclosure post-patch + CVE IDs | A.5.23, A.5.25 | RS.CO-3, RS.CO-5 | IR-6, SI-5 | Art.21(2)(b) | `cra.supply_chain_evidence` |
+| Annex II.5 — Coordinated vulnerability disclosure policy | A.6.7 | RS.CO-1 | IR-8 | Art.21(2)(b) | Manual policy + PSIRT |
+| Annex II.6 — User vuln reporting channel | A.5.30, A.6.6 | RS.CO-2 | IR-6, AC-2(11) | Art.21(2)(b) | Manual |
+| Annex II.7 — Secure update distribution channel | A.8.31 | PR.IP-3 | CM-3(2), SC-7(8) | Art.21(2)(e) | CICD + signing |
+
+### CRA Article 13 — Manufacturer obligations
+
+| CRA control | ISO 27001:2022 | NIST CSF 2.0 | NIST 800-53 Rev 5 | NIS2 |
+|---|---|---|---|---|
+| Art.13(1-3) — Essential req compliance + risk assessment | A.6.1, Clause 6.1.2 | GV.RM, ID.RA | RA-3, PM-9 | Art.21(2)(a) |
+| Art.13(6) — Third-party component due diligence + vuln monitoring | A.5.19, A.5.21, A.8.30 | ID.SC-2, ID.SC-4 | SR-3, SR-6, SR-11 | Art.21(2)(d) |
+| Art.13(7) — ENISA reporting process documented | A.5.24, A.5.25 | RS.CO-2, RS.CO-3 | IR-6, IR-8 | Art.21(2)(b), Art.23 reporting |
+| Art.13(8) — Declared support period ≥ 5 years | A.5.30 | PR.IP-9 | SA-3 | (no direct parallel) |
+| Art.13(10) — User information | A.5.30, A.7.2.2 | PR.AT-1 | PL-4, AT-2 | (no direct parallel) |
+| Art.13(14) — End-of-support notification (12 months prior) | A.8.32 | PR.IP-10 | SA-22 | (no direct parallel) |
+
+### CRA Article 14 — Incident reporting
+
+| CRA control | ISO 27001:2022 | NIST CSF 2.0 | NIST 800-53 Rev 5 | NIS2 | DORA |
+|---|---|---|---|---|---|
+| Art.14(2)(a) — 24h early warning to ENISA | A.5.24, A.5.25 | RS.CO-2 | IR-6, IR-6(1), IR-8 | **Art.23(4)(a)** — 24h early warning | **Art.19(4)(a)** — 24h initial |
+| Art.14(2)(b) — 72h vulnerability notification | A.5.24, A.5.25 | RS.AN-1, RS.CO-2 | IR-6(1), IR-8 | **Art.23(4)(b)** — 72h notification | **Art.19(4)(b)** — 72h intermediate |
+| Art.14(2)(c) — 14-day final vuln report | A.5.27 | RS.IM-1, RS.IM-2 | IR-4(3), IR-8 | Art.23(4)(c) final | Art.19(4)(c) final |
+| Art.14(3) — Severe incident 24h/72h/1 month cascade | A.5.24 | RS.CO-2 | IR-6, IR-8 | **Art.23 same cascade** | Art.19 same cascade |
+| Art.14(8) — Inform affected users | A.5.24, A.5.27 | RS.CO-4 | IR-6, IR-8 | Art.23(2) | Art.19(3) |
+
+**The Article 14 cascade is the most-overlapping CRA element.** A single 24h/72h/14d reporting infrastructure can satisfy CRA + NIS2 + DORA simultaneously if scoped correctly. Reuse strongly recommended.
+
+### CRA Article 18-20 — Supply-chain liability
+
+| CRA control | ISO 27001:2022 | NIST CSF 2.0 | NIST 800-53 Rev 5 |
+|---|---|---|---|
+| Art.18 — Authorised representative obligations | A.5.20 (supplier agreements) | GV.OC-2 | SA-9, SR-2 |
+| Art.19 — Importer verification + due diligence | A.5.19, A.5.20 | ID.SC-4 | SR-3, SR-6 |
+| Art.20 — Distributor verification | A.5.19 | ID.SC-3 | SR-3, SR-11 |
+| Art.21 — Rebrand / modification = manufacturer escalation | A.8.31 (change mgmt) | GV.RM-1 | CM-3, SA-10 |
+| Art.24 — OSS steward obligations | A.5.20 (third-party agreements) | ID.SC-2 | SA-8(13), SR-3 |
+
+### CRA Annex IV — Declaration of Conformity content
+
+Annex IV content has no direct framework analogue — it's a CRA-specific document format. The closest reuse is **technical documentation processes** already in place for CE marking under the Low Voltage Directive (LVD), EMC Directive, or Radio Equipment Directive (RED) for connected radio products. Manufacturers familiar with those declarations can re-use their internal sign-off workflows.
+
+### How to read this mapping operationally
+
+- **If a row maps to a control you already implement under another framework**, your evidence collection is reusable. Configure the input to the CRA framework with the same fact and CRA reports compliant on that control.
+- **If a row maps to multiple frameworks** (e.g. the Article 14 cascade), invest in ONE reporting infrastructure that satisfies all — don't build three.
+- **If the right-hand columns are empty / "no direct parallel"**, the CRA obligation is genuinely CRA-specific. Examples: 5-year support period (Art.13(8)), end-of-support 12-month notification (Art.13(14)), explicit CRA citation in Declaration of Conformity (Annex IV.6). Budget for these as new work.
+
+The evidence-bridge modules (`cra.supply_chain_evidence` and `cra.crypto_evidence`) automate the "reuse the same input" pattern for two of the highest-overlap areas — SBOM/signing/CVE and cryptography. Future evidence bridges (e.g. `cra.iam_evidence` consuming NIST 800-53 IA family) follow the same pattern.
+
+---
+
 ## Routing
 
 Per `opa_framework_map` in the AAC compliance repo (`ansible/vars/site_config.yml`), CRA routes to the **compliance** bucket — `opa-compliance` on port `:8182`. The AAC generic framework playbook (`ansible/playbooks/generic_framework_assessment.yml`) automatically resolves the correct OPA container; no hardcoding needed.
@@ -325,5 +410,6 @@ The unconditional rules (the majority of essential_requirements, vuln_handling, 
 | v0.2 | 2026-06-26 | Added importer / distributor / auth rep / OSS steward / Annex II — PR #31 second commit |
 | v0.3 | 2026-06-26 | Added Declaration content / Art.11 substantial modification / Art.22 marketplaces / Art.23 FOSS exclusion — PR #31 third commit |
 | v0.4 | 2026-06-26 | Added Business case, "What it identifies" risk-category framing, Penalty exposure table with Tier 1/2/3 fines, Worked operational scenarios A–E, explicit "what the framework does NOT do" scoping |
+| v0.5 | 2026-06-26 | Added evidence-bridge modules (`cra.supply_chain_evidence` re-uses SLSA findings → 14 CRA citations; `cra.crypto_evidence` re-uses ISO 27001 A.10 findings → 13 CRA citations); Cross-framework mapping section (ISO 27001 / NIST CSF 2.0 / NIST 800-53 / NIS2 / DORA per CRA Annex + Article); cleaned up misleading CRA mention in `digital_sovereignty/cyber_resilience_sovereignty.rego` header |
 
 This document tracks the current state of the framework. When the CRA gets implementing acts (delegated regulations under Art.6, Art.27, Art.39), or when standardisation bodies publish harmonised standards under Art.27, those will land as additional rules in the relevant modules and trigger version bumps here.

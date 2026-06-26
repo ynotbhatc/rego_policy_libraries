@@ -10,9 +10,14 @@ import rego.v1
 #   NIST SP 800-160 Vol. 2 (Cyber Resiliency Engineering)
 #   NIST CSF 2.0 — Govern, Identify, Protect, Detect, Respond, Recover
 #   ISO 22301 (Business Continuity Management)
-#   EU Cyber Resilience Act (CRA) — Regulation 2024/2847
 #   ENISA Cyber Resilience Guidelines
 #   NCSC Cyber Resilience Framework (UK)
+#
+# NOTE on CRA: This module does NOT implement the EU Cyber Resilience Act
+# (Regulation (EU) 2024/2847). CRA is implemented in its own dedicated
+# framework at frameworks/compliance/cra/ — package cra.main — which
+# covers all 15 articles + annexes the CRA actually mandates. See
+# frameworks/compliance/cra/COVERAGE.md for the article-level mapping.
 #
 # Input schema:
 #   input.cyber_resilience

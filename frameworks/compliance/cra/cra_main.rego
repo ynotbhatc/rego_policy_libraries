@@ -39,6 +39,8 @@ import rego.v1
 #   Article 11       — Substantial modification                     (data.cra.substantial_modification)
 #   Article 22       — Online marketplace obligations               (data.cra.online_marketplace)
 #   Article 23       — FOSS exclusion boundary check                (data.cra.foss_exclusion)
+#   evidence-bridge  — Supply-chain via data.supply_chain.slsa       (data.cra.supply_chain_evidence)
+#   evidence-bridge  — Crypto via data.iso27001.cryptography         (data.cra.crypto_evidence)
 
 import data.cra.essential_requirements      as er
 import data.cra.vulnerability_handling      as vh
@@ -55,6 +57,8 @@ import data.cra.declaration_of_conformity   as doc
 import data.cra.substantial_modification    as sm
 import data.cra.online_marketplace          as om
 import data.cra.foss_exclusion              as foss
+import data.cra.supply_chain_evidence       as sce
+import data.cra.crypto_evidence             as crypto
 
 default compliant := false
 default entity_name := "unknown"
@@ -78,10 +82,12 @@ io_v   := [v | some v in io_.violation]
 do_v   := [v | some v in do_.violation]
 oss_v  := [v | some v in oss.violation]
 ui_v   := [v | some v in ui.violation]
-doc_v  := [v | some v in doc.violation]
-sm_v   := [v | some v in sm.violation]
-om_v   := [v | some v in om.violation]
-foss_v := [v | some v in foss.violation]
+doc_v    := [v | some v in doc.violation]
+sm_v     := [v | some v in sm.violation]
+om_v     := [v | some v in om.violation]
+foss_v   := [v | some v in foss.violation]
+sce_v    := [v | some v in sce.violation]
+crypto_v := [v | some v in crypto.violation]
 
 # Nested 2-arg array.concat per repo convention.
 _a  := array.concat(er_v, vh_v)
@@ -97,7 +103,9 @@ _j  := array.concat(_i, ui_v)
 _k  := array.concat(_j, doc_v)
 _l  := array.concat(_k, sm_v)
 _m  := array.concat(_l, om_v)
-all_violations := array.concat(_m, foss_v)
+_n  := array.concat(_m, foss_v)
+_o  := array.concat(_n, sce_v)
+all_violations := array.concat(_o, crypto_v)
 
 violations := all_violations
 
@@ -117,8 +125,10 @@ violations := all_violations
 #   Article 11        substantial_modification  13
 #   Article 22        online_marketplace        13
 #   Article 23        foss_exclusion             8
-# Total: 217 distinct control checks across 15 modules.
-total_controls := 217
+#   evidence bridge   supply_chain_evidence     14  (re-frames data.supply_chain.slsa findings)
+#   evidence bridge   crypto_evidence           13  (re-frames data.iso27001.cryptography findings)
+# Total: 244 distinct control checks across 17 modules.
+total_controls := 244
 
 compliant if { count(violations) == 0 }
 
@@ -150,7 +160,11 @@ compliance_report := {
         "declaration_of_conformity":  {"violations": count(doc_v),  "compliant": count(doc_v)  == 0},
         "substantial_modification":   {"violations": count(sm_v),   "compliant": count(sm_v)   == 0},
         "online_marketplace":         {"violations": count(om_v),   "compliant": count(om_v)   == 0},
-        "foss_exclusion":             {"violations": count(foss_v), "compliant": count(foss_v) == 0,
+        "foss_exclusion":             {"violations": count(foss_v),   "compliant": count(foss_v)   == 0,
                                        "exempt": foss.exempt},
+        "supply_chain_evidence":      {"violations": count(sce_v),    "compliant": count(sce_v)    == 0,
+                                       "upstream": "data.supply_chain.slsa"},
+        "crypto_evidence":            {"violations": count(crypto_v), "compliant": count(crypto_v) == 0,
+                                       "upstream": "data.iso27001.cryptography"},
     },
 }

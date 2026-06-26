@@ -9,7 +9,7 @@ test_compliance_report_defined_on_empty_input if {
     r := main.compliance_report with input as {}
     r.framework == "EU Cyber Resilience Act (CRA)"
     r.regulation == "Regulation (EU) 2024/2847"
-    r.total_controls == 217
+    r.total_controls == 244
     is_number(r.violation_count)
 }
 
@@ -485,6 +485,81 @@ test_exemption_basis_must_be_documented if {
                 "process": {"exemption_basis_documented": false}}}
     hits := [v | some v in main.violations with input as inp;
              contains(v, "Art.23"); contains(v, "audit trail")]
+    count(hits) > 0
+}
+
+# ── Supply-chain evidence (SLSA bridge) ──────────────────────────────────
+
+test_supply_chain_evidence_module_appears if {
+    r := main.compliance_report with input as {}
+    r.module_summary.supply_chain_evidence
+    r.module_summary.supply_chain_evidence.upstream == "data.supply_chain.slsa"
+}
+
+test_sbom_missing_maps_to_annex_ii_1a if {
+    # An empty input → SLSA reports "No SBOM attached" → CRA bridge re-frames as Annex II.1(a)
+    inp := {}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex II.1(a) (via SLSA)")]
+    count(hits) > 0
+}
+
+test_unsigned_artifact_maps_to_annex_i_6a if {
+    # SLSA fires "Artifact is not signed" on empty input → CRA bridge re-frames as Annex I.6(a)
+    inp := {}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex I.6(a) (via SLSA)")]
+    count(hits) > 0
+}
+
+test_sbom_change_without_refresh_violates_art_11_via_slsa if {
+    inp := {"substantial_modification": {"changes": {"sbom_changed": true}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Art.11 (via SLSA)")]
+    count(hits) > 0
+}
+
+# ── Crypto evidence (ISO 27001 A.10 bridge) ──────────────────────────────
+
+test_crypto_evidence_module_appears if {
+    r := main.compliance_report with input as {}
+    r.module_summary.crypto_evidence
+    r.module_summary.crypto_evidence.upstream == "data.iso27001.cryptography"
+}
+
+test_missing_crypto_policy_maps_to_annex_i_5 if {
+    inp := {}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex I.5 (via ISO 27001 A.10.1.1)")]
+    count(hits) > 0
+}
+
+test_weak_cipher_in_use_fires_annex_i_5b if {
+    inp := {"cryptography": {"ciphers_in_use": ["AES-256-GCM", "DES"]}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex I.5(b)"); contains(v, "DES")]
+    count(hits) > 0
+}
+
+test_deprecated_protocol_fires_annex_i_5b if {
+    inp := {"cryptography": {"protocols_in_use": ["TLS1.0", "TLS1.3"]}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex I.5(b)"); contains(v, "TLS1.0")]
+    count(hits) > 0
+}
+
+test_no_anti_rollback_fires_annex_i_6b if {
+    inp := {"cryptography": {"signing": {"anti_rollback_enforced": false}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex I.6(b)"); contains(v, "Anti-rollback")]
+    count(hits) > 0
+}
+
+test_signing_without_hardware_backed_storage_fires_i_6_i_4 if {
+    inp := {"cryptography": {"signing": {"in_use": true,
+                                          "hardware_backed_key_storage": false}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex I.6 (interaction with I.4)")]
     count(hits) > 0
 }
 
