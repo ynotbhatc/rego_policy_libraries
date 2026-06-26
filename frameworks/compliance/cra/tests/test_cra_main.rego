@@ -9,7 +9,7 @@ test_compliance_report_defined_on_empty_input if {
     r := main.compliance_report with input as {}
     r.framework == "EU Cyber Resilience Act (CRA)"
     r.regulation == "Regulation (EU) 2024/2847"
-    r.total_controls == 163
+    r.total_controls == 217
     is_number(r.violation_count)
 }
 
@@ -240,4 +240,267 @@ test_user_info_must_disclose_sbom_location if {
     inp := {"user_information": {"sbom_access": {"disclosed_to_user": false}}}
     hits := [v | some v in main.violations with input as inp; contains(v, "Annex II.7")]
     count(hits) > 0
+}
+
+# ── Declaration of Conformity content (Annex IV) ─────────────────────────
+
+test_declaration_of_conformity_module_appears_in_summary if {
+    r := main.compliance_report with input as {}
+    r.module_summary.declaration_of_conformity
+}
+
+test_declaration_missing_sole_responsibility_statement if {
+    inp := {"declaration_of_conformity": {"statement_of_sole_responsibility": false}}
+    hits := [v | some v in main.violations with input as inp; contains(v, "Annex IV.4")]
+    count(hits) > 0
+}
+
+test_declaration_must_reference_cra_regulation if {
+    inp := {"declaration_of_conformity": {"conformity_statement": {"references_cra": false}}}
+    hits := [v | some v in main.violations with input as inp; contains(v, "Annex IV.6")]
+    count(hits) > 0
+}
+
+test_declaration_standards_must_include_dates_versions if {
+    inp := {"declaration_of_conformity": {
+                "standards": {
+                    "harmonised_standards_referenced": true,
+                    "standard_dates_versions_included": false}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex IV.7"); contains(v, "dates/versions")]
+    count(hits) > 0
+}
+
+test_notified_body_block_only_fires_when_involved if {
+    inp_not_involved := {"declaration_of_conformity": {"notified_body": {"involved": false}}}
+    hits := [v | some v in main.violations with input as inp_not_involved;
+             contains(v, "Annex IV.8: Notified body involvement is declared")]
+    count(hits) == 0
+
+    inp_involved_no_id := {"declaration_of_conformity": {
+                              "notified_body": {"involved": true, "name": "TÜV"}}}
+    hits2 := [v | some v in main.violations with input as inp_involved_no_id;
+              contains(v, "Annex IV.8")]
+    count(hits2) > 0
+}
+
+test_declaration_signature_must_include_signatory_function if {
+    inp := {"declaration_of_conformity": {
+                "signature": {
+                    "signed_for_manufacturer": true,
+                    "signatory_name": "J. Doe",
+                    "signatory_function": false}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex IV.10"); contains(v, "function")]
+    count(hits) > 0
+}
+
+# ── Substantial modification (Article 11) ────────────────────────────────
+
+test_substantial_modification_module_appears if {
+    r := main.compliance_report with input as {}
+    r.module_summary.substantial_modification
+}
+
+test_substantial_modification_requires_reassessment if {
+    inp := {"substantial_modification": {
+                "modification_classified_substantial": true,
+                "conformity_reassessment": {"performed": false}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Art.11(2)"); contains(v, "not been re-performed")]
+    count(hits) > 0
+}
+
+test_substantial_modifier_assumes_manufacturer_role if {
+    inp := {"substantial_modification": {
+                "modification_classified_substantial": true,
+                "modifier_is_not_original_manufacturer": true,
+                "modifier_assumed_manufacturer_obligations": false}}
+    hits := [v | some v in main.violations with input as inp; contains(v, "Art.11(3)")]
+    count(hits) > 0
+}
+
+test_added_connectivity_requires_updated_risk_assessment if {
+    inp := {"substantial_modification": {
+                "changes": {
+                    "added_network_connectivity": true,
+                    "risk_assessment_updated": false}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex I.1 interaction")]
+    count(hits) > 0
+}
+
+test_crypto_primitive_change_requires_review if {
+    inp := {"substantial_modification": {
+                "changes": {
+                    "cryptographic_primitive_changed": true,
+                    "cryptographic_review_performed": false}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex I.5/6 interaction")]
+    count(hits) > 0
+}
+
+test_sbom_must_refresh_after_dependency_change if {
+    inp := {"substantial_modification": {
+                "changes": {
+                    "sbom_changed": true,
+                    "sbom_published_after_change": false}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Annex II.1 interaction")]
+    count(hits) > 0
+}
+
+# ── Online marketplace (Article 22) ──────────────────────────────────────
+
+test_online_marketplace_module_appears if {
+    r := main.compliance_report with input as {}
+    r.module_summary.online_marketplace
+}
+
+test_non_marketplace_entity_has_zero_marketplace_violations if {
+    # An entity that is NOT a marketplace provider should produce zero
+    # marketplace-module violations (the threshold gate is correct).
+    inp := {"online_marketplace": {"is_marketplace_provider": false}}
+    r := main.compliance_report with input as inp
+    r.module_summary.online_marketplace.violations == 0
+}
+
+test_marketplace_must_designate_single_point_of_contact if {
+    inp := {"online_marketplace": {
+                "is_marketplace_provider": true,
+                "products_offered": {"includes_products_with_digital_elements": true}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Art.22(1)"); contains(v, "single point of contact")]
+    count(hits) > 0
+}
+
+test_marketplace_must_action_takedown_within_48h if {
+    inp := {"online_marketplace": {
+                "is_marketplace_provider": true,
+                "products_offered": {"includes_products_with_digital_elements": true},
+                "authority_takedown_order_received": true,
+                "authority_takedown_order_hours_pending": 60,
+                "authority_takedown_order_actioned": false}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Art.22(3)"); contains(v, "48h")]
+    count(hits) > 0
+}
+
+test_marketplace_random_check_sample_below_one_percent_violates if {
+    inp := {"online_marketplace": {
+                "is_marketplace_provider": true,
+                "products_offered": {"includes_products_with_digital_elements": true},
+                "random_checks": {"performed": true, "sample_size_pct": 0.5}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Art.22(5)"); contains(v, "0.5")]
+    count(hits) > 0
+}
+
+test_marketplace_high_severity_listing_must_be_removed if {
+    inp := {"online_marketplace": {
+                "is_marketplace_provider": true,
+                "products_offered": {"includes_products_with_digital_elements": true},
+                "non_compliant_listing_identified": true,
+                "severity": "high",
+                "listing_removed": false}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "high-severity non-compliant listing")]
+    count(hits) > 0
+}
+
+# ── FOSS exclusion (Article 23) ──────────────────────────────────────────
+
+test_foss_exclusion_module_appears if {
+    r := main.compliance_report with input as {}
+    r.module_summary.foss_exclusion
+}
+
+test_non_commercial_oss_is_exempt if {
+    inp := {"foss": {
+                "is_open_source_product": true,
+                "outside_course_of_commercial_activity": true}}
+    r := main.compliance_report with input as inp
+    r.module_summary.foss_exclusion.exempt == true
+    r.module_summary.foss_exclusion.violations == 0
+}
+
+test_default_state_is_not_exempt if {
+    r := main.compliance_report with input as {}
+    r.module_summary.foss_exclusion.exempt == false
+}
+
+test_misclaim_when_paid_support_offered if {
+    inp := {"foss": {
+                "claimed_exemption": true,
+                "revenue": {"paid_support_offered": true}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Art.23 (mis-claim)"); contains(v, "paid support")]
+    count(hits) > 0
+}
+
+test_misclaim_when_license_fees_collected if {
+    inp := {"foss": {
+                "claimed_exemption": true,
+                "revenue": {"license_fees_collected": true}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "license/usage fees")]
+    count(hits) > 0
+}
+
+test_misclaim_when_commercial_saas_hosting if {
+    inp := {"foss": {
+                "claimed_exemption": true,
+                "revenue": {"commercial_saas_hosting": true}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "commercial hosted version")]
+    count(hits) > 0
+}
+
+test_donation_full_time_devs_moves_to_steward_category if {
+    inp := {"foss": {
+                "claimed_exemption": true,
+                "revenue": {"donations_received": true},
+                "development": {
+                    "employed_developers_paid_from_donations": true,
+                    "developers_full_time": true}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Art.23 (boundary)"); contains(v, "OSS-steward category")]
+    count(hits) > 0
+}
+
+test_recital_18_commercial_integration_violates if {
+    inp := {"foss": {
+                "claimed_exemption": true,
+                "distribution": {
+                    "integrated_into_commercial_product": true,
+                    "distributed_in_eu_market": true}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Recital 18")]
+    count(hits) > 0
+}
+
+test_exemption_basis_must_be_documented if {
+    inp := {"foss": {
+                "claimed_exemption": true,
+                "process": {"exemption_basis_documented": false}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Art.23"); contains(v, "audit trail")]
+    count(hits) > 0
+}
+
+test_donations_alone_do_not_create_misclaim if {
+    # Recital 15 — donations alone don't make the entity commercial.
+    # If an entity claims exemption AND only receives donations (no full-time
+    # paid devs), the donation-related boundary rule must NOT fire.
+    inp := {"foss": {
+                "claimed_exemption": true,
+                "is_open_source_product": true,
+                "outside_course_of_commercial_activity": true,
+                "revenue": {"donations_received": true},
+                "process": {
+                    "exemption_basis_documented": true,
+                    "exemption_basis_reviewed_annually": true}}}
+    hits := [v | some v in main.violations with input as inp;
+             contains(v, "Art.23 (boundary)")]
+    count(hits) == 0
 }
