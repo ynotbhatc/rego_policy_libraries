@@ -193,3 +193,80 @@ nist_csf_govern_compliance := {
     "cybersecurity_procedures": cybersecurity_procedures,
     "overall_compliant": nist_csf_govern_compliant
 }
+
+# ── Violation set (for nist_csf.main orchestrator) ────────────────────────
+
+violation contains msg if {
+    not organizational_strategy_established
+    msg := "CSF GV.OC-01: Organizational cybersecurity strategy not documented/approved/reviewed"
+}
+
+violation contains msg if {
+    not cybersecurity_governance_established
+    msg := "CSF GV.OC-02: Cybersecurity governance structure lacks defined roles or accountability"
+}
+
+violation contains msg if {
+    not cybersecurity_policy_established
+    msg := "CSF GV.OC-03: Cybersecurity policy not established/current/communicated"
+}
+
+violation contains msg if {
+    not roles_responsibilities_established
+    msg := "CSF GV.OC-04: Cybersecurity roles/responsibilities not documented or assigned"
+}
+
+violation contains msg if {
+    not supply_chain_risk_management
+    msg := "CSF GV.OC-05: Supply chain risk management program not in place"
+}
+
+violation contains msg if {
+    not risk_management_strategy
+    msg := "CSF GV.RM-01: Risk management strategy not documented with tolerance/appetite"
+}
+
+violation contains msg if {
+    not risk_analysis_prioritization
+    msg := "CSF GV.RM-02: Risk analysis, prioritization, and response plans missing"
+}
+
+violation contains msg if {
+    not risk_mitigation_prioritized
+    msg := "CSF GV.RM-03: Risk mitigation actions not prioritized with timelines"
+}
+
+violation contains msg if {
+    not strategic_direction_informs_risk
+    msg := "CSF GV.RM-04: Strategic direction not linked to risk management decisions"
+}
+
+violation contains msg if {
+    not standardized_risk_calculation
+    msg := "CSF GV.RM-06: Standardized risk calculation methodology missing"
+}
+
+violation contains msg if {
+    not supply_chain_policy
+    msg := "CSF GV.SC-01: Supply chain cybersecurity policy not maintained"
+}
+
+violation contains msg if {
+    not supplier_pre_assessment
+    msg := "CSF GV.SC-04: Suppliers not assessed prior to establishing relationships"
+}
+
+violation contains msg if {
+    not supplier_ongoing_assessment
+    msg := "CSF GV.SC-05: Suppliers not continuously assessed during relationships"
+}
+
+violation contains msg if {
+    not cybersecurity_policy_maintenance
+    msg := "CSF GV.PO-01: Cybersecurity policy maintenance process missing"
+}
+
+violation contains msg if {
+    not cybersecurity_procedures
+    msg := "CSF GV.PO-02: Procedures to implement cybersecurity policy not maintained"
+}

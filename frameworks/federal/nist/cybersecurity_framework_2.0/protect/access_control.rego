@@ -229,3 +229,80 @@ nist_csf_protect_compliance := {
     "backup_processes": backup_processes,
     "overall_compliant": nist_csf_protect_compliant
 }
+
+# ── Violation set (for nist_csf.main orchestrator) ────────────────────────
+
+violation contains msg if {
+    not identity_credential_management
+    msg := "CSF PR.AC-01: Identities and credentials not managed for authorized users/devices"
+}
+
+violation contains msg if {
+    not physical_access_management
+    msg := "CSF PR.AC-02: Physical access to assets not managed/protected"
+}
+
+violation contains msg if {
+    not remote_access_management
+    msg := "CSF PR.AC-03: Remote access not managed (VPN, MFA, encryption)"
+}
+
+violation contains msg if {
+    not access_permissions_management
+    msg := "CSF PR.AC-04: Access permissions/least privilege/SoD not enforced"
+}
+
+violation contains msg if {
+    not network_integrity_protection
+    msg := "CSF PR.AC-05: Network integrity (segmentation, isolation) not protected"
+}
+
+violation contains msg if {
+    not identity_proofing
+    msg := "CSF PR.AC-06: Identities not proofed/bound to credentials"
+}
+
+violation contains msg if {
+    not authentication_mechanisms
+    msg := "CSF PR.AC-07: Authentication mechanisms not strength-aligned with risk"
+}
+
+violation contains msg if {
+    not user_awareness_training
+    msg := "CSF PR.AT-01: All users not trained on cybersecurity awareness"
+}
+
+violation contains msg if {
+    not data_at_rest_protection
+    msg := "CSF PR.DS-01: Data at rest not protected (encryption, access control)"
+}
+
+violation contains msg if {
+    not data_in_transit_protection
+    msg := "CSF PR.DS-02: Data in transit not protected (TLS, VPN, encrypted channels)"
+}
+
+violation contains msg if {
+    not asset_lifecycle_management
+    msg := "CSF PR.DS-03: Assets not formally managed through removal/transfer/disposition"
+}
+
+violation contains msg if {
+    not data_leak_protection
+    msg := "CSF PR.DS-05: Data-leak protections not implemented"
+}
+
+violation contains msg if {
+    not integrity_checking
+    msg := "CSF PR.DS-06: Integrity-checking mechanisms not used on software/firmware/data"
+}
+
+violation contains msg if {
+    not baseline_configuration_management
+    msg := "CSF PR.IP-01: Baseline configuration not created/maintained"
+}
+
+violation contains msg if {
+    not backup_processes
+    msg := "CSF PR.IP-04: Backups not conducted, maintained, and tested"
+}

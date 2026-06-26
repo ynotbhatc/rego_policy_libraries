@@ -232,3 +232,111 @@ nist_sp800_53_ac_compliance := {
     "reference_monitor": reference_monitor,
     "overall_compliant": nist_sp800_53_ac_compliant
 }
+
+# ── Violation set (for nist_800_53.main orchestrator) ─────────────────────
+# Boolean rules above are kept for compatibility with existing
+# comprehensive_test_suite.rego; this set turns them into the
+# violation-message shape required by the framework master.
+
+violation contains msg if {
+    not access_control_policy
+    msg := "NIST AC-1: Access control policy/procedures not documented, disseminated, or reviewed"
+}
+
+violation contains msg if {
+    not account_management
+    msg := "NIST AC-2: Account management lacks automated tooling, approval, reviews, or timely removal"
+}
+
+violation contains msg if {
+    not access_enforcement
+    msg := "NIST AC-3: Access enforcement does not implement MAC, DAC, and RBAC"
+}
+
+violation contains msg if {
+    not information_flow_enforcement
+    msg := "NIST AC-4: Information flow enforcement lacks security labels or automated flow control"
+}
+
+violation contains msg if {
+    not separation_of_duties
+    msg := "NIST AC-5: Separation of duties not implemented for critical functions"
+}
+
+violation contains msg if {
+    not least_privilege
+    msg := "NIST AC-6: Least privilege not enforced for privileged or non-privileged access"
+}
+
+violation contains msg if {
+    not unsuccessful_logon_attempts
+    msg := "NIST AC-7: Logon attempts not lockout-controlled (max 5 attempts, 15-min lockout)"
+}
+
+violation contains msg if {
+    not system_use_notification
+    msg := "NIST AC-8: System use notification banner/acknowledgment/consent missing"
+}
+
+violation contains msg if {
+    not previous_logon_notification
+    msg := "NIST AC-9: Previous logon notification not displayed to users"
+}
+
+violation contains msg if {
+    not concurrent_session_control
+    msg := "NIST AC-10: Concurrent session limits not configured"
+}
+
+violation contains msg if {
+    not session_lock
+    msg := "NIST AC-11: Session lock missing (inactivity timeout ≤15 min + pattern hiding required)"
+}
+
+violation contains msg if {
+    not session_termination
+    msg := "NIST AC-12: Session termination (automatic/user-initiated/admin) not supported"
+}
+
+violation contains msg if {
+    not permitted_actions_restricted
+    msg := "NIST AC-14: Permitted unauthenticated actions exceed approved list"
+}
+
+violation contains msg if {
+    not remote_access_control
+    msg := "NIST AC-17: Remote access not authorized/encrypted/monitored"
+}
+
+violation contains msg if {
+    not wireless_access_control
+    msg := "NIST AC-18: Wireless access not authorized/encrypted/monitored"
+}
+
+violation contains msg if {
+    not mobile_device_access_control
+    msg := "NIST AC-19: Mobile device access control missing usage restrictions or config requirements"
+}
+
+violation contains msg if {
+    not external_systems_control
+    msg := "NIST AC-20: External system use not authorized or governed by user agreements"
+}
+
+violation contains msg if {
+    not publicly_accessible_content
+    msg := "NIST AC-22: Publicly accessible content lacks review/removal process"
+}
+
+default compliant := false
+
+compliant if { count(violation) == 0 }
+
+compliance_report := {
+    "family": "AC",
+    "name":   "Access Control",
+    "controls_evaluated": 18,
+    "violations": violation,
+    "violation_count": count(violation),
+    "compliant": compliant,
+}

@@ -31,6 +31,19 @@ compliant if {
     count(violations) == 0
 }
 
+# Defaults — without these, an empty input makes compliance_report undefined
+# and the OPA endpoint returns null.
+default entity_name     := "unknown"
+default entity_type     := "unknown"
+default sector          := "unknown"
+default entity_category := "unknown"
+default assessed_at     := "unknown"
+entity_name     := input.entity_name
+entity_type     := input.entity_type
+sector          := input.sector
+entity_category := input.entity_category
+assessed_at     := input.assessment_date
+
 # ── Article 21(2)(a) — Risk Analysis & Security Policies ────────────────────
 
 violations contains msg if {
@@ -234,11 +247,11 @@ compliance_report := {
     "framework":       "EU Network and Information Security Directive 2 (NIS2)",
     "directive":       "Directive (EU) 2022/2555",
     "transposition":   "October 2024",
-    "entity_name":     input.entity_name,
-    "entity_type":     input.entity_type,
-    "sector":          input.sector,
-    "entity_category": input.entity_category,
-    "assessed_at":     input.assessment_date,
+    "entity_name":     entity_name,
+    "entity_type":     entity_type,
+    "sector":          sector,
+    "entity_category": entity_category,
+    "assessed_at":     assessed_at,
     "compliant":       compliant,
     "total_controls":  34,
     "violations":      violations,
