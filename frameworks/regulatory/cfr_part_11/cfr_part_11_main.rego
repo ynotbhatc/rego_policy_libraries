@@ -30,6 +30,17 @@ compliant if {
     count(violations) == 0
 }
 
+# Defaults — without these, an empty input makes compliance_report undefined
+# and the OPA endpoint returns null.
+default entity_name := "unknown"
+default entity_type := "unknown"
+default system_name := "unknown"
+default assessed_at := "unknown"
+entity_name := input.entity_name
+entity_type := input.entity_type
+system_name := input.system_name
+assessed_at := input.assessment_date
+
 # ── §11.10 — Controls for Closed Systems ──────────────────────────────────────
 
 # §11.10(a) — Validation
@@ -271,10 +282,10 @@ compliance_report := {
     "framework":       "FDA 21 CFR Part 11",
     "title":           "Electronic Records; Electronic Signatures",
     "regulation":      "21 Code of Federal Regulations Part 11",
-    "entity_name":     input.entity_name,
-    "entity_type":     input.entity_type,
-    "system_name":     input.system_name,
-    "assessed_at":     input.assessment_date,
+    "entity_name":     entity_name,
+    "entity_type":     entity_type,
+    "system_name":     system_name,
+    "assessed_at":     assessed_at,
     "compliant":       compliant,
     "total_controls":  43,
     "violations":      violations,
