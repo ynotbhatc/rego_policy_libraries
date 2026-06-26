@@ -1,6 +1,6 @@
 ---
 title: EU Cyber Resilience Act (CRA) — Policy Coverage
-version: v0.3
+version: v0.4
 date: 2026-06-26
 authors:
   - Tim Coulter
@@ -29,6 +29,112 @@ POST <opa>/v1/data/cra/main/compliance_report
 Returns the standard AAC contract shape `{framework, compliant, total_controls, violations, violation_count, module_summary}` so it's interchangeable with every other framework in the library.
 
 **Test coverage**: 54 unit tests, full repository `opa test` at 129/129 passing.
+
+---
+
+## Business case
+
+### Why CRA matters
+
+The Cyber Resilience Act is the **first horizontal EU cybersecurity law for products**. It patches a regulatory gap: GDPR governs personal data, NIS2 governs essential service operators, but until CRA there was no EU-wide obligation on the products themselves — the connected thermostats, industrial controllers, smart-home cameras, and the embedded software running everywhere in between. Estimated affected market: **roughly 50,000+ products** sold into the EU, across every manufacturer with a CE marking obligation.
+
+Three CRA properties make it consequential:
+
+1. **Penalties are turnover-linked, not absolute.** A small manufacturer can absorb a flat €1M fine. A €5B-revenue manufacturer cannot absorb 2.5% of global annual turnover (€125M) — which is what an Annex I essential-requirements failure exposes them to (Article 53).
+2. **Liability cascades through the supply chain.** Importers and distributors carry their own obligation sets (Articles 19-20) and inherit manufacturer liability when they rebrand or modify (Article 21). A failure upstream contaminates everyone who handled the product downstream.
+3. **The 24-hour clock is unforgiving.** Article 14 requires early-warning notification to ENISA within 24 hours of awareness of an actively exploited vulnerability. There is no "we'll handle it Monday" window. Organisations without a documented, tested process miss the deadline by default.
+
+### What this framework gives you
+
+A continuously-evaluable, evidence-producing CRA compliance signal. Not a checklist someone fills in once and forgets — a queryable system that:
+
+- **Says whether you're compliant right now**, on every one of the 15 obligation surfaces CRA covers, against a documented fact set you supply.
+- **Says specifically what's missing** when you're not — by article + annex reference, in language an auditor or notified body recognises.
+- **Produces an audit trail** — each query returns a structured `compliance_report` with the violation list, timestamp, and module pass/fail. Store the report and you have an answer to "what did you know on date X?"
+- **Decouples claim from check** — your engineers attest to facts (SBOM published / 24h early warning sent / Module H selected); the Rego policy evaluates whether those facts add up to CRA conformity. No more spreadsheet attestations that nobody validates.
+
+### Where the value lands
+
+| Use case | What this framework changes |
+|---|---|
+| **Pre-launch product gate** | A product that fails this report at launch ships with a known compliance failure. Catching it in CI is hours of work; catching it post-CE-marking is a recall + a fine. Run the report as a gate in the product release pipeline. |
+| **Continuous monitoring** | Run nightly over your product portfolio. SBOMs change, support periods get re-evaluated, vulnerabilities get disclosed. A monthly drift report is the difference between knowing about a problem in week 2 vs. month 6. |
+| **Supplier due diligence** | If you're an importer or distributor, run the report against your supplier's attested facts before accepting a shipment. Article 19/20 makes you liable for what you place on the market — verifying upstream protects you. |
+| **Acquisition due diligence** | Buying a company with EU-market products? Run the report against the target's product portfolio. Surfaces the inherited liability before the deal closes. |
+| **Incident-triggered re-assessment** | Vulnerability disclosed in a component you ship. Re-run the report with the new vulnerability marked as actively exploited. The framework tells you what the 24h / 72h / 14d clock looks like and which reports are now overdue. |
+| **Audit + notified body prep** | Before a Module H assessment or a market surveillance audit, run the report. Hand over the JSON + audit trail. Reduces the "discovery" phase of the audit by weeks. |
+| **Insurance underwriting** | Cyber insurance carriers are pricing CRA exposure. A continuously-running compliance report is the difference between "self-attested compliant" (untrusted) and "evidence-producing compliant" (premium reduction). |
+
+---
+
+## What the framework identifies (risk categories)
+
+The 217 control checks group into **eight risk categories**, listed roughly in descending order of typical enforcement priority. The right-hand column lists the modules that produce findings in each.
+
+| Risk category | What it catches | Modules |
+|---|---|---|
+| **Essential requirements gap** | Product missing CRA "by design" controls — no MFA, weak/missing encryption, no secure default config, no code signing, attack-surface bloat, missing exploitation mitigations. The Annex I rules. | essential_requirements, manufacturer_obligations |
+| **Reporting timeline failure** | Manufacturer / OSS steward missed the 24-hour early warning, the 72-hour notification, or the 14-day final report. Or: severe-incident clock missed. Or: impacted users not informed. | incident_reporting, oss_steward |
+| **Support period under-commitment** | Declared support period below the 5-year CRA minimum. Or: support period declared but no end-of-support date communicated to users. Or: no plan for the 12-month-prior end-of-support notification. | vulnerability_handling, manufacturer_obligations, user_information |
+| **Documentation gap** | Technical documentation incomplete; Declaration of Conformity missing required Annex IV elements (statement of sole responsibility, explicit CRA citation, harmonised standards with versions, signature with function); 10-year retention not in place. | technical_documentation, declaration_of_conformity, manufacturer_obligations |
+| **Conformity assessment mismatch** | Product classified Important Class II but Module A used (must be B+C, B+D, or H). Critical product not certified under a European cybersecurity certification scheme. Notified body engaged but ID not recorded. CE marking absent / incomplete. | conformity_assessment, declaration_of_conformity |
+| **Supply-chain liability** | Manufacturer outside EU but no authorised representative appointed. Importer placing under own brand without assuming manufacturer obligations. Distributor modifying without re-assessment. Marketplace not actioning takedown orders within 48 hours. Mis-claimed FOSS exclusion. | authorised_representative, importer_obligations, distributor_obligations, online_marketplace, foss_exclusion |
+| **Substantial-modification trigger ignored** | Connectivity added, cryptographic primitive changed, or SBOM altered, but no risk assessment refresh, no conformity reassessment, no Declaration reissue. Modifier silently assumed manufacturer liability without recognising it. | substantial_modification |
+| **User information gap** | Annex II content missing — manufacturer contact for vuln reports absent, support period not disclosed, end-of-support date not disclosed, secure decommissioning guidance not provided, user info not in the right Member State languages. | user_information, declaration_of_conformity |
+
+For each risk category, the framework returns the **specific article or annex citation** that an auditor will recognise, not a generic "compliance failure" message. Example output excerpts:
+
+```
+CRA Annex I.5(b): Transmitted data not protected via state-of-the-art encryption
+CRA Art.14(2)(a): No early warning sent to ENISA/CSIRT within 24h (current: 36h since awareness)
+CRA Art.32(2): Important Class II products require Module B+C, B+D, or H — Module A is insufficient
+CRA Art.13(8): Declared support period (3 years) is below the 5-year minimum
+CRA Art.21: Importer placing the product under its own name/trademark has not assumed manufacturer obligations under Article 13
+CRA Annex IV.7: Declaration references harmonised standards but does not include their dates/versions
+```
+
+These messages are intentionally written for auditors, not for engineers. They're the language that appears in a notified body's findings letter or a market surveillance correction notice.
+
+---
+
+## Penalty exposure + risk reduction
+
+### EU fine tiers (Articles 53-54)
+
+CRA establishes a three-tier penalty structure. Maximum fines are the **greater** of the listed absolute amount or the percentage of global annual turnover.
+
+| Tier | Violation type | Maximum fine |
+|---|---|---|
+| **Tier 1** (most severe) | Failure to comply with **essential requirements** (Annex I); failure of **manufacturer obligations** under Article 13; placing on the market without conformity assessment | **€15M or 2.5% of global annual turnover** |
+| **Tier 2** | Failure of other obligations (importer Art.19, distributor Art.20, authorised representative Art.18, reporting Art.14, technical documentation Art.28, etc.) | **€10M or 2% of global annual turnover** |
+| **Tier 3** | Supplying incorrect, incomplete, or misleading information to a notified body or market surveillance authority | **€5M or 1% of global annual turnover** |
+
+Member States also set their own additional penalties, and may impose periodic penalty payments to compel compliance. For SMEs, Article 54 directs Member States to consider proportionality — but the upper bounds remain.
+
+### What the framework reduces
+
+| Risk | How the framework reduces it |
+|---|---|
+| **Tier 1 essential-requirements fine** | Continuous Annex I evaluation. Missing essential requirements surface in the report immediately; remediation happens before market placement. Reduces the probability of the failure existing AT market placement (the moment liability attaches). |
+| **Tier 1 manufacturer-obligation fine** | Article 13 obligations (risk assessment, support period, third-party component due diligence, end-of-support notice planning) all evaluated. A green report = documented evidence the manufacturer can produce to authorities. |
+| **Tier 2 reporting-timeline fine** | The 24h / 72h / 14d cascade rules trigger automatically at the hour-boundary. Wire the report into an alerting system and the framework tells you the report is overdue **before** it actually is. |
+| **Tier 2 supply-chain fine** | Importer + distributor + authorised-representative obligations evaluated each time the supply chain handles a new product. Catches the "we didn't realise we were now the manufacturer" Article 21 trap. |
+| **Tier 2 documentation fine** | Annex IV + Annex VII content checked at the field level. A Declaration of Conformity missing the explicit CRA citation, or technical documentation missing third-party assessment evidence for a Class II product, surfaces as a specific violation. |
+| **Tier 3 misleading-information fine** | The framework produces evidence the manufacturer attested to. If facts later prove false, the audit trail records what was claimed when. Doesn't prevent fraud — but converts "we didn't know" into a documented chain. |
+| **Market-access loss** | A Class II product with the wrong conformity assessment module cannot legally carry a CE marking. The framework catches the mismatch **before** the Declaration of Conformity is signed and before the product hits market. Cheaper to fix in design than to recall. |
+| **Recall liability** | Articles 41-45 give market surveillance authorities recall powers. A product that fails post-market because of a known-but-unaddressed essential-requirements gap exposes the manufacturer to recall costs plus the underlying fine. The framework's continuous monitoring detects the gap during pre-launch QA. |
+| **Reputational damage** | Public enforcement actions are listed by the EU. Avoiding a finding letter avoids the public record. |
+| **Customer-contract liability** | Most enterprise customers will (post-2027) require CRA conformity attestations in supplier contracts. A continuously-running framework produces the attestation evidence; an annual self-attestation does not. |
+
+### What the framework does NOT do
+
+Honest scoping — the framework is a self-assessment tool, not a magic compliance machine:
+
+- **It does not replace notified body assessment.** Important Class II and Critical products require third-party conformity assessment under Article 32. The framework helps you arrive at that assessment with a clean baseline; it does not perform the assessment.
+- **It does not generate technical documentation.** Annex VII still requires you to write the documentation. The framework checks that you have the right elements; it does not produce them.
+- **It does not auto-file ENISA reports.** When Article 14 timelines fire, the framework tells you the report is overdue. You still need to actually file it through the ENISA single reporting platform (Article 14(7)).
+- **It does not interpret legal ambiguity.** Some CRA concepts (the Article 23 "outside the course of a commercial activity" boundary for FOSS, what counts as a "substantial modification" under Article 11) are fact-specific judgement calls. The framework evaluates the most defensible interpretation and flags the boundary cases; it does not give you legal advice.
+- **It does not protect against bad-faith attestation.** If your engineers tell the framework you have MFA enforced when you don't, the framework will report compliant. It's an attestation evaluator, not an attestation verifier. Pair it with independent technical evidence (test results, SBOM scans, penetration test reports) for high-assurance use cases.
 
 ---
 
@@ -123,6 +229,38 @@ Worked example fixtures will land in `examples/` alongside this doc.
 
 The `compliant` field is a strict AND across all 217 controls. The `module_summary` exposes per-module pass/fail for finer dashboards.
 
+### Worked operational scenarios
+
+**Scenario A — Pre-launch product gate**
+
+Acme is preparing to launch ConnectedThermostat-7 (Important Class II). Engineering attests to the product facts and runs the report as a release-gate check.
+
+The framework reports 71 violations: missing SBOM in machine-readable format, support period declared at 3 years, Module A selected (insufficient for Class II), and 18 essential-requirements gaps. Release blocked. Engineering remediates in 4 weeks pre-launch. Cost: 4 engineering-weeks. Without the gate: product ships, market surveillance flags during routine inspection 6 months in, Tier 1 fine + recall. Avoided cost: €15M floor under Article 53(2)(a), plus recall.
+
+**Scenario B — Distributor due diligence**
+
+A distributor receives a 10,000-unit shipment of smart cameras from a non-EU manufacturer. Before making the cameras available on the EU market, the distributor runs the report against the manufacturer's attested facts.
+
+The framework flags: Declaration of Conformity missing the explicit Article 13 citation (Annex IV.6 violation), notified body ID not recorded in the Declaration (Annex IV.8), and importer identification absent from the product packaging (Art.20(1)(c)). The distributor refuses the shipment under Article 20(2) ("suspend availability when non-conformity suspected"). Avoided: Article 20 violation + chain-of-liability exposure if the cameras had been distributed and later found non-conformant.
+
+**Scenario C — OSS foundation crossing the commercial line**
+
+An OSS foundation that has historically operated under the Article 23 exclusion accepts its first commercial paid-support contract. The legal team runs the report.
+
+The framework flags: `CRA Art.23 (mis-claim): FOSS exemption claimed, but the entity offers paid support — this is a commercial activity` and `Art.23 (boundary): Donation-funded full-time paid developers move the entity toward the OSS-steward category (Art.24)`. The foundation now knows it has crossed the boundary and has 12 months to either restructure (revert to non-commercial) or assume Article 24 OSS-steward obligations. Avoided: silent drift across the line, followed by Article 24 violations going undetected until enforcement.
+
+**Scenario D — Active exploitation incident**
+
+PSIRT receives credible evidence on Monday 09:00 UTC that a vulnerability in shipped firmware is being actively exploited. Continuous monitoring runs the report every 6 hours with the new incident facts.
+
+At hour 25 (Tuesday 10:00 UTC), the framework flags `Art.14(2)(a): No early warning sent to ENISA/CSIRT within 24h (current: 25h since awareness)`. Alerting fires. ENISA notification follows within the next 30 minutes. Without the framework: the PSIRT process might have caught the deadline; might not have. The framework's clock-based rules guarantee the team is told. Avoided: Tier 2 fine for Article 14 breach (up to €10M or 2% turnover).
+
+**Scenario E — Substantial modification escalation**
+
+Product team adds Bluetooth Low Energy connectivity to ConnectedThermostat-7 as a v2.1 feature update. They run the report against the modified product before release.
+
+The framework flags: `Art.11 (Annex I.1 interaction): New network connectivity added without an updated cybersecurity risk assessment`, `Art.11(2): A modification was classified as substantial but conformity assessment has not been re-performed`, and `Art.11(2) / Annex IV: Substantial modification performed but Declaration of Conformity not reissued`. Product team scopes a Module-H reassessment with the notified body. Avoided: a v2.1 product that fails Article 11 conformity by silently inheriting v2.0's declaration — a Tier 1 violation under Article 53(2)(a) because the v2.1 product is effectively unauthorised.
+
 ---
 
 ## Routing
@@ -186,5 +324,6 @@ The unconditional rules (the majority of essential_requirements, vuln_handling, 
 | v0.1 | 2026-06-26 | Initial 6 modules (manufacturer side) — PR #31 first commit |
 | v0.2 | 2026-06-26 | Added importer / distributor / auth rep / OSS steward / Annex II — PR #31 second commit |
 | v0.3 | 2026-06-26 | Added Declaration content / Art.11 substantial modification / Art.22 marketplaces / Art.23 FOSS exclusion — PR #31 third commit |
+| v0.4 | 2026-06-26 | Added Business case, "What it identifies" risk-category framing, Penalty exposure table with Tier 1/2/3 fines, Worked operational scenarios A–E, explicit "what the framework does NOT do" scoping |
 
 This document tracks the current state of the framework. When the CRA gets implementing acts (delegated regulations under Art.6, Art.27, Art.39), or when standardisation bodies publish harmonised standards under Art.27, those will land as additional rules in the relevant modules and trigger version bumps here.
