@@ -322,13 +322,25 @@ violations contains msg if {
 
 # ── Compliance Report ────────────────────────────────────────────────────────
 
+
+# Defaults — without these, an undefined input field makes the
+# entire compliance_report object undefined (Rego v1 behavior).
+default assessment_date := "unknown"
+assessment_date := input.assessment_date
+default assessment_level := "unknown"
+assessment_level := input.assessment_level
+default company_scope := "unknown"
+company_scope := input.company_scope
+default entity_name := "unknown"
+entity_name := input.entity_name
+
 compliance_report := {
     "framework":           "TISAX (Trusted Information Security Assessment Exchange)",
     "catalog":             "VDA ISA v6.0.3",
-    "assessment_level":    input.assessment_level,
-    "entity_name":         input.entity_name,
-    "company_scope":       input.company_scope,
-    "assessed_at":         input.assessment_date,
+    "assessment_level":    assessment_level,
+    "entity_name":         entity_name,
+    "company_scope":       company_scope,
+    "assessed_at":         assessment_date,
     "compliant":           compliant,
     "total_controls":      51,
     "violations":          violations,

@@ -13,7 +13,13 @@ package stig_kubernetes.main
 import rego.v1
 import data.stig.kubernetes
 
-compliance_report := kubernetes.compliance_report
+# Upstream report uses "open_findings"; the generic playbook contract expects
+# "violations". Merge a violations alias into the report so callers can use
+# either name. Use object.union so existing keys (open_findings, etc.) survive.
+compliance_report := object.union(kubernetes.compliance_report, {
+    "violations":      kubernetes.compliance_report.open_findings,
+    "violation_count": count(kubernetes.compliance_report.open_findings),
+})
 
 compliant := kubernetes.compliance_report.compliant
 

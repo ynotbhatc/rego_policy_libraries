@@ -281,13 +281,25 @@ violations contains msg if {
 
 # ── Compliance Report ────────────────────────────────────────────────────────
 
+
+# Defaults — without these, an undefined input field makes the
+# entire compliance_report object undefined (Rego v1 behavior).
+default assessment_date := "unknown"
+assessment_date := input.assessment_date
+default dfs_license_number := "unknown"
+dfs_license_number := input.dfs_license_number
+default entity_name := "unknown"
+entity_name := input.entity_name
+default entity_type := "unknown"
+entity_type := input.entity_type
+
 compliance_report := {
     "framework":      "NY DFS Cybersecurity Regulation",
     "regulation":     "23 NYCRR Part 500 (v2, November 2023)",
-    "entity_name":    input.entity_name,
-    "entity_type":    input.entity_type,
-    "dfs_license":    input.dfs_license_number,
-    "assessed_at":    input.assessment_date,
+    "entity_name":    entity_name,
+    "entity_type":    entity_type,
+    "dfs_license":    dfs_license_number,
+    "assessed_at":    assessment_date,
     "compliant":      compliant,
     "total_controls": 41,
     "violations":     violations,

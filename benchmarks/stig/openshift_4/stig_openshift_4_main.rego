@@ -13,7 +13,13 @@ package stig_openshift_4.main
 import rego.v1
 import data.stig.openshift_4
 
-compliance_report := openshift_4.compliance_report
+# Upstream report uses "open_findings"; the generic playbook contract expects
+# "violations". Merge a violations alias into the report so callers can use
+# either name.
+compliance_report := object.union(openshift_4.compliance_report, {
+    "violations":      openshift_4.compliance_report.open_findings,
+    "violation_count": count(openshift_4.compliance_report.open_findings),
+})
 
 compliant := openshift_4.compliance_report.compliant
 

@@ -232,14 +232,26 @@ violations contains msg if {
 
 # ── Compliance Report ────────────────────────────────────────────────────────
 
+
+# Defaults — without these, an undefined input field makes the
+# entire compliance_report object undefined (Rego v1 behavior).
+default assessment_date := "unknown"
+assessment_date := input.assessment_date
+default entity_name := "unknown"
+entity_name := input.entity_name
+default ot_system_type := "unknown"
+ot_system_type := input.ot_system_type
+default sector := "unknown"
+sector := input.sector
+
 compliance_report := {
     "framework":       "NIST Special Publication 800-82 Rev 3",
     "title":           "Guide to Operational Technology (OT) Security",
     "published":       "September 2023",
-    "entity_name":     input.entity_name,
-    "ot_system_type":  input.ot_system_type,
-    "sector":          input.sector,
-    "assessed_at":     input.assessment_date,
+    "entity_name":     entity_name,
+    "ot_system_type":  ot_system_type,
+    "sector":          sector,
+    "assessed_at":     assessment_date,
     "compliant":       compliant,
     "total_controls":  32,
     "violations":      violations,

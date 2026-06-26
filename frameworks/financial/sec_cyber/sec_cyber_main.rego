@@ -148,14 +148,26 @@ violations contains msg if {
 
 # ── Compliance Report ────────────────────────────────────────────────────────
 
+
+# Defaults — without these, an undefined input field makes the
+# entire compliance_report object undefined (Rego v1 behavior).
+default assessment_date := "unknown"
+assessment_date := input.assessment_date
+default entity_name := "unknown"
+entity_name := input.entity_name
+default fiscal_year_end := "unknown"
+fiscal_year_end := input.fiscal_year_end
+default ticker := "unknown"
+ticker := input.ticker
+
 compliance_report := {
     "framework":       "SEC Cybersecurity Disclosure Rules",
     "rule":            "17 CFR Parts 229, 232, 239, 240, and 249",
     "effective_date":  "2023-12-18",
-    "entity_name":     input.entity_name,
-    "ticker":          input.ticker,
-    "assessed_at":     input.assessment_date,
-    "fiscal_year_end": input.fiscal_year_end,
+    "entity_name":     entity_name,
+    "ticker":          ticker,
+    "assessed_at":     assessment_date,
+    "fiscal_year_end": fiscal_year_end,
     "compliant":       compliant,
     "total_controls":  22,
     "violations":      violations,

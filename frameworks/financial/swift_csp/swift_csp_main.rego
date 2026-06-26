@@ -276,15 +276,34 @@ mandatory_violations := violations
 
 # ── Compliance Report ────────────────────────────────────────────────────────
 
+
+# Defaults — without these, an undefined input field makes the
+# entire compliance_report object undefined (Rego v1 behavior).
+default assessment_date := "unknown"
+assessment_date := input.assessment_date
+default entity_name := "unknown"
+entity_name := input.entity_name
+default next_attestation_due := "unknown"
+next_attestation_due := input.next_attestation_due
+default swift_bic := "unknown"
+swift_bic := input.swift_bic
+default user_type := "unknown"
+user_type := input.user_type
+
 compliance_report := {
     "framework":               "SWIFT Customer Security Programme (CSP)",
     "version":                 "CSCF v2024",
-    "entity_name":             input.entity_name,
-    "swift_bic":               input.swift_bic,
-    "user_type":               input.user_type,
-    "assessed_at":             input.assessment_date,
-    "next_attestation_due":    input.next_attestation_due,
+    "entity_name":             entity_name,
+    "swift_bic":               swift_bic,
+    "user_type":               user_type,
+    "assessed_at":             assessment_date,
+    "next_attestation_due":    next_attestation_due,
     "compliant":               compliant,
+    # Standard contract fields (mandatory + advisory rolled up into the
+    # generic violations array so the universal report shape is satisfied).
+    "violations":              array.concat([v | some v in mandatory_violations], [v | some v in advisory_violations]),
+    "violation_count":         count(mandatory_violations) + count(advisory_violations),
+    "total_controls":          32,
     "mandatory_violations":    mandatory_violations,
     "mandatory_violation_count": count(mandatory_violations),
     "advisory_violations":     advisory_violations,
