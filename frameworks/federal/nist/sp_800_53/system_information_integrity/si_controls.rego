@@ -72,7 +72,7 @@ compliant if { count(violation) == 0 }
 compliance_report := {
     "family": "SI",
     "name":   "System and Information Integrity",
-    "controls_evaluated": 13,
+    "controls_evaluated": 12,
     "violations": violation,
     "violation_count": count(violation),
     "compliant": compliant,

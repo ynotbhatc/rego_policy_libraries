@@ -58,8 +58,12 @@ violation contains msg if {
 }
 
 violation contains msg if {
-    input.au_controls.retention_period_days < 365
-    msg := sprintf("NIST AU-11: Audit record retention %d days is below 365-day minimum", [input.au_controls.retention_period_days])
+    # object.get defaults missing/undefined to 0 so the rule still fires
+    # when retention_period_days is absent (otherwise the undefined comparison
+    # silently skips the control and skews the violation count).
+    object.get(input.au_controls, "retention_period_days", 0) < 365
+    msg := sprintf("NIST AU-11: Audit record retention %d days is below 365-day minimum",
+                   [object.get(input.au_controls, "retention_period_days", 0)])
 }
 
 violation contains msg if {

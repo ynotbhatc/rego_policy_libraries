@@ -44,7 +44,7 @@ violations := all_violations
 
 # Total controls evaluated across functions. Reflects the violation rules
 # present in each module — update when adding/removing rules.
-total_controls := 95   # GV(15) + ID(17) + PR(15) + DE(18) + RS(16) + RC(6) + adjustments
+total_controls := 87   # GV(15) + ID(17) + PR(15) + DE(18) + RS(16) + RC(6)
 
 compliant if { count(violations) == 0 }
 

@@ -49,7 +49,7 @@ violations := all_violations
 
 # Controls evaluated across all aggregated families. Update when new
 # families are wired in.
-total_controls := 91   # AC(18) + AU(12) + CM(11) + IA(12) + IR(9) + SC(17) + SI(13) — minus 1
+total_controls := 91   # AC(18) + AU(12) + CM(11) + IA(12) + IR(9) + SC(17) + SI(12)
 
 compliant if { count(violations) == 0 }
 
