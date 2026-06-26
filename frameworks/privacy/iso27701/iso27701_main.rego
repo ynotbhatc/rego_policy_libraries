@@ -27,6 +27,18 @@ modules_passing := count([m |
 ])
 
 compliance_report := {
+    "framework":       "ISO/IEC 27701 Privacy Information Management System",
+    "compliant":       overall_compliant,
+    "total_controls":  134,
+    "violations":      array.concat(
+                           array.concat(
+                               [v | some v in pims_requirements.violations],
+                               [v | some v in pii_controller.violations]),
+                           array.concat(
+                               [v | some v in pii_processor.violations],
+                               [v | some v in data_subject_rights.violations])),
+    "violation_count": count(pims_requirements.violations) + count(pii_controller.violations)
+                       + count(pii_processor.violations) + count(data_subject_rights.violations),
 	"standard": "ISO/IEC 27701:2019 — Privacy Information Management System",
 	"overall_compliant": overall_compliant,
 	"modules_passing": modules_passing,

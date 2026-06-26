@@ -187,13 +187,23 @@ violations contains msg if {
 
 # ── Compliance Report ────────────────────────────────────────────────────────
 
+
+# Defaults — without these, an undefined input field makes the
+# entire compliance_report object undefined (Rego v1 behavior).
+default assessment_date := "unknown"
+assessment_date := input.assessment_date
+default entity_name := "unknown"
+entity_name := input.entity_name
+default entity_type := "unknown"
+entity_type := input.entity_type
+
 compliance_report := {
     "framework":      "EU Digital Operational Resilience Act (DORA)",
     "regulation":     "Regulation (EU) 2022/2554",
     "effective_date": "2025-01-17",
-    "entity":         input.entity_name,
-    "entity_type":    input.entity_type,
-    "assessed_at":    input.assessment_date,
+    "entity":         entity_name,
+    "entity_type":    entity_type,
+    "assessed_at":    assessment_date,
     "compliant":      compliant,
     "total_controls": 30,
     "violations":     violations,

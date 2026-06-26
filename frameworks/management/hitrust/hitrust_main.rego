@@ -391,13 +391,23 @@ violations contains msg if {
 
 # ── Compliance Report ────────────────────────────────────────────────────────
 
+
+# Defaults — without these, an undefined input field makes the
+# entire compliance_report object undefined (Rego v1 behavior).
+default assessment_date := "unknown"
+assessment_date := input.assessment_date
+default entity_name := "unknown"
+entity_name := input.entity_name
+default entity_type := "unknown"
+entity_type := input.entity_type
+
 compliance_report := {
     "framework":       "HITRUST Common Security Framework (CSF)",
     "version":         "v11.3.0",
     "published":       "2023",
-    "entity_name":     input.entity_name,
-    "entity_type":     input.entity_type,
-    "assessed_at":     input.assessment_date,
+    "entity_name":     entity_name,
+    "entity_type":     entity_type,
+    "assessed_at":     assessment_date,
     "compliant":       compliant,
     "total_controls":  59,
     "violations":      violations,

@@ -27,6 +27,18 @@ modules_passing := count([m |
 ])
 
 compliance_report := {
+    "framework":       "California Consumer Privacy Act (CCPA / CPRA)",
+    "compliant":       overall_compliant,
+    "total_controls":  4,
+    "violations":      array.concat(
+                           array.concat(
+                               [v | some v in consumer_rights.violations],
+                               [v | some v in business_obligations.violations]),
+                           array.concat(
+                               [v | some v in sensitive_data.violations],
+                               [v | some v in data_practices.violations])),
+    "violation_count": count(consumer_rights.violations) + count(business_obligations.violations)
+                       + count(sensitive_data.violations) + count(data_practices.violations),
 	"standard": "CCPA/CPRA — California Consumer Privacy Act (as amended by CPRA 2023)",
 	"overall_compliant": overall_compliant,
 	"modules_passing": modules_passing,

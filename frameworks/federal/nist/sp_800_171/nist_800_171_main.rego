@@ -118,7 +118,41 @@ families_passing := count([s | some s in families_status; s == true])
 # Compliance report
 # ---------------------------------------------------------------------------
 
+# Aggregate violations across families. AC has no violation set (boolean
+# rules only), so it's omitted; other families contribute their violations.
+_v_at := [v | some v in object.get(data.nist.sp800_171.awareness_training, "violations", set())]
+_v_au := [v | some v in object.get(data.nist.sp800_171.audit_accountability, "violations", set())]
+_v_cm := [v | some v in object.get(data.nist.sp800_171.configuration_management, "violations", set())]
+_v_ia := [v | some v in object.get(data.nist.sp800_171.identification_authentication, "violations", set())]
+_v_ir := [v | some v in object.get(data.nist.sp800_171.incident_response, "violations", set())]
+_v_ma := [v | some v in object.get(data.nist.sp800_171.maintenance, "violations", set())]
+_v_mp := [v | some v in object.get(data.nist.sp800_171.media_protection, "violations", set())]
+_v_ps := [v | some v in object.get(data.nist.sp800_171.personnel_security, "violations", set())]
+_v_pe := [v | some v in object.get(data.nist.sp800_171.physical_protection, "violations", set())]
+_v_ra := [v | some v in object.get(data.nist.sp800_171.risk_assessment, "violations", set())]
+_v_ca := [v | some v in object.get(data.nist.sp800_171.security_assessment, "violations", set())]
+_v_sc := [v | some v in object.get(data.nist.sp800_171.system_communications, "violations", set())]
+_v_si := [v | some v in object.get(data.nist.sp800_171.system_information, "violations", set())]
+
+_v_at_au       := array.concat(_v_at, _v_au)
+_v_at_au_cm    := array.concat(_v_at_au, _v_cm)
+_v_at_au_cm_ia := array.concat(_v_at_au_cm, _v_ia)
+_v_acm_ia_ir   := array.concat(_v_at_au_cm_ia, _v_ir)
+_v_acm_ia_ir_ma := array.concat(_v_acm_ia_ir, _v_ma)
+_v_acm_ia_ir_ma_mp := array.concat(_v_acm_ia_ir_ma, _v_mp)
+_v_acm_ia_ir_ma_mp_ps := array.concat(_v_acm_ia_ir_ma_mp, _v_ps)
+_v_step_pe := array.concat(_v_acm_ia_ir_ma_mp_ps, _v_pe)
+_v_step_ra := array.concat(_v_step_pe, _v_ra)
+_v_step_ca := array.concat(_v_step_ra, _v_ca)
+_v_step_sc := array.concat(_v_step_ca, _v_sc)
+all_violations := array.concat(_v_step_sc, _v_si)
+
 compliance_report := {
+    "framework":       "NIST SP 800-171 Rev 3",
+    "compliant":       overall_compliant,
+    "total_controls":  110,
+    "violations":      all_violations,
+    "violation_count": count(all_violations),
     "standard": "NIST SP 800-171 Rev 3 — Protecting Controlled Unclassified Information (CUI)",
     "overall_compliant": overall_compliant,
     "families_passing": families_passing,

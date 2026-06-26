@@ -162,6 +162,10 @@ all_violations := array.concat(
 # =============================================================================
 
 compliance_report := {
+    "framework":       "EU Artificial Intelligence Act",
+    "total_controls":  5,
+    "violations":      [],
+    "violation_count": 0,
 	"standard": "EU Artificial Intelligence Act — Regulation (EU) 2024/1689",
 	"overall_compliant": overall_compliant,
 	"risk_tier": risk_tier,
