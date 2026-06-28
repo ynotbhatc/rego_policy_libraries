@@ -111,8 +111,11 @@ achievement_pct := round((count(achieved_cos) / count(all_co_achievements)) * 10
 # endpoint returns `{}`. Each sub-rule that could be undefined gets a
 # safe fallback below.
 
+# Field names match what the caf_demo_assessment playbook reads:
+# - total_cos_assessed (NOT total_cos)
+# - each principle dict has a `compliant` key
 default _achievement_summary := {
-    "total_cos": 0,
+    "total_cos_assessed": 0,
     "achieved": 0,
     "partially_achieved": 0,
     "not_achieved": 0,
@@ -128,25 +131,27 @@ _not_achieved := not_achieved_cos
 default _partially_achieved := []
 _partially_achieved := partially_achieved_cos
 
-default _principle_a3 := {}
+# Principle defaults include `compliant: false` so the display task
+# doesn't blow up on undefined access.
+default _principle_a3 := {"compliant": false}
 _principle_a3 := a3_asset_management.compliance_report
 
-default _principle_b2 := {}
+default _principle_b2 := {"compliant": false}
 _principle_b2 := b2_identity_access.compliance_report
 
-default _principle_b3 := {}
+default _principle_b3 := {"compliant": false}
 _principle_b3 := b3_data_security.compliance_report
 
-default _principle_b4 := {}
+default _principle_b4 := {"compliant": false}
 _principle_b4 := b4_system_security.compliance_report
 
-default _principle_b5 := {}
+default _principle_b5 := {"compliant": false}
 _principle_b5 := b5_resilience.compliance_report
 
-default _principle_c1 := {}
+default _principle_c1 := {"compliant": false}
 _principle_c1 := c1_security_monitoring.compliance_report
 
-default _principle_d1 := {}
+default _principle_d1 := {"compliant": false}
 _principle_d1 := d1_response_recovery.compliance_report
 
 compliance_report := {
