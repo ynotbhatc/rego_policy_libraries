@@ -95,12 +95,59 @@ achievement_summary := {
     "not_achieved_list": not_achieved_cos,
 }
 
-# Percentage of COs at "achieved" level
-achievement_pct := round((count(achieved_cos) / count(all_co_achievements)) * 100)
+# Percentage of COs at "achieved" level — guarded so empty / partial input
+# doesn't collapse the whole compliance_report to undefined.
+default achievement_pct := 0
+achievement_pct := round((count(achieved_cos) / count(all_co_achievements)) * 100) if {
+    count(all_co_achievements) > 0
+}
 
 # ---------------------------------------------------------------------------
 # Full compliance report
 # ---------------------------------------------------------------------------
+#
+# Defaults so this rule always produces SOMETHING — the Generic Framework
+# Assessment playbook (and Daily CAF Demo Assessment) blow up if the
+# endpoint returns `{}`. Each sub-rule that could be undefined gets a
+# safe fallback below.
+
+default _achievement_summary := {
+    "total_cos": 0,
+    "achieved": 0,
+    "partially_achieved": 0,
+    "not_achieved": 0,
+    "achievement_pct": 0,
+    "partially_achieved_list": [],
+    "not_achieved_list": [],
+}
+_achievement_summary := achievement_summary
+
+default _not_achieved := []
+_not_achieved := not_achieved_cos
+
+default _partially_achieved := []
+_partially_achieved := partially_achieved_cos
+
+default _principle_a3 := {}
+_principle_a3 := a3_asset_management.compliance_report
+
+default _principle_b2 := {}
+_principle_b2 := b2_identity_access.compliance_report
+
+default _principle_b3 := {}
+_principle_b3 := b3_data_security.compliance_report
+
+default _principle_b4 := {}
+_principle_b4 := b4_system_security.compliance_report
+
+default _principle_b5 := {}
+_principle_b5 := b5_resilience.compliance_report
+
+default _principle_c1 := {}
+_principle_c1 := c1_security_monitoring.compliance_report
+
+default _principle_d1 := {}
+_principle_d1 := d1_response_recovery.compliance_report
 
 compliance_report := {
     "total_controls":  23,
@@ -112,16 +159,16 @@ compliance_report := {
     "scope": "23 Contributing Outcomes (16 technical + 7 organisational)",
     "compliant": compliant,
     "achievement_pct": achievement_pct,
-    "achievement_summary": achievement_summary,
+    "achievement_summary": _achievement_summary,
     "principles": {
-        "A3_asset_management": a3_asset_management.compliance_report,
-        "B2_identity_access": b2_identity_access.compliance_report,
-        "B3_data_security": b3_data_security.compliance_report,
-        "B4_system_security": b4_system_security.compliance_report,
-        "B5_resilience": b5_resilience.compliance_report,
-        "C1_security_monitoring": c1_security_monitoring.compliance_report,
-        "D1_response_recovery": d1_response_recovery.compliance_report,
+        "A3_asset_management":   _principle_a3,
+        "B2_identity_access":    _principle_b2,
+        "B3_data_security":      _principle_b3,
+        "B4_system_security":    _principle_b4,
+        "B5_resilience":         _principle_b5,
+        "C1_security_monitoring": _principle_c1,
+        "D1_response_recovery":  _principle_d1,
     },
-    "not_achieved_cos": not_achieved_cos,
-    "partially_achieved_cos": partially_achieved_cos,
+    "not_achieved_cos":        _not_achieved,
+    "partially_achieved_cos":  _partially_achieved,
 }
