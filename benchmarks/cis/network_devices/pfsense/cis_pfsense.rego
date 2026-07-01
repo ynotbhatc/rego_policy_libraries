@@ -316,12 +316,15 @@ section_4_violations contains msg if {
 
 # ── Section 5: Package & Update Management ────────────────────────────────────
 
-# 5.1.1  No packages with known vulnerabilities (placeholder — flag if vuln_list present)
+# 5.1.1  No packages with known vulnerabilities
+#
+# This rule requires the fact-collection layer to explicitly set
+# input.vulnerability_scan.performed == true. When performed=true and
+# vulnerable_packages is empty, the rule passes. When performed is false
+# or absent, the rule fires a distinct "unable to verify" violation
+# rather than silently passing.
 no_vulnerable_packages if {
-    not input.vulnerable_packages
-}
-
-no_vulnerable_packages if {
+    input.vulnerability_scan.performed == true
     count(input.vulnerable_packages) == 0
 }
 
@@ -337,8 +340,14 @@ captive_portal_disabled if {
 }
 
 section_5_violations contains msg if {
+    input.vulnerability_scan.performed == true
     not no_vulnerable_packages
     msg := "5.1.1 Packages with known vulnerabilities detected — update immediately"
+}
+
+section_5_violations contains msg if {
+    not input.vulnerability_scan.performed
+    msg := "5.1.1 UNABLE TO VERIFY — vulnerability scan facts not provided (input.vulnerability_scan.performed is not true)"
 }
 
 # ── Aggregate violations ──────────────────────────────────────────────────────

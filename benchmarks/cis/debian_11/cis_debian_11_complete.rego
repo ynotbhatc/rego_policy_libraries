@@ -165,6 +165,15 @@ compliance_assessment := {
 # TOTAL CONTROLS COVERED
 # =============================================================================
 
-# Estimated ~400+ CIS Debian 11 controls
-# Currently using stub modules (pass by default) - ready for full implementation
-total_controls_covered := 400
+# Rule heads implemented across all modules in this policy set: 240
+#
+# This count is the number of Rego rule heads (`contains msg if`,
+# `contains violation if`) across every module imported by this master.
+# It is NOT a formal 1-to-1 mapping to CIS Debian Linux 11 Benchmark
+# control IDs. Some CIS controls are covered by multiple rules; some
+# rules cover multiple controls; some CIS controls are not implemented
+# here. See per-module `compliance_report` for actual violation detail.
+#
+# For audit-of-record use this library MUST be formally mapped against
+# the CIS Debian Linux 11 Benchmark before results are relied upon.
+total_controls_covered := 240
