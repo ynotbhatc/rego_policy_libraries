@@ -177,7 +177,19 @@ compliant_sections := count([1 |
 
 compliance_percentage := (compliant_sections * 100) / total_sections
 
-total_controls_covered := 338
+# Rule heads implemented across all modules in this policy set: 229
+#
+# This count is the number of Rego rule heads (`contains msg if`,
+# `contains violation if`) across every module imported by this master.
+# It is NOT a formal 1-to-1 mapping to CIS Amazon Linux 2023 Benchmark
+# control IDs. The prior value of 338 in this field was inaccurate —
+# it was carried over from the RHEL 9 master and did not reflect
+# actual coverage in the AL 2023 policy set. See per-module
+# `compliance_report` for actual violation detail.
+#
+# For audit-of-record use this library MUST be formally mapped against
+# the CIS Amazon Linux 2023 Benchmark before results are relied upon.
+total_controls_covered := 229
 
 # =============================================================================
 # RISK ASSESSMENT

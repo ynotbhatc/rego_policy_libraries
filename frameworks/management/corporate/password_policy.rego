@@ -67,9 +67,13 @@ history_requirements_met if {
     not password_in_history
 }
 
+# password_in_history — expects the caller to have pre-hashed input.password.value
+# with the same algorithm used to populate input.user.password_history[].hash.
+# Rego is NOT the place to compute password hashes; the fact-collection layer
+# (Ansible playbook / PAM history reader) must provide comparable hash values.
 password_in_history if {
     some i
-    input.user.password_history[i].hash == hash_password(input.password.value)
+    input.user.password_history[i].hash == input.password.value_hash
 }
 
 # Password Age Requirements
@@ -329,7 +333,10 @@ policy_metadata := {
     "exception_approval_required": true
 }
 
-# Helper function for password hashing (placeholder - implement with actual hash function)
-hash_password(password) := sprintf("hash_%s", [password]) if {
-    true  # In real implementation, use proper cryptographic hash
-}
+# NOTE: A fake `hash_password()` helper previously lived here that returned
+# `"hash_" + password` (literally a prefix + plaintext). It was called from the
+# password-reuse check above and would have silently produced FALSE COMPLIANCE
+# in any real deployment (real password history stores bcrypt/argon2/sha512-crypt
+# hashes; the fake would never match). Removed. The reuse check now expects the
+# caller to pre-hash `input.password.value` using the same algorithm as the
+# password history and pass it in as `input.password.value_hash`.

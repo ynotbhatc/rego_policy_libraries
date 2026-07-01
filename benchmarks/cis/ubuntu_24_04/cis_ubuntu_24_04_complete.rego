@@ -166,12 +166,21 @@ compliance_assessment := {
 }
 
 # =============================================================================
-# TOTAL CONTROLS COVERED
+# COVERAGE — honest representation
 # =============================================================================
-
-# Estimated ~400+ CIS Ubuntu 24.04 controls
-# Currently using stub modules (pass by default) - ready for full implementation
-total_controls_covered := 400
+#
+# Rule heads implemented across all modules in this policy set: 240
+#
+# This count is the number of Rego rule heads (`contains msg if`,
+# `contains violation if`) across every module imported by this master.
+# It is NOT a formal 1-to-1 mapping to CIS Ubuntu 24.04 LTS Benchmark
+# control IDs. Some CIS controls are covered by multiple rules; some
+# rules cover multiple controls; some CIS controls are not implemented
+# here. See per-module `compliance_report` for actual violation detail.
+#
+# For audit-of-record use this library MUST be formally mapped against
+# the CIS Ubuntu 24.04 LTS Benchmark before results are relied upon.
+total_controls_covered := 240
 
 # =============================================================================
 # PROFILE SELECTOR (Level 1 / Level 2)
