@@ -7,6 +7,8 @@ import rego.v1
 # Reference: https://www.cisecurity.org/benchmark/microsoft_windows_11
 
 # Main compliance evaluation
+default compliant := false
+
 compliant if {
 	count(violations) == 0
 }

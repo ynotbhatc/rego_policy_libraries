@@ -7,6 +7,8 @@ import rego.v1
 # Reference: https://www.cisecurity.org/benchmark/apache_http_server
 
 # Main compliance evaluation
+default compliant := false
+
 compliant if {
 	count(violations) == 0
 }
