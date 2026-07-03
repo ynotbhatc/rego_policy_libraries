@@ -122,7 +122,13 @@ deny_reasons contains msg if {
 
 # ── Summary report ────────────────────────────────────────────────────────────
 
-default summary := {}
+default summary := {
+    "authorized": false,
+    "user": null,
+    "roles": [],
+    "resource": {},
+    "deny_reasons": ["Invalid or missing OIDC token"],
+}
 
 summary := {
     "authorized": authorized,

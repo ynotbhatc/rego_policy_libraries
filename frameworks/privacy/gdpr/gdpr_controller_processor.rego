@@ -2,6 +2,22 @@ package gdpr.controller_processor
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default controller_accountability := false
+default data_protection_policies := false
+default privacy_by_design_technical := false
+default privacy_by_default := false
+default joint_controller_arrangement := false
+default processor_due_diligence := false
+default processor_contract := false
+default sub_processor_management := false
+default processor_staff_obligations := false
+default controller_records := false
+default processor_records := false
+default supervisory_authority_cooperation := false
+default security_of_processing := false
+
+
 # GDPR Articles 24-29 — Controller and Processor Responsibilities
 # Defines accountability, joint controllers, processor selection, and contracts
 

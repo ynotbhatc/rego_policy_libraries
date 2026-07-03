@@ -2,6 +2,23 @@ package iso27001.communications_security
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default network_controls := false
+default network_services_secure := false
+default network_segregation := false
+default transfer_policies := false
+default transfer_agreements := false
+default electronic_messaging_secure := false
+default nda_requirements := false
+default remote_access_secure := false
+default network_monitoring := false
+default dns_security := false
+default network_management_secure := false
+default network_security_management := false
+default information_transfer := false
+default compliant := false
+
+
 # ISO 27001:2022 - A.13 Communications Security
 # Technical controls for protecting information in networks and information transfer
 

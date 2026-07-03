@@ -2,6 +2,28 @@ package hipaa.privacy_rule
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default notice_of_privacy_practices := false
+default tpo_uses_documented := false
+default authorization_process := false
+default prohibited_disclosures := false
+default minimum_necessary := false
+default right_of_access := false
+default right_to_amend := false
+default right_to_accounting := false
+default right_to_restrict := false
+default right_to_confidential_comms := false
+default right_to_opt_out := false
+default de_identification := false
+default safe_harbor_de_identification := false
+default workforce_training := false
+default sanction_policy := false
+default privacy_officer := false
+default complaint_process := false
+default business_associate_agreements := false
+default documentation_retention := false
+
+
 # HIPAA Privacy Rule (45 CFR Part 164, Subparts A and E)
 # Governs the use and disclosure of Protected Health Information (PHI)
 #

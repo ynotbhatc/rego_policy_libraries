@@ -2,6 +2,14 @@ package iso27001
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default access_control_compliant := false
+default cryptography_compliant := false
+default operations_security_compliant := false
+default communications_security_compliant := false
+default system_acquisition_maintenance_compliant := false
+
+
 import data.iso27001.access_control
 import data.iso27001.cryptography
 import data.iso27001.operations_security
@@ -12,6 +20,8 @@ import data.iso27001.system_acquisition_maintenance
 # Technical controls that can be validated through Ansible automation
 
 # Main compliance check - system must pass all technical control categories
+default allow := false
+
 allow if {
     access_control.compliant
     cryptography.compliant

@@ -2,6 +2,26 @@ package iso27001.operations_security
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default operating_procedures_documented := false
+default change_management := false
+default capacity_management := false
+default environment_separation := false
+default malware_protection := false
+default backup_management := false
+default event_logging := false
+default log_protection := false
+default admin_logs := false
+default clock_synchronization := false
+default software_installation_control := false
+default vulnerability_management := false
+default software_restriction := false
+default audit_controls := false
+default operational_procedures := false
+default logging_monitoring := false
+default compliant := false
+
+
 # ISO 27001:2022 - A.12 Operations Security
 # Technical controls for secure day-to-day IT operations
 
