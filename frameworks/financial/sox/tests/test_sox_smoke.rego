@@ -14,7 +14,7 @@ import rego.v1
 # `todo_` prefix => OPA reports SKIPPED (documents the desired contract without
 # green-washing or breaking CI). Remove the prefix once the endpoint is fixed
 # (default-safe scores + a `compliance_report` rule).
-todo_test_report_wellformed_on_empty_input if {
+test_report_wellformed_on_empty_input if {
 	report := data.sox.main.overall_sox_assessment with input as {}
 	is_object(report)
 	count(report) > 0

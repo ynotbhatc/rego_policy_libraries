@@ -237,7 +237,7 @@ reason := msg if {
 reason := msg if {
     not allow
     risk_level == "high"
-    msg := sprintf("Tool '%v' has no explicit approval rule — defaulting to DENY (unknown risk)", [input.tool])
+    msg := sprintf("Tool '%v' has no explicit approval rule — defaulting to DENY (unknown risk)", [object.get(input, ["tool"], "unknown")])
 }
 
 # ---------------------------------------------------------------------------
@@ -258,5 +258,5 @@ response := {
     "decision":   decision,
     "risk_level": risk_level,
     "reason":     reason,
-    "tool":       input.tool,
+    "tool":       object.get(input, ["tool"], ""),
 }

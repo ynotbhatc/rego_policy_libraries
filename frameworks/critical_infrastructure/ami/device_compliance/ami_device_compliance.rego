@@ -220,7 +220,7 @@ compliant if {
     count(all_violations) == 0
 }
 
-total_devices := count(input.devices)
+total_devices := count(object.get(input, ["devices"], []))
 
 compliant_devices := count([1 |
     device := input.devices[_]

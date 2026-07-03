@@ -142,6 +142,9 @@ pci_requirement_9_compliant if {
 	poi_device_protection
 }
 
+default pci_requirement_9_score := 0
+default pci_requirement_9_findings := {}
+
 pci_requirement_9_score := score if {
 	controls := [
 		physical_security_policies_established,

@@ -7,7 +7,7 @@ import rego.v1
 
 import data.finops.tagging
 
-todo_test_report_wellformed_on_empty_input if {
+test_report_wellformed_on_empty_input if {
 	result := tagging.compliance_report with input as {}
 	is_object(result)
 	count(result) > 0

@@ -217,10 +217,15 @@ report := {
 		"GT-005_regulatory_monitoring": regulatory_change_monitoring_active,
 	},
 	"trigger_summary": {
-		"total_triggers": count(input.geopolitical_risk.geopolitical_event_triggers),
+		"total_triggers": count(object.get(input, ["geopolitical_risk", "geopolitical_event_triggers"], [])),
 		"triggers_documented": count([t | t := input.geopolitical_risk.geopolitical_event_triggers[_]; t.response_procedure_documented == true]),
-		"country_exit_plans": count(input.geopolitical_risk.country_exit_procedures),
+		"country_exit_plans": count(object.get(input, ["geopolitical_risk", "country_exit_procedures"], [])),
 	},
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# Defaults for control rules — ensure report never collapses to {} on absent facts
+default geopolitical_risk_register_current := false
+default regulatory_change_monitoring_active := false
+default supply_chain_geopolitical_assessed := false

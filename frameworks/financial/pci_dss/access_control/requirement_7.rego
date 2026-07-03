@@ -121,6 +121,9 @@ pci_requirement_7_compliant if {
 	access_control_system
 }
 
+default pci_requirement_7_score := 0
+default pci_requirement_7_findings := {}
+
 pci_requirement_7_score := score if {
 	controls := [
 		access_control_policies_established,

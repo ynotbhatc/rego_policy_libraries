@@ -475,10 +475,19 @@ report := {
 		"IS-013_vendor_lockin_assessed": vendor_lockin_cost_assessed,
 	},
 	"provider_summary": {
-		"total_providers": count(input.cloud_providers),
+		"total_providers": count(object.get(input, ["cloud_providers"], [])),
 		"foreign_providers": count([p | p := input.cloud_providers[_]; not p.hq_country in input.approved_jurisdictions]),
 		"cloud_act_exposed": count([p | p := input.cloud_providers[_]; p.subject_to_cloud_act == true]),
 	},
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# Defaults for control rules — ensure report never collapses to {} on absent facts
+default cloud_act_response_procedure_documented := false
+default data_portability_in_open_formats := false
+default dns_sovereignty := false
+default exit_strategy_documented := false
+default fisa_702_response_procedure_documented := false
+default foreign_provider_concentration_within_limits := false
+default vendor_lockin_cost_assessed := false

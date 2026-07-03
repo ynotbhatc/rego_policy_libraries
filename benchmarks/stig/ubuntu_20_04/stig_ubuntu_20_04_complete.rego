@@ -101,7 +101,7 @@ stig_assessment := {
 		"stig_title": "Ubuntu 20.04 LTS Security Technical Implementation Guide",
 		"stig_version": "Version 2, Release 1",
 		"classification": "UNCLASSIFIED",
-		"hostname": input.system_info.hostname,
+		"hostname": object.get(input, ["system_info", "hostname"], "unknown"),
 	},
 	"compliance_summary": {
 		"overall_status": compliance_status,

@@ -7,6 +7,8 @@ import rego.v1
 # Implements all 7 RMF steps: Prepare, Categorize, Select, Implement, Assess, Authorize, Monitor
 
 # FISMA Core Requirements
+default fisma_compliant := false
+
 fisma_compliant if {
 	rmf_step_1_prepare_compliant
 	rmf_step_2_categorize_compliant
@@ -18,6 +20,8 @@ fisma_compliant if {
 }
 
 # RMF Step 1: PREPARE - Essential activities to prepare for risk management
+default rmf_step_1_prepare_compliant := false
+
 rmf_step_1_prepare_compliant if {
 	organizational_risk_strategy_established
 	risk_management_roles_defined
@@ -75,6 +79,8 @@ continuous_monitoring_strategy_established if {
 }
 
 # RMF Step 2: CATEGORIZE - Categorize systems and information based on impact analysis
+default rmf_step_2_categorize_compliant := false
+
 rmf_step_2_categorize_compliant if {
 	system_security_categorization_completed
 	information_types_identified
@@ -132,6 +138,8 @@ security_categorization_approved if {
 }
 
 # RMF Step 3: SELECT - Select appropriate security controls
+default rmf_step_3_select_compliant := false
+
 rmf_step_3_select_compliant if {
 	security_control_baselines_selected
 	control_tailoring_completed
@@ -201,6 +209,8 @@ security_control_allocation_documented if {
 }
 
 # RMF Step 4: IMPLEMENT - Implement security controls
+default rmf_step_4_implement_compliant := false
+
 rmf_step_4_implement_compliant if {
 	security_controls_implemented
 	implementation_documented
@@ -237,6 +247,8 @@ control_implementation_evidence_available if {
 }
 
 # RMF Step 5: ASSESS - Assess security control effectiveness
+default rmf_step_5_assess_compliant := false
+
 rmf_step_5_assess_compliant if {
 	security_control_assessment_completed
 	assessment_procedures_followed
@@ -295,6 +307,8 @@ remediation_plans_developed if {
 }
 
 # RMF Step 6: AUTHORIZE - Make risk-based authorization decision
+default rmf_step_6_authorize_compliant := false
+
 rmf_step_6_authorize_compliant if {
 	authorization_package_complete
 	risk_assessment_conducted
@@ -331,6 +345,8 @@ terms_conditions_established if {
 }
 
 # RMF Step 7: MONITOR - Monitor security controls on an ongoing basis
+default rmf_step_7_monitor_compliant := false
+
 rmf_step_7_monitor_compliant if {
 	continuous_monitoring_implemented
 	configuration_management_monitored

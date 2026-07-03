@@ -15,7 +15,7 @@ import rego.v1
 # `todo_` prefix => OPA reports SKIPPED (documents the desired contract without
 # green-washing or breaking CI). Remove the prefix once the endpoint is fixed
 # (default-safe requirement scores + a `compliance_report` rule).
-todo_test_report_wellformed_on_empty_input if {
+test_report_wellformed_on_empty_input if {
 	report := data.pci_dss.main.pci_dss_detailed_findings with input as {}
 	is_object(report)
 	count(report) > 0

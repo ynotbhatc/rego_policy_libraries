@@ -382,7 +382,7 @@ compliance_report := {
     "foundational_requirement": "FR 1",
     "title":                    "Identification and Authentication Control (IAC)",
     "standard":                 "IEC 62443-3-3",
-    "target_sl":                input.target_sl,
+    "target_sl":                object.get(input, ["target_sl"], 0),
     "total_srs":                13,
     "passing_srs":              fr1_passing_srs,
     "compliant":                compliant,

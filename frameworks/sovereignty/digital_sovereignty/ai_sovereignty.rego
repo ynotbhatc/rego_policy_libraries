@@ -398,10 +398,16 @@ report := {
 		"AI-010_fairness_controls_implemented": ai_fairness_controls_implemented,
 	},
 	"service_summary": {
-		"total_ai_services": count(input.ai_services),
+		"total_ai_services": count(object.get(input, ["ai_services"], [])),
 		"saas_services": count([s | s := input.ai_services[_]; s.deployment_type == "saas"]),
 		"foreign_saas": count([s | s := input.ai_services[_]; s.deployment_type == "saas"; not s.provider_hq_country in input.approved_jurisdictions]),
 	},
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# Defaults for control rules — ensure report never collapses to {} on absent facts
+default ai_bias_audit_conducted := false
+default ai_fairness_controls_implemented := false
+default ai_governance_policy := false
+default shadow_ai_controlled := false

@@ -157,6 +157,9 @@ pci_requirement_11_compliant if {
 	payment_page_integrity
 }
 
+default pci_requirement_11_score := 0
+default pci_requirement_11_findings := {}
+
 pci_requirement_11_score := score if {
 	controls := [
 		security_testing_policies_established,

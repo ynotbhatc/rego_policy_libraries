@@ -355,6 +355,9 @@ pci_requirement_3_compliant if {
 # PCI Requirement 3 Score Calculation
 # =================================================================
 
+default pci_requirement_3_score := 0
+default pci_requirement_3_findings := {}
+
 pci_requirement_3_score := score if {
     controls := [
         account_data_protection_policies,

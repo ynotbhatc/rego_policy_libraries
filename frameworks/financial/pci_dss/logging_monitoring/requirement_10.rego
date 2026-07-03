@@ -185,6 +185,9 @@ pci_requirement_10_compliant if {
 	security_failure_response
 }
 
+default pci_requirement_10_score := 0
+default pci_requirement_10_findings := {}
+
 pci_requirement_10_score := score if {
 	controls := [
 		logging_policies_established,

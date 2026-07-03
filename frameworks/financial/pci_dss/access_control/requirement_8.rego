@@ -154,6 +154,9 @@ pci_requirement_8_compliant if {
 	system_application_accounts
 }
 
+default pci_requirement_8_score := 0
+default pci_requirement_8_findings := {}
+
 pci_requirement_8_score := score if {
 	controls := [
 		authentication_policies_established,

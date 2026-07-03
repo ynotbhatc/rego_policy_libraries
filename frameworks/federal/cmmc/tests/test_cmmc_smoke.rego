@@ -15,7 +15,7 @@ import rego.v1
 #
 # `todo_` prefix => OPA reports SKIPPED (documents the desired contract without
 # green-washing or breaking CI). Remove the prefix once the endpoint is fixed.
-todo_test_report_wellformed_on_empty_input if {
+test_report_wellformed_on_empty_input if {
 	report := data.cmmc.cmmc_compliance_report with input as {}
 	is_object(report)
 	count(report) > 0

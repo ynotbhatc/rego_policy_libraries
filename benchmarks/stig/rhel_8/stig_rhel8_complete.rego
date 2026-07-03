@@ -67,8 +67,8 @@ stig_assessment := {
 		"version": "V1R13",
 		"release_date": "2024-07-24",
 		"platform": "RHEL 8",
-		"assessed_host": input.system_info.hostname,
-		"os_version": input.system_info.os_version,
+		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
+		"os_version": object.get(input, ["system_info", "os_version"], "unknown"),
 	},
 	"summary": {
 		"total_findings": count(all_findings),

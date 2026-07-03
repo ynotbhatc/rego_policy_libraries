@@ -94,19 +94,19 @@ deny_reasons contains "AI system is disabled" if {
 # Full governance response
 governance_response := {
     "decision": decision,
-    "action": input.action,
+    "action": object.get(input, ["action"], ""),
     "risk_level": classification.action_risk_level,
     "ai_system": {
-        "id": input.ai_system.id,
-        "role": input.ai_system.role
+        "id": object.get(input, ["ai_system", "id"], "unknown"),
+        "role": object.get(input, ["ai_system", "role"], "unknown")
     },
     "approval_requirements": authorization.approval_requirements,
     "context": {
-        "environment": input.context.environment,
+        "environment": object.get(input, ["context", "environment"], "unknown"),
         "valid": context.context_valid
     },
     "deny_reasons": deny_reasons,
-    "trace_id": input.trace_id,
+    "trace_id": object.get(input, ["trace_id"], ""),
     "timestamp": time.now_ns(),
     "classification": classification.classification_report,
     "authorization": authorization.authorization_report,

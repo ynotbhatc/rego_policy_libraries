@@ -165,7 +165,7 @@ compliance_report := {
     "foundational_requirement": "FR 6",
     "title":                    "Timely Response to Events (TRE)",
     "standard":                 "IEC 62443-3-3",
-    "target_sl":                input.target_sl,
+    "target_sl":                object.get(input, ["target_sl"], 0),
     "total_srs":                2,
     "passing_srs":              fr6_passing_srs,
     "compliant":                compliant,

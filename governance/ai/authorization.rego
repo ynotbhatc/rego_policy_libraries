@@ -34,6 +34,8 @@ authorized if {
 }
 
 # Check if AI system exists and is enabled
+default ai_system_valid := false
+
 ai_system_valid if {
     input.ai_system.id != ""
     input.ai_system.enabled == true
@@ -90,6 +92,8 @@ approval_config := {
 approval_requirements := approval_config[classification.action_risk_level]
 
 # Check if approval has been obtained
+default approval_obtained := false
+
 approval_obtained if {
     input.approval.obtained == true
     input.approval.approvers_count >= approval_requirements.approvers
@@ -104,6 +108,8 @@ approval_valid if {
 }
 
 # Check if justification is provided when required
+default justification_valid := false
+
 justification_valid if {
     not approval_requirements.justification_required
 }
@@ -116,8 +122,8 @@ justification_valid if {
 
 # Authorization report
 authorization_report := {
-    "ai_system_id": input.ai_system.id,
-    "ai_system_role": input.ai_system.role,
+    "ai_system_id": object.get(input, ["ai_system", "id"], "unknown"),
+    "ai_system_role": object.get(input, ["ai_system", "role"], "unknown"),
     "authorized": authorized,
     "ai_system_valid": ai_system_valid,
     "approval_requirements": approval_requirements,

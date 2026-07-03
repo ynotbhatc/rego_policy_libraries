@@ -398,3 +398,9 @@ report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# Defaults for control rules — ensure report never collapses to {} on absent facts
+default dual_control_enforced := false
+default hsm_deployed := false
+default key_rotation_policy := false
+default no_hsm_vendor_backdoor := false

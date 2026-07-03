@@ -391,3 +391,14 @@ report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# Defaults for control rules — ensure report never collapses to {} on absent facts
+default dns_resolver_in_jurisdiction := false
+default dns_under_org_control := false
+default dnssec_enabled := false
+default egress_controlled := false
+default egress_in_jurisdiction := false
+default foreign_destination_alerting := false
+default netflow_monitoring := false
+default public_dns_blocked := false
+default rpki_deployed := false
