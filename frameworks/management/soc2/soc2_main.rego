@@ -23,26 +23,36 @@ import data.soc2.infrastructure.applications_services.applications_services
 # =================================================================
 
 # Security (Common Criteria) - Required for all SOC 2 reports
+default security_compliant := false
+
 security_compliant if {
     access_controls.overall_security_compliant
 }
 
 # Availability - Optional criteria
+default availability_compliant := false
+
 availability_compliant if {
     system_availability.overall_availability_compliant
 }
 
 # Processing Integrity - Optional criteria
+default processing_integrity_compliant := false
+
 processing_integrity_compliant if {
     data_processing.overall_processing_integrity_compliant
 }
 
 # Confidentiality - Optional criteria
+default confidentiality_compliant := false
+
 confidentiality_compliant if {
     data_confidentiality.overall_confidentiality_compliant
 }
 
 # Privacy - Optional criteria
+default privacy_compliant := false
+
 privacy_compliant if {
     data_privacy.overall_privacy_compliant
 }
