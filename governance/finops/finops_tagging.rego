@@ -210,7 +210,7 @@ violations contains sprintf("Budget: Cost center '%s' current spend $%.2f exceed
 # COMPLIANCE SUMMARY
 # =============================================================================
 
-total_resources := count(input.resources)
+total_resources := count(object.get(input, ["resources"], []))
 
 compliant_resources := count([r | some r in input.resources; not resource_has_violation(r.id)])
 

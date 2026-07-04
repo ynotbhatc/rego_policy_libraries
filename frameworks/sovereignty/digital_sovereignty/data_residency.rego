@@ -330,10 +330,16 @@ report := {
 		"DR-010_data_flow_inventory": data_flow_inventory_maintained,
 	},
 	"resource_summary": {
-		"total_resources": count(input.cloud_resources),
+		"total_resources": count(object.get(input, ["cloud_resources"], [])),
 		"regulated_resources": count([r | r := input.cloud_resources[_]; r.stores_regulated_data == true]),
 		"in_approved_regions": count([r | r := input.cloud_resources[_]; r.stores_regulated_data == true; r.region in input.approved_cloud_regions]),
 	},
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# Defaults for control rules — ensure report never collapses to {} on absent facts
+default data_flow_inventory_maintained := false
+default metadata_in_jurisdiction := false
+default no_vendor_log_access := false
+default telemetry_in_jurisdiction := false

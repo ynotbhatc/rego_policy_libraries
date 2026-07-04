@@ -14,9 +14,16 @@ import data.gdpr.data_transfers
 # MODULE COMPLIANCE STATUS
 # =============================================================================
 
+default core_compliant := false
 core_compliant if { compliance.compliant }
+
+default controller_processor_compliant := false
 controller_processor_compliant if { controller_processor.compliant }
+
+default data_transfers_compliant := false
 data_transfers_compliant if { data_transfers.compliant }
+
+default cookies_tracking_compliant := false
 cookies_tracking_compliant if { cookies_tracking.compliant }
 
 # =============================================================================

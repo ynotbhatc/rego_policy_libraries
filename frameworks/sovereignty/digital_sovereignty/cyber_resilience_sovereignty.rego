@@ -336,3 +336,16 @@ report := {
 	"violations":      violations,
 	"violation_count": count(violations),
 }
+
+# Defaults for control rules — ensure report never collapses to {} on absent facts
+default adversarial_testing_current := false
+default backup_immutable_and_sovereign := false
+default board_oversight_current := false
+default ir_plan_tested_and_current := false
+default mttr_within_threshold := false
+default nation_state_scenario_covered := false
+default recovery_tested_and_met_objectives := false
+default redundancy_adequate := false
+default staff_training_current := false
+default supply_chain_resilience_current := false
+default threat_intelligence_active := false

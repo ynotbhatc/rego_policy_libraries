@@ -22,17 +22,29 @@ import data.pci_dss.system_hardening.requirement_2
 # ALL 12 PCI DSS REQUIREMENTS
 # =================================================================
 
+default requirement_1_compliant := false
 requirement_1_compliant if { requirement_1.pci_requirement_1_compliant }  # Network Security Controls
+default requirement_2_compliant := false
 requirement_2_compliant if { requirement_2.pci_requirement_2_compliant }  # Secure Configurations
+default requirement_3_compliant := false
 requirement_3_compliant if { requirement_3.pci_requirement_3_compliant }  # Protect Stored CHD
+default requirement_4_compliant := false
 requirement_4_compliant if { requirement_4.pci_requirement_4_compliant }  # Protect CHD in Transit
+default requirement_5_compliant := false
 requirement_5_compliant if { requirement_5.pci_requirement_5_compliant }  # Malware Protection
+default requirement_6_compliant := false
 requirement_6_compliant if { requirement_6.pci_requirement_6_compliant }  # Secure Development
+default requirement_7_compliant := false
 requirement_7_compliant if { requirement_7.pci_requirement_7_compliant }  # Restrict Access
+default requirement_8_compliant := false
 requirement_8_compliant if { requirement_8.pci_requirement_8_compliant }  # User Authentication
+default requirement_9_compliant := false
 requirement_9_compliant if { requirement_9.pci_requirement_9_compliant }  # Physical Access
+default requirement_10_compliant := false
 requirement_10_compliant if { requirement_10.pci_requirement_10_compliant } # Logging & Monitoring
+default requirement_11_compliant := false
 requirement_11_compliant if { requirement_11.pci_requirement_11_compliant } # Security Testing
+default requirement_12_compliant := false
 requirement_12_compliant if { requirement_12.pci_requirement_12_compliant } # Governance & Policy
 
 # =================================================================
@@ -54,6 +66,8 @@ pci_validation_level := level if {
 } else := "Unknown"
 
 # Cardholder Data Environment (CDE) scope validation
+default cde_scope_defined := false
+
 cde_scope_defined if {
 	input.pci.cde.boundaries.documented == true
 	input.pci.cde.systems.inventoried == true
@@ -64,6 +78,8 @@ cde_scope_defined if {
 # =================================================================
 # OVERALL COMPLIANCE
 # =================================================================
+
+default all_requirements_compliant := false
 
 all_requirements_compliant if {
 	requirement_1_compliant
@@ -87,6 +103,8 @@ pci_program_management if {
 	input.pci.program.documentation.maintained == true
 	input.pci.program.risk_assessment.performed_annually == true
 }
+
+default overall_pci_dss_compliant := false
 
 overall_pci_dss_compliant if {
 	all_requirements_compliant

@@ -287,6 +287,9 @@ pci_requirement_1_compliant if {
 # PCI Requirement 1 Score Calculation
 # =================================================================
 
+default pci_requirement_1_score := 0
+default pci_requirement_1_findings := {}
+
 pci_requirement_1_score := score if {
     controls := [
         network_security_policies_established,

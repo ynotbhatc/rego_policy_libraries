@@ -224,3 +224,16 @@ report := {
 		"CLOUD Act / FISA 702 Response",
 	],
 }
+
+# Defaults for domain aggregators — keep report/domains_passing well-formed on absent facts
+default data_residency_compliant := false
+default cryptographic_sovereignty_compliant := false
+default infrastructure_sovereignty_compliant := false
+default software_sovereignty_compliant := false
+default operational_sovereignty_compliant := false
+default network_sovereignty_compliant := false
+default ai_sovereignty_compliant := false
+default breach_notification_sovereignty_compliant := false
+default geopolitical_sovereignty_compliant := false
+default dora_sovereignty_compliant := false
+default cyber_resilience_sovereignty_compliant := false

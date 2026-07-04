@@ -7,7 +7,7 @@ import rego.v1
 
 import data.digital_sovereignty.main
 
-todo_test_report_wellformed_on_empty_input if {
+test_report_wellformed_on_empty_input if {
 	result := main.report with input as {}
 	is_object(result)
 	count(result) > 0

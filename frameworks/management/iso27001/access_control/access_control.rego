@@ -2,6 +2,28 @@ package iso27001.access_control
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default business_requirements_met := false
+default user_access_management := false
+default user_registration_process := false
+default user_access_provisioning := false
+default privileged_access_management := false
+default secret_authentication_management := false
+default password_policy_compliant := false
+default mfa_implemented := false
+default secret_handling_secure := false
+default access_rights_review := false
+default access_rights_removal := false
+default user_responsibilities := false
+default system_application_access_control := false
+default information_access_restriction := false
+default secure_logon_procedures := false
+default password_management_system := false
+default privileged_utility_control := false
+default source_code_access_control := false
+default compliant := false
+
+
 # ISO 27001:2022 - A.9 Access Control
 # Technical controls for managing access to information and information processing facilities
 

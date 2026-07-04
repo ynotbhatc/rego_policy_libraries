@@ -362,7 +362,7 @@ cip_015_compliance_report := {
     },
     "violations": cip_015_violations,
     "violation_count": count(cip_015_violations),
-    "systems_assessed": count(input.insm.systems),
+    "systems_assessed": count(object.get(input, ["insm", "systems"], [])),
     "applicable_systems": count([s | s := input.insm.systems[_]; s.impact_categorization in ["high", "medium"]; s.has_external_routable_connectivity == true]),
     "metadata": {
         "standard": "NERC CIP-015",

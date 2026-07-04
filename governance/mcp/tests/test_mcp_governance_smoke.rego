@@ -8,7 +8,7 @@ import rego.v1
 
 import data.ai_governance.mcp
 
-todo_test_report_wellformed_on_empty_input if {
+test_report_wellformed_on_empty_input if {
 	result := mcp.response with input as {}
 	is_object(result)
 	count(result) > 0

@@ -15,9 +15,9 @@ import rego.v1
 # green-washing the bug or breaking CI. Remove the `todo_` prefix once the
 # endpoint is fixed (add `default fisma_compliant := false` and expose a
 # `compliance_report` rule).
-todo_test_report_wellformed_on_empty_input if {
-	report := data.fisma.main.compliance_report with input as {}
+test_report_wellformed_on_empty_input if {
+	report := data.fisma.main.fisma_assessment with input as {}
 	is_object(report)
 	count(report) > 0
-	is_boolean(report.compliant)
+	is_boolean(report.compliance_status)
 }

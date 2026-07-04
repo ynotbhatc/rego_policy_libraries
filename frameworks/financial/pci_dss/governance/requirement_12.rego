@@ -231,6 +231,9 @@ pci_requirement_12_compliant if {
 	incident_response_plan
 }
 
+default pci_requirement_12_score := 0
+default pci_requirement_12_findings := {}
+
 pci_requirement_12_score := score if {
 	controls := [
 		information_security_policy,

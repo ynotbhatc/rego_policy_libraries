@@ -152,6 +152,9 @@ pci_requirement_4_compliant if {
 	weak_protocols_inventory_current
 }
 
+default pci_requirement_4_score := 0
+default pci_requirement_4_findings := {}
+
 pci_requirement_4_score := score if {
 	controls := [
 		transmission_security_policies_established,

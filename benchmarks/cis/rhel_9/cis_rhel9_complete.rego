@@ -391,6 +391,22 @@ executive_summary := {
 	"top_priorities": [rec | some rec in generate_recommendations; rec.priority == "critical"],
 }
 
+# Consumer endpoint — /v1/data/cis_rhel9/compliance_assessment
+# Documented in the compliance repo + queried by cis_rhel9_assessment.yml, but
+# was never defined (returned {}). Derives compliant from sections rather than
+# the undefaulted `compliant` rule so it stays well-formed on partial input.
+compliance_assessment := {
+	"framework": "CIS Red Hat Enterprise Linux 9 Benchmark v2.0.0",
+	"compliant": compliant_sections == total_sections,
+	"score": compliance_percentage,
+	"total_controls": 338,
+	"sections_evaluated": total_sections,
+	"sections_compliant": compliant_sections,
+	"violations": all_violations,
+	"violation_count": count(all_violations),
+	"summary": executive_summary,
+}
+
 # =============================================================================
 # EXTENDED HARDENING (STIG / NIST / EDA drift detection)
 # Separate from the 338-control CIS score — does not affect `compliant`.

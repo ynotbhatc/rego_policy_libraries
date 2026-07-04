@@ -55,6 +55,8 @@ management_assessment_compliant if {
 }
 
 # SOX Compliance Score Calculation
+default sox_compliance_score := 0
+
 sox_compliance_score := score if {
     components := [
         section_302_score,
@@ -68,6 +70,8 @@ sox_compliance_score := score if {
 }
 
 # Section 302 Score
+default section_302_score := 0
+
 section_302_score := score if {
     checks := [
         data.sox.section_302.ceo_certification.provided,
@@ -82,6 +86,8 @@ section_302_score := score if {
 }
 
 # Section 404 Score
+default section_404_score := 0
+
 section_404_score := score if {
     checks := [
         data.sox.section_404.management_assessment.completed,
@@ -96,6 +102,8 @@ section_404_score := score if {
 }
 
 # Section 409 Score
+default section_409_score := 0
+
 section_409_score := score if {
     checks := [
         data.sox.section_409.material_events.disclosed_timely,
@@ -109,6 +117,8 @@ section_409_score := score if {
 }
 
 # Management Assessment Score
+default management_assessment_score := 0
+
 management_assessment_score := score if {
     checks := [
         data.sox.management.assessment_framework.documented,
@@ -123,6 +133,8 @@ management_assessment_score := score if {
 }
 
 # IT General Controls Score
+default it_general_controls_score := 0
+
 it_general_controls_score := score if {
     checks := [
         data.sox.itgc.access_controls.implemented,
@@ -137,6 +149,8 @@ it_general_controls_score := score if {
 }
 
 # Application Controls Score
+default application_controls_score := 0
+
 application_controls_score := score if {
     checks := [
         data.sox.application_controls.input_validation.comprehensive,

@@ -2,6 +2,23 @@ package gdpr.data_transfers
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default transfer_principles := false
+default adequacy_decision := false
+default transfer_to_adequate_country := false
+default standard_contractual_clauses := false
+default transfer_impact_assessment := false
+default supplementary_measures := false
+default binding_corporate_rules := false
+default eu_us_dpf := false
+default derogation_if_used := false
+default allowed_derogation_used := false
+default transfer_inventory := false
+default transfer_log := false
+default data_subjects_informed_of_transfers := false
+default transfer_mechanism_in_place := false
+
+
 # GDPR Chapter V (Articles 44-49) — Transfers of Personal Data to Third Countries
 # Ensures that personal data transferred outside the EEA maintains GDPR-equivalent protection
 

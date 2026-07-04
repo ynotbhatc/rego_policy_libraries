@@ -7,7 +7,7 @@ import rego.v1
 
 import data.nerc_cip_cip015
 
-todo_test_report_wellformed_on_empty_input if {
+test_report_wellformed_on_empty_input if {
 	result := nerc_cip_cip015.cip_015_compliance_report with input as {}
 	is_object(result)
 	count(result) > 0

@@ -265,3 +265,15 @@ report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# Defaults for control rules — ensure report never collapses to {} on absent facts
+default breach_comms_encrypted := false
+default breach_register_maintained := false
+default early_warning_timeline_compliant := false
+default foreign_le_disclosure_controlled := false
+default forensic_evidence_in_jurisdiction := false
+default notification_channel_sovereign := false
+default notification_procedure_documented := false
+default notification_timeline_compliant := false
+default processor_notification_procedure_exists := false
+default supervisory_authority_in_jurisdiction := false

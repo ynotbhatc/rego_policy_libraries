@@ -8,7 +8,7 @@ import rego.v1
 
 import data.governance.oidc
 
-todo_test_report_wellformed_on_empty_input if {
+test_report_wellformed_on_empty_input if {
 	result := oidc.summary with input as {}
 	is_object(result)
 	count(result) > 0

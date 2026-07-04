@@ -2,6 +2,28 @@ package iso27001.system_acquisition_maintenance
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default security_requirements_defined := false
+default public_network_services_secure := false
+default transaction_protection := false
+default secure_development_policy := false
+default change_control_procedures := false
+default os_change_review := false
+default software_package_control := false
+default secure_engineering_principles := false
+default secure_development_environment := false
+default outsourced_development := false
+default security_testing := false
+default acceptance_testing := false
+default data_protection_control := false
+default data_generation_control := false
+default cicd_security := false
+default sca_controls := false
+default information_systems_security := false
+default security_in_development := false
+default compliant := false
+
+
 # ISO 27001:2022 - A.14 System Acquisition, Development and Maintenance
 # Technical controls for building security into information systems
 

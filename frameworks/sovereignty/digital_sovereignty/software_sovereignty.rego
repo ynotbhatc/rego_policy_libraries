@@ -395,10 +395,18 @@ report := {
 		"SS-010_repos_in_jurisdiction": code_repos_in_jurisdiction,
 	},
 	"sbom_summary": {
-		"maintained": input.sbom.maintained,
-		"coverage_pct": input.sbom.coverage_pct,
-		"format": input.sbom.format,
+		"maintained": object.get(input, ["sbom", "maintained"], false),
+		"coverage_pct": object.get(input, ["sbom", "coverage_pct"], 0),
+		"format": object.get(input, ["sbom", "format"], "none"),
 	},
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# Defaults for control rules — ensure report never collapses to {} on absent facts
+default all_artifacts_signed := false
+default dependency_vulnerability_scanning := false
+default private_registry_used := false
+default sbom_coverage_adequate := false
+default sbom_current := false
+default sbom_maintained := false

@@ -2,6 +2,24 @@ package hipaa.hitech
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default breach_risk_assessment := false
+default individual_breach_notification := false
+default hhs_breach_notification := false
+default media_breach_notification := false
+default breach_log_maintained := false
+default ba_direct_liability := false
+default baa_hitech_compliant := false
+default penalty_awareness := false
+default cap_readiness := false
+default electronic_access_to_ephi := false
+default out_of_pocket_restriction := false
+default accounting_ehr_expansion := false
+default hitech_minimum_necessary := false
+default ehr_security_controls := false
+default meaningful_use_security := false
+
+
 # HITECH Act (Health Information Technology for Economic and Clinical Health Act)
 # Enacted as part of ARRA 2009 — strengthens HIPAA with stricter breach notification,
 # expanded BA liability, increased penalties, and EHR incentive requirements

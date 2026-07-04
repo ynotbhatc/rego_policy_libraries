@@ -177,7 +177,7 @@ fr_compliance_score := round((passing_frs / 7) * 100)
 iec_62443_compliance_report := {
     "standard":             "IEC 62443",
     "full_title":           "Security for Industrial Automation and Control Systems",
-    "target_sl":            input.target_sl,
+    "target_sl":            object.get(input, ["target_sl"], 0),
     "compliant":            iec_62443_compliant,
     "total_violations":     count(all_violations),
     "fr_compliance_score":  fr_compliance_score,

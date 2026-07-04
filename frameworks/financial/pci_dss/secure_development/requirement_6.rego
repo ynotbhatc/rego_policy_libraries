@@ -210,6 +210,9 @@ pci_requirement_6_compliant if {
 	waf_implemented
 }
 
+default pci_requirement_6_score := 0
+default pci_requirement_6_findings := {}
+
 pci_requirement_6_score := score if {
 	controls := [
 		secure_development_policies_established,

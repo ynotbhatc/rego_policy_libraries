@@ -89,6 +89,8 @@ rate_limit_ok if {
 }
 
 # Blocked operations check
+default operation_blocked := false
+
 operation_blocked if {
     input.context.blocked_operations
     input.action in input.context.blocked_operations
@@ -96,8 +98,8 @@ operation_blocked if {
 
 # Context validation report
 context_report := {
-    "environment": input.context.environment,
-    "environment_risk": environment_risk[input.context.environment],
+    "environment": object.get(input, ["context", "environment"], "unknown"),
+    "environment_risk": object.get(environment_risk, object.get(input, ["context", "environment"], ""), "unknown"),
     "environment_allowed": environment_allowed,
     "within_time_window": within_time_window,
     "scope_valid": scope_valid,

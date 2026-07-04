@@ -111,6 +111,9 @@ compliant if {
 # Risk tier label
 # =============================================================================
 
+# Most-conservative default: treat unknown/missing classification as "prohibited"
+default risk_tier := "prohibited"
+
 risk_tier := input.eu_ai_act.system_classification.risk_tier
 
 # =============================================================================

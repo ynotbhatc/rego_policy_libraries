@@ -2,6 +2,24 @@ package gdpr.cookies_tracking
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default cookie_consent_mechanism := false
+default consent_quality := false
+default strictly_necessary_exempt := false
+default cookie_inventory := false
+default cookie_categories_compliant := false
+default cookie_notice := false
+default local_storage_compliant := false
+default fingerprinting_controlled := false
+default tracking_pixels_compliant := false
+default cmp_implementation := false
+default consent_records := false
+default email_marketing_consent := false
+default automated_decision_making := false
+default behavioural_advertising := false
+default childrens_data := false
+
+
 # GDPR + ePrivacy Directive (2002/58/EC as amended by 2009/136/EC)
 # Controls for cookie consent, tracking technologies, and digital marketing
 #

@@ -13,13 +13,19 @@ import data.hipaa.security_rule
 # OVERALL HIPAA COMPLIANCE
 # =============================================================================
 
+default security_rule_compliant := false
+
 security_rule_compliant if {
 	security_rule.compliant
 }
 
+default privacy_rule_compliant := false
+
 privacy_rule_compliant if {
 	privacy_rule.compliant
 }
+
+default hitech_compliant := false
 
 hitech_compliant if {
 	hitech.compliant

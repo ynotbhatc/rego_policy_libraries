@@ -2,6 +2,33 @@ package hipaa.security_rule
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default security_management_process := false
+default assigned_security_responsibility := false
+default workforce_security := false
+default information_access_management := false
+default security_awareness_training := false
+default security_incident_procedures := false
+default contingency_plan := false
+default periodic_technical_evaluation := false
+default business_associate_contracts := false
+default facility_access_controls := false
+default workstation_use_controls := false
+default workstation_security := false
+default device_media_controls := false
+default technical_access_control := false
+default audit_controls := false
+default ephi_integrity := false
+default entity_authentication := false
+default transmission_security := false
+default breach_notification_procedures := false
+default minimum_necessary_controls := false
+default patient_rights_technical := false
+default administrative_safeguards_compliant := false
+default physical_safeguards_compliant := false
+default technical_safeguards_compliant := false
+
+
 # HIPAA Security Rule (45 CFR Part 164)
 # Technical, Administrative, and Physical Safeguards for
 # Electronic Protected Health Information (ePHI)

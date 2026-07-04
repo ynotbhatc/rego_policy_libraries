@@ -29,19 +29,49 @@ import rego.v1
 # Domain compliance reports (delegated to submodules)
 # ---------------------------------------------------------------------------
 
+# Default-safe: on empty input the submodule compliance_report rules are
+# undefined; without these defaults the aggregate object literal collapses.
+# The stub carries the only fields consumers read: compliant, passing, violations.
+default ac_report := {"compliant": false, "passing": 0, "violations": []}
 ac_report  := data.cmmc.access_control.compliance_report
+
+default at_report := {"compliant": false, "passing": 0, "violations": []}
 at_report  := data.cmmc.awareness_training.compliance_report
+
+default au_report := {"compliant": false, "passing": 0, "violations": []}
 au_report  := data.cmmc.audit_accountability.compliance_report
+
+default cm_report := {"compliant": false, "passing": 0, "violations": []}
 cm_report  := data.cmmc.configuration_management.compliance_report
+
+default ia_report := {"compliant": false, "passing": 0, "violations": []}
 ia_report  := data.cmmc.identification_authentication.compliance_report
+
+default ir_report := {"compliant": false, "passing": 0, "violations": []}
 ir_report  := data.cmmc.incident_response.compliance_report
+
+default ma_report := {"compliant": false, "passing": 0, "violations": []}
 ma_report  := data.cmmc.maintenance.compliance_report
+
+default mp_report := {"compliant": false, "passing": 0, "violations": []}
 mp_report  := data.cmmc.media_protection.compliance_report
+
+default ps_report := {"compliant": false, "passing": 0, "violations": []}
 ps_report  := data.cmmc.personnel_security.compliance_report
+
+default pe_report := {"compliant": false, "passing": 0, "violations": []}
 pe_report  := data.cmmc.physical_protection.compliance_report
+
+default rm_report := {"compliant": false, "passing": 0, "violations": []}
 rm_report  := data.cmmc.risk_assessment.compliance_report
+
+default ca_report := {"compliant": false, "passing": 0, "violations": []}
 ca_report  := data.cmmc.security_assessment.compliance_report
+
+default sc_report := {"compliant": false, "passing": 0, "violations": []}
 sc_report  := data.cmmc.system_communications_protection.compliance_report
+
+default si_report := {"compliant": false, "passing": 0, "violations": []}
 si_report  := data.cmmc.system_information_integrity.compliance_report
 
 # ---------------------------------------------------------------------------

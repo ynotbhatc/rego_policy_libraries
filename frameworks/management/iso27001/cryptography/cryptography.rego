@@ -2,6 +2,32 @@ package iso27001.cryptography
 
 import rego.v1
 
+# Defaults so report/details never collapse to {} on empty input
+default cryptographic_controls := false
+default cryptographic_policy := false
+default key_management := false
+default key_generation_secure := false
+default key_distribution_secure := false
+default key_usage_controlled := false
+default key_destruction_secure := false
+default data_encryption := false
+default data_at_rest_encrypted := false
+default data_in_transit_encrypted := false
+default network_protocols_secure := false
+default api_encryption_enforced := false
+default database_encryption_enabled := false
+default backup_encryption_enabled := false
+default digital_signatures := false
+default certificate_management_secure := false
+default digital_signature_implementation := false
+default pki_implementation := false
+default algorithm_compliance := false
+default weak_algorithms_disabled := false
+default quantum_resistance_planned := false
+default hsm_usage := false
+default compliant := false
+
+
 # ISO 27001:2022 - A.10 Cryptography
 # Technical controls for cryptographic information protection
 

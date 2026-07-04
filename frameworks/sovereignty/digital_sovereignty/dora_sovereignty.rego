@@ -380,3 +380,16 @@ report := {
 	"violations":      violations,
 	"violation_count": count(violations),
 }
+
+# Defaults for control rules — ensure report never collapses to {} on absent facts
+default business_continuity_current := false
+default concentration_risk_acceptable := false
+default critical_ict_register_maintained := false
+default digital_resilience_testing_current := false
+default ict_asset_register_current := false
+default ict_risk_framework_documented := false
+default initial_notification_compliant := false
+default intermediate_report_compliant := false
+default major_incident_criteria_defined := false
+default rto_rpo_defined := false
+default tlpt_compliant := false

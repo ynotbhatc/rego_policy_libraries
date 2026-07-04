@@ -109,13 +109,15 @@ requires_justification if {
 }
 
 # Helper to check if action requires multi-level approval
+default requires_multi_approval := false
+
 requires_multi_approval if {
     action_risk_level == "critical"
 }
 
 # Classification report
 classification_report := {
-    "action": input.action,
+    "action": object.get(input, ["action"], ""),
     "risk_level": action_risk_level,
     "requires_approval": requires_approval,
     "requires_justification": requires_justification,

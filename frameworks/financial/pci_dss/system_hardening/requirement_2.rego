@@ -147,6 +147,9 @@ pci_requirement_2_compliant if {
 	wireless_security_configured
 }
 
+default pci_requirement_2_score := 0
+default pci_requirement_2_findings := {}
+
 pci_requirement_2_score := score if {
 	controls := [
 		system_hardening_policies_established,
