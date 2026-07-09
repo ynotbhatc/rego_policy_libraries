@@ -325,6 +325,18 @@ This library is the policy engine behind [AAC](https://github.com/ynotbhatc/comp
 
 ---
 
+## Related Rego Policy Repositories
+
+Other OPA/Rego policy repositories in the Ansible / policy-as-code space. This library focuses on **compliance and security assessment** (does the infrastructure meet a framework?); the repositories below complement it with **automation-platform governance** (should this automation be allowed to run?).
+
+| Repository | Focus | Scope |
+|---|---|---|
+| [raedrizk/ansible-policy-as-code](https://github.com/raedrizk/ansible-policy-as-code/blob/main/policies/README.md) | **AAP governance / pipeline enforcement** — job-template naming standards, execution-environment security (registry validation, version pinning), fork/resource limits, time-based access controls, SCM branch enforcement, and superuser restrictions, aggregated under a single master policy. | ~11 active policies + legacy examples |
+
+> Adding a repository? Keep this list to actively-maintained Rego policy sets relevant to Ansible / OPA compliance and governance, with a one-line focus description and scope.
+
+---
+
 ## Contributing
 
 1. Place new `.rego` files in the appropriate taxonomy path
