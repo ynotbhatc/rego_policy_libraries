@@ -207,6 +207,7 @@ If you produce a customer-facing or auditor-facing document from this repo (comp
 
 1. Write the canonical version to the repo location it belongs in
 2. Save a copy to `~/Downloads/<name>.md` AND a second timestamped copy to `~/Downloads/<name>-<YYYY-MM-DD>.md` so the operator has both the current version and a dated snapshot
+3. **ALWAYS also save a DOCX with the version number in the filename** — required for every generated document, not only customer-facing ones: `~/Downloads/<name>-v<X.Y>.docx` and `~/Downloads/<name>-v<X.Y>-<YYYY-MM-DD>.docx`. Generate with pandoc: `pandoc <name>.md -o <name>-v<X.Y>.docx`.
 
 ## Documentation pointers
 
