@@ -325,28 +325,28 @@ This library is the policy engine behind [AAC](https://github.com/ynotbhatc/comp
 
 ---
 
-## Related Rego Policy Repositories & Resources
+## More Rego Policies on GitHub
 
-Other OPA/Rego projects in the policy-as-code ecosystem. This library focuses on **compliance and security assessment** across 50+ frameworks; the projects below complement it with adjacent **policy sets** (Kubernetes, supply chain, AAP governance) and with **Rego style, linting, and tooling**.
+Pointers to other great policy-as-code work in the community — **full credit to the owners and authors** of each project below. These are references, not vendored copies: we link to them so you can find them; the policies stay in their home repositories under their own maintainers and licenses.
 
 ### Policy libraries
 
-| Repository | Focus | Notes |
+| Repository | Owner / Author | What it covers |
 |---|---|---|
-| [redhat-cop/rego-policies](https://github.com/redhat-cop/rego-policies) | **Red Hat CoP** — Kubernetes/OpenShift + general config-compliance policies for OPA, Gatekeeper, and Conftest | Apache-2.0; auto-generated `POLICIES.md` inventory |
-| [kubewarden/rego-policies-library](https://github.com/kubewarden/rego-policies-library) | **Kubernetes security & compliance** — admission policies (Gatekeeper/Kubewarden-compatible), compiled to Wasm | `policies/` (released) + `staging/` tiers |
-| [conforma/policy](https://github.com/conforma/policy) | **Software supply-chain verification** — image attestations, build provenance, pipeline-definition validation (Konflux-CI / Enterprise Contract) | Bundled as OCI artifacts for Conftest |
-| [raedrizk/ansible-policy-as-code](https://github.com/raedrizk/ansible-policy-as-code/blob/main/policies/README.md) | **AAP governance / pipeline enforcement** — job-template naming, EE registry/version pinning, fork limits, time-based access, SCM branch enforcement, superuser restrictions | ~11 active policies + legacy examples |
+| [redhat-cop/rego-policies](https://github.com/redhat-cop/rego-policies) | Red Hat Community of Practice | Kubernetes/OpenShift + general config-compliance policies for OPA, Gatekeeper, and Conftest |
+| [kubewarden/rego-policies-library](https://github.com/kubewarden/rego-policies-library) | Kubewarden project (SUSE) | Kubernetes security & compliance admission policies (Gatekeeper/Kubewarden-compatible, compiled to Wasm) |
+| [conforma/policy](https://github.com/conforma/policy) | Conforma / Konflux-CI (Enterprise Contract) | Software supply-chain verification — image attestations, build provenance, pipeline-definition validation |
+| [raedrizk/ansible-policy-as-code](https://github.com/raedrizk/ansible-policy-as-code) | Raed Rizk ([@raedrizk](https://github.com/raedrizk)) | AAP governance / pipeline enforcement — job-template naming, EE security, fork limits, time-based access, SCM branch enforcement, superuser restrictions |
 
 ### Style, linting & tooling
 
-| Repository | Focus |
-|---|---|
-| [open-policy-agent/rego-style-guide](https://github.com/open-policy-agent/rego-style-guide) | Official OPA **Rego style guide** — best practices for authoring Rego (complements the Regal linter) |
-| [open-policy-agent/rego-python](https://github.com/open-policy-agent/rego-python) | Python library for working with **Rego ASTs** (`ast` + `walk` modules) |
-| [itaysk/regogo](https://github.com/itaysk/regogo) | Go library wrapping the Rego engine for general-purpose **JSON querying** (jq-style) |
+| Repository | Owner / Author | What it is |
+|---|---|---|
+| [open-policy-agent/rego-style-guide](https://github.com/open-policy-agent/rego-style-guide) | Open Policy Agent maintainers | Official Rego style guide / authoring best practices (complements the Regal linter) |
+| [open-policy-agent/rego-python](https://github.com/open-policy-agent/rego-python) | Open Policy Agent | Python library for working with Rego ASTs |
+| [itaysk/regogo](https://github.com/itaysk/regogo) | Itay Shakury ([@itaysk](https://github.com/itaysk)) | Go library wrapping the Rego engine for general-purpose JSON querying (jq-style) |
 
-> Adding a repository? Keep entries to actively-maintained Rego policy sets or tooling relevant to compliance, security, and policy-as-code, with a one-line focus description.
+> Credit to each project's maintainers and authors. Adding a repository? Link to it (don't copy the policies), name the owner/author, and give a one-line description.
 
 ---
 
