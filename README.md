@@ -325,15 +325,28 @@ This library is the policy engine behind [AAC](https://github.com/ynotbhatc/comp
 
 ---
 
-## Related Rego Policy Repositories
+## Related Rego Policy Repositories & Resources
 
-Other OPA/Rego policy repositories in the Ansible / policy-as-code space. This library focuses on **compliance and security assessment** (does the infrastructure meet a framework?); the repositories below complement it with **automation-platform governance** (should this automation be allowed to run?).
+Other OPA/Rego projects in the policy-as-code ecosystem. This library focuses on **compliance and security assessment** across 50+ frameworks; the projects below complement it with adjacent **policy sets** (Kubernetes, supply chain, AAP governance) and with **Rego style, linting, and tooling**.
 
-| Repository | Focus | Scope |
+### Policy libraries
+
+| Repository | Focus | Notes |
 |---|---|---|
-| [raedrizk/ansible-policy-as-code](https://github.com/raedrizk/ansible-policy-as-code/blob/main/policies/README.md) | **AAP governance / pipeline enforcement** — job-template naming standards, execution-environment security (registry validation, version pinning), fork/resource limits, time-based access controls, SCM branch enforcement, and superuser restrictions, aggregated under a single master policy. | ~11 active policies + legacy examples |
+| [redhat-cop/rego-policies](https://github.com/redhat-cop/rego-policies) | **Red Hat CoP** — Kubernetes/OpenShift + general config-compliance policies for OPA, Gatekeeper, and Conftest | Apache-2.0; auto-generated `POLICIES.md` inventory |
+| [kubewarden/rego-policies-library](https://github.com/kubewarden/rego-policies-library) | **Kubernetes security & compliance** — admission policies (Gatekeeper/Kubewarden-compatible), compiled to Wasm | `policies/` (released) + `staging/` tiers |
+| [conforma/policy](https://github.com/conforma/policy) | **Software supply-chain verification** — image attestations, build provenance, pipeline-definition validation (Konflux-CI / Enterprise Contract) | Bundled as OCI artifacts for Conftest |
+| [raedrizk/ansible-policy-as-code](https://github.com/raedrizk/ansible-policy-as-code/blob/main/policies/README.md) | **AAP governance / pipeline enforcement** — job-template naming, EE registry/version pinning, fork limits, time-based access, SCM branch enforcement, superuser restrictions | ~11 active policies + legacy examples |
 
-> Adding a repository? Keep this list to actively-maintained Rego policy sets relevant to Ansible / OPA compliance and governance, with a one-line focus description and scope.
+### Style, linting & tooling
+
+| Repository | Focus |
+|---|---|
+| [open-policy-agent/rego-style-guide](https://github.com/open-policy-agent/rego-style-guide) | Official OPA **Rego style guide** — best practices for authoring Rego (complements the Regal linter) |
+| [open-policy-agent/rego-python](https://github.com/open-policy-agent/rego-python) | Python library for working with **Rego ASTs** (`ast` + `walk` modules) |
+| [itaysk/regogo](https://github.com/itaysk/regogo) | Go library wrapping the Rego engine for general-purpose **JSON querying** (jq-style) |
+
+> Adding a repository? Keep entries to actively-maintained Rego policy sets or tooling relevant to compliance, security, and policy-as-code, with a one-line focus description.
 
 ---
 
