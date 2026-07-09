@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> **464 production-ready OPA policies** covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA instance.
+> **505 production-ready OPA policies** covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA instance.
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
@@ -18,7 +18,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 
 - Use **Rego v1 syntax** (`import rego.v1`) — no deprecation warnings, forward-compatible
 - Return **structured JSON reports** (compliant, score, violations list) — wire directly to dashboards or CI
-- Are **independently loadable** — use one framework or all 464 policies; no coupling
+- Are **independently loadable** — use one framework or all 505 policies; no coupling
 - Are **Apache 2.0 licensed** — use commercially without restriction
 
 > **Why not build your own?** You can — but CIS RHEL 9 alone has 338 controls across 14 sections. NERC-CIP covers 14 standards (CIP-002 through CIP-015) with 200+ requirements. IEC 62443 adds 51 System Requirements across 7 Foundational Requirements. Starting from scratch takes months. This library is that months-of-work already done.
@@ -80,7 +80,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 Pull the pre-built bundle directly from GitHub Container Registry — no clone needed:
 
 ```bash
-# Pull the full 464-policy bundle
+# Pull the full 505-policy bundle
 oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest
 
 # Start OPA with the bundle
