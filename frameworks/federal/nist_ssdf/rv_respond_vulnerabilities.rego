@@ -12,6 +12,7 @@ package nist_ssdf.rv
 #   input.vulnerability_management.triage_process
 #   input.vulnerability_management.remediation_sla_defined
 #   input.vulnerability_management.root_cause_analysis
+#   input.vulnerability_management.root_cause_trend_analysis
 #   input.vulnerability_management.systemic_review
 #   input.vulnerability_management.process_improvement
 #
@@ -21,8 +22,8 @@ import rego.v1
 
 default compliant := false
 
-# Discrete security checks in this group (each `violations` rule = one check).
-controls_evaluated := 8
+# One check per SP 800-218 task (1:1 with the standard's task IDs).
+controls_evaluated := 9
 
 # ── RV.1  Identify and Confirm Vulnerabilities on an Ongoing Basis ─────────────
 
@@ -61,13 +62,18 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	not input.vulnerability_management.root_cause_trend_analysis == true
+	msg := "RV.3.2: Root causes are not analyzed over time to identify patterns/systemic weaknesses"
+}
+
+violations contains msg if {
 	not input.vulnerability_management.systemic_review == true
-	msg := "RV.3.2: Codebase is not reviewed for other instances of the same class of vulnerability"
+	msg := "RV.3.3: Codebase is not reviewed for other instances of the same class of vulnerability"
 }
 
 violations contains msg if {
 	not input.vulnerability_management.process_improvement == true
-	msg := "RV.3.3: SDLC is not reviewed/improved to prevent recurrence of root causes"
+	msg := "RV.3.4: SDLC is not reviewed/updated to prevent recurrence of root causes"
 }
 
 # ── Aggregate ─────────────────────────────────────────────────────────────────

@@ -20,19 +20,19 @@ import rego.v1
 
 default compliant := false
 
-# Discrete security checks in this group (each `violations` rule = one check).
-controls_evaluated := 5
+# One check per SP 800-218 task (1:1 with the standard's task IDs).
+controls_evaluated := 4
 
 # ── PS.1  Protect All Forms of Code from Unauthorized Access and Tampering ─────
 
 violations contains msg if {
-	not input.source_control.access_controlled == true
-	msg := "PS.1.1: Source code repositories do not enforce least-privilege access control"
+	not code_protected
+	msg := "PS.1.1: Code is not protected from unauthorized access/tampering (require least-privilege repo access AND protected branches)"
 }
 
-violations contains msg if {
-	not input.source_control.branch_protection == true
-	msg := "PS.1.1: Protected branches are not enforced (unreviewed code can reach release branches)"
+code_protected if {
+	input.source_control.access_controlled == true
+	input.source_control.branch_protection == true
 }
 
 # ── PS.2  Provide a Mechanism for Verifying Software Release Integrity ─────────

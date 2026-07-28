@@ -7,8 +7,10 @@ package nist_ssdf.pw
 # Input contract (design / build / review / test posture — booleans):
 #   input.design.threat_model_performed
 #   input.design.security_requirements_tracked
+#   input.design.standardized_security_features
 #   input.design.design_review_performed
 #   input.dependencies.vetted_components
+#   input.dependencies.internal_components_secured
 #   input.dependencies.sca_enabled
 #   input.dependencies.vulnerability_scanned
 #   input.coding.secure_coding_standards
@@ -27,8 +29,8 @@ import rego.v1
 
 default compliant := false
 
-# Discrete security checks in this group (each `violations` rule = one check).
-controls_evaluated := 15
+# One check per SP 800-218 task (1:1 with the standard's task IDs).
+controls_evaluated := 16
 
 # ── PW.1  Design Software to Meet Security Requirements and Mitigate Risks ─────
 
@@ -40,6 +42,11 @@ violations contains msg if {
 violations contains msg if {
 	not input.design.security_requirements_tracked == true
 	msg := "PW.1.2: Security requirements are not tracked and maintained in the design"
+}
+
+violations contains msg if {
+	not input.design.standardized_security_features == true
+	msg := "PW.1.3: Standardized, well-vetted security features/services are not used where appropriate (custom implementations instead)"
 }
 
 # ── PW.2  Review the Software Design to Verify Compliance ──────────────────────
@@ -57,13 +64,18 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not input.dependencies.sca_enabled == true
-	msg := "PW.4.4: Software Composition Analysis (SCA) is not enabled for acquired components"
+	not input.dependencies.internal_components_secured == true
+	msg := "PW.4.2: Reusable in-house components for common security needs are not created/maintained as well-secured"
 }
 
 violations contains msg if {
-	not input.dependencies.vulnerability_scanned == true
-	msg := "PW.4.4: Acquired components are not scanned for known vulnerabilities before use"
+	not acquired_components_verified
+	msg := "PW.4.4: Acquired components are not verified against requirements (require SCA enabled AND vulnerability scanning)"
+}
+
+acquired_components_verified if {
+	input.dependencies.sca_enabled == true
+	input.dependencies.vulnerability_scanned == true
 }
 
 # ── PW.5  Create Source Code Adhering to Secure Coding Practices ───────────────

@@ -19,8 +19,8 @@ compliant_input := {
 	"source_control": {"access_controlled": true, "branch_protection": true, "change_tracking": true},
 	"provenance": {"integrity_verification": true, "artifacts_signed": true},
 	"release_management": {"releases_archived": true, "sbom_generated": true, "provenance_recorded": true},
-	"design": {"threat_model_performed": true, "security_requirements_tracked": true, "design_review_performed": true},
-	"dependencies": {"vetted_components": true, "sca_enabled": true, "vulnerability_scanned": true},
+	"design": {"threat_model_performed": true, "security_requirements_tracked": true, "standardized_security_features": true, "design_review_performed": true},
+	"dependencies": {"vetted_components": true, "internal_components_secured": true, "sca_enabled": true, "vulnerability_scanned": true},
 	"coding": {"secure_coding_standards": true},
 	"build": {"hardening_flags": true, "integrity_verified": true},
 	"code_review": {"peer_review_required": true},
@@ -30,7 +30,7 @@ compliant_input := {
 	"vulnerability_management": {
 		"monitoring_enabled": true, "disclosure_program": true, "response_process": true,
 		"triage_process": true, "remediation_sla_defined": true, "root_cause_analysis": true,
-		"systemic_review": true, "process_improvement": true,
+		"root_cause_trend_analysis": true, "systemic_review": true, "process_improvement": true,
 	},
 }
 
@@ -44,8 +44,8 @@ test_fully_compliant_scores_100 if {
 	main.compliance_percentage == 100 with input as compliant_input
 }
 
-test_fully_compliant_has_41_controls if {
-	main.total_controls == 41 with input as compliant_input
+test_fully_compliant_has_42_controls if {
+	main.total_controls == 42 with input as compliant_input
 }
 
 test_fully_compliant_no_violations if {
