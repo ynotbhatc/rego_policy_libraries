@@ -371,9 +371,14 @@ compliance_assessment := {
         "5_system_hardening":  count(section_5_violations) == 0,
     },
     "device_info": {
-        "hostname": object.get(input.system, "host-name", "unknown"),
+        # object.get(input, "system", {}) guards against a missing input.system:
+        # object.get(<undefined>, …) is itself undefined and would collapse the whole
+        # compliance_assessment object to null (OPA returns {}), masking a failed/empty
+        # fact collection as a silent result. Defaulting to {} keeps the report defined
+        # so an empty input scores low (loud) instead of returning null.
+        "hostname": object.get(object.get(input, "system", {}), "host-name", "unknown"),
         "version":  object.get(input, "version", "unknown"),
         "platform": "vyos",
-        "timezone": object.get(input.system, "time-zone", "unknown"),
+        "timezone": object.get(object.get(input, "system", {}), "time-zone", "unknown"),
     },
 }
