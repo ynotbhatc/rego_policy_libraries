@@ -171,9 +171,17 @@ violations contains msg if { some msg in violation_vpn }
 violations contains msg if { some msg in violation_transmission_integrity }
 violations contains msg if { some msg in violation_email }
 
+# Fail-closed: no ePHI systems in scope → cannot certify this safeguard
+violations contains msg if {
+    count(object.get(input, "phi_systems", [])) == 0
+    msg := "HIPAA 164.312(e): no ePHI systems in scope (input.phi_systems is empty) — cannot certify Transmission Security. Declare the ePHI systems to be evaluated."
+}
+
 # ---------------------------------------------------------------------------
 # Compliance
 # ---------------------------------------------------------------------------
+
+default compliant := false
 
 compliant if {
     count(violations) == 0

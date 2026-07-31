@@ -2,6 +2,15 @@ package hipaa.security_rule
 
 import rego.v1
 
+# Technical safeguards (§164.312) are evaluated by the data-activity modules —
+# measured from input.phi_systems[] / audit_logs[] / users[], and Guardium-feedable —
+# not by attestation booleans. This module aggregates them for the Security Rule verdict.
+import data.hipaa.access_control as tech_access_control
+import data.hipaa.audit_controls as tech_audit_controls
+import data.hipaa.authentication as tech_authentication
+import data.hipaa.integrity as tech_integrity
+import data.hipaa.transmission_security as tech_transmission
+
 # Defaults so report/details never collapse to {} on empty input
 default security_management_process := false
 default assigned_security_responsibility := false
@@ -16,11 +25,6 @@ default facility_access_controls := false
 default workstation_use_controls := false
 default workstation_security := false
 default device_media_controls := false
-default technical_access_control := false
-default audit_controls := false
-default ephi_integrity := false
-default entity_authentication := false
-default transmission_security := false
 default breach_notification_procedures := false
 default minimum_necessary_controls := false
 default patient_rights_technical := false
@@ -153,51 +157,12 @@ device_media_controls if {
 
 # =============================================================================
 # TECHNICAL SAFEGUARDS (§164.312)
+# Delegated to the data-activity modules (measured, not attested):
+#   hipaa.access_control, hipaa.audit_controls, hipaa.integrity,
+#   hipaa.authentication, hipaa.transmission_security
+# Each evaluates input.phi_systems[]/audit_logs[]/users[] and is Guardium-feedable.
+# Aggregated in technical_safeguards_compliant below.
 # =============================================================================
-
-# §164.312(a)(1) - Access Control
-technical_access_control if {
-	input.hipaa.technical.access_control.unique_user_id.assigned == true
-	input.hipaa.technical.access_control.emergency_access.procedure_defined == true
-	input.hipaa.technical.access_control.automatic_logoff.implemented == true
-	input.hipaa.technical.access_control.automatic_logoff.timeout_minutes <= 15
-	input.hipaa.technical.access_control.encryption.ephi_at_rest == true
-}
-
-# §164.312(b) - Audit Controls
-audit_controls if {
-	input.hipaa.technical.audit_controls.hardware.logging_enabled == true
-	input.hipaa.technical.audit_controls.software.logging_enabled == true
-	input.hipaa.technical.audit_controls.ephi_access.logged == true
-	input.hipaa.technical.audit_controls.logs.reviewed_regularly == true
-	input.hipaa.technical.audit_controls.logs.retention_years >= 6
-	input.hipaa.technical.audit_controls.tamper_protection.implemented == true
-}
-
-# §164.312(c)(1) - Integrity
-ephi_integrity if {
-	input.hipaa.technical.integrity.ephi_not_improperly_altered == true
-	input.hipaa.technical.integrity.transmission_integrity.controls_implemented == true
-	input.hipaa.technical.integrity.hash_verification.implemented == true
-}
-
-# §164.312(d) - Person or Entity Authentication
-entity_authentication if {
-	input.hipaa.technical.authentication.mfa.implemented == true
-	input.hipaa.technical.authentication.identity_verification.implemented == true
-	input.hipaa.technical.authentication.password_policy.enforced == true
-	input.hipaa.technical.authentication.password_policy.min_length >= 8
-	input.hipaa.technical.authentication.password_policy.complexity_required == true
-	input.hipaa.technical.authentication.failed_login_lockout.implemented == true
-}
-
-# §164.312(e)(1) - Transmission Security
-transmission_security if {
-	input.hipaa.technical.transmission.encryption.ephi_in_transit == true
-	input.hipaa.technical.transmission.tls.minimum_version >= "1.2"
-	input.hipaa.technical.transmission.network_controls.implemented == true
-	input.hipaa.technical.transmission.integrity_controls.implemented == true
-}
 
 # =============================================================================
 # BREACH NOTIFICATION RULE (§164.400-§164.414)
@@ -252,11 +217,12 @@ physical_safeguards_compliant if {
 }
 
 technical_safeguards_compliant if {
-	technical_access_control
-	audit_controls
-	ephi_integrity
-	entity_authentication
-	transmission_security
+	count(object.get(input, "phi_systems", [])) > 0 # fail-closed: ePHI scope must be declared
+	tech_access_control.compliant
+	tech_audit_controls.compliant
+	tech_integrity.compliant
+	tech_authentication.compliant
+	tech_transmission.compliant
 }
 
 default compliant := false
@@ -294,11 +260,12 @@ report := {
 		},
 		"technical": {
 			"compliant": technical_safeguards_compliant,
-			"access_control": technical_access_control,
-			"audit_controls": audit_controls,
-			"integrity": ephi_integrity,
-			"authentication": entity_authentication,
-			"transmission_security": transmission_security,
+			"ephi_scope_declared": count(object.get(input, "phi_systems", [])) > 0,
+			"access_control": tech_access_control.compliance_report,
+			"audit_controls": tech_audit_controls.compliance_report,
+			"integrity": tech_integrity.compliance_report,
+			"authentication": tech_authentication.compliance_report,
+			"transmission_security": tech_transmission.compliance_report,
 		},
 	},
 	"breach_notification": breach_notification_procedures,

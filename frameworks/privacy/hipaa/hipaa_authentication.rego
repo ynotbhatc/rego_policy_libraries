@@ -166,6 +166,8 @@ violations contains msg if { some msg in violation_service_accounts }
 # Compliance
 # ---------------------------------------------------------------------------
 
+default compliant := false
+
 compliant if {
     count(violations) == 0
 }
