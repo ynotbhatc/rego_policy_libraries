@@ -53,6 +53,9 @@ enforcement/                   Policy-as-Code gatekeepers (Sentinel-style)
 ├── terraform/                 Block bad Terraform plans
 ├── dockerfile/                Block bad Dockerfiles
 ├── kubernetes/                Block bad K8s manifests
+├── aap/                       AAP job gating — Policy as Code decision set
+│                              (maintenance windows, owner scope, labels,
+│                              extra_vars, naming, source control)
 └── git/                       Git change approval policy (used for repo
                                protection — see Approved-By convention)
 
@@ -60,7 +63,8 @@ threat_detection/              Behavioral threat patterns
 └── crypto_mining/             Crypto-miner indicators
 ```
 
-Headline count: **476 .rego files** across the above directories.
+Headline count: **510 policy files** (587 including tests) across the above directories.
+Count it, never quote it — `git ls-tree -r HEAD --name-only | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'` — the number drifts with every merge.
 
 ## Skill: Rego v1 syntax (MANDATORY)
 

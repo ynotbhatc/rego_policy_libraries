@@ -1,0 +1,98 @@
+{
+  "aac": {
+    "aap": {
+      "config": {
+        "maintenance_window": {
+          "timezone": "America/Los_Angeles",
+          "allowed_days": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "start_hour": 22,
+          "end_hour": 4,
+          "freeze_dates": ["2026-12-24", "2026-12-25", "2026-12-31"],
+          "break_glass_label": "break-glass"
+        },
+
+        "maintenance_mode": {
+          "active": false,
+          "inventories": ["prod-web", "prod-db"],
+          "reason": "quarterly database migration",
+          "break_glass_label": "break-glass"
+        },
+
+        "owner_scope": {
+          "bindings": {
+            "alice": ["prod-*", "stage-*"],
+            "bob": ["dev-*"]
+          },
+          "team_bindings": {
+            "platform-sre": ["*"],
+            "app-team": ["dev-*", "stage-*"]
+          },
+          "unbound_users_allowed": false,
+          "enforce_org_match": true
+        },
+
+        "superuser": {
+          "deny": true,
+          "exempt_users": []
+        },
+
+        "credential_scope": {
+          "deny_global_credentials": true,
+          "require_prefix_match": true,
+          "prefix_separator": "-",
+          "exempt_credentials": ["shared-galaxy-token"]
+        },
+
+        "labels": {
+          "required": [],
+          "forbidden": ["quarantined", "do-not-run"],
+          "required_for_inventories": {
+            "prod-*": ["change-approved", "peer-reviewed"]
+          },
+          "one_of": [["env-dev", "env-stage", "env-prod"]],
+          "pattern_requirements": {
+            "change-ticket": "^CHG[0-9]{7}$"
+          }
+        },
+
+        "extra_vars": {
+          "allowlist": ["app_version", "target_env", "deploy_batch"],
+          "denylist": ["ansible_become_password"],
+          "allow_unlisted": false,
+          "value_patterns": {
+            "target_env": "^(dev|stage|prod)$",
+            "app_version": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+          },
+          "forbid_secret_like_keys": true
+        },
+
+        "team_extra_vars": {
+          "teams": {
+            "app-team": ["app_version", "deploy_batch"],
+            "dba": ["db_schema_version"]
+          },
+          "unbound_teams_allowed": false
+        },
+
+        "naming": {
+          "pattern": "^(PROD|STAGE|DEV)-[A-Za-z0-9]+ - .+$",
+          "max_length": 80,
+          "forbid_terms": ["test", "tmp", "copy of", "delete me"]
+        },
+
+        "source_control": {
+          "allowed_repos": ["github.com/acme/*"],
+          "allowed_branches": ["main", "release/*"],
+          "forbid_detached_head": true,
+          "require_https": true
+        },
+
+        "deny_all": {
+          "active": false,
+          "reason": "automation is administratively halted",
+          "exempt_labels": ["incident-response"]
+        }
+      }
+    }
+  }
+}
