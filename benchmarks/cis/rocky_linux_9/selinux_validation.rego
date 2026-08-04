@@ -1,6 +1,6 @@
 package cis_rocky_linux_9.selinux
 
-# CIS Rocky Linux 9 Benchmark v2.0.0 - Section 1.6: Mandatory Access Controls (SELinux)
+# DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 1.6: Mandatory Access Controls (SELinux)
 
 import rego.v1
 
@@ -119,5 +119,5 @@ report := {
 	"total_violations": count(violations),
 	"controls_checked": 8,
 	"section": "1.6 Mandatory Access Controls",
-	"benchmark": "CIS Rocky Linux 9 v2.0.0",
+	"benchmark": "DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 (applied to Rocky Linux 9)",
 }

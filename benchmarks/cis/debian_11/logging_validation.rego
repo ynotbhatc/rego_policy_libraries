@@ -1,6 +1,6 @@
 package cis_debian_11.logging
 
-# CIS Debian Linux 11 Benchmark v2.0.0 - Section 4.2: Logging Configuration
+# DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 4.2: Logging Configuration
 
 import rego.v1
 
@@ -130,5 +130,5 @@ report := {
 		"forward_to_syslog": input.journald.forward_to_syslog,
 	},
 	"section": "4.2 Logging Configuration",
-	"benchmark": "CIS Debian 11 v2.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
 }

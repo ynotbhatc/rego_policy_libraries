@@ -1,6 +1,6 @@
 package cis_ubuntu_24_04.user_group
 
-# CIS Ubuntu 24.04 LTS Benchmark v1.0.0 - Section 6.2: User and Group Settings
+# DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 6.2: User and Group Settings
 
 import rego.v1
 
@@ -157,5 +157,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 16,
 	"section": "6.2 User and Group Settings",
-	"benchmark": "CIS Ubuntu 24.04 v1.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }

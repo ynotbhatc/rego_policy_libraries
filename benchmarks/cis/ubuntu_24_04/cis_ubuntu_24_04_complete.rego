@@ -2,7 +2,7 @@ package cis_ubuntu_24_04
 
 # CIS Ubuntu 24.04 LTS Benchmark - Complete Compliance Assessment
 # Master orchestrator that aggregates all modular validation policies
-# Benchmark Version: CIS Ubuntu Linux 24.04 LTS Benchmark v1.0.0
+# Benchmark Version: DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (provenance: see README)
 
 import rego.v1
 
@@ -149,7 +149,7 @@ module_status := [
 
 compliance_assessment := {
 	"assessment_metadata": {
-		"benchmark": "CIS Ubuntu Linux 24.04 LTS Benchmark v1.1.0",
+		"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README)",
 		"target_platform": "Ubuntu 24.04 LTS",
 		"assessment_time": time.now_ns(),
 		"hostname": input.system_info.hostname,

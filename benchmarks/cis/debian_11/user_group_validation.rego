@@ -1,6 +1,6 @@
 package cis_debian_11.user_group
 
-# CIS Debian Linux 11 Benchmark v2.0.0 - Section 6.2: User and Group Settings
+# DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 6.2: User and Group Settings
 
 import rego.v1
 
@@ -157,5 +157,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 16,
 	"section": "6.2 User and Group Settings",
-	"benchmark": "CIS Debian 11 v2.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
 }

@@ -1,6 +1,6 @@
 package cis_ubuntu_24_04.ssh
 
-# CIS Ubuntu 24.04 LTS Benchmark v1.0.0 - Section 5.2: Configure SSH Server
+# DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 5.2: Configure SSH Server
 
 import rego.v1
 
@@ -211,5 +211,5 @@ report := {
 	"permission_violations": count(permission_violations),
 	"controls_checked": 22,
 	"section": "5.2 Configure SSH Server",
-	"benchmark": "CIS Ubuntu 24.04 v1.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }

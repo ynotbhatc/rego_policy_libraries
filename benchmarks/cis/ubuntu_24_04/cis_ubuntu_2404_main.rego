@@ -16,6 +16,13 @@ package cis_ubuntu_2404.main
 #    the published CIS benchmark. Reporting the benchmark's headline number
 #    would overstate coverage. See "controls_basis" in the report.
 
+# PROVENANCE: this policy set is DERIVED — its controls are a copy of
+# CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0, relabelled for Ubuntu 24.04 LTS. There is no
+# Ubuntu 24.04 LTS-specific CIS benchmark implemented here. The report therefore
+# publishes the version of the benchmark it ACTUALLY implements, plus
+# derived/derived_from/applied_to so consumers can detect this.
+# See README.md in this directory.
+
 import rego.v1
 import data.cis_ubuntu_24_04 as bench
 
@@ -48,8 +55,11 @@ _percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_cont
 
 compliance_report := {
 	"framework": "cis_ubuntu_2404",
-	"benchmark": "CIS Ubuntu Linux 24.04 LTS Benchmark v1.0.0",
-	"version": "v1.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (provenance: see README)",
+	"version": "v3.0.0",
+	"derived": true,
+	"derived_from": "CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0",
+	"applied_to": "Ubuntu 24.04 LTS",
 	"total_controls": _total_controls,
 	"controls_basis": "distinct CIS control IDs evaluated by this policy set",
 	"passed_controls": _passed,

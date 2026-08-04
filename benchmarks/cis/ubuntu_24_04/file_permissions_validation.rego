@@ -1,6 +1,6 @@
 package cis_ubuntu_24_04.file_permissions
 
-# CIS Ubuntu 24.04 LTS Benchmark v1.0.0 - Section 6.1: System File Permissions
+# DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 6.1: System File Permissions
 
 import rego.v1
 
@@ -150,5 +150,5 @@ report := {
 		"non_compliant_critical_files": input.critical_files.non_compliant_count,
 	},
 	"section": "6.1 System File Permissions",
-	"benchmark": "CIS Ubuntu 24.04 v1.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }

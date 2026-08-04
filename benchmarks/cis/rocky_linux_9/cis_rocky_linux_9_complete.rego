@@ -1,6 +1,6 @@
 package cis_rocky_linux_9
 
-# CIS Rocky Linux 9 Benchmark v2.0.0 - Complete Validation
+# DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Complete Validation
 # MODULAR architecture with validation modules
 # Coverage: ~300+ controls
 

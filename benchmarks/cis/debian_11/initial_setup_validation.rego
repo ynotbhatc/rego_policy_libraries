@@ -1,6 +1,6 @@
 package cis_debian_11.initial_setup
 
-# CIS Debian Linux 11 Benchmark v2.0.0 - Sections 1.2, 1.7, 1.8: Initial System Setup
+# DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Sections 1.2, 1.7, 1.8: Initial System Setup
 
 import rego.v1
 
@@ -174,5 +174,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 24,
 	"section": "1.2-1.8 Initial System Setup",
-	"benchmark": "CIS Debian 11 v2.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
 }

@@ -1,6 +1,6 @@
 package cis_debian_11.cron
 
-# CIS Debian Linux 11 Benchmark v2.0.0 - Section 5.1: Configure time-based job schedulers
+# DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 5.1: Configure time-based job schedulers
 
 import rego.v1
 
@@ -141,5 +141,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 9,
 	"section": "5.1 Configure time-based job schedulers",
-	"benchmark": "CIS Debian 11 v2.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
 }

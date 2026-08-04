@@ -1,6 +1,6 @@
 package cis_ubuntu_24_04.network
 
-# CIS Ubuntu 24.04 LTS Benchmark v1.0.0 - Sections 3.1/3.2/3.3: Network Configuration
+# DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Sections 3.1/3.2/3.3: Network Configuration
 
 import rego.v1
 
@@ -177,5 +177,5 @@ report := {
 	"network_interface_violations": count(network_interface_violations),
 	"firewall": {"type": input.firewall.type, "active": input.firewall.active},
 	"section": "3.1-3.3 Network Configuration",
-	"benchmark": "CIS Ubuntu 24.04 v1.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }

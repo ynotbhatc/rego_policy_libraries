@@ -1,6 +1,6 @@
 package cis_ubuntu_24_04.cron
 
-# CIS Ubuntu 24.04 LTS Benchmark v1.0.0 - Section 5.1: Configure time-based job schedulers
+# DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 5.1: Configure time-based job schedulers
 
 import rego.v1
 
@@ -141,5 +141,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 9,
 	"section": "5.1 Configure time-based job schedulers",
-	"benchmark": "CIS Ubuntu 24.04 v1.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }

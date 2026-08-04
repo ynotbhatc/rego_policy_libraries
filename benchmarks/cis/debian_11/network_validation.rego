@@ -1,6 +1,6 @@
 package cis_debian_11.network
 
-# CIS Debian Linux 11 Benchmark v2.0.0 - Sections 3.1/3.2/3.3: Network Configuration
+# DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Sections 3.1/3.2/3.3: Network Configuration
 
 import rego.v1
 
@@ -177,5 +177,5 @@ report := {
 	"network_interface_violations": count(network_interface_violations),
 	"firewall": {"type": input.firewall.type, "active": input.firewall.active},
 	"section": "3.1-3.3 Network Configuration",
-	"benchmark": "CIS Debian 11 v2.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
 }

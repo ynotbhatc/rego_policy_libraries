@@ -1,6 +1,6 @@
 package cis_ubuntu_24_04.boot_security
 
-# CIS Ubuntu 24.04 LTS Benchmark v1.0.0 - Sections 1.3-1.5: Boot Security and Process Hardening
+# DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Sections 1.3-1.5: Boot Security and Process Hardening
 
 import rego.v1
 
@@ -109,5 +109,5 @@ report := {
 	"process_hardening_violations": count(process_hardening_violations),
 	"controls_checked": 12,
 	"section": "1.3-1.5 Boot Security and Process Hardening",
-	"benchmark": "CIS Ubuntu 24.04 v1.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }

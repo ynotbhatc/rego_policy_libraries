@@ -1,6 +1,6 @@
 package cis_ubuntu_24_04.sudo
 
-# CIS Ubuntu 24.04 LTS Benchmark v1.0.0 - Section 5.3: Configure Sudo
+# DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 5.3: Configure Sudo
 
 import rego.v1
 
@@ -83,5 +83,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 8,
 	"section": "5.3 Configure Sudo",
-	"benchmark": "CIS Ubuntu 24.04 v1.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }

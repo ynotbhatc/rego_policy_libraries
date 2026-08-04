@@ -1,6 +1,6 @@
 package cis_rocky_linux_9.services
 
-# CIS Rocky Linux 9 Benchmark v2.0.0 - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration
+# DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration
 
 import rego.v1
 
@@ -186,5 +186,5 @@ report := {
 	"package_violations": count(package_violations),
 	"controls_checked": 20,
 	"section": "1.1.23, 2.1-2.3 Service Configuration",
-	"benchmark": "CIS Rocky Linux 9 v2.0.0",
+	"benchmark": "DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 (applied to Rocky Linux 9)",
 }

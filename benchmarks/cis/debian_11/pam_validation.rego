@@ -1,6 +1,6 @@
 package cis_debian_11.pam
 
-# CIS Debian Linux 11 Benchmark v2.0.0 - Sections 5.4-5.5: PAM and Password Policies
+# DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Sections 5.4-5.5: PAM and Password Policies
 
 import rego.v1
 
@@ -147,5 +147,5 @@ report := {
 	"account_violations": count(account_violations),
 	"controls_checked": 17,
 	"section": "5.4-5.5 PAM and Password Policies",
-	"benchmark": "CIS Debian 11 v2.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
 }
