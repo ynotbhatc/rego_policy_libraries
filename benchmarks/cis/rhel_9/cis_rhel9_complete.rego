@@ -36,6 +36,11 @@ import data.cis_rhel9.l2
 # MAIN COMPLIANCE RULE
 # =============================================================================
 
+# Required by library rule #5: without a default, a never-firing rule is
+# undefined (not false), and an undefined field collapses the enclosing
+# object to {} at the OPA endpoint.
+default compliant := false
+
 compliant if {
 	filesystem.compliant
 	logging.compliant

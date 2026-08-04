@@ -1,6 +1,6 @@
-package cis_rhel9.main
+package cis_windows_2019.main
 
-# Bridge: expose cis_rhel9 under the /v1/data/<framework>/main/compliance_report
+# Bridge: expose cis_windows_server_2019 under the /v1/data/<framework>/main/compliance_report
 # convention consumed by the Generic Framework Assessment playbook
 # (compliance repo, ansible/playbooks/generic_framework_assessment.yml).
 #
@@ -17,7 +17,7 @@ package cis_rhel9.main
 #    would overstate coverage. See "controls_basis" in the report.
 
 import rego.v1
-import data.cis_rhel9 as bench
+import data.cis_windows_server_2019 as bench
 
 default _compliant := false
 
@@ -35,7 +35,7 @@ default _sections := {}
 
 _sections := bench.section_compliance
 
-_total_controls := 224
+_total_controls := 179
 
 _failed := count(_violations)
 
@@ -47,9 +47,9 @@ default _percentage := 0
 _percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
 
 compliance_report := {
-	"framework": "cis_rhel9",
-	"benchmark": "CIS Red Hat Enterprise Linux 9 Benchmark v2.0.0",
-	"version": "v2.0.0",
+	"framework": "cis_windows_2019",
+	"benchmark": "CIS Microsoft Windows Server 2019 Benchmark v4.0.0",
+	"version": "v4.0.0",
 	"total_controls": _total_controls,
 	"controls_basis": "distinct CIS control IDs evaluated by this policy set",
 	"passed_controls": _passed,
