@@ -16,7 +16,8 @@ Consumers pull this repo as a git submodule at a pinned commit. Today there are 
 ```
 benchmarks/                    Per-platform configuration baselines
 ├── cis/                       CIS Benchmarks (200+ files)
-│   ├── os/linux/redhat/       RHEL 8/9/10 by section
+│   ├── rhel_9/ rhel_8/        RHEL by version, modules per section
+│   │   rhel_10/               (os/linux/ holds only legacy/simple variants)
 │   ├── os/linux/ubuntu/       Ubuntu 20/22/24
 │   ├── os/windows/            Windows Server 2019/2022
 │   ├── cloud/                 AWS / Azure / GCP foundations
@@ -63,7 +64,7 @@ threat_detection/              Behavioral threat patterns
 └── crypto_mining/             Crypto-miner indicators
 ```
 
-Headline count: **510 policy files** (587 including tests) across the above directories.
+Headline count: **515 policy files** (595 including tests) across the above directories.
 Count it, never quote it — `git ls-tree -r HEAD --name-only | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'` — the number drifts with every merge.
 
 ## Skill: Rego v1 syntax (MANDATORY)
@@ -118,11 +119,11 @@ compliance_report := {
 
 ```bash
 # Test a single policy + its tests
-opa test benchmarks/cis/os/linux/redhat/pam_validation.rego \
-         benchmarks/cis/os/linux/redhat/tests/test_pam.rego -v
+opa test benchmarks/cis/rhel_9/pam_validation.rego \
+         benchmarks/cis/rhel_9/tests/test_pam.rego -v
 
 # Test an entire framework
-opa test benchmarks/cis/os/linux/redhat/ -v --coverage
+opa test benchmarks/cis/rhel_9/ -v --coverage
 
 # Full repo (ignore the .github/ directory that lives inside the
 # benchmarks tree — opa tries to parse the YAML otherwise)
