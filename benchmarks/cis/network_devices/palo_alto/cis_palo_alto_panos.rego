@@ -1,4 +1,4 @@
-package cis
+package cis_palo_alto_panos
 
 # CIS Palo Alto PAN-OS Benchmark v1.2.0
 # Center for Internet Security (CIS) Palo Alto PAN-OS Benchmark

@@ -1,4 +1,4 @@
-package cis
+package cis_arista_eos
 
 # CIS Arista EOS Benchmark v1.2.0
 # Center for Internet Security (CIS) Arista EOS Benchmark

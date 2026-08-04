@@ -1,4 +1,4 @@
-package cis
+package cis_kubernetes
 
 # CIS Kubernetes Benchmark v2.0.0
 # Center for Internet Security (CIS) Kubernetes Benchmark

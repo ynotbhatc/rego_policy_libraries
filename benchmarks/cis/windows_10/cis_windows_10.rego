@@ -1,4 +1,4 @@
-package cis
+package cis_windows_10
 
 # CIS Microsoft Windows 10 Enterprise Benchmark v4.0.0  
 # Center for Internet Security (CIS) Benchmark for Windows 10 Enterprise

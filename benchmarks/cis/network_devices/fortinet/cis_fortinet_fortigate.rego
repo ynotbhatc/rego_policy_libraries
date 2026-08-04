@@ -1,4 +1,4 @@
-package cis
+package cis_fortinet_fortigate
 
 # CIS Fortinet FortiGate Benchmark v1.3.0
 # Center for Internet Security (CIS) Fortinet FortiGate Benchmark

@@ -1,31 +1,23 @@
-package cis_vyos.main
+package cis_rhel10.main
 
-# Bridge: expose cis_vyos under the /v1/data/<framework>/main/compliance_report
-# convention consumed by the Generic Framework Assessment playbook
-# (compliance repo, ansible/playbooks/generic_framework_assessment.yml).
+# Bridge: expose cis.rhel_10 under the /v1/data/<framework>/main/compliance_report
+# convention consumed by the Generic Framework Assessment playbook.
 #
-# Two deliberate choices here:
+# Every field is sourced through a DEFAULTED local helper. An undefined field
+# inside an object literal makes the whole object undefined, which OPA returns
+# as {} — a silently empty compliance result rather than an error.
+# See library rule #5 in CLAUDE.md.
 #
-# 1. Every field is sourced through a DEFAULTED local helper. An undefined
-#    field inside an object literal makes the whole object undefined, which
-#    OPA returns as {} — a silently empty compliance result rather than an
-#    error. See library rule #5 in CLAUDE.md.
-#
-# 2. total_controls is the number of DISTINCT CIS control IDs this policy set
-#    actually evaluates (counted from the violation messages), NOT the size of
-#    the published CIS benchmark. Reporting the benchmark's headline number
-#    would overstate coverage. See "controls_basis" in the report.
+# This benchmark previously shared a bare `package cis` namespace with 13
+# unrelated benchmarks, where partial rules such as `violations` silently
+# merged across all of them. It now owns `cis.rhel_10`.
 
 import rego.v1
-import data.cis_vyos as bench
+import data.cis.rhel_10 as bench
 
 default _compliant := false
 
 _compliant := bench.compliant
-
-default _section_percentage := 0
-
-_section_percentage := bench.compliance_percentage
 
 # ---------------------------------------------------------------------------
 # FAIL-CLOSED GATE
@@ -56,18 +48,18 @@ _facts_supplied if count(object.keys(input)) > 0
 
 _no_facts_msg := sprintf(
 	"FAIL-CLOSED: no facts supplied for %s — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
-	["cis_vyos"],
+	["cis_rhel10"],
 )
 
 default _bench_violations := []
 
 _bench_violations := [v | some v in bench.violations]
 
-default _sections := {}
+default _summary := {}
 
-_sections := bench.compliance_assessment
+_summary := bench.compliance_summary
 
-_total_controls := 20
+_total_controls := 312
 
 _violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_supplied
 
@@ -86,16 +78,15 @@ default _percentage := 0
 _percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
 
 compliance_report := {
-	"framework": "cis_vyos",
-	"benchmark": "CIS VyOS Benchmark v1.0.1",
+	"framework": "cis_rhel10",
+	"benchmark": "CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1",
 	"version": "v1.0.1",
 	"total_controls": _total_controls,
-	"controls_basis": "controls implemented in this device policy set",
+	"controls_basis": "controls declared by this benchmark policy set",
 	"passed_controls": _passed,
 	"failed_controls": _failed,
 	"compliance_percentage": _percentage,
-	"section_compliance_percentage": _section_percentage,
 	"compliant": _compliant,
 	"violations": _violations,
-	"section_results": _sections,
+	"section_results": _summary,
 }

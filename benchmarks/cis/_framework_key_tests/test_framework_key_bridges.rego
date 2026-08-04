@@ -127,3 +127,39 @@ test_derived_sets_do_not_claim_own_benchmark if {
 	not contains(data.cis_rocky_linux_9.main.compliance_report.benchmark, "CIS Rocky Linux 9")
 	not contains(data.cis_ubuntu_2404.main.compliance_report.benchmark, "CIS Ubuntu Linux 24.04")
 }
+
+# --- fail-closed on missing facts -------------------------------------------
+#
+# Most benchmarks phrase controls as "violate if the fact says X", so with NO
+# facts nothing iterates and the benchmark reported near-total compliance for
+# an assessment that evaluated nothing. Measured before the gate: cis_rhel10
+# 99.0%, cis_azure 99.2%, cis_docker 99.1%, cis_kubernetes 99.2%, cis_aws
+# 97.1%, cis_rhel9 71.9%. Two cis_rhel10 rows already in compliance_results
+# carry exactly that empty-input signature.
+
+gated_reports := array.concat(reports, [
+	data.cis_aws.main.compliance_report,
+	data.cis_azure.main.compliance_report,
+	data.cis_docker.main.compliance_report,
+	data.cis_kubernetes.main.compliance_report,
+	data.cis_rhel10.main.compliance_report,
+])
+
+test_empty_input_reports_zero_percent if {
+	every r in gated_reports { r.compliance_percentage == 0 }
+}
+
+test_empty_input_passes_no_controls if {
+	every r in gated_reports { r.passed_controls == 0 }
+}
+
+test_empty_input_fails_every_control if {
+	every r in gated_reports { r.failed_controls == r.total_controls }
+}
+
+test_empty_input_emits_explicit_fail_closed_violation if {
+	every r in gated_reports {
+		some v in r.violations
+		startswith(v, "FAIL-CLOSED: no facts supplied")
+	}
+}

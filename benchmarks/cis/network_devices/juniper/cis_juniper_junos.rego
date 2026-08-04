@@ -1,4 +1,4 @@
-package cis
+package cis_juniper_junos
 
 # CIS Juniper JunOS Benchmark v2.1.0
 # Center for Internet Security (CIS) Juniper JunOS Benchmark
