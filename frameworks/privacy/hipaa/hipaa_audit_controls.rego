@@ -152,9 +152,17 @@ violations contains msg if { some msg in violation_audit_integrity }
 violations contains msg if { some msg in violation_audit_review }
 violations contains msg if { some msg in violation_after_hours }
 
+# Fail-closed: no ePHI systems in scope → cannot certify this safeguard
+violations contains msg if {
+    count(object.get(input, "phi_systems", [])) == 0
+    msg := "HIPAA 164.312(b): no ePHI systems in scope (input.phi_systems is empty) — cannot certify Audit Controls. Declare the ePHI systems to be evaluated."
+}
+
 # ---------------------------------------------------------------------------
 # Compliance
 # ---------------------------------------------------------------------------
+
+default compliant := false
 
 compliant if {
     count(violations) == 0

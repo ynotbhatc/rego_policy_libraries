@@ -49,6 +49,11 @@ violation_unique_user_id contains msg if {
     )
 }
 
+default control_a2i_compliant := false
+default control_a2ii_compliant := false
+default control_a2iii_compliant := false
+default control_a2iv_compliant := false
+
 control_a2i_compliant if {
     count(violation_unique_user_id) == 0
 }
@@ -220,9 +225,17 @@ violations contains msg if {
     some msg in violation_minimum_necessary
 }
 
+# Fail-closed: no ePHI systems in scope → cannot certify this safeguard
+violations contains msg if {
+    count(object.get(input, "phi_systems", [])) == 0
+    msg := "HIPAA 164.312(a): no ePHI systems in scope (input.phi_systems is empty) — cannot certify Access Control. Declare the ePHI systems to be evaluated."
+}
+
 # ---------------------------------------------------------------------------
 # Overall compliance
 # ---------------------------------------------------------------------------
+
+default compliant := false
 
 compliant if {
     count(violations) == 0
