@@ -1,4 +1,4 @@
-package cis
+package cis_windows_server_2016
 
 # CIS Microsoft Windows Server 2016 Benchmark v1.4.0
 # Center for Internet Security (CIS) Benchmark for Windows Server 2016

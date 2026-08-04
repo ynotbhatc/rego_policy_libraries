@@ -1,4 +1,4 @@
-package cis
+package cis_docker
 
 # CIS Docker Benchmark v1.8.0
 # Center for Internet Security (CIS) Docker Benchmark

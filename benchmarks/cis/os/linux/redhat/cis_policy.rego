@@ -1,4 +1,4 @@
-package cis
+package cis_redhat_legacy
 
 import rego.v1
 

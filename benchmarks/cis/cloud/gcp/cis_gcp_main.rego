@@ -400,18 +400,49 @@ default _assessed_at := ""
 
 _assessed_at := input.assessment_date
 
+# ---------------------------------------------------------------------------
+# FAIL-CLOSED GATE
+#
+# With NO facts, nothing iterates and a benchmark can report near-total
+# compliance for an assessment that evaluated nothing. A missing-facts
+# assessment is reported as fully non-compliant with an explicit violation,
+# never as a pass.
+#
+# LIMITATION: this gate detects a completely EMPTY input, not a partial one.
+# An input carrying one irrelevant key still evaluates normally, so sparse or
+# wrong-shaped facts can still under-report violations.
+# ---------------------------------------------------------------------------
+
+default _facts_supplied := false
+
+_facts_supplied if count(object.keys(input)) > 0
+
+_no_facts_msg := sprintf(
+	"FAIL-CLOSED: no facts supplied for %s — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
+	["cis_gcp"],
+)
+
 _total_controls := 57
 
 # Sets are not arrays; the report contract publishes arrays so downstream
 # JSON consumers get a stable type.
-_violations := [v | some v in violations]
+_bench_violations := [v | some v in violations]
 
-_failed := count(_violations)
+_violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_supplied
+
+_violations := _bench_violations if _facts_supplied
+
+# No facts => every control is unverified, which counts as failed, not passed.
+_failed := _total_controls if not _facts_supplied
+
+_failed := count(_bench_violations) if _facts_supplied
 
 # Clamp: a mis-declared total must never yield a negative passed count.
 _passed := max([0, _total_controls - _failed])
 
-_percentage := round((_passed * 100000) / _total_controls) / 1000
+default _percentage := 0
+
+_percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
 
 compliance_report := {
 	"framework": "cis_gcp",

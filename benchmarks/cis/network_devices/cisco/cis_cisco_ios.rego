@@ -1,4 +1,4 @@
-package cis
+package cis_cisco_ios
 
 # CIS Cisco IOS Benchmark v4.1.0
 # Center for Internet Security (CIS) Cisco IOS Benchmark

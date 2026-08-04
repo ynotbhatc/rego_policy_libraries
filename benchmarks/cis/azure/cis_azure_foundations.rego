@@ -1,4 +1,4 @@
-package cis
+package cis_azure
 
 # CIS Microsoft Azure Foundations Benchmark v3.0.0
 # Center for Internet Security (CIS) Azure Foundations Benchmark

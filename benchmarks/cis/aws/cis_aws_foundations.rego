@@ -1,4 +1,4 @@
-package cis
+package cis_aws
 
 # CIS Amazon Web Services Foundations Benchmark v7.0.0
 # Center for Internet Security (CIS) AWS Foundations Benchmark

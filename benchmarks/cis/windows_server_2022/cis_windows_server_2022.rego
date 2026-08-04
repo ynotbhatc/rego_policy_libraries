@@ -1,4 +1,4 @@
-package cis
+package cis_windows_server_2022_legacy
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0
 # Center for Internet Security (CIS) Benchmark for Windows Server 2022

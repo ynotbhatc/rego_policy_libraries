@@ -1,4 +1,4 @@
-package cis
+package cis_gcp_foundations
 
 # CIS Google Cloud Platform Foundation Benchmark v4.0.0
 # Center for Internet Security (CIS) GCP Foundation Benchmark
