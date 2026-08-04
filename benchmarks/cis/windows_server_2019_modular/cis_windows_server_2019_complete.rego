@@ -21,6 +21,11 @@ import data.cis_windows_server_2019.bitlocker
 # MAIN COMPLIANCE RULE
 # =============================================================================
 
+# Required by library rule #5: without a default, a never-firing rule is
+# undefined (not false), and an undefined field collapses the enclosing
+# object to {} at the OPA endpoint.
+default compliant := false
+
 compliant if {
 	account_policies.compliant
 	local_policies.compliant

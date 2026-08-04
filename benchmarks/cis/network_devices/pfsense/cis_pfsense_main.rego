@@ -1,6 +1,6 @@
-package cis_rhel9.main
+package cis_pfsense.main
 
-# Bridge: expose cis_rhel9 under the /v1/data/<framework>/main/compliance_report
+# Bridge: expose cis_pfsense under the /v1/data/<framework>/main/compliance_report
 # convention consumed by the Generic Framework Assessment playbook
 # (compliance repo, ansible/playbooks/generic_framework_assessment.yml).
 #
@@ -17,7 +17,7 @@ package cis_rhel9.main
 #    would overstate coverage. See "controls_basis" in the report.
 
 import rego.v1
-import data.cis_rhel9 as bench
+import data.cis_pfsense as bench
 
 default _compliant := false
 
@@ -29,13 +29,13 @@ _section_percentage := bench.compliance_percentage
 
 default _violations := []
 
-_violations := [v | some v in bench.all_violations]
+_violations := [v | some v in bench.violations]
 
 default _sections := {}
 
-_sections := bench.section_compliance
+_sections := bench.compliance_assessment
 
-_total_controls := 224
+_total_controls := 22
 
 _failed := count(_violations)
 
@@ -47,11 +47,11 @@ default _percentage := 0
 _percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
 
 compliance_report := {
-	"framework": "cis_rhel9",
-	"benchmark": "CIS Red Hat Enterprise Linux 9 Benchmark v2.0.0",
-	"version": "v2.0.0",
+	"framework": "cis_pfsense",
+	"benchmark": "CIS pfSense Benchmark v1.0.0",
+	"version": "v1.0.0",
 	"total_controls": _total_controls,
-	"controls_basis": "distinct CIS control IDs evaluated by this policy set",
+	"controls_basis": "controls implemented in this device policy set",
 	"passed_controls": _passed,
 	"failed_controls": _failed,
 	"compliance_percentage": _percentage,

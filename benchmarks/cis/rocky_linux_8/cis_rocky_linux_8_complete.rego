@@ -25,6 +25,11 @@ import data.cis_rocky_linux_8.file_permissions
 # MAIN COMPLIANCE RULE
 # =============================================================================
 
+# Required by library rule #5: without a default, a never-firing rule is
+# undefined (not false), and an undefined field collapses the enclosing
+# object to {} at the OPA endpoint.
+default compliant := false
+
 compliant if {
 	filesystem.compliant
 	initial_setup.compliant

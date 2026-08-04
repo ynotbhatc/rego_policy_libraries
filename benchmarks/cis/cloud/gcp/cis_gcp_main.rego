@@ -383,25 +383,58 @@ violations contains msg if {
 
 # ── Compliance Report ────────────────────────────────────────────────────────
 
+# Optional identity fields are read through defaulted helpers. Referencing
+# input.* directly inside the object literal made the entire report undefined
+# whenever the caller omitted them (library rule #5) — the endpoint returned
+# nothing at all rather than a report with blank metadata.
+
+default _entity_name := ""
+
+_entity_name := input.entity_name
+
+default _project_id := ""
+
+_project_id := input.gcp_project_id
+
+default _assessed_at := ""
+
+_assessed_at := input.assessment_date
+
+_total_controls := 57
+
+# Sets are not arrays; the report contract publishes arrays so downstream
+# JSON consumers get a stable type.
+_violations := [v | some v in violations]
+
+_failed := count(_violations)
+
+# Clamp: a mis-declared total must never yield a negative passed count.
+_passed := max([0, _total_controls - _failed])
+
+_percentage := round((_passed * 100000) / _total_controls) / 1000
+
 compliance_report := {
-    "framework":      "CIS Google Cloud Platform Foundation Benchmark",
-    "version":        "v2.0.0",
-    "published":      "March 2023",
-    "entity_name":    input.entity_name,
-    "project_id":     input.gcp_project_id,
-    "assessed_at":    input.assessment_date,
-    "compliant":      compliant,
-    "total_controls": 55,
-    "violations":     violations,
-    "violation_count": count(violations),
-    "section_summary": {
-        "iam":              [v | some v in violations; contains(v, "CIS GCP 1.")],
-        "logging":          [v | some v in violations; contains(v, "CIS GCP 2.")],
-        "networking":       [v | some v in violations; contains(v, "CIS GCP 3.")],
-        "virtual_machines": [v | some v in violations; contains(v, "CIS GCP 4.")],
-        "storage":          [v | some v in violations; contains(v, "CIS GCP 5.")],
-        "cloud_sql":        [v | some v in violations; contains(v, "CIS GCP 6.")],
-        "bigquery":         [v | some v in violations; contains(v, "CIS GCP 7.")],
-        "gke":              [v | some v in violations; contains(v, "CIS GCP 8.")],
-    },
+	"framework": "cis_gcp",
+	"benchmark": "CIS Google Cloud Platform Foundation Benchmark",
+	"version": "v4.0.0",
+	"entity_name": _entity_name,
+	"project_id": _project_id,
+	"assessed_at": _assessed_at,
+	"compliant": compliant,
+	"total_controls": _total_controls,
+	"passed_controls": _passed,
+	"failed_controls": _failed,
+	"compliance_percentage": _percentage,
+	"violations": _violations,
+	"violation_count": _failed,
+	"section_results": {
+		"iam": [v | some v in _violations; contains(v, "CIS GCP 1.")],
+		"logging": [v | some v in _violations; contains(v, "CIS GCP 2.")],
+		"networking": [v | some v in _violations; contains(v, "CIS GCP 3.")],
+		"virtual_machines": [v | some v in _violations; contains(v, "CIS GCP 4.")],
+		"storage": [v | some v in _violations; contains(v, "CIS GCP 5.")],
+		"cloud_sql": [v | some v in _violations; contains(v, "CIS GCP 6.")],
+		"bigquery": [v | some v in _violations; contains(v, "CIS GCP 7.")],
+		"gke": [v | some v in _violations; contains(v, "CIS GCP 8.")],
+	},
 }
