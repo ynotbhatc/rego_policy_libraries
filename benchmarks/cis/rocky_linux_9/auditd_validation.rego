@@ -1,6 +1,6 @@
 package cis_rocky_linux_9.auditd
 
-# CIS Rocky Linux 9 Benchmark v2.0.0 - Section 4.1: Configure System Accounting (auditd)
+# DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 4.1: Configure System Accounting (auditd)
 # Validates auditd service, configuration, and audit rules
 
 import rego.v1
@@ -202,5 +202,5 @@ report := {
 	"controls_checked": 40,
 	"rules_checked": count(required_rules),
 	"section": "4.1 Configure System Accounting (auditd)",
-	"benchmark": "CIS Rocky Linux 9 v2.0.0",
+	"benchmark": "DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 (applied to Rocky Linux 9)",
 }

@@ -1,6 +1,6 @@
 package cis_rocky_linux_9.logging
 
-# CIS Rocky Linux 9 Benchmark v2.0.0 - Section 4.2: Logging Configuration
+# DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 4.2: Logging Configuration
 # Validates rsyslog, journald, and log file permissions
 
 import rego.v1
@@ -118,5 +118,5 @@ report := {
 		"forward_to_syslog": input.journald.forward_to_syslog,
 	},
 	"section": "4.2 Logging Configuration",
-	"benchmark": "CIS Rocky Linux 9 v2.0.0",
+	"benchmark": "DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 (applied to Rocky Linux 9)",
 }

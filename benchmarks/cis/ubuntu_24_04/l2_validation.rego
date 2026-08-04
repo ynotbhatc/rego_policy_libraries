@@ -1,6 +1,6 @@
 package cis_ubuntu_2404.l2
 
-# CIS Ubuntu Linux 24.04 LTS Benchmark v1.0.0 - Level 2 Additional Controls
+# DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (provenance: see README) - Level 2 Additional Controls
 # Level 2 extends Level 1 with stricter settings suited for high-security
 # environments (FedRAMP High, CMMC Level 2/3, DoD, financial services).
 
@@ -253,7 +253,7 @@ l2_total_controls := 38
 
 compliance_report := {
 	"profile":           "level2",
-	"benchmark":         "CIS Ubuntu Linux 24.04 LTS Benchmark v1.0.0",
+	"benchmark":         "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (provenance: see README)",
 	"l2_controls":       l2_total_controls,
 	"l2_violations":     count(violations),
 	"l2_compliant":      compliant,

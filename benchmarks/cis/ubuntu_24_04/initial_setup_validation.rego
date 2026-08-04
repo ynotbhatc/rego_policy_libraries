@@ -1,6 +1,6 @@
 package cis_ubuntu_24_04.initial_setup
 
-# CIS Ubuntu 24.04 LTS Benchmark v1.0.0 - Sections 1.2, 1.7, 1.8: Initial System Setup
+# DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Sections 1.2, 1.7, 1.8: Initial System Setup
 
 import rego.v1
 
@@ -174,5 +174,5 @@ report := {
 	"violations": violations,
 	"controls_checked": 24,
 	"section": "1.2-1.8 Initial System Setup",
-	"benchmark": "CIS Ubuntu 24.04 v1.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }

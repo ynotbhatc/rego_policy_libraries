@@ -16,6 +16,13 @@ package cis_rocky_linux_9.main
 #    the published CIS benchmark. Reporting the benchmark's headline number
 #    would overstate coverage. See "controls_basis" in the report.
 
+# PROVENANCE: this policy set is DERIVED — its controls are a copy of
+# CIS Rocky Linux 8 Benchmark v3.0.0, relabelled for Rocky Linux 9. There is no
+# Rocky Linux 9-specific CIS benchmark implemented here. The report therefore
+# publishes the version of the benchmark it ACTUALLY implements, plus
+# derived/derived_from/applied_to so consumers can detect this.
+# See README.md in this directory.
+
 import rego.v1
 import data.cis_rocky_linux_9 as bench
 
@@ -48,8 +55,11 @@ _percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_cont
 
 compliance_report := {
 	"framework": "cis_rocky_linux_9",
-	"benchmark": "CIS Rocky Linux 9 Benchmark v2.0.0",
-	"version": "v2.0.0",
+	"benchmark": "DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README)",
+	"version": "v3.0.0",
+	"derived": true,
+	"derived_from": "CIS Rocky Linux 8 Benchmark v3.0.0",
+	"applied_to": "Rocky Linux 9",
 	"total_controls": _total_controls,
 	"controls_basis": "distinct CIS control IDs evaluated by this policy set",
 	"passed_controls": _passed,

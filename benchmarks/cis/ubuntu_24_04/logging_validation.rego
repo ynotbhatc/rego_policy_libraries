@@ -1,6 +1,6 @@
 package cis_ubuntu_24_04.logging
 
-# CIS Ubuntu 24.04 LTS Benchmark v1.0.0 - Section 4.2: Logging Configuration
+# DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 4.2: Logging Configuration
 
 import rego.v1
 
@@ -130,5 +130,5 @@ report := {
 		"forward_to_syslog": input.journald.forward_to_syslog,
 	},
 	"section": "4.2 Logging Configuration",
-	"benchmark": "CIS Ubuntu 24.04 v1.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }

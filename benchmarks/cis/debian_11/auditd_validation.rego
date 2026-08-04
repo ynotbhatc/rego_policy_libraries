@@ -1,6 +1,6 @@
 package cis_debian_11.auditd
 
-# CIS Debian Linux 11 Benchmark v2.0.0 - Section 4.1: Configure System Accounting (auditd)
+# DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 4.1: Configure System Accounting (auditd)
 
 import rego.v1
 
@@ -192,5 +192,5 @@ report := {
 	"controls_checked": 38,
 	"rules_checked": count(required_rules),
 	"section": "4.1 Configure System Accounting (auditd)",
-	"benchmark": "CIS Debian 11 v2.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
 }

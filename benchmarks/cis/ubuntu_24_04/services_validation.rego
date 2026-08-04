@@ -1,6 +1,6 @@
 package cis_ubuntu_24_04.services
 
-# CIS Ubuntu 24.04 LTS Benchmark v1.0.0 - Sections 2.1.x, 2.2.x, 2.3.x: Service Configuration
+# DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Sections 2.1.x, 2.2.x, 2.3.x: Service Configuration
 
 import rego.v1
 
@@ -176,5 +176,5 @@ report := {
 	"package_violations": count(package_violations),
 	"controls_checked": 18,
 	"section": "2.1-2.3 Service Configuration",
-	"benchmark": "CIS Ubuntu 24.04 v1.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }

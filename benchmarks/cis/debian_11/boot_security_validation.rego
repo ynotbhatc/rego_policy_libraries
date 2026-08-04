@@ -1,6 +1,6 @@
 package cis_debian_11.boot_security
 
-# CIS Debian Linux 11 Benchmark v2.0.0 - Sections 1.3-1.5: Boot Security and Process Hardening
+# DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Sections 1.3-1.5: Boot Security and Process Hardening
 
 import rego.v1
 
@@ -109,5 +109,5 @@ report := {
 	"process_hardening_violations": count(process_hardening_violations),
 	"controls_checked": 12,
 	"section": "1.3-1.5 Boot Security and Process Hardening",
-	"benchmark": "CIS Debian 11 v2.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
 }

@@ -99,3 +99,31 @@ test_empty_input_is_not_compliant if {
 test_amazon2023_detects_violations_on_empty_input if {
 	data.cis_amazon_linux_2023.main.compliance_report.failed_controls > 0
 }
+
+# --- derived policy sets must stay flagged -----------------------------------
+#
+# debian_11, rocky_linux_9 and ubuntu_24_04 contain copies of another
+# platform's controls (verified byte-identical by diff). They must never
+# advertise a benchmark version they do not implement, and consumers must be
+# able to detect the derivation programmatically.
+
+derived_reports := [
+	data.cis_debian_11.main.compliance_report,
+	data.cis_rocky_linux_9.main.compliance_report,
+	data.cis_ubuntu_2404.main.compliance_report,
+]
+
+test_derived_sets_are_flagged if {
+	every r in derived_reports {
+		r.derived == true
+		is_string(r.derived_from)
+		is_string(r.applied_to)
+		startswith(r.benchmark, "DERIVED from ")
+	}
+}
+
+test_derived_sets_do_not_claim_own_benchmark if {
+	not contains(data.cis_debian_11.main.compliance_report.benchmark, "CIS Debian")
+	not contains(data.cis_rocky_linux_9.main.compliance_report.benchmark, "CIS Rocky Linux 9")
+	not contains(data.cis_ubuntu_2404.main.compliance_report.benchmark, "CIS Ubuntu Linux 24.04")
+}

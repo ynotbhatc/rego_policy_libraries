@@ -1,6 +1,6 @@
 package cis_debian_11.file_permissions
 
-# CIS Debian Linux 11 Benchmark v2.0.0 - Section 6.1: System File Permissions
+# DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 6.1: System File Permissions
 
 import rego.v1
 
@@ -150,5 +150,5 @@ report := {
 		"non_compliant_critical_files": input.critical_files.non_compliant_count,
 	},
 	"section": "6.1 System File Permissions",
-	"benchmark": "CIS Debian 11 v2.0.0",
+	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
 }

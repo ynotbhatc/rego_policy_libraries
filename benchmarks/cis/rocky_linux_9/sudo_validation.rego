@@ -1,6 +1,6 @@
 package cis_rocky_linux_9.sudo
 
-# CIS Rocky Linux 9 Benchmark v2.0.0 - Section 5.3: Configure privilege escalation
+# DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 5.3: Configure privilege escalation
 # Sudo configuration validation
 
 import rego.v1
@@ -123,5 +123,5 @@ report := {
 	"total_violations": count(violations),
 	"controls_checked": 8,
 	"section": "5.3 Configure Privilege Escalation",
-	"benchmark": "CIS Rocky Linux 9 v2.0.0",
+	"benchmark": "DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 (applied to Rocky Linux 9)",
 }
