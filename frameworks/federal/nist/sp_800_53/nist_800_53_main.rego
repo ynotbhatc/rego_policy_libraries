@@ -1,4 +1,4 @@
-package nist_800_53.main
+package nist.sp800_53.main
 
 import rego.v1
 

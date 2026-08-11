@@ -1,4 +1,4 @@
-package cis_ubuntu_2404.main
+package cis_ubuntu_24_04.main
 
 # Bridge: expose cis_ubuntu_24_04 under the /v1/data/<framework>/main/compliance_report
 # entrypoint convention, so a caller can evaluate this framework by key
@@ -43,7 +43,7 @@ _section_percentage := bench.compliance_percentage
 # Measured on empty input before this gate: cis_rhel10 99.0%, cis_azure 99.2%,
 # cis_docker 99.1%, cis_kubernetes 99.2%, cis_aws 97.1%, cis_rhel9 71.9%.
 #
-# Two historical rows in compliance_results for cis_rhel10 carry exactly the
+# Two historical rows in a downstream results store for cis_rhel10 carry exactly the
 # empty-input signature (312/309/3 @ 99.04%) — this already reached the
 # database.
 #
@@ -63,7 +63,7 @@ _facts_supplied if count(object.keys(input)) > 0
 
 _no_facts_msg := sprintf(
 	"FAIL-CLOSED: no facts supplied for %s — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
-	["cis_ubuntu_2404"],
+	["cis_ubuntu_24_04"],
 )
 
 default _bench_violations := []
@@ -93,7 +93,7 @@ default _percentage := 0
 _percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
 
 compliance_report := {
-	"framework": "cis_ubuntu_2404",
+	"framework": "cis_ubuntu_24_04",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (provenance: see README)",
 	"version": "v3.0.0",
 	"derived": true,

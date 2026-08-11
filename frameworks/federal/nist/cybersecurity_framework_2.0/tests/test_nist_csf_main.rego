@@ -1,8 +1,8 @@
-package nist_csf.main_test
+package nist.csf.main_test
 
 import rego.v1
 
-import data.nist_csf.main
+import data.nist.csf.main
 
 # Smoke test — empty input should produce all violations and non-compliant.
 test_empty_input_non_compliant if {

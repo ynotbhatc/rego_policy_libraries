@@ -1,4 +1,4 @@
-package nist_csf.main
+package nist.csf.main
 
 import rego.v1
 

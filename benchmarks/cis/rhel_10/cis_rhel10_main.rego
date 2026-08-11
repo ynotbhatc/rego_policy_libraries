@@ -1,4 +1,4 @@
-package cis_rhel10.main
+package cis.rhel_10.main
 
 # Bridge: expose cis.rhel_10 under the /v1/data/<framework>/main/compliance_report
 # convention consumed by the Generic Framework Assessment playbook.
@@ -28,7 +28,7 @@ _compliant := bench.compliant
 # Measured on empty input before this gate: cis_rhel10 99.0%, cis_azure 99.2%,
 # cis_docker 99.1%, cis_kubernetes 99.2%, cis_aws 97.1%, cis_rhel9 71.9%.
 #
-# Two historical rows in compliance_results for cis_rhel10 carry exactly the
+# Two historical rows in a downstream results store for cis_rhel10 carry exactly the
 # empty-input signature (312/309/3 @ 99.04%) — this already reached the
 # database.
 #
@@ -48,7 +48,7 @@ _facts_supplied if count(object.keys(input)) > 0
 
 _no_facts_msg := sprintf(
 	"FAIL-CLOSED: no facts supplied for %s — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
-	["cis_rhel10"],
+	["cis.rhel_10"],
 )
 
 default _bench_violations := []
@@ -78,7 +78,7 @@ default _percentage := 0
 _percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
 
 compliance_report := {
-	"framework": "cis_rhel10",
+	"framework": "cis.rhel_10",
 	"benchmark": "CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1",
 	"version": "v1.0.1",
 	"total_controls": _total_controls,

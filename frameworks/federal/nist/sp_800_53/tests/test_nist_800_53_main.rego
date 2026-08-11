@@ -1,8 +1,8 @@
-package nist_800_53.main_test
+package nist.sp800_53.main_test
 
 import rego.v1
 
-import data.nist_800_53.main
+import data.nist.sp800_53.main
 
 # Minimal "everything-passes" input — every required key set to true.
 fully_compliant_input := {
