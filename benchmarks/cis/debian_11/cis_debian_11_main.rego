@@ -1,8 +1,8 @@
 package cis_debian_11.main
 
 # Bridge: expose cis_debian_11 under the /v1/data/<framework>/main/compliance_report
-# convention consumed by the Generic Framework Assessment playbook
-# (compliance repo, ansible/playbooks/generic_framework_assessment.yml).
+# entrypoint convention, so a caller can evaluate this framework by key
+# without knowing its internal package layout.
 #
 # Two deliberate choices here:
 #

@@ -35,7 +35,7 @@ import rego.v1
 # OPA bucket: ot  (opa_framework_map key: tsa_pipeline)
 #
 # --- FACT SOURCE STATUS ------------------------------------------------------
-# NOTHING IN THE COMPLIANCE REPO EMITS THIS INPUT TODAY. Both directives are
+# NO FACT COLLECTOR SHIPS WITH THIS LIBRARY FOR THIS FRAMEWORK. Both directives are
 # overwhelmingly plan-, attestation-, and recordkeeping-driven: "is there a
 # TSA-approved Cybersecurity Implementation Plan", "was the Assessment Plan
 # submitted within 12 months", "were at least one-third of measures assessed

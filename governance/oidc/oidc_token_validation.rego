@@ -15,7 +15,7 @@ import rego.v1
 #   input.resource.hostname  — target host
 #
 # OPA evaluation:
-#   POST http://192.168.4.62:8182/v1/data/governance/oidc
+#   POST http://localhost:8181/v1/data/governance/oidc
 #   { "input": { "token": { "claims": {...} }, "resource": {...} } }
 
 # ── Role definitions ──────────────────────────────────────────────────────────

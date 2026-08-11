@@ -4,7 +4,7 @@ import rego.v1
 
 # Sentinel-equivalent policy for Terraform plans
 # Evaluated against `terraform show -json tfplan.bin` output
-# OPA endpoint: POST http://192.168.4.62:8182/v1/data/sentinel/terraform/result
+# OPA endpoint: POST http://localhost:8181/v1/data/sentinel/terraform/result
 #
 # Input shape (subset of Terraform plan JSON):
 #   input.resource_changes[].address        — "aws_instance.web"

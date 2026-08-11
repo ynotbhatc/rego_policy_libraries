@@ -62,7 +62,7 @@ POST http://<host>:8182/v1/data/sentinel/ansible/result
 ```bash
 # Convert playbook to JSON, then evaluate
 python3 -c "import sys,yaml,json; print(json.dumps({'input': {'environment':'production','plays': yaml.safe_load(open('site.yml'))}}))" \
-  | curl -s -X POST http://192.168.4.62:8182/v1/data/sentinel/ansible/result \
+  | curl -s -X POST http://localhost:8181/v1/data/sentinel/ansible/result \
          -H 'Content-Type: application/json' -d @- | jq '.result'
 ```
 
@@ -124,7 +124,7 @@ Evaluates a Terraform plan JSON for policy violations before `apply`.
 ```bash
 terraform plan -out=tfplan.bin && terraform show -json tfplan.bin \
   | jq '{input: {environment: "production", plan: .}}' \
-  | curl -s -X POST http://192.168.4.62:8182/v1/data/sentinel/terraform/result \
+  | curl -s -X POST http://localhost:8181/v1/data/sentinel/terraform/result \
          -H 'Content-Type: application/json' -d @- | jq '.result'
 ```
 

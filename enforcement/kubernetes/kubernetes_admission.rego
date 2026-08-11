@@ -21,7 +21,7 @@ package kubernetes.admission
 #   - No NodePort services in production
 #   - Egress NetworkPolicy required per namespace
 #
-# OPA endpoint: POST http://192.168.4.62:8182/v1/data/kubernetes/admission
+# OPA endpoint: POST http://localhost:8181/v1/data/kubernetes/admission
 # Input: Kubernetes admission review request (AdmissionReview v1)
 
 import rego.v1

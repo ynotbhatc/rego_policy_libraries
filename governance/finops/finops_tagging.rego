@@ -13,7 +13,7 @@ package finops.tagging
 #   - Budget threshold tags
 #   - Orphaned/untagged resource detection
 #
-# OPA endpoint: POST http://192.168.4.62:8182/v1/data/finops/tagging
+# OPA endpoint: POST http://localhost:8181/v1/data/finops/tagging
 # Input: cloud resource inventory (from Ansible facts, AWS Config, Azure Policy, GCP Asset API)
 
 import rego.v1

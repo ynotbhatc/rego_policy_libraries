@@ -47,7 +47,7 @@ import rego.v1
 #   "law_enforcement_liaison_established":     boolean
 # }
 #
-# NO FACT SOURCE EXISTS YET. Nothing in the compliance repo emits
+# NO PUBLISHED FACT SOURCE EXISTS YET. Nothing in this library emits
 # input.cybersecurity_coordinator — these are attestation/document facts, not
 # host facts. Absent input this module reports fully non-compliant, which is
 # the correct fail-closed behavior for an audit framework. Do not present it as

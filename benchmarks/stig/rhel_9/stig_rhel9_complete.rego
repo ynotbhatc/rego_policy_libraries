@@ -5,7 +5,7 @@ package stig.rhel_9
 # Aggregates all modules: configuration_management, services, software_integrity,
 #   file_permissions, audit_logging, ssh_config, account_auth, network, pki_crypto
 #
-# Endpoint: POST http://192.168.4.62:8181/v1/data/stig/rhel_9/stig_assessment
+# Endpoint: POST http://localhost:8181/v1/data/stig/rhel_9/stig_assessment
 
 import rego.v1
 

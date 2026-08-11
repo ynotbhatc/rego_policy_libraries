@@ -2,7 +2,7 @@ package stig.rhel_8
 
 # DISA STIG for RHEL 8 - Master Aggregator
 # STIG Version: V1R13 | Released: July 2024
-# Endpoint: POST http://192.168.4.62:8181/v1/data/stig/rhel_8/stig_assessment
+# Endpoint: POST http://localhost:8181/v1/data/stig/rhel_8/stig_assessment
 
 import rego.v1
 

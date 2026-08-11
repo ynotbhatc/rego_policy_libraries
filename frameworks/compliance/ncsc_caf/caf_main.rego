@@ -26,7 +26,7 @@ import data.ncsc_caf.d1_response_recovery
 #   C1 (Monitoring):        C1.d, C1.f
 #   D1 (Response):          D1.a, D1.b, D1.c
 #
-# OPA endpoint: POST http://192.168.4.62:8182/v1/data/ncsc_caf/main/compliance_report
+# OPA endpoint: POST http://localhost:8181/v1/data/ncsc_caf/main/compliance_report
 #
 # Three-tier scoring per CO: "achieved" | "partially_achieved" | "not_achieved"
 # Overall compliant: all assessed COs must be "achieved"

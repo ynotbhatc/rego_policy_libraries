@@ -30,7 +30,7 @@ import rego.v1
 #   SL 3 — Protection against sophisticated attacks (nation-state capable actors)
 #   SL 4 — Protection against state-sponsored, highly motivated, well-resourced attacks
 #
-# OPA Endpoint: POST http://192.168.4.62:8183/v1/data/iec_62443_main
+# OPA Endpoint: POST http://localhost:8181/v1/data/iec_62443_main
 # =============================================================================
 
 import data.iec_62443.fr1

@@ -1,10 +1,10 @@
 package cis_framework_key_bridges_test
 
-# Regression guard for the Generic Framework Assessment contract.
+# Regression guard for the framework-key entrypoint contract.
 #
-# Every key registered in opa_framework_map (compliance repo,
-# ansible/vars/site_config.yml) is queried by the playbook as
+# Each framework exposes a stable, key-addressable entrypoint at
 #   /v1/data/<key>/main/compliance_report
+# so a caller can evaluate any framework without knowing its package layout.
 #
 # If that path is undefined, or if any field inside the report object is
 # undefined, OPA returns {} — the playbook stores a silently empty result
