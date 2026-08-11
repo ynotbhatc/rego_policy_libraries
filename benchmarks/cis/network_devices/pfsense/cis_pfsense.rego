@@ -13,7 +13,7 @@ package cis_pfsense
 #   input.version             — pfSense/OPNsense version string
 #   input.platform            — "pfsense" or "opnsense"
 #
-# OPA endpoint: POST http://192.168.4.62:8181/v1/data/cis_pfsense/compliance_assessment
+# OPA endpoint: POST http://localhost:8181/v1/data/cis_pfsense/compliance_assessment
 
 import rego.v1
 

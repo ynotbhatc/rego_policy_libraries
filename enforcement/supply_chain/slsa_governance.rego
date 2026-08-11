@@ -13,7 +13,7 @@ package supply_chain.slsa
 # Also covers: SBOM completeness, dependency hygiene, license compliance,
 # artifact signing (Sigstore/Cosign), and CVE policy enforcement.
 #
-# OPA endpoint: POST http://192.168.4.62:8182/v1/data/supply_chain/slsa
+# OPA endpoint: POST http://localhost:8181/v1/data/supply_chain/slsa
 # Input: artifact metadata, provenance attestation, SBOM, build environment facts
 
 import rego.v1

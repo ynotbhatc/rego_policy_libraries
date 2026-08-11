@@ -1,5 +1,5 @@
 # Wrapper exposing the Kubernetes STIG compliance report at the package path
-# expected by AAC's generic_framework_assessment.yml convention:
+# of the conventional framework-key entrypoint:
 #
 #   /v1/data/stig_kubernetes/main/compliance_report
 #

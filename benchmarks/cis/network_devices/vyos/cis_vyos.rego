@@ -13,7 +13,7 @@ package cis_vyos
 #   input.version     — VyOS version string  e.g. "VyOS 1.4.0"
 #   input.platform    — "vyos"
 #
-# OPA endpoint: POST http://192.168.4.62:8181/v1/data/cis_vyos/compliance_assessment
+# OPA endpoint: POST http://localhost:8181/v1/data/cis_vyos/compliance_assessment
 
 import rego.v1
 

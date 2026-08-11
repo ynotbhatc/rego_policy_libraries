@@ -4,7 +4,7 @@ import rego.v1
 
 # Sentinel-equivalent policy for Ansible playbooks
 # Playbook YAML is converted to JSON before evaluation (via `from_yaml | to_json`)
-# OPA endpoint: POST http://192.168.4.62:8182/v1/data/sentinel/ansible/result
+# OPA endpoint: POST http://localhost:8181/v1/data/sentinel/ansible/result
 #
 # Input shape:
 #   input.plays[].name          — play name (required)

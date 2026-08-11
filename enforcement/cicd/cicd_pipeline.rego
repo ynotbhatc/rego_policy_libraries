@@ -15,7 +15,7 @@ package cicd.pipeline
 #   - Container images pinned to digest in prod
 #   - Self-hosted runner governance
 #
-# OPA endpoint: POST http://192.168.4.62:8182/v1/data/cicd/pipeline
+# OPA endpoint: POST http://localhost:8181/v1/data/cicd/pipeline
 # Input: parsed pipeline configuration (GitHub Actions workflow JSON or equivalent)
 
 import rego.v1
