@@ -18,8 +18,13 @@ benchmarks/                    Per-platform configuration baselines
 ├── cis/                       CIS Benchmarks (200+ files)
 │   ├── rhel_9/ rhel_8/        RHEL by version, modules per section
 │   │   rhel_10/               (os/linux/ holds only legacy/simple variants)
-│   ├── os/linux/ubuntu/       Ubuntu 20/22/24
-│   ├── os/windows/            Windows Server 2019/2022
+│   ├── ubuntu_20_04/          Ubuntu, one directory per version
+│   │   ubuntu_22_04/ ubuntu_24_04/
+│   ├── debian_11/ rocky_linux_8/ rocky_linux_9/ amazon_linux_2023/
+│   ├── windows_server_2016/   Windows, one directory per version;
+│   │   windows_server_2019_modular/  *_modular are the current ones
+│   │   windows_server_2022/ windows_server_2022_modular/
+│   │   windows_10/ windows_11/
 │   ├── cloud/                 AWS / Azure / GCP foundations
 │   ├── container/             Docker / Kubernetes
 │   ├── saas/                  M365 (this is where the SaaS pattern lives)
@@ -64,7 +69,7 @@ threat_detection/              Behavioral threat patterns
 └── crypto_mining/             Crypto-miner indicators
 ```
 
-Headline count: **515 policy files** (595 including tests) across the above directories.
+Headline count: **532 policy files** (613 including tests) across the above directories.
 Count it, never quote it — `git ls-tree -r HEAD --name-only | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'` — the number drifts with every merge.
 
 ## Skill: Rego v1 syntax (MANDATORY)
@@ -170,7 +175,7 @@ The policy doesn't care where the facts came from — only that the shape matche
 
 Each multi-section framework has a master file that aggregates per-section reports:
 
-- `benchmarks/cis/os/linux/rhel_9/cis_rhel9_complete.rego` — RHEL 9
+- `benchmarks/cis/rhel_9/cis_rhel9_complete.rego` — RHEL 9
 - `frameworks/critical_infrastructure/nerc_cip/nerc_cip_main.rego` — NERC-CIP
 - `frameworks/management/iso27001/iso27001_policy.rego` — ISO 27001 ISMS
 - `frameworks/financial/sox/sox_main.rego` — SOX ITGC
@@ -192,7 +197,7 @@ The compliance repo has its own CI that validates the submodule pointer; bumping
 
 ## Conventions for new contributions
 
-1. New benchmark version: add as a new directory (`benchmarks/cis/os/linux/rhel_10/`); do NOT mutate the previous version
+1. New benchmark version: add as a new directory (`benchmarks/cis/rhel_10/`); do NOT mutate the previous version
 2. New framework: pick a parent under `frameworks/` (federal / financial / management / privacy / compliance / sovereignty / critical_infrastructure / regulatory) and ship a `<framework>_main.rego` master
 3. Always update the consumer side: bumping a policy doesn't help anyone until the compliance repo's submodule pointer advances and the loader playbook references it
 

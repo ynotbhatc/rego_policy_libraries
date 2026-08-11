@@ -1,11 +1,11 @@
 # Rego Policy Libraries
 
-> **505 production-ready OPA policies** covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA instance.
+> **532 production-ready OPA policies** covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA instance.
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
 [![Rego](https://img.shields.io/badge/Rego-v1-green)](https://www.openpolicyagent.org/docs/latest/policy-language/)
-[![CIS RHEL 9](https://img.shields.io/badge/CIS%20RHEL%209-338%2F338%20(100%25)-brightgreen)](benchmarks/cis/os/linux/rhel_9/)
+[![CIS RHEL 9](https://img.shields.io/badge/CIS%20RHEL%209-v2.0.0%20%C2%B7%2017%20modules-brightgreen)](benchmarks/cis/rhel_9/)
 [![GitHub Stars](https://img.shields.io/github/stars/ynotbhatc/rego_policy_libraries?style=social)](https://github.com/ynotbhatc/rego_policy_libraries/stargazers)
 
 ---
@@ -18,7 +18,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 
 - Use **Rego v1 syntax** (`import rego.v1`) — no deprecation warnings, forward-compatible
 - Return **structured JSON reports** (compliant, score, violations list) — wire directly to dashboards or CI
-- Are **independently loadable** — use one framework or all 505 policies; no coupling
+- Are **independently loadable** — use one framework or all 532 policies; no coupling
 - Are **Apache 2.0 licensed** — use commercially without restriction
 
 > **Why not build your own?** You can — but CIS RHEL 9 alone has 338 controls across 14 sections. NERC-CIP covers 14 standards (CIP-002 through CIP-015) with 200+ requirements. IEC 62443 adds 51 System Requirements across 7 Foundational Requirements. Starting from scratch takes months. This library is that months-of-work already done.
@@ -29,15 +29,23 @@ This library gives you a **complete, working policy set on day one**, covering 2
 
 | Standard / Framework | Path | Controls / Requirements |
 |---------------------|------|------------------------|
-| **CIS RHEL 9 v2.0.0** | `benchmarks/cis/os/linux/rhel_9/` | **338/338 (100%)** ✅ |
-| CIS RHEL 8 | `benchmarks/cis/os/linux/rhel_8/` | Full |
-| CIS Ubuntu 22.04/24.04/20.04 | `benchmarks/cis/os/linux/ubuntu_*/` | Full |
-| CIS Windows Server 2019/2022 | `benchmarks/cis/os/windows/` | 9 sections |
+| **CIS RHEL 9 v2.0.0** | `benchmarks/cis/rhel_9/` | 17 modules · **224+ control IDs** ✅ |
+| CIS RHEL 8 | `benchmarks/cis/rhel_8/` | Full |
+| CIS RHEL 10 | `benchmarks/cis/rhel_10/` | Full |
+| CIS Ubuntu 22.04/24.04/20.04 | `benchmarks/cis/ubuntu_*/` | Full |
+| CIS Rocky Linux 8/9 | `benchmarks/cis/rocky_linux_*/` | Full |
+| CIS Debian 11 | `benchmarks/cis/debian_11/` | Full |
+| CIS Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
+| CIS Windows Server 2019/2022 | `benchmarks/cis/windows_server_2022_modular/` | 9 sections |
+| CIS Windows 10/11 | `benchmarks/cis/windows_10/` | Full |
+| CIS Microsoft 365 (SaaS) | `benchmarks/cis/saas/m365/` | Identity, Defender, Purview |
+| CIS PostgreSQL | `benchmarks/cis/postgresql/` | Full |
+| Network devices — VyOS, pfSense | `benchmarks/cis/network_devices/` | Full |
 | CIS AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
 | CIS Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
 | DISA STIG RHEL 8/9, Ubuntu, Windows, OpenShift 4, Kubernetes | `benchmarks/stig/` | Full |
-| NIST 800-53 rev5 | `frameworks/federal/nist_800_53/` | All control families |
-| NIST 800-82 (OT) | `frameworks/federal/nist_800_82/` | Full |
+| NIST 800-53 rev5 | `frameworks/federal/nist/sp_800_53/` | All control families |
+| NIST 800-82 (OT) | `frameworks/critical_infrastructure/nist_800_82/` | Full |
 | FISMA / FedRAMP / CMMC | `frameworks/federal/` | Full |
 | ISO 27001:2022 | `frameworks/management/iso27001/` | Full ISMS |
 | SOC 2 Type II | `frameworks/management/soc2/` | All TSCs |
@@ -49,7 +57,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 | IEC 62443 (all parts) | `frameworks/critical_infrastructure/iec_62443/` | 51 SRs, SL 1–4 |
 | NIST IR 7628 (AMI / Smart Grid) | `frameworks/critical_infrastructure/ami/` | Full |
 | DORA / NIS2 | `frameworks/regulatory/` | Full |
-| NCSC CAF 4.0 | `frameworks/management/ncsc_caf/` | 23 Cyber Outcomes |
+| NCSC CAF 4.0 | `frameworks/compliance/ncsc_caf/` | 23 Cyber Outcomes |
 | Digital Sovereignty | `frameworks/sovereignty/` | 7 domains |
 | **CSA CCM v4.0** | `frameworks/management/csa_ccm/` | 16 domains, 197 controls |
 | **ISO/IEC 27701:2019** | `frameworks/privacy/iso27701/` | PIMS, PII Controller, PII Processor, DSR |
@@ -63,13 +71,24 @@ This library gives you a **complete, working policy set on day one**, covering 2
 
 | Domain | Policies | Coverage |
 |--------|----------|----------|
-| **CIS Benchmarks + DISA STIGs** | 246 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network + RHEL 8/9 & Windows 2022 STIGs. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
-| **Regulatory Frameworks** | 186 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA |
-| **Enforcement** | 9 | Ansible, Terraform, Dockerfile, Kubernetes admission, Git approval/playbook docs, **CI/CD pipeline gating**, **SLSA supply-chain governance** |
+| **CIS Benchmarks + DISA STIGs** | 273 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network + RHEL 8/9 & Windows 2022 STIGs. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
+| **Regulatory Frameworks** | 225 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA |
+| **Enforcement** | 14 | Ansible, Terraform, Dockerfile, Kubernetes admission, Git approval/playbook docs, **CI/CD pipeline gating**, **SLSA supply-chain governance** |
 | **Governance** | 19 | AI agent authorization, MCP tool-call enforcement, GEISA (API/ADM/LEE/VEE), **EU AI Act (Regulation 2024/1689)** suite, **OIDC token validation**, **FinOps tagging** |
 | **Threat Detection** | 1 | Cryptocurrency miner detection |
 
-**Highlight:** CIS RHEL 9 v2.0.0 — **338/338 controls (100%)** across 14 modules.
+**Highlight:** CIS RHEL 9 v2.0.0 — **224+ distinct CIS control IDs** across 17 modules
+(14 core CIS sections plus 3 extended-hardening modules for STIG/NIST drift detection).
+
+> **On coverage numbers.** The control IDs above are counted from the violation messages
+> the modules actually emit, so the figure is reproducible from a clone:
+> ```bash
+> grep -rhoE 'CIS (L2 )?[0-9]+(\.[0-9]+)*' benchmarks/cis/rhel_9 --include='*.rego' \
+>   | sed -E 's/CIS L2 /CIS /' | sort -u | wc -l
+> ```
+> It is a **floor, not a ceiling** — a single rule often satisfies more than one CIS control,
+> so true coverage is higher. We publish the number we can prove rather than a headline
+> percentage we cannot.
 
 ---
 
@@ -80,7 +99,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 Pull the pre-built bundle directly from GitHub Container Registry — no clone needed:
 
 ```bash
-# Pull the full 505-policy bundle
+# Pull the full 532-policy bundle
 oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest
 
 # Start OPA with the bundle
@@ -106,7 +125,7 @@ cd rego_policy_libraries
 podman run -d --name opa -p 8181:8181 openpolicyagent/opa run --server --addr :8181
 
 # Load all CIS RHEL 9 policies
-for f in benchmarks/cis/os/linux/rhel_9/*.rego; do
+for f in benchmarks/cis/rhel_9/*.rego; do
   curl -s -X PUT --data-binary @"$f" \
     "http://localhost:8181/v1/policies/$(basename $f .rego)"
 done
@@ -125,8 +144,18 @@ curl -s -X POST http://localhost:8181/v1/data/cis_rhel9/compliance_assessment \
 rego_policy_libraries/
 ├── benchmarks/                  # Technical security baselines
 │   ├── cis/
-│   │   ├── os/linux/            # RHEL 8/9/10, Ubuntu 20/22/24, Debian, Rocky, Amazon Linux
-│   │   ├── os/windows/          # Windows Server 2016/2019/2022, Windows 10/11
+│   │   ├── rhel_8/ rhel_9/ rhel_10/
+│   │   ├── ubuntu_20_04/ ubuntu_22_04/ ubuntu_24_04/
+│   │   ├── debian_11/ rocky_linux_8/ rocky_linux_9/ amazon_linux_2023/
+│   │   ├── windows_server_2016/ windows_server_2019_modular/
+│   │   ├── windows_server_2022/ windows_server_2022_modular/
+│   │   ├── windows_10/ windows_11/
+│   │   ├── aws/ azure/ gcp/     # Cloud Foundations
+│   │   ├── docker/ kubernetes/  # Containers
+│   │   ├── postgresql/ databases/
+│   │   ├── saas/m365/           # SaaS (Microsoft 365)
+│   │   ├── network_devices/     # VyOS, pfSense
+│   │   ├── os/linux/            # legacy/simple RHEL 9 variants — superseded
 │   │   ├── cloud/               # AWS, Azure, GCP Foundations
 │   │   ├── containers/          # Docker, Kubernetes, OpenShift
 │   │   ├── databases/           # MySQL 8, Oracle 19c, PostgreSQL 13/14/15
@@ -170,14 +199,14 @@ rego_policy_libraries/
 
 | Platform | Path | Controls |
 |----------|------|----------|
-| **RHEL 9** | `benchmarks/cis/os/linux/rhel_9/` | **338/338 (100%)** ✅ |
-| RHEL 8 | `benchmarks/cis/os/linux/rhel_8/` | Full |
-| Ubuntu 22.04 | `benchmarks/cis/os/linux/ubuntu_22_04/` | Full |
-| Ubuntu 20.04 / 24.04 | `benchmarks/cis/os/linux/ubuntu_20_04/` | Full |
-| Debian 11 | `benchmarks/cis/os/linux/debian_11/` | Full |
-| Rocky Linux 8 / 9 | `benchmarks/cis/os/linux/rocky_linux_8/` | Full |
-| Amazon Linux 2023 | `benchmarks/cis/os/linux/amazon_linux_2023/` | Full |
-| Windows Server 2019/2022 | `benchmarks/cis/os/windows/` | Modular (9 sections) |
+| **RHEL 9** | `benchmarks/cis/rhel_9/` | 17 modules · **224+ control IDs** ✅ |
+| RHEL 8 | `benchmarks/cis/rhel_8/` | Full |
+| Ubuntu 22.04 | `benchmarks/cis/ubuntu_22_04/` | Full |
+| Ubuntu 20.04 / 24.04 | `benchmarks/cis/ubuntu_20_04/` | Full |
+| Debian 11 | `benchmarks/cis/debian_11/` | Full |
+| Rocky Linux 8 / 9 | `benchmarks/cis/rocky_linux_8/` | Full |
+| Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
+| Windows Server 2019/2022 | `benchmarks/cis/windows_server_2022_modular/` | Modular (9 sections) |
 | AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
 | Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
 | MySQL / Oracle / PostgreSQL | `benchmarks/cis/databases/` | Full |
@@ -242,13 +271,13 @@ Full library covering all active CIP standards (CIP-002 through CIP-015) in `fra
 
 ### Single policy
 ```bash
-curl -X PUT --data-binary @benchmarks/cis/os/linux/rhel_9/pam_validation.rego \
+curl -X PUT --data-binary @benchmarks/cis/rhel_9/pam_validation.rego \
   http://localhost:8181/v1/policies/cis_rhel9_pam
 ```
 
 ### All policies in a directory
 ```bash
-for f in benchmarks/cis/os/linux/rhel_9/*.rego; do
+for f in benchmarks/cis/rhel_9/*.rego; do
   curl -s -X PUT --data-binary @"$f" \
     "http://localhost:8181/v1/policies/$(basename $f .rego)"
 done
@@ -321,7 +350,9 @@ git add policies && git commit -m "Update policy library"
 
 ## Part of Ansible Automated Compliance (AAC)
 
-This library is the policy engine behind [AAC](https://github.com/ynotbhatc/compliance) — a compliance automation platform built on Ansible Automation Platform + OPA + PostgreSQL. AAC uses these policies to continuously assess infrastructure against CIS, NIST, SOC 2, PCI-DSS, and 30+ other frameworks, storing historical results for audit evidence.
+This library is the policy engine behind **AAC (Ansible Automated Compliance)** — a compliance
+automation platform built on Ansible Automation Platform + OPA + PostgreSQL. (The AAC
+orchestration repository is private; this policy library is the open component.) AAC uses these policies to continuously assess infrastructure against CIS, NIST, SOC 2, PCI-DSS, and 30+ other frameworks, storing historical results for audit evidence.
 
 ---
 
