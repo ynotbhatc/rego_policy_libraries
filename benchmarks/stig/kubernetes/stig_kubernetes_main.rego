@@ -10,17 +10,92 @@
 
 package stig_kubernetes.main
 
-import rego.v1
 import data.stig.kubernetes
+import rego.v1
+
+# ---------------------------------------------------------------------------
+# FAIL-CLOSED GATE
+#
+# The STIG rules are written as "finding is open if the fact says X". With NO
+# facts, nothing iterates, no finding opens, and the benchmark reports a near
+# pass for an assessment that evaluated nothing. Measured on empty input before
+# this gate: stig_kubernetes reported 86% with 25 of 29 controls "passed" — the
+# 4 open findings come from rules that fire on absent keys, so the boolean
+# `compliant` was false while the score was still meaningless.
+#
+# A false 86% is written to compliance_results as a real row and reads as a
+# nearly-clean cluster. See the companion gate in stig_openshift_4_main.rego,
+# which reported a full 100% pass on the same empty input.
+#
+# A missing-facts assessment is now reported as fully non-compliant with an
+# explicit finding, never as a partial pass.
+#
+# LIMITATION: this gate detects a completely EMPTY input, not a partial one.
+# An input carrying one irrelevant key still evaluates normally, so sparse or
+# wrong-shaped facts can still under-report findings.
+# ---------------------------------------------------------------------------
+
+default _facts_supplied := false
+
+_facts_supplied if count(object.keys(input)) > 0
+
+_no_facts_finding := {
+	"rule_title": "FAIL-CLOSED: no facts supplied for stig_kubernetes — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
+	"severity": "CAT I",
+	"status": "open",
+}
+
+default _upstream := {}
+
+_upstream := kubernetes.compliance_report
+
+default _total_controls := 0
+
+_total_controls := _upstream.total_controls
+
+default _upstream_open := []
+
+_upstream_open := [f | some f in _upstream.open_findings]
+
+_open_findings := array.concat(_upstream_open, [_no_facts_finding]) if not _facts_supplied
+
+_open_findings := _upstream_open if _facts_supplied
+
+# No facts => every control is unverified, which counts as failed, not passed.
+_failed := _total_controls if not _facts_supplied
+
+_failed := count(_upstream_open) if _facts_supplied
+
+_passed := 0 if not _facts_supplied
+
+_passed := max([0, _total_controls - _failed]) if _facts_supplied
+
+default _percentage := 0
+
+_percentage := round((_passed * 100) / _total_controls) if _total_controls > 0
+
+default _compliant := false
+
+_compliant if {
+	_facts_supplied
+	count(_open_findings) == 0
+}
 
 # Upstream report uses "open_findings"; the generic playbook contract expects
 # "violations". Merge a violations alias into the report so callers can use
-# either name. Use object.union so existing keys (open_findings, etc.) survive.
-compliance_report := object.union(kubernetes.compliance_report, {
-    "violations":      kubernetes.compliance_report.open_findings,
-    "violation_count": count(kubernetes.compliance_report.open_findings),
+# either name. Use object.union so existing keys (all_findings, category
+# breakdown, version) survive; the gated values override the upstream ones.
+compliance_report := object.union(_upstream, {
+	"compliant": _compliant,
+	"passed_controls": _passed,
+	"failed_controls": _failed,
+	"compliance_percentage": _percentage,
+	"open_findings": _open_findings,
+	"violations": _open_findings,
+	"violation_count": count(_open_findings),
+	"facts_supplied": _facts_supplied,
 })
 
-compliant := kubernetes.compliance_report.compliant
+compliant := _compliant
 
-violations := kubernetes.compliance_report.open_findings
+violations := _open_findings
