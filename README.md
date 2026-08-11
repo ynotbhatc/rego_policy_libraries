@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> **532 production-ready OPA policies** covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA instance.
+> **545 production-ready OPA policies** covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA instance.
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
@@ -18,7 +18,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 
 - Use **Rego v1 syntax** (`import rego.v1`) — no deprecation warnings, forward-compatible
 - Return **structured JSON reports** (compliant, score, violations list) — wire directly to dashboards or CI
-- Are **independently loadable** — use one framework or all 532 policies; no coupling
+- Are **independently loadable** — use one framework or all 545 policies; no coupling
 - Are **Apache 2.0 licensed** — use commercially without restriction
 
 > **Why not build your own?** You can — but CIS RHEL 9 alone has 338 controls across 14 sections. NERC-CIP covers 14 standards (CIP-002 through CIP-015) with 200+ requirements. IEC 62443 adds 51 System Requirements across 7 Foundational Requirements. Starting from scratch takes months. This library is that months-of-work already done.
@@ -64,6 +64,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 | **NIST SP 800-171 Rev 3** | `frameworks/federal/nist/sp_800_171/` | 14 families, 110 CUI requirements |
 | **CCPA / CPRA** | `frameworks/privacy/ccpa/` | Consumer rights, sensitive PI, data practices |
 | **EU AI Act (2024/1689)** | `governance/eu_ai_act/` | Prohibited, High-Risk, Transparency, GPAI, Governance |
+| **TSA Pipeline Security Directives** | `frameworks/critical_infrastructure/tsa_pipeline/` | SD Pipeline-2021-01G + 02G, 12 sections, 112 requirements |
 
 ---
 
@@ -72,7 +73,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 | Domain | Policies | Coverage |
 |--------|----------|----------|
 | **CIS Benchmarks + DISA STIGs** | 273 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network + RHEL 8/9 & Windows 2022 STIGs. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
-| **Regulatory Frameworks** | 225 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA |
+| **Regulatory Frameworks** | 238 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA |
 | **Enforcement** | 14 | Ansible, Terraform, Dockerfile, Kubernetes admission, Git approval/playbook docs, **CI/CD pipeline gating**, **SLSA supply-chain governance** |
 | **Governance** | 19 | AI agent authorization, MCP tool-call enforcement, GEISA (API/ADM/LEE/VEE), **EU AI Act (Regulation 2024/1689)** suite, **OIDC token validation**, **FinOps tagging** |
 | **Threat Detection** | 1 | Cryptocurrency miner detection |
@@ -99,7 +100,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 Pull the pre-built bundle directly from GitHub Container Registry — no clone needed:
 
 ```bash
-# Pull the full 532-policy bundle
+# Pull the full 545-policy bundle
 oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest
 
 # Start OPA with the bundle
@@ -169,7 +170,8 @@ rego_policy_libraries/
 │   ├── financial/               # PCI-DSS, SOX, SWIFT CSP, NY DFS, SEC Cyber
 │   ├── privacy/                 # GDPR, HIPAA, HITRUST, CFR Part 11, TISAX
 │   ├── regulatory/              # DORA, NIS2
-│   ├── critical_infrastructure/ # NERC-CIP (CIP-002–CIP-015), IEC 62443, NIST IR 7628
+│   ├── critical_infrastructure/ # NERC-CIP (CIP-002–CIP-015), IEC 62443, NIST IR 7628,
+│   │                            # NIST 800-82, TSA Pipeline Security Directives
 │   └── sovereignty/             # Digital Sovereignty (7 domains)
 │
 ├── enforcement/                 # Gate-style policy enforcement
@@ -254,6 +256,47 @@ Full library for IEC 62443 Industrial Automation and Control Systems (IACS) Secu
   }
 }
 ```
+
+---
+
+## TSA Pipeline Security Directives Coverage
+
+Both currently-effective TSA pipeline cybersecurity directives, in
+`frameworks/critical_infrastructure/tsa_pipeline/` — 12 section modules plus an
+orchestrator, covering 112 directive subparagraphs.
+
+| Directive | Effective | Sections covered |
+|---|---|---|
+| **SD Pipeline-2021-01G** — *Enhancing Pipeline Cybersecurity* | 2026-01-16 → 2027-01-15 | II.B Cybersecurity Coordinator · II.C Incident reporting to CISA · II.D Vulnerability assessment |
+| **SD Pipeline-2021-02G** — *Pipeline Cybersecurity Mitigation Actions, Contingency Planning, and Testing* | 2026-05-03 → 2027-05-02 | II.A/III.A Critical Cyber Systems · II.B/VI Implementation Plan + amendments · III.B Network segmentation · III.C Access control · III.D Continuous monitoring · III.E Patch management · III.F Incident Response Plan · III.G Assessment Plan · IV/V Records + SSI |
+
+**OPA endpoint:** `POST /v1/data/tsa_pipeline/main/compliance_report`
+
+The directives are largely deadline-driven, and the deadlines are what these
+policies assert — each is pinned by a test in
+`tests/test_tsa_pipeline_deadlines.rego`:
+
+| Clock | Directive |
+|---|---|
+| 72 hours — report incident to CISA | SD-01G II.C.3 |
+| 24 hours — supplemental information | SD-01G II.C.5.f |
+| 7 days — Coordinator info change | SD-01G II.B.1.e |
+| 60 days — "no Critical Cyber Systems" notice | SD-02G II.A.5 |
+| 45 / 50 / 30 days — permanent change · amendment filing · reconsideration petition | SD-02G VI.C / VI.D / VI.F |
+| 12 months, ≥ 2 objectives — Incident Response Plan exercise | SD-02G III.F.1.e |
+| 24 months — cybersecurity architecture design review | SD-02G III.G.2.b |
+| ⅓ per year, 100% over 3 years — assessment coverage | SD-02G III.G.2.d |
+| 12 months — Assessment Plan and report submission | SD-02G III.G.3–4 |
+| 24 hours — maximum packet capture period | SD-02G IV.C.2.e.ii |
+
+> **No fact source exists yet.** Both directives are overwhelmingly plan-,
+> attestation-, and recordkeeping-driven ("is there a TSA-approved Cybersecurity
+> Implementation Plan", "was the Assessment Plan submitted within 12 months").
+> None of that comes from host fact-gathering, and nothing currently emits the
+> `input` documented in each module header. On absent input this framework
+> reports **fully non-compliant across all 12 sections** — correct fail-closed
+> behavior for an audit framework, but not a working assessment until an
+> attestation intake or GRC export is wired up. Don't demo it as one.
 
 ---
 

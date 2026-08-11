@@ -42,7 +42,7 @@ frameworks/                    Regulatory + management frameworks
 ├── privacy/                   GDPR, HIPAA, ISO 27701, CCPA
 ├── compliance/                NCSC CAF, NIS2
 ├── critical_infrastructure/   NERC-CIP, AMI/NIST IR 7628, IEC 62443,
-│                              NIST 800-82
+│                              NIST 800-82, TSA Pipeline Security Directives
 ├── regulatory/                CFR Part 11
 └── sovereignty/               Digital Sovereignty
 
@@ -69,7 +69,7 @@ threat_detection/              Behavioral threat patterns
 └── crypto_mining/             Crypto-miner indicators
 ```
 
-Headline count: **532 policy files** (613 including tests) across the above directories.
+Headline count: **545 policy files** (628 including tests) across the above directories.
 Count it, never quote it — `git ls-tree -r HEAD --name-only | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'` — the number drifts with every merge.
 
 ## Skill: Rego v1 syntax (MANDATORY)
