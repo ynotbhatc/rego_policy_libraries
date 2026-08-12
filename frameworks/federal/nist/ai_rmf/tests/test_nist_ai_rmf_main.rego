@@ -1,7 +1,7 @@
-package nist_ai_rmf.main_test
+package nist.ai_rmf.main_test
 
 import rego.v1
-import data.nist_ai_rmf.main
+import data.nist.ai_rmf.main
 
 test_compliance_report_defined_on_empty_input if {
     r := main.compliance_report with input as {}

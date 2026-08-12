@@ -8,7 +8,7 @@
 # routing (`framework: stig_kubernetes` → URL `/v1/data/stig_kubernetes/main`)
 # resolves cleanly without renaming the canonical package.
 
-package stig_kubernetes.main
+package stig.kubernetes.main
 
 import data.stig.kubernetes
 import rego.v1
@@ -23,7 +23,7 @@ import rego.v1
 # 4 open findings come from rules that fire on absent keys, so the boolean
 # `compliant` was false while the score was still meaningless.
 #
-# A false 86% is written to compliance_results as a real row and reads as a
+# A false 86% is written to a downstream results store as a real row and reads as a
 # nearly-clean cluster. See the companion gate in stig_openshift_4_main.rego,
 # which reported a full 100% pass on the same empty input.
 #
@@ -40,7 +40,7 @@ default _facts_supplied := false
 _facts_supplied if count(object.keys(input)) > 0
 
 _no_facts_finding := {
-	"rule_title": "FAIL-CLOSED: no facts supplied for stig_kubernetes — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
+	"rule_title": "FAIL-CLOSED: no facts supplied for stig.kubernetes — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
 	"severity": "CAT I",
 	"status": "open",
 }

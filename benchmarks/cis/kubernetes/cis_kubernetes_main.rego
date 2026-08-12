@@ -28,7 +28,7 @@ _compliant := bench.compliant
 # Measured on empty input before this gate: cis_rhel10 99.0%, cis_azure 99.2%,
 # cis_docker 99.1%, cis_kubernetes 99.2%, cis_aws 97.1%, cis_rhel9 71.9%.
 #
-# Two historical rows in compliance_results for cis_rhel10 carry exactly the
+# Two historical rows in a downstream results store for cis_rhel10 carry exactly the
 # empty-input signature (312/309/3 @ 99.04%) — this already reached the
 # database.
 #

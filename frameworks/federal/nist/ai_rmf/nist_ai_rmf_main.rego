@@ -1,4 +1,4 @@
-package nist_ai_rmf.main
+package nist.ai_rmf.main
 
 import rego.v1
 import data.nist.ai_rmf as ai

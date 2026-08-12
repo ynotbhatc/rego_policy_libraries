@@ -1,6 +1,8 @@
 # Rego Policy Libraries
 
-> **545 production-ready OPA policies** covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA instance.
+> **545 production-ready Rego policies** for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
+>
+> Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
@@ -19,6 +21,9 @@ This library gives you a **complete, working policy set on day one**, covering 2
 - Use **Rego v1 syntax** (`import rego.v1`) — no deprecation warnings, forward-compatible
 - Return **structured JSON reports** (compliant, score, violations list) — wire directly to dashboards or CI
 - Are **independently loadable** — use one framework or all 545 policies; no coupling
+- Expose a **uniform entrypoint** — `data.<package>.main.compliance_report` for every framework, so you can evaluate one by name without learning its internal layout
+- **Fail closed** — a framework given no facts reports non-compliant with an explicit reason, never a silent pass (see below)
+- Are **vendor-neutral** — no orchestrator, deployment topology, or caller vocabulary baked in
 - Are **Apache 2.0 licensed** — use commercially without restriction
 
 > **Why not build your own?** You can — but CIS RHEL 9 alone has 338 controls across 14 sections. NERC-CIP covers 14 standards (CIP-002 through CIP-015) with 200+ requirements. IEC 62443 adds 51 System Requirements across 7 Foundational Requirements. Starting from scratch takes months. This library is that months-of-work already done.
@@ -131,11 +136,15 @@ for f in benchmarks/cis/rhel_9/*.rego; do
     "http://localhost:8181/v1/policies/$(basename $f .rego)"
 done
 
-# Evaluate against your system facts
-curl -s -X POST http://localhost:8181/v1/data/cis_rhel9/compliance_assessment \
+# Evaluate against your system facts — uniform entrypoint, same for every framework
+curl -s -X POST http://localhost:8181/v1/data/cis_rhel9/main/compliance_report \
   -H 'Content-Type: application/json' \
   -d '{"input": {"os_family": "RedHat", ...}}'
 ```
+
+> Query with **no** input and you get `compliant: false` with an explicit
+> `FAIL-CLOSED` violation — not a 100% pass. That is deliberate; see
+> [Framework entrypoints](#framework-entrypoints).
 
 ---
 
@@ -326,25 +335,84 @@ for f in benchmarks/cis/rhel_9/*.rego; do
 done
 ```
 
-### Recommended 3-container pattern (domain isolation)
+### Optional: splitting by domain
+
+A single OPA instance serves this entire library comfortably — start there. If you later want
+blast-radius or access isolation between domains, you can run several instances and load a
+subtree into each:
+
 ```bash
-# Security benchmarks (CIS, NIST, DISA STIGs)
-podman run -d --name opa-security -p 8181:8181 openpolicyagent/opa run --server --addr :8181
-
-# Regulatory frameworks (ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, GDPR, HIPAA)
-podman run -d --name opa-compliance -p 8182:8182 openpolicyagent/opa run --server --addr :8182
-
-# OT / Critical infrastructure (NERC-CIP, IEC 62443, NIST IR 7628, AMI)
-podman run -d --name opa-ot -p 8183:8183 openpolicyagent/opa run --server --addr :8183
+# e.g. one instance per domain, each on its own port
+podman run -d --name opa-benchmarks  -p 8181:8181 openpolicyagent/opa run --server --addr :8181
+podman run -d --name opa-frameworks  -p 8182:8181 openpolicyagent/opa run --server --addr :8181
+podman run -d --name opa-governance  -p 8183:8181 openpolicyagent/opa run --server --addr :8181
 ```
 
-Load `benchmarks/` into `:8181`, `frameworks/` (minus critical_infrastructure) into `:8182`, `frameworks/critical_infrastructure/` + `governance/` into `:8183`.
+Then load `benchmarks/` into the first, `frameworks/` into the second, and
+`governance/` + `enforcement/` into the third.
+
+The split is entirely your choice — the policies neither know nor care which instance they
+are loaded into, and no policy references another instance. Pick whatever grouping matches
+how you want to control access; there is nothing special about the one above.
+
+---
+
+## Framework entrypoints
+
+Every framework exposes a uniform entrypoint:
+
+```
+data.<package>.main.compliance_report
+```
+
+so you can evaluate any framework by name without learning how its modules are organised
+internally. Some frameworks are a single module, others aggregate a dozen; the entrypoint
+looks the same either way.
+
+**Entrypoints are named after the package that holds the policy** — never after a caller's
+own vocabulary. If your system spells a framework differently (`cis_ubuntu_2204` where this
+library says `cis_ubuntu_22_04`), write a thin alias on your side:
+
+```rego
+package cis_ubuntu_2204.main
+
+import rego.v1
+
+compliance_report := data.cis_ubuntu_22_04.main.compliance_report
+```
+
+Keeping that translation in your repo is what lets this one stay generic.
+
+### Fail closed
+
+Most controls are phrased *"violate if the fact says X"*. Given **no facts**, nothing
+iterates, nothing violates — and a naive report would announce near-total compliance for an
+assessment that measured nothing. That result is indistinguishable from a genuinely clean
+system, and it is exactly the kind of thing that quietly lands in an audit record.
+
+Every entrypoint therefore gates on whether facts were supplied at all:
+
+| input | result |
+|---|---|
+| no facts | `compliant: false`, 0%, all controls counted failed, explicit `FAIL-CLOSED` violation |
+| real facts | normal assessment; the gate is transparent |
+
+```bash
+opa eval -d . -f pretty 'data.cis_rhel9.main.compliance_report'
+# compliant: false, compliance_percentage: 0, violations: ["FAIL-CLOSED: no facts supplied ..."]
+```
+
+An empty report is never a passing report. **Limitation:** the gate detects a completely
+empty input, not a partial one — sparse or wrong-shaped facts still evaluate normally and can
+under-report violations.
 
 ---
 
 ## Input / Output Contract
 
-Each policy exposes a `compliance_assessment` rule that accepts system facts as input and returns a structured report:
+Each framework's entrypoint accepts system facts as input and returns a structured report.
+Individual modules additionally expose their own `compliance_assessment` / `compliance_report`
+rules if you want a single section rather than the whole framework:
 
 ```json
 {
@@ -386,16 +454,34 @@ git add policies && git commit -m "Update policy library"
 
 ## Requirements
 
-- [Open Policy Agent](https://www.openpolicyagent.org/) v0.60+
+- [Open Policy Agent](https://www.openpolicyagent.org/) v0.60+, or
+  [Enterprise OPA (EOPA)](https://www.styra.com/enterprise-opa/) — the policies use only
+  standard Rego and built-ins, so either runtime works
 - All policies use `import rego.v1` (Rego v1 syntax)
+- Continuously tested against OPA v0.68 in CI and OPA v1.x locally
+- No other dependencies — no sidecar, no data documents, no external services. Policies are
+  pure functions of their input and perform no I/O (no `http.send`).
 
 ---
 
-## Part of Ansible Automated Compliance (AAC)
+## Consumers
 
-This library is the policy engine behind **AAC (Ansible Automated Compliance)** — a compliance
-automation platform built on Ansible Automation Platform + OPA + PostgreSQL. (The AAC
-orchestration repository is private; this policy library is the open component.) AAC uses these policies to continuously assess infrastructure against CIS, NIST, SOC 2, PCI-DSS, and 30+ other frameworks, storing historical results for audit evidence.
+This library is standalone. It has no opinion about who calls it, how facts are gathered, or
+where results are stored — it is a tree of `.rego` files and their tests, and nothing else.
+
+Anything specific to a particular caller — framework-key naming, routing tables, result
+schemas, fact collection — belongs in that caller, not here. If you find something in this
+repo that only makes sense for one consumer, that is a bug worth reporting.
+
+**Known consumers:**
+
+- **AAC (Ansible Automated Compliance)** — a compliance automation platform on Ansible
+  Automation Platform + OPA + PostgreSQL. It consumes this library as a git submodule and
+  keeps its own key-translation aliases and routing config on its side. (The orchestration
+  repo is private; this policy library is the open component.)
+
+Using it somewhere else? Open an issue — the goal is that nothing in here requires knowing
+about any of the above.
 
 ---
 

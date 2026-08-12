@@ -26,15 +26,15 @@ test_rocky9_report_populated if { count(data.cis_rocky_linux_9.main.compliance_r
 
 test_amazon2023_report_populated if { count(data.cis_amazon_linux_2023.main.compliance_report) > 0 }
 
-test_windows2022_report_populated if { count(data.cis_windows_2022.main.compliance_report) > 0 }
+test_windows2022_report_populated if { count(data.cis_windows_server_2022.main.compliance_report) > 0 }
 
-test_windows2019_report_populated if { count(data.cis_windows_2019.main.compliance_report) > 0 }
+test_windows2019_report_populated if { count(data.cis_windows_server_2019.main.compliance_report) > 0 }
 
-test_ubuntu2204_report_populated if { count(data.cis_ubuntu_2204.main.compliance_report) > 0 }
+test_ubuntu2204_report_populated if { count(data.cis_ubuntu_22_04.main.compliance_report) > 0 }
 
-test_ubuntu2004_report_populated if { count(data.cis_ubuntu_2004.main.compliance_report) > 0 }
+test_ubuntu2004_report_populated if { count(data.cis_ubuntu_20_04.main.compliance_report) > 0 }
 
-test_ubuntu2404_report_populated if { count(data.cis_ubuntu_2404.main.compliance_report) > 0 }
+test_ubuntu2404_report_populated if { count(data.cis_ubuntu_24_04.main.compliance_report) > 0 }
 
 test_debian11_report_populated if { count(data.cis_debian_11.main.compliance_report) > 0 }
 
@@ -52,11 +52,11 @@ reports := [
 	data.cis_rocky_linux_8.main.compliance_report,
 	data.cis_rocky_linux_9.main.compliance_report,
 	data.cis_amazon_linux_2023.main.compliance_report,
-	data.cis_windows_2022.main.compliance_report,
-	data.cis_windows_2019.main.compliance_report,
-	data.cis_ubuntu_2204.main.compliance_report,
-	data.cis_ubuntu_2004.main.compliance_report,
-	data.cis_ubuntu_2404.main.compliance_report,
+	data.cis_windows_server_2022.main.compliance_report,
+	data.cis_windows_server_2019.main.compliance_report,
+	data.cis_ubuntu_22_04.main.compliance_report,
+	data.cis_ubuntu_20_04.main.compliance_report,
+	data.cis_ubuntu_24_04.main.compliance_report,
 	data.cis_debian_11.main.compliance_report,
 	data.cis_vyos.main.compliance_report,
 	data.cis_pfsense.main.compliance_report,
@@ -110,7 +110,7 @@ test_amazon2023_detects_violations_on_empty_input if {
 derived_reports := [
 	data.cis_debian_11.main.compliance_report,
 	data.cis_rocky_linux_9.main.compliance_report,
-	data.cis_ubuntu_2404.main.compliance_report,
+	data.cis_ubuntu_24_04.main.compliance_report,
 ]
 
 test_derived_sets_are_flagged if {
@@ -125,7 +125,7 @@ test_derived_sets_are_flagged if {
 test_derived_sets_do_not_claim_own_benchmark if {
 	not contains(data.cis_debian_11.main.compliance_report.benchmark, "CIS Debian")
 	not contains(data.cis_rocky_linux_9.main.compliance_report.benchmark, "CIS Rocky Linux 9")
-	not contains(data.cis_ubuntu_2404.main.compliance_report.benchmark, "CIS Ubuntu Linux 24.04")
+	not contains(data.cis_ubuntu_24_04.main.compliance_report.benchmark, "CIS Ubuntu Linux 24.04")
 }
 
 # --- fail-closed on missing facts -------------------------------------------
@@ -142,7 +142,7 @@ gated_reports := array.concat(reports, [
 	data.cis_azure.main.compliance_report,
 	data.cis_docker.main.compliance_report,
 	data.cis_kubernetes.main.compliance_report,
-	data.cis_rhel10.main.compliance_report,
+	data.cis.rhel_10.main.compliance_report,
 ])
 
 test_empty_input_reports_zero_percent if {

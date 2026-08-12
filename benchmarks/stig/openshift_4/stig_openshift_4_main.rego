@@ -8,7 +8,7 @@
 # routing (`framework: stig_openshift_4` → URL `/v1/data/stig_openshift_4/main`)
 # resolves cleanly without renaming the canonical package.
 
-package stig_openshift_4.main
+package stig.openshift_4.main
 
 import data.stig.openshift_4
 import rego.v1
@@ -24,7 +24,7 @@ import rego.v1
 #
 # That is the same empty-input signature the CIS bridges were gated against in
 # #52 — and unlike a report that collapses to {} (which the playbook now fails
-# on), a bogus PASS is written to compliance_results as a green row. It is the
+# on), a bogus PASS is written to a downstream results store as a green row. It is the
 # more dangerous of the two failure modes, which is why it is fixed first.
 #
 # A missing-facts assessment is now reported as fully non-compliant with an
@@ -40,7 +40,7 @@ default _facts_supplied := false
 _facts_supplied if count(object.keys(input)) > 0
 
 _no_facts_finding := {
-	"rule_title": "FAIL-CLOSED: no facts supplied for stig_openshift_4 — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
+	"rule_title": "FAIL-CLOSED: no facts supplied for stig.openshift_4 — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
 	"severity": "CAT I",
 	"status": "open",
 }

@@ -1,10 +1,10 @@
-package stig_kubernetes.main_test
+package stig.kubernetes.main_test
 
-import data.stig_kubernetes.main
+import data.stig.kubernetes.main
 import rego.v1
 
 # Phase 1 contract smoke test: the live orchestrator endpoint
-# (data.stig_kubernetes.main.compliance_report) must return a well-formed
+# (data.stig.kubernetes.main.compliance_report) must return a well-formed
 # object on empty input, never collapse to undefined.
 test_report_wellformed_on_empty_input if {
 	report := main.compliance_report with input as {}
@@ -30,7 +30,7 @@ test_fails_closed_on_empty_input if {
 test_no_facts_finding_is_explicit if {
 	report := main.compliance_report with input as {}
 	some f in report.violations
-	contains(f.rule_title, "FAIL-CLOSED: no facts supplied for stig_kubernetes")
+	contains(f.rule_title, "FAIL-CLOSED: no facts supplied for stig.kubernetes")
 }
 
 # The gate must be transparent once real facts arrive — a genuine assessment
