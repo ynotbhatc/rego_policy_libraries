@@ -1,0 +1,2681 @@
+{
+  "benchmark": "CIS Microsoft 365 Foundations Benchmark",
+  "version": "7.0.0",
+  "released": "2026-05-20",
+  "source": "official CIS PDF (Appendix summary table + Recommendations body)",
+  "sections": {
+    "1": "Microsoft 365 admin center",
+    "2": "Microsoft Defender",
+    "3": "Microsoft Purview",
+    "4": "Microsoft Intune admin center",
+    "5": "Microsoft Entra admin center",
+    "6": "Exchange admin center",
+    "7": "SharePoint admin center",
+    "8": "Microsoft Teams admin center",
+    "9": "Microsoft Fabric"
+  },
+  "total_recommendations": 160,
+  "form": "keyword-digest (no verbatim CIS titles)",
+  "recommendations": [
+    {
+      "control_id": "1.1.1",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "accounts",
+        "administrative",
+        "cloud"
+      ]
+    },
+    {
+      "control_id": "1.1.2",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "access",
+        "accounts",
+        "defined",
+        "emergency",
+        "two"
+      ]
+    },
+    {
+      "control_id": "1.1.3",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "admins",
+        "between",
+        "designated",
+        "four",
+        "global",
+        "two"
+      ]
+    },
+    {
+      "control_id": "1.1.4",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "accounts",
+        "administrative",
+        "application",
+        "footprint",
+        "licenses",
+        "reduced"
+      ]
+    },
+    {
+      "control_id": "1.2.1",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "approved",
+        "exist",
+        "groups",
+        "managed",
+        "organizationally",
+        "public"
+      ]
+    },
+    {
+      "control_id": "1.2.2",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "blocked",
+        "mailboxes",
+        "shared",
+        "sign"
+      ]
+    },
+    {
+      "control_id": "1.3.1",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'password",
+        "'set",
+        "expiration",
+        "expire",
+        "never",
+        "passwords",
+        "policy'",
+        "recommended"
+      ]
+    },
+    {
+      "control_id": "1.3.2",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "'idle",
+        "devices",
+        "hours",
+        "less",
+        "session",
+        "timeout'",
+        "unmanaged"
+      ]
+    },
+    {
+      "control_id": "1.3.3",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "'external",
+        "available",
+        "calendars",
+        "sharing'"
+      ]
+    },
+    {
+      "control_id": "1.3.4",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'user",
+        "apps",
+        "owned",
+        "services'"
+      ]
+    },
+    {
+      "control_id": "1.3.5",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "forms",
+        "internal",
+        "phishing",
+        "protection"
+      ]
+    },
+    {
+      "control_id": "1.3.6",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "customer",
+        "feature",
+        "lockbox"
+      ]
+    },
+    {
+      "control_id": "1.3.7",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "'microsoft",
+        "'third",
+        "365",
+        "party",
+        "services'",
+        "storage",
+        "web'"
+      ]
+    },
+    {
+      "control_id": "1.3.8",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "cannot",
+        "organization",
+        "outside",
+        "people",
+        "shared",
+        "sways",
+        "your"
+      ]
+    },
+    {
+      "control_id": "1.3.9",
+      "section": 1,
+      "section_name": "Microsoft 365 admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "bookings",
+        "pages",
+        "select",
+        "shared",
+        "users"
+      ]
+    },
+    {
+      "control_id": "2.1.1",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "applications",
+        "links",
+        "office",
+        "safe"
+      ]
+    },
+    {
+      "control_id": "2.1.2",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "attachment",
+        "common",
+        "filter",
+        "types"
+      ]
+    },
+    {
+      "control_id": "2.1.3",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "internal",
+        "malware",
+        "notifications",
+        "sending",
+        "users"
+      ]
+    },
+    {
+      "control_id": "2.1.4",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "attachments",
+        "safe"
+      ]
+    },
+    {
+      "control_id": "2.1.5",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "attachments",
+        "microsoft",
+        "onedrive",
+        "safe",
+        "sharepoint",
+        "teams"
+      ]
+    },
+    {
+      "control_id": "2.1.6",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "administrators",
+        "exchange",
+        "notify",
+        "online",
+        "spam"
+      ]
+    },
+    {
+      "control_id": "2.1.7",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "anti",
+        "created",
+        "phishing"
+      ]
+    },
+    {
+      "control_id": "2.1.8",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "domains",
+        "exchange",
+        "published",
+        "records",
+        "spf"
+      ]
+    },
+    {
+      "control_id": "2.1.9",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "dkim",
+        "domains",
+        "exchange",
+        "online"
+      ]
+    },
+    {
+      "control_id": "2.1.10",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "dmarc",
+        "domains",
+        "exchange",
+        "online",
+        "published",
+        "records"
+      ]
+    },
+    {
+      "control_id": "2.1.11",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "applied",
+        "attachment",
+        "comprehensive",
+        "filtering"
+      ]
+    },
+    {
+      "control_id": "2.1.12",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "connection",
+        "filter",
+        "list"
+      ]
+    },
+    {
+      "control_id": "2.1.13",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "connection",
+        "filter",
+        "list",
+        "safe"
+      ]
+    },
+    {
+      "control_id": "2.1.14",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "anti",
+        "contain",
+        "domains",
+        "inbound",
+        "spam"
+      ]
+    },
+    {
+      "control_id": "2.1.15",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "anti",
+        "limits",
+        "message",
+        "outbound",
+        "place",
+        "spam"
+      ]
+    },
+    {
+      "control_id": "2.2.1",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Manual",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "access",
+        "account",
+        "activity",
+        "emergency",
+        "monitored"
+      ]
+    },
+    {
+      "control_id": "2.4.1",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "account",
+        "priority",
+        "protection"
+      ]
+    },
+    {
+      "control_id": "2.4.2",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'strict",
+        "accounts",
+        "applied",
+        "presets",
+        "priority",
+        "protection'"
+      ]
+    },
+    {
+      "control_id": "2.4.3",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Manual",
+      "levels": [
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "apps",
+        "cloud",
+        "defender",
+        "microsoft"
+      ]
+    },
+    {
+      "control_id": "2.4.4",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "auto",
+        "hour",
+        "microsoft",
+        "purge",
+        "teams",
+        "zero"
+      ]
+    },
+    {
+      "control_id": "2.4.5",
+      "section": 2,
+      "section_name": "Microsoft Defender",
+      "assessment": "Manual",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'air'",
+        "remediation"
+      ]
+    },
+    {
+      "control_id": "3.1.1",
+      "section": 3,
+      "section_name": "Microsoft Purview",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "365",
+        "audit",
+        "log",
+        "microsoft",
+        "search"
+      ]
+    },
+    {
+      "control_id": "3.2.1",
+      "section": 3,
+      "section_name": "Microsoft Purview",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "dlp"
+      ]
+    },
+    {
+      "control_id": "3.2.2",
+      "section": 3,
+      "section_name": "Microsoft Purview",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "dlp",
+        "microsoft",
+        "teams"
+      ]
+    },
+    {
+      "control_id": "3.2.3",
+      "section": 3,
+      "section_name": "Microsoft Purview",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "copilot",
+        "dlp",
+        "published",
+        "users"
+      ]
+    },
+    {
+      "control_id": "3.3.1",
+      "section": 3,
+      "section_name": "Microsoft Purview",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "information",
+        "label",
+        "protection",
+        "published",
+        "sensitivity"
+      ]
+    },
+    {
+      "control_id": "4.1",
+      "section": 4,
+      "section_name": "Microsoft Intune admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'not",
+        "compliance",
+        "compliant'",
+        "devices",
+        "marked",
+        "without"
+      ]
+    },
+    {
+      "control_id": "4.2",
+      "section": 4,
+      "section_name": "Microsoft Intune admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "blocked",
+        "device",
+        "devices",
+        "enrollment",
+        "owned",
+        "personally"
+      ]
+    },
+    {
+      "control_id": "5.1.2.1",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'per",
+        "mfa'",
+        "user"
+      ]
+    },
+    {
+      "control_id": "5.1.2.2",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "applications",
+        "cannot",
+        "register",
+        "users"
+      ]
+    },
+    {
+      "control_id": "5.1.2.3",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'restrict",
+        "'yes'",
+        "admin",
+        "creating",
+        "non",
+        "tenants'",
+        "users"
+      ]
+    },
+    {
+      "control_id": "5.1.2.4",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "access",
+        "admin",
+        "center",
+        "entra"
+      ]
+    },
+    {
+      "control_id": "5.1.2.5",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "hidden",
+        "option",
+        "remain",
+        "signed"
+      ]
+    },
+    {
+      "control_id": "5.1.2.6",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "'linkedin",
+        "account",
+        "connections'"
+      ]
+    },
+    {
+      "control_id": "5.1.3.1",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "cannot",
+        "create",
+        "groups",
+        "security",
+        "users"
+      ]
+    },
+    {
+      "control_id": "5.1.3.2",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "'restrict",
+        "'yes'",
+        "ability",
+        "access",
+        "features",
+        "groups",
+        "groups'",
+        "user"
+      ]
+    },
+    {
+      "control_id": "5.1.3.3",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'no'",
+        "'owners",
+        "can",
+        "group",
+        "groups'",
+        "manage",
+        "membership",
+        "requests"
+      ]
+    },
+    {
+      "control_id": "5.1.3.4",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "'no'",
+        "'users",
+        "365",
+        "api",
+        "azure",
+        "can",
+        "create",
+        "groups",
+        "microsoft",
+        "portals",
+        "powershell'"
+      ]
+    },
+    {
+      "control_id": "5.1.4.1",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "ability",
+        "devices",
+        "entra",
+        "join"
+      ]
+    },
+    {
+      "control_id": "5.1.4.2",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "devices",
+        "limited",
+        "maximum",
+        "number",
+        "per",
+        "user"
+      ]
+    },
+    {
+      "control_id": "5.1.4.3",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "added",
+        "administrator",
+        "during",
+        "entra",
+        "join",
+        "local",
+        "role"
+      ]
+    },
+    {
+      "control_id": "5.1.4.4",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "administrator",
+        "assignment",
+        "during",
+        "entra",
+        "join",
+        "limited",
+        "local"
+      ]
+    },
+    {
+      "control_id": "5.1.4.5",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "administrator",
+        "local",
+        "password",
+        "solution"
+      ]
+    },
+    {
+      "control_id": "5.1.4.6",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "bitlocker",
+        "keys",
+        "recovering",
+        "users"
+      ]
+    },
+    {
+      "control_id": "5.1.5.1",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "accessing",
+        "apps",
+        "behalf",
+        "company",
+        "consent",
+        "data",
+        "their",
+        "user"
+      ]
+    },
+    {
+      "control_id": "5.1.5.2",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "admin",
+        "consent",
+        "workflow"
+      ]
+    },
+    {
+      "control_id": "5.1.5.3",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "addition",
+        "applications",
+        "blocked",
+        "password"
+      ]
+    },
+    {
+      "control_id": "5.1.5.4",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "180",
+        "applications",
+        "days",
+        "does",
+        "exceed",
+        "lifetime",
+        "password"
+      ]
+    },
+    {
+      "control_id": "5.1.5.5",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "application",
+        "generated",
+        "new",
+        "passwords",
+        "system"
+      ]
+    },
+    {
+      "control_id": "5.1.5.6",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "180",
+        "applications",
+        "certificate",
+        "days",
+        "does",
+        "exceed",
+        "lifetime",
+        "maximum"
+      ]
+    },
+    {
+      "control_id": "5.1.6.1",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "collaboration",
+        "domains",
+        "invitations",
+        "sent"
+      ]
+    },
+    {
+      "control_id": "5.1.6.2",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "access",
+        "guest",
+        "user"
+      ]
+    },
+    {
+      "control_id": "5.1.6.3",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "guest",
+        "invitations",
+        "limited",
+        "user"
+      ]
+    },
+    {
+      "control_id": "5.1.8.1",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "deployments",
+        "hash",
+        "hybrid",
+        "password",
+        "sync"
+      ]
+    },
+    {
+      "control_id": "5.2.2.1",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "administrative",
+        "authentication",
+        "multifactor",
+        "roles",
+        "users"
+      ]
+    },
+    {
+      "control_id": "5.2.2.2",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "authentication",
+        "multifactor",
+        "users"
+      ]
+    },
+    {
+      "control_id": "5.2.2.3",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "access",
+        "authentication",
+        "block",
+        "conditional",
+        "legacy"
+      ]
+    },
+    {
+      "control_id": "5.2.2.4",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "administrative",
+        "browser",
+        "frequency",
+        "persistent",
+        "sessions",
+        "sign",
+        "users"
+      ]
+    },
+    {
+      "control_id": "5.2.2.5",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "'phishing",
+        "administrators",
+        "mfa",
+        "required",
+        "resistant",
+        "strength'"
+      ]
+    },
+    {
+      "control_id": "5.2.2.6",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "identity",
+        "protection",
+        "risk",
+        "user"
+      ]
+    },
+    {
+      "control_id": "5.2.2.7",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "identity",
+        "protection",
+        "risk",
+        "sign"
+      ]
+    },
+    {
+      "control_id": "5.2.2.8",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "'sign",
+        "blocked",
+        "high",
+        "medium",
+        "risk",
+        "risk'"
+      ]
+    },
+    {
+      "control_id": "5.2.2.9",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "authentication",
+        "device",
+        "managed",
+        "required"
+      ]
+    },
+    {
+      "control_id": "5.2.2.10",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "device",
+        "information",
+        "managed",
+        "register",
+        "required",
+        "security"
+      ]
+    },
+    {
+      "control_id": "5.2.2.11",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'every",
+        "enrollment",
+        "frequency",
+        "intune",
+        "sign",
+        "time'"
+      ]
+    },
+    {
+      "control_id": "5.2.2.12",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "blocked",
+        "code",
+        "device",
+        "flow",
+        "sign"
+      ]
+    },
+    {
+      "control_id": "5.2.2.13",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "periodic",
+        "reauthentication",
+        "required",
+        "users"
+      ]
+    },
+    {
+      "control_id": "5.2.2.14",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "'named",
+        "defined",
+        "locations'",
+        "trusted"
+      ]
+    },
+    {
+      "control_id": "5.2.2.15",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "access",
+        "controls",
+        "exclusionary",
+        "geographic",
+        "utilized"
+      ]
+    },
+    {
+      "control_id": "5.2.2.16",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "enforced",
+        "protection",
+        "session",
+        "token",
+        "tokens"
+      ]
+    },
+    {
+      "control_id": "5.2.2.17",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "authentication",
+        "blocked",
+        "transfer"
+      ]
+    },
+    {
+      "control_id": "5.2.3.1",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "against",
+        "authenticator",
+        "fatigue",
+        "mfa",
+        "microsoft",
+        "protect"
+      ]
+    },
+    {
+      "control_id": "5.2.3.2",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "banned",
+        "custom",
+        "lists",
+        "passwords"
+      ]
+    },
+    {
+      "control_id": "5.2.3.3",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "active",
+        "directory",
+        "password",
+        "prem",
+        "protection"
+      ]
+    },
+    {
+      "control_id": "5.2.3.4",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'mfa",
+        "capable'",
+        "member",
+        "users"
+      ]
+    },
+    {
+      "control_id": "5.2.3.5",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "authentication",
+        "methods",
+        "weak"
+      ]
+    },
+    {
+      "control_id": "5.2.3.6",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "authentication",
+        "multifactor",
+        "preferred",
+        "system"
+      ]
+    },
+    {
+      "control_id": "5.2.3.7",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "authentication",
+        "email",
+        "method",
+        "otp"
+      ]
+    },
+    {
+      "control_id": "5.2.3.8",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'10'",
+        "'lockout",
+        "account",
+        "less",
+        "threshold'"
+      ]
+    },
+    {
+      "control_id": "5.2.3.9",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'lockout",
+        "account",
+        "duration",
+        "least",
+        "seconds",
+        "seconds'"
+      ]
+    },
+    {
+      "control_id": "5.2.3.10",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "applications",
+        "authenticator",
+        "companion",
+        "microsoft"
+      ]
+    },
+    {
+      "control_id": "5.2.4.1",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'all'",
+        "'self",
+        "enabled'",
+        "password",
+        "reset",
+        "service"
+      ]
+    },
+    {
+      "control_id": "5.2.4.2",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "methods",
+        "password",
+        "required",
+        "reset"
+      ]
+    },
+    {
+      "control_id": "5.2.4.3",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "authentication",
+        "confirmation",
+        "registration",
+        "required",
+        "sspr"
+      ]
+    },
+    {
+      "control_id": "5.2.4.4",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "notified",
+        "password",
+        "resets",
+        "users"
+      ]
+    },
+    {
+      "control_id": "5.2.4.5",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "admins",
+        "notified",
+        "other",
+        "password",
+        "reset",
+        "their",
+        "when"
+      ]
+    },
+    {
+      "control_id": "5.3.1",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "activated",
+        "assigned",
+        "assignments",
+        "privileged",
+        "role"
+      ]
+    },
+    {
+      "control_id": "5.3.2",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'access",
+        "guest",
+        "reviews'",
+        "users"
+      ]
+    },
+    {
+      "control_id": "5.3.3",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'access",
+        "privileged",
+        "reviews'",
+        "roles"
+      ]
+    },
+    {
+      "control_id": "5.3.4",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "activation",
+        "administrator",
+        "approval",
+        "global",
+        "required",
+        "role"
+      ]
+    },
+    {
+      "control_id": "5.3.5",
+      "section": 5,
+      "section_name": "Microsoft Entra admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "activation",
+        "administrator",
+        "approval",
+        "privileged",
+        "required",
+        "role"
+      ]
+    },
+    {
+      "control_id": "6.1.1",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'auditdisabled'",
+        "'false'",
+        "organizationally"
+      ]
+    },
+    {
+      "control_id": "6.1.2",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "actions",
+        "audit",
+        "mailbox"
+      ]
+    },
+    {
+      "control_id": "6.1.3",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'auditbypassenabled'",
+        "mailboxes"
+      ]
+    },
+    {
+      "control_id": "6.2.1",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "blocked",
+        "forms",
+        "forwarding",
+        "mail"
+      ]
+    },
+    {
+      "control_id": "6.2.2",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "domains",
+        "mail",
+        "rules",
+        "specific",
+        "transport",
+        "whitelist"
+      ]
+    },
+    {
+      "control_id": "6.2.3",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "email",
+        "external",
+        "identified",
+        "senders"
+      ]
+    },
+    {
+      "control_id": "6.3.1",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "add",
+        "ins",
+        "installing",
+        "outlook",
+        "users"
+      ]
+    },
+    {
+      "control_id": "6.3.2",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "ability",
+        "accounts",
+        "add",
+        "calendars",
+        "email",
+        "personal"
+      ]
+    },
+    {
+      "control_id": "6.5.1",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "authentication",
+        "exchange",
+        "modern",
+        "online"
+      ]
+    },
+    {
+      "control_id": "6.5.2",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "end",
+        "mailtips",
+        "users"
+      ]
+    },
+    {
+      "control_id": "6.5.3",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "additional",
+        "outlook",
+        "providers",
+        "storage",
+        "web"
+      ]
+    },
+    {
+      "control_id": "6.5.4",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "auth",
+        "smtp"
+      ]
+    },
+    {
+      "control_id": "6.5.5",
+      "section": 6,
+      "section_name": "Exchange admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "direct",
+        "rejected",
+        "send",
+        "submissions"
+      ]
+    },
+    {
+      "control_id": "7.2.1",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "applications",
+        "authentication",
+        "modern",
+        "required",
+        "sharepoint"
+      ]
+    },
+    {
+      "control_id": "7.2.2",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "azure",
+        "b2b",
+        "integration",
+        "onedrive",
+        "sharepoint"
+      ]
+    },
+    {
+      "control_id": "7.2.3",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "content",
+        "external",
+        "sharing"
+      ]
+    },
+    {
+      "control_id": "7.2.4",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "content",
+        "onedrive",
+        "sharing"
+      ]
+    },
+    {
+      "control_id": "7.2.5",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "cannot",
+        "don't",
+        "guest",
+        "items",
+        "own",
+        "share",
+        "sharepoint",
+        "they",
+        "users"
+      ]
+    },
+    {
+      "control_id": "7.2.6",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "external",
+        "sharepoint",
+        "sharing"
+      ]
+    },
+    {
+      "control_id": "7.2.7",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "link",
+        "onedrive",
+        "sharepoint",
+        "sharing"
+      ]
+    },
+    {
+      "control_id": "7.2.8",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "external",
+        "group",
+        "security",
+        "sharing"
+      ]
+    },
+    {
+      "control_id": "7.2.9",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "access",
+        "automatically",
+        "expire",
+        "guest",
+        "onedrive",
+        "site",
+        "will"
+      ]
+    },
+    {
+      "control_id": "7.2.10",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "code",
+        "reauthentication",
+        "verification"
+      ]
+    },
+    {
+      "control_id": "7.2.11",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "link",
+        "permission",
+        "sharepoint",
+        "sharing"
+      ]
+    },
+    {
+      "control_id": "7.3.1",
+      "section": 7,
+      "section_name": "SharePoint admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "365",
+        "disallowed",
+        "download",
+        "files",
+        "infected",
+        "office",
+        "sharepoint"
+      ]
+    },
+    {
+      "control_id": "8.1.1",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "approved",
+        "cloud",
+        "external",
+        "file",
+        "services",
+        "sharing",
+        "storage",
+        "teams"
+      ]
+    },
+    {
+      "control_id": "8.1.2",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "address",
+        "can't",
+        "channel",
+        "email",
+        "emails",
+        "send",
+        "users"
+      ]
+    },
+    {
+      "control_id": "8.2.1",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "admin",
+        "center",
+        "domains",
+        "external",
+        "teams"
+      ]
+    },
+    {
+      "control_id": "8.2.2",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "communication",
+        "teams",
+        "unmanaged",
+        "users"
+      ]
+    },
+    {
+      "control_id": "8.2.3",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "cannot",
+        "conversations",
+        "external",
+        "initiate",
+        "teams",
+        "users"
+      ]
+    },
+    {
+      "control_id": "8.2.4",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "accounts",
+        "cannot",
+        "communicate",
+        "organization",
+        "teams",
+        "tenants",
+        "trial"
+      ]
+    },
+    {
+      "control_id": "8.4.1",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Manual",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "app",
+        "permission"
+      ]
+    },
+    {
+      "control_id": "8.5.1",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "anonymous",
+        "can't",
+        "join",
+        "meeting",
+        "users"
+      ]
+    },
+    {
+      "control_id": "8.5.2",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "anonymous",
+        "callers",
+        "can't",
+        "dial",
+        "meeting",
+        "start",
+        "users"
+      ]
+    },
+    {
+      "control_id": "8.5.3",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "bypass",
+        "can",
+        "lobby",
+        "org",
+        "people"
+      ]
+    },
+    {
+      "control_id": "8.5.4",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "bypass",
+        "can't",
+        "dialing",
+        "lobby",
+        "users"
+      ]
+    },
+    {
+      "control_id": "8.5.5",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "anonymous",
+        "chat",
+        "does",
+        "meeting",
+        "users"
+      ]
+    },
+    {
+      "control_id": "8.5.6",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "can",
+        "organizers",
+        "present"
+      ]
+    },
+    {
+      "control_id": "8.5.7",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "can't",
+        "control",
+        "external",
+        "give",
+        "participants",
+        "request"
+      ]
+    },
+    {
+      "control_id": "8.5.8",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "chat",
+        "external",
+        "meeting"
+      ]
+    },
+    {
+      "control_id": "8.5.9",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "meeting",
+        "recording"
+      ]
+    },
+    {
+      "control_id": "8.6.1",
+      "section": 8,
+      "section_name": "Microsoft Teams admin center",
+      "assessment": "Automated",
+      "levels": [
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "can",
+        "concerns",
+        "report",
+        "security",
+        "teams",
+        "users"
+      ]
+    },
+    {
+      "control_id": "9.1.1",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "access",
+        "guest",
+        "user"
+      ]
+    },
+    {
+      "control_id": "9.1.2",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "external",
+        "invitations",
+        "user"
+      ]
+    },
+    {
+      "control_id": "9.1.3",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "access",
+        "content",
+        "guest"
+      ]
+    },
+    {
+      "control_id": "9.1.4",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'publish",
+        "web'"
+      ]
+    },
+    {
+      "control_id": "9.1.5",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 2",
+        "E5 Level 2"
+      ],
+      "title_keywords": [
+        "'disabled'",
+        "'interact",
+        "python'",
+        "share",
+        "visuals"
+      ]
+    },
+    {
+      "control_id": "9.1.6",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'allow",
+        "'enabled'",
+        "apply",
+        "content'",
+        "labels",
+        "sensitivity",
+        "users"
+      ]
+    },
+    {
+      "control_id": "9.1.7",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "links",
+        "shareable"
+      ]
+    },
+    {
+      "control_id": "9.1.8",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "data",
+        "enabling",
+        "external",
+        "sharing"
+      ]
+    },
+    {
+      "control_id": "9.1.9",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "'block",
+        "'enabled'",
+        "authentication'",
+        "resourcekey"
+      ]
+    },
+    {
+      "control_id": "9.1.10",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "access",
+        "apis",
+        "principals",
+        "service"
+      ]
+    },
+    {
+      "control_id": "9.1.11",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "cannot",
+        "create",
+        "principals",
+        "profiles",
+        "service"
+      ]
+    },
+    {
+      "control_id": "9.1.12",
+      "section": 9,
+      "section_name": "Microsoft Fabric",
+      "assessment": "Automated",
+      "levels": [
+        "E3 Level 1",
+        "E5 Level 1"
+      ],
+      "title_keywords": [
+        "ability",
+        "connections",
+        "create",
+        "deployment",
+        "pipelines",
+        "principals",
+        "service",
+        "workspaces"
+      ]
+    }
+  ]
+}

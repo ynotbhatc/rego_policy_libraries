@@ -6,10 +6,15 @@ on:
     paths:
       - '**/*.rego'
       - '.github/workflows/opa-test.yml'
+      - 'scripts/check_cis_ids.py'
+      - '**/data/cis_*_index.json'
   pull_request:
     branches: [main]
     paths:
       - '**/*.rego'
+      - '.github/workflows/opa-test.yml'
+      - 'scripts/check_cis_ids.py'
+      - '**/data/cis_*_index.json'
 
 permissions:
   contents: read
@@ -79,15 +84,64 @@ jobs:
 
       - name: Run policy tests
         run: |
+          # Load the WHOLE repo in one run, per CLAUDE.md. Two reasons this
+          # is not a per-directory loop:
+          #
+          #  1. The previous loop globbed only '*_test.rego', which matched
+          #     1 of 84 test files. The other 83 use the repo's documented
+          #     'test_*.rego' convention and never executed in CI at all.
+          #  2. Tests can span trees -- frameworks/compliance/cra imports
+          #     enforcement/supply_chain/slsa_governance.rego -- so testing a
+          #     directory in isolation reports false failures.
+          #
+          # --ignore .github because opa otherwise tries to parse the YAML
+          # in the .github directory that lives inside the benchmarks tree.
           echo "Running tests ..."
-          RC=0
-          for f in $(find . -name "*_test.rego" -not -path "./.git/*"); do
-            dir=$(dirname "$f")
-            echo "  Testing $dir ..."
-            opa test "$dir" -v || RC=1
-          done
-          echo "Tests complete"
-          exit $RC
+          opa test . --ignore .github
+
+      - name: Guard against silent test-discovery loss
+        run: |
+          # A drop in test count means tests stopped being discovered, which
+          # looks identical to "all tests pass". Fail loudly instead.
+          #
+          # This is a discovery-collapse tripwire, NOT an exact expected
+          # count. The floor is the pre-existing suite size (348) rather
+          # than the current total, so that a branch which does not carry
+          # this tree's tests still passes. Ratchet it upward deliberately.
+          MIN_TESTS=348
+          count=$(opa test . --ignore .github 2>&1 | grep -oE 'PASS: [0-9]+' | grep -oE '[0-9]+')
+          echo "tests run: ${count:-0} (floor: $MIN_TESTS)"
+          if [ "${count:-0}" -lt "$MIN_TESTS" ]; then
+            echo "ERROR: expected at least $MIN_TESTS tests, ran ${count:-0}."
+            echo "Either tests were deleted, or discovery regressed."
+            exit 1
+          fi
+
+      - name: Verify CIS control ids against the benchmark enumeration
+        run: |
+          # Unit tests cannot catch a violation message that cites the wrong
+          # CIS control number -- they assert against the same wrong number.
+          # This checks every cited id against the benchmark's own
+          # enumeration, and that the message corresponds to the control
+          # that id actually names.
+          python3 scripts/check_cis_ids.py \
+            --enumeration benchmarks/cis/saas/m365_v7/data/cis_m365_v7_index.json \
+            --policy-dir benchmarks/cis/saas/m365_v7
+
+      - name: Assert the guard still rejects the deprecated m365 tree
+        run: |
+          # benchmarks/cis/saas/m365/ is deprecated precisely because its
+          # control ids do not match the benchmark. If this ever starts
+          # passing, either the tree was fixed (and should be un-deprecated)
+          # or the guard stopped working. Both need a human.
+          if python3 scripts/check_cis_ids.py \
+               --enumeration benchmarks/cis/saas/m365_v7/data/cis_m365_v7_index.json \
+               --policy-dir benchmarks/cis/saas/m365 > /dev/null 2>&1; then
+            echo "ERROR: the guard passed on the deprecated m365/ tree."
+            echo "Expected failure -- its ids do not match the benchmark."
+            exit 1
+          fi
+          echo "OK: guard correctly rejects the deprecated m365/ tree"
 
       - name: Count policies
         run: |
