@@ -1,3 +1,23 @@
+> ## ⚠️ DEPRECATED — DO NOT USE FOR NEW ASSESSMENTS
+>
+> **The control numbers in this directory do not correspond to any CIS
+> benchmark.** Measured 2026-08-14 against the CIS Microsoft 365
+> Foundations Benchmark v7.0.0: of 46 control-id citations, **20 name ids
+> that do not exist** and **22 name real ids whose requirement is unrelated
+> to the message**. Only 3 distinct ids of 40 are correct.
+>
+> The section topology assumed here (7 sections) is wrong; the benchmark
+> has **9**. Entra is section 5 (not 1), Exchange 6 (not 4), SharePoint 7
+> (not 6), Teams 8 (not 7), Fabric 9 (not 5). Sub-numbering is
+> independently wrong even where the section number happens to match.
+>
+> The 36/36 passing unit tests do not contradict this — they assert
+> against the same invented numbers.
+>
+> **Use [`../m365_v7/`](../m365_v7/) instead.** This directory is retained
+> only because repo convention treats a benchmark version as immutable.
+> `scripts/check_cis_ids.py` fails against this tree by design.
+
 # CIS Microsoft 365 Foundations Benchmark — Rego Library
 
 Policies evaluating a Microsoft 365 tenant's compliance against the

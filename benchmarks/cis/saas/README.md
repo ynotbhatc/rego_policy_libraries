@@ -8,7 +8,8 @@ than per-host facts.
 
 | Subdirectory | Benchmark | Vendor admin API |
 |---|---|---|
-| [`m365/`](m365/) | CIS Microsoft 365 Foundations Benchmark v3.1.0 | Microsoft Graph |
+| [`m365_v7/`](m365_v7/) | CIS Microsoft 365 Foundations Benchmark **v7.0.0** | Microsoft Graph |
+| [`m365/`](m365/) | v3.1.0 — **DEPRECATED**, control ids do not match the benchmark | Microsoft Graph |
 
 Companion fact-gathering Ansible modules live in the **AAC
 compliance repo** at `collections/ansible_collections/aac/<vendor>/`.
