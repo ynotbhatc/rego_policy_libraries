@@ -164,6 +164,43 @@ violation contains msg if {
 	msg := "CIS 1.1.1: administrative accounts were not collected, so whether they are cloud-only could not be established -- section 1 was not evaluated (this is not a pass)"
 }
 
+
+# ── Section 1 controls sourced from Exchange Online PowerShell ────────
+# 1.3.6 and 1.3.9 are section 1 controls whose settings live on
+# Get-OrganizationConfig, which the Exchange collector already fetches.
+# Reading them from input.exchange rather than issuing a second Exchange
+# session for two fields is deliberate; the coupling is documented here so
+# it is not mistaken for a stray dependency.
+
+default exchange_org_available := false
+
+exchange_org_available if {
+	input.exchange.collected == true
+	not input.exchange.unavailable.organization_config
+	_ := input.exchange.organization_config
+}
+
+# CIS 1.3.6 -- customer lockbox.
+violation contains msg if {
+	exchange_org_available
+	input.exchange.organization_config.CustomerLockBoxEnabled == false
+	msg := "CIS 1.3.6: the customer lockbox feature is not enabled, so Microsoft support can access tenant content without explicit per-request approval"
+}
+
+# CIS 1.3.9 -- shared bookings pages.
+violation contains msg if {
+	exchange_org_available
+	input.exchange.organization_config.BookingsEnabled == true
+	input.exchange.organization_config.BookingsAuthEnabled == false
+	msg := "CIS 1.3.9: shared bookings pages are not restricted to select users -- Bookings is enabled without requiring authentication, so pages are reachable anonymously"
+}
+
+violation contains msg if {
+	input.exchange.collected == true
+	input.exchange.unavailable.organization_config
+	msg := sprintf("CIS 1.3.6: whether the customer lockbox feature is enabled could not be evaluated -- %s (this is not a pass)", [input.exchange.unavailable.organization_config])
+}
+
 compliant if {
 	collected
 	count(violation) == 0
@@ -175,8 +212,8 @@ compliance_report := {
 	"section": "1",
 	"name": "Microsoft 365 admin center",
 	"section_total_controls": 15,
-	"controls_evaluated": 9,
-	"controls": ["1.1.1", "1.1.3", "1.1.4", "1.2.1", "1.3.1", "1.3.2", "1.3.4", "1.3.5", "1.3.7"],
+	"controls_evaluated": 11,
+	"controls": ["1.1.1", "1.1.3", "1.1.4", "1.2.1", "1.3.1", "1.3.2", "1.3.4", "1.3.5", "1.3.6", "1.3.7", "1.3.9"],
 	"facts_present": collected,
 	"unavailable_facts": unavailable,
 	"violations": violation,

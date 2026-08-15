@@ -126,9 +126,12 @@ test_3_1_1_audit_log_unavailable if {
 	contains(v, "CIS 3.1.1")
 }
 
-test_3_1_1_audit_log_available_passes if {
+test_3_1_1_audit_log_available_satisfies_its_control if {
+	# Section 3 now spans 5 controls across two fact sources, so an
+	# audit-log-only fixture cannot make the section compliant. Assert on
+	# the control it actually establishes.
 	r := purview.compliance_report with input as {"purview": {"audit_log_accessible": true}}
-	r.compliant == true
+	every v in r.violations { not contains(v, "CIS 3.1.1") }
 }
 
 # ── CIS 5.2.2.x / 5.3.1 -- Conditional Access and PIM ─────────────────
@@ -322,8 +325,8 @@ test_sharepoint_declares_the_cmdlet_deviation if {
 test_orchestrator_reports_partial_coverage_honestly if {
 	r := main.compliance_report with input as {}
 	r.benchmark_total_controls == 160
-	r.controls_evaluated == 90
-	r.controls_not_evaluated == 70
+	r.controls_evaluated == 96
+	r.controls_not_evaluated == 64
 	count(r.sections_not_evaluated) == 1
 }
 
@@ -745,4 +748,68 @@ test_tenant_without_defender_reports_unevaluable_not_compliant if {
 
 test_defender_report_survives_undefined_input if {
 	count(defender.compliance_report) > 0
+}
+
+# ── Section 3 -- DLP and sensitivity labels ───────────────────────────
+
+pv(extra) := {"purview_ps": object.union({"collected": true, "unavailable": {}}, extra)}
+
+test_3_2_1_no_enforcing_dlp_policy if {
+	r := purview.compliance_report with input as pv({"dlp_policies": []})
+	some v in r.violations
+	contains(v, "CIS 3.2.1")
+}
+
+# A policy in Test mode reports matches but prevents nothing, so it must
+# not satisfy a control asking for DLP to be enabled.
+test_3_2_1_test_mode_policy_does_not_satisfy_the_control if {
+	r := purview.compliance_report with input as pv({"dlp_policies": [
+		{"Name": "Pilot", "Enabled": true, "Mode": "TestWithNotifications"},
+	]})
+	some v in r.violations
+	contains(v, "CIS 3.2.1")
+}
+
+test_3_2_2_dlp_does_not_cover_teams if {
+	r := purview.compliance_report with input as pv({"dlp_policies": [
+		{"Name": "Default", "Enabled": true, "Mode": "Enforce", "TeamsLocation": []},
+	]})
+	some v in r.violations
+	contains(v, "CIS 3.2.2")
+}
+
+test_3_3_1_no_published_label_policy if {
+	r := purview.compliance_report with input as pv({"label_policies": []})
+	some v in r.violations
+	contains(v, "CIS 3.3.1")
+}
+
+test_purview_ps_unavailable_is_not_a_pass if {
+	r := purview.compliance_report with input as {"purview_ps": {
+		"collected": true,
+		"unavailable": {"dlp_policies": "purview access denied (blocks 3.2.1, 3.2.2, 3.2.3)"},
+	}}
+	some v in r.violations
+	contains(v, "CIS 3.2.1")
+	contains(v, "not a pass")
+}
+
+# ── Section 1 controls sourced from the Exchange collector ────────────
+
+test_1_3_6_customer_lockbox_disabled if {
+	r := ac.compliance_report with input as {
+		"admin_center": {"collected": true, "unavailable": {}},
+		"exchange": {"collected": true, "unavailable": {}, "organization_config": {"CustomerLockBoxEnabled": false}},
+	}
+	some v in r.violations
+	contains(v, "CIS 1.3.6")
+}
+
+test_1_3_9_bookings_without_auth if {
+	r := ac.compliance_report with input as {
+		"admin_center": {"collected": true, "unavailable": {}},
+		"exchange": {"collected": true, "unavailable": {}, "organization_config": {"BookingsEnabled": true, "BookingsAuthEnabled": false}},
+	}
+	some v in r.violations
+	contains(v, "CIS 1.3.9")
 }
