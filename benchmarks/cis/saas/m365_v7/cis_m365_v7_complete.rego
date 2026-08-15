@@ -17,9 +17,11 @@ import data.cis_m365_v7.attestation
 import data.cis_m365_v7.defender
 import data.cis_m365_v7.entra
 import data.cis_m365_v7.exchange
+import data.cis_m365_v7.fabric
 import data.cis_m365_v7.intune
 import data.cis_m365_v7.purview
 import data.cis_m365_v7.sharepoint
+import data.cis_m365_v7.teams
 import rego.v1
 
 BENCHMARK_TOTAL_CONTROLS := 160
@@ -27,20 +29,7 @@ BENCHMARK_TOTAL_CONTROLS := 160
 # Sections with no fact collector at all. Declared explicitly so that a
 # reader (or an auditor) sees the gap rather than inferring coverage from
 # the absence of violations.
-not_evaluated := [
-	{
-		"section": "8",
-		"name": "Microsoft Teams admin center",
-		"section_total_controls": 17,
-		"reason": "collector returns only a Teams app count and Microsoft Secure Score; neither establishes a CIS control",
-	},
-	{
-		"section": "9",
-		"name": "Microsoft Fabric",
-		"section_total_controls": 12,
-		"reason": "collector returns only Microsoft Secure Score; Fabric tenant settings require the Fabric Admin REST API, not Graph",
-	},
-]
+not_evaluated := []
 
 section_reports := [
 	admin_center.compliance_report,
@@ -50,6 +39,8 @@ section_reports := [
 	entra.compliance_report,
 	exchange.compliance_report,
 	sharepoint.compliance_report,
+	teams.compliance_report,
+	fabric.compliance_report,
 ]
 
 # array.concat takes exactly two arrays -- fold rather than vararg.

@@ -90,21 +90,34 @@ def scan(policy_dir: pathlib.Path, prefix: str):
 
 SECTION_DECL = re.compile(r'"section":\s*"(\d+)"')
 SECTION_TOTAL = re.compile(r'"section_total_controls":\s*(\d+)')
-# A control id used as an object key, e.g. in a lookup table:
-#     REQUIRES_ATTESTATION := {"5.2.4.1": "...", ...}
-# These never appear in a `CIS <id>` literal because the message is built
-# with sprintf, so the citation scan cannot see them. Check them directly
-# or a whole table of ids goes unverified.
-KEYED_ID = re.compile(r'"(\d+(?:\.\d+)+)"\s*:')
+# A control id that appears as a quoted STRING rather than inside a
+# `CIS <id>` message. Three shapes, all of which have bitten this guard:
+#
+#   as a key    REQUIRES_ATTESTATION := {"5.2.4.1": "..."}
+#   as a value  SETTING_CONTROLS := {"PublishToWeb": "9.1.4"}
+#   in a list   "controls": ["9.1.1", "9.1.2", ...]
+#
+# None appear in a `CIS <id>` literal when the message is built with
+# sprintf, so the citation scan cannot see any of them. Matching any
+# quoted id covers all three -- narrowing to one shape is what let the
+# section 9 ids through unverified.
+QUOTED_ID = re.compile(r'"(\d+(?:\.\d+)+)"')
+# Version strings are dotted numbers too. "benchmark_version": "7.0.0"
+# is not a citation of control 7.0.0 -- exclude those lines rather than
+# narrowing the id pattern, which would reintroduce the blind spot.
+VERSION_LINE = re.compile(r'(benchmark_version|benchmark_released|"version")')
 
 
 def keyed_ids(policy_dir: pathlib.Path):
-    """Yield (file, line_no, control_id) for ids used as object keys."""
+    """Yield (file, line_no, control_id) for ids appearing as quoted
+    strings anywhere in a policy file."""
     for rego in sorted(policy_dir.rglob("*.rego")):
         if rego.name.startswith("test_") or rego.name.endswith("_test.rego"):
             continue
         for n, line in enumerate(rego.read_text(encoding="utf-8").splitlines(), 1):
-            for m in KEYED_ID.finditer(line):
+            if VERSION_LINE.search(line):
+                continue
+            for m in QUOTED_ID.finditer(line):
                 yield rego, n, m.group(1)
 
 
