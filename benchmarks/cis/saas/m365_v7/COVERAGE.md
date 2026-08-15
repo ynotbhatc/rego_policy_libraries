@@ -1,8 +1,8 @@
 # CIS Microsoft 365 Foundations Benchmark v7.0.0 — coverage
 
-**Version:** v1.2
+**Version:** v1.3
 **Benchmark:** CIS Microsoft 365 Foundations Benchmark **v7.0.0**, released 2026-05-20
-**Evaluated:** **40 of 160** recommendations (**25%**)
+**Evaluated:** **52 of 160** recommendations (**33%**)
 **Requires attestation:** 6 (verified to have no app-only read path)
 **Unresolved:** 10 (parked pending a live-tenant probe during the POC)
 
@@ -21,11 +21,11 @@ modules themselves.
 | 3 | Microsoft Purview | 5 | 1 | `purview_validation.rego` |
 | 4 | Microsoft Intune admin center | 2 | 2 | `intune_validation.rego` |
 | 5 | Microsoft Entra admin center | 63 | 20 | `entra_validation.rego` |
-| 6 | Exchange admin center | 13 | 1 | `exchange_validation.rego` |
+| 6 | Exchange admin center | 13 | **13** | `exchange_validation.rego` |
 | 7 | SharePoint admin center | 12 | 4 | `sharepoint_validation.rego` |
 | 8 | Microsoft Teams admin center | 17 | **0** | — |
 | 9 | Microsoft Fabric | 12 | **0** | — |
-| | **Total** | **160** | **40** | |
+| | **Total** | **160** | **52** | |
 
 Evaluated ids: `1.1.1`, `1.1.3`, `1.1.4`, `1.2.1`, `1.3.1`, `1.3.2`, `1.3.4`,
 `1.3.5`, `1.3.7`, `4.1`, `4.2`, `2.1.8`, `2.1.9`, `2.1.10`, `3.1.1`, `5.2.2.1`,
@@ -47,17 +47,23 @@ recommendation. Those were not carried into v7.
 | 9 — Fabric | Collector returns Secure Score. Fabric tenant settings are only exposed by the Fabric Admin REST API, not Graph. |
 | 2 — Defender (18 of 21) | Safe Links, Safe Attachments, anti-phishing, anti-spam and connection filtering need Exchange Online PowerShell. |
 | 5 — Entra (59 of 63) | Most section 5 controls need Graph endpoints the collector does not call yet; several are only on `/beta`, and `graph.py` pins `GRAPH_BASE` to `/v1.0`. |
-| 6 — Exchange (12 of 13) | Transport rules and mail-flow controls need Exchange Online PowerShell. |
+| 6 — Exchange | **Complete.** All 13 controls via Exchange Online PowerShell in `aac-m365-ee`. |
 
-## Evidence-strength caveat
+## Evidence-strength caveats
 
-**`6.1.1` is a proxy, not a direct measurement.** Graph v1.0 does not
-expose the tenant-wide `AuditDisabled` organization flag, so the collector
-samples per-user `mailboxSettings` instead. It can demonstrate that
-auditing is off for sampled mailboxes; it cannot prove the organization
-flag is `False`. The benchmark's own audit procedure uses Exchange Online
-PowerShell. This is surfaced at runtime in the section 6 report under
-`evidence_strength` so a reader cannot miss it.
+**`6.1.1` is now measured directly.** It was previously a Graph-sourced
+proxy; `Get-OrganizationConfig` reads the tenant `AuditDisabled` flag,
+which is what the benchmark's own audit procedure does.
+
+Two caveats remain, both surfaced at runtime under `evidence_strength`:
+
+- **`6.1.2` is sampled.** Mailbox audit actions are checked across a
+  bounded sample, not every mailbox. The sample size and limit appear in
+  the report so a reader can judge the result's strength.
+- **`5.1.2.1` uses `/beta`.** Microsoft documents `/beta` as subject to
+  change and unsupported for production, and CIS marks the control Manual
+  with no automated procedure — so this reaches past the benchmark's own
+  audit steps.
 
 ## What is deliberately absent
 

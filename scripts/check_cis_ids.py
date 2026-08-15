@@ -33,7 +33,21 @@ WORD = re.compile(r"[a-z0-9']+")
 
 
 def keywords(text: str) -> set[str]:
-    return {w for w in WORD.findall(text.lower()) if w not in STOPWORDS and len(w) > 2}
+    """Tokenise, stripping surrounding quotes.
+
+    CIS quotes setting names in its titles -- "Ensure 'AuditBypassEnabled'
+    is not enabled on mailboxes". Without stripping, the token is
+    "'auditbypassenabled'" and never matches the same word written
+    unquoted in a violation message, so the coherence check fails on
+    correct messages. CIS quotes setting names constantly, so this was a
+    false-positive generator across the whole benchmark.
+    """
+    out = set()
+    for w in WORD.findall(text.lower()):
+        w = w.strip("'")
+        if w and w not in STOPWORDS and len(w) > 2:
+            out.add(w)
+    return out
 
 
 def load_enumeration(path: pathlib.Path):

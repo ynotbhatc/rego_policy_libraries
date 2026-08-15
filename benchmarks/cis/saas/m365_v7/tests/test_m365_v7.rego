@@ -192,27 +192,50 @@ test_disabled_policy_does_not_satisfy_control if {
 
 # ── CIS 6.1.1 -- mailbox auditing ─────────────────────────────────────
 
-test_6_1_1_audit_disabled_on_sampled_mailboxes if {
-	r := exchange.compliance_report with input as {"exchange": {"mailbox_audit_summary": {
-		"sampled": 10, "audit_enabled": 7, "audit_disabled": 3, "evaluable": true,
-	}}}
+test_6_1_1_audit_disabled_read_directly if {
+	# Now a direct read of the tenant flag, not a per-user proxy.
+	r := exchange.compliance_report with input as {"exchange": {
+		"collected": true, "unavailable": {},
+		"organization_config": {"AuditDisabled": true},
+	}}
 	r.compliant == false
 	some v in r.violations
 	contains(v, "CIS 6.1.1")
 }
 
-test_6_1_1_all_audited_passes if {
-	r := exchange.compliance_report with input as {"exchange": {"mailbox_audit_summary": {
-		"sampled": 10, "audit_enabled": 10, "audit_disabled": 0, "evaluable": true,
-	}}}
-	r.compliant == true
+test_6_5_4_smtp_auth_enabled if {
+	r := exchange.compliance_report with input as {"exchange": {
+		"collected": true, "unavailable": {},
+		"transport_config": {"SmtpClientAuthenticationDisabled": false},
+	}}
+	some v in r.violations
+	contains(v, "CIS 6.5.4")
 }
 
-test_6_1_1_declares_proxy_evidence if {
-	# The collection limit must stay visible in the report -- a reader has
-	# to be able to see that this is weaker than a PowerShell-sourced result.
+test_6_1_3_audit_bypass_flagged if {
+	r := exchange.compliance_report with input as {"exchange": {
+		"collected": true, "unavailable": {},
+		"audit_bypass_associations": [{"Identity": "svc@c.com"}],
+	}}
+	some v in r.violations
+	contains(v, "CIS 6.1.3")
+}
+
+test_6_2_2_scl_bypass_whitelist_flagged if {
+	r := exchange.compliance_report with input as {"exchange": {
+		"collected": true, "unavailable": {},
+		"transport_rules": [{"Name": "allow-partner", "State": "Enabled",
+			"SetSCL": -1, "SenderDomainIs": ["partner.com"]}],
+	}}
+	some v in r.violations
+	contains(v, "CIS 6.2.2")
+}
+
+test_6_1_2_declares_its_sampling_limit if {
+	# 6.1.1 is now measured directly, but 6.1.2 is still sampled -- that
+	# limit has to stay visible in the report.
 	r := exchange.compliance_report with input as {}
-	contains(r.evidence_strength["6.1.1"], "proxy")
+	contains(r.evidence_strength["6.1.2"], "sampled")
 }
 
 # ── CIS 7.2.x -- SharePoint sharing ───────────────────────────────────
@@ -259,8 +282,8 @@ test_sharepoint_hardened_passes if {
 test_orchestrator_reports_partial_coverage_honestly if {
 	r := main.compliance_report with input as {}
 	r.benchmark_total_controls == 160
-	r.controls_evaluated == 40
-	r.controls_not_evaluated == 120
+	r.controls_evaluated == 52
+	r.controls_not_evaluated == 108
 	count(r.sections_not_evaluated) == 2
 }
 
