@@ -325,8 +325,8 @@ test_sharepoint_declares_the_cmdlet_deviation if {
 test_orchestrator_reports_partial_coverage_honestly if {
 	r := main.compliance_report with input as {}
 	r.benchmark_total_controls == 160
-	r.controls_evaluated == 133
-	r.controls_not_evaluated == 27
+	r.controls_evaluated == 138
+	r.controls_not_evaluated == 22
 	count(r.sections_not_evaluated) == 0
 }
 
@@ -1033,4 +1033,71 @@ test_missing_laps_endpoint_blocks_its_control_rather_than_failing_it if {
 	some v in r.violations
 	contains(v, "CIS 5.1.4.5:")
 	contains(v, "not a pass")
+}
+
+# ── Authenticator hardening and smart lockout ─────────────────────────
+
+test_5_2_3_1_number_matching_disabled if {
+	r := entra.compliance_report with input as entra_input({"authenticator": {
+		"state": "enabled",
+		"number_matching_state": "disabled",
+		"show_app_information_state": "enabled",
+		"show_geographic_location_state": "enabled",
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.2.3.1:")
+}
+
+test_5_2_3_1_fully_hardened_authenticator_passes if {
+	r := entra.compliance_report with input as entra_input({"authenticator": {
+		"state": "enabled",
+		"number_matching_state": "enabled",
+		"show_app_information_state": "enabled",
+		"show_geographic_location_state": "enabled",
+	}})
+	every v in r.violations { not contains(v, "CIS 5.2.3.1:") }
+}
+
+test_5_2_3_8_lockout_threshold_too_high if {
+	r := entra.compliance_report with input as entra_input({"lockout": {
+		"settings_present": true, "threshold": "25", "duration_seconds": "60",
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.2.3.8:")
+}
+
+test_5_2_3_9_lockout_duration_too_short if {
+	r := entra.compliance_report with input as entra_input({"lockout": {
+		"settings_present": true, "threshold": "10", "duration_seconds": "30",
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.2.3.9:")
+}
+
+# A tenant that has never set these has no LockoutThreshold value at all.
+# Absent is not the same as non-compliant -- treating a missing value as 0
+# would report every such tenant as failing 5.2.3.9.
+test_absent_lockout_settings_do_not_fabricate_a_finding if {
+	r := entra.compliance_report with input as entra_input({"lockout": {
+		"settings_present": false,
+	}})
+	every v in r.violations {
+		not contains(v, "CIS 5.2.3.8:")
+		not contains(v, "CIS 5.2.3.9:")
+	}
+}
+
+test_5_1_3_4_unrestricted_group_creation if {
+	r := entra.compliance_report with input as entra_input({"group_creation": {
+		"settings_present": true, "enabled": "True", "allowed_group_id": "",
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.1.3.4:")
+}
+
+test_5_1_3_4_group_creation_restricted_to_a_group_passes if {
+	r := entra.compliance_report with input as entra_input({"group_creation": {
+		"settings_present": true, "enabled": "True", "allowed_group_id": "0000-group",
+	}})
+	every v in r.violations { not contains(v, "CIS 5.1.3.4:") }
 }
