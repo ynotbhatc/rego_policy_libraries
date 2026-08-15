@@ -20,6 +20,7 @@ import data.cis_m365_v7.exchange
 import data.cis_m365_v7.intune
 import data.cis_m365_v7.purview
 import data.cis_m365_v7.sharepoint
+import data.cis_m365_v7.teams
 import rego.v1
 
 BENCHMARK_TOTAL_CONTROLS := 160
@@ -28,12 +29,6 @@ BENCHMARK_TOTAL_CONTROLS := 160
 # reader (or an auditor) sees the gap rather than inferring coverage from
 # the absence of violations.
 not_evaluated := [
-	{
-		"section": "8",
-		"name": "Microsoft Teams admin center",
-		"section_total_controls": 17,
-		"reason": "collector returns only a Teams app count and Microsoft Secure Score; neither establishes a CIS control",
-	},
 	{
 		"section": "9",
 		"name": "Microsoft Fabric",
@@ -50,6 +45,7 @@ section_reports := [
 	entra.compliance_report,
 	exchange.compliance_report,
 	sharepoint.compliance_report,
+	teams.compliance_report,
 ]
 
 # array.concat takes exactly two arrays -- fold rather than vararg.

@@ -312,9 +312,9 @@ test_sharepoint_declares_the_cmdlet_deviation if {
 test_orchestrator_reports_partial_coverage_honestly if {
 	r := main.compliance_report with input as {}
 	r.benchmark_total_controls == 160
-	r.controls_evaluated == 60
-	r.controls_not_evaluated == 100
-	count(r.sections_not_evaluated) == 2
+	r.controls_evaluated == 76
+	r.controls_not_evaluated == 84
+	count(r.sections_not_evaluated) == 1
 }
 
 test_orchestrator_exposes_no_bare_compliant_field if {
@@ -573,4 +573,100 @@ test_entra_unavailable_fact_names_the_blocked_control if {
 	some v in r.violations
 	contains(v, "CIS 5.1.2.2")
 	contains(v, "not a pass")
+}
+
+# ── Section 8 -- Teams ────────────────────────────────────────────────
+
+import data.cis_m365_v7.teams as teams
+
+teams_input(extra) := {"teams": object.union({"collected": true, "unavailable": {}}, extra)}
+
+test_8_1_1_unapproved_storage_provider if {
+	r := teams.compliance_report with input as teams_input({"client_configuration": {"AllowDropBox": true}})
+	some v in r.violations
+	contains(v, "CIS 8.1.1")
+}
+
+test_8_2_2_unmanaged_teams_users_allowed if {
+	r := teams.compliance_report with input as teams_input({"federation_configuration": {"AllowTeamsConsumer": true}})
+	some v in r.violations
+	contains(v, "CIS 8.2.2")
+}
+
+test_8_2_1_open_federation_with_no_allow_list if {
+	r := teams.compliance_report with input as teams_input({"federation_configuration": {
+		"AllowFederatedUsers": true, "AllowedDomains": [],
+	}})
+	some v in r.violations
+	contains(v, "CIS 8.2.1")
+}
+
+test_8_2_1_not_raised_when_an_allow_list_exists if {
+	r := teams.compliance_report with input as teams_input({"federation_configuration": {
+		"AllowFederatedUsers": true, "AllowedDomains": ["partner.com"],
+	}})
+	every v in r.violations { not contains(v, "CIS 8.2.1") }
+}
+
+test_8_5_1_anonymous_join_in_global_policy if {
+	r := teams.compliance_report with input as teams_input({"meeting_policies": [
+		{"Identity": "Global", "AllowAnonymousUsersToJoinMeeting": true},
+	]})
+	some v in r.violations
+	contains(v, "CIS 8.5.1")
+}
+
+# The reason all policies are checked, not just Global: a hardened Global
+# policy does not protect users assigned a permissive one.
+test_permissive_non_global_policy_is_not_masked_by_a_clean_global if {
+	r := teams.compliance_report with input as teams_input({"meeting_policies": [
+		{"Identity": "Global", "AllowAnonymousUsersToJoinMeeting": false},
+		{"Identity": "Tag:Contractors", "AllowAnonymousUsersToJoinMeeting": true},
+	]})
+	some v in r.violations
+	contains(v, "CIS 8.5.1")
+	contains(v, "Contractors")
+}
+
+test_8_5_4_pstn_bypasses_lobby if {
+	r := teams.compliance_report with input as teams_input({"meeting_policies": [
+		{"Identity": "Global", "AllowPSTNUsersToBypassLobby": true},
+	]})
+	some v in r.violations
+	contains(v, "CIS 8.5.4")
+}
+
+test_8_6_1_security_reporting_disabled if {
+	r := teams.compliance_report with input as teams_input({"messaging_policies": [
+		{"Identity": "Global", "AllowSecurityEndUserReporting": false},
+	]})
+	some v in r.violations
+	contains(v, "CIS 8.6.1")
+}
+
+test_teams_absent_facts_is_not_a_pass if {
+	r := teams.compliance_report with input as {}
+	r.compliant == false
+	count(r.violations) > 0
+}
+
+test_teams_unavailable_fact_names_the_blocked_control if {
+	r := teams.compliance_report with input as {"teams": {
+		"collected": true,
+		"unavailable": {"meeting_policies": "Teams PowerShell module is not installed"},
+	}}
+	some v in r.violations
+	contains(v, "CIS 8.5.1")
+	contains(v, "not a pass")
+}
+
+# Section 8 follows CIS's own cmdlets, unlike section 7 -- the note should
+# say so rather than claiming a deviation that does not exist here.
+test_teams_declares_it_followed_the_documented_cmdlets if {
+	r := teams.compliance_report with input as {}
+	contains(r.evidence_strength.section, "cmdlets CIS documents")
+}
+
+test_teams_report_survives_undefined_input if {
+	count(teams.compliance_report) > 0
 }
