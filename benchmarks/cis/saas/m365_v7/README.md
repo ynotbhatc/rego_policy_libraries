@@ -53,8 +53,8 @@ It applies two checks:
 1. **Existence** — every cited id must appear in the benchmark.
 2. **Coherence** — the message must share a substantive word with the
    benchmark's own title for that id. This is the check that catches
-   `"CIS 1.1.1: Security Defaults..."` when `1.1.1` is actually
-   *"Ensure Administrative accounts are cloud-only"*.
+   `"CIS 1.1.1: Security Defaults..."` when `1.1.1` is actually about
+   administrative accounts being cloud-only.
 
 It runs in CI on every PR touching this tree.
 
