@@ -22,9 +22,12 @@ test_admin_center_absent_facts_is_not_a_pass if {
 }
 
 test_defender_absent_facts_is_not_a_pass if {
+	# Section 2 now spans 17 controls across two fact sources (DNS for
+	# SPF/DKIM/DMARC, Exchange PowerShell for the policy controls), so
+	# empty input raises a violation per source rather than exactly one.
 	r := defender.compliance_report with input as {}
 	r.compliant == false
-	count(r.violations) == 1
+	count(r.violations) >= 2
 }
 
 test_entra_absent_facts_is_not_a_pass if {
@@ -102,9 +105,16 @@ test_2_1_10_missing_dmarc if {
 	contains(v, "CIS 2.1.10")
 }
 
-test_all_mail_auth_present_passes if {
+test_mail_authentication_controls_satisfied if {
+	# A domains-only fixture establishes SPF/DKIM/DMARC and nothing else.
+	# With 17 controls in the section it cannot make the whole section
+	# compliant, so assert on the three controls it actually covers.
 	r := defender.compliance_report with input as domains(true, true, true)
-	r.compliant == true
+	every v in r.violations {
+		not contains(v, "CIS 2.1.8")
+		not contains(v, "CIS 2.1.9")
+		not contains(v, "CIS 2.1.10")
+	}
 }
 
 # ── CIS 3.1.1 -- unified audit log ────────────────────────────────────
@@ -312,8 +322,8 @@ test_sharepoint_declares_the_cmdlet_deviation if {
 test_orchestrator_reports_partial_coverage_honestly if {
 	r := main.compliance_report with input as {}
 	r.benchmark_total_controls == 160
-	r.controls_evaluated == 76
-	r.controls_not_evaluated == 84
+	r.controls_evaluated == 90
+	r.controls_not_evaluated == 70
 	count(r.sections_not_evaluated) == 1
 }
 
@@ -669,4 +679,70 @@ test_teams_declares_it_followed_the_documented_cmdlets if {
 
 test_teams_report_survives_undefined_input if {
 	count(teams.compliance_report) > 0
+}
+
+# ── Section 2 -- Defender policy controls (Exchange Online PowerShell) ─
+
+def_input(extra) := {"defender": object.union({"collected": true, "unavailable": {}}, extra)}
+
+test_2_1_1_safe_links_not_enabled_for_office if {
+	r := defender.compliance_report with input as def_input({"safe_links_policies": [
+		{"Name": "Default", "EnableSafeLinksForOffice": false},
+	]})
+	some v in r.violations
+	contains(v, "CIS 2.1.1")
+}
+
+test_2_1_2_attachment_type_filter_disabled if {
+	r := defender.compliance_report with input as def_input({"malware_filter_policies": [
+		{"Identity": "Default", "EnableFileFilter": false},
+	]})
+	some v in r.violations
+	contains(v, "CIS 2.1.2")
+}
+
+test_2_1_4_no_safe_attachments_policy if {
+	r := defender.compliance_report with input as def_input({"safe_attachment_policies": []})
+	some v in r.violations
+	contains(v, "CIS 2.1.4")
+}
+
+test_2_1_12_ip_allow_list_in_use if {
+	r := defender.compliance_report with input as def_input({"connection_filter_policies": [
+		{"Name": "Default", "IPAllowList": ["203.0.113.10"]},
+	]})
+	some v in r.violations
+	contains(v, "CIS 2.1.12")
+}
+
+test_2_1_14_allowed_sender_domains if {
+	r := defender.compliance_report with input as def_input({"content_filter_policies": [
+		{"Name": "Default", "AllowedSenderDomains": ["partner.com"]},
+	]})
+	some v in r.violations
+	contains(v, "CIS 2.1.14")
+}
+
+test_2_4_4_teams_zap_off if {
+	r := defender.compliance_report with input as def_input({"teams_protection_policy": {"ZapEnabled": false}})
+	some v in r.violations
+	contains(v, "CIS 2.4.4")
+}
+
+# A tenant without Defender for Office 365 has no ATP cmdlets at all. That
+# must report as unevaluable, not as compliance -- the absence of a policy
+# you cannot query is not evidence the control is met.
+test_tenant_without_defender_reports_unevaluable_not_compliant if {
+	r := defender.compliance_report with input as {"defender": {
+		"collected": true,
+		"unavailable": {"safe_attachment_policies": "exchange cmdlet returned no output (blocks 2.1.4)"},
+	}}
+	r.compliant == false
+	some v in r.violations
+	contains(v, "CIS 2.1.4")
+	contains(v, "not a pass")
+}
+
+test_defender_report_survives_undefined_input if {
+	count(defender.compliance_report) > 0
 }

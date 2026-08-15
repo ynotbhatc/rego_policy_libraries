@@ -1,8 +1,8 @@
 # CIS Microsoft 365 Foundations Benchmark v7.0.0 — coverage
 
-**Version:** v1.5
+**Version:** v1.6
 **Benchmark:** CIS Microsoft 365 Foundations Benchmark **v7.0.0**, released 2026-05-20
-**Evaluated:** **76 of 160** recommendations (**48%**)
+**Evaluated:** **90 of 160** recommendations (**56%**)
 **Requires attestation:** 6 (verified to have no app-only read path)
 **Unresolved:** 10 (parked pending a live-tenant probe during the POC)
 
@@ -17,7 +17,7 @@ modules themselves.
 | § | Section | Controls | Evaluated | Module |
 |---|---|---|---|---|
 | 1 | Microsoft 365 admin center | 15 | 9 | `admin_center_validation.rego` |
-| 2 | Microsoft Defender | 21 | 3 | `defender_validation.rego` |
+| 2 | Microsoft Defender | 21 | **17** | `defender_validation.rego` |
 | 3 | Microsoft Purview | 5 | 1 | `purview_validation.rego` |
 | 4 | Microsoft Intune admin center | 2 | 2 | `intune_validation.rego` |
 | 5 | Microsoft Entra admin center | 63 | 20 | `entra_validation.rego` |
@@ -25,13 +25,13 @@ modules themselves.
 | 7 | SharePoint admin center | 12 | **12** | `sharepoint_validation.rego` |
 | 8 | Microsoft Teams admin center | 17 | **16** | `teams_validation.rego` |
 | 9 | Microsoft Fabric | 12 | **0** | — |
-| | **Total** | **160** | **76** | |
+| | **Total** | **160** | **90** | |
 
 Evaluated ids: `1.1.1`, `1.1.3`, `1.1.4`, `1.2.1`, `1.3.1`, `1.3.2`, `1.3.4`,
 `1.3.5`, `1.3.7`, `4.1`, `4.2`, `2.1.8`, `2.1.9`, `2.1.10`, `3.1.1`, `5.2.2.1`,
 `5.2.2.2`, `5.2.2.3`, `5.3.1`, `6.1.1`, `7.2.1`, `7.2.6`, `7.2.7`, `7.2.11`.
 
-## Why coverage is 48%
+## Why coverage is 56%
 
 Coverage is bounded by **fact collection**, not by policy. The `aac.m365`
 collection currently issues ten Microsoft Graph calls. Four of its seven
@@ -45,7 +45,7 @@ recommendation. Those were not carried into v7.
 | 4 — Intune | **Now collected.** Requires the `DeviceManagementConfiguration.Read.All` application permission — without it both controls report unavailable, never pass. |
 | 8 — Teams | Collector returns a Teams app count and Secure Score. Real coverage needs Teams PowerShell or Graph beta. |
 | 9 — Fabric | Collector returns Secure Score. Fabric tenant settings are only exposed by the Fabric Admin REST API, not Graph. |
-| 2 — Defender (18 of 21) | Safe Links, Safe Attachments, anti-phishing, anti-spam and connection filtering need Exchange Online PowerShell. |
+| 2 — Defender (4 of 21) | **Now collected** via Exchange Online PowerShell. Only 2.2.1, 2.4.3 and 2.4.5 outstanding — all Manual in CIS with no PowerShell audit procedure. |
 | 5 — Entra (59 of 63) | Most section 5 controls need Graph endpoints the collector does not call yet; several are only on `/beta`, and `graph.py` pins `GRAPH_BASE` to `/v1.0`. |
 | 6 — Exchange | **Complete.** All 13 controls via Exchange Online PowerShell in `aac-m365-ee`. |
 
