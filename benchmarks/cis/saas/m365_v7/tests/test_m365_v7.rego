@@ -51,7 +51,11 @@ test_reports_never_collapse_to_empty_object if {
 
 # ── CIS 1.1.3 -- between two and four global admins ───────────────────
 
-admins(n) := {"identity": {"global_admins": [{"id": sprintf("u%d", [i])} | some i in numbers.range(1, n)]}}
+admins(n) := {"admin_center": {
+	"collected": true, "unavailable": {},
+	"global_admin_count": n,
+	"global_admins": [{"id": sprintf("u%d", [i])} | some i in numbers.range(1, n)],
+}}
 
 test_1_1_3_too_few_global_admins if {
 	r := admin_center.compliance_report with input as admins(1)
@@ -246,9 +250,9 @@ test_sharepoint_hardened_passes if {
 test_orchestrator_reports_partial_coverage_honestly if {
 	r := main.compliance_report with input as {}
 	r.benchmark_total_controls == 160
-	r.controls_evaluated == 14
-	r.controls_not_evaluated == 146
-	count(r.sections_not_evaluated) == 3
+	r.controls_evaluated == 24
+	r.controls_not_evaluated == 136
+	count(r.sections_not_evaluated) == 2
 }
 
 test_orchestrator_exposes_no_bare_compliant_field if {
@@ -269,4 +273,135 @@ test_orchestrator_scopes_its_verdict_to_evaluated_controls if {
 test_every_evaluated_id_is_reported if {
 	r := main.compliance_report with input as {}
 	count(r.evaluated_control_ids) == r.controls_evaluated
+}
+
+# ── Section 1 -- admin center ─────────────────────────────────────────
+
+import data.cis_m365_v7.admin_center as ac
+import data.cis_m365_v7.attestation as att
+import data.cis_m365_v7.intune as intune
+
+ac_input(extra) := {"admin_center": object.union({"collected": true, "unavailable": {}}, extra)}
+
+test_1_1_1_on_prem_synced_admin if {
+	r := ac.compliance_report with input as ac_input({"global_admins": [
+		{"user_principal_name": "a@c.com", "on_premises_sync_enabled": true},
+	], "global_admin_count": 3})
+	some v in r.violations
+	contains(v, "CIS 1.1.1")
+}
+
+test_1_2_1_public_group_flagged if {
+	r := ac.compliance_report with input as ac_input({"public_groups": [{"display_name": "All Co"}]})
+	some v in r.violations
+	contains(v, "CIS 1.2.1")
+}
+
+test_1_3_1_password_expiry_configured if {
+	r := ac.compliance_report with input as ac_input({"domains": [
+		{"id": "c.com", "is_verified": true, "password_validity_period_in_days": 90},
+	]})
+	some v in r.violations
+	contains(v, "CIS 1.3.1")
+}
+
+test_1_3_1_never_expires_passes if {
+	r := ac.compliance_report with input as ac_input({"domains": [
+		{"id": "c.com", "is_verified": true, "password_validity_period_in_days": 2147483647},
+	]})
+	every v in r.violations { not contains(v, "CIS 1.3.1") }
+}
+
+# The whole point of the `unavailable` contract: a denied endpoint must
+# raise a violation naming the control it blocked, never pass silently.
+test_unavailable_fact_raises_the_blocked_control if {
+	r := ac.compliance_report with input as {"admin_center": {
+		"collected": true,
+		"unavailable": {"domains": "permission denied -- scope missing"},
+	}}
+	r.compliant == false
+	some v in r.violations
+	contains(v, "CIS 1.3.1")
+	contains(v, "not a pass")
+}
+
+test_admin_center_absent_facts_is_not_a_pass if {
+	r := ac.compliance_report with input as {}
+	r.compliant == false
+	count(r.violations) > 0
+}
+
+# ── Section 4 -- Intune ───────────────────────────────────────────────
+
+test_4_1_secure_by_default_off if {
+	r := intune.compliance_report with input as {"intune": {
+		"collected": true, "unavailable": {}, "secure_by_default": false,
+		"enrollment_platform_restrictions": [{"display_name": "d", "platforms": {}}],
+	}}
+	some v in r.violations
+	contains(v, "CIS 4.1")
+}
+
+test_4_2_personal_enrollment_permitted if {
+	r := intune.compliance_report with input as {"intune": {
+		"collected": true, "unavailable": {}, "secure_by_default": true,
+		"enrollment_platform_restrictions": [{"display_name": "Default", "platforms": {
+			"iosRestriction": {"personal_device_enrollment_blocked": false},
+		}}],
+	}}
+	some v in r.violations
+	contains(v, "CIS 4.2")
+}
+
+test_intune_missing_permission_is_not_a_pass if {
+	r := intune.compliance_report with input as {"intune": {
+		"collected": true,
+		"unavailable": {"device_management_settings": "permission denied -- scope missing"},
+	}}
+	r.compliant == false
+}
+
+# ── Attestation ───────────────────────────────────────────────────────
+
+test_uncollectable_controls_are_reported_not_omitted if {
+	r := att.compliance_report with input as {}
+	r.compliant == false
+	r.requires_attestation_count == 6
+	r.unresolved_count == 10
+	# An omitted control is indistinguishable from a passing one.
+	count(r.violations) == 16
+}
+
+test_complete_attestation_satisfies_the_control if {
+	r := att.compliance_report with input as {"attestations": [{
+		"control_id": "5.2.4.1", "observed": "All",
+		"attested_by": "operator@example.com", "attested_on": "2026-08-14",
+		"evidence_ref": "screenshot-001.png",
+	}]}
+	every v in r.violations { not contains(v, "CIS 5.2.4.1") }
+}
+
+test_attestation_missing_provenance_is_inadmissible if {
+	r := att.compliance_report with input as {"attestations": [{
+		"control_id": "5.2.4.1", "observed": "All", "attested_by": "operator@example.com",
+	}]}
+	some v in r.violations
+	contains(v, "CIS 5.2.4.1")
+	contains(v, "not admissible")
+}
+
+test_attestation_marks_its_evidence_source if {
+	r := att.compliance_report with input as {}
+	r.evidence_source == "attested"
+}
+
+# ── Regression: reports must not collapse to {} without input ─────────
+# A top-level assignment that reads `input` is undefined when no input is
+# supplied at all, which silently collapses compliance_report to {} at the
+# OPA endpoint. Both new modules hit this during development.
+
+test_new_section_reports_survive_undefined_input if {
+	count(ac.compliance_report) > 0
+	count(intune.compliance_report) > 0
+	count(att.compliance_report) > 0
 }

@@ -13,9 +13,11 @@
 package cis_m365_v7.main
 
 import data.cis_m365_v7.admin_center
+import data.cis_m365_v7.attestation
 import data.cis_m365_v7.defender
 import data.cis_m365_v7.entra
 import data.cis_m365_v7.exchange
+import data.cis_m365_v7.intune
 import data.cis_m365_v7.purview
 import data.cis_m365_v7.sharepoint
 import rego.v1
@@ -26,12 +28,6 @@ BENCHMARK_TOTAL_CONTROLS := 160
 # reader (or an auditor) sees the gap rather than inferring coverage from
 # the absence of violations.
 not_evaluated := [
-	{
-		"section": "4",
-		"name": "Microsoft Intune admin center",
-		"section_total_controls": 2,
-		"reason": "no collector; Intune controls require Graph deviceManagement/* and an additional application permission scope",
-	},
 	{
 		"section": "8",
 		"name": "Microsoft Teams admin center",
@@ -50,16 +46,17 @@ section_reports := [
 	admin_center.compliance_report,
 	defender.compliance_report,
 	purview.compliance_report,
+	intune.compliance_report,
 	entra.compliance_report,
 	exchange.compliance_report,
 	sharepoint.compliance_report,
 ]
 
 # array.concat takes exactly two arrays -- fold rather than vararg.
-all_violations := [v |
-	some r in section_reports
-	some v in r.violations
-]
+all_violations := array.concat(
+	[v | some r in section_reports; some v in r.violations],
+	[v | some v in attestation.violation],
+)
 
 evaluated_controls := [c |
 	some r in section_reports
@@ -87,6 +84,9 @@ compliance_report := {
 	"evaluated_control_ids": evaluated_controls,
 	"sections_evaluated": section_reports,
 	"sections_not_evaluated": not_evaluated,
+	# Controls with no collector path are reported, never omitted -- an
+	# omitted control is indistinguishable from a passing one.
+	"no_collector_path": attestation.compliance_report,
 	"violations": all_violations,
 	"violation_count": count(all_violations),
 	# Scoped deliberately: true means "no violation among the controls that
