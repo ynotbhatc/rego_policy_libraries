@@ -430,6 +430,97 @@ violation contains msg if {
 	msg := "CIS 5.2.2.17: authentication transfer is not blocked, so a session can be handed from a desktop to an attacker-controlled device"
 }
 
+
+# ── 5.1.4.x -- device registration ───────────────────────────────────
+# Five controls from one beta policy object. CIS documents these as
+# portal steps; recorded in evidence_strength for the subsection.
+
+MAX_DEVICES_PER_USER := 20
+
+violation contains msg if {
+	available("device_registration_policy")
+	input.entra.device_registration.azure_ad_join_allowed_to_join == "all"
+	msg := "CIS 5.1.4.1: the ability to join devices to Entra is not restricted -- every user may join a device, so an attacker with credentials can register one"
+}
+
+violation contains msg if {
+	available("device_registration_policy")
+	to_number(object.get(input.entra.device_registration, "user_device_quota", 0)) > MAX_DEVICES_PER_USER
+	msg := sprintf("CIS 5.1.4.2: the maximum number of devices per user is %v; the benchmark expects a limit of %d or fewer", [input.entra.device_registration.user_device_quota, MAX_DEVICES_PER_USER])
+}
+
+violation contains msg if {
+	available("device_registration_policy")
+	input.entra.device_registration.local_admin_global_admins_enabled == true
+	msg := "CIS 5.1.4.3: the Global Administrator role is added as a local administrator during Entra join, which extends tenant-wide privilege onto every joined device"
+}
+
+violation contains msg if {
+	available("device_registration_policy")
+	input.entra.device_registration.local_admin_registering_user_enabled == "all"
+	msg := "CIS 5.1.4.4: local administrator assignment is not limited during Entra join -- the registering user becomes a local admin on the device"
+}
+
+violation contains msg if {
+	available("laps_policy")
+	input.entra.laps_enabled == false
+	msg := "CIS 5.1.4.5: Local Administrator Password Solution is not enabled, so local administrator passwords are neither randomised nor rotated"
+}
+
+# ── 5.1.5.x -- application credential management ─────────────────────
+# The app management policy expresses restrictions as a list of rules
+# rather than flags, so each control asks whether a rule of its kind
+# exists and is enabled.
+
+app_restriction_present(collection, rule_type) if {
+	some r in object.get(input.entra.app_management, collection, [])
+	r.restrictionType == rule_type
+	r.state == "enabled"
+}
+
+violation contains msg if {
+	available("app_management_policy")
+	not app_restriction_present("password_credentials", "passwordAddition")
+	msg := "CIS 5.1.5.3: password addition is not blocked for applications, so a secret can be added to an existing app registration"
+}
+
+violation contains msg if {
+	available("app_management_policy")
+	not app_restriction_present("password_credentials", "passwordLifetime")
+	msg := "CIS 5.1.5.4: no password lifetime restriction is enforced for applications, so an application password can exceed 180 days"
+}
+
+violation contains msg if {
+	available("app_management_policy")
+	not app_restriction_present("password_credentials", "symmetricKeyAddition")
+	msg := "CIS 5.1.5.5: new application passwords are not required to be system-generated, so a weak secret can be supplied by hand"
+}
+
+violation contains msg if {
+	available("app_management_policy")
+	not app_restriction_present("key_credentials", "asymmetricKeyLifetime")
+	msg := "CIS 5.1.5.6: no maximum certificate lifetime is enforced for applications, so an application certificate can exceed 180 days"
+}
+
+# ── 5.3.2 / 5.3.3 -- access reviews ──────────────────────────────────
+
+review_covers(term) if {
+	some r in input.entra.access_reviews
+	contains(lower(object.get(r, "scope_query", "")), term)
+}
+
+violation contains msg if {
+	available("access_reviews")
+	not review_covers("guest")
+	msg := "CIS 5.3.2: no access review is configured for guest users, so external access is never re-attested"
+}
+
+violation contains msg if {
+	available("access_reviews")
+	not review_covers("roleassignment")
+	msg := "CIS 5.3.3: no access review is configured for privileged roles, so standing administrative access is never re-attested"
+}
+
 # ── Fail closed on every gap the collector recorded ───────────────────
 FACT_CONTROLS := {
 	"authorization_policy": "5.1.2.2",
@@ -438,6 +529,10 @@ FACT_CONTROLS := {
 	"on_premises_synchronization": "5.1.8.1",
 	"conditional_access_policies": "5.2.2.1",
 	"named_locations": "5.2.2.14",
+	"device_registration_policy": "5.1.4.1",
+	"laps_policy": "5.1.4.5",
+	"app_management_policy": "5.1.5.3",
+	"access_reviews": "5.3.2",
 	"pim_role_assignments": "5.3.1",
 	"group_settings": "5.2.3.2",
 	"mfa_registration_report": "5.2.3.4",
@@ -466,16 +561,18 @@ compliance_report := {
 	"section": "5",
 	"name": "Microsoft Entra admin center",
 	"section_total_controls": 63,
-	"controls_evaluated": 34,
+	"controls_evaluated": 45,
 	"controls": [
 		"5.1.2.1", "5.1.2.2", "5.1.2.3", "5.1.3.1", "5.1.4.6",
-		"5.1.5.1", "5.1.5.2", "5.1.6.2", "5.1.6.3", "5.1.8.1",
+		"5.1.4.1", "5.1.4.2", "5.1.4.3", "5.1.4.4", "5.1.4.5",
+		"5.1.5.1", "5.1.5.2", "5.1.5.3", "5.1.5.4", "5.1.5.5", "5.1.5.6",
+		"5.1.6.2", "5.1.6.3", "5.1.8.1",
 		"5.2.2.1", "5.2.2.2", "5.2.2.3", "5.2.2.4", "5.2.2.5",
 		"5.2.2.6", "5.2.2.7", "5.2.2.8", "5.2.2.9", "5.2.2.10",
 		"5.2.2.11", "5.2.2.12", "5.2.2.13", "5.2.2.14", "5.2.2.15",
 		"5.2.2.16", "5.2.2.17",
 		"5.2.3.2", "5.2.3.3", "5.2.3.4", "5.2.3.5", "5.2.3.6", "5.2.3.7",
-		"5.3.1",
+		"5.3.1", "5.3.2", "5.3.3",
 	],
 	"facts_present": collected,
 	"unavailable_facts": unavailable,

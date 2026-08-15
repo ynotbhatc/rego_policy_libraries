@@ -325,8 +325,8 @@ test_sharepoint_declares_the_cmdlet_deviation if {
 test_orchestrator_reports_partial_coverage_honestly if {
 	r := main.compliance_report with input as {}
 	r.benchmark_total_controls == 160
-	r.controls_evaluated == 122
-	r.controls_not_evaluated == 38
+	r.controls_evaluated == 133
+	r.controls_not_evaluated == 27
 	count(r.sections_not_evaluated) == 0
 }
 
@@ -964,4 +964,73 @@ test_report_only_policy_satisfies_nothing if {
 test_5_2_2_x_declares_the_undocumented_path if {
 	r := entra.compliance_report with input as {}
 	contains(r.evidence_strength["5.2.2.x"], "path it does not describe")
+}
+
+# ── 5.1.4.x / 5.1.5.x / 5.3.x ─────────────────────────────────────────
+
+test_5_1_4_1_device_join_open_to_all if {
+	r := entra.compliance_report with input as entra_input({"device_registration": {
+		"azure_ad_join_allowed_to_join": "all",
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.1.4.1:")
+}
+
+test_5_1_4_3_global_admin_as_local_admin if {
+	r := entra.compliance_report with input as entra_input({"device_registration": {
+		"local_admin_global_admins_enabled": true,
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.1.4.3:")
+}
+
+test_5_1_4_5_laps_disabled if {
+	r := entra.compliance_report with input as entra_input({"laps_enabled": false})
+	some v in r.violations
+	contains(v, "CIS 5.1.4.5:")
+}
+
+# The app management policy expresses restrictions as a list of rules,
+# not flags -- a rule present but disabled must not satisfy the control.
+test_5_1_5_3_disabled_restriction_does_not_satisfy_the_control if {
+	r := entra.compliance_report with input as entra_input({"app_management": {
+		"password_credentials": [{"restrictionType": "passwordAddition", "state": "disabled"}],
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.1.5.3:")
+}
+
+test_5_1_5_3_enabled_restriction_satisfies_the_control if {
+	r := entra.compliance_report with input as entra_input({"app_management": {
+		"password_credentials": [{"restrictionType": "passwordAddition", "state": "enabled"}],
+	}})
+	every v in r.violations { not contains(v, "CIS 5.1.5.3:") }
+}
+
+test_5_3_2_no_guest_access_review if {
+	r := entra.compliance_report with input as entra_input({"access_reviews": [
+		{"id": "r1", "scope_query": "/roleAssignments", "status": "InProgress"},
+	]})
+	some v in r.violations
+	contains(v, "CIS 5.3.2:")
+}
+
+test_5_3_3_no_privileged_role_access_review if {
+	r := entra.compliance_report with input as entra_input({"access_reviews": [
+		{"id": "r1", "scope_query": "/groups/guests", "status": "InProgress"},
+	]})
+	some v in r.violations
+	contains(v, "CIS 5.3.3:")
+}
+
+# A beta sub-resource older tenants do not expose must block its control,
+# not read as "LAPS is off".
+test_missing_laps_endpoint_blocks_its_control_rather_than_failing_it if {
+	r := entra.compliance_report with input as {"entra": {
+		"collected": true,
+		"unavailable": {"laps_policy": "not found (/policies/deviceRegistrationPolicy/localAdminPassword)"},
+	}}
+	some v in r.violations
+	contains(v, "CIS 5.1.4.5:")
+	contains(v, "not a pass")
 }
