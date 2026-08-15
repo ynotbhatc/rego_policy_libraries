@@ -240,41 +240,71 @@ test_6_1_2_declares_its_sampling_limit if {
 
 # ── CIS 7.2.x -- SharePoint sharing ───────────────────────────────────
 
-sp(cap, link, perm, legacy) := {"sharepoint": {
-	"settings_reachable": true,
-	"sharing_capability": cap,
-	"default_sharing_link_type": link,
-	"default_link_permission": perm,
-	"legacy_auth_protocols_enabled": legacy,
+sp(props) := {"sharepoint": {
+	"collected": true,
+	"unavailable": {},
+	"tenant": props,
 }}
 
 test_7_2_1_legacy_auth_enabled if {
-	r := sharepoint.compliance_report with input as sp("Disabled", "Internal", "View", true)
+	r := sharepoint.compliance_report with input as sp({"LegacyAuthProtocolsEnabled": true})
 	some v in r.violations
 	contains(v, "CIS 7.2.1")
 }
 
 test_7_2_6_most_permissive_sharing if {
-	r := sharepoint.compliance_report with input as sp("ExternalUserAndGuestSharing", "Internal", "View", false)
+	r := sharepoint.compliance_report with input as sp({"SharingCapability": "ExternalUserAndGuestSharing"})
 	some v in r.violations
 	contains(v, "CIS 7.2.6")
 }
 
 test_7_2_7_anonymous_default_link if {
-	r := sharepoint.compliance_report with input as sp("Disabled", "AnonymousAccess", "View", false)
+	r := sharepoint.compliance_report with input as sp({"DefaultSharingLinkType": "AnonymousAccess"})
 	some v in r.violations
 	contains(v, "CIS 7.2.7")
 }
 
 test_7_2_11_default_link_permission_edit if {
-	r := sharepoint.compliance_report with input as sp("Disabled", "Internal", "Edit", false)
+	r := sharepoint.compliance_report with input as sp({"DefaultLinkPermission": "Edit"})
 	some v in r.violations
 	contains(v, "CIS 7.2.11")
 }
 
 test_sharepoint_hardened_passes if {
-	r := sharepoint.compliance_report with input as sp("Disabled", "Internal", "View", false)
+	r := sharepoint.compliance_report with input as sp({
+		"LegacyAuthProtocolsEnabled": false,
+		"EnableAzureADB2BIntegration": true,
+		"SharingCapability": "Disabled",
+		"OneDriveSharingCapability": "Disabled",
+		"PreventExternalUsersFromResharing": true,
+		"DefaultSharingLinkType": "Internal",
+		"SharingDomainRestrictionMode": "AllowList",
+		"ExternalUserExpirationRequired": true,
+		"EmailAttestationRequired": true,
+		"DefaultLinkPermission": "View",
+		"DisallowInfectedFileDownload": true,
+	})
 	r.compliant == true
+}
+
+# A property PnP did not return must block its control, not read as null
+# and pass -- the property name could be wrong or renamed.
+test_7_2_8_missing_property_blocks_its_control if {
+	r := sharepoint.compliance_report with input as {"sharepoint": {
+		"collected": true,
+		"unavailable": {"SharingDomainRestrictionMode": "Get-PnPTenant did not return the property"},
+		"tenant": {},
+	}}
+	r.compliant == false
+	some v in r.violations
+	contains(v, "CIS 7.2.8")
+	contains(v, "not a pass")
+}
+
+test_sharepoint_declares_the_cmdlet_deviation if {
+	r := sharepoint.compliance_report with input as {}
+	contains(r.evidence_strength.section, "Get-PnPTenant")
+	contains(r.evidence_strength.section, "Windows-only")
 }
 
 # ── Orchestrator accounting ───────────────────────────────────────────
@@ -282,8 +312,8 @@ test_sharepoint_hardened_passes if {
 test_orchestrator_reports_partial_coverage_honestly if {
 	r := main.compliance_report with input as {}
 	r.benchmark_total_controls == 160
-	r.controls_evaluated == 52
-	r.controls_not_evaluated == 108
+	r.controls_evaluated == 60
+	r.controls_not_evaluated == 100
 	count(r.sections_not_evaluated) == 2
 }
 

@@ -1,8 +1,8 @@
 # CIS Microsoft 365 Foundations Benchmark v7.0.0 — coverage
 
-**Version:** v1.3
+**Version:** v1.4
 **Benchmark:** CIS Microsoft 365 Foundations Benchmark **v7.0.0**, released 2026-05-20
-**Evaluated:** **52 of 160** recommendations (**33%**)
+**Evaluated:** **60 of 160** recommendations (**38%**)
 **Requires attestation:** 6 (verified to have no app-only read path)
 **Unresolved:** 10 (parked pending a live-tenant probe during the POC)
 
@@ -22,16 +22,16 @@ modules themselves.
 | 4 | Microsoft Intune admin center | 2 | 2 | `intune_validation.rego` |
 | 5 | Microsoft Entra admin center | 63 | 20 | `entra_validation.rego` |
 | 6 | Exchange admin center | 13 | **13** | `exchange_validation.rego` |
-| 7 | SharePoint admin center | 12 | 4 | `sharepoint_validation.rego` |
+| 7 | SharePoint admin center | 12 | **12** | `sharepoint_validation.rego` |
 | 8 | Microsoft Teams admin center | 17 | **0** | — |
 | 9 | Microsoft Fabric | 12 | **0** | — |
-| | **Total** | **160** | **52** | |
+| | **Total** | **160** | **60** | |
 
 Evaluated ids: `1.1.1`, `1.1.3`, `1.1.4`, `1.2.1`, `1.3.1`, `1.3.2`, `1.3.4`,
 `1.3.5`, `1.3.7`, `4.1`, `4.2`, `2.1.8`, `2.1.9`, `2.1.10`, `3.1.1`, `5.2.2.1`,
 `5.2.2.2`, `5.2.2.3`, `5.3.1`, `6.1.1`, `7.2.1`, `7.2.6`, `7.2.7`, `7.2.11`.
 
-## Why coverage is 25%
+## Why coverage is 38%
 
 Coverage is bounded by **fact collection**, not by policy. The `aac.m365`
 collection currently issues ten Microsoft Graph calls. Four of its seven
@@ -60,6 +60,11 @@ Two caveats remain, both surfaced at runtime under `evidence_strength`:
 - **`6.1.2` is sampled.** Mailbox audit actions are checked across a
   bounded sample, not every mailbox. The sample size and limit appear in
   the report so a reader can judge the result's strength.
+- **All of §7 uses `Get-PnPTenant`, not the `Get-SPOTenant` CIS documents.**
+  `Microsoft.Online.SharePoint.PowerShell` is Windows-only and cannot be
+  installed in a Linux execution environment — verified absent from
+  `aac-m365-ee`. The same CSOM tenant properties are read, but the tool is
+  not the benchmark's, and that is permanent rather than a gap to close.
 - **`5.1.2.1` uses `/beta`.** Microsoft documents `/beta` as subject to
   change and unsupported for production, and CIS marks the control Manual
   with no automated procedure — so this reaches past the benchmark's own
