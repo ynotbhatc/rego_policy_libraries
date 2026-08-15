@@ -1,8 +1,8 @@
 # CIS Microsoft 365 Foundations Benchmark v7.0.0 — coverage
 
-**Version:** v1.7
+**Version:** v1.8
 **Benchmark:** CIS Microsoft 365 Foundations Benchmark **v7.0.0**, released 2026-05-20
-**Evaluated:** **96 of 160** recommendations (**60%**)
+**Evaluated:** **108 of 160** recommendations (**68%**)
 **Requires attestation:** 6 (verified to have no app-only read path)
 **Unresolved:** 10 (parked pending a live-tenant probe during the POC)
 
@@ -24,14 +24,14 @@ modules themselves.
 | 6 | Exchange admin center | 13 | **13** | `exchange_validation.rego` |
 | 7 | SharePoint admin center | 12 | **12** | `sharepoint_validation.rego` |
 | 8 | Microsoft Teams admin center | 17 | **16** | `teams_validation.rego` |
-| 9 | Microsoft Fabric | 12 | **0** | — |
-| | **Total** | **160** | **96** | |
+| 9 | Microsoft Fabric | 12 | **12** | `fabric_validation.rego` |
+| | **Total** | **160** | **108** | |
 
 Evaluated ids: `1.1.1`, `1.1.3`, `1.1.4`, `1.2.1`, `1.3.1`, `1.3.2`, `1.3.4`,
 `1.3.5`, `1.3.7`, `4.1`, `4.2`, `2.1.8`, `2.1.9`, `2.1.10`, `3.1.1`, `5.2.2.1`,
 `5.2.2.2`, `5.2.2.3`, `5.3.1`, `6.1.1`, `7.2.1`, `7.2.6`, `7.2.7`, `7.2.11`.
 
-## Why coverage is 60%
+## Why coverage is 68%
 
 Coverage is bounded by **fact collection**, not by policy. The `aac.m365`
 collection currently issues ten Microsoft Graph calls. Four of its seven

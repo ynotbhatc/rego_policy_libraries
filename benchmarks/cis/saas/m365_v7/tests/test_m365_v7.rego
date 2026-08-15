@@ -325,9 +325,9 @@ test_sharepoint_declares_the_cmdlet_deviation if {
 test_orchestrator_reports_partial_coverage_honestly if {
 	r := main.compliance_report with input as {}
 	r.benchmark_total_controls == 160
-	r.controls_evaluated == 96
-	r.controls_not_evaluated == 64
-	count(r.sections_not_evaluated) == 1
+	r.controls_evaluated == 108
+	r.controls_not_evaluated == 52
+	count(r.sections_not_evaluated) == 0
 }
 
 test_orchestrator_exposes_no_bare_compliant_field if {
@@ -812,4 +812,78 @@ test_1_3_9_bookings_without_auth if {
 	}
 	some v in r.violations
 	contains(v, "CIS 1.3.9")
+}
+
+# ── Section 9 -- Fabric ───────────────────────────────────────────────
+
+import data.cis_m365_v7.fabric as fabric
+
+fab(settings) := {"fabric": {"collected": true, "unavailable": {}, "settings": settings}}
+
+test_9_1_4_publish_to_web_open_to_whole_org if {
+	r := fabric.compliance_report with input as fab({"PublishToWeb": {"enabled": true, "enabled_security_groups": []}})
+	some v in r.violations
+	contains(v, "CIS 9.1.4")
+}
+
+# Fabric settings are not simple booleans: enabled-but-scoped to named
+# security groups is what the benchmark accepts. Treating that as a
+# violation would flood a correctly-configured tenant with false findings.
+test_enabled_but_scoped_to_a_security_group_is_accepted if {
+	r := fabric.compliance_report with input as fab({"PublishToWeb": {
+		"enabled": true, "enabled_security_groups": [{"name": "BI-Publishers"}],
+	}})
+	every v in r.violations { not contains(v, "CIS 9.1.4") }
+}
+
+test_9_1_4_disabled_outright_is_accepted if {
+	r := fabric.compliance_report with input as fab({"PublishToWeb": {"enabled": false}})
+	every v in r.violations { not contains(v, "CIS 9.1.4") }
+}
+
+# 9.1.6 and 9.1.9 are the inverse of the others -- they are protections,
+# so the benchmark wants them ON.
+test_9_1_6_sensitivity_labels_disabled if {
+	r := fabric.compliance_report with input as fab({"EimInformationProtectionEdit": {"enabled": false}})
+	some v in r.violations
+	contains(v, "CIS 9.1.6")
+}
+
+test_9_1_9_resource_key_auth_not_blocked if {
+	r := fabric.compliance_report with input as fab({"BlockResourceKeyAuthentication": {"enabled": false}})
+	some v in r.violations
+	contains(v, "CIS 9.1.9")
+}
+
+# The Fabric-specific failure an operator will actually hit: valid token,
+# refused API, because the admin-portal switch does not name the app.
+test_service_principal_not_enabled_for_fabric_apis if {
+	r := fabric.compliance_report with input as {"fabric": {
+		"collected": true,
+		"unavailable": {"tenant_settings": "Fabric admin API returned 403 -- Service principals can use Fabric APIs must name a security group containing this app"},
+	}}
+	r.compliant == false
+	some v in r.violations
+	contains(v, "CIS 9.1.1")
+	contains(v, "not a pass")
+}
+
+test_missing_setting_blocks_its_control if {
+	r := fabric.compliance_report with input as {"fabric": {
+		"collected": true,
+		"unavailable": {"ShareLinkToEntireOrg": "the Fabric admin API did not return the setting"},
+		"settings": {},
+	}}
+	some v in r.violations
+	contains(v, "CIS 9.1.7")
+}
+
+test_fabric_absent_facts_is_not_a_pass if {
+	r := fabric.compliance_report with input as {}
+	r.compliant == false
+	count(r.violations) > 0
+}
+
+test_fabric_report_survives_undefined_input if {
+	count(fabric.compliance_report) > 0
 }
