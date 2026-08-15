@@ -521,6 +521,56 @@ violation contains msg if {
 	msg := "CIS 5.3.3: no access review is configured for privileged roles, so standing administrative access is never re-attested"
 }
 
+
+# ── Authenticator hardening and smart lockout ────────────────────────
+# Five more controls, all riding on policy objects already fetched --
+# they were simply not projected into the facts. CIS documents these as
+# portal steps.
+
+MAX_LOCKOUT_THRESHOLD := 10
+MIN_LOCKOUT_DURATION_SECONDS := 60
+
+# CIS 5.2.3.1 -- Authenticator must show app and location, and require
+# number matching, so a push cannot be approved blind.
+violation contains msg if {
+	available("authentication_methods_policy")
+	input.entra.authenticator.state == "enabled"
+	some feature in ["number_matching_state", "show_app_information_state", "show_geographic_location_state"]
+	input.entra.authenticator[feature] != "enabled"
+	msg := sprintf("CIS 5.2.3.1: Microsoft Authenticator is not configured to protect against MFA fatigue -- '%s' is not enabled, so a push can be approved without seeing what is being approved", [feature])
+}
+
+# CIS 5.2.3.10 -- companion applications.
+violation contains msg if {
+	available("authentication_methods_policy")
+	input.entra.authenticator.companion_app_allowed_state == "enabled"
+	msg := "CIS 5.2.3.10: Microsoft Authenticator on companion applications is not disabled, which widens the surface on which an approval can be granted"
+}
+
+# CIS 5.2.3.8 / 5.2.3.9 -- smart lockout.
+violation contains msg if {
+	available("group_settings")
+	input.entra.lockout.settings_present == true
+	to_number(input.entra.lockout.threshold) > MAX_LOCKOUT_THRESHOLD
+	msg := sprintf("CIS 5.2.3.8: the account lockout threshold is %v; the benchmark expects '10' or less", [input.entra.lockout.threshold])
+}
+
+violation contains msg if {
+	available("group_settings")
+	input.entra.lockout.settings_present == true
+	to_number(input.entra.lockout.duration_seconds) < MIN_LOCKOUT_DURATION_SECONDS
+	msg := sprintf("CIS 5.2.3.9: the account lockout duration in seconds is %v; the benchmark expects at least %d", [input.entra.lockout.duration_seconds, MIN_LOCKOUT_DURATION_SECONDS])
+}
+
+# CIS 5.1.3.4 -- Microsoft 365 group creation restricted.
+violation contains msg if {
+	available("group_settings")
+	input.entra.group_creation.settings_present == true
+	lower(object.get(input.entra.group_creation, "enabled", "")) == "true"
+	input.entra.group_creation.allowed_group_id == ""
+	msg := "CIS 5.1.3.4: users can create Microsoft 365 groups in Azure portals, APIs or PowerShell with no restricting group -- group membership drives access, so unmanaged creation undermines authorization"
+}
+
 # ── Fail closed on every gap the collector recorded ───────────────────
 FACT_CONTROLS := {
 	"authorization_policy": "5.1.2.2",
@@ -561,9 +611,9 @@ compliance_report := {
 	"section": "5",
 	"name": "Microsoft Entra admin center",
 	"section_total_controls": 63,
-	"controls_evaluated": 45,
+	"controls_evaluated": 50,
 	"controls": [
-		"5.1.2.1", "5.1.2.2", "5.1.2.3", "5.1.3.1", "5.1.4.6",
+		"5.1.2.1", "5.1.2.2", "5.1.2.3", "5.1.3.1", "5.1.3.4", "5.1.4.6",
 		"5.1.4.1", "5.1.4.2", "5.1.4.3", "5.1.4.4", "5.1.4.5",
 		"5.1.5.1", "5.1.5.2", "5.1.5.3", "5.1.5.4", "5.1.5.5", "5.1.5.6",
 		"5.1.6.2", "5.1.6.3", "5.1.8.1",
@@ -571,7 +621,8 @@ compliance_report := {
 		"5.2.2.6", "5.2.2.7", "5.2.2.8", "5.2.2.9", "5.2.2.10",
 		"5.2.2.11", "5.2.2.12", "5.2.2.13", "5.2.2.14", "5.2.2.15",
 		"5.2.2.16", "5.2.2.17",
-		"5.2.3.2", "5.2.3.3", "5.2.3.4", "5.2.3.5", "5.2.3.6", "5.2.3.7",
+		"5.2.3.1", "5.2.3.2", "5.2.3.3", "5.2.3.4", "5.2.3.5", "5.2.3.6",
+		"5.2.3.7", "5.2.3.8", "5.2.3.9", "5.2.3.10",
 		"5.3.1", "5.3.2", "5.3.3",
 	],
 	"facts_present": collected,
