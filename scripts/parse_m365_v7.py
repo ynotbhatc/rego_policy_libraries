@@ -42,7 +42,15 @@ _WORD = re.compile(r"[a-z0-9']+")
 
 
 def keywords(text):
-    return {w for w in _WORD.findall(text.lower()) if w not in STOPWORDS and len(w) > 2}
+    """Mirrors check_cis_ids.keywords -- including the quote strip. CIS
+    quotes setting names in titles; leaving the quotes on produces tokens
+    that never match the same word written unquoted."""
+    out = set()
+    for w in _WORD.findall(text.lower()):
+        w = w.strip("'")
+        if w and w not in STOPWORDS and len(w) > 2:
+            out.add(w)
+    return out
 
 
 ROW = re.compile(r"^(\d+(?:\.\d+)+)\s+(\S.*?)\s*$")

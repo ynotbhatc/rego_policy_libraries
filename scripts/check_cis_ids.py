@@ -33,7 +33,21 @@ WORD = re.compile(r"[a-z0-9']+")
 
 
 def keywords(text: str) -> set[str]:
-    return {w for w in WORD.findall(text.lower()) if w not in STOPWORDS and len(w) > 2}
+    """Tokenise, stripping surrounding quotes.
+
+    CIS quotes setting names in its titles -- "Ensure 'AuditBypassEnabled'
+    is not enabled on mailboxes". Without stripping, the token is
+    "'auditbypassenabled'" and never matches the same word written
+    unquoted in a violation message, so the coherence check fails on
+    correct messages. CIS quotes setting names constantly, so this was a
+    false-positive generator across the whole benchmark.
+    """
+    out = set()
+    for w in WORD.findall(text.lower()):
+        w = w.strip("'")
+        if w and w not in STOPWORDS and len(w) > 2:
+            out.add(w)
+    return out
 
 
 def load_enumeration(path: pathlib.Path):
@@ -76,6 +90,22 @@ def scan(policy_dir: pathlib.Path, prefix: str):
 
 SECTION_DECL = re.compile(r'"section":\s*"(\d+)"')
 SECTION_TOTAL = re.compile(r'"section_total_controls":\s*(\d+)')
+# A control id used as an object key, e.g. in a lookup table:
+#     REQUIRES_ATTESTATION := {"5.2.4.1": "...", ...}
+# These never appear in a `CIS <id>` literal because the message is built
+# with sprintf, so the citation scan cannot see them. Check them directly
+# or a whole table of ids goes unverified.
+KEYED_ID = re.compile(r'"(\d+(?:\.\d+)+)"\s*:')
+
+
+def keyed_ids(policy_dir: pathlib.Path):
+    """Yield (file, line_no, control_id) for ids used as object keys."""
+    for rego in sorted(policy_dir.rglob("*.rego")):
+        if rego.name.startswith("test_") or rego.name.endswith("_test.rego"):
+            continue
+        for n, line in enumerate(rego.read_text(encoding="utf-8").splitlines(), 1):
+            for m in KEYED_ID.finditer(line):
+                yield rego, n, m.group(1)
 
 
 def check_section_totals(policy_dir: pathlib.Path, enum_path: pathlib.Path):
@@ -160,15 +190,26 @@ def main() -> int:
             print(f"    message : {msg[:88]!r}")
         print()
 
-    # Check 3: declared per-section denominators must match the benchmark.
+    # Check 3: ids used as object keys (sprintf-built messages) must exist.
+    keyed = list(keyed_ids(args.policy_dir))
+    bad_keys = [(f, n, c) for f, n, c in keyed if c not in kw]
+    if keyed:
+        print(f"keyed ids  : {len({c for _, _, c in keyed})} distinct (lookup tables)")
+    if bad_keys:
+        print(f"\nFAIL [3/4]: {len(bad_keys)} lookup-table id(s) absent from the benchmark")
+        for f, n, c in bad_keys:
+            print(f"  {f.name}:{n}: {c}  -- no such control")
+        print()
+
+    # Check 4: declared per-section denominators must match the benchmark.
     drift = check_section_totals(args.policy_dir, args.enumeration)
     if drift:
-        print(f"FAIL [3/3]: {len(drift)} module(s) declare a stale section_total_controls")
+        print(f"FAIL [4/4]: {len(drift)} module(s) declare a stale section_total_controls")
         for f, sec, declared, real in drift:
             print(f"  {f.name}: section {sec} declares {declared}, benchmark has {real}")
         print()
 
-    if unknown or incoherent or drift:
+    if unknown or incoherent or drift or bad_keys:
         print(
             "Auditors read violation messages, not the source. A message citing a\n"
             "control number that names a different requirement is an evidence defect,\n"
@@ -178,6 +219,8 @@ def main() -> int:
 
     print(f"OK: all {len(distinct)} distinct ids exist in {label} and are coherent")
     print(f"OK: per-section control totals match the benchmark")
+    if keyed:
+        print(f"OK: all lookup-table ids exist in the benchmark")
     return 0
 
 
