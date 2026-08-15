@@ -234,6 +234,202 @@ violation contains msg if {
 	msg := "CIS 5.3.1: Privileged Identity Management is not in use; privileged role assignments are standing rather than activated on demand"
 }
 
+
+# ── 5.2.2.x -- the Conditional Access cluster ────────────────────────
+# Fourteen further controls, all evaluable from the Conditional Access
+# policies already collected. CIS documents these as portal steps, so
+# every one of them reaches its answer by a path the benchmark does not
+# describe -- recorded in evidence_strength for the subsection rather
+# than per control.
+#
+# Shared shape: a control is satisfied when SOME enabled policy has the
+# required condition and control. A disabled or report-only policy
+# enforces nothing and must not satisfy anything.
+
+session(p) := object.get(p, "session_controls", {})
+
+# CIS 5.2.2.4 -- sign-in frequency, non-persistent browser sessions.
+default signin_frequency_enforced := false
+
+signin_frequency_enforced if {
+	some p in enabled_policies
+	object.get(session(p), ["signInFrequency", "isEnabled"], false) == true
+	object.get(session(p), ["persistentBrowser", "mode"], "") == "never"
+}
+
+violation contains msg if {
+	available("conditional_access_policies")
+	not signin_frequency_enforced
+	msg := "CIS 5.2.2.4: no enabled Conditional Access policy sets a sign-in frequency with browser sessions made non-persistent, so a stolen session cookie stays valid indefinitely"
+}
+
+# CIS 5.2.2.5 -- phishing-resistant MFA for administrators.
+default phishing_resistant_admin_mfa := false
+
+phishing_resistant_admin_mfa if {
+	some p in enabled_policies
+	targets_admin_roles(p)
+	contains(lower(object.get(p, ["grant_controls", "authenticationStrength", "displayName"], "")), "phishing-resistant")
+}
+
+violation contains msg if {
+	available("conditional_access_policies")
+	not phishing_resistant_admin_mfa
+	msg := "CIS 5.2.2.5: phishing-resistant MFA strength is not required for administrators; a policy requiring generic MFA still admits phishable factors"
+}
+
+# CIS 5.2.2.6 / 5.2.2.7 / 5.2.2.8 -- Identity Protection risk policies.
+risk_policy_exists(field) if {
+	some p in enabled_policies
+	count(object.get(p, ["conditions", field], [])) > 0
+}
+
+violation contains msg if {
+	available("conditional_access_policies")
+	not risk_policy_exists("userRiskLevels")
+	msg := "CIS 5.2.2.6: no enabled Identity Protection user risk policy exists, so a user flagged as compromised is not challenged or blocked"
+}
+
+violation contains msg if {
+	available("conditional_access_policies")
+	not risk_policy_exists("signInRiskLevels")
+	msg := "CIS 5.2.2.7: no enabled Identity Protection sign-in risk policy exists, so a risky sign-in is not challenged"
+}
+
+default signin_risk_blocked := false
+
+signin_risk_blocked if {
+	some p in enabled_policies
+	levels := object.get(p, ["conditions", "signInRiskLevels"], [])
+	"high" in levels
+	"medium" in levels
+}
+
+violation contains msg if {
+	available("conditional_access_policies")
+	not signin_risk_blocked
+	msg := "CIS 5.2.2.8: sign-in risk is not blocked for both medium and high risk levels"
+}
+
+# CIS 5.2.2.9 / 5.2.2.10 -- managed device required.
+requires_compliant_device(p) if {
+	some c in object.get(p, ["grant_controls", "builtInControls"], [])
+	c in {"compliantDevice", "domainJoinedDevice"}
+}
+
+default managed_device_required := false
+
+managed_device_required if {
+	some p in enabled_policies
+	requires_compliant_device(p)
+	targets_all_users(p)
+}
+
+violation contains msg if {
+	available("conditional_access_policies")
+	not managed_device_required
+	msg := "CIS 5.2.2.9: no enabled Conditional Access policy requires a managed device for authentication"
+}
+
+default managed_device_for_registration := false
+
+managed_device_for_registration if {
+	some p in enabled_policies
+	requires_compliant_device(p)
+	object.get(p, ["conditions", "applications", "includeUserActions"], []) != []
+}
+
+violation contains msg if {
+	available("conditional_access_policies")
+	not managed_device_for_registration
+	msg := "CIS 5.2.2.10: no enabled Conditional Access policy requires a managed device to register security information, so an attacker can enrol their own MFA method"
+}
+
+# CIS 5.2.2.11 -- sign-in frequency for Intune enrolment.
+default intune_enrolment_frequency := false
+
+intune_enrolment_frequency if {
+	some p in enabled_policies
+	object.get(session(p), ["signInFrequency", "frequencyInterval"], "") == "everyTime"
+}
+
+violation contains msg if {
+	available("conditional_access_policies")
+	not intune_enrolment_frequency
+	msg := "CIS 5.2.2.11: sign-in frequency for Intune enrollment is not set to every time"
+}
+
+# CIS 5.2.2.12 -- device code flow blocked.
+default device_code_blocked := false
+
+device_code_blocked if {
+	some p in enabled_policies
+	some f in object.get(p, ["conditions", "authenticationFlows", "transferMethods"], [])
+	f == "deviceCodeFlow"
+	some g in object.get(p, ["grant_controls", "builtInControls"], [])
+	g == "block"
+}
+
+violation contains msg if {
+	available("conditional_access_policies")
+	not device_code_blocked
+	msg := "CIS 5.2.2.12: the device code sign-in flow is not blocked; it is a common phishing vector because the victim authenticates on their own device"
+}
+
+# CIS 5.2.2.13 -- periodic reauthentication.
+violation contains msg if {
+	available("conditional_access_policies")
+	not signin_frequency_enforced
+	msg := "CIS 5.2.2.13: periodic reauthentication is not required for all users -- no enabled policy sets a sign-in frequency"
+}
+
+# CIS 5.2.2.14 / 5.2.2.15 -- named locations.
+violation contains msg if {
+	available("named_locations")
+	count([l | some l in input.entra.named_locations; l.is_trusted == true]) == 0
+	msg := "CIS 5.2.2.14: no trusted named locations are defined, so location cannot be used as a signal in Conditional Access"
+}
+
+violation contains msg if {
+	available("named_locations")
+	count([l |
+		some l in input.entra.named_locations
+		count(object.get(l, "countries_and_regions", [])) > 0
+	]) == 0
+	msg := "CIS 5.2.2.15: no exclusionary geographic access controls are utilized -- no country or region named location is defined"
+}
+
+# CIS 5.2.2.16 -- token protection.
+default token_protection_enforced := false
+
+token_protection_enforced if {
+	some p in enabled_policies
+	object.get(session(p), ["secureSignInSession", "isEnabled"], false) == true
+}
+
+violation contains msg if {
+	available("conditional_access_policies")
+	not token_protection_enforced
+	msg := "CIS 5.2.2.16: token protection is not enforced for session tokens, so a stolen refresh token can be replayed from another device"
+}
+
+# CIS 5.2.2.17 -- authentication transfer blocked.
+default auth_transfer_blocked := false
+
+auth_transfer_blocked if {
+	some p in enabled_policies
+	some f in object.get(p, ["conditions", "authenticationFlows", "transferMethods"], [])
+	f == "authenticationTransfer"
+	some g in object.get(p, ["grant_controls", "builtInControls"], [])
+	g == "block"
+}
+
+violation contains msg if {
+	available("conditional_access_policies")
+	not auth_transfer_blocked
+	msg := "CIS 5.2.2.17: authentication transfer is not blocked, so a session can be handed from a desktop to an attacker-controlled device"
+}
+
 # ── Fail closed on every gap the collector recorded ───────────────────
 FACT_CONTROLS := {
 	"authorization_policy": "5.1.2.2",
@@ -241,6 +437,7 @@ FACT_CONTROLS := {
 	"admin_consent_request_policy": "5.1.5.2",
 	"on_premises_synchronization": "5.1.8.1",
 	"conditional_access_policies": "5.2.2.1",
+	"named_locations": "5.2.2.14",
 	"pim_role_assignments": "5.3.1",
 	"group_settings": "5.2.3.2",
 	"mfa_registration_report": "5.2.3.4",
@@ -269,11 +466,14 @@ compliance_report := {
 	"section": "5",
 	"name": "Microsoft Entra admin center",
 	"section_total_controls": 63,
-	"controls_evaluated": 20,
+	"controls_evaluated": 34,
 	"controls": [
 		"5.1.2.1", "5.1.2.2", "5.1.2.3", "5.1.3.1", "5.1.4.6",
 		"5.1.5.1", "5.1.5.2", "5.1.6.2", "5.1.6.3", "5.1.8.1",
-		"5.2.2.1", "5.2.2.2", "5.2.2.3",
+		"5.2.2.1", "5.2.2.2", "5.2.2.3", "5.2.2.4", "5.2.2.5",
+		"5.2.2.6", "5.2.2.7", "5.2.2.8", "5.2.2.9", "5.2.2.10",
+		"5.2.2.11", "5.2.2.12", "5.2.2.13", "5.2.2.14", "5.2.2.15",
+		"5.2.2.16", "5.2.2.17",
 		"5.2.3.2", "5.2.3.3", "5.2.3.4", "5.2.3.5", "5.2.3.6", "5.2.3.7",
 		"5.3.1",
 	],
@@ -282,6 +482,7 @@ compliance_report := {
 	# 5.1.2.1 is read from a /beta endpoint, which Microsoft documents as
 	# subject to change and unsupported for production.
 	"evidence_strength": {
+		"5.2.2.x": "the 5.2.2 Conditional Access controls are evaluated from the policies Graph returns. CIS documents them as Entra portal steps and names no cmdlet, so these reach the benchmark's answer by a path it does not describe.",
 		"5.1.2.1": "collected from Microsoft Graph /beta (users/{id}/authentication/requirements); CIS marks this control Manual and documents no automated procedure",
 	},
 	"violations": violation,
