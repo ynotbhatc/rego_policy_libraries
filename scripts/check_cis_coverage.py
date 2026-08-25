@@ -29,6 +29,24 @@ The check is a set partition, not an arithmetic one. Counts summing to 160
 is strictly weaker: two buckets could double-claim a control while a third
 lost one, and the total would still balance.
 
+Two boundaries worth knowing:
+
+  Absent package is a FAILURE here, deliberately diverging from
+  check_cis_ids.py, which returns 0 when a tree cites no ids at all
+  ("nothing to check"). That early-out is right for a citation guard and
+  wrong for a coverage one: a tree with no buckets accounts for nothing,
+  which is the maximal version of the defect. Pointed at a tree without
+  the package, this reports four undefined buckets and exits 1.
+
+  `evaluated` is self-declared. It flattens the section modules' static
+  `controls` arrays, so this proves the declared ids partition the
+  benchmark -- not that each has a violation rule behind it. An id added
+  to a `controls` array with no logic would still count. check_cis_ids.py
+  closes part of that gap (a control with a real message gets its id and
+  wording checked), but an id appearing only in a `controls` array and a
+  lookup table passes both. Evaluating that would mean asserting on rule
+  bodies; for now it is a known limit rather than a silent one.
+
 Usage:
     check_cis_coverage.py --enumeration <enum.json> --policy-dir <dir>
                           [--package cis_m365_v7] [--opa opa]

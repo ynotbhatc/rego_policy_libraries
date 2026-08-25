@@ -16,6 +16,16 @@ recommendation is claimed by exactly one. `scripts/check_cis_coverage.py`
 fails CI otherwise, and `compliance_report.coverage_accounting` publishes
 the sum so a reader can check it without running anything.
 
+What that guard does **not** establish: the evaluated bucket is read from
+the section modules' own `controls` arrays, so it proves the declared ids
+partition the benchmark, not that each id has a violation rule behind it.
+An id added to a `controls` array with no logic would still be counted.
+`check_cis_ids.py` catches the common case — a control with a real
+violation message has its id and wording checked against the benchmark —
+but an id present only in a `controls` array and a lookup table passes
+both guards. Treat the count as "declared and cross-checked", not
+"proven executable".
+
 > **Corrected 2026-08-25.** Through v2.1 this file read
 > "138 evaluated + 6 attestation + 10 unresolved" — which is 154, not 160.
 > Six controls (`1.2.2`, `1.3.3`, `2.4.1`, `5.1.6.1`, `5.3.4`, `5.3.5`)
