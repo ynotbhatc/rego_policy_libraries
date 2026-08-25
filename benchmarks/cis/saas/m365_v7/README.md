@@ -1,8 +1,9 @@
 # CIS Microsoft 365 Foundations Benchmark v7.0.0 — Rego Library
 
-**Version:** v1.0
+**Version:** v1.1
 **Benchmark:** CIS Microsoft 365 Foundations Benchmark **v7.0.0** (released 2026-05-20)
-**Coverage:** 14 of 160 recommendations — see [COVERAGE.md](COVERAGE.md)
+**Coverage:** 138 of 160 recommendations evaluated; the remaining 22 are
+each claimed by a named bucket — see [COVERAGE.md](COVERAGE.md)
 
 ## Sections
 
@@ -92,8 +93,24 @@ the control could not be evaluated. A missing fact never reads as a pass.
 opa test benchmarks/cis/saas/m365_v7/ benchmarks/cis/saas/m365_v7/tests/ -v
 ```
 
-31 tests covering each control's violation path, its passing path, the
+122 tests covering each control's violation path, its passing path, the
 fail-closed path, and the orchestrator's coverage accounting.
+
+Tests alone cannot establish coverage — they assert against the ids the
+modules declare, so a control no module mentions is invisible to them.
+Two CI guards check the modules against the benchmark's own enumeration:
+
+```bash
+# every cited id exists, and its message matches the control it names
+python3 scripts/check_cis_ids.py \
+  --enumeration benchmarks/cis/saas/m365_v7/data/cis_m365_v7_index.json \
+  --policy-dir benchmarks/cis/saas/m365_v7
+
+# all 160 recommendations are claimed by exactly one bucket
+python3 scripts/check_cis_coverage.py \
+  --enumeration benchmarks/cis/saas/m365_v7/data/cis_m365_v7_index.json \
+  --policy-dir benchmarks/cis/saas/m365_v7
+```
 
 ## Relationship to `../m365/`
 

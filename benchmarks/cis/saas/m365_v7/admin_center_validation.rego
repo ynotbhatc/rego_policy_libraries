@@ -1,10 +1,18 @@
 # CIS Microsoft 365 Foundations Benchmark v7.0.0
 # Section 1 -- Microsoft 365 admin center
 #
-# 9 of section 1's 15 recommendations name Microsoft Graph in the
-# benchmark's own Audit procedure and are evaluated here. The remaining 6
-# need Exchange Online PowerShell (1.3.3, 1.3.6, 1.3.9), are Manual
-# (1.1.2, 1.3.8), or are pending (see COVERAGE.md).
+# 11 of section 1's 15 recommendations are evaluated here, via Microsoft
+# Graph and Exchange Online PowerShell. The other four are carried by the
+# ledger in attestation_validation.rego, never dropped:
+#
+#   1.1.2, 1.3.8    unresolved      collectability not yet established
+#   1.2.2, 1.3.3    not_implemented automatable; the collector does not
+#                                   make the call yet
+#
+# Keep this list accurate. Section 1 previously described itself as
+# "9 of 15" with 1.3.6 and 1.3.9 unimplemented long after both were built,
+# and 1.2.2 was named nowhere at all -- which is how it came to be missing
+# from the report entirely.
 #
 # Every control id below is verified against the benchmark by
 # scripts/check_cis_ids.py, which fails CI if an id does not exist or if

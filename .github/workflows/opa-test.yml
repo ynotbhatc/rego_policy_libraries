@@ -7,6 +7,7 @@ on:
       - '**/*.rego'
       - '.github/workflows/opa-test.yml'
       - 'scripts/check_cis_ids.py'
+      - 'scripts/check_cis_coverage.py'
       - '**/data/cis_*_index.json'
   pull_request:
     branches: [main]
@@ -14,6 +15,7 @@ on:
       - '**/*.rego'
       - '.github/workflows/opa-test.yml'
       - 'scripts/check_cis_ids.py'
+      - 'scripts/check_cis_coverage.py'
       - '**/data/cis_*_index.json'
 
 permissions:
@@ -125,6 +127,23 @@ jobs:
           # enumeration, and that the message corresponds to the control
           # that id actually names.
           python3 scripts/check_cis_ids.py \
+            --enumeration benchmarks/cis/saas/m365_v7/data/cis_m365_v7_index.json \
+            --policy-dir benchmarks/cis/saas/m365_v7
+
+      - name: Verify every recommendation is accounted for exactly once
+        run: |
+          # check_cis_ids.py verifies the ids we DO cite. It cannot see a
+          # control that nothing mentions -- and neither can opa test,
+          # which asserts against the ids the modules declare. On
+          # 2026-08-25 six controls were found in no bucket at all: not
+          # evaluated, not attested, not flagged, and so absent from the
+          # report, which described a 154-recommendation benchmark.
+          #
+          # This checks the four buckets against the benchmark's own
+          # enumeration as a set partition. Counts summing to 160 is
+          # weaker: two buckets could double-claim one control while a
+          # third lost one, and the total would still balance.
+          python3 scripts/check_cis_coverage.py \
             --enumeration benchmarks/cis/saas/m365_v7/data/cis_m365_v7_index.json \
             --policy-dir benchmarks/cis/saas/m365_v7
 

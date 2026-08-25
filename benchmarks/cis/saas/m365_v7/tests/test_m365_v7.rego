@@ -443,8 +443,76 @@ test_uncollectable_controls_are_reported_not_omitted if {
 	r.compliant == false
 	r.requires_attestation_count == 6
 	r.unresolved_count == 10
+	r.not_implemented_count == 6
 	# An omitted control is indistinguishable from a passing one.
-	count(r.violations) == 16
+	count(r.violations) == 22
+}
+
+# ── The 2026-08-25 accounting hole ────────────────────────────────────
+# Six controls were in no bucket: not evaluated, not attested, not
+# unresolved. They appeared nowhere in the report, so the assessment
+# described a 154-recommendation benchmark. These tests pin the
+# partition; scripts/check_cis_coverage.py enforces it against the
+# benchmark enumeration, which is the check that can actually see a
+# control nothing mentions.
+
+test_not_implemented_controls_are_reported if {
+	r := att.compliance_report with input as {}
+	every cid in ["1.2.2", "1.3.3", "2.4.1", "5.1.6.1", "5.3.4", "5.3.5"] {
+		some v in r.violations
+		contains(v, sprintf("CIS %s:", [cid]))
+	}
+}
+
+test_not_implemented_is_stated_as_our_gap_not_a_limit if {
+	r := att.compliance_report with input as {}
+	some v in r.violations
+	contains(v, "CIS 5.3.4:")
+	# The distinction that matters: we can collect this, we just have not.
+	contains(v, "the collector does not make the call yet")
+	contains(v, "this is not a pass")
+}
+
+test_not_implemented_names_its_collector_path if {
+	# Each entry is a work item, not a disclaimer -- it must say what to build.
+	every cid in ["1.2.2", "1.3.3", "2.4.1", "5.1.6.1", "5.3.4", "5.3.5"] {
+		count(att.NOT_IMPLEMENTED[cid].collector) > 0
+	}
+}
+
+test_not_implemented_can_be_closed_by_attestation if {
+	r := att.compliance_report with input as {"attestations": [{
+		"control_id": "1.3.3", "observed": "no sharing policy grants calendar sharing",
+		"attested_by": "operator@example.com", "attested_on": "2026-08-25",
+		"evidence_ref": "get-sharingpolicy-001.txt",
+	}]}
+	every v in r.violations { not contains(v, "CIS 1.3.3:") }
+}
+
+test_buckets_do_not_overlap if {
+	att_ids := {cid | some cid, _ in att.REQUIRES_ATTESTATION}
+	unres := {cid | some cid, _ in att.UNRESOLVED}
+	notimpl := {cid | some cid, _ in att.NOT_IMPLEMENTED}
+	evaluated := {cid | some cid in main.compliance_report.evaluated_control_ids}
+	count(att_ids & unres) == 0
+	count(att_ids & notimpl) == 0
+	count(unres & notimpl) == 0
+	count(evaluated & (att_ids | (unres | notimpl))) == 0
+}
+
+test_coverage_accounting_balances_to_the_whole_benchmark if {
+	a := main.compliance_report.coverage_accounting with input as {}
+	a.benchmark_total == 160
+	a.accounted == 160
+	a.unaccounted == 0
+	a.balanced == true
+}
+
+test_coverage_accounting_is_published_not_just_asserted if {
+	# A reader has to be able to check the sum without running the tests.
+	r := main.compliance_report with input as {}
+	r.coverage_accounting.evaluated + r.coverage_accounting.requires_attestation +
+		r.coverage_accounting.unresolved + r.coverage_accounting.not_implemented == r.benchmark_total_controls
 }
 
 test_complete_attestation_satisfies_the_control if {
