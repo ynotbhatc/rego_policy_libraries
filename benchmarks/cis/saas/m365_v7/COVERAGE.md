@@ -1,10 +1,40 @@
 # CIS Microsoft 365 Foundations Benchmark v7.0.0 — coverage
 
-**Version:** v2.1
+**Version:** v2.2
 **Benchmark:** CIS Microsoft 365 Foundations Benchmark **v7.0.0**, released 2026-05-20
-**Evaluated:** **138 of 160** recommendations (**86%**)
-**Requires attestation:** 6 (verified to have no app-only read path)
-**Unresolved:** 10 (parked pending a live-tenant probe during the POC)
+
+| Bucket | Controls | Meaning |
+|---|---|---|
+| Evaluated | **138** | assessed from collected facts |
+| Requires attestation | 6 | verified to have no app-only read path |
+| Unresolved | 10 | collectability unestablished; parked pending a live-tenant probe |
+| Not implemented | 6 | automatable, the collector does not make the call yet |
+| **Total** | **160** | the whole benchmark |
+
+**Coverage: 138 of 160 (86%).** The four buckets must sum to 160 — every
+recommendation is claimed by exactly one. `scripts/check_cis_coverage.py`
+fails CI otherwise, and `compliance_report.coverage_accounting` publishes
+the sum so a reader can check it without running anything.
+
+What that guard does **not** establish: the evaluated bucket is read from
+the section modules' own `controls` arrays, so it proves the declared ids
+partition the benchmark, not that each id has a violation rule behind it.
+An id added to a `controls` array with no logic would still be counted.
+`check_cis_ids.py` catches the common case — a control with a real
+violation message has its id and wording checked against the benchmark —
+but an id present only in a `controls` array and a lookup table passes
+both guards. Treat the count as "declared and cross-checked", not
+"proven executable".
+
+> **Corrected 2026-08-25.** Through v2.1 this file read
+> "138 evaluated + 6 attestation + 10 unresolved" — which is 154, not 160.
+> Six controls (`1.2.2`, `1.3.3`, `2.4.1`, `5.1.6.1`, `5.3.4`, `5.3.5`)
+> were in no bucket: not evaluated, not attested, not flagged, and so
+> absent from the assessment entirely. Two of them were described in a
+> module comment as already reported here; they were not. An omitted
+> control is indistinguishable from a passing one, which is the same
+> defect class this rewrite exists to correct — so the partition is now
+> machine-checked rather than restated.
 
 This file exists because a partial assessment that does not say it is
 partial reads as a clean bill of health. Everything below is measured, not
@@ -103,7 +133,9 @@ until an operator attests with dated, attributed evidence. An omitted
 control is indistinguishable from a passing one, so they are never simply
 dropped.
 
-Two categories, deliberately not merged:
+Three categories, deliberately not merged — the distinction between "the
+platform will not tell us", "we have not checked" and "we have not built
+it" is the whole value of the ledger:
 
 - **Requires attestation (6)** — verified to have no app-only read path.
   The five SSPR controls (`5.2.4.1`–`5.2.4.5`) have no API at all; `5.1.2.4`
@@ -112,6 +144,23 @@ Two categories, deliberately not merged:
 - **Unresolved (10)** — not yet checked against a live tenant. These are
   **not** claimed as limits; several may prove collectable. Parked pending a
   POC probe with app-only credentials.
+- **Not implemented (6)** — automatable, and our own analysis names the
+  audit path. This is our backlog, not a platform limit, and each entry
+  carries the call that would close it:
+
+  | Control | Subject | What the collector must add |
+  |---|---|---|
+  | `1.2.2` | sign-in to shared mailboxes is blocked | `Get-EXOMailbox -RecipientTypeDetails SharedMailbox` joined to the Entra `accountEnabled` flag — today the mailbox query selects only audit properties and `/users` selects only `id` and `userPrincipalName` |
+  | `1.3.3` | external calendar sharing is not available | `Get-SharingPolicy`, not among the nine Exchange cmdlets run |
+  | `2.4.1` | priority account protection | Defender priority-account configuration |
+  | `5.1.6.1` | invitations only to allowed domains | the Graph B2B management policy carrying the domain allow/block list |
+  | `5.3.4` | approval required to activate Global Administrator | Graph PIM role-management policy rules |
+  | `5.3.5` | approval required to activate Privileged Role Administrator | same call as `5.3.4` |
+
+  Closing all six moves coverage to **144 of 160 (90%)**, the ceiling
+  `docs/m365/CIS_M365_V7_AUTOMATION_LIMITS.md` §8 already states. The work
+  is collector-side, in the `aac.m365` collection in the compliance repo —
+  not in this library.
 
 An attestation missing `attested_by`, `attested_on` or `evidence_ref` is
 rejected as inadmissible rather than accepted. The report marks

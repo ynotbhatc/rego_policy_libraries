@@ -2,18 +2,29 @@
 # Section 5 -- Microsoft Entra admin center
 #
 # Section 5 is the largest in the benchmark: 63 of its 160
-# recommendations, 39% of the whole. 20 are evaluated here.
+# recommendations, 39% of the whole. 50 are evaluated here.
 #
 # DROPPED FROM THE PRE-v7 LIBRARY: the "Security Defaults" check. v7.0.0
 # has no Security Defaults recommendation. The check was removed rather
 # than renumbered -- inventing an id is the defect this rewrite exists to
 # fix.
 #
-# NOT EVALUATED, deliberately: 5.1.6.1 (allowed collaboration domains) and
-# 5.3.4 (Global Administrator activation approval). CIS names no cmdlet
-# for either and their endpoint is not established. Guessing one would
-# manufacture a result; they are reported by the attestation module as
-# unresolved until the live-tenant probe.
+# NOT EVALUATED HERE. The other 13 of section 5 are carried by the ledger
+# in attestation_validation.rego:
+#
+#   5.1.2.4, 5.2.4.1-5   requires_attestation  no app-only read path
+#   5.1.2.5, 5.1.2.6,
+#   5.1.3.2, 5.1.3.3     unresolved            collectability unestablished
+#   5.1.6.1, 5.3.4,
+#   5.3.5                not_implemented       Graph exposes these; the
+#                                              collector does not ask
+#
+# This comment previously asserted that 5.1.6.1 and 5.3.4 "are reported by
+# the attestation module as unresolved". They were not in any of its maps,
+# and 5.3.5 was named nowhere at all -- so all three were silently absent
+# from the assessment. A comment is not a mechanism: the report says what
+# it emits, not what a source file claims it emits. That gap is now
+# enforced by scripts/check_cis_coverage.py rather than described here.
 #
 # Input contract (aac.m365.m365_entra_facts) -- see the module for the
 # control-to-endpoint mapping. /policies/authorizationPolicy alone carries
