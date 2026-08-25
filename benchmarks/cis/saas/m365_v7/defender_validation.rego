@@ -218,6 +218,49 @@ DEFENDER_FACT_CONTROLS := {
 	"content_filter_policies": "2.1.14",
 	"eop_protection_rules": "2.4.2",
 	"teams_protection_policy": "2.4.4",
+	"email_tenant_settings": "2.4.1",
+	"priority_account_alerts": "2.4.1",
+}
+
+# ── CIS 2.4.1 -- priority account protection ──────────────────────────
+# The only compound control in this section. CIS requires all three:
+#
+#   EnablePriorityAccountProtection is true                (Exchange)
+#   a passing alert policy with ThreatType Phish           (Purview)
+#   a passing alert policy with ThreatType Malware         (Purview)
+#
+# "Passing" is CIS's own list: severity High, inbound mail direction,
+# tagged to priority accounts, notification enabled with a recipient, and
+# not disabled. A tenant with the toggle on and no alerts configured is
+# not compliant -- the toggle alone tags accounts, it does not watch them.
+
+violation contains msg if {
+	policy_available("email_tenant_settings")
+	input.defender.email_tenant_settings.EnablePriorityAccountProtection == false
+	msg := "CIS 2.4.1: priority account protection is not enabled for the tenant, so accounts tagged as priority receive no differentiated protection"
+}
+
+passing_alert(threat) if {
+	some a in input.defender.priority_account_alerts
+	a.ThreatType == threat
+	a.Severity == "High"
+	a.Disabled == false
+	a.NotificationEnabled == true
+	count(object.get(a, "NotifyUser", [])) > 0
+	contains(a.RecipientTags, "Priority account")
+	contains(a.Filter, "Inbound")
+}
+
+violation contains msg if {
+	policy_available("priority_account_alerts")
+	not passing_alert("Phish")
+	msg := "CIS 2.4.1: no alert policy monitors priority accounts for phishing email detected at delivery -- a high-severity, inbound, priority-tagged alert with a notification recipient is required"
+}
+
+violation contains msg if {
+	policy_available("priority_account_alerts")
+	not passing_alert("Malware")
+	msg := "CIS 2.4.1: no alert policy monitors priority accounts for detected malware in email -- a high-severity, inbound, priority-tagged alert with a notification recipient is required"
 }
 
 violation contains msg if {
@@ -242,11 +285,11 @@ compliance_report := {
 	"section": "2",
 	"name": "Microsoft Defender",
 	"section_total_controls": 21,
-	"controls_evaluated": 17,
+	"controls_evaluated": 18,
 	"controls": [
 		"2.1.1", "2.1.2", "2.1.3", "2.1.4", "2.1.5", "2.1.6", "2.1.7",
 		"2.1.8", "2.1.9", "2.1.10", "2.1.11", "2.1.12", "2.1.13",
-		"2.1.14", "2.1.15", "2.4.2", "2.4.4",
+		"2.1.14", "2.1.15", "2.4.1", "2.4.2", "2.4.4",
 	],
 	"facts_present": facts_present,
 	"violations": violation,

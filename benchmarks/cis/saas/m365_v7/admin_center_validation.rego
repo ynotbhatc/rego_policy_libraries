@@ -1,13 +1,15 @@
 # CIS Microsoft 365 Foundations Benchmark v7.0.0
 # Section 1 -- Microsoft 365 admin center
 #
-# 11 of section 1's 15 recommendations are evaluated here, via Microsoft
-# Graph and Exchange Online PowerShell. The other four are carried by the
-# ledger in attestation_validation.rego, never dropped:
+# 13 of section 1's 15 recommendations are evaluated here, via Microsoft
+# Graph and Exchange Online PowerShell. The other two -- 1.1.2 and 1.3.8 --
+# are carried as `unresolved` by the ledger in attestation_validation.rego,
+# never dropped.
 #
-#   1.1.2, 1.3.8    unresolved      collectability not yet established
-#   1.2.2, 1.3.3    not_implemented automatable; the collector does not
-#                                   make the call yet
+# 1.2.2 and 1.3.3 joined this module on 2026-08-25. Both are section 1
+# controls whose facts come from Exchange, and 1.2.2 additionally needs
+# the Graph sign-in state -- CIS's own procedure for it is a join across
+# both surfaces.
 #
 # Keep this list accurate. Section 1 previously described itself as
 # "9 of 15" with 1.3.6 and 1.3.9 unimplemented long after both were built,
@@ -209,6 +211,91 @@ violation contains msg if {
 	msg := sprintf("CIS 1.3.6: whether the customer lockbox feature is enabled could not be evaluated -- %s (this is not a pass)", [input.exchange.unavailable.organization_config])
 }
 
+# ── CIS 1.3.3 -- external sharing of calendars ────────────────────────
+# CIS audits the default sharing policy and requires Enabled to be False.
+# Every returned policy is checked, not only the default: a tenant can add
+# further sharing policies, and a second enabled one shares calendars just
+# as effectively. Checking only the default would audit the benchmark's
+# example rather than the control.
+
+default sharing_policies_available := false
+
+sharing_policies_available if {
+	input.exchange.collected == true
+	not input.exchange.unavailable.sharing_policies
+	_ := input.exchange.sharing_policies
+}
+
+violation contains msg if {
+	sharing_policies_available
+	some policy in input.exchange.sharing_policies
+	policy.Enabled == true
+	msg := sprintf("CIS 1.3.3: external sharing of calendars is available -- sharing policy '%s' is enabled, so users can share calendars with people outside the organization", [policy.Name])
+}
+
+violation contains msg if {
+	input.exchange.collected == true
+	input.exchange.unavailable.sharing_policies
+	msg := sprintf("CIS 1.3.3: whether external calendar sharing is available could not be evaluated -- %s (this is not a pass)", [input.exchange.unavailable.sharing_policies])
+}
+
+# ── CIS 1.2.2 -- sign-in to shared mailboxes must be blocked ──────────
+# The one control in this section that spans two collectors. CIS's own
+# procedure is a join: Get-EXOMailbox lists the shared mailboxes, then
+# Get-MgUser reports AccountEnabled for each. Exchange supplies the
+# mailboxes, Graph supplies the sign-in state, and they meet here on the
+# directory object id.
+#
+# A mailbox whose account is absent from the Graph map is reported as
+# unevaluated rather than passed. An account we could not find is not an
+# account we established was blocked.
+
+default shared_mailboxes_available := false
+
+shared_mailboxes_available if {
+	input.exchange.collected == true
+	not input.exchange.unavailable.shared_mailboxes
+	_ := input.exchange.shared_mailboxes
+}
+
+default sign_in_state_available := false
+
+sign_in_state_available if {
+	collected
+	not unavailable.user_sign_in_state
+	_ := input.admin_center.user_sign_in_state
+}
+
+sign_in_state := object.get(input, ["admin_center", "user_sign_in_state"], {})
+
+violation contains msg if {
+	shared_mailboxes_available
+	sign_in_state_available
+	some mailbox in input.exchange.shared_mailboxes
+	sign_in_state[mailbox.ExternalDirectoryObjectId].account_enabled == true
+	msg := sprintf("CIS 1.2.2: sign-in to shared mailbox '%s' is not blocked -- its Entra account is enabled, so it can be signed into directly rather than only accessed through delegation", [mailbox.UserPrincipalName])
+}
+
+violation contains msg if {
+	shared_mailboxes_available
+	sign_in_state_available
+	some mailbox in input.exchange.shared_mailboxes
+	not sign_in_state[mailbox.ExternalDirectoryObjectId]
+	msg := sprintf("CIS 1.2.2: whether sign-in to shared mailbox '%s' is blocked could not be evaluated -- no directory account matched its object id (this is not a pass)", [mailbox.UserPrincipalName])
+}
+
+violation contains msg if {
+	input.exchange.collected == true
+	input.exchange.unavailable.shared_mailboxes
+	msg := sprintf("CIS 1.2.2: whether sign-in to shared mailboxes is blocked could not be evaluated -- the shared mailbox list is unavailable: %s (this is not a pass)", [input.exchange.unavailable.shared_mailboxes])
+}
+
+violation contains msg if {
+	collected
+	unavailable.user_sign_in_state
+	msg := sprintf("CIS 1.2.2: whether sign-in to shared mailboxes is blocked could not be evaluated -- directory sign-in state is unavailable: %s (this is not a pass)", [unavailable.user_sign_in_state])
+}
+
 compliant if {
 	collected
 	count(violation) == 0
@@ -220,8 +307,8 @@ compliance_report := {
 	"section": "1",
 	"name": "Microsoft 365 admin center",
 	"section_total_controls": 15,
-	"controls_evaluated": 11,
-	"controls": ["1.1.1", "1.1.3", "1.1.4", "1.2.1", "1.3.1", "1.3.2", "1.3.4", "1.3.5", "1.3.6", "1.3.7", "1.3.9"],
+	"controls_evaluated": 13,
+	"controls": ["1.1.1", "1.2.1", "1.2.2", "1.1.3", "1.1.4", "1.3.1", "1.3.2", "1.3.3", "1.3.4", "1.3.5", "1.3.6", "1.3.7", "1.3.9"],
 	"facts_present": collected,
 	"unavailable_facts": unavailable,
 	"violations": violation,

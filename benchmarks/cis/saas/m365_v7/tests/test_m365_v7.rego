@@ -325,8 +325,8 @@ test_sharepoint_declares_the_cmdlet_deviation if {
 test_orchestrator_reports_partial_coverage_honestly if {
 	r := main.compliance_report with input as {}
 	r.benchmark_total_controls == 160
-	r.controls_evaluated == 138
-	r.controls_not_evaluated == 22
+	r.controls_evaluated == 144
+	r.controls_not_evaluated == 16
 	count(r.sections_not_evaluated) == 0
 }
 
@@ -443,50 +443,289 @@ test_uncollectable_controls_are_reported_not_omitted if {
 	r.compliant == false
 	r.requires_attestation_count == 6
 	r.unresolved_count == 10
-	r.not_implemented_count == 6
+	r.not_implemented_count == 0
 	# An omitted control is indistinguishable from a passing one.
-	count(r.violations) == 22
+	count(r.violations) == 16
 }
 
 # ── The 2026-08-25 accounting hole ────────────────────────────────────
 # Six controls were in no bucket: not evaluated, not attested, not
 # unresolved. They appeared nowhere in the report, so the assessment
-# described a 154-recommendation benchmark. These tests pin the
-# partition; scripts/check_cis_coverage.py enforces it against the
-# benchmark enumeration, which is the check that can actually see a
-# control nothing mentions.
+# described a 154-recommendation benchmark. All six are now evaluated by
+# their section modules; these tests pin the partition, and
+# scripts/check_cis_coverage.py enforces it against the benchmark
+# enumeration -- the check that can actually see a control nothing
+# mentions.
 
-test_not_implemented_controls_are_reported if {
-	r := att.compliance_report with input as {}
+test_the_six_gap_controls_are_evaluated_not_merely_listed if {
+	ids := {c | some c in main.compliance_report.evaluated_control_ids}
 	every cid in ["1.2.2", "1.3.3", "2.4.1", "5.1.6.1", "5.3.4", "5.3.5"] {
-		some v in r.violations
-		contains(v, sprintf("CIS %s:", [cid]))
+		cid in ids
 	}
 }
 
-test_not_implemented_is_stated_as_our_gap_not_a_limit if {
-	r := att.compliance_report with input as {}
+test_not_implemented_bucket_is_empty_but_retained if {
+	# The category is real and will recur. Removing the map would send the
+	# next "we know how to collect this, we have not built it" control into
+	# `unresolved`, which understates what we know.
+	count(att.NOT_IMPLEMENTED) == 0
+	is_object(att.NOT_IMPLEMENTED)
+}
+
+# ── 1.3.3 -- external calendar sharing ────────────────────────────────
+
+ex(extra) := {"exchange": object.union({"collected": true, "unavailable": {}}, extra)}
+
+test_1_3_3_enabled_sharing_policy_violates if {
+	r := ac.compliance_report with input as object.union(
+		ac_input({}),
+		ex({"sharing_policies": [{"Name": "Default Sharing Policy", "Enabled": true}]}),
+	)
 	some v in r.violations
-	contains(v, "CIS 5.3.4:")
-	# The distinction that matters: we can collect this, we just have not.
-	contains(v, "the collector does not make the call yet")
+	contains(v, "CIS 1.3.3:")
+	contains(v, "Default Sharing Policy")
+}
+
+test_1_3_3_checks_every_policy_not_just_the_default if {
+	# A non-default policy shares calendars just as effectively.
+	r := ac.compliance_report with input as object.union(ac_input({}), ex({"sharing_policies": [
+		{"Name": "Default Sharing Policy", "Enabled": false, "Default": true},
+		{"Name": "Partners", "Enabled": true, "Default": false},
+	]}))
+	some v in r.violations
+	contains(v, "CIS 1.3.3:")
+	contains(v, "Partners")
+}
+
+test_1_3_3_all_policies_disabled_passes if {
+	r := ac.compliance_report with input as object.union(ac_input({}), ex({"sharing_policies": [
+		{"Name": "Default Sharing Policy", "Enabled": false},
+	]}))
+	every v in r.violations { not contains(v, "CIS 1.3.3:") }
+}
+
+test_1_3_3_unavailable_is_not_a_pass if {
+	r := ac.compliance_report with input as object.union(ac_input({}), {"exchange": {
+		"collected": true,
+		"unavailable": {"sharing_policies": "insufficient permissions"},
+	}})
+	some v in r.violations
+	contains(v, "CIS 1.3.3:")
 	contains(v, "this is not a pass")
 }
 
-test_not_implemented_names_its_collector_path if {
-	# Each entry is a work item, not a disclaimer -- it must say what to build.
-	every cid in ["1.2.2", "1.3.3", "2.4.1", "5.1.6.1", "5.3.4", "5.3.5"] {
-		count(att.NOT_IMPLEMENTED[cid].collector) > 0
-	}
+# ── 1.2.2 -- shared mailbox sign-in, the cross-collector join ─────────
+
+test_1_2_2_enabled_shared_mailbox_violates if {
+	r := ac.compliance_report with input as object.union(
+		ac_input({"user_sign_in_state": {"obj-1": {"account_enabled": true}}}),
+		ex({"shared_mailboxes": [{"UserPrincipalName": "shared@x.com", "ExternalDirectoryObjectId": "obj-1"}]}),
+	)
+	some v in r.violations
+	contains(v, "CIS 1.2.2:")
+	contains(v, "shared@x.com")
 }
 
-test_not_implemented_can_be_closed_by_attestation if {
-	r := att.compliance_report with input as {"attestations": [{
-		"control_id": "1.3.3", "observed": "no sharing policy grants calendar sharing",
-		"attested_by": "operator@example.com", "attested_on": "2026-08-25",
-		"evidence_ref": "get-sharingpolicy-001.txt",
-	}]}
-	every v in r.violations { not contains(v, "CIS 1.3.3:") }
+test_1_2_2_blocked_shared_mailbox_passes if {
+	r := ac.compliance_report with input as object.union(
+		ac_input({"user_sign_in_state": {"obj-1": {"account_enabled": false}}}),
+		ex({"shared_mailboxes": [{"UserPrincipalName": "shared@x.com", "ExternalDirectoryObjectId": "obj-1"}]}),
+	)
+	every v in r.violations { not contains(v, "CIS 1.2.2:") }
+}
+
+test_1_2_2_unmatched_account_is_unevaluated_not_passed if {
+	# An account we could not find is not an account we established was
+	# blocked. This is the join's fail-closed edge.
+	r := ac.compliance_report with input as object.union(
+		ac_input({"user_sign_in_state": {"someone-else": {"account_enabled": false}}}),
+		ex({"shared_mailboxes": [{"UserPrincipalName": "orphan@x.com", "ExternalDirectoryObjectId": "obj-missing"}]}),
+	)
+	some v in r.violations
+	contains(v, "CIS 1.2.2:")
+	contains(v, "no directory account matched")
+}
+
+test_1_2_2_missing_sign_in_state_is_not_a_pass if {
+	r := ac.compliance_report with input as object.union(
+		{"admin_center": {"collected": true, "unavailable": {"user_sign_in_state": "Directory.Read.All not granted"}}},
+		ex({"shared_mailboxes": [{"UserPrincipalName": "shared@x.com", "ExternalDirectoryObjectId": "obj-1"}]}),
+	)
+	some v in r.violations
+	contains(v, "CIS 1.2.2:")
+	contains(v, "this is not a pass")
+}
+
+# ── 2.4.1 -- priority account protection (compound) ───────────────────
+
+def_in(extra) := {"defender": object.union({"collected": true, "unavailable": {}}, extra)}
+
+good_alert(threat) := {
+	"Name": threat, "ThreatType": threat, "Severity": "High",
+	"Disabled": false, "NotificationEnabled": true,
+	"NotifyUser": ["soc@x.com"], "RecipientTags": "Priority account",
+	"Filter": "Mail.Direction -eq 'Inbound'",
+}
+
+test_2_4_1_tenant_toggle_off_violates if {
+	r := defender.compliance_report with input as def_in({
+		"email_tenant_settings": {"EnablePriorityAccountProtection": false},
+		"priority_account_alerts": [good_alert("Phish"), good_alert("Malware")],
+	})
+	some v in r.violations
+	contains(v, "CIS 2.4.1:")
+	contains(v, "not enabled for the tenant")
+}
+
+test_2_4_1_toggle_on_but_no_alerts_still_violates if {
+	# The toggle tags accounts; it does not watch them. CIS requires both.
+	r := defender.compliance_report with input as def_in({
+		"email_tenant_settings": {"EnablePriorityAccountProtection": true},
+		"priority_account_alerts": [],
+	})
+	some v in r.violations
+	contains(v, "CIS 2.4.1:")
+	contains(v, "phishing")
+}
+
+test_2_4_1_requires_both_phish_and_malware_alerts if {
+	r := defender.compliance_report with input as def_in({
+		"email_tenant_settings": {"EnablePriorityAccountProtection": true},
+		"priority_account_alerts": [good_alert("Phish")],
+	})
+	some v in r.violations
+	contains(v, "CIS 2.4.1:")
+	contains(v, "malware")
+	every v in r.violations { not contains(v, "phishing email detected") }
+}
+
+test_2_4_1_fully_configured_passes if {
+	r := defender.compliance_report with input as def_in({
+		"email_tenant_settings": {"EnablePriorityAccountProtection": true},
+		"priority_account_alerts": [good_alert("Phish"), good_alert("Malware")],
+	})
+	every v in r.violations { not contains(v, "CIS 2.4.1:") }
+}
+
+test_2_4_1_disabled_alert_does_not_count_as_passing if {
+	disabled := object.union(good_alert("Phish"), {"Disabled": true})
+	r := defender.compliance_report with input as def_in({
+		"email_tenant_settings": {"EnablePriorityAccountProtection": true},
+		"priority_account_alerts": [disabled, good_alert("Malware")],
+	})
+	some v in r.violations
+	contains(v, "CIS 2.4.1:")
+	contains(v, "phishing")
+}
+
+test_2_4_1_low_severity_alert_does_not_count if {
+	low := object.union(good_alert("Malware"), {"Severity": "Low"})
+	r := defender.compliance_report with input as def_in({
+		"email_tenant_settings": {"EnablePriorityAccountProtection": true},
+		"priority_account_alerts": [good_alert("Phish"), low],
+	})
+	some v in r.violations
+	contains(v, "CIS 2.4.1:")
+	contains(v, "malware")
+}
+
+# ── 5.1.6.1 -- collaboration invitation domains ───────────────────────
+
+en(extra) := {"entra": object.union({"collected": true, "unavailable": {}}, extra)}
+
+test_5_1_6_1_no_policy_violates if {
+	r := entra.compliance_report with input as en({"b2b_management_policy": {"policy_present": false}})
+	some v in r.violations
+	contains(v, "CIS 5.1.6.1:")
+}
+
+test_5_1_6_1_allow_list_present_passes if {
+	r := entra.compliance_report with input as en({"b2b_management_policy": {
+		"policy_present": true, "allowed_domains": ["contoso.com"],
+		"allowed_domains_present": true, "blocked_domains_present": false,
+	}})
+	every v in r.violations { not contains(v, "CIS 5.1.6.1:") }
+}
+
+test_5_1_6_1_empty_allow_list_is_compliant if {
+	# CIS is explicit: an empty AllowedDomains permits nothing, and is
+	# compliant. Collapsing "absent" and "empty" would invert the control.
+	r := entra.compliance_report with input as en({"b2b_management_policy": {
+		"policy_present": true, "allowed_domains": [],
+		"allowed_domains_present": true, "blocked_domains_present": false,
+	}})
+	every v in r.violations { not contains(v, "CIS 5.1.6.1:") }
+}
+
+test_5_1_6_1_absent_allow_list_violates if {
+	r := entra.compliance_report with input as en({"b2b_management_policy": {
+		"policy_present": true, "allowed_domains_present": false,
+		"blocked_domains_present": false,
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.1.6.1:")
+	contains(v, "no AllowedDomains")
+}
+
+test_5_1_6_1_block_list_violates_even_with_an_allow_list if {
+	r := entra.compliance_report with input as en({"b2b_management_policy": {
+		"policy_present": true, "allowed_domains": ["contoso.com"],
+		"allowed_domains_present": true, "blocked_domains_present": true,
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.1.6.1:")
+	contains(v, "BlockedDomains")
+}
+
+# ── 5.3.4 / 5.3.5 -- PIM activation approval ──────────────────────────
+
+GA_KEY := "pim_approval_62e90394-69f5-4237-9190-012177145e10"
+
+PRA_KEY := "pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814"
+
+test_5_3_4_approval_not_required_violates if {
+	r := entra.compliance_report with input as en({GA_KEY: {
+		"is_approval_required": false, "primary_approver_count": 0,
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.3.4:")
+	contains(v, "Global Administrator")
+}
+
+test_5_3_5_approval_not_required_violates if {
+	r := entra.compliance_report with input as en({PRA_KEY: {
+		"is_approval_required": false, "primary_approver_count": 0,
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.3.5:")
+	contains(v, "Privileged Role Administrator")
+}
+
+test_5_3_4_approval_required_with_no_approvers_violates if {
+	# A requirement that nobody can satisfy gates nothing.
+	r := entra.compliance_report with input as en({GA_KEY: {
+		"is_approval_required": true, "primary_approver_count": 0,
+	}})
+	some v in r.violations
+	contains(v, "CIS 5.3.4:")
+	contains(v, "no approvers are assigned")
+}
+
+test_5_3_4_approval_required_with_approvers_passes if {
+	r := entra.compliance_report with input as en({GA_KEY: {
+		"is_approval_required": true, "primary_approver_count": 2,
+	}})
+	every v in r.violations { not contains(v, "CIS 5.3.4:") }
+}
+
+test_5_3_4_role_not_governed_by_pim_is_not_a_pass if {
+	r := entra.compliance_report with input as {"entra": {
+		"collected": true,
+		"unavailable": {GA_KEY: "no roleManagementPolicyAssignment for the Global Administrator role -- PIM does not govern its activation (blocks 5.3.4)"},
+	}}
+	some v in r.violations
+	contains(v, "CIS 5.3.4:")
+	contains(v, "this is not a pass")
 }
 
 test_buckets_do_not_overlap if {
