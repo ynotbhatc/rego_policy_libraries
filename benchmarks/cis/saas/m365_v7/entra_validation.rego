@@ -2,22 +2,22 @@
 # Section 5 -- Microsoft Entra admin center
 #
 # Section 5 is the largest in the benchmark: 63 of its 160
-# recommendations, 39% of the whole. 50 are evaluated here.
+# recommendations, 39% of the whole. 53 are evaluated here.
 #
 # DROPPED FROM THE PRE-v7 LIBRARY: the "Security Defaults" check. v7.0.0
 # has no Security Defaults recommendation. The check was removed rather
 # than renumbered -- inventing an id is the defect this rewrite exists to
 # fix.
 #
-# NOT EVALUATED HERE. The other 13 of section 5 are carried by the ledger
+# NOT EVALUATED HERE. The other 10 of section 5 are carried by the ledger
 # in attestation_validation.rego:
 #
 #   5.1.2.4, 5.2.4.1-5   requires_attestation  no app-only read path
 #   5.1.2.5, 5.1.2.6,
 #   5.1.3.2, 5.1.3.3     unresolved            collectability unestablished
-#   5.1.6.1, 5.3.4,
-#   5.3.5                not_implemented       Graph exposes these; the
-#                                              collector does not ask
+#
+# 5.1.6.1, 5.3.4 and 5.3.5 were the third category -- known automatable,
+# never built. All three are evaluated here as of 2026-08-25.
 #
 # This comment previously asserted that 5.1.6.1 and 5.3.4 "are reported by
 # the attestation module as unresolved". They were not in any of its maps,
@@ -598,6 +598,9 @@ FACT_CONTROLS := {
 	"group_settings": "5.2.3.2",
 	"mfa_registration_report": "5.2.3.4",
 	"per_user_mfa": "5.1.2.1",
+	"b2b_management_policy": "5.1.6.1",
+	"pim_approval_62e90394-69f5-4237-9190-012177145e10": "5.3.4",
+	"pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814": "5.3.5",
 }
 
 violation contains msg if {
@@ -611,6 +614,72 @@ violation contains msg if {
 	msg := "CIS 5.1.2.2: Entra facts were not collected, so whether users can register applications could not be established -- section 5 was not evaluated (this is not a pass)"
 }
 
+# ── CIS 5.1.6.1 -- invitations only to allowed domains ────────────────
+# CIS reads the B2BManagementPolicy invitation domain policy. Compliant
+# means an AllowedDomains list is PRESENT and no BlockedDomains property.
+#
+# The empty case is the subtle one and CIS is explicit about it: an
+# AllowedDomains list with no entries is compliant, because it permits
+# nothing. Absent is not the same as empty, which is why the collector
+# reports presence separately from contents -- treating a missing list as
+# an empty one would turn "unrestricted" into "maximally restricted".
+
+b2b := object.get(input, ["entra", "b2b_management_policy"], {})
+
+violation contains msg if {
+	available("b2b_management_policy")
+	b2b.policy_present == false
+	msg := "CIS 5.1.6.1: no B2B collaboration domain policy exists, so invitations can be sent to any domain"
+}
+
+violation contains msg if {
+	available("b2b_management_policy")
+	b2b.policy_present == true
+	b2b.allowed_domains_present == false
+	msg := "CIS 5.1.6.1: collaboration invitations are not restricted to allowed domains -- the B2B policy specifies no AllowedDomains list, so any domain may be invited"
+}
+
+# A block list is an allow-everything-else posture, which CIS treats as
+# non-compliant even when an allow list is also present.
+violation contains msg if {
+	available("b2b_management_policy")
+	b2b.policy_present == true
+	b2b.blocked_domains_present == true
+	msg := "CIS 5.1.6.1: the B2B collaboration policy specifies BlockedDomains -- blocking named domains permits every other domain, where the benchmark requires an explicit allow list"
+}
+
+# ── CIS 5.3.4 / 5.3.5 -- approval to activate a privileged role ───────
+# Both controls have the same shape against different roles, so the map
+# drives the rules. CIS requires BOTH isApprovalRequired and at least one
+# primary approver: a policy that requires approval from nobody cannot
+# gate anything.
+
+PIM_APPROVAL_CONTROLS := {
+	"pim_approval_62e90394-69f5-4237-9190-012177145e10": {
+		"control": "5.3.4",
+		"role": "Global Administrator",
+	},
+	"pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814": {
+		"control": "5.3.5",
+		"role": "Privileged Role Administrator",
+	},
+}
+
+violation contains msg if {
+	some key, meta in PIM_APPROVAL_CONTROLS
+	available(key)
+	input.entra[key].is_approval_required == false
+	msg := sprintf("CIS %s: activating the %s role does not require approval, so an eligible principal can elevate unilaterally", [meta.control, meta.role])
+}
+
+violation contains msg if {
+	some key, meta in PIM_APPROVAL_CONTROLS
+	available(key)
+	input.entra[key].is_approval_required == true
+	input.entra[key].primary_approver_count == 0
+	msg := sprintf("CIS %s: activating the %s role requires approval but no approvers are assigned, so the requirement gates nothing", [meta.control, meta.role])
+}
+
 compliant if {
 	collected
 	count(violation) == 0
@@ -622,19 +691,19 @@ compliance_report := {
 	"section": "5",
 	"name": "Microsoft Entra admin center",
 	"section_total_controls": 63,
-	"controls_evaluated": 50,
+	"controls_evaluated": 53,
 	"controls": [
 		"5.1.2.1", "5.1.2.2", "5.1.2.3", "5.1.3.1", "5.1.3.4", "5.1.4.6",
 		"5.1.4.1", "5.1.4.2", "5.1.4.3", "5.1.4.4", "5.1.4.5",
 		"5.1.5.1", "5.1.5.2", "5.1.5.3", "5.1.5.4", "5.1.5.5", "5.1.5.6",
-		"5.1.6.2", "5.1.6.3", "5.1.8.1",
+		"5.1.6.1", "5.1.6.2", "5.1.6.3", "5.1.8.1",
 		"5.2.2.1", "5.2.2.2", "5.2.2.3", "5.2.2.4", "5.2.2.5",
 		"5.2.2.6", "5.2.2.7", "5.2.2.8", "5.2.2.9", "5.2.2.10",
 		"5.2.2.11", "5.2.2.12", "5.2.2.13", "5.2.2.14", "5.2.2.15",
 		"5.2.2.16", "5.2.2.17",
 		"5.2.3.1", "5.2.3.2", "5.2.3.3", "5.2.3.4", "5.2.3.5", "5.2.3.6",
 		"5.2.3.7", "5.2.3.8", "5.2.3.9", "5.2.3.10",
-		"5.3.1", "5.3.2", "5.3.3",
+		"5.3.1", "5.3.2", "5.3.3", "5.3.4", "5.3.5",
 	],
 	"facts_present": collected,
 	"unavailable_facts": unavailable,

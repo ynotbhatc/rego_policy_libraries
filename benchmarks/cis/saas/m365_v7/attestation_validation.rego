@@ -69,35 +69,18 @@ UNRESOLVED := {
 
 # Automatable, but the collector does not make the call yet.
 #
+# EMPTY as of 2026-08-25. All six original entries -- 1.2.2, 1.3.3,
+# 2.4.1, 5.1.6.1, 5.3.4, 5.3.5 -- were built and moved into their section
+# modules. The bucket stays because the category is real and will recur:
+# the next control we know how to collect but have not built belongs
+# here, not in `unresolved`, which would understate what we know.
+#
 # Each entry names the audit path, so this reads as a work list rather
 # than a disclaimer. Subjects are paraphrased from the shipped keyword
 # digest -- CIS titles are not reproduced verbatim (see README).
-NOT_IMPLEMENTED := {
-	"1.2.2": {
-		"subject": "sign-in to shared mailboxes is blocked",
-		"collector": "Get-EXOMailbox -RecipientTypeDetails SharedMailbox, joined to the Entra accountEnabled flag; today the mailbox query selects only audit properties and /users selects only id and userPrincipalName",
-	},
-	"1.3.3": {
-		"subject": "external sharing of calendars is not available",
-		"collector": "Get-SharingPolicy via Exchange Online PowerShell; not among the nine cmdlets the collector runs",
-	},
-	"2.4.1": {
-		"subject": "priority account protection is enabled and configured",
-		"collector": "Defender priority-account configuration; the Defender collector reads only the anti-phish, anti-spam, malware, Safe Links and Safe Attachments policies",
-	},
-	"5.1.6.1": {
-		"subject": "collaboration invitations are sent only to allowed domains",
-		"collector": "the Graph B2B management policy carrying the invitation allow/block domain list; the Entra collector does not request it",
-	},
-	"5.3.4": {
-		"subject": "approval is required to activate the Global Administrator role",
-		"collector": "Graph PIM role-management policy rules; the Entra collector reads roleEligibilityScheduleInstances but not the policy rules that govern activation",
-	},
-	"5.3.5": {
-		"subject": "approval is required to activate the Privileged Role Administrator role",
-		"collector": "Graph PIM role-management policy rules, as for 5.3.4",
-	},
-}
+#
+#   "<id>": {"subject": "...", "collector": "the call that would close it"}
+NOT_IMPLEMENTED := {}
 
 attestations := object.get(input, "attestations", [])
 
