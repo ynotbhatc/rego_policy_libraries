@@ -99,11 +99,19 @@ critical_actions := {
 }
 
 # Helper to check if action requires approval
+# `default` is required: this rule only fires for medium/high/critical, so for a
+# read_only or low action it would otherwise be undefined — and one undefined
+# field collapses the whole classification_report object to {}.
+default requires_approval := false
+
 requires_approval if {
     action_risk_level in ["medium", "high", "critical"]
 }
 
 # Helper to check if action requires justification
+# Same reason as above: undefined for anything below high risk without this.
+default requires_justification := false
+
 requires_justification if {
     action_risk_level in ["high", "critical"]
 }
