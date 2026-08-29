@@ -12,6 +12,16 @@ body:
         An untested policy can silently return `{}` and read as "compliant" when
         it is actually undefined. Tests are what stop a policy quietly passing
         everything.
+
+        **This library uses two rule styles — check which one your file uses:**
+
+        - a violation set, `violations contains msg if { ... }` — test that each
+          block fires on bad input and that none fire on good input
+        - boolean rules, `default thing := false` with `thing if { ... }` — test
+          that each goes true on satisfying input and stays false otherwise
+
+        Either way the last case is the same: assert the compliance report is a
+        populated object on **empty input**, not `{}`.
   - type: input
     id: policy_file
     attributes:
@@ -34,7 +44,7 @@ body:
       label: Done when
       options:
         - label: "`opa test <policy dir> -v` passes"
-        - label: Each violation the policy defines has a case that triggers it
+        - label: Each rule the policy defines has a case that exercises it
         - label: At least one case asserts the rule does *not* fire on compliant input
         - label: The compliance report is asserted to be a populated object, not `{}`
   - type: textarea
