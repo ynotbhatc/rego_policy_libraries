@@ -184,3 +184,14 @@ test_report_survives_a_playbook_with_no_path if {
 	r.path == "<playbook>"
 	count(r) > 0
 }
+
+# An import_playbook entry has no name of its own — the imported file names its
+# plays. Flagging it was a false positive found on the first run against the
+# real repository, in demo_cip010_loop.yml.
+test_import_playbook_entry_needs_no_name if {
+	v := hygiene.violation with input as {"path": "d.yml", "plays": [
+		{"import_playbook": "other.yml"},
+		{"ansible.builtin.import_playbook": "third.yml"},
+	]}
+	not has(v, "AAC-ANS-002")
+}

@@ -77,9 +77,18 @@ violation contains msg if {
 # ── AAC-ANS-002 — every play is named ────────────────────────────────────────
 # An unnamed play produces unattributable output, which is the same
 # evidence-quality problem the platform exists to solve.
+# An `import_playbook` entry is not a play and carries no name of its own —
+# the imported file names its own plays. Flagging it was a false positive
+# found on the first run against the real repository.
+is_import(entry) if {
+	some k, _ in entry
+	endswith(k, "import_playbook")
+}
+
 violation contains msg if {
 	some i, play in input.plays
 	not play.name
+	not is_import(play)
 	msg := sprintf("AAC-ANS-002: %s: play %d has no name", [path_label, i])
 }
 
