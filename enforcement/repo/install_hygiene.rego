@@ -105,8 +105,14 @@ violation contains msg if {
 # which parses a password-AGING policy and holds no credential at all. A rule
 # that flags password policy alongside real passwords trains people to ignore
 # it, so the target is matched specifically.
+# The keyword must END the identifier. Allowing a trailing `\w*` matched
+# `password_authentication` and `permit_empty_passwords` -- sshd CONFIG FIELDS,
+# not credentials. Acting on those replaced `| default('not set')` with
+# `| mandatory` and broke fact collection on every host that relies on sshd
+# defaults, which is most of them. A name that merely CONTAINS "password" is
+# usually a setting about passwords; a name that ENDS with it is the secret.
 secret_assignment(text) if {
-	regex.match(`(?i)^\s*[-\s]*["']?[\w.]*(password|passwd|secret|token|api_?key)\w*["']?\s*[:=]`, text)
+	regex.match(`(?i)^\s*[-\s]*["']?[\w.]*?(password|passwd|secret|token|api_?key)["']?\s*[:=]`, text)
 }
 
 # A purely numeric fallback is a duration, port or retry count, never a
@@ -134,11 +140,21 @@ violation contains msg if {
 violation contains msg if {
 	not allowlisted
 	some line in lines
-	some m in regex.find_n(`\$\{[A-Za-z_][A-Za-z0-9_]*:-[^}]*\}`, line.text, -1)
+	# `[^}]+` not `[^}]*`: an EMPTY default (`${VAR:-}`) is not a fallback
+	# credential, it is the standard `set -u`-safe way to read a maybe-unset
+	# variable so the next line can check it and print real guidance. Flagging
+	# it pushed scripts toward `${VAR:?}`, which aborts with bash's terse
+	# message BEFORE the script's own error text can run -- strictly worse.
+	# Only a non-empty fallback is a shipped credential.
+	some m in regex.find_n(`\$\{[A-Za-z_][A-Za-z0-9_]*:-[^}]+\}`, line.text, -1)
 	# Shell names abbreviate (GRAFANA_PASS, DB_PASSWD), so match on an
 	# underscore-delimited SEGMENT rather than a substring. Substring matching
 	# would also catch BYPASS_CHECK and PASSED_COUNT; segment matching does not.
-	regex.match(`(?i)\$\{(\w+_)?(password|passwd|pass|secret|token|api_?key|credential)(_\w+)*:-`, m)
+	# Same rule as above: the keyword must be the LAST segment. Allowing
+	# trailing segments matched `${TOKEN_NOTE:-}` -- a display string, not a
+	# credential -- and turning it into `${TOKEN_NOTE:?}` aborted the script on
+	# its normal path, because that note is only set on a fallback branch.
+	regex.match(`(?i)\$\{(\w+_)?(password|passwd|pass|secret|token|api_?key|credential):-`, m)
 	msg := sprintf(
 		"AAC-CFG-004: %s:%v: secret has a shell fallback default (%s) — this fails open. Use ${VAR:?message} so a missing credential stops the run",
 		[path_label, line.n, m],
