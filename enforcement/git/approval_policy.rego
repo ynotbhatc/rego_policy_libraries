@@ -14,14 +14,24 @@ protected_paths := {
 	"ansible/",
 }
 
-# Users authorized to approve changes
-authorized_approvers := {
-	"ynotbha@aisle-five.com",
-	"tcoulter@example.com",
-	"john.doe@example.com",
-	"security-team@example.com",
-	"compliance-admin@example.com",
-}
+# Users authorized to approve changes.
+#
+# EVERY ENTRY MUST BE A REAL, DELIVERABLE ADDRESS BELONGING TO SOMEONE
+# ACCOUNTABLE FOR THE CHANGE.
+#
+# This set previously carried four example.com placeholders --
+# tcoulter@example.com, john.doe@example.com, security-team@example.com,
+# compliance-admin@example.com. example.com is RFC 2606 reserved: those
+# addresses can never belong to anyone. Because approval is satisfied by any
+# trailer matching this set, `Approved-By: john.doe@example.com` evaluated to
+# `true` and passed the gate on protected paths. Verified against this policy
+# on 2026-08-29 before removal.
+#
+# A placeholder in an allowlist is not a placeholder. It is a working key.
+#
+# To add an approver, add the address they actually receive mail at. Do not add
+# a role address unless it resolves to people who will read it.
+authorized_approvers := {"ynotbha@aisle-five.com"}
 
 # Default: changes are not approved
 default approved := false
@@ -107,8 +117,26 @@ affected_protected_paths := paths if {
 # Test data helpers
 test_approved_change if {
 	approved with input as {
+		"commit_message": "Update policies\n\nApproved-By: ynotbha@aisle-five.com",
+		"changed_files": ["policies/cis_rhel9/test.rego"],
+	}
+}
+
+# Regression. This exact input returned `true` until 2026-08-29, because the
+# approver set carried example.com placeholders and any trailer matching the
+# set was sufficient. A reserved address that can never belong to anyone was
+# therefore a working approval key on every protected path.
+test_placeholder_approver_is_rejected if {
+	not approved with input as {
 		"commit_message": "Update policies\n\nApproved-By: john.doe@example.com",
 		"changed_files": ["policies/cis_rhel9/test.rego"],
+	}
+}
+
+test_any_example_com_address_is_rejected if {
+	not approved with input as {
+		"commit_message": "Update policies\n\nApproved-By: security-team@example.com",
+		"changed_files": [".github/workflows/ci.yml"],
 	}
 }
 
