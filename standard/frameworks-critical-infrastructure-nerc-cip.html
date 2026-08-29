@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NERC-CIP Rego Policies for Open Policy Agent (OPA)</title>
+<meta name="description" content="16 open-source Rego policies encoding NERC Critical Infrastructure Protection, CIP-002 to CIP-015. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
+<link rel="canonical" href="https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-nerc-cip.html">
+<meta property="og:title" content="NERC-CIP Rego Policies for Open Policy Agent (OPA)">
+<meta property="og:description" content="16 open-source Rego policies encoding NERC Critical Infrastructure Protection, CIP-002 to CIP-015. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-nerc-cip.html">
+<style>body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 860px; margin: 60px auto; padding: 0 24px; color: #24292f; }
+    h1 { font-size: 2em; border-bottom: 1px solid #d0d7de; padding-bottom: 12px; }
+    h2 { font-size: 1.3em; margin-top: 32px; }
+    a { color: #0969da; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .badge { display: inline-block; background: #1f6feb; color: white; border-radius: 4px; padding: 3px 10px; font-size: 0.85em; margin-right: 6px; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+    th { background: #f6f8fa; text-align: left; padding: 8px 12px; border: 1px solid #d0d7de; }
+    td { padding: 8px 12px; border: 1px solid #d0d7de; }
+    tr:nth-child(even) { background: #f6f8fa; }
+    .hero { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 24px; margin: 24px 0; }
+    code { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 4px; padding: 2px 6px; font-size: 0.9em; }
+    pre { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; overflow-x: auto; }</style>
+</head>
+<body>
+<h1>NERC-CIP — Rego Policies for OPA</h1>
+<p>16 open-source Rego policies encoding NERC Critical Infrastructure Protection, CIP-002 to CIP-015. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.</p>
+
+<h2>What this is</h2>
+<p><strong>16 Rego policy files</strong> encoding NERC Critical Infrastructure Protection, CIP-002 to CIP-015, part of the
+<a href="https://ynotbhatc.github.io/rego_policy_libraries/">Rego Policy Libraries</a> — a standalone, dependency-free
+collection of Open Policy Agent policies for published security and compliance
+standards. No orchestrator, no agent, no vendor runtime.</p>
+
+<h2>Load and query it</h2>
+<pre><code>git clone https://github.com/ynotbhatc/rego_policy_libraries.git
+opa eval -d rego_policy_libraries/frameworks/critical_infrastructure/nerc_cip -f pretty 'data'</code></pre>
+<p>Or load into a running OPA:</p>
+<pre><code>for f in rego_policy_libraries/frameworks/critical_infrastructure/nerc_cip/*.rego; do
+  curl -X PUT --data-binary @"$f" "$OPA/v1/policies/$(basename $f .rego)"
+done</code></pre>
+
+<h2>Two ways to use these policies</h2>
+<p><strong>Gating a change of state</strong> — evaluate a proposed action before it
+proceeds, and refuse it if it violates the standard. <strong>Measuring state</strong> —
+evaluate collected facts about an environment against the standard to produce
+compliance evidence. The same policy content serves both; only the integration
+differs.</p>
+
+<h2>Policy modules</h2>
+<ul>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_002_asset_identification.rego"><code>cip_002_asset_identification.rego</code></a> <span style="opacity:.7">nerc_cip.cip_002</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_003_security_management.rego"><code>cip_003_security_management.rego</code></a> <span style="opacity:.7">nerc_cip.cip_003</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_004_personnel_training.rego"><code>cip_004_personnel_training.rego</code></a> <span style="opacity:.7">nerc_cip.cip_004</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_005_electronic_security.rego"><code>cip_005_electronic_security.rego</code></a> <span style="opacity:.7">nerc_cip.cip_005</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego"><code>cip_006_physical_security.rego</code></a> <span style="opacity:.7">nerc_cip.cip_006</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego"><code>cip_007_systems_security.rego</code></a> <span style="opacity:.7">nerc_cip.cip_007</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_008_incident_response.rego"><code>cip_008_incident_response.rego</code></a> <span style="opacity:.7">nerc_cip.cip_008</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_009_recovery_plans.rego"><code>cip_009_recovery_plans.rego</code></a> <span style="opacity:.7">nerc_cip.cip_009</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_010_configuration_management.rego"><code>cip_010_configuration_management.rego</code></a> <span style="opacity:.7">nerc_cip.cip_010</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego"><code>cip_011_information_protection.rego</code></a> <span style="opacity:.7">nerc_cip.cip_011</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_012_communications.rego"><code>cip_012_communications.rego</code></a> <span style="opacity:.7">nerc_cip.cip_012</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego"><code>cip_013_supply_chain.rego</code></a> <span style="opacity:.7">nerc_cip.cip_013</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego"><code>cip_014_physical_security_transmission.rego</code></a> <span style="opacity:.7">nerc_cip.cip_014</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/cip_015_insm.rego"><code>cip_015_insm.rego</code></a> <span style="opacity:.7">nerc_cip_cip015</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/nerc_cip_main.rego"><code>nerc_cip_main.rego</code></a> <span style="opacity:.7">nerc_cip_main</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/nerc_cip/nerc_cip_simplified.rego"><code>nerc_cip_simplified.rego</code></a> <span style="opacity:.7">nerc.cip.simplified</span></li>
+</ul>
+
+<h2>Contributing</h2>
+<p>Test coverage is published in
+<a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/COVERAGE.md">COVERAGE.md</a>, and uncovered policies are the best
+first contribution — each is small, self-contained, and either passes
+<code>opa test</code> or does not. See
+<a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
+
+<h2>Links</h2>
+<ul>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries">Repository</a> (Apache 2.0)</li>
+<li><a href="https://ynotbhatc.github.io/rego_policy_libraries/">All standards</a></li>
+<li><a href="https://www.openpolicyagent.org/">Open Policy Agent</a></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AMI / NIST IR 7628 Rego Policies for Open Policy Agent (OPA)</title>
+<meta name="description" content="9 open-source Rego policies encoding Advanced Metering Infrastructure and smart grid security. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
+<link rel="canonical" href="https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-ami.html">
+<meta property="og:title" content="AMI / NIST IR 7628 Rego Policies for Open Policy Agent (OPA)">
+<meta property="og:description" content="9 open-source Rego policies encoding Advanced Metering Infrastructure and smart grid security. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-ami.html">
+<style>body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 860px; margin: 60px auto; padding: 0 24px; color: #24292f; }
+    h1 { font-size: 2em; border-bottom: 1px solid #d0d7de; padding-bottom: 12px; }
+    h2 { font-size: 1.3em; margin-top: 32px; }
+    a { color: #0969da; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .badge { display: inline-block; background: #1f6feb; color: white; border-radius: 4px; padding: 3px 10px; font-size: 0.85em; margin-right: 6px; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+    th { background: #f6f8fa; text-align: left; padding: 8px 12px; border: 1px solid #d0d7de; }
+    td { padding: 8px 12px; border: 1px solid #d0d7de; }
+    tr:nth-child(even) { background: #f6f8fa; }
+    .hero { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 24px; margin: 24px 0; }
+    code { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 4px; padding: 2px 6px; font-size: 0.9em; }
+    pre { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; overflow-x: auto; }</style>
+</head>
+<body>
+<h1>AMI / NIST IR 7628 — Rego Policies for OPA</h1>
+<p>9 open-source Rego policies encoding Advanced Metering Infrastructure and smart grid security. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.</p>
+
+<h2>What this is</h2>
+<p><strong>9 Rego policy files</strong> encoding Advanced Metering Infrastructure and smart grid security, part of the
+<a href="https://ynotbhatc.github.io/rego_policy_libraries/">Rego Policy Libraries</a> — a standalone, dependency-free
+collection of Open Policy Agent policies for published security and compliance
+standards. No orchestrator, no agent, no vendor runtime.</p>
+
+<h2>Load and query it</h2>
+<pre><code>git clone https://github.com/ynotbhatc/rego_policy_libraries.git
+opa eval -d rego_policy_libraries/frameworks/critical_infrastructure/ami -f pretty 'data'</code></pre>
+<p>Or load into a running OPA:</p>
+<pre><code>for f in rego_policy_libraries/frameworks/critical_infrastructure/ami/*.rego; do
+  curl -X PUT --data-binary @"$f" "$OPA/v1/policies/$(basename $f .rego)"
+done</code></pre>
+
+<h2>Two ways to use these policies</h2>
+<p><strong>Gating a change of state</strong> — evaluate a proposed action before it
+proceeds, and refuse it if it violates the standard. <strong>Measuring state</strong> —
+evaluate collected facts about an environment against the standard to produce
+compliance evidence. The same policy content serves both; only the integration
+differs.</p>
+
+<h2>Policy modules</h2>
+<ul>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/device_compliance/ami_device_compliance.rego"><code>ami_device_compliance.rego</code></a> <span style="opacity:.7">ami.device.compliance</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/headend/ami_headend_security.rego"><code>ami_headend_security.rego</code></a> <span style="opacity:.7">ami.headend.security</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_access_control.rego"><code>nist_ir7628_access_control.rego</code></a> <span style="opacity:.7">ami.nist_ir7628.access_control</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_audit.rego"><code>nist_ir7628_audit.rego</code></a> <span style="opacity:.7">ami.nist_ir7628.audit</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_complete.rego"><code>nist_ir7628_complete.rego</code></a> <span style="opacity:.7">ami.nist_ir7628.complete</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_config_management.rego"><code>nist_ir7628_config_management.rego</code></a> <span style="opacity:.7">ami.nist_ir7628.config_management</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_identification_auth.rego"><code>nist_ir7628_identification_auth.rego</code></a> <span style="opacity:.7">ami.nist_ir7628.identification_auth</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_incident_response.rego"><code>nist_ir7628_incident_response.rego</code></a> <span style="opacity:.7">ami.nist_ir7628.incident_response</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_system_comms.rego"><code>nist_ir7628_system_comms.rego</code></a> <span style="opacity:.7">ami.nist_ir7628.system_comms</span></li>
+</ul>
+
+<h2>Contributing</h2>
+<p>Test coverage is published in
+<a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/COVERAGE.md">COVERAGE.md</a>, and uncovered policies are the best
+first contribution — each is small, self-contained, and either passes
+<code>opa test</code> or does not. See
+<a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
+
+<h2>Links</h2>
+<ul>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries">Repository</a> (Apache 2.0)</li>
+<li><a href="https://ynotbhatc.github.io/rego_policy_libraries/">All standards</a></li>
+<li><a href="https://www.openpolicyagent.org/">Open Policy Agent</a></li>
+</ul>
+
+</body>
+</html>
