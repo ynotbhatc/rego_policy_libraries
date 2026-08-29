@@ -1,8 +1,16 @@
 # Rego Policy Libraries
 
-> **545 production-ready Rego policies** for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
+> **500+ production-ready Rego policies** for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
 >
 > Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
+
+<sub>Counts move with every merge, so this README says "500+" rather than a figure
+that goes stale. For the exact number at any commit:</sub>
+
+```bash
+git ls-files | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'   # policy files
+git ls-files | grep -c '\.rego$'                                          # including tests
+```
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
@@ -20,7 +28,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 
 - Use **Rego v1 syntax** (`import rego.v1`) — no deprecation warnings, forward-compatible
 - Return **structured JSON reports** (compliant, score, violations list) — wire directly to dashboards or CI
-- Are **independently loadable** — use one framework or all 545 policies; no coupling
+- Are **independently loadable** — use one framework or the whole library; no coupling
 - Expose a **uniform entrypoint** — `data.<package>.main.compliance_report` for every framework, so you can evaluate one by name without learning its internal layout
 - **Fail closed** — a framework given no facts reports non-compliant with an explicit reason, never a silent pass (see below)
 - Are **vendor-neutral** — no orchestrator, deployment topology, or caller vocabulary baked in
