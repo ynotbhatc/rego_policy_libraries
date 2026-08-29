@@ -1,0 +1,50 @@
+name: Add tests for an existing policy
+description: The best first contribution — pick an uncovered policy from COVERAGE.md
+title: "test: add tests for "
+labels: ["good first issue", "help wanted"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        476 of 558 policies have no tests. Every one is small, self-contained and
+        mergeable — see [COVERAGE.md](../blob/main/COVERAGE.md) for the queue.
+
+        An untested policy can silently return `{}` and read as "compliant" when
+        it is actually undefined. Tests are what stop a policy quietly passing
+        everything.
+  - type: input
+    id: policy_file
+    attributes:
+      label: Policy file
+      description: Path from the repository root
+      placeholder: benchmarks/cis/rhel_9/pam_validation.rego
+    validations:
+      required: true
+  - type: input
+    id: package
+    attributes:
+      label: Package
+      description: The `package` line at the top of that file
+      placeholder: cis_rhel9.pam
+    validations:
+      required: true
+  - type: checkboxes
+    id: done_when
+    attributes:
+      label: Done when
+      options:
+        - label: "`opa test <policy dir> -v` passes"
+        - label: Each violation the policy defines has a case that triggers it
+        - label: At least one case asserts the rule does *not* fire on compliant input
+        - label: The compliance report is asserted to be a populated object, not `{}`
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything odd about this policy?
+      description: Optional — unclear controls, missing input fields, anything that made it hard.
+  - type: markdown
+    attributes:
+      value: |
+        **Say in your PR which file you took**, so two people don't write the
+        same test. The pattern to copy is in
+        [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md).
