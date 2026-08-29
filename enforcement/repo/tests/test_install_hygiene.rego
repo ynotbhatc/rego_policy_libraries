@@ -226,3 +226,68 @@ test_bypass_is_not_a_password if {
 	v := ih.violation with input as file("scripts/x.sh", ["MODE=\"${BYPASS:-off}\""])
 	not has(v, "AAC-CFG-004")
 }
+
+# ── Regressions from acting on these rules too loosely ───────────────────────
+# Each of these was flagged as a secret, "fixed", and broke something.
+
+# sshd config FIELDS, not credentials. `| mandatory` on these failed fact
+# collection on any host using sshd defaults.
+test_password_authentication_is_a_setting_not_a_secret if {
+	v := ih.violation with input as file("roles/ssh/tasks/main.yml", [
+		"        password_authentication: \"{{ d.passwordauthentication | default('not set') }}\"",
+	])
+	not has(v, "AAC-CFG-004")
+}
+
+test_permit_empty_passwords_is_a_setting_not_a_secret if {
+	v := ih.violation with input as file("roles/ssh/tasks/main.yml", [
+		"        permit_empty_passwords: \"{{ d.permitemptypasswords | default('not set') }}\"",
+	])
+	not has(v, "AAC-CFG-004")
+}
+
+# A display note that happens to start with TOKEN. Requiring it aborted the
+# script on the path where the note is legitimately unset.
+test_token_note_is_not_a_secret if {
+	v := ih.violation with input as file("install/seed.sh", [
+		"echo \"Controller token ID: ${TOKEN_ID}${TOKEN_NOTE:-}\"",
+	])
+	not has(v, "AAC-CFG-004")
+}
+
+# The real ones must still be caught after tightening.
+test_real_secret_assignment_still_caught if {
+	v := ih.violation with input as file("playbooks/x.yml", [
+		"    compliance_db_password: \"{{ compliance_db_password | default('hunter2') }}\"",
+	])
+	has(v, "AAC-CFG-004")
+}
+
+test_real_shell_secret_still_caught if {
+	v := ih.violation with input as file("scripts/x.sh", ["GRAFANA_PASS=\"${GRAFANA_PASS:-hunter2}\""])
+	has(v, "AAC-CFG-004")
+}
+
+# A path derived from a secret name is not itself a secret.
+test_password_file_path_is_not_a_secret if {
+	v := ih.violation with input as file("scripts/x.sh", ["F=\"${DB_PASSWORD_FILE:-/etc/pw}\""])
+	not has(v, "AAC-CFG-004")
+}
+
+# `${VAR:-}` reads a maybe-unset variable safely so the NEXT line can check it
+# and print real guidance. That is fail-closed. Flagging it pushed scripts to
+# `${VAR:?}`, which aborts with bash's terse message before the script's own
+# error text runs.
+test_empty_shell_default_is_a_guard_not_a_fallback if {
+	v := ih.violation with input as file("scripts/x.sh", [
+		"if [[ -z \"${GRAFANA_PASS:-}\" ]]; then",
+		"    echo 'GRAFANA_PASS is not set — export it first.' >&2; exit 1",
+		"fi",
+	])
+	not has(v, "AAC-CFG-004")
+}
+
+test_nonempty_shell_default_is_still_a_fallback if {
+	v := ih.violation with input as file("scripts/x.sh", ["P=\"${GRAFANA_PASS:-hunter2}\""])
+	has(v, "AAC-CFG-004")
+}
