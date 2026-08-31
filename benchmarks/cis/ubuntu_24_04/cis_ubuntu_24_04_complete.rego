@@ -152,13 +152,15 @@ compliance_assessment := {
 		"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README)",
 		"target_platform": "Ubuntu 24.04 LTS",
 		"assessment_time": time.now_ns(),
-		"hostname": input.system_info.hostname,
+		# Defaulted: a bare dereference here collapsed the whole report to {}
+		# on any input missing system_info (library rule #5).
+		"hostname": object.get(input, ["system_info", "hostname"], "unknown"),
 	},
 	"system_info": {
-		"distribution": input.system_info.distribution,
-		"distribution_version": input.system_info.distribution_version,
-		"kernel": input.system_info.kernel,
-		"architecture": input.system_info.architecture,
+		"distribution": object.get(input, ["system_info", "distribution"], "unknown"),
+		"distribution_version": object.get(input, ["system_info", "distribution_version"], "unknown"),
+		"kernel": object.get(input, ["system_info", "kernel"], "unknown"),
+		"architecture": object.get(input, ["system_info", "architecture"], "unknown"),
 	},
 	"compliance_summary": compliance_summary,
 	"module_status": module_status,
