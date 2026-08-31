@@ -152,13 +152,20 @@ compliance_assessment := {
 		"benchmark": "CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0",
 		"target_platform": "Ubuntu 22.04 LTS",
 		"assessment_time": time.now_ns(),
-		"hostname": input.system_info.hostname,
+		# Every input-sourced field is defaulted. These were bare dereferences,
+		# and one undefined field collapses the whole object to {} at the
+		# endpoint (library rule #5) -- so the report this file exists to
+		# produce vanished on any input missing system_info, and the caller
+		# stored the empty result while its job stayed green. The smoke test
+		# knew: it tested compliance_summary instead and called the collapse
+		# "by design". Fail-closed means saying "unknown", not saying nothing.
+		"hostname": object.get(input, ["system_info", "hostname"], "unknown"),
 	},
 	"system_info": {
-		"distribution": input.system_info.distribution,
-		"distribution_version": input.system_info.distribution_version,
-		"kernel": input.system_info.kernel,
-		"architecture": input.system_info.architecture,
+		"distribution": object.get(input, ["system_info", "distribution"], "unknown"),
+		"distribution_version": object.get(input, ["system_info", "distribution_version"], "unknown"),
+		"kernel": object.get(input, ["system_info", "kernel"], "unknown"),
+		"architecture": object.get(input, ["system_info", "architecture"], "unknown"),
 	},
 	"compliance_summary": compliance_summary,
 	"module_status": module_status,
