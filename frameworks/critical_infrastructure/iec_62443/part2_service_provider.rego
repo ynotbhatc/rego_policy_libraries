@@ -185,7 +185,7 @@ compliance_report := {
     "part":                     "IEC 62443-2-4",
     "title":                    "Security Program Requirements for IACS Service Providers",
     "standard":                 "IEC 62443-2-4",
-    "is_iacs_service_provider": input.is_iacs_service_provider,
+    "is_iacs_service_provider": object.get(input, "is_iacs_service_provider", false),
     "compliant":                compliant,
     "violations":               violations,
 }

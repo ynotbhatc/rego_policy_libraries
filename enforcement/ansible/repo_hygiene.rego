@@ -154,7 +154,7 @@ compliant if count(violation) == 0
 compliance_report := {
 	"policy": "AAC repository hygiene",
 	"path": path_label,
-	"plays_evaluated": count(input.plays),
+	"plays_evaluated": count(object.get(input, "plays", [])),
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,

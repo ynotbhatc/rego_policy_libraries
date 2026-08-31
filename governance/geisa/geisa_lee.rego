@@ -67,8 +67,8 @@ compliance_report := {
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
-	"runtime": _container.runtime,
-	"runtime_version": _container.runtime_version,
-	"isolated": _container.isolated,
-	"network_mode": _container.network_mode,
+	"runtime": object.get(input, ["container", "runtime"], "unknown"),
+	"runtime_version": object.get(input, ["container", "runtime_version"], "unknown"),
+	"isolated": object.get(input, ["container", "isolated"], false),
+	"network_mode": object.get(input, ["container", "network_mode"], "unknown"),
 }

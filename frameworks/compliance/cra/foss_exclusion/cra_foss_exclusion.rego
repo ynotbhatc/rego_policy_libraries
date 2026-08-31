@@ -94,7 +94,7 @@ compliant if { count(violation) == 0 }
 
 # Useful auxiliary field for downstream consumers.
 exemption_status := {
-    "claimed":  input.foss.claimed_exemption,
+    "claimed":  object.get(input, ["foss", "claimed_exemption"], false),
     "valid":    exempt,
     "misclaim": count(violation) > 0,
 }

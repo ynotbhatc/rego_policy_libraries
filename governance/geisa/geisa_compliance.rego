@@ -79,8 +79,8 @@ _pillars := [
 
 compliance_report := {
 	"compliant": compliant,
-	"app_id": input.manifest.applicationId,
-	"app_version": input.manifest.version,
+	"app_id": object.get(input, ["manifest", "applicationId"], "unknown"),
+	"app_version": object.get(input, ["manifest", "version"], "unknown"),
 	"total_violations": count(all_violations),
 	"pillars": _pillars,
 	"violations": all_violations,

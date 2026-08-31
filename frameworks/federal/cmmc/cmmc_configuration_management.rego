@@ -118,7 +118,7 @@ compliant if { count(violations) == 0 }
 
 compliance_report := {
     "domain":          "Configuration Management (CM)",
-    "cmmc_level":      input.cmmc_level,
+    "cmmc_level":      object.get(input, "cmmc_level", 0),
     "compliant":       compliant,
     "violation_count": count(violations),
     "violations":      violations,

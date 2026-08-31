@@ -148,18 +148,18 @@ compliance_report := {
 	"standards": ["NIST SP 800-53 SC-17", "NIST SP 800-53 IA-5", "NIST SP 800-53 SC-13", "CIS 1.8"],
 	"violations": violations,
 	"compliant": compliant,
-	"total_certs": count(object.get(input.certificates, "system_certs", [])),
+	"total_certs": count(object.get(input, ["certificates", "system_certs"], [])),
 	"expired": count([c |
-		some c in input.certificates.system_certs
+		some c in object.get(input, ["certificates", "system_certs"], [])
 		c.days_until_expiry < 0
 	]),
 	"expiring_critical": count([c |
-		some c in input.certificates.system_certs
+		some c in object.get(input, ["certificates", "system_certs"], [])
 		c.days_until_expiry >= 0
 		c.days_until_expiry <= expiry_critical_days
 	]),
 	"expiring_warning": count([c |
-		some c in input.certificates.system_certs
+		some c in object.get(input, ["certificates", "system_certs"], [])
 		c.days_until_expiry > expiry_critical_days
 		c.days_until_expiry <= expiry_warning_days
 	]),

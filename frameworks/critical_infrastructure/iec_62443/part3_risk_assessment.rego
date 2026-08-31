@@ -182,7 +182,7 @@ compliance_report := {
     "part":       "IEC 62443-3-2",
     "title":      "Security Risk Assessment for System Design",
     "standard":   "IEC 62443-3-2",
-    "target_sl":  input.target_sl,
+    "target_sl":  object.get(input, "target_sl", 0),
     "compliant":  compliant,
     "violations": violations,
 }
