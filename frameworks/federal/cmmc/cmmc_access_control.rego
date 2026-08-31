@@ -205,11 +205,17 @@ violations contains msg if {
     some msg in level_2_violations
 }
 
+# `default` is mandatory (library rule): the fail-closed violations above FIRE
+# on missing input, so count(violations) != 0 and this rule never evaluates --
+# without the default, `compliant` is undefined and the whole report collapses
+# to {} at the endpoint. This file was the only CMMC module missing it.
+default compliant := false
+
 compliant if { count(violations) == 0 }
 
 compliance_report := {
     "domain":          "Access Control (AC)",
-    "cmmc_level":      input.cmmc_level,
+    "cmmc_level":      object.get(input, "cmmc_level", 0),
     "compliant":       compliant,
     "violation_count": count(violations),
     "violations":      violations,

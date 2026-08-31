@@ -170,7 +170,7 @@ compliance_report := {
 	"standards": ["STIG RHEL-09-231xxx", "STIG RHEL-09-672xxx", "NIST SP 800-53 SC-28", "NIST SP 800-53 SC-13"],
 	"violations": violations,
 	"compliant": compliant,
-	"fips_enabled": object.get(input.storage_encryption, "fips_enabled", false),
-	"crypto_policy": object.get(input.storage_encryption, "crypto_policy", "unknown"),
-	"luks_volume_count": count(object.get(input.storage_encryption, "luks_volumes", [])),
+	"fips_enabled": object.get(input, ["storage_encryption", "fips_enabled"], false),
+	"crypto_policy": object.get(input, ["storage_encryption", "crypto_policy"], "unknown"),
+	"luks_volume_count": count(object.get(input, ["storage_encryption", "luks_volumes"], [])),
 }

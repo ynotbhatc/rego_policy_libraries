@@ -95,7 +95,7 @@ compliance_report := {
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
-	"app_id": _app_id,
-	"geisa_version": _discovery.geisa_version,
-	"platform_discovery_status": _discovery.status_code,
+	"app_id": object.get(input, ["manifest", "applicationId"], "unknown"),
+	"geisa_version": object.get(input, ["discovery_response", "geisa_version"], "unknown"),
+	"platform_discovery_status": object.get(input, ["discovery_response", "status_code"], 0),
 }

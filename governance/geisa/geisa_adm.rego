@@ -96,8 +96,8 @@ compliance_report := {
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
-	"lwm2m_version": _lwm2m.version,
-	"registered": _lwm2m.registered,
-	"registered_objects": _lwm2m.registered_objects,
-	"object9": _obj9,
+	"lwm2m_version": object.get(input, ["lwm2m", "version"], "unknown"),
+	"registered": object.get(input, ["lwm2m", "registered"], false),
+	"registered_objects": object.get(input, ["lwm2m", "registered_objects"], []),
+	"object9": object.get(input, ["lwm2m", "object9"], {}),
 }

@@ -183,11 +183,11 @@ compliance_report := {
 	"standards": ["CIS RHEL 9 5.2", "STIG RHEL-09-255xxx", "NIST SP 800-53 IA-3", "NIST SP 800-53 SC-13"],
 	"violations": violations,
 	"compliant": compliant,
-	"files_checked": count(object.get(input.authorized_keys, "files", [])),
-	"total_keys": count([k | some e in input.authorized_keys.files; some k in e.keys]),
+	"files_checked": count(object.get(input, ["authorized_keys", "files"], [])),
+	"total_keys": count([k | some e in object.get(input, ["authorized_keys", "files"], []); some k in e.keys]),
 	"unapproved_keys": count([k |
-		count(input.authorized_keys.approved_fingerprints) > 0
-		some e in input.authorized_keys.files
+		count(object.get(input, ["authorized_keys", "approved_fingerprints"], [])) > 0
+		some e in object.get(input, ["authorized_keys", "files"], [])
 		some k in e.keys
 		not approved_fingerprint(k.fingerprint)
 	]),
