@@ -63,7 +63,13 @@ jobs:
 
       - name: Login to GHCR
         run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | oras login ghcr.io \
+          # GHCR_PAT preferred: the package predates this workflow (created
+          # by a manual push), and GitHub offers no API to grant a package
+          # Actions write access — GITHUB_TOKEN gets permission_denied even
+          # with packages:write (every run since 2026-08-29 failed this way).
+          # Falls back to GITHUB_TOKEN once the package access is fixed in
+          # the UI (package settings -> Manage Actions access -> add repo).
+          echo "${{ secrets.GHCR_PAT || secrets.GITHUB_TOKEN }}" | oras login ghcr.io \
             -u "${{ github.actor }}" \
             --password-stdin
 
