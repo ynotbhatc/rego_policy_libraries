@@ -5,13 +5,21 @@ package corporate.git_approval
 
 import rego.v1
 
-# Protected paths that require approval
+# Protected paths that require approval.
+#
+# Narrowed 2026-09-01 (compliance CHANGE_GOVERNANCE §8: "a control that
+# fires on everything signals nothing"):
+#   - "ansible/" removed — it was nearly the whole compliance repository,
+#     so the Approved-By trailer had become reflex rather than decision.
+#   - "opa/" and "aap-integration/" removed — those directories no longer
+#     exist in any consuming repository (dead paths in an allowlist are
+#     latent scope the moment someone recreates the name).
+#   - "enforcement/git/" added — this policy itself is the gate; changing
+#     the gate requires approval in the policy-library repository.
 protected_paths := {
 	"policies/",
-	"opa/",
 	".github/workflows/",
-	"aap-integration/",
-	"ansible/",
+	"enforcement/git/",
 }
 
 # Users authorized to approve changes.
