@@ -7,6 +7,35 @@ _protected := [".github/workflows/approval-check.yml"]
 
 _unprotected := ["README.md"]
 
+# ansible/ was removed from protected_paths 2026-09-01 — an ordinary
+# playbook change must no longer demand the trailer, and the gate on the
+# gate itself (enforcement/git/) must hold.
+_formerly_protected := ["ansible/playbooks/some_playbook.yml"]
+
+_gate_itself := ["enforcement/git/approval_policy.rego"]
+
+test_ansible_no_longer_protected if {
+	d := git_approval.decision with input as {
+		"commit_message": "feat: change a playbook with no trailer",
+		"changed_files": _formerly_protected,
+		"author": "ynotbhatc",
+		"pr_number": 5,
+	}
+	d.approved
+	d.requires_approval == false
+}
+
+test_gate_itself_is_protected if {
+	d := git_approval.decision with input as {
+		"commit_message": "feat: loosen the gate with no trailer",
+		"changed_files": _gate_itself,
+		"author": "ynotbhatc",
+		"pr_number": 6,
+	}
+	d.requires_approval == true
+	not d.approved
+}
+
 # The exact shape that broke evaluation: a real trailer PLUS prose that
 # mentions the trailer. Previously produced eval_conflict_error.
 _msg_trailer_and_prose := concat("\n", [
