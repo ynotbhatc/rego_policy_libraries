@@ -24,7 +24,7 @@ git ls-files | grep -c '\.rego$'                                          # incl
 
 Writing compliance policies from scratch is expensive and error-prone. A typical enterprise deploying OPA for CIS RHEL 9 alone needs 338 individual control checks — and that's one framework for one OS.
 
-This library gives you a **complete, working policy set on day one**, covering 22 platforms, 50+ regulatory frameworks, and every major compliance standard from CIS and DISA STIGs to NERC-CIP and IEC 62443. All policies:
+This library gives you a **complete, working policy set on day one**, covering 22 platforms, 55+ regulatory frameworks, and every major compliance standard from CIS and DISA STIGs to NERC-CIP and IEC 62443. All policies:
 
 - Use **Rego v1 syntax** (`import rego.v1`) — no deprecation warnings, forward-compatible
 - Return **structured JSON reports** (compliant, score, violations list) — wire directly to dashboards or CI
@@ -78,6 +78,13 @@ This library gives you a **complete, working policy set on day one**, covering 2
 | **CCPA / CPRA** | `frameworks/privacy/ccpa/` | Consumer rights, sensitive PI, data practices |
 | **EU AI Act (2024/1689)** | `governance/eu_ai_act/` | Prohibited, High-Risk, Transparency, GPAI, Governance |
 | **TSA Pipeline Security Directives** | `frameworks/critical_infrastructure/tsa_pipeline/` | SD Pipeline-2021-01G + 02G, 12 sections, 112 requirements |
+| **GLBA Safeguards Rule (16 CFR 314)** | `frameworks/financial/glba/` | All §314.4 elements + §314.5 breach notification (2024), small-institution exemption modeled |
+| **CISA CPG 2.0 (Oct 2025)** | `frameworks/federal/cisa_cpg/` | All 34 goals, six CSF-2.0 functions incl. GOVERN, per-function rollup |
+| **ISO/IEC 42001:2023 (AIMS)** | `governance/iso_42001/` | Clauses 4–10 + Annex A groups — completes the AI trio with EU AI Act + NIST AI RMF |
+| **ITAR (22 CFR 120–130)** | `frameworks/regulatory/itar/` | Data-safeguarding slice: deemed exports, §120.54 encryption carve-out, DDTC hygiene — legal/licensing scoped out honestly |
+| **COBIT 2019** | `frameworks/management/cobit/` | Governance-system attestation across EDM/APO/BAI/DSS/MEA — maturity assessment explicitly disclaimed |
+
+Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDARDS_UPDATE_REGISTRY.md) — pinned version, upstream revision cadence, and watch URL — so modules regenerate when standards change instead of drifting silently.
 
 ---
 
