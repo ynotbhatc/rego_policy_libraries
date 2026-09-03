@@ -1,1 +1,1550 @@
-{"meta":{"note":"Framework 800-53 inheritance maps. Only status:authoritative entries are scored by crosswalk.framework_overlay; each carries a source. Seeded empty pending authoritative fetch — see docs/CONTROL_CORRELATION_PATTERN.md §7."},"maps":{}}
+{
+"meta": {
+"note": "Framework 800-53 inheritance maps for crosswalk.framework_overlay. status:authoritative entries are scored; status:pending are listed only. No mapping is invented \u2014 every authoritative entry cites a fetchable NIST/standards-body source.",
+"generated": "2026-09-03"
+},
+"maps": {
+"nist_800_53b_low": {
+"name": "NIST SP 800-53B Low Impact Baseline (FedRAMP Low derives from this)",
+"source": "NIST OSCAL content, usnistgov/oscal-content: nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_<impact>-baseline_profile.json (Rev 5.2.0), fetched 2026-09-03",
+"status": "authoritative",
+"granularity": "base control (enhancements not distinguished \u2014 matches the STIG\u2192800-53 spine granularity)",
+"map": {
+"AC-1": [
+"AC-1"
+],
+"AC-14": [
+"AC-14"
+],
+"AC-17": [
+"AC-17"
+],
+"AC-18": [
+"AC-18"
+],
+"AC-19": [
+"AC-19"
+],
+"AC-2": [
+"AC-2"
+],
+"AC-20": [
+"AC-20"
+],
+"AC-22": [
+"AC-22"
+],
+"AC-3": [
+"AC-3"
+],
+"AC-7": [
+"AC-7"
+],
+"AC-8": [
+"AC-8"
+],
+"AT-1": [
+"AT-1"
+],
+"AT-2": [
+"AT-2"
+],
+"AT-3": [
+"AT-3"
+],
+"AT-4": [
+"AT-4"
+],
+"AU-1": [
+"AU-1"
+],
+"AU-11": [
+"AU-11"
+],
+"AU-12": [
+"AU-12"
+],
+"AU-2": [
+"AU-2"
+],
+"AU-3": [
+"AU-3"
+],
+"AU-4": [
+"AU-4"
+],
+"AU-5": [
+"AU-5"
+],
+"AU-6": [
+"AU-6"
+],
+"AU-8": [
+"AU-8"
+],
+"AU-9": [
+"AU-9"
+],
+"CA-1": [
+"CA-1"
+],
+"CA-2": [
+"CA-2"
+],
+"CA-3": [
+"CA-3"
+],
+"CA-5": [
+"CA-5"
+],
+"CA-6": [
+"CA-6"
+],
+"CA-7": [
+"CA-7"
+],
+"CA-9": [
+"CA-9"
+],
+"CM-1": [
+"CM-1"
+],
+"CM-10": [
+"CM-10"
+],
+"CM-11": [
+"CM-11"
+],
+"CM-2": [
+"CM-2"
+],
+"CM-4": [
+"CM-4"
+],
+"CM-5": [
+"CM-5"
+],
+"CM-6": [
+"CM-6"
+],
+"CM-7": [
+"CM-7"
+],
+"CM-8": [
+"CM-8"
+],
+"CP-1": [
+"CP-1"
+],
+"CP-10": [
+"CP-10"
+],
+"CP-2": [
+"CP-2"
+],
+"CP-3": [
+"CP-3"
+],
+"CP-4": [
+"CP-4"
+],
+"CP-9": [
+"CP-9"
+],
+"IA-1": [
+"IA-1"
+],
+"IA-11": [
+"IA-11"
+],
+"IA-2": [
+"IA-2"
+],
+"IA-4": [
+"IA-4"
+],
+"IA-5": [
+"IA-5"
+],
+"IA-6": [
+"IA-6"
+],
+"IA-7": [
+"IA-7"
+],
+"IA-8": [
+"IA-8"
+],
+"IR-1": [
+"IR-1"
+],
+"IR-2": [
+"IR-2"
+],
+"IR-4": [
+"IR-4"
+],
+"IR-5": [
+"IR-5"
+],
+"IR-6": [
+"IR-6"
+],
+"IR-7": [
+"IR-7"
+],
+"IR-8": [
+"IR-8"
+],
+"MA-1": [
+"MA-1"
+],
+"MA-2": [
+"MA-2"
+],
+"MA-4": [
+"MA-4"
+],
+"MA-5": [
+"MA-5"
+],
+"MP-1": [
+"MP-1"
+],
+"MP-2": [
+"MP-2"
+],
+"MP-6": [
+"MP-6"
+],
+"MP-7": [
+"MP-7"
+],
+"PE-1": [
+"PE-1"
+],
+"PE-12": [
+"PE-12"
+],
+"PE-13": [
+"PE-13"
+],
+"PE-14": [
+"PE-14"
+],
+"PE-15": [
+"PE-15"
+],
+"PE-16": [
+"PE-16"
+],
+"PE-2": [
+"PE-2"
+],
+"PE-3": [
+"PE-3"
+],
+"PE-6": [
+"PE-6"
+],
+"PE-8": [
+"PE-8"
+],
+"PL-1": [
+"PL-1"
+],
+"PL-10": [
+"PL-10"
+],
+"PL-11": [
+"PL-11"
+],
+"PL-2": [
+"PL-2"
+],
+"PL-4": [
+"PL-4"
+],
+"PS-1": [
+"PS-1"
+],
+"PS-2": [
+"PS-2"
+],
+"PS-3": [
+"PS-3"
+],
+"PS-4": [
+"PS-4"
+],
+"PS-5": [
+"PS-5"
+],
+"PS-6": [
+"PS-6"
+],
+"PS-7": [
+"PS-7"
+],
+"PS-8": [
+"PS-8"
+],
+"PS-9": [
+"PS-9"
+],
+"RA-1": [
+"RA-1"
+],
+"RA-2": [
+"RA-2"
+],
+"RA-3": [
+"RA-3"
+],
+"RA-5": [
+"RA-5"
+],
+"RA-7": [
+"RA-7"
+],
+"SA-1": [
+"SA-1"
+],
+"SA-2": [
+"SA-2"
+],
+"SA-22": [
+"SA-22"
+],
+"SA-3": [
+"SA-3"
+],
+"SA-4": [
+"SA-4"
+],
+"SA-5": [
+"SA-5"
+],
+"SA-8": [
+"SA-8"
+],
+"SA-9": [
+"SA-9"
+],
+"SC-1": [
+"SC-1"
+],
+"SC-12": [
+"SC-12"
+],
+"SC-13": [
+"SC-13"
+],
+"SC-15": [
+"SC-15"
+],
+"SC-20": [
+"SC-20"
+],
+"SC-21": [
+"SC-21"
+],
+"SC-22": [
+"SC-22"
+],
+"SC-39": [
+"SC-39"
+],
+"SC-5": [
+"SC-5"
+],
+"SC-7": [
+"SC-7"
+],
+"SI-1": [
+"SI-1"
+],
+"SI-12": [
+"SI-12"
+],
+"SI-2": [
+"SI-2"
+],
+"SI-3": [
+"SI-3"
+],
+"SI-4": [
+"SI-4"
+],
+"SI-5": [
+"SI-5"
+],
+"SR-1": [
+"SR-1"
+],
+"SR-10": [
+"SR-10"
+],
+"SR-11": [
+"SR-11"
+],
+"SR-12": [
+"SR-12"
+],
+"SR-2": [
+"SR-2"
+],
+"SR-3": [
+"SR-3"
+],
+"SR-5": [
+"SR-5"
+],
+"SR-8": [
+"SR-8"
+]
+}
+},
+"nist_800_53b_moderate": {
+"name": "NIST SP 800-53B Moderate Impact Baseline (FedRAMP Moderate derives from this)",
+"source": "NIST OSCAL content, usnistgov/oscal-content: nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_<impact>-baseline_profile.json (Rev 5.2.0), fetched 2026-09-03",
+"status": "authoritative",
+"granularity": "base control (enhancements not distinguished \u2014 matches the STIG\u2192800-53 spine granularity)",
+"map": {
+"AC-1": [
+"AC-1"
+],
+"AC-11": [
+"AC-11"
+],
+"AC-12": [
+"AC-12"
+],
+"AC-14": [
+"AC-14"
+],
+"AC-17": [
+"AC-17"
+],
+"AC-18": [
+"AC-18"
+],
+"AC-19": [
+"AC-19"
+],
+"AC-2": [
+"AC-2"
+],
+"AC-20": [
+"AC-20"
+],
+"AC-21": [
+"AC-21"
+],
+"AC-22": [
+"AC-22"
+],
+"AC-3": [
+"AC-3"
+],
+"AC-4": [
+"AC-4"
+],
+"AC-5": [
+"AC-5"
+],
+"AC-6": [
+"AC-6"
+],
+"AC-7": [
+"AC-7"
+],
+"AC-8": [
+"AC-8"
+],
+"AT-1": [
+"AT-1"
+],
+"AT-2": [
+"AT-2"
+],
+"AT-3": [
+"AT-3"
+],
+"AT-4": [
+"AT-4"
+],
+"AU-1": [
+"AU-1"
+],
+"AU-11": [
+"AU-11"
+],
+"AU-12": [
+"AU-12"
+],
+"AU-2": [
+"AU-2"
+],
+"AU-3": [
+"AU-3"
+],
+"AU-4": [
+"AU-4"
+],
+"AU-5": [
+"AU-5"
+],
+"AU-6": [
+"AU-6"
+],
+"AU-7": [
+"AU-7"
+],
+"AU-8": [
+"AU-8"
+],
+"AU-9": [
+"AU-9"
+],
+"CA-1": [
+"CA-1"
+],
+"CA-2": [
+"CA-2"
+],
+"CA-3": [
+"CA-3"
+],
+"CA-5": [
+"CA-5"
+],
+"CA-6": [
+"CA-6"
+],
+"CA-7": [
+"CA-7"
+],
+"CA-9": [
+"CA-9"
+],
+"CM-1": [
+"CM-1"
+],
+"CM-10": [
+"CM-10"
+],
+"CM-11": [
+"CM-11"
+],
+"CM-12": [
+"CM-12"
+],
+"CM-2": [
+"CM-2"
+],
+"CM-3": [
+"CM-3"
+],
+"CM-4": [
+"CM-4"
+],
+"CM-5": [
+"CM-5"
+],
+"CM-6": [
+"CM-6"
+],
+"CM-7": [
+"CM-7"
+],
+"CM-8": [
+"CM-8"
+],
+"CM-9": [
+"CM-9"
+],
+"CP-1": [
+"CP-1"
+],
+"CP-10": [
+"CP-10"
+],
+"CP-2": [
+"CP-2"
+],
+"CP-3": [
+"CP-3"
+],
+"CP-4": [
+"CP-4"
+],
+"CP-6": [
+"CP-6"
+],
+"CP-7": [
+"CP-7"
+],
+"CP-8": [
+"CP-8"
+],
+"CP-9": [
+"CP-9"
+],
+"IA-1": [
+"IA-1"
+],
+"IA-11": [
+"IA-11"
+],
+"IA-12": [
+"IA-12"
+],
+"IA-2": [
+"IA-2"
+],
+"IA-3": [
+"IA-3"
+],
+"IA-4": [
+"IA-4"
+],
+"IA-5": [
+"IA-5"
+],
+"IA-6": [
+"IA-6"
+],
+"IA-7": [
+"IA-7"
+],
+"IA-8": [
+"IA-8"
+],
+"IR-1": [
+"IR-1"
+],
+"IR-2": [
+"IR-2"
+],
+"IR-3": [
+"IR-3"
+],
+"IR-4": [
+"IR-4"
+],
+"IR-5": [
+"IR-5"
+],
+"IR-6": [
+"IR-6"
+],
+"IR-7": [
+"IR-7"
+],
+"IR-8": [
+"IR-8"
+],
+"MA-1": [
+"MA-1"
+],
+"MA-2": [
+"MA-2"
+],
+"MA-3": [
+"MA-3"
+],
+"MA-4": [
+"MA-4"
+],
+"MA-5": [
+"MA-5"
+],
+"MA-6": [
+"MA-6"
+],
+"MP-1": [
+"MP-1"
+],
+"MP-2": [
+"MP-2"
+],
+"MP-3": [
+"MP-3"
+],
+"MP-4": [
+"MP-4"
+],
+"MP-5": [
+"MP-5"
+],
+"MP-6": [
+"MP-6"
+],
+"MP-7": [
+"MP-7"
+],
+"PE-1": [
+"PE-1"
+],
+"PE-10": [
+"PE-10"
+],
+"PE-11": [
+"PE-11"
+],
+"PE-12": [
+"PE-12"
+],
+"PE-13": [
+"PE-13"
+],
+"PE-14": [
+"PE-14"
+],
+"PE-15": [
+"PE-15"
+],
+"PE-16": [
+"PE-16"
+],
+"PE-17": [
+"PE-17"
+],
+"PE-2": [
+"PE-2"
+],
+"PE-3": [
+"PE-3"
+],
+"PE-4": [
+"PE-4"
+],
+"PE-5": [
+"PE-5"
+],
+"PE-6": [
+"PE-6"
+],
+"PE-8": [
+"PE-8"
+],
+"PE-9": [
+"PE-9"
+],
+"PL-1": [
+"PL-1"
+],
+"PL-10": [
+"PL-10"
+],
+"PL-11": [
+"PL-11"
+],
+"PL-2": [
+"PL-2"
+],
+"PL-4": [
+"PL-4"
+],
+"PL-8": [
+"PL-8"
+],
+"PS-1": [
+"PS-1"
+],
+"PS-2": [
+"PS-2"
+],
+"PS-3": [
+"PS-3"
+],
+"PS-4": [
+"PS-4"
+],
+"PS-5": [
+"PS-5"
+],
+"PS-6": [
+"PS-6"
+],
+"PS-7": [
+"PS-7"
+],
+"PS-8": [
+"PS-8"
+],
+"PS-9": [
+"PS-9"
+],
+"RA-1": [
+"RA-1"
+],
+"RA-2": [
+"RA-2"
+],
+"RA-3": [
+"RA-3"
+],
+"RA-5": [
+"RA-5"
+],
+"RA-7": [
+"RA-7"
+],
+"RA-9": [
+"RA-9"
+],
+"SA-1": [
+"SA-1"
+],
+"SA-10": [
+"SA-10"
+],
+"SA-11": [
+"SA-11"
+],
+"SA-15": [
+"SA-15"
+],
+"SA-2": [
+"SA-2"
+],
+"SA-22": [
+"SA-22"
+],
+"SA-3": [
+"SA-3"
+],
+"SA-4": [
+"SA-4"
+],
+"SA-5": [
+"SA-5"
+],
+"SA-8": [
+"SA-8"
+],
+"SA-9": [
+"SA-9"
+],
+"SC-1": [
+"SC-1"
+],
+"SC-10": [
+"SC-10"
+],
+"SC-12": [
+"SC-12"
+],
+"SC-13": [
+"SC-13"
+],
+"SC-15": [
+"SC-15"
+],
+"SC-17": [
+"SC-17"
+],
+"SC-18": [
+"SC-18"
+],
+"SC-2": [
+"SC-2"
+],
+"SC-20": [
+"SC-20"
+],
+"SC-21": [
+"SC-21"
+],
+"SC-22": [
+"SC-22"
+],
+"SC-23": [
+"SC-23"
+],
+"SC-28": [
+"SC-28"
+],
+"SC-39": [
+"SC-39"
+],
+"SC-4": [
+"SC-4"
+],
+"SC-5": [
+"SC-5"
+],
+"SC-7": [
+"SC-7"
+],
+"SC-8": [
+"SC-8"
+],
+"SI-1": [
+"SI-1"
+],
+"SI-10": [
+"SI-10"
+],
+"SI-11": [
+"SI-11"
+],
+"SI-12": [
+"SI-12"
+],
+"SI-16": [
+"SI-16"
+],
+"SI-2": [
+"SI-2"
+],
+"SI-3": [
+"SI-3"
+],
+"SI-4": [
+"SI-4"
+],
+"SI-5": [
+"SI-5"
+],
+"SI-7": [
+"SI-7"
+],
+"SI-8": [
+"SI-8"
+],
+"SR-1": [
+"SR-1"
+],
+"SR-10": [
+"SR-10"
+],
+"SR-11": [
+"SR-11"
+],
+"SR-12": [
+"SR-12"
+],
+"SR-2": [
+"SR-2"
+],
+"SR-3": [
+"SR-3"
+],
+"SR-5": [
+"SR-5"
+],
+"SR-6": [
+"SR-6"
+],
+"SR-8": [
+"SR-8"
+]
+}
+},
+"nist_800_53b_high": {
+"name": "NIST SP 800-53B High Impact Baseline (FedRAMP High derives from this)",
+"source": "NIST OSCAL content, usnistgov/oscal-content: nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_<impact>-baseline_profile.json (Rev 5.2.0), fetched 2026-09-03",
+"status": "authoritative",
+"granularity": "base control (enhancements not distinguished \u2014 matches the STIG\u2192800-53 spine granularity)",
+"map": {
+"AC-1": [
+"AC-1"
+],
+"AC-10": [
+"AC-10"
+],
+"AC-11": [
+"AC-11"
+],
+"AC-12": [
+"AC-12"
+],
+"AC-14": [
+"AC-14"
+],
+"AC-17": [
+"AC-17"
+],
+"AC-18": [
+"AC-18"
+],
+"AC-19": [
+"AC-19"
+],
+"AC-2": [
+"AC-2"
+],
+"AC-20": [
+"AC-20"
+],
+"AC-21": [
+"AC-21"
+],
+"AC-22": [
+"AC-22"
+],
+"AC-3": [
+"AC-3"
+],
+"AC-4": [
+"AC-4"
+],
+"AC-5": [
+"AC-5"
+],
+"AC-6": [
+"AC-6"
+],
+"AC-7": [
+"AC-7"
+],
+"AC-8": [
+"AC-8"
+],
+"AT-1": [
+"AT-1"
+],
+"AT-2": [
+"AT-2"
+],
+"AT-3": [
+"AT-3"
+],
+"AT-4": [
+"AT-4"
+],
+"AU-1": [
+"AU-1"
+],
+"AU-10": [
+"AU-10"
+],
+"AU-11": [
+"AU-11"
+],
+"AU-12": [
+"AU-12"
+],
+"AU-2": [
+"AU-2"
+],
+"AU-3": [
+"AU-3"
+],
+"AU-4": [
+"AU-4"
+],
+"AU-5": [
+"AU-5"
+],
+"AU-6": [
+"AU-6"
+],
+"AU-7": [
+"AU-7"
+],
+"AU-8": [
+"AU-8"
+],
+"AU-9": [
+"AU-9"
+],
+"CA-1": [
+"CA-1"
+],
+"CA-2": [
+"CA-2"
+],
+"CA-3": [
+"CA-3"
+],
+"CA-5": [
+"CA-5"
+],
+"CA-6": [
+"CA-6"
+],
+"CA-7": [
+"CA-7"
+],
+"CA-8": [
+"CA-8"
+],
+"CA-9": [
+"CA-9"
+],
+"CM-1": [
+"CM-1"
+],
+"CM-10": [
+"CM-10"
+],
+"CM-11": [
+"CM-11"
+],
+"CM-12": [
+"CM-12"
+],
+"CM-2": [
+"CM-2"
+],
+"CM-3": [
+"CM-3"
+],
+"CM-4": [
+"CM-4"
+],
+"CM-5": [
+"CM-5"
+],
+"CM-6": [
+"CM-6"
+],
+"CM-7": [
+"CM-7"
+],
+"CM-8": [
+"CM-8"
+],
+"CM-9": [
+"CM-9"
+],
+"CP-1": [
+"CP-1"
+],
+"CP-10": [
+"CP-10"
+],
+"CP-2": [
+"CP-2"
+],
+"CP-3": [
+"CP-3"
+],
+"CP-4": [
+"CP-4"
+],
+"CP-6": [
+"CP-6"
+],
+"CP-7": [
+"CP-7"
+],
+"CP-8": [
+"CP-8"
+],
+"CP-9": [
+"CP-9"
+],
+"IA-1": [
+"IA-1"
+],
+"IA-11": [
+"IA-11"
+],
+"IA-12": [
+"IA-12"
+],
+"IA-2": [
+"IA-2"
+],
+"IA-3": [
+"IA-3"
+],
+"IA-4": [
+"IA-4"
+],
+"IA-5": [
+"IA-5"
+],
+"IA-6": [
+"IA-6"
+],
+"IA-7": [
+"IA-7"
+],
+"IA-8": [
+"IA-8"
+],
+"IR-1": [
+"IR-1"
+],
+"IR-2": [
+"IR-2"
+],
+"IR-3": [
+"IR-3"
+],
+"IR-4": [
+"IR-4"
+],
+"IR-5": [
+"IR-5"
+],
+"IR-6": [
+"IR-6"
+],
+"IR-7": [
+"IR-7"
+],
+"IR-8": [
+"IR-8"
+],
+"MA-1": [
+"MA-1"
+],
+"MA-2": [
+"MA-2"
+],
+"MA-3": [
+"MA-3"
+],
+"MA-4": [
+"MA-4"
+],
+"MA-5": [
+"MA-5"
+],
+"MA-6": [
+"MA-6"
+],
+"MP-1": [
+"MP-1"
+],
+"MP-2": [
+"MP-2"
+],
+"MP-3": [
+"MP-3"
+],
+"MP-4": [
+"MP-4"
+],
+"MP-5": [
+"MP-5"
+],
+"MP-6": [
+"MP-6"
+],
+"MP-7": [
+"MP-7"
+],
+"PE-1": [
+"PE-1"
+],
+"PE-10": [
+"PE-10"
+],
+"PE-11": [
+"PE-11"
+],
+"PE-12": [
+"PE-12"
+],
+"PE-13": [
+"PE-13"
+],
+"PE-14": [
+"PE-14"
+],
+"PE-15": [
+"PE-15"
+],
+"PE-16": [
+"PE-16"
+],
+"PE-17": [
+"PE-17"
+],
+"PE-18": [
+"PE-18"
+],
+"PE-2": [
+"PE-2"
+],
+"PE-3": [
+"PE-3"
+],
+"PE-4": [
+"PE-4"
+],
+"PE-5": [
+"PE-5"
+],
+"PE-6": [
+"PE-6"
+],
+"PE-8": [
+"PE-8"
+],
+"PE-9": [
+"PE-9"
+],
+"PL-1": [
+"PL-1"
+],
+"PL-10": [
+"PL-10"
+],
+"PL-11": [
+"PL-11"
+],
+"PL-2": [
+"PL-2"
+],
+"PL-4": [
+"PL-4"
+],
+"PL-8": [
+"PL-8"
+],
+"PS-1": [
+"PS-1"
+],
+"PS-2": [
+"PS-2"
+],
+"PS-3": [
+"PS-3"
+],
+"PS-4": [
+"PS-4"
+],
+"PS-5": [
+"PS-5"
+],
+"PS-6": [
+"PS-6"
+],
+"PS-7": [
+"PS-7"
+],
+"PS-8": [
+"PS-8"
+],
+"PS-9": [
+"PS-9"
+],
+"RA-1": [
+"RA-1"
+],
+"RA-2": [
+"RA-2"
+],
+"RA-3": [
+"RA-3"
+],
+"RA-5": [
+"RA-5"
+],
+"RA-7": [
+"RA-7"
+],
+"RA-9": [
+"RA-9"
+],
+"SA-1": [
+"SA-1"
+],
+"SA-10": [
+"SA-10"
+],
+"SA-11": [
+"SA-11"
+],
+"SA-15": [
+"SA-15"
+],
+"SA-16": [
+"SA-16"
+],
+"SA-17": [
+"SA-17"
+],
+"SA-2": [
+"SA-2"
+],
+"SA-21": [
+"SA-21"
+],
+"SA-22": [
+"SA-22"
+],
+"SA-3": [
+"SA-3"
+],
+"SA-4": [
+"SA-4"
+],
+"SA-5": [
+"SA-5"
+],
+"SA-8": [
+"SA-8"
+],
+"SA-9": [
+"SA-9"
+],
+"SC-1": [
+"SC-1"
+],
+"SC-10": [
+"SC-10"
+],
+"SC-12": [
+"SC-12"
+],
+"SC-13": [
+"SC-13"
+],
+"SC-15": [
+"SC-15"
+],
+"SC-17": [
+"SC-17"
+],
+"SC-18": [
+"SC-18"
+],
+"SC-2": [
+"SC-2"
+],
+"SC-20": [
+"SC-20"
+],
+"SC-21": [
+"SC-21"
+],
+"SC-22": [
+"SC-22"
+],
+"SC-23": [
+"SC-23"
+],
+"SC-24": [
+"SC-24"
+],
+"SC-28": [
+"SC-28"
+],
+"SC-3": [
+"SC-3"
+],
+"SC-39": [
+"SC-39"
+],
+"SC-4": [
+"SC-4"
+],
+"SC-5": [
+"SC-5"
+],
+"SC-7": [
+"SC-7"
+],
+"SC-8": [
+"SC-8"
+],
+"SI-1": [
+"SI-1"
+],
+"SI-10": [
+"SI-10"
+],
+"SI-11": [
+"SI-11"
+],
+"SI-12": [
+"SI-12"
+],
+"SI-16": [
+"SI-16"
+],
+"SI-2": [
+"SI-2"
+],
+"SI-3": [
+"SI-3"
+],
+"SI-4": [
+"SI-4"
+],
+"SI-5": [
+"SI-5"
+],
+"SI-6": [
+"SI-6"
+],
+"SI-7": [
+"SI-7"
+],
+"SI-8": [
+"SI-8"
+],
+"SR-1": [
+"SR-1"
+],
+"SR-10": [
+"SR-10"
+],
+"SR-11": [
+"SR-11"
+],
+"SR-12": [
+"SR-12"
+],
+"SR-2": [
+"SR-2"
+],
+"SR-3": [
+"SR-3"
+],
+"SR-5": [
+"SR-5"
+],
+"SR-6": [
+"SR-6"
+],
+"SR-8": [
+"SR-8"
+],
+"SR-9": [
+"SR-9"
+]
+}
+},
+"nist_800_171_r3": {
+"name": "nist_800_171_r3",
+"source": "NIST SP 800-171 Rev 3 Appendix C (PDF table; no NIST machine-readable export). Chain via 800-53 tailoring.",
+"status": "pending",
+"map": {}
+},
+"nist_csf_2_0": {
+"name": "nist_csf_2_0",
+"source": "NIST OLIR 'CSFv2.0-to-SP-800-53-Rev-5-2-0' (final 2025-11-17); fetch via CPRT flat JSON csrc.nist.gov/projects/cprt/catalog.",
+"status": "pending",
+"map": {}
+},
+"iso_27001_2022": {
+"name": "iso_27001_2022",
+"source": "NIST OLIR referenceId=155, linked from 800-53 Rev5 supplemental material; SUBMITTER AUTHORSHIP UNVERIFIED \u2014 confirm NIST authorship before scoring.",
+"status": "pending",
+"map": {}
+},
+"pci_dss_v4": {
+"name": "pci_dss_v4",
+"source": "NO authoritative direct PCI\u2192800-53 mapping. PCI SSC publishes PCI DSS v4.0.1\u2192CSF 2.0 only; chaining through CSF would be derived, not authoritative.",
+"status": "pending",
+"map": {}
+},
+"cis_controls_v8": {
+"name": "cis_controls_v8",
+"source": "CIS Controls v8.1\u2192800-53 Rev5 whitepaper (authoritative, CIS) but registration-gated download \u2014 not anonymously fetchable.",
+"status": "pending",
+"map": {}
+}
+}
+}

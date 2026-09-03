@@ -3,7 +3,7 @@
 **Version:** v1.0
 **Date:** 2026-09-03
 **Authors:** Tim Coulter (Red Hat) with Claude (Anthropic)
-**Status:** Pattern documented + first implementation shipped (`crosswalk/`)
+**Status:** Pattern documented; spine + framework-inheritance overlay shipped (`crosswalk/`)
 
 > A pattern found should be expressed and documented, so we can align to it.
 > This is that write-up: what the overlap between standards actually is, why
@@ -164,3 +164,39 @@ this document's figures.
 | Linux↔Windows control overlap | 91% |
 
 Numbers drift with each quarterly release; the *pattern* does not.
+
+
+## 9. The framework-inheritance layer (shipped)
+
+The spine answers "which 800-53 controls did this assessment satisfy." The
+overlay (`crosswalk/framework_overlay.rego` + `crosswalk/framework_maps/`)
+answers the next question: **which frameworks does that discharge.** Given one
+platform's findings it emits, per framework, `satisfied / gaps / not_covered`.
+
+**Sourcing discipline (this is the part that keeps it honest):** every
+framework map carries a `source` and a `status`. Only `status:"authoritative"`
+maps — those citing a fetchable NIST/standards-body source — are scored.
+`status:"pending"` maps are listed under `frameworks_pending` and never scored.
+No mapping is invented; where an authoritative source does not exist, the entry
+says so.
+
+Seeded state (2026-09-03), from an authoritative-source audit:
+
+| Framework map | Status | Source |
+|---|---|---|
+| NIST 800-53B Low / Moderate / High baselines | **authoritative** | NIST OSCAL content (`usnistgov/oscal-content`, Rev 5.2.0) |
+| NIST 800-171 r3 → 800-53 | pending | SP 800-171r3 Appendix C — PDF only, no NIST machine-readable export |
+| NIST CSF 2.0 → 800-53 | pending | NIST OLIR (final 2025-11-17) — fetch via CPRT flat JSON |
+| ISO/IEC 27001:2022 ↔ 800-53 | pending | NIST OLIR ref 155 — **submitter authorship unverified; confirm before scoring** |
+| PCI DSS v4 → 800-53 | pending | **no authoritative direct mapping exists** (PCI SSC publishes only PCI→CSF 2.0) |
+| CIS Controls v8 → 800-53 | pending | CIS whitepaper (authoritative) but registration-gated download |
+
+**First grounded result:** a STIG assessment addresses **54 of the 177 base
+controls in the 800-53 Moderate baseline** (Low: 36/131, High: 59/188) — an
+honest, single-assessment FedRAMP coverage-and-gap statement, at base-control
+granularity. The `not_covered` list is the exact set of baseline controls a
+STIG does not speak to — the work a STIG alone cannot close.
+
+This is the "assess once, report against many" loop closed for the frameworks
+whose 800-53 relationship is authoritatively published, with the rest queued
+and sourced rather than faked.
