@@ -1,23 +1,15 @@
-package stig.windows_server_2022
+package stig.sles_15
 
-# DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide — Master Aggregator
-# V2R9 | Release: 9 Benchmark Date: 01 Jul 2026
-# Coverage: 104 auto-derived registry rules across 3 generated modules; 175 rules of 279 not yet implemented (non-registry or complex).
+# DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide — Master Aggregator
+# V2R8 | Release: 8 Benchmark Date: 01 Jul 2026
+# Coverage: 27 of 218 rules (25 CAT I of 26); remainder is follow-up work.
 # Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03.
 
 import rego.v1
 
-import data.stig.windows_server_2022.registry_cc
-import data.stig.windows_server_2022.registry_other
-import data.stig.windows_server_2022.registry_so
+import data.stig.sles_15.core
 
-_f_0 := registry_cc.findings
-_f_1 := registry_other.findings
-_f_2 := registry_so.findings
-
-_acc_1 := array.concat(_f_0, _f_1)
-_acc_2 := array.concat(_acc_1, _f_2)
-all_findings := _acc_2
+all_findings := core.findings
 
 open_findings := [f | some f in all_findings; f.status == "Open"]
 cat_i_open := [f | some f in open_findings; f.severity == "CAT I"]
@@ -29,10 +21,10 @@ fully_compliant if count(open_findings) == 0
 
 stig_assessment := {
 	"metadata": {
-		"stig_title": "Microsoft Windows Server 2022 Security Technical Implementation Guide",
-		"version": "V2R9",
-		"release": "Release: 9 Benchmark Date: 01 Jul 2026",
-		"platform": "Windows Server 2022",
+		"stig_title": "SUSE Linux Enterprise Server 15 Security Technical Implementation Guide",
+		"version": "V2R8",
+		"release": "Release: 8 Benchmark Date: 01 Jul 2026",
+		"platform": "SUSE Linux Enterprise Server 15",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
 	},
 	"summary": {
@@ -47,7 +39,7 @@ stig_assessment := {
 }
 
 # Uniform library entrypoint contract (consumed by the .main alias's
-# fail-closed gate).
+# fail-closed gate): total_controls + open_findings are required.
 compliance_report := {
 	"total_controls": count(all_findings),
 	"open_findings": open_findings,

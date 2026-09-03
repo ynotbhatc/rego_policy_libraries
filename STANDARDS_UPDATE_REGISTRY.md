@@ -35,7 +35,7 @@ A one-fetch check caught it. This registry is that check, systematized.
 | NIST SP 800-53 | r5 (+ r5.2 patch releases) | NIST | continuous "patch release" model since 2024 — **watch quarterly** (verify) | rolling | csrc.nist.gov/pubs/sp/800/53 |
 | NIST SP 800-171 | r3 (May 2024) | NIST | multi-year | — | csrc.nist.gov/pubs/sp/800/171 |
 | CIS Benchmarks (per-OS dirs) | pinned per directory (e.g. RHEL 9 v2.0.0) | CIS | **rolling, roughly annual per benchmark** — the highest-churn family in the library | continuous | workbench.cisecurity.org (per-benchmark) |
-| DISA STIGs | pinned per module | DISA | **quarterly release cycle** | quarterly | public.cyber.mil/stigs |
+| DISA STIGs | per-platform pins — July 2026 library verified 2026-09-03 (see `benchmarks/stig/README.md`) | DISA | **quarterly release cycle**; compilation zip `U_SRG-STIG_Library_<Month>_<Year>.zip` | October 2026 library | dl.dod.cyber.mil (compilation) / public.cyber.mil/stigs |
 | PCI DSS | 4.x | PCI SSC | ~3–4 year majors + interim revisions (4.0.1 model) | verify | pcisecuritystandards.org/document_library |
 | ISO/IEC 27001 | 2022 (+ Amd 1:2024 climate) | ISO | ~5–9 year cycle | verify | iso.org/standard (27001) |
 | ISO/IEC 42001 | **2023 (first edition)** | ISO | first-edition standards often amend early — **watch closely** (verify) | verify | iso.org/standard/44545 |

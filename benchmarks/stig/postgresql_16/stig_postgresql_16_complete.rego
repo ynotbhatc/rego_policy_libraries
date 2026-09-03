@@ -1,23 +1,15 @@
-package stig.windows_server_2022
+package stig.postgresql_16
 
-# DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide — Master Aggregator
-# V2R9 | Release: 9 Benchmark Date: 01 Jul 2026
-# Coverage: 104 auto-derived registry rules across 3 generated modules; 175 rules of 279 not yet implemented (non-registry or complex).
+# DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide — Master Aggregator
+# V1R3 | Release: 3 Benchmark Date: 01 Jul 2026
+# Coverage: 13 of 111 rules (11 of 11 CAT I).
 # Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03.
 
 import rego.v1
 
-import data.stig.windows_server_2022.registry_cc
-import data.stig.windows_server_2022.registry_other
-import data.stig.windows_server_2022.registry_so
+import data.stig.postgresql_16.core
 
-_f_0 := registry_cc.findings
-_f_1 := registry_other.findings
-_f_2 := registry_so.findings
-
-_acc_1 := array.concat(_f_0, _f_1)
-_acc_2 := array.concat(_acc_1, _f_2)
-all_findings := _acc_2
+all_findings := core.findings
 
 open_findings := [f | some f in all_findings; f.status == "Open"]
 cat_i_open := [f | some f in open_findings; f.severity == "CAT I"]
@@ -29,10 +21,10 @@ fully_compliant if count(open_findings) == 0
 
 stig_assessment := {
 	"metadata": {
-		"stig_title": "Microsoft Windows Server 2022 Security Technical Implementation Guide",
-		"version": "V2R9",
-		"release": "Release: 9 Benchmark Date: 01 Jul 2026",
-		"platform": "Windows Server 2022",
+		"stig_title": "Crunchy Data Postgres 16 Security Technical Implementation Guide",
+		"version": "V1R3",
+		"release": "Release: 3 Benchmark Date: 01 Jul 2026",
+		"platform": "Crunchy Data Postgres 16",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
 	},
 	"summary": {
@@ -46,8 +38,7 @@ stig_assessment := {
 	"findings": all_findings,
 }
 
-# Uniform library entrypoint contract (consumed by the .main alias's
-# fail-closed gate).
+# Uniform library entrypoint contract.
 compliance_report := {
 	"total_controls": count(all_findings),
 	"open_findings": open_findings,
