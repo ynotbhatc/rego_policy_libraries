@@ -1,15 +1,15 @@
-package stig.windows_11
+package stig.windows_server_2025
 
-# DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide — Master Aggregator
-# V2R8 | Release: 8 Benchmark Date: 01 Jul 2026
-# Coverage: 102 auto-derived registry rules across 3 generated modules; 154 rules of 256 not yet implemented (non-registry or complex).
+# DISA STIG — Microsoft Windows Server 2025 Security Technical Implementation Guide — Master Aggregator
+# V1R2 | Release: 2 Benchmark Date: 01 Jul 2026
+# Coverage: 95 auto-derived registry rules across 3 generated modules; 197 rules of 292 not yet implemented (non-registry or complex).
 # Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03.
 
 import rego.v1
 
-import data.stig.windows_11.registry_cc
-import data.stig.windows_11.registry_other
-import data.stig.windows_11.registry_so
+import data.stig.windows_server_2025.registry_cc
+import data.stig.windows_server_2025.registry_other
+import data.stig.windows_server_2025.registry_so
 
 _f_0 := registry_cc.findings
 _f_1 := registry_other.findings
@@ -29,10 +29,10 @@ fully_compliant if count(open_findings) == 0
 
 stig_assessment := {
 	"metadata": {
-		"stig_title": "Microsoft Windows 11 Security Technical Implementation Guide",
-		"version": "V2R8",
-		"release": "Release: 8 Benchmark Date: 01 Jul 2026",
-		"platform": "Windows 11",
+		"stig_title": "Microsoft Windows Server 2025 Security Technical Implementation Guide",
+		"version": "V1R2",
+		"release": "Release: 2 Benchmark Date: 01 Jul 2026",
+		"platform": "Windows Server 2025",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
 	},
 	"summary": {
