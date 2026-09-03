@@ -45,3 +45,13 @@ stig_assessment := {
 	},
 	"findings": all_findings,
 }
+
+# Uniform library entrypoint contract (consumed by the .main alias's
+# fail-closed gate).
+compliance_report := {
+	"total_controls": count(all_findings),
+	"open_findings": open_findings,
+	"passed_controls": count(all_findings) - count(open_findings),
+	"failed_controls": count(open_findings),
+	"compliant": fully_compliant,
+}
