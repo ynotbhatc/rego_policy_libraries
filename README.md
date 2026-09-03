@@ -56,7 +56,7 @@ This library gives you a **complete, working policy set on day one**, covering 2
 | Network devices — VyOS, pfSense | `benchmarks/cis/network_devices/` | Full |
 | CIS AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
 | CIS Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
-| DISA STIG RHEL 8/9, Ubuntu, Windows, OpenShift 4, Kubernetes | `benchmarks/stig/` | Full |
+| **DISA STIGs — 13 current platforms** (RHEL 8/9, Windows Server 2022/**2025**, Win 11, Ubuntu 22.04, Amazon Linux 2023, SLES 15, Kubernetes, OpenShift 4, Crunchy Postgres 16, SQL 2016, Apache 2.4, Cisco IOS-XE, vSphere 8 ESXi) | `benchmarks/stig/` | Per-rule findings with XCCDF-verified IDs (July 2026 library); all CAT I on new platforms; fail-closed entrypoints; coverage-of-total stated per aggregator |
 | NIST 800-53 rev5 | `frameworks/federal/nist/sp_800_53/` | All control families |
 | NIST 800-82 (OT) | `frameworks/critical_infrastructure/nist_800_82/` | Full |
 | FISMA / FedRAMP / CMMC | `frameworks/federal/` | Full |
