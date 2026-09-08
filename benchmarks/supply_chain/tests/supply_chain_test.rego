@@ -7,8 +7,10 @@ import rego.v1
 
 import data.supply_chain.baseline
 import data.supply_chain.coverage
+import data.supply_chain.metrics
 import data.supply_chain.slsa
 import data.supply_chain.ssdf
+import data.supply_chain.ssdf_genai
 
 # A fully-compliant supply-chain fact set.
 _full := {
@@ -63,8 +65,28 @@ test_coverage_light_for_benign_artifact if {
 	coverage.report.evaluation_depth == "light" with input as {"artifact": {"name": "leftpad", "capabilities": ["string_util"]}}
 }
 
+# ── SSDF-GenAI (800-218A) — AI-contribution attestation ──
+test_ssdf_genai_attested_when_ai_signed if {
+	ssdf_genai.ai_attested with input as {"ai": {"has_ai_contributions": true, "ai_contributions_attested": true}}
+}
+
+test_ssdf_genai_not_attested_when_ai_unattested if {
+	not ssdf_genai.ai_attested with input as {"ai": {"has_ai_contributions": true, "ai_contributions_attested": false}}
+}
+
+test_ssdf_genai_vacuous_when_no_ai if {
+	ssdf_genai.ai_attested with input as {"ai": {"has_ai_contributions": false}}
+}
+
 # ── The collapse: independent frameworks reference the SAME substrate rules ──
 test_collapse_frameworks_reuse_substrate if {
 	"signing" in slsa.report.reuses_substrate
 	"signing" in ssdf.report.reuses_substrate
+}
+
+# ── The collapse, measured: many framework references -> few distinct themes ──
+test_collapse_metric if {
+	metrics.collapse_report.frameworks == 5
+	metrics.collapse_report.distinct_themes_referenced <= 7
+	metrics.collapse_report.framework_theme_references > metrics.collapse_report.distinct_themes_referenced
 }

@@ -16,13 +16,21 @@ Vendor-neutral: SLSA and SSDF are public standards; nothing here is AAC-specific
 ## Layout
 
 ```
-_substrate/   the 7 invariant control themes (SR/SA/CM anchors + centrality weights)
-baseline/     the default check — the supply-chain spine (compliance_report)
-slsa/         SLSA v1.0 build track  -> substrate
-ssdf/         NIST SSDF (SP 800-218) -> substrate
-coverage/     spine-footprint -> evaluation-depth triage
-tests/        opa test — incl. the "frameworks reuse the substrate" collapse test
+_substrate/     the 7 invariant control themes (SR/SA/CM anchors + centrality weights)
+baseline/       the default check — the supply-chain spine (compliance_report)
+slsa/           SLSA v1.0 build track            -> substrate
+ssdf/           NIST SSDF (SP 800-218)           -> substrate
+ssdf_genai/     NIST SSDF for GenAI (SP 800-218A)-> substrate + AI-contribution attestation
+scrm_800_161/   NIST SP 800-161r1 (C-SCRM)       -> substrate
+s2c2f/          OpenSSF S2C2F (consumption)      -> substrate
+coverage/       spine-footprint -> evaluation-depth triage
+metrics/        the collapse, measured (framework references vs distinct themes)
+tests/          opa test — incl. the collapse tests
 ```
+
+**The collapse, measured** (`data.supply_chain.metrics.collapse_report`): **5 frameworks → 20
+framework-to-theme references collapsing onto 7 distinct themes.** That ratio is the supply-chain
+analogue of the original spine's "2,767 rules → 65 controls".
 
 ## The seven invariant themes
 
@@ -63,7 +71,7 @@ opa eval -d benchmarks/supply_chain -I 'data.supply_chain.coverage.report' < fix
 
 ## Status — scaffold / proof
 
-Two frameworks mapped (SLSA, SSDF) + the baseline + the coverage triage. Follow-ons: the
-**SSDF-GenAI (800-218A)** and **800-161 / S2C2F** packages, fuller per-requirement mappings,
-and the supply-chain **facts collectors** (SBOM, provenance/attestation, repo-governance,
-KEV/OSV) that produce the input contract above.
+Five frameworks mapped (SLSA, SSDF, SSDF-GenAI, 800-161, S2C2F) + the baseline + the coverage
+triage + the collapse metric. Follow-ons: fuller per-requirement mappings, and the supply-chain
+**facts collectors** (SBOM, provenance/attestation, repo-governance, KEV/OSV) that produce the
+input contract above.

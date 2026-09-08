@@ -34,9 +34,11 @@ unmet contains p if {
 	v == false
 }
 
+reuses_substrate := ["signing", "sbom", "dependencies", "source_control", "vulns"]
+
 report := {
 	"framework": "NIST SSDF (SP 800-218)",
 	"practices_met": count(met),
 	"practices_total": count(practice_status),
-	"reuses_substrate": ["signing", "sbom", "dependencies", "source_control", "vulns"],
+	"reuses_substrate": reuses_substrate,
 }
