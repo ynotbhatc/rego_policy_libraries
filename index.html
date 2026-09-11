@@ -4,115 +4,307 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="7fdd8b57bc74ab1a" />
-  <title>Rego Policy Libraries — Open Policy Agent Compliance Library</title>
-  <meta name="description" content="Open Policy Agent (OPA) Rego policy library for CIS benchmarks, NIST, ISO 27001, SOC 2, NERC-CIP, DORA, NIS2, PCI-DSS, Digital Sovereignty, and AI governance. Policy-as-Code compliance at enterprise scale.">
+  <title>Rego Policy Libraries — Browse 601+ OPA Compliance Policies by Standard</title>
+  <meta name="description" content="Browse 601+ production-ready Open Policy Agent (OPA) Rego policies by standard: CIS Benchmarks, DISA STIGs, NIST, NERC-CIP, IEC 62443, ISO 27001, SOC 2, PCI-DSS, EU AI Act and 55+ frameworks. Apache 2.0, Rego v1, OCI-ready.">
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 860px; margin: 60px auto; padding: 0 24px; color: #24292f; }
-    h1 { font-size: 2em; border-bottom: 1px solid #d0d7de; padding-bottom: 12px; }
-    h2 { font-size: 1.3em; margin-top: 32px; }
-    a { color: #0969da; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .badge { display: inline-block; background: #1f6feb; color: white; border-radius: 4px; padding: 3px 10px; font-size: 0.85em; margin-right: 6px; }
-    table { border-collapse: collapse; width: 100%; margin: 16px 0; }
-    th { background: #f6f8fa; text-align: left; padding: 8px 12px; border: 1px solid #d0d7de; }
-    td { padding: 8px 12px; border: 1px solid #d0d7de; }
-    tr:nth-child(even) { background: #f6f8fa; }
-    .hero { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 24px; margin: 24px 0; }
-    code { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 4px; padding: 2px 6px; font-size: 0.9em; }
-    pre { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; overflow-x: auto; }
+    :root { --ink:#1b202b; --muted:#5c6573; --line:#d0d7de; --page:#ffffff; --card:#f6f8fa; --accent:#1f6feb; --accent2:#0f8f83; }
+    * { box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--ink); background:var(--page); margin:0; line-height:1.5; }
+    .wrap { max-width:1040px; margin:0 auto; padding:0 20px 64px; }
+    header { background:linear-gradient(160deg,#0d1117,#1f2a44); color:#fff; padding:44px 20px 36px; }
+    header .wrap { padding-bottom:0; }
+    h1 { font-size:2.1em; margin:0 0 8px; letter-spacing:-.02em; }
+    .tag { color:#c9d4e6; font-size:1.05em; max-width:70ch; margin:0 0 18px; }
+    .stats { display:flex; gap:26px; flex-wrap:wrap; margin-top:10px; }
+    .stat b { display:block; font-size:1.7em; line-height:1; }
+    .stat span { color:#9db0cc; font-size:.85em; text-transform:uppercase; letter-spacing:.05em; }
+    .cta { margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
+    .cta a { background:#fff; color:#12213b; text-decoration:none; font-weight:600; padding:9px 16px; border-radius:7px; font-size:.92em; }
+    .cta a.ghost { background:transparent; color:#fff; border:1px solid #46587a; }
+    pre { background:#0b0f17; color:#d7e0ee; border-radius:8px; padding:16px; overflow-x:auto; font-size:.86em; margin:22px 0 0; }
+    .search { position:sticky; top:0; background:var(--page); padding:18px 0 10px; border-bottom:1px solid var(--line); z-index:5; }
+    .search input { width:100%; padding:12px 14px; font-size:1em; border:1.5px solid var(--line); border-radius:9px; }
+    .cat { margin-top:30px; }
+    .cat-head h2 { font-size:1.28em; margin:0 0 2px; }
+    .cat-total { background:var(--accent); color:#fff; font-size:.6em; vertical-align:middle; border-radius:20px; padding:3px 9px; margin-left:6px; }
+    .cat-head p { color:var(--muted); margin:0 0 12px; font-size:.92em; }
+    .mods { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:8px; }
+    .mod { display:flex; justify-content:space-between; align-items:center; gap:10px; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 13px; transition:border-color .12s,transform .12s; }
+    .mod:hover { border-color:var(--accent); transform:translateY(-1px); }
+    .mod-name { font-weight:600; font-size:.93em; }
+    .mod-count { background:#fff; border:1px solid var(--line); color:var(--muted); border-radius:20px; padding:1px 9px; font-size:.8em; font-variant-numeric:tabular-nums; }
+    .empty { color:var(--muted); padding:30px 0; display:none; }
+    footer { border-top:1px solid var(--line); margin-top:48px; padding-top:20px; color:var(--muted); font-size:.9em; }
+    footer a { color:var(--accent); text-decoration:none; }
+    @media (prefers-color-scheme:dark) {
+      :root { --ink:#e6edf3; --muted:#9198a1; --line:#30363d; --page:#0d1117; --card:#161b22; }
+      .mod-count { background:#0d1117; }
+      .cta a { background:#e6edf3; }
+    }
   </style>
 </head>
 <body>
-
-  <h1>Rego Policy Libraries</h1>
-  <p>
-    <span class="badge">Open Policy Agent</span>
-    <span class="badge">Policy-as-Code</span>
-    <span class="badge">Compliance</span>
-  </p>
-
-  <div class="hero">
-    <strong>Open source Rego policy library for enterprise compliance automation.</strong><br>
-    Covers CIS benchmarks, NIST, ISO 27001, SOC 2, NERC-CIP, DORA, NIS2, PCI-DSS, Digital Sovereignty, and AI governance — all in auditable, extensible Rego v1 syntax.
+  <header>
+    <div class="wrap">
+      <h1>Rego Policy Libraries</h1>
+      <p class="tag">Browse 601+ production-ready OPA Rego policies by standard — load one framework or the whole library. Rego v1, vendor-neutral, fail-closed, Apache&nbsp;2.0.</p>
+      <div class="stats">
+        <div class="stat"><b>601+</b><span>Policies</span></div>
+        <div class="stat"><b>110+</b><span>Standards</span></div>
+        <div class="stat"><b>13</b><span>DISA STIG platforms</span></div>
+        <div class="stat"><b>v1</b><span>Rego syntax</span></div>
+      </div>
+      <div class="cta">
+        <a href="https://github.com/ynotbhatc/rego_policy_libraries">GitHub repo</a>
+        <a class="ghost" href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/README.md">README</a>
+        <a class="ghost" href="https://github.com/ynotbhatc/rego_policy_libraries/releases">Releases</a>
+        <a class="ghost" href="https://github.com/ynotbhatc/rego_policy_libraries/discussions">Discussions</a>
+      </div>
+<pre>oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest   # OCI bundle, no clone
+# every framework: data.&lt;package&gt;.main.compliance_report</pre>
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="search"><input id="q" type="search" placeholder="Filter by standard — e.g. NERC, STIG, ISO, RHEL, AI…" autocomplete="off"></div>
+    <p class="empty" id="empty">No standard matches that filter.</p>
+    <section class="cat" data-search="cis benchmarks os, cloud, container, database & network hardening">
+      <div class="cat-head">
+        <h2>CIS Benchmarks <span class="cat-total">254</span></h2>
+        <p>OS, cloud, container, database & network hardening</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/rhel_9" data-name="rhel 9"><span class="mod-name">RHEL 9</span><span class="mod-count">21</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/saas" data-name="saas (m365, google ws)"><span class="mod-name">SaaS (M365, Google WS)</span><span class="mod-count">18</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/amazon_linux_2023" data-name="amazon linux 2023"><span class="mod-name">Amazon Linux 2023</span><span class="mod-count">17</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/ubuntu_22_04" data-name="ubuntu 22.04"><span class="mod-name">Ubuntu 22.04</span><span class="mod-count">17</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/ubuntu_24_04" data-name="ubuntu 24.04"><span class="mod-name">Ubuntu 24.04</span><span class="mod-count">17</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/debian_11" data-name="debian 11"><span class="mod-name">Debian 11</span><span class="mod-count">16</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/rhel_8" data-name="rhel 8"><span class="mod-name">RHEL 8</span><span class="mod-count">16</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/ubuntu_20_04" data-name="ubuntu 20.04"><span class="mod-name">Ubuntu 20.04</span><span class="mod-count">16</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/rocky_linux_8" data-name="rocky linux 8"><span class="mod-name">Rocky Linux 8</span><span class="mod-count">15</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/rocky_linux_9" data-name="rocky linux 9"><span class="mod-name">Rocky Linux 9</span><span class="mod-count">15</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/windows_server_2022_modular" data-name="windows server 2022"><span class="mod-name">Windows Server 2022</span><span class="mod-count">12</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/windows_server_2019_modular" data-name="windows server 2019"><span class="mod-name">Windows Server 2019</span><span class="mod-count">11</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/network_devices" data-name="network devices"><span class="mod-name">Network Devices</span><span class="mod-count">9</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/os" data-name="os (cross-platform)"><span class="mod-name">OS (cross-platform)</span><span class="mod-count">9</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/databases" data-name="databases"><span class="mod-name">Databases</span><span class="mod-count">5</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/aws" data-name="aws"><span class="mod-name">AWS</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/azure" data-name="azure"><span class="mod-name">Azure</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/cloud" data-name="cloud"><span class="mod-name">Cloud</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/kubernetes" data-name="kubernetes"><span class="mod-name">Kubernetes</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/postgresql" data-name="postgresql"><span class="mod-name">PostgreSQL</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/web_servers" data-name="web servers"><span class="mod-name">Web Servers</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/containers" data-name="containers"><span class="mod-name">Containers</span><span class="mod-count">2</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/docker" data-name="docker"><span class="mod-name">Docker</span><span class="mod-count">2</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/gcp" data-name="gcp"><span class="mod-name">GCP</span><span class="mod-count">2</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/mobile_devices" data-name="mobile devices"><span class="mod-name">Mobile Devices</span><span class="mod-count">2</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/rhel_10" data-name="rhel 10"><span class="mod-name">RHEL 10</span><span class="mod-count">2</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/vmware" data-name="vmware"><span class="mod-name">VMware</span><span class="mod-count">2</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/apache" data-name="apache"><span class="mod-name">Apache</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/mysql" data-name="mysql"><span class="mod-name">MySQL</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/network" data-name="network devices (cis)"><span class="mod-name">Network Devices (CIS)</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/nginx" data-name="nginx"><span class="mod-name">Nginx</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/openshift" data-name="openshift"><span class="mod-name">OpenShift</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/oracle" data-name="oracle"><span class="mod-name">Oracle</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/windows_10" data-name="windows 10"><span class="mod-name">Windows 10</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/windows_11" data-name="windows 11"><span class="mod-name">Windows 11</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/windows_server_2016" data-name="windows server 2016"><span class="mod-name">Windows Server 2016</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/cis/windows_server_2022" data-name="windows server 2022 (legacy)"><span class="mod-name">Windows Server 2022 (legacy)</span><span class="mod-count">1</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="disa stigs dod security technical implementation guides">
+      <div class="cat-head">
+        <h2>DISA STIGs <span class="cat-total">67</span></h2>
+        <p>DoD Security Technical Implementation Guides</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/rhel_9" data-name="rhel 9"><span class="mod-name">RHEL 9</span><span class="mod-count">10</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/rhel_8" data-name="rhel 8"><span class="mod-name">RHEL 8</span><span class="mod-count">8</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/windows_11" data-name="windows 11"><span class="mod-name">Windows 11</span><span class="mod-count">5</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/windows_server_2022" data-name="windows server 2022 (legacy)"><span class="mod-name">Windows Server 2022 (legacy)</span><span class="mod-count">5</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/windows_server_2025" data-name="windows server 2025"><span class="mod-name">Windows Server 2025</span><span class="mod-count">5</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/amazon_linux_2023" data-name="amazon linux 2023"><span class="mod-name">Amazon Linux 2023</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/apache_2_4_unix" data-name="apache 2.4"><span class="mod-name">Apache 2.4</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/cisco_ios_xe_router" data-name="cisco ios-xe"><span class="mod-name">Cisco IOS-XE</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/kubernetes" data-name="kubernetes"><span class="mod-name">Kubernetes</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/ms_sql_2016" data-name="sql server 2016"><span class="mod-name">SQL Server 2016</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/openshift_4" data-name="openshift 4"><span class="mod-name">OpenShift 4</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/postgresql_16" data-name="postgresql 16"><span class="mod-name">PostgreSQL 16</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/sles_15" data-name="sles 15"><span class="mod-name">SLES 15</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/ubuntu_22_04" data-name="ubuntu 22.04"><span class="mod-name">Ubuntu 22.04</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/vmware_vsphere_8" data-name="vsphere 8 esxi"><span class="mod-name">vSphere 8 ESXi</span><span class="mod-count">3</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/ubuntu_20_04" data-name="ubuntu 20.04"><span class="mod-name">Ubuntu 20.04</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/windows_10" data-name="windows 10"><span class="mod-name">Windows 10</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/windows_server_2016" data-name="windows server 2016"><span class="mod-name">Windows Server 2016</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/benchmarks/stig/windows_server_2019" data-name="windows server 2019"><span class="mod-name">Windows Server 2019</span><span class="mod-count">1</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="federal (us) nist, fisma, fedramp, cmmc, cisa cpg">
+      <div class="cat-head">
+        <h2>Federal (US) <span class="cat-total">60</span></h2>
+        <p>NIST, FISMA, FedRAMP, CMMC, CISA CPG</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/federal/nist" data-name="nist"><span class="mod-name">NIST</span><span class="mod-count">33</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/federal/cmmc" data-name="cmmc"><span class="mod-name">CMMC</span><span class="mod-count">15</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/federal/nist_ssdf" data-name="nist ssdf"><span class="mod-name">NIST Ssdf</span><span class="mod-count">5</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/federal/fisma" data-name="fisma"><span class="mod-name">FISMA</span><span class="mod-count">4</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/federal/fedramp" data-name="fedramp"><span class="mod-name">FEDRAMP</span><span class="mod-count">2</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/federal/cisa_cpg" data-name="cisa cpg"><span class="mod-name">CISA CPG</span><span class="mod-count">1</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="critical infrastructure / ot nerc-cip, iec 62443, ami, tsa pipeline, nist 800-82">
+      <div class="cat-head">
+        <h2>Critical Infrastructure / OT <span class="cat-total">51</span></h2>
+        <p>NERC-CIP, IEC 62443, AMI, TSA Pipeline, NIST 800-82</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/critical_infrastructure/nerc_cip" data-name="nerc-cip"><span class="mod-name">NERC-CIP</span><span class="mod-count">16</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/critical_infrastructure/tsa_pipeline" data-name="tsa pipeline"><span class="mod-name">TSA Pipeline</span><span class="mod-count">13</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/critical_infrastructure/iec_62443" data-name="iec 62443"><span class="mod-name">IEC 62443</span><span class="mod-count">12</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/critical_infrastructure/ami" data-name="ami"><span class="mod-name">AMI</span><span class="mod-count">9</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/critical_infrastructure/nist_800_82" data-name="nist 800-82"><span class="mod-name">NIST 800-82</span><span class="mod-count">1</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="management systems iso 27001, soc 2, csa ccm, cobit">
+      <div class="cat-head">
+        <h2>Management Systems <span class="cat-total">43</span></h2>
+        <p>ISO 27001, SOC 2, CSA CCM, COBIT</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/management/csa_ccm" data-name="csa ccm"><span class="mod-name">CSA CCM</span><span class="mod-count">17</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/management/soc2" data-name="soc 2"><span class="mod-name">SOC 2</span><span class="mod-count">12</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/management/iso27001" data-name="iso 27001"><span class="mod-name">ISO 27001</span><span class="mod-count">6</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/management/corporate" data-name="corporate"><span class="mod-name">Corporate</span><span class="mod-count">4</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/management/cobit" data-name="cobit"><span class="mod-name">COBIT</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/management/hitrust" data-name="hitrust"><span class="mod-name">Hitrust</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/management/technical_debt" data-name="technical debt"><span class="mod-name">Technical Debt</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/management/tisax" data-name="tisax"><span class="mod-name">Tisax</span><span class="mod-count">1</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="financial pci-dss, sox, glba">
+      <div class="cat-head">
+        <h2>Financial <span class="cat-total">23</span></h2>
+        <p>PCI-DSS, SOX, GLBA</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/financial/pci_dss" data-name="pci-dss"><span class="mod-name">PCI-DSS</span><span class="mod-count">14</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/financial/sox" data-name="sox"><span class="mod-name">SOX</span><span class="mod-count">4</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/financial/dora" data-name="dora"><span class="mod-name">DORA</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/financial/glba" data-name="glba"><span class="mod-name">GLBA</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/financial/ny_dfs" data-name="ny dfs"><span class="mod-name">NY DFS</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/financial/sec_cyber" data-name="sec cyber"><span class="mod-name">SEC Cyber</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/financial/swift_csp" data-name="swift csp"><span class="mod-name">SWIFT CSP</span><span class="mod-count">1</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="privacy gdpr, hipaa, ccpa/cpra, iso 27701">
+      <div class="cat-head">
+        <h2>Privacy <span class="cat-total">24</span></h2>
+        <p>GDPR, HIPAA, CCPA/CPRA, ISO 27701</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/privacy/hipaa" data-name="hipaa"><span class="mod-name">HIPAA</span><span class="mod-count">9</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/privacy/ccpa" data-name="ccpa"><span class="mod-name">CCPA</span><span class="mod-count">5</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/privacy/gdpr" data-name="gdpr"><span class="mod-name">GDPR</span><span class="mod-count">5</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/privacy/iso27701" data-name="iso 27701"><span class="mod-name">ISO 27701</span><span class="mod-count">5</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="sector & regional dora, nis2, ncsc caf, ny dfs, sec, swift">
+      <div class="cat-head">
+        <h2>Sector & Regional <span class="cat-total">27</span></h2>
+        <p>DORA, NIS2, NCSC CAF, NY DFS, SEC, SWIFT</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/compliance/cra" data-name="cra"><span class="mod-name">Cra</span><span class="mod-count">18</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/compliance/ncsc_caf" data-name="ncsc caf"><span class="mod-name">NCSC CAF</span><span class="mod-count">8</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/compliance/nis2" data-name="nis2"><span class="mod-name">NIS2</span><span class="mod-count">1</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="regulatory itar and other regulatory regimes">
+      <div class="cat-head">
+        <h2>Regulatory <span class="cat-total">2</span></h2>
+        <p>ITAR and other regulatory regimes</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/regulatory/cfr_part_11" data-name="cfr part 11"><span class="mod-name">CFR Part 11</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/regulatory/itar" data-name="itar"><span class="mod-name">ITAR</span><span class="mod-count">1</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="digital sovereignty data residency and sovereignty domains">
+      <div class="cat-head">
+        <h2>Digital Sovereignty <span class="cat-total">12</span></h2>
+        <p>Data residency and sovereignty domains</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/frameworks/sovereignty/digital_sovereignty" data-name="digital sovereignty"><span class="mod-name">Digital Sovereignty</span><span class="mod-count">12</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="ai & mcp governance eu ai act, iso 42001, agent authorization, mcp tool-call gating">
+      <div class="cat-head">
+        <h2>AI & MCP Governance <span class="cat-total">21</span></h2>
+        <p>EU AI Act, ISO 42001, agent authorization, MCP tool-call gating</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/governance/eu_ai_act" data-name="eu ai act"><span class="mod-name">EU AI Act</span><span class="mod-count">6</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/governance/geisa" data-name="geisa"><span class="mod-name">GEISA</span><span class="mod-count">6</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/governance/ai" data-name="ai"><span class="mod-name">AI</span><span class="mod-count">4</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/governance/exceptions" data-name="exceptions"><span class="mod-name">Exceptions</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/governance/finops" data-name="finops"><span class="mod-name">FINOPS</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/governance/iso_42001" data-name="iso 42001"><span class="mod-name">ISO 42001</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/governance/mcp" data-name="mcp"><span class="mod-name">MCP</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/governance/oidc" data-name="oidc"><span class="mod-name">OIDC</span><span class="mod-count">1</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="enforcement gates ansible, terraform, dockerfile, kubernetes, ci/cd, slsa">
+      <div class="cat-head">
+        <h2>Enforcement Gates <span class="cat-total">16</span></h2>
+        <p>Ansible, Terraform, Dockerfile, Kubernetes, CI/CD, SLSA</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/enforcement/aap" data-name="aap"><span class="mod-name">Aap</span><span class="mod-count">5</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/enforcement/ansible" data-name="ansible"><span class="mod-name">Ansible</span><span class="mod-count">2</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/enforcement/git" data-name="git"><span class="mod-name">Git</span><span class="mod-count">2</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/enforcement/kubernetes" data-name="kubernetes"><span class="mod-name">Kubernetes</span><span class="mod-count">2</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/enforcement/cicd" data-name="cicd"><span class="mod-name">Cicd</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/enforcement/dockerfile" data-name="dockerfile"><span class="mod-name">Dockerfile</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/enforcement/repo" data-name="repo"><span class="mod-name">Repo</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/enforcement/supply_chain" data-name="supply chain"><span class="mod-name">Supply Chain</span><span class="mod-count">1</span></a>
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/enforcement/terraform" data-name="terraform"><span class="mod-name">Terraform</span><span class="mod-count">1</span></a>
+      </div>
+    </section>
+    <section class="cat" data-search="threat detection behavioral detection policies">
+      <div class="cat-head">
+        <h2>Threat Detection <span class="cat-total">1</span></h2>
+        <p>Behavioral detection policies</p>
+      </div>
+      <div class="mods">
+        <a class="mod" href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/threat_detection/crypto_mining" data-name="crypto mining"><span class="mod-name">Crypto Mining</span><span class="mod-count">1</span></a>
+      </div>
+    </section>
+    <footer>
+      Part of the <a href="https://github.com/ynotbhatc/compliance">Ansible Automated Compliance (AAC)</a> platform ·
+      Apache 2.0 · generated from the repository tree, so counts stay current ·
+      <a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/CONTRIBUTING.md">Contributing</a> ·
+      <a href="https://github.com/ynotbhatc/rego_policy_libraries/issues?q=is%3Aopen+label%3A%22good+first+issue%22">Good first issues</a>
+    </footer>
   </div>
-
-  <p>
-    Part of the <strong>Ansible Automated Compliance (AAC)</strong> platform — Policy-as-Code compliance at enterprise scale, built on Ansible Automation Platform and Open Policy Agent.
-  </p>
-
-  <p>
-    <a href="https://github.com/ynotbhatc/rego_policy_libraries">View on GitHub →</a>
-  </p>
-
-  <h2>Framework Coverage</h2>
-  <table>
-    <tr><th>Framework</th><th>Category</th><th>OPA Container</th></tr>
-    <tr><td>CIS Benchmarks (RHEL 9, Ubuntu, Windows, AWS)</td><td>Security</td><td>opa-security :8181</td></tr>
-    <tr><td>DISA STIGs</td><td>Security</td><td>opa-security :8181</td></tr>
-    <tr><td>NIST 800-53 / FedRAMP / FISMA / CMMC</td><td>Federal</td><td>opa-security :8181</td></tr>
-    <tr><td>ISO 27001 / SOC 2 / PCI-DSS / SOX</td><td>Compliance</td><td>opa-compliance :8182</td></tr>
-    <tr><td>GDPR / HIPAA / Privacy</td><td>Privacy</td><td>opa-compliance :8182</td></tr>
-    <tr><td>DORA / NIS2 / Digital Sovereignty</td><td>Sovereignty</td><td>opa-compliance :8182</td></tr>
-    <tr><td>NERC-CIP (CIP-002 through CIP-015)</td><td>Critical Infrastructure</td><td>opa-ot :8183</td></tr>
-    <tr><td>AMI / NIST IR 7628 / IEC 62443</td><td>OT / Smart Grid</td><td>opa-ot :8183</td></tr>
-    <tr><td>AI Governance / MCP Enforcement</td><td>AI / Governance</td><td>opa-ot :8183</td></tr>
-    <tr><td>Ansible / Terraform / Git Enforcement</td><td>Pipeline</td><td>opa-compliance :8182</td></tr>
-  </table>
-
-  <h2>Quick Start</h2>
-  <pre>git clone https://github.com/ynotbhatc/rego_policy_libraries.git
-
-# Load a policy into OPA
-curl -X PUT --data-binary @benchmarks/cis/os/linux/rhel_9/cis_rhel9_complete.rego \
-  http://localhost:8181/v1/policies/cis_rhel9_complete
-
-# Query compliance
-curl -X POST http://localhost:8181/v1/data/cis_rhel9/compliance_assessment \
-  -H 'Content-Type: application/json' -d @your_facts.json</pre>
-
-  <h2>Policy Library Structure</h2>
-  <table>
-    <tr><th>Directory</th><th>Contents</th></tr>
-    <tr><td><code>benchmarks/cis/</code></td><td>CIS benchmark policies — 200+ files</td></tr>
-    <tr><td><code>benchmarks/stig/</code></td><td>DISA STIG policies</td></tr>
-    <tr><td><code>frameworks/federal/</code></td><td>NIST, FISMA, FedRAMP, CMMC</td></tr>
-    <tr><td><code>frameworks/management/</code></td><td>ISO 27001, SOC 2, Corporate</td></tr>
-    <tr><td><code>frameworks/financial/</code></td><td>PCI-DSS, SOX</td></tr>
-    <tr><td><code>frameworks/privacy/</code></td><td>GDPR, HIPAA</td></tr>
-    <tr><td><code>frameworks/critical_infrastructure/</code></td><td>NERC-CIP, AMI, IEC 62443</td></tr>
-    <tr><td><code>frameworks/sovereignty/</code></td><td>Digital Sovereignty (11 domains)</td></tr>
-    <tr><td><code>enforcement/</code></td><td>Ansible, Terraform, Git pipeline enforcement</td></tr>
-    <tr><td><code>governance/</code></td><td>AI governance, MCP enforcement</td></tr>
-    <tr><td><code>threat_detection/</code></td><td>Threat and anomaly detection policies</td></tr>
-  </table>
-
-  <h2>Standards Covered</h2>
-<p>Each standard has its own page listing the policy modules it contains and how
-to load them into OPA:
-<a href="standard/index.html">browse all 42 standards</a>.</p>
-<p style="opacity:.85">
-<a href="standard/benchmarks-cis-rhel-9.html">CIS RHEL 9</a> ·
-<a href="standard/frameworks-critical-infrastructure-nerc-cip.html">NERC-CIP</a> ·
-<a href="standard/frameworks-management-iso27001.html">ISO 27001</a> ·
-<a href="standard/frameworks-financial-pci-dss.html">PCI-DSS</a> ·
-<a href="standard/frameworks-privacy-gdpr.html">GDPR</a> ·
-<a href="standard/frameworks-management-soc2.html">SOC 2</a> ·
-<a href="standard/governance-eu-ai-act.html">EU AI Act</a> ·
-<a href="standard/benchmarks-stig-rhel-9.html">DISA STIG RHEL 9</a>
-</p>
-
-<h2>Links</h2>
-  <ul>
-    <li><a href="https://github.com/ynotbhatc/rego_policy_libraries">GitHub Repository</a></li>
-    <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/CHANGELOG.md">Changelog</a></li>
-    <li><a href="https://www.openpolicyagent.org/">Open Policy Agent</a></li>
-  </ul>
-
-  <hr>
-  <p style="color:#656d76; font-size:0.85em;">
-    Rego Policy Libraries — Part of the Ansible Automated Compliance (AAC) project.<br>
-    All policies use Rego v1 syntax. Requires OPA 0.60+.
-  </p>
-
+  <script>
+    var q = document.getElementById('q'), cats = document.querySelectorAll('.cat'), empty = document.getElementById('empty');
+    q.addEventListener('input', function () {
+      var t = q.value.trim().toLowerCase(), shown = 0;
+      cats.forEach(function (cat) {
+        var mods = cat.querySelectorAll('.mod'), any = false;
+        var catMatch = cat.getAttribute('data-search').indexOf(t) !== -1;
+        mods.forEach(function (m) {
+          var hit = !t || catMatch || m.getAttribute('data-name').indexOf(t) !== -1;
+          m.style.display = hit ? '' : 'none';
+          if (hit) any = true;
+        });
+        cat.style.display = any ? '' : 'none';
+        if (any) shown++;
+      });
+      empty.style.display = shown ? 'none' : 'block';
+    });
+  </script>
 </body>
 </html>
