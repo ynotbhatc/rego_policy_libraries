@@ -1,10 +1,10 @@
 # Rego Policy Libraries
 
-> **500+ production-ready Rego policies** for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
+> **600+ production-ready Rego policies** for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
 >
 > Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
 
-<sub>Counts move with every merge, so this README says "500+" rather than a figure
+<sub>Counts move with every merge, so this README says "600+" rather than a figure
 that goes stale. For the exact number at any commit:</sub>
 
 ```bash
@@ -24,7 +24,7 @@ git ls-files | grep -c '\.rego$'                                          # incl
 
 Writing compliance policies from scratch is expensive and error-prone. A typical enterprise deploying OPA for CIS RHEL 9 alone needs 338 individual control checks — and that's one framework for one OS.
 
-This library gives you a **complete, working policy set on day one**, covering 22 platforms, 55+ regulatory frameworks, and every major compliance standard from CIS and DISA STIGs to NERC-CIP and IEC 62443. All policies:
+This library gives you a **complete, working policy set on day one**, covering 30+ platforms, 55+ regulatory frameworks, and every major compliance standard from CIS and DISA STIGs to NERC-CIP and IEC 62443. All policies:
 
 - Use **Rego v1 syntax** (`import rego.v1`) — no deprecation warnings, forward-compatible
 - Return **structured JSON reports** (compliant, score, violations list) — wire directly to dashboards or CI
@@ -51,12 +51,12 @@ This library gives you a **complete, working policy set on day one**, covering 2
 | CIS Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
 | CIS Windows Server 2019/2022 | `benchmarks/cis/windows_server_2022_modular/` | 9 sections |
 | CIS Windows 10/11 | `benchmarks/cis/windows_10/` | Full |
-| CIS Microsoft 365 (SaaS) | `benchmarks/cis/saas/m365/` | Identity, Defender, Purview |
+| CIS Microsoft 365 Foundations v7 (SaaS) | `benchmarks/cis/saas/m365_v7/` | 9 sections: Entra, Exchange, Defender, Purview, SharePoint, Teams, Intune, Fabric, Admin Center |
 | CIS PostgreSQL | `benchmarks/cis/postgresql/` | Full |
-| Network devices — VyOS, pfSense | `benchmarks/cis/network_devices/` | Full |
+| Network devices — Cisco, Juniper, Palo Alto, Fortinet, Arista, VyOS, pfSense | `benchmarks/cis/network_devices/` | Full |
 | CIS AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
 | CIS Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
-| **DISA STIGs — 13 current platforms** (RHEL 8/9, Windows Server 2022/**2025**, Win 11, Ubuntu 22.04, Amazon Linux 2023, SLES 15, Kubernetes, OpenShift 4, Crunchy Postgres 16, SQL 2016, Apache 2.4, Cisco IOS-XE, vSphere 8 ESXi) | `benchmarks/stig/` | Per-rule findings with XCCDF-verified IDs (July 2026 library); all CAT I on new platforms; fail-closed entrypoints; coverage-of-total stated per aggregator |
+| **DISA STIGs — 19 platforms** (RHEL 8/9, Windows Server 2016/2019/2022/**2025**, Windows 10/11, Ubuntu 20.04/22.04, Amazon Linux 2023, SLES 15, Kubernetes, OpenShift 4, Crunchy Postgres 16, SQL 2016, Apache 2.4, Cisco IOS-XE, vSphere 8 ESXi) | `benchmarks/stig/` | Per-rule findings with XCCDF-verified IDs (July 2026 library); all CAT I on new platforms; fail-closed entrypoints; coverage-of-total stated per aggregator |
 | NIST 800-53 rev5 | `frameworks/federal/nist/sp_800_53/` | All control families |
 | NIST 800-82 (OT) | `frameworks/critical_infrastructure/nist_800_82/` | Full |
 | FISMA / FedRAMP / CMMC | `frameworks/federal/` | Full |
@@ -92,10 +92,11 @@ Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDA
 
 | Domain | Policies | Coverage |
 |--------|----------|----------|
-| **CIS Benchmarks + DISA STIGs** | 273 | 22 platforms: Linux, Windows, Cloud, Containers, Databases, Network + RHEL 8/9 & Windows 2022 STIGs. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
-| **Regulatory Frameworks** | 238 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA |
-| **Enforcement** | 14 | Ansible, Terraform, Dockerfile, Kubernetes admission, Git approval/playbook docs, **CI/CD pipeline gating**, **SLSA supply-chain governance** |
-| **Governance** | 19 | AI agent authorization, MCP tool-call enforcement, GEISA (API/ADM/LEE/VEE), **EU AI Act (Regulation 2024/1689)** suite, **OIDC token validation**, **FinOps tagging** |
+| **CIS Benchmarks + DISA STIGs** | 321 | 30+ platforms: Linux, Windows, cloud, containers, databases, web servers, network devices, VMware, mobile, and SaaS (M365) — plus **DISA STIGs for 19 platforms**. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
+| **Regulatory Frameworks** | 242 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA, TSA Pipeline SDs, GLBA, CISA CPG 2.0, ITAR, COBIT 2019 |
+| **Enforcement** | 16 | Ansible, Terraform, Dockerfile, Kubernetes admission, Git approval/playbook docs, **AAP job gating**, **CI/CD pipeline gating**, **SLSA supply-chain governance** |
+| **Governance** | 21 | AI agent authorization, MCP tool-call enforcement, GEISA (API/ADM/LEE/VEE), **EU AI Act (Regulation 2024/1689)** suite, **ISO/IEC 42001 (AIMS)**, **OIDC token validation**, **FinOps tagging** |
+| **Crosswalks** | 2 | STIG ↔ NIST 800-53 control mappings, framework maps |
 | **Threat Detection** | 1 | Cryptocurrency miner detection |
 
 **Highlight:** CIS RHEL 9 v2.0.0 — **224+ distinct CIS control IDs** across 17 modules
@@ -120,7 +121,7 @@ Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDA
 Pull the pre-built bundle directly from GitHub Container Registry — no clone needed:
 
 ```bash
-# Pull the full 545-policy bundle
+# Pull the full policy bundle
 oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest
 
 # Start OPA with the bundle
@@ -178,15 +179,18 @@ rego_policy_libraries/
 │   │   ├── aws/ azure/ gcp/     # Cloud Foundations
 │   │   ├── docker/ kubernetes/  # Containers
 │   │   ├── postgresql/ databases/
-│   │   ├── saas/m365/           # SaaS (Microsoft 365)
-│   │   ├── network_devices/     # VyOS, pfSense
+│   │   ├── saas/m365_v7/        # SaaS — CIS Microsoft 365 Foundations v7 (m365/ = v6 legacy)
+│   │   ├── network_devices/     # Cisco, Juniper, Palo Alto, Fortinet, Arista, VyOS, pfSense
+│   │   ├── vmware/              # ESXi 8, vCenter
+│   │   ├── mobile_devices/      # Android, iOS
 │   │   ├── os/linux/            # legacy/simple RHEL 9 variants — superseded
 │   │   ├── cloud/               # AWS, Azure, GCP Foundations
 │   │   ├── containers/          # Docker, Kubernetes, OpenShift
 │   │   ├── databases/           # MySQL 8, Oracle 19c, PostgreSQL 13/14/15
 │   │   ├── web_servers/         # Apache 2.4, Nginx 1.20
 │   │   └── network/             # Cisco IOS, Juniper Junos, Palo Alto, Fortinet, Arista
-│   └── stig/                    # DISA STIGs — RHEL 8/9, Ubuntu, Windows
+│   └── stig/                    # DISA STIGs — 19 platforms (Linux, Windows, K8s/OpenShift,
+│                                # databases, Apache, Cisco IOS-XE, vSphere)
 │
 ├── frameworks/                  # Regulatory compliance
 │   ├── federal/                 # NIST 800-53/171/800-82, CSF 2.0, AI RMF, FISMA, FedRAMP, CMMC
