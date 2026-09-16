@@ -296,6 +296,27 @@ violation contains msg if {
 	msg := sprintf("CIS 1.2.2: whether sign-in to shared mailboxes is blocked could not be evaluated -- directory sign-in state is unavailable: %s (this is not a pass)", [unavailable.user_sign_in_state])
 }
 
+# ── Fail-closed when Exchange facts are absent entirely ──────────────
+# 1.2.2 / 1.3.3 / 1.3.6 / 1.3.9 are sourced from input.exchange. In a
+# Graph-only run (m365_include_powershell_sections=false) input.exchange is
+# absent, so every rule above gated on `input.exchange.collected == true` is
+# skipped and these four controls would emit neither a violation nor an
+# unavailable entry -- a silent pass. Report them as not-evaluated instead.
+# (When Exchange IS collected but a specific fact is missing, the per-fact
+# unavailable rules above handle it; this fires only when nothing was collected.)
+_exchange_sourced_controls := {
+	"1.2.2": "whether sign-in to shared mailboxes is blocked",
+	"1.3.3": "whether external calendar sharing is available",
+	"1.3.6": "whether the customer lockbox feature is enabled",
+	"1.3.9": "whether shared bookings pages are restricted to select users",
+}
+
+violation contains msg if {
+	not input.exchange.collected
+	some control, subject in _exchange_sourced_controls
+	msg := sprintf("CIS %s: %s could not be evaluated -- Exchange facts were not collected (this is not a pass)", [control, subject])
+}
+
 compliant if {
 	collected
 	count(violation) == 0
