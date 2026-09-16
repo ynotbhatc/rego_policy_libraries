@@ -123,6 +123,22 @@ test_2_1_10_missing_dmarc if {
 	contains(v, "CIS 2.1.10:")
 }
 
+test_2_1_domain_dns_unavailable_is_not_a_false_violation if {
+	# M2: a domain whose DNS records could not be queried (permission error)
+	# must report as not-evaluated, NOT as a definite "no SPF/DKIM/DMARC".
+	r := defender.compliance_report with input as {"exchange": {"verified_domains": [{
+		"id": "contoso.com",
+		"dns_unavailable": "could not query DNS records: 403 Forbidden",
+	}]}}
+	some v in r.violations
+	contains(v, "could not be evaluated")
+	contains(v, "contoso.com")
+	# and no false definite failure for that domain
+	every v in r.violations {
+		not contains(v, "no SPF record published")
+	}
+}
+
 test_mail_authentication_controls_satisfied if {
 	# A domains-only fixture establishes SPF/DKIM/DMARC and nothing else.
 	# With 17 controls in the section it cannot make the whole section

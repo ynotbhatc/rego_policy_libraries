@@ -40,9 +40,16 @@ facts_present if {
 	is_array(input.exchange.verified_domains)
 }
 
+# A domain whose DNS records could not be queried (e.g. a permission error
+# on serviceConfigurationRecords) carries `dns_unavailable`. Its SPF/DKIM/DMARC
+# state is unknown, NOT absent -- the collector must not report a missing record
+# as false, and the rules below must not read its absence as a definite failure.
+# Those domains are reported as not-evaluated instead (see the catch below).
+
 # CIS 2.1.8 -- SPF records published for all Exchange domains.
 violation contains msg if {
 	some d in input.exchange.verified_domains
+	not d.dns_unavailable
 	not d.spf_present
 	msg := sprintf("CIS 2.1.8: no SPF record published for domain '%s' -- receivers cannot distinguish legitimate senders from spoofed mail", [d.id])
 }
@@ -50,6 +57,7 @@ violation contains msg if {
 # CIS 2.1.9 -- DKIM enabled for all Exchange Online domains.
 violation contains msg if {
 	some d in input.exchange.verified_domains
+	not d.dns_unavailable
 	not d.dkim_present
 	msg := sprintf("CIS 2.1.9: DKIM not enabled for domain '%s' -- outbound mail carries no cryptographic origin signature", [d.id])
 }
@@ -57,8 +65,17 @@ violation contains msg if {
 # CIS 2.1.10 -- DMARC records published for all Exchange Online domains.
 violation contains msg if {
 	some d in input.exchange.verified_domains
+	not d.dns_unavailable
 	not d.dmarc_present
 	msg := sprintf("CIS 2.1.10: no DMARC record published for domain '%s' -- SPF and DKIM failures have no enforcement disposition", [d.id])
+}
+
+# Domain whose DNS records could not be queried -- not a pass, not a definite
+# violation; SPF/DKIM/DMARC could not be evaluated for it.
+violation contains msg if {
+	some d in input.exchange.verified_domains
+	d.dns_unavailable
+	msg := sprintf("CIS 2.1.8/2.1.9/2.1.10: SPF, DKIM and DMARC for domain '%s' could not be evaluated -- %s (this is not a pass)", [d.id, d.dns_unavailable])
 }
 
 violation contains msg if {
