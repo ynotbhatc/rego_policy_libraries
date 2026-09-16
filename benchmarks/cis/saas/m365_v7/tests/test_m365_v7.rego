@@ -18,7 +18,10 @@ test_admin_center_absent_facts_is_not_a_pass if {
 	r := admin_center.compliance_report with input as {}
 	r.compliant == false
 	r.facts_present == false
-	count(r.violations) == 1
+	# admin_center's own 1.1.1 not-collected catch (1) plus the four
+	# Exchange-sourced controls (1.2.2/1.3.3/1.3.6/1.3.9) now reported as
+	# not-evaluated when Exchange facts are absent, rather than passing silently.
+	count(r.violations) == 5
 }
 
 test_defender_absent_facts_is_not_a_pass if {
@@ -74,8 +77,23 @@ test_1_1_3_too_many_global_admins if {
 
 test_1_1_3_three_global_admins_passes if {
 	r := admin_center.compliance_report with input as admins(3)
-	r.compliant == true
-	count(r.violations) == 0
+	# Three global admins is within the 2-4 range, so 1.1.3 must not be
+	# flagged. This minimal input carries no Exchange facts, so the
+	# Exchange-sourced controls correctly report as not-evaluated (the report
+	# is not globally clean); assert 1.1.3 specifically passes.
+	count([v | some v in r.violations; contains(v, "CIS 1.1.3:")]) == 0
+}
+
+test_graph_only_mode_exchange_controls_are_not_a_silent_pass if {
+	# H1: in a Graph-only run (m365_include_powershell_sections=false) there is
+	# no input.exchange, so the four Exchange-sourced section-1 controls must
+	# report as not-evaluated -- never pass silently.
+	r := admin_center.compliance_report with input as admins(3)
+	every c in ["1.2.2", "1.3.3", "1.3.6", "1.3.9"] {
+		some v in r.violations
+		startswith(v, sprintf("CIS %s:", [c]))
+		contains(v, "Exchange facts were not collected")
+	}
 }
 
 # ── CIS 2.1.8 / 2.1.9 / 2.1.10 -- SPF, DKIM, DMARC ────────────────────
@@ -103,6 +121,36 @@ test_2_1_10_missing_dmarc if {
 	r := defender.compliance_report with input as domains(true, true, false)
 	some v in r.violations
 	contains(v, "CIS 2.1.10:")
+}
+
+test_2_1_domain_dns_unavailable_is_not_a_false_violation if {
+	# M2: a domain whose DNS records could not be queried (permission error)
+	# must report as not-evaluated, NOT as a definite "no SPF/DKIM/DMARC".
+	r := defender.compliance_report with input as {"exchange": {"verified_domains": [{
+		"id": "contoso.com",
+		"dns_unavailable": "could not query DNS records: 403 Forbidden",
+	}]}}
+	some v in r.violations
+	contains(v, "could not be evaluated")
+	contains(v, "contoso.com")
+	# and no false definite failure for that domain
+	every v in r.violations {
+		not contains(v, "no SPF record published")
+	}
+}
+
+test_2_1_initial_domain_excluded_from_dns_controls if {
+	# C3: the Microsoft-managed initial domain (…onmicrosoft.com) cannot publish
+	# custom DNS, so it must raise no SPF/DKIM/DMARC violation even with no records.
+	r := defender.compliance_report with input as {"exchange": {"verified_domains": [{
+		"id": "acme.onmicrosoft.com", "is_initial": true,
+		"spf_present": false, "dkim_present": false, "dmarc_present": false,
+	}]}}
+	every v in r.violations {
+		not contains(v, "CIS 2.1.8:")
+		not contains(v, "CIS 2.1.9:")
+		not contains(v, "CIS 2.1.10:")
+	}
 }
 
 test_mail_authentication_controls_satisfied if {
