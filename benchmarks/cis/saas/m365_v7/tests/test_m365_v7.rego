@@ -139,6 +139,20 @@ test_2_1_domain_dns_unavailable_is_not_a_false_violation if {
 	}
 }
 
+test_2_1_initial_domain_excluded_from_dns_controls if {
+	# C3: the Microsoft-managed initial domain (…onmicrosoft.com) cannot publish
+	# custom DNS, so it must raise no SPF/DKIM/DMARC violation even with no records.
+	r := defender.compliance_report with input as {"exchange": {"verified_domains": [{
+		"id": "acme.onmicrosoft.com", "is_initial": true,
+		"spf_present": false, "dkim_present": false, "dmarc_present": false,
+	}]}}
+	every v in r.violations {
+		not contains(v, "CIS 2.1.8:")
+		not contains(v, "CIS 2.1.9:")
+		not contains(v, "CIS 2.1.10:")
+	}
+}
+
 test_mail_authentication_controls_satisfied if {
 	# A domains-only fixture establishes SPF/DKIM/DMARC and nothing else.
 	# With 17 controls in the section it cannot make the whole section
