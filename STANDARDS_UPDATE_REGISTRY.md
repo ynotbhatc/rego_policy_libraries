@@ -66,6 +66,9 @@ A one-fetch check caught it. This registry is that check, systematized.
 | FedRAMP | current baselines (rev5) | GSA | **FedRAMP 20x modernization in progress — watch actively** (verify) | rolling | fedramp.gov |
 | CIS M365 (saas/) | pinned per module | CIS | rolling ~annual | continuous | workbench.cisecurity.org |
 | CISA SCuBA M365 (scuba/) | per-policy IDs (v-suffix) pinned in modules; 104 policies | CISA | rolling per-policy revisions in cisagov/ScubaGear — watch the baselines/ directory | continuous | github.com/cisagov/ScubaGear/tree/main/PowerShell/ScubaGear/baselines |
+| CIS EKS | v1.8.0 | CIS | rolling ~annual | continuous | workbench.cisecurity.org |
+| CIS AKS | v1.8.0 | CIS | rolling ~annual | continuous | workbench.cisecurity.org |
+| CIS GKE | v1.9.0 | CIS | rolling ~annual | continuous | workbench.cisecurity.org |
 
 ## Maintenance
 
