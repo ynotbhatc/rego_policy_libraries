@@ -30,7 +30,10 @@ benchmarks/                    Per-platform configuration baselines
 │   ├── saas/                  M365 (this is where the SaaS pattern lives)
 │   ├── network/cisco/         Network device baselines
 │   └── mobile/ios/            Mobile platforms
-└── stig/                      DISA STIGs — RHEL/Win/Kubernetes/OpenShift
+├── stig/                      DISA STIGs — 19 platforms
+├── scuba/m365/                CISA SCuBA M365 baselines (104 policies, 7 products)
+├── nsa_cisa/kubernetes/       NSA/CISA K8s Hardening Guidance v1.2 (43 controls)
+└── pss/kubernetes/            K8s Pod Security Standards (baseline + restricted)
 
 frameworks/                    Regulatory + management frameworks
 ├── federal/                   NIST 800-53, NIST 800-171, NIST CSF, NIST RMF,
@@ -39,7 +42,7 @@ frameworks/                    Regulatory + management frameworks
 │                              SWIFT CSP
 ├── management/                ISO 27001, SOC 2, HITRUST, TISAX, CSA CCM,
 │                              corporate, technical_debt
-├── privacy/                   GDPR, HIPAA, ISO 27701, CCPA
+├── privacy/                   GDPR, HIPAA, ISO 27701, CCPA, FERPA, COPPA
 ├── compliance/                NCSC CAF, NIS2
 ├── critical_infrastructure/   NERC-CIP, AMI/NIST IR 7628, IEC 62443,
 │                              NIST 800-82, TSA Pipeline Security Directives
@@ -69,7 +72,7 @@ threat_detection/              Behavioral threat patterns
 └── crypto_mining/             Crypto-miner indicators
 ```
 
-Headline count: **603 policy files** (711 including tests) across the above directories, as of 2026-09-16.
+Headline count: **619 policy files** (736 including tests) across the above directories, as of 2026-09-16.
 Count it, never quote it — `git ls-tree -r HEAD --name-only | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'` — the number drifts with every merge.
 
 ## Skill: Rego v1 syntax (MANDATORY)
