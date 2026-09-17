@@ -83,6 +83,14 @@ This library gives you a **complete, working policy set on day one**, covering 3
 | **ISO/IEC 42001:2023 (AIMS)** | `governance/iso_42001/` | Clauses 4–10 + Annex A groups — completes the AI trio with EU AI Act + NIST AI RMF |
 | **ITAR (22 CFR 120–130)** | `frameworks/regulatory/itar/` | Data-safeguarding slice: deemed exports, §120.54 encryption carve-out, DDTC hygiene — legal/licensing scoped out honestly |
 | **COBIT 2019** | `frameworks/management/cobit/` | Governance-system attestation across EDM/APO/BAI/DSS/MEA — maturity assessment explicitly disclaimed |
+| **CISA SCuBA M365** | `benchmarks/scuba/m365/` | All 104 baseline policies across 7 products (Entra ID, Defender, EXO, Power BI, Power Platform, SharePoint/OneDrive, Teams); SHALL/SHOULD criticality reported; BOD 25-01 |
+| **CIS Amazon EKS v1.8.0** | `benchmarks/cis/eks/` | 49 controls (kubescape-mapped coverage; gaps stated in header) |
+| **CIS Azure AKS v1.8.0** | `benchmarks/cis/aks/` | 56 controls (kubescape-mapped coverage; gaps stated in header) |
+| **CIS Google GKE v1.9.0** | `benchmarks/cis/gke/` | 40 controls (partial cover of the official benchmark — stated in header) |
+| **NSA/CISA Kubernetes Hardening v1.2** | `benchmarks/nsa_cisa/kubernetes/` | 43 controls across the guide's 5 sections |
+| **Kubernetes Pod Security Standards** | `benchmarks/pss/kubernetes/` | 12 baseline + 6 restricted controls, evaluated against an actual Pod manifest |
+| **FERPA (34 CFR Part 99)** | `frameworks/privacy/ferpa/` | 32 controls: notification, access/amendment, consent, exception conditions, directory info, disclosure recordkeeping |
+| **COPPA (16 CFR Part 312, 2025 amendments)** | `frameworks/privacy/coppa/` | 21 controls incl. separate third-party-disclosure consent, retention policy, written infosec program |
 
 Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDARDS_UPDATE_REGISTRY.md) — pinned version, upstream revision cadence, and watch URL — so modules regenerate when standards change instead of drifting silently.
 
@@ -92,9 +100,10 @@ Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDA
 
 | Domain | Policies | Coverage |
 |--------|----------|----------|
-| **CIS Benchmarks + DISA STIGs** | 321 | 30+ platforms: Linux, Windows, cloud, containers, databases, web servers, network devices, VMware, mobile, and SaaS (M365) — plus **DISA STIGs for 19 platforms**. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
-| **Regulatory Frameworks** | 242 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA, TSA Pipeline SDs, GLBA, CISA CPG 2.0, ITAR, COBIT 2019 |
-| **Enforcement** | 16 | Ansible, Terraform, Dockerfile, Kubernetes admission, Git approval/playbook docs, **AAP job gating**, **CI/CD pipeline gating**, **SLSA supply-chain governance** |
+| **CIS Benchmarks + DISA STIGs** | 324 | 30+ platforms: Linux, Windows, cloud, containers, **managed Kubernetes (EKS/AKS/GKE)**, databases, web servers, network devices, VMware, mobile, and SaaS (M365) — plus **DISA STIGs for 19 platforms**. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
+| **Federal & K8s hardening baselines** | 10 | **CISA SCuBA M365** (104 policies, 7 products, BOD 25-01), **NSA/CISA Kubernetes Hardening v1.2** (43 controls), **Kubernetes Pod Security Standards** (baseline + restricted, evaluated against actual Pod manifests) |
+| **Regulatory Frameworks** | 244 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA, TSA Pipeline SDs, GLBA, CISA CPG 2.0, ITAR, COBIT 2019, **FERPA**, **COPPA (2025 amendments)** |
+| **Enforcement** | 17 | Ansible, Terraform, Dockerfile, Kubernetes admission, Git approval/playbook docs, **AAP job gating**, **CI/CD pipeline gating**, **SLSA supply-chain governance** |
 | **Governance** | 21 | AI agent authorization, MCP tool-call enforcement, GEISA (API/ADM/LEE/VEE), **EU AI Act (Regulation 2024/1689)** suite, **ISO/IEC 42001 (AIMS)**, **OIDC token validation**, **FinOps tagging** |
 | **Crosswalks** | 2 | STIG ↔ NIST 800-53 control mappings, framework maps |
 | **Threat Detection** | 1 | Cryptocurrency miner detection |
@@ -178,6 +187,7 @@ rego_policy_libraries/
 │   │   ├── windows_10/ windows_11/
 │   │   ├── aws/ azure/ gcp/     # Cloud Foundations
 │   │   ├── docker/ kubernetes/  # Containers
+│   │   ├── eks/ aks/ gke/       # Managed Kubernetes (EKS v1.8.0, AKS v1.8.0, GKE v1.9.0)
 │   │   ├── postgresql/ databases/
 │   │   ├── saas/m365_v7/        # SaaS — CIS Microsoft 365 Foundations v7 (m365/ = v6 legacy)
 │   │   ├── network_devices/     # Cisco, Juniper, Palo Alto, Fortinet, Arista, VyOS, pfSense
@@ -189,14 +199,17 @@ rego_policy_libraries/
 │   │   ├── databases/           # MySQL 8, Oracle 19c, PostgreSQL 13/14/15
 │   │   ├── web_servers/         # Apache 2.4, Nginx 1.20
 │   │   └── network/             # Cisco IOS, Juniper Junos, Palo Alto, Fortinet, Arista
-│   └── stig/                    # DISA STIGs — 19 platforms (Linux, Windows, K8s/OpenShift,
-│                                # databases, Apache, Cisco IOS-XE, vSphere)
+│   ├── stig/                    # DISA STIGs — 19 platforms (Linux, Windows, K8s/OpenShift,
+│   │                            # databases, Apache, Cisco IOS-XE, vSphere)
+│   ├── scuba/m365/              # CISA SCuBA M365 baselines — 104 policies, 7 products (BOD 25-01)
+│   ├── nsa_cisa/kubernetes/     # NSA/CISA Kubernetes Hardening Guidance v1.2 — 43 controls
+│   └── pss/kubernetes/          # K8s Pod Security Standards — baseline + restricted, manifest-evaluated
 │
 ├── frameworks/                  # Regulatory compliance
 │   ├── federal/                 # NIST 800-53/171/800-82, CSF 2.0, AI RMF, FISMA, FedRAMP, CMMC
 │   ├── management/              # ISO 27001, SOC 2, Corporate, NCSC CAF 4.0
 │   ├── financial/               # PCI-DSS, SOX, SWIFT CSP, NY DFS, SEC Cyber
-│   ├── privacy/                 # GDPR, HIPAA, HITRUST, CFR Part 11, TISAX
+│   ├── privacy/                 # GDPR, HIPAA, ISO 27701, CCPA/CPRA, FERPA, COPPA
 │   ├── regulatory/              # DORA, NIS2
 │   ├── critical_infrastructure/ # NERC-CIP (CIP-002–CIP-015), IEC 62443, NIST IR 7628,
 │   │                            # NIST 800-82, TSA Pipeline Security Directives
