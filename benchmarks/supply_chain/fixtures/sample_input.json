@@ -1,0 +1,10 @@
+{
+  "sbom": { "present": true, "format": "cyclonedx", "components": [{"purl": "pkg:pypi/requests@2.31"}] },
+  "provenance": { "present": true, "signed": true, "slsa_build_level": 2, "builder": "hosted" },
+  "signing": { "artifacts_signed": true, "method": "cosign" },
+  "source": { "branch_protection": true, "required_reviews": 1, "code_owner_review": true, "signed_commits": true },
+  "dependencies": { "pinned": true, "vetted": true, "unresolved_purls": 0 },
+  "vulnerabilities": { "kev_hits": 0, "osv_hits": 1, "unaddressed": 1 },
+  "build": { "hardened": false, "isolated": false, "ephemeral": true },
+  "artifact": { "name": "authlib", "capabilities": ["auth", "crypto", "config"] }
+}
