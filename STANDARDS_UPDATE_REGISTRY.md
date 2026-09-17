@@ -59,6 +59,8 @@ A one-fetch check caught it. This registry is that check, systematized.
 | HITRUST CSF | pinned in module | HITRUST | ~annual minor releases (verify) | annual | hitrustalliance.net |
 | TISAX | pinned in module | ENX/VDA | ISA catalog updates (verify) | verify | enx.com/tisax |
 | CFR Part 11 | 21 CFR 11 | FDA | stable; guidance-driven | — | fda.gov |
+| FERPA | 34 CFR Part 99 (current per eCFR 2026-09) | ED | amendment-driven; **ED signaled intent (Fall 2024) to propose amendments — watch** | rolling | ecfr.gov (34 CFR 99) |
+| COPPA | 16 CFR Part 312 as amended 90 FR 16918 (eff. 2025-06-23; compliance 2026-04-22) | FTC | amendment-driven (first update since 2013) | — | ftc.gov/legal-library (COPPA Rule) |
 | FedRAMP | current baselines (rev5) | GSA | **FedRAMP 20x modernization in progress — watch actively** (verify) | rolling | fedramp.gov |
 | CIS M365 (saas/) | pinned per module | CIS | rolling ~annual | continuous | workbench.cisecurity.org |
 
