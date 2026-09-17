@@ -61,6 +61,7 @@ A one-fetch check caught it. This registry is that check, systematized.
 | CFR Part 11 | 21 CFR 11 | FDA | stable; guidance-driven | — | fda.gov |
 | FedRAMP | current baselines (rev5) | GSA | **FedRAMP 20x modernization in progress — watch actively** (verify) | rolling | fedramp.gov |
 | CIS M365 (saas/) | pinned per module | CIS | rolling ~annual | continuous | workbench.cisecurity.org |
+| CISA SCuBA M365 (scuba/) | per-policy IDs (v-suffix) pinned in modules; 104 policies | CISA | rolling per-policy revisions in cisagov/ScubaGear — watch the baselines/ directory | continuous | github.com/cisagov/ScubaGear/tree/main/PowerShell/ScubaGear/baselines |
 
 ## Maintenance
 
