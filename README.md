@@ -1,11 +1,11 @@
 # Rego Policy Libraries
 
-> **600+ production-ready Rego policies** for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
+> **619 production-ready Rego policies** (736 including tests, counted at main 2026-09-16) for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), DISA STIGs, CISA SCuBA M365, NSA/CISA Kubernetes Hardening, NIST, SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
 >
 > Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
 
-<sub>Counts move with every merge, so this README says "600+" rather than a figure
-that goes stale. For the exact number at any commit:</sub>
+<sub>The count above is restamped by the docs pass that accompanies each merge batch;
+between batches it can drift slightly low. The exact number at any commit:</sub>
 
 ```bash
 git ls-files | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'   # policy files
