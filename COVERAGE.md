@@ -2,7 +2,7 @@
 
 > **Generated** — do not edit by hand. Refresh with `python3 scripts/coverage_report.py > COVERAGE.md`
 
-**82 of 558 policy files have tests (15%).** 86 test files, 476 policies still uncovered.
+**127 of 619 policy files have tests (21%).** 139 test files, 492 policies still uncovered.
 
 ## Why this file exists
 
@@ -23,25 +23,24 @@ took so two people do not write the same test.
 
 | area | policies without tests |
 |---|---|
-| `benchmarks/cis` | 233 |
-| `frameworks/federal` | 51 |
+| `benchmarks/cis` | 230 |
+| `frameworks/federal` | 50 |
+| `benchmarks/stig` | 46 |
 | `frameworks/critical_infrastructure` | 43 |
-| `frameworks/management` | 38 |
+| `frameworks/management` | 37 |
 | `frameworks/compliance` | 24 |
-| `benchmarks/stig` | 20 |
-| `frameworks/privacy` | 19 |
+| `frameworks/privacy` | 18 |
 | `frameworks/financial` | 15 |
 | `frameworks/sovereignty` | 11 |
-| `governance/geisa` | 6 |
 | `governance/eu_ai_act` | 5 |
-| `governance/ai` | 3 |
+| `governance/geisa` | 5 |
 | `enforcement/kubernetes` | 2 |
-| `enforcement/ansible` | 1 |
 | `enforcement/cicd` | 1 |
 | `enforcement/dockerfile` | 1 |
 | `enforcement/git` | 1 |
 | `enforcement/supply_chain` | 1 |
 | `enforcement/terraform` | 1 |
+| `governance/ai` | 1 |
 
 ## The queue
 
@@ -278,7 +277,7 @@ took so two people do not write the same test.
 
 </details>
 
-<details><summary><code>benchmarks/cis/rhel_8</code> — 15 file(s)</summary>
+<details><summary><code>benchmarks/cis/rhel_8</code> — 14 file(s)</summary>
 
 - `auditd_validation.rego`
 - `cis_rhel8_main.rego`
@@ -293,12 +292,11 @@ took so two people do not write the same test.
 - `selinux_validation.rego`
 - `services_validation.rego`
 - `ssh_validation.rego`
-- `sudo_validation.rego`
 - `user_group_validation.rego`
 
 </details>
 
-<details><summary><code>benchmarks/cis/rhel_9</code> — 20 file(s)</summary>
+<details><summary><code>benchmarks/cis/rhel_9</code> — 18 file(s)</summary>
 
 - `auditd_validation.rego`
 - `authorized_keys_validation.rego`
@@ -314,11 +312,9 @@ took so two people do not write the same test.
 - `logging_validation.rego`
 - `network_validation.rego`
 - `pam_validation.rego`
-- `selinux_validation.rego`
 - `service_validation.rego`
 - `ssh_validation.rego`
 - `storage_encryption_validation.rego`
-- `sudo_validation.rego`
 - `user_group_validation.rego`
 
 </details>
@@ -528,15 +524,50 @@ took so two people do not write the same test.
 
 </details>
 
+<details><summary><code>benchmarks/stig/amazon_linux_2023</code> — 2 file(s)</summary>
+
+- `core.rego`
+- `stig_amazon_linux_2023_main.rego`
+
+</details>
+
+<details><summary><code>benchmarks/stig/apache_2_4_unix</code> — 2 file(s)</summary>
+
+- `core.rego`
+- `stig_apache_2_4_unix_main.rego`
+
+</details>
+
+<details><summary><code>benchmarks/stig/cisco_ios_xe_router</code> — 2 file(s)</summary>
+
+- `core.rego`
+- `stig_cisco_ios_xe_router_main.rego`
+
+</details>
+
 <details><summary><code>benchmarks/stig/kubernetes</code> — 1 file(s)</summary>
 
-- `stig_kubernetes_complete.rego`
+- `core.rego`
+
+</details>
+
+<details><summary><code>benchmarks/stig/ms_sql_2016</code> — 2 file(s)</summary>
+
+- `core.rego`
+- `stig_ms_sql_2016_main.rego`
 
 </details>
 
 <details><summary><code>benchmarks/stig/openshift_4</code> — 1 file(s)</summary>
 
-- `stig_openshift_4_complete.rego`
+- `core.rego`
+
+</details>
+
+<details><summary><code>benchmarks/stig/postgresql_16</code> — 2 file(s)</summary>
+
+- `core.rego`
+- `stig_postgresql_16_main.rego`
 
 </details>
 
@@ -566,16 +597,51 @@ took so two people do not write the same test.
 
 </details>
 
-<details><summary><code>benchmarks/stig/windows_server_2022</code> — 2 file(s)</summary>
+<details><summary><code>benchmarks/stig/sles_15</code> — 2 file(s)</summary>
 
-- `configuration_management.rego`
-- `services_audit.rego`
+- `core.rego`
+- `stig_sles_15_main.rego`
 
 </details>
 
-<details><summary><code>enforcement/ansible</code> — 1 file(s)</summary>
+<details><summary><code>benchmarks/stig/ubuntu_22_04</code> — 2 file(s)</summary>
 
-- `sentinel_ansible.rego`
+- `core.rego`
+- `stig_ubuntu_22_04_main.rego`
+
+</details>
+
+<details><summary><code>benchmarks/stig/vmware_vsphere_8</code> — 2 file(s)</summary>
+
+- `core.rego`
+- `stig_vmware_vsphere_8_main.rego`
+
+</details>
+
+<details><summary><code>benchmarks/stig/windows_11</code> — 4 file(s)</summary>
+
+- `registry_cc.rego`
+- `registry_other.rego`
+- `registry_so.rego`
+- `stig_windows_11_main.rego`
+
+</details>
+
+<details><summary><code>benchmarks/stig/windows_server_2022</code> — 4 file(s)</summary>
+
+- `registry_cc.rego`
+- `registry_other.rego`
+- `registry_so.rego`
+- `stig_windows_server_2022_main.rego`
+
+</details>
+
+<details><summary><code>benchmarks/stig/windows_server_2025</code> — 4 file(s)</summary>
+
+- `registry_cc.rego`
+- `registry_other.rego`
+- `registry_so.rego`
+- `stig_windows_server_2025_main.rego`
 
 </details>
 
@@ -793,7 +859,7 @@ took so two people do not write the same test.
 
 </details>
 
-<details><summary><code>frameworks/federal/cmmc</code> — 14 file(s)</summary>
+<details><summary><code>frameworks/federal/cmmc</code> — 13 file(s)</summary>
 
 - `cmmc_access_control.rego`
 - `cmmc_audit_accountability.rego`
@@ -801,7 +867,6 @@ took so two people do not write the same test.
 - `cmmc_configuration_management.rego`
 - `cmmc_identification_authentication.rego`
 - `cmmc_incident_response.rego`
-- `cmmc_maintenance.rego`
 - `cmmc_media_protection.rego`
 - `cmmc_personnel_security.rego`
 - `cmmc_physical_protection.rego`
@@ -1149,10 +1214,9 @@ took so two people do not write the same test.
 
 </details>
 
-<details><summary><code>frameworks/management/soc2</code> — 2 file(s)</summary>
+<details><summary><code>frameworks/management/soc2</code> — 1 file(s)</summary>
 
 - `soc2_assessment.rego`
-- `soc2_main.rego`
 
 </details>
 
@@ -1231,9 +1295,8 @@ took so two people do not write the same test.
 
 </details>
 
-<details><summary><code>frameworks/privacy/gdpr</code> — 4 file(s)</summary>
+<details><summary><code>frameworks/privacy/gdpr</code> — 3 file(s)</summary>
 
-- `gdpr_compliance.rego`
 - `gdpr_controller_processor.rego`
 - `gdpr_cookies_tracking.rego`
 - `gdpr_data_transfers.rego`
@@ -1277,11 +1340,9 @@ took so two people do not write the same test.
 
 </details>
 
-<details><summary><code>governance/ai</code> — 3 file(s)</summary>
+<details><summary><code>governance/ai</code> — 1 file(s)</summary>
 
 - `action_classification.rego`
-- `authorization.rego`
-- `context_validation.rego`
 
 </details>
 
@@ -1295,10 +1356,9 @@ took so two people do not write the same test.
 
 </details>
 
-<details><summary><code>governance/geisa</code> — 6 file(s)</summary>
+<details><summary><code>governance/geisa</code> — 5 file(s)</summary>
 
 - `geisa_adm.rego`
-- `geisa_api.rego`
 - `geisa_compliance.rego`
 - `geisa_lee.rego`
 - `geisa_manifest_validation.rego`
