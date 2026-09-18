@@ -70,6 +70,42 @@ Thin — several mainstream engines missing, and **no dedicated storage benchmar
 | C7 | **Object-storage hardening** (S3-compatible / MinIO / Ceph) | Generic object-store controls beyond the CIS AWS S3 checks | `benchmarks/storage/object_storage/` |
 | C8 | Cassandra · IBM Db2 (expand) · CockroachDB · NetApp ONTAP | Add as demand appears | `benchmarks/cis/databases/<engine>/` |
 
+## Track D — Technology coverage evaluation (via the 800-53 spine)
+
+The `crosswalk/` **NIST SP 800-53 control spine** (a control assessed once, reported
+against every standard that inherits it) lets us rank uncovered **technologies** by
+*leverage*, not popularity: a benchmark is high-value when it lights up many 800-53
+control families, because every downstream standard mapped through the spine then covers
+that technology for free. The leverage column below is a **qualitative** read (control
+families the technology most implicates); it should be replaced with measured counts once
+each benchmark exists and `crosswalk.correlation` can score it.
+
+| Technology domain | Coverage today | Conspicuous uncovered | Spine leverage (800-53 families) |
+|---|---|---|---|
+| **Identity / IdP** | via M365 + OS only | **Okta, Entra ID standalone, Ping, Keycloak** | **IA, AC — very high (spine hub)** |
+| **Storage** | none | **NIST 800-209, object storage (S3-compat/MinIO/Ceph), NetApp ONTAP** | **MP, SC, CP, AC — high; currently 0** |
+| **Databases** | MySQL, Oracle, PostgreSQL, MS-SQL (STIG) | MongoDB, MariaDB, Redis, Elasticsearch, CIS SQL Server, Snowflake | AC, AU, SC, CP — high |
+| **SaaS** | M365 only | Google Workspace, Salesforce, Okta, GitHub, Snowflake | AC, IA, AU — high |
+| Cloud IaaS | AWS / Azure / GCP (CIS) | OCI, IBM Cloud, Alibaba | AC, CM, SC, AU |
+| Containers / orchestration | Docker, K8s, OpenShift, EKS/AKS/GKE, PSS, NSA/CISA | Nomad, registries (Harbor/ECR/Quay) | CM, AC, SC |
+| Network devices | Cisco IOS-XE (STIG) | Palo Alto, Juniper, F5, Fortinet | SC, AC, CA |
+| OS / host | RHEL, Ubuntu, Windows, SLES, Amazon, Rocky, Debian | macOS, AIX, Solaris | CM, AC, AU, SC, SI |
+| Web / app servers | Apache, Nginx | Tomcat, IIS, HAProxy, Envoy | CM, SC, SI |
+| Messaging / streaming | none | Kafka, RabbitMQ, NATS | AC, SC, AU |
+| CI/CD & supply chain | enforcement/ (ansible, tf, dockerfile, k8s, git, cicd, supply_chain) | Jenkins, Argo CD, Artifactory config | CM, SA, SR |
+
+**How to read it:** technologies that implicate **IA (identity)** and **AC (access
+control)** are spine hubs — they light up the most 800-53 controls and therefore the most
+inherited frameworks. That is why **identity SaaS (Okta) and storage (NIST 800-209)**
+outrank their apparent popularity: highest spine leverage. Sequence Tracks B and C by this
+column, not by raw demand — an identity or storage benchmark pays off across the whole
+inherited-standard set at once.
+
+**Method to make this exact:** ship a `<tech> → 800-53` map in `crosswalk/` alongside each
+new benchmark (same shape as `stig_800_53/data.json`), then `crosswalk.correlation` reports
+the real control count each technology satisfies — turning this qualitative table into a
+measured leverage score.
+
 ## Notes
 
 - **HITECH** is already covered (folded into the HIPAA module) — not on this list.
