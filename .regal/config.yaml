@@ -1,0 +1,42 @@
+# Regal configuration for rego_policy_libraries.
+#
+# Regal's out-of-the-box defaults report ~8k issues on this library, almost all
+# style. Most of that noise comes from three rules that conflict with deliberate,
+# load-bearing conventions in this repo. This config silences exactly those and
+# keeps the high-signal correctness/performance rules at full strength.
+#
+# Refresh the picture any time with:  regal lint . --format compact
+rules:
+  idiomatic:
+    directory-package-mismatch:
+      # This library names packages by FRAMEWORK (e.g. `package cis_rhel9.selinux`
+      # in benchmarks/cis/rhel_9/), not by directory path. That mapping is the
+      # library's public contract — data.<framework>.main.compliance_report — and
+      # is intentional. Regal's dir==package expectation does not apply here.
+      level: ignore
+  style:
+    rule-name-repeats-package:
+      # Same convention: section rules intentionally echo their framework package
+      # (cis_rhel9.selinux -> selinux_* rules). Not a smell in this codebase.
+      level: ignore
+    line-length:
+      # Violation messages are auditor-facing and quote full control text, so they
+      # run long by design. Keep the rule to catch genuinely runaway lines, but at
+      # a threshold that fits this repo rather than the 120-col default.
+      max-line-length: 200
+  testing:
+    file-missing-test-suffix:
+      # This library names test files `tests/test_<name>.rego` (documented in
+      # CONTRIBUTING and every "add tests" issue), not Regal's `<name>_test.rego`.
+      # OPA finds tests by the `test_` rule prefix, not the filename, so this is a
+      # naming convention, not a correctness issue. Disable.
+      level: ignore
+  performance:
+    with-outside-test-context:
+      # `with` in test helpers is fine. This rule only fires on the test files
+      # because the `tests/test_*.rego` naming above isn't recognized as a test
+      # context — so scope the rule out of the tests directories, while keeping it
+      # at full strength for real (production) policy code.
+      ignore:
+        files:
+          - "**/tests/**"
