@@ -51,7 +51,10 @@ environment_allowed if {
 }
 
 # Time window checks (for maintenance operations)
-default within_time_window := true
+# Fail closed: if a maintenance window is required but not active, neither clause
+# fires and the rule is false (denied). A `default := true` here would fail OPEN —
+# a required-but-inactive window would fall back to true and never be enforced.
+default within_time_window := false
 
 within_time_window if {
     not input.context.require_maintenance_window
@@ -63,7 +66,10 @@ within_time_window if {
 }
 
 # Scope validation
-default scope_valid := true
+# Fail closed: if a scope_limit is declared but the target host count exceeds it
+# (or target_hosts is absent), neither clause fires and the rule is false. A
+# `default := true` would fail OPEN — an over-limit scope would fall back to true.
+default scope_valid := false
 
 scope_valid if {
     not input.context.scope_limit
@@ -76,7 +82,10 @@ scope_valid if {
 }
 
 # Rate limiting
-default rate_limit_ok := true
+# Fail closed: if a rate_limit is declared but actions_in_window meets or exceeds
+# it (or actions_in_window is absent), neither clause fires and the rule is false.
+# A `default := true` would fail OPEN — an over-limit rate would fall back to true.
+default rate_limit_ok := false
 
 rate_limit_ok if {
     not input.context.rate_limit
