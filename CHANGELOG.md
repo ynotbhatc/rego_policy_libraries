@@ -6,10 +6,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [2.0.0] - 2026-09-17
+## [2.0.0] - 2026-09-21
 
 Six months of additions since the initial extraction. The library grew from 327 to
-**619 policy files** (736 including tests), roughly doubling framework coverage and adding a
+**638 policy files** (796 including tests), roughly doubling framework coverage and adding a
 production distribution path, Level 2 hardening profiles, and a standards-update registry.
 
 ### Added — new frameworks
@@ -20,6 +20,9 @@ production distribution path, Level 2 hardening profiles, and a standards-update
 - **Federal:** NIST SP 800-171 Rev 3 (14 families, 110 CUI requirements); CISA CPG 2.0
   (34 goals across the six CSF-2.0 functions incl. GOVERN).
 - **Management:** CSA CCM v4.0 (16 domains, 197 controls); COBIT 2019 governance-system attestation.
+- **Security program:** **CIS Controls v8.1** — the 18 Critical Security Controls / 153 safeguards,
+  Implementation-Group tiered (cumulative IG1 ⊆ IG2 ⊆ IG3 scoring) with a fail-closed report
+  (`frameworks/management/cis_controls_v8/`). Distinct from the CIS *Benchmarks* the library already ships.
 - **SaaS security posture:** CISA SCuBA Microsoft 365 Secure Configuration Baselines — 104 policies
   across 7 products (Entra ID, Exchange Online, SharePoint/OneDrive, Teams, Defender, Power Platform,
   Power BI).
