@@ -31,9 +31,10 @@ action_risk_level := "medium" if {
     input.action in medium_risk_actions
 }
 
-action_risk_level := "high" if {
-    input.action in high_risk_actions
-}
+# No explicit "high" rule: high_risk_actions (and any unclassified action)
+# resolve through `default action_risk_level := "high"` — assigning the
+# default explicitly is redundant (regal bugs/rule-assigns-default). The
+# high_risk_actions set remains the documented catalog of known-high actions.
 
 action_risk_level := "critical" if {
     input.action in critical_actions
@@ -98,6 +99,65 @@ critical_actions := {
     "production_emergency_access"
 }
 
+# ---------------------------------------------------------------------------
+# Crown jewels — the two artifact classes the governance plane exists to
+# protect: the BUSINESS RULES (the logic that runs the business, including the
+# governance plane's own policies) and the DATA. Jewel actions are critical by
+# classification and additionally tagged with jewel_class so downstream
+# authorization (dual control, no lone-emergency bypass) and the decision-log
+# analytics (jewel-touching activity ranks first) can key on them.
+# ---------------------------------------------------------------------------
+
+# New jewel action names (disjoint from the legacy sets above)
+business_rules_jewel_actions := {
+    "modify_business_rules",
+    "modify_governance_policy",
+    "reload_governance_policy",
+    "modify_policy_data",
+    "register_governed_automation",
+    "modify_decision_logic"
+}
+
+data_jewel_actions := {
+    "delete_dataset",
+    "bulk_export_data",
+    "modify_data_pipeline",
+    "grant_data_access",
+    "modify_data_classification",
+    "restore_data_from_backup"
+}
+
+action_risk_level := "critical" if {
+    input.action in business_rules_jewel_actions
+}
+
+action_risk_level := "critical" if {
+    input.action in data_jewel_actions
+}
+
+# jewel_class also covers the legacy critical actions that are jewels by nature
+default jewel_class := "none"
+
+jewel_class := "business_rules" if {
+    input.action in business_rules_jewel_actions
+}
+
+jewel_class := "business_rules" if {
+    input.action in {"modify_security_policy", "disable_control", "modify_authentication"}
+}
+
+jewel_class := "data" if {
+    input.action in data_jewel_actions
+}
+
+jewel_class := "data" if {
+    input.action == "delete_audit_data"
+}
+
+default is_jewel_action := false
+
+is_jewel_action if jewel_class != "none"
+
 # Helper to check if action requires approval
 # `default` is required: this rule only fires for medium/high/critical, so for a
 # read_only or low action it would otherwise be undefined — and one undefined
@@ -127,6 +187,8 @@ requires_multi_approval if {
 classification_report := {
     "action": object.get(input, ["action"], ""),
     "risk_level": action_risk_level,
+    "jewel_class": jewel_class,
+    "is_jewel_action": is_jewel_action,
     "requires_approval": requires_approval,
     "requires_justification": requires_justification,
     "requires_multi_approval": requires_multi_approval

@@ -48,6 +48,37 @@ emergency_access_valid if {
     time.now_ns() - input.ai_system.emergency_granted_at < 86400000000000  # 24 hours in nanoseconds
 }
 
+# The emergency role is only usable inside its granted window. Previously
+# emergency_access_valid was computed but consumed by nothing — an ai_emergency
+# system worked forever. Non-emergency roles pass trivially.
+default emergency_ok := false
+
+emergency_ok if {
+    object.get(input, ["ai_system", "role"], "") != "ai_emergency"
+}
+
+emergency_ok if {
+    input.ai_system.role == "ai_emergency"
+    emergency_access_valid
+}
+
+# Crown-jewels constraint: a jewel action (business rules or data — see
+# classification.jewel_class) requires obtained approval with DUAL CONTROL at
+# minimum, and a justification, regardless of role. There is no lone-approver
+# and no lone-emergency path to the jewels.
+default jewel_constraints_met := false
+
+jewel_constraints_met if {
+    classification.jewel_class == "none"
+}
+
+jewel_constraints_met if {
+    classification.jewel_class != "none"
+    approval_obtained
+    input.approval.approvers_count >= 2
+    justification_valid
+}
+
 # Approval configuration by risk level
 approval_config := {
     "read_only": {
@@ -126,6 +157,8 @@ authorization_report := {
     "ai_system_role": object.get(input, ["ai_system", "role"], "unknown"),
     "authorized": authorized,
     "ai_system_valid": ai_system_valid,
+    "emergency_ok": emergency_ok,
+    "jewel_constraints_met": jewel_constraints_met,
     "approval_requirements": approval_requirements,
     "approval_obtained": approval_obtained,
     "justification_valid": justification_valid

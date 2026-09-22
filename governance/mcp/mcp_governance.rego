@@ -103,6 +103,76 @@ approved_template_ids := {
 	166, 167, # CAF 4.0: Fact Collection, Assessment and Store
 }
 
+# ---------------------------------------------------------------------------
+# Self-protection: the governance plane is a crown jewel.
+#
+# A governed agent must not be able to modify, reload, or dilute its own gate.
+# Two escalation paths existed before this section:
+#   1. Direct — the legacy ID allowlist approved the templates that reload OPA
+#      policy (27), recreate the OPA containers (28), seed/mutate the template
+#      registry OPA decides from (36, 37), and rotate the MCP token (40).
+#   2. Indirect — scaffold ops let the agent CREATE a template; any registered
+#      name starting "AAC" was then auto-approved for launch (create-then-launch).
+# Both are closed here: governance-plane templates classify as "blocked" and
+# override every allow path; template/workflow creation is no longer agent work.
+# Governance-plane changes are human work, through PR review and the console.
+# ---------------------------------------------------------------------------
+
+# Legacy IDs of governance-plane templates (same caveat as the allowlist: IDs
+# drift across reinstalls — the name fragments below are the durable match).
+governance_plane_template_ids := {27, 28, 36, 37, 40}
+
+_governance_plane_name_fragments := {"load opa", "deploy opa", "seed template", "rotate mcp"}
+
+_is_governance_plane(tid) if tid in governance_plane_template_ids
+
+_is_governance_plane(tid) if {
+	name := _registered_name(tid)
+	some frag in _governance_plane_name_fragments
+	contains(lower(name), frag)
+}
+
+# Data-driven additions without a policy change (same push path as the registry)
+_is_governance_plane(tid) if {
+	some id in data.aac.governance_plane_template_ids
+	tid == to_number(id)
+}
+
+_launch_tools := {"run_job", "api_job_templates_launch_create", "api_workflow_job_templates_launch_create"}
+
+# Scaffold/creation ops — formerly "medium: allowed with logging". Creating a
+# template or workflow node is authoring automation, and combined with the
+# AAC-name auto-approval it was a self-elevation chain. Agents run reviewed
+# automation; they do not author it.
+governance_scaffold_tools := {
+	"api_job_templates_create",
+	"api_job_templates_credentials_create",
+	"api_job_templates_survey_spec_create",
+	"api_workflow_job_templates_create",
+	"api_workflow_job_template_nodes_create",
+	"api_workflow_job_template_nodes_success_nodes_create",
+	"api_workflow_job_template_nodes_failure_nodes_create",
+	"api_workflow_job_template_nodes_always_nodes_create",
+}
+
+# ---------------------------------------------------------------------------
+# Agent identity — load-bearing when the registry is published.
+# Push the registry the same way as the template registry:
+#   PUT /v1/data/aac/agents   e.g. ["aac-operator-agent", "aac-reporting-agent"]
+# Registry present  → only listed identities may act (fail-closed per identity).
+# Registry absent   → identity not yet enforced (transition state, so existing
+#                     deployments keep working until the ops push lands).
+# ---------------------------------------------------------------------------
+
+default agent_authorized := false
+
+agent_authorized if {
+	some a in data.aac.agents
+	a == input.agent
+}
+
+agent_authorized if not data.aac.agents
+
 # Tools that are always blocked regardless of context
 blocked_tools := {
 	# Destructive operations
@@ -140,35 +210,31 @@ risk_level := "blocked" if input.tool in blocked_tools
 # form includes the whole NERC-CIP demo set (Collate, Capture Baseline, Check
 # Drift), so launching them fell through to the default-deny and the agent could
 # not do ordinary work.
+# Governance-plane self-protection overrides every launch-allow path below
+risk_level := "blocked" if {
+	input.tool in _launch_tools
+	_is_governance_plane(_template_id)
+}
+
+# Scaffold/creation ops: blocked (see governance_scaffold_tools rationale)
+risk_level := "blocked" if input.tool in governance_scaffold_tools
+
 risk_level := "low" if {
-	input.tool in {"run_job", "api_job_templates_launch_create"}
+	input.tool in _launch_tools
 	name := _registered_name(_template_id)
 	startswith(name, "AAC")
+	not _is_governance_plane(_template_id)
 }
 
 risk_level := "low" if {
-	input.tool in {"run_job", "api_job_templates_launch_create"}
+	input.tool in _launch_tools
 	template_id := _template_id
 	template_id in approved_template_ids
+	not _is_governance_plane(template_id)
 }
 
 risk_level := "medium" if {
 	input.tool in {"sync_project", "api_projects_update_create"}
-}
-
-# Demo/setup scaffold operations — allowed but logged
-risk_level := "medium" if {
-	input.tool in {
-		"api_job_templates_create",
-		"api_job_templates_credentials_create",
-		"api_job_templates_survey_spec_create",
-		"api_workflow_job_templates_create",
-		"api_workflow_job_template_nodes_create",
-		"api_workflow_job_template_nodes_success_nodes_create",
-		"api_workflow_job_template_nodes_failure_nodes_create",
-		"api_workflow_job_template_nodes_always_nodes_create",
-		"api_workflow_job_templates_launch_create",
-	}
 }
 
 # ---------------------------------------------------------------------------
@@ -177,13 +243,22 @@ risk_level := "medium" if {
 
 default allow := false
 
-allow if risk_level == "read_only"
+allow if {
+	risk_level == "read_only"
+	agent_authorized
+}
 
-allow if risk_level == "low"
+allow if {
+	risk_level == "low"
+	agent_authorized
+}
 
-allow if risk_level == "medium"
+allow if {
+	risk_level == "medium"
+	agent_authorized
+}
 
-# Blocked and high/unknown risk → deny
+# Blocked and high/unknown risk → deny; unregistered agent → deny at any risk
 
 # ---------------------------------------------------------------------------
 # Decision output
@@ -227,20 +302,39 @@ reason := "Project sync — allowed with logging" if {
 	input.tool in {"sync_project", "api_projects_update_create"}
 }
 
-reason := "Demo scaffold operation — allowed with logging" if {
-	allow
-	risk_level == "medium"
-	not input.tool in {"sync_project", "api_projects_update_create"}
-}
-
 reason := msg if {
 	not allow
 	risk_level == "blocked"
+	input.tool in blocked_tools
 	msg := sprintf("Tool '%v' is blocked — destructive or privileged operations are not permitted for AI agents", [input.tool])
 }
 
 reason := msg if {
 	not allow
+	risk_level == "blocked"
+	input.tool in governance_scaffold_tools
+	msg := sprintf("Tool '%v' is blocked — agents run reviewed automation, they do not author it (create-then-launch self-elevation is closed)", [input.tool])
+}
+
+reason := msg if {
+	not allow
+	risk_level == "blocked"
+	input.tool in _launch_tools
+	tid := _template_id
+	_is_governance_plane(tid)
+	msg := sprintf("Template %v mutates the governance plane (policy load / OPA deploy / registry seed / token rotation) — agents cannot modify their own gate; this change is human work", [tid])
+}
+
+reason := msg if {
+	not allow
+	not agent_authorized
+	risk_level in {"read_only", "low", "medium"}
+	msg := sprintf("Agent identity '%v' is not in the registered agent set (data/aac/agents) — denied", [object.get(input, ["agent"], "")])
+}
+
+reason := msg if {
+	not allow
+	agent_authorized
 	risk_level == "low"
 	tid := _template_id
 	not tid in approved_template_ids
@@ -272,4 +366,5 @@ response := {
 	"risk_level": risk_level,
 	"reason": reason,
 	"tool": object.get(input, ["tool"], ""),
+	"agent": object.get(input, ["agent"], ""),
 }
