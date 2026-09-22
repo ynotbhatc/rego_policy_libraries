@@ -166,7 +166,9 @@ test_fully_authorized_scenario if {
 test_authorization_report_populated_on_empty_input if {
 	report := authorization.authorization_report with input as {}
 	is_object(report)
-	count(report) == 7
+	count(report) == 9
+	report.emergency_ok == true
+	report.jewel_constraints_met == true
 	report.ai_system_id == "unknown"
 	report.ai_system_role == "unknown"
 	report.authorized == false

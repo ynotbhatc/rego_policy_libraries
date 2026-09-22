@@ -41,6 +41,7 @@ default decision := "deny"
 # Allow without logging for read-only operations
 decision := "allow" if {
     authorization.authorized
+    authorization.emergency_ok
     context.context_valid
     classification.action_risk_level == "read_only"
 }
@@ -48,22 +49,29 @@ decision := "allow" if {
 # Allow with logging for low-risk operations
 decision := "allow_with_logging" if {
     authorization.authorized
+    authorization.emergency_ok
     context.context_valid
     classification.action_risk_level == "low"
 }
 
-# Allow with logging for medium/high/critical if approval obtained
+# Allow with logging for medium/high/critical if approval obtained.
+# Jewel actions (business rules / data) additionally require the jewel
+# constraints: dual control minimum + justification — no lone-approver or
+# lone-emergency path to the jewels.
 decision := "allow_with_logging" if {
     authorization.authorized
+    authorization.emergency_ok
     context.context_valid
     classification.action_risk_level in ["medium", "high", "critical"]
     authorization.approval_obtained
     authorization.justification_valid
+    authorization.jewel_constraints_met
 }
 
 # Pending approval for medium/high/critical without approval
 decision := "pending_approval" if {
     authorization.authorized
+    authorization.emergency_ok
     context.context_valid
     classification.action_risk_level in ["medium", "high", "critical"]
     not authorization.approval_obtained
@@ -91,11 +99,23 @@ deny_reasons contains "AI system is disabled" if {
     input.ai_system.enabled == false
 }
 
+deny_reasons contains "Emergency access window expired or never granted" if {
+    not authorization.emergency_ok
+}
+
+deny_reasons contains msg if {
+    classification.is_jewel_action
+    not authorization.jewel_constraints_met
+    authorization.approval_obtained
+    msg := sprintf("Crown-jewel action (%v) requires dual-control approval (>=2 approvers) and justification", [classification.jewel_class])
+}
+
 # Full governance response
 governance_response := {
     "decision": decision,
     "action": object.get(input, ["action"], ""),
     "risk_level": classification.action_risk_level,
+    "jewel_class": classification.jewel_class,
     "ai_system": {
         "id": object.get(input, ["ai_system", "id"], "unknown"),
         "role": object.get(input, ["ai_system", "role"], "unknown")
@@ -129,6 +149,7 @@ audit_entry := {
     "ai_system_role": input.ai_system.role,
     "action": input.action,
     "risk_level": classification.action_risk_level,
+    "jewel_class": classification.jewel_class,
     "decision": decision,
     "environment": input.context.environment,
     "approval_obtained": authorization.approval_obtained,
