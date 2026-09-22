@@ -63,7 +63,7 @@ decision := "allow_with_logging" if {
     authorization.emergency_ok
     context.context_valid
     classification.action_risk_level in ["medium", "high", "critical"]
-    authorization.approval_obtained
+    authorization.approval_valid
     authorization.justification_valid
     authorization.jewel_constraints_met
 }
@@ -101,6 +101,11 @@ deny_reasons contains "AI system is disabled" if {
 
 deny_reasons contains "Emergency access window expired or never granted" if {
     not authorization.emergency_ok
+}
+
+deny_reasons contains "Approval expired or not yet valid (timestamp outside its window)" if {
+    authorization.approval_obtained
+    not authorization.approval_valid
 }
 
 deny_reasons contains msg if {

@@ -41,11 +41,16 @@ ai_system_valid if {
     input.ai_system.enabled == true
 }
 
-# Check if emergency access is within time window (24 hours max)
+# Check if emergency access is within time window (24 hours max).
+# The grant must be in the PAST: without the now >= granted_at bound, a
+# future-dated grant satisfies "now - granted < 24h" (negative delta) and the
+# time-box is bypassable by minting a grant timestamp in the future.
 emergency_access_valid if {
     input.ai_system.role == "ai_emergency"
-    input.ai_system.emergency_granted_at
-    time.now_ns() - input.ai_system.emergency_granted_at < 86400000000000  # 24 hours in nanoseconds
+    now := time.now_ns()
+    granted := input.ai_system.emergency_granted_at
+    now >= granted
+    now - granted < 86400000000000  # 24 hours in nanoseconds
 }
 
 # The emergency role is only usable inside its granted window. Previously
@@ -74,7 +79,7 @@ jewel_constraints_met if {
 
 jewel_constraints_met if {
     classification.jewel_class != "none"
-    approval_obtained
+    approval_valid
     input.approval.approvers_count >= 2
     justification_valid
 }
@@ -130,11 +135,18 @@ approval_obtained if {
     input.approval.approvers_count >= approval_requirements.approvers
 }
 
-# Check if approval is still valid (not expired)
+# Check if approval is still valid (not expired). Same future-clamp as the
+# emergency box: a future-dated approved_at must not pass. `default` because
+# this rule is consumed by the aggregate decision — undefined would silently
+# void the decision object.
+default approval_valid := false
+
 approval_valid if {
     approval_obtained
-    input.approval.approved_at
-    hours_since_approval := (time.now_ns() - input.approval.approved_at) / 3600000000000
+    now := time.now_ns()
+    approved := input.approval.approved_at
+    now >= approved
+    hours_since_approval := (now - approved) / 3600000000000
     hours_since_approval < approval_requirements.timeout_hours
 }
 

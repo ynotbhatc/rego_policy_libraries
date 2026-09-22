@@ -117,3 +117,23 @@ test_plane_denial_wins_over_identity_denial if {
 	r.allow == false
 	r.risk_level == "blocked"
 }
+
+# --- Round-3: malformed registries fail CLOSED (only truly absent = transition).
+
+test_object_shaped_registry_denies_even_on_value_match if {
+	r := mcp.response with input as {"tool": "api_jobs_list", "arguments": {}, "agent": "aac-operator"}
+		with data.aac.agents as {"someone": "aac-operator"}
+	r.allow == false
+}
+
+test_string_shaped_registry_denies if {
+	r := mcp.response with input as {"tool": "api_jobs_list", "arguments": {}, "agent": "aac-operator"}
+		with data.aac.agents as "aac-operator"
+	r.allow == false
+}
+
+test_empty_array_registry_denies_all if {
+	r := mcp.response with input as {"tool": "api_jobs_list", "arguments": {}, "agent": "aac-operator"}
+		with data.aac.agents as []
+	r.allow == false
+}
