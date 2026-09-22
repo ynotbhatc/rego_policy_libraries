@@ -86,6 +86,13 @@ changed. Relay only what survives verification; don't paste raw dumps.
 - Approvals enforce **expiry** — a past-validity approval must be rejected by an
   explicit expiry comparison, not implicitly accepted.
 
+**Dead / self-defeating logic**
+- A rule that is **computed but never consumed** — nothing in the
+  report/decision dependency graph references it — is a control that does not
+  exist. (`emergency_access_valid` / `approval_valid` were computed-but-unused,
+  so the gate passed regardless.) For every safety rule the change adds, confirm
+  the entrypoint actually reads it. Grep the rule name across the package.
+
 **Hardcoded identifiers**
 - No hardcoded AAP template/resource IDs as the primary key of a decision — IDs
   drift on re-seed / re-provision (the standing "launch by name, not id" lesson).
@@ -108,6 +115,14 @@ changed. Relay only what survives verification; don't paste raw dumps.
 - A new section/module is wired into the master's `violations` aggregation
   (remember the 2-arg `array.concat` rule) — an unaggregated section silently
   scores nothing.
+
+**Tests assert INTENDED behavior, not observed**
+- A test written to match current output can **pin a bug as correct** — e.g. a
+  future-timestamp test that asserts `allow` is *celebrating* the vulnerability,
+  and it goes green while the control is bypassable. For a safety control the
+  test must assert the **secure** outcome (future/expired → deny, malformed →
+  deny), so the assertion fails if the control regresses. A test suite that
+  passes the attack is worse than no test.
 
 **Input contract**
 - The policy documents its input shape in a header comment, and the change
