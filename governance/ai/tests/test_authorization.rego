@@ -77,9 +77,19 @@ test_ai_system_valid_false_empty_id if {
 
 # --- emergency_access_valid ------------------------------------------------
 
-# emergency grant within the 24h window (future ts -> negative delta -> valid)
+# emergency grant within the 24h window (past grant, mocked clock)
 test_emergency_access_valid_true if {
 	authorization.emergency_access_valid with input as {"ai_system": {
+		"role": "ai_emergency",
+		"emergency_granted_at": 1000,
+	}}
+		with time.now_ns as 2000
+}
+
+# FUTURE-dated grant must NOT validate — this test previously asserted the
+# opposite ("future ts -> negative delta -> valid"), i.e. it pinned the bug.
+test_emergency_access_invalid_future_grant if {
+	not authorization.emergency_access_valid with input as {"ai_system": {
 		"role": "ai_emergency",
 		"emergency_granted_at": 99999999999999999999,
 	}}
@@ -113,9 +123,22 @@ test_approval_obtained_false_insufficient if {
 
 # --- approval_valid --------------------------------------------------------
 
-# obtained + approved within the medium 24h timeout (future ts) -> valid
+# obtained + approved within the medium 24h timeout (past approval, mocked clock)
 test_approval_valid_true_medium if {
 	authorization.approval_valid with input as {
+		"action": "update_inventory",
+		"approval": {
+			"obtained": true,
+			"approvers_count": 1,
+			"approved_at": 1000,
+		},
+	}
+		with time.now_ns as 2000
+}
+
+# FUTURE-dated approval must NOT validate — previously pinned as valid (the bug).
+test_approval_invalid_future_dated if {
+	not authorization.approval_valid with input as {
 		"action": "update_inventory",
 		"approval": {
 			"obtained": true,

@@ -41,10 +41,10 @@ test_ordinary_action_is_not_jewel if {
 test_jewel_constraints_met_with_dual_control if {
 	inp := object.union(_base, {
 		"action": "modify_governance_policy",
-		"approval": {"obtained": true, "approvers_count": 3},
+		"approval": {"obtained": true, "approvers_count": 3, "approved_at": 1000},
 		"justification": "change record CHG-1234 approved by review board",
 	})
-	authorization.jewel_constraints_met with input as inp
+	authorization.jewel_constraints_met with input as inp with time.now_ns as 2000
 }
 
 test_jewel_constraints_not_met_single_approver if {
@@ -115,4 +115,54 @@ test_non_emergency_role_unaffected_by_window if {
 	})
 	d := ai_governance.decision with input as inp
 	d == "allow"
+}
+
+# --- Round-3 hardening: future timestamps, expiry enforcement, registry shape.
+
+test_future_dated_emergency_grant_invalid if {
+	inp := object.union(_base, {
+		"action": "view_compliance_report",
+		"ai_system": object.union(_base.ai_system, {"emergency_granted_at": 5000}),
+	})
+
+	# now (2000) is BEFORE the grant (5000) — must not validate
+	d := ai_governance.decision with input as inp with time.now_ns as 2000
+	d == "deny"
+}
+
+test_future_dated_approval_invalid if {
+	inp := object.union(_base, {
+		"action": "modify_governance_policy",
+		"ai_system": object.union(_base.ai_system, {"emergency_granted_at": 1000}),
+		"approval": {"obtained": true, "approvers_count": 3, "approved_at": 9000},
+		"justification": "change record CHG-1234 approved by review board",
+	})
+	d := ai_governance.decision with input as inp with time.now_ns as 2000
+	d == "deny"
+	reasons := ai_governance.deny_reasons with input as inp with time.now_ns as 2000
+	"Approval expired or not yet valid (timestamp outside its window)" in reasons
+}
+
+test_expired_approval_denied if {
+	inp := object.union(_base, {
+		"action": "remediate_low_severity",
+		"ai_system": {"id": "agent-2", "role": "ai_operator", "enabled": true},
+		"approval": {"obtained": true, "approvers_count": 1, "approved_at": 0},
+		"justification": "",
+	})
+
+	# medium risk: timeout 24h; 25h elapsed since approval
+	d := ai_governance.decision with input as inp with time.now_ns as 90000000000000
+	d == "deny"
+}
+
+test_fresh_approval_still_allows if {
+	inp := object.union(_base, {
+		"action": "remediate_low_severity",
+		"ai_system": {"id": "agent-2", "role": "ai_operator", "enabled": true},
+		"approval": {"obtained": true, "approvers_count": 1, "approved_at": 1000},
+		"justification": "",
+	})
+	d := ai_governance.decision with input as inp with time.now_ns as 2000
+	d == "allow_with_logging"
 }

@@ -118,8 +118,11 @@ approved_template_ids := {
 # Governance-plane changes are human work, through PR review and the console.
 # ---------------------------------------------------------------------------
 
-# Legacy IDs of governance-plane templates (same caveat as the allowlist: IDs
-# drift across reinstalls — the name fragments below are the durable match).
+# Legacy IDs of governance-plane templates. IDs drift across reinstalls, so
+# the NAME FRAGMENTS below are the primary, durable match; these ids and the
+# data-driven list are belt-and-braces. Drift on this list fails SAFE: a
+# reassigned id over-blocks an unrelated template (deny, visible, fixable)
+# rather than under-blocking a governance-plane one.
 governance_plane_template_ids := {27, 28, 36, 37, 40}
 
 _governance_plane_name_fragments := {"load opa", "deploy opa", "seed template", "rotate mcp"}
@@ -166,7 +169,12 @@ governance_scaffold_tools := {
 
 default agent_authorized := false
 
+# is_array guard: `some a in <object>` iterates VALUES, so a wrong-shaped push
+# (e.g. {"x": "agent-name"}) could authorize by value match — malformed
+# registries must fail CLOSED. Present-but-not-an-array → both rules fail →
+# deny. Only a truly ABSENT registry is the documented transition state.
 agent_authorized if {
+	is_array(data.aac.agents)
 	some a in data.aac.agents
 	a == input.agent
 }
