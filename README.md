@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> **685 production-ready Rego policies** (892 including tests, counted at main 2026-09-23) for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), CIS Controls v8.1, DISA STIGs, CISA SCuBA M365, NSA/CISA Kubernetes Hardening, NIST, Zero Trust (CISA ZTMM v2.0), SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, FBI CJIS, IRS Pub 1075, ACSC Essential Eight, UK Cyber Essentials, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
+> **703 production-ready Rego policies** (928 including tests, counted at main 2026-09-23) for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), CIS Controls v8.1, DISA STIGs, CISA SCuBA M365, NSA/CISA Kubernetes Hardening, NIST, Zero Trust (CISA ZTMM v2.0), SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, FBI CJIS, IRS Pub 1075, ACSC Essential Eight, UK Cyber Essentials, BSI C5, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
 >
 > Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
 
@@ -98,6 +98,7 @@ This library gives you a **complete, working policy set on day one**, covering 3
 | **NIST SSDF (SP 800-218 v1.1)** | `frameworks/federal/nist_ssdf/` | 42 secure-software-development controls |
 | **IRS Publication 1075 (Rev. 11-2021)** | `frameworks/federal/irs_1075/` | 8 safeguard areas, 57 requirements — IRC 6103(p)(4)(A)–(F), §9 computer security (800-53 Rev 5 tailoring), §10 incident response |
 | **UK Cyber Essentials (Willow, April 2025)** | `frameworks/regional/cyber_essentials/` | 5 technical control themes, 28 requirements |
+| **BSI C5:2020** | `frameworks/regional/bsi_c5/` | All 17 criteria domains, 61 requirements — incl. Portability/Interoperability (export + confirmed deletion) and Government Investigation Requests (INQ) |
 
 Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDARDS_UPDATE_REGISTRY.md) — pinned version, upstream revision cadence, and watch URL — so modules regenerate when standards change instead of drifting silently.
 
@@ -109,7 +110,7 @@ Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDA
 |--------|----------|----------|
 | **CIS Benchmarks + DISA STIGs** | 324 | 30+ platforms: Linux, Windows, cloud, containers, **managed Kubernetes (EKS/AKS/GKE)**, databases, web servers, network devices, VMware, mobile, and SaaS (M365) — plus **DISA STIGs for 19 platforms**. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
 | **Federal & K8s hardening baselines** | 10 | **CISA SCuBA M365** (104 policies, 7 products, BOD 25-01), **NSA/CISA Kubernetes Hardening v1.2** (43 controls), **Kubernetes Pod Security Standards** (baseline + restricted, evaluated against actual Pod manifests) |
-| **Regulatory Frameworks** | 310 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA, TSA Pipeline SDs, GLBA, CISA CPG 2.0, ITAR, COBIT 2019, FERPA, COPPA (2025 amendments), **CIS Controls v8.1**, **Zero Trust (CISA ZTMM v2.0)**, **NIST SSDF**, **FBI CJIS**, **ACSC Essential Eight**, **IRS Pub 1075**, **UK Cyber Essentials** |
+| **Regulatory Frameworks** | 328 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA, TSA Pipeline SDs, GLBA, CISA CPG 2.0, ITAR, COBIT 2019, FERPA, COPPA (2025 amendments), **CIS Controls v8.1**, **Zero Trust (CISA ZTMM v2.0)**, **NIST SSDF**, **FBI CJIS**, **ACSC Essential Eight**, **IRS Pub 1075**, **UK Cyber Essentials**, **BSI C5:2020** |
 | **Enforcement** | 17 | Ansible, Terraform, Dockerfile, Kubernetes admission, Git approval/playbook docs, **AAP job gating**, **CI/CD pipeline gating**, **SLSA supply-chain governance** |
 | **Governance** | 21 | AI agent authorization, MCP tool-call enforcement, GEISA (API/ADM/LEE/VEE), **EU AI Act (Regulation 2024/1689)** suite, **ISO/IEC 42001 (AIMS)**, **OIDC token validation**, **FinOps tagging** |
 | **Crosswalks** | 2 | STIG ↔ NIST 800-53 control mappings, framework maps |
@@ -220,7 +221,7 @@ rego_policy_libraries/
 │   ├── financial/               # PCI-DSS, SOX, SWIFT CSP, NY DFS, SEC Cyber, GLBA
 │   ├── privacy/                 # GDPR, HIPAA, ISO 27701, CCPA/CPRA, FERPA, COPPA
 │   ├── regulatory/              # DORA, NIS2, ITAR
-│   ├── regional/                # ACSC Essential Eight, UK Cyber Essentials
+│   ├── regional/                # ACSC Essential Eight, UK Cyber Essentials, BSI C5
 │   ├── critical_infrastructure/ # NERC-CIP (CIP-002–CIP-015), IEC 62443, NIST IR 7628,
 │   │                            # NIST 800-82, TSA Pipeline Security Directives
 │   └── sovereignty/             # Digital Sovereignty (7 domains)
