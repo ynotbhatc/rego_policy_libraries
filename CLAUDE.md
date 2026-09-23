@@ -37,7 +37,8 @@ benchmarks/                    Per-platform configuration baselines
 
 frameworks/                    Regulatory + management frameworks
 ├── federal/                   NIST 800-53, NIST 800-171, NIST CSF, NIST RMF,
-│                              FISMA, FedRAMP, CMMC, NIST AI RMF
+│                              FISMA, FedRAMP, CMMC, NIST AI RMF, NIST SSDF,
+│                              Zero Trust, CJIS, IRS Pub 1075
 ├── financial/                 PCI-DSS, SOX, DORA, NY DFS, SEC Cyber,
 │                              SWIFT CSP
 ├── management/                ISO 27001, SOC 2, HITRUST, TISAX, CSA CCM,
@@ -47,6 +48,7 @@ frameworks/                    Regulatory + management frameworks
 ├── critical_infrastructure/   NERC-CIP, AMI/NIST IR 7628, IEC 62443,
 │                              NIST 800-82, TSA Pipeline Security Directives
 ├── regulatory/                CFR Part 11
+├── regional/                  ACSC Essential Eight, UK Cyber Essentials
 └── sovereignty/               Digital Sovereignty
 
 governance/                    Cross-cutting governance
