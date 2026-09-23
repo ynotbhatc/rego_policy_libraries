@@ -51,3 +51,15 @@ test_single_area_gap_propagates if {
 	r.compliant == false
 	r.policy_areas["Access Control"].compliant == false
 }
+
+# A non-object requirements payload must not shrink total_requirements —
+# every id stays counted (as unmet) and the report stays self-consistent.
+test_malformed_attestation_keeps_totals if {
+	expected := sum([count(reqs) | some reqs in _areas])
+	malformed := {"cjis": {"access_control": {"requirements": "all attested"}}}
+	r := main.compliance_report with input as malformed
+	r.total_requirements == expected
+	r.requirements_met == 0
+	r.violation_count == expected
+	r.compliant == false
+}

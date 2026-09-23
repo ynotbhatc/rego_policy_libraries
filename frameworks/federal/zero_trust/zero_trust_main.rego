@@ -40,7 +40,10 @@ all_violations := [v | some r in pillar_reports; some v in r.violations]
 # entirely-absent input (the standard bare `opa eval` verify command).
 default _attest(_) := {}
 
-_attest(pillar) := input.zero_trust[pillar].criteria
+_attest(pillar) := req if {
+	req := input.zero_trust[pillar].criteria
+	is_object(req)
+}
 
 # Each pillar's criteria paired with its attestation key, so the master can
 # compute per-maturity-stage coverage across the whole model.

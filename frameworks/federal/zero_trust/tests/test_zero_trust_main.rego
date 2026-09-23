@@ -56,3 +56,17 @@ test_single_pillar_gap_propagates if {
 	r.compliant == false
 	r.pillars.Identity.compliant == false
 }
+
+# A non-object criteria payload must not shrink total_criteria — every
+# criterion stays counted (as unmet) and the report stays self-consistent.
+test_malformed_attestation_keeps_totals if {
+	malformed := {"zero_trust": {"identity": {"criteria": "all attested"}}}
+	r := main.compliance_report with input as malformed
+
+	# violations come from the pillar modules, untouched by _attest — so
+	# equality pins total_criteria at the full criteria count
+	r.total_criteria == r.violation_count
+	r.total_criteria > 0
+	r.criteria_met == 0
+	r.compliant == false
+}
