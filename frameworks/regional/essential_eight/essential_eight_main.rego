@@ -37,7 +37,10 @@ all_violations := [v | some r in strategy_reports; some v in r.violations]
 # entirely-absent input (the standard bare `opa eval` verify command).
 default _attest(_) := {}
 
-_attest(strat) := input.essential_eight[strat].requirements
+_attest(strat) := req if {
+	req := input.essential_eight[strat].requirements
+	is_object(req)
+}
 
 _specs := [
 	{"key": "application_control", "req": application_control.requirements},

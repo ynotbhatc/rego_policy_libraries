@@ -54,3 +54,14 @@ test_all_attested_is_level_three_and_compliant if {
 	r.compliant == true
 	r.requirements_met == r.total_requirements
 }
+
+# A non-object requirements payload must not shrink total_requirements —
+# every id stays counted (as unmet) and the report stays self-consistent.
+test_malformed_attestation_keeps_totals if {
+	expected := sum([count(reqs) | some reqs in _strats])
+	malformed := {"essential_eight": {"application_control": {"requirements": "all attested"}}}
+	r := main.compliance_report with input as malformed
+	r.total_requirements == expected
+	r.requirements_met == 0
+	r.compliant == false
+}

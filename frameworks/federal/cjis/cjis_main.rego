@@ -48,7 +48,10 @@ all_violations := [v | some r in area_reports; some v in r.violations]
 # to entirely-absent input (the standard bare `opa eval` verify command).
 default _attest(_) := {}
 
-_attest(area) := input.cjis[area].requirements
+_attest(area) := req if {
+	req := input.cjis[area].requirements
+	is_object(req)
+}
 
 _specs := [
 	{"key": "information_exchange", "req": information_exchange.requirements},
