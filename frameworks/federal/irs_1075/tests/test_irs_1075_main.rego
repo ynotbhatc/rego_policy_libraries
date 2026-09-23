@@ -41,7 +41,7 @@ test_fully_attested_is_compliant if {
 # A non-object requirements payload must not shrink total_requirements —
 # every id stays counted (as unmet) and the report stays self-consistent.
 test_malformed_attestation_keeps_totals if {
-	expected := sum([count(reqs) | some _, reqs in _areas])
+	expected := sum([count(reqs) | some reqs in _areas])
 	malformed := {"irs_1075": {"computer_security": {"requirements": "all attested"}}}
 	r := main.compliance_report with input as malformed
 	r.total_requirements == expected
