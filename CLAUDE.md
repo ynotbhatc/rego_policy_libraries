@@ -48,7 +48,7 @@ frameworks/                    Regulatory + management frameworks
 ├── critical_infrastructure/   NERC-CIP, AMI/NIST IR 7628, IEC 62443,
 │                              NIST 800-82, TSA Pipeline Security Directives
 ├── regulatory/                CFR Part 11
-├── regional/                  ACSC Essential Eight, UK Cyber Essentials
+├── regional/                  ACSC Essential Eight, UK Cyber Essentials, BSI C5
 └── sovereignty/               Digital Sovereignty
 
 governance/                    Cross-cutting governance
