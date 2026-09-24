@@ -31,6 +31,7 @@ A one-fetch check caught it. This registry is that check, systematized.
 | Framework / benchmark | Implemented version | Upstream owner | Revision cadence | Next expected | Watch |
 |---|---|---|---|---|---|
 | CISA CPG | **2.0 (Oct 2025)** | CISA | **24–36 months (stated in the 2.0 report)** | 2027–2028 | cisa.gov/cross-sector-cybersecurity-performance-goals |
+| CIS MCP Server Benchmark | **v1.0.0 (Sep 2026) — PARTIAL: 46/55 recs, sections 6/8/9 pending PDF** | CIS | first release; expect fast minor revs while MCP spec moves | watch closely | workbench.cisecurity.org / cisecurity.org/cis-benchmarks |
 | NIST CSF | 2.0 (Feb 2024) | NIST | ~10 years major; concept papers precede | no major expected soon | nist.gov/cyberframework |
 | NIST SP 800-53 | r5 (+ r5.2 patch releases) | NIST | continuous "patch release" model since 2024 — **watch quarterly** (verify) | rolling | csrc.nist.gov/pubs/sp/800/53 |
 | NIST SP 800-171 | r3 (May 2024) | NIST | multi-year | — | csrc.nist.gov/pubs/sp/800/171 |
