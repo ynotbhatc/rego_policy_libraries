@@ -74,7 +74,7 @@ threat_detection/              Behavioral threat patterns
 └── crypto_mining/             Crypto-miner indicators
 ```
 
-Headline count: **619 policy files** (736 including tests) across the above directories, as of 2026-09-16.
+Headline count: **720 policy files** (954 including tests) across the above directories, as of 2026-10-01. Count it, do not quote it: total minus test-named files (tests/ dirs, test_*, *_test.rego).
 Count it, never quote it — `git ls-tree -r HEAD --name-only | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'` — the number drifts with every merge.
 
 ## Skill: Rego v1 syntax (MANDATORY)
