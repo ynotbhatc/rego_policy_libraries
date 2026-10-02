@@ -46,42 +46,47 @@ jobs:
 
       - name: Syntax check — benchmarks
         run: |
+          # Package-aware: check the whole tree at once so cross-file
+          # references within a package resolve (per-file `opa check`
+          # cannot see a helper defined in a sibling file).
           echo "Checking benchmarks/ ..."
-          find benchmarks -name "*.rego" | sort | while read f; do
-            opa check "$f" || exit 1
-          done
+          opa check benchmarks
           echo "benchmarks/ OK"
 
       - name: Syntax check — frameworks
         run: |
+          # Package-aware: check the whole tree at once so cross-file
+          # references within a package resolve (per-file `opa check`
+          # cannot see a helper defined in a sibling file).
           echo "Checking frameworks/ ..."
-          find frameworks -name "*.rego" | sort | while read f; do
-            opa check "$f" || exit 1
-          done
+          opa check frameworks
           echo "frameworks/ OK"
 
       - name: Syntax check — enforcement
         run: |
+          # Package-aware: check the whole tree at once so cross-file
+          # references within a package resolve (per-file `opa check`
+          # cannot see a helper defined in a sibling file).
           echo "Checking enforcement/ ..."
-          find enforcement -name "*.rego" | sort | while read f; do
-            opa check "$f" || exit 1
-          done
+          opa check enforcement
           echo "enforcement/ OK"
 
       - name: Syntax check — governance
         run: |
+          # Package-aware: check the whole tree at once so cross-file
+          # references within a package resolve (per-file `opa check`
+          # cannot see a helper defined in a sibling file).
           echo "Checking governance/ ..."
-          find governance -name "*.rego" | sort | while read f; do
-            opa check "$f" || exit 1
-          done
+          opa check governance
           echo "governance/ OK"
 
       - name: Syntax check — threat_detection
         run: |
+          # Package-aware: check the whole tree at once so cross-file
+          # references within a package resolve (per-file `opa check`
+          # cannot see a helper defined in a sibling file).
           echo "Checking threat_detection/ ..."
-          find threat_detection -name "*.rego" | sort | while read f; do
-            opa check "$f" || exit 1
-          done
+          opa check threat_detection
           echo "threat_detection/ OK"
 
       - name: Run policy tests
