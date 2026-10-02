@@ -119,7 +119,8 @@ _tev_cfg := object.union(_tev_defaults, _override) if {
 	is_object(_override)
 } else := _tev_defaults
 
-_user_teams := {lower(t) | some t in object.get(input, ["created_by", "teams"], [])}
+# Team objects and bare names both accepted — see _aap_team_name in owner_scope.rego.
+_user_teams := {_aap_team_name(t) | some t in object.get(input, ["created_by", "teams"], [])}
 
 _team_permitted := {lower(k) |
 	some team in _user_teams

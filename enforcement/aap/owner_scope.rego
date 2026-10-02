@@ -40,7 +40,20 @@ _username := lower(object.get(input, ["created_by", "username"], ""))
 
 _inv_name := lower(object.get(input, ["inventory", "name"], ""))
 
-_teams := {lower(t) | some t in object.get(input, ["created_by", "teams"], [])}
+_teams := {_aap_team_name(t) | some t in object.get(input, ["created_by", "teams"], [])}
+
+# AAP 2.7 sends each team as an object — created_by.teams is
+# [{"id": 3, "name": "app-team"}], built by awx/main/tasks/policy.py
+# (_TeamSerializer, fields id and name). A bare string is still accepted, so
+# hand-written inputs keep working. Before this, lower() on the object was a
+# type error, the element dropped out of the comprehension, and every
+# team-scoped rule silently never matched.
+_aap_team_name(t) := lower(t) if is_string(t)
+
+_aap_team_name(t) := lower(t.name) if {
+	is_object(t)
+	is_string(t.name)
+}
 
 # Patterns this launcher is permitted to target, from user and team bindings.
 _allowed_patterns := patterns if {
