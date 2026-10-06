@@ -155,7 +155,7 @@ violations contains msg if {
 compliance_report := {
 	"module": "transparency_obligations",
 	"standard": "EU AI Act — Title IV, Article 50",
-	"applies_from": "August 2026",
+	"applies_from": "2 August 2026 (Art. 50 — NOT deferred by Reg. (EU) 2026/1744)",
 	"compliant": compliant,
 	"total_violations": count(violations),
 	"violations": violations,

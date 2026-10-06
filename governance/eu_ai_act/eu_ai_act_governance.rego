@@ -184,7 +184,7 @@ violations contains msg if {
 compliance_report := {
 	"module": "governance_deployer",
 	"standard": "EU AI Act — Title VI, Articles 26-28, 72, 77-78",
-	"applies_from": "August 2026",
+	"applies_from": "2 December 2027 (tracks the Annex III high-risk postponement, Reg. (EU) 2026/1744)",
 	"compliant": compliant,
 	"total_violations": count(violations),
 	"violations": violations,

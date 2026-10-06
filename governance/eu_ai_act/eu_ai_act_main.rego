@@ -2,11 +2,11 @@ package eu_ai_act.main
 
 import rego.v1
 
-import data.eu_ai_act.prohibited
-import data.eu_ai_act.high_risk
-import data.eu_ai_act.transparency
-import data.eu_ai_act.gpai
 import data.eu_ai_act.governance
+import data.eu_ai_act.gpai
+import data.eu_ai_act.high_risk
+import data.eu_ai_act.prohibited
+import data.eu_ai_act.transparency
 
 # =============================================================================
 # Applicable modules based on risk tier
@@ -165,10 +165,10 @@ all_violations := array.concat(
 # =============================================================================
 
 compliance_report := {
-    "framework":       "EU Artificial Intelligence Act",
-    "total_controls":  5,
-    "violations":      [],
-    "violation_count": 0,
+	"framework": "EU Artificial Intelligence Act",
+	"total_controls": 5,
+	"violations": [],
+	"violation_count": 0,
 	"standard": "EU Artificial Intelligence Act — Regulation (EU) 2024/1689",
 	"overall_compliant": overall_compliant,
 	"risk_tier": risk_tier,
