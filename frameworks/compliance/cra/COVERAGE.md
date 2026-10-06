@@ -1,7 +1,7 @@
 ---
 title: EU Cyber Resilience Act (CRA) — Policy Coverage
-version: v0.5
-date: 2026-06-26
+version: v0.6
+date: 2026-10-06
 authors:
   - Tim Coulter
   - Claude (Anthropic)
@@ -10,8 +10,8 @@ authors:
 # EU Cyber Resilience Act — AAC Policy Coverage
 
 **Regulation**: Regulation (EU) 2024/2847 ("Cyber Resilience Act" / CRA)
-**In force**: November 2024
-**Mandatory compliance**: December 2027
+**In force**: 10 December 2024 (OJ publication 20 November 2024)
+**Applies from**: 11 December 2027 generally — **Article 14 reporting obligations apply from 11 September 2026** (already in force) and Chapter IV from 11 June 2026 (Art. 71(2))
 **Scope of this document**: what the AAC Rego policy library covers, what it does not, and how to use it.
 
 ---
@@ -20,7 +20,7 @@ authors:
 
 This library implements **17 policy modules** across the major CRA chapters covering all five categories of economic operator (manufacturer, authorised representative, importer, distributor, online marketplace) plus the new "open-source software steward" category, the Article 23 FOSS exclusion boundary, the deepest annex content checks (Annex I, II, IV, VII), and **two evidence-integration bridges** that re-frame existing SLSA supply-chain + ISO 27001 cryptography findings as CRA citations — no double-attestation required.
 
-**Total**: **244 distinct control checks** across 17 modules, surfaced at a single endpoint:
+**Total**: **245 control checks** across 17 modules (sum of per-module `controls_evaluated` at v0.6), surfaced at a single endpoint:
 
 ```
 POST <opa>/v1/data/cra/main/compliance_report
@@ -69,7 +69,7 @@ A continuously-evaluable, evidence-producing CRA compliance signal. Not a checkl
 
 ## What the framework identifies (risk categories)
 
-The 217 control checks group into **eight risk categories**, listed roughly in descending order of typical enforcement priority. The right-hand column lists the modules that produce findings in each.
+The 245 control checks group into **eight risk categories**, listed roughly in descending order of typical enforcement priority. The right-hand column lists the modules that produce findings in each.
 
 | Risk category | What it catches | Modules |
 |---|---|---|
@@ -99,17 +99,17 @@ These messages are intentionally written for auditors, not for engineers. They'r
 
 ## Penalty exposure + risk reduction
 
-### EU fine tiers (Articles 53-54)
+### EU fine tiers (Article 64)
 
 CRA establishes a three-tier penalty structure. Maximum fines are the **greater** of the listed absolute amount or the percentage of global annual turnover.
 
 | Tier | Violation type | Maximum fine |
 |---|---|---|
-| **Tier 1** (most severe) | Failure to comply with **essential requirements** (Annex I); failure of **manufacturer obligations** under Article 13; placing on the market without conformity assessment | **€15M or 2.5% of global annual turnover** |
-| **Tier 2** | Failure of other obligations (importer Art.19, distributor Art.20, authorised representative Art.18, reporting Art.14, technical documentation Art.28, etc.) | **€10M or 2% of global annual turnover** |
-| **Tier 3** | Supplying incorrect, incomplete, or misleading information to a notified body or market surveillance authority | **€5M or 1% of global annual turnover** |
+| **Tier 1** (most severe, Art. 64(2)) | Failure to comply with the **essential requirements** (Annex I) or the obligations of **Articles 13 and 14** — manufacturer obligations **and the reporting cascade** | **€15M or 2.5% of global annual turnover** |
+| **Tier 2** (Art. 64(3)) | Failure of other obligations (authorised representative Art.18, importer Art.19, distributor Art.20, identification Art.23, technical documentation Art.31, etc.) | **€10M or 2% of global annual turnover** |
+| **Tier 3** (Art. 64(4)) | Supplying incorrect, incomplete, or misleading information to a notified body or market surveillance authority | **€5M or 1% of global annual turnover** |
 
-Member States also set their own additional penalties, and may impose periodic penalty payments to compel compliance. For SMEs, Article 54 directs Member States to consider proportionality — but the upper bounds remain.
+Member States also set their own additional penalties, and may impose periodic penalty payments to compel compliance. Art. 64(10) carves out two groups: micro/small enterprises get relief on the Art. 14 24-hour deadline specifically (64(10)(a)), and **administrative fines do not apply to infringements by open-source software stewards at all (64(10)(b))** — steward findings in these modules are conformance signals, not fine exposure.
 
 ### What the framework reduces
 
@@ -117,7 +117,7 @@ Member States also set their own additional penalties, and may impose periodic p
 |---|---|
 | **Tier 1 essential-requirements fine** | Continuous Annex I evaluation. Missing essential requirements surface in the report immediately; remediation happens before market placement. Reduces the probability of the failure existing AT market placement (the moment liability attaches). |
 | **Tier 1 manufacturer-obligation fine** | Article 13 obligations (risk assessment, support period, third-party component due diligence, end-of-support notice planning) all evaluated. A green report = documented evidence the manufacturer can produce to authorities. |
-| **Tier 2 reporting-timeline fine** | The 24h / 72h / 14d cascade rules trigger automatically at the hour-boundary. Wire the report into an alerting system and the framework tells you the report is overdue **before** it actually is. |
+| **Tier 1 reporting-timeline fine** (Art. 14 sits in the top tier) | The 24h / 72h cascades trigger automatically at the hour-boundary; the final-report clocks run from corrective-measure availability (14(2)(c)) and from the incident notification (14(4)(c)). Wire the report into an alerting system and the framework tells you the report is overdue **before** it actually is. |
 | **Tier 2 supply-chain fine** | Importer + distributor + authorised-representative obligations evaluated each time the supply chain handles a new product. Catches the "we didn't realise we were now the manufacturer" Article 21 trap. |
 | **Tier 2 documentation fine** | Annex IV + Annex VII content checked at the field level. A Declaration of Conformity missing the explicit CRA citation, or technical documentation missing third-party assessment evidence for a Class II product, surfaces as a specific violation. |
 | **Tier 3 misleading-information fine** | The framework produces evidence the manufacturer attested to. If facts later prove false, the audit trail records what was claimed when. Doesn't prevent fraud — but converts "we didn't know" into a documented chain. |
@@ -143,21 +143,21 @@ Honest scoping — the framework is a self-assessment tool, not a magic complian
 | # | Module | CRA basis | Controls | Notes |
 |---|---|---|---|---|
 | 1 | `cra.essential_requirements` | Annex I Part I | 21 | Core "security by design" — secure default config, vuln protection, MFA / IAM, encryption (at rest + in transit), code signing, data minimisation, DoS protection, attack-surface reduction, exploitation mitigation, security event logging, secure data deletion |
-| 2 | `cra.vulnerability_handling` | Annex I Part II | 16 | SBOM (machine-readable), remediation process, **5-year minimum support period** enforcement, regular testing, public disclosure post-patch, coordinated vulnerability disclosure (CVD) policy, single contact point, secure update channel |
-| 3 | `cra.incident_reporting` | Article 14 | 11 | **24h / 72h / 14d** vulnerability reporting cascade; **24h / 72h / 1-month** severe-incident cascade; user notification + mitigation guidance; single ENISA reporting point |
-| 4 | `cra.technical_documentation` | Article 28 + Annex VII | 15 | Product description, risk assessment, design/architecture, cybersecurity control mapping, vuln-handling process documentation, SBOM inclusion, test results, third-party assessment evidence (for Important Class II / Critical), 10-year retention, availability to authorities |
-| 5 | `cra.conformity_assessment` | Articles 32-33 | 11 | Conformity procedure selection; **Module A insufficient for Important Class II**; Critical products require European cybersecurity certification scheme; notified body engagement + ID; CE marking (affixed, visible, legible, indelible); notified body number alongside CE; reassessment on modification |
+| 2 | `cra.vulnerability_handling` | Annex I Part II (1)-(8) + Art.13(8) | 17 | SBOM (machine-readable, top-level deps), remediation without delay, **support period: 5-year floor with the shorter expected-use carve-out**, regular testing, post-patch disclosure, CVD policy, contact address, secure+timely update distribution, free dissemination (tailor-made exception) |
+| 3 | `cra.incident_reporting` | Article 14 (**applies from 2026-09-11**) | 12 | **24h / 72h** vulnerability cascade + final report 14d after a corrective measure is available; **24h / 72h** severe-incident cascade + final report 1 month after the notification; simultaneous CSIRT-coordinator + ENISA recipients via the Art.16 platform; user notification incl. machine-readable where appropriate; CSIRT-coordinator identified in advance |
+| 4 | `cra.technical_documentation` | Article 31 + Annex VII | 15 | Product description, risk assessment, design/architecture, cybersecurity control mapping, vuln-handling process documentation, SBOM inclusion, test results, third-party assessment evidence (for Important Class II / Critical), 10-year retention, availability to authorities |
+| 5 | `cra.conformity_assessment` | Article 32 + Annex VIII | 11 | Conformity procedure selection; **Module A insufficient for Important Class II**; Critical products require European cybersecurity certification scheme; notified body engagement + ID; CE marking (affixed, visible, legible, indelible); notified body number alongside CE; reassessment on modification |
 | 6 | `cra.manufacturer_obligations` | Article 13 | 14 | Risk assessment performed + documented; vuln handling lifetime coverage; third-party component due diligence + monitoring; ENISA reporting process; 5-year support period; user information; market surveillance cooperation; end-of-support notification 12 months in advance; PSIRT lead |
 | 7 | `cra.authorised_representative` | Article 18 | 13 | Written mandate; non-EU manufacturer must appoint EU rep; retention of Declaration + Tech Doc for 10 years; cooperation with authorities; mandate termination + authority notification if manufacturer breaches CRA; **non-delegation** of essential requirements + conformity assessment; contact details in user info |
 | 8 | `cra.importer_obligations` | Article 19 | 14 | Verify manufacturer conformity assessment + technical documentation + CE marking + Declaration; importer identification on product; storage/transport preserves compliance; risk awareness reporting; 10-year doc retention; corrective action + withdrawal/recall; **Art.21 escalation** to manufacturer role if rebranding |
 | 9 | `cra.distributor_obligations` | Article 20 | 15 | Pre-availability verification; suspend availability on suspected non-conformity; storage handling; market-surveillance notification; cooperation; corrective action; **Art.21 escalation** to manufacturer if product modified or sold under own brand |
-| 10 | `cra.oss_steward` | Article 24 | 13 | **Threshold-gated** (systematic + sustained + commercial); cybersecurity policy published + covers vulnerability handling + secure development; cooperation with market surveillance; 24h/72h ENISA reporting; downstream manufacturer engagement; coordinated vuln disclosure policy; user reporting channel; security decision records |
+| 10 | `cra.oss_steward` | Article 24 | 13 | **Threshold-gated** on the full Art.3(14) definition (legal person, not the manufacturer of the product, systematic+sustained, ensures viability, product intended for commercial activities); policy documented verifiably (vuln handling, secure dev, voluntary Art.15 reporting + info sharing, CVD, reporting channel); Art.24(2) cooperation incl. policy-on-reasoned-request; **Art.24(3) conditional reporting** (14(1) only if involved in development; 14(3)/(8) only for incidents affecting steward-provided infrastructure), "without undue delay" to CSIRT coordinator + ENISA; CSIRT identified in advance; Art.52(3) corrective-action capability. Fines never apply (64(10)(b)) |
 | 11 | `cra.user_information` | Annex II | 20 | Manufacturer + auth-rep contact details; product type/batch/version; intended purpose + security environment; cybersecurity properties; use-case threats; SBOM access; support period + end-of-support date; security update access + install instructions; secure decommissioning; Member State languages; readability appropriate for users |
-| 12 | `cra.declaration_of_conformity` | Annex IV | 20 | Product model + serial/batch identifier; manufacturer details; authorised representative details (when applicable); statement of sole responsibility; object description sufficient for traceability; explicit conformity-with-CRA statement; harmonised standards referenced **with dates/versions**; notified body name + ID + certificate ref (when applicable); declared support period; signature with name + function + place + date; translation into Member State languages |
-| 13 | `cra.substantial_modification` | Article 11 | 13 | Documented + published assessment criteria; conformity reassessment after substantial mod; modifier assumes Art.13 obligations; risk assessment update on new connectivity / cryptographic-primitive change / SBOM change; technical documentation update; Declaration reissued; user notification of security-relevant changes; support period recommitment; annual review of assessment criteria |
-| 14 | `cra.online_marketplace` | Article 22 | 13 | **Threshold-gated** (marketplace provider + offers PDE products); single point of contact for authorities + end users; cooperation; **48h authority takedown order action**; trader identity verification + CRA attestation; random checks (≥ 1% sample); manufacturer notification + listing removal on non-compliance; affected-buyer notification; consumer reporting channel; documented CRA process |
-| 15 | `cra.foss_exclusion` | Article 23 + Recitals 15-18 | 8 | **Boundary check** — returns `exempt = true` for non-commercial OSS, zero violations. Detects mis-claims: paid support / license fees / commercial SaaS / donation-funded full-time devs / integration into commercial products. Requires documented + annually-reviewed exemption basis |
-| 16 | `cra.supply_chain_evidence` | **Evidence bridge** — re-uses `data.supply_chain.slsa` | 14 | Consumes SLSA findings (SBOM completeness, machine-readable format, signing, CVE policy, provenance) and re-frames them in CRA citation form. The same evidence powers both an SLSA report and a CRA report — no double-attestation. Connects: Annex I.6 (integrity), Annex II.1 (SBOM), Annex II.4 (CVE disclosure), Art.13(6) (third-party diligence), Art.11 (substantial-modification SBOM refresh), Annex VII.3 (provenance in technical documentation) |
+| 12 | `cra.declaration_of_conformity` | Annex V | 20 | Product model + serial/batch identifier; manufacturer details; authorised representative details (when applicable); statement of sole responsibility; object description sufficient for traceability; explicit conformity-with-CRA statement; harmonised standards referenced **with dates/versions**; notified body name + ID + certificate ref (when applicable); declared support period; signature with name + function + place + date; translation into Member State languages |
+| 13 | `cra.substantial_modification` | Article 22 (def. Art.3(40)) | 13 | Documented + published assessment criteria; conformity reassessment after substantial mod; modifier assumes Art.13 obligations; risk assessment update on new connectivity / cryptographic-primitive change / SBOM change; technical documentation update; Declaration reissued; user notification of security-relevant changes; support period recommitment; annual review of assessment criteria |
+| 14 | `cra.online_marketplace` | **Non-CRA adjunct** (recital 78; DSA/GPSR-derived) | 13 | **Threshold-gated** (marketplace provider + offers PDE products); single point of contact for authorities + end users; cooperation; **48h authority takedown order action**; trader identity verification + CRA attestation; random checks (≥ 1% sample); manufacturer notification + listing removal on non-compliance; affected-buyer notification; consumer reporting channel; documented CRA process |
+| 15 | `cra.foss_exclusion` | Art.3(22) + recitals 15/18 | 7 | **Boundary check** — returns `exempt = true` for non-commercial OSS, zero violations. Mis-claims: beyond-cost-recovery paid support / price for the product / monetised platform / personal-data conditioning / claimant integrating into its own commercial product. How development is financed (donations) is NOT a factor (recital 18). Hygiene checks labeled as practice, not CRA duties |
+| 16 | `cra.supply_chain_evidence` | **Evidence bridge** — re-uses `data.supply_chain.slsa` | 14 | Consumes SLSA findings (SBOM completeness, machine-readable format, signing, CVE policy, provenance) and re-frames them in CRA citation form. The same evidence powers both an SLSA report and a CRA report — no double-attestation. Connects: Annex I.6 (integrity), Annex I Part II (1) (SBOM), Annex I Part II (4) (disclosure), Art.13(6) (third-party diligence), Art.22 (substantial-modification SBOM refresh), Annex VII.3 (provenance in technical documentation) |
 | 17 | `cra.crypto_evidence` | **Evidence bridge** — re-uses `data.iso27001.cryptography` | 13 | Consumes ISO 27001 A.10 crypto findings (policy, key management, generation, distribution, usage, destruction) and re-frames them as CRA Annex I.5 / I.6 / I.4 citations. Adds CRA-specific weak-cipher + deprecated-protocol + anti-rollback + hardware-backed-key-storage rules that ISO 27001 leaves implicit |
 
 ---
@@ -217,7 +217,7 @@ Worked example fixtures will land in `examples/` alongside this doc.
   "in_force":        "2024-11",
   "mandatory_from":  "2027-12",
   "compliant":       false,
-  "total_controls":  217,
+  "total_controls":  245,
   "violation_count": 142,
   "violations":      ["CRA Annex I.1(a): ...", "CRA Art.14(2)(b): ...", ...],
   "module_summary": {
@@ -229,7 +229,7 @@ Worked example fixtures will land in `examples/` alongside this doc.
 }
 ```
 
-The `compliant` field is a strict AND across all 217 controls. The `module_summary` exposes per-module pass/fail for finer dashboards.
+The `compliant` field is a strict AND across all 245 controls. The `module_summary` exposes per-module pass/fail for finer dashboards.
 
 ### Worked operational scenarios
 
@@ -247,15 +247,15 @@ The framework flags: Declaration of Conformity missing the explicit Article 13 c
 
 **Scenario C — OSS foundation crossing the commercial line**
 
-An OSS foundation that has historically operated under the Article 23 exclusion accepts its first commercial paid-support contract. The legal team runs the report.
+An OSS foundation that has historically operated under the non-commercial exclusion (Art.3(22)/recital 15) starts selling support contracts priced beyond cost recovery. The legal team runs the report.
 
-The framework flags: `CRA Art.23 (mis-claim): FOSS exemption claimed, but the entity offers paid support — this is a commercial activity` and `Art.23 (boundary): Donation-funded full-time paid developers move the entity toward the OSS-steward category (Art.24)`. The foundation now knows it has crossed the boundary and has 12 months to either restructure (revert to non-commercial) or assume Article 24 OSS-steward obligations. Avoided: silent drift across the line, followed by Article 24 violations going undetected until enforcement.
+The framework flags: `CRA Art.3(22)/recital 15 (mis-claim): exclusion claimed, but paid technical support exceeds recuperation of actual costs — a commercial activity`. The foundation now knows it has crossed the boundary and can restructure (return to cost-recovery pricing) or assess its role under the Regulation. Donations and how development is financed are NOT factors (recital 18) — the report will not false-flag a donation-funded foundation. Avoided: silent drift across the line.
 
 **Scenario D — Active exploitation incident**
 
 PSIRT receives credible evidence on Monday 09:00 UTC that a vulnerability in shipped firmware is being actively exploited. Continuous monitoring runs the report every 6 hours with the new incident facts.
 
-At hour 25 (Tuesday 10:00 UTC), the framework flags `Art.14(2)(a): No early warning sent to ENISA/CSIRT within 24h (current: 25h since awareness)`. Alerting fires. ENISA notification follows within the next 30 minutes. Without the framework: the PSIRT process might have caught the deadline; might not have. The framework's clock-based rules guarantee the team is told. Avoided: Tier 2 fine for Article 14 breach (up to €10M or 2% turnover).
+At hour 25 (Tuesday 10:00 UTC), the framework flags `CRA Art.14(2)(a): no early warning submitted to the CSIRT coordinator and ENISA within 24h of awareness (current: 25h)`. Alerting fires; the notification follows within the next 30 minutes via the Art.16 single reporting platform. Without the framework: the PSIRT process might have caught the deadline; might not have. Avoided: **Tier 1** fine — Article 14 breaches sit in the top tier (Art. 64(2): up to €15M or 2.5% of turnover), and these obligations are live since 11 September 2026.
 
 **Scenario E — Substantial modification escalation**
 
