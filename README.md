@@ -100,6 +100,7 @@ This library gives you a **complete, working policy set on day one**, covering 3
 | **IRS Publication 1075 (Rev. 11-2021)** | `frameworks/federal/irs_1075/` | 8 safeguard areas, 57 requirements — IRC 6103(p)(4)(A)–(F), §9 computer security (800-53 Rev 5 tailoring), §10 incident response |
 | **UK Cyber Essentials (Willow, April 2025)** | `frameworks/regional/cyber_essentials/` | 5 technical control themes, 28 requirements |
 | **BSI C5:2020** | `frameworks/regional/bsi_c5/` | All 17 criteria domains, 61 requirements — incl. Portability/Interoperability (export + confirmed deletion) and Government Investigation Requests (INQ) |
+| **UK MoD DCC — DEF STAN 05-138 Issue 4** | `frameworks/regional/dcc/` | All 148 controls, 4 Cyber Risk Profiles (L0 Basic → L3 Expert) with exact per-control level sets incl. the non-cumulative supersession pairs |
 
 Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDARDS_UPDATE_REGISTRY.md) — pinned version, upstream revision cadence, and watch URL — so modules regenerate when standards change instead of drifting silently.
 
@@ -222,7 +223,7 @@ rego_policy_libraries/
 │   ├── financial/               # PCI-DSS, SOX, SWIFT CSP, NY DFS, SEC Cyber, GLBA
 │   ├── privacy/                 # GDPR, HIPAA, ISO 27701, CCPA/CPRA, FERPA, COPPA
 │   ├── regulatory/              # DORA, NIS2, ITAR
-│   ├── regional/                # ACSC Essential Eight, UK Cyber Essentials, BSI C5
+│   ├── regional/                # ACSC Essential Eight, UK Cyber Essentials, BSI C5, UK MoD DCC
 │   ├── critical_infrastructure/ # NERC-CIP (CIP-002–CIP-015), IEC 62443, NIST IR 7628,
 │   │                            # NIST 800-82, TSA Pipeline Security Directives
 │   └── sovereignty/             # Digital Sovereignty (7 domains)
