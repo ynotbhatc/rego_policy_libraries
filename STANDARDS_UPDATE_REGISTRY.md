@@ -65,6 +65,7 @@ A one-fetch check caught it. This registry is that check, systematized.
 | FERPA | 34 CFR Part 99 (current per eCFR 2026-09) | ED | amendment-driven; **ED signaled intent (Fall 2024) to propose amendments — watch** | rolling | ecfr.gov (34 CFR 99) |
 | COPPA | 16 CFR Part 312 as amended 90 FR 16918 (eff. 2025-06-23; compliance 2026-04-22) | FTC | amendment-driven (first update since 2013) | — | ftc.gov/legal-library (COPPA Rule) |
 | FedRAMP | current baselines (rev5) | GSA | **FedRAMP 20x modernization in progress — watch actively** (verify) | rolling | fedramp.gov |
+| PQC Readiness | FIPS 203/204/205 (Aug 2024) + NIST IR 8547 (draft ipd) + EO 14412 (2026-06-22) / OMB M-26-15 + CNSA 2.0 | NIST / OMB / NSA | **IR 8547 final expected — watch; CNSA 2.0 FAQ revs; EO-driven FAR rule in progress** | rolling | csrc.nist.gov/pubs/ir/8547 + nsa.gov (CNSA 2.0 FAQ) |
 | CIS M365 (saas/) | pinned per module | CIS | rolling ~annual | continuous | workbench.cisecurity.org |
 | CISA SCuBA M365 (scuba/) | per-policy IDs (v-suffix) pinned in modules; 104 policies | CISA | rolling per-policy revisions in cisagov/ScubaGear — watch the baselines/ directory | continuous | github.com/cisagov/ScubaGear/tree/main/PowerShell/ScubaGear/baselines |
 | CIS EKS | v1.8.0 | CIS | rolling ~annual | continuous | workbench.cisecurity.org |
