@@ -2,6 +2,14 @@ package eu_ai_act.prohibited
 
 import rego.v1
 
+# EU AI Act Article 5 prohibited practices — Reg. (EU) 2024/1689 as
+# amended by the Digital Omnibus on AI, Reg. (EU) 2026/1744 (in force
+# 2026-07-27), which inserted two new prohibitions applying from
+# 2 December 2026: Art. 5(1)(ba) non-consensual intimate imagery and
+# Art. 5(1)(bb) child sexual abuse material — both with a safe harbour
+# for effective technical safeguards that reliably prevent such outputs,
+# and both in the top fine tier (€35M / 7% of global turnover).
+
 default compliant := false
 
 compliant if {
@@ -209,13 +217,45 @@ violations contains msg if {
 }
 
 # =============================================================================
+# Article 5(1)(ba) — Non-consensual intimate imagery (added by Reg. 2026/1744,
+# applies from 2 December 2026)
+# =============================================================================
+
+violations contains msg if {
+	input.eu_ai_act.prohibited.intimate_imagery.can_generate_realistic_intimate_imagery == true
+	not input.eu_ai_act.prohibited.intimate_imagery.effective_safeguards_prevent_output == true
+	msg := "Article 5(1)(ba) (Reg. 2026/1744, applies 2026-12-02): AI system can generate or manipulate realistic intimate imagery of identifiable persons without consent, and lacks effective technical safeguards that reliably prevent such outputs"
+}
+
+violations contains msg if {
+	input.eu_ai_act.prohibited.intimate_imagery.generated_without_consent == true
+	msg := "Article 5(1)(ba) (Reg. 2026/1744): AI system has generated or manipulated realistic intimate imagery of an identifiable person without that person's consent"
+}
+
+# =============================================================================
+# Article 5(1)(bb) — Child sexual abuse material (added by Reg. 2026/1744,
+# applies from 2 December 2026)
+# =============================================================================
+
+violations contains msg if {
+	input.eu_ai_act.prohibited.csam.can_generate_csam == true
+	not input.eu_ai_act.prohibited.csam.effective_safeguards_prevent_output == true
+	msg := "Article 5(1)(bb) (Reg. 2026/1744, applies 2026-12-02): AI system can generate or manipulate child sexual abuse material, and lacks effective technical safeguards that reliably prevent such outputs"
+}
+
+violations contains msg if {
+	input.eu_ai_act.prohibited.csam.generated_csam == true
+	msg := "Article 5(1)(bb) (Reg. 2026/1744): AI system has generated or manipulated child sexual abuse material"
+}
+
+# =============================================================================
 # Compliance report
 # =============================================================================
 
 compliance_report := {
 	"module": "prohibited_practices",
 	"standard": "EU AI Act — Title II, Article 5",
-	"applies_from": "February 2025",
+	"applies_from": "2 February 2025 (Art.5(1)(ba)/(bb): 2 December 2026, per Reg. (EU) 2026/1744)",
 	"compliant": compliant,
 	"total_violations": count(violations),
 	"violations": violations,
@@ -228,5 +268,7 @@ compliance_report := {
 		"5.1(f) — Emotion recognition in workplace/education",
 		"5.1(g) — Untargeted facial recognition scraping",
 		"5.1(h) — Predictive policing on individual basis",
+		"5(1)(ba) — Non-consensual intimate imagery (Reg. 2026/1744, from 2026-12-02)",
+		"5(1)(bb) — Child sexual abuse material (Reg. 2026/1744, from 2026-12-02)",
 	],
 }
