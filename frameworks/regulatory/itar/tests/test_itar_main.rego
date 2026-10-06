@@ -17,7 +17,10 @@ compliant_input := {
 	"entity_name": "Example Defense Supplier",
 	"assessment_date": "2026-09-02",
 	"registration": {"ddtc_current": true},
-	"jurisdiction": {"technical_data_identified": true},
+	"jurisdiction": {
+		"technical_data_identified": true,
+		"classification_reviewed_after_usml_revision": true,
+	},
 	"access": {
 		"us_persons_only_enforced": true,
 		"system_access_controls": true,
@@ -25,7 +28,8 @@ compliant_input := {
 	},
 	"encryption": {
 		"end_to_end_fips_validated": true,
-		"no_decryption_in_proscribed_countries": true,
+		"no_storage_in_proscribed_or_russia": true,
+		"not_sent_from_proscribed_or_russia": true,
 		"keys_withheld_from_foreign_persons": true,
 	},
 	"program": {

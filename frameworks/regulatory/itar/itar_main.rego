@@ -40,12 +40,33 @@ violations contains msg if {
 	msg := "ITAR 22 CFR 120.33/121.1: USML-controlled technical data not identified and classified (jurisdiction/classification determinations not documented)"
 }
 
+# The USML moved under us: revisions to §§121.0/121.1/126.9 effective
+# 2025-09-15 (GNSS anti-spoof CRPAs, ACAS antennas and lead-free
+# birdshot moved to the EAR; new §126.9(u) UUV exemption) and the Cat
+# XX(a)(10)/(a)(11) UUV re-scope effective 2026-10-19. Pre-revision
+# classification determinations may now be wrong in either direction.
+violations contains msg if {
+	not input.jurisdiction.classification_reviewed_after_usml_revision == true
+	msg := "ITAR 22 CFR 121.1 (as revised eff. 2025-09-15 and 2026-10-19): classification determinations not re-reviewed against the current USML — pre-revision determinations may misclassify items moved to or from the EAR"
+}
+
 # ── Access Restriction (the core safeguarding obligation) ────────────────────
+
+# Three satisfying paths: U.S.-persons-only, a documented export
+# authorization, or documented AUKUS §126.7 exemption eligibility
+# (final rule 90 FR 61053, eff. 2025-12-30) — all three §126.7 facts
+# are required for that path.
+_aukus_exemption_documented if {
+	input.access.aukus.both_parties_on_authorized_user_list == true
+	input.access.aukus.item_not_on_excluded_technology_list == true
+	input.access.aukus.ddtc_registration_current == true
+}
 
 violations contains msg if {
 	not input.access.us_persons_only_enforced
 	not input.access.foreign_person_authorization_documented
-	msg := "ITAR 22 CFR 120.50/127.1: Access to ITAR technical data not restricted to U.S. persons, and no export authorization documented for foreign-person access (unauthorized foreign-person access is a deemed export)"
+	not _aukus_exemption_documented
+	msg := "ITAR 22 CFR 120.50/127.1: Access to ITAR technical data not restricted to U.S. persons, with no export authorization documented and no AUKUS §126.7 exemption eligibility documented (authorized-user status both parties + item off the Excluded Technology List + current DDTC registration) — unauthorized foreign-person access is a deemed export"
 }
 
 violations contains msg if {
@@ -59,23 +80,33 @@ violations contains msg if {
 }
 
 # ── §120.54 — Encrypted Transfer/Storage Carve-out ───────────────────────────
-# Properly secured encrypted data is not an "export" — the condition
-# set is specific: FIPS 140-validated end-to-end encryption, no
-# decryption in a §126.1 country, keys not provided to foreign persons.
+# Properly secured encrypted data is not an "export". The §120.54(a)(5)
+# conditions: (i) unclassified; (ii) end-to-end encrypted; (iii) FIPS
+# 140-compliant or equivalent (≥AES-128) modules; (iv) not intentionally
+# sent to a person in, or stored in, a §126.1 proscribed country OR the
+# Russian Federation (Russia is named separately — it is not a §126.1
+# country); (v) not sent from such a country. Per §120.54(b)(1),
+# end-to-end means the means of decryption are not provided to ANY
+# third party.
 
 violations contains msg if {
 	not input.encryption.end_to_end_fips_validated
-	msg := "ITAR 22 CFR 120.54(a)(5)(i): Technical data transfers/cloud storage not secured with FIPS 140-validated end-to-end encryption — without it, transit or storage abroad is an export requiring authorization"
+	msg := "ITAR 22 CFR 120.54(a)(5)(ii)-(iii): Technical data transfers/cloud storage not secured with end-to-end encryption using FIPS 140-compliant (or equivalent, >=AES-128) modules — without it, transit or storage abroad is an export requiring authorization"
 }
 
 violations contains msg if {
-	not input.encryption.no_decryption_in_proscribed_countries
-	msg := "ITAR 22 CFR 120.54(a)(5)(ii): No assurance that encrypted technical data is not decrypted in §126.1 proscribed countries"
+	not input.encryption.no_storage_in_proscribed_or_russia
+	msg := "ITAR 22 CFR 120.54(a)(5)(iv): No assurance that encrypted technical data is not intentionally sent to a person in, or stored in, a §126.1 proscribed country or the Russian Federation"
+}
+
+violations contains msg if {
+	not input.encryption.not_sent_from_proscribed_or_russia == true
+	msg := "ITAR 22 CFR 120.54(a)(5)(v): No assurance that encrypted technical data is not sent from a §126.1 proscribed country or the Russian Federation"
 }
 
 violations contains msg if {
 	not input.encryption.keys_withheld_from_foreign_persons
-	msg := "ITAR 22 CFR 120.54(a)(5)(iii): Decryption keys/means not withheld from foreign persons"
+	msg := "ITAR 22 CFR 120.54(b)(1): Means of decryption not withheld from third parties — end-to-end encryption requires that decryption capability is provided to no third party"
 }
 
 # ── Compliance Program (DDTC consent-agreement staples) ──────────────────────
@@ -135,7 +166,7 @@ compliance_report := {
 	"entity_name": entity_name,
 	"assessed_at": assessment_date,
 	"compliant": compliant,
-	"total_controls": 15,
+	"total_controls": 17,
 	"violations": violations,
 	"violation_count": count(violations),
 	"scope_note": "Covers the assessable data-safeguarding slice of ITAR. Licensing decisions, TAA/MLA agreements, and jurisdiction rulings are legal process outside technical assessment. Pair with NIST SP 800-171 for technical control depth on the same systems.",
