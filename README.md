@@ -100,6 +100,9 @@ This library gives you a **complete, working policy set on day one**, covering 3
 | **IRS Publication 1075 (Rev. 11-2021)** | `frameworks/federal/irs_1075/` | 8 safeguard areas, 57 requirements — IRC 6103(p)(4)(A)–(F), §9 computer security (800-53 Rev 5 tailoring), §10 incident response |
 | **UK Cyber Essentials (Willow, April 2025)** | `frameworks/regional/cyber_essentials/` | 5 technical control themes, 28 requirements |
 | **BSI C5:2020** | `frameworks/regional/bsi_c5/` | All 17 criteria domains, 61 requirements — incl. Portability/Interoperability (export + confirmed deletion) and Government Investigation Requests (INQ) |
+| **ISO/IEC 42005:2025 (AI impact assessment)** | `governance/iso_42005/` | 22 attestation checks across the AIIA process (Clause 5) and per-system records (Clause 6), wired to the ISO 42001 AIMS integration |
+| **OWASP LLM Top 10 (2026)** | `governance/owasp_llm/` | 30 controls (3 per risk, LLM01–LLM10:2026) with a MITRE ATLAS mitigation crosswalk (atlas-data v2026.09) |
+| **FedRAMP 20x KSI** | `frameworks/federal/fedramp_20x/` | All 46 Key Security Indicators, Class B/C profiles, generated from the Consolidated Rules datafile; rev5 module retained for existing/High |
 | **UK MoD DCC — DEF STAN 05-138 Issue 4** | `frameworks/regional/dcc/` | All 148 controls, 4 Cyber Risk Profiles (L0 Basic → L3 Expert) with exact per-control level sets incl. the non-cumulative supersession pairs |
 
 Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDARDS_UPDATE_REGISTRY.md) — pinned version, upstream revision cadence, and watch URL — so modules regenerate when standards change instead of drifting silently.

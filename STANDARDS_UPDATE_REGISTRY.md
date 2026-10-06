@@ -65,6 +65,10 @@ A one-fetch check caught it. This registry is that check, systematized.
 | FERPA | 34 CFR Part 99 (current per eCFR 2026-09) | ED | amendment-driven; **ED signaled intent (Fall 2024) to propose amendments — watch** | rolling | ecfr.gov (34 CFR 99) |
 | COPPA | 16 CFR Part 312 as amended 90 FR 16918 (eff. 2025-06-23; compliance 2026-04-22) | FTC | amendment-driven (first update since 2013) | — | ftc.gov/legal-library (COPPA Rule) |
 | FedRAMP | rev5 baselines — **20x is GA** (Consolidated Rules 2026-06-25): rules mandatory for all 2027-01-01, no new rev5 certs after 2027-06-11, Class D stays rev5 pending FY27 pilot; **20x/KSI module scoped (#172)** | GSA | 20x cadence | 2027-01-01 | fedramp.gov |
+| ISO/IEC 42005 | 2025 (first edition, 2025-05-28) | ISO/IEC | first-edition — watch for early amendment | — | iso.org/standard/44545 (42005) |
+| OWASP LLM Top 10 | 2026 edition (2026-08-04) | OWASP GenAI Security Project | ~annual; 2026 renumbered 8 of 10 vs 2025 | 2027 | genai.owasp.org |
+| MITRE ATLAS (crosswalk) | atlas-data v2026.09 (16 tactics, 101+69 techniques, 35 mitigations) | MITRE | monthly releases — crosswalk metadata only, not checks | continuous | github.com/mitre-atlas/atlas-data |
+| FedRAMP 20x KSI | Consolidated Rules datafile (46 KSIs, stable since 2026-06-24) | GSA/FedRAMP | datafile-versioned; regenerate module from fedramp-consolidated-rules.json | rolling | github.com/FedRAMP/rules |
 | UK MoD DCC / DEF STAN 05-138 | Issue 4 (14 May 2024); DCC scheme live 2025, L0 mandate 2026-12-31 | UK MoD DStan / IASME | issue-driven (Iss 3→4 ~4 yrs); scheme guidance revs faster | watch | gov.uk (DStan) + iasme.co.uk (DCC) |
 | PQC Readiness | FIPS 203/204/205 (Aug 2024) + NIST IR 8547 (draft ipd) + EO 14412 (2026-06-22) / OMB M-26-15 + CNSA 2.0 | NIST / OMB / NSA | **IR 8547 final expected — watch; CNSA 2.0 FAQ revs; EO-driven FAR rule in progress** | rolling | csrc.nist.gov/pubs/ir/8547 + nsa.gov (CNSA 2.0 FAQ) |
 | CIS M365 (saas/) | pinned per module | CIS | rolling ~annual | continuous | workbench.cisecurity.org |

@@ -53,7 +53,9 @@ frameworks/                    Regulatory + management frameworks
 
 governance/                    Cross-cutting governance
 ├── ai/                        AI governance controls
-├── eu_ai_act/                 EU AI Act
+├── eu_ai_act/                 EU AI Act (amended by Reg. 2026/1744)
+├── iso_42005/                 ISO/IEC 42005:2025 AI impact assessment
+├── owasp_llm/                 OWASP LLM Top 10 (2026) + ATLAS crosswalk
 ├── finops/                    FinOps governance
 ├── geisa/                     Grid Edge Interoperability + Security
 ├── mcp/                       MCP tool-call governance
