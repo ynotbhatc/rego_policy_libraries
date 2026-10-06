@@ -38,7 +38,7 @@ benchmarks/                    Per-platform configuration baselines
 frameworks/                    Regulatory + management frameworks
 ├── federal/                   NIST 800-53, NIST 800-171, NIST CSF, NIST RMF,
 │                              FISMA, FedRAMP, CMMC, NIST AI RMF, NIST SSDF,
-│                              Zero Trust, CJIS, IRS Pub 1075
+│                              Zero Trust, CJIS, IRS Pub 1075, PQC Readiness
 ├── financial/                 PCI-DSS, SOX, DORA, NY DFS, SEC Cyber,
 │                              SWIFT CSP
 ├── management/                ISO 27001, SOC 2, HITRUST, TISAX, CSA CCM,

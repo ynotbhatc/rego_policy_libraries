@@ -93,6 +93,7 @@ This library gives you a **complete, working policy set on day one**, covering 3
 | **COPPA (16 CFR Part 312, 2025 amendments)** | `frameworks/privacy/coppa/` | 21 controls incl. separate third-party-disclosure consent, retention policy, written infosec program |
 | **CIS Controls v8.1** | `frameworks/management/cis_controls_v8/` | 18 Critical Security Controls, 153 safeguards, cumulative IG1 ⊆ IG2 ⊆ IG3 scoring — distinct from the CIS *Benchmarks* above |
 | **Zero Trust — CISA ZTMM v2.0 + NIST SP 800-207** | `frameworks/federal/zero_trust/` | 83 criteria across the 5 pillars + 3 cross-cutting capabilities |
+| **PQC Readiness (FIPS 203/204/205, EO 14412, CNSA 2.0)** | `frameworks/federal/pqc/` | 15 profile-gated controls (general/federal/nss) + data-driven algorithm classification over a supplied crypto inventory (HNDL, IR 8547 deprecation, CNSA 2.0) |
 | **ACSC Essential Eight (Nov 2023)** | `frameworks/regional/essential_eight/` | 8 mitigation strategies, 96 requirements; overall maturity = lowest strategy level |
 | **FBI CJIS Security Policy** | `frameworks/federal/cjis/` | All 13 Policy Areas, 98 requirements, NIST 800-53-mapped |
 | **NIST SSDF (SP 800-218 v1.1)** | `frameworks/federal/nist_ssdf/` | 42 secure-software-development controls |
