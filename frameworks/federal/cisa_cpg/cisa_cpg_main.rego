@@ -3,7 +3,7 @@ package cisa_cpg.main
 import rego.v1
 
 # CISA Cross-Sector Cybersecurity Performance Goals (CPG) 2.0
-# (October 2025 update; aligned to NIST CSF 2.0's six functions,
+# (official publication 2025-12-11; aligned to NIST CSF 2.0's six functions,
 # GOVERN added; CISA's stated revision cycle is 24-36 months)
 #
 # 34 goals across six functions:
@@ -47,7 +47,7 @@ violations contains msg if {
 
 violations contains msg if {
 	not input.cpg.governance.incident_response_plans_managed
-	msg := "CISA CPG 1.C (Manage Incident Response Plans): IT and OT incident response plans not established, maintained, and exercised"
+	msg := "CISA CPG 1.C (Maintain Incident Response Plans): IT and OT incident response plans not established, maintained, and exercised"
 }
 
 violations contains msg if {
@@ -219,7 +219,7 @@ violations contains msg if {
 
 violations contains msg if {
 	not input.cpg.recover.incident_planning_preparedness
-	msg := "CISA CPG 6.A (Incident Planning and Preparedness): Recovery planning and preparedness (restoration exercises, lessons learned) not established"
+	msg := "CISA CPG 6.A (Execute Incident Recovery Plan): capability to execute recovery plans (restoration exercises, degraded-operations readiness, lessons learned) not established"
 }
 
 # ── Per-function rollup ──────────────────────────────────────────────────────
@@ -249,7 +249,7 @@ entity_name := input.entity_name
 
 compliance_report := {
 	"framework": "CISA Cross-Sector Cybersecurity Performance Goals",
-	"version": "2.0 (October 2025)",
+	"version": "2.0 (published 2025-12-11)",
 	"entity_name": entity_name,
 	"assessed_at": assessment_date,
 	"compliant": compliant,
