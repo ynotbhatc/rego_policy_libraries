@@ -4,9 +4,10 @@ import rego.v1
 
 # EU Cyber Resilience Act (CRA) — Master orchestrator.
 #
-# Regulation (EU) 2024/2847. Entered into force November 2024;
-# mandatory compliance for products with digital elements (PDE) placed
-# on the EU market from December 2027.
+# Regulation (EU) 2024/2847. In force 10 Dec 2024 (OJ 20 Nov 2024);
+# applies generally from 11 Dec 2027 — but Art.14 reporting applies
+# from 11 SEPTEMBER 2026 and Chapter IV (notification bodies) from
+# 11 June 2026 (Art. 71(2)).
 #
 # Applies to:
 #   - Manufacturers           (Art.13)
@@ -27,84 +28,88 @@ import rego.v1
 #   Annex I Part I   — Essential cybersecurity requirements         (data.cra.essential_requirements)
 #   Annex I Part II  — Vulnerability handling                       (data.cra.vulnerability_handling)
 #   Article 14       — Incident reporting (24h / 72h / final)       (data.cra.incident_reporting)
-#   Article 28 / VII — Technical documentation                      (data.cra.technical_documentation)
-#   Articles 32-33   — Conformity assessment + CE marking           (data.cra.conformity_assessment)
+#   Article 31 / Annex VII — Technical documentation                (data.cra.technical_documentation)
+#   Art.32 / Annex VIII — Conformity assessment + CE marking        (data.cra.conformity_assessment)
 #   Article 13       — Manufacturer obligations                     (data.cra.manufacturer_obligations)
 #   Article 18       — Authorised representative obligations        (data.cra.authorised_representative)
 #   Article 19       — Importer obligations                         (data.cra.importer_obligations)
 #   Article 20       — Distributor obligations                      (data.cra.distributor_obligations)
 #   Article 24       — Open-source software steward obligations     (data.cra.oss_steward)
 #   Annex II         — User information                             (data.cra.user_information)
-#   Annex IV         — Declaration of Conformity content            (data.cra.declaration_of_conformity)
-#   Article 11       — Substantial modification                     (data.cra.substantial_modification)
-#   Article 22       — Online marketplace obligations               (data.cra.online_marketplace)
-#   Article 23       — FOSS exclusion boundary check                (data.cra.foss_exclusion)
+#   Annex V          — Declaration of Conformity content            (data.cra.declaration_of_conformity)
+#   Article 22       — Substantial modification (def. Art.3(40))    (data.cra.substantial_modification)
+#   (non-CRA)        — Marketplace due diligence adjunct            (data.cra.online_marketplace)
+#   Art.3(22)/rec.15,18 — FOSS exclusion boundary check             (data.cra.foss_exclusion)
 #   evidence-bridge  — Supply-chain via data.supply_chain.slsa       (data.cra.supply_chain_evidence)
 #   evidence-bridge  — Crypto via data.iso27001.cryptography         (data.cra.crypto_evidence)
 
-import data.cra.essential_requirements      as er
-import data.cra.vulnerability_handling      as vh
-import data.cra.incident_reporting          as ir
-import data.cra.technical_documentation     as td
-import data.cra.conformity_assessment       as ca
-import data.cra.manufacturer_obligations    as mo
-import data.cra.authorised_representative   as ar
-import data.cra.importer_obligations        as io_
-import data.cra.distributor_obligations     as do_
-import data.cra.oss_steward                 as oss
-import data.cra.user_information            as ui
-import data.cra.declaration_of_conformity   as doc
-import data.cra.substantial_modification    as sm
-import data.cra.online_marketplace          as om
-import data.cra.foss_exclusion              as foss
-import data.cra.supply_chain_evidence       as sce
-import data.cra.crypto_evidence             as crypto
+import data.cra.authorised_representative as ar
+import data.cra.conformity_assessment as ca
+import data.cra.crypto_evidence as crypto
+import data.cra.declaration_of_conformity as doc
+import data.cra.distributor_obligations as do_
+import data.cra.essential_requirements as er
+import data.cra.foss_exclusion as foss
+import data.cra.importer_obligations as io_
+import data.cra.incident_reporting as ir
+import data.cra.manufacturer_obligations as mo
+import data.cra.online_marketplace as om
+import data.cra.oss_steward as oss
+import data.cra.substantial_modification as sm
+import data.cra.supply_chain_evidence as sce
+import data.cra.technical_documentation as td
+import data.cra.user_information as ui
+import data.cra.vulnerability_handling as vh
 
 default compliant := false
+
 default entity_name := "unknown"
+
 default product_name := "unknown"
+
 default product_class := "unknown"
+
 default assessed_at := "unknown"
 
-entity_name   := input.entity_name
-product_name  := input.product_name
+entity_name := input.entity_name
+product_name := input.product_name
 product_class := input.product_class
-assessed_at   := input.assessment_date
+assessed_at := input.assessment_date
 
-er_v   := [v | some v in er.violation]
-vh_v   := [v | some v in vh.violation]
-ir_v   := [v | some v in ir.violation]
-td_v   := [v | some v in td.violation]
-ca_v   := [v | some v in ca.violation]
-mo_v   := [v | some v in mo.violation]
-ar_v   := [v | some v in ar.violation]
-io_v   := [v | some v in io_.violation]
-do_v   := [v | some v in do_.violation]
-oss_v  := [v | some v in oss.violation]
-ui_v   := [v | some v in ui.violation]
-doc_v    := [v | some v in doc.violation]
-sm_v     := [v | some v in sm.violation]
-om_v     := [v | some v in om.violation]
-foss_v   := [v | some v in foss.violation]
-sce_v    := [v | some v in sce.violation]
+er_v := [v | some v in er.violation]
+vh_v := [v | some v in vh.violation]
+ir_v := [v | some v in ir.violation]
+td_v := [v | some v in td.violation]
+ca_v := [v | some v in ca.violation]
+mo_v := [v | some v in mo.violation]
+ar_v := [v | some v in ar.violation]
+io_v := [v | some v in io_.violation]
+do_v := [v | some v in do_.violation]
+oss_v := [v | some v in oss.violation]
+ui_v := [v | some v in ui.violation]
+doc_v := [v | some v in doc.violation]
+sm_v := [v | some v in sm.violation]
+om_v := [v | some v in om.violation]
+foss_v := [v | some v in foss.violation]
+sce_v := [v | some v in sce.violation]
 crypto_v := [v | some v in crypto.violation]
 
 # Nested 2-arg array.concat per repo convention.
-_a  := array.concat(er_v, vh_v)
-_b  := array.concat(_a, ir_v)
-_c  := array.concat(_b, td_v)
-_d  := array.concat(_c, ca_v)
-_e  := array.concat(_d, mo_v)
-_f  := array.concat(_e, ar_v)
-_g  := array.concat(_f, io_v)
-_h  := array.concat(_g, do_v)
-_i  := array.concat(_h, oss_v)
-_j  := array.concat(_i, ui_v)
-_k  := array.concat(_j, doc_v)
-_l  := array.concat(_k, sm_v)
-_m  := array.concat(_l, om_v)
-_n  := array.concat(_m, foss_v)
-_o  := array.concat(_n, sce_v)
+_a := array.concat(er_v, vh_v)
+_b := array.concat(_a, ir_v)
+_c := array.concat(_b, td_v)
+_d := array.concat(_c, ca_v)
+_e := array.concat(_d, mo_v)
+_f := array.concat(_e, ar_v)
+_g := array.concat(_f, io_v)
+_h := array.concat(_g, do_v)
+_i := array.concat(_h, oss_v)
+_j := array.concat(_i, ui_v)
+_k := array.concat(_j, doc_v)
+_l := array.concat(_k, sm_v)
+_m := array.concat(_l, om_v)
+_n := array.concat(_m, foss_v)
+_o := array.concat(_n, sce_v)
 all_violations := array.concat(_o, crypto_v)
 
 violations := all_violations
@@ -113,58 +118,64 @@ violations := all_violations
 #   Annex I Part I    essential_requirements    21
 #   Annex I Part II   vulnerability_handling    16
 #   Article 14        incident_reporting        11
-#   Article 28/VII    technical_documentation   15
-#   Articles 32-33    conformity_assessment     11
+#   Art.31/Annex VII  technical_documentation   15
+#   Art.32/Annex VIII conformity_assessment     11
 #   Article 13        manufacturer_obligations  14
 #   Article 18        authorised_representative 13
 #   Article 19        importer_obligations      14
 #   Article 20        distributor_obligations   15
 #   Article 24        oss_steward               13
 #   Annex II          user_information          20
-#   Annex IV          declaration_of_conformity 20
-#   Article 11        substantial_modification  13
-#   Article 22        online_marketplace        13
-#   Article 23        foss_exclusion             8
+#   Annex V           declaration_of_conformity 20
+#   Article 22        substantial_modification  13
+#   (non-CRA adjunct) online_marketplace        13
+#   Art.3(22)/recitals foss_exclusion            7
 #   evidence bridge   supply_chain_evidence     14  (re-frames data.supply_chain.slsa findings)
 #   evidence bridge   crypto_evidence           13  (re-frames data.iso27001.cryptography findings)
-# Total: 244 distinct control checks across 17 modules.
-total_controls := 244
+# Total: 245 control checks across 17 modules (sum of per-module counts).
+total_controls := 245
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 compliance_report := {
-    "framework":       "EU Cyber Resilience Act (CRA)",
-    "regulation":      "Regulation (EU) 2024/2847",
-    "in_force":        "2024-11",
-    "mandatory_from":  "2027-12",
-    "entity_name":     entity_name,
-    "product_name":    product_name,
-    "product_class":   product_class,
-    "assessed_at":     assessed_at,
-    "compliant":       compliant,
-    "total_controls":  total_controls,
-    "violations":      violations,
-    "violation_count": count(violations),
-    "module_summary": {
-        "essential_requirements":     {"violations": count(er_v),   "compliant": count(er_v)   == 0},
-        "vulnerability_handling":     {"violations": count(vh_v),   "compliant": count(vh_v)   == 0},
-        "incident_reporting":         {"violations": count(ir_v),   "compliant": count(ir_v)   == 0},
-        "technical_documentation":    {"violations": count(td_v),   "compliant": count(td_v)   == 0},
-        "conformity_assessment":      {"violations": count(ca_v),   "compliant": count(ca_v)   == 0},
-        "manufacturer_obligations":   {"violations": count(mo_v),   "compliant": count(mo_v)   == 0},
-        "authorised_representative":  {"violations": count(ar_v),   "compliant": count(ar_v)   == 0},
-        "importer_obligations":       {"violations": count(io_v),   "compliant": count(io_v)   == 0},
-        "distributor_obligations":    {"violations": count(do_v),   "compliant": count(do_v)   == 0},
-        "oss_steward":                {"violations": count(oss_v),  "compliant": count(oss_v)  == 0},
-        "user_information":           {"violations": count(ui_v),   "compliant": count(ui_v)   == 0},
-        "declaration_of_conformity":  {"violations": count(doc_v),  "compliant": count(doc_v)  == 0},
-        "substantial_modification":   {"violations": count(sm_v),   "compliant": count(sm_v)   == 0},
-        "online_marketplace":         {"violations": count(om_v),   "compliant": count(om_v)   == 0},
-        "foss_exclusion":             {"violations": count(foss_v),   "compliant": count(foss_v)   == 0,
-                                       "exempt": foss.exempt},
-        "supply_chain_evidence":      {"violations": count(sce_v),    "compliant": count(sce_v)    == 0,
-                                       "upstream": "data.supply_chain.slsa"},
-        "crypto_evidence":            {"violations": count(crypto_v), "compliant": count(crypto_v) == 0,
-                                       "upstream": "data.iso27001.cryptography"},
-    },
+	"framework": "EU Cyber Resilience Act (CRA)",
+	"regulation": "Regulation (EU) 2024/2847",
+	"in_force": "2024-11",
+	"mandatory_from": "2027-12",
+	"entity_name": entity_name,
+	"product_name": product_name,
+	"product_class": product_class,
+	"assessed_at": assessed_at,
+	"compliant": compliant,
+	"total_controls": total_controls,
+	"violations": violations,
+	"violation_count": count(violations),
+	"module_summary": {
+		"essential_requirements": {"violations": count(er_v), "compliant": count(er_v) == 0},
+		"vulnerability_handling": {"violations": count(vh_v), "compliant": count(vh_v) == 0},
+		"incident_reporting": {"violations": count(ir_v), "compliant": count(ir_v) == 0},
+		"technical_documentation": {"violations": count(td_v), "compliant": count(td_v) == 0},
+		"conformity_assessment": {"violations": count(ca_v), "compliant": count(ca_v) == 0},
+		"manufacturer_obligations": {"violations": count(mo_v), "compliant": count(mo_v) == 0},
+		"authorised_representative": {"violations": count(ar_v), "compliant": count(ar_v) == 0},
+		"importer_obligations": {"violations": count(io_v), "compliant": count(io_v) == 0},
+		"distributor_obligations": {"violations": count(do_v), "compliant": count(do_v) == 0},
+		"oss_steward": {"violations": count(oss_v), "compliant": count(oss_v) == 0},
+		"user_information": {"violations": count(ui_v), "compliant": count(ui_v) == 0},
+		"declaration_of_conformity": {"violations": count(doc_v), "compliant": count(doc_v) == 0},
+		"substantial_modification": {"violations": count(sm_v), "compliant": count(sm_v) == 0},
+		"online_marketplace": {"violations": count(om_v), "compliant": count(om_v) == 0},
+		"foss_exclusion": {
+			"violations": count(foss_v), "compliant": count(foss_v) == 0,
+			"exempt": foss.exempt,
+		},
+		"supply_chain_evidence": {
+			"violations": count(sce_v), "compliant": count(sce_v) == 0,
+			"upstream": "data.supply_chain.slsa",
+		},
+		"crypto_evidence": {
+			"violations": count(crypto_v), "compliant": count(crypto_v) == 0,
+			"upstream": "data.iso27001.cryptography",
+		},
+	},
 }

@@ -2,110 +2,123 @@ package cra.foss_exclusion
 
 import rego.v1
 
-# EU Cyber Resilience Act (CRA) — Article 23 (recitals 15-18) + interaction with Art.24
-# Free and open-source software exclusion.
+# EU Cyber Resilience Act (CRA) — free and open-source software scope
+# boundary (Regulation (EU) 2024/2847, final OJ text).
 #
-# CRA does NOT apply to free + open-source software supplied "outside the
-# course of a commercial activity". The challenge is that the boundary
-# between "commercial" and "non-commercial" OSS is fact-specific:
-#   - A single corporate sponsor providing paid support → commercial
-#   - A foundation / nonprofit collecting donations to fund development →
-#     case-by-case (recital 15)
-#   - Individual maintainer accepting donations / sponsorship → typically
-#     non-commercial (and therefore exempt)
+# The final CRA has NO dedicated "FOSS exclusion article". The boundary
+# operates through the scope machinery: Art. 3(22) defines 'making
+# available on the market' as supply "in the course of a commercial
+# activity", read with recitals 15 and 18:
+#   - Recital 15: charging a price for the product, or for technical
+#     support services where this does NOT serve only the recuperation
+#     of actual costs, monetising a platform, or conditioning use on
+#     personal data for other than security purposes → commercial.
+#     Cost-recovering paid support is NOT commercial.
+#   - Recital 18: how development was financed (donations included)
+#     is NOT taken into account; not-for-profits stay non-commercial
+#     provided earnings after costs fund not-for-profit objectives.
+#     Supplying a FOSS component for integration by other
+#     manufacturers is making available on the market ONLY if the
+#     component is monetised by its ORIGINAL manufacturer — a
+#     downstream manufacturer's commercial product does not void the
+#     upstream supplier's exclusion.
 #
-# This module evaluates the boundary conditions. If the entity meets the
-# non-commercial exclusion criteria, the policy returns ZERO violations
-# regardless of what other CRA modules find — that is the correct outcome.
+# The commercial/non-commercial question is per PRODUCT (edition), not
+# per entity: the same organisation can be a manufacturer for an
+# enterprise edition and outside scope (or a steward) for the
+# community edition of the same project.
 #
-# Returns:
-#   * `exempt = true` when Art.23 exclusion applies — no violations emitted
-#   * `exempt = false` when CRA applies — violations emitted only if the
-#     entity claimed exemption it isn't entitled to.
+# If the exclusion applies, the product is outside CRA scope and this
+# module returns ZERO violations — an out-of-scope entity has no CRA
+# obligations. Violations are emitted only when an asserted exemption
+# conflicts with commercial markers (mis-claim detection), plus two
+# self-assessment hygiene checks (library practice, not CRA duties).
 
-default compliant := true   # default is "no obligation" — exemption applies
+default compliant := true # default is "no obligation" — exclusion applies
+
 default exempt := false
 
-# ── Threshold conditions for the Art.23 exclusion ─────────────────────────
+# ── Threshold for the non-commercial exclusion (Art. 3(22), rec. 15/18) ────
 
-# Recital 15 — distinguishes the supplier from the user perspective.
 exempt if {
-    input.foss.is_open_source_product
-    input.foss.outside_course_of_commercial_activity
+	input.foss.is_open_source_product
+	input.foss.not_made_available_in_course_of_commercial_activity
 }
 
-# ── Misuse: claimed exemption but commercial markers are present ──────────
+# ── Mis-claim: asserted exclusion vs commercial markers ────────────────────
 
-# An entity that asserts the FOSS exclusion while collecting commercial
-# revenue (paid support, license fees, hosted SaaS) is misclassifying.
+# Paid support is commercial ONLY beyond cost recovery (recital 15; a
+# reasonable salary / living expenses counts as cost recovery).
 violation contains msg if {
-    input.foss.claimed_exemption == true
-    input.foss.revenue.paid_support_offered
-    msg := "CRA Art.23 (mis-claim): FOSS exemption claimed, but the entity offers paid support — this is a commercial activity"
-}
-
-violation contains msg if {
-    input.foss.claimed_exemption == true
-    input.foss.revenue.license_fees_collected
-    msg := "CRA Art.23 (mis-claim): FOSS exemption claimed, but the entity collects license/usage fees — this is a commercial activity"
+	input.foss.claimed_exemption == true
+	input.foss.revenue.paid_support_offered
+	not input.foss.revenue.paid_support_cost_recovery_only == true
+	msg := "CRA Art.3(22)/recital 15 (mis-claim): exclusion claimed, but paid technical support exceeds recuperation of actual costs — a commercial activity"
 }
 
 violation contains msg if {
-    input.foss.claimed_exemption == true
-    input.foss.revenue.commercial_saas_hosting
-    msg := "CRA Art.23 (mis-claim): FOSS exemption claimed, but the entity offers a commercial hosted version — this is a commercial activity"
-}
-
-# Donations on their own do NOT constitute commercial activity (recital 15)
-# but combined with sustained employed development they may. Check pattern:
-violation contains msg if {
-    input.foss.claimed_exemption == true
-    input.foss.revenue.donations_received
-    input.foss.development.employed_developers_paid_from_donations
-    input.foss.development.developers_full_time
-    msg := "CRA Art.23 (boundary): Donation-funded full-time paid developers move the entity toward the OSS-steward category (Art.24), not the Art.23 exclusion"
-}
-
-# Recital 18 — single integrator placing FOSS-based commercial product on
-# market does not benefit from the exclusion regardless of what the upstream
-# OSS license says.
-violation contains msg if {
-    input.foss.claimed_exemption == true
-    input.foss.distribution.integrated_into_commercial_product
-    input.foss.distribution.distributed_in_eu_market
-    msg := "CRA Recital 18: FOSS exemption does not apply when the software is integrated into a commercial product distributed on the EU market"
-}
-
-# ── Process documentation ─────────────────────────────────────────────────
-
-violation contains msg if {
-    input.foss.claimed_exemption == true
-    not input.foss.process.exemption_basis_documented
-    msg := "CRA Art.23: FOSS exemption claimed but the basis for the claim is not documented (no audit trail)"
+	input.foss.claimed_exemption == true
+	input.foss.revenue.license_fees_collected
+	msg := "CRA Art.3(22)/recital 15 (mis-claim): exclusion claimed, but the entity charges a price for the product (license/usage fees) — a commercial activity"
 }
 
 violation contains msg if {
-    input.foss.claimed_exemption == true
-    not input.foss.process.exemption_basis_reviewed_annually
-    msg := "CRA Art.23: FOSS exemption status is not reviewed annually — commercial relationships may change over time"
+	input.foss.claimed_exemption == true
+	input.foss.revenue.commercial_saas_hosting
+	msg := "CRA Art.3(22)/recital 15 (mis-claim): exclusion claimed, but the entity monetises the product through a hosted/platform offering — a commercial activity"
 }
 
-compliant if { count(violation) == 0 }
+violation contains msg if {
+	input.foss.claimed_exemption == true
+	input.foss.revenue.use_conditioned_on_personal_data
+	msg := "CRA Art.3(22)/recital 15 (mis-claim): exclusion claimed, but use of the product is conditioned on processing personal data for purposes other than security — a commercial activity"
+}
+
+# The UPSTREAM supplier loses the exclusion only when it monetises the
+# component itself. If the CLAIMANT integrates the FOSS into its own
+# commercial product placed on the EU market, the exclusion cannot
+# cover that commercial product (recital 18).
+violation contains msg if {
+	input.foss.claimed_exemption == true
+	input.foss.distribution.claimant_integrates_into_own_commercial_product
+	input.foss.distribution.distributed_in_eu_market
+	msg := "CRA recital 18 (mis-claim): the claimant integrates this software into its own commercial product placed on the EU market — the exclusion does not cover that product"
+}
+
+# ── Self-assessment hygiene (library practice — NOT CRA obligations) ───────
+# An out-of-scope entity has no CRA duties; documenting the basis for
+# the claim is prudent practice for when the facts change.
+
+violation contains msg if {
+	input.foss.claimed_exemption == true
+	not input.foss.process.exemption_basis_documented
+	msg := "Scope hygiene (not a CRA obligation): exclusion claimed but the basis for the claim is not documented — no audit trail if commercial facts change"
+}
+
+violation contains msg if {
+	input.foss.claimed_exemption == true
+	not input.foss.process.exemption_basis_reviewed_annually
+	msg := "Scope hygiene (not a CRA obligation): exclusion basis is not reviewed periodically — monetisation and distribution facts drift"
+}
+
+compliant if {
+	count(violation) == 0
+}
 
 # Useful auxiliary field for downstream consumers.
 exemption_status := {
-    "claimed":  object.get(input, ["foss", "claimed_exemption"], false),
-    "valid":    exempt,
-    "misclaim": count(violation) > 0,
+	"claimed": object.get(input, ["foss", "claimed_exemption"], false),
+	"valid": exempt,
+	"misclaim": count(violation) > 0,
 }
 
 compliance_report := {
-    "family": "Article 23",
-    "name":   "Free and open-source software exclusion (boundary check)",
-    "controls_evaluated": 8,
-    "violations": violation,
-    "violation_count": count(violation),
-    "compliant": compliant,
-    "exempt":   exempt,
-    "exemption_status": exemption_status,
+	"family": "Scope — Art.3(22), recitals 15/18",
+	"name": "Free and open-source software exclusion (boundary check)",
+	"controls_evaluated": 7,
+	"violations": violation,
+	"violation_count": count(violation),
+	"compliant": compliant,
+	"exempt": exempt,
+	"exemption_status": exemption_status,
 }
