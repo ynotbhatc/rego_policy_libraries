@@ -49,17 +49,41 @@ jobs:
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "Image: ghcr.io/${{ github.repository_owner }}/rego_policy_libraries:$TAG"
 
+      - name: Generate bundle manifest (explicit roots)
+        run: |
+          # Explicit roots let a consumer load this bundle alongside their
+          # own site config (data.aac.aap.config) without an overlapping-root
+          # rejection. Roots are computed from package names so the list never
+          # goes stale. See scripts/gen_bundle_manifest.py and #841.
+          REVISION=$(git describe --tags --always --dirty 2>/dev/null || echo "$GITHUB_SHA")
+          python3 scripts/gen_bundle_manifest.py "$REVISION"
+          echo "--- .manifest ---"; cat .manifest
+
       - name: Build OPA bundle
         run: |
-          opa build \
-            benchmarks/ \
-            frameworks/ \
-            enforcement/ \
-            governance/ \
-            threat_detection/ \
-            --output bundle.tar.gz
+          # Bundle mode (-b .) so the committed/generated .manifest roots are
+          # honored. Ignores keep the published bundle to runtime policy only:
+          # test modules (never shipped), sample/fixture JSON (not referenced
+          # by any policy), and non-policy trees. Test files are excluded here
+          # AND from the manifest roots — they must agree, and a mismatch fails
+          # this build loudly before anything is published.
+          opa build -b . --output bundle.tar.gz \
+            --ignore '*_test.rego' \
+            --ignore 'test_*.rego' \
+            --ignore 'tests' \
+            --ignore '_framework_key_tests' \
+            --ignore '*.json' \
+            --ignore 'docs' \
+            --ignore 'scripts' \
+            --ignore 'tools' \
+            --ignore 'standard' \
+            --ignore 'crosswalk' \
+            --ignore '.github' \
+            --ignore '.git' \
+            --ignore '.claude'
           echo "Bundle size: $(du -sh bundle.tar.gz)"
           echo "Rego files: $(tar -tzf bundle.tar.gz | grep -c '\.rego')"
+          echo "Manifest roots: $(tar -xzf bundle.tar.gz -O /.manifest | python3 -c 'import sys,json;print(len(json.load(sys.stdin)["roots"]))')"
 
       - name: Login to GHCR
         run: |
