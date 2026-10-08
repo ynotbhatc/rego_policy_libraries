@@ -7,6 +7,15 @@ import rego.v1
 
 default compliant := false
 
+# FAIL-CLOSED: REQUIRED FACTS. Every rule below iterates a list under
+# input.user_group; with no such object nothing iterates and the section used
+# to pass on empty input. Absent facts are unevaluated, and unevaluated is
+# reported as non-compliant, never as a pass.
+violations contains msg if {
+    not input.user_group
+    msg := "CIS 6.2: FAIL-CLOSED - user_group facts were not supplied; the section cannot be evaluated and is reported non-compliant"
+}
+
 # CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords
 violations contains msg if {
     some user in input.user_group.users_without_shadow

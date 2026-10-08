@@ -17,14 +17,35 @@ compliant if {
 
 violations := array.concat(
 	array.concat(
-		[v | some v in sysctl_violations],
-		[v | some v in ip_forwarding_violations],
+		array.concat(
+			[v | some v in sysctl_violations],
+			[v | some v in ip_forwarding_violations],
+		),
+		array.concat(
+			[v | some v in ipv6_violations],
+			[v | some v in network_interface_violations],
+		),
 	),
-	array.concat(
-		[v | some v in ipv6_violations],
-		[v | some v in network_interface_violations],
-	),
+	missing_facts_violations,
 )
+
+# =============================================================================
+# FAIL-CLOSED: REQUIRED FACTS
+# =============================================================================
+# See filesystem_validation.rego: absent facts must not read as compliant.
+required_fact_keys := [
+	"sysctl_parameters",
+	"ip_forwarding",
+	"ipv6",
+	"firewall",
+	"wireless_interfaces",
+]
+
+missing_facts_violations := [msg |
+	some key in required_fact_keys
+	not input[key]
+	msg := sprintf("CIS 3.x: FAIL-CLOSED - network facts '%s' were not supplied; the section cannot be evaluated and is reported non-compliant", [key])
+]
 
 # =============================================================================
 # CIS 3.1.x, 3.2.x - KERNEL NETWORK PARAMETERS (SYSCTL)

@@ -19,11 +19,37 @@ compliant if {
 # Aggregate all violations
 violations := array.concat(
 	array.concat(
-		array.concat([violation | some violation in filesystem_module_violations], [violation | some violation in partition_violations]),
-		[violation | some violation in mount_option_violations],
+		array.concat(
+			array.concat([violation | some violation in filesystem_module_violations], [violation | some violation in partition_violations]),
+			[violation | some violation in mount_option_violations],
+		),
+		array.concat([violation | some violation in sticky_bit_violations], [violation | some violation in usb_storage_violation]),
 	),
-	array.concat([violation | some violation in sticky_bit_violations], [violation | some violation in usb_storage_violation]),
+	missing_facts_violations,
 )
+
+# =============================================================================
+# FAIL-CLOSED: REQUIRED FACTS
+# =============================================================================
+# Every control below is written as "violate if the fact says X". With the
+# facts absent, nothing iterates, no violation fires, and this section used
+# to report compliant for an assessment that evaluated nothing (measured on
+# empty input: filesystem, network and user_group passed while the other 11
+# sections failed). A section whose facts were not collected is not
+# compliant; it is unevaluated, and unevaluated counts as failed.
+required_fact_keys := [
+	"disabled_filesystem_modules",
+	"separate_partitions",
+	"mount_options",
+	"sticky_bit",
+	"usb_storage",
+]
+
+missing_facts_violations := [msg |
+	some key in required_fact_keys
+	not input[key]
+	msg := sprintf("CIS 1.1: FAIL-CLOSED - filesystem facts '%s' were not supplied; the section cannot be evaluated and is reported non-compliant", [key])
+]
 
 # =============================================================================
 # CIS 1.1.1.x - DISABLED FILESYSTEM MODULES
