@@ -5,7 +5,8 @@ package stig.rhel_9
 # Aggregates all modules: configuration_management, services, software_integrity,
 #   file_permissions, audit_logging, ssh_config, account_auth, network, pki_crypto
 #
-# Endpoint: POST http://localhost:8181/v1/data/stig/rhel_9/stig_assessment
+# Endpoints: POST http://localhost:8181/v1/data/stig/rhel_9/stig_assessment
+#            POST http://localhost:8181/v1/data/stig/rhel_9/main/compliance_report  (fail-closed alias)
 
 import rego.v1
 
@@ -155,4 +156,21 @@ stig_assessment := {
 	},
 	"module_status": module_status,
 	"findings": all_findings,
+}
+
+# =============================================================================
+# UNIFORM LIBRARY ENTRYPOINT CONTRACT
+# =============================================================================
+# Consumed by the stig.rhel_9.main alias's fail-closed gate (see
+# stig_rhel_9_main.rego): total_controls + open_findings are required.
+# total_controls is derived from the module finding arrays, never hard-coded.
+
+open_findings := [f | some f in all_findings; f.status == "Open"]
+
+compliance_report := {
+	"total_controls": count(all_findings),
+	"open_findings": open_findings,
+	"passed_controls": count(all_findings) - count(open_findings),
+	"failed_controls": count(open_findings),
+	"compliant": fully_compliant,
 }
