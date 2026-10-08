@@ -20,6 +20,66 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   from the module finding arrays (73 for RHEL 8 V1R13, 143 for RHEL 9 V2R2), not hard-coded.
   Tests: `tests/test_stig_rhel_8_main.rego`, `tests/test_stig_rhel_9_main.rego`.
 
+## [2.1.0] - 2026-10-08
+
+Seventeen days of additions since 2.0.0, and the first release consumed by Red Hat's AAP
+Policy as Code in a live environment (ericcames/sales.demos#841). The library grew from 638 to
+**729 policy files** (976 including tests, counted at main 2026-10-08). 1,837 tests pass.
+
+### Fixed — fail closed, everywhere it was not
+- **CIS RHEL 9 sections fail closed on missing facts** (#183). `filesystem`, `network` and
+  `user_group` reported compliant with no facts at all, so `cis_rhel9/compliance_assessment`
+  scored 21.4% with 3/14 sections compliant on empty input. Each now emits a `FAIL-CLOSED`
+  violation per missing required fact object; `{}` reports `compliant=false, score=0, 0/14`.
+  The guard clears when the fact objects are supplied and names each missing key. Reported by
+  Eric Ames while attaching the policy to AAP.
+- **STIG RHEL 8 / RHEL 9 gain `.main` aggregators** (#182), so `stig.rhel_8.main` (73 rules)
+  and `stig.rhel_9.main` (143 rules) answer the uniform `compliance_report` entrypoint and fail
+  closed on `{}` (every rule failed, 0%). They were previously unreachable by key.
+- **AAP Policy as Code: AAP 2.7's team objects accepted** (#161), with a real AAP 2.7 input
+  document captured from a live decision log as a test fixture.
+- `is_object` guard on `_attest` in the CJIS, Zero Trust and Essential Eight orchestrators (#143);
+  governance time-box clamp, approval expiry enforced, registry shape guard (#138).
+
+### Added — new frameworks
+- **AI governance:** ISO/IEC 42005:2025 AI impact assessment and the OWASP LLM Top 10 (2026)
+  with a MITRE ATLAS crosswalk (#181); governance self-protecting MCP gate, load-bearing agent
+  identity, crown-jewels tier (#136); group-membership read tools approved for agent inventory
+  lookups (#146).
+- **Federal:** FedRAMP 20x Key Security Indicators, 46 KSIs with Class B/C profiles (#180);
+  PQC Readiness — FIPS 203/204/205, EO 14412, CNSA 2.0 (#165); FBI CJIS Security Policy, 13
+  policy areas (#135); Zero Trust — CISA ZTMM v2.0 + NIST SP 800-207 (#132); IRS Publication
+  1075, 8 safeguard areas (#140).
+- **Regional:** UK MoD DCC — DEF STAN 05-138 Issue 4, all 148 controls (#166); BSI C5:2020
+  (#142); UK Cyber Essentials (Willow) (#141); ACSC Essential Eight Maturity Model (#133).
+- **Benchmarks:** CIS MCP Server Benchmark v1.0.0, 46/55 recommendations (#145).
+- **Supply chain:** SSDF-GenAI, NIST SP 800-161 and S2C2F on a shared spine with a measured
+  collapse metric (#111).
+- **DORA level-2 RTS modules:** subcontracting (2025/532) and TLPT (2025/1190) (#177).
+
+### Changed — reconciled with the standards as published
+- EU AI Act: Digital Omnibus Reg. (EU) 2026/1744 dates and new Art. 5 prohibitions (#175).
+- CRA: reconciled with the final Regulation (EU) 2024/2847 text (#167). ITAR: 2025–2026 final
+  rules, §120.54 cites, AUKUS §126.7 (#178). NY DFS second amendment final tranche: universal
+  MFA, 500.13(a) asset inventory (#176). CISA CPG titles aligned to the 2025-12-11 publication
+  (#179). Standards registry 2026-10 sweep triage (#174).
+
+### Changed — distribution and CI
+- The bundle declares explicit roots so a consumer can compose site config beside it (#164).
+- CI tests on OPA 1.10.0, the version the bundle publishes for (#163), and `opa check` runs
+  package-aware per directory (#162). `actions/checkout` v7 (#134).
+- A pre-merge Rego review skill tuned to this library's failure classes (#137, #139).
+
+### Known limitations
+- Seven `.main` entrypoints still answer `{}` on empty input: `digital_sovereignty`, `fisma`,
+  `gdpr`, `hipaa`, `pci_dss`, `soc2`, `sox`. A consumer must treat an empty report as a failed
+  assessment, never as a pass.
+- The CIS RHEL 9 input is a custom document (about 60 top-level keys), not raw Ansible facts
+  or OpenSCAP output; no shipped collector produces all of it yet. The section-level guards
+  above make a partial input report what it did not evaluate.
+
+---
+
 ## [2.0.0] - 2026-09-21
 
 Six months of additions since the initial extraction. The library grew from 327 to
