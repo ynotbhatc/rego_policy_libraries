@@ -2,7 +2,8 @@ package stig.rhel_8
 
 # DISA STIG for RHEL 8 - Master Aggregator
 # STIG Version: V1R13 | Released: July 2024
-# Endpoint: POST http://localhost:8181/v1/data/stig/rhel_8/stig_assessment
+# Endpoints: POST http://localhost:8181/v1/data/stig/rhel_8/stig_assessment
+#            POST http://localhost:8181/v1/data/stig/rhel_8/main/compliance_report  (fail-closed alias)
 
 import rego.v1
 
@@ -89,4 +90,21 @@ stig_assessment := {
 		"file_permissions": file_permissions.compliant,
 	},
 	"findings": all_findings,
+}
+
+# =============================================================================
+# UNIFORM LIBRARY ENTRYPOINT CONTRACT
+# =============================================================================
+# Consumed by the stig.rhel_8.main alias's fail-closed gate (see
+# stig_rhel_8_main.rego): total_controls + open_findings are required.
+# total_controls is derived from the module finding arrays, never hard-coded.
+
+open_findings := [f | some f in all_findings; f.status == "Open"]
+
+compliance_report := {
+	"total_controls": count(all_findings),
+	"open_findings": open_findings,
+	"passed_controls": count(all_findings) - count(open_findings),
+	"failed_controls": count(open_findings),
+	"compliant": fully_compliant,
 }

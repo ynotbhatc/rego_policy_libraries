@@ -6,6 +6,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [Unreleased]
+
+### Fixed
+- **DISA STIG RHEL 8 / RHEL 9 were unreachable from the uniform entrypoint.** Both bundles
+  exposed only `stig_assessment` and had no `stig.<platform>.main` alias, so a caller using the
+  library-wide `data.<package>.main.compliance_report` contract got `undefined` back. Added the
+  uniform `compliance_report` contract to `stig_rhel8_complete.rego` / `stig_rhel9_complete.rego`
+  and the fail-closed `stig.rhel_8.main` / `stig.rhel_9.main` aliases
+  (`benchmarks/stig/rhel_8/stig_rhel_8_main.rego`, `benchmarks/stig/rhel_9/stig_rhel_9_main.rego`),
+  matching the other 13 STIG platforms: empty input reports `compliant=false`,
+  `facts_supplied=false`, 0% with an explicit FAIL-CLOSED CAT I finding. `total_controls` is derived
+  from the module finding arrays (73 for RHEL 8 V1R13, 143 for RHEL 9 V2R2), not hard-coded.
+  Tests: `tests/test_stig_rhel_8_main.rego`, `tests/test_stig_rhel_9_main.rego`.
+
 ## [2.0.0] - 2026-09-21
 
 Six months of additions since the initial extraction. The library grew from 327 to
