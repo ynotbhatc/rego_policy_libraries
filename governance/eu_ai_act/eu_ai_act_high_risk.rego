@@ -1,3 +1,10 @@
+# METADATA
+# title: "Eu Ai Act High Risk"
+# custom:
+#   class: governance
+#   framework: eu_ai_act
+#   source: eu
+#   domains: [ai, eu]
 package eu_ai_act.high_risk
 
 import rego.v1

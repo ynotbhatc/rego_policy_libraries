@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0"
+# custom:
+#   class: security
+#   framework: cis_amazon_linux_2023
+#   source: cis
+#   domains: [linux, amazon-linux]
 package cis.amazon_linux_2023
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0

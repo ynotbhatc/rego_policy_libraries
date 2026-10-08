@@ -1,3 +1,10 @@
+# METADATA
+# title: "Bridge: expose cis_ubuntu_20_04 under the /v1/data/<framework>/main/compliance_report"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_20_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_20_04.main
 
 # Bridge: expose cis_ubuntu_20_04 under the /v1/data/<framework>/main/compliance_report

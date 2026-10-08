@@ -27,6 +27,13 @@
 #
 # OPA query path: /v1/data/k8s_pss/main/compliance_report
 
+# METADATA
+# title: "Kubernetes Pod Security Standards (PSS)"
+# custom:
+#   class: security
+#   framework: pss_kubernetes
+#   source: kubernetes
+#   domains: [kubernetes, container]
 package k8s_pss.main
 
 import rego.v1

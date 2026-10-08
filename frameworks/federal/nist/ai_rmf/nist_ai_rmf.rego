@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST AI Risk Management Framework (AI RMF 1.0)"
+# custom:
+#   class: compliance
+#   framework: nist_ai_rmf
+#   source: nist
+#   domains: [us-federal, ai]
 package nist.ai_rmf
 
 import rego.v1

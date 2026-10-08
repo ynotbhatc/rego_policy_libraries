@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 1.3-1.5: Boot Security and Process Hardening"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_20_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_20_04.boot_security
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 1.3-1.5: Boot Security and Process Hardening

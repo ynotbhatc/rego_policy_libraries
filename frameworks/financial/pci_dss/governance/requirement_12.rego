@@ -1,6 +1,13 @@
 # PCI DSS v4.0 Requirement 12 - Support Information Security with Organizational
 # Policies and Programs
 
+# METADATA
+# title: "PCI DSS v4.0 Requirement 12 - Support Information Security with Organizational"
+# custom:
+#   class: compliance
+#   framework: pci_dss
+#   source: pci-ssc
+#   domains: [financial, payment-cards]
 package pci_dss.governance.requirement_12
 
 import rego.v1

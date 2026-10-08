@@ -1,6 +1,13 @@
 # PCI DSS v4.0 Requirement 2 - Apply Secure Configurations to All System Components
 # Ensures vendor defaults are changed and unnecessary functions are removed
 
+# METADATA
+# title: "PCI DSS v4.0 Requirement 2 - Apply Secure Configurations to All System Components"
+# custom:
+#   class: compliance
+#   framework: pci_dss
+#   source: pci-ssc
+#   domains: [financial, payment-cards]
 package pci_dss.system_hardening.requirement_2
 
 import rego.v1

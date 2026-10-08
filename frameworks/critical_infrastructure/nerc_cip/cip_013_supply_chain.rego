@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIP-013-2: Supply Chain Risk Management"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip.cip_013
 
 import rego.v1

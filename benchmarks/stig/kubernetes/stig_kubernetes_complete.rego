@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — Kubernetes Security Technical Implementation Guide — Master Aggregator"
+# custom:
+#   class: security
+#   framework: stig_kubernetes
+#   source: disa
+#   domains: [kubernetes, container]
 package stig.kubernetes
 
 # DISA STIG — Kubernetes Security Technical Implementation Guide — Master Aggregator

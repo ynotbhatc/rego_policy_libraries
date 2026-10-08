@@ -1,3 +1,10 @@
+# METADATA
+# title: "TISAX — Trusted Information Security Assessment Exchange"
+# custom:
+#   class: compliance
+#   framework: tisax
+#   source: enx
+#   domains: [automotive]
 package tisax.main
 
 import rego.v1

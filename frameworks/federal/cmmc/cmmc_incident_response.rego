@@ -1,3 +1,10 @@
+# METADATA
+# title: "CMMC 2.0 — Incident Response Domain (IR)"
+# custom:
+#   class: compliance
+#   framework: cmmc
+#   source: dod
+#   domains: [us-federal, defense]
 package cmmc.incident_response
 
 import rego.v1

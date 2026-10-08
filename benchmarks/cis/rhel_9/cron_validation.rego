@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Section 5.1: Configure time-based job schedulers"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.cron
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "GEISA API Pillar — Platform Discovery Compliance"
+# custom:
+#   class: governance
+#   framework: geisa
+#   source: geisa
+#   domains: [ot, energy, smart-grid]
 package governance.geisa.api
 
 import rego.v1

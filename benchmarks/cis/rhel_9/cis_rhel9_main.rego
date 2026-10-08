@@ -1,3 +1,10 @@
+# METADATA
+# title: "Bridge: expose cis_rhel9 under the /v1/data/<framework>/main/compliance_report"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.main
 
 # Bridge: expose cis_rhel9 under the /v1/data/<framework>/main/compliance_report

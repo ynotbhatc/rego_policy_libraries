@@ -1,3 +1,10 @@
+# METADATA
+# title: "EU AI Act Article 5 prohibited practices — Reg. (EU) 2024/1689 as"
+# custom:
+#   class: governance
+#   framework: eu_ai_act
+#   source: eu
+#   domains: [ai, eu]
 package eu_ai_act.prohibited
 
 import rego.v1

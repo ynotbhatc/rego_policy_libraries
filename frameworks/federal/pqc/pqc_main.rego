@@ -70,6 +70,13 @@
 #     network_equipment_on_track     bool — VPN/router exclusive-use by 2030
 #     symmetric_cnsa_compliant       bool — AES-256, SHA-384/512 only
 
+# METADATA
+# title: "Post-Quantum Cryptography (PQC) Readiness — v1.0"
+# custom:
+#   class: compliance
+#   framework: pqc
+#   source: nist
+#   domains: [us-federal, cryptography]
 package pqc.main
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Benchmark - Network Configuration"
+# custom:
+#   class: security
+#   framework: cis_os
+#   source: cis
+#   domains: [linux]
 package cis.network
 
 import rego.v1

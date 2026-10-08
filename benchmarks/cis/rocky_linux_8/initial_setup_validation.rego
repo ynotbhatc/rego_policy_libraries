@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup"
+# custom:
+#   class: security
+#   framework: cis_rocky_linux_8
+#   source: cis
+#   domains: [linux, rocky]
 package cis_rocky_linux_8.initial_setup
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup

@@ -27,6 +27,13 @@
 # Violations may be strings or objects; objects are matched against their
 # JSON serialization, so a control ID anywhere in the object matches.
 
+# METADATA
+# title: "Security exception waivers — waived, never hidden"
+# custom:
+#   class: governance
+#   framework: exceptions
+#   source: aac
+#   domains: [exceptions]
 package exceptions
 
 import rego.v1

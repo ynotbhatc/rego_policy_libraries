@@ -1,3 +1,10 @@
+# METADATA
+# title: "Corporate Backup and Recovery Policy Implementation"
+# custom:
+#   class: compliance
+#   framework: corporate
+#   source: aac
+#   domains: [corporate]
 package corporate.backup
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Kubernetes Benchmark v1.10.0 - Level 2 Additional Controls"
+# custom:
+#   class: security
+#   framework: cis_kubernetes
+#   source: cis
+#   domains: [kubernetes, container]
 package cis_kubernetes.l2
 
 # CIS Kubernetes Benchmark v1.10.0 - Level 2 Additional Controls

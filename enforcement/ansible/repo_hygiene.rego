@@ -30,6 +30,13 @@
 #
 # OPA query path: /v1/data/aac/repo/hygiene/violation
 
+# METADATA
+# title: "AAC repository hygiene — policy the delivery layer is gated by"
+# custom:
+#   class: enforcement
+#   framework: enforcement_ansible
+#   source: aac
+#   domains: [ansible]
 package aac.repo.hygiene
 
 import rego.v1

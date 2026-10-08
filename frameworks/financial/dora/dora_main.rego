@@ -1,3 +1,10 @@
+# METADATA
+# title: "EU Digital Operational Resilience Act (DORA) — Regulation (EU) 2022/2554"
+# custom:
+#   class: compliance
+#   framework: dora
+#   source: eu
+#   domains: [financial, eu]
 package dora.main
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "Ccpa Main"
+# custom:
+#   class: compliance
+#   framework: ccpa
+#   source: us-state
+#   domains: [privacy, us-state]
 package ccpa.main
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — MS SQL Server 2016 Instance Security Technical Implementation Guide — Master Aggregator"
+# custom:
+#   class: security
+#   framework: stig_ms_sql_2016
+#   source: disa
+#   domains: [database, mssql]
 package stig.ms_sql_2016
 
 # DISA STIG — MS SQL Server 2016 Instance Security Technical Implementation Guide — Master Aggregator

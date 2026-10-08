@@ -1,3 +1,10 @@
+# METADATA
+# title: "CRA — Supply-chain evidence integration"
+# custom:
+#   class: compliance
+#   framework: cra
+#   source: eu
+#   domains: [eu, product-security]
 package cra.supply_chain_evidence
 
 import data.supply_chain.slsa

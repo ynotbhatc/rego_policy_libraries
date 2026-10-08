@@ -1,3 +1,10 @@
+# METADATA
+# title: "EU Cyber Resilience Act (CRA) — Annex I Part I"
+# custom:
+#   class: compliance
+#   framework: cra
+#   source: eu
+#   domains: [eu, product-security]
 package cra.essential_requirements
 
 import rego.v1

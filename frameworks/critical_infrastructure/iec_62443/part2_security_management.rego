@@ -1,3 +1,10 @@
+# METADATA
+# title: "IEC 62443-2-1 — Security Management System (CSMS)"
+# custom:
+#   class: ot
+#   framework: iec_62443
+#   source: iec
+#   domains: [ot, industrial]
 package iec_62443.part2_1
 
 import rego.v1

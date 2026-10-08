@@ -1,3 +1,10 @@
+# METADATA
+# title: "OIDC Token Validation Policy"
+# custom:
+#   class: governance
+#   framework: oidc
+#   source: aac
+#   domains: [identity]
 package governance.oidc
 
 import rego.v1

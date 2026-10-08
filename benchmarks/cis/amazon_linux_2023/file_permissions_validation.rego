@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Amazon Linux 2023 Section 6.1.x - System File Permissions"
+# custom:
+#   class: security
+#   framework: cis_amazon_linux_2023
+#   source: cis
+#   domains: [linux, amazon-linux]
 package cis_amazon_linux_2023.file_permissions
 
 # CIS Amazon Linux 2023 Section 6.1.x - System File Permissions

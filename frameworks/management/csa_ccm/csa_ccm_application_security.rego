@@ -1,3 +1,10 @@
+# METADATA
+# title: "Csa Ccm Application Security"
+# custom:
+#   class: compliance
+#   framework: csa_ccm
+#   source: csa
+#   domains: [cloud]
 package csa_ccm.application_security
 
 import rego.v1

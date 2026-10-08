@@ -1,3 +1,10 @@
+# METADATA
+# title: "CMMC 2.0 — Domain 3.14: System and Information Integrity"
+# custom:
+#   class: compliance
+#   framework: cmmc
+#   source: dod
+#   domains: [us-federal, defense]
 package cmmc.system_information_integrity
 
 import rego.v1

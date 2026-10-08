@@ -1,3 +1,10 @@
+# METADATA
+# title: "Sentinel-equivalent policy for Ansible playbooks"
+# custom:
+#   class: enforcement
+#   framework: enforcement_ansible
+#   source: aac
+#   domains: [ansible]
 package sentinel.ansible
 
 import rego.v1

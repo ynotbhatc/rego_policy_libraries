@@ -7,6 +7,14 @@
 #
 # The same triage applies to a dependency, a code change, or an AI-generated
 # contribution — anything with a capability profile.
+
+# METADATA
+# title: "Spine-coverage risk triage (basis of the evaluation-depth model, P28)"
+# custom:
+#   class: security
+#   framework: supply_chain_coverage
+#   source: aac
+#   domains: [supply-chain]
 package supply_chain.coverage
 
 import rego.v1

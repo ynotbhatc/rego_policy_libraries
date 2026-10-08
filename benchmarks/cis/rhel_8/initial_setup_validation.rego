@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 8 Benchmark v4.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup"
+# custom:
+#   class: security
+#   framework: cis_rhel_8
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel8.initial_setup
 
 # CIS RHEL 8 Benchmark v4.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup

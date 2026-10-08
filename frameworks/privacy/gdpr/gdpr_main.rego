@@ -1,3 +1,10 @@
+# METADATA
+# title: "GDPR Compliance Aggregator"
+# custom:
+#   class: compliance
+#   framework: gdpr
+#   source: eu
+#   domains: [privacy, eu]
 package gdpr.main
 
 import rego.v1

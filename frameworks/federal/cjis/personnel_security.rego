@@ -1,3 +1,10 @@
+# METADATA
+# title: "FBI CJIS Security Policy — Policy Area 12: Personnel Security"
+# custom:
+#   class: compliance
+#   framework: cjis
+#   source: fbi
+#   domains: [us-federal, justice]
 package cjis.personnel_security
 
 import rego.v1

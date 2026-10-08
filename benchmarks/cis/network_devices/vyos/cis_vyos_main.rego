@@ -1,3 +1,10 @@
+# METADATA
+# title: "Bridge: expose cis_vyos under the /v1/data/<framework>/main/compliance_report"
+# custom:
+#   class: security
+#   framework: cis_network_devices
+#   source: cis
+#   domains: [network]
 package cis_vyos.main
 
 # Bridge: expose cis_vyos under the /v1/data/<framework>/main/compliance_report

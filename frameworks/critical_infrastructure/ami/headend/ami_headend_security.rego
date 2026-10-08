@@ -1,3 +1,10 @@
+# METADATA
+# title: "AMI Head-End System Security Policy"
+# custom:
+#   class: ot
+#   framework: ami
+#   source: nist
+#   domains: [ot, energy, smart-grid]
 package ami.headend.security
 
 import rego.v1

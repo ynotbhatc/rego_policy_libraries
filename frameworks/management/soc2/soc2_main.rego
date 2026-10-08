@@ -1,6 +1,13 @@
 # SOC 2 Trust Service Criteria - Main Aggregation Policy
 # Comprehensive SOC 2 Type II Compliance Assessment
 
+# METADATA
+# title: "SOC 2 Trust Service Criteria - Main Aggregation Policy"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2.main
 
 import rego.v1

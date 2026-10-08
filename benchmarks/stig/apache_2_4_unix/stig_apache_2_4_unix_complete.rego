@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide — Master Aggregator"
+# custom:
+#   class: security
+#   framework: stig_apache_2_4_unix
+#   source: disa
+#   domains: [web-server]
 package stig.apache_2_4_unix
 
 # DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide — Master Aggregator

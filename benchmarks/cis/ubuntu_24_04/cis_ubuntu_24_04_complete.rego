@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Ubuntu 24.04 LTS Benchmark - Complete Compliance Assessment"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_24_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_24_04
 
 # CIS Ubuntu 24.04 LTS Benchmark - Complete Compliance Assessment

@@ -1,3 +1,10 @@
+# METADATA
+# title: "IEC 62443-2-3 — Patch Management in the IACS Environment"
+# custom:
+#   class: ot
+#   framework: iec_62443
+#   source: iec
+#   domains: [ot, industrial]
 package iec_62443.part2_3
 
 import rego.v1

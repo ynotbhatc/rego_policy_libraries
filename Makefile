@@ -3,13 +3,14 @@
 
 OPA ?= opa
 
-.PHONY: test lint check load-security load-compliance load-ot help
+.PHONY: test lint metadata check load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
 	@echo "  make test          Run all opa tests (policy + test files)"
 	@echo "  make lint          Check syntax of all .rego files"
-	@echo "  make check         lint + test"
+	@echo "  make metadata      Verify every package carries a conforming METADATA block"
+	@echo "  make check         lint + test + metadata"
 	@echo "  make load-security    Load benchmarks into opa-security (:8181)"
 	@echo "  make load-compliance  Load frameworks into opa-compliance (:8182)"
 	@echo "  make load-ot          Load OT policies into opa-ot (:8183)"
@@ -37,7 +38,11 @@ test:
 	done; \
 	exit $$RC
 
-check: lint test
+metadata:
+	@echo "=== Checking policy METADATA annotations ==="
+	@python3 scripts/check_metadata.py
+
+check: lint test metadata
 
 OPA_SECURITY_URL  ?= http://localhost:8181
 OPA_COMPLIANCE_URL ?= http://localhost:8182

@@ -1,3 +1,10 @@
+# METADATA
+# title: "IEC 62443-3-3 FR 3 — System Integrity (SI)"
+# custom:
+#   class: ot
+#   framework: iec_62443
+#   source: iec
+#   domains: [ot, industrial]
 package iec_62443.fr3
 
 import rego.v1

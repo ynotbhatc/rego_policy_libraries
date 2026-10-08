@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Cisco IOS Benchmark v4.1.0"
+# custom:
+#   class: security
+#   framework: cis_network_devices
+#   source: cis
+#   domains: [network, cisco]
 package cis_cisco_ios
 
 # CIS Cisco IOS Benchmark v4.1.0

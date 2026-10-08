@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.3: Security Options"
+# custom:
+#   class: security
+#   framework: cis_windows_server_2019_modular
+#   source: cis
+#   domains: [windows]
 package cis_windows_server_2019.security_options
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.3: Security Options

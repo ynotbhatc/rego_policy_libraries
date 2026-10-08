@@ -1,3 +1,10 @@
+# METADATA
+# title: "Csa Ccm Change Control"
+# custom:
+#   class: compliance
+#   framework: csa_ccm
+#   source: csa
+#   domains: [cloud]
 package csa_ccm.change_control
 
 import rego.v1

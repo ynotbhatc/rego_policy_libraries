@@ -1,6 +1,13 @@
 # SOC 2 Trust Service Criteria - Availability (A1.0)
 # System Availability and Performance Monitoring
 
+# METADATA
+# title: "SOC 2 Trust Service Criteria - Availability (A1.0)"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2.availability.system_availability
 
 import rego.v1

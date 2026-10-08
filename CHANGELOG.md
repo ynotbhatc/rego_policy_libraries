@@ -8,6 +8,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+- **Package-scoped `# METADATA` on every policy.** All 729 policy files now resolve to an OPA
+  annotation block carrying `title` and `custom.{class, framework, source, domains}`, so a
+  consumer classifies a policy from `opa inspect -a` instead of parsing directory names. `class`
+  is a closed set (`security`, `compliance`, `ot`, `governance`, `enforcement`,
+  `threat-detection`) that maps to the OPA container; `source` and `domains` come from the
+  controlled vocabulary in `scripts/metadata_vocabulary.json`. `scripts/check_metadata.py`
+  (`make metadata`, now part of `make check`) fails when a block is missing or off-vocabulary.
+  `scripts/backfill_metadata.py` is the directory-driven bootstrap for new trees. OPA permits one
+  package-scoped block per package, so the two multi-file packages (`aac.aap.policy`,
+  `supply_chain.slsa`) have one owning file and pointer comments in the rest.
+
 ### Fixed
 - **DISA STIG RHEL 8 / RHEL 9 were unreachable from the uniform entrypoint.** Both bundles
   exposed only `stig_assessment` and had no `stig.<platform>.main` alias, so a caller using the

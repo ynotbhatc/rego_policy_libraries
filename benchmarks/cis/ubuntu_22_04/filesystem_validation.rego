@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Ubuntu 22.04 - Section 1.1 Filesystem Configuration"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_22_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_22_04.filesystem
 
 # CIS Ubuntu 22.04 - Section 1.1 Filesystem Configuration

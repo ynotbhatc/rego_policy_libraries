@@ -9,6 +9,13 @@
 # Section 5 audit also needs the PowerShell / Fabric Admin REST
 # path. We surface that explicitly rather than silently passing.
 
+# METADATA
+# title: "CIS Microsoft 365 Foundations Benchmark — Section 5 (Microsoft Fabric)"
+# custom:
+#   class: security
+#   framework: cis_saas
+#   source: cis
+#   domains: [saas, m365]
 package cis_m365.fabric
 
 import rego.v1

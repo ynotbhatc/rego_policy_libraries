@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG for windows server 2019 - Simplified Complete Assessment"
+# custom:
+#   class: security
+#   framework: stig_windows_server_2019
+#   source: disa
+#   domains: [windows]
 package stig.windows_server_2019
 
 # DISA STIG for windows server 2019 - Simplified Complete Assessment

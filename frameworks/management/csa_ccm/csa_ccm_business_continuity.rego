@@ -1,3 +1,10 @@
+# METADATA
+# title: "Csa Ccm Business Continuity"
+# custom:
+#   class: compliance
+#   framework: csa_ccm
+#   source: csa
+#   domains: [cloud]
 package csa_ccm.business_continuity
 
 import rego.v1

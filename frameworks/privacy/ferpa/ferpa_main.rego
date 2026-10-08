@@ -49,6 +49,13 @@
 #
 # OPA query path: /v1/data/ferpa/main/compliance_report
 
+# METADATA
+# title: "FERPA — Family Educational Rights and Privacy Act"
+# custom:
+#   class: compliance
+#   framework: ferpa
+#   source: us-federal
+#   domains: [privacy, education]
 package ferpa.main
 
 import rego.v1

@@ -82,6 +82,13 @@
 #     https_lb_tls_encrypted                5.4.5
 #     iam_authenticator_rbac_managed        5.5.1
 
+# METADATA
+# title: "CIS Amazon EKS Benchmark v1.8.0"
+# custom:
+#   class: security
+#   framework: cis_eks
+#   source: cis
+#   domains: [kubernetes, cloud, aws]
 package cis_eks.main
 
 import rego.v1

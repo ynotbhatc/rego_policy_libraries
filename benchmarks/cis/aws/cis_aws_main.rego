@@ -1,3 +1,10 @@
+# METADATA
+# title: "Bridge: expose cis_aws under the /v1/data/<framework>/main/compliance_report"
+# custom:
+#   class: security
+#   framework: cis_aws
+#   source: cis
+#   domains: [cloud, aws]
 package cis_aws.main
 
 # Bridge: expose cis_aws under the /v1/data/<framework>/main/compliance_report

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 9 Section 4.2.x - Logging Configuration"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.logging
 
 # CIS RHEL 9 Section 4.2.x - Logging Configuration

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Palo Alto PAN-OS Benchmark v1.2.0"
+# custom:
+#   class: security
+#   framework: cis_network_devices
+#   source: cis
+#   domains: [network, palo-alto]
 package cis_palo_alto_panos
 
 # CIS Palo Alto PAN-OS Benchmark v1.2.0

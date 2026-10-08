@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Windows Server 2022 Benchmark v5.0.0 - Section 18: Administrative Templates (Registry)"
+# custom:
+#   class: security
+#   framework: cis_windows_server_2022_modular
+#   source: cis
+#   domains: [windows]
 package cis_windows_server_2022.registry
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 18: Administrative Templates (Registry)

@@ -1,3 +1,10 @@
+# METADATA
+# title: "IEC 62443-2-4 — Security Program Requirements for IACS Service Providers"
+# custom:
+#   class: ot
+#   framework: iec_62443
+#   source: iec
+#   domains: [ot, industrial]
 package iec_62443.part2_4
 
 import rego.v1

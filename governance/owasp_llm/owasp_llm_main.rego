@@ -15,6 +15,13 @@
 # Input contract — input.owasp_llm.<llmNN>.<control> (all bool), e.g.
 #   input.owasp_llm.llm01.privilege_separation_enforced
 
+# METADATA
+# title: "OWASP Top 10 for LLM Applications — 2026 edition (OWASP GenAI"
+# custom:
+#   class: governance
+#   framework: owasp_llm
+#   source: owasp
+#   domains: [ai]
 package owasp_llm.main
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "GEISA Application Manifest Validator"
+# custom:
+#   class: governance
+#   framework: geisa
+#   source: geisa
+#   domains: [ot, energy, smart-grid]
 package governance.geisa.manifest_validation
 
 import rego.v1

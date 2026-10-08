@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 - Level 2 Additional Controls"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_22_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_2204.l2
 
 # CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 - Level 2 Additional Controls

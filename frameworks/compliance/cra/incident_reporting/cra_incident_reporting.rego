@@ -1,3 +1,10 @@
+# METADATA
+# title: "EU Cyber Resilience Act (CRA) — Article 14 (Regulation (EU) 2024/2847, final OJ text). Manufacturer reporting obligations for actively"
+# custom:
+#   class: compliance
+#   framework: cra
+#   source: eu
+#   domains: [eu, product-security]
 package cra.incident_reporting
 
 import rego.v1

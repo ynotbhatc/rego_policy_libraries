@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide"
+# custom:
+#   class: security
+#   framework: stig_openshift_4
+#   source: disa
+#   domains: [kubernetes, openshift, container]
 package stig.openshift_4.core
 
 # DISA STIG — Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide

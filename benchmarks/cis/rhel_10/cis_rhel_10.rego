@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft)"
+# custom:
+#   class: security
+#   framework: cis_rhel_10
+#   source: cis
+#   domains: [linux, rhel]
 package cis.rhel_10
 
 # CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft)

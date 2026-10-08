@@ -1,3 +1,10 @@
+# METADATA
+# title: "COBIT 2019 — Governance and Management of Enterprise I&T (ISACA)"
+# custom:
+#   class: compliance
+#   framework: cobit
+#   source: isaca
+#   domains: [it-governance]
 package cobit.main
 
 import rego.v1

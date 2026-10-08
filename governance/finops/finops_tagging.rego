@@ -1,3 +1,10 @@
+# METADATA
+# title: "FinOps / Cost Governance — Resource Tagging & Organization Policy"
+# custom:
+#   class: governance
+#   framework: finops
+#   source: finops-foundation
+#   domains: [finops, cost]
 package finops.tagging
 
 # FinOps / Cost Governance — Resource Tagging & Organization Policy

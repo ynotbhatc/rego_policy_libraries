@@ -1,3 +1,10 @@
+# METADATA
+# title: "Csa Ccm Supply Chain"
+# custom:
+#   class: compliance
+#   framework: csa_ccm
+#   source: csa
+#   domains: [cloud]
 package csa_ccm.supply_chain
 
 import rego.v1

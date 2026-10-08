@@ -1,3 +1,10 @@
+# METADATA
+# title: "Official CIS Controls v8.1 safeguards for Control 4: Secure Configuration of Enterprise Assets and Software"
+# custom:
+#   class: compliance
+#   framework: cis_controls_v8
+#   source: cis
+#   domains: [security-controls]
 package cis_controls_v8.c04
 
 import rego.v1

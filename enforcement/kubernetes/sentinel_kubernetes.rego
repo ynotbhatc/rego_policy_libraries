@@ -1,3 +1,10 @@
+# METADATA
+# title: "Sentinel Policy Enforcement — Kubernetes Manifests"
+# custom:
+#   class: enforcement
+#   framework: enforcement_kubernetes
+#   source: aac
+#   domains: [kubernetes]
 package sentinel.kubernetes
 
 import rego.v1

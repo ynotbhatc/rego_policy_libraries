@@ -1,3 +1,10 @@
+# METADATA
+# title: "Control-correlation engine — \"assess once, report against many.\""
+# custom:
+#   class: compliance
+#   framework: crosswalk
+#   source: nist
+#   domains: [crosswalk, security-controls]
 package crosswalk.correlation
 
 import rego.v1

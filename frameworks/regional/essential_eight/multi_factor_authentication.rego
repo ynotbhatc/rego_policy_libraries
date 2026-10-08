@@ -1,3 +1,10 @@
+# METADATA
+# title: "ACSC Essential Eight Maturity Model (Nov 2023) — Multi-Factor Authentication"
+# custom:
+#   class: compliance
+#   framework: essential_eight
+#   source: acsc
+#   domains: [australia]
 package essential_eight.multi_factor_authentication
 
 import rego.v1

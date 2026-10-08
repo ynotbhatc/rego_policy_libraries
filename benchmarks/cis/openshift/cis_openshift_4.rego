@@ -1,3 +1,10 @@
+# METADATA
+# title: "Cis Openshift 4"
+# custom:
+#   class: security
+#   framework: cis_openshift
+#   source: cis
+#   domains: [kubernetes, openshift, container]
 package cis_openshift_4
 
 import rego.v1

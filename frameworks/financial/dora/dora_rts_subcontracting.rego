@@ -1,3 +1,10 @@
+# METADATA
+# title: "DORA level-2 technical standard — ICT subcontracting (critical/important functions)"
+# custom:
+#   class: compliance
+#   framework: dora
+#   source: eu
+#   domains: [financial, eu]
 package dora.rts_subcontracting
 
 import rego.v1

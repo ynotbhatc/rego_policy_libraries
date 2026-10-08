@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8: Initial System Setup"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_20_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_20_04.initial_setup
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8: Initial System Setup

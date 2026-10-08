@@ -28,6 +28,13 @@
 #     }
 #   }
 
+# METADATA
+# title: "AI Governance - Master Policy"
+# custom:
+#   class: governance
+#   framework: ai
+#   source: aac
+#   domains: [ai]
 package ai_governance
 
 import rego.v1

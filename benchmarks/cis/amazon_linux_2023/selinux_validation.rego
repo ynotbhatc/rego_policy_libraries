@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Section 1.6: Mandatory Access Controls (SELinux)"
+# custom:
+#   class: security
+#   framework: cis_amazon_linux_2023
+#   source: cis
+#   domains: [linux, amazon-linux]
 package cis_amazon_linux_2023.selinux
 
 import rego.v1

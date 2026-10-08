@@ -1,3 +1,10 @@
+# METADATA
+# title: "Csa Ccm Logging Monitoring"
+# custom:
+#   class: compliance
+#   framework: csa_ccm
+#   source: csa
+#   domains: [cloud]
 package csa_ccm.logging_monitoring
 
 import rego.v1

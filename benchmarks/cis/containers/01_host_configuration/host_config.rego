@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Docker Benchmark"
+# custom:
+#   class: security
+#   framework: cis_containers
+#   source: cis
+#   domains: [container]
 package cis.docker.host
 
 import rego.v1

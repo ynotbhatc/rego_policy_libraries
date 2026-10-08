@@ -1,3 +1,10 @@
+# METADATA
+# title: "Corporate Password Policy Implementation"
+# custom:
+#   class: compliance
+#   framework: corporate
+#   source: aac
+#   domains: [corporate]
 package corporate.password
 
 import rego.v1

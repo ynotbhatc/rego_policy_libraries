@@ -1,3 +1,10 @@
+# METADATA
+# title: "FBI CJIS Security Policy — Policy Area 7: Configuration Management"
+# custom:
+#   class: compliance
+#   framework: cjis
+#   source: fbi
+#   domains: [us-federal, justice]
 package cjis.configuration_management
 
 import rego.v1

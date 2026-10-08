@@ -1,3 +1,10 @@
+# METADATA
+# title: "CISA Zero Trust Maturity Model (ZTMM) v2.0 — Data pillar"
+# custom:
+#   class: compliance
+#   framework: zero_trust
+#   source: nist
+#   domains: [us-federal, zero-trust]
 package zero_trust.data
 
 import rego.v1

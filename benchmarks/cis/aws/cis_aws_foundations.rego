@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Amazon Web Services Foundations Benchmark v7.0.0"
+# custom:
+#   class: security
+#   framework: cis_aws
+#   source: cis
+#   domains: [cloud, aws]
 package cis_aws
 
 # CIS Amazon Web Services Foundations Benchmark v7.0.0

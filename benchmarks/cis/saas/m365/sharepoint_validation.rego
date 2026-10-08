@@ -4,6 +4,13 @@
 # Uses Secure Score as the primary surface, with /admin/sharepoint/
 # settings as a richer secondary source where reachable (beta API).
 
+# METADATA
+# title: "CIS Microsoft 365 Foundations Benchmark — Section 6 (SharePoint Online)"
+# custom:
+#   class: security
+#   framework: cis_saas
+#   source: cis
+#   domains: [saas, m365]
 package cis_m365.sharepoint
 
 import rego.v1

@@ -2,6 +2,13 @@
 # stig_kubernetes_main.rego / rego PR #52 lineage): an empty input must
 # report fully non-compliant with an explicit finding, never a pass.
 
+# METADATA
+# title: "Framework-key entrypoint alias with the fail-closed gate (pattern from"
+# custom:
+#   class: security
+#   framework: stig_cisco_ios_xe_router
+#   source: disa
+#   domains: [network, cisco]
 package stig.cisco_ios_xe_router.main
 
 import data.stig.cisco_ios_xe_router

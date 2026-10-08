@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST Cybersecurity Framework 2.0 — RECOVER (RC) function"
+# custom:
+#   class: compliance
+#   framework: nist_cybersecurity_framework_2_0
+#   source: nist
+#   domains: [us-federal, security-controls]
 package nist.csf.recover
 
 import rego.v1

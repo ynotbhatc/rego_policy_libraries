@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST SSDF (SP 800-218 v1.1) — Practice Group: Produce Well-Secured Software (PW)"
+# custom:
+#   class: compliance
+#   framework: nist_ssdf
+#   source: nist
+#   domains: [us-federal, secure-development]
 package nist_ssdf.pw
 
 # NIST SSDF (SP 800-218 v1.1) — Practice Group: Produce Well-Secured Software (PW)

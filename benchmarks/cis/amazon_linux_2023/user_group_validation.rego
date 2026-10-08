@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Section 6.2: User and Group Settings"
+# custom:
+#   class: security
+#   framework: cis_amazon_linux_2023
+#   source: cis
+#   domains: [linux, amazon-linux]
 package cis_amazon_linux_2023.user_group
 
 import rego.v1

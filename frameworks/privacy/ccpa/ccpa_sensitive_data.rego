@@ -1,3 +1,10 @@
+# METADATA
+# title: "Ccpa Sensitive Data"
+# custom:
+#   class: compliance
+#   framework: ccpa
+#   source: us-state
+#   domains: [privacy, us-state]
 package ccpa.sensitive_data
 
 import rego.v1

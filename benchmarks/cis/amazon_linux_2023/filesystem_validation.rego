@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Amazon Linux 2023 Section 1.1.x - Filesystem Configuration"
+# custom:
+#   class: security
+#   framework: cis_amazon_linux_2023
+#   source: cis
+#   domains: [linux, amazon-linux]
 package cis_amazon_linux_2023.filesystem
 
 # CIS Amazon Linux 2023 Section 1.1.x - Filesystem Configuration

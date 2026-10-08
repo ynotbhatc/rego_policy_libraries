@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Microsoft Windows 11 Enterprise Benchmark v5.0.1"
+# custom:
+#   class: security
+#   framework: cis_windows_11
+#   source: cis
+#   domains: [windows]
 package cis.windows_11
 
 import rego.v1

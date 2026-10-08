@@ -1,3 +1,10 @@
+# METADATA
+# title: "Iso27701 Pii Processor"
+# custom:
+#   class: compliance
+#   framework: iso27701
+#   source: iso
+#   domains: [privacy, isms]
 package iso27701.pii_processor
 
 import rego.v1

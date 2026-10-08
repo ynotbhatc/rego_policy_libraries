@@ -26,6 +26,13 @@ Thank you for contributing! This library grows by community submissions. Whether
 **Required structure:**
 
 ```rego
+# METADATA
+# title: "<Framework Name> — <section or control group>"
+# custom:
+#   class: compliance            # security | compliance | ot | governance | enforcement | threat-detection
+#   framework: <framework_slug>  # e.g. cis_rhel_9, nist_sp_800_53, nerc_cip
+#   source: <authority>          # from scripts/metadata_vocabulary.json
+#   domains: [<tag>, <tag>]      # from scripts/metadata_vocabulary.json
 package <framework>.<module_name>
 
 import rego.v1
@@ -54,6 +61,7 @@ compliance_report := {
 ```
 
 **Rules:**
+- The `# METADATA` block is mandatory and checked by `make metadata` (`scripts/check_metadata.py`). Values for `source` and `domains` come from `scripts/metadata_vocabulary.json`; add new ones there in the same PR. One block per *package*: if your package already exists in another file, that file owns the block (see CLAUDE.md, *Skill: policy metadata*)
 - `import rego.v1` is mandatory — no exceptions
 - Every policy must export a `compliance_report` rule with at minimum: `compliant`, `violations`
 - Violation messages must include a control identifier (e.g., `"CIS 1.1.1: ..."`, `"CIP-007 R2: ..."`)
@@ -96,6 +104,7 @@ The CI pipeline (`.github/workflows/opa-test.yml`) runs all tests on every PR.
 
 ## Pull request checklist
 
+- [ ] `# METADATA` block present on every new package and `make metadata` passes
 - [ ] `import rego.v1` present in every new `.rego` file
 - [ ] `default compliant := false` present
 - [ ] `compliance_report` rule exported

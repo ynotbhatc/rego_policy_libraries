@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 8 Benchmark v4.0.0 - Section 6.2: User and Group Settings"
+# custom:
+#   class: security
+#   framework: cis_rhel_8
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel8.user_group
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 6.2: User and Group Settings

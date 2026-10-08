@@ -1,3 +1,10 @@
+# METADATA
+# title: "New York Department of Financial Services — 23 NYCRR Part 500"
+# custom:
+#   class: compliance
+#   framework: ny_dfs
+#   source: ny-dfs
+#   domains: [financial, us-state]
 package ny_dfs.main
 
 import rego.v1

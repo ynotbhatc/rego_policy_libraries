@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 9 Benchmark v2.0.0 - Complete Validation"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9
 
 # CIS RHEL 9 Benchmark v2.0.0 - Complete Validation

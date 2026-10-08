@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide — Master Aggregator"
+# custom:
+#   class: security
+#   framework: stig_windows_11
+#   source: disa
+#   domains: [windows]
 package stig.windows_11
 
 # DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide — Master Aggregator

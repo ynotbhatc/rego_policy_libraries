@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — Amazon Linux 2023 Security Technical Implementation Guide — Master Aggregator"
+# custom:
+#   class: security
+#   framework: stig_amazon_linux_2023
+#   source: disa
+#   domains: [linux, amazon-linux]
 package stig.amazon_linux_2023
 
 # DISA STIG — Amazon Linux 2023 Security Technical Implementation Guide — Master Aggregator

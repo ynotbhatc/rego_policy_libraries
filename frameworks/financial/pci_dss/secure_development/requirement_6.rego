@@ -1,5 +1,12 @@
 # PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software
 
+# METADATA
+# title: "PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software"
+# custom:
+#   class: compliance
+#   framework: pci_dss
+#   source: pci-ssc
+#   domains: [financial, payment-cards]
 package pci_dss.secure_development.requirement_6
 
 import rego.v1

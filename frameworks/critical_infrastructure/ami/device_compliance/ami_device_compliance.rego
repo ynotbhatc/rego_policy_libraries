@@ -1,3 +1,10 @@
+# METADATA
+# title: "AMI 2.0 Device Compliance Policy"
+# custom:
+#   class: ot
+#   framework: ami
+#   source: nist
+#   domains: [ot, energy, smart-grid]
 package ami.device.compliance
 
 import rego.v1

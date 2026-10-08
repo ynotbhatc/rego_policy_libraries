@@ -1,3 +1,10 @@
+# METADATA
+# title: "Ccpa Consumer Rights"
+# custom:
+#   class: compliance
+#   framework: ccpa
+#   source: us-state
+#   domains: [privacy, us-state]
 package ccpa.consumer_rights
 
 import rego.v1

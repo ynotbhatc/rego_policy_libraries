@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Ubuntu 20.04 LTS Benchmark - Complete Compliance Assessment"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_20_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_20_04
 
 # CIS Ubuntu 20.04 LTS Benchmark - Complete Compliance Assessment

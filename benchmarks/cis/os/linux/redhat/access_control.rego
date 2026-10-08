@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Benchmark - Access, Authentication and Authorization"
+# custom:
+#   class: security
+#   framework: cis_os
+#   source: cis
+#   domains: [linux]
 package cis.access_control
 
 import rego.v1

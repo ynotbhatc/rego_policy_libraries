@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST Special Publication 800-82 Revision 3"
+# custom:
+#   class: ot
+#   framework: nist_800_82
+#   source: nist
+#   domains: [ot, industrial]
 package nist_800_82.main
 
 import rego.v1

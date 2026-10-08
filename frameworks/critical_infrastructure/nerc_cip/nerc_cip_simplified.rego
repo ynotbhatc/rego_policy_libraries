@@ -1,3 +1,10 @@
+# METADATA
+# title: "NERC CIP (Critical Infrastructure Protection) Standards Implementation"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc.cip.simplified
 
 import rego.v1

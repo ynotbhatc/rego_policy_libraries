@@ -1,6 +1,13 @@
 # SOC 2 Infrastructure - Systems Architecture and Management
 # Comprehensive systems infrastructure controls for SOC 2 compliance
 
+# METADATA
+# title: "SOC 2 Infrastructure - Systems Architecture and Management"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2.infrastructure.systems
 
 import rego.v1

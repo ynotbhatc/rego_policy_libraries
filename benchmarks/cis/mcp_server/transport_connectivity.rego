@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS MCP Server Benchmark v1.0.0 — Section 2: Transport and Connectivity"
+# custom:
+#   class: security
+#   framework: cis_mcp_server
+#   source: cis
+#   domains: [ai, mcp]
 package cis_mcp_server.transport_connectivity
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "FBI CJIS Security Policy — Policy Area 2: Security Awareness Training"
+# custom:
+#   class: compliance
+#   framework: cjis
+#   source: fbi
+#   domains: [us-federal, justice]
 package cjis.security_awareness_training
 
 import rego.v1

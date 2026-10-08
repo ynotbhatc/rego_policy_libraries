@@ -1,3 +1,10 @@
+# METADATA
+# title: "System Security Plan (SSP) Validation Policy"
+# custom:
+#   class: compliance
+#   framework: fisma
+#   source: nist
+#   domains: [us-federal]
 package fisma.ssp
 
 import rego.v1

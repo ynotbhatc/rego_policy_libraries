@@ -1,3 +1,10 @@
+# METADATA
+# title: "IEC 62443 — Industrial Automation and Control Systems (IACS) Security"
+# custom:
+#   class: ot
+#   framework: iec_62443
+#   source: iec
+#   domains: [ot, industrial]
 package iec_62443_main
 
 import rego.v1

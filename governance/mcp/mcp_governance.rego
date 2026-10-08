@@ -1,3 +1,10 @@
+# METADATA
+# title: "MCP Governance Policy"
+# custom:
+#   class: governance
+#   framework: mcp
+#   source: aac
+#   domains: [ai, mcp]
 package ai_governance.mcp
 
 import rego.v1

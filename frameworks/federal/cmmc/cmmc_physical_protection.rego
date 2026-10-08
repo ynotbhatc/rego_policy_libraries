@@ -1,3 +1,10 @@
+# METADATA
+# title: "CMMC 2.0 — Domain 3.10: Physical Protection"
+# custom:
+#   class: compliance
+#   framework: cmmc
+#   source: dod
+#   domains: [us-federal, defense]
 package cmmc.physical_protection
 
 import rego.v1

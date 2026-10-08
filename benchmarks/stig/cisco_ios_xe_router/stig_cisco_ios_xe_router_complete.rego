@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide — Master Aggregator"
+# custom:
+#   class: security
+#   framework: stig_cisco_ios_xe_router
+#   source: disa
+#   domains: [network, cisco]
 package stig.cisco_ios_xe_router
 
 # DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide — Master Aggregator

@@ -1,3 +1,10 @@
+# METADATA
+# title: "Defaults so report/details never collapse to {} on empty input"
+# custom:
+#   class: compliance
+#   framework: gdpr
+#   source: eu
+#   domains: [privacy, eu]
 package gdpr.controller_processor
 
 import rego.v1

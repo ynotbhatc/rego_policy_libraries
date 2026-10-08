@@ -37,6 +37,13 @@
 #   input.attestations[] - {control_id, observed, attested_by,
 #                           attested_on, evidence_ref}
 
+# METADATA
+# title: "CIS Microsoft 365 Foundations Benchmark v7.0.0"
+# custom:
+#   class: security
+#   framework: cis_saas
+#   source: cis
+#   domains: [saas, m365]
 package cis_m365_v7.attestation
 
 import rego.v1

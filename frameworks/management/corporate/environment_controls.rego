@@ -1,3 +1,10 @@
+# METADATA
+# title: "Environment Control Policies for Development, QA, and Production"
+# custom:
+#   class: compliance
+#   framework: corporate
+#   source: aac
+#   domains: [corporate]
 package corporate.environment.controls
 
 import rego.v1

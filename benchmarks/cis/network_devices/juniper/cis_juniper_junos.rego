@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Juniper JunOS Benchmark v2.1.0"
+# custom:
+#   class: security
+#   framework: cis_network_devices
+#   source: cis
+#   domains: [network]
 package cis_juniper_junos
 
 # CIS Juniper JunOS Benchmark v2.1.0

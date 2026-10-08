@@ -8,6 +8,13 @@
 #   - high: Requires approval + justification
 #   - critical: Requires multi-level approval
 
+# METADATA
+# title: "AI Governance - Action Classification Policy"
+# custom:
+#   class: governance
+#   framework: ai
+#   source: aac
+#   domains: [ai]
 package ai_governance.classification
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "EU Cyber Resilience Act (CRA) — Article 31 + Annex VII"
+# custom:
+#   class: compliance
+#   framework: cra
+#   source: eu
+#   domains: [eu, product-security]
 package cra.technical_documentation
 
 import rego.v1

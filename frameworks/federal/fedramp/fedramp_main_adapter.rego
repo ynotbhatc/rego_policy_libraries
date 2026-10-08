@@ -1,3 +1,10 @@
+# METADATA
+# title: "FedRAMP main adapter — exposes the standard contract"
+# custom:
+#   class: compliance
+#   framework: fedramp
+#   source: fedramp
+#   domains: [us-federal, cloud]
 package fedramp.main
 
 import rego.v1

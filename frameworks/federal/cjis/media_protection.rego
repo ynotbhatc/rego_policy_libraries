@@ -1,3 +1,10 @@
+# METADATA
+# title: "FBI CJIS Security Policy — Policy Area 8: Media Protection"
+# custom:
+#   class: compliance
+#   framework: cjis
+#   source: fbi
+#   domains: [us-federal, justice]
 package cjis.media_protection
 
 import rego.v1

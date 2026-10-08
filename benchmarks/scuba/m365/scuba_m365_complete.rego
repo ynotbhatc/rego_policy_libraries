@@ -29,6 +29,13 @@
 #
 # OPA query path: /v1/data/scuba_m365/main/compliance_report
 
+# METADATA
+# title: "CISA SCuBA — Secure Configuration Baselines for Microsoft 365"
+# custom:
+#   class: security
+#   framework: scuba_m365
+#   source: cisa
+#   domains: [saas, m365]
 package scuba_m365.main
 
 import data.scuba_m365.aad

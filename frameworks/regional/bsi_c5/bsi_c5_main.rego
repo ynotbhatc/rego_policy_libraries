@@ -9,6 +9,13 @@
 #
 # Entry point: data.bsi_c5.main.compliance_report
 
+# METADATA
+# title: "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — master orchestrator"
+# custom:
+#   class: compliance
+#   framework: bsi_c5
+#   source: bsi
+#   domains: [germany, cloud]
 package bsi_c5.main
 
 import rego.v1

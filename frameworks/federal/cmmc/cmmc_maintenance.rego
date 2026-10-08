@@ -1,3 +1,10 @@
+# METADATA
+# title: "CMMC 2.0 — Domain 3.7: Maintenance"
+# custom:
+#   class: compliance
+#   framework: cmmc
+#   source: dod
+#   domains: [us-federal, defense]
 package cmmc.maintenance
 
 import rego.v1

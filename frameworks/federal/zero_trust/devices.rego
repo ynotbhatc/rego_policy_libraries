@@ -1,3 +1,10 @@
+# METADATA
+# title: "ZTMM v2.0 — Devices pillar. AAC assessment mapping; each criterion tagged with its maturity stage"
+# custom:
+#   class: compliance
+#   framework: zero_trust
+#   source: nist
+#   domains: [us-federal, zero-trust]
 package zero_trust.devices
 
 import rego.v1

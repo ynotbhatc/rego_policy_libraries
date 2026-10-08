@@ -1,3 +1,10 @@
+# METADATA
+# title: "CISA Cross-Sector Cybersecurity Performance Goals (CPG) 2.0"
+# custom:
+#   class: compliance
+#   framework: cisa_cpg
+#   source: cisa
+#   domains: [us-federal, critical-infrastructure]
 package cisa_cpg.main
 
 import rego.v1

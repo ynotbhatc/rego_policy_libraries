@@ -1,3 +1,10 @@
+# METADATA
+# title: "AAC Technical Debt Scoring Policy"
+# custom:
+#   class: compliance
+#   framework: technical_debt
+#   source: aac
+#   domains: [technical-debt]
 package technical_debt.scoring
 
 import rego.v1

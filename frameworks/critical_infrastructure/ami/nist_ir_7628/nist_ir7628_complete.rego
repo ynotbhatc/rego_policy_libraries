@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity"
+# custom:
+#   class: ot
+#   framework: ami
+#   source: nist
+#   domains: [ot, energy, smart-grid]
 package ami.nist_ir7628.complete
 
 import rego.v1

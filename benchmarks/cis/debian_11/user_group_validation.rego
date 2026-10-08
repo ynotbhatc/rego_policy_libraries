@@ -1,3 +1,10 @@
+# METADATA
+# title: "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 6.2: User and Group..."
+# custom:
+#   class: security
+#   framework: cis_debian_11
+#   source: cis
+#   domains: [linux, debian]
 package cis_debian_11.user_group
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 6.2: User and Group Settings

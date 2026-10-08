@@ -1,3 +1,10 @@
+# METADATA
+# title: "Framework inheritance overlay — \"report against many.\""
+# custom:
+#   class: compliance
+#   framework: crosswalk
+#   source: nist
+#   domains: [crosswalk, security-controls]
 package crosswalk.framework_overlay
 
 import rego.v1

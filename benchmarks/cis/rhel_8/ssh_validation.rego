@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 8 Benchmark v4.0.0 - Section 5.2: SSH Server Configuration"
+# custom:
+#   class: security
+#   framework: cis_rhel_8
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel8.ssh
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.2: SSH Server Configuration

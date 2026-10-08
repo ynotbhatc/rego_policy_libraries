@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — VMware vSphere 8.0 ESXi Security Technical Implementation Guide — Master Aggregator"
+# custom:
+#   class: security
+#   framework: stig_vmware_vsphere_8
+#   source: disa
+#   domains: [virtualization, vmware]
 package stig.vmware_vsphere_8
 
 # DISA STIG — VMware vSphere 8.0 ESXi Security Technical Implementation Guide — Master Aggregator

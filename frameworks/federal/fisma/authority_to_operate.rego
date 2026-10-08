@@ -1,3 +1,10 @@
+# METADATA
+# title: "Authority to Operate (ATO) Assessment Policy"
+# custom:
+#   class: compliance
+#   framework: fisma
+#   source: nist
+#   domains: [us-federal]
 package fisma.ato
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "Cis Vcenter 8"
+# custom:
+#   class: security
+#   framework: cis_vmware
+#   source: cis
+#   domains: [virtualization, vmware]
 package cis_vcenter_8
 
 import rego.v1

@@ -21,6 +21,13 @@
 #                                           enabled_security_groups[], ...}
 #   input.fabric.unavailable             - {key: reason}
 
+# METADATA
+# title: "CIS Microsoft 365 Foundations Benchmark v7.0.0"
+# custom:
+#   class: security
+#   framework: cis_saas
+#   source: cis
+#   domains: [saas, m365]
 package cis_m365_v7.fabric
 
 import rego.v1

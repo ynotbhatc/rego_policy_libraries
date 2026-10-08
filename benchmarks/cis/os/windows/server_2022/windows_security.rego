@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Microsoft Windows Server 2022 Benchmark"
+# custom:
+#   class: security
+#   framework: cis_os
+#   source: cis
+#   domains: [windows]
 package cis.windows.server2022
 
 import rego.v1

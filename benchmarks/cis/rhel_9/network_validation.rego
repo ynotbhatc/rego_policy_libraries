@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 9 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.network
 
 # CIS RHEL 9 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration

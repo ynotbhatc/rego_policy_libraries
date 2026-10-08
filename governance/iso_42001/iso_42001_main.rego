@@ -1,3 +1,10 @@
+# METADATA
+# title: "ISO/IEC 42001:2023 — Artificial Intelligence Management System (AIMS)"
+# custom:
+#   class: governance
+#   framework: iso_42001
+#   source: iso
+#   domains: [ai]
 package iso_42001.main
 
 import rego.v1

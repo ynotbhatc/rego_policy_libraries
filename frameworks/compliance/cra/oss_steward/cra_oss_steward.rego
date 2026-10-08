@@ -1,3 +1,10 @@
+# METADATA
+# title: "EU Cyber Resilience Act (CRA) — Article 24 (Regulation (EU) 2024/2847, final OJ text of 20 Nov 2024)"
+# custom:
+#   class: compliance
+#   framework: cra
+#   source: eu
+#   domains: [eu, product-security]
 package cra.oss_steward
 
 import rego.v1

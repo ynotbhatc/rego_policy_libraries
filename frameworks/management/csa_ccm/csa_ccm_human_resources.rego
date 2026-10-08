@@ -1,3 +1,10 @@
+# METADATA
+# title: "Csa Ccm Human Resources"
+# custom:
+#   class: compliance
+#   framework: csa_ccm
+#   source: csa
+#   domains: [cloud]
 package csa_ccm.human_resources
 
 import rego.v1

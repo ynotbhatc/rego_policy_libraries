@@ -1,3 +1,10 @@
+# METADATA
+# title: "EU Cyber Resilience Act (CRA) — Article 22 (definition: Art. 3(40))"
+# custom:
+#   class: compliance
+#   framework: cra
+#   source: eu
+#   domains: [eu, product-security]
 package cra.substantial_modification
 
 import rego.v1

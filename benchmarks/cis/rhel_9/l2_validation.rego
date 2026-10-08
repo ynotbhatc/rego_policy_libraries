@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 9 Benchmark v2.0.0 - Level 2 Additional Controls"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.l2
 
 # CIS RHEL 9 Benchmark v2.0.0 - Level 2 Additional Controls

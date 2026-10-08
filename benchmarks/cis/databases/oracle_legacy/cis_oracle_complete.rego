@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Oracle Database 19c Benchmark - Complete Validation"
+# custom:
+#   class: security
+#   framework: cis_databases
+#   source: cis
+#   domains: [database, oracle]
 package cis_oracle
 
 # CIS Oracle Database 19c Benchmark - Complete Validation

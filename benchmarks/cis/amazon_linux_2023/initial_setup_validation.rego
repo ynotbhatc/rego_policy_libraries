@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup"
+# custom:
+#   class: security
+#   framework: cis_amazon_linux_2023
+#   source: cis
+#   domains: [linux, amazon-linux]
 package cis_amazon_linux_2023.initial_setup
 
 import rego.v1

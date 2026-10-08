@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Windows Server 2019 Benchmark v4.0.0 - Section 17: Advanced Audit Policy Configuration"
+# custom:
+#   class: security
+#   framework: cis_windows_server_2019_modular
+#   source: cis
+#   domains: [windows]
 package cis_windows_server_2019.advanced_audit
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 17: Advanced Audit Policy Configuration

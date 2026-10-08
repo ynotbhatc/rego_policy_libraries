@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 9 Section 4.1.x - Configure System Accounting (auditd)"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.auditd
 
 # CIS RHEL 9 Section 4.1.x - Configure System Accounting (auditd)

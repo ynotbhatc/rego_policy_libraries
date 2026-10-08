@@ -39,6 +39,13 @@
 #
 # OPA query path (module): /v1/data/scuba_m365/aad/compliance_report
 
+# METADATA
+# title: "CISA SCuBA — Secure Configuration Baseline for Microsoft Entra ID (AAD)"
+# custom:
+#   class: security
+#   framework: scuba_m365
+#   source: cisa
+#   domains: [saas, m365]
 package scuba_m365.aad
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis.rhel_9
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0

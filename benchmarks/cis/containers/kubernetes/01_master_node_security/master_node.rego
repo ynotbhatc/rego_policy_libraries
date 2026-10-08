@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Kubernetes Benchmark"
+# custom:
+#   class: security
+#   framework: cis_containers
+#   source: cis
+#   domains: [container, kubernetes]
 package cis.kubernetes.master
 
 import rego.v1

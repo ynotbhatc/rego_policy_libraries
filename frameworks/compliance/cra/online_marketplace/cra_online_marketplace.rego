@@ -1,3 +1,10 @@
+# METADATA
+# title: "Online marketplace due diligence for products with digital elements — NON-CRA ADJUNCT MODULE"
+# custom:
+#   class: compliance
+#   framework: cra
+#   source: eu
+#   domains: [eu, product-security]
 package cra.online_marketplace
 
 import rego.v1

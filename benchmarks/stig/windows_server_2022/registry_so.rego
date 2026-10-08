@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide"
+# custom:
+#   class: security
+#   framework: stig_windows_server_2022
+#   source: disa
+#   domains: [windows]
 package stig.windows_server_2022.registry_so
 
 # DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide

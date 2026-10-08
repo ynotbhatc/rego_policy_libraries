@@ -1,6 +1,13 @@
 # PCI DSS v4.0 - Main Aggregation Policy (All 12 Requirements)
 # Comprehensive PCI DSS compliance assessment for payment card industry
 
+# METADATA
+# title: "PCI DSS v4.0 - Main Aggregation Policy (All 12 Requirements)"
+# custom:
+#   class: compliance
+#   framework: pci_dss
+#   source: pci-ssc
+#   domains: [financial, payment-cards]
 package pci_dss.main
 
 import rego.v1

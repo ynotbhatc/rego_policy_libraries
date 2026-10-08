@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Amazon Web Services Foundations Benchmark"
+# custom:
+#   class: security
+#   framework: cis_cloud
+#   source: cis
+#   domains: [cloud, aws]
 package cis.aws.iam
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "ZTMM v2.0 — Visibility & Analytics cross-cutting capability. AAC assessment"
+# custom:
+#   class: compliance
+#   framework: zero_trust
+#   source: nist
+#   domains: [us-federal, zero-trust]
 package zero_trust.visibility_analytics
 
 import rego.v1

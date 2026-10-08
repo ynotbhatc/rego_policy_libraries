@@ -1,3 +1,10 @@
+# METADATA
+# title: "Iso27701 Data Subject Rights"
+# custom:
+#   class: compliance
+#   framework: iso27701
+#   source: iso
+#   domains: [privacy, isms]
 package iso27701.data_subject_rights
 
 import rego.v1

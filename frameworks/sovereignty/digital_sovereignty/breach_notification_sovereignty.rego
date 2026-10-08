@@ -1,3 +1,10 @@
+# METADATA
+# title: "Digital Sovereignty — Breach Notification Sovereignty"
+# custom:
+#   class: compliance
+#   framework: digital_sovereignty
+#   source: aac
+#   domains: [sovereignty, data-residency]
 package digital_sovereignty.breach_notification_sovereignty
 
 import rego.v1

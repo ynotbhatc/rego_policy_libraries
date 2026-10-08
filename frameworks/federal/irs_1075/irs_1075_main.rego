@@ -9,6 +9,13 @@
 #
 # Entry point: data.irs_1075.main.compliance_report
 
+# METADATA
+# title: "IRS Publication 1075 (Rev. 11-2021) — master orchestrator"
+# custom:
+#   class: compliance
+#   framework: irs_1075
+#   source: irs
+#   domains: [us-federal, tax]
 package irs_1075.main
 
 import rego.v1

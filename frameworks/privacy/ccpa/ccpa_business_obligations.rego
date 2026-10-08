@@ -1,3 +1,10 @@
+# METADATA
+# title: "Ccpa Business Obligations"
+# custom:
+#   class: compliance
+#   framework: ccpa
+#   source: us-state
+#   domains: [privacy, us-state]
 package ccpa.business_obligations
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "FISMA Continuous Monitoring Program"
+# custom:
+#   class: compliance
+#   framework: fisma
+#   source: nist
+#   domains: [us-federal]
 package fisma.continuous_monitoring
 
 import rego.v1

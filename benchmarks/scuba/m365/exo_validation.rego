@@ -20,6 +20,13 @@
 #
 # OPA query path (module): /v1/data/scuba_m365/exo/compliance_report
 
+# METADATA
+# title: "CISA SCuBA — Secure Configuration Baseline for Exchange Online — 12"
+# custom:
+#   class: security
+#   framework: scuba_m365
+#   source: cisa
+#   domains: [saas, m365]
 package scuba_m365.exo
 
 import rego.v1

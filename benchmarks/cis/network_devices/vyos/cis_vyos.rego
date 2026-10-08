@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS VyOS Router Hardening Benchmark v1.0.0"
+# custom:
+#   class: security
+#   framework: cis_network_devices
+#   source: cis
+#   domains: [network]
 package cis_vyos
 
 # CIS VyOS Router Hardening Benchmark v1.0.0

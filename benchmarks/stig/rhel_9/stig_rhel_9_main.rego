@@ -8,6 +8,13 @@
 # (package stig.rhel_9); this file is a thin alias so framework-key routing
 # resolves to the uniform compliance_report contract.
 
+# METADATA
+# title: "Framework-key entrypoint alias with the fail-closed gate (pattern from"
+# custom:
+#   class: security
+#   framework: stig_rhel_9
+#   source: disa
+#   domains: [linux, rhel]
 package stig.rhel_9.main
 
 import data.stig.rhel_9

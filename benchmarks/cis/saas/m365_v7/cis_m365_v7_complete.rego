@@ -17,6 +17,13 @@
 #
 # OPA query path: /v1/data/cis_m365_v7/main/compliance_report
 
+# METADATA
+# title: "CIS Microsoft 365 Foundations Benchmark v7.0.0 -- master orchestrator"
+# custom:
+#   class: security
+#   framework: cis_saas
+#   source: cis
+#   domains: [saas, m365]
 package cis_m365_v7.main
 
 import data.cis_m365_v7.admin_center

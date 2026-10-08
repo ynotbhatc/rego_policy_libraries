@@ -1,3 +1,10 @@
+# METADATA
+# title: "GEISA ADM Pillar — Application/Device Management via LwM2M"
+# custom:
+#   class: governance
+#   framework: geisa
+#   source: geisa
+#   domains: [ot, energy, smart-grid]
 package governance.geisa.adm
 
 import rego.v1

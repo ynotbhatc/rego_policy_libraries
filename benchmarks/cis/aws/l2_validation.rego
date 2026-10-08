@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Amazon Web Services Foundations Benchmark v7.0.0 - Level 2 Additional Controls"
+# custom:
+#   class: security
+#   framework: cis_aws
+#   source: cis
+#   domains: [cloud, aws]
 package cis_aws.l2
 
 # CIS Amazon Web Services Foundations Benchmark v7.0.0 - Level 2 Additional Controls

@@ -1,3 +1,10 @@
+# METADATA
+# title: "Bridge: expose cis_amazon_linux_2023 under the /v1/data/<framework>/main/compliance_report"
+# custom:
+#   class: security
+#   framework: cis_amazon_linux_2023
+#   source: cis
+#   domains: [linux, amazon-linux]
 package cis_amazon_linux_2023.main
 
 # Bridge: expose cis_amazon_linux_2023 under the /v1/data/<framework>/main/compliance_report

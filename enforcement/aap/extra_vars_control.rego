@@ -9,6 +9,14 @@
 #
 # Covers PAC examples: extra_vars_allowlist, extra_vars_validation,
 # team_based_extra_vars_restriction
+
+# METADATA
+# title: "AAP job policy — what variables may enter automation"
+# custom:
+#   class: enforcement
+#   framework: enforcement_aap
+#   source: aac
+#   domains: [ansible, aap]
 package aac.aap.policy
 
 import rego.v1

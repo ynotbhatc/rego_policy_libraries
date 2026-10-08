@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIP-004-6: Personnel & Training"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip.cip_004
 
 import rego.v1

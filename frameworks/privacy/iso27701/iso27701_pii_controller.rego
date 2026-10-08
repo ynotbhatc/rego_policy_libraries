@@ -1,3 +1,10 @@
+# METADATA
+# title: "Iso27701 Pii Controller"
+# custom:
+#   class: compliance
+#   framework: iso27701
+#   source: iso
+#   domains: [privacy, isms]
 package iso27701.pii_controller
 
 import rego.v1

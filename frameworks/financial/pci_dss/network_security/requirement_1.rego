@@ -1,6 +1,13 @@
 # PCI DSS Requirement 1 - Install and Maintain Network Security Controls
 # Network security controls for cardholder data environment (CDE)
 
+# METADATA
+# title: "PCI DSS Requirement 1 - Install and Maintain Network Security Controls"
+# custom:
+#   class: compliance
+#   framework: pci_dss
+#   source: pci-ssc
+#   domains: [financial, payment-cards]
 package pci_dss.network_security.requirement_1
 
 import rego.v1

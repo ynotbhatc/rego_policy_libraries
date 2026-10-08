@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Section 5.1: Configure time-based job schedulers"
+# custom:
+#   class: security
+#   framework: cis_amazon_linux_2023
+#   source: cis
+#   domains: [linux, amazon-linux]
 package cis_amazon_linux_2023.cron
 
 import rego.v1

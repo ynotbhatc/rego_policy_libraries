@@ -24,6 +24,13 @@
 #   records.*   — facts about the per-system AIIA records (attest for
 #                 the assessed population, e.g. all production systems)
 
+# METADATA
+# title: "ISO/IEC 42005:2025 — AI system impact assessment (first edition, published 2025-05-28)"
+# custom:
+#   class: governance
+#   framework: iso_42005
+#   source: iso
+#   domains: [ai]
 package iso_42005.main
 
 import rego.v1

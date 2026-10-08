@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Apple iOS Benchmark"
+# custom:
+#   class: security
+#   framework: cis_mobile_devices
+#   source: cis
+#   domains: [mobile, ios]
 package cis.mobile.ios
 
 import rego.v1

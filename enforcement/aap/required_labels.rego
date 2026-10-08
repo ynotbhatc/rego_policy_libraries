@@ -8,6 +8,8 @@
 #   /v1/data/aac/aap/policy/required_labels
 #
 # No PAC example covers this — it is an AAC addition.
+
+# Package-level METADATA for aac.aap.policy is declared in enforcement/aap/extra_vars_control.rego (OPA allows one per package).
 package aac.aap.policy
 
 import rego.v1

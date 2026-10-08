@@ -3,6 +3,14 @@
 # and .score. This lives in the bare `soc2` package (NOT soc2.main) so it
 # resolves at data.soc2.soc2_assessment — the path the playbook queries.
 # Security is the required common criteria; score = % of the 5 TSC passing.
+
+# METADATA
+# title: "Consumer endpoint for the compliance-repo soc2 role"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2
 
 import rego.v1

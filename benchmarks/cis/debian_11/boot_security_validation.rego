@@ -1,3 +1,10 @@
+# METADATA
+# title: "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Sections 1.3-1.5: Boot..."
+# custom:
+#   class: security
+#   framework: cis_debian_11
+#   source: cis
+#   domains: [linux, debian]
 package cis_debian_11.boot_security
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Sections 1.3-1.5: Boot Security and Process Hardening

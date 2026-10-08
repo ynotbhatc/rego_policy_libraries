@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Sections 1.3, 1.4, 1.5: Boot Security, Filesystem Integrity, Process Hardening"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.boot_security
 
 import rego.v1

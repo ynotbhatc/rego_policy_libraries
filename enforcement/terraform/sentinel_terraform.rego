@@ -1,3 +1,10 @@
+# METADATA
+# title: "Sentinel-equivalent policy for Terraform plans"
+# custom:
+#   class: enforcement
+#   framework: enforcement_terraform
+#   source: aac
+#   domains: [iac, terraform]
 package sentinel.terraform
 
 import rego.v1

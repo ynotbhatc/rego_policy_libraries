@@ -15,6 +15,13 @@
 #
 # OPA query path (module): /v1/data/scuba_m365/powerplatform/compliance_report
 
+# METADATA
+# title: "CISA SCuBA — Secure Configuration Baseline for Power Platform — 9"
+# custom:
+#   class: security
+#   framework: scuba_m365
+#   source: cisa
+#   domains: [saas, m365]
 package scuba_m365.powerplatform
 
 import rego.v1

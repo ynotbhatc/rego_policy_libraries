@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG for Ubuntu 20.04 LTS - Simplified Complete Assessment"
+# custom:
+#   class: security
+#   framework: stig_ubuntu_20_04
+#   source: disa
+#   domains: [linux, ubuntu]
 package stig.ubuntu_20_04
 
 # DISA STIG for Ubuntu 20.04 LTS - Simplified Complete Assessment

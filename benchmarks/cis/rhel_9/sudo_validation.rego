@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Section 5.3: Configure privilege escalation (sudo)"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.sudo
 
 import rego.v1

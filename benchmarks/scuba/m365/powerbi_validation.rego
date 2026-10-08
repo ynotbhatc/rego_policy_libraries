@@ -18,6 +18,13 @@
 #
 # OPA query path (module): /v1/data/scuba_m365/powerbi/compliance_report
 
+# METADATA
+# title: "CISA SCuBA — Secure Configuration Baseline for Power BI — 8 policies"
+# custom:
+#   class: security
+#   framework: scuba_m365
+#   source: cisa
+#   domains: [saas, m365]
 package scuba_m365.powerbi
 
 import rego.v1

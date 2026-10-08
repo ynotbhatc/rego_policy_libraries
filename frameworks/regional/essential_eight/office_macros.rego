@@ -1,3 +1,10 @@
+# METADATA
+# title: "ACSC Essential Eight Maturity Model (Nov 2023) — Configure Microsoft Office Macro Settings"
+# custom:
+#   class: compliance
+#   framework: essential_eight
+#   source: acsc
+#   domains: [australia]
 package essential_eight.office_macros
 
 import rego.v1

@@ -1,5 +1,12 @@
 # PCI DSS v4.0 Requirement 11 - Test Security of Systems and Networks Regularly
 
+# METADATA
+# title: "PCI DSS v4.0 Requirement 11 - Test Security of Systems and Networks Regularly"
+# custom:
+#   class: compliance
+#   framework: pci_dss
+#   source: pci-ssc
+#   domains: [financial, payment-cards]
 package pci_dss.security_testing.requirement_11
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "Bridge: expose cis_kubernetes under the /v1/data/<framework>/main/compliance_report"
+# custom:
+#   class: security
+#   framework: cis_kubernetes
+#   source: cis
+#   domains: [kubernetes, container]
 package cis_kubernetes.main
 
 # Bridge: expose cis_kubernetes under the /v1/data/<framework>/main/compliance_report

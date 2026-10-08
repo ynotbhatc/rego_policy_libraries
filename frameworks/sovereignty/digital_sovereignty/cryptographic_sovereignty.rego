@@ -1,3 +1,10 @@
+# METADATA
+# title: "Digital Sovereignty — Cryptographic Sovereignty"
+# custom:
+#   class: compliance
+#   framework: digital_sovereignty
+#   source: aac
+#   domains: [sovereignty, data-residency]
 package digital_sovereignty.cryptographic_sovereignty
 
 import rego.v1

@@ -1,3 +1,4 @@
+# Package-level METADATA for supply_chain.slsa is declared in benchmarks/supply_chain/slsa/slsa.rego (OPA allows one per package).
 package supply_chain.slsa
 
 # Software Supply Chain Security — SLSA Framework Governance

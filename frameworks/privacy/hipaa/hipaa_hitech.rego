@@ -1,3 +1,10 @@
+# METADATA
+# title: "Defaults so report/details never collapse to {} on empty input"
+# custom:
+#   class: compliance
+#   framework: hipaa
+#   source: hhs
+#   domains: [privacy, healthcare]
 package hipaa.hitech
 
 import rego.v1

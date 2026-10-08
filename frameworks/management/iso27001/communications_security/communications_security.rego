@@ -1,3 +1,10 @@
+# METADATA
+# title: "Defaults so report/details never collapse to {} on empty input"
+# custom:
+#   class: compliance
+#   framework: iso27001
+#   source: iso
+#   domains: [isms]
 package iso27001.communications_security
 
 import rego.v1

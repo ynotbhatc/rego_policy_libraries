@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Microsoft Azure Foundations Benchmark"
+# custom:
+#   class: security
+#   framework: cis_cloud
+#   source: cis
+#   domains: [cloud, azure]
 package cis.azure.iam
 
 import rego.v1

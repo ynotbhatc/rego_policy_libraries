@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS PostgreSQL 15 Benchmark v1.2.0"
+# custom:
+#   class: security
+#   framework: cis_postgresql
+#   source: cis
+#   domains: [database, postgresql]
 package cis.postgresql_15
 
 import rego.v1

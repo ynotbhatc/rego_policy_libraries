@@ -1,3 +1,10 @@
+# METADATA
+# title: "FBI CJIS Security Policy — Policy Area 1: Information Exchange Agreements"
+# custom:
+#   class: compliance
+#   framework: cjis
+#   source: fbi
+#   domains: [us-federal, justice]
 package cjis.information_exchange
 
 import rego.v1

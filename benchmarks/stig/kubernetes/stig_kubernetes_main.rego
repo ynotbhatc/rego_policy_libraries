@@ -8,6 +8,13 @@
 # routing (`framework: stig_kubernetes` → URL `/v1/data/stig_kubernetes/main`)
 # resolves cleanly without renaming the canonical package.
 
+# METADATA
+# title: "Wrapper exposing the Kubernetes STIG compliance report at the package path"
+# custom:
+#   class: security
+#   framework: stig_kubernetes
+#   source: disa
+#   domains: [kubernetes, container]
 package stig.kubernetes.main
 
 import data.stig.kubernetes

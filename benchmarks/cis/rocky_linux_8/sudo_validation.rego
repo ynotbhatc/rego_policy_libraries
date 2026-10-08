@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.3: Configure privilege escalation"
+# custom:
+#   class: security
+#   framework: cis_rocky_linux_8
+#   source: cis
+#   domains: [linux, rocky]
 package cis_rocky_linux_8.sudo
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.3: Configure privilege escalation

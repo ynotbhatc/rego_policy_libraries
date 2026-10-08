@@ -1,3 +1,10 @@
+# METADATA
+# title: "Digital Sovereignty — Network Sovereignty"
+# custom:
+#   class: compliance
+#   framework: digital_sovereignty
+#   source: aac
+#   domains: [sovereignty, data-residency]
 package digital_sovereignty.network_sovereignty
 
 import rego.v1

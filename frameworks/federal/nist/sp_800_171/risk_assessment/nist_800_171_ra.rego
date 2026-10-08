@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST SP 800-171 Rev 3 - Risk Assessment (RA) Requirements"
+# custom:
+#   class: compliance
+#   framework: nist_sp_800_171
+#   source: nist
+#   domains: [us-federal, security-controls]
 package nist.sp800_171.risk_assessment
 
 import rego.v1

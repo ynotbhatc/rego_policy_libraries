@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide"
+# custom:
+#   class: security
+#   framework: stig_ubuntu_22_04
+#   source: disa
+#   domains: [linux, ubuntu]
 package stig.ubuntu_22_04.core
 
 # DISA STIG — Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide

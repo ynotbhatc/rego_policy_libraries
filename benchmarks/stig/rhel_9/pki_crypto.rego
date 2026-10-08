@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG for RHEL 9 - PKI and Cryptography Module"
+# custom:
+#   class: security
+#   framework: stig_rhel_9
+#   source: disa
+#   domains: [linux, rhel]
 package stig.rhel_9.pki_crypto
 
 # DISA STIG for RHEL 9 - PKI and Cryptography Module

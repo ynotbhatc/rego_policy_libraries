@@ -2,6 +2,13 @@
 # stig_kubernetes_main.rego / rego PR #52 lineage): an empty input must
 # report fully non-compliant with an explicit finding, never a pass.
 
+# METADATA
+# title: "Framework-key entrypoint alias with the fail-closed gate (pattern from"
+# custom:
+#   class: security
+#   framework: stig_amazon_linux_2023
+#   source: disa
+#   domains: [linux, amazon-linux]
 package stig.amazon_linux_2023.main
 
 import data.stig.amazon_linux_2023

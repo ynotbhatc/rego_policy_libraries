@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Microsoft Azure Foundations Benchmark v3.0.0 - Level 2 Additional Controls"
+# custom:
+#   class: security
+#   framework: cis_azure
+#   source: cis
+#   domains: [cloud, azure]
 package cis_azure.l2
 
 # CIS Microsoft Azure Foundations Benchmark v3.0.0 - Level 2 Additional Controls

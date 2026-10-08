@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST SP 800-53 Rev 5 — Incident Response (IR) Family"
+# custom:
+#   class: compliance
+#   framework: nist_sp_800_53
+#   source: nist
+#   domains: [us-federal, security-controls]
 package nist.sp800_53.incident_response
 
 import rego.v1

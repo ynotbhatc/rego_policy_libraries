@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 8 Benchmark v4.0.0 - Section 5.4/5.5: PAM and User Accounts"
+# custom:
+#   class: security
+#   framework: cis_rhel_8
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel8.pam
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.4/5.5: PAM and User Accounts

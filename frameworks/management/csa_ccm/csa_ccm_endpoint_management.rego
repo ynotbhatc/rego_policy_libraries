@@ -1,3 +1,10 @@
+# METADATA
+# title: "Csa Ccm Endpoint Management"
+# custom:
+#   class: compliance
+#   framework: csa_ccm
+#   source: csa
+#   domains: [cloud]
 package csa_ccm.endpoint_management
 
 import rego.v1

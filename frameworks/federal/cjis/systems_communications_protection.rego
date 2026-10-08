@@ -1,3 +1,10 @@
+# METADATA
+# title: "FBI CJIS Security Policy — Policy Area 10: Systems and Communications Protection and Information Integrity. AAC operationalization (maps..."
+# custom:
+#   class: compliance
+#   framework: cjis
+#   source: fbi
+#   domains: [us-federal, justice]
 package cjis.systems_communications_protection
 
 import rego.v1

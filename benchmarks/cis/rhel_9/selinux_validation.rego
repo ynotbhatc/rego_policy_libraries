@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Section 1.6: Mandatory Access Controls (SELinux)"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.selinux
 
 import rego.v1

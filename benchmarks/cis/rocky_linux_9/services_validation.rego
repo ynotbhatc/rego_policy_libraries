@@ -1,3 +1,10 @@
+# METADATA
+# title: "DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Sections 1.1.23, 2.1.x, 2.2.x,..."
+# custom:
+#   class: security
+#   framework: cis_rocky_linux_9
+#   source: cis
+#   domains: [linux, rocky]
 package cis_rocky_linux_9.services
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration

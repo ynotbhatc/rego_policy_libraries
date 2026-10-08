@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Windows Server 2019 Benchmark v4.0.0 - Section 1: Account Policies"
+# custom:
+#   class: security
+#   framework: cis_windows_server_2019_modular
+#   source: cis
+#   domains: [windows]
 package cis_windows_server_2019.account_policies
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 1: Account Policies

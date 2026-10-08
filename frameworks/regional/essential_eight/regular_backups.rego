@@ -1,3 +1,10 @@
+# METADATA
+# title: "ACSC Essential Eight Maturity Model (Nov 2023) — Regular Backups"
+# custom:
+#   class: compliance
+#   framework: essential_eight
+#   source: acsc
+#   domains: [australia]
 package essential_eight.regular_backups
 
 import rego.v1

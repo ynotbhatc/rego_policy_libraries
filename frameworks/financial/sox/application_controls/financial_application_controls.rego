@@ -1,3 +1,10 @@
+# METADATA
+# title: "SOX Application Controls for Financial Systems"
+# custom:
+#   class: compliance
+#   framework: sox
+#   source: us-federal
+#   domains: [financial, public-company]
 package sox.application_controls
 
 import rego.v1

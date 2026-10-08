@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Benchmark compliance rules for Linux systems"
+# custom:
+#   class: security
+#   framework: cis_os
+#   source: cis
+#   domains: [linux]
 package cis_redhat_legacy
 
 import rego.v1
