@@ -1,3 +1,10 @@
+# METADATA
+# title: "Csa Ccm Governance"
+# custom:
+#   class: compliance
+#   framework: csa_ccm
+#   source: csa
+#   domains: [cloud]
 package csa_ccm.governance
 
 import rego.v1

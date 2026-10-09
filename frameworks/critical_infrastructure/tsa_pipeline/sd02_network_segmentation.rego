@@ -1,3 +1,10 @@
+# METADATA
+# title: "TSA Security Directive Pipeline-2021-02G"
+# custom:
+#   class: ot
+#   framework: tsa_pipeline
+#   source: tsa
+#   domains: [ot, pipeline]
 package tsa_pipeline.sd02_network_segmentation
 
 import rego.v1

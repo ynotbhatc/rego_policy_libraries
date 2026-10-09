@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Kubernetes Benchmark v2.0.0"
+# custom:
+#   class: security
+#   framework: cis_kubernetes
+#   source: cis
+#   domains: [kubernetes, container]
 package cis_kubernetes
 
 # CIS Kubernetes Benchmark v2.0.0

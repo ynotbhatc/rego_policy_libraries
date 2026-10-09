@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — Microsoft Windows Server 2025 Security Technical Implementation Guide"
+# custom:
+#   class: security
+#   framework: stig_windows_server_2025
+#   source: disa
+#   domains: [windows]
 package stig.windows_server_2025.registry_other
 
 # DISA STIG — Microsoft Windows Server 2025 Security Technical Implementation Guide

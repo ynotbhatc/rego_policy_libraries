@@ -18,6 +18,13 @@
 #     "org_settings": {...}
 #   }
 
+# METADATA
+# title: "CIS Microsoft 365 Foundations Benchmark — Section 4 (Microsoft Exchange)"
+# custom:
+#   class: security
+#   framework: cis_saas
+#   source: cis
+#   domains: [saas, m365]
 package cis_m365.exchange
 
 import rego.v1

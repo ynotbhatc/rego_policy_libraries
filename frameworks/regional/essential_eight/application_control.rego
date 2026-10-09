@@ -1,3 +1,10 @@
+# METADATA
+# title: "ACSC Essential Eight Maturity Model (Nov 2023) — Application Control"
+# custom:
+#   class: compliance
+#   framework: essential_eight
+#   source: acsc
+#   domains: [australia]
 package essential_eight.application_control
 
 import rego.v1

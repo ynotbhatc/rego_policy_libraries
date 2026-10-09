@@ -1,3 +1,10 @@
+# METADATA
+# title: "SSH Authorized Keys Validation"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.authorized_keys
 
 import rego.v1

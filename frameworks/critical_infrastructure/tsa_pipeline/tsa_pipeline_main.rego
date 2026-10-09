@@ -1,3 +1,10 @@
+# METADATA
+# title: "TSA Pipeline Security Directives — Main Orchestrator"
+# custom:
+#   class: ot
+#   framework: tsa_pipeline
+#   source: tsa
+#   domains: [ot, pipeline]
 package tsa_pipeline.main
 
 import rego.v1

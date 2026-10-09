@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIP-006-6: Physical Security of BES Cyber Systems"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip.cip_006
 
 import rego.v1

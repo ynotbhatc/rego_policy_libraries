@@ -92,6 +92,13 @@
 #     untrusted_workloads_restricted        5.6.1
 #     hostile_multitenant_isolated          5.6.2
 
+# METADATA
+# title: "CIS Azure AKS (Azure Kubernetes Service) Benchmark v1.8.0"
+# custom:
+#   class: security
+#   framework: cis_aks
+#   source: cis
+#   domains: [kubernetes, cloud, azure]
 package cis_aks.main
 
 import rego.v1

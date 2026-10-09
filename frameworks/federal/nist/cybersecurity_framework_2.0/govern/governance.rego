@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST Cybersecurity Framework 2.0 - GOVERN Function"
+# custom:
+#   class: compliance
+#   framework: nist_cybersecurity_framework_2_0
+#   source: nist
+#   domains: [us-federal, security-controls]
 package nist.csf.govern
 
 import rego.v1

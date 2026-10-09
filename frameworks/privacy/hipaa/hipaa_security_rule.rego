@@ -1,3 +1,10 @@
+# METADATA
+# title: "Technical safeguards (§164.312) are evaluated by the data-activity modules — measured from input.phi_systems[] / audit_logs[] / users[],..."
+# custom:
+#   class: compliance
+#   framework: hipaa
+#   source: hhs
+#   domains: [privacy, healthcare]
 package hipaa.security_rule
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_20_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_20_04.auditd
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)

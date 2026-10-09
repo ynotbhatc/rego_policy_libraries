@@ -1,3 +1,10 @@
+# METADATA
+# title: "CRA — Cryptography evidence integration"
+# custom:
+#   class: compliance
+#   framework: cra
+#   source: eu
+#   domains: [eu, product-security]
 package cra.crypto_evidence
 
 import data.iso27001.cryptography as iso_crypto

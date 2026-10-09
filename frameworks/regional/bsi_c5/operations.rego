@@ -1,3 +1,10 @@
+# METADATA
+# title: "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria"
+# custom:
+#   class: compliance
+#   framework: bsi_c5
+#   source: bsi
+#   domains: [germany, cloud]
 package bsi_c5.operations
 
 import rego.v1

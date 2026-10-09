@@ -1,3 +1,10 @@
+# METADATA
+# title: "Digital Sovereignty — Data Residency"
+# custom:
+#   class: compliance
+#   framework: digital_sovereignty
+#   source: aac
+#   domains: [sovereignty, data-residency]
 package digital_sovereignty.data_residency
 
 import rego.v1

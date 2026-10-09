@@ -1,3 +1,10 @@
+# METADATA
+# title: "CMMC 2.0 — Domain 3.3: Audit & Accountability"
+# custom:
+#   class: compliance
+#   framework: cmmc
+#   source: dod
+#   domains: [us-federal, defense]
 package cmmc.audit_accountability
 
 import rego.v1

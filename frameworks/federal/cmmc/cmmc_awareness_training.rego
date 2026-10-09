@@ -1,3 +1,10 @@
+# METADATA
+# title: "CMMC 2.0 — Domain 3.2: Awareness & Training"
+# custom:
+#   class: compliance
+#   framework: cmmc
+#   source: dod
+#   domains: [us-federal, defense]
 package cmmc.awareness_training
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS MCP Server Benchmark v1.0.0 — Section 5: Server Configuration"
+# custom:
+#   class: security
+#   framework: cis_mcp_server
+#   source: cis
+#   domains: [ai, mcp]
 package cis_mcp_server.server_config
 
 import rego.v1

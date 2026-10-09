@@ -1,3 +1,10 @@
+# METADATA
+# title: "Digital Sovereignty — Operational Sovereignty"
+# custom:
+#   class: compliance
+#   framework: digital_sovereignty
+#   source: aac
+#   domains: [sovereignty, data-residency]
 package digital_sovereignty.operational_sovereignty
 
 import rego.v1

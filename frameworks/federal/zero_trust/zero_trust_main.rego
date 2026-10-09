@@ -8,6 +8,13 @@
 #
 # Entry point: data.zero_trust.main.compliance_report
 
+# METADATA
+# title: "CISA Zero Trust Maturity Model v2.0 — master orchestrator"
+# custom:
+#   class: compliance
+#   framework: zero_trust
+#   source: nist
+#   domains: [us-federal, zero-trust]
 package zero_trust.main
 
 import rego.v1

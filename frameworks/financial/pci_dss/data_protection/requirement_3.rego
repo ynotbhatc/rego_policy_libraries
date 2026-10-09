@@ -1,6 +1,13 @@
 # PCI DSS Requirement 3 - Protect Stored Account Data
 # Critical requirement for cardholder data protection at rest
 
+# METADATA
+# title: "PCI DSS Requirement 3 - Protect Stored Account Data"
+# custom:
+#   class: compliance
+#   framework: pci_dss
+#   source: pci-ssc
+#   domains: [financial, payment-cards]
 package pci_dss.data_protection.requirement_3
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST SP 800-53 Rev 5 — System and Communications Protection (SC) Family"
+# custom:
+#   class: compliance
+#   framework: nist_sp_800_53
+#   source: nist
+#   domains: [us-federal, security-controls]
 package nist.sp800_53.system_communications
 
 import rego.v1

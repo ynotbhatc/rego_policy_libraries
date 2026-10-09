@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers"
+# custom:
+#   class: security
+#   framework: cis_rocky_linux_8
+#   source: cis
+#   domains: [linux, rocky]
 package cis_rocky_linux_8.cron
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers

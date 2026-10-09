@@ -1,3 +1,10 @@
+# METADATA
+# title: "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 5.2: Configure SSH Server"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_24_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_24_04.ssh
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 5.2: Configure SSH Server

@@ -1,3 +1,10 @@
+# METADATA
+# title: "Bridge: expose cis_debian_11 under the /v1/data/<framework>/main/compliance_report"
+# custom:
+#   class: security
+#   framework: cis_debian_11
+#   source: cis
+#   domains: [linux, debian]
 package cis_debian_11.main
 
 # Bridge: expose cis_debian_11 under the /v1/data/<framework>/main/compliance_report

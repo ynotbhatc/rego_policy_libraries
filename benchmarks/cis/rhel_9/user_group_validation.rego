@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Section 6.2: User and Group Settings"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.user_group
 
 import rego.v1

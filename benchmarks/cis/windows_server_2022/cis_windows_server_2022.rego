@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Microsoft Windows Server 2022 Benchmark v5.0.0"
+# custom:
+#   class: security
+#   framework: cis_windows_server_2022
+#   source: cis
+#   domains: [windows]
 package cis_windows_server_2022_legacy
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0

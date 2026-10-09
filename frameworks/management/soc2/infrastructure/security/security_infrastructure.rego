@@ -1,6 +1,13 @@
 # SOC 2 Infrastructure - Security Infrastructure and Operations
 # Comprehensive security infrastructure controls for SOC 2 compliance
 
+# METADATA
+# title: "SOC 2 Infrastructure - Security Infrastructure and Operations"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2.infrastructure.security
 
 import rego.v1

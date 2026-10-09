@@ -8,6 +8,13 @@
 #   - ai_admin: Full access except critical
 #   - ai_emergency: Full access including critical (time-limited)
 
+# METADATA
+# title: "AI Governance - Authorization Policy"
+# custom:
+#   class: governance
+#   framework: ai
+#   source: aac
+#   domains: [ai]
 package ai_governance.authorization
 
 import rego.v1

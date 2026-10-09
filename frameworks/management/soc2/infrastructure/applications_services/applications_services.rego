@@ -1,6 +1,13 @@
 # SOC 2 Infrastructure - Applications and Services Security
 # Comprehensive application and service infrastructure controls for SOC 2 compliance
 
+# METADATA
+# title: "SOC 2 Infrastructure - Applications and Services Security"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2.infrastructure.applications_services
 
 import rego.v1

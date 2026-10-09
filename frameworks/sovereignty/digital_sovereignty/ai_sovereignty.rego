@@ -1,3 +1,10 @@
+# METADATA
+# title: "Digital Sovereignty — AI/ML Sovereignty"
+# custom:
+#   class: compliance
+#   framework: digital_sovereignty
+#   source: aac
+#   domains: [sovereignty, data-residency]
 package digital_sovereignty.ai_sovereignty
 
 import rego.v1

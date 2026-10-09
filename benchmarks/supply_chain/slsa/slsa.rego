@@ -8,6 +8,14 @@
 #   L1  Provenance exists                 -> provenance present
 #   L2  Signed by a hosted build platform -> substrate.provenance_ok + signing_ok
 #   L3  Hardened, isolated builds         -> + substrate.build_hardening_ok
+
+# METADATA
+# title: "SLSA v1.0 (build track) mapped onto the supply-chain substrate"
+# custom:
+#   class: security
+#   framework: supply_chain_slsa
+#   source: openssf
+#   domains: [supply-chain, cicd]
 package supply_chain.slsa
 
 import rego.v1

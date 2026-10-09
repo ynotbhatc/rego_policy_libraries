@@ -15,6 +15,14 @@
 # reports the control unsatisfied rather than silently passing.
 #
 # Input contract (supply-chain facts) — see README.md for the full shape.
+
+# METADATA
+# title: "AAC Supply-Chain Control Substrate"
+# custom:
+#   class: security
+#   framework: supply_chain_substrate
+#   source: aac
+#   domains: [supply-chain]
 package supply_chain.substrate
 
 import rego.v1

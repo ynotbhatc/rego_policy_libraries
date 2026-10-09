@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Microsoft Windows 10 Enterprise Benchmark v4.0.0"
+# custom:
+#   class: security
+#   framework: cis_windows_10
+#   source: cis
+#   domains: [windows]
 package cis_windows_10
 
 # CIS Microsoft Windows 10 Enterprise Benchmark v4.0.0  

@@ -7,6 +7,13 @@
 #
 # Entry point: data.cis_controls_v8.main.compliance_report
 
+# METADATA
+# title: "CIS Controls v8.1 — master orchestrator"
+# custom:
+#   class: compliance
+#   framework: cis_controls_v8
+#   source: cis
+#   domains: [security-controls]
 package cis_controls_v8.main
 
 import rego.v1

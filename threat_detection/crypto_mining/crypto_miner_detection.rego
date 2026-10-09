@@ -2,6 +2,13 @@
 # Detects indicators of unauthorized cryptocurrency mining software
 # Part of Ansible Automated Compliance (AAC) security controls
 
+# METADATA
+# title: "Crypto Miner Detection Policy"
+# custom:
+#   class: threat-detection
+#   framework: crypto_mining
+#   source: aac
+#   domains: [threat, cryptomining]
 package security.crypto_miner_detection
 
 import rego.v1

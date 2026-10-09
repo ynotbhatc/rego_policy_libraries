@@ -1,3 +1,10 @@
+# METADATA
+# title: "IRS Publication 1075 (Rev. 11-2021) — Section 5: Restricting Access"
+# custom:
+#   class: compliance
+#   framework: irs_1075
+#   source: irs
+#   domains: [us-federal, tax]
 package irs_1075.restricting_access
 
 import rego.v1

@@ -127,6 +127,49 @@ compliance_report := {
 
 7. Set → array: `[v | some v in <set>]` (sets and arrays aren't interchangeable)
 
+## Skill: policy metadata (MANDATORY)
+
+Every package carries a package-scoped OPA [`# METADATA`](https://www.openpolicyagent.org/docs/latest/annotations/)
+block directly above `package`. It is how consumers classify a policy without
+parsing directory names: `opa inspect -a -f json .` returns every block as data,
+and `scripts/check_metadata.py` (`make metadata`) fails the build when one is
+missing or uses a value outside the controlled vocabulary.
+
+```rego
+# METADATA
+# title: "CIS RHEL 9 Benchmark v2.0.0 - Section 1.6: SELinux"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
+package cis_rhel9.selinux
+```
+
+| key | rule |
+|---|---|
+| `title` | One line, quoted. What the module covers, usually the standard + section. |
+| `custom.class` | **Closed set**: `security`, `compliance`, `ot`, `governance`, `enforcement`, `threat-detection`. Decides the OPA container (see `container_for_class` in the vocabulary). |
+| `custom.framework` | Slug `[a-z0-9_]+` naming the standard the module implements (`cis_rhel_9`, `stig_rhel_9`, `nist_sp_800_53`, `nerc_cip`, `enforcement_aap`). Same for every module of one standard. |
+| `custom.source` | Issuing authority, from the vocabulary (`cis`, `disa`, `cisa`, `nist`, `iso`, `eu`, `aac` for internal policy, ...). |
+| `custom.domains` | One or more platform / sector tags from the vocabulary (`linux`, `rhel`, `kubernetes`, `cloud`, `saas`, `ot`, `energy`, `privacy`, `ai`, ...). |
+
+Rules:
+
+1. The vocabulary is `scripts/metadata_vocabulary.json`. Need a new `source` or
+   `domain`? Add it there in the same PR, with the policy that uses it. `class` does
+   not grow without a new OPA container to back it.
+2. **OPA allows one package-scoped block per package.** When a package spans several
+   files (`enforcement/aap/*.rego` all declare `aac.aap.policy`), exactly one file
+   owns the block and the others carry a one-line pointer comment to it.
+   `scripts/backfill_metadata.py` picks the owner deterministically.
+3. If the line above `package` is already a comment, leave a blank line before
+   `# METADATA`, or OPA parses the old header as part of the annotation.
+4. Framework-to-control mapping (STIG id to 800-53, etc.) is **not** a tag. That lives
+   in `crosswalk/`.
+5. New directory? Add its row to the table in `scripts/backfill_metadata.py`, run it
+   with `--only <dir>`, review the titles, commit.
+
 ## Skill: testing locally
 
 ```bash
@@ -198,15 +241,19 @@ When you add new sections, also wire them into the master orchestrator's `violat
 
 ## CI
 
-`.github/workflows/ci.yml` runs `opa test` on every PR via the `Check and Test Rego Policies` job. PRs are merged when CI is green.
+`.github/workflows/opa-test.yml` runs `opa check` per tree, `opa test . --ignore .github`, a
+test-count tripwire and the CIS-id checks on every PR. `make check` runs the same set locally
+plus `make metadata` (`scripts/check_metadata.py`); wiring that script into the workflow is a
+protected-path change and needs the `Approved-By` trailer. PRs are merged when CI is green.
 
 The compliance repo has its own CI that validates the submodule pointer; bumping the submodule there pulls in this library at the SHA you committed.
 
 ## Conventions for new contributions
 
-1. New benchmark version: add as a new directory (`benchmarks/cis/rhel_10/`); do NOT mutate the previous version
-2. New framework: pick a parent under `frameworks/` (federal / financial / management / privacy / compliance / sovereignty / critical_infrastructure / regulatory) and ship a `<framework>_main.rego` master
-3. Always update the consumer side: bumping a policy doesn't help anyone until the compliance repo's submodule pointer advances and the loader playbook references it
+1. Every new package carries the `# METADATA` block (see *Skill: policy metadata*); `make metadata` must pass
+2. New benchmark version: add as a new directory (`benchmarks/cis/rhel_10/`); do NOT mutate the previous version
+3. New framework: pick a parent under `frameworks/` (federal / financial / management / privacy / compliance / sovereignty / critical_infrastructure / regulatory) and ship a `<framework>_main.rego` master
+4. Always update the consumer side: bumping a policy doesn't help anyone until the compliance repo's submodule pointer advances and the loader playbook references it
 
 ## Cross-cutting conventions (apply across all AAC repos)
 

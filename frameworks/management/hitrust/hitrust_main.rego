@@ -1,3 +1,10 @@
+# METADATA
+# title: "HITRUST Common Security Framework (CSF) v11.3.0"
+# custom:
+#   class: compliance
+#   framework: hitrust
+#   source: hitrust
+#   domains: [healthcare]
 package hitrust.main
 
 import rego.v1

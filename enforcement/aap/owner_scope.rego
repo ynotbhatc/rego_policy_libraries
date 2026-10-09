@@ -10,6 +10,8 @@
 #
 # Covers PAC examples: restrict_inv_use_to_org, superuser_allowed_false,
 # mismatch_prefix_allowed_false, global_credential_allowed_false
+
+# Package-level METADATA for aac.aap.policy is declared in enforcement/aap/extra_vars_control.rego (OPA allows one per package).
 package aac.aap.policy
 
 import rego.v1

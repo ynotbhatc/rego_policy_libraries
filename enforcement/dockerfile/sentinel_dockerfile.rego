@@ -1,3 +1,10 @@
+# METADATA
+# title: "Sentinel Policy Enforcement — Dockerfile Validation"
+# custom:
+#   class: enforcement
+#   framework: enforcement_dockerfile
+#   source: aac
+#   domains: [container]
 package sentinel.dockerfile
 
 import rego.v1

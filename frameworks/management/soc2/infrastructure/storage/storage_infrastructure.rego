@@ -1,6 +1,13 @@
 # SOC 2 Infrastructure - Storage Security and Management
 # Comprehensive storage infrastructure controls for SOC 2 compliance
 
+# METADATA
+# title: "SOC 2 Infrastructure - Storage Security and Management"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2.infrastructure.storage
 
 import rego.v1

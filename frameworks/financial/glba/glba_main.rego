@@ -1,3 +1,10 @@
+# METADATA
+# title: "Gramm-Leach-Bliley Act — FTC Safeguards Rule, 16 CFR Part 314"
+# custom:
+#   class: compliance
+#   framework: glba
+#   source: us-federal
+#   domains: [financial, banking]
 package glba.main
 
 import rego.v1

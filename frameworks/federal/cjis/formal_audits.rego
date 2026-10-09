@@ -1,3 +1,10 @@
+# METADATA
+# title: "FBI CJIS Security Policy — Policy Area 11: Formal Audits. AAC operationalization (maps to NIST 800-53 CA/AU families)"
+# custom:
+#   class: compliance
+#   framework: cjis
+#   source: fbi
+#   domains: [us-federal, justice]
 package cjis.formal_audits
 
 import rego.v1

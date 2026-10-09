@@ -15,6 +15,13 @@
 #   input.intune.enrollment_platform_restrictions[] - {display_name, platforms{}}
 #   input.intune.unavailable                        - {fact_key: reason}
 
+# METADATA
+# title: "CIS Microsoft 365 Foundations Benchmark v7.0.0"
+# custom:
+#   class: security
+#   framework: cis_saas
+#   source: cis
+#   domains: [saas, m365]
 package cis_m365_v7.intune
 
 import rego.v1

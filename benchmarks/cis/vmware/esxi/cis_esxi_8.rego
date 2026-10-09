@@ -1,3 +1,10 @@
+# METADATA
+# title: "Cis Esxi 8"
+# custom:
+#   class: security
+#   framework: cis_vmware
+#   source: cis
+#   domains: [virtualization, vmware]
 package cis_esxi_8
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Microsoft Azure Foundations Benchmark v3.0.0"
+# custom:
+#   class: security
+#   framework: cis_azure
+#   source: cis
+#   domains: [cloud, azure]
 package cis_azure
 
 # CIS Microsoft Azure Foundations Benchmark v3.0.0

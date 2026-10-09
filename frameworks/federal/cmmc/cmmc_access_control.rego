@@ -1,3 +1,10 @@
+# METADATA
+# title: "CMMC 2.0 — Access Control Domain (AC)"
+# custom:
+#   class: compliance
+#   framework: cmmc
+#   source: dod
+#   domains: [us-federal, defense]
 package cmmc.access_control
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 8 Benchmark v4.0.0 - Section 1.1: Filesystem Configuration"
+# custom:
+#   class: security
+#   framework: cis_rhel_8
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel8.filesystem
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 1.1: Filesystem Configuration

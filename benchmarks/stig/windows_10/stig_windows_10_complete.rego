@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG for windows 10 - Simplified Complete Assessment"
+# custom:
+#   class: security
+#   framework: stig_windows_10
+#   source: disa
+#   domains: [windows]
 package stig.windows_10
 
 # DISA STIG for windows 10 - Simplified Complete Assessment

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Debian 11 Benchmark - Complete Compliance Assessment"
+# custom:
+#   class: security
+#   framework: cis_debian_11
+#   source: cis
+#   domains: [linux, debian]
 package cis_debian_11
 
 # CIS Debian 11 Benchmark - Complete Compliance Assessment

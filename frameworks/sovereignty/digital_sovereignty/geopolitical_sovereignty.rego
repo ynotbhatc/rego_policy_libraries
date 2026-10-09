@@ -1,3 +1,10 @@
+# METADATA
+# title: "Digital Sovereignty — Geopolitical Event Triggers"
+# custom:
+#   class: compliance
+#   framework: digital_sovereignty
+#   source: aac
+#   domains: [sovereignty, data-residency]
 package digital_sovereignty.geopolitical_sovereignty
 
 import rego.v1

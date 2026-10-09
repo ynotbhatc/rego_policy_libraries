@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 8 Benchmark v4.0.0 - Section 5.1: Configure time-based job schedulers"
+# custom:
+#   class: security
+#   framework: cis_rhel_8
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel8.cron
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.1: Configure time-based job schedulers

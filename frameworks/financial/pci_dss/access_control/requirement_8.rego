@@ -1,5 +1,12 @@
 # PCI DSS v4.0 Requirement 8 - Identify Users and Authenticate Access to System Components
 
+# METADATA
+# title: "PCI DSS v4.0 Requirement 8 - Identify Users and Authenticate Access to System Components"
+# custom:
+#   class: compliance
+#   framework: pci_dss
+#   source: pci-ssc
+#   domains: [financial, payment-cards]
 package pci_dss.access_control.requirement_8
 
 import rego.v1

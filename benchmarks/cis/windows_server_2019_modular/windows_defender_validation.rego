@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.42: Windows Defender Antivirus"
+# custom:
+#   class: security
+#   framework: cis_windows_server_2019_modular
+#   source: cis
+#   domains: [windows]
 package cis_windows_server_2019.windows_defender
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.42: Windows Defender Antivirus

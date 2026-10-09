@@ -1,3 +1,10 @@
+# METADATA
+# title: "HIPAA Security Rule — 45 CFR 164.312(a)"
+# custom:
+#   class: compliance
+#   framework: hipaa
+#   source: hhs
+#   domains: [privacy, healthcare]
 package hipaa.access_control
 
 import rego.v1

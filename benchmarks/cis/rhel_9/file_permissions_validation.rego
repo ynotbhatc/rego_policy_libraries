@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 9 Section 6.1.x - System File Permissions"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.file_permissions
 
 # CIS RHEL 9 Section 6.1.x - System File Permissions

@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST SSDF (SP 800-218 v1.1) — Practice Group: Prepare the Organization (PO)"
+# custom:
+#   class: compliance
+#   framework: nist_ssdf
+#   source: nist
+#   domains: [us-federal, secure-development]
 package nist_ssdf.po
 
 # NIST SSDF (SP 800-218 v1.1) — Practice Group: Prepare the Organization (PO)

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Google Cloud Platform Foundation Benchmark v4.0.0 - Level 2 Additional Controls"
+# custom:
+#   class: security
+#   framework: cis_gcp
+#   source: cis
+#   domains: [cloud, gcp]
 package cis_gcp.l2
 
 # CIS Google Cloud Platform Foundation Benchmark v4.0.0 - Level 2 Additional Controls

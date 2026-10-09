@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIP-012-1: Communications Between Control Centers"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip.cip_012
 
 import rego.v1

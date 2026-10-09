@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Windows Server 2022 Benchmark v5.0.0 - Section 18.10.42: Windows Defender Antivirus"
+# custom:
+#   class: security
+#   framework: cis_windows_server_2022_modular
+#   source: cis
+#   domains: [windows]
 package cis_windows_server_2022.windows_defender
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 18.10.42: Windows Defender Antivirus

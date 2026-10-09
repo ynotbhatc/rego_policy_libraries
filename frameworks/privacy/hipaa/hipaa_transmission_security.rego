@@ -1,3 +1,10 @@
+# METADATA
+# title: "HIPAA Security Rule — 45 CFR 164.312(e)"
+# custom:
+#   class: compliance
+#   framework: hipaa
+#   source: hhs
+#   domains: [privacy, healthcare]
 package hipaa.transmission_security
 
 import rego.v1

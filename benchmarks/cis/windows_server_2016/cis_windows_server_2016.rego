@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Microsoft Windows Server 2016 Benchmark v1.4.0"
+# custom:
+#   class: security
+#   framework: cis_windows_server_2016
+#   source: cis
+#   domains: [windows]
 package cis_windows_server_2016
 
 # CIS Microsoft Windows Server 2016 Benchmark v1.4.0

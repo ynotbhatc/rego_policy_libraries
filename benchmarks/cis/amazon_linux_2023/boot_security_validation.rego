@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Sections 1.3, 1.4, 1.5: Boot Security, Filesystem Integrity, Process Hardening"
+# custom:
+#   class: security
+#   framework: cis_amazon_linux_2023
+#   source: cis
+#   domains: [linux, amazon-linux]
 package cis_amazon_linux_2023.boot_security
 
 import rego.v1

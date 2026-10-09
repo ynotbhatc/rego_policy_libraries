@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST AI RMF main adapter — exposes the standard contract"
+# custom:
+#   class: compliance
+#   framework: nist_ai_rmf
+#   source: nist
+#   domains: [us-federal, ai]
 package nist.ai_rmf.main
 
 import rego.v1

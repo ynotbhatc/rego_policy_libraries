@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Oracle Database 19c Benchmark - Section 1"
+# custom:
+#   class: security
+#   framework: cis_databases
+#   source: cis
+#   domains: [database, oracle]
 package cis_oracle.installation_patches
 
 # CIS Oracle Database 19c Benchmark - Section 1

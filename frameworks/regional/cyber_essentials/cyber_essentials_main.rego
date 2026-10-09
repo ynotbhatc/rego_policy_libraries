@@ -10,6 +10,13 @@
 #
 # Entry point: data.cyber_essentials.main.compliance_report
 
+# METADATA
+# title: "UK Cyber Essentials — master orchestrator"
+# custom:
+#   class: compliance
+#   framework: cyber_essentials
+#   source: uk-ncsc
+#   domains: [uk]
 package cyber_essentials.main
 
 import rego.v1

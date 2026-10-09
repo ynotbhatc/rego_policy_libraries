@@ -34,6 +34,13 @@
 #                  {"KSI-IAM-ELP": true}. Source: provider assessment
 #                  records / automated KSI validation pipeline.
 
+# METADATA
+# title: "FedRAMP 20x — Key Security Indicators (KSI)"
+# custom:
+#   class: compliance
+#   framework: fedramp_20x
+#   source: fedramp
+#   domains: [us-federal, cloud]
 package fedramp_20x.main
 
 import rego.v1

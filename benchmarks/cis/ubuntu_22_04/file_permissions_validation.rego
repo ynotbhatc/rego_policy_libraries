@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 6.1: System File Permissions"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_22_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_22_04.file_permissions
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 6.1: System File Permissions

@@ -5,6 +5,14 @@
 # This lives in the bare `pci_dss` package (NOT pci_dss.main) so it resolves at
 # data.pci_dss.pci_dss_assessment — the exact path the playbook queries. Logic
 # is delegated to pci_dss.main; score = % of the 12 PCI DSS requirements passing.
+
+# METADATA
+# title: "Consumer endpoint for the compliance-repo pci_dss_compliance role"
+# custom:
+#   class: compliance
+#   framework: pci_dss
+#   source: pci-ssc
+#   domains: [financial, payment-cards]
 package pci_dss
 
 import rego.v1

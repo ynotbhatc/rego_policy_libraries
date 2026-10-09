@@ -1,3 +1,10 @@
+# METADATA
+# title: "EU Network and Information Security Directive 2 (NIS2) — Directive (EU) 2022/2555"
+# custom:
+#   class: compliance
+#   framework: nis2
+#   source: eu
+#   domains: [eu, critical-infrastructure]
 package nis2.main
 
 import rego.v1

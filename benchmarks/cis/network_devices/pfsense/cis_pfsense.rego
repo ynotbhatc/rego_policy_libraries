@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS pfSense / OPNsense Firewall Hardening Benchmark v1.0.0"
+# custom:
+#   class: security
+#   framework: cis_network_devices
+#   source: cis
+#   domains: [network, pfsense]
 package cis_pfsense
 
 # CIS pfSense / OPNsense Firewall Hardening Benchmark v1.0.0

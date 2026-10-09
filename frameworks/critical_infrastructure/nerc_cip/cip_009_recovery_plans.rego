@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIP-009-6: Recovery Plans for BES Cyber Systems"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip.cip_009
 
 import rego.v1

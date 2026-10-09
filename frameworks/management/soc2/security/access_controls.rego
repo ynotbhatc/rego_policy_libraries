@@ -1,6 +1,13 @@
 # SOC 2 Trust Service Criteria - Security (CC6.0)
 # Access Controls and User Authentication
 
+# METADATA
+# title: "SOC 2 Trust Service Criteria - Security (CC6.0)"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2.security.access_controls
 
 import rego.v1

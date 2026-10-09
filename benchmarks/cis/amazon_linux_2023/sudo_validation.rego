@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Section 5.3: Configure privilege escalation (sudo)"
+# custom:
+#   class: security
+#   framework: cis_amazon_linux_2023
+#   source: cis
+#   domains: [linux, amazon-linux]
 package cis_amazon_linux_2023.sudo
 
 import rego.v1

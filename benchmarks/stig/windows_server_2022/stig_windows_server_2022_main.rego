@@ -2,6 +2,13 @@
 # stig_kubernetes_main.rego / rego PR #52 lineage): an empty input must
 # report fully non-compliant with an explicit finding, never a pass.
 
+# METADATA
+# title: "Framework-key entrypoint alias with the fail-closed gate (pattern from"
+# custom:
+#   class: security
+#   framework: stig_windows_server_2022
+#   source: disa
+#   domains: [windows]
 package stig.windows_server_2022.main
 
 import data.stig.windows_server_2022

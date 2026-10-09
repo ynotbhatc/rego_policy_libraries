@@ -1,3 +1,10 @@
+# METADATA
+# title: "ITAR — International Traffic in Arms Regulations, 22 CFR Parts 120-130"
+# custom:
+#   class: compliance
+#   framework: itar
+#   source: us-state-dept
+#   domains: [us-federal, defense, export-control]
 package itar.main
 
 import rego.v1

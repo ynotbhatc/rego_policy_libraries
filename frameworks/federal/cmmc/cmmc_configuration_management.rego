@@ -1,3 +1,10 @@
+# METADATA
+# title: "CMMC 2.0 — Configuration Management Domain (CM)"
+# custom:
+#   class: compliance
+#   framework: cmmc
+#   source: dod
+#   domains: [us-federal, defense]
 package cmmc.configuration_management
 
 import rego.v1

@@ -7,6 +7,13 @@
 #   - Scope limitations (specific hosts, inventories)
 #   - Rate limiting
 
+# METADATA
+# title: "AI Governance - Context Validation Policy"
+# custom:
+#   class: governance
+#   framework: ai
+#   source: aac
+#   domains: [ai]
 package ai_governance.context
 
 import rego.v1

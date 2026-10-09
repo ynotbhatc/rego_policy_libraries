@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Complete Validation"
+# custom:
+#   class: security
+#   framework: cis_windows_server_2019_modular
+#   source: cis
+#   domains: [windows]
 package cis_windows_server_2019
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Complete Validation

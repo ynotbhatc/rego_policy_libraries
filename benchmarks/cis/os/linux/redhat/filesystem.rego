@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Benchmark - Initial Setup and Filesystem Configuration"
+# custom:
+#   class: security
+#   framework: cis_os
+#   source: cis
+#   domains: [linux]
 package cis.filesystem
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIP-011-3: Information Protection"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip.cip_011
 
 import rego.v1

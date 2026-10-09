@@ -1,3 +1,10 @@
+# METADATA
+# title: "ZTMM v2.0 — Automation & Orchestration cross-cutting capability. AAC"
+# custom:
+#   class: compliance
+#   framework: zero_trust
+#   source: nist
+#   domains: [us-federal, zero-trust]
 package zero_trust.automation_orchestration
 
 import rego.v1

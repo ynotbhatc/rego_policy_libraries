@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIP-002-5.1a: BES Cyber System Categorization"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip.cip_002
 
 import rego.v1

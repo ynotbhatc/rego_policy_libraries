@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Cisco IOS Benchmark"
+# custom:
+#   class: security
+#   framework: cis_network
+#   source: cis
+#   domains: [network, cisco]
 package cis.network.cisco
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide"
+# custom:
+#   class: security
+#   framework: stig_postgresql_16
+#   source: disa
+#   domains: [database, postgresql]
 package stig.postgresql_16.core
 
 # DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide

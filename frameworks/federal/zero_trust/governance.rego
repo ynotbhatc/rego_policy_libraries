@@ -1,3 +1,10 @@
+# METADATA
+# title: "ZTMM v2.0 — Governance cross-cutting capability. AAC assessment mapping; each"
+# custom:
+#   class: compliance
+#   framework: zero_trust
+#   source: nist
+#   domains: [us-federal, zero-trust]
 package zero_trust.governance
 
 import rego.v1

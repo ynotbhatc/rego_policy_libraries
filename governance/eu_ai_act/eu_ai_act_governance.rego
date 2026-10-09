@@ -1,3 +1,10 @@
+# METADATA
+# title: "Eu Ai Act Governance"
+# custom:
+#   class: governance
+#   framework: eu_ai_act
+#   source: eu
+#   domains: [ai, eu]
 package eu_ai_act.governance
 
 import rego.v1

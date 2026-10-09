@@ -1,3 +1,10 @@
+# METADATA
+# title: "Digital Sovereignty — Aggregator"
+# custom:
+#   class: compliance
+#   framework: digital_sovereignty
+#   source: aac
+#   domains: [sovereignty, data-residency]
 package digital_sovereignty.main
 
 import rego.v1

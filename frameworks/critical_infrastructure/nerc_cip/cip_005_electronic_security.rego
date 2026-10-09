@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIP-005-7: Electronic Security Perimeters"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip.cip_005
 
 import rego.v1

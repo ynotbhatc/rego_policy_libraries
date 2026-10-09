@@ -2,6 +2,14 @@
 # requirements onto the shared substrate; this quantifies how many framework->theme
 # references reduce to how few distinct themes — the supply-chain analogue of the
 # original spine's "2,767 rules -> 65 controls -> 14 universal".
+
+# METADATA
+# title: "The collapse, measured. Five independent supply-chain frameworks each map their"
+# custom:
+#   class: security
+#   framework: supply_chain_metrics
+#   source: aac
+#   domains: [supply-chain]
 package supply_chain.metrics
 
 import rego.v1

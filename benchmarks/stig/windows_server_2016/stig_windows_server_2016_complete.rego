@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG for windows server 2016 - Simplified Complete Assessment"
+# custom:
+#   class: security
+#   framework: stig_windows_server_2016
+#   source: disa
+#   domains: [windows]
 package stig.windows_server_2016
 
 # DISA STIG for windows server 2016 - Simplified Complete Assessment

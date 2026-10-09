@@ -1,3 +1,10 @@
+# METADATA
+# title: "CISA Zero Trust Maturity Model (ZTMM) v2.0 — Applications & Workloads pillar"
+# custom:
+#   class: compliance
+#   framework: zero_trust
+#   source: nist
+#   domains: [us-federal, zero-trust]
 package zero_trust.applications_workloads
 
 import rego.v1

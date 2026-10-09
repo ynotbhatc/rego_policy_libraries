@@ -4,6 +4,14 @@
 # contributions are attested (marked, reviewable, traceable) — and relies on the
 # coverage triage (data.supply_chain.coverage) to force focused human review
 # when AI-generated output touches the spine (auth / crypto / config / audit).
+
+# METADATA
+# title: "NIST SSDF for Generative AI (SP 800-218A) mapped onto the supply-chain"
+# custom:
+#   class: security
+#   framework: supply_chain_ssdf_genai
+#   source: nist
+#   domains: [supply-chain, secure-development, ai]
 package supply_chain.ssdf_genai
 
 import rego.v1

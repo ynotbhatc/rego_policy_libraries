@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST Risk Management Framework (RMF) - CATEGORIZE Step"
+# custom:
+#   class: compliance
+#   framework: nist_risk_management_framework
+#   source: nist
+#   domains: [us-federal, security-controls]
 package nist.rmf.categorize
 
 import rego.v1

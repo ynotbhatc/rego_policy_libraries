@@ -1,3 +1,10 @@
+# METADATA
+# title: "IEC 62443-3-2 — Security Risk Assessment for System Design"
+# custom:
+#   class: ot
+#   framework: iec_62443
+#   source: iec
+#   domains: [ot, industrial]
 package iec_62443.part3_2
 
 import rego.v1

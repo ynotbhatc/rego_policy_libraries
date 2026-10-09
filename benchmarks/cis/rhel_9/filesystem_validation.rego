@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 9 Section 1.1.x - Filesystem Configuration"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.filesystem
 
 # CIS RHEL 9 Section 1.1.x - Filesystem Configuration

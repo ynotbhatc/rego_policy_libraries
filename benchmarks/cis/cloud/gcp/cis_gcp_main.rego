@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Google Cloud Platform Foundation Benchmark v4.0.0"
+# custom:
+#   class: security
+#   framework: cis_cloud
+#   source: cis
+#   domains: [cloud, gcp]
 package cis_gcp.main
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "Cis Nginx 1 20"
+# custom:
+#   class: security
+#   framework: cis_nginx
+#   source: cis
+#   domains: [web-server]
 package cis_nginx_1_20
 
 import rego.v1

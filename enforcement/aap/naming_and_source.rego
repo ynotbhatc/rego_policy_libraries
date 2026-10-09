@@ -7,6 +7,8 @@
 #
 # Covers PAC examples: jt_naming_validation, github_repo_validation,
 # project_scm_branch, allowed_false
+
+# Package-level METADATA for aac.aap.policy is declared in enforcement/aap/extra_vars_control.rego (OPA allows one per package).
 package aac.aap.policy
 
 import rego.v1

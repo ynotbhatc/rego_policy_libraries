@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Arista EOS Benchmark v1.2.0"
+# custom:
+#   class: security
+#   framework: cis_network_devices
+#   source: cis
+#   domains: [network, arista]
 package cis_arista_eos
 
 # CIS Arista EOS Benchmark v1.2.0

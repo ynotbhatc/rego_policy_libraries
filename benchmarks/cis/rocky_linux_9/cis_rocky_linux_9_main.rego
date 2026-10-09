@@ -1,3 +1,10 @@
+# METADATA
+# title: "Bridge: expose cis_rocky_linux_9 under the /v1/data/<framework>/main/compliance_report"
+# custom:
+#   class: security
+#   framework: cis_rocky_linux_9
+#   source: cis
+#   domains: [linux, rocky]
 package cis_rocky_linux_9.main
 
 # Bridge: expose cis_rocky_linux_9 under the /v1/data/<framework>/main/compliance_report

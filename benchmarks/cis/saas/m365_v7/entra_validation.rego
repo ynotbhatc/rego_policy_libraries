@@ -30,6 +30,13 @@
 # control-to-endpoint mapping. /policies/authorizationPolicy alone carries
 # seven of these controls.
 
+# METADATA
+# title: "CIS Microsoft 365 Foundations Benchmark v7.0.0"
+# custom:
+#   class: security
+#   framework: cis_saas
+#   source: cis
+#   domains: [saas, m365]
 package cis_m365_v7.entra
 
 import rego.v1

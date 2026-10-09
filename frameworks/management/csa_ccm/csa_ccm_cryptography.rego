@@ -1,3 +1,10 @@
+# METADATA
+# title: "Csa Ccm Cryptography"
+# custom:
+#   class: compliance
+#   framework: csa_ccm
+#   source: csa
+#   domains: [cloud]
 package csa_ccm.cryptography
 
 import rego.v1

@@ -1,6 +1,13 @@
 # SOC 2 Trust Service Criteria - Privacy (P1.0)
 # Data Privacy Controls and Personal Information Management
 
+# METADATA
+# title: "SOC 2 Trust Service Criteria - Privacy (P1.0)"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2.privacy.data_privacy
 
 import rego.v1

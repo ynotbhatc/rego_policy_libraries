@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide — Master Aggregator"
+# custom:
+#   class: security
+#   framework: stig_sles_15
+#   source: disa
+#   domains: [linux, sles]
 package stig.sles_15
 
 # DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide — Master Aggregator

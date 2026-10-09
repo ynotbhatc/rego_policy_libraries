@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST SSDF (SP 800-218 v1.1) — Practice Group: Respond to Vulnerabilities (RV)"
+# custom:
+#   class: compliance
+#   framework: nist_ssdf
+#   source: nist
+#   domains: [us-federal, secure-development]
 package nist_ssdf.rv
 
 # NIST SSDF (SP 800-218 v1.1) — Practice Group: Respond to Vulnerabilities (RV)

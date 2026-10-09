@@ -13,6 +13,13 @@
 #
 # Entry point: data.cis_mcp_server.main.compliance_report
 
+# METADATA
+# title: "CIS MCP Server Benchmark v1.0.0 — master orchestrator"
+# custom:
+#   class: security
+#   framework: cis_mcp_server
+#   source: cis
+#   domains: [ai, mcp]
 package cis_mcp_server.main
 
 import rego.v1

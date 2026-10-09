@@ -1,3 +1,10 @@
+# METADATA
+# title: "Iso27701 Pims Requirements"
+# custom:
+#   class: compliance
+#   framework: iso27701
+#   source: iso
+#   domains: [privacy, isms]
 package iso27701.pims_requirements
 
 import rego.v1

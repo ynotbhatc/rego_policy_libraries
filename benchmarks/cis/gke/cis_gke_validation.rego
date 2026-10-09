@@ -78,6 +78,13 @@
 #     web_ui_disabled                       5.10.1
 #     gke_sandbox_considered                5.10.3
 
+# METADATA
+# title: "CIS Google GKE (Google Kubernetes Engine) Benchmark v1.9.0"
+# custom:
+#   class: security
+#   framework: cis_gke
+#   source: cis
+#   domains: [kubernetes, cloud, gcp]
 package cis_gke.main
 
 import rego.v1

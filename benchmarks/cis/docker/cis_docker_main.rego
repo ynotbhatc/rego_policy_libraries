@@ -1,3 +1,10 @@
+# METADATA
+# title: "Bridge: expose cis_docker under the /v1/data/<framework>/main/compliance_report"
+# custom:
+#   class: security
+#   framework: cis_docker
+#   source: cis
+#   domains: [container]
 package cis_docker.main
 
 # Bridge: expose cis_docker under the /v1/data/<framework>/main/compliance_report

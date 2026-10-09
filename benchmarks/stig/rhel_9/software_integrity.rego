@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG for RHEL 9 - Software Integrity Module"
+# custom:
+#   class: security
+#   framework: stig_rhel_9
+#   source: disa
+#   domains: [linux, rhel]
 package stig.rhel_9.software_integrity
 
 # DISA STIG for RHEL 9 - Software Integrity Module

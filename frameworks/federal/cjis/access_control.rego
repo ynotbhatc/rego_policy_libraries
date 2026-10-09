@@ -1,3 +1,10 @@
+# METADATA
+# title: "FBI CJIS Security Policy — Policy Area 5: Access Control. AAC operationalization (CJIS maps to NIST 800-53 AC family)"
+# custom:
+#   class: compliance
+#   framework: cjis
+#   source: fbi
+#   domains: [us-federal, justice]
 package cjis.access_control
 
 import rego.v1

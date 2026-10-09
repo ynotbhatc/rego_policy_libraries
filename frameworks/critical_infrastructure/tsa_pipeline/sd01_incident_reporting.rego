@@ -1,3 +1,10 @@
+# METADATA
+# title: "TSA Security Directive Pipeline-2021-01G — \"Enhancing Pipeline Cybersecurity\""
+# custom:
+#   class: ot
+#   framework: tsa_pipeline
+#   source: tsa
+#   domains: [ot, pipeline]
 package tsa_pipeline.sd01_reporting
 
 import rego.v1

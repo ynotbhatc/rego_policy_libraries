@@ -1,3 +1,10 @@
+# METADATA
+# title: "Applicable modules based on risk tier"
+# custom:
+#   class: governance
+#   framework: eu_ai_act
+#   source: eu
+#   domains: [ai, eu]
 package eu_ai_act.main
 
 import rego.v1

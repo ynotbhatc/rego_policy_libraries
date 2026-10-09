@@ -1,3 +1,10 @@
+# METADATA
+# title: "HIPAA Compliance Aggregator"
+# custom:
+#   class: compliance
+#   framework: hipaa
+#   source: hhs
+#   domains: [privacy, healthcare]
 package hipaa.main
 
 import rego.v1

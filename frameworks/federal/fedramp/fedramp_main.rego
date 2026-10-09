@@ -1,3 +1,10 @@
+# METADATA
+# title: "FedRAMP — Federal Risk and Authorization Management Program"
+# custom:
+#   class: compliance
+#   framework: fedramp
+#   source: fedramp
+#   domains: [us-federal, cloud]
 package fedramp
 
 import rego.v1

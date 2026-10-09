@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST SSDF (SP 800-218 v1.1) — Master Orchestrator"
+# custom:
+#   class: compliance
+#   framework: nist_ssdf
+#   source: nist
+#   domains: [us-federal, secure-development]
 package nist_ssdf.main
 
 # NIST SSDF (SP 800-218 v1.1) — Master Orchestrator

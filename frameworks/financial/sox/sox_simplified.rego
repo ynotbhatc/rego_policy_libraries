@@ -1,3 +1,10 @@
+# METADATA
+# title: "Simplified SOX (Sarbanes-Oxley Act) Compliance Framework"
+# custom:
+#   class: compliance
+#   framework: sox
+#   source: us-federal
+#   domains: [financial, public-company]
 package sox.simplified
 
 import rego.v1

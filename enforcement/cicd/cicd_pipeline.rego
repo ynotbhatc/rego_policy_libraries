@@ -1,3 +1,10 @@
+# METADATA
+# title: "CI/CD Pipeline Security Governance"
+# custom:
+#   class: enforcement
+#   framework: enforcement_cicd
+#   source: aac
+#   domains: [cicd]
 package cicd.pipeline
 
 # CI/CD Pipeline Security Governance

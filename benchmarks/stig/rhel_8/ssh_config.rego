@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG for RHEL 8 - SSH Configuration Module"
+# custom:
+#   class: security
+#   framework: stig_rhel_8
+#   source: disa
+#   domains: [linux, rhel]
 package stig.rhel_8.ssh_config
 
 # DISA STIG for RHEL 8 - SSH Configuration Module

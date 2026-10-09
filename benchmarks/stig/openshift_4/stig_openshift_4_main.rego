@@ -8,6 +8,13 @@
 # routing (`framework: stig_openshift_4` → URL `/v1/data/stig_openshift_4/main`)
 # resolves cleanly without renaming the canonical package.
 
+# METADATA
+# title: "Wrapper exposing the OpenShift 4 STIG compliance report at the package path"
+# custom:
+#   class: security
+#   framework: stig_openshift_4
+#   source: disa
+#   domains: [kubernetes, openshift, container]
 package stig.openshift_4.main
 
 import data.stig.openshift_4

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)"
+# custom:
+#   class: security
+#   framework: cis_rocky_linux_8
+#   source: cis
+#   domains: [linux, rocky]
 package cis_rocky_linux_8.auditd
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)

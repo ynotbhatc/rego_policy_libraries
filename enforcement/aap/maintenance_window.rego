@@ -10,6 +10,8 @@
 #   /v1/data/aac/aap/policy/maintenance_mode
 #
 # Covers PAC example: maintenance_window
+
+# Package-level METADATA for aac.aap.policy is declared in enforcement/aap/extra_vars_control.rego (OPA allows one per package).
 package aac.aap.policy
 
 import rego.v1

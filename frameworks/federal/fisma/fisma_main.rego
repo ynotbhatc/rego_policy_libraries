@@ -1,3 +1,10 @@
+# METADATA
+# title: "Federal Information Security Modernization Act (FISMA) 2014 Implementation"
+# custom:
+#   class: compliance
+#   framework: fisma
+#   source: nist
+#   domains: [us-federal]
 package fisma.main
 
 import rego.v1

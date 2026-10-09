@@ -1,0 +1,36 @@
+{
+  "_comment": "Controlled vocabulary for the `custom:` block of every policy's `# METADATA` annotation. check_metadata.py enforces it. Add a value here (with a PR) before using it in a policy.",
+  "class": {
+    "security": "Configuration baseline for a platform (CIS, STIG, SCuBA, PSS, supply-chain). Loads into opa-security.",
+    "compliance": "Regulatory, legal or management framework (NIST, ISO, PCI, GDPR, SOC 2, ...). Loads into opa-compliance.",
+    "ot": "Operational-technology / critical-infrastructure framework (NERC-CIP, IEC 62443, AMI, TSA). Loads into opa-ot.",
+    "governance": "Cross-cutting governance (AI, FinOps, MCP, OIDC, exceptions). Loads into opa-compliance AND opa-ot.",
+    "enforcement": "Policy-as-code gatekeeper that blocks a change or a job (Ansible, Terraform, AAP, git). Loads into opa-compliance.",
+    "threat-detection": "Behavioural indicator, not a control. Loads into opa-ot."
+  },
+  "container_for_class": {
+    "opa-security": ["security"],
+    "opa-compliance": ["compliance", "governance", "enforcement"],
+    "opa-ot": ["ot", "governance", "threat-detection"]
+  },
+  "source": [
+    "aac", "acsc", "aicpa", "bsi", "cis", "cisa", "csa", "disa", "dod", "enx", "eu", "fbi", "fda",
+    "fedramp", "finops-foundation", "ftc", "geisa", "hhs", "hitrust", "iec", "irs", "isaca", "iso",
+    "kubernetes", "nerc", "nist", "ny-dfs", "openssf", "owasp", "pci-ssc", "sec", "swift", "tsa",
+    "uk-mod", "uk-ncsc", "us-federal", "us-state", "us-state-dept"
+  ],
+  "domains": [
+    "aap", "ai", "amazon-linux", "android", "ansible", "arista", "assurance", "australia", "automotive",
+    "aws", "azure", "banking", "bulk-electric", "children", "cicd", "cisco", "cloud", "container",
+    "corporate", "cost", "critical-infrastructure", "crosswalk", "cryptography", "cryptomining",
+    "data-residency", "database", "debian", "defense", "education", "energy", "eu", "exceptions",
+    "export-control", "financial", "finops", "fortinet", "gcp", "germany", "git", "google-workspace",
+    "healthcare", "iac", "identity", "industrial", "ios", "isms", "it-governance", "justice",
+    "kubernetes", "life-sciences", "linux", "m365", "mcp", "mobile", "mssql", "mysql", "network",
+    "openshift", "oracle", "palo-alto", "payment-cards", "pfsense", "pipeline", "postgresql",
+    "privacy", "product-security", "public-company", "rhel", "rocky", "saas", "secure-development",
+    "security-controls", "sles", "smart-grid", "sovereignty", "supply-chain", "tax", "technical-debt",
+    "terraform", "threat", "ubuntu", "uk", "us-federal", "us-state", "virtualization", "vmware",
+    "web-server", "windows", "zero-trust", "ot"
+  ]
+}

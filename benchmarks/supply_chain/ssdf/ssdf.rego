@@ -10,6 +10,14 @@
 #
 # A GenAI profile (SSDF 800-218A) would add AI-contribution practices mapping to
 # the same substrate plus an AI-attestation signal — left as a follow-on package.
+
+# METADATA
+# title: "NIST SSDF (SP 800-218) mapped onto the supply-chain substrate (representative"
+# custom:
+#   class: security
+#   framework: supply_chain_ssdf
+#   source: nist
+#   domains: [supply-chain, secure-development]
 package supply_chain.ssdf
 
 import rego.v1

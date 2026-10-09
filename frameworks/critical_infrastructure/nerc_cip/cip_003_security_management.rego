@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIP-003-8: Security Management Controls"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip.cip_003
 
 import rego.v1

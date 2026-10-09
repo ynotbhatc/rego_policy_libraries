@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Ubuntu Linux Benchmark"
+# custom:
+#   class: security
+#   framework: cis_os
+#   source: cis
+#   domains: [linux]
 package cis.ubuntu.initial_setup
 
 import rego.v1

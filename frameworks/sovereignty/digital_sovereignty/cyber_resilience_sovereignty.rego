@@ -1,3 +1,10 @@
+# METADATA
+# title: "Digital Sovereignty — Cyber Resilience"
+# custom:
+#   class: compliance
+#   framework: digital_sovereignty
+#   source: aac
+#   domains: [sovereignty, data-residency]
 package digital_sovereignty.cyber_resilience_sovereignty
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 6.1: System File..."
+# custom:
+#   class: security
+#   framework: cis_debian_11
+#   source: cis
+#   domains: [linux, debian]
 package cis_debian_11.file_permissions
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 6.1: System File Permissions

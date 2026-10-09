@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 9 Benchmark v2.0.0 - Sections 5.3-5.4 & 6.2: User Accounts and Environment"
+# custom:
+#   class: security
+#   framework: cis_os
+#   source: cis
+#   domains: [linux]
 package cis_rhel9.user_accounts_validation
 
 import rego.v1

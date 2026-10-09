@@ -1,3 +1,10 @@
+# METADATA
+# title: "Official CIS Controls v8.1 safeguards for Control 3: Data Protection"
+# custom:
+#   class: compliance
+#   framework: cis_controls_v8
+#   source: cis
+#   domains: [security-controls]
 package cis_controls_v8.c03
 
 import rego.v1

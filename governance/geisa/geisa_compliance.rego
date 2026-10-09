@@ -1,3 +1,10 @@
+# METADATA
+# title: "GEISA Runtime Compliance Orchestrator"
+# custom:
+#   class: governance
+#   framework: geisa
+#   source: geisa
+#   domains: [ot, energy, smart-grid]
 package governance.geisa.compliance
 
 import rego.v1

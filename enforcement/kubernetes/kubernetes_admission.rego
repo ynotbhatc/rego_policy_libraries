@@ -1,3 +1,10 @@
+# METADATA
+# title: "Kubernetes Admission Control — Security and Operations Policy"
+# custom:
+#   class: enforcement
+#   framework: enforcement_kubernetes
+#   source: aac
+#   domains: [kubernetes]
 package kubernetes.admission
 
 # Kubernetes Admission Control — Security and Operations Policy

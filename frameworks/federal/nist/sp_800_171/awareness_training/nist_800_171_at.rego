@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST SP 800-171 Rev 3 - Awareness and Training (AT) Requirements"
+# custom:
+#   class: compliance
+#   framework: nist_sp_800_171
+#   source: nist
+#   domains: [us-federal, security-controls]
 package nist.sp800_171.awareness_training
 
 import rego.v1

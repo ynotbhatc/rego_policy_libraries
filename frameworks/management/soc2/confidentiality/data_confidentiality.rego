@@ -1,6 +1,13 @@
 # SOC 2 Trust Service Criteria - Confidentiality (C1.0)
 # Data Confidentiality and Protection Controls
 
+# METADATA
+# title: "SOC 2 Trust Service Criteria - Confidentiality (C1.0)"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2.confidentiality.data_confidentiality
 
 import rego.v1

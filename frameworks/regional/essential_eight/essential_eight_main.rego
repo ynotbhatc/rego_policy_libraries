@@ -7,6 +7,13 @@
 #
 # Entry point: data.essential_eight.main.compliance_report
 
+# METADATA
+# title: "ACSC Essential Eight Maturity Model (Nov 2023) — master orchestrator"
+# custom:
+#   class: compliance
+#   framework: essential_eight
+#   source: acsc
+#   domains: [australia]
 package essential_eight.main
 
 import rego.v1

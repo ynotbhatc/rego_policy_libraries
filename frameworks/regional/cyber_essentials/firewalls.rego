@@ -1,3 +1,10 @@
+# METADATA
+# title: "UK Cyber Essentials (Willow question set, effective April 2025) — Control"
+# custom:
+#   class: compliance
+#   framework: cyber_essentials
+#   source: uk-ncsc
+#   domains: [uk]
 package cyber_essentials.firewalls
 
 import rego.v1

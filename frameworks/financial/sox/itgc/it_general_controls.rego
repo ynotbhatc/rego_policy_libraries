@@ -1,3 +1,10 @@
+# METADATA
+# title: "SOX IT General Controls (ITGC)"
+# custom:
+#   class: compliance
+#   framework: sox
+#   source: us-federal
+#   domains: [financial, public-company]
 package sox.itgc
 
 import rego.v1

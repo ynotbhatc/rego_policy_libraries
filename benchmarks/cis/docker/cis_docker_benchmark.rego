@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Docker Benchmark v1.8.0"
+# custom:
+#   class: security
+#   framework: cis_docker
+#   source: cis
+#   domains: [container]
 package cis_docker
 
 # CIS Docker Benchmark v1.8.0

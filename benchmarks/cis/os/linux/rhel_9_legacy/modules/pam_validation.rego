@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 9 Benchmark v2.0.0 - Section 5.2: PAM (Pluggable Authentication Modules)"
+# custom:
+#   class: security
+#   framework: cis_os
+#   source: cis
+#   domains: [linux]
 package cis_rhel9.pam_validation
 
 import rego.v1

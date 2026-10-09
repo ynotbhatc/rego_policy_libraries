@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS MySQL 8.0 Benchmark v1.2.0"
+# custom:
+#   class: security
+#   framework: cis_mysql
+#   source: cis
+#   domains: [database, mysql]
 package cis.mysql_8
 
 import rego.v1

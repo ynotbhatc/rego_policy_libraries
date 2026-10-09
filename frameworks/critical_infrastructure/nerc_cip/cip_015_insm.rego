@@ -1,3 +1,10 @@
+# METADATA
+# title: "NERC CIP-015: Internal Network Security Monitoring (INSM)"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip_cip015
 
 import rego.v1

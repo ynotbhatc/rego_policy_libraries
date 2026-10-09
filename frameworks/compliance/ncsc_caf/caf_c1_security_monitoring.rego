@@ -1,3 +1,10 @@
+# METADATA
+# title: "NCSC Cyber Assessment Framework 4.0"
+# custom:
+#   class: compliance
+#   framework: ncsc_caf
+#   source: uk-ncsc
+#   domains: [uk, critical-infrastructure]
 package ncsc_caf.c1_security_monitoring
 
 import rego.v1

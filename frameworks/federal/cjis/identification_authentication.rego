@@ -1,3 +1,10 @@
+# METADATA
+# title: "FBI CJIS Security Policy — Policy Area 6: Identification and Authentication. AAC operationalization (CJIS maps to NIST 800-53 IA family)"
+# custom:
+#   class: compliance
+#   framework: cjis
+#   source: fbi
+#   domains: [us-federal, justice]
 package cjis.identification_authentication
 
 import rego.v1

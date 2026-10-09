@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.4/5.5: PAM and User Accounts"
+# custom:
+#   class: security
+#   framework: cis_rocky_linux_8
+#   source: cis
+#   domains: [linux, rocky]
 package cis_rocky_linux_8.pam
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.4/5.5: PAM and User Accounts

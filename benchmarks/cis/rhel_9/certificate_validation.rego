@@ -1,3 +1,10 @@
+# METADATA
+# title: "System Certificate and PKI Validation"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.certificate_validation
 
 import rego.v1

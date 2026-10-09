@@ -1,6 +1,13 @@
 # SOC 2 Trust Service Criteria - Processing Integrity (PI1.0)
 # Data Processing Integrity and Validation
 
+# METADATA
+# title: "SOC 2 Trust Service Criteria - Processing Integrity (PI1.0)"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2.processing_integrity.data_processing
 
 import rego.v1

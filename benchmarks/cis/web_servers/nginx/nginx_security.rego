@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS NGINX Benchmark"
+# custom:
+#   class: security
+#   framework: cis_web_servers
+#   source: cis
+#   domains: [web-server]
 package cis.server.nginx
 
 import rego.v1

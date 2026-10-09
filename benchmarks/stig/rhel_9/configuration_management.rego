@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG for RHEL 9 - Configuration Management Module"
+# custom:
+#   class: security
+#   framework: stig_rhel_9
+#   source: disa
+#   domains: [linux, rhel]
 package stig.rhel_9.configuration_management
 
 # DISA STIG for RHEL 9 - Configuration Management Module

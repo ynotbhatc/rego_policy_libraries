@@ -40,6 +40,13 @@
 #
 # OPA query path: /v1/data/coppa/main/compliance_report
 
+# METADATA
+# title: "COPPA — Children's Online Privacy Protection Rule"
+# custom:
+#   class: compliance
+#   framework: coppa
+#   source: ftc
+#   domains: [privacy, children]
 package coppa.main
 
 import rego.v1

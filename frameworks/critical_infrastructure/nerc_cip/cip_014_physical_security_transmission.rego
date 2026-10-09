@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIP-014-3: Physical Security of Transmission Stations and Substations"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip.cip_014
 
 import rego.v1

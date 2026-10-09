@@ -1,3 +1,10 @@
+# METADATA
+# title: "Corporate Access Control and Identity Management Policy"
+# custom:
+#   class: compliance
+#   framework: corporate
+#   source: aac
+#   domains: [corporate]
 package corporate.access.control
 
 import rego.v1

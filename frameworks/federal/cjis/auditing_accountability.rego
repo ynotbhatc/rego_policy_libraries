@@ -1,3 +1,10 @@
+# METADATA
+# title: "FBI CJIS Security Policy — Policy Area 4: Auditing and Accountability. AAC operationalization (CJIS maps to NIST 800-53 AU family)"
+# custom:
+#   class: compliance
+#   framework: cjis
+#   source: fbi
+#   domains: [us-federal, justice]
 package cjis.auditing_accountability
 
 import rego.v1

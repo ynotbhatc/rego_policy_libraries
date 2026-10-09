@@ -1,3 +1,10 @@
+# METADATA
+# title: "Digital Sovereignty — DORA (Digital Operational Resilience Act)"
+# custom:
+#   class: compliance
+#   framework: digital_sovereignty
+#   source: aac
+#   domains: [sovereignty, data-residency]
 package digital_sovereignty.dora_sovereignty
 
 import rego.v1

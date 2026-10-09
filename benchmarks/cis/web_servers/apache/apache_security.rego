@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Apache HTTP Server Benchmark"
+# custom:
+#   class: security
+#   framework: cis_web_servers
+#   source: cis
+#   domains: [web-server]
 package cis.server.apache
 
 import rego.v1

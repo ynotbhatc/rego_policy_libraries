@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Google Android Benchmark"
+# custom:
+#   class: security
+#   framework: cis_mobile_devices
+#   source: cis
+#   domains: [mobile, android]
 package cis.mobile.android
 
 import rego.v1

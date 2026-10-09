@@ -1,3 +1,10 @@
+# METADATA
+# title: "Ccpa Data Practices"
+# custom:
+#   class: compliance
+#   framework: ccpa
+#   source: us-state
+#   domains: [privacy, us-state]
 package ccpa.data_practices
 
 import rego.v1

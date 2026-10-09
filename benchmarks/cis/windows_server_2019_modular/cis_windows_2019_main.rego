@@ -1,3 +1,10 @@
+# METADATA
+# title: "Bridge: expose cis_windows_server_2019 under the /v1/data/<framework>/main/compliance_report"
+# custom:
+#   class: security
+#   framework: cis_windows_server_2019_modular
+#   source: cis
+#   domains: [windows]
 package cis_windows_server_2019.main
 
 # Bridge: expose cis_windows_server_2019 under the /v1/data/<framework>/main/compliance_report

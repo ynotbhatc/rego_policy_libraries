@@ -1,3 +1,10 @@
+# METADATA
+# title: "DORA level-2 technical standard — Threat-led penetration testing (TLPT)"
+# custom:
+#   class: compliance
+#   framework: dora
+#   source: eu
+#   domains: [financial, eu]
 package dora.rts_tlpt
 
 import rego.v1

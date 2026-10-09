@@ -1,6 +1,13 @@
 # SOC 2 Infrastructure - Network Security and Architecture
 # Comprehensive network infrastructure controls for SOC 2 compliance
 
+# METADATA
+# title: "SOC 2 Infrastructure - Network Security and Architecture"
+# custom:
+#   class: compliance
+#   framework: soc2
+#   source: aicpa
+#   domains: [assurance]
 package soc2.infrastructure.network
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIP-010-4: Configuration Change Management and Vulnerability Assessments"
+# custom:
+#   class: ot
+#   framework: nerc_cip
+#   source: nerc
+#   domains: [ot, energy, bulk-electric]
 package nerc_cip.cip_010
 
 import rego.v1

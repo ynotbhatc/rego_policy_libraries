@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_22_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_22_04.network
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration

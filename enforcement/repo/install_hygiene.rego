@@ -42,6 +42,13 @@
 #   /v1/data/aac/repo/install_hygiene/violation
 #   /v1/data/aac/repo/install_hygiene/tracking_violation
 
+# METADATA
+# title: "Install-configuration hygiene — keep one environment's addresses and credentials out of another environment's install"
+# custom:
+#   class: enforcement
+#   framework: enforcement_repo
+#   source: aac
+#   domains: [git]
 package aac.repo.install_hygiene
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Rocky Linux 8 Section 1.1 - Filesystem Configuration"
+# custom:
+#   class: security
+#   framework: cis_rocky_linux_8
+#   source: cis
+#   domains: [linux, rocky]
 package cis_rocky_linux_8.filesystem
 
 # CIS Rocky Linux 8 Section 1.1 - Filesystem Configuration

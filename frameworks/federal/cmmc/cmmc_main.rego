@@ -1,3 +1,10 @@
+# METADATA
+# title: "CMMC 2.0 — Master Compliance Orchestrator"
+# custom:
+#   class: compliance
+#   framework: cmmc
+#   source: dod
+#   domains: [us-federal, defense]
 package cmmc
 
 import rego.v1

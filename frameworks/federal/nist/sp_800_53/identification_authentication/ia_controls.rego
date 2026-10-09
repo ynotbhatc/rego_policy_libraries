@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST SP 800-53 Rev 5 — Identification and Authentication (IA) Family"
+# custom:
+#   class: compliance
+#   framework: nist_sp_800_53
+#   source: nist
+#   domains: [us-federal, security-controls]
 package nist.sp800_53.identification_authentication
 
 import rego.v1

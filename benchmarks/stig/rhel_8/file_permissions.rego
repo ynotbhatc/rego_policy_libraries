@@ -1,3 +1,10 @@
+# METADATA
+# title: "DISA STIG for RHEL 8 - File Permissions Module"
+# custom:
+#   class: security
+#   framework: stig_rhel_8
+#   source: disa
+#   domains: [linux, rhel]
 package stig.rhel_8.file_permissions
 
 # DISA STIG for RHEL 8 - File Permissions Module

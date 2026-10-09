@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Oracle Database 19c Benchmark v2.0.0"
+# custom:
+#   class: security
+#   framework: cis_oracle
+#   source: cis
+#   domains: [database, oracle]
 package cis.oracle_19c
 
 import rego.v1

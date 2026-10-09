@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Fortinet FortiGate Benchmark v1.3.0"
+# custom:
+#   class: security
+#   framework: cis_network_devices
+#   source: cis
+#   domains: [network, fortinet]
 package cis_fortinet_fortigate
 
 # CIS Fortinet FortiGate Benchmark v1.3.0

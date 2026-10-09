@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS MySQL Benchmark"
+# custom:
+#   class: security
+#   framework: cis_web_servers
+#   source: cis
+#   domains: [database, mysql]
 package cis.server.mysql
 
 import rego.v1

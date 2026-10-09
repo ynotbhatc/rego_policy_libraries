@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Amazon Linux 2023 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration"
+# custom:
+#   class: security
+#   framework: cis_amazon_linux_2023
+#   source: cis
+#   domains: [linux, amazon-linux]
 package cis_amazon_linux_2023.network
 
 # CIS Amazon Linux 2023 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration

@@ -1,3 +1,10 @@
+# METADATA
+# title: "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Sections 2.1.x, 2.2.x, 2.3.x:..."
+# custom:
+#   class: security
+#   framework: cis_ubuntu_24_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_24_04.services
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Sections 2.1.x, 2.2.x, 2.3.x: Service Configuration

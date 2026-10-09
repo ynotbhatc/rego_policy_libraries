@@ -1,6 +1,14 @@
 # NIST SP 800-161r1 (Cybersecurity Supply Chain Risk Management) mapped onto the
 # substrate. 800-161 is itself a 800-53 SR overlay, so it exercises the
 # SR-anchored substrate themes directly.
+
+# METADATA
+# title: "NIST SP 800-161r1 (Cybersecurity Supply Chain Risk Management) mapped onto the"
+# custom:
+#   class: security
+#   framework: supply_chain_scrm_800_161
+#   source: nist
+#   domains: [supply-chain, us-federal]
 package supply_chain.scrm_800_161
 
 import rego.v1

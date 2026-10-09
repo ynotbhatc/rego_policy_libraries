@@ -46,6 +46,13 @@
 #
 # OPA query path: /v1/data/nsa_cisa_k8s/main/compliance_report
 
+# METADATA
+# title: "NSA/CISA Kubernetes Hardening Guidance v1.2 (August 2022)"
+# custom:
+#   class: security
+#   framework: nsa_cisa_kubernetes
+#   source: cisa
+#   domains: [kubernetes, container]
 package nsa_cisa_k8s.main
 
 import rego.v1

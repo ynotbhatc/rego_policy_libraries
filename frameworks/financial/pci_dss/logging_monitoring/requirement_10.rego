@@ -1,6 +1,13 @@
 # PCI DSS v4.0 Requirement 10 - Log and Monitor All Access to System Components
 # and Cardholder Data
 
+# METADATA
+# title: "PCI DSS v4.0 Requirement 10 - Log and Monitor All Access to System Components"
+# custom:
+#   class: compliance
+#   framework: pci_dss
+#   source: pci-ssc
+#   domains: [financial, payment-cards]
 package pci_dss.logging_monitoring.requirement_10
 
 import rego.v1

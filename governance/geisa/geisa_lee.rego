@@ -1,3 +1,10 @@
+# METADATA
+# title: "GEISA LEE Pillar — Lightweight Execution Environment"
+# custom:
+#   class: governance
+#   framework: geisa
+#   source: geisa
+#   domains: [ot, energy, smart-grid]
 package governance.geisa.lee
 
 import rego.v1

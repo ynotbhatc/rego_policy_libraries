@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 5.3: Configure Sudo"
+# custom:
+#   class: security
+#   framework: cis_ubuntu_20_04
+#   source: cis
+#   domains: [linux, ubuntu]
 package cis_ubuntu_20_04.sudo
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 5.3: Configure Sudo

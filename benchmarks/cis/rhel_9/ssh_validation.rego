@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 9 Section 5.2.x - SSH Server Configuration"
+# custom:
+#   class: security
+#   framework: cis_rhel_9
+#   source: cis
+#   domains: [linux, rhel]
 package cis_rhel9.ssh
 
 # CIS RHEL 9 Section 5.2.x - SSH Server Configuration

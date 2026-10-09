@@ -1,3 +1,10 @@
+# METADATA
+# title: "NIST SP 800-53 Rev 5 — System and Information Integrity (SI) Family"
+# custom:
+#   class: compliance
+#   framework: nist_sp_800_53
+#   source: nist
+#   domains: [us-federal, security-controls]
 package nist.sp800_53.system_information_integrity
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "SWIFT Customer Security Programme (CSP)"
+# custom:
+#   class: compliance
+#   framework: swift_csp
+#   source: swift
+#   domains: [financial, banking]
 package swift_csp.main
 
 import rego.v1

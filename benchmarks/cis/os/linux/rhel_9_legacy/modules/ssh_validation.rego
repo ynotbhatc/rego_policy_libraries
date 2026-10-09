@@ -1,3 +1,10 @@
+# METADATA
+# title: "CIS RHEL 9 Benchmark v2.0.0 - Section 5.1: SSH Server Configuration"
+# custom:
+#   class: security
+#   framework: cis_os
+#   source: cis
+#   domains: [linux]
 package cis_rhel9.ssh_validation
 
 import rego.v1

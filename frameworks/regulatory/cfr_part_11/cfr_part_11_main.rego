@@ -1,3 +1,10 @@
+# METADATA
+# title: "FDA 21 CFR Part 11 — Electronic Records; Electronic Signatures"
+# custom:
+#   class: compliance
+#   framework: cfr_part_11
+#   source: fda
+#   domains: [life-sciences, us-federal]
 package cfr_part_11.main
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "SEC Cybersecurity Disclosure Rules"
+# custom:
+#   class: compliance
+#   framework: sec_cyber
+#   source: sec
+#   domains: [financial, public-company]
 package sec_cyber.main
 
 import rego.v1

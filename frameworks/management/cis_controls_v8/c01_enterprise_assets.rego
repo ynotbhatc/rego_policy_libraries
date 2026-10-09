@@ -1,3 +1,10 @@
+# METADATA
+# title: "Official CIS Controls v8.1 safeguards for Control 1: Inventory and Control of Enterprise Assets"
+# custom:
+#   class: compliance
+#   framework: cis_controls_v8
+#   source: cis
+#   domains: [security-controls]
 package cis_controls_v8.c01
 
 import rego.v1

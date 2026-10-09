@@ -13,6 +13,14 @@
 # tfsec / KICS cover). It is vendor-neutral library content: it makes a decision
 # from the plan JSON and emits both string violations (auditor-readable) and
 # structured findings (id / severity / resource), plus an allow gate.
+
+# METADATA
+# title: "Terraform plan enforcement — pre-apply gate against a Terraform plan"
+# custom:
+#   class: enforcement
+#   framework: enforcement_terraform
+#   source: aac
+#   domains: [iac, terraform]
 package enforcement.terraform.plan
 
 import rego.v1

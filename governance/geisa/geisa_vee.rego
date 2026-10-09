@@ -1,3 +1,10 @@
+# METADATA
+# title: "GEISA VEE Pillar — Virtual Execution Environment"
+# custom:
+#   class: governance
+#   framework: geisa
+#   source: geisa
+#   domains: [ot, energy, smart-grid]
 package governance.geisa.vee
 
 import rego.v1

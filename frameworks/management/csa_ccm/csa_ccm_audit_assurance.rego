@@ -1,3 +1,10 @@
+# METADATA
+# title: "Csa Ccm Audit Assurance"
+# custom:
+#   class: compliance
+#   framework: csa_ccm
+#   source: csa
+#   domains: [cloud]
 package csa_ccm.audit_assurance
 
 import rego.v1

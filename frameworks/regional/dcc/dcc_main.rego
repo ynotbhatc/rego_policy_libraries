@@ -47,6 +47,13 @@
 #                              supplier assessment records / portal
 #                              attestation workflow.
 
+# METADATA
+# title: "UK MoD Defence Cyber Certification (DCC) — DEF STAN 05-138 Issue 4"
+# custom:
+#   class: compliance
+#   framework: dcc
+#   source: uk-mod
+#   domains: [uk, defense]
 package dcc.main
 
 import rego.v1

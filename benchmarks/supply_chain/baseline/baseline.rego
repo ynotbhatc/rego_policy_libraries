@@ -3,6 +3,14 @@
 # Evaluates the seven invariant substrate themes directly. This is the "default
 # check" any software-supply-chain effort runs: one assessment against the
 # spine, which each framework (SLSA, SSDF, ...) then projects from.
+
+# METADATA
+# title: "AAC Supply-Chain Baseline — the default check (the supply-chain spine)"
+# custom:
+#   class: security
+#   framework: supply_chain_baseline
+#   source: aac
+#   domains: [supply-chain]
 package supply_chain.baseline
 
 import rego.v1

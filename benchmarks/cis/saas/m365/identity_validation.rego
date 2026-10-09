@@ -17,6 +17,13 @@
 #     "pim_available": bool
 #   }
 
+# METADATA
+# title: "CIS Microsoft 365 Foundations Benchmark — Section 1 (Microsoft Entra)"
+# custom:
+#   class: security
+#   framework: cis_saas
+#   source: cis
+#   domains: [saas, m365]
 package cis_m365.identity
 
 import rego.v1

@@ -7,6 +7,13 @@
 #
 # Entry point: data.cjis.main.compliance_report
 
+# METADATA
+# title: "FBI CJIS Security Policy — master orchestrator"
+# custom:
+#   class: compliance
+#   framework: cjis
+#   source: fbi
+#   domains: [us-federal, justice]
 package cjis.main
 
 import rego.v1

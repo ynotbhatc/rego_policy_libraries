@@ -1,3 +1,10 @@
+# METADATA
+# title: "Csa Ccm Interoperability"
+# custom:
+#   class: compliance
+#   framework: csa_ccm
+#   source: csa
+#   domains: [cloud]
 package csa_ccm.interoperability
 
 import rego.v1

@@ -1,3 +1,10 @@
+# METADATA
+# title: "IEC 62443-3-3 FR 6 — Timely Response to Events (TRE)"
+# custom:
+#   class: ot
+#   framework: iec_62443
+#   source: iec
+#   domains: [ot, industrial]
 package iec_62443.fr6
 
 import rego.v1
