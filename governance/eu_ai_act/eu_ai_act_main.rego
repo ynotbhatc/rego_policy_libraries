@@ -101,9 +101,55 @@ module_compliant_map := {
 # Overall compliance — only applicable modules count
 # =============================================================================
 
+# ---------------------------------------------------------------------------
+# FAIL-CLOSED GATE (rego_policy_libraries#186)
+#
+# Every prohibited-practice rule fires on a fact being true. With NO facts
+# nothing fires, the prohibited module reports zero violations, and before
+# this gate an assessment that collected nothing was stored as a pass
+# (overall_compliant: true on {}). A missing classification already gets the
+# strictest tier; it must also be judged on the absence of evidence.
+#
+# Two conditions, both required before anything can pass:
+#   _facts_supplied  input.eu_ai_act is a non-empty object
+#   _classified      system_classification.risk_tier is one of the five tiers
+# Each failure adds an explicit violation so the consumer sees why.
+# ---------------------------------------------------------------------------
+
+default _facts_supplied := false
+
+_facts_supplied if {
+	is_object(input.eu_ai_act)
+	count(object.keys(input.eu_ai_act)) > 0
+}
+
+default _classified := false
+
+_classified if {
+	input.eu_ai_act.system_classification.risk_tier in {"prohibited", "high_risk", "limited_risk", "minimal_risk", "gpai"}
+}
+
+_no_facts_msg := "FAIL-CLOSED: no eu_ai_act facts supplied — the assessment could not be evaluated. This is NOT a passing result; supply input.eu_ai_act with system_classification.risk_tier and the per-module facts."
+
+_unclassified_msg := "FAIL-CLOSED: input.eu_ai_act.system_classification.risk_tier is missing or not one of prohibited | high_risk | limited_risk | minimal_risk | gpai — the system is assessed at the prohibited tier and is non-compliant until it is classified."
+
+gate_violations := [_no_facts_msg] if not _facts_supplied
+
+gate_violations := [_unclassified_msg] if {
+	_facts_supplied
+	not _classified
+}
+
+gate_violations := [] if {
+	_facts_supplied
+	_classified
+}
+
 default overall_compliant := false
 
 overall_compliant if {
+	_facts_supplied
+	_classified
 	modules_passing == count(applicable_modules)
 	count(applicable_modules) > 0
 }
@@ -167,6 +213,9 @@ all_violations := array.concat(
 	violations_governance,
 )
 
+# Gate messages first: when they are present they explain every other number.
+violations := array.concat(gate_violations, all_violations)
+
 # =============================================================================
 # Top-level compliance report
 # =============================================================================
@@ -174,15 +223,18 @@ all_violations := array.concat(
 compliance_report := {
 	"framework": "EU Artificial Intelligence Act",
 	"total_controls": 5,
-	"violations": [],
-	"violation_count": 0,
+	"violations": violations,
+	"violation_count": count(violations),
 	"standard": "EU Artificial Intelligence Act — Regulation (EU) 2024/1689",
+	"compliant": compliant,
 	"overall_compliant": overall_compliant,
+	"facts_supplied": _facts_supplied,
+	"classified": _classified,
 	"risk_tier": risk_tier,
 	"applicable_modules": applicable_modules,
 	"modules_passing": modules_passing,
 	"modules_total": 5,
-	"total_violations": count(all_violations),
+	"total_violations": count(violations),
 	"modules": {
 		"prohibited_practices": {
 			"compliant": prohibited_compliant,

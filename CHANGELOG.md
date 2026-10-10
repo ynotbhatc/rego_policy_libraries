@@ -21,6 +21,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `supply_chain.slsa`) have one owning file and pointer comments in the rest.
 
 ### Fixed
+- **`eu_ai_act` reported compliant on empty input (fail-open, #186).** A missing classification
+  was given the strictest tier and then judged on the absence of evidence: no prohibited-practice
+  fact is `true`, so the module has zero violations and `overall_compliant` was `true` on `{}`.
+  `eu_ai_act.main` now carries the same fail-closed gate as `cis_rhel9.main`: `input.eu_ai_act`
+  must be a non-empty object and `system_classification.risk_tier` one of the five tiers before
+  anything can pass; each failure is an explicit `FAIL-CLOSED:` violation. The report gains a
+  `compliant` key (one key across frameworks), `facts_supplied` and `classified`; `violations`,
+  `violation_count` and `total_violations` now carry the real aggregate instead of the literal
+  `[]` / `0` they were hard-coded to. Tests: `governance/eu_ai_act/tests/test_eu_ai_act_main.rego`.
 - **DISA STIG RHEL 8 / RHEL 9 were unreachable from the uniform entrypoint.** Both bundles
   exposed only `stig_assessment` and had no `stig.<platform>.main` alias, so a caller using the
   library-wide `data.<package>.main.compliance_report` contract got `undefined` back. Added the
