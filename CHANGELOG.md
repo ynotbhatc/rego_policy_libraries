@@ -8,6 +8,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+_Nothing yet._
+
+---
+
+## [2.1.1] - 2026-10-10
+
+Two days after 2.1.0, for the first consumer's second finding. **729 policy files**
+(977 including tests, counted at main 2026-10-10). 1,845 tests pass. No policy is
+removed or renamed; `enforcement/aap` is unchanged.
+
+
 ### Added
 - **Package-scoped `# METADATA` on every policy.** All 729 policy files now resolve to an OPA
   annotation block carrying `title` and `custom.{class, framework, source, domains}`, so a
@@ -40,6 +51,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `facts_supplied=false`, 0% with an explicit FAIL-CLOSED CAT I finding. `total_controls` is derived
   from the module finding arrays (73 for RHEL 8 V1R13, 143 for RHEL 9 V2R2), not hard-coded.
   Tests: `tests/test_stig_rhel_8_main.rego`, `tests/test_stig_rhel_9_main.rego`.
+
+---
 
 ## [2.1.0] - 2026-10-08
 
