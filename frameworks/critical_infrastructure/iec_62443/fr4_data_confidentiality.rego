@@ -10,9 +10,10 @@
 #     cited: 3
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: none
+#     as_of: v2.3.4
 package iec_62443.fr4
 
 import rego.v1

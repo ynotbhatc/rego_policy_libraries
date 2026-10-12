@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 5
 #     cited: 4
-#     density: sparse
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package bsi_c5.cryptography
 
 import rego.v1

@@ -24,11 +24,12 @@
 #   coverage:
 #     checks: 13
 #     cited: 0
-#     density: sized
-#     basis: size
+#     density: gate
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package enforcement.terraform.plan
 
 import rego.v1

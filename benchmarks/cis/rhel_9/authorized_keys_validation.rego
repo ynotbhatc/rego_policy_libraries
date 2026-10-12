@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 9
 #     cited: 6
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: none
+#     as_of: v2.3.4
 package cis_rhel9.authorized_keys
 
 import rego.v1

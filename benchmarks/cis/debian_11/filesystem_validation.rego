@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 4
 #     cited: 2
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: orchestrator
+#     as_of: v2.3.4
 package cis_debian_11.filesystem
 
 # CIS Debian 11 - Section 1.1 Filesystem Configuration

@@ -10,9 +10,10 @@
 #     cited: 0
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: none
+#     as_of: v2.3.4
 package cis_rhel9.pam_validation
 
 import rego.v1

@@ -12,7 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package essential_eight.user_application_hardening
 
 import rego.v1

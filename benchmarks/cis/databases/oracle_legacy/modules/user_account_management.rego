@@ -10,9 +10,10 @@
 #     cited: 8
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: none
+#     as_of: v2.3.4
 package cis_oracle.user_account_management
 
 # CIS Oracle Database 19c Benchmark - Section 3

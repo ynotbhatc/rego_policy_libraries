@@ -10,9 +10,10 @@
 #     cited: 1
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package nerc_cip.cip_007
 
 import rego.v1

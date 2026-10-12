@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 2
 #     cited: 2
-#     density: stub
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_debian_11
 
 # CIS Debian 11 Benchmark - Complete Compliance Assessment

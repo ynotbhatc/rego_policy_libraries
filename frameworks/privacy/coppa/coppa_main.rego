@@ -57,7 +57,8 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package coppa.main
 
 import rego.v1

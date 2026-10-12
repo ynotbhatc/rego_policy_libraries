@@ -12,7 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: none
+#     as_of: v2.3.4
 package finops.tagging
 
 # FinOps / Cost Governance — Resource Tagging & Organization Policy

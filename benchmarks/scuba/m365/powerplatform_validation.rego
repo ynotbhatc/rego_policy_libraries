@@ -25,11 +25,12 @@
 #   coverage:
 #     checks: 9
 #     cited: 9
-#     density: sparse
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package scuba_m365.powerplatform
 
 import rego.v1

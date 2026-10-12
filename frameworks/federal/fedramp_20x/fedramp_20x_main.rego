@@ -48,7 +48,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package fedramp_20x.main
 
 import rego.v1

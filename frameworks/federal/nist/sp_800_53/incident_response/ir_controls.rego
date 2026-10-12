@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 9
 #     cited: 9
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package nist.sp800_53.incident_response
 
 import rego.v1

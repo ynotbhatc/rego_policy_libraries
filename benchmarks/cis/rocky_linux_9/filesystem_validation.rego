@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 5
 #     cited: 3
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_rocky_linux_9.filesystem
 
 # CIS Rocky Linux 9 Section 1.1 - Filesystem Configuration

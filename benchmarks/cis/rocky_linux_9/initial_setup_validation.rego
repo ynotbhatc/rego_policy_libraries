@@ -10,9 +10,10 @@
 #     cited: 20
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_rocky_linux_9.initial_setup
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup

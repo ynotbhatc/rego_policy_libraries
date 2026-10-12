@@ -10,9 +10,10 @@
 #     cited: 17
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: none
+#     as_of: v2.3.4
 package cis_rhel8.user_group
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 6.2: User and Group Settings

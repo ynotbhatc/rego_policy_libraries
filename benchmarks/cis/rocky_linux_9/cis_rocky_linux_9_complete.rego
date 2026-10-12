@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 14
 #     cited: 14
-#     density: sized
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package cis_rocky_linux_9
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Complete Validation

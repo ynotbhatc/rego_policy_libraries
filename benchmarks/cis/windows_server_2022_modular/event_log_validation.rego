@@ -10,9 +10,10 @@
 #     cited: 11
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_windows_server_2022.event_log
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 18.9: Event Log Configuration

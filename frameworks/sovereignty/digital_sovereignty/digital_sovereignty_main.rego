@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 12
 #     cited: 12
-#     density: sized
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package digital_sovereignty.main
 
 import rego.v1

@@ -12,7 +12,8 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package nist_ssdf.main
 
 # NIST SSDF (SP 800-218 v1.1) — Master Orchestrator

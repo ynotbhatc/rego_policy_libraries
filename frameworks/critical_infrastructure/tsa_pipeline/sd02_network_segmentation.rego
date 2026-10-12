@@ -10,9 +10,10 @@
 #     cited: 7
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package tsa_pipeline.sd02_network_segmentation
 
 import rego.v1

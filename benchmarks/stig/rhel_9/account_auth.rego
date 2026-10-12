@@ -10,9 +10,10 @@
 #     cited: 18
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package stig.rhel_9.account_auth
 
 # DISA STIG for RHEL 9 - Account and Authentication Module

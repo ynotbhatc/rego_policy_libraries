@@ -10,9 +10,10 @@
 #     cited: 8
 #     density: sparse
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_fortinet_fortigate
 
 # CIS Fortinet FortiGate Benchmark v1.3.0

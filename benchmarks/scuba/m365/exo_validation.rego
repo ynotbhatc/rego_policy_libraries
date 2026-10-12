@@ -34,7 +34,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package scuba_m365.exo
 
 import rego.v1

@@ -10,9 +10,10 @@
 #     cited: 0
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package cis.network
 
 import rego.v1

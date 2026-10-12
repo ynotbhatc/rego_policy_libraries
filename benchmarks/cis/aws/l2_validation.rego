@@ -10,9 +10,10 @@
 #     cited: 41
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_aws.l2
 
 # CIS Amazon Web Services Foundations Benchmark v7.0.0 - Level 2 Additional Controls

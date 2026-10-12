@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 2
 #     cited: 2
-#     density: stub
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package stig.vmware_vsphere_8
 
 # DISA STIG — VMware vSphere 8.0 ESXi Security Technical Implementation Guide — Master Aggregator

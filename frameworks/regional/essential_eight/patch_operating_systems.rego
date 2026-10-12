@@ -12,7 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package essential_eight.patch_operating_systems
 
 import rego.v1

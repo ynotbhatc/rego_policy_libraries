@@ -10,9 +10,10 @@
 #     cited: 4
 #     density: sparse
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_arista_eos
 
 # CIS Arista EOS Benchmark v1.2.0

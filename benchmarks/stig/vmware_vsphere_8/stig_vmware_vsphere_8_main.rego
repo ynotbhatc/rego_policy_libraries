@@ -14,9 +14,10 @@
 #     cited: 0
 #     density: orchestrator
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package stig.vmware_vsphere_8.main
 
 import data.stig.vmware_vsphere_8

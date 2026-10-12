@@ -12,7 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package essential_eight.multi_factor_authentication
 
 import rego.v1

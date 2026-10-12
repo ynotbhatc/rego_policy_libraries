@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 9
 #     cited: 8
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package stig.rhel_8.file_permissions
 
 # DISA STIG for RHEL 8 - File Permissions Module

@@ -10,9 +10,10 @@
 #     cited: 10
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_amazon_linux_2023.boot_security
 
 import rego.v1

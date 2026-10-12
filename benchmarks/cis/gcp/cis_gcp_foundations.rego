@@ -10,9 +10,10 @@
 #     cited: 7
 #     density: sparse
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: none
+#     as_of: v2.3.4
 package cis_gcp_foundations
 
 # CIS Google Cloud Platform Foundation Benchmark v4.0.0

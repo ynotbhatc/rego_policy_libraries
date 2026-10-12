@@ -37,9 +37,10 @@
 #     cited: 24
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_m365_v7.sharepoint
 
 import rego.v1

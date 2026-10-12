@@ -14,9 +14,10 @@
 #     cited: 0
 #     density: orchestrator
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package stig.ubuntu_22_04.main
 
 import data.stig.ubuntu_22_04

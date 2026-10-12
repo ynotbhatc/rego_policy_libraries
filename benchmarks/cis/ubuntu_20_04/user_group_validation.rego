@@ -10,9 +10,10 @@
 #     cited: 17
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: orchestrator
+#     as_of: v2.3.4
 package cis_ubuntu_20_04.user_group
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 6.2: User and Group Settings

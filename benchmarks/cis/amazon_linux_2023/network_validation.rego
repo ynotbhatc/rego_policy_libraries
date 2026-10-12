@@ -10,9 +10,10 @@
 #     cited: 14
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: none
+#     as_of: v2.3.4
 package cis_amazon_linux_2023.network
 
 # CIS Amazon Linux 2023 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration

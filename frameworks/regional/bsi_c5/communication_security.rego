@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 4
 #     cited: 3
-#     density: sparse
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package bsi_c5.communication_security
 
 import rego.v1

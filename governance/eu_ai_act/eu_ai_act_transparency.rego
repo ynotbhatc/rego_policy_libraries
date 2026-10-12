@@ -10,9 +10,10 @@
 #     cited: 5
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: orchestrator
+#     as_of: v2.3.4
 package eu_ai_act.transparency
 
 import rego.v1

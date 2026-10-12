@@ -10,9 +10,10 @@
 #     cited: 3
 #     density: sparse
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_cisco_ios
 
 # CIS Cisco IOS Benchmark v4.1.0

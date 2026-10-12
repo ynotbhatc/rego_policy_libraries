@@ -13,9 +13,10 @@
 #     cited: 2
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package pci_dss.data_protection.requirement_4
 
 import rego.v1

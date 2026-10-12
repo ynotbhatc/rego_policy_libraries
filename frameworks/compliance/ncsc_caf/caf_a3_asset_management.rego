@@ -10,9 +10,10 @@
 #     cited: 0
 #     density: unrecognised
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package ncsc_caf.a3_asset_management
 
 import rego.v1

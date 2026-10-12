@@ -10,9 +10,10 @@
 #     cited: 0
 #     density: orchestrator
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_debian_11.main
 
 # Bridge: expose cis_debian_11 under the /v1/data/<framework>/main/compliance_report

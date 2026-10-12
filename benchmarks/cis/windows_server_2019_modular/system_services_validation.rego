@@ -10,9 +10,10 @@
 #     cited: 26
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: none
+#     as_of: v2.3.4
 package cis_windows_server_2019.system_services
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 5: System Services

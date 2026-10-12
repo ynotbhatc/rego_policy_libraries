@@ -26,11 +26,12 @@
 #   coverage:
 #     checks: 14
 #     cited: 7
-#     density: sized
-#     basis: size
-#     tested: false
+#     density: overlay
+#     basis: role
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package supply_chain.substrate
 
 import rego.v1

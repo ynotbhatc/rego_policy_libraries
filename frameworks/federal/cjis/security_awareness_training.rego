@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 8
 #     cited: 7
-#     density: sparse
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cjis.security_awareness_training
 
 import rego.v1

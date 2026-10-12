@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 17
 #     cited: 17
-#     density: sized
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package cis_rhel9
 
 # CIS RHEL 9 Benchmark v2.0.0 - Complete Validation

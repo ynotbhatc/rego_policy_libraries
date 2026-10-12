@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 6
 #     cited: 5
-#     density: sparse
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cyber_essentials.security_update_management
 
 import rego.v1

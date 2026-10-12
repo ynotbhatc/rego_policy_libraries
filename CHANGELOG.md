@@ -8,6 +8,27 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.3.4] - 2026-10-12
+
+### Added — a smoke test for every module, roles and a measured fail-closed guard in the coverage scan
+
+- `scripts/gen_tests.py` wrote a smoke test for every module that had none (554 files under `tests/`). Each
+  asserts only what its module was proven to do on empty input: it evaluates without a runtime error; its report
+  is an object; its report is not compliant (fail-closed); its violations are non-empty. The suite grows from
+  1,954 to 3375 tests; the CI discovery floor is ratcheted to 3,000.
+- The coverage scan stamps roles — `section` (a small module an orchestrator in the same tree aggregates),
+  `orchestrator`, `overlay` (supply-chain scoring, crosswalk), `gate` (enforcement and governance decisions) —
+  and a measured **`guard`**: one evaluation of the whole tree on empty input says, per module, whether
+  fail-closed is enforced by the module itself (`self`, 543), by a fail-closed orchestrator that references it
+  (`orchestrator`, 24), by nothing (`none`, 35) or does not apply (`n/a`). Of the 165 modules that looked sparse
+  by size, 147 are one of those roles by design; 18 are genuinely thin and `docs/COVERAGE_SCAN.md` names them.
+- `docs/TEST_GENERATION.md` lists what the generator could **not** assert, classified by guard. The findings
+  worth acting on: **60 modules whose report is undefined on empty input** (the `{}` collapse the contract
+  forbids: a member of the report literal is undefined without facts, so a consumer gets nothing); **18
+  modules that report compliant on empty input with no orchestrator guarding them** (fail-open); 19 that are
+  compliant alone but guarded by their orchestrator (by design); 2 whose report says compliant while the
+  module emits violations (the report's `compliant` is computed from a subset of the checks).
+
 ## [2.3.3] - 2026-10-12
 
 ### Changed — a check is a distinct check, not a distinct citation: 13,758, validated against 47 declared totals

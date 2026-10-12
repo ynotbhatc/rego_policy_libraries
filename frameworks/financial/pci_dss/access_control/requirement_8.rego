@@ -12,9 +12,10 @@
 #     cited: 5
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package pci_dss.access_control.requirement_8
 
 import rego.v1

@@ -40,9 +40,10 @@
 #     cited: 31
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_m365_v7.defender
 
 import rego.v1

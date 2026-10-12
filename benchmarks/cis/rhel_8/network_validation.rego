@@ -10,9 +10,10 @@
 #     cited: 9
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: none
+#     as_of: v2.3.4
 package cis_rhel8.network
 
 # CIS RHEL 8 Benchmark v4.0.0 - Sections 3.1/3.2/3.3: Network Configuration

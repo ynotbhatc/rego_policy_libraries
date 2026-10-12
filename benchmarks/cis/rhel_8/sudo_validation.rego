@@ -12,7 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_rhel8.sudo
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.3: Configure privilege escalation

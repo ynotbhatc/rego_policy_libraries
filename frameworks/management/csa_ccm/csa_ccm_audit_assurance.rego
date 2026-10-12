@@ -10,9 +10,10 @@
 #     cited: 0
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package csa_ccm.audit_assurance
 
 import rego.v1

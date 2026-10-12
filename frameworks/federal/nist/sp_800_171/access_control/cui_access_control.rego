@@ -10,9 +10,10 @@
 #     cited: 0
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package nist.sp800_171.access_control
 
 import rego.v1

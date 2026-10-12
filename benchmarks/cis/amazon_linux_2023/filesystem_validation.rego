@@ -10,9 +10,10 @@
 #     cited: 9
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: none
+#     as_of: v2.3.4
 package cis_amazon_linux_2023.filesystem
 
 # CIS Amazon Linux 2023 Section 1.1.x - Filesystem Configuration

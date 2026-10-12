@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 27
 #     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
+#     density: gate
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package kubernetes.admission
 
 # Kubernetes Admission Control — Security and Operations Policy

@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 4
 #     cited: 2
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: orchestrator
+#     as_of: v2.3.4
 package cis_ubuntu_20_04.filesystem
 
 # CIS Ubuntu 20.04 - Section 1.1 Filesystem Configuration

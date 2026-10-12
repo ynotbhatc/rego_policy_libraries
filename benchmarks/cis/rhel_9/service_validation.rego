@@ -10,9 +10,10 @@
 #     cited: 13
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_rhel9.services
 
 # CIS RHEL 9 Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x - Service Configuration

@@ -14,11 +14,12 @@
 #   coverage:
 #     checks: 1
 #     cited: 0
-#     density: stub
-#     basis: size
-#     tested: false
+#     density: overlay
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package supply_chain.baseline
 
 import rego.v1

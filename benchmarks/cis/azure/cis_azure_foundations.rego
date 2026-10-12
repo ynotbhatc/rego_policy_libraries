@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 9
 #     cited: 9
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_azure
 
 # CIS Microsoft Azure Foundations Benchmark v3.0.0

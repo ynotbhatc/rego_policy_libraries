@@ -12,7 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package nist.ai_rmf
 
 import rego.v1

@@ -23,7 +23,8 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package irs_1075.main
 
 import rego.v1

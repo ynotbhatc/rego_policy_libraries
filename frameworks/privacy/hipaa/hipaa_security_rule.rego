@@ -12,7 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package hipaa.security_rule
 
 import rego.v1

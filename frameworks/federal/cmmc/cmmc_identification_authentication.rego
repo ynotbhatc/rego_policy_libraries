@@ -10,9 +10,10 @@
 #     cited: 11
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cmmc.identification_authentication
 
 import rego.v1

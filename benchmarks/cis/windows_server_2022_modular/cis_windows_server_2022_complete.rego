@@ -8,11 +8,12 @@
 #   coverage:
 #     checks: 10
 #     cited: 10
-#     density: sized
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: n/a
+#     as_of: v2.3.4
 package cis_windows_server_2022
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Complete Validation

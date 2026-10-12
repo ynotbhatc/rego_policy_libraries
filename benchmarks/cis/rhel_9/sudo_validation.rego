@@ -12,7 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_rhel9.sudo
 
 import rego.v1

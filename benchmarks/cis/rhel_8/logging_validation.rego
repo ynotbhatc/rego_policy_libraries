@@ -10,9 +10,10 @@
 #     cited: 8
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package cis_rhel8.logging
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 4.2: Logging Configuration

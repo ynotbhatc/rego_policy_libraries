@@ -10,9 +10,10 @@
 #     cited: 3
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     guard: self
+#     as_of: v2.3.4
 package gdpr.controller_processor
 
 import rego.v1
