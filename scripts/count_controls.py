@@ -33,7 +33,8 @@ exclude = re.compile(r'^(sections|chapters|groups|first_report_deadline|notifica
 bodies = obj = strs = files = 0
 for f in root.rglob('*.rego'):
     rel = f.relative_to(root).as_posix()
-    if re.search(r'(^|/)(test_|.*_test\.rego$)', rel) or '/tests/' in rel: continue
+    # tests are not controls; converters/ holds generated copies and adapters of policies counted elsewhere
+    if re.search(r'(^|/)(test_|.*_test\.rego$)', rel) or '/tests/' in rel or rel.startswith('converters/'): continue
     files += 1
     cur = None
     for line in f.read_text(errors='ignore').splitlines():
