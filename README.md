@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> **729 production-ready Rego policies** (977 including tests, counted at main 2026-10-10) for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), CIS Controls v8.1, DISA STIGs, CISA SCuBA M365, NSA/CISA Kubernetes Hardening, NIST, Zero Trust (CISA ZTMM v2.0), SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, FBI CJIS, IRS Pub 1075, ACSC Essential Eight, UK Cyber Essentials, BSI C5, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
+> **729 production-ready Rego policies** (977 including tests, counted at main 2026-10-10) for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), CIS Controls v8.1, DISA STIGs, CISA SCuBA M365, NSA/CISA Kubernetes Hardening, NIST, Zero Trust (CISA ZTMM v2.0), SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, FBI CJIS, IRS Pub 1075, ACSC Essential Eight, MAS TRM (Singapore), UK Cyber Essentials, BSI C5, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
 >
 > Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
 
@@ -94,12 +94,13 @@ This library gives you a **complete, working policy set on day one**, covering 3
 | **CIS Controls v8.1** | `frameworks/management/cis_controls_v8/` | 18 Critical Security Controls, 153 safeguards, cumulative IG1 ⊆ IG2 ⊆ IG3 scoring — distinct from the CIS *Benchmarks* above |
 | **Zero Trust — CISA ZTMM v2.0 + NIST SP 800-207** | `frameworks/federal/zero_trust/` | 83 criteria across the 5 pillars + 3 cross-cutting capabilities |
 | **PQC Readiness (FIPS 203/204/205, EO 14412, CNSA 2.0)** | `frameworks/federal/pqc/` | 15 profile-gated controls (general/federal/nss) + data-driven algorithm classification over a supplied crypto inventory (HNDL, IR 8547 deprecation, CNSA 2.0) |
+| **MAS Technology Risk Management Guidelines (Jan 2021)** | `frameworks/financial/mas_trm/` | 237 controls across chapters 3–15, per-chapter report; chapter 14 (online financial services) scoped by flag |
 | **ACSC Essential Eight (Nov 2023)** | `frameworks/regional/essential_eight/` | 8 mitigation strategies, 96 requirements; overall maturity = lowest strategy level |
 | **FBI CJIS Security Policy** | `frameworks/federal/cjis/` | All 13 Policy Areas, 98 requirements, NIST 800-53-mapped |
 | **NIST SSDF (SP 800-218 v1.1)** | `frameworks/federal/nist_ssdf/` | 42 secure-software-development controls |
 | **IRS Publication 1075 (Rev. 11-2021)** | `frameworks/federal/irs_1075/` | 8 safeguard areas, 57 requirements — IRC 6103(p)(4)(A)–(F), §9 computer security (800-53 Rev 5 tailoring), §10 incident response |
 | **UK Cyber Essentials (Willow, April 2025)** | `frameworks/regional/cyber_essentials/` | 5 technical control themes, 28 requirements |
-| **BSI C5:2020** | `frameworks/regional/bsi_c5/` | All 17 criteria domains, 61 requirements — incl. Portability/Interoperability (export + confirmed deletion) and Government Investigation Requests (INQ) |
+| **BSI C5:2020**, **MAS TRM (Singapore, Jan 2021)** | `frameworks/regional/bsi_c5/` | All 17 criteria domains, 61 requirements — incl. Portability/Interoperability (export + confirmed deletion) and Government Investigation Requests (INQ) |
 | **ISO/IEC 42005:2025 (AI impact assessment)** | `governance/iso_42005/` | 22 attestation checks across the AIIA process (Clause 5) and per-system records (Clause 6), wired to the ISO 42001 AIMS integration |
 | **OWASP LLM Top 10 (2026)** | `governance/owasp_llm/` | 30 controls (3 per risk, LLM01–LLM10:2026) with a MITRE ATLAS mitigation crosswalk (atlas-data v2026.09) |
 | **FedRAMP 20x KSI** | `frameworks/federal/fedramp_20x/` | All 46 Key Security Indicators, Class B/C profiles, generated from the Consolidated Rules datafile; rev5 module retained for existing/High |

@@ -9,6 +9,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- **MAS Technology Risk Management Guidelines (Singapore, January 2021)** — `frameworks/financial/mas_trm/`,
+  `mas_trm.main`. One control per Guidelines paragraph that states a "should": **237 controls across
+  chapters 3–15** (governance, TRM framework, project management and security-by-design, software
+  development, IT service management, IT resilience, access control, cryptography, data and
+  infrastructure security, cyber security operations, cyber security assessment, online financial
+  services, IT audit), attested from the FI's evidence as `input.mas_trm.controls["<paragraph>"]`.
+  Per-chapter report with gaps; chapter 14 is scoped out by `online_financial_services=false` and
+  nothing else can be excluded. Fail-closed on absent/non-true attestations, unknown ids and a
+  malformed container. 14 tests. First Asia-Pacific framework beyond ACSC Essential Eight; metadata
+  vocabulary gains source `mas` and domain `singapore`.
 - **CCPA — the 2025 CPPA regulations (effective 2026-01-01)** as three new modules under
   `frameworks/privacy/ccpa/`, written from the OAL-approved text (approved 2025-09-22):
   - `ccpa.cybersecurity_audits` — Article 9, §§7120–7124: §7120 applicability thresholds

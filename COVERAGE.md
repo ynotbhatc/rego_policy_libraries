@@ -30,7 +30,7 @@ took so two people do not write the same test.
 | `frameworks/management` | 37 |
 | `frameworks/compliance` | 24 |
 | `frameworks/privacy` | 21 |
-| `frameworks/financial` | 15 |
+| `frameworks/financial` | 17 |
 | `frameworks/sovereignty` | 11 |
 | `governance/eu_ai_act` | 5 |
 | `governance/geisa` | 5 |
@@ -1071,6 +1071,13 @@ took so two people do not write the same test.
 - `ps_protect_software.rego`
 - `pw_produce_secured_software.rego`
 - `rv_respond_vulnerabilities.rego`
+
+</details>
+
+<details><summary><code>frameworks/financial/mas_trm</code> — 2 file(s)</summary>
+
+- `mas_trm_controls_a.rego`
+- `mas_trm_main.rego`
 
 </details>
 
