@@ -6,13 +6,13 @@
 #   source: aac
 #   domains: [container]
 #   coverage:
-#     checks: 12
+#     checks: 19
 #     cited: 12
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package sentinel.dockerfile
 
 import rego.v1

@@ -6,16 +6,16 @@
 #   source: swift
 #   domains: [financial, banking]
 #   coverage:
-#     checks: 23
+#     checks: 43
 #     cited: 23
 #     expected: 32
-#     found: 23
-#     scope: module
-#     density: partial
+#     found: 43
+#     scope: directory
+#     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package swift_csp.main
 
 import rego.v1

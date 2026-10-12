@@ -298,8 +298,12 @@ def items(ast):
 
 
 def checks(ast):
-    """(count, cited_ids, uncited) under the v3 rule: distinct control ids + uncited set-rules"""
+    """(count, cited_ids, uncited): per module, every distinct check. A check is a distinct (control id, text)
+    pair — several rules citing the same article paragraph with different requirements ("Art.21(2)(c): BCP not
+    documented" / "...not tested annually") are several checks of that control, while a row re-listed with the
+    same text is one — plus each uncited item counted on its own. cited_ids is the set of distinct control ids."""
     its = items(ast)
-    ids = {cid for cid, _, _ in its if cid}
+    cited = {(cid, (text or "").strip()) for cid, text, _ in its if cid}
+    ids = {cid for cid, _ in cited}
     uncited = sum(1 for cid, _, shape in its if not cid and (shape in ("set-rule", "array-comprehension", "array-object") or shape.startswith("check-map:")))
-    return len(ids) + uncited, ids, uncited
+    return len(cited) + uncited, ids, uncited

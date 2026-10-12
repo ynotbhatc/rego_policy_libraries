@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 17
+#     checks: 24
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rhel8.user_group
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 6.2: User and Group Settings

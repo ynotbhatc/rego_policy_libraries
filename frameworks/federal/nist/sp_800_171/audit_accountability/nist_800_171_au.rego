@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package nist.sp800_171.audit_accountability
 
 import rego.v1

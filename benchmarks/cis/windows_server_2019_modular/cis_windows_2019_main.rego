@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_windows_server_2019.main
 
 # Bridge: expose cis_windows_server_2019 under the /v1/data/<framework>/main/compliance_report

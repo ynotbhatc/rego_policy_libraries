@@ -21,7 +21,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package ai_governance.context
 
 import rego.v1

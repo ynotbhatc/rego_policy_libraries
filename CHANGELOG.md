@@ -8,6 +8,34 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.3.3] - 2026-10-12
+
+### Changed — a check is a distinct check, not a distinct citation: 13,758, validated against 47 declared totals
+
+Trying to fill the "sparse" modules showed they were not sparse. NIS2 holds 35 checks and declares 34; the SEC
+rule module holds 23 and declares 22; FDA Part 11 holds 42 and declares 43; GLBA 34 and declares 33. The 2.3.2
+rule reported 14, 8, 30 and 26 because it folded every check citing the same article paragraph into one
+("Art.21(2)(c): BCP not documented" and "Art.21(2)(c): BCP not tested annually" became one control). A check is
+now a distinct (control id, text) pair per module; a row re-listed with identical text is still one.
+
+The rule is now validated by evidence outside itself: 47 modules declare their own total in their report
+literal, and 45 are within 10 % of it under this rule (NSA/CISA Kubernetes 43/43, PostgreSQL 15 172/172, CSA CCM
+185/197 across its domain modules ...). The two below are licensed texts we could only partly transcribe
+(ISO/IEC 27701 67/134, CIS Windows 11 210/267) and are named in `scripts/coverage_stamp.py`; `make
+check-coverage` fails if any other declaring module falls below 90 %, so a counter regression cannot pass CI.
+
+| | checks |
+|---|---|
+| 2.2.0 regex | 7,867 |
+| 2.3.0 AST, one shape | 7,560 |
+| 2.3.1 AST, six shapes | 11,645 |
+| 2.3.2 exclusion fix | 11,693 |
+| **2.3.3 distinct checks, validated** | **13,758** |
+
+11,693 module-level controls and 11,124 distinct controls across 143 frameworks are unchanged; the OSCAL
+catalogs, crosswalk CSV and XCCDF table are keyed on controls and do not move.
+
+
 ## [2.3.2] - 2026-10-12
 
 ### Changed — verification pass on the 2.3.1 count: 11,693

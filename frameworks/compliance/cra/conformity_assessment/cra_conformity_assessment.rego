@@ -6,13 +6,13 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 10
+#     checks: 11
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cra.conformity_assessment
 
 import rego.v1

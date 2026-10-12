@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis.rhel_10
 
 # CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft)

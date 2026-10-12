@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 4
+#     checks: 9
 #     cited: 4
 #     density: sparse
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rhel9.certificate_validation
 
 import rego.v1

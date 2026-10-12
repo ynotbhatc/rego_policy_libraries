@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 9
+#     checks: 21
 #     cited: 9
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rocky_linux_8.cron
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers

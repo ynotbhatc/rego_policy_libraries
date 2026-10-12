@@ -43,7 +43,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package mas_trm.main
 
 import rego.v1

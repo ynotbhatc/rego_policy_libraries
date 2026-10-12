@@ -6,13 +6,13 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 11
+#     checks: 34
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cmmc.identification_authentication
 
 import rego.v1

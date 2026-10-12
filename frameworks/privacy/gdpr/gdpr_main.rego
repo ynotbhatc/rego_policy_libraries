@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package gdpr.main
 
 import rego.v1

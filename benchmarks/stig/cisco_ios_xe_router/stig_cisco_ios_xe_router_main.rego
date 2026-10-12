@@ -16,7 +16,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package stig.cisco_ios_xe_router.main
 
 import data.stig.cisco_ios_xe_router

@@ -6,13 +6,13 @@
 #   source: csa
 #   domains: [cloud]
 #   coverage:
-#     checks: 6
+#     checks: 26
 #     cited: 6
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package csa_ccm.governance
 
 import rego.v1

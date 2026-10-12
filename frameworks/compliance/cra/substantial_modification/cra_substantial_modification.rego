@@ -6,13 +6,13 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 11
+#     checks: 13
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cra.substantial_modification
 
 import rego.v1

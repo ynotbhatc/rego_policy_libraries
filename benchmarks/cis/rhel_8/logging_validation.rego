@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 15
+#     checks: 16
 #     cited: 8
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rhel8.logging
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 4.2: Logging Configuration

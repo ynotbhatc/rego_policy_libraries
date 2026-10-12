@@ -6,13 +6,13 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 6
+#     checks: 24
 #     cited: 6
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cmmc.physical_protection
 
 import rego.v1

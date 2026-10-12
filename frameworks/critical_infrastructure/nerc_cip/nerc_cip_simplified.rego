@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package nerc.cip.simplified
 
 import rego.v1

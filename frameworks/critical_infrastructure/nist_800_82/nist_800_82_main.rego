@@ -6,16 +6,16 @@
 #   source: nist
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 23
+#     checks: 35
 #     cited: 23
 #     expected: 32
-#     found: 23
-#     scope: module
-#     density: partial
+#     found: 35
+#     scope: directory
+#     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package nist_800_82.main
 
 import rego.v1

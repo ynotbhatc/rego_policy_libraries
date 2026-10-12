@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 8
+#     checks: 14
 #     cited: 8
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_amazon_linux_2023.sudo
 
 import rego.v1

@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 13
+#     checks: 20
 #     cited: 13
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rocky_linux_8.services
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration

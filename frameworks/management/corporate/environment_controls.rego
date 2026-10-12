@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package corporate.environment.controls
 
 import rego.v1

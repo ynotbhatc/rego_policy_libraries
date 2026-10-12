@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_juniper_junos
 
 # CIS Juniper JunOS Benchmark v2.1.0

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_mcp_server.client_host_config
 
 import rego.v1

@@ -6,16 +6,16 @@
 #   source: eu
 #   domains: [financial, eu]
 #   coverage:
-#     checks: 39
+#     checks: 54
 #     cited: 16
 #     expected: 91
-#     found: 39
-#     scope: module
-#     density: sparse
+#     found: 115
+#     scope: directory
+#     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package dora.main
 
 import rego.v1

@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 12
+#     checks: 16
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_amazon_linux_2023.file_permissions
 
 # CIS Amazon Linux 2023 Section 6.1.x - System File Permissions

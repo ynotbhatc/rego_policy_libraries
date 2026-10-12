@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package fisma.main
 
 import rego.v1

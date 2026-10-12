@@ -14,7 +14,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package pci_dss.security_testing.requirement_11
 
 import rego.v1

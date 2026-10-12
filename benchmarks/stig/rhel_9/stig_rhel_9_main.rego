@@ -22,7 +22,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package stig.rhel_9.main
 
 import data.stig.rhel_9

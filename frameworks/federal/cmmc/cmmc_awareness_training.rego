@@ -6,13 +6,13 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 3
+#     checks: 12
 #     cited: 3
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cmmc.awareness_training
 
 import rego.v1

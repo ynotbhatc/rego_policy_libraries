@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_debian_11
 
 # CIS Debian 11 Benchmark - Complete Compliance Assessment

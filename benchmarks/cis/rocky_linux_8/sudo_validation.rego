@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 8
+#     checks: 14
 #     cited: 8
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rocky_linux_8.sudo
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.3: Configure privilege escalation

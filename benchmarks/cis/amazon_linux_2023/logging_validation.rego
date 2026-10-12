@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 11
+#     checks: 14
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_amazon_linux_2023.logging
 
 # CIS Amazon Linux 2023 Section 4.2.x - Logging Configuration

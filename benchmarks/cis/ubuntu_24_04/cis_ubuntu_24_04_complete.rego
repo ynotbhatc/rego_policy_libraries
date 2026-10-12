@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_ubuntu_24_04
 
 # CIS Ubuntu 24.04 LTS Benchmark - Complete Compliance Assessment

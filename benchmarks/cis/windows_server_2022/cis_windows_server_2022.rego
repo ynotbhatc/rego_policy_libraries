@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_windows_server_2022_legacy
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0

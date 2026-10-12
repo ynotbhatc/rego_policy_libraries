@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [windows]
 #   coverage:
-#     checks: 25
+#     checks: 35
 #     cited: 25
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_windows_server_2019.advanced_audit
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 17: Advanced Audit Policy Configuration

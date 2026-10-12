@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [database, oracle]
 #   coverage:
-#     checks: 16
+#     checks: 21
 #     cited: 16
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_oracle.database_parameters
 
 # CIS Oracle Database 19c Benchmark - Section 2.2

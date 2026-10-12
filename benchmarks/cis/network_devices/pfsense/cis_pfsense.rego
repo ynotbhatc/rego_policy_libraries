@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [network, pfsense]
 #   coverage:
-#     checks: 19
+#     checks: 21
 #     cited: 19
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_pfsense
 
 # CIS pfSense / OPNsense Firewall Hardening Benchmark v1.0.0

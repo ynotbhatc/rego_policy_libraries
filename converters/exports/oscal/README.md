@@ -2,7 +2,7 @@
 
 **Status:** shipping — catalog, component-definition, assessment-results.
 **Kind:** export (Tier 1)
-**Covers:** every framework — 143 catalogs, 11,124 distinct controls (the 11,693 control-level checks collapse onto them; the same id in two modules of one framework is one control)
+**Covers:** every framework — 143 catalogs, 11,124 distinct controls (the 13,758 control-level checks collapse onto them; the same id in two modules of one framework is one control)
 **Spec:** [OSCAL 1.2.3](https://pages.nist.gov/OSCAL/), JSON; schemas vendored in `schema/`
 
 ## Use it
@@ -11,7 +11,7 @@
 # one framework
 curl -sLO https://raw.githubusercontent.com/ynotbhatc/rego_policy_libraries/main/converters/exports/oscal/dist/catalogs/gdpr.json
 # everything in one catalog (attached to each release)
-gh release download v2.3.2 --repo ynotbhatc/rego_policy_libraries --pattern oscal-catalogs.tar.gz
+gh release download v2.3.3 --repo ynotbhatc/rego_policy_libraries --pattern oscal-catalogs.tar.gz
 ```
 
 `dist/catalogs/index.json` lists every catalog with its uuid and control count. Importers tested so far: the

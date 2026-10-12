@@ -25,7 +25,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package supply_chain.ssdf
 
 import rego.v1

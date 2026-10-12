@@ -6,13 +6,13 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 11
+#     checks: 12
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package nist.sp800_53.identification_authentication
 
 import rego.v1

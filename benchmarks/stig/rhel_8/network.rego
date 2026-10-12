@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package stig.rhel_8.network
 
 # DISA STIG for RHEL 8 - Network Configuration Module

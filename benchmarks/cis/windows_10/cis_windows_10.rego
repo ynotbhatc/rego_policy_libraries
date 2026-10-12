@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_windows_10
 
 # CIS Microsoft Windows 10 Enterprise Benchmark v4.0.0  

@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 17
+#     checks: 24
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rocky_linux_8.user_group
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 6.2: User and Group Settings

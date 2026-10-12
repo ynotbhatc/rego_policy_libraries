@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package digital_sovereignty.breach_notification_sovereignty
 
 import rego.v1

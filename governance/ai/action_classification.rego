@@ -22,7 +22,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package ai_governance.classification
 
 import rego.v1

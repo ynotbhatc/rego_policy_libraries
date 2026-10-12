@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package stig.windows_server_2016
 
 # DISA STIG for windows server 2016 - Simplified Complete Assessment

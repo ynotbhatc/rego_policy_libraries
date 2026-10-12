@@ -16,7 +16,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package stig.amazon_linux_2023.main
 
 import data.stig.amazon_linux_2023

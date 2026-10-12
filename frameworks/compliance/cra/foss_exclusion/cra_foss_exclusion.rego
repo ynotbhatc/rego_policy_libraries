@@ -6,13 +6,13 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 4
+#     checks: 7
 #     cited: 2
 #     density: sparse
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cra.foss_exclusion
 
 import rego.v1
