@@ -1,0 +1,16 @@
+{
+ "rows": 761,
+ "platforms": {
+  "amazon_linux_2023": 88,
+  "debian_11": 54,
+  "rhel_8": 79,
+  "rhel_9": 89,
+  "rocky_linux_8": 78,
+  "rocky_linux_9": 78,
+  "saas": 133,
+  "ubuntu_20_04": 54,
+  "ubuntu_22_04": 54,
+  "ubuntu_24_04": 54
+ },
+ "join": "CIS-CAT rule id startswith xccdf_rule_id_prefix, same platform and benchmark version"
+}
