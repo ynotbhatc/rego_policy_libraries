@@ -13,31 +13,74 @@ package cis_rhel9
 
 import rego.v1
 
-import data.cis_rhel9.filesystem
-import data.cis_rhel9.logging
-import data.cis_rhel9.file_permissions
-import data.cis_rhel9.services
-import data.cis_rhel9.network
-import data.cis_rhel9.ssh
 import data.cis_rhel9.auditd
-import data.cis_rhel9.pam
-import data.cis_rhel9.sudo
-import data.cis_rhel9.selinux
-import data.cis_rhel9.user_group
-import data.cis_rhel9.cron
 import data.cis_rhel9.boot_security
+import data.cis_rhel9.cron
+import data.cis_rhel9.file_permissions
+import data.cis_rhel9.filesystem
 import data.cis_rhel9.initial_setup
+import data.cis_rhel9.logging
+import data.cis_rhel9.network
+import data.cis_rhel9.pam
+import data.cis_rhel9.selinux
+import data.cis_rhel9.services
+import data.cis_rhel9.ssh
+import data.cis_rhel9.sudo
+import data.cis_rhel9.user_group
 
 # Extended hardening modules (STIG / NIST / EDA drift detection)
 # These supplement the 338 CIS controls but are not part of CIS RHEL 9 v2.0.0.
 # They are evaluated separately so the CIS compliance score is not affected.
-import data.cis_rhel9.storage_encryption
-import data.cis_rhel9.certificate_validation
 import data.cis_rhel9.authorized_keys
+import data.cis_rhel9.certificate_validation
+import data.cis_rhel9.storage_encryption
 
 # CIS Level 2 additional controls
 # Activated when input.profile == "level2"
 import data.cis_rhel9.l2
+
+# =============================================================================
+# ASSESSMENT COVERAGE — which sections actually received facts
+# =============================================================================
+#
+# Every module below expresses its controls as "violate if the fact says X".
+# A section whose input keys were never collected therefore produces no
+# violations and would count as compliant. That is a pass for an assessment
+# that evaluated nothing. The map below names the input keys each section
+# reads; a section is ASSESSED only when at least one of them is present, and
+# an unassessed section is never counted as compliant.
+
+section_inputs := {
+	"section_1_1_filesystem": ["mount_options", "disabled_filesystem_modules", "separate_partitions", "usb_storage", "sticky_bit"],
+	"section_1_2_1_7_1_8_initial_setup": ["initial_setup"],
+	"section_1_3_1_4_1_5_boot_security": ["boot_security"],
+	"section_1_6_selinux": ["selinux"],
+	"section_2_services": ["unnecessary_services", "time_synchronization", "chronyd", "client_packages", "autofs"],
+	"section_3_network": ["sysctl_parameters", "ip_forwarding", "ipv", "firewall", "wireless_interfaces"],
+	"section_4_1_auditd": ["auditd"],
+	"section_4_2_logging": ["rsyslog", "journald"],
+	"section_5_1_cron": ["cron"],
+	"section_5_2_ssh": ["ssh"],
+	"section_5_3_sudo": ["sudo"],
+	"section_5_4_5_5_pam": ["pam"],
+	"section_6_1_file_permissions": ["suid_files", "critical_files", "world_writable", "unowned_files", "ungrouped_files"],
+	"section_6_2_user_group": ["user_group"],
+}
+
+section_assessed(name) if {
+	some k in section_inputs[name]
+	input[k]
+}
+
+missing_inputs := {name: [k | some k in section_inputs[name]; not input[k]] | some name, _ in section_inputs}
+
+not_assessed_sections := sort([name | some name, _ in section_inputs; not section_assessed(name)])
+
+assessed_sections := count(section_inputs) - count(not_assessed_sections)
+
+assessment_coverage_percentage := round((assessed_sections * 100) / count(section_inputs))
+
+section_assessment := {name: {"assessed": section_assessed(name) == true, "missing_inputs": missing_inputs[name]} | some name, _ in section_inputs}
 
 # =============================================================================
 # MAIN COMPLIANCE RULE
@@ -49,6 +92,7 @@ import data.cis_rhel9.l2
 default compliant := false
 
 compliant if {
+	count(not_assessed_sections) == 0
 	filesystem.compliant
 	logging.compliant
 	file_permissions.compliant
@@ -178,24 +222,11 @@ section_compliance := {
 
 total_sections := 14
 
-compliant_sections := count([1 |
-	some compliant_status in [
-		filesystem.compliant,
-		logging.compliant,
-		file_permissions.compliant,
-		services.compliant,
-		network.compliant,
-		ssh.compliant,
-		auditd.compliant,
-		pam.compliant,
-		sudo.compliant,
-		selinux.compliant,
-		user_group.compliant,
-		cron.compliant,
-		boot_security.compliant,
-		initial_setup.compliant,
-	]
-	compliant_status == true
+# A section counts as compliant only if it was actually assessed (fail-closed).
+compliant_sections := count([name |
+	some name, section in section_compliance
+	section.compliant == true
+	section_assessed(name)
 ])
 
 compliance_percentage := (compliant_sections * 100) / total_sections

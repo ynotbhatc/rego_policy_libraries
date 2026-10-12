@@ -23,8 +23,8 @@ package cis_rhel9.main
 #    the published CIS benchmark. Reporting the benchmark's headline number
 #    would overstate coverage. See "controls_basis" in the report.
 
-import rego.v1
 import data.cis_rhel9 as bench
+import rego.v1
 
 default _compliant := false
 
@@ -50,11 +50,12 @@ _section_percentage := bench.compliance_percentage
 # A missing-facts assessment is now reported as fully non-compliant with an
 # explicit violation, never as a pass.
 #
-# LIMITATION: this gate detects a completely EMPTY input, not a partial one.
-# An input carrying one irrelevant key still evaluates normally, so sparse or
-# wrong-shaped facts can still under-report violations. Per-benchmark required-
-# key assertions would be the stronger guarantee; that is a larger design change
-# and is not attempted here.
+# PARTIAL INPUT: the orchestrator now names the input keys each section reads
+# (cis_rhel9.section_inputs). A section that received none of them is NOT
+# ASSESSED: it is listed, it contributes an explicit violation, and its share
+# of the controls counts as failed, never as passed. Measured 2026-10-12 before
+# this change: the ansible_facts-only payload the Linux assessment playbooks
+# sent produced 0 violations and a 100% score in the results store.
 # ---------------------------------------------------------------------------
 
 default _facts_supplied := false
@@ -70,6 +71,30 @@ default _bench_violations := []
 
 _bench_violations := [v | some v in bench.all_violations]
 
+default _not_assessed := []
+
+_not_assessed := bench.not_assessed_sections
+
+default _missing_inputs := {}
+
+_missing_inputs := bench.missing_inputs
+
+_not_assessed_msgs := [sprintf("NOT ASSESSED: %s — required input not collected: %s", [name, concat(", ", _missing_inputs[name])]) | some name in _not_assessed]
+
+# Share of the control basis carried by unassessed sections, scaled from the
+# per-section controls_covered figures onto the distinct-ID basis.
+_covered_total := sum([section.controls_covered | some _, section in bench.section_compliance])
+
+_unassessed_covered := sum([bench.section_compliance[name].controls_covered | some name in _not_assessed])
+
+default _unassessed_controls := 0
+
+_unassessed_controls := round((_total_controls * _unassessed_covered) / _covered_total) if _covered_total > 0
+
+default _coverage := 0
+
+_coverage := bench.assessment_coverage_percentage
+
 default _sections := {}
 
 _sections := bench.section_compliance
@@ -78,12 +103,13 @@ _total_controls := 224
 
 _violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_supplied
 
-_violations := _bench_violations if _facts_supplied
+_violations := array.concat(_bench_violations, _not_assessed_msgs) if _facts_supplied
 
 # No facts => every control is unverified, which counts as failed, not passed.
 _failed := _total_controls if not _facts_supplied
 
-_failed := count(_bench_violations) if _facts_supplied
+# Unassessed sections count against the result, clamped to the control basis.
+_failed := min([_total_controls, count(_bench_violations) + _unassessed_controls]) if _facts_supplied
 
 # Clamp: more violations than known controls must not yield a negative count.
 _passed := max([0, _total_controls - _failed])
@@ -105,4 +131,7 @@ compliance_report := {
 	"compliant": _compliant,
 	"violations": _violations,
 	"section_results": _sections,
+	"sections_not_assessed": _not_assessed,
+	"missing_inputs": _missing_inputs,
+	"assessment_coverage_percentage": _coverage,
 }
