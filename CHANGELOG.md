@@ -9,6 +9,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- **Bank Negara Malaysia — Risk Management in Technology (RMiT), 25 September 2026** —
+  `frameworks/financial/bnm_rmit/`, `bnm_rmit.main`, written from BNM/RH/PD 028-98 as published: one control
+  per mandatory **S paragraph of Part B §§8–15 (99 standards)** — governance, technology risk management,
+  technology operations (projects, SDLC, patch and EOL, cryptography, data centres, service availability,
+  network resilience, backup, third parties, cloud, access control), cybersecurity management, digital
+  services, technology audits, external party assurance, awareness. Cloud, third-party, NCII and
+  digital-services paragraphs are gated by flags that must be declared true or false. The report carries the
+  30 September 2027 early-warning / stand-in deadline, the 15 October 2027 disclosure start, and the 4-hour /
+  120-minute availability targets. 11 tests. Vocabulary gains source `bnm` and domain `malaysia`.
 - **APRA Prudential Standard CPS 234 Information Security (Australia, July 2019)** —
   `frameworks/financial/apra_cps234/`, `apra_cps234.main`, written from the APRA text: one control per
   requirement paragraph 13–36 (24 controls) across roles, capability, policy framework, classification,
