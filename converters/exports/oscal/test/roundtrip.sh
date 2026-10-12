@@ -50,8 +50,44 @@ hit = [c for g in rhel["groups"] for c in g["controls"] if c["id"] == "cis_rhel_
 assert hit and "AIDE" in hit[0]["parts"][0]["prose"], "CIS RHEL 9 1.3.1 did not round-trip"
 print(f"PASS roundtrip: {idx['frameworks']} catalogs, {got_total} controls, all.json {m}, every control linked to an existing Rego file")
 PY
-# schema validation of every catalog + the combined one
-out="$(python3 "$HERE/validate.py" $(ls "$TMP"/catalogs/*.json | grep -v index.json) "$TMP/all.json" 2>&1 | grep -v '^ok ' || true)"
+# component-definition: one implemented-requirement per catalog control, every control-id resolves
+python3 "$HERE/build_component.py" --out "$TMP" --catalogs "$TMP/catalogs" >/dev/null
+# assessment-results from live evaluations (fail-closed on empty input), targets resolve to catalog statement parts
+echo '{}' > "$TMP/empty.json"
+opa eval -f json -d "$ROOT/benchmarks/cis/rhel_9" -i "$TMP/empty.json" 'data.cis_rhel9.main.compliance_report' > "$TMP/cis.json"
+opa eval -f json -d "$ROOT/frameworks/privacy/ccpa" -i "$TMP/empty.json" 'data.ccpa' > "$TMP/ccpa.json"
+python3 "$HERE/build_assessment_results.py" "$TMP/cis.json" "$TMP/ccpa.json" -o "$TMP/assessment-results.json" --time 2026-10-12T00:00:00Z --subject roundtrip --catalogs "$TMP/catalogs" >/dev/null
+python3 - "$TMP" <<'PY'
+import sys, json, pathlib
+tmp = pathlib.Path(sys.argv[1])
+idx = json.loads((tmp / "catalogs" / "index.json").read_text())
+parts, ids = set(), set()
+for row in idx["catalogs"]:
+    for g in json.loads((tmp / row["file"]).read_text())["catalog"]["groups"]:
+        for c in g["controls"]:
+            ids.add(c["id"]); parts.update(p["id"] for p in c["parts"])
+cd = json.loads((tmp / "component-definition.json").read_text())["component-definition"]
+reqs = [r for ci in cd["components"][0]["control-implementations"] for r in ci["implemented-requirements"]]
+assert len(reqs) == idx["controls"] == len(ids), f"{len(reqs)} implemented-requirements vs {idx['controls']} catalog controls"
+assert {r["control-id"] for r in reqs} == ids, "implemented-requirements do not cover the catalogs exactly"
+assert len({r["uuid"] for r in reqs}) == len(reqs), "duplicate implemented-requirement uuids"
+ar = json.loads((tmp / "assessment-results.json").read_text())["assessment-results"]
+res = ar["results"][0]
+obs = {o["uuid"] for o in res["observations"]}
+assert res["findings"] and len(res["findings"]) == len(res["observations"]) > 50
+for f in res["findings"]:
+    assert f["target"]["status"]["state"] == "not-satisfied"
+    assert all(ro["observation-uuid"] in obs for ro in f["related-observations"])
+    if f["target"]["type"] == "objective-id":
+        assert f["target"]["target-id"] in parts, f["target"]["target-id"]
+mapped = sum(1 for f in res["findings"] if f["target"]["type"] == "objective-id")
+assert mapped / len(res["findings"]) >= 0.6, f"only {mapped}/{len(res['findings'])} findings target a catalog statement"
+reviewed = sum(len(s.get("include-controls", [])) for s in res["reviewed-controls"]["control-selections"])
+assert reviewed >= mapped
+print(f"PASS roundtrip: component-definition {len(reqs)} implemented-requirements == catalogs; assessment-results {len(res['findings'])} findings ({mapped} on catalog statements), {reviewed} reviewed controls")
+PY
+# schema validation of every catalog + the combined one + the two documents
+out="$(python3 "$HERE/validate.py" $(ls "$TMP"/catalogs/*.json | grep -v index.json) "$TMP/all.json" "$TMP/component-definition.json" "$TMP/assessment-results.json" 2>&1 | grep -v '^ok ' || true)"
 if [[ "$out" == *SKIP* ]]; then echo "SKIP schema validation: jsonschema not installed"; exit 0; fi
 if [[ "$out" == *FAIL* ]]; then printf '%s\n' "$out" | sed -n '1,20p'; exit 1; fi
-echo "PASS schema: every catalog validates against OSCAL ${OSCAL_VERSION:-1.2.3}"
+echo "PASS schema: every catalog, the component-definition and the assessment-results validate against OSCAL ${OSCAL_VERSION:-1.2.3}"
