@@ -1,0 +1,159 @@
+{
+ "catalog": {
+  "uuid": "d63e341d-5a26-5b66-8b03-e6d9f03e3875",
+  "metadata": {
+   "title": "Rego Policy Libraries — stig_kubernetes (DISA STIG — Kubernetes Security Technical Implementation Guide — Master Aggregator)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "stig_kubernetes"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "stig_kubernetes-stig_kubernetes_complete",
+    "class": "rego-module",
+    "title": "DISA STIG — Kubernetes Security Technical Implementation Guide — Master Aggregator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.kubernetes"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/kubernetes/stig_kubernetes_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_kubernetes-metadata",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/stig_kubernetes_complete.rego (package stig.kubernetes); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#53dc5bf5-07f9-5a30-b3df-1a2218663330",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/stig_kubernetes_complete.rego (package stig.kubernetes); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-summary",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/stig_kubernetes_complete.rego (package stig.kubernetes); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#53dc5bf5-07f9-5a30-b3df-1a2218663330",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/stig_kubernetes_complete.rego (package stig.kubernetes); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "53dc5bf5-07f9-5a30-b3df-1a2218663330",
+     "title": "DISA STIG — Kubernetes Security Technical Implementation Guide — Master Aggregator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.kubernetes"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/stig/kubernetes/stig_kubernetes_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

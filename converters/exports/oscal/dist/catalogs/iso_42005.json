@@ -1,0 +1,819 @@
+{
+ "catalog": {
+  "uuid": "508f523d-778a-5dca-9380-cf5ba89b1dd0",
+  "metadata": {
+   "title": "Rego Policy Libraries — iso_42005 (ISO/IEC 42005:2025 — AI system impact assessment (first edition, published 2025-05-28))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "iso_42005"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "iso_42005-iso_42005_main",
+    "class": "rego-module",
+    "title": "ISO/IEC 42005:2025 — AI system impact assessment (first edition, published 2025-05-28)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iso_42005.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/iso_42005/iso_42005_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iso_42005-iso_42005.main-1",
+      "title": "ISO/IEC 42005:2025 Clause 5 (process): no documented, repeatable AI impact assessment approach reflecting internal context (governance, risk appetite) and external context (regulation, norms, market)",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-1_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 5 (process): no documented, repeatable AI impact assessment approach reflecting internal context (governance, risk appetite) and external context (regulation, norms, market)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-2",
+      "title": "ISO/IEC 42005:2025 Clause 5 (process): AIIA methodology, roles, inputs, outputs and decision workflow not documented and version-controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-2_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 5 (process): AIIA methodology, roles, inputs, outputs and decision workflow not documented and version-controlled"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-3",
+      "title": "ISO/IEC 42005:2025 Clause 5 (process): AIIA not integrated with existing management processes (risk management, compliance, privacy/DPIA) — standalone assessments drift",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-3_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 5 (process): AIIA not integrated with existing management processes (risk management, compliance, privacy/DPIA) — standalone assessments drift"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-4",
+      "title": "ISO/IEC 42005:2025 Clause 5 (process): assessment timing triggers not defined (design/planning, before deployment, after significant change)",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-4_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 5 (process): assessment timing triggers not defined (design/planning, before deployment, after significant change)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-5",
+      "title": "ISO/IEC 42005:2025 Clause 5 (process): assessor, reviewer and approver roles not allocated as distinct responsibilities with multidisciplinary input",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-5_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 5 (process): assessor, reviewer and approver roles not allocated as distinct responsibilities with multidisciplinary input"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-6",
+      "title": "ISO/IEC 42005:2025 Clause 5 (process): thresholds for sensitive/restricted uses and impact scales that trigger in-depth assessment and escalated approval not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-6_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 5 (process): thresholds for sensitive/restricted uses and impact scales that trigger in-depth assessment and escalated approval not established"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-7",
+      "title": "ISO/IEC 42005:2025 Clause 5 (process): severity and likelihood scales for rating identified impacts not defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-7_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 5 (process): severity and likelihood scales for rating identified impacts not defined"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-8",
+      "title": "ISO/IEC 42005:2025 Clause 5 (process): formal AIIA review and sign-off before deployment not required at a defined authority level",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-8_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 5 (process): formal AIIA review and sign-off before deployment not required at a defined authority level"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-9",
+      "title": "ISO/IEC 42005:2025 Clause 5 (process): review cadence and re-assessment triggers (system change, new use, context change, incident, emerging harm) not defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-9_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 5 (process): review cadence and re-assessment triggers (system change, new use, context change, incident, emerging harm) not defined"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-10",
+      "title": "ISO/IEC 42005:2025 Annex A: AIIA not referenced from the organization's AI management system (ISO/IEC 42001 6.1.4 requires an AI impact assessment; duplicate processes drift)",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-10_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Annex A: AIIA not referenced from the organization's AI management system (ISO/IEC 42001 6.1.4 requires an AI impact assessment; duplicate processes drift)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-11",
+      "title": "ISO/IEC 42005:2025 Clause 6 (documentation): AIIA records do not state the assessment scope (system boundary, intended purpose, operational context)",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-11_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 6 (documentation): AIIA records do not state the assessment scope (system boundary, intended purpose, operational context)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-12",
+      "title": "ISO/IEC 42005:2025 Clause 6 (documentation): AIIA records cover intended uses but not reasonably foreseeable UNintended uses and misuse",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-12_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 6 (documentation): AIIA records cover intended uses but not reasonably foreseeable UNintended uses and misuse"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-13",
+      "title": "ISO/IEC 42005:2025 Clause 6 (documentation): data sources, provenance and quality measures for development and operational data not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-13_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 6 (documentation): data sources, provenance and quality measures for development and operational data not documented"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-14",
+      "title": "ISO/IEC 42005:2025 Clause 6 (documentation): algorithm/model information (type, development approach, version identifiers, deployment details) not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-14_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 6 (documentation): algorithm/model information (type, development approach, version identifiers, deployment details) not documented"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-15",
+      "title": "ISO/IEC 42005:2025 Clause 6 (documentation): deployment environment (geography, languages, operational constraints) not described",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-15_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 6 (documentation): deployment environment (geography, languages, operational constraints) not described"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-16",
+      "title": "ISO/IEC 42005:2025 Clause 6 (documentation): interested parties not identified, including indirectly affected and vulnerable individuals/groups",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-16_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 6 (documentation): interested parties not identified, including indirectly affected and vulnerable individuals/groups"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-17",
+      "title": "ISO/IEC 42005:2025 Clause 6 (documentation): impacts not assessed across both harms AND benefits, including failure modes and misuse scenarios",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-17_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 6 (documentation): impacts not assessed across both harms AND benefits, including failure modes and misuse scenarios"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-18",
+      "title": "ISO/IEC 42005:2025 Clause 6 (documentation): identified impacts not rated for severity and likelihood on the defined scales",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-18_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 6 (documentation): identified impacts not rated for severity and likelihood on the defined scales"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-19",
+      "title": "ISO/IEC 42005:2025 Clause 6 (documentation): high-severity impacts lack mitigation measures with named owners",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-19_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 6 (documentation): high-severity impacts lack mitigation measures with named owners"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-20",
+      "title": "ISO/IEC 42005:2025 Clause 6 (documentation): approval records (approver, date) do not predate deployment for production AI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-20_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 6 (documentation): approval records (approver, date) do not predate deployment for production AI systems"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-21",
+      "title": "ISO/IEC 42005:2025 Clause 6 (documentation): AIIA records not current — last review outside the defined cadence or change-triggered re-assessment missing",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-21_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Clause 6 (documentation): AIIA records not current — last review outside the defined cadence or change-triggered re-assessment missing"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42005-iso_42005.main-22",
+      "title": "ISO/IEC 42005:2025 Annex D: related assessments (DPIA/privacy, ethics, environmental) for the same system not cross-referenced",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso_42005.main#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso_42005.main#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42005.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8461b8f1-faca-5a34-b5ce-2ba498af8865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42005-iso_42005.main-22_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 42005:2025 Annex D: related assessments (DPIA/privacy, ethics, environmental) for the same system not cross-referenced"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "8461b8f1-faca-5a34-b5ce-2ba498af8865",
+     "title": "ISO/IEC 42005:2025 — AI system impact assessment (first edition, published 2025-05-28)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iso_42005.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/iso_42005/iso_42005_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

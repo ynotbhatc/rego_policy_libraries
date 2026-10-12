@@ -1,0 +1,2507 @@
+{
+ "catalog": {
+  "uuid": "7dc13aac-dea3-51f2-99ee-04c4b3084c73",
+  "metadata": {
+   "title": "Rego Policy Libraries — hkma_trm (HKMA SPM TM-G-1 Technology Risk Management + TM-C-1 Cyber Risk (Hong Kong))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "hkma_trm"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "hkma_trm-hkma_trm_main",
+    "class": "rego-module",
+    "title": "HKMA SPM TM-G-1 Technology Risk Management + TM-C-1 Cyber Risk (Hong Kong)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "hkma_trm.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/hkma_trm/hkma_trm_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "hkma_trm-uses_wireless_lan",
+      "title": "TM-G-1 6.3 — whether the AI deploys wireless LANs must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "uses_wireless_lan"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "uses_wireless_lan"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-uses_wireless_lan_stmt",
+        "name": "statement",
+        "prose": "TM-G-1 6.3 — whether the AI deploys wireless LANs must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-outsources_technology_services",
+      "title": "TM-G-1 7.1 — whether the AI outsources technology services must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "outsources_technology_services"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "outsources_technology_services"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-outsources_technology_services_stmt",
+        "name": "statement",
+        "prose": "TM-G-1 7.1 — whether the AI outsources technology services must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-relies_on_overseas_offices_for_it",
+      "title": "TM-G-1 2.6 — whether the AI relies on overseas offices for IT controls or support must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "relies_on_overseas_offices_for_it"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "relies_on_overseas_offices_for_it"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-relies_on_overseas_offices_for_it_stmt",
+        "name": "statement",
+        "prose": "TM-G-1 2.6 — whether the AI relies on overseas offices for IT controls or support must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.1.1",
+      "title": "IT control policies setting the ground rules for IT controls are developed by senior management, formally approved by the Board or its committee, and implemented across IT functions and business units",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.1.1_stmt",
+        "name": "statement",
+        "prose": "IT control policies setting the ground rules for IT controls are developed by senior management, formally approved by the Board or its committee, and implemented across IT functions and business units"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.1.2",
+      "title": "IT control policies cover at least security management, system development and change management, information processing, communications networks and service providers, and are reviewed regularly and ",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.1.2_stmt",
+        "name": "statement",
+        "prose": "IT control policies cover at least security management, system development and change management, information processing, communications networks and service providers, and are reviewed regularly and updated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.1.3",
+      "title": "Processes to verify compliance with IT control policies and to seek approval for dispensation are specified, with defined consequences for non-adherence",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.1.3_stmt",
+        "name": "statement",
+        "prose": "Processes to verify compliance with IT control policies and to seek approval for dispensation are specified, with defined consequences for non-adherence"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.1.4",
+      "title": "Mechanisms (periodic reminders, orientation for new recruits) promote regular awareness of IT control policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.1.4_stmt",
+        "name": "statement",
+        "prose": "Mechanisms (periodic reminders, orientation for new recruits) promote regular awareness of IT control policies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.2.1",
+      "title": "An IT organisation structure and job descriptions for IT functions are documented and approved by senior management",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.2.1_stmt",
+        "name": "statement",
+        "prose": "An IT organisation structure and job descriptions for IT functions are documented and approved by senior management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.2.2",
+      "title": "Segregation of duties within and among IT functions is enforced (developers have no production access; security management has no conflicting duties), with compensating controls such as peer review wh",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.2.2_stmt",
+        "name": "statement",
+        "prose": "Segregation of duties within and among IT functions is enforced (developers have no production access; security management has no conflicting duties), with compensating controls such as peer review where segregation is impractical"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.2.3",
+      "title": "An IT planning or steering committee of senior management, business units and IT meets regularly and reports major technology initiatives and material IT issues to senior management and the Board",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.2.3_stmt",
+        "name": "statement",
+        "prose": "An IT planning or steering committee of senior management, business units and IT meets regularly and reports major technology initiatives and material IT issues to senior management and the Board"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.2.4",
+      "title": "A documented IT strategy covering long- and short-term initiatives is endorsed by the Board and senior management and reviewed at least annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.2.4_stmt",
+        "name": "statement",
+        "prose": "A documented IT strategy covering long- and short-term initiatives is endorsed by the Board and senior management and reviewed at least annually"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.3.2",
+      "title": "The function responsible for the technology risk management (TRM) process is clearly established",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.3.2_stmt",
+        "name": "statement",
+        "prose": "The function responsible for the technology risk management (TRM) process is clearly established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.3.3",
+      "title": "The TRM function assists business units and IT in identifying, measuring, monitoring and controlling technology risks, promotes policy compliance and supports investigation of technology-related fraud",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.3.3_stmt",
+        "name": "statement",
+        "prose": "The TRM function assists business units and IT in identifying, measuring, monitoring and controlling technology risks, promotes policy compliance and supports investigation of technology-related frauds and incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.3.4",
+      "title": "A formal technology risk acknowledgement and acceptance process reviews, evaluates and approves major non-compliance with IT control policies: risk description and assessment, mitigating controls, rem",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.3.4_stmt",
+        "name": "statement",
+        "prose": "A formal technology risk acknowledgement and acceptance process reviews, evaluates and approves major non-compliance with IT control policies: risk description and assessment, mitigating controls, remedial plan, approval by the risk owner and senior management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.4.1",
+      "title": "Technology audits periodically assess the TRM process and IT controls under an annual technology audit plan; audit issues are recorded, followed up and rectified",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.4.1_stmt",
+        "name": "statement",
+        "prose": "Technology audits periodically assess the TRM process and IT controls under an annual technology audit plan; audit issues are recorded, followed up and rectified"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.4.2",
+      "title": "Where in-house technology audit expertise is insufficient it is supplemented by external specialists or group technology auditors",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.4.2_stmt",
+        "name": "statement",
+        "prose": "Where in-house technology audit expertise is insufficient it is supplemented by external specialists or group technology auditors"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.5.1",
+      "title": "Staff of IT functions, the TRM function and technology audit are competent, with sufficient staffing for present and expected demand and turnover",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.5.1_stmt",
+        "name": "statement",
+        "prose": "Staff of IT functions, the TRM function and technology audit are competent, with sufficient staffing for present and expected demand and turnover"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.5.2",
+      "title": "A process identifies material skill gaps against a skill matrix and an adequate training programme is in place; professional qualifications are encouraged for security, TRM and audit staff",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.5.2_stmt",
+        "name": "statement",
+        "prose": "A process identifies material skill gaps against a skill matrix and an adequate training programme is in place; professional qualifications are encouraged for security, TRM and audit staff"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-2.6.1",
+      "title": "Respective responsibilities of local and overseas offices for IT controls and support are clearly set out in policies, procedures or service agreements",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-2.6.1_stmt",
+        "name": "statement",
+        "prose": "Respective responsibilities of local and overseas offices for IT controls and support are clearly set out in policies, procedures or service agreements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.1.1",
+      "title": "Each application system has an assigned information owner accountable for confidentiality and integrity, working with the TRM and IT functions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.1.1_stmt",
+        "name": "statement",
+        "prose": "Each application system has an assigned information owner accountable for confidentiality and integrity, working with the TRM and IT functions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.1.2",
+      "title": "Information is classified by sensitivity with guidelines, definitions and protection procedures for each class",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.1.2_stmt",
+        "name": "statement",
+        "prose": "Information is classified by sensitivity with guidelines, definitions and protection procedures for each class"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.1.3",
+      "title": "Confidentiality is protected regardless of media; secure disposal and destruction processes exist for sensitive paper and electronic media",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.1.3_stmt",
+        "name": "statement",
+        "prose": "Confidentiality is protected regardless of media; secure disposal and destruction processes exist for sensitive paper and electronic media"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.1.4",
+      "title": "Cryptography uses industry-accepted solutions with sound key management: secure generation, distribution, storage, entry, use and archiving (tamper-resistant storage recommended) and off-site backup o",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.1.4_stmt",
+        "name": "statement",
+        "prose": "Cryptography uses industry-accepted solutions with sound key management: secure generation, distribution, storage, entry, use and archiving (tamper-resistant storage recommended) and off-site backup of keys under equivalent controls"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.2.1",
+      "title": "Access to information and application systems is restricted by authentication and access control rules; every user has a unique ID with an appropriate authentication method",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.2.1_stmt",
+        "name": "statement",
+        "prose": "Access to information and application systems is restricted by authentication and access control rules; every user has a unique ID with an appropriate authentication method"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.2.2",
+      "title": "Effective password rules avoid easy-to-guess passwords and enforce periodic change; multi-factor authentication is used for higher-risk transactions and activities (payments, financial messages, mobil",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.2.2_stmt",
+        "name": "statement",
+        "prose": "Effective password rules avoid easy-to-guess passwords and enforce periodic change; multi-factor authentication is used for higher-risk transactions and activities (payments, financial messages, mobile computing)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.2.3",
+      "title": "Privileged and emergency IDs are granted only necessary authorities, formally approved before release, monitored (peer review of logs), safeguarded, and have passwords changed immediately on return",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.2.3_stmt",
+        "name": "statement",
+        "prose": "Privileged and emergency IDs are granted only necessary authorities, formally approved before release, monitored (peer review of logs), safeguarded, and have passwords changed immediately on return"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.3.1",
+      "title": "A security administration function grants, changes and removes access with information-owner approval, removes rights on leaving or role change, re-certifies user access periodically (e.g. annually), ",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.3.1_stmt",
+        "name": "statement",
+        "prose": "A security administration function grants, changes and removes access with information-owner approval, removes rights on leaving or role change, re-certifies user access periodically (e.g. annually), reviews security logs and violation reports timely, and performs incident analysis, reporting and investigation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.3.2",
+      "title": "Segregation of duties or compensating controls within the security administration function mitigate unauthorised activity by that function",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.3.2_stmt",
+        "name": "statement",
+        "prose": "Segregation of duties or compensating controls within the security administration function mitigate unauthorised activity by that function"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.3.3",
+      "title": "Incident response and reporting procedures handle security incidents during and outside office hours and include timely reporting to the HKMA of confirmed IT-related fraud or major security breaches",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.3.3_stmt",
+        "name": "statement",
+        "prose": "Incident response and reporting procedures handle security incidents during and outside office hours and include timely reporting to the HKMA of confirmed IT-related fraud or major security breaches"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.4.1",
+      "title": "Baseline security requirements safeguard applications, operating systems, system software and databases: authenticated and authorised access, periodic static-data integrity checks, secure configuratio",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.4.1_stmt",
+        "name": "statement",
+        "prose": "Baseline security requirements safeguard applications, operating systems, system software and databases: authenticated and authorised access, periodic static-data integrity checks, secure configuration with unnecessary services removed, timely vendor patching with clear responsibility, documented configurations with periodic certification, and protected logging and monitoring of system and user activity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.5.1",
+      "title": "End-user computing is controlled: data security, documentation, storage and backup, recovery, audit responsibilities and training",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.5.1_stmt",
+        "name": "statement",
+        "prose": "End-user computing is controlled: data security, documentation, storage and backup, recovery, audit responsibilities and training"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.5.2",
+      "title": "Mobile computing controls cover user approval, remote-access authentication, protection of devices against theft and malware, encryption of sensitive data in the mobile environment and in transit, and",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.5.2_stmt",
+        "name": "statement",
+        "prose": "Mobile computing controls cover user approval, remote-access authentication, protection of devices against theft and malware, encryption of sensitive data in the mobile environment and in transit, and backup of mobile data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.5.3",
+      "title": "Malicious-software controls prohibit unauthorised downloads and doubtful sites, keep reputable anti-virus current, block executables and mobile code with known vulnerabilities, and scan all devices re",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.5.3_stmt",
+        "name": "statement",
+        "prose": "Malicious-software controls prohibit unauthorised downloads and doubtful sites, keep reputable anti-virus current, block executables and mobile code with known vulnerabilities, and scan all devices regularly with recovery procedures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.6.1",
+      "title": "Critical information processing facilities sit in secure areas with security barriers and entry controls; access is restricted to authorised personnel and reviewed regularly; buildings give minimum in",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.6.1_stmt",
+        "name": "statement",
+        "prose": "Critical information processing facilities sit in secure areas with security barriers and entry controls; access is restricted to authorised personnel and reviewed regularly; buildings give minimum indication of purpose"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.6.2",
+      "title": "Data centre sites consider environmental threats; environmental monitoring (fire, smoke, temperature, water, dust) and protection from power failure (UPS, backup generator) are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.6.2_stmt",
+        "name": "statement",
+        "prose": "Data centre sites consider environmental threats; environmental monitoring (fire, smoke, temperature, water, dust) and protection from power failure (UPS, backup generator) are in place"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-3.6.3",
+      "title": "Third-party access to secure areas is approved and monitored; recruitment of permanent and temporary technology staff and contractors includes verification and background checks",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-3.6.3_stmt",
+        "name": "statement",
+        "prose": "Third-party access to secure areas is approved and monitored; recruitment of permanent and temporary technology staff and contractors includes verification and background checks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-4.1.1",
+      "title": "A project management framework specifies the methodology for major technology projects: responsibilities, activity breakdown, time and resource budgets, milestones, checkpoints, dependencies, quality ",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-4.1.1_stmt",
+        "name": "statement",
+        "prose": "A project management framework specifies the methodology for major technology projects: responsibilities, activity breakdown, time and resource budgets, milestones, checkpoints, dependencies, quality assurance, risk assessment and approvals"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-4.2.1",
+      "title": "A full project life-cycle methodology governs development, implementation and maintenance of major systems from initiation through feasibility, requirements, design, development, testing, training, im",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-4.2.1_stmt",
+        "name": "statement",
+        "prose": "A full project life-cycle methodology governs development, implementation and maintenance of major systems from initiation through feasibility, requirements, design, development, testing, training, implementation, operation and maintenance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-4.2.2",
+      "title": "The life-cycle methodology defines roles and deliverables per phase and ensures security requirements are identified with business requirements, built, tested and implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-4.2.2_stmt",
+        "name": "statement",
+        "prose": "The life-cycle methodology defines roles and deliverables per phase and ensures security requirements are identified with business requirements, built, tested and implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-4.2.3",
+      "title": "An independent party (QA, TRM or technology audit) conducts a quality assurance review of major projects for compliance with the methodology, policies, control requirements, regulations and law",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-4.2.3_stmt",
+        "name": "statement",
+        "prose": "An independent party (QA, TRM or technology audit) conducts a quality assurance review of major projects for compliance with the methodology, policies, control requirements, regulations and law"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-4.2.4",
+      "title": "A formal acceptance process promotes only tested and approved systems to production; testing is in a separate environment; production data is not used in testing unless de-sensitised and approved by t",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-4.2.4_stmt",
+        "name": "statement",
+        "prose": "A formal acceptance process promotes only tested and approved systems to production; testing is in a separate environment; production data is not used in testing unless de-sensitised and approved by the information owner; performance testing precedes promotion"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-4.2.5",
+      "title": "A formal software package acquisition process evaluates the package (licence, functionality, performance, security) and the supplier (financial condition, reputation, technical capability)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-4.2.5_stmt",
+        "name": "statement",
+        "prose": "A formal software package acquisition process evaluates the package (licence, functionality, performance, security) and the supplier (financial condition, reputation, technical capability)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-4.2.6",
+      "title": "Ongoing maintenance and support of software packages are specified in formal contracts; escrow is considered for mission-critical packages",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-4.2.6_stmt",
+        "name": "statement",
+        "prose": "Ongoing maintenance and support of software packages are specified in formal contracts; escrow is considered for mission-critical packages"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-4.3.1",
+      "title": "A formal change management process covers classification and impact, roles with segregation of duties so no one person can change production unreviewed, version control and audit trails, scheduling an",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-4.3.1_stmt",
+        "name": "statement",
+        "prose": "A formal change management process covers classification and impact, roles with segregation of duties so no one person can change production unreviewed, version control and audit trails, scheduling and tracking, rollback, and post-implementation verification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-4.3.2",
+      "title": "Emergency changes follow formal procedures and are approved by the information owner and relevant parties at the time, or endorsed by the information owner as soon as practicable afterwards",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-4.3.2_stmt",
+        "name": "statement",
+        "prose": "Emergency changes follow formal procedures and are approved by the information owner and relevant parties at the time, or endorsed by the information owner as soon as practicable afterwards"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-4.3.3",
+      "title": "Emergency changes are logged and backed up (previous and changed versions and data), reviewed by independent personnel, and replaced by proper fixes through normal change management",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-4.3.3_stmt",
+        "name": "statement",
+        "prose": "Emergency changes are logged and backed up (previous and changed versions and data), reviewed by independent personnel, and replaced by proper fixes through normal change management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-5.1.1",
+      "title": "Service level agreements with business units cover availability, performance, capacity for growth and user support, with procedures to manage delivery",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-5.1.1_stmt",
+        "name": "statement",
+        "prose": "Service level agreements with business units cover availability, performance, capacity for growth and user support, with procedures to manage delivery"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-5.1.2",
+      "title": "An IT operations manual documents operator tasks, job scheduling and execution, and on-site and off-site backup of data and software (frequency, scope, retention) for production and development",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-5.1.2_stmt",
+        "name": "statement",
+        "prose": "An IT operations manual documents operator tasks, job scheduling and execution, and on-site and off-site backup of data and software (frequency, scope, retention) for production and development"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-5.1.3",
+      "title": "A problem management system responds to IT operational incidents, escalates to IT management, and records, analyses and tracks incidents to rectification; a helpdesk provides front-line support",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-5.1.3_stmt",
+        "name": "statement",
+        "prose": "A problem management system responds to IT operational incidents, escalates to IT management, and records, analyses and tracks incidents to rectification; a helpdesk provides front-line support"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-5.2.1",
+      "title": "Application performance is continuously monitored with timely exception reporting and forecasting to identify problems early and feed capacity planning",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-5.2.1_stmt",
+        "name": "statement",
+        "prose": "Application performance is continuously monitored with timely exception reporting and forecasting to identify problems early and feed capacity planning"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-5.2.2",
+      "title": "Capacity planning covers backup systems and related facilities as well as production",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-5.2.2_stmt",
+        "name": "statement",
+        "prose": "Capacity planning covers backup systems and related facilities as well as production"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-5.3.1",
+      "title": "IT facilities and equipment are maintained per industry practice and supplier intervals, with fault and maintenance records and a hardware and facility inventory of purchased and leased assets",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-5.3.1_stmt",
+        "name": "statement",
+        "prose": "IT facilities and equipment are maintained per industry practice and supplier intervals, with fault and maintenance records and a hardware and facility inventory of purchased and leased assets"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-5.4.1",
+      "title": "An IT disaster recovery plan ensures critical application systems and technology services resume per business recovery requirements (TM-G-2), with adequate insurance of IT resources",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-5.4.1_stmt",
+        "name": "statement",
+        "prose": "An IT disaster recovery plan ensures critical application systems and technology services resume per business recovery requirements (TM-G-2), with adequate insurance of IT resources"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-6.1.2",
+      "title": "Network management responsibility is assigned to skilled, resourced individuals; network standards, design, diagrams and procedures are documented, current, communicated and reviewed periodically",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-6.1.2_stmt",
+        "name": "statement",
+        "prose": "Network management responsibility is assigned to skilled, resourced individuals; network standards, design, diagrams and procedures are documented, current, communicated and reviewed periodically"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-6.1.3",
+      "title": "Critical communications facilities are identified and single points of failure minimised by automatic re-routing, multiple exchanges and alternate telecommunications providers",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-6.1.3_stmt",
+        "name": "statement",
+        "prose": "Critical communications facilities are identified and single points of failure minimised by automatic re-routing, multiple exchanges and alternate telecommunications providers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-6.1.4",
+      "title": "The network is monitored continuously: services and performance against targets, traffic volumes and bottlenecks, and detection of unusual activity based on attack characteristics",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-6.1.4_stmt",
+        "name": "statement",
+        "prose": "The network is monitored continuously: services and performance against targets, traffic volumes and bottlenecks, and detection of unusual activity based on attack characteristics"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-6.1.5",
+      "title": "Powerful network analysis and monitoring tools are protected from unauthorised use and restricted to authorised staff under approval and review",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-6.1.5_stmt",
+        "name": "statement",
+        "prose": "Powerful network analysis and monitoring tools are protected from unauthorised use and restricted to authorised staff under approval and review"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-6.2.1",
+      "title": "Procedures for use of networks and network services define available services, authorisation of who may access them, and protection of access points, connections and services",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-6.2.1_stmt",
+        "name": "statement",
+        "prose": "Procedures for use of networks and network services define available services, authorisation of who may access them, and protection of access points, connections and services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-6.2.2",
+      "title": "Internal networks are segregated by access-control need; production systems sit in dedicated segments separated from internet, extranet and market-data traffic; sensitive inter-segment traffic is cont",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-6.2.2_stmt",
+        "name": "statement",
+        "prose": "Internal networks are segregated by access-control need; production systems sit in dedicated segments separated from internet, extranet and market-data traffic; sensitive inter-segment traffic is controlled and tamper-protected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-6.2.3",
+      "title": "Security parameter settings of routers, firewalls and network servers are reviewed regularly; audit trails of critical network devices are maintained and reviewed; operations staff are alerted in real",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-6.2.3_stmt",
+        "name": "statement",
+        "prose": "Security parameter settings of routers, firewalls and network servers are reviewed regularly; audit trails of critical network devices are maintained and reviewed; operations staff are alerted in real time to potential breaches"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-6.2.4",
+      "title": "Network certification assesses LAN/WAN additions or changes (dial ports, switches, terminal servers, gateways, routers, extranets, internet) for vulnerabilities and documents approval or required cont",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-6.2.4_stmt",
+        "name": "statement",
+        "prose": "Network certification assesses LAN/WAN additions or changes (dial ports, switches, terminal servers, gateways, routers, extranets, internet) for vulnerabilities and documents approval or required controls"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-6.3.1",
+      "title": "WLAN policies cover approval, installation, operation and administration; a risk assessment of accessible information precedes implementation; a standard WLAN security configuration and network certif",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-6.3.1_stmt",
+        "name": "statement",
+        "prose": "WLAN policies cover approval, installation, operation and administration; a risk assessment of accessible information precedes implementation; a standard WLAN security configuration and network certification apply"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-6.3.2",
+      "title": "Stronger encryption and mutual authentication protect wireless-to-wired traffic where needed; WLANs are segregated from the corporate network (e.g. firewalls)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-6.3.2_stmt",
+        "name": "statement",
+        "prose": "Stronger encryption and mutual authentication protect wireless-to-wired traffic where needed; WLANs are segregated from the corporate network (e.g. firewalls)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-7.1.1",
+      "title": "Technology outsourcing follows SA-2 plus: providers have resources and expertise to meet IT control policies; critical services get an independent assessment of the provider's IT control environment w",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-7.1.1_stmt",
+        "name": "statement",
+        "prose": "Technology outsourcing follows SA-2 plus: providers have resources and expertise to meet IT control policies; critical services get an independent assessment of the provider's IT control environment with the report provided to the HKMA; agreements specify performance standards, obligations, ownership and sub-contracting notification or approval; an annual assessment confirms the control environment of critical providers; excessive reliance on a single provider is avoided; a contingency and exit plan exists for critical outsourced services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-7.2.1",
+      "title": "Guidelines govern other major technology service providers (telecommunications, network operators): selection, approval of material exceptions and avoidance of over-reliance on a single provider for c",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-7.2.1_stmt",
+        "name": "statement",
+        "prose": "Guidelines govern other major technology service providers (telecommunications, network operators): selection, approval of material exceptions and avoidance of over-reliance on a single provider for critical services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-C.2.2",
+      "title": "A technology and cyber risk management framework proportionate to the nature, scale and complexity of operations is in place, consistent with IC-1 and TM-G-1",
+      "props": [
+       {
+        "name": "label",
+        "value": "C.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "C.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-C.2.2_stmt",
+        "name": "statement",
+        "prose": "A technology and cyber risk management framework proportionate to the nature, scale and complexity of operations is in place, consistent with IC-1 and TM-G-1"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-C.2.4",
+      "title": "Significant cyber incidents are reported promptly to the HKMA and, where appropriate, other relevant authorities (e.g. PCPD, CSTCB) under prevailing legal and regulatory obligations",
+      "props": [
+       {
+        "name": "label",
+        "value": "C.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "C.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-C.2.4_stmt",
+        "name": "statement",
+        "prose": "Significant cyber incidents are reported promptly to the HKMA and, where appropriate, other relevant authorities (e.g. PCPD, CSTCB) under prevailing legal and regulatory obligations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-C.3.5.2",
+      "title": "Regular Cyber Resilience Assessment Framework (C-RAF) assessments are conducted — inherent risk assessment, maturity assessment, and iCAST for medium or high inherent risk — raising cyber defence matu",
+      "props": [
+       {
+        "name": "label",
+        "value": "C.3.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "C.3.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-C.3.5.2_stmt",
+        "name": "statement",
+        "prose": "Regular Cyber Resilience Assessment Framework (C-RAF) assessments are conducted — inherent risk assessment, maturity assessment, and iCAST for medium or high inherent risk — raising cyber defence maturity to the assessed exposure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-C.4.3",
+      "title": "Secure Tertiary Data Backup (STDB) is adopted so critical data can be recovered if a cyber attack compromises both production and backup environments",
+      "props": [
+       {
+        "name": "label",
+        "value": "C.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "C.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-C.4.3_stmt",
+        "name": "statement",
+        "prose": "Secure Tertiary Data Backup (STDB) is adopted so critical data can be recovered if a cyber attack compromises both production and backup environments"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-C.5.1",
+      "title": "The AI exchanges cyber threat intelligence through the Cyber Intelligence Sharing Platform (CISP) under the Cybersecurity Fortification Initiative",
+      "props": [
+       {
+        "name": "label",
+        "value": "C.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "C.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-C.5.1_stmt",
+        "name": "statement",
+        "prose": "The AI exchanges cyber threat intelligence through the Cyber Intelligence Sharing Platform (CISP) under the Cybersecurity Fortification Initiative"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-hkma_trm.main-1",
+      "title": "HKMA %v (hkma_trm.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "hkma_trm.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hkma_trm.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-hkma_trm.main-1_stmt",
+        "name": "statement",
+        "prose": "HKMA %v (hkma_trm.%v undeclared)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-hkma_trm.main-2",
+      "title": "HKMA %v %v: %v — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "hkma_trm.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hkma_trm.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-hkma_trm.main-2_stmt",
+        "name": "statement",
+        "prose": "HKMA %v %v: %v — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-HKMA-Input-Contract",
+      "title": "attestation for unknown paragraph %v — not in TM-G-1 §§2–7 or the TM-C-1 duties",
+      "props": [
+       {
+        "name": "label",
+        "value": "HKMA Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HKMA Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-HKMA-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "attestation for unknown paragraph %v — not in TM-G-1 §§2–7 or the TM-C-1 duties"
+       },
+       {
+        "id": "hkma_trm-HKMA-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "input.hkma_trm.controls must be an object of {\\\"<paragraph>\\\": true}"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "c8c41774-9f24-5f22-bd08-32a44e01b1f9",
+     "title": "HKMA SPM TM-G-1 Technology Risk Management + TM-C-1 Cyber Risk (Hong Kong)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "hkma_trm.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/hkma_trm/hkma_trm_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

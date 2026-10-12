@@ -1,0 +1,2136 @@
+{
+ "catalog": {
+  "uuid": "c6187faa-5b03-5dee-9c10-83a7848f126f",
+  "metadata": {
+   "title": "Rego Policy Libraries — ami (AMI Head-End System Security Policy)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "ami"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "ami-ami_headend_security",
+    "class": "rego-module",
+    "title": "AMI Head-End System Security Policy",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ami.headend.security"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/ami/headend/ami_headend_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ami-HEADEND-API-1",
+      "title": "MFA not enabled or not required for admin API access",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-API-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-API-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-API-1_stmt",
+        "name": "statement",
+        "prose": "MFA not enabled or not required for admin API access"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-API-2",
+      "title": "OAuth2/JWT session management not configured or JWT expiry exceeds 60 minutes",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-API-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-API-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-API-2_stmt",
+        "name": "statement",
+        "prose": "OAuth2/JWT session management not configured or JWT expiry exceeds 60 minutes"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-API-3",
+      "title": "RBAC with default-deny not configured on API gateway",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-API-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-API-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-API-3_stmt",
+        "name": "statement",
+        "prose": "RBAC with default-deny not configured on API gateway"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-API-4",
+      "title": "API gateway allows deprecated TLS/SSL versions — TLS 1.2 minimum required",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-API-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-API-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-API-4_stmt",
+        "name": "statement",
+        "prose": "API gateway allows deprecated TLS/SSL versions — TLS 1.2 minimum required"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-API-5",
+      "title": "Input validation or rate limiting not enabled on API gateway",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-API-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-API-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-API-5_stmt",
+        "name": "statement",
+        "prose": "Input validation or rate limiting not enabled on API gateway"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-DB-1",
+      "title": "Database encryption at rest not enabled or not using AES-256",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-DB-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-DB-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-DB-1_stmt",
+        "name": "statement",
+        "prose": "Database encryption at rest not enabled or not using AES-256"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-DB-2",
+      "title": "Transparent Data Encryption (TDE) not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-DB-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-DB-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-DB-2_stmt",
+        "name": "statement",
+        "prose": "Transparent Data Encryption (TDE) not enabled"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-DB-3",
+      "title": "Database encryption keys not managed by HSM or dedicated KMS",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-DB-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-DB-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-DB-3_stmt",
+        "name": "statement",
+        "prose": "Database encryption keys not managed by HSM or dedicated KMS"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-DB-4",
+      "title": "Database accessible from public network or default port in use",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-DB-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-DB-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-DB-4_stmt",
+        "name": "statement",
+        "prose": "Database accessible from public network or default port in use"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-DB-5",
+      "title": "Shared database admin accounts in use — per-application service accounts required",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-DB-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-DB-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-DB-5_stmt",
+        "name": "statement",
+        "prose": "Shared database admin accounts in use — per-application service accounts required"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-DB-6",
+      "title": "Database connections do not require SSL/TLS 1.2+",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-DB-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-DB-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-DB-6_stmt",
+        "name": "statement",
+        "prose": "Database connections do not require SSL/TLS 1.2+"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-AUD-1",
+      "title": "Required audit event types not logged: %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-AUD-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-AUD-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-AUD-1_stmt",
+        "name": "statement",
+        "prose": "Required audit event types not logged: %v"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-AUD-2",
+      "title": "Audit log retention is %d days — minimum 365 days required",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-AUD-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-AUD-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-AUD-2_stmt",
+        "name": "statement",
+        "prose": "Audit log retention is %d days — minimum 365 days required"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-AUD-3",
+      "title": "Audit logs not encrypted or HMAC-integrity protected with write-once storage",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-AUD-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-AUD-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-AUD-3_stmt",
+        "name": "statement",
+        "prose": "Audit logs not encrypted or HMAC-integrity protected with write-once storage"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-AUD-4",
+      "title": "SIEM integration or real-time alerting not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-AUD-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-AUD-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-AUD-4_stmt",
+        "name": "statement",
+        "prose": "SIEM integration or real-time alerting not configured"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-NET-1",
+      "title": "OT and IT networks not segmented with firewall between zones",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-NET-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-NET-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-NET-1_stmt",
+        "name": "statement",
+        "prose": "OT and IT networks not segmented with firewall between zones"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-NET-2",
+      "title": "AMI head-end is internet-facing without DMZ protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-NET-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-NET-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-NET-2_stmt",
+        "name": "statement",
+        "prose": "AMI head-end is internet-facing without DMZ protection"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-NET-3",
+      "title": "Direct SSH access to head-end not blocked — bastion host required",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-NET-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-NET-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-NET-3_stmt",
+        "name": "statement",
+        "prose": "Direct SSH access to head-end not blocked — bastion host required"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-HEADEND-PATCH-1",
+      "title": "Patch management SLAs exceed limits (critical: 30 days, high: 60 days)",
+      "props": [
+       {
+        "name": "label",
+        "value": "HEADEND-PATCH-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HEADEND-PATCH-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.headend.security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-HEADEND-PATCH-1_stmt",
+        "name": "statement",
+        "prose": "Patch management SLAs exceed limits (critical: 30 days, high: 60 days)"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "ami-nist_ir7628_access_control",
+    "class": "rego-module",
+    "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ami.nist_ir7628.access_control"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_access_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ami-SG.AC-1",
+      "title": "Access control policy is not documented or approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AC-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AC-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f0e5856-c7b6-566e-bfde-6028af8bb48f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.AC-1_stmt",
+        "name": "statement",
+        "prose": "Access control policy is not documented or approved"
+       },
+       {
+        "id": "ami-SG.AC-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Access control policy has not been reviewed within the past 365 days"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.AC-2",
+      "title": "Formal account provisioning/deprovisioning process not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AC-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AC-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f0e5856-c7b6-566e-bfde-6028af8bb48f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.AC-2_stmt",
+        "name": "statement",
+        "prose": "Formal account provisioning/deprovisioning process not implemented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.AC-3",
+      "title": "Default-deny access enforcement not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AC-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AC-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f0e5856-c7b6-566e-bfde-6028af8bb48f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.AC-3_stmt",
+        "name": "statement",
+        "prose": "Default-deny access enforcement not configured"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.AC-6",
+      "title": "Least privilege and privilege separation not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AC-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AC-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f0e5856-c7b6-566e-bfde-6028af8bb48f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.AC-6_stmt",
+        "name": "statement",
+        "prose": "Least privilege and privilege separation not enforced"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.AC-11",
+      "title": "Session management does not enforce secure tokens or 30-minute timeout",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AC-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AC-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f0e5856-c7b6-566e-bfde-6028af8bb48f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.AC-11_stmt",
+        "name": "statement",
+        "prose": "Session management does not enforce secure tokens or 30-minute timeout"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.AC-17",
+      "title": "Remote access does not require MFA, VPN, and encrypted channel",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AC-17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AC-17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f0e5856-c7b6-566e-bfde-6028af8bb48f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.AC-17_stmt",
+        "name": "statement",
+        "prose": "Remote access does not require MFA, VPN, and encrypted channel"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "ami-nist_ir7628_audit",
+    "class": "rego-module",
+    "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ami.nist_ir7628.audit"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_audit.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ami-SG.AU-2",
+      "title": "Required audit events not logged: %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AU-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AU-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a4fc07bf-2320-507e-89f8-511152d4a4fe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.AU-2_stmt",
+        "name": "statement",
+        "prose": "Required audit events not logged: %v"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.AU-4",
+      "title": "Audit log capacity monitoring or auto-archive not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AU-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AU-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a4fc07bf-2320-507e-89f8-511152d4a4fe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.AU-4_stmt",
+        "name": "statement",
+        "prose": "Audit log capacity monitoring or auto-archive not configured"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.AU-5",
+      "title": "Audit subsystem failure alerting not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AU-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AU-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a4fc07bf-2320-507e-89f8-511152d4a4fe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.AU-5_stmt",
+        "name": "statement",
+        "prose": "Audit subsystem failure alerting not enabled"
+       },
+       {
+        "id": "ami-SG.AU-5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit log retention is %d days — minimum 365 required"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.AU-9",
+      "title": "Audit logs are not encrypted or HMAC-integrity protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AU-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AU-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a4fc07bf-2320-507e-89f8-511152d4a4fe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.AU-9_stmt",
+        "name": "statement",
+        "prose": "Audit logs are not encrypted or HMAC-integrity protected"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.AU-11",
+      "title": "SIEM integration or real-time alerting not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AU-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AU-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a4fc07bf-2320-507e-89f8-511152d4a4fe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.AU-11_stmt",
+        "name": "statement",
+        "prose": "SIEM integration or real-time alerting not configured"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "ami-nist_ir7628_complete",
+    "class": "rego-module",
+    "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ami.nist_ir7628.complete"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ami-control_families",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_complete.rego (package ami.nist_ir7628.complete); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "control_families"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "control_families"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.complete"
+       }
+      ],
+      "links": [
+       {
+        "href": "#34416782-eb0a-5adf-b8cc-0356c1c4c537",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-control_families_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_complete.rego (package ami.nist_ir7628.complete); see the rule body."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "ami-nist_ir7628_config_management",
+    "class": "rego-module",
+    "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ami.nist_ir7628.config_management"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_config_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ami-SG.CM-2",
+      "title": "Baseline configuration not documented or not version-controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.CM-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.CM-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.config_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00d0c244-35e4-54d7-ae6b-cfe79152c864",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.CM-2_stmt",
+        "name": "statement",
+        "prose": "Baseline configuration not documented or not version-controlled"
+       },
+       {
+        "id": "ami-SG.CM-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Baseline configuration has not been reviewed within the past 365 days"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.CM-3",
+      "title": "Formal change control process with approval and rollback not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.CM-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.CM-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.config_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00d0c244-35e4-54d7-ae6b-cfe79152c864",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.CM-3_stmt",
+        "name": "statement",
+        "prose": "Formal change control process with approval and rollback not implemented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.CM-6",
+      "title": "AMI device hardening incomplete — default passwords, unnecessary services, or ports not addressed",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.CM-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.CM-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.config_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00d0c244-35e4-54d7-ae6b-cfe79152c864",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.CM-6_stmt",
+        "name": "statement",
+        "prose": "AMI device hardening incomplete — default passwords, unnecessary services, or ports not addressed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.CM-7",
+      "title": "Least functionality not enforced — application whitelisting or unnecessary software removal missing",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.CM-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.CM-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.config_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00d0c244-35e4-54d7-ae6b-cfe79152c864",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.CM-7_stmt",
+        "name": "statement",
+        "prose": "Least functionality not enforced — application whitelisting or unnecessary software removal missing"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.CM-8",
+      "title": "AMI component inventory is missing or not updated within the past 30 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.CM-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.CM-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.config_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00d0c244-35e4-54d7-ae6b-cfe79152c864",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.CM-8_stmt",
+        "name": "statement",
+        "prose": "AMI component inventory is missing or not updated within the past 30 days"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "ami-nist_ir7628_identification_auth",
+    "class": "rego-module",
+    "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ami.nist_ir7628.identification_auth"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_identification_auth.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ami-SG.IA-3",
+      "title": "Device identification and authentication not enforced for all AMI devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IA-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IA-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.identification_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ec5520ee-b95e-5859-8552-3aa8d5a60c96",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.IA-3_stmt",
+        "name": "statement",
+        "prose": "Device identification and authentication not enforced for all AMI devices"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.IA-5",
+      "title": "PKI certificate configuration is invalid — verify CA trust, algorithm strength, and CRL checking",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IA-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IA-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.identification_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ec5520ee-b95e-5859-8552-3aa8d5a60c96",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.IA-5_stmt",
+        "name": "statement",
+        "prose": "PKI certificate configuration is invalid — verify CA trust, algorithm strength, and CRL checking"
+       },
+       {
+        "id": "ami-SG.IA-5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Device certificates expiring within 30 days: %v"
+       },
+       {
+        "id": "ami-SG.IA-5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Key rotation overdue (>90 days) for devices: %v"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.IA-7",
+      "title": "Cryptographic modules are not FIPS 140-2/3 validated at Level 2 or higher",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IA-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IA-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.identification_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ec5520ee-b95e-5859-8552-3aa8d5a60c96",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.IA-7_stmt",
+        "name": "statement",
+        "prose": "Cryptographic modules are not FIPS 140-2/3 validated at Level 2 or higher"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.IA-8",
+      "title": "Multi-Factor Authentication not enforced for privileged head-end users",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IA-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IA-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.identification_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ec5520ee-b95e-5859-8552-3aa8d5a60c96",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.IA-8_stmt",
+        "name": "statement",
+        "prose": "Multi-Factor Authentication not enforced for privileged head-end users"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "ami-nist_ir7628_incident_response",
+    "class": "rego-module",
+    "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ami.nist_ir7628.incident_response"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_incident_response.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ami-SG.IR-1",
+      "title": "Incident response policy with AMI-specific procedures not documented or approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IR-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IR-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c07f4fd-8916-5ed7-84e9-f069b284a920",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.IR-1_stmt",
+        "name": "statement",
+        "prose": "Incident response policy with AMI-specific procedures not documented or approved"
+       },
+       {
+        "id": "ami-SG.IR-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Incident response policy has not been reviewed within the past 365 days"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.IR-2",
+      "title": "Incident response training (including AMI scenarios) not completed within 365 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IR-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IR-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c07f4fd-8916-5ed7-84e9-f069b284a920",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.IR-2_stmt",
+        "name": "statement",
+        "prose": "Incident response training (including AMI scenarios) not completed within 365 days"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.IR-3",
+      "title": "Incident response procedures not tested (tabletop or simulation) within the past 365 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IR-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IR-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c07f4fd-8916-5ed7-84e9-f069b284a920",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.IR-3_stmt",
+        "name": "statement",
+        "prose": "Incident response procedures not tested (tabletop or simulation) within the past 365 days"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.IR-4",
+      "title": "Automated AMI incident detection (tamper alerts, anomaly detection) not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IR-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IR-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c07f4fd-8916-5ed7-84e9-f069b284a920",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.IR-4_stmt",
+        "name": "statement",
+        "prose": "Automated AMI incident detection (tamper alerts, anomaly detection) not enabled"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.IR-6",
+      "title": "Incident reporting chain or external contacts not current; reporting timeframe must be <= 24 hours",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IR-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IR-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c07f4fd-8916-5ed7-84e9-f069b284a920",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.IR-6_stmt",
+        "name": "statement",
+        "prose": "Incident reporting chain or external contacts not current; reporting timeframe must be <= 24 hours"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.IR-8",
+      "title": "AMI-specific IR scenarios not covered in plan: %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IR-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IR-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c07f4fd-8916-5ed7-84e9-f069b284a920",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.IR-8_stmt",
+        "name": "statement",
+        "prose": "AMI-specific IR scenarios not covered in plan: %v"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "ami-nist_ir7628_system_comms",
+    "class": "rego-module",
+    "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ami.nist_ir7628.system_comms"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_system_comms.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ami-SG.SC-1",
+      "title": "System and communications protection policy not documented or approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.SC-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.SC-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.system_comms"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10e89aad-603b-52f3-bd7c-b1a622299774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.SC-1_stmt",
+        "name": "statement",
+        "prose": "System and communications protection policy not documented or approved"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.SC-4",
+      "title": "AMI network not properly segmented from IT networks and internet",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.SC-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.SC-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.system_comms"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10e89aad-603b-52f3-bd7c-b1a622299774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.SC-4_stmt",
+        "name": "statement",
+        "prose": "AMI network not properly segmented from IT networks and internet"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.SC-8",
+      "title": "TLS version '%v' is not approved — use TLS 1.2 or TLS 1.3",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.SC-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.SC-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.system_comms"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10e89aad-603b-52f3-bd7c-b1a622299774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.SC-8_stmt",
+        "name": "statement",
+        "prose": "TLS version '%v' is not approved — use TLS 1.2 or TLS 1.3"
+       },
+       {
+        "id": "ami-SG.SC-8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Prohibited cipher suites are enabled: %v"
+       },
+       {
+        "id": "ami-SG.SC-8_obj.2",
+        "name": "assessment-objective",
+        "prose": "RF mesh network does not use AES-based encryption (CCM or GCM mode required)"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.SC-12",
+      "title": "Cryptographic key management does not use HSM or lacks rotation policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.SC-12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.SC-12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.system_comms"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10e89aad-603b-52f3-bd7c-b1a622299774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.SC-12_stmt",
+        "name": "statement",
+        "prose": "Cryptographic key management does not use HSM or lacks rotation policy"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.SC-17",
+      "title": "PKI hierarchy invalid — offline root CA, online intermediate CA, and CRL/OCSP required",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.SC-17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.SC-17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.system_comms"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10e89aad-603b-52f3-bd7c-b1a622299774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.SC-17_stmt",
+        "name": "statement",
+        "prose": "PKI hierarchy invalid — offline root CA, online intermediate CA, and CRL/OCSP required"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "ami-SG.SC-28",
+      "title": "MDMS data at rest is not encrypted with AES-128 or AES-256",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.SC-28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.SC-28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.nist_ir7628.system_comms"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10e89aad-603b-52f3-bd7c-b1a622299774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-SG.SC-28_stmt",
+        "name": "statement",
+        "prose": "MDMS data at rest is not encrypted with AES-128 or AES-256"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "a9850cb9-fad9-5b81-8468-f3665d5c20a3",
+     "title": "AMI Head-End System Security Policy",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ami.headend.security"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/ami/headend/ami_headend_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "9f0e5856-c7b6-566e-bfde-6028af8bb48f",
+     "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ami.nist_ir7628.access_control"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_access_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a4fc07bf-2320-507e-89f8-511152d4a4fe",
+     "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ami.nist_ir7628.audit"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_audit.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "34416782-eb0a-5adf-b8cc-0356c1c4c537",
+     "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ami.nist_ir7628.complete"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "00d0c244-35e4-54d7-ae6b-cfe79152c864",
+     "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ami.nist_ir7628.config_management"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_config_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "ec5520ee-b95e-5859-8552-3aa8d5a60c96",
+     "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ami.nist_ir7628.identification_auth"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_identification_auth.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "2c07f4fd-8916-5ed7-84e9-f069b284a920",
+     "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ami.nist_ir7628.incident_response"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_incident_response.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "10e89aad-603b-52f3-bd7c-b1a622299774",
+     "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ami.nist_ir7628.system_comms"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_system_comms.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

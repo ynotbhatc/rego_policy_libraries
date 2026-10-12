@@ -1,0 +1,225 @@
+{
+ "catalog": {
+  "uuid": "08276774-ca92-5136-851a-1f35877a7480",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_os (CIS Benchmark compliance rules for Linux systems)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_os"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_os-cis_policy",
+    "class": "rego-module",
+    "title": "CIS Benchmark compliance rules for Linux systems",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_redhat_legacy"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/os/linux/redhat/cis_policy.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_os-selinux",
+      "title": "Implemented by a Rego rule in benchmarks/cis/os/linux/redhat/cis_policy.rego (package cis_redhat_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "selinux"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "selinux"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_redhat_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ec508fc-287f-5ea6-8c21-6a80041cf2f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-selinux_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/os/linux/redhat/cis_policy.rego (package cis_redhat_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-ssh",
+      "title": "Implemented by a Rego rule in benchmarks/cis/os/linux/redhat/cis_policy.rego (package cis_redhat_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ssh"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ssh"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_redhat_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ec508fc-287f-5ea6-8c21-6a80041cf2f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-ssh_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/os/linux/redhat/cis_policy.rego (package cis_redhat_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-firewall",
+      "title": "Implemented by a Rego rule in benchmarks/cis/os/linux/redhat/cis_policy.rego (package cis_redhat_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "firewall"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "firewall"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_redhat_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ec508fc-287f-5ea6-8c21-6a80041cf2f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-firewall_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/os/linux/redhat/cis_policy.rego (package cis_redhat_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-os",
+      "title": "Implemented by a Rego rule in benchmarks/cis/os/linux/redhat/cis_policy.rego (package cis_redhat_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "os"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "os"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_redhat_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ec508fc-287f-5ea6-8c21-6a80041cf2f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-os_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/os/linux/redhat/cis_policy.rego (package cis_redhat_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "1ec508fc-287f-5ea6-8c21-6a80041cf2f8",
+     "title": "CIS Benchmark compliance rules for Linux systems",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_redhat_legacy"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/os/linux/redhat/cis_policy.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

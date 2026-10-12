@@ -1,0 +1,1019 @@
+{
+ "catalog": {
+  "uuid": "ea4a50c9-37ab-56f0-8710-5e28ee651cb2",
+  "metadata": {
+   "title": "Rego Policy Libraries — gdpr (GDPR - General Data Protection Regulation (EU) 2016/679)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "gdpr"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "gdpr-gdpr_compliance",
+    "class": "rego-module",
+    "title": "GDPR - General Data Protection Regulation (EU) 2016/679",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "gdpr.compliance"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/gdpr/gdpr_compliance.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "gdpr-standard",
+      "title": "GDPR (EU) 2016/679",
+      "props": [
+       {
+        "name": "label",
+        "value": "standard"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "standard"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.compliance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9eb626b8-a0c6-5669-bfcb-7a14de71624d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#b5602f2b-4e69-5d3e-9e7c-3d73a5bc0054",
+        "rel": "implementation"
+       },
+       {
+        "href": "#bf384c2e-fee9-55de-9523-d1264e213297",
+        "rel": "implementation"
+       },
+       {
+        "href": "#3497af9f-cf92-5df2-afd4-7a2914b0c0cc",
+        "rel": "implementation"
+       },
+       {
+        "href": "#c9ae15e5-3e8f-57fe-b874-1c15fcbfa260",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-standard_stmt",
+        "name": "statement",
+        "prose": "GDPR (EU) 2016/679"
+       },
+       {
+        "id": "gdpr-standard_obj.1",
+        "name": "assessment-objective",
+        "prose": "GDPR Articles 24-32 — Controller/Processor Accountability"
+       },
+       {
+        "id": "gdpr-standard_obj.2",
+        "name": "assessment-objective",
+        "prose": "GDPR Art. 6/7 + ePrivacy Directive — Cookies and Tracking"
+       },
+       {
+        "id": "gdpr-standard_obj.3",
+        "name": "assessment-objective",
+        "prose": "GDPR Chapter V — International Data Transfers"
+       },
+       {
+        "id": "gdpr-standard_obj.4",
+        "name": "assessment-objective",
+        "prose": "GDPR (EU) 2016/679 — Full Compliance Assessment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-lawfulness_of_processing",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "lawfulness_of_processing"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "lawfulness_of_processing"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.compliance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9eb626b8-a0c6-5669-bfcb-7a14de71624d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-lawfulness_of_processing_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-data_subject_rights",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "data_subject_rights"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "data_subject_rights"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.compliance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9eb626b8-a0c6-5669-bfcb-7a14de71624d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-data_subject_rights_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-accountability",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "accountability"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "accountability"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.compliance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9eb626b8-a0c6-5669-bfcb-7a14de71624d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-accountability_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-incident_management",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "incident_management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "incident_management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.compliance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9eb626b8-a0c6-5669-bfcb-7a14de71624d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-incident_management_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-technical_measures",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "technical_measures"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "technical_measures"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.compliance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9eb626b8-a0c6-5669-bfcb-7a14de71624d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-technical_measures_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-data_governance",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "data_governance"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "data_governance"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.compliance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9eb626b8-a0c6-5669-bfcb-7a14de71624d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-data_governance_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "gdpr-gdpr_controller_processor",
+    "class": "rego-module",
+    "title": "GDPR Articles 24-29 — Controller and Processor Responsibilities",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "gdpr.controller_processor"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/gdpr/gdpr_controller_processor.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "gdpr-controller",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_controller_processor.rego (package gdpr.controller_processor); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "controller"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "controller"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.controller_processor"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b5602f2b-4e69-5d3e-9e7c-3d73a5bc0054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-controller_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_controller_processor.rego (package gdpr.controller_processor); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-privacy_by_design",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_controller_processor.rego (package gdpr.controller_processor); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "privacy_by_design"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "privacy_by_design"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.controller_processor"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b5602f2b-4e69-5d3e-9e7c-3d73a5bc0054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-privacy_by_design_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_controller_processor.rego (package gdpr.controller_processor); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-processors",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_controller_processor.rego (package gdpr.controller_processor); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "processors"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "processors"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.controller_processor"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b5602f2b-4e69-5d3e-9e7c-3d73a5bc0054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-processors_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_controller_processor.rego (package gdpr.controller_processor); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "gdpr-gdpr_cookies_tracking",
+    "class": "rego-module",
+    "title": "GDPR + ePrivacy Directive (2002/58/EC as amended by 2009/136/EC)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "gdpr.cookies_tracking"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/gdpr/gdpr_cookies_tracking.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "gdpr-cookie_consent",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cookie_consent"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cookie_consent"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.cookies_tracking"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bf384c2e-fee9-55de-9523-d1264e213297",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-cookie_consent_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-cookie_governance",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cookie_governance"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cookie_governance"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.cookies_tracking"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bf384c2e-fee9-55de-9523-d1264e213297",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-cookie_governance_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-tracking_technologies",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "tracking_technologies"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tracking_technologies"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.cookies_tracking"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bf384c2e-fee9-55de-9523-d1264e213297",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-tracking_technologies_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-consent_management",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "consent_management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "consent_management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.cookies_tracking"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bf384c2e-fee9-55de-9523-d1264e213297",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-consent_management_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-marketing_and_profiling",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "marketing_and_profiling"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "marketing_and_profiling"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.cookies_tracking"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bf384c2e-fee9-55de-9523-d1264e213297",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-marketing_and_profiling_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "gdpr-gdpr_data_transfers",
+    "class": "rego-module",
+    "title": "GDPR Chapter V (Articles 44-49) — Transfers of Personal Data to Third Countries",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "gdpr.data_transfers"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/gdpr/gdpr_data_transfers.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "gdpr-mechanisms",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_data_transfers.rego (package gdpr.data_transfers); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "mechanisms"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "mechanisms"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.data_transfers"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3497af9f-cf92-5df2-afd4-7a2914b0c0cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-mechanisms_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_data_transfers.rego (package gdpr.data_transfers); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-governance",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_data_transfers.rego (package gdpr.data_transfers); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.data_transfers"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3497af9f-cf92-5df2-afd4-7a2914b0c0cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-governance_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_data_transfers.rego (package gdpr.data_transfers); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "gdpr-gdpr_main",
+    "class": "rego-module",
+    "title": "GDPR Compliance Aggregator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "gdpr.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/gdpr/gdpr_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "gdpr-modules",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_main.rego (package gdpr.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "modules"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "modules"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9ae15e5-3e8f-57fe-b874-1c15fcbfa260",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-modules_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_main.rego (package gdpr.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-core_gdpr",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_main.rego (package gdpr.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "core_gdpr"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "core_gdpr"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9ae15e5-3e8f-57fe-b874-1c15fcbfa260",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-core_gdpr_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_main.rego (package gdpr.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-controller_processor",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_main.rego (package gdpr.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "controller_processor"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "controller_processor"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9ae15e5-3e8f-57fe-b874-1c15fcbfa260",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-controller_processor_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_main.rego (package gdpr.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-data_transfers",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_main.rego (package gdpr.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "data_transfers"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "data_transfers"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9ae15e5-3e8f-57fe-b874-1c15fcbfa260",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-data_transfers_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_main.rego (package gdpr.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-cookies_and_tracking",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_main.rego (package gdpr.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cookies_and_tracking"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cookies_and_tracking"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9ae15e5-3e8f-57fe-b874-1c15fcbfa260",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-cookies_and_tracking_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_main.rego (package gdpr.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "9eb626b8-a0c6-5669-bfcb-7a14de71624d",
+     "title": "GDPR - General Data Protection Regulation (EU) 2016/679",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "gdpr.compliance"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/gdpr/gdpr_compliance.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b5602f2b-4e69-5d3e-9e7c-3d73a5bc0054",
+     "title": "GDPR Articles 24-29 — Controller and Processor Responsibilities",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "gdpr.controller_processor"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/gdpr/gdpr_controller_processor.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "bf384c2e-fee9-55de-9523-d1264e213297",
+     "title": "GDPR + ePrivacy Directive (2002/58/EC as amended by 2009/136/EC)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "gdpr.cookies_tracking"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/gdpr/gdpr_cookies_tracking.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "3497af9f-cf92-5df2-afd4-7a2914b0c0cc",
+     "title": "GDPR Chapter V (Articles 44-49) — Transfers of Personal Data to Third Countries",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "gdpr.data_transfers"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/gdpr/gdpr_data_transfers.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "c9ae15e5-3e8f-57fe-b874-1c15fcbfa260",
+     "title": "GDPR Compliance Aggregator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "gdpr.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/gdpr/gdpr_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

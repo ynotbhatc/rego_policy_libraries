@@ -23,7 +23,8 @@ meet is in [`CONTRACT.md`](CONTRACT.md). Status at a glance is the table in §2 
 | Status | Targets |
 |---|---|
 | shipping | **Tier 0 complete:** `packaging/wasm` (4 bundles, 92 entrypoints, round-trip), `packaging/bundles` (GHCR publish; signing planned), `packaging/gatekeeper` (2 ConstraintTemplates + Constraints, round-trip, Artifact Hub metadata), `packaging/kubewarden` (3 policies, round-trip), `packaging/iac_scanners` (Conftest layout, round-trip with conftest), `packaging/terraform_platforms` (TFC/Spacelift/env0 policy set, round-trip) |
-| planned | Tier 1 exports next (oscal, sarif, ocsf, crosswalk_csv, xccdf_ids), then Tier 2 generators; Trivy/KICS/Regula/Snyk adapters inside iac_scanners |
+| shipping | Tier 1: **oscal catalog** (`exports/oscal/dist/catalogs/<framework>.json`, 125 catalogs, OSCAL 1.2.3) |
+| planned | Tier 1 next: oscal component-definition + assessment-results, sarif, ocsf, crosswalk_csv, xccdf_ids; then Tier 2 generators; Trivy/KICS/Regula/Snyk adapters inside iac_scanners |
 
 ## 1. Where the checks are, and what shape their input takes
 
@@ -56,7 +57,7 @@ Effort: S = days, M = weeks, L = a quarter. Reach = who can consume the library 
 
 | # | Rego → | Mechanism | Covers | Effort | Reach |
 |---|---|---|---|---|---|
-| 7 | **OSCAL catalog** | one catalog per framework from `# METADATA` plus the control tables and `compliance_report` ids | all frameworks (5,272) | M | compliance-trestle, RegScale, Xacta, Telos, FedRAMP automation, any OSCAL importer. Puts us beside SCF on the interchange axis while staying executable. |
+| 7 | **OSCAL catalog** — **shipping** (`exports/oscal`) | one catalog per framework from the shared control inventory (`scripts/inventory_controls.py`); committed under `dist/catalogs/`, schema-validated in CI | all frameworks (5,559 distinct controls) | M | compliance-trestle, RegScale, Xacta, Telos, FedRAMP automation, any OSCAL importer. Puts us beside SCF on the interchange axis while staying executable. |
 | 8 | **OSCAL component-definition** | the library as a component with `implemented-requirements` linking each control to its Rego rule | all | S after 7 | SSP generators |
 | 9 | **OSCAL assessment-results** | emit from `compliance_report` output at evaluation time | all | S | audit evidence that GRC tools ingest directly |
 | 10 | **SARIF** | `compliance_report` → SARIF 2.1 (rule = control id, result = violation) | all | S | GitHub code scanning, Azure DevOps, every SARIF viewer |

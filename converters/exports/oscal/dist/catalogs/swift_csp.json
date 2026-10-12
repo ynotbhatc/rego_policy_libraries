@@ -1,0 +1,853 @@
+{
+ "catalog": {
+  "uuid": "21489ea8-be02-5b3e-ac26-9c661c0fe7b1",
+  "metadata": {
+   "title": "Rego Policy Libraries — swift_csp (SWIFT Customer Security Programme (CSP))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "swift_csp"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "swift_csp-swift_csp_main",
+    "class": "rego-module",
+    "title": "SWIFT Customer Security Programme (CSP)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "swift_csp.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/swift_csp/swift_csp_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "swift_csp-SWIFT-CSP-1.1-M",
+      "title": "SWIFT infrastructure not isolated in a secure zone separate from general IT",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 1.1(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 1.1(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-1.1-M_stmt",
+        "name": "statement",
+        "prose": "SWIFT infrastructure not isolated in a secure zone separate from general IT"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-1.1-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Network segmentation not implemented between SWIFT zone and other networks"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-1.1-M_obj.2",
+        "name": "assessment-objective",
+        "prose": "Data flows between SWIFT zone and other components not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-1.2-M",
+      "title": "OS privileged accounts on SWIFT systems not restricted to minimum required",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 1.2(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 1.2(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-1.2-M_stmt",
+        "name": "statement",
+        "prose": "OS privileged accounts on SWIFT systems not restricted to minimum required"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-1.2-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Administrative accounts on SWIFT systems used for day-to-day tasks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-1.3-M",
+      "title": "Virtualisation platform hosting SWIFT components not hardened",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 1.3(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 1.3(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-1.3-M_stmt",
+        "name": "statement",
+        "prose": "Virtualisation platform hosting SWIFT components not hardened"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-1.3-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "SWIFT VMs not isolated from non-SWIFT VMs on shared infrastructure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-1.4-M",
+      "title": "Internet access not restricted from SWIFT infrastructure zone",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 1.4(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 1.4(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-1.4-M_stmt",
+        "name": "statement",
+        "prose": "Internet access not restricted from SWIFT infrastructure zone"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-1.4-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Outbound internet traffic from SWIFT environment not controlled and filtered"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-2.1-M",
+      "title": "SWIFT data flows within internal network not protected with encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 2.1(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 2.1(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-2.1-M_stmt",
+        "name": "statement",
+        "prose": "SWIFT data flows within internal network not protected with encryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-2.2-M",
+      "title": "SWIFT software components not updated with latest security patches",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 2.2(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 2.2(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-2.2-M_stmt",
+        "name": "statement",
+        "prose": "SWIFT software components not updated with latest security patches"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-2.2-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Critical OS patches on SWIFT systems not applied within 3 months"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-2.3-M",
+      "title": "Security hardening baseline not applied to SWIFT infrastructure systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 2.3(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 2.3(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-2.3-M_stmt",
+        "name": "statement",
+        "prose": "Security hardening baseline not applied to SWIFT infrastructure systems"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-2.3-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unnecessary services, ports, and programs not disabled on SWIFT systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-2.4-M",
+      "title": "Data flows between SWIFT infrastructure and back-office systems not encrypted",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 2.4(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 2.4(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-2.4-M_stmt",
+        "name": "statement",
+        "prose": "Data flows between SWIFT infrastructure and back-office systems not encrypted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-2.5-M",
+      "title": "SWIFT messages not integrity-protected for external transmission",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 2.5(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 2.5(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-2.5-M_stmt",
+        "name": "statement",
+        "prose": "SWIFT messages not integrity-protected for external transmission"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-2.6-M",
+      "title": "Operator sessions to SWIFT systems not encrypted",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 2.6(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 2.6(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-2.6-M_stmt",
+        "name": "statement",
+        "prose": "Operator sessions to SWIFT systems not encrypted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-2.7-M",
+      "title": "Vulnerability scanning of SWIFT infrastructure not conducted at least quarterly",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 2.7(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 2.7(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-2.7-M_stmt",
+        "name": "statement",
+        "prose": "Vulnerability scanning of SWIFT infrastructure not conducted at least quarterly"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-2.7-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Critical and high vulnerabilities on SWIFT systems not remediated within defined timeframes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-2.8-M",
+      "title": "Outsourced SWIFT service provider not confirmed as CSCF compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 2.8(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 2.8(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-2.8-M_stmt",
+        "name": "statement",
+        "prose": "Outsourced SWIFT service provider not confirmed as CSCF compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-4.1-M",
+      "title": "Strong password policy not enforced for all SWIFT system accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 4.1(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 4.1(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-4.1-M_stmt",
+        "name": "statement",
+        "prose": "Strong password policy not enforced for all SWIFT system accounts"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-4.1-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Process not in place to immediately change passwords on suspected compromise"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-5.1-M",
+      "title": "Least privilege not enforced for access to SWIFT systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 5.1(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 5.1(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-5.1-M_stmt",
+        "name": "statement",
+        "prose": "Least privilege not enforced for access to SWIFT systems"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-5.1-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Role-based access controls not implemented for SWIFT systems"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-5.1-M_obj.2",
+        "name": "assessment-objective",
+        "prose": "MFA not required for all privileged access to SWIFT infrastructure"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-5.1-M_obj.3",
+        "name": "assessment-objective",
+        "prose": "Periodic reviews of user access rights to SWIFT systems not conducted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-5.2-M",
+      "title": "Hardware authentication tokens not used for SWIFT Business Application access",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 5.2(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 5.2(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-5.2-M_stmt",
+        "name": "statement",
+        "prose": "Hardware authentication tokens not used for SWIFT Business Application access"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-5.2-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Authentication tokens not stored securely when not in use"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-5.4-M",
+      "title": "Stored credentials for SWIFT systems not encrypted",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 5.4(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 5.4(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-5.4-M_stmt",
+        "name": "statement",
+        "prose": "Stored credentials for SWIFT systems not encrypted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-6.1-M",
+      "title": "Anti-malware software not deployed on all SWIFT infrastructure components",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 6.1(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 6.1(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-6.1-M_stmt",
+        "name": "statement",
+        "prose": "Anti-malware software not deployed on all SWIFT infrastructure components"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-6.1-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Anti-malware signatures on SWIFT systems not regularly updated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-6.4-M",
+      "title": "All security events on SWIFT systems not captured in audit logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 6.4(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 6.4(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-6.4-M_stmt",
+        "name": "statement",
+        "prose": "All security events on SWIFT systems not captured in audit logs"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-6.4-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "SWIFT transaction logs not maintained for all processed messages"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-6.4-M_obj.2",
+        "name": "assessment-objective",
+        "prose": "Logs not retained for minimum 3 months in readily accessible form"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-6.4-M_obj.3",
+        "name": "assessment-objective",
+        "prose": "Logs not archived for minimum 2.5 years total"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-7.1-M",
+      "title": "SWIFT-specific cyber incident response plan not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 7.1(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 7.1(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-7.1-M_stmt",
+        "name": "statement",
+        "prose": "SWIFT-specific cyber incident response plan not established"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-7.1-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Incident response plan does not include SWIFT notification procedures"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-7.1-M_obj.2",
+        "name": "assessment-objective",
+        "prose": "Process not established to notify SWIFT of confirmed fraud or security incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "swift_csp-SWIFT-CSP-7.2-M",
+      "title": "Annual security training not provided to personnel handling SWIFT systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "SWIFT CSP 7.2(M)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SWIFT CSP 7.2(M)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "swift_csp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ce1d551-a925-5f79-a192-e2afea188d65",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "swift_csp-SWIFT-CSP-7.2-M_stmt",
+        "name": "statement",
+        "prose": "Annual security training not provided to personnel handling SWIFT systems"
+       },
+       {
+        "id": "swift_csp-SWIFT-CSP-7.2-M_obj.1",
+        "name": "assessment-objective",
+        "prose": "Security training does not include social engineering and fraud awareness"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "8ce1d551-a925-5f79-a192-e2afea188d65",
+     "title": "SWIFT Customer Security Programme (CSP)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "swift_csp.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/swift_csp/swift_csp_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

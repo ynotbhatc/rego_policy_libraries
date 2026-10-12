@@ -1,0 +1,1974 @@
+{
+ "catalog": {
+  "uuid": "a8076737-fa37-5d79-8b15-fca904e5458b",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_cloud (CIS Google Cloud Platform Foundation Benchmark v4.0.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_cloud"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_cloud-cis_gcp_main",
+    "class": "rego-module",
+    "title": "CIS Google Cloud Platform Foundation Benchmark v4.0.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_gcp.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_cloud-CIS-GCP-1.1",
+      "title": "Corporate login credentials not enforced — personal Gmail accounts should not have project access",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-1.1_stmt",
+        "name": "statement",
+        "prose": "Corporate login credentials not enforced — personal Gmail accounts should not have project access"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-1.2",
+      "title": "MFA not enforced for all non-service account users",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-1.2_stmt",
+        "name": "statement",
+        "prose": "MFA not enforced for all non-service account users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-1.3",
+      "title": "Security key (phishing-resistant MFA) not enforced for admin accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-1.3_stmt",
+        "name": "statement",
+        "prose": "Security key (phishing-resistant MFA) not enforced for admin accounts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-1.4",
+      "title": "One or more service accounts have admin/owner roles — violates least privilege",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-1.4_stmt",
+        "name": "statement",
+        "prose": "One or more service accounts have admin/owner roles — violates least privilege"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-1.5",
+      "title": "User-managed service account keys exist — prefer Google-managed keys",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-1.5_stmt",
+        "name": "statement",
+        "prose": "User-managed service account keys exist — prefer Google-managed keys"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-1.6",
+      "title": "Service account keys not rotated within 90 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-1.6_stmt",
+        "name": "statement",
+        "prose": "Service account keys not rotated within 90 days"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-1.7",
+      "title": "Same user can create and use service accounts — separation of duties not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-1.7_stmt",
+        "name": "statement",
+        "prose": "Same user can create and use service accounts — separation of duties not enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-1.8",
+      "title": "Cloud KMS cryptokeys accessible by allUsers or allAuthenticatedUsers",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-1.8_stmt",
+        "name": "statement",
+        "prose": "Cloud KMS cryptokeys accessible by allUsers or allAuthenticatedUsers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-1.9",
+      "title": "Cloud KMS keys not configured for automatic rotation within 90 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-1.9_stmt",
+        "name": "statement",
+        "prose": "Cloud KMS keys not configured for automatic rotation within 90 days"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-1.10",
+      "title": "KMS encryption keys not protected against accidental deletion",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-1.10_stmt",
+        "name": "statement",
+        "prose": "KMS encryption keys not protected against accidental deletion"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-1.11",
+      "title": "Workload Identity not used — service account key files in workloads is insecure",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-1.11_stmt",
+        "name": "statement",
+        "prose": "Workload Identity not used — service account key files in workloads is insecure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-2.1",
+      "title": "Cloud Audit Logs Data Access logging not enabled for all services",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-2.1_stmt",
+        "name": "statement",
+        "prose": "Cloud Audit Logs Data Access logging not enabled for all services"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-2.2",
+      "title": "Log sink not configured to export all log entries to a long-term storage destination",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-2.2_stmt",
+        "name": "statement",
+        "prose": "Log sink not configured to export all log entries to a long-term storage destination"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-2.3",
+      "title": "Log bucket lock (retention policy) not enabled to prevent log tampering",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-2.3_stmt",
+        "name": "statement",
+        "prose": "Log bucket lock (retention policy) not enabled to prevent log tampering"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-2.4",
+      "title": "No metric filter/alert for project ownership assignment or changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-2.4_stmt",
+        "name": "statement",
+        "prose": "No metric filter/alert for project ownership assignment or changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-2.5",
+      "title": "No metric filter/alert for audit configuration changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-2.5_stmt",
+        "name": "statement",
+        "prose": "No metric filter/alert for audit configuration changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-2.6",
+      "title": "No metric filter/alert for custom IAM role creation, modification, or deletion",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-2.6_stmt",
+        "name": "statement",
+        "prose": "No metric filter/alert for custom IAM role creation, modification, or deletion"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-2.7",
+      "title": "No metric filter/alert for VPC network changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-2.7_stmt",
+        "name": "statement",
+        "prose": "No metric filter/alert for VPC network changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-2.8",
+      "title": "No metric filter/alert for VPC network route changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-2.8_stmt",
+        "name": "statement",
+        "prose": "No metric filter/alert for VPC network route changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-2.9",
+      "title": "No metric filter/alert for VPC firewall rule changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-2.9_stmt",
+        "name": "statement",
+        "prose": "No metric filter/alert for VPC firewall rule changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-2.10",
+      "title": "No metric filter/alert for Cloud Storage bucket IAM permission changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-2.10_stmt",
+        "name": "statement",
+        "prose": "No metric filter/alert for Cloud Storage bucket IAM permission changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-2.11",
+      "title": "No metric filter/alert for Cloud SQL instance configuration changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-2.11_stmt",
+        "name": "statement",
+        "prose": "No metric filter/alert for Cloud SQL instance configuration changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-3.1",
+      "title": "Default network exists in the project — delete default network and use custom VPCs",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-3.1_stmt",
+        "name": "statement",
+        "prose": "Default network exists in the project — delete default network and use custom VPCs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-3.2",
+      "title": "Legacy network exists in project — migrate to VPC networks",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-3.2_stmt",
+        "name": "statement",
+        "prose": "Legacy network exists in project — migrate to VPC networks"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-3.3",
+      "title": "DNSSEC not enabled for Cloud DNS managed zones",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-3.3_stmt",
+        "name": "statement",
+        "prose": "DNSSEC not enabled for Cloud DNS managed zones"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-3.4",
+      "title": "RSASHA1 algorithm used for DNSSEC key-signing key — use stronger algorithm",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-3.4_stmt",
+        "name": "statement",
+        "prose": "RSASHA1 algorithm used for DNSSEC key-signing key — use stronger algorithm"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-3.5",
+      "title": "RSASHA1 algorithm used for DNSSEC zone-signing key — use stronger algorithm",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-3.5_stmt",
+        "name": "statement",
+        "prose": "RSASHA1 algorithm used for DNSSEC zone-signing key — use stronger algorithm"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-3.6",
+      "title": "Firewall rule allows SSH (port 22) from 0.0.0.0/0 or ::/0",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-3.6_stmt",
+        "name": "statement",
+        "prose": "Firewall rule allows SSH (port 22) from 0.0.0.0/0 or ::/0"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-3.7",
+      "title": "Firewall rule allows RDP (port 3389) from 0.0.0.0/0 or ::/0",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-3.7_stmt",
+        "name": "statement",
+        "prose": "Firewall rule allows RDP (port 3389) from 0.0.0.0/0 or ::/0"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-3.8",
+      "title": "VPC Flow Logs not enabled on all subnets",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-3.8_stmt",
+        "name": "statement",
+        "prose": "VPC Flow Logs not enabled on all subnets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-3.9",
+      "title": "Load balancer SSL policy permits weak cipher suites or deprecated TLS versions",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-3.9_stmt",
+        "name": "statement",
+        "prose": "Load balancer SSL policy permits weak cipher suites or deprecated TLS versions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-4.1",
+      "title": "VM instances use default service account with full API access scope",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-4.1_stmt",
+        "name": "statement",
+        "prose": "VM instances use default service account with full API access scope"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-4.2",
+      "title": "VM instances using default service account — create dedicated per-workload service accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-4.2_stmt",
+        "name": "statement",
+        "prose": "VM instances using default service account — create dedicated per-workload service accounts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-4.3",
+      "title": "Serial port access enabled on one or more VM instances — disable except for debugging",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-4.3_stmt",
+        "name": "statement",
+        "prose": "Serial port access enabled on one or more VM instances — disable except for debugging"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-4.4",
+      "title": "Compute instances have public IP addresses — use Cloud NAT or IAP for external connectivity",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-4.4_stmt",
+        "name": "statement",
+        "prose": "Compute instances have public IP addresses — use Cloud NAT or IAP for external connectivity"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-4.5",
+      "title": "Confidential Computing (memory encryption) not enabled on sensitive workload VMs",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-4.5_stmt",
+        "name": "statement",
+        "prose": "Confidential Computing (memory encryption) not enabled on sensitive workload VMs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-4.6",
+      "title": "Shielded VM (Secure Boot, vTPM, Integrity Monitoring) not enabled on instances",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-4.6_stmt",
+        "name": "statement",
+        "prose": "Shielded VM (Secure Boot, vTPM, Integrity Monitoring) not enabled on instances"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-4.7",
+      "title": "OS Login not enabled — centralized SSH key management via IAM not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-4.7_stmt",
+        "name": "statement",
+        "prose": "OS Login not enabled — centralized SSH key management via IAM not enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-5.1",
+      "title": "Cloud Storage bucket accessible by allUsers or allAuthenticatedUsers",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-5.1_stmt",
+        "name": "statement",
+        "prose": "Cloud Storage bucket accessible by allUsers or allAuthenticatedUsers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-5.2",
+      "title": "Uniform bucket-level access not enabled — object-level ACLs create inconsistent controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-5.2_stmt",
+        "name": "statement",
+        "prose": "Uniform bucket-level access not enabled — object-level ACLs create inconsistent controls"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-5.3",
+      "title": "Access logging not enabled on Cloud Storage buckets containing sensitive data",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-5.3_stmt",
+        "name": "statement",
+        "prose": "Access logging not enabled on Cloud Storage buckets containing sensitive data"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-6.1",
+      "title": "Cloud SQL database instance does not require SSL for all connections",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-6.1_stmt",
+        "name": "statement",
+        "prose": "Cloud SQL database instance does not require SSL for all connections"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-6.2",
+      "title": "Cloud SQL authorized network allows 0.0.0.0/0 — restrict to known IPs",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-6.2_stmt",
+        "name": "statement",
+        "prose": "Cloud SQL authorized network allows 0.0.0.0/0 — restrict to known IPs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-6.3",
+      "title": "Cloud SQL instances use public IP — configure private IP connectivity",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-6.3_stmt",
+        "name": "statement",
+        "prose": "Cloud SQL instances use public IP — configure private IP connectivity"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-6.4",
+      "title": "Automated backups not enabled on Cloud SQL instances",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-6.4_stmt",
+        "name": "statement",
+        "prose": "Automated backups not enabled on Cloud SQL instances"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-6.5",
+      "title": "Cloud SQL database flags set to insecure values (e.g., local_infile=on, log_checkpoints=off)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-6.5_stmt",
+        "name": "statement",
+        "prose": "Cloud SQL database flags set to insecure values (e.g., local_infile=on, log_checkpoints=off)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-7.1",
+      "title": "BigQuery dataset accessible by allUsers or allAuthenticatedUsers",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-7.1_stmt",
+        "name": "statement",
+        "prose": "BigQuery dataset accessible by allUsers or allAuthenticatedUsers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-7.2",
+      "title": "BigQuery tables with sensitive data not encrypted with Customer Managed Encryption Keys",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-7.2_stmt",
+        "name": "statement",
+        "prose": "BigQuery tables with sensitive data not encrypted with Customer Managed Encryption Keys"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-8.1",
+      "title": "Cloud Logging (Stackdriver) not enabled on GKE clusters",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-8.1_stmt",
+        "name": "statement",
+        "prose": "Cloud Logging (Stackdriver) not enabled on GKE clusters"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-8.2",
+      "title": "Cloud Monitoring (Stackdriver) not enabled on GKE clusters",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-8.2_stmt",
+        "name": "statement",
+        "prose": "Cloud Monitoring (Stackdriver) not enabled on GKE clusters"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-8.3",
+      "title": "Legacy Authorization (ABAC) not disabled on GKE cluster — use RBAC",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-8.3_stmt",
+        "name": "statement",
+        "prose": "Legacy Authorization (ABAC) not disabled on GKE cluster — use RBAC"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-8.4",
+      "title": "Master Authorized Networks not enabled — GKE control plane accessible from any IP",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-8.4_stmt",
+        "name": "statement",
+        "prose": "Master Authorized Networks not enabled — GKE control plane accessible from any IP"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-8.5",
+      "title": "GKE cluster resource labels not configured for cost attribution and governance",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 8.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 8.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-8.5_stmt",
+        "name": "statement",
+        "prose": "GKE cluster resource labels not configured for cost attribution and governance"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-8.6",
+      "title": "Automatic node repair not enabled on GKE node pools",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 8.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 8.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-8.6_stmt",
+        "name": "statement",
+        "prose": "Automatic node repair not enabled on GKE node pools"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-8.7",
+      "title": "Automatic node upgrades not enabled on GKE node pools",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 8.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 8.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-8.7_stmt",
+        "name": "statement",
+        "prose": "Automatic node upgrades not enabled on GKE node pools"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-8.8",
+      "title": "GKE node pools not using Container-Optimized OS (COS) image",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 8.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 8.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-8.8_stmt",
+        "name": "statement",
+        "prose": "GKE node pools not using Container-Optimized OS (COS) image"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-CIS-GCP-8.9",
+      "title": "Workload Identity not enabled on GKE cluster — pods using node service account instead",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GCP 8.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GCP 8.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#457d899c-e169-549c-9c62-cee15c476499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-CIS-GCP-8.9_stmt",
+        "name": "statement",
+        "prose": "Workload Identity not enabled on GKE cluster — pods using node service account instead"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "457d899c-e169-549c-9c62-cee15c476499",
+     "title": "CIS Google Cloud Platform Foundation Benchmark v4.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_gcp.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/cloud/gcp/cis_gcp_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

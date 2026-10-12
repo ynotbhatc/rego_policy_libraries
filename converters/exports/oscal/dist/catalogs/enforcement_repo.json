@@ -1,0 +1,230 @@
+{
+ "catalog": {
+  "uuid": "815bd0e3-4956-5a8e-974b-9714e8a2a288",
+  "metadata": {
+   "title": "Rego Policy Libraries — enforcement_repo (WHAT THIS IS FOR)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "enforcement_repo"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "enforcement_repo-install_hygiene",
+    "class": "rego-module",
+    "title": "WHAT THIS IS FOR",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "aac.repo.install_hygiene"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/repo/install_hygiene.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_repo-AAC-CFG-001",
+      "title": "%s:%v: address %s belongs to one environment — resolve it through the install inventory instead of naming it here",
+      "props": [
+       {
+        "name": "label",
+        "value": "AAC-CFG-001"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AAC-CFG-001"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.repo.install_hygiene"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16962fe7-548d-5586-a134-423b6b681bcb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_repo-AAC-CFG-001_stmt",
+        "name": "statement",
+        "prose": "%s:%v: address %s belongs to one environment — resolve it through the install inventory instead of naming it here"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_repo-AAC-CFG-002",
+      "title": "%s:%v: credential literal %q must not ship — use a placeholder and source the real value from an AAP credential or an encrypted vault file",
+      "props": [
+       {
+        "name": "label",
+        "value": "AAC-CFG-002"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AAC-CFG-002"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.repo.install_hygiene"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16962fe7-548d-5586-a134-423b6b681bcb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_repo-AAC-CFG-002_stmt",
+        "name": "statement",
+        "prose": "%s:%v: credential literal %q must not ship — use a placeholder and source the real value from an AAP credential or an encrypted vault file"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_repo-AAC-CFG-004",
+      "title": "%s:%v: secret has a fallback default — this fails open. Use `| mandatory` so a missing credential stops the run instead of silently authenticating with a value baked into the repository",
+      "props": [
+       {
+        "name": "label",
+        "value": "AAC-CFG-004"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AAC-CFG-004"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.repo.install_hygiene"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16962fe7-548d-5586-a134-423b6b681bcb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_repo-AAC-CFG-004_stmt",
+        "name": "statement",
+        "prose": "%s:%v: secret has a fallback default — this fails open. Use `| mandatory` so a missing credential stops the run instead of silently authenticating with a value baked into the repository"
+       },
+       {
+        "id": "enforcement_repo-AAC-CFG-004_obj.1",
+        "name": "assessment-objective",
+        "prose": "%s:%v: secret has a shell fallback default (%s) — this fails open. Use ${VAR:?message} so a missing credential stops the run"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_repo-policy",
+      "title": "Install configuration hygiene — tracked files",
+      "props": [
+       {
+        "name": "label",
+        "value": "policy"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "policy"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.repo.install_hygiene"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16962fe7-548d-5586-a134-423b6b681bcb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_repo-policy_stmt",
+        "name": "statement",
+        "prose": "Install configuration hygiene — tracked files"
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "16962fe7-548d-5586-a134-423b6b681bcb",
+     "title": "WHAT THIS IS FOR",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "aac.repo.install_hygiene"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/enforcement/repo/install_hygiene.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

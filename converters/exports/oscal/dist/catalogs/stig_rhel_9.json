@@ -1,0 +1,159 @@
+{
+ "catalog": {
+  "uuid": "2ddf6d6b-f51a-541c-87f0-afcab85bc777",
+  "metadata": {
+   "title": "Rego Policy Libraries — stig_rhel_9 (DISA STIG for RHEL 9 - Master Aggregator)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "stig_rhel_9"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "stig_rhel_9-stig_rhel9_complete",
+    "class": "rego-module",
+    "title": "DISA STIG for RHEL 9 - Master Aggregator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rhel_9"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rhel_9/stig_rhel9_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rhel_9-metadata",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_9/stig_rhel9_complete.rego (package stig.rhel_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#526addef-e955-5b67-abe9-55db48bb94ac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_9-metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_9/stig_rhel9_complete.rego (package stig.rhel_9); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_9-summary",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_9/stig_rhel9_complete.rego (package stig.rhel_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#526addef-e955-5b67-abe9-55db48bb94ac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_9-summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_9/stig_rhel9_complete.rego (package stig.rhel_9); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "526addef-e955-5b67-abe9-55db48bb94ac",
+     "title": "DISA STIG for RHEL 9 - Master Aggregator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rhel_9"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/stig/rhel_9/stig_rhel9_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

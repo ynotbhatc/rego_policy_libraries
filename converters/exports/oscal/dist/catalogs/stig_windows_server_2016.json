@@ -1,0 +1,159 @@
+{
+ "catalog": {
+  "uuid": "4392be6d-04cd-5478-bf24-bed3222fc40a",
+  "metadata": {
+   "title": "Rego Policy Libraries — stig_windows_server_2016 (DISA STIG for windows server 2016 - Simplified Complete Assessment)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "stig_windows_server_2016"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "stig_windows_server_2016-stig_windows_server_2016_complete",
+    "class": "rego-module",
+    "title": "DISA STIG for windows server 2016 - Simplified Complete Assessment",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_server_2016"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_server_2016/stig_windows_server_2016_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_server_2016-assessment_metadata",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2016/stig_windows_server_2016_complete.rego (package stig.windows_server_2016); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "assessment_metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "assessment_metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b659654c-6ee4-5f36-9267-f7b8407ec644",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-assessment_metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2016/stig_windows_server_2016_complete.rego (package stig.windows_server_2016); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-compliance_summary",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2016/stig_windows_server_2016_complete.rego (package stig.windows_server_2016); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "compliance_summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "compliance_summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b659654c-6ee4-5f36-9267-f7b8407ec644",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-compliance_summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2016/stig_windows_server_2016_complete.rego (package stig.windows_server_2016); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "b659654c-6ee4-5f36-9267-f7b8407ec644",
+     "title": "DISA STIG for windows server 2016 - Simplified Complete Assessment",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_server_2016"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/stig/windows_server_2016/stig_windows_server_2016_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

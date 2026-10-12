@@ -1,0 +1,159 @@
+{
+ "catalog": {
+  "uuid": "41f75e6c-60c9-5fbc-a013-bd4a980e5bdc",
+  "metadata": {
+   "title": "Rego Policy Libraries — supply_chain_ssdf_genai (NIST SSDF for Generative AI (SP 800-218A) mapped onto the supply-chain)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "supply_chain_ssdf_genai"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "supply_chain_ssdf_genai-ssdf_genai",
+    "class": "rego-module",
+    "title": "NIST SSDF for Generative AI (SP 800-218A) mapped onto the supply-chain",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "supply_chain.ssdf_genai"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/supply_chain/ssdf_genai/ssdf_genai.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "supply_chain_ssdf_genai-framework",
+      "title": "NIST SSDF for GenAI (SP 800-218A)",
+      "props": [
+       {
+        "name": "label",
+        "value": "framework"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "framework"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.ssdf_genai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a07e45ff-1228-54b8-9f90-f34fa1a25e6f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "supply_chain_ssdf_genai-framework_stmt",
+        "name": "statement",
+        "prose": "NIST SSDF for GenAI (SP 800-218A)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "supply_chain_ssdf_genai-note",
+      "title": "AI-generated artifacts run the same substrate controls; the coverage triage forces focused review when AI output touches the spine.",
+      "props": [
+       {
+        "name": "label",
+        "value": "note"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "note"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.ssdf_genai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a07e45ff-1228-54b8-9f90-f34fa1a25e6f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "supply_chain_ssdf_genai-note_stmt",
+        "name": "statement",
+        "prose": "AI-generated artifacts run the same substrate controls; the coverage triage forces focused review when AI output touches the spine."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "a07e45ff-1228-54b8-9f90-f34fa1a25e6f",
+     "title": "NIST SSDF for Generative AI (SP 800-218A) mapped onto the supply-chain",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "supply_chain.ssdf_genai"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/supply_chain/ssdf_genai/ssdf_genai.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

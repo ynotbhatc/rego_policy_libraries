@@ -1,0 +1,730 @@
+{
+ "catalog": {
+  "uuid": "2de7d5a7-5164-5d9d-a277-57888dbeaec1",
+  "metadata": {
+   "title": "Rego Policy Libraries — coppa (COPPA — Children's Online Privacy Protection Rule)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "coppa"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "coppa-coppa_main",
+    "class": "rego-module",
+    "title": "COPPA — Children's Online Privacy Protection Rule",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "coppa.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/coppa/coppa_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "coppa-COPPA-312.4-d",
+      "title": "Clear and prominent online notice of information practices regarding children not posted",
+      "props": [
+       {
+        "name": "label",
+        "value": "COPPA §312.4(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COPPA §312.4(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-COPPA-312.4-d_stmt",
+        "name": "statement",
+        "prose": "Clear and prominent online notice of information practices regarding children not posted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-COPPA-312.4-b-c",
+      "title": "Direct notice to parents not provided before collecting personal information from a child",
+      "props": [
+       {
+        "name": "label",
+        "value": "COPPA §312.4(b)-(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COPPA §312.4(b)-(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-COPPA-312.4-b-c_stmt",
+        "name": "statement",
+        "prose": "Direct notice to parents not provided before collecting personal information from a child"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-COPPA-312.4",
+      "title": "Notice content incomplete — must state what is collected, how it is used, and disclosure practices, including the identities/categories of third-party recipients",
+      "props": [
+       {
+        "name": "label",
+        "value": "COPPA §312.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COPPA §312.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-COPPA-312.4_stmt",
+        "name": "statement",
+        "prose": "Notice content incomplete — must state what is collected, how it is used, and disclosure practices, including the identities/categories of third-party recipients"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-COPPA-312.5-a-1",
+      "title": "Verifiable parental consent not obtained before collection, use, or disclosure of children's personal information",
+      "props": [
+       {
+        "name": "label",
+        "value": "COPPA §312.5(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COPPA §312.5(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-COPPA-312.5-a-1_stmt",
+        "name": "statement",
+        "prose": "Verifiable parental consent not obtained before collection, use, or disclosure of children's personal information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-COPPA-312.5-b",
+      "title": "Consent method is not among the approved verifiable-consent methods",
+      "props": [
+       {
+        "name": "label",
+        "value": "COPPA §312.5(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COPPA §312.5(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-COPPA-312.5-b_stmt",
+        "name": "statement",
+        "prose": "Consent method is not among the approved verifiable-consent methods"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-coppa.main-1",
+      "title": "COPPA §312.5 [2025]: No separate verifiable parental consent for disclosures of children's personal information to third parties, including for targeted advertising",
+      "props": [
+       {
+        "name": "label",
+        "value": "coppa.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coppa.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-coppa.main-1_stmt",
+        "name": "statement",
+        "prose": "COPPA §312.5 [2025]: No separate verifiable parental consent for disclosures of children's personal information to third parties, including for targeted advertising"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-COPPA-312.5",
+      "title": "Records of verifiable parental consent not retained as evidence",
+      "props": [
+       {
+        "name": "label",
+        "value": "COPPA §312.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COPPA §312.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-COPPA-312.5_stmt",
+        "name": "statement",
+        "prose": "Records of verifiable parental consent not retained as evidence"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-COPPA-312.6-a-2",
+      "title": "No mechanism for a parent to review the personal information collected from their child",
+      "props": [
+       {
+        "name": "label",
+        "value": "COPPA §312.6(a)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COPPA §312.6(a)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-COPPA-312.6-a-2_stmt",
+        "name": "statement",
+        "prose": "No mechanism for a parent to review the personal information collected from their child"
+       },
+       {
+        "id": "coppa-COPPA-312.6-a-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "No mechanism for a parent to direct deletion of their child's personal information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-COPPA-312.6-a-1",
+      "title": "No mechanism for a parent to refuse further collection or use of their child's personal information",
+      "props": [
+       {
+        "name": "label",
+        "value": "COPPA §312.6(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COPPA §312.6(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-COPPA-312.6-a-1_stmt",
+        "name": "statement",
+        "prose": "No mechanism for a parent to refuse further collection or use of their child's personal information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-COPPA-312.7",
+      "title": "Participation in a game, prize offering, or activity is conditioned on disclosing more personal information than reasonably necessary",
+      "props": [
+       {
+        "name": "label",
+        "value": "COPPA §312.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COPPA §312.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-COPPA-312.7_stmt",
+        "name": "statement",
+        "prose": "Participation in a game, prize offering, or activity is conditioned on disclosing more personal information than reasonably necessary"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-coppa.main-2",
+      "title": "COPPA §312.8 [2025]: No written comprehensive information security program for children's personal information",
+      "props": [
+       {
+        "name": "label",
+        "value": "coppa.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coppa.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-coppa.main-2_stmt",
+        "name": "statement",
+        "prose": "COPPA §312.8 [2025]: No written comprehensive information security program for children's personal information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-COPPA-312.8",
+      "title": "Safeguards not appropriate to the sensitivity of children's personal information and the risks of its handling",
+      "props": [
+       {
+        "name": "label",
+        "value": "COPPA §312.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COPPA §312.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-COPPA-312.8_stmt",
+        "name": "statement",
+        "prose": "Safeguards not appropriate to the sensitivity of children's personal information and the risks of its handling"
+       },
+       {
+        "id": "coppa-COPPA-312.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Personal information released to third parties without assurances of their capability to maintain its confidentiality, security, and integrity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-coppa.main-3",
+      "title": "COPPA §312.8 [2025]: Information security program not periodically reviewed and updated",
+      "props": [
+       {
+        "name": "label",
+        "value": "coppa.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coppa.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-coppa.main-3_stmt",
+        "name": "statement",
+        "prose": "COPPA §312.8 [2025]: Information security program not periodically reviewed and updated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-coppa.main-4",
+      "title": "COPPA §312.10 [2025]: Children's personal information retained longer than reasonably necessary for the purpose for which it was collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "coppa.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coppa.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-coppa.main-4_stmt",
+        "name": "statement",
+        "prose": "COPPA §312.10 [2025]: Children's personal information retained longer than reasonably necessary for the purpose for which it was collected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-coppa.main-5",
+      "title": "COPPA §312.10 [2025]: No written, publicly available children's data retention policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "coppa.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coppa.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-coppa.main-5_stmt",
+        "name": "statement",
+        "prose": "COPPA §312.10 [2025]: No written, publicly available children's data retention policy"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-coppa.main-6",
+      "title": "COPPA §312.10 [2025]: Retention practices permit indefinite retention of children's personal information",
+      "props": [
+       {
+        "name": "label",
+        "value": "coppa.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coppa.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-coppa.main-6_stmt",
+        "name": "statement",
+        "prose": "COPPA §312.10 [2025]: Retention practices permit indefinite retention of children's personal information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-coppa.main-7",
+      "title": "COPPA §312.2 [2025]: Personal-information inventory does not cover the expanded definition — biometric identifiers and government-issued identifiers",
+      "props": [
+       {
+        "name": "label",
+        "value": "coppa.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coppa.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-coppa.main-7_stmt",
+        "name": "statement",
+        "prose": "COPPA §312.2 [2025]: Personal-information inventory does not cover the expanded definition — biometric identifiers and government-issued identifiers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-coppa.main-8",
+      "title": "COPPA §312.2 [2025]: No documented audience determination (child-directed / mixed audience / general audience) supporting the compliance posture",
+      "props": [
+       {
+        "name": "label",
+        "value": "coppa.main#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coppa.main#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-coppa.main-8_stmt",
+        "name": "statement",
+        "prose": "COPPA §312.2 [2025]: No documented audience determination (child-directed / mixed audience / general audience) supporting the compliance posture"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "coppa-COPPA-312.11",
+      "title": "Safe-harbor participation status undetermined, or program requirements not met by a participating operator",
+      "props": [
+       {
+        "name": "label",
+        "value": "COPPA §312.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COPPA §312.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "coppa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0254a6-85a6-5827-aa34-bc0058af0dff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "coppa-COPPA-312.11_stmt",
+        "name": "statement",
+        "prose": "Safe-harbor participation status undetermined, or program requirements not met by a participating operator"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "aa0254a6-85a6-5827-aa34-bc0058af0dff",
+     "title": "COPPA — Children's Online Privacy Protection Rule",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "coppa.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/coppa/coppa_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,159 @@
+{
+ "catalog": {
+  "uuid": "bc28597e-03d5-572a-9841-b11be10ad31b",
+  "metadata": {
+   "title": "Rego Policy Libraries — stig_windows_11 (DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide — Master Aggregator)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "stig_windows_11"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "stig_windows_11-stig_windows_11_complete",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide — Master Aggregator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_11"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_11/stig_windows_11_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_11-metadata",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/stig_windows_11_complete.rego (package stig.windows_11); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81a1b8be-8984-5beb-9766-065576b01433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/stig_windows_11_complete.rego (package stig.windows_11); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-summary",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/stig_windows_11_complete.rego (package stig.windows_11); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81a1b8be-8984-5beb-9766-065576b01433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/stig_windows_11_complete.rego (package stig.windows_11); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "81a1b8be-8984-5beb-9766-065576b01433",
+     "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide — Master Aggregator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_11"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/stig/windows_11/stig_windows_11_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

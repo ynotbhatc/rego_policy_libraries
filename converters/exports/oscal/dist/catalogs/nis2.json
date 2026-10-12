@@ -1,0 +1,660 @@
+{
+ "catalog": {
+  "uuid": "cbea22bb-9312-52d7-aac4-7b4dbab4f356",
+  "metadata": {
+   "title": "Rego Policy Libraries — nis2 (EU Network and Information Security Directive 2 (NIS2) — Directive (EU) 2022/2555)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nis2"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nis2-nis2_main",
+    "class": "rego-module",
+    "title": "EU Network and Information Security Directive 2 (NIS2) — Directive (EU) 2022/2555",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nis2.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/compliance/nis2/nis2_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nis2-NIS2-Art.21-2-a",
+      "title": "Risk analysis for network and information systems not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.21(2)(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.21(2)(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.21-2-a_stmt",
+        "name": "statement",
+        "prose": "Risk analysis for network and information systems not documented"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-a_obj.1",
+        "name": "assessment-objective",
+        "prose": "Information security policies not approved by management body"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-a_obj.2",
+        "name": "assessment-objective",
+        "prose": "Risk analysis not reviewed at least annually or after significant changes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.21-2-b",
+      "title": "Incident handling plan not documented and tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.21(2)(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.21(2)(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.21-2-b_stmt",
+        "name": "statement",
+        "prose": "Incident handling plan not documented and tested"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-b_obj.1",
+        "name": "assessment-objective",
+        "prose": "Security logs not retained for minimum 1 year"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.23-4-a",
+      "title": "Early warning to CSIRT/authority not issued within 24 hours of significant incident",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.23(4)(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.23(4)(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.23-4-a_stmt",
+        "name": "statement",
+        "prose": "Early warning to CSIRT/authority not issued within 24 hours of significant incident"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.23-4-b",
+      "title": "Incident notification to authority not issued within 72 hours",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.23(4)(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.23(4)(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.23-4-b_stmt",
+        "name": "statement",
+        "prose": "Incident notification to authority not issued within 72 hours"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.23-4-d",
+      "title": "Final incident report not submitted within 1 month",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.23(4)(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.23(4)(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.23-4-d_stmt",
+        "name": "statement",
+        "prose": "Final incident report not submitted within 1 month"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.21-2-c",
+      "title": "Business continuity plan not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.21(2)(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.21(2)(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.21-2-c_stmt",
+        "name": "statement",
+        "prose": "Business continuity plan not documented"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-c_obj.1",
+        "name": "assessment-objective",
+        "prose": "Business continuity plan not tested at least annually"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-c_obj.2",
+        "name": "assessment-objective",
+        "prose": "Disaster recovery plan not documented"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-c_obj.3",
+        "name": "assessment-objective",
+        "prose": "Crisis management plan not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.21-2-d",
+      "title": "Supplier and third-party security assessment process not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.21(2)(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.21(2)(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.21-2-d_stmt",
+        "name": "statement",
+        "prose": "Supplier and third-party security assessment process not established"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-d_obj.1",
+        "name": "assessment-objective",
+        "prose": "Critical ICT suppliers not identified and risk-assessed"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-d_obj.2",
+        "name": "assessment-objective",
+        "prose": "Security requirements not included in supplier contracts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.21-2-e",
+      "title": "Secure software development lifecycle policy not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.21(2)(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.21(2)(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.21-2-e_stmt",
+        "name": "statement",
+        "prose": "Secure software development lifecycle policy not documented"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-e_obj.1",
+        "name": "assessment-objective",
+        "prose": "Vulnerability management process not established"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-e_obj.2",
+        "name": "assessment-objective",
+        "prose": "Timely patch management process not in place"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.21-2-f",
+      "title": "Penetration testing not conducted at least annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.21(2)(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.21(2)(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.21-2-f_stmt",
+        "name": "statement",
+        "prose": "Penetration testing not conducted at least annually"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-f_obj.1",
+        "name": "assessment-objective",
+        "prose": "Regular security audits of cybersecurity measures not performed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.21-2-g",
+      "title": "Cybersecurity awareness training not conducted annually for all staff",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.21(2)(g)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.21(2)(g)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.21-2-g_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity awareness training not conducted annually for all staff"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-g_obj.1",
+        "name": "assessment-objective",
+        "prose": "Management body members have not received cybersecurity training"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-g_obj.2",
+        "name": "assessment-objective",
+        "prose": "Cyber hygiene policy (patching, updates, configurations) not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.21-2-h",
+      "title": "Cryptography and encryption policy not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.21(2)(h)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.21(2)(h)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.21-2-h_stmt",
+        "name": "statement",
+        "prose": "Cryptography and encryption policy not documented"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-h_obj.1",
+        "name": "assessment-objective",
+        "prose": "Sensitive data at rest not encrypted"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-h_obj.2",
+        "name": "assessment-objective",
+        "prose": "Data in transit not encrypted with strong protocols"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.21-2-i",
+      "title": "Principle of least privilege not enforced for system access",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.21(2)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.21(2)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.21-2-i_stmt",
+        "name": "statement",
+        "prose": "Principle of least privilege not enforced for system access"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-i_obj.1",
+        "name": "assessment-objective",
+        "prose": "Privileged accounts not managed through formal process"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-i_obj.2",
+        "name": "assessment-objective",
+        "prose": "Asset inventory not maintained for network and information systems"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-i_obj.3",
+        "name": "assessment-objective",
+        "prose": "HR security process for joiners/movers/leavers not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.21-2-j",
+      "title": "MFA not enforced for remote access to network and information systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.21(2)(j)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.21(2)(j)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.21-2-j_stmt",
+        "name": "statement",
+        "prose": "MFA not enforced for remote access to network and information systems"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-j_obj.1",
+        "name": "assessment-objective",
+        "prose": "MFA not enforced for privileged account access"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-j_obj.2",
+        "name": "assessment-objective",
+        "prose": "MFA not enforced for access to critical systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.20",
+      "title": "Management body has not approved cybersecurity risk management measures",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5fca2d20-693e-5414-8108-36ae17188551",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.20_stmt",
+        "name": "statement",
+        "prose": "Management body has not approved cybersecurity risk management measures"
+       },
+       {
+        "id": "nis2-NIS2-Art.20_obj.1",
+        "name": "assessment-objective",
+        "prose": "Management body not accountable for implementation of cybersecurity measures"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "5fca2d20-693e-5414-8108-36ae17188551",
+     "title": "EU Network and Information Security Directive 2 (NIS2) — Directive (EU) 2022/2555",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nis2.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/compliance/nis2/nis2_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

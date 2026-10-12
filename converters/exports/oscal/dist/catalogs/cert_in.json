@@ -1,0 +1,1623 @@
+{
+ "catalog": {
+  "uuid": "4520057e-fbc5-5cf4-a71d-90fceda9fcdc",
+  "metadata": {
+   "title": "Rego Policy Libraries — cert_in (CERT-In Directions under s.70B(6) IT Act (28 April 2022))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cert_in"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cert_in-cert_in_main",
+    "class": "rego-module",
+    "title": "CERT-In Directions under s.70B(6) IT Act (28 April 2022)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cert_in.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/cert_in/cert_in_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cert_in-provides_datacentre_vps_cloud_or_vpn",
+      "title": "direction (v) — whether the entity is a data centre, VPS, cloud or VPN service provider must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "provides_datacentre_vps_cloud_or_vpn"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "provides_datacentre_vps_cloud_or_vpn"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-provides_datacentre_vps_cloud_or_vpn_stmt",
+        "name": "statement",
+        "prose": "direction (v) — whether the entity is a data centre, VPS, cloud or VPN service provider must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-is_virtual_asset_service_provider",
+      "title": "direction (vi) — whether the entity is a virtual asset service provider, exchange or custodian wallet provider must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "is_virtual_asset_service_provider"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "is_virtual_asset_service_provider"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-is_virtual_asset_service_provider_stmt",
+        "name": "statement",
+        "prose": "direction (vi) — whether the entity is a virtual asset service provider, exchange or custodian wallet provider must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-1",
+      "title": "CERT-In %v (cert_in.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-1_stmt",
+        "name": "statement",
+        "prose": "CERT-In %v (cert_in.%v undeclared)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-CERT-In-direction-i",
+      "title": "not all ICT system clocks are synchronised to a standard time source",
+      "props": [
+       {
+        "name": "label",
+        "value": "CERT-In direction (i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CERT-In direction (i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-CERT-In-direction-i_stmt",
+        "name": "statement",
+        "prose": "not all ICT system clocks are synchronised to a standard time source"
+       },
+       {
+        "id": "cert_in-CERT-In-direction-i_obj.1",
+        "name": "assessment-objective",
+        "prose": "time source is not the NIC or NPL NTP server, or a server traceable to them (a multi-geography entity may use another standard source only if it does not deviate from NPL/NIC)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-2",
+      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-CERT-In-direction-ii",
+      "title": "reportable cyber incidents are not reported to CERT-In within 6 hours of being noticed or brought to notice",
+      "props": [
+       {
+        "name": "label",
+        "value": "CERT-In direction (ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CERT-In direction (ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-CERT-In-direction-ii_stmt",
+        "name": "statement",
+        "prose": "reportable cyber incidents are not reported to CERT-In within 6 hours of being noticed or brought to notice"
+       },
+       {
+        "id": "cert_in-CERT-In-direction-ii_obj.1",
+        "name": "assessment-objective",
+        "prose": "the CERT-In reporting channels (incident@cert-in.org.in, 1800-11-4949, published formats) are not built into the incident procedure"
+       },
+       {
+        "id": "cert_in-CERT-In-direction-ii_obj.2",
+        "name": "assessment-objective",
+        "prose": "reports do not follow the methods and formats published on cert-in.org.in"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-3",
+      "title": "CERT-In Annexure I (%v): \\\"%v\\\" is not a reportable incident type in the entity's procedure",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-3_stmt",
+        "name": "statement",
+        "prose": "CERT-In Annexure I (%v): \\\"%v\\\" is not a reportable incident type in the entity's procedure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-i_targeted_scanning_probing",
+      "title": "Targeted scanning/probing of critical networks/systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "i_targeted_scanning_probing"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "i_targeted_scanning_probing"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-i_targeted_scanning_probing_stmt",
+        "name": "statement",
+        "prose": "Targeted scanning/probing of critical networks/systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-ii_compromise_of_critical_systems",
+      "title": "Compromise of critical systems/information",
+      "props": [
+       {
+        "name": "label",
+        "value": "ii_compromise_of_critical_systems"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ii_compromise_of_critical_systems"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-ii_compromise_of_critical_systems_stmt",
+        "name": "statement",
+        "prose": "Compromise of critical systems/information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-iii_unauthorised_access",
+      "title": "Unauthorised access of IT systems/data",
+      "props": [
+       {
+        "name": "label",
+        "value": "iii_unauthorised_access"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iii_unauthorised_access"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-iii_unauthorised_access_stmt",
+        "name": "statement",
+        "prose": "Unauthorised access of IT systems/data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-iv_website_defacement_or_intrusion",
+      "title": "Defacement of or intrusion into a website, unauthorised changes such as malicious code or external links",
+      "props": [
+       {
+        "name": "label",
+        "value": "iv_website_defacement_or_intrusion"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iv_website_defacement_or_intrusion"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-iv_website_defacement_or_intrusion_stmt",
+        "name": "statement",
+        "prose": "Defacement of or intrusion into a website, unauthorised changes such as malicious code or external links"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-v_malicious_code",
+      "title": "Malicious code attacks — virus/worm/Trojan/bots/spyware/ransomware/cryptominers",
+      "props": [
+       {
+        "name": "label",
+        "value": "v_malicious_code"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "v_malicious_code"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-v_malicious_code_stmt",
+        "name": "statement",
+        "prose": "Malicious code attacks — virus/worm/Trojan/bots/spyware/ransomware/cryptominers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-vi_attacks_on_servers_and_network_devices",
+      "title": "Attacks on servers (database, mail, DNS) and network devices such as routers",
+      "props": [
+       {
+        "name": "label",
+        "value": "vi_attacks_on_servers_and_network_devices"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "vi_attacks_on_servers_and_network_devices"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-vi_attacks_on_servers_and_network_devices_stmt",
+        "name": "statement",
+        "prose": "Attacks on servers (database, mail, DNS) and network devices such as routers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-vii_identity_theft_spoofing_phishing",
+      "title": "Identity theft, spoofing and phishing attacks",
+      "props": [
+       {
+        "name": "label",
+        "value": "vii_identity_theft_spoofing_phishing"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "vii_identity_theft_spoofing_phishing"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-vii_identity_theft_spoofing_phishing_stmt",
+        "name": "statement",
+        "prose": "Identity theft, spoofing and phishing attacks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-viii_dos_ddos",
+      "title": "Denial of Service and Distributed Denial of Service attacks",
+      "props": [
+       {
+        "name": "label",
+        "value": "viii_dos_ddos"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "viii_dos_ddos"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-viii_dos_ddos_stmt",
+        "name": "statement",
+        "prose": "Denial of Service and Distributed Denial of Service attacks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-ix_critical_infrastructure_scada_ot_wireless",
+      "title": "Attacks on critical infrastructure, SCADA and OT systems and wireless networks",
+      "props": [
+       {
+        "name": "label",
+        "value": "ix_critical_infrastructure_scada_ot_wireless"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ix_critical_infrastructure_scada_ot_wireless"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-ix_critical_infrastructure_scada_ot_wireless_stmt",
+        "name": "statement",
+        "prose": "Attacks on critical infrastructure, SCADA and OT systems and wireless networks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-x_attacks_on_applications",
+      "title": "Attacks on applications such as e-Governance and e-Commerce",
+      "props": [
+       {
+        "name": "label",
+        "value": "x_attacks_on_applications"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "x_attacks_on_applications"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-x_attacks_on_applications_stmt",
+        "name": "statement",
+        "prose": "Attacks on applications such as e-Governance and e-Commerce"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-xi_data_breach",
+      "title": "Data breach",
+      "props": [
+       {
+        "name": "label",
+        "value": "xi_data_breach"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "xi_data_breach"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-xi_data_breach_stmt",
+        "name": "statement",
+        "prose": "Data breach"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-xii_data_leak",
+      "title": "Data leak",
+      "props": [
+       {
+        "name": "label",
+        "value": "xii_data_leak"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "xii_data_leak"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-xii_data_leak_stmt",
+        "name": "statement",
+        "prose": "Data leak"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-xiii_iot",
+      "title": "Attacks on IoT devices and associated systems, networks, software, servers",
+      "props": [
+       {
+        "name": "label",
+        "value": "xiii_iot"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "xiii_iot"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-xiii_iot_stmt",
+        "name": "statement",
+        "prose": "Attacks on IoT devices and associated systems, networks, software, servers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-xiv_digital_payment_systems",
+      "title": "Attacks or incidents affecting digital payment systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "xiv_digital_payment_systems"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "xiv_digital_payment_systems"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-xiv_digital_payment_systems_stmt",
+        "name": "statement",
+        "prose": "Attacks or incidents affecting digital payment systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-xv_malicious_mobile_apps",
+      "title": "Attacks through malicious mobile apps",
+      "props": [
+       {
+        "name": "label",
+        "value": "xv_malicious_mobile_apps"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "xv_malicious_mobile_apps"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-xv_malicious_mobile_apps_stmt",
+        "name": "statement",
+        "prose": "Attacks through malicious mobile apps"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-xvi_fake_mobile_apps",
+      "title": "Fake mobile apps",
+      "props": [
+       {
+        "name": "label",
+        "value": "xvi_fake_mobile_apps"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "xvi_fake_mobile_apps"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-xvi_fake_mobile_apps_stmt",
+        "name": "statement",
+        "prose": "Fake mobile apps"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-xvii_social_media_accounts",
+      "title": "Unauthorised access to social media accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "xvii_social_media_accounts"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "xvii_social_media_accounts"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-xvii_social_media_accounts_stmt",
+        "name": "statement",
+        "prose": "Unauthorised access to social media accounts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-xviii_cloud_systems",
+      "title": "Attacks or malicious/suspicious activities affecting cloud computing systems/servers/software/applications",
+      "props": [
+       {
+        "name": "label",
+        "value": "xviii_cloud_systems"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "xviii_cloud_systems"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-xviii_cloud_systems_stmt",
+        "name": "statement",
+        "prose": "Attacks or malicious/suspicious activities affecting cloud computing systems/servers/software/applications"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-xix_big_data_blockchain_virtual_assets_robotics_drones",
+      "title": "Attacks or malicious/suspicious activities affecting Big Data, blockchain, virtual assets and exchanges, custodian wallets, robotics, 3D/4D printing, additive manufacturing, drones",
+      "props": [
+       {
+        "name": "label",
+        "value": "xix_big_data_blockchain_virtual_assets_robotics_drones"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "xix_big_data_blockchain_virtual_assets_robotics_drones"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-xix_big_data_blockchain_virtual_assets_robotics_drones_stmt",
+        "name": "statement",
+        "prose": "Attacks or malicious/suspicious activities affecting Big Data, blockchain, virtual assets and exchanges, custodian wallets, robotics, 3D/4D printing, additive manufacturing, drones"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-xx_ai_ml_systems",
+      "title": "Attacks or malicious/suspicious activities affecting AI and ML systems/servers/software/applications",
+      "props": [
+       {
+        "name": "label",
+        "value": "xx_ai_ml_systems"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "xx_ai_ml_systems"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-xx_ai_ml_systems_stmt",
+        "name": "statement",
+        "prose": "Attacks or malicious/suspicious activities affecting AI and ML systems/servers/software/applications"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-4",
+      "title": "CERT-In Annexure I (%v): \\\"%v\\\" is not a reportable incident type in the entity's procedure",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-4_stmt",
+        "name": "statement",
+        "prose": "CERT-In Annexure I (%v): \\\"%v\\\" is not a reportable incident type in the entity's procedure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-CERT-In-direction-iii",
+      "title": "no process to take action, provide information (up to near real-time) or assist CERT-In within the timeframe its order specifies",
+      "props": [
+       {
+        "name": "label",
+        "value": "CERT-In direction (iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CERT-In direction (iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-CERT-In-direction-iii_stmt",
+        "name": "statement",
+        "prose": "no process to take action, provide information (up to near real-time) or assist CERT-In within the timeframe its order specifies"
+       },
+       {
+        "id": "cert_in-CERT-In-direction-iii_obj.1",
+        "name": "assessment-objective",
+        "prose": "no Point of Contact designated to interface with CERT-In"
+       },
+       {
+        "id": "cert_in-CERT-In-direction-iii_obj.2",
+        "name": "assessment-objective",
+        "prose": "Point of Contact information is not updated when it changes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-CERT-In-direction-iii-Annexure-II",
+      "title": "Point of Contact details (name, designation, organisation, address, email, mobile, phone, fax) not sent to info@cert-in.org.in in the prescribed format",
+      "props": [
+       {
+        "name": "label",
+        "value": "CERT-In direction (iii) / Annexure II"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CERT-In direction (iii) / Annexure II"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-CERT-In-direction-iii-Annexure-II_stmt",
+        "name": "statement",
+        "prose": "Point of Contact details (name, designation, organisation, address, email, mobile, phone, fax) not sent to info@cert-in.org.in in the prescribed format"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-5",
+      "title": "CERT-In direction (v) (%v): subscriber registration does not capture %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-5_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (v) (%v): subscriber registration does not capture %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-CERT-In-direction-iv",
+      "title": "logs are not enabled on all ICT systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "CERT-In direction (iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CERT-In direction (iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-CERT-In-direction-iv_stmt",
+        "name": "statement",
+        "prose": "logs are not enabled on all ICT systems"
+       },
+       {
+        "id": "cert_in-CERT-In-direction-iv_obj.1",
+        "name": "assessment-objective",
+        "prose": "logs are not maintained securely for a rolling period of 180 days"
+       },
+       {
+        "id": "cert_in-CERT-In-direction-iv_obj.2",
+        "name": "assessment-objective",
+        "prose": "logs are not maintained within the Indian jurisdiction"
+       },
+       {
+        "id": "cert_in-CERT-In-direction-iv_obj.3",
+        "name": "assessment-objective",
+        "prose": "logs are not provided to CERT-In with incident reports or when ordered"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-6",
+      "title": "CERT-In direction (v) (%v): subscriber registration does not capture %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-6_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (v) (%v): subscriber registration does not capture %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-a_validated_subscriber_names",
+      "title": "validated names of subscribers/customers hiring the services",
+      "props": [
+       {
+        "name": "label",
+        "value": "a_validated_subscriber_names"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "a_validated_subscriber_names"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-a_validated_subscriber_names_stmt",
+        "name": "statement",
+        "prose": "validated names of subscribers/customers hiring the services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-b_period_of_hire_with_dates",
+      "title": "period of hire including dates",
+      "props": [
+       {
+        "name": "label",
+        "value": "b_period_of_hire_with_dates"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b_period_of_hire_with_dates"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-b_period_of_hire_with_dates_stmt",
+        "name": "statement",
+        "prose": "period of hire including dates"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-c_ips_allotted_or_used",
+      "title": "IPs allotted to / being used by the members",
+      "props": [
+       {
+        "name": "label",
+        "value": "c_ips_allotted_or_used"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c_ips_allotted_or_used"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-c_ips_allotted_or_used_stmt",
+        "name": "statement",
+        "prose": "IPs allotted to / being used by the members"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-d_registration_email_ip_timestamp",
+      "title": "email address, IP address and time stamp used at registration/on-boarding",
+      "props": [
+       {
+        "name": "label",
+        "value": "d_registration_email_ip_timestamp"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "d_registration_email_ip_timestamp"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-d_registration_email_ip_timestamp_stmt",
+        "name": "statement",
+        "prose": "email address, IP address and time stamp used at registration/on-boarding"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-e_purpose_for_hiring",
+      "title": "purpose for hiring services",
+      "props": [
+       {
+        "name": "label",
+        "value": "e_purpose_for_hiring"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "e_purpose_for_hiring"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-e_purpose_for_hiring_stmt",
+        "name": "statement",
+        "prose": "purpose for hiring services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-f_validated_address_and_contact",
+      "title": "validated address and contact numbers",
+      "props": [
+       {
+        "name": "label",
+        "value": "f_validated_address_and_contact"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "f_validated_address_and_contact"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-f_validated_address_and_contact_stmt",
+        "name": "statement",
+        "prose": "validated address and contact numbers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-g_ownership_pattern",
+      "title": "ownership pattern of the subscribers/customers",
+      "props": [
+       {
+        "name": "label",
+        "value": "g_ownership_pattern"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "g_ownership_pattern"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-g_ownership_pattern_stmt",
+        "name": "statement",
+        "prose": "ownership pattern of the subscribers/customers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-7",
+      "title": "CERT-In direction (v) (%v): subscriber registration does not capture %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-7_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (v) (%v): subscriber registration does not capture %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-CERT-In-direction-v",
+      "title": "subscriber registration information is not retained for 5 years (or longer where law mandates) after cancellation or withdrawal of the registration",
+      "props": [
+       {
+        "name": "label",
+        "value": "CERT-In direction (v)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CERT-In direction (v)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-CERT-In-direction-v_stmt",
+        "name": "statement",
+        "prose": "subscriber registration information is not retained for 5 years (or longer where law mandates) after cancellation or withdrawal of the registration"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-CERT-In-direction-vi-Annexure-III",
+      "title": "KYC information is not obtained with the RBI KYC Directions 2016 / SEBI April 2020 / DoT S-KYC officially valid documents (or RBI CDD for business entities) and maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "CERT-In direction (vi) / Annexure III"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CERT-In direction (vi) / Annexure III"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-CERT-In-direction-vi-Annexure-III_stmt",
+        "name": "statement",
+        "prose": "KYC information is not obtained with the RBI KYC Directions 2016 / SEBI April 2020 / DoT S-KYC officially valid documents (or RBI CDD for business entities) and maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-CERT-In-direction-vi",
+      "title": "KYC information and financial transaction records are not retained for five years",
+      "props": [
+       {
+        "name": "label",
+        "value": "CERT-In direction (vi)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CERT-In direction (vi)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-CERT-In-direction-vi_stmt",
+        "name": "statement",
+        "prose": "KYC information and financial transaction records are not retained for five years"
+       },
+       {
+        "id": "cert_in-CERT-In-direction-vi_obj.1",
+        "name": "assessment-objective",
+        "prose": "transaction records do not allow each transaction to be reconstructed — party identification with IP addresses, timestamps and time zones, transaction ID, public keys/addresses/accounts, nature and date, amount"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-8",
+      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe11eb1-4a10-5057-a241-add025436774",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "efe11eb1-4a10-5057-a241-add025436774",
+     "title": "CERT-In Directions under s.70B(6) IT Act (28 April 2022)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cert_in.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/cert_in/cert_in_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,4315 @@
+{
+ "catalog": {
+  "uuid": "625b30ba-dc70-513c-a802-139d8a914ff6",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_rhel_8 (CIS RHEL 8 Benchmark v4.0.0 - Section 4.1: Configure System Accounting (auditd))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_rhel_8"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_rhel_8-auditd_validation",
+    "class": "rego-module",
+    "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 4.1: Configure System Accounting (auditd)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rhel8.auditd"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_8/auditd_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_8-section",
+      "title": "4.1 Configure System Accounting (auditd)",
+      "props": [
+       {
+        "name": "label",
+        "value": "section"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a96530d-b37e-5aee-8d5d-02bb8979e280",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a99fa697-a724-5f9b-8f72-73546ce447c6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#91707d78-19e4-5e8c-a37d-f4de6700ad34",
+        "rel": "implementation"
+       },
+       {
+        "href": "#db0c04f1-388e-5d2a-9f7c-987e9ecfdb76",
+        "rel": "implementation"
+       },
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#76d905ed-87d3-59ff-bf76-16ca01694f40",
+        "rel": "implementation"
+       },
+       {
+        "href": "#1990cb83-cf92-52dd-bcee-2ed387fee8d1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       },
+       {
+        "href": "#e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+        "rel": "implementation"
+       },
+       {
+        "href": "#8f13b30a-1dd6-5848-8181-3a0463214cf6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#8e6088d1-fc82-5cc8-87c9-af29eef15701",
+        "rel": "implementation"
+       },
+       {
+        "href": "#874ebc0d-b461-5210-97fd-ee98bd646d7d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_stmt",
+        "name": "statement",
+        "prose": "4.1 Configure System Accounting (auditd)"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.1",
+        "name": "assessment-objective",
+        "prose": "5.1 Configure time-based job schedulers"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.2",
+        "name": "assessment-objective",
+        "prose": "6.1 System File Permissions"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.3",
+        "name": "assessment-objective",
+        "prose": "1.1 Filesystem Configuration"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.4",
+        "name": "assessment-objective",
+        "prose": "1.2, 1.7-1.9 Initial System Setup"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.5",
+        "name": "assessment-objective",
+        "prose": "4.2 Logging Configuration"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.6",
+        "name": "assessment-objective",
+        "prose": "3.1-3.3 Network Configuration"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.7",
+        "name": "assessment-objective",
+        "prose": "5.4-5.5 PAM and User Accounts"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.8",
+        "name": "assessment-objective",
+        "prose": "1.6 Mandatory Access Controls"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.9",
+        "name": "assessment-objective",
+        "prose": "1.1.23, 2.1-2.3 Service Configuration"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.10",
+        "name": "assessment-objective",
+        "prose": "5.2 SSH Server Configuration"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.11",
+        "name": "assessment-objective",
+        "prose": "5.3 Configure Privilege Escalation"
+       },
+       {
+        "id": "cis_rhel_8-section_obj.12",
+        "name": "assessment-objective",
+        "prose": "6.2 User and Group Settings"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-benchmark",
+      "title": "CIS RHEL 8 v4.0.0",
+      "props": [
+       {
+        "name": "label",
+        "value": "benchmark"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "benchmark"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a96530d-b37e-5aee-8d5d-02bb8979e280",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a99fa697-a724-5f9b-8f72-73546ce447c6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#91707d78-19e4-5e8c-a37d-f4de6700ad34",
+        "rel": "implementation"
+       },
+       {
+        "href": "#db0c04f1-388e-5d2a-9f7c-987e9ecfdb76",
+        "rel": "implementation"
+       },
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#76d905ed-87d3-59ff-bf76-16ca01694f40",
+        "rel": "implementation"
+       },
+       {
+        "href": "#1990cb83-cf92-52dd-bcee-2ed387fee8d1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       },
+       {
+        "href": "#e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+        "rel": "implementation"
+       },
+       {
+        "href": "#8f13b30a-1dd6-5848-8181-3a0463214cf6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#8e6088d1-fc82-5cc8-87c9-af29eef15701",
+        "rel": "implementation"
+       },
+       {
+        "href": "#874ebc0d-b461-5210-97fd-ee98bd646d7d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-benchmark_stmt",
+        "name": "statement",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.1",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.2",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.3",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.4",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.5",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.6",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.7",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.8",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.9",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.10",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.11",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       },
+       {
+        "id": "cis_rhel_8-benchmark_obj.12",
+        "name": "assessment-objective",
+        "prose": "CIS RHEL 8 v4.0.0"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rhel_8-cis_rhel8_complete",
+    "class": "rego-module",
+    "title": "CIS RHEL 8 Benchmark v4.0.0 - Complete Validation",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rhel8"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_8/cis_rhel8_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_8-section_1_1_filesystem",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_1_1_filesystem"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_1_1_filesystem"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_1_1_filesystem_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_1_initial_setup",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_1_initial_setup"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_1_initial_setup"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_1_initial_setup_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_2_services",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_2_services"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_2_services"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_2_services_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_3_network",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_3_network"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_3_network"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_3_network_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_4_logging",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_4_logging"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_4_logging"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_4_logging_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_4_1_auditd",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_4_1_auditd"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_4_1_auditd"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_4_1_auditd_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_5_2_ssh",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_5_2_ssh"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_5_2_ssh"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_5_2_ssh_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_5_pam",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_5_pam"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_5_pam"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_5_pam_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_5_3_sudo",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_5_3_sudo"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_5_3_sudo"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_5_3_sudo_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_1_6_selinux",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_1_6_selinux"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_1_6_selinux"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_1_6_selinux_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_6_2_user_group",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_6_2_user_group"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_6_2_user_group"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_6_2_user_group_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_5_1_cron",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_5_1_cron"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_5_1_cron"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_5_1_cron_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-section_6_1_file_permissions",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_6_1_file_permissions"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_6_1_file_permissions"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-section_6_1_file_permissions_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-risk_breakdown",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "risk_breakdown"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "risk_breakdown"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#911e2b23-d14a-5baf-a722-c8473cf12bd3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-risk_breakdown_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/cis_rhel8_complete.rego (package cis_rhel8); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rhel_8-cron_validation",
+    "class": "rego-module",
+    "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 5.1: Configure time-based job schedulers",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rhel8.cron"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_8/cron_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_8-CIS-5.1.1",
+      "title": "cron daemon (crond) is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a99fa697-a724-5f9b-8f72-73546ce447c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.1.1_stmt",
+        "name": "statement",
+        "prose": "cron daemon (crond) is not enabled"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "cron daemon (crond) is not running"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.1.2",
+      "title": "/etc/crontab has mode %s, should be 0600",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a99fa697-a724-5f9b-8f72-73546ce447c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.1.2_stmt",
+        "name": "statement",
+        "prose": "/etc/crontab has mode %s, should be 0600"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/crontab owned by %s, should be root"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/crontab group is %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.1.3",
+      "title": "/etc/cron.hourly has mode %s, should be 0700",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a99fa697-a724-5f9b-8f72-73546ce447c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.1.3_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.hourly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.hourly owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.1.4",
+      "title": "/etc/cron.daily has mode %s, should be 0700",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a99fa697-a724-5f9b-8f72-73546ce447c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.1.4_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.daily has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.daily owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.1.5",
+      "title": "/etc/cron.weekly has mode %s, should be 0700",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a99fa697-a724-5f9b-8f72-73546ce447c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.1.5_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.weekly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.weekly owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.1.6",
+      "title": "/etc/cron.monthly has mode %s, should be 0700",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a99fa697-a724-5f9b-8f72-73546ce447c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.1.6_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.monthly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.monthly owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.1.7",
+      "title": "/etc/cron.d has mode %s, should be 0700",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a99fa697-a724-5f9b-8f72-73546ce447c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.1.7_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.d has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.d owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.1.8",
+      "title": "/etc/cron.deny exists - should be removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a99fa697-a724-5f9b-8f72-73546ce447c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.1.8_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.deny exists - should be removed"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.allow does not exist - should be created"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.allow has mode %s, should be 0600"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.1.9",
+      "title": "/etc/at.deny exists - should be removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a99fa697-a724-5f9b-8f72-73546ce447c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.1.9_stmt",
+        "name": "statement",
+        "prose": "/etc/at.deny exists - should be removed"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/at.allow does not exist - should be created"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/at.allow has mode %s, should be 0600"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rhel_8-file_permissions_validation",
+    "class": "rego-module",
+    "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 6.1: System File Permissions",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rhel8.file_permissions"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_8/file_permissions_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_8-security_risks",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/file_permissions_validation.rego (package cis_rhel8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "security_risks"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "security_risks"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#91707d78-19e4-5e8c-a37d-f4de6700ad34",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-security_risks_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/file_permissions_validation.rego (package cis_rhel8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rhel_8-initial_setup_validation",
+    "class": "rego-module",
+    "title": "CIS RHEL 8 Benchmark v4.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rhel8.initial_setup"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_8/initial_setup_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_8-CIS-1.2.1",
+      "title": "No GPG keys configured for package verification",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.2.1_stmt",
+        "name": "statement",
+        "prose": "No GPG keys configured for package verification"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.2.2",
+      "title": "No package repositories are enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.2.2_stmt",
+        "name": "statement",
+        "prose": "No package repositories are enabled"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Repository %s does not have gpgcheck enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.2.3",
+      "title": "Global gpgcheck is not enabled in /etc/dnf/dnf.conf",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.2.3_stmt",
+        "name": "statement",
+        "prose": "Global gpgcheck is not enabled in /etc/dnf/dnf.conf"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.7.1",
+      "title": "/etc/motd has mode %s, should be 0644",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.7.1_stmt",
+        "name": "statement",
+        "prose": "/etc/motd has mode %s, should be 0644"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/motd contains sensitive system information (OS version, kernel, etc.)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/motd does not exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.7.2",
+      "title": "/etc/issue does not exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.7.2_stmt",
+        "name": "statement",
+        "prose": "/etc/issue does not exist"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/issue has mode %s, should be 0644"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/issue contains sensitive system information"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.7.3",
+      "title": "/etc/issue.net does not exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.7.3_stmt",
+        "name": "statement",
+        "prose": "/etc/issue.net does not exist"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/issue.net has mode %s, should be 0644"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/issue.net contains sensitive system information"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.7.4",
+      "title": "/etc/motd owned by %s, should be root",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.7.4_stmt",
+        "name": "statement",
+        "prose": "/etc/motd owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.7.5",
+      "title": "/etc/issue owned by %s, should be root",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.7.5_stmt",
+        "name": "statement",
+        "prose": "/etc/issue owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.7.6",
+      "title": "/etc/issue.net owned by %s, should be root",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.7.6_stmt",
+        "name": "statement",
+        "prose": "/etc/issue.net owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.8.1",
+      "title": "GNOME Display Manager (GDM) installed on server without GUI requirement",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.8.1_stmt",
+        "name": "statement",
+        "prose": "GNOME Display Manager (GDM) installed on server without GUI requirement"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.8.2",
+      "title": "GDM login banner is not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.8.2_stmt",
+        "name": "statement",
+        "prose": "GDM login banner is not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.8.3",
+      "title": "GDM user list is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.8.3_stmt",
+        "name": "statement",
+        "prose": "GDM user list is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.8.4",
+      "title": "GDM automatic screen lock is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.8.4_stmt",
+        "name": "statement",
+        "prose": "GDM automatic screen lock is not enabled"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.8.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "GDM idle delay is %d seconds, should be 900 or less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.8.5",
+      "title": "GDM screen lock can be overridden by users",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.8.5_stmt",
+        "name": "statement",
+        "prose": "GDM screen lock can be overridden by users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.8.6",
+      "title": "GDM automatic mounting of removable media is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.8.6_stmt",
+        "name": "statement",
+        "prose": "GDM automatic mounting of removable media is not disabled"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.8.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "GDM automatic opening of removable media is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.8.7",
+      "title": "GDM automount settings can be overridden by users",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.8.7_stmt",
+        "name": "statement",
+        "prose": "GDM automount settings can be overridden by users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.8.8",
+      "title": "GDM autorun-never is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.8.8_stmt",
+        "name": "statement",
+        "prose": "GDM autorun-never is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.8.9",
+      "title": "GDM autorun-never can be overridden by users",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.8.9_stmt",
+        "name": "statement",
+        "prose": "GDM autorun-never can be overridden by users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.8.10",
+      "title": "GDM XDMCP is enabled - should be disabled for security",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.8.10_stmt",
+        "name": "statement",
+        "prose": "GDM XDMCP is enabled - should be disabled for security"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.9",
+      "title": "System-wide crypto policy is set to LEGACY - should use DEFAULT, FUTURE, or FIPS",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2c35e10-5f75-596b-a74a-76e733a93a9b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.9_stmt",
+        "name": "statement",
+        "prose": "System-wide crypto policy is set to LEGACY - should use DEFAULT, FUTURE, or FIPS"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "System-wide crypto policy is not configured"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rhel_8-logging_validation",
+    "class": "rego-module",
+    "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 4.2: Logging Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rhel8.logging"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_8/logging_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_8-rsyslog",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/logging_validation.rego (package cis_rhel8.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "rsyslog"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "rsyslog"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#76d905ed-87d3-59ff-bf76-16ca01694f40",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-rsyslog_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/logging_validation.rego (package cis_rhel8.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-journald",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/logging_validation.rego (package cis_rhel8.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "journald"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "journald"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#76d905ed-87d3-59ff-bf76-16ca01694f40",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-journald_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/logging_validation.rego (package cis_rhel8.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rhel_8-network_validation",
+    "class": "rego-module",
+    "title": "CIS RHEL 8 Benchmark v4.0.0 - Sections 3.1/3.2/3.3: Network Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rhel8.network"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_8/network_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_8-ip_forwarding",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/network_validation.rego (package cis_rhel8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ip_forwarding"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ip_forwarding"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1990cb83-cf92-52dd-bcee-2ed387fee8d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-ip_forwarding_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/network_validation.rego (package cis_rhel8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-firewall",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_8/network_validation.rego (package cis_rhel8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "firewall"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "firewall"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1990cb83-cf92-52dd-bcee-2ed387fee8d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-firewall_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_8/network_validation.rego (package cis_rhel8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rhel_8-pam_validation",
+    "class": "rego-module",
+    "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 5.4/5.5: PAM and User Accounts",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rhel8.pam"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_8/pam_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_8-CIS-5.4.1",
+      "title": "pwquality package not installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.4.1_stmt",
+        "name": "statement",
+        "prose": "pwquality package not installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.4.1.1",
+      "title": "Password minimum length not configured in pwquality.conf",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.4.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.4.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.4.1.1_stmt",
+        "name": "statement",
+        "prose": "Password minimum length not configured in pwquality.conf"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.4.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Password minimum length is %s, should be 14 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.4.1.2",
+      "title": "Password complexity requirements not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.4.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.4.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.4.1.2_stmt",
+        "name": "statement",
+        "prose": "Password complexity requirements not configured"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.4.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Password minclass is %s, should be 4"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.4.2",
+      "title": "pam_faillock not configured in PAM",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.4.2_stmt",
+        "name": "statement",
+        "prose": "pam_faillock not configured in PAM"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Account lockout threshold (deny) not configured"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.4.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Account lockout time (unlock_time) not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.4.3",
+      "title": "Password reuse limitation not configured (remember parameter missing)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.4.3_stmt",
+        "name": "statement",
+        "prose": "Password reuse limitation not configured (remember parameter missing)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.4.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Password remember value is %d, should be 5 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.4.4",
+      "title": "Password hashing algorithm not set to SHA-512",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.4.4_stmt",
+        "name": "statement",
+        "prose": "Password hashing algorithm not set to SHA-512"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.4.3.1",
+      "title": "pam_pwhistory not configured in system-auth",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.4.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.4.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.4.3.1_stmt",
+        "name": "statement",
+        "prose": "pam_pwhistory not configured in system-auth"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.4.3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "pam_pwhistory enforce_for_root not set — root password history not enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.5.1.1",
+      "title": "PASS_MIN_DAYS is %s, should be 1 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.5.1.1_stmt",
+        "name": "statement",
+        "prose": "PASS_MIN_DAYS is %s, should be 1 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.5.1.2",
+      "title": "PASS_MAX_DAYS is %s, should be 365 or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.5.1.2_stmt",
+        "name": "statement",
+        "prose": "PASS_MAX_DAYS is %s, should be 365 or less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.5.1.3",
+      "title": "PASS_WARN_AGE is %s, should be 7 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.5.1.3_stmt",
+        "name": "statement",
+        "prose": "PASS_WARN_AGE is %s, should be 7 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.5.1.4",
+      "title": "Inactive password lock is %s days, should be 30 or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.5.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.5.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.5.1.4_stmt",
+        "name": "statement",
+        "prose": "Inactive password lock is %s days, should be 30 or less"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.5.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Inactive password lock not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.5.1.5",
+      "title": "User %s has password change date in the future",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.5.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.5.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.5.1.5_stmt",
+        "name": "statement",
+        "prose": "User %s has password change date in the future"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.5.2",
+      "title": "System account %s has a login shell",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.5.2_stmt",
+        "name": "statement",
+        "prose": "System account %s has a login shell"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.5.3",
+      "title": "Root account GID is %s, should be 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.5.3_stmt",
+        "name": "statement",
+        "prose": "Root account GID is %s, should be 0"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.5.4",
+      "title": "Default umask is %s, should be 027 or more restrictive",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.5.4_stmt",
+        "name": "statement",
+        "prose": "Default umask is %s, should be 027 or more restrictive"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.5.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Default umask not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.5.5",
+      "title": "TMOUT is %s seconds, should be 900 or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ecf05719-5be8-557a-89ea-825012e75143",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.5.5_stmt",
+        "name": "statement",
+        "prose": "TMOUT is %s seconds, should be 900 or less"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.5.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "TMOUT is disabled (0), should be 900 seconds or less"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.5.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "TMOUT not configured"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rhel_8-selinux_validation",
+    "class": "rego-module",
+    "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 1.6: Mandatory Access Controls (SELinux)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rhel8.selinux"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_8/selinux_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_8-CIS-1.6.1.1",
+      "title": "SELinux (libselinux) not installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.6.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.6.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.selinux"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.1_stmt",
+        "name": "statement",
+        "prose": "SELinux (libselinux) not installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.6.1.2",
+      "title": "SELinux is disabled in bootloader configuration (selinux=0)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.selinux"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.2_stmt",
+        "name": "statement",
+        "prose": "SELinux is disabled in bootloader configuration (selinux=0)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "SELinux enforcing is disabled in bootloader configuration (enforcing=0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.6.1.3",
+      "title": "SELinux policy not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.6.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.6.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.selinux"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.3_stmt",
+        "name": "statement",
+        "prose": "SELinux policy not configured"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "SELinux policy is %s, should be 'targeted' or 'mls'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.6.1.4",
+      "title": "SELinux is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.6.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.6.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.selinux"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.4_stmt",
+        "name": "statement",
+        "prose": "SELinux is not enabled"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "SELinux mode is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.6.1.5",
+      "title": "SELinux mode is %s, should be enforcing",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.6.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.6.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.selinux"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.5_stmt",
+        "name": "statement",
+        "prose": "SELinux mode is %s, should be enforcing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.6.1.6",
+      "title": "Found %d unconfined services: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.6.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.6.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.selinux"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.6_stmt",
+        "name": "statement",
+        "prose": "Found %d unconfined services: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.6.1.7",
+      "title": "SETroubleshoot is installed - should be removed on production systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.6.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.6.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.selinux"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.7_stmt",
+        "name": "statement",
+        "prose": "SETroubleshoot is installed - should be removed on production systems"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.6.1.8",
+      "title": "MCS Translation Service (mcstrans) is installed - should be removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.6.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.6.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.selinux"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.8_stmt",
+        "name": "statement",
+        "prose": "MCS Translation Service (mcstrans) is installed - should be removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.6",
+      "title": "Found %d files with incorrect SELinux context",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.selinux"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.6_stmt",
+        "name": "statement",
+        "prose": "Found %d files with incorrect SELinux context"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "High number of SELinux denials (%d) - review /var/log/audit/audit.log"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rhel_8-sudo_validation",
+    "class": "rego-module",
+    "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 5.3: Configure privilege escalation",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rhel8.sudo"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_8/sudo_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_8-CIS-5.3.1",
+      "title": "sudo package not installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874ebc0d-b461-5210-97fd-ee98bd646d7d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.3.1_stmt",
+        "name": "statement",
+        "prose": "sudo package not installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.3.2",
+      "title": "sudo not configured to use pty (Defaults use_pty missing)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874ebc0d-b461-5210-97fd-ee98bd646d7d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.3.2_stmt",
+        "name": "statement",
+        "prose": "sudo not configured to use pty (Defaults use_pty missing)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.3.3",
+      "title": "sudo logfile not configured (Defaults logfile= missing)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874ebc0d-b461-5210-97fd-ee98bd646d7d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.3.3_stmt",
+        "name": "statement",
+        "prose": "sudo logfile not configured (Defaults logfile= missing)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.3.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "sudo logfile configured but file does not exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.3.4",
+      "title": "NOPASSWD option found in sudoers - users should provide password",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874ebc0d-b461-5210-97fd-ee98bd646d7d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.3.4_stmt",
+        "name": "statement",
+        "prose": "NOPASSWD option found in sudoers - users should provide password"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.3.5",
+      "title": "!authenticate found in sudoers - re-authentication is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874ebc0d-b461-5210-97fd-ee98bd646d7d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.3.5_stmt",
+        "name": "statement",
+        "prose": "!authenticate found in sudoers - re-authentication is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.3.6",
+      "title": "sudo timestamp_timeout is %s minutes, should be 15 or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874ebc0d-b461-5210-97fd-ee98bd646d7d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.3.6_stmt",
+        "name": "statement",
+        "prose": "sudo timestamp_timeout is %s minutes, should be 15 or less"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.3.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "sudo timestamp_timeout not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.3.7",
+      "title": "Access to su command not restricted (pam_wheel.so not configured)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874ebc0d-b461-5210-97fd-ee98bd646d7d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.3.7_stmt",
+        "name": "statement",
+        "prose": "Access to su command not restricted (pam_wheel.so not configured)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.3.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "wheel group has no members - no users can use su"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.3",
+      "title": "/etc/sudoers has mode %s, should be 0440 or 0400",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874ebc0d-b461-5210-97fd-ee98bd646d7d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.3_stmt",
+        "name": "statement",
+        "prose": "/etc/sudoers has mode %s, should be 0440 or 0400"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/sudoers owned by %s, should be root"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/sudoers group is %s, should be root"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "sudoers should include /etc/sudoers.d directory"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rhel_8-user_group_validation",
+    "class": "rego-module",
+    "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 6.2: User and Group Settings",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rhel8.user_group"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_8/user_group_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_8-CIS-6.2.1",
+      "title": "User %s in /etc/passwd does not use shadowed passwords",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.1_stmt",
+        "name": "statement",
+        "prose": "User %s in /etc/passwd does not use shadowed passwords"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.2",
+      "title": "User %s has an empty password field in /etc/shadow",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.2_stmt",
+        "name": "statement",
+        "prose": "User %s has an empty password field in /etc/shadow"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.3",
+      "title": "Group %s from /etc/passwd does not exist in /etc/group",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.3_stmt",
+        "name": "statement",
+        "prose": "Group %s from /etc/passwd does not exist in /etc/group"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.4",
+      "title": "Duplicate UID %s found for users: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.4_stmt",
+        "name": "statement",
+        "prose": "Duplicate UID %s found for users: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.5",
+      "title": "Duplicate GID %s found for groups: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.5_stmt",
+        "name": "statement",
+        "prose": "Duplicate GID %s found for groups: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.6",
+      "title": "Duplicate username %s found %d times",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.6_stmt",
+        "name": "statement",
+        "prose": "Duplicate username %s found %d times"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.7",
+      "title": "Duplicate group name %s found %d times",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.7_stmt",
+        "name": "statement",
+        "prose": "Duplicate group name %s found %d times"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.8",
+      "title": "Root PATH contains empty directory (::)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.8_stmt",
+        "name": "statement",
+        "prose": "Root PATH contains empty directory (::)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.2.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Root PATH starts with colon"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.2.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "Root PATH ends with colon"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.2.8_obj.3",
+        "name": "assessment-objective",
+        "prose": "Root PATH contains current directory (.)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.2.8_obj.4",
+        "name": "assessment-objective",
+        "prose": "Root PATH contains world-writable directory: %s"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.2.8_obj.5",
+        "name": "assessment-objective",
+        "prose": "Root PATH contains non-existent directory: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.9",
+      "title": "Account %s has UID 0 - only root should have UID 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.9_stmt",
+        "name": "statement",
+        "prose": "Account %s has UID 0 - only root should have UID 0"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.10",
+      "title": "User %s home directory does not exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.10_stmt",
+        "name": "statement",
+        "prose": "User %s home directory does not exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.11",
+      "title": "User %s does not own their home directory %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.11_stmt",
+        "name": "statement",
+        "prose": "User %s does not own their home directory %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.12",
+      "title": "User %s home directory %s has permissions %s (should be 750 or more restrictive)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.12_stmt",
+        "name": "statement",
+        "prose": "User %s home directory %s has permissions %s (should be 750 or more restrictive)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.13",
+      "title": "User %s has .netrc file: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.13_stmt",
+        "name": "statement",
+        "prose": "User %s has .netrc file: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.14",
+      "title": "User %s has .forward file: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.14_stmt",
+        "name": "statement",
+        "prose": "User %s has .forward file: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.15",
+      "title": "User %s has .rhosts file: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.15_stmt",
+        "name": "statement",
+        "prose": "User %s has .rhosts file: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2.16",
+      "title": "User %s has group/world writable dot file: %s (mode: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2.16_stmt",
+        "name": "statement",
+        "prose": "User %s has group/world writable dot file: %s (mode: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.2",
+      "title": "Legacy '+' entry found in /etc/passwd",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2_stmt",
+        "name": "statement",
+        "prose": "Legacy '+' entry found in /etc/passwd"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Legacy '+' entry found in /etc/shadow"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Legacy '+' entry found in /etc/group"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "8a96530d-b37e-5aee-8d5d-02bb8979e280",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 4.1: Configure System Accounting (auditd)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.auditd"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/auditd_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "911e2b23-d14a-5baf-a722-c8473cf12bd3",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Complete Validation",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/cis_rhel8_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a99fa697-a724-5f9b-8f72-73546ce447c6",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 5.1: Configure time-based job schedulers",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.cron"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/cron_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "91707d78-19e4-5e8c-a37d-f4de6700ad34",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 6.1: System File Permissions",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.file_permissions"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/file_permissions_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "db0c04f1-388e-5d2a-9f7c-987e9ecfdb76",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 1.1: Filesystem Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.filesystem"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/filesystem_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "c2c35e10-5f75-596b-a74a-76e733a93a9b",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.initial_setup"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/initial_setup_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "76d905ed-87d3-59ff-bf76-16ca01694f40",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 4.2: Logging Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.logging"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/logging_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "1990cb83-cf92-52dd-bcee-2ed387fee8d1",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Sections 3.1/3.2/3.3: Network Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.network"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/network_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "ecf05719-5be8-557a-89ea-825012e75143",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 5.4/5.5: PAM and User Accounts",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.pam"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/pam_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e84b8ddd-f2fe-58d7-9479-4805ee88ea83",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 1.6: Mandatory Access Controls (SELinux)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.selinux"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/selinux_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8f13b30a-1dd6-5848-8181-3a0463214cf6",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.services"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/services_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8e6088d1-fc82-5cc8-87c9-af29eef15701",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 5.2: SSH Server Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.ssh"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/ssh_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "874ebc0d-b461-5210-97fd-ee98bd646d7d",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 5.3: Configure privilege escalation",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.sudo"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/sudo_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "47fccbe1-9d76-50f6-bdf2-bece23a27f88",
+     "title": "CIS RHEL 8 Benchmark v4.0.0 - Section 6.2: User and Group Settings",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rhel8.user_group"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_8/user_group_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

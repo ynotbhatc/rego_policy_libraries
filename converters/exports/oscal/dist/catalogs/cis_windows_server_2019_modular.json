@@ -1,0 +1,981 @@
+{
+ "catalog": {
+  "uuid": "d12df08a-4b35-5c87-b193-ba18705c2e01",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_windows_server_2019_modular (CIS Windows Server 2019 Benchmark v4.0.0 - Section 1: Account Policies)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_windows_server_2019_modular"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_windows_server_2019_modular-account_policies_validation",
+    "class": "rego-module",
+    "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 1: Account Policies",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2019.account_policies"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2019_modular/account_policies_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-section",
+      "title": "1 Account Policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "section"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cdca406f-f33d-566b-80c4-a515b88aba17",
+        "rel": "implementation"
+       },
+       {
+        "href": "#5ac94b6b-76b1-53e8-b446-84d943235add",
+        "rel": "implementation"
+       },
+       {
+        "href": "#73217aaf-a1c4-5634-a95b-db02b1a6c4f6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#e98e77e2-3462-583f-93d7-a4fd07b6e33a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#82aac97c-e2df-53b4-93dc-f6c45b5df534",
+        "rel": "implementation"
+       },
+       {
+        "href": "#b04766c3-40be-589e-8de4-489ab95904eb",
+        "rel": "implementation"
+       },
+       {
+        "href": "#36838a93-d513-5e1d-b092-2d25dacb248b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#c1160d2b-dc67-57fb-a5fb-3d7ce81faa48",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a1b7ea3d-0fa9-5b4e-8e0e-953992cb213b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-section_stmt",
+        "name": "statement",
+        "prose": "1 Account Policies"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-section_obj.1",
+        "name": "assessment-objective",
+        "prose": "17 Advanced Audit Policy Configuration"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-section_obj.2",
+        "name": "assessment-objective",
+        "prose": "18.10.9 BitLocker Drive Encryption"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-section_obj.3",
+        "name": "assessment-objective",
+        "prose": "18.9.26 Event Log Service"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-section_obj.4",
+        "name": "assessment-objective",
+        "prose": "2.2 User Rights Assignment"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-section_obj.5",
+        "name": "assessment-objective",
+        "prose": "18 Administrative Templates (Registry)"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-section_obj.6",
+        "name": "assessment-objective",
+        "prose": "2.3 Security Options"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-section_obj.7",
+        "name": "assessment-objective",
+        "prose": "5 System Services"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-section_obj.8",
+        "name": "assessment-objective",
+        "prose": "18.10.42 Windows Defender / 9 Windows Firewall"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-benchmark",
+      "title": "CIS Windows Server 2019 v4.0.0",
+      "props": [
+       {
+        "name": "label",
+        "value": "benchmark"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "benchmark"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cdca406f-f33d-566b-80c4-a515b88aba17",
+        "rel": "implementation"
+       },
+       {
+        "href": "#5ac94b6b-76b1-53e8-b446-84d943235add",
+        "rel": "implementation"
+       },
+       {
+        "href": "#73217aaf-a1c4-5634-a95b-db02b1a6c4f6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#e98e77e2-3462-583f-93d7-a4fd07b6e33a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#82aac97c-e2df-53b4-93dc-f6c45b5df534",
+        "rel": "implementation"
+       },
+       {
+        "href": "#b04766c3-40be-589e-8de4-489ab95904eb",
+        "rel": "implementation"
+       },
+       {
+        "href": "#36838a93-d513-5e1d-b092-2d25dacb248b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#c1160d2b-dc67-57fb-a5fb-3d7ce81faa48",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a1b7ea3d-0fa9-5b4e-8e0e-953992cb213b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-benchmark_stmt",
+        "name": "statement",
+        "prose": "CIS Windows Server 2019 v4.0.0"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-benchmark_obj.1",
+        "name": "assessment-objective",
+        "prose": "CIS Windows Server 2019 v4.0.0"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-benchmark_obj.2",
+        "name": "assessment-objective",
+        "prose": "CIS Windows Server 2019 v4.0.0"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-benchmark_obj.3",
+        "name": "assessment-objective",
+        "prose": "CIS Windows Server 2019 v4.0.0"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-benchmark_obj.4",
+        "name": "assessment-objective",
+        "prose": "CIS Windows Server 2019 v4.0.0"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-benchmark_obj.5",
+        "name": "assessment-objective",
+        "prose": "CIS Windows Server 2019 v4.0.0"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-benchmark_obj.6",
+        "name": "assessment-objective",
+        "prose": "CIS Windows Server 2019 v4.0.0"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-benchmark_obj.7",
+        "name": "assessment-objective",
+        "prose": "CIS Windows Server 2019 v4.0.0"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-benchmark_obj.8",
+        "name": "assessment-objective",
+        "prose": "CIS Windows Server 2019 v4.0.0"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_windows_server_2019_modular-bitlocker_validation",
+    "class": "rego-module",
+    "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.9: BitLocker Drive Encryption",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2019.bitlocker"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2019_modular/bitlocker_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-encryption_status",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/bitlocker_validation.rego (package cis_windows_server_2019.bitlocker); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "encryption_status"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "encryption_status"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.bitlocker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#73217aaf-a1c4-5634-a95b-db02b1a6c4f6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-encryption_status_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/bitlocker_validation.rego (package cis_windows_server_2019.bitlocker); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_windows_server_2019_modular-cis_windows_server_2019_complete",
+    "class": "rego-module",
+    "title": "CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Complete Validation",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2019"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-section_1_account_policies",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_1_account_policies"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_1_account_policies"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3bc2a0d-8284-5d04-a523-7d60a19f7124",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-section_1_account_policies_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-section_2_local_policies",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_2_local_policies"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_2_local_policies"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3bc2a0d-8284-5d04-a523-7d60a19f7124",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-section_2_local_policies_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-section_3_event_log",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_3_event_log"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_3_event_log"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3bc2a0d-8284-5d04-a523-7d60a19f7124",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-section_3_event_log_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-section_5_system_services",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_5_system_services"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_5_system_services"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3bc2a0d-8284-5d04-a523-7d60a19f7124",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-section_5_system_services_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-section_6_registry",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_6_registry"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_6_registry"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3bc2a0d-8284-5d04-a523-7d60a19f7124",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-section_6_registry_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-section_7_security_options",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_7_security_options"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_7_security_options"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3bc2a0d-8284-5d04-a523-7d60a19f7124",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-section_7_security_options_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-section_8_advanced_audit",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_8_advanced_audit"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_8_advanced_audit"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3bc2a0d-8284-5d04-a523-7d60a19f7124",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-section_8_advanced_audit_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-section_9_windows_defender",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_9_windows_defender"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_9_windows_defender"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3bc2a0d-8284-5d04-a523-7d60a19f7124",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-section_9_windows_defender_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-section_10_bitlocker",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_10_bitlocker"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_10_bitlocker"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3bc2a0d-8284-5d04-a523-7d60a19f7124",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-section_10_bitlocker_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-risk_breakdown",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "risk_breakdown"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "risk_breakdown"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3bc2a0d-8284-5d04-a523-7d60a19f7124",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-risk_breakdown_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_windows_server_2019_modular-event_log_validation",
+    "class": "rego-module",
+    "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.9: Event Log Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2019.event_log"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2019_modular/event_log_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-event_log_sizes",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/event_log_validation.rego (package cis_windows_server_2019.event_log); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "event_log_sizes"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "event_log_sizes"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.event_log"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e98e77e2-3462-583f-93d7-a4fd07b6e33a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-event_log_sizes_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/event_log_validation.rego (package cis_windows_server_2019.event_log); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_windows_server_2019_modular-windows_defender_validation",
+    "class": "rego-module",
+    "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.42: Windows Defender Antivirus",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2019.windows_defender"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2019_modular/windows_defender_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-defender_status",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/windows_defender_validation.rego (package cis_windows_server_2019.windows_defender); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "defender_status"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "defender_status"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a1b7ea3d-0fa9-5b4e-8e0e-953992cb213b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-defender_status_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/windows_defender_validation.rego (package cis_windows_server_2019.windows_defender); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "cdca406f-f33d-566b-80c4-a515b88aba17",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 1: Account Policies",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.account_policies"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_server_2019_modular/account_policies_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "5ac94b6b-76b1-53e8-b446-84d943235add",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 17: Advanced Audit Policy Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.advanced_audit"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_server_2019_modular/advanced_audit_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "73217aaf-a1c4-5634-a95b-db02b1a6c4f6",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.9: BitLocker Drive Encryption",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.bitlocker"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_server_2019_modular/bitlocker_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d3bc2a0d-8284-5d04-a523-7d60a19f7124",
+     "title": "CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Complete Validation",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e98e77e2-3462-583f-93d7-a4fd07b6e33a",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.9: Event Log Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.event_log"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_server_2019_modular/event_log_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "82aac97c-e2df-53b4-93dc-f6c45b5df534",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.2: User Rights Assignment",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.local_policies"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_server_2019_modular/local_policies_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b04766c3-40be-589e-8de4-489ab95904eb",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18: Administrative Templates (Registry)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.registry"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_server_2019_modular/registry_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "36838a93-d513-5e1d-b092-2d25dacb248b",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.3: Security Options",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.security_options"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_server_2019_modular/security_options_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "c1160d2b-dc67-57fb-a5fb-3d7ce81faa48",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 5: System Services",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.system_services"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_server_2019_modular/system_services_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a1b7ea3d-0fa9-5b4e-8e0e-953992cb213b",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.42: Windows Defender Antivirus",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.windows_defender"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_server_2019_modular/windows_defender_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

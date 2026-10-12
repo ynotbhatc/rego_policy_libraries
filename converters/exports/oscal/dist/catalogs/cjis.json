@@ -1,0 +1,4248 @@
+{
+ "catalog": {
+  "uuid": "eabb83c0-1d63-5d49-b85f-fb97b9f9450b",
+  "metadata": {
+   "title": "Rego Policy Libraries — cjis (cjis / access control)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cjis"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cjis-access_control",
+    "class": "rego-module",
+    "title": "cjis / access control",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.access_control"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/access_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-AC-1",
+      "title": "Access to CJI is granted on least-privilege and need-to-know basis",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AC-1_stmt",
+        "name": "statement",
+        "prose": "Access to CJI is granted on least-privilege and need-to-know basis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AC-2",
+      "title": "Account management: accounts are created, reviewed, and disabled per authorization",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AC-2_stmt",
+        "name": "statement",
+        "prose": "Account management: accounts are created, reviewed, and disabled per authorization"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AC-3",
+      "title": "Session lock is enforced after a maximum 30 minutes of inactivity",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AC-3_stmt",
+        "name": "statement",
+        "prose": "Session lock is enforced after a maximum 30 minutes of inactivity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AC-4",
+      "title": "Unsuccessful login attempts are limited (lockout after no more than 5 attempts)",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AC-4_stmt",
+        "name": "statement",
+        "prose": "Unsuccessful login attempts are limited (lockout after no more than 5 attempts)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AC-5",
+      "title": "Remote access to CJI is controlled, encrypted, and monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AC-5_stmt",
+        "name": "statement",
+        "prose": "Remote access to CJI is controlled, encrypted, and monitored"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AC-6",
+      "title": "A system-use notification (warning banner) is displayed before access is granted",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AC-6_stmt",
+        "name": "statement",
+        "prose": "A system-use notification (warning banner) is displayed before access is granted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AC-7",
+      "title": "Access enforcement restricts CJI to authorized users, processes, and devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AC-7_stmt",
+        "name": "statement",
+        "prose": "Access enforcement restricts CJI to authorized users, processes, and devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.access_control-1",
+      "title": "CJIS [Access Control] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.access_control#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.access_control#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.access_control-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Access Control] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-auditing_accountability",
+    "class": "rego-module",
+    "title": "cjis / auditing accountability",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.auditing_accountability"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/auditing_accountability.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-AA-1",
+      "title": "Auditable events are defined and logged (successful/failed logons, access to CJI)",
+      "props": [
+       {
+        "name": "label",
+        "value": "AA-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AA-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.auditing_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AA-1_stmt",
+        "name": "statement",
+        "prose": "Auditable events are defined and logged (successful/failed logons, access to CJI)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AA-2",
+      "title": "Audit records capture required content (event type, timestamp, source, outcome, user identity)",
+      "props": [
+       {
+        "name": "label",
+        "value": "AA-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AA-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.auditing_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AA-2_stmt",
+        "name": "statement",
+        "prose": "Audit records capture required content (event type, timestamp, source, outcome, user identity)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AA-3",
+      "title": "Audit logs are retained for a minimum of one year",
+      "props": [
+       {
+        "name": "label",
+        "value": "AA-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AA-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.auditing_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AA-3_stmt",
+        "name": "statement",
+        "prose": "Audit logs are retained for a minimum of one year"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AA-4",
+      "title": "Audit records are reviewed and analyzed for indications of inappropriate activity",
+      "props": [
+       {
+        "name": "label",
+        "value": "AA-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AA-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.auditing_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AA-4_stmt",
+        "name": "statement",
+        "prose": "Audit records are reviewed and analyzed for indications of inappropriate activity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AA-5",
+      "title": "Audit logs are protected from unauthorized access, modification, and deletion",
+      "props": [
+       {
+        "name": "label",
+        "value": "AA-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AA-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.auditing_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AA-5_stmt",
+        "name": "statement",
+        "prose": "Audit logs are protected from unauthorized access, modification, and deletion"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AA-6",
+      "title": "Time is synchronized to an authoritative source for accurate audit timestamps",
+      "props": [
+       {
+        "name": "label",
+        "value": "AA-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AA-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.auditing_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AA-6_stmt",
+        "name": "statement",
+        "prose": "Time is synchronized to an authoritative source for accurate audit timestamps"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-AA-7",
+      "title": "Personnel are alerted upon audit processing or storage failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "AA-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AA-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.auditing_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-AA-7_stmt",
+        "name": "statement",
+        "prose": "Personnel are alerted upon audit processing or storage failure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.auditing_accountability-1",
+      "title": "CJIS [Auditing and Accountability] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.auditing_accountability#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.auditing_accountability#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.auditing_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.auditing_accountability-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Auditing and Accountability] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-configuration_management",
+    "class": "rego-module",
+    "title": "FBI CJIS Security Policy — Policy Area 7: Configuration Management",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.configuration_management"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/configuration_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-CM-1",
+      "title": "A documented, current baseline configuration is maintained for information systems that store, process, or transmit CJI",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-CM-1_stmt",
+        "name": "statement",
+        "prose": "A documented, current baseline configuration is maintained for information systems that store, process, or transmit CJI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-CM-2",
+      "title": "The principle of least functionality is enforced — only essential ports, protocols, services, and capabilities are enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-CM-2_stmt",
+        "name": "statement",
+        "prose": "The principle of least functionality is enforced — only essential ports, protocols, services, and capabilities are enabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-CM-3",
+      "title": "A formal change control process governs and documents changes to CJI systems before they are applied",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-CM-3_stmt",
+        "name": "statement",
+        "prose": "A formal change control process governs and documents changes to CJI systems before they are applied"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-CM-4",
+      "title": "Access to make configuration changes is restricted to authorized personnel with an approval and audit trail",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-CM-4_stmt",
+        "name": "statement",
+        "prose": "Access to make configuration changes is restricted to authorized personnel with an approval and audit trail"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-CM-5",
+      "title": "A current network topology (system architecture) diagram documenting the CJI environment is maintained and protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-CM-5_stmt",
+        "name": "statement",
+        "prose": "A current network topology (system architecture) diagram documenting the CJI environment is maintained and protected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-CM-6",
+      "title": "Security-relevant configuration settings are hardened to a documented standard and enforced across CJI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-CM-6_stmt",
+        "name": "statement",
+        "prose": "Security-relevant configuration settings are hardened to a documented standard and enforced across CJI systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-CM-7",
+      "title": "Security impact of proposed configuration changes is analyzed prior to implementation",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-CM-7_stmt",
+        "name": "statement",
+        "prose": "Security impact of proposed configuration changes is analyzed prior to implementation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.configuration_management-1",
+      "title": "CJIS [Configuration Management] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.configuration_management#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.configuration_management#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.configuration_management-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Configuration Management] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-formal_audits",
+    "class": "rego-module",
+    "title": "cjis / formal audits",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.formal_audits"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/formal_audits.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-FA-1",
+      "title": "The agency is subject to a triennial CJIS Security Policy compliance audit conducted by the FBI CJIS Division (or CSA on its behalf)",
+      "props": [
+       {
+        "name": "label",
+        "value": "FA-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FA-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.formal_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-FA-1_stmt",
+        "name": "statement",
+        "prose": "The agency is subject to a triennial CJIS Security Policy compliance audit conducted by the FBI CJIS Division (or CSA on its behalf)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-FA-2",
+      "title": "The CSA/SIB conducts audits of the agency, and the agency cooperates with and remediates findings from those audits",
+      "props": [
+       {
+        "name": "label",
+        "value": "FA-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FA-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.formal_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-FA-2_stmt",
+        "name": "statement",
+        "prose": "The CSA/SIB conducts audits of the agency, and the agency cooperates with and remediates findings from those audits"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-FA-3",
+      "title": "The agency audits its contractors, vendors, and subordinate/servicing agencies with access to CJI at least triennially",
+      "props": [
+       {
+        "name": "label",
+        "value": "FA-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FA-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.formal_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-FA-3_stmt",
+        "name": "statement",
+        "prose": "The agency audits its contractors, vendors, and subordinate/servicing agencies with access to CJI at least triennially"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-FA-4",
+      "title": "Use of NCIC, III, and other CJIS systems is audited for authorized purpose and compliance (transaction/log review)",
+      "props": [
+       {
+        "name": "label",
+        "value": "FA-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FA-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.formal_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-FA-4_stmt",
+        "name": "statement",
+        "prose": "Use of NCIC, III, and other CJIS systems is audited for authorized purpose and compliance (transaction/log review)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-FA-5",
+      "title": "Audit findings are documented and tracked to remediation through a corrective action plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "FA-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FA-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.formal_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-FA-5_stmt",
+        "name": "statement",
+        "prose": "Audit findings are documented and tracked to remediation through a corrective action plan"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-FA-6",
+      "title": "The agency permits FBI/CSA inspection and can produce records demonstrating CJIS Security Policy compliance on request",
+      "props": [
+       {
+        "name": "label",
+        "value": "FA-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FA-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.formal_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-FA-6_stmt",
+        "name": "statement",
+        "prose": "The agency permits FBI/CSA inspection and can produce records demonstrating CJIS Security Policy compliance on request"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.formal_audits-1",
+      "title": "CJIS [Formal Audits] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.formal_audits#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.formal_audits#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.formal_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.formal_audits-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Formal Audits] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-identification_authentication",
+    "class": "rego-module",
+    "title": "cjis / identification authentication",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.identification_authentication"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/identification_authentication.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-IA-1",
+      "title": "Each user is uniquely identified before access to CJI is granted",
+      "props": [
+       {
+        "name": "label",
+        "value": "IA-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IA-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IA-1_stmt",
+        "name": "statement",
+        "prose": "Each user is uniquely identified before access to CJI is granted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IA-2",
+      "title": "Advanced authentication (MFA) is enforced for access to CJI",
+      "props": [
+       {
+        "name": "label",
+        "value": "IA-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IA-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IA-2_stmt",
+        "name": "statement",
+        "prose": "Advanced authentication (MFA) is enforced for access to CJI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IA-3",
+      "title": "Password/authenticator standards meet CJIS complexity and length requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "IA-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IA-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IA-3_stmt",
+        "name": "statement",
+        "prose": "Password/authenticator standards meet CJIS complexity and length requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IA-4",
+      "title": "Authenticators are protected in storage and transmission (no plaintext)",
+      "props": [
+       {
+        "name": "label",
+        "value": "IA-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IA-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IA-4_stmt",
+        "name": "statement",
+        "prose": "Authenticators are protected in storage and transmission (no plaintext)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IA-5",
+      "title": "Identifiers are managed: no shared accounts, and reuse is prevented",
+      "props": [
+       {
+        "name": "label",
+        "value": "IA-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IA-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IA-5_stmt",
+        "name": "statement",
+        "prose": "Identifiers are managed: no shared accounts, and reuse is prevented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IA-6",
+      "title": "Authentication feedback (e.g. password entry) is obscured",
+      "props": [
+       {
+        "name": "label",
+        "value": "IA-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IA-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IA-6_stmt",
+        "name": "statement",
+        "prose": "Authentication feedback (e.g. password entry) is obscured"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IA-7",
+      "title": "Device identification and authentication is enforced before connection",
+      "props": [
+       {
+        "name": "label",
+        "value": "IA-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IA-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IA-7_stmt",
+        "name": "statement",
+        "prose": "Device identification and authentication is enforced before connection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.identification_authentication-1",
+      "title": "CJIS [Identification and Authentication] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.identification_authentication#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.identification_authentication#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.identification_authentication-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Identification and Authentication] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-incident_response",
+    "class": "rego-module",
+    "title": "FBI CJIS Security Policy — Policy Area 3: Incident Response",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.incident_response"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/incident_response.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-IR-1",
+      "title": "A documented incident response plan defines roles, responsibilities, and handling procedures",
+      "props": [
+       {
+        "name": "label",
+        "value": "IR-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IR-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IR-1_stmt",
+        "name": "statement",
+        "prose": "A documented incident response plan defines roles, responsibilities, and handling procedures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IR-2",
+      "title": "An incident handling capability covers preparation, detection, analysis, containment, eradication, and recovery",
+      "props": [
+       {
+        "name": "label",
+        "value": "IR-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IR-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IR-2_stmt",
+        "name": "statement",
+        "prose": "An incident handling capability covers preparation, detection, analysis, containment, eradication, and recovery"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IR-3",
+      "title": "Security incidents are reported to the CJIS Systems Officer (CSO) and the FBI CJIS Information Security Officer (ISO)",
+      "props": [
+       {
+        "name": "label",
+        "value": "IR-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IR-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IR-3_stmt",
+        "name": "statement",
+        "prose": "Security incidents are reported to the CJIS Systems Officer (CSO) and the FBI CJIS Information Security Officer (ISO)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IR-4",
+      "title": "Incidents are tracked and documented from detection through resolution",
+      "props": [
+       {
+        "name": "label",
+        "value": "IR-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IR-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IR-4_stmt",
+        "name": "statement",
+        "prose": "Incidents are tracked and documented from detection through resolution"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IR-5",
+      "title": "Incident information and evidence are collected and preserved for analysis and reporting",
+      "props": [
+       {
+        "name": "label",
+        "value": "IR-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IR-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IR-5_stmt",
+        "name": "statement",
+        "prose": "Incident information and evidence are collected and preserved for analysis and reporting"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IR-6",
+      "title": "The incident response capability is tested and exercised on a defined schedule",
+      "props": [
+       {
+        "name": "label",
+        "value": "IR-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IR-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IR-6_stmt",
+        "name": "statement",
+        "prose": "The incident response capability is tested and exercised on a defined schedule"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IR-7",
+      "title": "Personnel receive incident response training appropriate to their role",
+      "props": [
+       {
+        "name": "label",
+        "value": "IR-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IR-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IR-7_stmt",
+        "name": "statement",
+        "prose": "Personnel receive incident response training appropriate to their role"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IR-8",
+      "title": "Lessons learned from incidents are used to update controls and the incident response plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "IR-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IR-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IR-8_stmt",
+        "name": "statement",
+        "prose": "Lessons learned from incidents are used to update controls and the incident response plan"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.incident_response-1",
+      "title": "CJIS [Incident Response] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.incident_response#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.incident_response#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.incident_response-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Incident Response] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-information_exchange",
+    "class": "rego-module",
+    "title": "FBI CJIS Security Policy — Policy Area 1: Information Exchange Agreements",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.information_exchange"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/information_exchange.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-IEA-1",
+      "title": "A signed information exchange agreement governs sharing of CJI between agencies",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEA-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEA-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.information_exchange"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IEA-1_stmt",
+        "name": "statement",
+        "prose": "A signed information exchange agreement governs sharing of CJI between agencies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IEA-2",
+      "title": "A management control agreement is in place where another agency administers CJI systems on the agency's behalf",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEA-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEA-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.information_exchange"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IEA-2_stmt",
+        "name": "statement",
+        "prose": "A management control agreement is in place where another agency administers CJI systems on the agency's behalf"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IEA-3",
+      "title": "A signed CJIS Security Addendum covers every private contractor with access to CJI",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEA-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEA-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.information_exchange"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IEA-3_stmt",
+        "name": "statement",
+        "prose": "A signed CJIS Security Addendum covers every private contractor with access to CJI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IEA-4",
+      "title": "Inter-agency and information exchange agreements define roles, responsibilities, and security controls in writing",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEA-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEA-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.information_exchange"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IEA-4_stmt",
+        "name": "statement",
+        "prose": "Inter-agency and information exchange agreements define roles, responsibilities, and security controls in writing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IEA-5",
+      "title": "Secondary dissemination of CJI is authorized and recorded",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEA-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEA-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.information_exchange"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IEA-5_stmt",
+        "name": "statement",
+        "prose": "Secondary dissemination of CJI is authorized and recorded"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IEA-6",
+      "title": "Agreements require CJI to be handled, stored, and destroyed in accordance with the CJIS Security Policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEA-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEA-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.information_exchange"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IEA-6_stmt",
+        "name": "statement",
+        "prose": "Agreements require CJI to be handled, stored, and destroyed in accordance with the CJIS Security Policy"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-IEA-7",
+      "title": "Agreements are reviewed and current, with a designated point of contact for each party",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEA-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEA-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.information_exchange"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-IEA-7_stmt",
+        "name": "statement",
+        "prose": "Agreements are reviewed and current, with a designated point of contact for each party"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.information_exchange-1",
+      "title": "CJIS [Information Exchange Agreements] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.information_exchange#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.information_exchange#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.information_exchange"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.information_exchange-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Information Exchange Agreements] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-media_protection",
+    "class": "rego-module",
+    "title": "FBI CJIS Security Policy — Policy Area 8: Media Protection",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.media_protection"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/media_protection.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-MP-1",
+      "title": "Access to digital and physical media containing CJI is restricted to authorized users",
+      "props": [
+       {
+        "name": "label",
+        "value": "MP-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MP-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MP-1_stmt",
+        "name": "statement",
+        "prose": "Access to digital and physical media containing CJI is restricted to authorized users"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MP-2",
+      "title": "Digital and physical media containing CJI is securely stored within physically secure or controlled areas",
+      "props": [
+       {
+        "name": "label",
+        "value": "MP-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MP-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MP-2_stmt",
+        "name": "statement",
+        "prose": "Digital and physical media containing CJI is securely stored within physically secure or controlled areas"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MP-3",
+      "title": "CJI is encrypted while at rest on digital media and while in transit outside physically secure locations",
+      "props": [
+       {
+        "name": "label",
+        "value": "MP-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MP-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MP-3_stmt",
+        "name": "statement",
+        "prose": "CJI is encrypted while at rest on digital media and while in transit outside physically secure locations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MP-4",
+      "title": "Media containing CJI is protected and controlled during transport outside of controlled areas, with accountability maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "MP-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MP-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MP-4_stmt",
+        "name": "statement",
+        "prose": "Media containing CJI is protected and controlled during transport outside of controlled areas, with accountability maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MP-5",
+      "title": "Digital media is sanitized or destroyed using approved methods before disposal or reuse",
+      "props": [
+       {
+        "name": "label",
+        "value": "MP-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MP-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MP-5_stmt",
+        "name": "statement",
+        "prose": "Digital media is sanitized or destroyed using approved methods before disposal or reuse"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MP-6",
+      "title": "Physical media containing CJI is destroyed by shredding, incineration, or another approved method when no longer needed",
+      "props": [
+       {
+        "name": "label",
+        "value": "MP-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MP-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MP-6_stmt",
+        "name": "statement",
+        "prose": "Physical media containing CJI is destroyed by shredding, incineration, or another approved method when no longer needed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MP-7",
+      "title": "Sanitization and destruction of media containing CJI is witnessed or carried out by authorized personnel and documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "MP-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MP-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MP-7_stmt",
+        "name": "statement",
+        "prose": "Sanitization and destruction of media containing CJI is witnessed or carried out by authorized personnel and documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.media_protection-1",
+      "title": "CJIS [Media Protection] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.media_protection#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.media_protection#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.media_protection-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Media Protection] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-mobile_devices",
+    "class": "rego-module",
+    "title": "FBI CJIS Security Policy — Policy Area 13: Mobile Devices",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.mobile_devices"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/mobile_devices.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-MD-1",
+      "title": "Mobile devices that access, process, or store CJI are enrolled in centralized mobile device management (MDM)",
+      "props": [
+       {
+        "name": "label",
+        "value": "MD-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MD-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.mobile_devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MD-1_stmt",
+        "name": "statement",
+        "prose": "Mobile devices that access, process, or store CJI are enrolled in centralized mobile device management (MDM)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MD-2",
+      "title": "Data at rest and CJI on mobile devices is protected with FIPS 140-validated encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "MD-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MD-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.mobile_devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MD-2_stmt",
+        "name": "statement",
+        "prose": "Data at rest and CJI on mobile devices is protected with FIPS 140-validated encryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MD-3",
+      "title": "Lost or stolen mobile devices can be remotely locked and remotely wiped of CJI",
+      "props": [
+       {
+        "name": "label",
+        "value": "MD-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MD-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.mobile_devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MD-3_stmt",
+        "name": "statement",
+        "prose": "Lost or stolen mobile devices can be remotely locked and remotely wiped of CJI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MD-4",
+      "title": "Wireless connectivity (cellular, Wi-Fi, Bluetooth) is secured and unapproved interfaces are disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "MD-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MD-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.mobile_devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MD-4_stmt",
+        "name": "statement",
+        "prose": "Wireless connectivity (cellular, Wi-Fi, Bluetooth) is secured and unapproved interfaces are disabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MD-5",
+      "title": "Mobile devices enforce authentication, session lock, and automatic device lock after inactivity",
+      "props": [
+       {
+        "name": "label",
+        "value": "MD-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MD-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.mobile_devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MD-5_stmt",
+        "name": "statement",
+        "prose": "Mobile devices enforce authentication, session lock, and automatic device lock after inactivity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MD-6",
+      "title": "Compensating controls are applied to limited-feature (pocket/handheld) and tablet devices that cannot meet full requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "MD-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MD-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.mobile_devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MD-6_stmt",
+        "name": "statement",
+        "prose": "Compensating controls are applied to limited-feature (pocket/handheld) and tablet devices that cannot meet full requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MD-7",
+      "title": "Mobile devices are patched and run only approved, malware-protected applications",
+      "props": [
+       {
+        "name": "label",
+        "value": "MD-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MD-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.mobile_devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MD-7_stmt",
+        "name": "statement",
+        "prose": "Mobile devices are patched and run only approved, malware-protected applications"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-MD-8",
+      "title": "Personally owned (BYOD) devices accessing CJI are governed by policy and technical controls before access is granted",
+      "props": [
+       {
+        "name": "label",
+        "value": "MD-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MD-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.mobile_devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-MD-8_stmt",
+        "name": "statement",
+        "prose": "Personally owned (BYOD) devices accessing CJI are governed by policy and technical controls before access is granted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.mobile_devices-1",
+      "title": "CJIS [Mobile Devices] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.mobile_devices#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.mobile_devices#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.mobile_devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.mobile_devices-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Mobile Devices] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-personnel_security",
+    "class": "rego-module",
+    "title": "FBI CJIS Security Policy — Policy Area 12: Personnel Security",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.personnel_security"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/personnel_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-PS-1",
+      "title": "A state of residency and national fingerprint-based background check is completed before authorizing access to CJI",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PS-1_stmt",
+        "name": "statement",
+        "prose": "A state of residency and national fingerprint-based background check is completed before authorizing access to CJI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PS-2",
+      "title": "Access to CJI is not granted until the background check adjudication is favorably resolved",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PS-2_stmt",
+        "name": "statement",
+        "prose": "Access to CJI is not granted until the background check adjudication is favorably resolved"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PS-3",
+      "title": "Personnel with access to CJI are re-investigated on a defined periodic basis",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PS-3_stmt",
+        "name": "statement",
+        "prose": "Personnel with access to CJI are re-investigated on a defined periodic basis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PS-4",
+      "title": "Contractors, vendors, and third-party personnel are screened to the same personnel security standard before CJI access",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PS-4_stmt",
+        "name": "statement",
+        "prose": "Contractors, vendors, and third-party personnel are screened to the same personnel security standard before CJI access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PS-5",
+      "title": "Access authorizations are revoked immediately upon termination of employment or contract",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PS-5_stmt",
+        "name": "statement",
+        "prose": "Access authorizations are revoked immediately upon termination of employment or contract"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PS-6",
+      "title": "Access authorizations are reviewed and adjusted upon personnel transfer or reassignment",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PS-6_stmt",
+        "name": "statement",
+        "prose": "Access authorizations are reviewed and adjusted upon personnel transfer or reassignment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PS-7",
+      "title": "A documented process governs personnel security incidents, sanctions, and disqualifying criteria",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PS-7_stmt",
+        "name": "statement",
+        "prose": "A documented process governs personnel security incidents, sanctions, and disqualifying criteria"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PS-8",
+      "title": "Personnel with access to unescorted CJI are subject to state and agency support-personnel screening requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PS-8_stmt",
+        "name": "statement",
+        "prose": "Personnel with access to unescorted CJI are subject to state and agency support-personnel screening requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.personnel_security-1",
+      "title": "CJIS [Personnel Security] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.personnel_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.personnel_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.personnel_security-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Personnel Security] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-physical_protection",
+    "class": "rego-module",
+    "title": "FBI CJIS Security Policy — Policy Area 9: Physical Protection",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.physical_protection"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/physical_protection.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-PP-1",
+      "title": "A physically secure location is established and documented for the storage, processing, and access of CJI",
+      "props": [
+       {
+        "name": "label",
+        "value": "PP-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PP-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PP-1_stmt",
+        "name": "statement",
+        "prose": "A physically secure location is established and documented for the storage, processing, and access of CJI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PP-2",
+      "title": "Physical access authorizations to the CJI area are issued, maintained, and reviewed for authorized personnel only",
+      "props": [
+       {
+        "name": "label",
+        "value": "PP-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PP-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PP-2_stmt",
+        "name": "statement",
+        "prose": "Physical access authorizations to the CJI area are issued, maintained, and reviewed for authorized personnel only"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PP-3",
+      "title": "Physical access to the secure area is controlled and enforced at entry points to prevent unauthorized entry",
+      "props": [
+       {
+        "name": "label",
+        "value": "PP-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PP-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PP-3_stmt",
+        "name": "statement",
+        "prose": "Physical access to the secure area is controlled and enforced at entry points to prevent unauthorized entry"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PP-4",
+      "title": "Visitors to the physically secure area are identified, authorized, escorted, and monitored at all times",
+      "props": [
+       {
+        "name": "label",
+        "value": "PP-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PP-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PP-4_stmt",
+        "name": "statement",
+        "prose": "Visitors to the physically secure area are identified, authorized, escorted, and monitored at all times"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PP-5",
+      "title": "A visitor access record for the secure area is maintained and retained for the required period",
+      "props": [
+       {
+        "name": "label",
+        "value": "PP-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PP-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PP-5_stmt",
+        "name": "statement",
+        "prose": "A visitor access record for the secure area is maintained and retained for the required period"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PP-6",
+      "title": "Physical access devices (keys, badges, combinations) are inventoried, controlled, and changed when personnel change or devices are lost",
+      "props": [
+       {
+        "name": "label",
+        "value": "PP-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PP-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PP-6_stmt",
+        "name": "statement",
+        "prose": "Physical access devices (keys, badges, combinations) are inventoried, controlled, and changed when personnel change or devices are lost"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-PP-7",
+      "title": "Information system distribution and transmission lines within the secure area are protected from interception and damage",
+      "props": [
+       {
+        "name": "label",
+        "value": "PP-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PP-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-PP-7_stmt",
+        "name": "statement",
+        "prose": "Information system distribution and transmission lines within the secure area are protected from interception and damage"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.physical_protection-1",
+      "title": "CJIS [Physical Protection] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.physical_protection#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.physical_protection#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.physical_protection-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Physical Protection] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-security_awareness_training",
+    "class": "rego-module",
+    "title": "FBI CJIS Security Policy — Policy Area 2: Security Awareness Training",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.security_awareness_training"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/security_awareness_training.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-SAT-1",
+      "title": "Security awareness training is completed within six months of assignment for all personnel with access to CJI",
+      "props": [
+       {
+        "name": "label",
+        "value": "SAT-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SAT-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.security_awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SAT-1_stmt",
+        "name": "statement",
+        "prose": "Security awareness training is completed within six months of assignment for all personnel with access to CJI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SAT-2",
+      "title": "Security awareness training is repeated at least once every two years (biennially)",
+      "props": [
+       {
+        "name": "label",
+        "value": "SAT-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SAT-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.security_awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SAT-2_stmt",
+        "name": "statement",
+        "prose": "Security awareness training is repeated at least once every two years (biennially)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SAT-3",
+      "title": "Role-based training content matches each individual's level of access to CJI and information systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "SAT-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SAT-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.security_awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SAT-3_stmt",
+        "name": "statement",
+        "prose": "Role-based training content matches each individual's level of access to CJI and information systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SAT-4",
+      "title": "Training covers proper handling, storage, dissemination, and protection of CJI",
+      "props": [
+       {
+        "name": "label",
+        "value": "SAT-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SAT-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.security_awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SAT-4_stmt",
+        "name": "statement",
+        "prose": "Training covers proper handling, storage, dissemination, and protection of CJI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SAT-5",
+      "title": "Training records are maintained and auditable for each individual",
+      "props": [
+       {
+        "name": "label",
+        "value": "SAT-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SAT-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.security_awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SAT-5_stmt",
+        "name": "statement",
+        "prose": "Training records are maintained and auditable for each individual"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SAT-6",
+      "title": "Personnel with physical or logical access to CJI, including IT and contractor staff, are covered by the training program",
+      "props": [
+       {
+        "name": "label",
+        "value": "SAT-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SAT-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.security_awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SAT-6_stmt",
+        "name": "statement",
+        "prose": "Personnel with physical or logical access to CJI, including IT and contractor staff, are covered by the training program"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SAT-7",
+      "title": "Training addresses incident reporting responsibilities and recognition of security threats such as social engineering",
+      "props": [
+       {
+        "name": "label",
+        "value": "SAT-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SAT-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.security_awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SAT-7_stmt",
+        "name": "statement",
+        "prose": "Training addresses incident reporting responsibilities and recognition of security threats such as social engineering"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.security_awareness_training-1",
+      "title": "CJIS [Security Awareness Training] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.security_awareness_training#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.security_awareness_training#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.security_awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.security_awareness_training-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Security Awareness Training] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cjis-systems_communications_protection",
+    "class": "rego-module",
+    "title": "cjis / systems communications protection",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cjis.systems_communications_protection"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cjis/systems_communications_protection.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cjis-SC-1",
+      "title": "CJI in transit is encrypted with FIPS 140-2/140-3 validated cryptography (minimum 128-bit)",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-1_stmt",
+        "name": "statement",
+        "prose": "CJI in transit is encrypted with FIPS 140-2/140-3 validated cryptography (minimum 128-bit)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-2",
+      "title": "CJI at rest is encrypted with FIPS 140-2/140-3 validated cryptography when stored outside a physically secure location",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-2_stmt",
+        "name": "statement",
+        "prose": "CJI at rest is encrypted with FIPS 140-2/140-3 validated cryptography when stored outside a physically secure location"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-3",
+      "title": "Boundary protection is enforced (firewall between the CJI network and untrusted networks)",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-3_stmt",
+        "name": "statement",
+        "prose": "Boundary protection is enforced (firewall between the CJI network and untrusted networks)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-4",
+      "title": "The network is segmented so that CJI systems are isolated (VLAN/subnet separation) from non-criminal-justice systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-4_stmt",
+        "name": "statement",
+        "prose": "The network is segmented so that CJI systems are isolated (VLAN/subnet separation) from non-criminal-justice systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-5",
+      "title": "Malicious code protection (antivirus/anti-malware) is deployed and signatures are kept current",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-5_stmt",
+        "name": "statement",
+        "prose": "Malicious code protection (antivirus/anti-malware) is deployed and signatures are kept current"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-6",
+      "title": "Spam and spyware protection is deployed at gateways and workstations",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-6_stmt",
+        "name": "statement",
+        "prose": "Spam and spyware protection is deployed at gateways and workstations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-7",
+      "title": "A personal firewall is enabled on mobile/remote devices that access CJI outside the agency network",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-7_stmt",
+        "name": "statement",
+        "prose": "A personal firewall is enabled on mobile/remote devices that access CJI outside the agency network"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-8",
+      "title": "Security patches and critical updates are applied in a timely, documented manner (patch management)",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-8_stmt",
+        "name": "statement",
+        "prose": "Security patches and critical updates are applied in a timely, documented manner (patch management)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-9",
+      "title": "Intrusion detection/prevention capability monitors the CJI environment for malicious activity",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-9_stmt",
+        "name": "statement",
+        "prose": "Intrusion detection/prevention capability monitors the CJI environment for malicious activity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-10",
+      "title": "Information integrity: system and information flaws are identified, reported, and corrected",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-10_stmt",
+        "name": "statement",
+        "prose": "Information integrity: system and information flaws are identified, reported, and corrected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-11",
+      "title": "Voice over Internet Protocol (VoIP) transmitting CJI is protected consistent with encryption requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-11_stmt",
+        "name": "statement",
+        "prose": "Voice over Internet Protocol (VoIP) transmitting CJI is protected consistent with encryption requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-12",
+      "title": "Cloud services storing or transmitting CJI meet CJIS encryption and boundary-protection requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-12_stmt",
+        "name": "statement",
+        "prose": "Cloud services storing or transmitting CJI meet CJIS encryption and boundary-protection requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-cjis.systems_communications_protection-1",
+      "title": "CJIS [Systems and Communications Protection and Information Integrity] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.systems_communications_protection#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.systems_communications_protection#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.systems_communications_protection-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Systems and Communications Protection and Information Integrity] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "61829787-36f1-567c-8b81-cca5d49d6be5",
+     "title": "cjis / access control",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.access_control"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/access_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+     "title": "cjis / auditing accountability",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.auditing_accountability"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/auditing_accountability.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+     "title": "FBI CJIS Security Policy — Policy Area 7: Configuration Management",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.configuration_management"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/configuration_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "19e7156e-274d-5373-9524-ebc1120cd95f",
+     "title": "cjis / formal audits",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.formal_audits"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/formal_audits.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+     "title": "cjis / identification authentication",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.identification_authentication"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/identification_authentication.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+     "title": "FBI CJIS Security Policy — Policy Area 3: Incident Response",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.incident_response"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/incident_response.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d68d7df7-505d-563e-8d14-3fe146aaaeef",
+     "title": "FBI CJIS Security Policy — Policy Area 1: Information Exchange Agreements",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.information_exchange"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/information_exchange.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d32b84f3-4a31-579a-9aa9-f641612df745",
+     "title": "FBI CJIS Security Policy — Policy Area 8: Media Protection",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.media_protection"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/media_protection.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "dc981ef4-7d50-5fb4-904a-3844bf595871",
+     "title": "FBI CJIS Security Policy — Policy Area 13: Mobile Devices",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.mobile_devices"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/mobile_devices.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+     "title": "FBI CJIS Security Policy — Policy Area 12: Personnel Security",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.personnel_security"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/personnel_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "17d231cc-bb18-5018-b3c4-caffda308056",
+     "title": "FBI CJIS Security Policy — Policy Area 9: Physical Protection",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.physical_protection"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/physical_protection.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "835619ec-f324-5281-8219-818f8e1b17ef",
+     "title": "FBI CJIS Security Policy — Policy Area 2: Security Awareness Training",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.security_awareness_training"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/security_awareness_training.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "7649065b-7304-5904-9de1-20c4eb6f110a",
+     "title": "cjis / systems communications protection",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cjis.systems_communications_protection"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/systems_communications_protection.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,1095 @@
+{
+ "catalog": {
+  "uuid": "bd3c1d40-2b13-5a14-8e9a-59f13eb92402",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_network_devices (CIS Arista EOS Benchmark v1.2.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_network_devices"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_network_devices-cis_arista_eos",
+    "class": "rego-module",
+    "title": "CIS Arista EOS Benchmark v1.2.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_arista_eos"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/network_devices/arista/cis_arista_eos.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_network_devices-sections",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "sections"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sections"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a560b70c-0b5a-5a46-ba4b-03aa6eb22531",
+        "rel": "implementation"
+       },
+       {
+        "href": "#49d7b842-66e0-56eb-b346-bbeb7d4c4482",
+        "rel": "implementation"
+       },
+       {
+        "href": "#b0e836f5-a528-541c-8442-43b1ee8a1d8a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#39077d0b-b814-59bb-90c1-1156492c9fd4",
+        "rel": "implementation"
+       },
+       {
+        "href": "#61b580d2-16f5-5d45-b220-996edf833673",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-sections_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-sections_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-sections_obj.2",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-sections_obj.3",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego (package cis_juniper_junos); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-sections_obj.4",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-management_plane",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "management_plane"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "management_plane"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a560b70c-0b5a-5a46-ba4b-03aa6eb22531",
+        "rel": "implementation"
+       },
+       {
+        "href": "#49d7b842-66e0-56eb-b346-bbeb7d4c4482",
+        "rel": "implementation"
+       },
+       {
+        "href": "#39077d0b-b814-59bb-90c1-1156492c9fd4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-management_plane_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-management_plane_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-management_plane_obj.2",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego (package cis_juniper_junos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-control_plane",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "control_plane"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "control_plane"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a560b70c-0b5a-5a46-ba4b-03aa6eb22531",
+        "rel": "implementation"
+       },
+       {
+        "href": "#49d7b842-66e0-56eb-b346-bbeb7d4c4482",
+        "rel": "implementation"
+       },
+       {
+        "href": "#39077d0b-b814-59bb-90c1-1156492c9fd4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-control_plane_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-control_plane_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-control_plane_obj.2",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego (package cis_juniper_junos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-data_plane",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "data_plane"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "data_plane"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a560b70c-0b5a-5a46-ba4b-03aa6eb22531",
+        "rel": "implementation"
+       },
+       {
+        "href": "#49d7b842-66e0-56eb-b346-bbeb7d4c4482",
+        "rel": "implementation"
+       },
+       {
+        "href": "#39077d0b-b814-59bb-90c1-1156492c9fd4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-data_plane_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-data_plane_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-data_plane_obj.2",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego (package cis_juniper_junos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-logging",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "logging"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "logging"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a560b70c-0b5a-5a46-ba4b-03aa6eb22531",
+        "rel": "implementation"
+       },
+       {
+        "href": "#b0e836f5-a528-541c-8442-43b1ee8a1d8a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#61b580d2-16f5-5d45-b220-996edf833673",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-logging_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-logging_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-logging_obj.2",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_network_devices-cis_fortinet_fortigate",
+    "class": "rego-module",
+    "title": "CIS Fortinet FortiGate Benchmark v1.3.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_fortinet_fortigate"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_network_devices-system_settings",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "system_settings"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "system_settings"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b0e836f5-a528-541c-8442-43b1ee8a1d8a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-system_settings_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-administration",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "administration"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "administration"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b0e836f5-a528-541c-8442-43b1ee8a1d8a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-administration_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-network",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "network"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "network"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b0e836f5-a528-541c-8442-43b1ee8a1d8a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-network_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-firewall",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "firewall"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "firewall"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b0e836f5-a528-541c-8442-43b1ee8a1d8a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-firewall_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-vpn",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "vpn"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "vpn"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b0e836f5-a528-541c-8442-43b1ee8a1d8a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-vpn_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-wireless",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "wireless"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "wireless"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b0e836f5-a528-541c-8442-43b1ee8a1d8a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-wireless_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-security_fabric",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "security_fabric"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "security_fabric"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b0e836f5-a528-541c-8442-43b1ee8a1d8a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-security_fabric_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_network_devices-cis_palo_alto_panos",
+    "class": "rego-module",
+    "title": "CIS Palo Alto PAN-OS Benchmark v1.2.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_palo_alto_panos"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_network_devices-management_interface",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "management_interface"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "management_interface"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61b580d2-16f5-5d45-b220-996edf833673",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-management_interface_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-authentication",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "authentication"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "authentication"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61b580d2-16f5-5d45-b220-996edf833673",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-authentication_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-admin_access",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "admin_access"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "admin_access"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61b580d2-16f5-5d45-b220-996edf833673",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-admin_access_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-security_services",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "security_services"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "security_services"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61b580d2-16f5-5d45-b220-996edf833673",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-security_services_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-network_security",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "network_security"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "network_security"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61b580d2-16f5-5d45-b220-996edf833673",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-network_security_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-device_management",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "device_management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "device_management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61b580d2-16f5-5d45-b220-996edf833673",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-device_management_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_network_devices-cis_pfsense",
+    "class": "rego-module",
+    "title": "CIS pfSense / OPNsense Firewall Hardening Benchmark v1.0.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_pfsense"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/network_devices/pfsense/cis_pfsense.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_network_devices-summary",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d676b9f2-71bf-588f-822d-7a2b01375913",
+        "rel": "implementation"
+       },
+       {
+        "href": "#8d23914e-4aa4-5229-9e25-3b0d8d51eace",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-summary_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/vyos/cis_vyos.rego (package cis_vyos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-section_compliance",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_compliance"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_compliance"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d676b9f2-71bf-588f-822d-7a2b01375913",
+        "rel": "implementation"
+       },
+       {
+        "href": "#8d23914e-4aa4-5229-9e25-3b0d8d51eace",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-section_compliance_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-section_compliance_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/vyos/cis_vyos.rego (package cis_vyos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-device_info",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "device_info"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "device_info"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d676b9f2-71bf-588f-822d-7a2b01375913",
+        "rel": "implementation"
+       },
+       {
+        "href": "#8d23914e-4aa4-5229-9e25-3b0d8d51eace",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-device_info_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-device_info_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/vyos/cis_vyos.rego (package cis_vyos); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "a560b70c-0b5a-5a46-ba4b-03aa6eb22531",
+     "title": "CIS Arista EOS Benchmark v1.2.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_arista_eos"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/network_devices/arista/cis_arista_eos.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "49d7b842-66e0-56eb-b346-bbeb7d4c4482",
+     "title": "CIS Cisco IOS Benchmark v4.1.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_cisco_ios"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b0e836f5-a528-541c-8442-43b1ee8a1d8a",
+     "title": "CIS Fortinet FortiGate Benchmark v1.3.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_fortinet_fortigate"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "39077d0b-b814-59bb-90c1-1156492c9fd4",
+     "title": "CIS Juniper JunOS Benchmark v2.1.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_juniper_junos"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "61b580d2-16f5-5d45-b220-996edf833673",
+     "title": "CIS Palo Alto PAN-OS Benchmark v1.2.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_palo_alto_panos"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d676b9f2-71bf-588f-822d-7a2b01375913",
+     "title": "CIS pfSense / OPNsense Firewall Hardening Benchmark v1.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_pfsense"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/network_devices/pfsense/cis_pfsense.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8d23914e-4aa4-5229-9e25-3b0d8d51eace",
+     "title": "CIS VyOS Router Hardening Benchmark v1.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_vyos"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/network_devices/vyos/cis_vyos.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

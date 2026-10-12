@@ -1,0 +1,1941 @@
+{
+ "catalog": {
+  "uuid": "f3d3a376-094a-5422-92b2-dba5a3f09121",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_aks (CIS Azure AKS (Azure Kubernetes Service) Benchmark v1.8.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_aks"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_aks-cis_aks_validation",
+    "class": "rego-module",
+    "title": "CIS Azure AKS (Azure Kubernetes Service) Benchmark v1.8.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_aks.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/aks/cis_aks_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_aks-CIS-AKS-2.1.1",
+      "title": "Control plane audit logging is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-2.1.1_stmt",
+        "name": "statement",
+        "prose": "Control plane audit logging is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.1.1",
+      "title": "kubeconfig file permissions are more permissive than 644",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.1.1_stmt",
+        "name": "statement",
+        "prose": "kubeconfig file permissions are more permissive than 644"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.1.2",
+      "title": "kubelet kubeconfig file is not owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.1.2_stmt",
+        "name": "statement",
+        "prose": "kubelet kubeconfig file is not owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.1.3",
+      "title": "kubelet configuration file permissions are more permissive than 644",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.1.3_stmt",
+        "name": "statement",
+        "prose": "kubelet configuration file permissions are more permissive than 644"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.1.4",
+      "title": "kubelet configuration file is not owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.1.4_stmt",
+        "name": "statement",
+        "prose": "kubelet configuration file is not owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.2.1",
+      "title": "Kubelet --anonymous-auth is not set to false",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.2.1_stmt",
+        "name": "statement",
+        "prose": "Kubelet --anonymous-auth is not set to false"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.2.2",
+      "title": "Kubelet --authorization-mode allows all requests (AlwaysAllow)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.2.2_stmt",
+        "name": "statement",
+        "prose": "Kubelet --authorization-mode allows all requests (AlwaysAllow)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.2.3",
+      "title": "Kubelet --client-ca-file is not set",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.2.3_stmt",
+        "name": "statement",
+        "prose": "Kubelet --client-ca-file is not set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.2.4",
+      "title": "Kubelet read-only port is not secured (disabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.2.4_stmt",
+        "name": "statement",
+        "prose": "Kubelet read-only port is not secured (disabled)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.2.5",
+      "title": "Kubelet --streaming-connection-idle-timeout is set to 0 (disabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.2.5_stmt",
+        "name": "statement",
+        "prose": "Kubelet --streaming-connection-idle-timeout is set to 0 (disabled)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.2.6",
+      "title": "Kubelet --protect-kernel-defaults is not set to true",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.2.6_stmt",
+        "name": "statement",
+        "prose": "Kubelet --protect-kernel-defaults is not set to true"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.2.7",
+      "title": "Kubelet --make-iptables-util-chains is not set to true",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.2.7_stmt",
+        "name": "statement",
+        "prose": "Kubelet --make-iptables-util-chains is not set to true"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.2.8",
+      "title": "Kubelet --hostname-override is set, breaking node identity verification",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.2.8_stmt",
+        "name": "statement",
+        "prose": "Kubelet --hostname-override is set, breaking node identity verification"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.2.9",
+      "title": "Kubelet --eventRecordQPS is not set to an appropriate event capture level",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.2.9_stmt",
+        "name": "statement",
+        "prose": "Kubelet --eventRecordQPS is not set to an appropriate event capture level"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.2.10",
+      "title": "Kubelet client certificate rotation is disabled (--rotate-certificates false)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.2.10_stmt",
+        "name": "statement",
+        "prose": "Kubelet client certificate rotation is disabled (--rotate-certificates false)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-3.2.11",
+      "title": "Kubelet RotateKubeletServerCertificate is not set to true",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 3.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 3.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-3.2.11_stmt",
+        "name": "statement",
+        "prose": "Kubelet RotateKubeletServerCertificate is not set to true"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.1.1",
+      "title": "cluster-admin role is bound beyond where it is required",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.1.1_stmt",
+        "name": "statement",
+        "prose": "cluster-admin role is bound beyond where it is required"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.1.2",
+      "title": "Access to secrets is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.1.2_stmt",
+        "name": "statement",
+        "prose": "Access to secrets is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.1.3",
+      "title": "Wildcards are used in Roles or ClusterRoles",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.1.3_stmt",
+        "name": "statement",
+        "prose": "Wildcards are used in Roles or ClusterRoles"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.1.4",
+      "title": "Access to create pods is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.1.4_stmt",
+        "name": "statement",
+        "prose": "Access to create pods is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.1.5",
+      "title": "Default service accounts are actively used",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.1.5_stmt",
+        "name": "statement",
+        "prose": "Default service accounts are actively used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.1.6",
+      "title": "Service account tokens are mounted in pods that do not need them",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.1.6_stmt",
+        "name": "statement",
+        "prose": "Service account tokens are mounted in pods that do not need them"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.1.9",
+      "title": "Access to the proxy sub-resource of nodes is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.1.9_stmt",
+        "name": "statement",
+        "prose": "Access to the proxy sub-resource of nodes is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.1.10",
+      "title": "Access to the approval sub-resource of certificatesigningrequests is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.1.10_stmt",
+        "name": "statement",
+        "prose": "Access to the approval sub-resource of certificatesigningrequests is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.1.11",
+      "title": "Access to webhook configuration objects is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.1.11_stmt",
+        "name": "statement",
+        "prose": "Access to webhook configuration objects is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.1.12",
+      "title": "Access to service account token creation is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.1.12_stmt",
+        "name": "statement",
+        "prose": "Access to service account token creation is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.2.1",
+      "title": "Admission of privileged containers is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.2.1_stmt",
+        "name": "statement",
+        "prose": "Admission of privileged containers is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.2.2",
+      "title": "Admission of containers sharing the host PID namespace is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.2.2_stmt",
+        "name": "statement",
+        "prose": "Admission of containers sharing the host PID namespace is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.2.3",
+      "title": "Admission of containers sharing the host IPC namespace is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.2.3_stmt",
+        "name": "statement",
+        "prose": "Admission of containers sharing the host IPC namespace is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.2.4",
+      "title": "Admission of containers sharing the host network namespace is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.2.4_stmt",
+        "name": "statement",
+        "prose": "Admission of containers sharing the host network namespace is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.2.5",
+      "title": "Admission of containers with allowPrivilegeEscalation is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.2.5_stmt",
+        "name": "statement",
+        "prose": "Admission of containers with allowPrivilegeEscalation is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.2.6",
+      "title": "Admission of root containers is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.2.6_stmt",
+        "name": "statement",
+        "prose": "Admission of root containers is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.2.7",
+      "title": "Admission of containers with added capabilities is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.2.7_stmt",
+        "name": "statement",
+        "prose": "Admission of containers with added capabilities is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.2.8",
+      "title": "Admission of containers with capabilities assigned is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.2.8_stmt",
+        "name": "statement",
+        "prose": "Admission of containers with capabilities assigned is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.4.1",
+      "title": "The latest CNI version is not in use",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.4.1_stmt",
+        "name": "statement",
+        "prose": "The latest CNI version is not in use"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.4.2",
+      "title": "One or more namespaces have no NetworkPolicy defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.4.2_stmt",
+        "name": "statement",
+        "prose": "One or more namespaces have no NetworkPolicy defined"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.5.1",
+      "title": "Secrets are exposed as environment variables rather than mounted as files",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.5.1_stmt",
+        "name": "statement",
+        "prose": "Secrets are exposed as environment variables rather than mounted as files"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.5.2",
+      "title": "External secret storage has not been evaluated or adopted",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.5.2_stmt",
+        "name": "statement",
+        "prose": "External secret storage has not been evaluated or adopted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.7.1",
+      "title": "Namespaces are not used to create administrative boundaries between resources",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.7.1_stmt",
+        "name": "statement",
+        "prose": "Namespaces are not used to create administrative boundaries between resources"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.7.2",
+      "title": "Security Context is not applied to pods and containers",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.7.2_stmt",
+        "name": "statement",
+        "prose": "Security Context is not applied to pods and containers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-4.7.3",
+      "title": "Workloads are deployed in the default namespace",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 4.7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 4.7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-4.7.3_stmt",
+        "name": "statement",
+        "prose": "Workloads are deployed in the default namespace"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.1.1",
+      "title": "Image vulnerability scanning (Microsoft Defender for Cloud or third party) is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.1.1_stmt",
+        "name": "statement",
+        "prose": "Image vulnerability scanning (Microsoft Defender for Cloud or third party) is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.1.2",
+      "title": "Cluster access to Azure Container Registry is not limited to read-only",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.1.2_stmt",
+        "name": "statement",
+        "prose": "Cluster access to Azure Container Registry is not limited to read-only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.1.3",
+      "title": "User access to Azure Container Registry is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.1.3_stmt",
+        "name": "statement",
+        "prose": "User access to Azure Container Registry is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.1.4",
+      "title": "Container image registries are not limited to an approved set",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.1.4_stmt",
+        "name": "statement",
+        "prose": "Container image registries are not limited to an approved set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.2.1",
+      "title": "Dedicated AKS service accounts (workload identity) are not used for workloads needing Azure access",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.2.1_stmt",
+        "name": "statement",
+        "prose": "Dedicated AKS service accounts (workload identity) are not used for workloads needing Azure access"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.2.2",
+      "title": "Azure RBAC for Kubernetes Authorization is not in use",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.2.2_stmt",
+        "name": "statement",
+        "prose": "Azure RBAC for Kubernetes Authorization is not in use"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.3.1",
+      "title": "Kubernetes secrets are not encrypted with a customer-managed key",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.3.1_stmt",
+        "name": "statement",
+        "prose": "Kubernetes secrets are not encrypted with a customer-managed key"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.4.1",
+      "title": "Access to the control plane endpoint is not restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.4.1_stmt",
+        "name": "statement",
+        "prose": "Access to the control plane endpoint is not restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.4.2",
+      "title": "Private endpoint is not enabled with public access disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.4.2_stmt",
+        "name": "statement",
+        "prose": "Private endpoint is not enabled with public access disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.4.3",
+      "title": "Cluster nodes are not private (nodes have public reachability)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.4.3_stmt",
+        "name": "statement",
+        "prose": "Cluster nodes are not private (nodes have public reachability)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.4.4",
+      "title": "Network Policy is not enabled for the cluster",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.4.4_stmt",
+        "name": "statement",
+        "prose": "Network Policy is not enabled for the cluster"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.4.5",
+      "title": "Load balancer traffic is not TLS-encrypted end to end",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.4.5_stmt",
+        "name": "statement",
+        "prose": "Load balancer traffic is not TLS-encrypted end to end"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.5.1",
+      "title": "Kubernetes RBAC users are not managed with Azure AD (Microsoft Entra ID)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.5.1_stmt",
+        "name": "statement",
+        "prose": "Kubernetes RBAC users are not managed with Azure AD (Microsoft Entra ID)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.6.1",
+      "title": "Untrusted workloads are not restricted (no sandboxing/isolation in place)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.6.1_stmt",
+        "name": "statement",
+        "prose": "Untrusted workloads are not restricted (no sandboxing/isolation in place)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aks-CIS-AKS-5.6.2",
+      "title": "Hostile multi-tenant workloads are not isolated (no dedicated clusters/hard isolation)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS AKS 5.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS AKS 5.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b8621d7-2d68-5732-b612-95d3a2800944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aks-CIS-AKS-5.6.2_stmt",
+        "name": "statement",
+        "prose": "Hostile multi-tenant workloads are not isolated (no dedicated clusters/hard isolation)"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "7b8621d7-2d68-5732-b612-95d3a2800944",
+     "title": "CIS Azure AKS (Azure Kubernetes Service) Benchmark v1.8.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_aks.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/aks/cis_aks_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

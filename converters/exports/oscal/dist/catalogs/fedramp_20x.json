@@ -1,0 +1,2461 @@
+{
+ "catalog": {
+  "uuid": "2c0aa0b7-d667-5ee3-838c-dcb7c8dcf15a",
+  "metadata": {
+   "title": "Rego Policy Libraries — fedramp_20x (FedRAMP 20x — Key Security Indicators (KSI))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "fedramp_20x"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "fedramp_20x-fedramp_20x_main",
+    "class": "rego-module",
+    "title": "FedRAMP 20x — Key Security Indicators (KSI)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "fedramp_20x.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/fedramp_20x/fedramp_20x_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "fedramp_20x-FedRAMP-20x-Input-Contract",
+      "title": "unrecognized target_class %v — must be \\\"b\\\" or \\\"c\\\" (evaluated at Class C; Class D/High is not available in 20x yet)",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP 20x Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP 20x Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-FedRAMP-20x-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "unrecognized target_class %v — must be \\\"b\\\" or \\\"c\\\" (evaluated at Class C; Class D/High is not available in 20x yet)"
+       },
+       {
+        "id": "fedramp_20x-FedRAMP-20x-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "ksis must be an object of {\\\"<KSI id>\\\": true} attestations"
+       },
+       {
+        "id": "fedramp_20x-FedRAMP-20x-Input-Contract_obj.2",
+        "name": "assessment-objective",
+        "prose": "attestation for unknown KSI id %v — not in the Consolidated Rules KSI set"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-fedramp_20x.main-1",
+      "title": "FedRAMP 20x %s (%s — %s): %s — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "fedramp_20x.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "fedramp_20x.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-fedramp_20x.main-1_stmt",
+        "name": "statement",
+        "prose": "FedRAMP 20x %s (%s — %s): %s — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CED-RAT",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CED-RAT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CED-RAT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CED-RAT_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-family",
+      "title": "Cloud Native Architecture",
+      "props": [
+       {
+        "name": "label",
+        "value": "family"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "family"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-family_stmt",
+        "name": "statement",
+        "prose": "Cloud Native Architecture"
+       },
+       {
+        "id": "fedramp_20x-family_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cloud Native Architecture"
+       },
+       {
+        "id": "fedramp_20x-family_obj.2",
+        "name": "assessment-objective",
+        "prose": "Cloud Native Architecture"
+       },
+       {
+        "id": "fedramp_20x-family_obj.3",
+        "name": "assessment-objective",
+        "prose": "Cloud Native Architecture"
+       },
+       {
+        "id": "fedramp_20x-family_obj.4",
+        "name": "assessment-objective",
+        "prose": "Cloud Native Architecture"
+       },
+       {
+        "id": "fedramp_20x-family_obj.5",
+        "name": "assessment-objective",
+        "prose": "Cloud Native Architecture"
+       },
+       {
+        "id": "fedramp_20x-family_obj.6",
+        "name": "assessment-objective",
+        "prose": "Cloud Native Architecture"
+       },
+       {
+        "id": "fedramp_20x-family_obj.7",
+        "name": "assessment-objective",
+        "prose": "Cloud Native Architecture"
+       },
+       {
+        "id": "fedramp_20x-family_obj.8",
+        "name": "assessment-objective",
+        "prose": "Identity and Access Management"
+       },
+       {
+        "id": "fedramp_20x-family_obj.9",
+        "name": "assessment-objective",
+        "prose": "Identity and Access Management"
+       },
+       {
+        "id": "fedramp_20x-family_obj.10",
+        "name": "assessment-objective",
+        "prose": "Identity and Access Management"
+       },
+       {
+        "id": "fedramp_20x-family_obj.11",
+        "name": "assessment-objective",
+        "prose": "Identity and Access Management"
+       },
+       {
+        "id": "fedramp_20x-family_obj.12",
+        "name": "assessment-objective",
+        "prose": "Identity and Access Management"
+       },
+       {
+        "id": "fedramp_20x-family_obj.13",
+        "name": "assessment-objective",
+        "prose": "Identity and Access Management"
+       },
+       {
+        "id": "fedramp_20x-family_obj.14",
+        "name": "assessment-objective",
+        "prose": "Monitoring, Logging, and Auditing"
+       },
+       {
+        "id": "fedramp_20x-family_obj.15",
+        "name": "assessment-objective",
+        "prose": "Monitoring, Logging, and Auditing"
+       },
+       {
+        "id": "fedramp_20x-family_obj.16",
+        "name": "assessment-objective",
+        "prose": "Monitoring, Logging, and Auditing"
+       },
+       {
+        "id": "fedramp_20x-family_obj.17",
+        "name": "assessment-objective",
+        "prose": "Monitoring, Logging, and Auditing"
+       },
+       {
+        "id": "fedramp_20x-family_obj.18",
+        "name": "assessment-objective",
+        "prose": "Monitoring, Logging, and Auditing"
+       },
+       {
+        "id": "fedramp_20x-family_obj.19",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity Education"
+       },
+       {
+        "id": "fedramp_20x-family_obj.20",
+        "name": "assessment-objective",
+        "prose": "Change Management"
+       },
+       {
+        "id": "fedramp_20x-family_obj.21",
+        "name": "assessment-objective",
+        "prose": "Change Management"
+       },
+       {
+        "id": "fedramp_20x-family_obj.22",
+        "name": "assessment-objective",
+        "prose": "Change Management"
+       },
+       {
+        "id": "fedramp_20x-family_obj.23",
+        "name": "assessment-objective",
+        "prose": "Change Management"
+       },
+       {
+        "id": "fedramp_20x-family_obj.24",
+        "name": "assessment-objective",
+        "prose": "Incident Response"
+       },
+       {
+        "id": "fedramp_20x-family_obj.25",
+        "name": "assessment-objective",
+        "prose": "Incident Response"
+       },
+       {
+        "id": "fedramp_20x-family_obj.26",
+        "name": "assessment-objective",
+        "prose": "Incident Response"
+       },
+       {
+        "id": "fedramp_20x-family_obj.27",
+        "name": "assessment-objective",
+        "prose": "Policy and Inventory"
+       },
+       {
+        "id": "fedramp_20x-family_obj.28",
+        "name": "assessment-objective",
+        "prose": "Policy and Inventory"
+       },
+       {
+        "id": "fedramp_20x-family_obj.29",
+        "name": "assessment-objective",
+        "prose": "Policy and Inventory"
+       },
+       {
+        "id": "fedramp_20x-family_obj.30",
+        "name": "assessment-objective",
+        "prose": "Policy and Inventory"
+       },
+       {
+        "id": "fedramp_20x-family_obj.31",
+        "name": "assessment-objective",
+        "prose": "Policy and Inventory"
+       },
+       {
+        "id": "fedramp_20x-family_obj.32",
+        "name": "assessment-objective",
+        "prose": "Recovery Planning"
+       },
+       {
+        "id": "fedramp_20x-family_obj.33",
+        "name": "assessment-objective",
+        "prose": "Recovery Planning"
+       },
+       {
+        "id": "fedramp_20x-family_obj.34",
+        "name": "assessment-objective",
+        "prose": "Recovery Planning"
+       },
+       {
+        "id": "fedramp_20x-family_obj.35",
+        "name": "assessment-objective",
+        "prose": "Recovery Planning"
+       },
+       {
+        "id": "fedramp_20x-family_obj.36",
+        "name": "assessment-objective",
+        "prose": "Supply Chain Risk"
+       },
+       {
+        "id": "fedramp_20x-family_obj.37",
+        "name": "assessment-objective",
+        "prose": "Supply Chain Risk"
+       },
+       {
+        "id": "fedramp_20x-family_obj.38",
+        "name": "assessment-objective",
+        "prose": "Service Configuration"
+       },
+       {
+        "id": "fedramp_20x-family_obj.39",
+        "name": "assessment-objective",
+        "prose": "Service Configuration"
+       },
+       {
+        "id": "fedramp_20x-family_obj.40",
+        "name": "assessment-objective",
+        "prose": "Service Configuration"
+       },
+       {
+        "id": "fedramp_20x-family_obj.41",
+        "name": "assessment-objective",
+        "prose": "Service Configuration"
+       },
+       {
+        "id": "fedramp_20x-family_obj.42",
+        "name": "assessment-objective",
+        "prose": "Service Configuration"
+       },
+       {
+        "id": "fedramp_20x-family_obj.43",
+        "name": "assessment-objective",
+        "prose": "Service Configuration"
+       },
+       {
+        "id": "fedramp_20x-family_obj.44",
+        "name": "assessment-objective",
+        "prose": "Service Configuration"
+       },
+       {
+        "id": "fedramp_20x-family_obj.45",
+        "name": "assessment-objective",
+        "prose": "Service Configuration"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-name",
+      "title": "Reviewing Change Procedures",
+      "props": [
+       {
+        "name": "label",
+        "value": "name"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "name"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-name_stmt",
+        "name": "statement",
+        "prose": "Reviewing Change Procedures"
+       },
+       {
+        "id": "fedramp_20x-name_obj.1",
+        "name": "assessment-objective",
+        "prose": "Validating Throughout Deployment"
+       },
+       {
+        "id": "fedramp_20x-name_obj.2",
+        "name": "assessment-objective",
+        "prose": "Defining Functionality and Privileges"
+       },
+       {
+        "id": "fedramp_20x-name_obj.3",
+        "name": "assessment-objective",
+        "prose": "Implementing Best Practices"
+       },
+       {
+        "id": "fedramp_20x-name_obj.4",
+        "name": "assessment-objective",
+        "prose": "Minimizing Attack Surface"
+       },
+       {
+        "id": "fedramp_20x-name_obj.5",
+        "name": "assessment-objective",
+        "prose": "Optimizing for Availability"
+       },
+       {
+        "id": "fedramp_20x-name_obj.6",
+        "name": "assessment-objective",
+        "prose": "Restricting Network Traffic"
+       },
+       {
+        "id": "fedramp_20x-name_obj.7",
+        "name": "assessment-objective",
+        "prose": "Automating Account Management"
+       },
+       {
+        "id": "fedramp_20x-name_obj.8",
+        "name": "assessment-objective",
+        "prose": "Adopting Passwordless Methods"
+       },
+       {
+        "id": "fedramp_20x-name_obj.9",
+        "name": "assessment-objective",
+        "prose": "Securing Non-User Authentication"
+       },
+       {
+        "id": "fedramp_20x-name_obj.10",
+        "name": "assessment-objective",
+        "prose": "Responding to Suspicious Activity"
+       },
+       {
+        "id": "fedramp_20x-name_obj.11",
+        "name": "assessment-objective",
+        "prose": "Generating After Action Reports"
+       },
+       {
+        "id": "fedramp_20x-name_obj.12",
+        "name": "assessment-objective",
+        "prose": "Reviewing Incident Response Procedures"
+       },
+       {
+        "id": "fedramp_20x-name_obj.13",
+        "name": "assessment-objective",
+        "prose": "Evaluating Configurations"
+       },
+       {
+        "id": "fedramp_20x-name_obj.14",
+        "name": "assessment-objective",
+        "prose": "Operating SIEM Capability"
+       },
+       {
+        "id": "fedramp_20x-name_obj.15",
+        "name": "assessment-objective",
+        "prose": "Reviewing Executive Support"
+       },
+       {
+        "id": "fedramp_20x-name_obj.16",
+        "name": "assessment-objective",
+        "prose": "Reviewing Investments in Security"
+       },
+       {
+        "id": "fedramp_20x-name_obj.17",
+        "name": "assessment-objective",
+        "prose": "Reviewing Security in the SDLC"
+       },
+       {
+        "id": "fedramp_20x-name_obj.18",
+        "name": "assessment-objective",
+        "prose": "Reviewing Vulnerability Disclosures"
+       },
+       {
+        "id": "fedramp_20x-name_obj.19",
+        "name": "assessment-objective",
+        "prose": "Aligning Backups with Objectives"
+       },
+       {
+        "id": "fedramp_20x-name_obj.20",
+        "name": "assessment-objective",
+        "prose": "Reviewing Recovery Objectives"
+       },
+       {
+        "id": "fedramp_20x-name_obj.21",
+        "name": "assessment-objective",
+        "prose": "Testing Recovery Capabilities"
+       },
+       {
+        "id": "fedramp_20x-name_obj.22",
+        "name": "assessment-objective",
+        "prose": "Mitigating Supply Chain Risk"
+       },
+       {
+        "id": "fedramp_20x-name_obj.23",
+        "name": "assessment-objective",
+        "prose": "Monitoring Supply Chain Risk"
+       },
+       {
+        "id": "fedramp_20x-name_obj.24",
+        "name": "assessment-objective",
+        "prose": "Automating Configuration Management"
+       },
+       {
+        "id": "fedramp_20x-name_obj.25",
+        "name": "assessment-objective",
+        "prose": "Automating Secret Management"
+       },
+       {
+        "id": "fedramp_20x-name_obj.26",
+        "name": "assessment-objective",
+        "prose": "Evaluating and Improving Security"
+       },
+       {
+        "id": "fedramp_20x-name_obj.27",
+        "name": "assessment-objective",
+        "prose": "Validating Communications"
+       },
+       {
+        "id": "fedramp_20x-name_obj.28",
+        "name": "assessment-objective",
+        "prose": "Validating Resource Integrity"
+       },
+       {
+        "id": "fedramp_20x-name_obj.29",
+        "name": "assessment-objective",
+        "prose": "Reviewing All Training"
+       },
+       {
+        "id": "fedramp_20x-name_obj.30",
+        "name": "assessment-objective",
+        "prose": "Logging Changes"
+       },
+       {
+        "id": "fedramp_20x-name_obj.31",
+        "name": "assessment-objective",
+        "prose": "Redeploying vs Modifying"
+       },
+       {
+        "id": "fedramp_20x-name_obj.32",
+        "name": "assessment-objective",
+        "prose": "Enforcing Intended State"
+       },
+       {
+        "id": "fedramp_20x-name_obj.33",
+        "name": "assessment-objective",
+        "prose": "Reviewing Protections"
+       },
+       {
+        "id": "fedramp_20x-name_obj.34",
+        "name": "assessment-objective",
+        "prose": "Using Logical Networking"
+       },
+       {
+        "id": "fedramp_20x-name_obj.35",
+        "name": "assessment-objective",
+        "prose": "Ensuring Least Privilege"
+       },
+       {
+        "id": "fedramp_20x-name_obj.36",
+        "name": "assessment-objective",
+        "prose": "Authorizing Just-in-Time"
+       },
+       {
+        "id": "fedramp_20x-name_obj.37",
+        "name": "assessment-objective",
+        "prose": "Reviewing Past Incidents"
+       },
+       {
+        "id": "fedramp_20x-name_obj.38",
+        "name": "assessment-objective",
+        "prose": "Authorizing Log Access"
+       },
+       {
+        "id": "fedramp_20x-name_obj.39",
+        "name": "assessment-objective",
+        "prose": "Logging Event Types"
+       },
+       {
+        "id": "fedramp_20x-name_obj.40",
+        "name": "assessment-objective",
+        "prose": "Reviewing Logs"
+       },
+       {
+        "id": "fedramp_20x-name_obj.41",
+        "name": "assessment-objective",
+        "prose": "Generating Inventories"
+       },
+       {
+        "id": "fedramp_20x-name_obj.42",
+        "name": "assessment-objective",
+        "prose": "Aligning Recovery Plan"
+       },
+       {
+        "id": "fedramp_20x-name_obj.43",
+        "name": "assessment-objective",
+        "prose": "Preventing Residual Risk"
+       },
+       {
+        "id": "fedramp_20x-name_obj.44",
+        "name": "assessment-objective",
+        "prose": "Removing Unwanted Data"
+       },
+       {
+        "id": "fedramp_20x-name_obj.45",
+        "name": "assessment-objective",
+        "prose": "Securing Information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-req",
+      "title": "The effectiveness of relevant cybersecurity education and training is persistently reviewed, including at least general training for all employees, role-specific training for employees in high risk ro",
+      "props": [
+       {
+        "name": "label",
+        "value": "req"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "req"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-req_stmt",
+        "name": "statement",
+        "prose": "The effectiveness of relevant cybersecurity education and training is persistently reviewed, including at least general training for all employees, role-specific training for employees in high risk roles, training for development and engineering staff on secure software delivery, and training for staff involved with incident response or disaster recovery."
+       },
+       {
+        "id": "fedramp_20x-req_obj.1",
+        "name": "assessment-objective",
+        "prose": "Modifications to the cloud service offering are logged and monitored."
+       },
+       {
+        "id": "fedramp_20x-req_obj.2",
+        "name": "assessment-objective",
+        "prose": "Changes to machine-based information resources are executed through the redeployment of version controlled resources rather than direct modification wherever reasonable."
+       },
+       {
+        "id": "fedramp_20x-req_obj.3",
+        "name": "assessment-objective",
+        "prose": "The effectiveness of documented change management procedures is persistently reviewed."
+       },
+       {
+        "id": "fedramp_20x-req_obj.4",
+        "name": "assessment-objective",
+        "prose": "Persistent testing and validation of changes throughout deployment is automated."
+       },
+       {
+        "id": "fedramp_20x-req_obj.5",
+        "name": "assessment-objective",
+        "prose": "The functionality and privileges for infrastructure and services are strictly defined."
+       },
+       {
+        "id": "fedramp_20x-req_obj.6",
+        "name": "assessment-objective",
+        "prose": "Automated services are used to persistently assess the security of all machine-based information resources and automatically enforce their intended operational state."
+       },
+       {
+        "id": "fedramp_20x-req_obj.7",
+        "name": "assessment-objective",
+        "prose": "The use and configuration of third-party machine-based information resources is persistently compared against the original provider's best practices and guidance."
+       },
+       {
+        "id": "fedramp_20x-req_obj.8",
+        "name": "assessment-objective",
+        "prose": "Machine-based information resources are persistently reviewed to ensure they have a minimal attack surface and that lateral movement is minimized if compromised."
+       },
+       {
+        "id": "fedramp_20x-req_obj.9",
+        "name": "assessment-objective",
+        "prose": "Machine-based information resources are persistently reviewed to ensure they are appropriately optimized for high availability and rapid recovery."
+       },
+       {
+        "id": "fedramp_20x-req_obj.10",
+        "name": "assessment-objective",
+        "prose": "Machine-based information resources are persistently reviewed to ensure they are appropriately configured to limit inbound and outbound network traffic."
+       },
+       {
+        "id": "fedramp_20x-req_obj.11",
+        "name": "assessment-objective",
+        "prose": "The effectiveness of protection against denial of service attacks and other unwanted activity for machine-based information resources is persistently reviewed."
+       },
+       {
+        "id": "fedramp_20x-req_obj.12",
+        "name": "assessment-objective",
+        "prose": "Logical networking and related capabilities are used and persistently reviewed to enforce traffic flow controls."
+       },
+       {
+        "id": "fedramp_20x-req_obj.13",
+        "name": "assessment-objective",
+        "prose": "The lifecycle and privileges of all accounts, roles, and groups are securely managed using automation."
+       },
+       {
+        "id": "fedramp_20x-req_obj.14",
+        "name": "assessment-objective",
+        "prose": "Secure passwordless methods are used for user authentication and authorization when feasible, otherwise strong passwords with phishing-resistant MFA is used."
+       },
+       {
+        "id": "fedramp_20x-req_obj.15",
+        "name": "assessment-objective",
+        "prose": "Identity and access management measures are used and persistently reviewed to ensure each user or device can only access the resources they need."
+       },
+       {
+        "id": "fedramp_20x-req_obj.16",
+        "name": "assessment-objective",
+        "prose": "A least-privileged, role and attribute-based, and just-in-time security authorization model is used and persistently reviewed for all user and non-user accounts and services."
+       },
+       {
+        "id": "fedramp_20x-req_obj.17",
+        "name": "assessment-objective",
+        "prose": "Appropriately secure authentication methods are used and persistently reviewed for non-user accounts and services."
+       },
+       {
+        "id": "fedramp_20x-req_obj.18",
+        "name": "assessment-objective",
+        "prose": "Accounts with privileged access are disabled or otherwise secured in response to suspicious activity."
+       },
+       {
+        "id": "fedramp_20x-req_obj.19",
+        "name": "assessment-objective",
+        "prose": "Incident after action reports are generated and lessons learned are persistently incorporated."
+       },
+       {
+        "id": "fedramp_20x-req_obj.20",
+        "name": "assessment-objective",
+        "prose": "The effectiveness of documented incident response procedures is persistently reviewed."
+       },
+       {
+        "id": "fedramp_20x-req_obj.21",
+        "name": "assessment-objective",
+        "prose": "Past incidents are persistently reviewed for patterns or vulnerabilities that were not previously apparent or identified."
+       },
+       {
+        "id": "fedramp_20x-req_obj.22",
+        "name": "assessment-objective",
+        "prose": "A least-privileged, role and attribute-based, and just-in-time access authorization model is used and persistently reviewed for access to log data based on organizationally defined data sensitivity."
+       },
+       {
+        "id": "fedramp_20x-req_obj.23",
+        "name": "assessment-objective",
+        "prose": "The configuration of machine-based information resources, especially infrastructure as code, is persistently evaluated and tested."
+       },
+       {
+        "id": "fedramp_20x-req_obj.24",
+        "name": "assessment-objective",
+        "prose": "A list of information resources and event types that will be logged, monitored, and audited is maintained and persistently reviewed to ensure these activities occur."
+       },
+       {
+        "id": "fedramp_20x-req_obj.25",
+        "name": "assessment-objective",
+        "prose": "A Security Information and Event Management (SIEM) or similar system(s) is used and persistently reviewed for centralized, tamper-resistant logging of events, activities, and changes."
+       },
+       {
+        "id": "fedramp_20x-req_obj.26",
+        "name": "assessment-objective",
+        "prose": "Logs are persistently reviewed and audited."
+       },
+       {
+        "id": "fedramp_20x-req_obj.27",
+        "name": "assessment-objective",
+        "prose": "Authoritative sources are used to automatically generate real-time inventories of all information resources when needed."
+       },
+       {
+        "id": "fedramp_20x-req_obj.28",
+        "name": "assessment-objective",
+        "prose": "Executive support for achieving the provider's security goals is persistently reviewed and demonstrated."
+       },
+       {
+        "id": "fedramp_20x-req_obj.29",
+        "name": "assessment-objective",
+        "prose": "The effectiveness of the provider's investments in achieving security goals is persistently reviewed."
+       },
+       {
+        "id": "fedramp_20x-req_obj.30",
+        "name": "assessment-objective",
+        "prose": "The effectiveness of building security and privacy considerations into the Software Development Lifecycle and aligning with CISA Secure By Design principles is persistently reviewed."
+       },
+       {
+        "id": "fedramp_20x-req_obj.31",
+        "name": "assessment-objective",
+        "prose": "The effectiveness of the provider's vulnerability disclosure program is persistently reviewed."
+       },
+       {
+        "id": "fedramp_20x-req_obj.32",
+        "name": "assessment-objective",
+        "prose": "The alignment of machine-based information resource backups with defined recovery objectives is persistently reviewed."
+       },
+       {
+        "id": "fedramp_20x-req_obj.33",
+        "name": "assessment-objective",
+        "prose": "The alignment of recovery plans with defined recovery objectives is persistently reviewed."
+       },
+       {
+        "id": "fedramp_20x-req_obj.34",
+        "name": "assessment-objective",
+        "prose": "The desired Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO) are defined and persistently reviewed for alignment with the provider's business needs and capabilities."
+       },
+       {
+        "id": "fedramp_20x-req_obj.35",
+        "name": "assessment-objective",
+        "prose": "The capability to recover from incidents and contingencies aligned with defined recovery objectives is persistently tested."
+       },
+       {
+        "id": "fedramp_20x-req_obj.36",
+        "name": "assessment-objective",
+        "prose": "Persistently identify, review, and mitigate potential supply chain risks."
+       },
+       {
+        "id": "fedramp_20x-req_obj.37",
+        "name": "assessment-objective",
+        "prose": "Third party software information resources are automatically monitored for upstream vulnerabilities using mechanisms that may include contractual notification requirements or active monitoring services."
+       },
+       {
+        "id": "fedramp_20x-req_obj.38",
+        "name": "assessment-objective",
+        "prose": "The configuration of machine-based information resources is managed using automation and persistently reviewed for drift."
+       },
+       {
+        "id": "fedramp_20x-req_obj.39",
+        "name": "assessment-objective",
+        "prose": "Management, protection, and regular rotation of digital keys, certificates, and other secrets is automated and persistently reviewed."
+       },
+       {
+        "id": "fedramp_20x-req_obj.40",
+        "name": "assessment-objective",
+        "prose": "Information resources are persistently evaluated for opportunities to improve security and those improvements are persistently made."
+       },
+       {
+        "id": "fedramp_20x-req_obj.41",
+        "name": "assessment-objective",
+        "prose": "Plans, procedures, and the state of information resources are persistently reviewed after making changes to limit and remove unwanted residual elements that would likely negatively affect the confidentiality, integrity, or availability of federal customer data."
+       },
+       {
+        "id": "fedramp_20x-req_obj.42",
+        "name": "assessment-objective",
+        "prose": "Unwanted federal customer data is removed promptly when requested by an agency in alignment with customer agreements, including from backups if appropriate; this typically applies when a customer spills information or when a customer seeks to remove information from a service due to a change in usage."
+       },
+       {
+        "id": "fedramp_20x-req_obj.43",
+        "name": "assessment-objective",
+        "prose": "Information is encrypted or otherwise secured from unwanted access or modification."
+       },
+       {
+        "id": "fedramp_20x-req_obj.44",
+        "name": "assessment-objective",
+        "prose": "The authenticity and integrity of communications between machine-based information resources is persistently validated using automation."
+       },
+       {
+        "id": "fedramp_20x-req_obj.45",
+        "name": "assessment-objective",
+        "prose": "Use cryptographic methods to validate the integrity of machine-based information resources."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CMT-LMC",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CMT-LMC"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CMT-LMC"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CMT-LMC_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CMT-RMV",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CMT-RMV"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CMT-RMV"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CMT-RMV_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CMT-RVP",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CMT-RVP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CMT-RVP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CMT-RVP_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CMT-VTD",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CMT-VTD"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CMT-VTD"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CMT-VTD_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CNA-DFP",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CNA-DFP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CNA-DFP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CNA-DFP_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CNA-EIS",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CNA-EIS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CNA-EIS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CNA-EIS_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CNA-IBP",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CNA-IBP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CNA-IBP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CNA-IBP_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CNA-MAT",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CNA-MAT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CNA-MAT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CNA-MAT_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CNA-OFA",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CNA-OFA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CNA-OFA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CNA-OFA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CNA-RNT",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CNA-RNT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CNA-RNT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CNA-RNT_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CNA-RVP",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CNA-RVP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CNA-RVP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CNA-RVP_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-CNA-ULN",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-CNA-ULN"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-CNA-ULN"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-CNA-ULN_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-IAM-AAM",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-IAM-AAM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-IAM-AAM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-IAM-AAM_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-IAM-APM",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-IAM-APM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-IAM-APM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-IAM-APM_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-IAM-ELP",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-IAM-ELP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-IAM-ELP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-IAM-ELP_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-IAM-JIT",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-IAM-JIT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-IAM-JIT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-IAM-JIT_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-IAM-SNU",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-IAM-SNU"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-IAM-SNU"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-IAM-SNU_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-IAM-SUS",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-IAM-SUS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-IAM-SUS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-IAM-SUS_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-INR-AAR",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-INR-AAR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-INR-AAR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-INR-AAR_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-INR-RIR",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-INR-RIR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-INR-RIR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-INR-RIR_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-INR-RPI",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-INR-RPI"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-INR-RPI"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-INR-RPI_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-MLA-ALA",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-MLA-ALA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-MLA-ALA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-MLA-ALA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-MLA-EVC",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-MLA-EVC"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-MLA-EVC"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-MLA-EVC_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-MLA-LET",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-MLA-LET"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-MLA-LET"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-MLA-LET_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-MLA-OSM",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-MLA-OSM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-MLA-OSM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-MLA-OSM_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-MLA-RVL",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-MLA-RVL"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-MLA-RVL"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-MLA-RVL_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-PIY-GIV",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-PIY-GIV"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-PIY-GIV"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-PIY-GIV_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-PIY-RES",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-PIY-RES"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-PIY-RES"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-PIY-RES_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-PIY-RIS",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-PIY-RIS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-PIY-RIS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-PIY-RIS_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-PIY-RSD",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-PIY-RSD"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-PIY-RSD"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-PIY-RSD_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-PIY-RVD",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-PIY-RVD"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-PIY-RVD"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-PIY-RVD_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-RPL-ABO",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-RPL-ABO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-RPL-ABO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-RPL-ABO_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-RPL-ARP",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-RPL-ARP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-RPL-ARP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-RPL-ARP_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-RPL-RRO",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-RPL-RRO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-RPL-RRO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-RPL-RRO_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-RPL-TRC",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-RPL-TRC"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-RPL-TRC"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-RPL-TRC_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-SCR-MIT",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-SCR-MIT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-SCR-MIT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-SCR-MIT_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-SCR-MON",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-SCR-MON"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-SCR-MON"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-SCR-MON_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-SVC-ACM",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-SVC-ACM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-SVC-ACM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-SVC-ACM_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-SVC-ASM",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-SVC-ASM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-SVC-ASM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-SVC-ASM_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-SVC-EIS",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-SVC-EIS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-SVC-EIS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-SVC-EIS_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-SVC-PRR",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-SVC-PRR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-SVC-PRR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-SVC-PRR_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-SVC-RUD",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-SVC-RUD"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-SVC-RUD"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-SVC-RUD_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-SVC-SIN",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-SVC-SIN"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-SVC-SIN"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-SVC-SIN_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-SVC-VCM",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-SVC-VCM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-SVC-VCM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-SVC-VCM_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp_20x-KSI-SVC-VRI",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "KSI-SVC-VRI"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "KSI-SVC-VRI"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp_20x.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp_20x-KSI-SVC-VRI_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "c370ef66-742c-50c9-99c9-0bf3826499df",
+     "title": "FedRAMP 20x — Key Security Indicators (KSI)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "fedramp_20x.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/fedramp_20x/fedramp_20x_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

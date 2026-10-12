@@ -1,0 +1,6363 @@
+{
+ "catalog": {
+  "uuid": "becd8b11-ff0f-5ce2-b992-f0ae1ae82fc3",
+  "metadata": {
+   "title": "Rego Policy Libraries — technical_debt (AAC Technical Debt Scoring Policy)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "technical_debt"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "technical_debt-debt_scoring",
+    "class": "rego-module",
+    "title": "AAC Technical Debt Scoring Policy",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "technical_debt.scoring"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/technical_debt/debt_scoring.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "technical_debt-cis_rhel9",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rhel9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rhel9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-cis_rhel9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-1.1",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-1.1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-1.2",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-1.2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-1.3",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-1.3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-1.4",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-1.4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-2.1",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-2.1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-2.2",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-2.2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-2.3",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-2.3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-2.4",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-2.4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-3.1",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-3.1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-3.2",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-3.2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-3.3",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-3.3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-3.4",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-3.4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-4.1",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-4.1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-4.2",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-4.2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-4.3",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-4.3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-5.1",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-5.1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-5.2",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-5.2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-5.3",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-5.3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-5.4",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-5.4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-5.5",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-5.5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-5.6",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-5.6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-6.1",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-6.1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-6.2",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-6.2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-nerc_cip",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-nerc_cip_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-002",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-002"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-002"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-002_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-003",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-003"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-003"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-003_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-004",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-004"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-004"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-004_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-005",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-005"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-005"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-005_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-006",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-006"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-006"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-006_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-007",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-007"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-007"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-007_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-008",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-008"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-008"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-008_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-009",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-009"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-009"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-009_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-010",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-011",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-011"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-011"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-011_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-012",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-012"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-012"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-012_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-013",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-013"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-013"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-013_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-014",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-014"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-014"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-014_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CIP-015",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-015"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-015"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CIP-015_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-nist_800_53",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist_800_53"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist_800_53"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-nist_800_53_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-AC",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-AC_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-AU",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AU"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AU"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-AU_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CA",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CM",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CM_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CP",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CP_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-IA",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-IA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-IR",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-IR_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-MA",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-MA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-MP",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-MP_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-PE",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-PE_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-PL",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PL"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PL"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-PL_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-PS",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-PS_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-RA",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-RA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SA",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SC",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SC_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SI",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SI"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SI"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SI_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-iso27001",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso27001"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso27001"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-iso27001_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.5",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.6",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.7",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.8",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.9",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.10",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.11",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.12",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.13",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.14",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.14_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.15",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.15_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.16",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.16_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.17",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.17_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A.18",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A.18_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-ncsc_caf",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-ncsc_caf_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-A",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "A"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-A_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-B",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "B"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "B"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-B_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-C",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "C"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "C"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-C_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-D",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "D"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-D_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-ami",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ami"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ami"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-ami_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.AC",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AC"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AC"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.AC_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.AU",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.AU"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.AU"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.AU_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.CM",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.CM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.CM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.CM_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.IA",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.IA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.IR",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.IR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.IR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.IR_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.MA",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.MA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.MA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.MA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.MP",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.MP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.MP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.MP_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.PE",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.PE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.PE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.PE_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.PL",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.PL"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.PL"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.PL_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.RA",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.RA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.RA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.RA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.SA",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.SA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.SA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.SA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.SC",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.SC"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.SC"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.SC_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SG.SI",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SG.SI"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SG.SI"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SG.SI_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-digital_sovereignty",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-digital_sovereignty_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-IS",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-IS_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-NS",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "NS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-NS_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SS",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SS_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-OS",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-OS_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CS",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CS_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-DR",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-DR_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-CR",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-CR_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-GT",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-GT_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-AI",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AI"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AI"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-AI_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-BN",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "BN"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "BN"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-BN_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-DORA",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-DORA_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-dora",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dora"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dora"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-dora_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.5",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.6",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.8",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.9",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.10",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.12",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.13",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.17",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.17_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.18",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.18_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.19",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.19_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.25",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.25_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.26",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.26_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.28",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.28_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.29",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.29_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.30",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.30_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.45",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.45"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.45"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.45_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-nis2",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "nis2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nis2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-nis2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.20",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.20_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.21",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.21_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Art.23",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Art.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Art.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Art.23_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-sec_cyber",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "sec_cyber"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sec_cyber"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-sec_cyber_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-Item-1.05",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Item 1.05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Item 1.05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-Item-1.05_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-ny_dfs",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ny_dfs"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ny_dfs"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-ny_dfs_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.2",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.3",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.4",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.5",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.6",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.7",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.9",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.10",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.11",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.12",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.13",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.14",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.14_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.15",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.15_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.16",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.16_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-500.17",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "500.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "500.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-500.17_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-swift_csp",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "swift_csp"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "swift_csp"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-swift_csp_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-2.5",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-2.5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-2.6",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-2.6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-2.7",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-2.7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-2.8",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-2.8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-6.4",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-6.4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-7.1",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-7.1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-7.2",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-7.2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-nist_800_82",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist_800_82"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist_800_82"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-nist_800_82_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-SR",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-SR_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-hitrust",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "hitrust"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hitrust"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-hitrust_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-00",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "00"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "00"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-00_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-01",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-01_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-02",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-02_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-03",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-03_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-04",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-04_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-06",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "06"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "06"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-06_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-07",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "07"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "07"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-07_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-08",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "08"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "08"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-08_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-09",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "09"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "09"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-09_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-10",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-11",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-12",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-13",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-14",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-14_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-15",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-15_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-16",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-16_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-17",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-17_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-18",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-18_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-cfr_part_11",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-cfr_part_11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-11.10",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-11.10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-11.30",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-11.30_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-11.50",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.50"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.50"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-11.50_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-11.70",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.70"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.70"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-11.70_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-11.100",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-11.100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-11.200",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-11.200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-11.300",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-11.300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-tisax",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "tisax"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tisax"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-tisax_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-1",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-2",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-3",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-4",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-5",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-6",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-7",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-8",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-9",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-PD",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PD"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PD"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-PD_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "technical_debt-cis_gcp",
+      "title": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_gcp"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_gcp"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "technical_debt.scoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83fbb150-76f3-5b7b-a969-391dbcd0620d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "technical_debt-cis_gcp_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "83fbb150-76f3-5b7b-a969-391dbcd0620d",
+     "title": "AAC Technical Debt Scoring Policy",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "technical_debt.scoring"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/technical_debt/debt_scoring.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

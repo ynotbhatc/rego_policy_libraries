@@ -1,0 +1,434 @@
+{
+ "catalog": {
+  "uuid": "5834a8b4-ee6e-5cda-91c9-30d37f8da73d",
+  "metadata": {
+   "title": "Rego Policy Libraries — nist_ai_rmf (NIST AI Risk Management Framework (AI RMF 1.0))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nist_ai_rmf"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nist_ai_rmf-nist_ai_rmf",
+    "class": "rego-module",
+    "title": "NIST AI Risk Management Framework (AI RMF 1.0)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.ai_rmf"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_ai_rmf-standard",
+      "title": "NIST AI RMF 1.0",
+      "props": [
+       {
+        "name": "label",
+        "value": "standard"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "standard"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a023ab7-e13a-5c53-94be-f4e32eecf318",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-standard_stmt",
+        "name": "statement",
+        "prose": "NIST AI RMF 1.0"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-full_title",
+      "title": "NIST Artificial Intelligence Risk Management Framework",
+      "props": [
+       {
+        "name": "label",
+        "value": "full_title"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "full_title"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a023ab7-e13a-5c53-94be-f4e32eecf318",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-full_title_stmt",
+        "name": "statement",
+        "prose": "NIST Artificial Intelligence Risk Management Framework"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-core_functions",
+      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "core_functions"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "core_functions"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a023ab7-e13a-5c53-94be-f4e32eecf318",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-core_functions_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN",
+      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a023ab7-e13a-5c53-94be-f4e32eecf318",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a779105d-b2e4-5f63-ba64-5b8ec020ce32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body."
+       },
+       {
+        "id": "nist_ai_rmf-GOVERN_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP",
+      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a023ab7-e13a-5c53-94be-f4e32eecf318",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a779105d-b2e4-5f63-ba64-5b8ec020ce32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body."
+       },
+       {
+        "id": "nist_ai_rmf-MAP_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE",
+      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a023ab7-e13a-5c53-94be-f4e32eecf318",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a779105d-b2e4-5f63-ba64-5b8ec020ce32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body."
+       },
+       {
+        "id": "nist_ai_rmf-MEASURE_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE",
+      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a023ab7-e13a-5c53-94be-f4e32eecf318",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a779105d-b2e4-5f63-ba64-5b8ec020ce32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body."
+       },
+       {
+        "id": "nist_ai_rmf-MANAGE_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_ai_rmf-nist_ai_rmf_main",
+    "class": "rego-module",
+    "title": "NIST AI RMF main adapter — exposes the standard contract",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.ai_rmf.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_ai_rmf-TRUSTWORTHINESS",
+      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "TRUSTWORTHINESS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TRUSTWORTHINESS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a779105d-b2e4-5f63-ba64-5b8ec020ce32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-TRUSTWORTHINESS_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "5a023ab7-e13a-5c53-94be-f4e32eecf318",
+     "title": "NIST AI Risk Management Framework (AI RMF 1.0)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.ai_rmf"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a779105d-b2e4-5f63-ba64-5b8ec020ce32",
+     "title": "NIST AI RMF main adapter — exposes the standard contract",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.ai_rmf.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

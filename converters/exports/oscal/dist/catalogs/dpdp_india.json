@@ -1,0 +1,2504 @@
+{
+ "catalog": {
+  "uuid": "f5112ea2-0f6a-5596-a66e-bea5a369e78e",
+  "metadata": {
+   "title": "Rego Policy Libraries — dpdp_india (India DPDP Act 2023 + DPDP Rules 2025 — Data Fiduciary obligations)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "dpdp_india"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "dpdp_india-dpdp_main",
+    "class": "rego-module",
+    "title": "India DPDP Act 2023 + DPDP Rules 2025 — Data Fiduciary obligations",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "dpdp.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/dpdp_india/dpdp_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "dpdp_india-processes_childrens_data",
+      "title": "s.9 / Rules 10–12 — whether the fiduciary processes personal data of children or of persons with disability with a lawful guardian must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "processes_childrens_data"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "processes_childrens_data"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-processes_childrens_data_stmt",
+        "name": "statement",
+        "prose": "s.9 / Rules 10–12 — whether the fiduciary processes personal data of children or of persons with disability with a lawful guardian must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-is_significant_data_fiduciary",
+      "title": "s.10 / Rule 13 — whether the fiduciary is notified as a Significant Data Fiduciary must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "is_significant_data_fiduciary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "is_significant_data_fiduciary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-is_significant_data_fiduciary_stmt",
+        "name": "statement",
+        "prose": "s.10 / Rule 13 — whether the fiduciary is notified as a Significant Data Fiduciary must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-uses_data_processors",
+      "title": "s.8(2) / Rule 6(1)(f) — whether Data Processors act on the fiduciary's behalf must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "uses_data_processors"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "uses_data_processors"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-uses_data_processors_stmt",
+        "name": "statement",
+        "prose": "s.8(2) / Rule 6(1)(f) — whether Data Processors act on the fiduciary's behalf must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-in_third_schedule_class",
+      "title": "Rule 8(1) / Third Schedule — whether the fiduciary is an e-commerce entity (≥2 crore users), online gaming intermediary (≥50 lakh) or social media intermediary (≥2 crore) must be declared true or fals",
+      "props": [
+       {
+        "name": "label",
+        "value": "in_third_schedule_class"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "in_third_schedule_class"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-in_third_schedule_class_stmt",
+        "name": "statement",
+        "prose": "Rule 8(1) / Third Schedule — whether the fiduciary is an e-commerce entity (≥2 crore users), online gaming intermediary (≥50 lakh) or social media intermediary (≥2 crore) must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-1",
+      "title": "DPDP %v (dpdp.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-1_stmt",
+        "name": "statement",
+        "prose": "DPDP %v (dpdp.%v undeclared)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.4-1",
+      "title": "not every processing purpose rests on the Data Principal's consent or on a s.7 legitimate use",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.4(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.4(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.4-1_stmt",
+        "name": "statement",
+        "prose": "not every processing purpose rests on the Data Principal's consent or on a s.7 legitimate use"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.7",
+      "title": "processing without consent is claimed on grounds outside the s.7(a)–(i) list (voluntary provision for a specified purpose, State benefits, legal functions, court orders, medical emergency, epidemic, d",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.7_stmt",
+        "name": "statement",
+        "prose": "processing without consent is claimed on grounds outside the s.7(a)–(i) list (voluntary provision for a specified purpose, State benefits, legal functions, court orders, medical emergency, epidemic, disaster, employment)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-2",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.5-1",
+      "title": "the notice does not accompany or precede every request for consent",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.5(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.5(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.5-1_stmt",
+        "name": "statement",
+        "prose": "the notice does not accompany or precede every request for consent"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-3-b-i",
+      "title": "the notice does not give an itemised description of the personal data",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 3(b)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 3(b)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-3-b-i_stmt",
+        "name": "statement",
+        "prose": "the notice does not give an itemised description of the personal data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-3-b-ii",
+      "title": "the notice does not state the specified purpose(s) and a specific description of the goods, services or uses enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 3(b)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 3(b)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-3-b-ii_stmt",
+        "name": "statement",
+        "prose": "the notice does not state the specified purpose(s) and a specific description of the goods, services or uses enabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.5-1-ii-Rule-3-c",
+      "title": "the notice does not describe how to withdraw consent (as easily as it was given) and exercise rights under the Act, with the particular link to the website or app",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.5(1)(ii) / Rule 3(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.5(1)(ii) / Rule 3(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.5-1-ii-Rule-3-c_stmt",
+        "name": "statement",
+        "prose": "the notice does not describe how to withdraw consent (as easily as it was given) and exercise rights under the Act, with the particular link to the website or app"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.5-1-iii-Rule-3-c-iii",
+      "title": "the notice does not describe how to make a complaint to the Data Protection Board",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.5(1)(iii) / Rule 3(c)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.5(1)(iii) / Rule 3(c)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.5-1-iii-Rule-3-c-iii_stmt",
+        "name": "statement",
+        "prose": "the notice does not describe how to make a complaint to the Data Protection Board"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-standalone_and_plain_language",
+      "title": "DPDP Rule 3(a)–(b): the notice is not presented and understandable independently of other information, in clear and plain language",
+      "props": [
+       {
+        "name": "label",
+        "value": "standalone_and_plain_language"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "standalone_and_plain_language"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-standalone_and_plain_language_stmt",
+        "name": "statement",
+        "prose": "DPDP Rule 3(a)–(b): the notice is not presented and understandable independently of other information, in clear and plain language"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.5-3",
+      "title": "the notice cannot be accessed in English or any language in the Eighth Schedule to the Constitution",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.5(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.5(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.5-3_stmt",
+        "name": "statement",
+        "prose": "the notice cannot be accessed in English or any language in the Eighth Schedule to the Constitution"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.5-2",
+      "title": "Data Principals who consented before commencement were not given the notice as soon as reasonably practicable",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.5(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.5(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.5-2_stmt",
+        "name": "statement",
+        "prose": "Data Principals who consented before commencement were not given the notice as soon as reasonably practicable"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.8-2",
+      "title": "Data Processors are engaged without a valid contract",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.8(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.8(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-2_stmt",
+        "name": "statement",
+        "prose": "Data Processors are engaged without a valid contract"
+       },
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Data Processors are engaged without a valid contract"
+       },
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Data Processors are engaged without a valid contract"
+       },
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Data Processors are engaged without a valid contract"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.6-1",
+      "title": "consent is not free, specific, informed, unconditional and unambiguous with a clear affirmative action",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.6(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.6(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.6-1_stmt",
+        "name": "statement",
+        "prose": "consent is not free, specific, informed, unconditional and unambiguous with a clear affirmative action"
+       },
+       {
+        "id": "dpdp_india-DPDP-Act-s.6-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "consent, and the processing under it, is not limited to the personal data necessary for the specified purpose"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.6-2",
+      "title": "consent terms include parts that infringe the Act or other law (e.g. waiver of the right to complain)",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.6(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.6(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.6-2_stmt",
+        "name": "statement",
+        "prose": "consent terms include parts that infringe the Act or other law (e.g. waiver of the right to complain)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.6-3",
+      "title": "the consent request is not in clear and plain language, selectable in English or an Eighth Schedule language, with the DPO or authorised person's contact details",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.6(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.6(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.6-3_stmt",
+        "name": "statement",
+        "prose": "the consent request is not in clear and plain language, selectable in English or an Eighth Schedule language, with the DPO or authorised person's contact details"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.6-4",
+      "title": "withdrawing consent is not as easy as giving it",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.6(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.6(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.6-4_stmt",
+        "name": "statement",
+        "prose": "withdrawing consent is not as easy as giving it"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.6-6",
+      "title": "on withdrawal the fiduciary does not, within a reasonable time, cease processing and cause its Data Processors to cease",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.6(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.6(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.6-6_stmt",
+        "name": "statement",
+        "prose": "on withdrawal the fiduciary does not, within a reasonable time, cease processing and cause its Data Processors to cease"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-consent_manager_requests_honoured",
+      "title": "DPDP Act s.6(7)–(9): consent given, managed or withdrawn through a registered Consent Manager is not honoured",
+      "props": [
+       {
+        "name": "label",
+        "value": "consent_manager_requests_honoured"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "consent_manager_requests_honoured"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-consent_manager_requests_honoured_stmt",
+        "name": "statement",
+        "prose": "DPDP Act s.6(7)–(9): consent given, managed or withdrawn through a registered Consent Manager is not honoured"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.6-10",
+      "title": "the fiduciary cannot prove that notice was given and consent obtained in accordance with the Act and Rules",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.6(10)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.6(10)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.6-10_stmt",
+        "name": "statement",
+        "prose": "the fiduciary cannot prove that notice was given and consent obtained in accordance with the Act and Rules"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.8-1",
+      "title": "the fiduciary does not take responsibility for compliance in respect of processing by it or on its behalf by Data Processors",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.8(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.8(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-1_stmt",
+        "name": "statement",
+        "prose": "the fiduciary does not take responsibility for compliance in respect of processing by it or on its behalf by Data Processors"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.8-3",
+      "title": "completeness, accuracy and consistency are not ensured for personal data used to make decisions about, or disclosed about, the Data Principal",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.8(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.8(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-3_stmt",
+        "name": "statement",
+        "prose": "completeness, accuracy and consistency are not ensured for personal data used to make decisions about, or disclosed about, the Data Principal"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.8-4",
+      "title": "no appropriate technical and organisational measures ensure effective observance of the Act and Rules",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.8(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.8(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-4_stmt",
+        "name": "statement",
+        "prose": "no appropriate technical and organisational measures ensure effective observance of the Act and Rules"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.8-9-Rule-9",
+      "title": "business contact information of the DPO or an answerable person is not prominently published on the website/app and in every response to a rights request",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.8(9) / Rule 9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.8(9) / Rule 9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-9-Rule-9_stmt",
+        "name": "statement",
+        "prose": "business contact information of the DPO or an answerable person is not prominently published on the website/app and in every response to a rights request"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.8-10-s.13",
+      "title": "no effective, readily available grievance redressal mechanism",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.8(10) / s.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.8(10) / s.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-10-s.13_stmt",
+        "name": "statement",
+        "prose": "no effective, readily available grievance redressal mechanism"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-14-3",
+      "title": "the grievance response period (not exceeding ninety days) is not prominently published, or measures to meet it are absent",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 14(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 14(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-14-3_stmt",
+        "name": "statement",
+        "prose": "the grievance response period (not exceeding ninety days) is not prominently published, or measures to meet it are absent"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.8-7-b",
+      "title": "the fiduciary does not cause its Data Processors to erase personal data it made available to them",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.8(7)(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.8(7)(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-7-b_stmt",
+        "name": "statement",
+        "prose": "the fiduciary does not cause its Data Processors to erase personal data it made available to them"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-6-1-a",
+      "title": "personal data is not secured through encryption, obfuscation, masking or virtual tokens",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 6(1)(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 6(1)(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-6-1-a_stmt",
+        "name": "statement",
+        "prose": "personal data is not secured through encryption, obfuscation, masking or virtual tokens"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-6-1-b",
+      "title": "no appropriate measures control access to the computer resources of the fiduciary and its processors",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 6(1)(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 6(1)(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-6-1-b_stmt",
+        "name": "statement",
+        "prose": "no appropriate measures control access to the computer resources of the fiduciary and its processors"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-6-1-c",
+      "title": "no logs, monitoring and review give visibility of access to personal data for detecting, investigating and remediating unauthorised access",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 6(1)(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 6(1)(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-6-1-c_stmt",
+        "name": "statement",
+        "prose": "no logs, monitoring and review give visibility of access to personal data for detecting, investigating and remediating unauthorised access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-6-1-d",
+      "title": "no reasonable measures (e.g. backups) for continued processing when confidentiality, integrity or availability is compromised",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 6(1)(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 6(1)(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-6-1-d_stmt",
+        "name": "statement",
+        "prose": "no reasonable measures (e.g. backups) for continued processing when confidentiality, integrity or availability is compromised"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-6-1-e",
+      "title": "logs and personal data are not retained for one year to enable detection, investigation, remediation and continuity (unless another law requires otherwise)",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 6(1)(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 6(1)(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-6-1-e_stmt",
+        "name": "statement",
+        "prose": "logs and personal data are not retained for one year to enable detection, investigation, remediation and continuity (unless another law requires otherwise)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-6-1-g",
+      "title": "no technical and organisational measures ensure effective observance of the security safeguards",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 6(1)(g)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 6(1)(g)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-6-1-g_stmt",
+        "name": "statement",
+        "prose": "no technical and organisational measures ensure effective observance of the security safeguards"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-6-1-f",
+      "title": "contracts with Data Processors lack the provision requiring reasonable security safeguards",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 6(1)(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 6(1)(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-6-1-f_stmt",
+        "name": "statement",
+        "prose": "contracts with Data Processors lack the provision requiring reasonable security safeguards"
+       },
+       {
+        "id": "dpdp_india-DPDP-Rule-6-1-f_obj.1",
+        "name": "assessment-objective",
+        "prose": "contracts with Data Processors lack the provision requiring reasonable security safeguards"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-7-1",
+      "title": "affected Data Principals are not intimated without delay through their user account or a registered mode of communication",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 7(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 7(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-7-1_stmt",
+        "name": "statement",
+        "prose": "affected Data Principals are not intimated without delay through their user account or a registered mode of communication"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-principal_notice_contents",
+      "title": "DPDP Rule 7(1)(a)–(e): the notice to Data Principals lacks the description of the breach (nature, extent, timing), the consequences for them, mitigation implemented, safety measures they may take, and",
+      "props": [
+       {
+        "name": "label",
+        "value": "principal_notice_contents"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "principal_notice_contents"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-principal_notice_contents_stmt",
+        "name": "statement",
+        "prose": "DPDP Rule 7(1)(a)–(e): the notice to Data Principals lacks the description of the breach (nature, extent, timing), the consequences for them, mitigation implemented, safety measures they may take, and a contact who can respond"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-7-2-a",
+      "title": "the Data Protection Board is not intimated without delay with a description of the breach (nature, extent, timing, location, likely impact)",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 7(2)(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 7(2)(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-7-2-a_stmt",
+        "name": "statement",
+        "prose": "the Data Protection Board is not intimated without delay with a description of the breach (nature, extent, timing, location, likely impact)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-7-2-b",
+      "title": "within seventy-two hours of becoming aware, the Board does not receive the updated description, the facts and reasons, mitigation, findings on the person who caused it, remedial measures, and the repo",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 7(2)(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 7(2)(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-7-2-b_stmt",
+        "name": "statement",
+        "prose": "within seventy-two hours of becoming aware, the Board does not receive the updated description, the facts and reasons, mitigation, findings on the person who caused it, remedial measures, and the report of intimations to Data Principals"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-8-1-Third-Schedule",
+      "title": "personal data is not erased three years after the Data Principal last approached the fiduciary or exercised her rights (or Rules commencement, whichever is latest), except account-access and virtual-t",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 8(1) / Third Schedule"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 8(1) / Third Schedule"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-8-1-Third-Schedule_stmt",
+        "name": "statement",
+        "prose": "personal data is not erased three years after the Data Principal last approached the fiduciary or exercised her rights (or Rules commencement, whichever is latest), except account-access and virtual-token purposes"
+       },
+       {
+        "id": "dpdp_india-DPDP-Rule-8-1-Third-Schedule_obj.1",
+        "name": "assessment-objective",
+        "prose": "personal data is not erased three years after the Data Principal last approached the fiduciary or exercised her rights (or Rules commencement, whichever is latest), except account-access and virtual-token purposes"
+       },
+       {
+        "id": "dpdp_india-DPDP-Rule-8-1-Third-Schedule_obj.2",
+        "name": "assessment-objective",
+        "prose": "personal data is not erased three years after the Data Principal last approached the fiduciary or exercised her rights (or Rules commencement, whichever is latest), except account-access and virtual-token purposes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.8-7-a",
+      "title": "personal data is not erased on withdrawal of consent or when the specified purpose is no longer served, whichever is earlier (unless retention is required by law)",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.8(7)(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.8(7)(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-7-a_stmt",
+        "name": "statement",
+        "prose": "personal data is not erased on withdrawal of consent or when the specified purpose is no longer served, whichever is earlier (unless retention is required by law)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-8-3",
+      "title": "personal data, associated traffic data and processing logs are not retained for at least one year from processing and then erased (unless another law or a Government notification requires longer)",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 8(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 8(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-8-3_stmt",
+        "name": "statement",
+        "prose": "personal data, associated traffic data and processing logs are not retained for at least one year from processing and then erased (unless another law or a Government notification requires longer)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-8-2",
+      "title": "Data Principals are not informed at least forty-eight hours before the erasure period completes that their data will be erased unless they log in or initiate contact",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 8(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 8(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-8-2_stmt",
+        "name": "statement",
+        "prose": "Data Principals are not informed at least forty-eight hours before the erasure period completes that their data will be erased unless they log in or initiate contact"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.9-1-Rule-10-1",
+      "title": "verifiable consent of the parent (or lawful guardian) is not obtained before processing a child's personal data",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.9(1) / Rule 10(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.9(1) / Rule 10(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.9-1-Rule-10-1_stmt",
+        "name": "statement",
+        "prose": "verifiable consent of the parent (or lawful guardian) is not obtained before processing a child's personal data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-parent_identity_and_age_due_diligence",
+      "title": "DPDP Rule 10(1)(a)–(b): no due diligence confirms the person identifying as parent is an identifiable adult — reliable details held by the fiduciary, voluntarily provided details, or a virtual token f",
+      "props": [
+       {
+        "name": "label",
+        "value": "parent_identity_and_age_due_diligence"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "parent_identity_and_age_due_diligence"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-parent_identity_and_age_due_diligence_stmt",
+        "name": "statement",
+        "prose": "DPDP Rule 10(1)(a)–(b): no due diligence confirms the person identifying as parent is an identifiable adult — reliable details held by the fiduciary, voluntarily provided details, or a virtual token from an authorised entity or Digital Locker service provider"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-11",
+      "title": "a lawful guardian of a person with disability is not verified as appointed by a court, designated authority or local level committee",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-11_stmt",
+        "name": "statement",
+        "prose": "a lawful guardian of a person with disability is not verified as appointed by a court, designated authority or local level committee"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.9-2",
+      "title": "processing likely to cause a detrimental effect on a child's well-being is not prevented",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.9(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.9(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.9-2_stmt",
+        "name": "statement",
+        "prose": "processing likely to cause a detrimental effect on a child's well-being is not prevented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.9-3",
+      "title": "tracking, behavioural monitoring of children or targeted advertising directed at children is not prevented",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.9(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.9(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.9-3_stmt",
+        "name": "statement",
+        "prose": "tracking, behavioural monitoring of children or targeted advertising directed at children is not prevented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-12-Fourth-Schedule",
+      "title": "any reliance on exemption from s.9(1) and (3) is not limited to the listed classes (healthcare, education, childcare…) and purposes, with their conditions",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 12 / Fourth Schedule"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 12 / Fourth Schedule"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-12-Fourth-Schedule_stmt",
+        "name": "statement",
+        "prose": "any reliance on exemption from s.9(1) and (3) is not limited to the listed classes (healthcare, education, childcare…) and purposes, with their conditions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-3",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.10-2-a",
+      "title": "no Data Protection Officer based in India, responsible to the Board of Directors or governing body, who is the grievance point of contact",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.10(2)(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.10(2)(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.10-2-a_stmt",
+        "name": "statement",
+        "prose": "no Data Protection Officer based in India, responsible to the Board of Directors or governing body, who is the grievance point of contact"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.10-2-b",
+      "title": "no independent data auditor appointed to evaluate compliance",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.10(2)(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.10(2)(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.10-2-b_stmt",
+        "name": "statement",
+        "prose": "no independent data auditor appointed to evaluate compliance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.10-2-c-Rule-13-1",
+      "title": "a Data Protection Impact Assessment and an audit are not undertaken once in every twelve months",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.10(2)(c) / Rule 13(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.10(2)(c) / Rule 13(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.10-2-c-Rule-13-1_stmt",
+        "name": "statement",
+        "prose": "a Data Protection Impact Assessment and an audit are not undertaken once in every twelve months"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-13-2",
+      "title": "the person carrying out the DPIA and audit does not furnish the Board a report of significant observations",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 13(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 13(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-13-2_stmt",
+        "name": "statement",
+        "prose": "the person carrying out the DPIA and audit does not furnish the Board a report of significant observations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-13-3",
+      "title": "no due diligence verifies that technical measures including algorithmic software do not pose a risk to Data Principals' rights",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 13(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 13(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-13-3_stmt",
+        "name": "statement",
+        "prose": "no due diligence verifies that technical measures including algorithmic software do not pose a risk to Data Principals' rights"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-13-4",
+      "title": "personal data specified by the Central Government (and its traffic data) is not kept from transfer outside India",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 13(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 13(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-13-4_stmt",
+        "name": "statement",
+        "prose": "personal data specified by the Central Government (and its traffic data) is not kept from transfer outside India"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-4",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.11",
+      "title": "on request, the Data Principal cannot obtain a summary of her personal data and processing activities, and the identities of other fiduciaries and processors it was shared with",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.11_stmt",
+        "name": "statement",
+        "prose": "on request, the Data Principal cannot obtain a summary of her personal data and processing activities, and the identities of other fiduciaries and processors it was shared with"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.12-2",
+      "title": "inaccurate, incomplete or outdated personal data is not corrected, completed or updated on request",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.12(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.12(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.12-2_stmt",
+        "name": "statement",
+        "prose": "inaccurate, incomplete or outdated personal data is not corrected, completed or updated on request"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.12-3",
+      "title": "personal data is not erased on request unless retention is necessary for the specified purpose or by law",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.12(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.12(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.12-3_stmt",
+        "name": "statement",
+        "prose": "personal data is not erased on request unless retention is necessary for the specified purpose or by law"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-14-1",
+      "title": "the means to make rights requests, and the identifiers required, are not prominently published on the website/app",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 14(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 14(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-14-1_stmt",
+        "name": "statement",
+        "prose": "the means to make rights requests, and the identifiers required, are not prominently published on the website/app"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.14-Rule-14-4",
+      "title": "the Data Principal cannot nominate an individual to exercise her rights on death or incapacity",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.14 / Rule 14(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.14 / Rule 14(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.14-Rule-14-4_stmt",
+        "name": "statement",
+        "prose": "the Data Principal cannot nominate an individual to exercise her rights on death or incapacity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-5",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.16-1",
+      "title": "personal data is transferred to a country or territory the Central Government has notified as restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.16(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.16(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.16-1_stmt",
+        "name": "statement",
+        "prose": "personal data is transferred to a country or territory the Central Government has notified as restricted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-15",
+      "title": "transfers outside India do not meet the Central Government's requirements on making personal data available to a foreign State or its agencies",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-15_stmt",
+        "name": "statement",
+        "prose": "transfers outside India do not meet the Central Government's requirements on making personal data available to a foreign State or its agencies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-6",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-23-1",
+      "title": "no process to furnish information called for by the Central Government's authorised person within the specified period",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 23(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 23(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-23-1_stmt",
+        "name": "statement",
+        "prose": "no process to furnish information called for by the Central Government's authorised person within the specified period"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-23-2",
+      "title": "no process to withhold disclosure of such a request from the Data Principal when directed in the interests of sovereignty, integrity or security of the State",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 23(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 23(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-23-2_stmt",
+        "name": "statement",
+        "prose": "no process to withhold disclosure of such a request from the Data Principal when directed in the interests of sovereignty, integrity or security of the State"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-7",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a88b067-e8da-503f-9df7-a29fc25793f9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "8a88b067-e8da-503f-9df7-a29fc25793f9",
+     "title": "India DPDP Act 2023 + DPDP Rules 2025 — Data Fiduciary obligations",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "dpdp.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/dpdp_india/dpdp_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

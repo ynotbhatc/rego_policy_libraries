@@ -1,0 +1,2857 @@
+{
+ "catalog": {
+  "uuid": "6e5ee290-2d4a-54d5-a7cd-efe378507768",
+  "metadata": {
+   "title": "Rego Policy Libraries — dora (EU Digital Operational Resilience Act (DORA) — Regulation (EU) 2022/2554)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "dora"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "dora-dora_main",
+    "class": "rego-module",
+    "title": "EU Digital Operational Resilience Act (DORA) — Regulation (EU) 2022/2554",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "dora.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/dora/dora_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "dora-DORA-Art.5",
+      "title": "ICT risk management governance framework not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.5_stmt",
+        "name": "statement",
+        "prose": "ICT risk management governance framework not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.6",
+      "title": "ICT risk appetite and tolerance levels not formally defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.6_stmt",
+        "name": "statement",
+        "prose": "ICT risk appetite and tolerance levels not formally defined"
+       },
+       {
+        "id": "dora-DORA-Art.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICT risk management framework annual review not completed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.8",
+      "title": "ICT asset inventory not maintained (hardware, software, data assets)",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.8_stmt",
+        "name": "statement",
+        "prose": "ICT asset inventory not maintained (hardware, software, data assets)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.13",
+      "title": "Threat intelligence gathering and monitoring process absent",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.13_stmt",
+        "name": "statement",
+        "prose": "Threat intelligence gathering and monitoring process absent"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.12",
+      "title": "Recovery Time Objectives (RTO) not defined for critical ICT systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.12_stmt",
+        "name": "statement",
+        "prose": "Recovery Time Objectives (RTO) not defined for critical ICT systems"
+       },
+       {
+        "id": "dora-DORA-Art.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Recovery Point Objectives (RPO) not defined for critical ICT systems"
+       },
+       {
+        "id": "dora-DORA-Art.12_obj.2",
+        "name": "assessment-objective",
+        "prose": "ICT backup policy not documented or tested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.10",
+      "title": "Patch and vulnerability management process not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.10_stmt",
+        "name": "statement",
+        "prose": "Patch and vulnerability management process not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.9",
+      "title": "Data in transit not encrypted — encryption of sensitive data required",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.9_stmt",
+        "name": "statement",
+        "prose": "Data in transit not encrypted — encryption of sensitive data required"
+       },
+       {
+        "id": "dora-DORA-Art.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Data at rest not encrypted — encryption of sensitive data required"
+       },
+       {
+        "id": "dora-DORA-Art.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "Multi-factor authentication not enforced for ICT system access"
+       },
+       {
+        "id": "dora-DORA-Art.9_obj.3",
+        "name": "assessment-objective",
+        "prose": "Privileged access not managed — PAM controls required"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.18",
+      "title": "ICT incident classification and impact assessment process not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.18_stmt",
+        "name": "statement",
+        "prose": "ICT incident classification and impact assessment process not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.19",
+      "title": "Major incident initial notification to authority not within 4 hours",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.19_stmt",
+        "name": "statement",
+        "prose": "Major incident initial notification to authority not within 4 hours"
+       },
+       {
+        "id": "dora-DORA-Art.19_obj.1",
+        "name": "assessment-objective",
+        "prose": "Intermediate incident report to authority not within 72 hours"
+       },
+       {
+        "id": "dora-DORA-Art.19_obj.2",
+        "name": "assessment-objective",
+        "prose": "Final incident report to authority not within 1 month of resolution"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.17",
+      "title": "ICT incident register not maintained with required details",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.17_stmt",
+        "name": "statement",
+        "prose": "ICT incident register not maintained with required details"
+       },
+       {
+        "id": "dora-DORA-Art.17_obj.1",
+        "name": "assessment-objective",
+        "prose": "Root cause analysis not performed for major ICT incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.25",
+      "title": "Basic resilience testing (vulnerability scans, pen tests) not conducted annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.25_stmt",
+        "name": "statement",
+        "prose": "Basic resilience testing (vulnerability scans, pen tests) not conducted annually"
+       },
+       {
+        "id": "dora-DORA-Art.25_obj.1",
+        "name": "assessment-objective",
+        "prose": "Critical findings from resilience testing not remediated in defined timeframe"
+       },
+       {
+        "id": "dora-DORA-Art.25_obj.2",
+        "name": "assessment-objective",
+        "prose": "Business continuity and crisis communication drills not conducted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.26",
+      "title": "Threat-Led Penetration Testing (TLPT) not conducted (significant entities: every 3 years)",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.26_stmt",
+        "name": "statement",
+        "prose": "Threat-Led Penetration Testing (TLPT) not conducted (significant entities: every 3 years)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.28",
+      "title": "ICT third-party service provider register not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.28_stmt",
+        "name": "statement",
+        "prose": "ICT third-party service provider register not maintained"
+       },
+       {
+        "id": "dora-DORA-Art.28_obj.1",
+        "name": "assessment-objective",
+        "prose": "Critical ICT third-party providers not identified and assessed"
+       },
+       {
+        "id": "dora-DORA-Art.28_obj.2",
+        "name": "assessment-objective",
+        "prose": "Due diligence not performed for ICT third-party providers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.30",
+      "title": "ICT service contracts do not include exit strategy and transition plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.30_stmt",
+        "name": "statement",
+        "prose": "ICT service contracts do not include exit strategy and transition plan"
+       },
+       {
+        "id": "dora-DORA-Art.30_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICT service contracts do not include audit and access rights"
+       },
+       {
+        "id": "dora-DORA-Art.30_obj.2",
+        "name": "assessment-objective",
+        "prose": "ICT service contracts lack SLA definitions for availability and performance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.29",
+      "title": "ICT concentration risk not assessed (over-reliance on single provider)",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.29_stmt",
+        "name": "statement",
+        "prose": "ICT concentration risk not assessed (over-reliance on single provider)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.45",
+      "title": "Cyber threat information sharing arrangements not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.45"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.45"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.45_stmt",
+        "name": "statement",
+        "prose": "Cyber threat information sharing arrangements not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-dora.main-1",
+      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dora.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dora.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-dora.main-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-dora.main-2",
+      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dora.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dora.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0bcbe869-9727-554e-a3aa-92c822dfdda8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-dora.main-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "dora-dora_rts_subcontracting",
+    "class": "rego-module",
+    "title": "DORA level-2 technical standard — ICT subcontracting (critical/important functions)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "dora.rts_subcontracting"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/dora/dora_rts_subcontracting.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.1",
+      "title": "Subcontracting risk assessment considers chain length/complexity, subcontractor locations, data shared, group membership, concentration, transferability and disruption risk — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.1_stmt",
+        "name": "statement",
+        "prose": "Subcontracting risk assessment considers chain length/complexity, subcontractor locations, data shared, group membership, concentration, transferability and disruption risk — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.2",
+      "title": "Parent undertaking ensures subcontracting conditions are implemented consistently across all group financial entities — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.2_stmt",
+        "name": "statement",
+        "prose": "Parent undertaking ensures subcontracting conditions are implemented consistently across all group financial entities — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-1",
+      "title": "Pre-contract decision documented on whether ICT services supporting critical/important functions may be subcontracted — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-1_stmt",
+        "name": "statement",
+        "prose": "Pre-contract decision documented on whether ICT services supporting critical/important functions may be subcontracted — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-1-a",
+      "title": "Verified the ICT provider can select and assess operational and financial abilities of potential subcontractors — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(1)(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(1)(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-1-a_stmt",
+        "name": "statement",
+        "prose": "Verified the ICT provider can select and assess operational and financial abilities of potential subcontractors — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-1-b",
+      "title": "ICT provider can identify ALL subcontractors in the chain and notify the entity with assessment information — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(1)(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(1)(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-1-b_stmt",
+        "name": "statement",
+        "prose": "ICT provider can identify ALL subcontractors in the chain and notify the entity with assessment information — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-1-c",
+      "title": "Subcontracts enable the financial entity to meet its own DORA and Union/national legal obligations — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(1)(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(1)(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-1-c_stmt",
+        "name": "statement",
+        "prose": "Subcontracts enable the financial entity to meet its own DORA and Union/national legal obligations — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-1-d",
+      "title": "Subcontractors grant the entity and competent/resolution authorities the same access and inspection rights as the main provider — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(1)(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(1)(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-1-d_stmt",
+        "name": "statement",
+        "prose": "Subcontractors grant the entity and competent/resolution authorities the same access and inspection rights as the main provider — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-1-e",
+      "title": "ICT provider has sufficient ability, expertise and resources to monitor ICT risk at subcontractor level — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(1)(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(1)(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-1-e_stmt",
+        "name": "statement",
+        "prose": "ICT provider has sufficient ability, expertise and resources to monitor ICT risk at subcontractor level — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-1-f",
+      "title": "Financial entity itself has sufficient resources and expertise to monitor subcontracting-chain ICT risk — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(1)(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(1)(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-1-f_stmt",
+        "name": "statement",
+        "prose": "Financial entity itself has sufficient resources and expertise to monitor subcontracting-chain ICT risk — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-1-g",
+      "title": "Impact of a possible subcontractor failure on resilience and financial soundness assessed — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(1)(g)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(1)(g)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-1-g_stmt",
+        "name": "statement",
+        "prose": "Impact of a possible subcontractor failure on resilience and financial soundness assessed — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-1-h",
+      "title": "Geographic-location risks of potential subcontractors (and parents/service locations) assessed — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(1)(h)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(1)(h)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-1-h_stmt",
+        "name": "statement",
+        "prose": "Geographic-location risks of potential subcontractors (and parents/service locations) assessed — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-1-i",
+      "title": "ICT concentration risk at entity level assessed for the subcontracting chain (DORA Art.29) — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(1)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(1)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-1-i_stmt",
+        "name": "statement",
+        "prose": "ICT concentration risk at entity level assessed for the subcontracting chain (DORA Art.29) — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-1-j",
+      "title": "Assessed whether supervisory inspection/audit rights face obstacles anywhere in the chain — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(1)(j)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(1)(j)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-1-j_stmt",
+        "name": "statement",
+        "prose": "Assessed whether supervisory inspection/audit rights face obstacles anywhere in the chain — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-2",
+      "title": "Subcontracting risk assessment periodically re-performed against changes in functions, threats, concentration and geopolitics — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-2_stmt",
+        "name": "statement",
+        "prose": "Subcontracting risk assessment periodically re-performed against changes in functions, threats, concentration and geopolitics — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.3-3",
+      "title": "Entity's own risk assessment evidenced — final responsibility not delegated to provider-performed assessments — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.3(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.3(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.3-3_stmt",
+        "name": "statement",
+        "prose": "Entity's own risk assessment evidenced — final responsibility not delegated to provider-performed assessments — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.4-1",
+      "title": "Contract identifies which ICT services supporting critical/important functions may be subcontracted and under which conditions — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.4(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.4(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.4-1_stmt",
+        "name": "statement",
+        "prose": "Contract identifies which ICT services supporting critical/important functions may be subcontracted and under which conditions — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.4-1-a",
+      "title": "Contract makes the ICT provider responsible for all services delivered by its subcontractors — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.4(1)(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.4(1)(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.4-1-a_stmt",
+        "name": "statement",
+        "prose": "Contract makes the ICT provider responsible for all services delivered by its subcontractors — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.4-1-b-c",
+      "title": "Contract obliges continuous provider monitoring of subcontracted services with specified reporting to the entity — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.4(1)(b)-(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.4(1)(b)-(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.4-1-b-c_stmt",
+        "name": "statement",
+        "prose": "Contract obliges continuous provider monitoring of subcontracted services with specified reporting to the entity — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.4-1-d-e",
+      "title": "Contract obliges subcontractor location-risk assessment and specifies where subcontractors process/store data — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.4(1)(d)-(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.4(1)(d)-(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.4-1-d-e_stmt",
+        "name": "statement",
+        "prose": "Contract obliges subcontractor location-risk assessment and specifies where subcontractors process/store data — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.4-1-f",
+      "title": "Contract requires monitoring/reporting obligations to flow down into the provider's subcontractor contracts — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.4(1)(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.4(1)(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.4-1-f_stmt",
+        "name": "statement",
+        "prose": "Contract requires monitoring/reporting obligations to flow down into the provider's subcontractor contracts — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.4-1-g-h",
+      "title": "Contract requires service continuity through the whole chain on subcontractor failure, incl. contingency plans with service levels — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.4(1)(g)-(h)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.4(1)(g)-(h)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.4-1-g-h_stmt",
+        "name": "statement",
+        "prose": "Contract requires service continuity through the whole chain on subcontractor failure, incl. contingency plans with service levels — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.4-1-i",
+      "title": "Contract specifies ICT security standards applicable through the subcontracting chain — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.4(1)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.4(1)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.4-1-i_stmt",
+        "name": "statement",
+        "prose": "Contract specifies ICT security standards applicable through the subcontracting chain — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.4-1-j",
+      "title": "Contract requires subcontractors to grant the entity and authorities the same access, inspection and audit rights — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.4(1)(j)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.4(1)(j)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.4-1-j_stmt",
+        "name": "statement",
+        "prose": "Contract requires subcontractors to grant the entity and authorities the same access, inspection and audit rights — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.4-1-k",
+      "title": "Contract requires provider notification of any material change to subcontracting arrangements — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.4(1)(k)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.4(1)(k)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.4-1-k_stmt",
+        "name": "statement",
+        "prose": "Contract requires provider notification of any material change to subcontracting arrangements — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.4-1-l",
+      "title": "Contract grants termination rights when RTS Art.6 or DORA Art.28(7) conditions are met — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.4(1)(l)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.4(1)(l)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.4-1-l_stmt",
+        "name": "statement",
+        "prose": "Contract grants termination rights when RTS Art.6 or DORA Art.28(7) conditions are met — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.4-2",
+      "title": "Required contractual changes implemented timely with documented implementation timelines — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.4(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.4(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.4-2_stmt",
+        "name": "statement",
+        "prose": "Required contractual changes implemented timely with documented implementation timelines — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.5-1-2",
+      "title": "Contract requires advance notice of intended material subcontracting changes with a reasonable approval/objection period — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.5(1)-(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.5(1)-(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.5-1-2_stmt",
+        "name": "statement",
+        "prose": "Contract requires advance notice of intended material subcontracting changes with a reasonable approval/objection period — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.5-3",
+      "title": "Material changes implemented only after entity approval or non-objection — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.5(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.5(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.5-3_stmt",
+        "name": "statement",
+        "prose": "Material changes implemented only after entity approval or non-objection — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.5-4",
+      "title": "Objection-and-modification process exercised when a proposed change exceeds risk tolerance, before implementation — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.5(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.5(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.5-4_stmt",
+        "name": "statement",
+        "prose": "Objection-and-modification process exercised when a proposed change exceeds risk tolerance, before implementation — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-532-Art.6",
+      "title": "Termination triggers defined: change despite objection; change before notice expiry without approval; subcontracting of a non-permitted service — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/532 Art.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/532 Art.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_subcontracting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-532-Art.6_stmt",
+        "name": "statement",
+        "prose": "Termination triggers defined: change despite objection; change before notice expiry without approval; subcontracting of a non-permitted service — not attested"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "dora-dora_rts_tlpt",
+    "class": "rego-module",
+    "title": "DORA level-2 technical standard — Threat-led penetration testing (TLPT)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "dora.rts_tlpt"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/dora/dora_rts_tlpt.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.2",
+      "title": "TLPT scope determination performed against the mandatory categories and authority-designation criteria — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.2_stmt",
+        "name": "statement",
+        "prose": "TLPT scope determination performed against the mandatory categories and authority-designation criteria — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.4-1",
+      "title": "Control team lead appointed, responsible for day-to-day TLPT management — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.4(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.4(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.4-1_stmt",
+        "name": "statement",
+        "prose": "Control team lead appointed, responsible for day-to-day TLPT management — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.4-2",
+      "title": "Secrecy measures established: need-to-know access, blue team unaware, confidentiality arrangements, code names — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.4(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.4(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.4-2_stmt",
+        "name": "statement",
+        "prose": "Secrecy measures established: need-to-know access, blue team unaware, confidentiality arrangements, code names — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.5",
+      "title": "Risk assessment of testing live production systems performed and reviewed throughout the test — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.5_stmt",
+        "name": "statement",
+        "prose": "Risk assessment of testing live production systems performed and reviewed throughout the test — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.6",
+      "title": "For pooled/joint TLPT: per-entity risk assessment plus cooperative joint-risk identification — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.6_stmt",
+        "name": "statement",
+        "prose": "For pooled/joint TLPT: per-entity risk assessment plus cooperative joint-risk identification — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.7-1-a-d",
+      "title": "Provider selection evidence collected: CVs, certifications, indemnity insurance, minimum references (3 TI / 5 testers) — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.7(1)(a)-(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.7(1)(a)-(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.7-1-a-d_stmt",
+        "name": "statement",
+        "prose": "Provider selection evidence collected: CVs, certifications, indemnity insurance, minimum references (3 TI / 5 testers) — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.7-1-e",
+      "title": "Threat-intelligence team requirements met (experience thresholds, prior assignments, no blue-team conflicts, tester separation) — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.7(1)(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.7(1)(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.7-1-e_stmt",
+        "name": "statement",
+        "prose": "Threat-intelligence team requirements met (experience thresholds, prior assignments, no blue-team conflicts, tester separation) — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.7-1-f",
+      "title": "Red-team requirements met (manager 5+ years, 2+ testers with 2+ years, 5+ prior assignments, TI independence) — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.7(1)(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.7(1)(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.7-1-f_stmt",
+        "name": "statement",
+        "prose": "Red-team requirements met (manager 5+ years, 2+ testers with 2+ years, 5+ prior assignments, TI independence) — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.7-1-g-h",
+      "title": "Restoration and clean-up procedures agreed: credential deletion, C2 deactivation, kill switches, malware removal, secure disposal — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.7(1)(g)-(h)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.7(1)(g)-(h)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.7-1-g-h_stmt",
+        "name": "statement",
+        "prose": "Restoration and clean-up procedures agreed: credential deletion, C2 deactivation, kill switches, malware removal, secure disposal — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.7-1-i",
+      "title": "Prohibited-activity boundaries contractually set (no destruction, no uncontrolled modification, no out-of-scope systems) — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.7(1)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.7(1)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.7-1-i_stmt",
+        "name": "statement",
+        "prose": "Prohibited-activity boundaries contractually set (no destruction, no uncontrolled modification, no out-of-scope systems) — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.7-2",
+      "title": "Provider-compliance evidence documented; exceptional non-compliant providers carry documented risk mitigations — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.7(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.7(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.7-2_stmt",
+        "name": "statement",
+        "prose": "Provider-compliance evidence documented; exceptional non-compliant providers carry documented risk mitigations — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.9-2",
+      "title": "TLPT initiation documents submitted within 3 months of authority notification (project charter, contacts, channels, code name) — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.9(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.9(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.9-2_stmt",
+        "name": "statement",
+        "prose": "TLPT initiation documents submitted within 3 months of authority notification (project charter, contacts, channels, code name) — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.9-4",
+      "title": "Control team established with defined responsibilities — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.9(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.9(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.9-4_stmt",
+        "name": "statement",
+        "prose": "Control team established with defined responsibilities — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.9-6-7",
+      "title": "Scope specification submitted within 6 months and approved by the management body — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.9(6)-(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.9(6)-(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.9-6-7_stmt",
+        "name": "statement",
+        "prose": "Scope specification submitted within 6 months and approved by the management body — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.9-9",
+      "title": "Tester and TI-provider procurement completed before the testing phase starts — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.9(9)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.9(9)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.9-9_stmt",
+        "name": "statement",
+        "prose": "Tester and TI-provider procurement completed before the testing phase starts — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.10-1-2",
+      "title": "Targeted threat intelligence gathered; scenarios cover each in-scope critical/important function, varied by actor and TTPs — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.10(1)-(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.10(1)-(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.10-1-2_stmt",
+        "name": "statement",
+        "prose": "Targeted threat intelligence gathered; scenarios cover each in-scope critical/important function, varied by actor and TTPs — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.10-3-4",
+      "title": "Minimum 3 scenarios selected (at most 1 non-threat-led); pooled/joint includes a shared-provider scenario — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.10(3)-(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.10(3)-(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.10-3-4_stmt",
+        "name": "statement",
+        "prose": "Minimum 3 scenarios selected (at most 1 non-threat-led); pooled/joint includes a shared-provider scenario — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.10-5-6",
+      "title": "Targeted threat-intelligence report delivered and approved by the TLPT authority — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.10(5)-(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.10(5)-(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.10-5-6_stmt",
+        "name": "statement",
+        "prose": "Targeted threat-intelligence report delivered and approved by the TLPT authority — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.11-1-3",
+      "title": "Red-team test plan prepared from scope spec and TI report, approved by control team and TLPT authority — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.11(1)-(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.11(1)-(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.11-1-3_stmt",
+        "name": "statement",
+        "prose": "Red-team test plan prepared from scope spec and TI report, approved by control team and TLPT authority — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.11-5",
+      "title": "Active red-team phase lasts a minimum of 12 weeks — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.11(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.11(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.11-5_stmt",
+        "name": "statement",
+        "prose": "Active red-team phase lasts a minimum of 12 weeks — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.11-7",
+      "title": "Testers report at least weekly to control team and test managers during the active phase — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.11(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.11(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.11-7_stmt",
+        "name": "statement",
+        "prose": "Testers report at least weekly to control team and test managers during the active phase — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.11-8-10",
+      "title": "Leg-up, detection-continuation and suspension/limited-purple-teaming procedures defined and approved — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.11(8)-(10)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.11(8)-(10)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.11-8-10_stmt",
+        "name": "statement",
+        "prose": "Leg-up, detection-continuation and suspension/limited-purple-teaming procedures defined and approved — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.12-2",
+      "title": "Red-team test report submitted within 4 weeks of active-phase end — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.12(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.12(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.12-2_stmt",
+        "name": "statement",
+        "prose": "Red-team test report submitted within 4 weeks of active-phase end — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.12-4",
+      "title": "Blue-team test report submitted within 10 weeks of active-phase end — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.12(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.12(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.12-4_stmt",
+        "name": "statement",
+        "prose": "Blue-team test report submitted within 10 weeks of active-phase end — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.12-5-6",
+      "title": "Replay / purple-teaming exercise conducted within 10 weeks of active-phase end with mutual feedback — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.12(5)-(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.12(5)-(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.12-5-6_stmt",
+        "name": "statement",
+        "prose": "Replay / purple-teaming exercise conducted within 10 weeks of active-phase end with mutual feedback — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.12-7",
+      "title": "Test summary report submitted within 8 weeks of authority assessment notification — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.12(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.12(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.12-7_stmt",
+        "name": "statement",
+        "prose": "Test summary report submitted within 8 weeks of authority assessment notification — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.13",
+      "title": "Remediation plan submitted within 8 weeks: shortcomings, prioritized measures with dates, root causes, owners, residual risks — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.13_stmt",
+        "name": "statement",
+        "prose": "Remediation plan submitted within 8 weeks: shortcomings, prioritized measures with dates, root causes, owners, residual risks — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.14",
+      "title": "Attestation obtained from the TLPT authority (DORA Art.26(7)) — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.14_stmt",
+        "name": "statement",
+        "prose": "Attestation obtained from the TLPT authority (DORA Art.26(7)) — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.15-1",
+      "title": "Internal-tester management policy established (suitability, conflicts, staffing minimums, 12+ months employment) without degrading defence — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.15(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.15(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.15-1_stmt",
+        "name": "statement",
+        "prose": "Internal-tester management policy established (suitability, conflicts, staffing minimums, 12+ months employment) without degrading defence — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-RTS-2025-1190-Art.15-2-3",
+      "title": "Internal-tester use approved by the TLPT authority and disclosed in initiation info and reports — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA RTS 2025/1190 Art.15(2)-(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA RTS 2025/1190 Art.15(2)-(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-RTS-2025-1190-Art.15-2-3_stmt",
+        "name": "statement",
+        "prose": "Internal-tester use approved by the TLPT authority and disclosed in initiation info and reports — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-dora.rts_tlpt-1",
+      "title": "DORA RTS 2025/1190 / DORA Art.26(1)+(8): TLPT performed at least every 3 years with external testers at least every third test (significant credit institutions: always external) — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "dora.rts_tlpt#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dora.rts_tlpt#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.rts_tlpt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2740739e-a592-54b2-8403-84ba8fa255b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-dora.rts_tlpt-1_stmt",
+        "name": "statement",
+        "prose": "DORA RTS 2025/1190 / DORA Art.26(1)+(8): TLPT performed at least every 3 years with external testers at least every third test (significant credit institutions: always external) — not attested"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "0bcbe869-9727-554e-a3aa-92c822dfdda8",
+     "title": "EU Digital Operational Resilience Act (DORA) — Regulation (EU) 2022/2554",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "dora.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/dora/dora_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "25ac2339-5ef1-5a01-aaf1-46560b6b03b7",
+     "title": "DORA level-2 technical standard — ICT subcontracting (critical/important functions)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "dora.rts_subcontracting"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/dora/dora_rts_subcontracting.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "2740739e-a592-54b2-8403-84ba8fa255b7",
+     "title": "DORA level-2 technical standard — Threat-led penetration testing (TLPT)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "dora.rts_tlpt"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/dora/dora_rts_tlpt.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

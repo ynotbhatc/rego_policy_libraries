@@ -1,0 +1,6433 @@
+{
+ "catalog": {
+  "uuid": "be39b061-bc41-5e37-804f-883548179960",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_controls_v8 (Official CIS Controls v8.1 safeguards for Control 1: Inventory and Control of Enterprise Assets)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_controls_v8"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_controls_v8-c01_enterprise_assets",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 1: Inventory and Control of Enterprise Assets",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c01"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c01_enterprise_assets.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-1.1",
+      "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c01"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e48291b-b854-58c2-8c79-e3d0a13823cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-1.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain Detailed Enterprise Asset Inventory"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-1.2",
+      "title": "Address Unauthorized Assets",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c01"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e48291b-b854-58c2-8c79-e3d0a13823cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-1.2_stmt",
+        "name": "statement",
+        "prose": "Address Unauthorized Assets"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-1.3",
+      "title": "Utilize an Active Discovery Tool",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c01"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e48291b-b854-58c2-8c79-e3d0a13823cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-1.3_stmt",
+        "name": "statement",
+        "prose": "Utilize an Active Discovery Tool"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-1.4",
+      "title": "Use Dynamic Host Configuration Protocol (DHCP) Logging to Update Enterprise Asset Inventory",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c01"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e48291b-b854-58c2-8c79-e3d0a13823cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-1.4_stmt",
+        "name": "statement",
+        "prose": "Use Dynamic Host Configuration Protocol (DHCP) Logging to Update Enterprise Asset Inventory"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-1.5",
+      "title": "Use a Passive Asset Discovery Tool",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c01"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e48291b-b854-58c2-8c79-e3d0a13823cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-1.5_stmt",
+        "name": "statement",
+        "prose": "Use a Passive Asset Discovery Tool"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c01-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c01#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c01#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c01"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e48291b-b854-58c2-8c79-e3d0a13823cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c01-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c02_software_assets",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 2: Inventory and Control of Software Assets",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c02"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c02_software_assets.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-2.1",
+      "title": "Establish and Maintain a Software Inventory",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c02"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e3c85e1-f59b-511a-9a1d-69589a05166f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-2.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Software Inventory"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-2.2",
+      "title": "Ensure Authorized Software is Currently Supported",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c02"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e3c85e1-f59b-511a-9a1d-69589a05166f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Authorized Software is Currently Supported"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-2.3",
+      "title": "Address Unauthorized Software",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c02"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e3c85e1-f59b-511a-9a1d-69589a05166f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-2.3_stmt",
+        "name": "statement",
+        "prose": "Address Unauthorized Software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-2.4",
+      "title": "Utilize Automated Software Inventory Tools",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c02"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e3c85e1-f59b-511a-9a1d-69589a05166f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-2.4_stmt",
+        "name": "statement",
+        "prose": "Utilize Automated Software Inventory Tools"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-2.5",
+      "title": "Allowlist Authorized Software",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c02"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e3c85e1-f59b-511a-9a1d-69589a05166f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-2.5_stmt",
+        "name": "statement",
+        "prose": "Allowlist Authorized Software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-2.6",
+      "title": "Allowlist Authorized Libraries",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c02"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e3c85e1-f59b-511a-9a1d-69589a05166f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-2.6_stmt",
+        "name": "statement",
+        "prose": "Allowlist Authorized Libraries"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-2.7",
+      "title": "Allowlist Authorized Scripts",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c02"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e3c85e1-f59b-511a-9a1d-69589a05166f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-2.7_stmt",
+        "name": "statement",
+        "prose": "Allowlist Authorized Scripts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c02-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c02#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c02#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c02"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e3c85e1-f59b-511a-9a1d-69589a05166f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c02-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c03_data_protection",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 3: Data Protection",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c03"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c03_data_protection.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-3.1",
+      "title": "Establish and Maintain a Data Management Process",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Data Management Process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.2",
+      "title": "Establish and Maintain a Data Inventory",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.2_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Data Inventory"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.3",
+      "title": "Configure Data Access Control Lists",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.3_stmt",
+        "name": "statement",
+        "prose": "Configure Data Access Control Lists"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.4",
+      "title": "Enforce Data Retention",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.4_stmt",
+        "name": "statement",
+        "prose": "Enforce Data Retention"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.5",
+      "title": "Securely Dispose of Data",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.5_stmt",
+        "name": "statement",
+        "prose": "Securely Dispose of Data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.6",
+      "title": "Encrypt Data on End-User Devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.6_stmt",
+        "name": "statement",
+        "prose": "Encrypt Data on End-User Devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.7",
+      "title": "Establish and Maintain a Data Classification Scheme",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.7_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Data Classification Scheme"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.8",
+      "title": "Document Data Flows",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.8_stmt",
+        "name": "statement",
+        "prose": "Document Data Flows"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.9",
+      "title": "Encrypt Data on Removable Media",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.9_stmt",
+        "name": "statement",
+        "prose": "Encrypt Data on Removable Media"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.10",
+      "title": "Encrypt Sensitive Data in Transit",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.10_stmt",
+        "name": "statement",
+        "prose": "Encrypt Sensitive Data in Transit"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.11",
+      "title": "Encrypt Sensitive Data at Rest",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.11_stmt",
+        "name": "statement",
+        "prose": "Encrypt Sensitive Data at Rest"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.12",
+      "title": "Segment Data Processing and Storage Based on Sensitivity",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.12_stmt",
+        "name": "statement",
+        "prose": "Segment Data Processing and Storage Based on Sensitivity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.13",
+      "title": "Deploy a Data Loss Prevention Solution",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.13_stmt",
+        "name": "statement",
+        "prose": "Deploy a Data Loss Prevention Solution"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-3.14",
+      "title": "Log Sensitive Data Access",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-3.14_stmt",
+        "name": "statement",
+        "prose": "Log Sensitive Data Access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c03-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c03#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c03#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c03"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dea02d5a-a7f8-51a0-9362-f752842d546b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c03-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c04_secure_configuration",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 4: Secure Configuration of Enterprise Assets and Software",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c04"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c04_secure_configuration.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-4.1",
+      "title": "Establish and Maintain a Secure Configuration Process",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Secure Configuration Process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-4.2",
+      "title": "Establish and Maintain a Secure Configuration Process for Network Infrastructure",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.2_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Secure Configuration Process for Network Infrastructure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-4.3",
+      "title": "Configure Automatic Session Locking on Enterprise Assets",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.3_stmt",
+        "name": "statement",
+        "prose": "Configure Automatic Session Locking on Enterprise Assets"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-4.4",
+      "title": "Implement and Manage a Firewall on Servers",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.4_stmt",
+        "name": "statement",
+        "prose": "Implement and Manage a Firewall on Servers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-4.5",
+      "title": "Implement and Manage a Firewall on End-User Devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.5_stmt",
+        "name": "statement",
+        "prose": "Implement and Manage a Firewall on End-User Devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-4.6",
+      "title": "Securely Manage Enterprise Assets and Software",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.6_stmt",
+        "name": "statement",
+        "prose": "Securely Manage Enterprise Assets and Software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-4.7",
+      "title": "Manage Default Accounts on Enterprise Assets and Software",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.7_stmt",
+        "name": "statement",
+        "prose": "Manage Default Accounts on Enterprise Assets and Software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-4.8",
+      "title": "Uninstall or Disable Unnecessary Services on Enterprise Assets and Software",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.8_stmt",
+        "name": "statement",
+        "prose": "Uninstall or Disable Unnecessary Services on Enterprise Assets and Software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-4.9",
+      "title": "Configure Trusted DNS Servers on Enterprise Assets",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.9_stmt",
+        "name": "statement",
+        "prose": "Configure Trusted DNS Servers on Enterprise Assets"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-4.10",
+      "title": "Enforce Automatic Device Lockout on Portable End-User Devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.10_stmt",
+        "name": "statement",
+        "prose": "Enforce Automatic Device Lockout on Portable End-User Devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-4.11",
+      "title": "Enforce Remote Wipe Capability on Portable End-User Devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.11_stmt",
+        "name": "statement",
+        "prose": "Enforce Remote Wipe Capability on Portable End-User Devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-4.12",
+      "title": "Separate Enterprise Workspaces on Mobile End-User Devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-4.12_stmt",
+        "name": "statement",
+        "prose": "Separate Enterprise Workspaces on Mobile End-User Devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c04-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c04#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c04#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#397938af-4116-511a-9c4e-afad237d027d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c04-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c05_account_management",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 5: Account Management",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c05"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c05_account_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-5.1",
+      "title": "Establish and Maintain an Inventory of Accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c05"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d65be3d-a284-5de0-a41f-70cf07258a7b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-5.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain an Inventory of Accounts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-5.2",
+      "title": "Use Unique Passwords",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c05"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d65be3d-a284-5de0-a41f-70cf07258a7b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-5.2_stmt",
+        "name": "statement",
+        "prose": "Use Unique Passwords"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-5.3",
+      "title": "Disable Dormant Accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c05"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d65be3d-a284-5de0-a41f-70cf07258a7b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-5.3_stmt",
+        "name": "statement",
+        "prose": "Disable Dormant Accounts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-5.4",
+      "title": "Restrict Administrator Privileges to Dedicated Administrator Accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c05"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d65be3d-a284-5de0-a41f-70cf07258a7b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-5.4_stmt",
+        "name": "statement",
+        "prose": "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-5.5",
+      "title": "Establish and Maintain an Inventory of Service Accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c05"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d65be3d-a284-5de0-a41f-70cf07258a7b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-5.5_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain an Inventory of Service Accounts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-5.6",
+      "title": "Centralize Account Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c05"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d65be3d-a284-5de0-a41f-70cf07258a7b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-5.6_stmt",
+        "name": "statement",
+        "prose": "Centralize Account Management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c05-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c05#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c05#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c05"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d65be3d-a284-5de0-a41f-70cf07258a7b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c05-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c06_access_control",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 6: Access Control Management",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c06"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c06_access_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-6.1",
+      "title": "Establish an Access Granting Process",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c06"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25e8a155-d342-5d60-9415-0260c7d6f78a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-6.1_stmt",
+        "name": "statement",
+        "prose": "Establish an Access Granting Process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-6.2",
+      "title": "Establish an Access Revoking Process",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c06"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25e8a155-d342-5d60-9415-0260c7d6f78a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-6.2_stmt",
+        "name": "statement",
+        "prose": "Establish an Access Revoking Process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-6.3",
+      "title": "Require MFA for Externally-Exposed Applications",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c06"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25e8a155-d342-5d60-9415-0260c7d6f78a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-6.3_stmt",
+        "name": "statement",
+        "prose": "Require MFA for Externally-Exposed Applications"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-6.4",
+      "title": "Require MFA for Remote Network Access",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c06"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25e8a155-d342-5d60-9415-0260c7d6f78a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-6.4_stmt",
+        "name": "statement",
+        "prose": "Require MFA for Remote Network Access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-6.5",
+      "title": "Require MFA for Administrative Access",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c06"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25e8a155-d342-5d60-9415-0260c7d6f78a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-6.5_stmt",
+        "name": "statement",
+        "prose": "Require MFA for Administrative Access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-6.6",
+      "title": "Establish and Maintain an Inventory of Authentication and Authorization Systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c06"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25e8a155-d342-5d60-9415-0260c7d6f78a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-6.6_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain an Inventory of Authentication and Authorization Systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-6.7",
+      "title": "Centralize Access Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c06"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25e8a155-d342-5d60-9415-0260c7d6f78a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-6.7_stmt",
+        "name": "statement",
+        "prose": "Centralize Access Control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-6.8",
+      "title": "Define and Maintain Role-Based Access Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c06"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25e8a155-d342-5d60-9415-0260c7d6f78a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-6.8_stmt",
+        "name": "statement",
+        "prose": "Define and Maintain Role-Based Access Control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c06-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c06#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c06#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c06"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25e8a155-d342-5d60-9415-0260c7d6f78a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c06-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c07_vulnerability_management",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 7:",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c07"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c07_vulnerability_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-7.1",
+      "title": "Establish and Maintain a Vulnerability Management Process",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c07"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0e23546-38e1-5abb-b478-18f0ff7ecd62",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-7.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Vulnerability Management Process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-7.2",
+      "title": "Establish and Maintain a Remediation Process",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c07"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0e23546-38e1-5abb-b478-18f0ff7ecd62",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-7.2_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Remediation Process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-7.3",
+      "title": "Perform Automated Operating System Patch Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c07"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0e23546-38e1-5abb-b478-18f0ff7ecd62",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-7.3_stmt",
+        "name": "statement",
+        "prose": "Perform Automated Operating System Patch Management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-7.4",
+      "title": "Perform Automated Application Patch Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c07"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0e23546-38e1-5abb-b478-18f0ff7ecd62",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-7.4_stmt",
+        "name": "statement",
+        "prose": "Perform Automated Application Patch Management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-7.5",
+      "title": "Perform Automated Vulnerability Scans of Internal Enterprise Assets",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c07"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0e23546-38e1-5abb-b478-18f0ff7ecd62",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-7.5_stmt",
+        "name": "statement",
+        "prose": "Perform Automated Vulnerability Scans of Internal Enterprise Assets"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-7.6",
+      "title": "Perform Automated Vulnerability Scans of Externally-Exposed Enterprise Assets",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c07"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0e23546-38e1-5abb-b478-18f0ff7ecd62",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-7.6_stmt",
+        "name": "statement",
+        "prose": "Perform Automated Vulnerability Scans of Externally-Exposed Enterprise Assets"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-7.7",
+      "title": "Remediate Detected Vulnerabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c07"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0e23546-38e1-5abb-b478-18f0ff7ecd62",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-7.7_stmt",
+        "name": "statement",
+        "prose": "Remediate Detected Vulnerabilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c07-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c07#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c07#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c07"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0e23546-38e1-5abb-b478-18f0ff7ecd62",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c07-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c08_audit_log_management",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 8: Audit Log Management. Official IDs, titles, and IG levels",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c08"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c08_audit_log_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-8.1",
+      "title": "Establish and Maintain an Audit Log Management Process",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain an Audit Log Management Process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-8.2",
+      "title": "Collect Audit Logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.2_stmt",
+        "name": "statement",
+        "prose": "Collect Audit Logs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-8.3",
+      "title": "Ensure Adequate Audit Log Storage",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.3_stmt",
+        "name": "statement",
+        "prose": "Ensure Adequate Audit Log Storage"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-8.4",
+      "title": "Standardize Time Synchronization",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.4_stmt",
+        "name": "statement",
+        "prose": "Standardize Time Synchronization"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-8.5",
+      "title": "Collect Detailed Audit Logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.5_stmt",
+        "name": "statement",
+        "prose": "Collect Detailed Audit Logs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-8.6",
+      "title": "Collect DNS Query Audit Logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.6_stmt",
+        "name": "statement",
+        "prose": "Collect DNS Query Audit Logs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-8.7",
+      "title": "Collect URL Request Audit Logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.7_stmt",
+        "name": "statement",
+        "prose": "Collect URL Request Audit Logs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-8.8",
+      "title": "Collect Command-Line Audit Logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.8_stmt",
+        "name": "statement",
+        "prose": "Collect Command-Line Audit Logs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-8.9",
+      "title": "Centralize Audit Logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.9_stmt",
+        "name": "statement",
+        "prose": "Centralize Audit Logs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-8.10",
+      "title": "Retain Audit Logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.10_stmt",
+        "name": "statement",
+        "prose": "Retain Audit Logs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-8.11",
+      "title": "Conduct Audit Log Reviews",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.11_stmt",
+        "name": "statement",
+        "prose": "Conduct Audit Log Reviews"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-8.12",
+      "title": "Collect Service Provider Logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-8.12_stmt",
+        "name": "statement",
+        "prose": "Collect Service Provider Logs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c08-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c08#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c08#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c08"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a826718-e803-5db5-a7a8-631e88719dec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c08-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c09_email_web_protections",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 9:",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c09"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c09_email_web_protections.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-9.1",
+      "title": "Ensure Use of Only Fully Supported Browsers and Email Clients",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c09"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f89ed14-5edb-5088-8abf-dc8d643b6004",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-9.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Use of Only Fully Supported Browsers and Email Clients"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-9.2",
+      "title": "Use DNS Filtering Services",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c09"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f89ed14-5edb-5088-8abf-dc8d643b6004",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-9.2_stmt",
+        "name": "statement",
+        "prose": "Use DNS Filtering Services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-9.3",
+      "title": "Maintain and Enforce Network-Based URL Filters",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c09"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f89ed14-5edb-5088-8abf-dc8d643b6004",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-9.3_stmt",
+        "name": "statement",
+        "prose": "Maintain and Enforce Network-Based URL Filters"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-9.4",
+      "title": "Restrict Unnecessary or Unauthorized Browser and Email Client Extensions",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c09"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f89ed14-5edb-5088-8abf-dc8d643b6004",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-9.4_stmt",
+        "name": "statement",
+        "prose": "Restrict Unnecessary or Unauthorized Browser and Email Client Extensions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-9.5",
+      "title": "Implement DMARC",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c09"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f89ed14-5edb-5088-8abf-dc8d643b6004",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-9.5_stmt",
+        "name": "statement",
+        "prose": "Implement DMARC"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-9.6",
+      "title": "Block Unnecessary File Types",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c09"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f89ed14-5edb-5088-8abf-dc8d643b6004",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-9.6_stmt",
+        "name": "statement",
+        "prose": "Block Unnecessary File Types"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-9.7",
+      "title": "Deploy and Maintain Email Server Anti-Malware Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c09"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f89ed14-5edb-5088-8abf-dc8d643b6004",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-9.7_stmt",
+        "name": "statement",
+        "prose": "Deploy and Maintain Email Server Anti-Malware Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c09-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c09#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c09#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c09"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f89ed14-5edb-5088-8abf-dc8d643b6004",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c09-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c10_malware_defenses",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 10: Malware Defenses",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c10"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c10_malware_defenses.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-10.1",
+      "title": "Deploy and Maintain Anti-Malware Software",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#844dc22d-137c-5ef7-86a3-61deffb49e13",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-10.1_stmt",
+        "name": "statement",
+        "prose": "Deploy and Maintain Anti-Malware Software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-10.2",
+      "title": "Configure Automatic Anti-Malware Signature Updates",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#844dc22d-137c-5ef7-86a3-61deffb49e13",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-10.2_stmt",
+        "name": "statement",
+        "prose": "Configure Automatic Anti-Malware Signature Updates"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-10.3",
+      "title": "Disable Autorun and Autoplay for Removable Media",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#844dc22d-137c-5ef7-86a3-61deffb49e13",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-10.3_stmt",
+        "name": "statement",
+        "prose": "Disable Autorun and Autoplay for Removable Media"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-10.4",
+      "title": "Configure Automatic Anti-Malware Scanning of Removable Media",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#844dc22d-137c-5ef7-86a3-61deffb49e13",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-10.4_stmt",
+        "name": "statement",
+        "prose": "Configure Automatic Anti-Malware Scanning of Removable Media"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-10.5",
+      "title": "Enable Anti-Exploitation Features",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#844dc22d-137c-5ef7-86a3-61deffb49e13",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-10.5_stmt",
+        "name": "statement",
+        "prose": "Enable Anti-Exploitation Features"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-10.6",
+      "title": "Centrally Manage Anti-Malware Software",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#844dc22d-137c-5ef7-86a3-61deffb49e13",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-10.6_stmt",
+        "name": "statement",
+        "prose": "Centrally Manage Anti-Malware Software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-10.7",
+      "title": "Use Behavior-Based Anti-Malware Software",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#844dc22d-137c-5ef7-86a3-61deffb49e13",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-10.7_stmt",
+        "name": "statement",
+        "prose": "Use Behavior-Based Anti-Malware Software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c10-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c10#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c10#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#844dc22d-137c-5ef7-86a3-61deffb49e13",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c10-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c11_data_recovery",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 11: Data Recovery",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c11"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c11_data_recovery.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-11.1",
+      "title": "Establish and Maintain a Data Recovery Process",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a431f67d-2d66-542a-b34a-21ee967d67dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-11.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Data Recovery Process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-11.2",
+      "title": "Perform Automated Backups",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a431f67d-2d66-542a-b34a-21ee967d67dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-11.2_stmt",
+        "name": "statement",
+        "prose": "Perform Automated Backups"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-11.3",
+      "title": "Protect Recovery Data",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a431f67d-2d66-542a-b34a-21ee967d67dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-11.3_stmt",
+        "name": "statement",
+        "prose": "Protect Recovery Data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-11.4",
+      "title": "Establish and Maintain an Isolated Instance of Recovery Data",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a431f67d-2d66-542a-b34a-21ee967d67dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-11.4_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain an Isolated Instance of Recovery Data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-11.5",
+      "title": "Test Data Recovery",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a431f67d-2d66-542a-b34a-21ee967d67dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-11.5_stmt",
+        "name": "statement",
+        "prose": "Test Data Recovery"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c11-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c11#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c11#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a431f67d-2d66-542a-b34a-21ee967d67dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c11-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c12_network_infrastructure",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 12: Network Infrastructure Management",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c12"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c12_network_infrastructure.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-12.1",
+      "title": "Ensure Network Infrastructure is Up-to-Date",
+      "props": [
+       {
+        "name": "label",
+        "value": "12.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "12.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d46f6ec0-cc56-57d0-81b5-4f6eea846207",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-12.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Network Infrastructure is Up-to-Date"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-12.2",
+      "title": "Establish and Maintain a Secure Network Architecture",
+      "props": [
+       {
+        "name": "label",
+        "value": "12.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "12.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d46f6ec0-cc56-57d0-81b5-4f6eea846207",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-12.2_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Secure Network Architecture"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-12.3",
+      "title": "Securely Manage Network Infrastructure",
+      "props": [
+       {
+        "name": "label",
+        "value": "12.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "12.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d46f6ec0-cc56-57d0-81b5-4f6eea846207",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-12.3_stmt",
+        "name": "statement",
+        "prose": "Securely Manage Network Infrastructure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-12.4",
+      "title": "Establish and Maintain Architecture Diagram(s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "12.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "12.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d46f6ec0-cc56-57d0-81b5-4f6eea846207",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-12.4_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain Architecture Diagram(s)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-12.5",
+      "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+      "props": [
+       {
+        "name": "label",
+        "value": "12.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "12.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d46f6ec0-cc56-57d0-81b5-4f6eea846207",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-12.5_stmt",
+        "name": "statement",
+        "prose": "Centralize Network Authentication, Authorization, and Auditing (AAA)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-12.6",
+      "title": "Use of Secure Network Management and Communication Protocols",
+      "props": [
+       {
+        "name": "label",
+        "value": "12.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "12.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d46f6ec0-cc56-57d0-81b5-4f6eea846207",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-12.6_stmt",
+        "name": "statement",
+        "prose": "Use of Secure Network Management and Communication Protocols"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-12.7",
+      "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise's AAA Infrastructure",
+      "props": [
+       {
+        "name": "label",
+        "value": "12.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "12.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d46f6ec0-cc56-57d0-81b5-4f6eea846207",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-12.7_stmt",
+        "name": "statement",
+        "prose": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise's AAA Infrastructure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-12.8",
+      "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+      "props": [
+       {
+        "name": "label",
+        "value": "12.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "12.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d46f6ec0-cc56-57d0-81b5-4f6eea846207",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-12.8_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain Dedicated Computing Resources for All Administrative Work"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c12-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c12#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c12#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d46f6ec0-cc56-57d0-81b5-4f6eea846207",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c12-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c13_network_monitoring",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 13: Network Monitoring and Defense",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c13"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c13_network_monitoring.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-13.1",
+      "title": "Centralize Security Event Alerting",
+      "props": [
+       {
+        "name": "label",
+        "value": "13.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-13.1_stmt",
+        "name": "statement",
+        "prose": "Centralize Security Event Alerting"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-13.2",
+      "title": "Deploy a Host-Based Intrusion Detection Solution",
+      "props": [
+       {
+        "name": "label",
+        "value": "13.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-13.2_stmt",
+        "name": "statement",
+        "prose": "Deploy a Host-Based Intrusion Detection Solution"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-13.3",
+      "title": "Deploy a Network Intrusion Detection Solution",
+      "props": [
+       {
+        "name": "label",
+        "value": "13.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-13.3_stmt",
+        "name": "statement",
+        "prose": "Deploy a Network Intrusion Detection Solution"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-13.4",
+      "title": "Perform Traffic Filtering Between Network Segments",
+      "props": [
+       {
+        "name": "label",
+        "value": "13.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-13.4_stmt",
+        "name": "statement",
+        "prose": "Perform Traffic Filtering Between Network Segments"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-13.5",
+      "title": "Manage Access Control for Remote Assets",
+      "props": [
+       {
+        "name": "label",
+        "value": "13.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-13.5_stmt",
+        "name": "statement",
+        "prose": "Manage Access Control for Remote Assets"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-13.6",
+      "title": "Collect Network Traffic Flow Logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "13.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-13.6_stmt",
+        "name": "statement",
+        "prose": "Collect Network Traffic Flow Logs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-13.7",
+      "title": "Deploy a Host-Based Intrusion Prevention Solution",
+      "props": [
+       {
+        "name": "label",
+        "value": "13.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-13.7_stmt",
+        "name": "statement",
+        "prose": "Deploy a Host-Based Intrusion Prevention Solution"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-13.8",
+      "title": "Deploy a Network Intrusion Prevention Solution",
+      "props": [
+       {
+        "name": "label",
+        "value": "13.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-13.8_stmt",
+        "name": "statement",
+        "prose": "Deploy a Network Intrusion Prevention Solution"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-13.9",
+      "title": "Deploy Port-Level Access Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "13.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-13.9_stmt",
+        "name": "statement",
+        "prose": "Deploy Port-Level Access Control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-13.10",
+      "title": "Perform Application Layer Filtering",
+      "props": [
+       {
+        "name": "label",
+        "value": "13.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-13.10_stmt",
+        "name": "statement",
+        "prose": "Perform Application Layer Filtering"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-13.11",
+      "title": "Tune Security Event Alerting Thresholds",
+      "props": [
+       {
+        "name": "label",
+        "value": "13.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-13.11_stmt",
+        "name": "statement",
+        "prose": "Tune Security Event Alerting Thresholds"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c13-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c13#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c13#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c13"
+       }
+      ],
+      "links": [
+       {
+        "href": "#171c6a47-4771-54a5-86e6-3acdaa96f839",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c13-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c14_security_awareness",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 14: Security Awareness and Skills Training",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c14"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c14_security_awareness.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-14.1",
+      "title": "Establish and Maintain a Security Awareness Program",
+      "props": [
+       {
+        "name": "label",
+        "value": "14.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "14.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c14"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a9cc04e-612a-5c49-81f8-bf9ea50ded0d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-14.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Security Awareness Program"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-14.2",
+      "title": "Train Workforce Members to Recognize Social Engineering Attacks",
+      "props": [
+       {
+        "name": "label",
+        "value": "14.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "14.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c14"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a9cc04e-612a-5c49-81f8-bf9ea50ded0d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-14.2_stmt",
+        "name": "statement",
+        "prose": "Train Workforce Members to Recognize Social Engineering Attacks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-14.3",
+      "title": "Train Workforce Members on Authentication Best Practices",
+      "props": [
+       {
+        "name": "label",
+        "value": "14.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "14.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c14"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a9cc04e-612a-5c49-81f8-bf9ea50ded0d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-14.3_stmt",
+        "name": "statement",
+        "prose": "Train Workforce Members on Authentication Best Practices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-14.4",
+      "title": "Train Workforce on Data Handling Best Practices",
+      "props": [
+       {
+        "name": "label",
+        "value": "14.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "14.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c14"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a9cc04e-612a-5c49-81f8-bf9ea50ded0d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-14.4_stmt",
+        "name": "statement",
+        "prose": "Train Workforce on Data Handling Best Practices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-14.5",
+      "title": "Train Workforce Members on Causes of Unintentional Data Exposure",
+      "props": [
+       {
+        "name": "label",
+        "value": "14.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "14.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c14"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a9cc04e-612a-5c49-81f8-bf9ea50ded0d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-14.5_stmt",
+        "name": "statement",
+        "prose": "Train Workforce Members on Causes of Unintentional Data Exposure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-14.6",
+      "title": "Train Workforce Members on Recognizing and Reporting Security Incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "14.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "14.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c14"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a9cc04e-612a-5c49-81f8-bf9ea50ded0d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-14.6_stmt",
+        "name": "statement",
+        "prose": "Train Workforce Members on Recognizing and Reporting Security Incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-14.7",
+      "title": "Train Workforce on How to Identify and Report if Their Enterprise Assets are Missing Security Updates",
+      "props": [
+       {
+        "name": "label",
+        "value": "14.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "14.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c14"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a9cc04e-612a-5c49-81f8-bf9ea50ded0d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-14.7_stmt",
+        "name": "statement",
+        "prose": "Train Workforce on How to Identify and Report if Their Enterprise Assets are Missing Security Updates"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-14.8",
+      "title": "Train Workforce on the Dangers of Connecting to and Transmitting Enterprise Data Over Insecure Networks",
+      "props": [
+       {
+        "name": "label",
+        "value": "14.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "14.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c14"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a9cc04e-612a-5c49-81f8-bf9ea50ded0d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-14.8_stmt",
+        "name": "statement",
+        "prose": "Train Workforce on the Dangers of Connecting to and Transmitting Enterprise Data Over Insecure Networks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-14.9",
+      "title": "Conduct Role-Specific Security Awareness and Skills Training",
+      "props": [
+       {
+        "name": "label",
+        "value": "14.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "14.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c14"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a9cc04e-612a-5c49-81f8-bf9ea50ded0d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-14.9_stmt",
+        "name": "statement",
+        "prose": "Conduct Role-Specific Security Awareness and Skills Training"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c14-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c14#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c14#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c14"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a9cc04e-612a-5c49-81f8-bf9ea50ded0d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c14-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c15_service_provider",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 15: Service Provider Management",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c15"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c15_service_provider.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-15.1",
+      "title": "Establish and Maintain an Inventory of Service Providers",
+      "props": [
+       {
+        "name": "label",
+        "value": "15.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "15.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c15"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5173ff5e-f6fb-5976-91d8-a9f475cc678a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-15.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain an Inventory of Service Providers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-15.2",
+      "title": "Establish and Maintain a Service Provider Management Policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "15.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "15.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c15"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5173ff5e-f6fb-5976-91d8-a9f475cc678a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-15.2_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Service Provider Management Policy"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-15.3",
+      "title": "Classify Service Providers",
+      "props": [
+       {
+        "name": "label",
+        "value": "15.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "15.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c15"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5173ff5e-f6fb-5976-91d8-a9f475cc678a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-15.3_stmt",
+        "name": "statement",
+        "prose": "Classify Service Providers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-15.4",
+      "title": "Ensure Service Provider Contracts Include Security Requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "15.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "15.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c15"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5173ff5e-f6fb-5976-91d8-a9f475cc678a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-15.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Service Provider Contracts Include Security Requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-15.5",
+      "title": "Assess Service Providers",
+      "props": [
+       {
+        "name": "label",
+        "value": "15.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "15.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c15"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5173ff5e-f6fb-5976-91d8-a9f475cc678a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-15.5_stmt",
+        "name": "statement",
+        "prose": "Assess Service Providers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-15.6",
+      "title": "Monitor Service Providers",
+      "props": [
+       {
+        "name": "label",
+        "value": "15.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "15.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c15"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5173ff5e-f6fb-5976-91d8-a9f475cc678a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-15.6_stmt",
+        "name": "statement",
+        "prose": "Monitor Service Providers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-15.7",
+      "title": "Securely Decommission Service Providers",
+      "props": [
+       {
+        "name": "label",
+        "value": "15.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "15.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c15"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5173ff5e-f6fb-5976-91d8-a9f475cc678a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-15.7_stmt",
+        "name": "statement",
+        "prose": "Securely Decommission Service Providers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c15-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c15#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c15#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c15"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5173ff5e-f6fb-5976-91d8-a9f475cc678a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c15-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c16_application_security",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 16:",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c16"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c16_application_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-16.1",
+      "title": "Establish and Maintain a Secure Application Development Process",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Secure Application Development Process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.2",
+      "title": "Establish and Maintain a Process to Accept and Address Software Vulnerabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.2_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Process to Accept and Address Software Vulnerabilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.3",
+      "title": "Perform Root Cause Analysis on Security Vulnerabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.3_stmt",
+        "name": "statement",
+        "prose": "Perform Root Cause Analysis on Security Vulnerabilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.4",
+      "title": "Establish and Manage an Inventory of Third-Party Software Components",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.4_stmt",
+        "name": "statement",
+        "prose": "Establish and Manage an Inventory of Third-Party Software Components"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.5",
+      "title": "Use Up-to-Date and Trusted Third-Party Software Components",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.5_stmt",
+        "name": "statement",
+        "prose": "Use Up-to-Date and Trusted Third-Party Software Components"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.6",
+      "title": "Establish and Maintain a Severity Rating System and Process for Application Vulnerabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.6_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Severity Rating System and Process for Application Vulnerabilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.7",
+      "title": "Use Standard Hardening Configuration Templates for Application Infrastructure",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.7_stmt",
+        "name": "statement",
+        "prose": "Use Standard Hardening Configuration Templates for Application Infrastructure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.8",
+      "title": "Separate Production and Non-Production Systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.8_stmt",
+        "name": "statement",
+        "prose": "Separate Production and Non-Production Systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.9",
+      "title": "Train Developers in Application Security Concepts and Secure Coding",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.9_stmt",
+        "name": "statement",
+        "prose": "Train Developers in Application Security Concepts and Secure Coding"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.10",
+      "title": "Apply Secure Design Principles in Application Architectures",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.10_stmt",
+        "name": "statement",
+        "prose": "Apply Secure Design Principles in Application Architectures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.11",
+      "title": "Leverage Vetted Modules or Services for Application Security Components",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.11_stmt",
+        "name": "statement",
+        "prose": "Leverage Vetted Modules or Services for Application Security Components"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.12",
+      "title": "Implement Code-Level Security Checks",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.12_stmt",
+        "name": "statement",
+        "prose": "Implement Code-Level Security Checks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.13",
+      "title": "Conduct Application Penetration Testing",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.13_stmt",
+        "name": "statement",
+        "prose": "Conduct Application Penetration Testing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-16.14",
+      "title": "Conduct Threat Modeling",
+      "props": [
+       {
+        "name": "label",
+        "value": "16.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-16.14_stmt",
+        "name": "statement",
+        "prose": "Conduct Threat Modeling"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c16-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c16#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c16#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c16"
+       }
+      ],
+      "links": [
+       {
+        "href": "#245fe9da-107b-5e3f-831f-16d37d40a433",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c16-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c17_incident_response",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 17:",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c17"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c17_incident_response.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-17.1",
+      "title": "Designate Personnel to Manage Incident Handling",
+      "props": [
+       {
+        "name": "label",
+        "value": "17.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "17.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee765684-99b7-5909-a6c3-de529b0ae9df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-17.1_stmt",
+        "name": "statement",
+        "prose": "Designate Personnel to Manage Incident Handling"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-17.2",
+      "title": "Establish and Maintain Contact Information for Reporting Security Incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "17.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "17.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee765684-99b7-5909-a6c3-de529b0ae9df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-17.2_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain Contact Information for Reporting Security Incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-17.3",
+      "title": "Establish and Maintain an Enterprise Process for Reporting Incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "17.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "17.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee765684-99b7-5909-a6c3-de529b0ae9df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-17.3_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain an Enterprise Process for Reporting Incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-17.4",
+      "title": "Establish and Maintain an Incident Response Process",
+      "props": [
+       {
+        "name": "label",
+        "value": "17.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "17.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee765684-99b7-5909-a6c3-de529b0ae9df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-17.4_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain an Incident Response Process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-17.5",
+      "title": "Assign Key Roles and Responsibilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "17.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "17.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee765684-99b7-5909-a6c3-de529b0ae9df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-17.5_stmt",
+        "name": "statement",
+        "prose": "Assign Key Roles and Responsibilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-17.6",
+      "title": "Define Mechanisms for Communicating During Incident Response",
+      "props": [
+       {
+        "name": "label",
+        "value": "17.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "17.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee765684-99b7-5909-a6c3-de529b0ae9df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-17.6_stmt",
+        "name": "statement",
+        "prose": "Define Mechanisms for Communicating During Incident Response"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-17.7",
+      "title": "Conduct Routine Incident Response Exercises",
+      "props": [
+       {
+        "name": "label",
+        "value": "17.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "17.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee765684-99b7-5909-a6c3-de529b0ae9df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-17.7_stmt",
+        "name": "statement",
+        "prose": "Conduct Routine Incident Response Exercises"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-17.8",
+      "title": "Conduct Post-Incident Reviews",
+      "props": [
+       {
+        "name": "label",
+        "value": "17.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "17.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee765684-99b7-5909-a6c3-de529b0ae9df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-17.8_stmt",
+        "name": "statement",
+        "prose": "Conduct Post-Incident Reviews"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-17.9",
+      "title": "Establish and Maintain Security Incident Thresholds",
+      "props": [
+       {
+        "name": "label",
+        "value": "17.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "17.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee765684-99b7-5909-a6c3-de529b0ae9df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-17.9_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain Security Incident Thresholds"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c17-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c17#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c17#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee765684-99b7-5909-a6c3-de529b0ae9df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c17-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cis_controls_v8-c18_penetration_testing",
+    "class": "rego-module",
+    "title": "Official CIS Controls v8.1 safeguards for Control 18: Penetration Testing. Official IDs, titles, and IG levels",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_controls_v8.c18"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cis_controls_v8/c18_penetration_testing.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_controls_v8-18.1",
+      "title": "Establish and Maintain a Penetration Testing Program",
+      "props": [
+       {
+        "name": "label",
+        "value": "18.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "18.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c18"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ddbb71ba-bfda-5923-8c1f-ef84cb8ef429",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-18.1_stmt",
+        "name": "statement",
+        "prose": "Establish and Maintain a Penetration Testing Program"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-18.2",
+      "title": "Perform Periodic External Penetration Tests",
+      "props": [
+       {
+        "name": "label",
+        "value": "18.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "18.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c18"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ddbb71ba-bfda-5923-8c1f-ef84cb8ef429",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-18.2_stmt",
+        "name": "statement",
+        "prose": "Perform Periodic External Penetration Tests"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-18.3",
+      "title": "Remediate Penetration Test Findings",
+      "props": [
+       {
+        "name": "label",
+        "value": "18.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "18.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c18"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ddbb71ba-bfda-5923-8c1f-ef84cb8ef429",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-18.3_stmt",
+        "name": "statement",
+        "prose": "Remediate Penetration Test Findings"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-18.4",
+      "title": "Validate Security Measures",
+      "props": [
+       {
+        "name": "label",
+        "value": "18.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "18.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c18"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ddbb71ba-bfda-5923-8c1f-ef84cb8ef429",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-18.4_stmt",
+        "name": "statement",
+        "prose": "Validate Security Measures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-18.5",
+      "title": "Perform Periodic Internal Penetration Tests",
+      "props": [
+       {
+        "name": "label",
+        "value": "18.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "18.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c18"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ddbb71ba-bfda-5923-8c1f-ef84cb8ef429",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-18.5_stmt",
+        "name": "statement",
+        "prose": "Perform Periodic Internal Penetration Tests"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cis_controls_v8-cis_controls_v8.c18-1",
+      "title": "CIS Controls v8 %s (IG%d): %s — not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_controls_v8.c18#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_controls_v8.c18#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_controls_v8.c18"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ddbb71ba-bfda-5923-8c1f-ef84cb8ef429",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_controls_v8-cis_controls_v8.c18-1_stmt",
+        "name": "statement",
+        "prose": "CIS Controls v8 %s (IG%d): %s — not implemented"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "6e48291b-b854-58c2-8c79-e3d0a13823cc",
+     "title": "Official CIS Controls v8.1 safeguards for Control 1: Inventory and Control of Enterprise Assets",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c01"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c01_enterprise_assets.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "7e3c85e1-f59b-511a-9a1d-69589a05166f",
+     "title": "Official CIS Controls v8.1 safeguards for Control 2: Inventory and Control of Software Assets",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c02"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c02_software_assets.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "dea02d5a-a7f8-51a0-9362-f752842d546b",
+     "title": "Official CIS Controls v8.1 safeguards for Control 3: Data Protection",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c03"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c03_data_protection.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "397938af-4116-511a-9c4e-afad237d027d",
+     "title": "Official CIS Controls v8.1 safeguards for Control 4: Secure Configuration of Enterprise Assets and Software",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c04"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c04_secure_configuration.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "6d65be3d-a284-5de0-a41f-70cf07258a7b",
+     "title": "Official CIS Controls v8.1 safeguards for Control 5: Account Management",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c05"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c05_account_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "25e8a155-d342-5d60-9415-0260c7d6f78a",
+     "title": "Official CIS Controls v8.1 safeguards for Control 6: Access Control Management",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c06"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c06_access_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f0e23546-38e1-5abb-b478-18f0ff7ecd62",
+     "title": "Official CIS Controls v8.1 safeguards for Control 7:",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c07"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c07_vulnerability_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "7a826718-e803-5db5-a7a8-631e88719dec",
+     "title": "Official CIS Controls v8.1 safeguards for Control 8: Audit Log Management. Official IDs, titles, and IG levels",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c08"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c08_audit_log_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "4f89ed14-5edb-5088-8abf-dc8d643b6004",
+     "title": "Official CIS Controls v8.1 safeguards for Control 9:",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c09"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c09_email_web_protections.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "844dc22d-137c-5ef7-86a3-61deffb49e13",
+     "title": "Official CIS Controls v8.1 safeguards for Control 10: Malware Defenses",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c10"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c10_malware_defenses.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a431f67d-2d66-542a-b34a-21ee967d67dd",
+     "title": "Official CIS Controls v8.1 safeguards for Control 11: Data Recovery",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c11"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c11_data_recovery.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d46f6ec0-cc56-57d0-81b5-4f6eea846207",
+     "title": "Official CIS Controls v8.1 safeguards for Control 12: Network Infrastructure Management",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c12"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c12_network_infrastructure.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "171c6a47-4771-54a5-86e6-3acdaa96f839",
+     "title": "Official CIS Controls v8.1 safeguards for Control 13: Network Monitoring and Defense",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c13"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c13_network_monitoring.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "9a9cc04e-612a-5c49-81f8-bf9ea50ded0d",
+     "title": "Official CIS Controls v8.1 safeguards for Control 14: Security Awareness and Skills Training",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c14"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c14_security_awareness.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "5173ff5e-f6fb-5976-91d8-a9f475cc678a",
+     "title": "Official CIS Controls v8.1 safeguards for Control 15: Service Provider Management",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c15"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c15_service_provider.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "245fe9da-107b-5e3f-831f-16d37d40a433",
+     "title": "Official CIS Controls v8.1 safeguards for Control 16:",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c16"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c16_application_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "ee765684-99b7-5909-a6c3-de529b0ae9df",
+     "title": "Official CIS Controls v8.1 safeguards for Control 17:",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c17"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c17_incident_response.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "ddbb71ba-bfda-5923-8c1f-ef84cb8ef429",
+     "title": "Official CIS Controls v8.1 safeguards for Control 18: Penetration Testing. Official IDs, titles, and IG levels",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_controls_v8.c18"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cis_controls_v8/c18_penetration_testing.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

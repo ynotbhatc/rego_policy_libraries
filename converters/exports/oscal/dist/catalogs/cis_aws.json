@@ -1,0 +1,291 @@
+{
+ "catalog": {
+  "uuid": "33be0e2e-7c55-5b03-a60d-45f02abace13",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_aws (CIS Amazon Web Services Foundations Benchmark v7.0.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_aws"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_aws-cis_aws_foundations",
+    "class": "rego-module",
+    "title": "CIS Amazon Web Services Foundations Benchmark v7.0.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_aws"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/aws/cis_aws_foundations.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_aws-sections",
+      "title": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "sections"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sections"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-sections_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-identity_access",
+      "title": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "identity_access"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "identity_access"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-identity_access_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-storage",
+      "title": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "storage"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "storage"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-storage_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-logging",
+      "title": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "logging"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "logging"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-logging_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-monitoring",
+      "title": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "monitoring"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "monitoring"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-monitoring_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-networking",
+      "title": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "networking"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "networking"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-networking_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+     "title": "CIS Amazon Web Services Foundations Benchmark v7.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_aws"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/aws/cis_aws_foundations.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

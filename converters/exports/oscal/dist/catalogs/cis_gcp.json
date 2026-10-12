@@ -1,0 +1,357 @@
+{
+ "catalog": {
+  "uuid": "9940ad61-cca3-554e-92dd-ac2e63899ccf",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_gcp (CIS Google Cloud Platform Foundation Benchmark v4.0.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_gcp"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_gcp-cis_gcp_foundations",
+    "class": "rego-module",
+    "title": "CIS Google Cloud Platform Foundation Benchmark v4.0.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_gcp_foundations"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/gcp/cis_gcp_foundations.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_gcp-sections",
+      "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "sections"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sections"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp_foundations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-sections_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-identity_access",
+      "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "identity_access"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "identity_access"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp_foundations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-identity_access_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-logging",
+      "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "logging"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "logging"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp_foundations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-logging_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-networking",
+      "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "networking"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "networking"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp_foundations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-networking_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-virtual_machines",
+      "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "virtual_machines"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "virtual_machines"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp_foundations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-virtual_machines_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-storage",
+      "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "storage"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "storage"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp_foundations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-storage_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-sql",
+      "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "sql"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sql"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp_foundations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-sql_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-bigquery",
+      "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "bigquery"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bigquery"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp_foundations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-bigquery_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "50146ea3-84d0-5165-98b1-bcd84832c2c1",
+     "title": "CIS Google Cloud Platform Foundation Benchmark v4.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_gcp_foundations"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/gcp/cis_gcp_foundations.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

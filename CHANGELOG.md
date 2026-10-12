@@ -8,6 +8,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+- **OSCAL 1.2.3 catalog export** (`converters/exports/oscal`): one catalog per framework (125) built from the new shared control inventory `scripts/inventory_controls.py` (7,867 checks → 5,559 distinct controls); committed under `dist/catalogs/`, combined `all.json` attached to releases, every catalog validated against the NIST schema in CI with a round-trip test proving no control is lost or invented.
+
 _Nothing yet._
 
 ---

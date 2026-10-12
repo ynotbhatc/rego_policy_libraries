@@ -1,0 +1,389 @@
+{
+ "catalog": {
+  "uuid": "fadc1eb4-9e1d-567a-9c59-8ae79022749f",
+  "metadata": {
+   "title": "Rego Policy Libraries — pqc (Post-Quantum Cryptography (PQC) Readiness — v1.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "pqc"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "pqc-pqc_main",
+    "class": "rego-module",
+    "title": "Post-Quantum Cryptography (PQC) Readiness — v1.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pqc.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/pqc/pqc_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pqc-PQC-Input-Contract",
+      "title": "unrecognized profile %v — must be one of general, federal, nss (profile-gated checks were NOT evaluated)",
+      "props": [
+       {
+        "name": "label",
+        "value": "PQC Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PQC Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bea56570-9fb5-5e13-89ef-c6e34d65d8f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-PQC-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "unrecognized profile %v — must be one of general, federal, nss (profile-gated checks were NOT evaluated)"
+       },
+       {
+        "id": "pqc-PQC-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "crypto_inventory must be an array of asset records (data-driven algorithm checks were NOT evaluated)"
+       },
+       {
+        "id": "pqc-PQC-Input-Contract_obj.2",
+        "name": "assessment-objective",
+        "prose": "crypto_inventory[%v] is malformed — asset, algorithm (single token), and a valid usage (key_establishment|signature|symmetric|hashing) are required"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-PQC-OMB-M-26-15",
+      "title": "Automated cryptographic inventory (systems, protocols, libraries, certificates) is not complete",
+      "props": [
+       {
+        "name": "label",
+        "value": "PQC OMB M-26-15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PQC OMB M-26-15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bea56570-9fb5-5e13-89ef-c6e34d65d8f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-PQC-OMB-M-26-15_stmt",
+        "name": "statement",
+        "prose": "Automated cryptographic inventory (systems, protocols, libraries, certificates) is not complete"
+       },
+       {
+        "id": "pqc-PQC-OMB-M-26-15_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cryptographic inventory has not been refreshed within the last year"
+       },
+       {
+        "id": "pqc-PQC-OMB-M-26-15_obj.2",
+        "name": "assessment-objective",
+        "prose": "TLS endpoints do not support PQC key establishment (hybrid ML-KEM groups acceptable)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-PQC-NIST-IR-8547",
+      "title": "Data with long confidentiality lifetimes has not been identified for harvest-now-decrypt-later risk prioritization",
+      "props": [
+       {
+        "name": "label",
+        "value": "PQC NIST IR 8547"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PQC NIST IR 8547"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bea56570-9fb5-5e13-89ef-c6e34d65d8f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-PQC-NIST-IR-8547_stmt",
+        "name": "statement",
+        "prose": "Data with long confidentiality lifetimes has not been identified for harvest-now-decrypt-later risk prioritization"
+       },
+       {
+        "id": "pqc-PQC-NIST-IR-8547_obj.1",
+        "name": "assessment-objective",
+        "prose": "Asset '%s' uses quantum-vulnerable algorithm '%s' for %s with no PQC migration planned (deprecated after 2030, disallowed after 2035)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-PQC-EO-14412",
+      "title": "No prioritized, milestoned PQC migration plan exists",
+      "props": [
+       {
+        "name": "label",
+        "value": "PQC EO 14412"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PQC EO 14412"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bea56570-9fb5-5e13-89ef-c6e34d65d8f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-PQC-EO-14412_stmt",
+        "name": "statement",
+        "prose": "No prioritized, milestoned PQC migration plan exists"
+       },
+       {
+        "id": "pqc-PQC-EO-14412_obj.1",
+        "name": "assessment-objective",
+        "prose": "Key-establishment migration to ML-KEM (FIPS 203) for high-value/high-impact systems is not on track for 2030-12-31"
+       },
+       {
+        "id": "pqc-PQC-EO-14412_obj.2",
+        "name": "assessment-objective",
+        "prose": "Digital-signature migration to ML-DSA/SLH-DSA (FIPS 204/205) for high-value/high-impact systems is not on track for 2031-12-31"
+       },
+       {
+        "id": "pqc-PQC-EO-14412_obj.3",
+        "name": "assessment-objective",
+        "prose": "FIPS PQC requirements are not flowed down to covered contractors and vendors"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-PQC-FIPS-180-4",
+      "title": "Asset '%s' uses broken hash algorithm '%s', which is disallowed for all cryptographic use",
+      "props": [
+       {
+        "name": "label",
+        "value": "PQC FIPS 180-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PQC FIPS 180-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bea56570-9fb5-5e13-89ef-c6e34d65d8f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-PQC-FIPS-180-4_stmt",
+        "name": "statement",
+        "prose": "Asset '%s' uses broken hash algorithm '%s', which is disallowed for all cryptographic use"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-PQC-Crypto-Agility",
+      "title": "Cryptographic algorithms cannot be replaced without application redesign",
+      "props": [
+       {
+        "name": "label",
+        "value": "PQC Crypto-Agility"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PQC Crypto-Agility"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bea56570-9fb5-5e13-89ef-c6e34d65d8f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-PQC-Crypto-Agility_stmt",
+        "name": "statement",
+        "prose": "Cryptographic algorithms cannot be replaced without application redesign"
+       },
+       {
+        "id": "pqc-PQC-Crypto-Agility_obj.1",
+        "name": "assessment-objective",
+        "prose": "No maintained inventory of cryptographic libraries and their PQC support status"
+       },
+       {
+        "id": "pqc-PQC-Crypto-Agility_obj.2",
+        "name": "assessment-objective",
+        "prose": "Vendor PQC roadmaps and FIPS 140-3 PQC validation status are not tracked"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-PQC-CNSA-2.0",
+      "title": "Software/firmware signing does not use ML-DSA-87, LMS, or XMSS (SP 800-208)",
+      "props": [
+       {
+        "name": "label",
+        "value": "PQC CNSA 2.0"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PQC CNSA 2.0"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bea56570-9fb5-5e13-89ef-c6e34d65d8f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-PQC-CNSA-2.0_stmt",
+        "name": "statement",
+        "prose": "Software/firmware signing does not use ML-DSA-87, LMS, or XMSS (SP 800-208)"
+       },
+       {
+        "id": "pqc-PQC-CNSA-2.0_obj.1",
+        "name": "assessment-objective",
+        "prose": "New NSS acquisitions do not require CNSA 2.0 algorithm support (mandatory from 2027-01-01)"
+       },
+       {
+        "id": "pqc-PQC-CNSA-2.0_obj.2",
+        "name": "assessment-objective",
+        "prose": "VPN/router/network equipment is not on track for CNSA 2.0 exclusive use by 2030"
+       },
+       {
+        "id": "pqc-PQC-CNSA-2.0_obj.3",
+        "name": "assessment-objective",
+        "prose": "Symmetric/hash usage is not restricted to AES-256 and SHA-384/SHA-512"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "bea56570-9fb5-5e13-89ef-c6e34d65d8f7",
+     "title": "Post-Quantum Cryptography (PQC) Readiness — v1.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pqc.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/pqc/pqc_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

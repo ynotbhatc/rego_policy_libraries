@@ -1,0 +1,620 @@
+{
+ "catalog": {
+  "uuid": "28b4646c-ba94-519e-9a3d-a9b1c4cb8091",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_databases (CIS Oracle Database 19c Benchmark - Complete Validation)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_databases"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_databases-cis_oracle_complete",
+    "class": "rego-module",
+    "title": "CIS Oracle Database 19c Benchmark - Complete Validation",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_oracle"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_databases-section_1_installation_patches",
+      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_1_installation_patches"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_1_installation_patches"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8bfdbeae-f437-5826-8e0c-4172743530de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-section_1_installation_patches_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-section_2_1_listener_configuration",
+      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_2_1_listener_configuration"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_2_1_listener_configuration"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8bfdbeae-f437-5826-8e0c-4172743530de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-section_2_1_listener_configuration_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-section_2_2_database_parameters",
+      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_2_2_database_parameters"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_2_2_database_parameters"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8bfdbeae-f437-5826-8e0c-4172743530de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-section_2_2_database_parameters_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-section_3_user_account_management",
+      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_3_user_account_management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_3_user_account_management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8bfdbeae-f437-5826-8e0c-4172743530de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-section_3_user_account_management_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_databases-database_parameters",
+    "class": "rego-module",
+    "title": "CIS Oracle Database 19c Benchmark - Section 2.2",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_oracle.database_parameters"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_databases-audit_configuration",
+      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego (package cis_oracle.database_parameters); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "audit_configuration"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "audit_configuration"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a16f3fff-c606-5840-b11e-52ecd1272af0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-audit_configuration_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego (package cis_oracle.database_parameters); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-security_parameters",
+      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego (package cis_oracle.database_parameters); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "security_parameters"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "security_parameters"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a16f3fff-c606-5840-b11e-52ecd1272af0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-security_parameters_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego (package cis_oracle.database_parameters); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_databases-installation_patches",
+    "class": "rego-module",
+    "title": "CIS Oracle Database 19c Benchmark - Section 1",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_oracle.installation_patches"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/databases/oracle_legacy/modules/installation_patches.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_databases-oracle_version",
+      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/installation_patches.rego (package cis_oracle.installation_patches); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "oracle_version"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "oracle_version"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.installation_patches"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d91e2d38-5305-52a9-9598-bf7597a1ade5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-oracle_version_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/installation_patches.rego (package cis_oracle.installation_patches); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-patch_status",
+      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/installation_patches.rego (package cis_oracle.installation_patches); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "patch_status"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "patch_status"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.installation_patches"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d91e2d38-5305-52a9-9598-bf7597a1ade5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-patch_status_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/installation_patches.rego (package cis_oracle.installation_patches); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_databases-listener_configuration",
+    "class": "rego-module",
+    "title": "CIS Oracle Database 19c Benchmark - Section 2.1",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_oracle.listener_configuration"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/databases/oracle_legacy/modules/listener_configuration.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_databases-listener_summary",
+      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/listener_configuration.rego (package cis_oracle.listener_configuration); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "listener_summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "listener_summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.listener_configuration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7da5450c-2e00-5125-bd4b-1340556d156e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-listener_summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/listener_configuration.rego (package cis_oracle.listener_configuration); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_databases-user_account_management",
+    "class": "rego-module",
+    "title": "CIS Oracle Database 19c Benchmark - Section 3",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_oracle.user_account_management"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_databases-account_summary",
+      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego (package cis_oracle.user_account_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "account_summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "account_summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.user_account_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e0515b19-d794-5660-a555-74e3d4803dca",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-account_summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego (package cis_oracle.user_account_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-password_policy_status",
+      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego (package cis_oracle.user_account_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "password_policy_status"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "password_policy_status"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.user_account_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e0515b19-d794-5660-a555-74e3d4803dca",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-password_policy_status_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego (package cis_oracle.user_account_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "8bfdbeae-f437-5826-8e0c-4172743530de",
+     "title": "CIS Oracle Database 19c Benchmark - Complete Validation",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_oracle"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a16f3fff-c606-5840-b11e-52ecd1272af0",
+     "title": "CIS Oracle Database 19c Benchmark - Section 2.2",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_oracle.database_parameters"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d91e2d38-5305-52a9-9598-bf7597a1ade5",
+     "title": "CIS Oracle Database 19c Benchmark - Section 1",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_oracle.installation_patches"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/databases/oracle_legacy/modules/installation_patches.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "7da5450c-2e00-5125-bd4b-1340556d156e",
+     "title": "CIS Oracle Database 19c Benchmark - Section 2.1",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_oracle.listener_configuration"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/databases/oracle_legacy/modules/listener_configuration.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e0515b19-d794-5660-a555-74e3d4803dca",
+     "title": "CIS Oracle Database 19c Benchmark - Section 3",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_oracle.user_account_management"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

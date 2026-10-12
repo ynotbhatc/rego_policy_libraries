@@ -1,0 +1,912 @@
+{
+ "catalog": {
+  "uuid": "3f4094b3-7d59-5fbc-86c7-5c9080bec920",
+  "metadata": {
+   "title": "Rego Policy Libraries — nist_800_82 (NIST Special Publication 800-82 Revision 3)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nist_800_82"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nist_800_82-nist_800_82_main",
+    "class": "rego-module",
+    "title": "NIST Special Publication 800-82 Revision 3",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist_800_82.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/nist_800_82/nist_800_82_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_800_82-NIST-800-82-RA-3-OT",
+      "title": "OT-specific risk assessment not conducted — must account for safety, availability, and process integrity impacts",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 RA-3(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 RA-3(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-RA-3-OT_stmt",
+        "name": "statement",
+        "prose": "OT-specific risk assessment not conducted — must account for safety, availability, and process integrity impacts"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-RA-3-OT_obj.1",
+        "name": "assessment-objective",
+        "prose": "Risk assessment does not evaluate life-safety consequences of cyber events"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-RA-3-OT_obj.2",
+        "name": "assessment-objective",
+        "prose": "Risk assessment does not evaluate environmental impact consequences of cyber events"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-CM-8-OT",
+      "title": "OT asset inventory not maintained (PLCs, RTUs, HMIs, historians, engineering workstations)",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 CM-8(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 CM-8(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-CM-8-OT_stmt",
+        "name": "statement",
+        "prose": "OT asset inventory not maintained (PLCs, RTUs, HMIs, historians, engineering workstations)"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-SC-7-OT",
+      "title": "OT network not segmented from IT/corporate network using firewall or DMZ",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 SC-7(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 SC-7(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-SC-7-OT_stmt",
+        "name": "statement",
+        "prose": "OT network not segmented from IT/corporate network using firewall or DMZ"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-SC-7-OT_obj.1",
+        "name": "assessment-objective",
+        "prose": "DMZ not established between OT and IT networks for data exchange"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-SC-7-OT_obj.2",
+        "name": "assessment-objective",
+        "prose": "Dial-up modems connected to OT systems not disabled or controlled"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-SC-7-OT_obj.3",
+        "name": "assessment-objective",
+        "prose": "Data flows between OT zones and to IT/internet not documented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-SC-8-OT",
+      "title": "Wireless access to OT networks not restricted and controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 SC-8(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 SC-8(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-SC-8-OT_stmt",
+        "name": "statement",
+        "prose": "Wireless access to OT networks not restricted and controlled"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-AC-17-OT",
+      "title": "Remote access to OT systems not controlled with OT-specific security controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 AC-17(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 AC-17(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-AC-17-OT_stmt",
+        "name": "statement",
+        "prose": "Remote access to OT systems not controlled with OT-specific security controls"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-AC-17-OT_obj.1",
+        "name": "assessment-objective",
+        "prose": "Vendor and third-party remote access to OT systems not controlled and monitored"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-AC-2-OT",
+      "title": "OT system accounts not formally managed — shared accounts common but must be documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 AC-2(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 AC-2(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-AC-2-OT_stmt",
+        "name": "statement",
+        "prose": "OT system accounts not formally managed — shared accounts common but must be documented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-AC-6-OT",
+      "title": "Privileged access to OT engineering workstations and HMIs not controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 AC-6(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 AC-6(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-AC-6-OT_stmt",
+        "name": "statement",
+        "prose": "Privileged access to OT engineering workstations and HMIs not controlled"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-PE-3-OT",
+      "title": "Physical access to OT components (field devices, control panels) not controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 PE-3(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 PE-3(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-PE-3-OT_stmt",
+        "name": "statement",
+        "prose": "Physical access to OT components (field devices, control panels) not controlled"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-CM-2-OT",
+      "title": "Secure baseline configuration not established for OT systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 CM-2(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 CM-2(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-CM-2-OT_stmt",
+        "name": "statement",
+        "prose": "Secure baseline configuration not established for OT systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-CM-3-OT",
+      "title": "Change management process not established for OT system changes — must consider safety impacts",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 CM-3(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 CM-3(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-CM-3-OT_stmt",
+        "name": "statement",
+        "prose": "Change management process not established for OT system changes — must consider safety impacts"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-MP-7-OT",
+      "title": "Removable media (USB drives, laptops) not controlled when connecting to OT systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 MP-7(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 MP-7(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-MP-7-OT_stmt",
+        "name": "statement",
+        "prose": "Removable media (USB drives, laptops) not controlled when connecting to OT systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-CM-7-OT",
+      "title": "Only authorized software permitted to execute on OT systems — whitelisting required",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 CM-7(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 CM-7(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-CM-7-OT_stmt",
+        "name": "statement",
+        "prose": "Only authorized software permitted to execute on OT systems — whitelisting required"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-SI-2-OT",
+      "title": "OT-specific patch management policy not established — must account for vendor approval requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 SI-2(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 SI-2(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-SI-2-OT_stmt",
+        "name": "statement",
+        "prose": "OT-specific patch management policy not established — must account for vendor approval requirements"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-SI-2-OT_obj.1",
+        "name": "assessment-objective",
+        "prose": "Compensating controls not in place for OT systems that cannot be immediately patched"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-SI-2-OT_obj.2",
+        "name": "assessment-objective",
+        "prose": "Vendor coordination process not established for OT software updates"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-IR-4-OT",
+      "title": "OT-specific incident response plan not established — must include safety system recovery",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 IR-4(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 IR-4(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-IR-4-OT_stmt",
+        "name": "statement",
+        "prose": "OT-specific incident response plan not established — must include safety system recovery"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-IR-4-OT_obj.1",
+        "name": "assessment-objective",
+        "prose": "Incident response plan does not coordinate with safety and engineering teams"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-IR-4-OT_obj.2",
+        "name": "assessment-objective",
+        "prose": "OT incident response does not address forensic evidence collection without disrupting operations"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-IR-6-OT",
+      "title": "Process not established to report OT incidents to ICS-CERT / CISA",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 IR-6(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 IR-6(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-IR-6-OT_stmt",
+        "name": "statement",
+        "prose": "Process not established to report OT incidents to ICS-CERT / CISA"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-AU-2-OT",
+      "title": "Continuous monitoring not implemented for OT network traffic",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 AU-2(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 AU-2(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-AU-2-OT_stmt",
+        "name": "statement",
+        "prose": "Continuous monitoring not implemented for OT network traffic"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-AU-2-OT_obj.1",
+        "name": "assessment-objective",
+        "prose": "OT network monitoring not protocol-aware (Modbus, DNP3, IEC 61850, etc.)"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-AU-9-OT",
+      "title": "Process historian logs not protected from tampering",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 AU-9(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 AU-9(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-AU-9-OT_stmt",
+        "name": "statement",
+        "prose": "Process historian logs not protected from tampering"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-SI-3-OT",
+      "title": "OT-appropriate malware protection not deployed — must not impact real-time operations",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 SI-3(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 SI-3(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-SI-3-OT_stmt",
+        "name": "statement",
+        "prose": "OT-appropriate malware protection not deployed — must not impact real-time operations"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-SI-7-OT",
+      "title": "Firmware integrity verification not performed for critical OT devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 SI-7(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 SI-7(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-SI-7-OT_stmt",
+        "name": "statement",
+        "prose": "Firmware integrity verification not performed for critical OT devices"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-CP-9-OT",
+      "title": "OT system configurations (PLC programs, HMI screens, historian data) not backed up",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 CP-9(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 CP-9(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-CP-9-OT_stmt",
+        "name": "statement",
+        "prose": "OT system configurations (PLC programs, HMI screens, historian data) not backed up"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-CP-2-OT",
+      "title": "Recovery Time Objectives not defined for OT systems — must balance safety with cyber recovery",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 CP-2(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 CP-2(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-CP-2-OT_stmt",
+        "name": "statement",
+        "prose": "Recovery Time Objectives not defined for OT systems — must balance safety with cyber recovery"
+       },
+       {
+        "id": "nist_800_82-NIST-800-82-CP-2-OT_obj.1",
+        "name": "assessment-objective",
+        "prose": "Manual/degraded operations procedures not documented for OT systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-SR-3-OT",
+      "title": "OT equipment vendor security assessment not performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 SR-3(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 SR-3(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-SR-3-OT_stmt",
+        "name": "statement",
+        "prose": "OT equipment vendor security assessment not performed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-SR-4-OT",
+      "title": "Process not established to detect counterfeit OT hardware components",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 SR-4(OT)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 SR-4(OT)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-SR-4-OT_stmt",
+        "name": "statement",
+        "prose": "Process not established to detect counterfeit OT hardware components"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "aaa76f71-55ff-57a1-b0d9-7c5fac2b023b",
+     "title": "NIST Special Publication 800-82 Revision 3",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist_800_82.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/nist_800_82/nist_800_82_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

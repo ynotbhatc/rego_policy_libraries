@@ -1,0 +1,2401 @@
+{
+ "catalog": {
+  "uuid": "e0df6d63-2a3c-5168-82c1-fdea7adcb572",
+  "metadata": {
+   "title": "Rego Policy Libraries — pci_dss (PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "pci_dss"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "pci_dss-requirement_7",
+    "class": "rego-module",
+    "title": "PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.access_control.requirement_7"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/access_control/requirement_7.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-requirement_7_1",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_7.rego (package pci_dss.access_control.requirement_7); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_7_1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_7_1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b99ad9c2-88dd-50e3-b753-ae753092e58e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_7_1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_7.rego (package pci_dss.access_control.requirement_7); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_7_2",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_7.rego (package pci_dss.access_control.requirement_7); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_7_2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_7_2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b99ad9c2-88dd-50e3-b753-ae753092e58e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_7_2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_7.rego (package pci_dss.access_control.requirement_7); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_7_3",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_7.rego (package pci_dss.access_control.requirement_7); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_7_3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_7_3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b99ad9c2-88dd-50e3-b753-ae753092e58e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_7_3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_7.rego (package pci_dss.access_control.requirement_7); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-requirement_8",
+    "class": "rego-module",
+    "title": "PCI DSS v4.0 Requirement 8 - Identify Users and Authenticate Access to System Components",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.access_control.requirement_8"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/access_control/requirement_8.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-requirement_8_1",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_8_1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_8_1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d15b2a68-bf30-5c80-babd-035afad170ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_8_1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_8_2",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_8_2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_8_2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d15b2a68-bf30-5c80-babd-035afad170ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_8_2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_8_3",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_8_3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_8_3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d15b2a68-bf30-5c80-babd-035afad170ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_8_3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_8_4_mfa",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_8_4_mfa"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_8_4_mfa"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d15b2a68-bf30-5c80-babd-035afad170ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_8_4_mfa_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_8_6",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_8_6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_8_6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d15b2a68-bf30-5c80-babd-035afad170ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_8_6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-requirement_4",
+    "class": "rego-module",
+    "title": "PCI DSS v4.0 Requirement 4 - Protect Cardholder Data with Strong Cryptography",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.data_protection.requirement_4"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/data_protection/requirement_4.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-requirement_4_1",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/data_protection/requirement_4.rego (package pci_dss.data_protection.requirement_4); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_4_1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_4_1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aecf2c18-008d-5f75-96d2-e787c4d09dc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_4_1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/data_protection/requirement_4.rego (package pci_dss.data_protection.requirement_4); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_4_2",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/data_protection/requirement_4.rego (package pci_dss.data_protection.requirement_4); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_4_2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_4_2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aecf2c18-008d-5f75-96d2-e787c4d09dc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_4_2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/data_protection/requirement_4.rego (package pci_dss.data_protection.requirement_4); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-requirement_12",
+    "class": "rego-module",
+    "title": "PCI DSS v4.0 Requirement 12 - Support Information Security with Organizational",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.governance.requirement_12"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/governance/requirement_12.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-requirement_12_1",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_12_1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_12_1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#65588d90-b595-5b35-a2d7-2b7a9ff01d8f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_12_1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_12_2",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_12_2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_12_2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#65588d90-b595-5b35-a2d7-2b7a9ff01d8f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_12_2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_12_3",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_12_3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_12_3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#65588d90-b595-5b35-a2d7-2b7a9ff01d8f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_12_3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_12_4",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_12_4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_12_4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#65588d90-b595-5b35-a2d7-2b7a9ff01d8f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_12_4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_12_5",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_12_5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_12_5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#65588d90-b595-5b35-a2d7-2b7a9ff01d8f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_12_5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_12_6",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_12_6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_12_6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#65588d90-b595-5b35-a2d7-2b7a9ff01d8f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_12_6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_12_7",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_12_7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_12_7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#65588d90-b595-5b35-a2d7-2b7a9ff01d8f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_12_7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_12_8_9",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_12_8_9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_12_8_9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#65588d90-b595-5b35-a2d7-2b7a9ff01d8f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_12_8_9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_12_10",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_12_10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_12_10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#65588d90-b595-5b35-a2d7-2b7a9ff01d8f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_12_10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-requirement_10",
+    "class": "rego-module",
+    "title": "PCI DSS v4.0 Requirement 10 - Log and Monitor All Access to System Components",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.logging_monitoring.requirement_10"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-requirement_10_1",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_10_1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_10_1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.logging_monitoring.requirement_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23ba5050-d5e0-5bd5-94b1-e917667ec5e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_10_1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_10_2",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_10_2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_10_2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.logging_monitoring.requirement_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23ba5050-d5e0-5bd5-94b1-e917667ec5e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_10_2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_10_3",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_10_3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_10_3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.logging_monitoring.requirement_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23ba5050-d5e0-5bd5-94b1-e917667ec5e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_10_3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_10_4",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_10_4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_10_4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.logging_monitoring.requirement_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23ba5050-d5e0-5bd5-94b1-e917667ec5e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_10_4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_10_5",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_10_5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_10_5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.logging_monitoring.requirement_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23ba5050-d5e0-5bd5-94b1-e917667ec5e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_10_5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_10_6",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_10_6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_10_6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.logging_monitoring.requirement_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23ba5050-d5e0-5bd5-94b1-e917667ec5e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_10_6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_10_7",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_10_7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_10_7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.logging_monitoring.requirement_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23ba5050-d5e0-5bd5-94b1-e917667ec5e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_10_7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-requirement_5",
+    "class": "rego-module",
+    "title": "PCI DSS v4.0 Requirement 5 - Protect All Systems and Networks from Malicious Software",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.malware_protection.requirement_5"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/malware_protection/requirement_5.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-requirement_5_1",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_5_1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_5_1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.malware_protection.requirement_5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fca409ec-225f-5b8c-8da3-5bb74804b414",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_5_1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_5_2",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_5_2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_5_2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.malware_protection.requirement_5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fca409ec-225f-5b8c-8da3-5bb74804b414",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_5_2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_5_3",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_5_3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_5_3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.malware_protection.requirement_5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fca409ec-225f-5b8c-8da3-5bb74804b414",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_5_3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_5_4",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_5_4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_5_4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.malware_protection.requirement_5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fca409ec-225f-5b8c-8da3-5bb74804b414",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_5_4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-enhanced_controls",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enhanced_controls"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enhanced_controls"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.malware_protection.requirement_5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fca409ec-225f-5b8c-8da3-5bb74804b414",
+        "rel": "implementation"
+       },
+       {
+        "href": "#0a3dce43-1f21-5b6d-a7d2-19cebf651a21",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-enhanced_controls_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body."
+       },
+       {
+        "id": "pci_dss-enhanced_controls_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-pci_dss_assessment",
+    "class": "rego-module",
+    "title": "Consumer endpoint for the compliance-repo pci_dss_compliance role",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/pci_dss_assessment.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-requirement_results",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/pci_dss_assessment.rego (package pci_dss); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_results"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_results"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4546b57e-6727-5ccf-b9e2-ed199706c71e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_results_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/pci_dss_assessment.rego (package pci_dss); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-pci_dss_main",
+    "class": "rego-module",
+    "title": "PCI DSS v4.0 - Main Aggregation Policy (All 12 Requirements)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/pci_dss_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-compliance_status",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/pci_dss_main.rego (package pci_dss.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "compliance_status"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "compliance_status"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e1317fc-dd09-567b-a394-722b7c0739d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-compliance_status_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/pci_dss_main.rego (package pci_dss.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-scores",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/pci_dss_main.rego (package pci_dss.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "scores"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "scores"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e1317fc-dd09-567b-a394-722b7c0739d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-scores_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/pci_dss_main.rego (package pci_dss.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_details",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/pci_dss_main.rego (package pci_dss.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_details"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_details"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e1317fc-dd09-567b-a394-722b7c0739d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_details_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/pci_dss_main.rego (package pci_dss.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-requirement_9",
+    "class": "rego-module",
+    "title": "PCI DSS v4.0 Requirement 9 - Restrict Physical Access to Cardholder Data",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.physical_security.requirement_9"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/physical_security/requirement_9.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-requirement_9_1",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/physical_security/requirement_9.rego (package pci_dss.physical_security.requirement_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_9_1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_9_1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f6c0b7c-ec2c-58da-a68b-dfbed151db31",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_9_1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/physical_security/requirement_9.rego (package pci_dss.physical_security.requirement_9); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_9_2",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/physical_security/requirement_9.rego (package pci_dss.physical_security.requirement_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_9_2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_9_2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f6c0b7c-ec2c-58da-a68b-dfbed151db31",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_9_2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/physical_security/requirement_9.rego (package pci_dss.physical_security.requirement_9); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_9_3",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/physical_security/requirement_9.rego (package pci_dss.physical_security.requirement_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_9_3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_9_3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f6c0b7c-ec2c-58da-a68b-dfbed151db31",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_9_3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/physical_security/requirement_9.rego (package pci_dss.physical_security.requirement_9); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_9_4",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/physical_security/requirement_9.rego (package pci_dss.physical_security.requirement_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_9_4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_9_4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f6c0b7c-ec2c-58da-a68b-dfbed151db31",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_9_4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/physical_security/requirement_9.rego (package pci_dss.physical_security.requirement_9); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_9_5",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/physical_security/requirement_9.rego (package pci_dss.physical_security.requirement_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_9_5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_9_5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f6c0b7c-ec2c-58da-a68b-dfbed151db31",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_9_5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/physical_security/requirement_9.rego (package pci_dss.physical_security.requirement_9); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-requirement_6",
+    "class": "rego-module",
+    "title": "PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.secure_development.requirement_6"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/secure_development/requirement_6.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-requirement_6_1",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_6_1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_6_1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0a3dce43-1f21-5b6d-a7d2-19cebf651a21",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_6_1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_6_2",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_6_2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_6_2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0a3dce43-1f21-5b6d-a7d2-19cebf651a21",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_6_2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_6_2_4_attack_prevention",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_6_2_4_attack_prevention"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_6_2_4_attack_prevention"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0a3dce43-1f21-5b6d-a7d2-19cebf651a21",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_6_2_4_attack_prevention_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_6_3",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_6_3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_6_3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0a3dce43-1f21-5b6d-a7d2-19cebf651a21",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_6_3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_6_4",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_6_4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_6_4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0a3dce43-1f21-5b6d-a7d2-19cebf651a21",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_6_4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-requirement_11",
+    "class": "rego-module",
+    "title": "PCI DSS v4.0 Requirement 11 - Test Security of Systems and Networks Regularly",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.security_testing.requirement_11"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/security_testing/requirement_11.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-requirement_11_1",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_11_1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_11_1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.security_testing.requirement_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d18b8276-db1d-5d2d-876d-c4bc7749bc17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_11_1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_11_2",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_11_2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_11_2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.security_testing.requirement_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d18b8276-db1d-5d2d-876d-c4bc7749bc17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_11_2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_11_3",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_11_3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_11_3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.security_testing.requirement_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d18b8276-db1d-5d2d-876d-c4bc7749bc17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_11_3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_11_4",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_11_4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_11_4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.security_testing.requirement_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d18b8276-db1d-5d2d-876d-c4bc7749bc17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_11_4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_11_5",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_11_5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_11_5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.security_testing.requirement_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d18b8276-db1d-5d2d-876d-c4bc7749bc17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_11_5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_11_6",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_11_6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_11_6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.security_testing.requirement_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d18b8276-db1d-5d2d-876d-c4bc7749bc17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_11_6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-requirement_2",
+    "class": "rego-module",
+    "title": "PCI DSS v4.0 Requirement 2 - Apply Secure Configurations to All System Components",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.system_hardening.requirement_2"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/system_hardening/requirement_2.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-requirement_2_1",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/system_hardening/requirement_2.rego (package pci_dss.system_hardening.requirement_2); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_2_1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_2_1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1312d04d-3e8b-5b62-97be-99d852427459",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_2_1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/system_hardening/requirement_2.rego (package pci_dss.system_hardening.requirement_2); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_2_2",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/system_hardening/requirement_2.rego (package pci_dss.system_hardening.requirement_2); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_2_2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_2_2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1312d04d-3e8b-5b62-97be-99d852427459",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_2_2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/system_hardening/requirement_2.rego (package pci_dss.system_hardening.requirement_2); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-hardening_by_component",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/system_hardening/requirement_2.rego (package pci_dss.system_hardening.requirement_2); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "hardening_by_component"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hardening_by_component"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1312d04d-3e8b-5b62-97be-99d852427459",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-hardening_by_component_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/system_hardening/requirement_2.rego (package pci_dss.system_hardening.requirement_2); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_2_2_7",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/system_hardening/requirement_2.rego (package pci_dss.system_hardening.requirement_2); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_2_2_7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_2_2_7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1312d04d-3e8b-5b62-97be-99d852427459",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_2_2_7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/system_hardening/requirement_2.rego (package pci_dss.system_hardening.requirement_2); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-requirement_2_3",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/system_hardening/requirement_2.rego (package pci_dss.system_hardening.requirement_2); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "requirement_2_3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requirement_2_3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1312d04d-3e8b-5b62-97be-99d852427459",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-requirement_2_3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/system_hardening/requirement_2.rego (package pci_dss.system_hardening.requirement_2); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "b99ad9c2-88dd-50e3-b753-ae753092e58e",
+     "title": "PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.access_control.requirement_7"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/access_control/requirement_7.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d15b2a68-bf30-5c80-babd-035afad170ef",
+     "title": "PCI DSS v4.0 Requirement 8 - Identify Users and Authenticate Access to System Components",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.access_control.requirement_8"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/access_control/requirement_8.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "aecf2c18-008d-5f75-96d2-e787c4d09dc7",
+     "title": "PCI DSS v4.0 Requirement 4 - Protect Cardholder Data with Strong Cryptography",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.data_protection.requirement_4"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/data_protection/requirement_4.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "65588d90-b595-5b35-a2d7-2b7a9ff01d8f",
+     "title": "PCI DSS v4.0 Requirement 12 - Support Information Security with Organizational",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.governance.requirement_12"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/governance/requirement_12.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "23ba5050-d5e0-5bd5-94b1-e917667ec5e0",
+     "title": "PCI DSS v4.0 Requirement 10 - Log and Monitor All Access to System Components",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.logging_monitoring.requirement_10"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "fca409ec-225f-5b8c-8da3-5bb74804b414",
+     "title": "PCI DSS v4.0 Requirement 5 - Protect All Systems and Networks from Malicious Software",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.malware_protection.requirement_5"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/malware_protection/requirement_5.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "4546b57e-6727-5ccf-b9e2-ed199706c71e",
+     "title": "Consumer endpoint for the compliance-repo pci_dss_compliance role",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/pci_dss_assessment.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "0e1317fc-dd09-567b-a394-722b7c0739d4",
+     "title": "PCI DSS v4.0 - Main Aggregation Policy (All 12 Requirements)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/pci_dss_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8f6c0b7c-ec2c-58da-a68b-dfbed151db31",
+     "title": "PCI DSS v4.0 Requirement 9 - Restrict Physical Access to Cardholder Data",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.physical_security.requirement_9"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/physical_security/requirement_9.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "0a3dce43-1f21-5b6d-a7d2-19cebf651a21",
+     "title": "PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.secure_development.requirement_6"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/secure_development/requirement_6.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d18b8276-db1d-5d2d-876d-c4bc7749bc17",
+     "title": "PCI DSS v4.0 Requirement 11 - Test Security of Systems and Networks Regularly",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.security_testing.requirement_11"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/security_testing/requirement_11.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "1312d04d-3e8b-5b62-97be-99d852427459",
+     "title": "PCI DSS v4.0 Requirement 2 - Apply Secure Configurations to All System Components",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.system_hardening.requirement_2"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/pci_dss/system_hardening/requirement_2.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

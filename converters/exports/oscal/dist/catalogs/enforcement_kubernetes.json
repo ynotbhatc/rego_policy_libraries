@@ -1,0 +1,126 @@
+{
+ "catalog": {
+  "uuid": "e1cc451e-ef27-5d5e-91df-6ab5e9c1be39",
+  "metadata": {
+   "title": "Rego Policy Libraries — enforcement_kubernetes (Kubernetes Admission Control — Security and Operations Policy)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "enforcement_kubernetes"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "enforcement_kubernetes-kubernetes_admission",
+    "class": "rego-module",
+    "title": "Kubernetes Admission Control — Security and Operations Policy",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "kubernetes.admission"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/kubernetes/kubernetes_admission.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-1",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7ed61a57-416f-560a-a2ba-f1696080e584",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "7ed61a57-416f-560a-a2ba-f1696080e584",
+     "title": "Kubernetes Admission Control — Security and Operations Policy",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "kubernetes.admission"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/enforcement/kubernetes/kubernetes_admission.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,810 @@
+{
+ "catalog": {
+  "uuid": "cb05405e-a772-5978-a020-bdabed34b326",
+  "metadata": {
+   "title": "Rego Policy Libraries — cmmc (CMMC 2.0 — Access Control Domain (AC))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cmmc"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cmmc-cmmc_access_control",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Access Control Domain (AC)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.access_control"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_access_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-cmmc.access_control-1",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c60c8b86-ec85-5211-8d42-9d71cf7b7e9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-2",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c60c8b86-ec85-5211-8d42-9d71cf7b7e9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_configuration_management",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Configuration Management Domain (CM)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.configuration_management"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_configuration_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-cmmc.configuration_management-1",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.configuration_management-2",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.configuration_management-3",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.configuration_management-4",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.configuration_management-5",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.configuration_management-6",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.configuration_management-7",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.configuration_management-8",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.configuration_management-9",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_incident_response",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Incident Response Domain (IR)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.incident_response"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_incident_response.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-cmmc.incident_response-1",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.incident_response#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.incident_response#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#157eab50-1f55-50c5-9811-6decb5f8a736",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.incident_response-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.incident_response-2",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.incident_response#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.incident_response#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#157eab50-1f55-50c5-9811-6decb5f8a736",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.incident_response-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.incident_response-3",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.incident_response#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.incident_response#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#157eab50-1f55-50c5-9811-6decb5f8a736",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.incident_response-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_main",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Master Compliance Orchestrator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-standard",
+      "title": "CMMC 2.0",
+      "props": [
+       {
+        "name": "label",
+        "value": "standard"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "standard"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3503588f-7371-5ff8-a761-02f1c6662a50",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-standard_stmt",
+        "name": "statement",
+        "prose": "CMMC 2.0"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-regulation",
+      "title": "32 CFR Part 170 / DFARS 252.204-7021",
+      "props": [
+       {
+        "name": "label",
+        "value": "regulation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "regulation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3503588f-7371-5ff8-a761-02f1c6662a50",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-regulation_stmt",
+        "name": "statement",
+        "prose": "32 CFR Part 170 / DFARS 252.204-7021"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-nist_sp",
+      "title": "NIST SP 800-171 Rev 2",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist_sp"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist_sp"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3503588f-7371-5ff8-a761-02f1c6662a50",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-nist_sp_stmt",
+        "name": "statement",
+        "prose": "NIST SP 800-171 Rev 2"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-domains",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "domains"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "domains"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3503588f-7371-5ff8-a761-02f1c6662a50",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-domains_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "c60c8b86-ec85-5211-8d42-9d71cf7b7e9e",
+     "title": "CMMC 2.0 — Access Control Domain (AC)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.access_control"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cmmc/cmmc_access_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+     "title": "CMMC 2.0 — Configuration Management Domain (CM)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.configuration_management"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cmmc/cmmc_configuration_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "157eab50-1f55-50c5-9811-6decb5f8a736",
+     "title": "CMMC 2.0 — Incident Response Domain (IR)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.incident_response"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cmmc/cmmc_incident_response.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "3503588f-7371-5ff8-a761-02f1c6662a50",
+     "title": "CMMC 2.0 — Master Compliance Orchestrator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cmmc/cmmc_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

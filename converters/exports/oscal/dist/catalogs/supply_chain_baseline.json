@@ -1,0 +1,126 @@
+{
+ "catalog": {
+  "uuid": "ade8da6d-3cfd-504f-902f-e0aa614e7c0f",
+  "metadata": {
+   "title": "Rego Policy Libraries — supply_chain_baseline (AAC Supply-Chain Baseline — the default check (the supply-chain spine))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "supply_chain_baseline"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "supply_chain_baseline-baseline",
+    "class": "rego-module",
+    "title": "AAC Supply-Chain Baseline — the default check (the supply-chain spine)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "supply_chain.baseline"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/supply_chain/baseline/baseline.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "supply_chain_baseline-Supply-chain-baseline",
+      "title": "'%s' not satisfied (800-53 %v)",
+      "props": [
+       {
+        "name": "label",
+        "value": "Supply-chain baseline"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Supply-chain baseline"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.baseline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#635ae272-4f45-5a8c-ae6c-63a2b71dbe61",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "supply_chain_baseline-Supply-chain-baseline_stmt",
+        "name": "statement",
+        "prose": "'%s' not satisfied (800-53 %v)"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "635ae272-4f45-5a8c-ae6c-63a2b71dbe61",
+     "title": "AAC Supply-Chain Baseline — the default check (the supply-chain spine)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "supply_chain.baseline"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/supply_chain/baseline/baseline.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

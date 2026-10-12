@@ -1,0 +1,1220 @@
+{
+ "catalog": {
+  "uuid": "d71b6b35-fdec-5616-a738-b0b46ed3765a",
+  "metadata": {
+   "title": "Rego Policy Libraries — cisa_cpg (CISA Cross-Sector Cybersecurity Performance Goals (CPG) 2.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cisa_cpg"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cisa_cpg-cisa_cpg_main",
+    "class": "rego-module",
+    "title": "CISA Cross-Sector Cybersecurity Performance Goals (CPG) 2.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cisa_cpg.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cisa_cpg/cisa_cpg_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cisa_cpg-CISA-CPG-1.A-Establish-Cybersecurity-Responsibilities",
+      "title": "Leadership responsibility and accountability for cybersecurity not established for IT and OT",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 1.A (Establish Cybersecurity Responsibilities)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 1.A (Establish Cybersecurity Responsibilities)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-1.A-Establish-Cybersecurity-Responsibilities_stmt",
+        "name": "statement",
+        "prose": "Leadership responsibility and accountability for cybersecurity not established for IT and OT"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-1.B-Manage-Cybersecurity-Oversight",
+      "title": "Leadership does not regularly review and adapt the cybersecurity program against evolving threats",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 1.B (Manage Cybersecurity Oversight)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 1.B (Manage Cybersecurity Oversight)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-1.B-Manage-Cybersecurity-Oversight_stmt",
+        "name": "statement",
+        "prose": "Leadership does not regularly review and adapt the cybersecurity program against evolving threats"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-1.C-Maintain-Incident-Response-Plans",
+      "title": "IT and OT incident response plans not established, maintained, and exercised",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 1.C (Maintain Incident Response Plans)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 1.C (Maintain Incident Response Plans)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-1.C-Maintain-Incident-Response-Plans_stmt",
+        "name": "statement",
+        "prose": "IT and OT incident response plans not established, maintained, and exercised"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-cisa_cpg.main-1",
+      "title": "CISA CPG 1.D (Supply Chain Incident Reporting & Vulnerability Disclosure): Supplier contracts do not require incident reporting and vulnerability disclosure",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_cpg.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_cpg.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-cisa_cpg.main-1_stmt",
+        "name": "statement",
+        "prose": "CISA CPG 1.D (Supply Chain Incident Reporting & Vulnerability Disclosure): Supplier contracts do not require incident reporting and vulnerability disclosure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-1.E-Manage-Risks-from-Managed-Service-Providers",
+      "title": "Risks from MSPs with privileged system access not identified and managed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 1.E (Manage Risks from Managed Service Providers)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 1.E (Manage Risks from Managed Service Providers)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-1.E-Manage-Risks-from-Managed-Service-Providers_stmt",
+        "name": "statement",
+        "prose": "Risks from MSPs with privileged system access not identified and managed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-2.A-Manage-Organizational-Assets",
+      "title": "Physical device/hardware asset inventory not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 2.A (Manage Organizational Assets)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 2.A (Manage Organizational Assets)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-2.A-Manage-Organizational-Assets_stmt",
+        "name": "statement",
+        "prose": "Physical device/hardware asset inventory not maintained"
+       },
+       {
+        "id": "cisa_cpg-CISA-CPG-2.A-Manage-Organizational-Assets_obj.1",
+        "name": "assessment-objective",
+        "prose": "Software and platform inventory not maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-2.B-Mitigate-Known-Vulnerabilities",
+      "title": "Known exploited vulnerabilities (CISA KEV) not mitigated on internet-facing systems within risk-informed timelines",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 2.B (Mitigate Known Vulnerabilities)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 2.B (Mitigate Known Vulnerabilities)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-2.B-Mitigate-Known-Vulnerabilities_stmt",
+        "name": "statement",
+        "prose": "Known exploited vulnerabilities (CISA KEV) not mitigated on internet-facing systems within risk-informed timelines"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-cisa_cpg.main-2",
+      "title": "CISA CPG 2.C (Obtain Independent Validation of Cybersecurity Controls): Controls not independently validated (assessment, audit, or pen test by parties outside the implementing team)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_cpg.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_cpg.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-cisa_cpg.main-2_stmt",
+        "name": "statement",
+        "prose": "CISA CPG 2.C (Obtain Independent Validation of Cybersecurity Controls): Controls not independently validated (assessment, audit, or pen test by parties outside the implementing team)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-cisa_cpg.main-3",
+      "title": "CISA CPG 2.D (Maintain Vulnerability Disclosure/Reporting Process): Public process for external parties to report vulnerabilities not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_cpg.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_cpg.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-cisa_cpg.main-3_stmt",
+        "name": "statement",
+        "prose": "CISA CPG 2.D (Maintain Vulnerability Disclosure/Reporting Process): Public process for external parties to report vulnerabilities not maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-2.E-Document-Network-Topology",
+      "title": "Current network topology documentation (IT and OT) not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 2.E (Document Network Topology)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 2.E (Document Network Topology)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-2.E-Document-Network-Topology_stmt",
+        "name": "statement",
+        "prose": "Current network topology documentation (IT and OT) not maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.A-Changing-Default-Passwords",
+      "title": "Default manufacturer passwords not changed before deployment",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.A (Changing Default Passwords)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.A (Changing Default Passwords)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.A-Changing-Default-Passwords_stmt",
+        "name": "statement",
+        "prose": "Default manufacturer passwords not changed before deployment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.B-Establish-Minimum-Password-Strength",
+      "title": "Minimum password strength not enforced organization-wide",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.B (Establish Minimum Password Strength)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.B (Establish Minimum Password Strength)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.B-Establish-Minimum-Password-Strength_stmt",
+        "name": "statement",
+        "prose": "Minimum password strength not enforced organization-wide"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.C-Create-Unique-Credentials",
+      "title": "Unique credentials per user/service not enforced (shared accounts in use)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.C (Create Unique Credentials)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.C (Create Unique Credentials)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.C-Create-Unique-Credentials_stmt",
+        "name": "statement",
+        "prose": "Unique credentials per user/service not enforced (shared accounts in use)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.D-Revoking-Credentials-for-Departing-Staff",
+      "title": "Credentials of departing employees/contractors not promptly revoked",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.D (Revoking Credentials for Departing Staff)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.D (Revoking Credentials for Departing Staff)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.D-Revoking-Credentials-for-Departing-Staff_stmt",
+        "name": "statement",
+        "prose": "Credentials of departing employees/contractors not promptly revoked"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.E-Monitor-Unsuccessful-Login-Attempts",
+      "title": "Unsuccessful (automated) login attempts not detected and alerted (brute-force indicator)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.E (Monitor Unsuccessful Login Attempts)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.E (Monitor Unsuccessful Login Attempts)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.E-Monitor-Unsuccessful-Login-Attempts_stmt",
+        "name": "statement",
+        "prose": "Unsuccessful (automated) login attempts not detected and alerted (brute-force indicator)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.F-Implement-Multi-factor-Authentication",
+      "title": "MFA not implemented — at minimum for remote access and privileged accounts, phishing-resistant preferred",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.F (Implement Multi-factor Authentication)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.F (Implement Multi-factor Authentication)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.F-Implement-Multi-factor-Authentication_stmt",
+        "name": "statement",
+        "prose": "MFA not implemented — at minimum for remote access and privileged accounts, phishing-resistant preferred"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-cisa_cpg.main-4",
+      "title": "CISA CPG 3.G (Administrators Maintain Separate User and Privileged Accounts): Administrators do not use separate accounts for user vs privileged activity",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_cpg.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_cpg.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-cisa_cpg.main-4_stmt",
+        "name": "statement",
+        "prose": "CISA CPG 3.G (Administrators Maintain Separate User and Privileged Accounts): Administrators do not use separate accounts for user vs privileged activity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.H-Implement-the-Principles-of-Least-Privilege",
+      "title": "Access rights not limited to those required for role/function",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.H (Implement the Principles of Least Privilege)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.H (Implement the Principles of Least Privilege)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.H-Implement-the-Principles-of-Least-Privilege_stmt",
+        "name": "statement",
+        "prose": "Access rights not limited to those required for role/function"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-cisa_cpg.main-5",
+      "title": "CISA CPG 3.I (Implement Logical/Physical Network Segmentation): Networks (including IT/OT boundary) not segmented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_cpg.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_cpg.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-cisa_cpg.main-5_stmt",
+        "name": "statement",
+        "prose": "CISA CPG 3.I (Implement Logical/Physical Network Segmentation): Networks (including IT/OT boundary) not segmented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.J-Implement-Cybersecurity-Training",
+      "title": "Cybersecurity training (including OT-specific where applicable) not provided",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.J (Implement Cybersecurity Training)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.J (Implement Cybersecurity Training)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.J-Implement-Cybersecurity-Training_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity training (including OT-specific where applicable) not provided"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.K-Utilize-Strong-Encryption",
+      "title": "Strong, agile encryption not used for data in transit and sensitive data (including credentials/secrets) at rest",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.K (Utilize Strong Encryption)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.K (Utilize Strong Encryption)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.K-Utilize-Strong-Encryption_stmt",
+        "name": "statement",
+        "prose": "Strong, agile encryption not used for data in transit and sensitive data (including credentials/secrets) at rest"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.L-Enable-Email-Security",
+      "title": "Email security controls (SPF/DKIM/DMARC, STARTTLS) not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.L (Enable Email Security)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.L (Enable Email Security)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.L-Enable-Email-Security_stmt",
+        "name": "statement",
+        "prose": "Email security controls (SPF/DKIM/DMARC, STARTTLS) not enabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-cisa_cpg.main-6",
+      "title": "CISA CPG 3.M (Disable Autorun & Macros By Default): Autorun and Office macros not disabled by default",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_cpg.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_cpg.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-cisa_cpg.main-6_stmt",
+        "name": "statement",
+        "prose": "CISA CPG 3.M (Disable Autorun & Macros By Default): Autorun and Office macros not disabled by default"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.N-Establish-Change-Management-Processes",
+      "title": "Documented change management for systems and configurations not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.N (Establish Change Management Processes)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.N (Establish Change Management Processes)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.N-Establish-Change-Management-Processes_stmt",
+        "name": "statement",
+        "prose": "Documented change management for systems and configurations not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-cisa_cpg.main-7",
+      "title": "CISA CPG 3.O (Maintain System Backups & Restoration Ability): System backups not maintained, isolated, and restoration-tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_cpg.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_cpg.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-cisa_cpg.main-7_stmt",
+        "name": "statement",
+        "prose": "CISA CPG 3.O (Maintain System Backups & Restoration Ability): System backups not maintained, isolated, and restoration-tested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-cisa_cpg.main-8",
+      "title": "CISA CPG 3.P (Maintain Hardware & Software Approval Process): Administrative approval process for new hardware/software not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_cpg.main#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_cpg.main#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-cisa_cpg.main-8_stmt",
+        "name": "statement",
+        "prose": "CISA CPG 3.P (Maintain Hardware & Software Approval Process): Administrative approval process for new hardware/software not maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-cisa_cpg.main-9",
+      "title": "CISA CPG 3.Q (Maintain Log Collection & Storage): Security logs not collected and stored securely (tamper-resistant, adequate retention)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_cpg.main#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_cpg.main#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-cisa_cpg.main-9_stmt",
+        "name": "statement",
+        "prose": "CISA CPG 3.Q (Maintain Log Collection & Storage): Security logs not collected and stored securely (tamper-resistant, adequate retention)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.R-Prohibit-Connection-of-Unauthorized-Devices",
+      "title": "Connection of unauthorized devices (including removable media) not prevented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.R (Prohibit Connection of Unauthorized Devices)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.R (Prohibit Connection of Unauthorized Devices)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.R-Prohibit-Connection-of-Unauthorized-Devices_stmt",
+        "name": "statement",
+        "prose": "Connection of unauthorized devices (including removable media) not prevented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-3.S-Secure-Internet-Facing-Devices",
+      "title": "Unnecessary exploitable services on internet-facing assets (and unprotected OT exposure) not eliminated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 3.S (Secure Internet Facing Devices)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 3.S (Secure Internet Facing Devices)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-3.S-Secure-Internet-Facing-Devices_stmt",
+        "name": "statement",
+        "prose": "Unnecessary exploitable services on internet-facing assets (and unprotected OT exposure) not eliminated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-4.A-Establish-Malicious-Code-Detection",
+      "title": "Malicious code detection (endpoint/network) not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 4.A (Establish Malicious Code Detection)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 4.A (Establish Malicious Code Detection)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-4.A-Establish-Malicious-Code-Detection_stmt",
+        "name": "statement",
+        "prose": "Malicious code detection (endpoint/network) not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-4.B-Identify-Adverse-Events",
+      "title": "Capability to identify adverse events and relevant threat TTPs not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 4.B (Identify Adverse Events)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 4.B (Identify Adverse Events)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-4.B-Identify-Adverse-Events_stmt",
+        "name": "statement",
+        "prose": "Capability to identify adverse events and relevant threat TTPs not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-5.A-Establish-Incident-Communication-Procedures",
+      "title": "Incident communication procedures (internal, partners, suppliers) not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 5.A (Establish Incident Communication Procedures)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 5.A (Establish Incident Communication Procedures)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-5.A-Establish-Incident-Communication-Procedures_stmt",
+        "name": "statement",
+        "prose": "Incident communication procedures (internal, partners, suppliers) not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-5.B-Establish-Incident-Reporting-Procedures",
+      "title": "Procedures to report incidents (including to CISA/authorities as applicable) not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 5.B (Establish Incident Reporting Procedures)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 5.B (Establish Incident Reporting Procedures)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-5.B-Establish-Incident-Reporting-Procedures_stmt",
+        "name": "statement",
+        "prose": "Procedures to report incidents (including to CISA/authorities as applicable) not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_cpg-CISA-CPG-6.A-Execute-Incident-Recovery-Plan",
+      "title": "capability to execute recovery plans (restoration exercises, degraded-operations readiness, lessons learned) not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA CPG 6.A (Execute Incident Recovery Plan)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA CPG 6.A (Execute Incident Recovery Plan)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_cpg.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_cpg-CISA-CPG-6.A-Execute-Incident-Recovery-Plan_stmt",
+        "name": "statement",
+        "prose": "capability to execute recovery plans (restoration exercises, degraded-operations readiness, lessons learned) not established"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "4bb3f737-a603-584b-ae3c-8d3b6bcf5da7",
+     "title": "CISA Cross-Sector Cybersecurity Performance Goals (CPG) 2.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cisa_cpg.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cisa_cpg/cisa_cpg_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

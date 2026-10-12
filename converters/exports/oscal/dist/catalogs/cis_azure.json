@@ -1,0 +1,423 @@
+{
+ "catalog": {
+  "uuid": "8ddd680d-0d7e-5cb0-b19b-9dd0f4a0f097",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_azure (CIS Microsoft Azure Foundations Benchmark v3.0.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_azure"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_azure-cis_azure_foundations",
+    "class": "rego-module",
+    "title": "CIS Microsoft Azure Foundations Benchmark v3.0.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_azure"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/azure/cis_azure_foundations.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_azure-sections",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "sections"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sections"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-sections_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-identity_access",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "identity_access"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "identity_access"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-identity_access_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-security_center",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "security_center"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "security_center"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-security_center_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-storage",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "storage"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "storage"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-storage_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-database",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "database"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "database"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-database_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-logging",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "logging"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "logging"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-logging_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-networking",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "networking"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "networking"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-networking_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-virtual_machines",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "virtual_machines"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "virtual_machines"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-virtual_machines_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-key_vault",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "key_vault"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "key_vault"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-key_vault_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-app_service",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "app_service"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "app_service"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-app_service_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "246d9973-a81e-576f-928a-f5279ce7c73e",
+     "title": "CIS Microsoft Azure Foundations Benchmark v3.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_azure"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/azure/cis_azure_foundations.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

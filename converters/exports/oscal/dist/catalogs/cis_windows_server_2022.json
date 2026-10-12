@@ -1,0 +1,456 @@
+{
+ "catalog": {
+  "uuid": "b01b4df6-bb13-5329-874b-bd9e64477146",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_windows_server_2022 (CIS Microsoft Windows Server 2022 Benchmark v5.0.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_windows_server_2022"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_windows_server_2022-cis_windows_server_2022",
+    "class": "rego-module",
+    "title": "CIS Microsoft Windows Server 2022 Benchmark v5.0.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2022_legacy"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2022-sections",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "sections"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sections"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2022_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#934308c8-654f-5481-82c1-b0eeab760a17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2022-sections_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2022-account_policies",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "account_policies"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "account_policies"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2022_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#934308c8-654f-5481-82c1-b0eeab760a17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2022-account_policies_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2022-local_policies",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "local_policies"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "local_policies"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2022_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#934308c8-654f-5481-82c1-b0eeab760a17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2022-local_policies_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2022-event_log",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "event_log"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "event_log"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2022_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#934308c8-654f-5481-82c1-b0eeab760a17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2022-event_log_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2022-restricted_groups",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "restricted_groups"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "restricted_groups"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2022_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#934308c8-654f-5481-82c1-b0eeab760a17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2022-restricted_groups_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2022-system_services",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "system_services"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "system_services"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2022_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#934308c8-654f-5481-82c1-b0eeab760a17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2022-system_services_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2022-registry",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "registry"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "registry"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2022_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#934308c8-654f-5481-82c1-b0eeab760a17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2022-registry_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2022-security_options",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "security_options"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "security_options"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2022_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#934308c8-654f-5481-82c1-b0eeab760a17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2022-security_options_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2022-advanced_audit",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "advanced_audit"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "advanced_audit"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2022_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#934308c8-654f-5481-82c1-b0eeab760a17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2022-advanced_audit_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2022-windows_defender",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "windows_defender"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "windows_defender"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2022_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#934308c8-654f-5481-82c1-b0eeab760a17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2022-windows_defender_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2022-bitlocker",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "bitlocker"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bitlocker"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2022_legacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#934308c8-654f-5481-82c1-b0eeab760a17",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2022-bitlocker_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego (package cis_windows_server_2022_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "934308c8-654f-5481-82c1-b0eeab760a17",
+     "title": "CIS Microsoft Windows Server 2022 Benchmark v5.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2022_legacy"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_server_2022/cis_windows_server_2022.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

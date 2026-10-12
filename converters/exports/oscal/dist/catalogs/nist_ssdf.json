@@ -1,0 +1,1602 @@
+{
+ "catalog": {
+  "uuid": "11fdceb6-3c35-50df-8c95-8455b71e3cb5",
+  "metadata": {
+   "title": "Rego Policy Libraries — nist_ssdf (NIST SSDF (SP 800-218 v1.1) — Practice Group: Prepare the Organization (PO))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nist_ssdf"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nist_ssdf-po_prepare_organization",
+    "class": "rego-module",
+    "title": "NIST SSDF (SP 800-218 v1.1) — Practice Group: Prepare the Organization (PO)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist_ssdf.po"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist_ssdf/po_prepare_organization.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_ssdf-PO.1.1",
+      "title": "Security requirements for software development are not defined and documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.1.1_stmt",
+        "name": "statement",
+        "prose": "Security requirements for software development are not defined and documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.1.2",
+      "title": "Security requirements are not communicated to third-party suppliers/developers",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.1.2_stmt",
+        "name": "statement",
+        "prose": "Security requirements are not communicated to third-party suppliers/developers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.1.3",
+      "title": "Software security requirements are not maintained/reviewed over time",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.1.3_stmt",
+        "name": "statement",
+        "prose": "Software security requirements are not maintained/reviewed over time"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.2.1",
+      "title": "SDLC security roles and responsibilities are not defined for all personnel",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.2.1_stmt",
+        "name": "statement",
+        "prose": "SDLC security roles and responsibilities are not defined for all personnel"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.2.2",
+      "title": "Role-based secure-development training is not provided",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.2.2_stmt",
+        "name": "statement",
+        "prose": "Role-based secure-development training is not provided"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.2.3",
+      "title": "Management has not committed resources/support to secure development",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.2.3_stmt",
+        "name": "statement",
+        "prose": "Management has not committed resources/support to secure development"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.3.1",
+      "title": "A supporting toolchain for secure development is not specified",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.3.1_stmt",
+        "name": "statement",
+        "prose": "A supporting toolchain for secure development is not specified"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.3.2",
+      "title": "Security is not integrated into the development toolchain (SAST/SCA/signing)",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.3.2_stmt",
+        "name": "statement",
+        "prose": "Security is not integrated into the development toolchain (SAST/SCA/signing)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.3.3",
+      "title": "Toolchain artifacts/evidence are not collected for auditability",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.3.3_stmt",
+        "name": "statement",
+        "prose": "Toolchain artifacts/evidence are not collected for auditability"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.4.1",
+      "title": "Criteria for software security checks (gates) are not defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.4.1_stmt",
+        "name": "statement",
+        "prose": "Criteria for software security checks (gates) are not defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.4.2",
+      "title": "Security-check data is not gathered/reviewed to inform decision-making",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.4.2_stmt",
+        "name": "statement",
+        "prose": "Security-check data is not gathered/reviewed to inform decision-making"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.5.1",
+      "title": "Development, build, and production environments are not separated/isolated",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.5.1_stmt",
+        "name": "statement",
+        "prose": "Development, build, and production environments are not separated/isolated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PO.5.2",
+      "title": "Developer endpoints and build environments are not hardened/secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "PO.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PO.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.po"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PO.5.2_stmt",
+        "name": "statement",
+        "prose": "Developer endpoints and build environments are not hardened/secured"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_ssdf-ps_protect_software",
+    "class": "rego-module",
+    "title": "NIST SSDF (SP 800-218 v1.1) — Practice Group: Protect the Software (PS)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist_ssdf.ps"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist_ssdf/ps_protect_software.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_ssdf-PS.1.1",
+      "title": "Code is not protected from unauthorized access/tampering (require least-privilege repo access AND protected branches)",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.ps"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a247040-8d35-545b-a6ef-af90bcf334e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PS.1.1_stmt",
+        "name": "statement",
+        "prose": "Code is not protected from unauthorized access/tampering (require least-privilege repo access AND protected branches)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PS.2.1",
+      "title": "No mechanism (hashes/signatures) is provided for consumers to verify release integrity",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.ps"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a247040-8d35-545b-a6ef-af90bcf334e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PS.2.1_stmt",
+        "name": "statement",
+        "prose": "No mechanism (hashes/signatures) is provided for consumers to verify release integrity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PS.3.1",
+      "title": "Software releases and their build inputs are not archived and protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.ps"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a247040-8d35-545b-a6ef-af90bcf334e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PS.3.1_stmt",
+        "name": "statement",
+        "prose": "Software releases and their build inputs are not archived and protected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PS.3.2",
+      "title": "An SBOM (provenance data) is not generated and retained for each release",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.ps"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a247040-8d35-545b-a6ef-af90bcf334e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PS.3.2_stmt",
+        "name": "statement",
+        "prose": "An SBOM (provenance data) is not generated and retained for each release"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_ssdf-pw_produce_secured_software",
+    "class": "rego-module",
+    "title": "NIST SSDF (SP 800-218 v1.1) — Practice Group: Produce Well-Secured Software (PW)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist_ssdf.pw"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist_ssdf/pw_produce_secured_software.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_ssdf-PW.1.1",
+      "title": "Threat modeling / design risk analysis is not performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.1.1_stmt",
+        "name": "statement",
+        "prose": "Threat modeling / design risk analysis is not performed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.1.2",
+      "title": "Security requirements are not tracked and maintained in the design",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.1.2_stmt",
+        "name": "statement",
+        "prose": "Security requirements are not tracked and maintained in the design"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.1.3",
+      "title": "Standardized, well-vetted security features/services are not used where appropriate (custom implementations instead)",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.1.3_stmt",
+        "name": "statement",
+        "prose": "Standardized, well-vetted security features/services are not used where appropriate (custom implementations instead)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.2.1",
+      "title": "Software design is not reviewed by a qualified reviewer against security requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.2.1_stmt",
+        "name": "statement",
+        "prose": "Software design is not reviewed by a qualified reviewer against security requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.4.1",
+      "title": "Third-party/open-source components are not acquired from vetted, well-secured sources",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.4.1_stmt",
+        "name": "statement",
+        "prose": "Third-party/open-source components are not acquired from vetted, well-secured sources"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.4.2",
+      "title": "Reusable in-house components for common security needs are not created/maintained as well-secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.4.2_stmt",
+        "name": "statement",
+        "prose": "Reusable in-house components for common security needs are not created/maintained as well-secured"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.4.4",
+      "title": "Acquired components are not verified against requirements (require SCA enabled AND vulnerability scanning)",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.4.4_stmt",
+        "name": "statement",
+        "prose": "Acquired components are not verified against requirements (require SCA enabled AND vulnerability scanning)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.5.1",
+      "title": "Secure coding standards are not defined and followed",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.5.1_stmt",
+        "name": "statement",
+        "prose": "Secure coding standards are not defined and followed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.6.1",
+      "title": "Compiler/build hardening settings (e.g. stack protection, RELRO) are not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.6.1_stmt",
+        "name": "statement",
+        "prose": "Compiler/build hardening settings (e.g. stack protection, RELRO) are not enabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.6.2",
+      "title": "Build process integrity is not verified (reproducible/attested builds)",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.6.2_stmt",
+        "name": "statement",
+        "prose": "Build process integrity is not verified (reproducible/attested builds)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.7.1",
+      "title": "Peer code review is not required before merge",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.7.1_stmt",
+        "name": "statement",
+        "prose": "Peer code review is not required before merge"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.7.2",
+      "title": "Automated static analysis (SAST) is not enabled in the pipeline",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.7.2_stmt",
+        "name": "statement",
+        "prose": "Automated static analysis (SAST) is not enabled in the pipeline"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.8.1",
+      "title": "Security test cases / test configuration are not defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.8.1_stmt",
+        "name": "statement",
+        "prose": "Security test cases / test configuration are not defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.8.2",
+      "title": "Dynamic analysis (DAST) / runtime security testing is not performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.8.2_stmt",
+        "name": "statement",
+        "prose": "Dynamic analysis (DAST) / runtime security testing is not performed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.9.1",
+      "title": "Software is not configured with secure settings by default",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.9.1_stmt",
+        "name": "statement",
+        "prose": "Software is not configured with secure settings by default"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-PW.9.2",
+      "title": "Secure default settings are not verified before release",
+      "props": [
+       {
+        "name": "label",
+        "value": "PW.9.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PW.9.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.pw"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-PW.9.2_stmt",
+        "name": "statement",
+        "prose": "Secure default settings are not verified before release"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_ssdf-rv_respond_vulnerabilities",
+    "class": "rego-module",
+    "title": "NIST SSDF (SP 800-218 v1.1) — Practice Group: Respond to Vulnerabilities (RV)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist_ssdf.rv"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist_ssdf/rv_respond_vulnerabilities.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_ssdf-RV.1.1",
+      "title": "Ongoing monitoring for vulnerabilities in releases/components is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "RV.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RV.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.rv"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24156bad-29ff-5e61-914b-e1e636b754b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-RV.1.1_stmt",
+        "name": "statement",
+        "prose": "Ongoing monitoring for vulnerabilities in releases/components is not enabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-RV.1.2",
+      "title": "No vulnerability disclosure program / intake channel exists",
+      "props": [
+       {
+        "name": "label",
+        "value": "RV.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RV.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.rv"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24156bad-29ff-5e61-914b-e1e636b754b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-RV.1.2_stmt",
+        "name": "statement",
+        "prose": "No vulnerability disclosure program / intake channel exists"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-RV.1.3",
+      "title": "A documented vulnerability response process is not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "RV.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RV.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.rv"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24156bad-29ff-5e61-914b-e1e636b754b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-RV.1.3_stmt",
+        "name": "statement",
+        "prose": "A documented vulnerability response process is not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-RV.2.1",
+      "title": "Vulnerabilities are not analyzed and prioritized (triage/severity)",
+      "props": [
+       {
+        "name": "label",
+        "value": "RV.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RV.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.rv"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24156bad-29ff-5e61-914b-e1e636b754b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-RV.2.1_stmt",
+        "name": "statement",
+        "prose": "Vulnerabilities are not analyzed and prioritized (triage/severity)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-RV.2.2",
+      "title": "Remediation SLAs/timelines are not defined for confirmed vulnerabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "RV.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RV.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.rv"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24156bad-29ff-5e61-914b-e1e636b754b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-RV.2.2_stmt",
+        "name": "statement",
+        "prose": "Remediation SLAs/timelines are not defined for confirmed vulnerabilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-RV.3.1",
+      "title": "Root-cause analysis is not performed for identified vulnerabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "RV.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RV.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.rv"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24156bad-29ff-5e61-914b-e1e636b754b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-RV.3.1_stmt",
+        "name": "statement",
+        "prose": "Root-cause analysis is not performed for identified vulnerabilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-RV.3.2",
+      "title": "Root causes are not analyzed over time to identify patterns/systemic weaknesses",
+      "props": [
+       {
+        "name": "label",
+        "value": "RV.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RV.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.rv"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24156bad-29ff-5e61-914b-e1e636b754b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-RV.3.2_stmt",
+        "name": "statement",
+        "prose": "Root causes are not analyzed over time to identify patterns/systemic weaknesses"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-RV.3.3",
+      "title": "Codebase is not reviewed for other instances of the same class of vulnerability",
+      "props": [
+       {
+        "name": "label",
+        "value": "RV.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RV.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.rv"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24156bad-29ff-5e61-914b-e1e636b754b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-RV.3.3_stmt",
+        "name": "statement",
+        "prose": "Codebase is not reviewed for other instances of the same class of vulnerability"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ssdf-RV.3.4",
+      "title": "SDLC is not reviewed/updated to prevent recurrence of root causes",
+      "props": [
+       {
+        "name": "label",
+        "value": "RV.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RV.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_ssdf.rv"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24156bad-29ff-5e61-914b-e1e636b754b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ssdf-RV.3.4_stmt",
+        "name": "statement",
+        "prose": "SDLC is not reviewed/updated to prevent recurrence of root causes"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "c848e1c8-07fa-5fc7-8d75-33d5dcc33f72",
+     "title": "NIST SSDF (SP 800-218 v1.1) — Practice Group: Prepare the Organization (PO)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist_ssdf.po"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist_ssdf/po_prepare_organization.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "6a247040-8d35-545b-a6ef-af90bcf334e7",
+     "title": "NIST SSDF (SP 800-218 v1.1) — Practice Group: Protect the Software (PS)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist_ssdf.ps"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist_ssdf/ps_protect_software.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "81e4e5fd-22f2-548f-9aa3-1870df8c4b39",
+     "title": "NIST SSDF (SP 800-218 v1.1) — Practice Group: Produce Well-Secured Software (PW)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist_ssdf.pw"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist_ssdf/pw_produce_secured_software.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "24156bad-29ff-5e61-914b-e1e636b754b7",
+     "title": "NIST SSDF (SP 800-218 v1.1) — Practice Group: Respond to Vulnerabilities (RV)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist_ssdf.rv"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist_ssdf/rv_respond_vulnerabilities.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
