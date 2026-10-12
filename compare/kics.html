@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KICS (Checkmarx) vs Rego Policy Libraries — size, scope and whether it is an alternative</title>
+<meta name="description" content="KICS (Checkmarx): 1,813 Rego queries, infrastructure-as-code only. Rego Policy Libraries: 7,867 control-level checks across 54 standards in OPA Rego, covering hosts, cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents. Measured side by side, with the counting method and what each one does not do.">
+<link rel="canonical" href="https://ynotbhatc.github.io/rego_policy_libraries/compare/kics.html">
+<meta property="og:title" content="KICS (Checkmarx) vs Rego Policy Libraries — size, scope and whether it is an alternative">
+<meta property="og:description" content="KICS (Checkmarx): 1,813 Rego queries, infrastructure-as-code only. Rego Policy Libraries: 7,867 control-level checks across 54 standards in OPA Rego, covering hosts, cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents. Measured side by side, with the counting method and what each one does not do.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ynotbhatc.github.io/rego_policy_libraries/compare/kics.html">
+<style>:root { --ink:#1b202b; --muted:#5c6573; --line:#d0d7de; --page:#ffffff; --card:#f6f8fa; --accent:#1f6feb; --accent2:#0f8f83; }
+    * { box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--ink); background:var(--page); margin:0; line-height:1.5; }
+    .wrap { max-width:1040px; margin:0 auto; padding:0 20px 64px; }
+    header { background:linear-gradient(160deg,#0d1117,#1f2a44); color:#fff; padding:44px 20px 36px; }
+    header .wrap { padding-bottom:0; }
+    h1 { font-size:2.1em; margin:0 0 8px; letter-spacing:-.02em; }
+    .tag { color:#c9d4e6; font-size:1.05em; max-width:70ch; margin:0 0 18px; }
+    .stats { display:flex; gap:26px; flex-wrap:wrap; margin-top:10px; }
+    .stat b { display:block; font-size:1.7em; line-height:1; }
+    .stat span { color:#9db0cc; font-size:.85em; text-transform:uppercase; letter-spacing:.05em; }
+    .cta { margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
+    .cta a { background:#fff; color:#12213b; text-decoration:none; font-weight:600; padding:9px 16px; border-radius:7px; font-size:.92em; }
+    .cta a.ghost { background:transparent; color:#fff; border:1px solid #46587a; }
+    pre { background:#0b0f17; color:#d7e0ee; border-radius:8px; padding:16px; overflow-x:auto; font-size:.86em; margin:22px 0 0; }
+    .search { position:sticky; top:0; background:var(--page); padding:18px 0 10px; border-bottom:1px solid var(--line); z-index:5; }
+    .search input { width:100%; padding:12px 14px; font-size:1em; border:1.5px solid var(--line); border-radius:9px; }
+    .cat { margin-top:30px; }
+    .cat-head h2 { font-size:1.28em; margin:0 0 2px; }
+    .cat-total { background:var(--accent); color:#fff; font-size:.6em; vertical-align:middle; border-radius:20px; padding:3px 9px; margin-left:6px; }
+    .cat-head p { color:var(--muted); margin:0 0 12px; font-size:.92em; }
+    .mods { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:8px; }
+    .mod { display:flex; justify-content:space-between; align-items:center; gap:10px; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 13px; transition:border-color .12s,transform .12s; }
+    .mod:hover { border-color:var(--accent); transform:translateY(-1px); }
+    .mod-name { font-weight:600; font-size:.93em; }
+    .mod-count { background:#fff; border:1px solid var(--line); color:var(--muted); border-radius:20px; padding:1px 9px; font-size:.8em; font-variant-numeric:tabular-nums; }
+    .empty { color:var(--muted); padding:30px 0; display:none; }
+    footer { border-top:1px solid var(--line); margin-top:48px; padding-top:20px; color:var(--muted); font-size:.9em; }
+    footer a { color:var(--accent); text-decoration:none; }
+    @media (prefers-color-scheme:dark) {
+      :root { --ink:#e6edf3; --muted:#9198a1; --line:#30363d; --page:#0d1117; --card:#161b22; }
+      .mod-count { background:#0d1117; }
+      .cta a { background:#e6edf3; }
+    }</style>
+</head>
+<body>
+<h1>KICS (Checkmarx) vs Rego Policy Libraries</h1>
+<table><tr><th></th><th>KICS (Checkmarx)</th><th>Rego Policy Libraries</th></tr>
+<tr><td>Size</td><td>1,813 Rego queries</td><td>7,867 control-level checks, 740 policy files</td></tr>
+<tr><td>Scope</td><td>infrastructure-as-code only</td><td>hosts (CIS, STIG), cloud, SaaS, Kubernetes, IaC, AI governance, 54 regulatory and management standards</td></tr>
+<tr><td>Language</td><td>Rego</td><td>OPA Rego v1, Apache 2.0</td></tr></table>
+<p>The largest IaC query set, in Rego. No host, cloud-account, SaaS or regulatory coverage.</p>
+<p>Counts were taken from each project's public repository on 2026-10-12; ours is <code>make count</code>, re-verified by CI.
+Method and the full table: <a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/docs/COMPARISON.md">docs/COMPARISON.md</a>.
+Is one a replacement for the other? Usually not: KICS (Checkmarx) is infrastructure-as-code only; this library is the layer that evaluates every framework a regulator or auditor names, and runs inside the same OPA, Conftest, Gatekeeper and Kubewarden that the others plug into.</p>
+<p><a href="https://ynotbhatc.github.io/rego_policy_libraries/largest-policy-library.html">How big the library is, measured</a> &middot; <a href="https://github.com/ynotbhatc/rego_policy_libraries">The repository</a></p>
+
+</body>
+</html>

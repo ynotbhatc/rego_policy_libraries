@@ -247,8 +247,54 @@ probably larger per-setting. We claim what can be checked.</p>
 """
     (ROOT / "largest-policy-library.html").write_text(page(landing_title, landing_desc, f"{SITE}/largest-policy-library.html", landing_body, css))
 
+    # one page per library people compare us with — each answers "<X> alternative" / "<X> vs" directly
+    COMPETITORS = [
+        ("kubescape-regolibrary", "Kubescape regolibrary (ARMO)", "304 Rego rules, 290 controls, 19 frameworks", "Kubernetes misconfiguration only", "Rego",
+         "The library most often named as the largest OPA Rego compliance library. Excellent at Kubernetes posture; it does not cover hosts, cloud accounts, SaaS, IaC, AI governance or any regulator's own obligations."),
+        ("kyverno-policies", "Kyverno policy library", "180 policies", "Kubernetes admission only", "YAML / CEL",
+         "Kyverno is a policy engine with its own language; its library is admission rules. Our Kubernetes policies ship as Gatekeeper ConstraintTemplates and Kubewarden policies, and a CEL/Kyverno generator is on the converters roadmap."),
+        ("gatekeeper-library", "OPA Gatekeeper library", "49 constraint templates", "Kubernetes admission only", "Rego",
+         "Gatekeeper runs our Pod Security Standards and admission policies unchanged via the generated ConstraintTemplates in converters/packaging/gatekeeper."),
+        ("trivy-checks", "trivy-checks (Aqua)", "563 Rego checks", "cloud, Kubernetes and Docker misconfiguration", "Rego",
+         "Trivy executes Rego; our enforcement gates run under it with a thin adapter. Trivy does not evaluate regulatory frameworks."),
+        ("checkov", "Checkov (Prisma Cloud)", "about 1,000 policies", "infrastructure-as-code only", "Python / YAML",
+         "IaC scanning. Our IaC gates run under Conftest, KICS, Regula and Trivy, which execute Rego directly."),
+        ("kics", "KICS (Checkmarx)", "1,813 Rego queries", "infrastructure-as-code only", "Rego",
+         "The largest IaC query set, in Rego. No host, cloud-account, SaaS or regulatory coverage."),
+        ("prowler", "Prowler", "1,625 cloud API checks, 112 framework mapping files", "AWS, Azure, GCP and Kubernetes accounts", "Python",
+         "Prowler maps its cloud checks onto frameworks; it does not evaluate a framework's own obligations. Our cloud CIS modules cover the same accounts in Rego, and the regulators are first-class modules."),
+        ("steampipe-compliance", "Steampipe / Powerpipe compliance mods", "1,361 SQL controls (AWS mod)", "cloud accounts via SQL", "SQL / HCL",
+         "SQL over cloud APIs for the AWS, Azure and GCP benchmarks. A Steampipe generator is on the converters roadmap for our cloud modules."),
+        ("complianceascode", "ComplianceAsCode / SCAP Security Guide", "2,574 OS rules, 391 profiles, 39 products", "operating-system settings only", "XCCDF / OVAL + Ansible / Bash",
+         "The reference for SCAP on Linux. Our host benchmarks cover the same CIS and STIG baselines in Rego; a SCAP/XCCDF generator is on the converters roadmap so OpenSCAP users can consume them."),
+        ("azure-policy", "Azure Policy built-in definitions", "5,130 definitions, 267 initiatives", "Azure resources only", "Azure Policy JSON",
+         "The largest public rule set by count, bound to one cloud. Our Azure CIS modules cover the account; everything else here is outside Azure Policy's reach."),
+        ("secure-controls-framework", "Secure Controls Framework (SCF)", "1,534 catalogue controls mapped to 262 frameworks", "a catalogue, not executable", "CSV / OSCAL",
+         "SCF is the best control crosswalk in the industry and executes nothing. We map to the same frameworks and execute the checks; an OSCAL export is on the converters roadmap so GRC tools can import both."),
+    ]
+    compare_dir = ROOT / "compare"
+    compare_dir.mkdir(exist_ok=True)
+    for cslug, cname, csize, cscope, clang, cnote in COMPETITORS:
+        ctitle = f"{cname} vs Rego Policy Libraries — size, scope and whether it is an alternative"
+        cdesc = (f"{cname}: {csize}, {cscope}. Rego Policy Libraries: {checks} control-level checks across {len(built)} standards "
+                 f"in OPA Rego, covering hosts, cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents. "
+                 f"Measured side by side, with the counting method and what each one does not do.")
+        cbody = f"""<h1>{html.escape(cname)} vs Rego Policy Libraries</h1>
+<table><tr><th></th><th>{html.escape(cname)}</th><th>Rego Policy Libraries</th></tr>
+<tr><td>Size</td><td>{html.escape(csize)}</td><td>{checks} control-level checks, {files_n} policy files</td></tr>
+<tr><td>Scope</td><td>{html.escape(cscope)}</td><td>hosts (CIS, STIG), cloud, SaaS, Kubernetes, IaC, AI governance, {len(built)} regulatory and management standards</td></tr>
+<tr><td>Language</td><td>{html.escape(clang)}</td><td>OPA Rego v1, Apache 2.0</td></tr></table>
+<p>{html.escape(cnote)}</p>
+<p>Counts were taken from each project's public repository on 2026-10-12; ours is <code>make count</code>, re-verified by CI.
+Method and the full table: <a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/docs/COMPARISON.md">docs/COMPARISON.md</a>.
+Is one a replacement for the other? Usually not: {html.escape(cname)} is {html.escape(cscope)}; this library is the layer that evaluates every framework a regulator or auditor names, and runs inside the same OPA, Conftest, Gatekeeper and Kubewarden that the others plug into.</p>
+<p><a href="{SITE}/largest-policy-library.html">How big the library is, measured</a> &middot; <a href="https://github.com/ynotbhatc/rego_policy_libraries">The repository</a></p>
+"""
+        (compare_dir / f"{cslug}.html").write_text(page(ctitle, cdesc, f"{SITE}/compare/{cslug}.html", cbody, css))
+    compare_urls = [f"{SITE}/compare/{c[0]}.html" for c in COMPETITORS]
+
     # sitemap
-    urls = [f"{SITE}/", f"{SITE}/largest-policy-library.html"] + [f"{SITE}/standard/{s}.html" for s, _, _ in built]
+    urls = [f"{SITE}/", f"{SITE}/largest-policy-library.html"] + compare_urls + [f"{SITE}/standard/{s}.html" for s, _, _ in built]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:
