@@ -132,7 +132,9 @@ spec:
     dist = pathlib.Path(__file__).resolve().parent / "dist" / t["name"]; (dist / "samples").mkdir(parents=True, exist_ok=True)
     (dist / "template.yaml").write_text(template)
     (dist / "samples" / "constraint.yaml").write_text(constraint)
-    version = subprocess.run(["git", "describe", "--tags", "--abbrev=0"], cwd=ROOT, capture_output=True, text=True).stdout.strip().lstrip("v") or "0.0.0"
+    # version from CHANGELOG (deterministic in a shallow CI checkout, unlike git describe)
+    m = re.search(r"^## \[(\d+\.\d+\.\d+)\]", (ROOT / "CHANGELOG.md").read_text(), re.M)
+    version = m.group(1) if m else "0.0.0"
     (dist / "artifacthub-pkg.yml").write_text(f"""version: {version}
 name: {t['name']}
 displayName: AAC {t['kind']}
