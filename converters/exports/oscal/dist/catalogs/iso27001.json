@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "a25d3c71-96b7-501c-8825-b4dd3a7e7796",
+  "uuid": "6207f551-7d20-56b2-b5cc-301182f854fb",
   "metadata": {
    "title": "Rego Policy Libraries — iso27001 (ISO 27001:2022 - A.9 Access Control)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,39 +66,6 @@
     ],
     "controls": [
      {
-      "id": "iso27001-user_access_management",
-      "title": "Implemented by a Rego rule in frameworks/management/iso27001/access_control/access_control.rego (package iso27001.access_control); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "user_access_management"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "user_access_management"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27001.access_control"
-       }
-      ],
-      "links": [
-       {
-        "href": "#dea7134d-d1a0-5149-973d-f206d761276f",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "iso27001-user_access_management_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/iso27001/access_control/access_control.rego (package iso27001.access_control); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "iso27001-system_application_access",
       "title": "Implemented by a Rego rule in frameworks/management/iso27001/access_control/access_control.rego (package iso27001.access_control); see the rule body.",
       "props": [
@@ -118,13 +85,46 @@
       ],
       "links": [
        {
-        "href": "#dea7134d-d1a0-5149-973d-f206d761276f",
+        "href": "#7ea3d57e-29cb-5052-a8f0-a7a750bf4db0",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "iso27001-system_application_access_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/iso27001/access_control/access_control.rego (package iso27001.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-user_access_management",
+      "title": "Implemented by a Rego rule in frameworks/management/iso27001/access_control/access_control.rego (package iso27001.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "user_access_management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "user_access_management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7ea3d57e-29cb-5052-a8f0-a7a750bf4db0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-user_access_management_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/management/iso27001/access_control/access_control.rego (package iso27001.access_control); see the rule body."
        }
@@ -156,39 +156,6 @@
     ],
     "controls": [
      {
-      "id": "iso27001-network_security_management",
-      "title": "Implemented by a Rego rule in frameworks/management/iso27001/communications_security/communications_security.rego (package iso27001.communications_security); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "network_security_management"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "network_security_management"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27001.communications_security"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4c4d2c64-39d1-5945-82eb-b0e8f78ec609",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "iso27001-network_security_management_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/iso27001/communications_security/communications_security.rego (package iso27001.communications_security); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "iso27001-information_transfer",
       "title": "Implemented by a Rego rule in frameworks/management/iso27001/communications_security/communications_security.rego (package iso27001.communications_security); see the rule body.",
       "props": [
@@ -208,13 +175,46 @@
       ],
       "links": [
        {
-        "href": "#4c4d2c64-39d1-5945-82eb-b0e8f78ec609",
+        "href": "#f234f025-4629-5438-87ea-7fff532dcb07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "iso27001-information_transfer_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/iso27001/communications_security/communications_security.rego (package iso27001.communications_security); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-network_security_management",
+      "title": "Implemented by a Rego rule in frameworks/management/iso27001/communications_security/communications_security.rego (package iso27001.communications_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "network_security_management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "network_security_management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001.communications_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f234f025-4629-5438-87ea-7fff532dcb07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-network_security_management_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/management/iso27001/communications_security/communications_security.rego (package iso27001.communications_security); see the rule body."
        }
@@ -246,16 +246,16 @@
     ],
     "controls": [
      {
-      "id": "iso27001-key_management",
+      "id": "iso27001-algorithm_compliance",
       "title": "Implemented by a Rego rule in frameworks/management/iso27001/cryptography/cryptography.rego (package iso27001.cryptography); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "key_management"
+        "value": "algorithm_compliance"
        },
        {
         "name": "alt-identifier",
-        "value": "key_management"
+        "value": "algorithm_compliance"
        },
        {
         "name": "rego-package",
@@ -265,13 +265,13 @@
       ],
       "links": [
        {
-        "href": "#13935f42-e19c-5159-ad7d-6129de6b690e",
+        "href": "#b468598a-82e5-5695-9334-4f939cdde410",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27001-key_management_stmt",
+        "id": "iso27001-algorithm_compliance_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/management/iso27001/cryptography/cryptography.rego (package iso27001.cryptography); see the rule body."
        }
@@ -298,7 +298,7 @@
       ],
       "links": [
        {
-        "href": "#13935f42-e19c-5159-ad7d-6129de6b690e",
+        "href": "#b468598a-82e5-5695-9334-4f939cdde410",
         "rel": "implementation"
        }
       ],
@@ -331,7 +331,7 @@
       ],
       "links": [
        {
-        "href": "#13935f42-e19c-5159-ad7d-6129de6b690e",
+        "href": "#b468598a-82e5-5695-9334-4f939cdde410",
         "rel": "implementation"
        }
       ],
@@ -345,16 +345,16 @@
       "class": "compliance"
      },
      {
-      "id": "iso27001-algorithm_compliance",
+      "id": "iso27001-key_management",
       "title": "Implemented by a Rego rule in frameworks/management/iso27001/cryptography/cryptography.rego (package iso27001.cryptography); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "algorithm_compliance"
+        "value": "key_management"
        },
        {
         "name": "alt-identifier",
-        "value": "algorithm_compliance"
+        "value": "key_management"
        },
        {
         "name": "rego-package",
@@ -364,13 +364,13 @@
       ],
       "links": [
        {
-        "href": "#13935f42-e19c-5159-ad7d-6129de6b690e",
+        "href": "#b468598a-82e5-5695-9334-4f939cdde410",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27001-algorithm_compliance_stmt",
+        "id": "iso27001-key_management_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/management/iso27001/cryptography/cryptography.rego (package iso27001.cryptography); see the rule body."
        }
@@ -421,7 +421,7 @@
       ],
       "links": [
        {
-        "href": "#9cd79b74-56ba-5475-9574-de2cca30de7e",
+        "href": "#d9c7d5b5-3aae-5617-a1a0-e6c9c5dae40a",
         "rel": "implementation"
        }
       ],
@@ -454,13 +454,46 @@
       ],
       "links": [
        {
-        "href": "#9cd79b74-56ba-5475-9574-de2cca30de7e",
+        "href": "#d9c7d5b5-3aae-5617-a1a0-e6c9c5dae40a",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "iso27001-access_control_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/iso27001/iso27001_policy.rego (package iso27001); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-communications_security",
+      "title": "Implemented by a Rego rule in frameworks/management/iso27001/iso27001_policy.rego (package iso27001); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "communications_security"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "communications_security"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9c7d5b5-3aae-5617-a1a0-e6c9c5dae40a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-communications_security_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/management/iso27001/iso27001_policy.rego (package iso27001); see the rule body."
        }
@@ -487,7 +520,7 @@
       ],
       "links": [
        {
-        "href": "#9cd79b74-56ba-5475-9574-de2cca30de7e",
+        "href": "#d9c7d5b5-3aae-5617-a1a0-e6c9c5dae40a",
         "rel": "implementation"
        }
       ],
@@ -520,46 +553,13 @@
       ],
       "links": [
        {
-        "href": "#9cd79b74-56ba-5475-9574-de2cca30de7e",
+        "href": "#d9c7d5b5-3aae-5617-a1a0-e6c9c5dae40a",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "iso27001-operations_security_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/iso27001/iso27001_policy.rego (package iso27001); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "iso27001-communications_security",
-      "title": "Implemented by a Rego rule in frameworks/management/iso27001/iso27001_policy.rego (package iso27001); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "communications_security"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "communications_security"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27001"
-       }
-      ],
-      "links": [
-       {
-        "href": "#9cd79b74-56ba-5475-9574-de2cca30de7e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "iso27001-communications_security_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/management/iso27001/iso27001_policy.rego (package iso27001); see the rule body."
        }
@@ -586,7 +586,7 @@
       ],
       "links": [
        {
-        "href": "#9cd79b74-56ba-5475-9574-de2cca30de7e",
+        "href": "#d9c7d5b5-3aae-5617-a1a0-e6c9c5dae40a",
         "rel": "implementation"
        }
       ],
@@ -624,39 +624,6 @@
     ],
     "controls": [
      {
-      "id": "iso27001-operational_procedures",
-      "title": "Implemented by a Rego rule in frameworks/management/iso27001/operations_security/operations_security.rego (package iso27001.operations_security); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "operational_procedures"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "operational_procedures"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27001.operations_security"
-       }
-      ],
-      "links": [
-       {
-        "href": "#48810e9a-206a-57c5-bfe7-ad2e999e879f",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "iso27001-operational_procedures_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/iso27001/operations_security/operations_security.rego (package iso27001.operations_security); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "iso27001-logging_monitoring",
       "title": "Implemented by a Rego rule in frameworks/management/iso27001/operations_security/operations_security.rego (package iso27001.operations_security); see the rule body.",
       "props": [
@@ -676,13 +643,46 @@
       ],
       "links": [
        {
-        "href": "#48810e9a-206a-57c5-bfe7-ad2e999e879f",
+        "href": "#5834e520-821e-58ac-9aad-a13d4cd365d6",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "iso27001-logging_monitoring_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/iso27001/operations_security/operations_security.rego (package iso27001.operations_security); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-operational_procedures",
+      "title": "Implemented by a Rego rule in frameworks/management/iso27001/operations_security/operations_security.rego (package iso27001.operations_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "operational_procedures"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "operational_procedures"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001.operations_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5834e520-821e-58ac-9aad-a13d4cd365d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-operational_procedures_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/management/iso27001/operations_security/operations_security.rego (package iso27001.operations_security); see the rule body."
        }
@@ -709,7 +709,7 @@
       ],
       "links": [
        {
-        "href": "#48810e9a-206a-57c5-bfe7-ad2e999e879f",
+        "href": "#5834e520-821e-58ac-9aad-a13d4cd365d6",
         "rel": "implementation"
        }
       ],
@@ -747,6 +747,39 @@
     ],
     "controls": [
      {
+      "id": "iso27001-devsecops",
+      "title": "Implemented by a Rego rule in frameworks/management/iso27001/system_acquisition_maintenance/system_acquisition_maintenance.rego (package iso27001.system_acquisition_maintenance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "devsecops"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "devsecops"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001.system_acquisition_maintenance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c352bbb3-739f-5df9-a211-f99e41b5d3d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-devsecops_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/iso27001/system_acquisition_maintenance/system_acquisition_maintenance.rego (package iso27001.system_acquisition_maintenance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "iso27001-information_systems_security",
       "title": "Implemented by a Rego rule in frameworks/management/iso27001/system_acquisition_maintenance/system_acquisition_maintenance.rego (package iso27001.system_acquisition_maintenance); see the rule body.",
       "props": [
@@ -766,7 +799,7 @@
       ],
       "links": [
        {
-        "href": "#68e162bc-f46c-5ef1-acd8-5c3783f820a5",
+        "href": "#c352bbb3-739f-5df9-a211-f99e41b5d3d0",
         "rel": "implementation"
        }
       ],
@@ -799,7 +832,7 @@
       ],
       "links": [
        {
-        "href": "#68e162bc-f46c-5ef1-acd8-5c3783f820a5",
+        "href": "#c352bbb3-739f-5df9-a211-f99e41b5d3d0",
         "rel": "implementation"
        }
       ],
@@ -832,46 +865,13 @@
       ],
       "links": [
        {
-        "href": "#68e162bc-f46c-5ef1-acd8-5c3783f820a5",
+        "href": "#c352bbb3-739f-5df9-a211-f99e41b5d3d0",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "iso27001-test_data_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/iso27001/system_acquisition_maintenance/system_acquisition_maintenance.rego (package iso27001.system_acquisition_maintenance); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "iso27001-devsecops",
-      "title": "Implemented by a Rego rule in frameworks/management/iso27001/system_acquisition_maintenance/system_acquisition_maintenance.rego (package iso27001.system_acquisition_maintenance); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "devsecops"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "devsecops"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27001.system_acquisition_maintenance"
-       }
-      ],
-      "links": [
-       {
-        "href": "#68e162bc-f46c-5ef1-acd8-5c3783f820a5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "iso27001-devsecops_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/management/iso27001/system_acquisition_maintenance/system_acquisition_maintenance.rego (package iso27001.system_acquisition_maintenance); see the rule body."
        }
@@ -884,7 +884,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "dea7134d-d1a0-5149-973d-f206d761276f",
+     "uuid": "7ea3d57e-29cb-5052-a8f0-a7a750bf4db0",
      "title": "ISO 27001:2022 - A.9 Access Control",
      "props": [
       {
@@ -895,13 +895,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/iso27001/access_control/access_control.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/management/iso27001/access_control/access_control.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "4c4d2c64-39d1-5945-82eb-b0e8f78ec609",
+     "uuid": "f234f025-4629-5438-87ea-7fff532dcb07",
      "title": "ISO 27001:2022 - A.13 Communications Security",
      "props": [
       {
@@ -912,13 +912,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/iso27001/communications_security/communications_security.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/management/iso27001/communications_security/communications_security.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "13935f42-e19c-5159-ad7d-6129de6b690e",
+     "uuid": "b468598a-82e5-5695-9334-4f939cdde410",
      "title": "ISO 27001:2022 - A.10 Cryptography",
      "props": [
       {
@@ -929,13 +929,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/iso27001/cryptography/cryptography.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/management/iso27001/cryptography/cryptography.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "9cd79b74-56ba-5475-9574-de2cca30de7e",
+     "uuid": "d9c7d5b5-3aae-5617-a1a0-e6c9c5dae40a",
      "title": "ISO/IEC 27001:2022 Information Security Management System",
      "props": [
       {
@@ -946,13 +946,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/iso27001/iso27001_policy.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/management/iso27001/iso27001_policy.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "48810e9a-206a-57c5-bfe7-ad2e999e879f",
+     "uuid": "5834e520-821e-58ac-9aad-a13d4cd365d6",
      "title": "ISO 27001:2022 - A.12 Operations Security",
      "props": [
       {
@@ -963,13 +963,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/iso27001/operations_security/operations_security.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/management/iso27001/operations_security/operations_security.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "68e162bc-f46c-5ef1-acd8-5c3783f820a5",
+     "uuid": "c352bbb3-739f-5df9-a211-f99e41b5d3d0",
      "title": "ISO 27001:2022 - A.14 System Acquisition, Development and Maintenance",
      "props": [
       {
@@ -980,7 +980,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/iso27001/system_acquisition_maintenance/system_acquisition_maintenance.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/management/iso27001/system_acquisition_maintenance/system_acquisition_maintenance.rego",
        "media-type": "text/plain"
       }
      ]

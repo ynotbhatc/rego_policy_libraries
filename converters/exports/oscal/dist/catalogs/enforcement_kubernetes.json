@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "e1cc451e-ef27-5d5e-91df-6ab5e9c1be39",
+  "uuid": "7ae74124-f2fe-5776-8a04-50f80861d57d",
   "metadata": {
    "title": "Rego Policy Libraries — enforcement_kubernetes (Kubernetes Admission Control — Security and Operations Policy)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,13 +85,871 @@
       ],
       "links": [
        {
-        "href": "#7ed61a57-416f-560a-a2ba-f1696080e584",
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "enforcement_kubernetes-kubernetes.admission-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-2",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-3",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-4",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-5",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-6",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-7",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-8",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-9",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-10",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-11",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-12",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-13",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-14",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-14_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-15",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-15_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-16",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-16_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-17",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-17_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-18",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-18_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-19",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-19_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-20",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-20_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-21",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-21_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-22",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-22_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-23",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-23_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-24",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-24_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-25",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-25_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-26",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-26_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-27",
+      "title": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4cedc409-0f68-59f1-8110-a4cf90d80ff7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-27_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in enforcement/kubernetes/kubernetes_admission.rego (package kubernetes.admission); see the rule body."
        }
@@ -104,7 +962,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "7ed61a57-416f-560a-a2ba-f1696080e584",
+     "uuid": "4cedc409-0f68-59f1-8110-a4cf90d80ff7",
      "title": "Kubernetes Admission Control — Security and Operations Policy",
      "props": [
       {
@@ -115,7 +973,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/enforcement/kubernetes/kubernetes_admission.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/enforcement/kubernetes/kubernetes_admission.rego",
        "media-type": "text/plain"
       }
      ]

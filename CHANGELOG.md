@@ -8,10 +8,27 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.3.0] - 2026-10-12
+
+### Changed — the control-level count is now exact, and lower
+
+**7,560 control-level checks** (was 7,867 at 2.2.0). No policy changed; the counter did. The old `make count`
+read source lines with regular expressions and had two faults that partly cancelled: it counted the fields inside
+multi-line table rows (`"text": "..."`) and the rows of report scaffolding (`report := Ellipsis`) as checks (+945),
+and it missed every violation rule whose set element is a string literal or an object rather than a bare
+variable (`violations contains "CIS L2 1.5: ..." if`, `deny contains {"msg": m} if`) (−638). The count now comes
+from OPA's own parser (`scripts/rego_ast.py`, `opa parse --format json`): a multi-value violation rule, a leaf
+object row of a top-level table, or a string row of a check table is one check; fields and scaffolding never are.
+`scripts/inventory_controls.py` reads the same AST under the same rule, so the exports and the published number
+cannot drift (7,560 checks → 6,076 distinct controls across 121 frameworks with controls).
+
+We say "largest executable compliance library anyone can verify" and that claim must be exact; the next largest
+public rule set we measured, Azure Policy built-ins, holds 5,130 definitions.
+
 ### Added
-- **OSCAL 1.2.3 catalog export** (`converters/exports/oscal`): one catalog per framework (125) built from the new shared control inventory `scripts/inventory_controls.py` (7,867 checks → 5,559 distinct controls); committed under `dist/catalogs/`, combined `all.json` attached to releases, every catalog validated against the NIST schema in CI with a round-trip test proving no control is lost or invented.
+- **OSCAL 1.2.3 catalog export** (`converters/exports/oscal`): one catalog per framework (121) built from the new shared control inventory `scripts/inventory_controls.py` (7,560 checks → 6,076 distinct controls); committed under `dist/catalogs/`, combined `all.json` attached to releases, every catalog validated against the NIST schema in CI with a round-trip test proving no control is lost or invented.
 - **SARIF 2.1.0 and OCSF 1.9.0 exports** (`converters/exports/sarif`, `converters/exports/ocsf`): convert any `compliance_report` output (an `opa eval -f json` file) into SARIF results for GitHub code scanning and every SARIF viewer, and into OCSF `compliance_finding` events for Security Lake, Splunk and Sentinel. Both use the OSCAL control id as the rule / finding uid, read one shared findings reader (`converters/exports/_lib/findings.py`), and are schema-validated with round-trip tests in CI.
-- **Crosswalk CSVs** (`converters/exports/crosswalk_csv/dist`): `controls.csv` (every control with its OSCAL id), `stig_to_800_53.csv` (2,767 STIG rules), `framework_to_800_53.csv`, and `spine_800_53.csv`, the SCF-style pivot on the 800-53 spine (baseline membership, STIG rules per platform, library controls). **CIS-CAT / XCCDF join table** (`converters/exports/xccdf_ids/dist/cis_xccdf_ids.csv`): 761 CIS sections on 10 platforms with the XCCDF rule-id prefix to join CIS-CAT results on. Both committed, round-trip tested, kept fresh by CI.
+- **Crosswalk CSVs** (`converters/exports/crosswalk_csv/dist`): `controls.csv` (every control with its OSCAL id), `stig_to_800_53.csv` (2,767 STIG rules), `framework_to_800_53.csv`, and `spine_800_53.csv`, the SCF-style pivot on the 800-53 spine (baseline membership, STIG rules per platform, library controls). **CIS-CAT / XCCDF join table** (`converters/exports/xccdf_ids/dist/cis_xccdf_ids.csv`): 1,126 CIS sections on 15 platforms with the XCCDF rule-id prefix to join CIS-CAT results on. Both committed, round-trip tested, kept fresh by CI.
 - **OSCAL component-definition and assessment-results** (`converters/exports/oscal`): `dist/component-definition.json` (one implemented-requirement per catalog control) and `build_assessment_results.py` (from `compliance_report` output: one finding and observation per distinct violation targeting the catalog statement; controls without a finding are not asserted satisfied). Schema-validated and round-trip tested with the catalogs.
 
 _Nothing yet._

@@ -1,18 +1,15 @@
 #!/usr/bin/env python3
 """Shared control inventory for the exports: every control the library evaluates, with its id, text,
-framework, class, source, domains, package and file — derived from the Rego tree, never hand-kept.
+framework, class, source, domains, package and file — read from OPA's parser (scripts/rego_ast.py), never
+hand-kept, under exactly the rule scripts/count_controls.py publishes, so sum(checks) == make count.
 
-Same recognition rules as scripts/count_controls.py (table-object rows, named check-table rows,
-violation rule bodies), plus id/text extraction:
-
-  table object rows    "9.1.5": {"text": "..."}                 -> id "9.1.5", text
+  table object rows    "9.1.5": {"text": "..."}                 -> id "9.1.5", text (leaf rows only)
   table string rows    "qualified": "CCPA §7122(a)(1): ..."     -> id from the message prefix, text
   rule bodies          msg := "CIS 1.3.1: AIDE is not installed" -> id "CIS 1.3.1", text after the colon
                        msg := sprintf("CIS 1.4.2: ... %s", ...)  -> id "CIS 1.4.2", format text
 
-A control id is the message prefix up to the first ':' when that prefix looks like a citation
-(letters/digits/§/./-/spaces/parentheses, <= 60 chars); otherwise the whole message is the text and the id
-is synthesised as <package>#<n>. Messages that share an id are one control with several findings.
+A control id is the message prefix up to the first ':' when that prefix looks like a citation; otherwise the
+id is synthesised as <package>#<n>. Messages that share an id are one control with several checks.
 
 Usage: python3 scripts/inventory_controls.py [--json out.json] [--summary]
 Import: from inventory_controls import inventory; inventory(root) -> list[dict]
@@ -20,18 +17,11 @@ Import: from inventory_controls import inventory; inventory(root) -> list[dict]
 from __future__ import annotations
 import json, re, sys, pathlib
 from collections import OrderedDict
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from rego_ast import parse_tree, tables, bodies, leaf_rows, first_message, package, INCLUDE, EXCLUDE, SCAFFOLD, ID_KEY
 
 ROOT_DEFAULT = pathlib.Path(__file__).resolve().parent.parent
-TEST_RE = re.compile(r"(^|/)(test_|.*_test\.rego$)")
-PKG_RE = re.compile(r"^package\s+([a-z0-9_.]+)", re.M)
 META_RE = re.compile(r"^#\s*(title|class|framework|source|domains):\s*(.+?)\s*$", re.M)
-BODY_RE = re.compile(r"^\s*(violations?|deny|warn|findings?)\s+contains\s+\w+\s+if\b")
-MAP_START = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*)\s*:=\s*\{\s*$")
-OBJ_ROW = re.compile(r'^\s*"([A-Za-z0-9][A-Za-z0-9._ -]*)":\s*\{(.*)$')
-STR_ROW = re.compile(r'^\s*"([A-Za-z0-9][A-Za-z0-9._ -]*)":\s*"((?:[^"\\]|\\.)*)"')
-MSG_RE = re.compile(r'msg\s*:=\s*(?:sprintf\()?\s*"((?:[^"\\]|\\.)*)"')
-INCLUDE = re.compile(r"(check|notice|consent|obligation|security|breach|retention|right|transfer|government|lawful|flag|field|timing|submission|report|auditor|certification|sdf|children|appeal|exception|opt_out|access|registration|vasp|reporting|coordination|logging|annexure|requirement|control|item|standard|ksi|activit|component)", re.I)
-EXCLUDE = re.compile(r"^(sections|chapters|groups|first_report_deadline|notification_clocks|rules_commencement|dated_obligations|compliance_report|availability_targets|penalty|legacy|_in)$")
 ID_PREFIX = re.compile(r"^([A-Za-z][A-Za-z0-9 §.\-()/_]{1,58}?)\s*:\s+(.+)$")
 TEXT_KEYS = ("text", "req", "title", "description", "name")
 
@@ -66,61 +56,45 @@ def _split(msg):
     return None, msg.strip()
 
 
-def _obj_text(rest):
+def _obj_text(obj_term):
+    fields = {k["value"]: v for k, v in obj_term["value"] if k["type"] == "string"}
     for k in TEXT_KEYS:
-        mm = re.search(rf'"{k}":\s*"((?:[^"\\]|\\.)*)"', rest)
-        if mm:
-            return mm.group(1)
+        v = fields.get(k)
+        if v and v["type"] == "string":
+            return v["value"]
     return ""
 
 
 def inventory(root=ROOT_DEFAULT):
     root = pathlib.Path(root)
     out = []
-    for f in sorted(root.rglob("*.rego")):
-        rel = f.relative_to(root).as_posix()
-        if TEST_RE.search(rel) or "/tests/" in rel or rel.startswith(("converters/", ".git/")):
-            continue
-        src = f.read_text(errors="ignore")
-        pkg = PKG_RE.search(src)
-        if not pkg:
-            continue
+    for rel, ast in parse_tree(root).items():
+        src = (root / rel).read_text(errors="ignore")
+        pkg = package(ast)
         meta = _meta(src)
         controls = OrderedDict()
-        cur = None
         synth = 0
-        lines = src.splitlines()
-        for i, line in enumerate(lines):
-            if BODY_RE.match(line):
-                # find the message literal within the next 40 lines of this body
-                window = "\n".join(lines[i:i + 40])
-                mm = MSG_RE.search(window)
-                if mm:
-                    cid, text = _split(mm.group(1))
-                else:
-                    cid, text = None, ""
-                if not cid:
-                    synth += 1; cid = f"{pkg.group(1)}#{synth}"
-                controls.setdefault(cid, {"id": cid, "texts": []})["texts"].append(text)
+        for name, rule in bodies(ast):
+            msg = first_message(rule)
+            cid, text = _split(msg) if msg else (None, "")
+            if not cid:
+                synth += 1; cid = f"{pkg}#{synth}"
+            controls.setdefault(cid, {"id": cid, "texts": []})["texts"].append(text)
+        for name, rows in tables(ast):
+            if not name or EXCLUDE.match(name):
                 continue
-            m = MAP_START.match(line)
-            if m:
-                cur = m.group(1); continue
-            if line.strip() == "}":
-                cur = None; continue
-            if cur and not EXCLUDE.match(cur):
-                mo = OBJ_ROW.match(line)
-                if mo:
-                    cid = mo.group(1); text = _obj_text(mo.group(2))
-                    controls.setdefault(cid, {"id": cid, "texts": []})["texts"].append(text)
+            for k, v in rows:
+                if not ID_KEY.match(k):
                     continue
-                ms = STR_ROW.match(line)
-                if ms and INCLUDE.search(cur):
-                    pid, text = _split(ms.group(2))
-                    cid = pid or ms.group(1)
+                if v["type"] == "object" and v["value"]:
+                    for lk, lv in leaf_rows(k, v):
+                        controls.setdefault(lk, {"id": lk, "texts": []})["texts"].append(_obj_text(lv))
+                elif v["type"] == "string" and INCLUDE.search(name) and not SCAFFOLD.match(name):
+                    pid, text = _split(v["value"])
+                    cid = pid or k
                     controls.setdefault(cid, {"id": cid, "texts": []})["texts"].append(text)
         if controls:
-            out.append({"file": rel, "package": pkg.group(1), "title": _title(meta.get("title", ""), src, pkg.group(1)),
+            out.append({"file": rel, "package": pkg, "title": _title(meta.get("title", ""), src, pkg),
                         "class": meta.get("class", ""), "framework": meta.get("framework", ""), "source": meta.get("source", ""),
                         "domains": meta.get("domains", []), "controls": list(controls.values())})
     # OPA allows one package-scoped METADATA block per package, so a second file of the same package

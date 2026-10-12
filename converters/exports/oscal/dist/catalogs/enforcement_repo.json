@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "815bd0e3-4956-5a8e-974b-9714e8a2a288",
+  "uuid": "74a639e5-36dc-5b78-9937-23164dd97183",
   "metadata": {
    "title": "Rego Policy Libraries — enforcement_repo (WHAT THIS IS FOR)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#16962fe7-548d-5586-a134-423b6b681bcb",
+        "href": "#064add6c-07f0-5124-98d7-4e5148e9d310",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#16962fe7-548d-5586-a134-423b6b681bcb",
+        "href": "#064add6c-07f0-5124-98d7-4e5148e9d310",
         "rel": "implementation"
        }
       ],
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#16962fe7-548d-5586-a134-423b6b681bcb",
+        "href": "#064add6c-07f0-5124-98d7-4e5148e9d310",
         "rel": "implementation"
        }
       ],
@@ -168,39 +168,6 @@
        }
       ],
       "class": "enforcement"
-     },
-     {
-      "id": "enforcement_repo-policy",
-      "title": "Install configuration hygiene — tracked files",
-      "props": [
-       {
-        "name": "label",
-        "value": "policy"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "policy"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "aac.repo.install_hygiene"
-       }
-      ],
-      "links": [
-       {
-        "href": "#16962fe7-548d-5586-a134-423b6b681bcb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "enforcement_repo-policy_stmt",
-        "name": "statement",
-        "prose": "Install configuration hygiene — tracked files"
-       }
-      ],
-      "class": "enforcement"
      }
     ]
    }
@@ -208,7 +175,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "16962fe7-548d-5586-a134-423b6b681bcb",
+     "uuid": "064add6c-07f0-5124-98d7-4e5148e9d310",
      "title": "WHAT THIS IS FOR",
      "props": [
       {
@@ -219,7 +186,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/enforcement/repo/install_hygiene.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/enforcement/repo/install_hygiene.rego",
        "media-type": "text/plain"
       }
      ]

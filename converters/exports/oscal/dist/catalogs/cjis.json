@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "eabb83c0-1d63-5d49-b85f-fb97b9f9450b",
+  "uuid": "f86ade4f-a09e-58ac-aab6-a697a582a6c0",
   "metadata": {
    "title": "Rego Policy Libraries — cjis (cjis / access control)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.access_control-1",
+      "title": "CJIS [Access Control] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.access_control#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.access_control#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72dce89e-69e6-5b7d-86ea-86d299341b2b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.access_control-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Access Control] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-AC-1",
       "title": "Access to CJI is granted on least-privilege and need-to-know basis",
       "props": [
@@ -85,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "href": "#72dce89e-69e6-5b7d-86ea-86d299341b2b",
         "rel": "implementation"
        }
       ],
@@ -118,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "href": "#72dce89e-69e6-5b7d-86ea-86d299341b2b",
         "rel": "implementation"
        }
       ],
@@ -151,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "href": "#72dce89e-69e6-5b7d-86ea-86d299341b2b",
         "rel": "implementation"
        }
       ],
@@ -184,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "href": "#72dce89e-69e6-5b7d-86ea-86d299341b2b",
         "rel": "implementation"
        }
       ],
@@ -217,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "href": "#72dce89e-69e6-5b7d-86ea-86d299341b2b",
         "rel": "implementation"
        }
       ],
@@ -250,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "href": "#72dce89e-69e6-5b7d-86ea-86d299341b2b",
         "rel": "implementation"
        }
       ],
@@ -283,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
+        "href": "#72dce89e-69e6-5b7d-86ea-86d299341b2b",
         "rel": "implementation"
        }
       ],
@@ -292,39 +325,6 @@
         "id": "cjis-AC-7_stmt",
         "name": "statement",
         "prose": "Access enforcement restricts CJI to authorized users, processes, and devices"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.access_control-1",
-      "title": "CJIS [Access Control] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.access_control#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.access_control#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.access_control"
-       }
-      ],
-      "links": [
-       {
-        "href": "#61829787-36f1-567c-8b81-cca5d49d6be5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.access_control-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Access Control] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -354,6 +354,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.auditing_accountability-1",
+      "title": "CJIS [Auditing and Accountability] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.auditing_accountability#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.auditing_accountability#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.auditing_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5cf003fd-3fe9-53bf-8ad2-5f9baa2fcc22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.auditing_accountability-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Auditing and Accountability] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-AA-1",
       "title": "Auditable events are defined and logged (successful/failed logons, access to CJI)",
       "props": [
@@ -373,7 +406,7 @@
       ],
       "links": [
        {
-        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "href": "#5cf003fd-3fe9-53bf-8ad2-5f9baa2fcc22",
         "rel": "implementation"
        }
       ],
@@ -406,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "href": "#5cf003fd-3fe9-53bf-8ad2-5f9baa2fcc22",
         "rel": "implementation"
        }
       ],
@@ -439,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "href": "#5cf003fd-3fe9-53bf-8ad2-5f9baa2fcc22",
         "rel": "implementation"
        }
       ],
@@ -472,7 +505,7 @@
       ],
       "links": [
        {
-        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "href": "#5cf003fd-3fe9-53bf-8ad2-5f9baa2fcc22",
         "rel": "implementation"
        }
       ],
@@ -505,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "href": "#5cf003fd-3fe9-53bf-8ad2-5f9baa2fcc22",
         "rel": "implementation"
        }
       ],
@@ -538,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "href": "#5cf003fd-3fe9-53bf-8ad2-5f9baa2fcc22",
         "rel": "implementation"
        }
       ],
@@ -571,7 +604,7 @@
       ],
       "links": [
        {
-        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+        "href": "#5cf003fd-3fe9-53bf-8ad2-5f9baa2fcc22",
         "rel": "implementation"
        }
       ],
@@ -580,39 +613,6 @@
         "id": "cjis-AA-7_stmt",
         "name": "statement",
         "prose": "Personnel are alerted upon audit processing or storage failure"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.auditing_accountability-1",
-      "title": "CJIS [Auditing and Accountability] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.auditing_accountability#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.auditing_accountability#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.auditing_accountability"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f233f4e2-4f82-511f-ab9c-c8550ddf0243",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.auditing_accountability-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Auditing and Accountability] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -642,6 +642,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.configuration_management-1",
+      "title": "CJIS [Configuration Management] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.configuration_management#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.configuration_management#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8dac2293-c590-5b1c-af67-689d5ce2090f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.configuration_management-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Configuration Management] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-CM-1",
       "title": "A documented, current baseline configuration is maintained for information systems that store, process, or transmit CJI",
       "props": [
@@ -661,7 +694,7 @@
       ],
       "links": [
        {
-        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "href": "#8dac2293-c590-5b1c-af67-689d5ce2090f",
         "rel": "implementation"
        }
       ],
@@ -694,7 +727,7 @@
       ],
       "links": [
        {
-        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "href": "#8dac2293-c590-5b1c-af67-689d5ce2090f",
         "rel": "implementation"
        }
       ],
@@ -727,7 +760,7 @@
       ],
       "links": [
        {
-        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "href": "#8dac2293-c590-5b1c-af67-689d5ce2090f",
         "rel": "implementation"
        }
       ],
@@ -760,7 +793,7 @@
       ],
       "links": [
        {
-        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "href": "#8dac2293-c590-5b1c-af67-689d5ce2090f",
         "rel": "implementation"
        }
       ],
@@ -793,7 +826,7 @@
       ],
       "links": [
        {
-        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "href": "#8dac2293-c590-5b1c-af67-689d5ce2090f",
         "rel": "implementation"
        }
       ],
@@ -826,7 +859,7 @@
       ],
       "links": [
        {
-        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "href": "#8dac2293-c590-5b1c-af67-689d5ce2090f",
         "rel": "implementation"
        }
       ],
@@ -859,7 +892,7 @@
       ],
       "links": [
        {
-        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+        "href": "#8dac2293-c590-5b1c-af67-689d5ce2090f",
         "rel": "implementation"
        }
       ],
@@ -868,39 +901,6 @@
         "id": "cjis-CM-7_stmt",
         "name": "statement",
         "prose": "Security impact of proposed configuration changes is analyzed prior to implementation"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.configuration_management-1",
-      "title": "CJIS [Configuration Management] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.configuration_management#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.configuration_management#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.configuration_management-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Configuration Management] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -930,6 +930,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.formal_audits-1",
+      "title": "CJIS [Formal Audits] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.formal_audits#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.formal_audits#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.formal_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#272ca1f4-4f19-57f7-8b7b-f39cc5d24e07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.formal_audits-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Formal Audits] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-FA-1",
       "title": "The agency is subject to a triennial CJIS Security Policy compliance audit conducted by the FBI CJIS Division (or CSA on its behalf)",
       "props": [
@@ -949,7 +982,7 @@
       ],
       "links": [
        {
-        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "href": "#272ca1f4-4f19-57f7-8b7b-f39cc5d24e07",
         "rel": "implementation"
        }
       ],
@@ -982,7 +1015,7 @@
       ],
       "links": [
        {
-        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "href": "#272ca1f4-4f19-57f7-8b7b-f39cc5d24e07",
         "rel": "implementation"
        }
       ],
@@ -1015,7 +1048,7 @@
       ],
       "links": [
        {
-        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "href": "#272ca1f4-4f19-57f7-8b7b-f39cc5d24e07",
         "rel": "implementation"
        }
       ],
@@ -1048,7 +1081,7 @@
       ],
       "links": [
        {
-        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "href": "#272ca1f4-4f19-57f7-8b7b-f39cc5d24e07",
         "rel": "implementation"
        }
       ],
@@ -1081,7 +1114,7 @@
       ],
       "links": [
        {
-        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "href": "#272ca1f4-4f19-57f7-8b7b-f39cc5d24e07",
         "rel": "implementation"
        }
       ],
@@ -1114,7 +1147,7 @@
       ],
       "links": [
        {
-        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
+        "href": "#272ca1f4-4f19-57f7-8b7b-f39cc5d24e07",
         "rel": "implementation"
        }
       ],
@@ -1123,39 +1156,6 @@
         "id": "cjis-FA-6_stmt",
         "name": "statement",
         "prose": "The agency permits FBI/CSA inspection and can produce records demonstrating CJIS Security Policy compliance on request"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.formal_audits-1",
-      "title": "CJIS [Formal Audits] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.formal_audits#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.formal_audits#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.formal_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#19e7156e-274d-5373-9524-ebc1120cd95f",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.formal_audits-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Formal Audits] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -1185,6 +1185,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.identification_authentication-1",
+      "title": "CJIS [Identification and Authentication] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.identification_authentication#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.identification_authentication#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#851566e5-3161-5534-8fdf-66a292eecdca",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.identification_authentication-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Identification and Authentication] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-IA-1",
       "title": "Each user is uniquely identified before access to CJI is granted",
       "props": [
@@ -1204,7 +1237,7 @@
       ],
       "links": [
        {
-        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "href": "#851566e5-3161-5534-8fdf-66a292eecdca",
         "rel": "implementation"
        }
       ],
@@ -1237,7 +1270,7 @@
       ],
       "links": [
        {
-        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "href": "#851566e5-3161-5534-8fdf-66a292eecdca",
         "rel": "implementation"
        }
       ],
@@ -1270,7 +1303,7 @@
       ],
       "links": [
        {
-        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "href": "#851566e5-3161-5534-8fdf-66a292eecdca",
         "rel": "implementation"
        }
       ],
@@ -1303,7 +1336,7 @@
       ],
       "links": [
        {
-        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "href": "#851566e5-3161-5534-8fdf-66a292eecdca",
         "rel": "implementation"
        }
       ],
@@ -1336,7 +1369,7 @@
       ],
       "links": [
        {
-        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "href": "#851566e5-3161-5534-8fdf-66a292eecdca",
         "rel": "implementation"
        }
       ],
@@ -1369,7 +1402,7 @@
       ],
       "links": [
        {
-        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "href": "#851566e5-3161-5534-8fdf-66a292eecdca",
         "rel": "implementation"
        }
       ],
@@ -1402,7 +1435,7 @@
       ],
       "links": [
        {
-        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+        "href": "#851566e5-3161-5534-8fdf-66a292eecdca",
         "rel": "implementation"
        }
       ],
@@ -1411,39 +1444,6 @@
         "id": "cjis-IA-7_stmt",
         "name": "statement",
         "prose": "Device identification and authentication is enforced before connection"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.identification_authentication-1",
-      "title": "CJIS [Identification and Authentication] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.identification_authentication#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.identification_authentication#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.identification_authentication"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.identification_authentication-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Identification and Authentication] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -1473,6 +1473,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.incident_response-1",
+      "title": "CJIS [Incident Response] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.incident_response#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.incident_response#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d44f7e66-088e-5771-baca-5959c51d2441",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.incident_response-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Incident Response] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-IR-1",
       "title": "A documented incident response plan defines roles, responsibilities, and handling procedures",
       "props": [
@@ -1492,7 +1525,7 @@
       ],
       "links": [
        {
-        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "href": "#d44f7e66-088e-5771-baca-5959c51d2441",
         "rel": "implementation"
        }
       ],
@@ -1525,7 +1558,7 @@
       ],
       "links": [
        {
-        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "href": "#d44f7e66-088e-5771-baca-5959c51d2441",
         "rel": "implementation"
        }
       ],
@@ -1558,7 +1591,7 @@
       ],
       "links": [
        {
-        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "href": "#d44f7e66-088e-5771-baca-5959c51d2441",
         "rel": "implementation"
        }
       ],
@@ -1591,7 +1624,7 @@
       ],
       "links": [
        {
-        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "href": "#d44f7e66-088e-5771-baca-5959c51d2441",
         "rel": "implementation"
        }
       ],
@@ -1624,7 +1657,7 @@
       ],
       "links": [
        {
-        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "href": "#d44f7e66-088e-5771-baca-5959c51d2441",
         "rel": "implementation"
        }
       ],
@@ -1657,7 +1690,7 @@
       ],
       "links": [
        {
-        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "href": "#d44f7e66-088e-5771-baca-5959c51d2441",
         "rel": "implementation"
        }
       ],
@@ -1690,7 +1723,7 @@
       ],
       "links": [
        {
-        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "href": "#d44f7e66-088e-5771-baca-5959c51d2441",
         "rel": "implementation"
        }
       ],
@@ -1723,7 +1756,7 @@
       ],
       "links": [
        {
-        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+        "href": "#d44f7e66-088e-5771-baca-5959c51d2441",
         "rel": "implementation"
        }
       ],
@@ -1732,39 +1765,6 @@
         "id": "cjis-IR-8_stmt",
         "name": "statement",
         "prose": "Lessons learned from incidents are used to update controls and the incident response plan"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.incident_response-1",
-      "title": "CJIS [Incident Response] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.incident_response#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.incident_response#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.incident_response"
-       }
-      ],
-      "links": [
-       {
-        "href": "#144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.incident_response-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Incident Response] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -1794,6 +1794,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.information_exchange-1",
+      "title": "CJIS [Information Exchange Agreements] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.information_exchange#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.information_exchange#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.information_exchange"
+       }
+      ],
+      "links": [
+       {
+        "href": "#96622421-9c0f-5db5-8be0-e263ad685eb9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.information_exchange-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Information Exchange Agreements] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-IEA-1",
       "title": "A signed information exchange agreement governs sharing of CJI between agencies",
       "props": [
@@ -1813,7 +1846,7 @@
       ],
       "links": [
        {
-        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "href": "#96622421-9c0f-5db5-8be0-e263ad685eb9",
         "rel": "implementation"
        }
       ],
@@ -1846,7 +1879,7 @@
       ],
       "links": [
        {
-        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "href": "#96622421-9c0f-5db5-8be0-e263ad685eb9",
         "rel": "implementation"
        }
       ],
@@ -1879,7 +1912,7 @@
       ],
       "links": [
        {
-        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "href": "#96622421-9c0f-5db5-8be0-e263ad685eb9",
         "rel": "implementation"
        }
       ],
@@ -1912,7 +1945,7 @@
       ],
       "links": [
        {
-        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "href": "#96622421-9c0f-5db5-8be0-e263ad685eb9",
         "rel": "implementation"
        }
       ],
@@ -1945,7 +1978,7 @@
       ],
       "links": [
        {
-        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "href": "#96622421-9c0f-5db5-8be0-e263ad685eb9",
         "rel": "implementation"
        }
       ],
@@ -1978,7 +2011,7 @@
       ],
       "links": [
        {
-        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "href": "#96622421-9c0f-5db5-8be0-e263ad685eb9",
         "rel": "implementation"
        }
       ],
@@ -2011,7 +2044,7 @@
       ],
       "links": [
        {
-        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
+        "href": "#96622421-9c0f-5db5-8be0-e263ad685eb9",
         "rel": "implementation"
        }
       ],
@@ -2020,39 +2053,6 @@
         "id": "cjis-IEA-7_stmt",
         "name": "statement",
         "prose": "Agreements are reviewed and current, with a designated point of contact for each party"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.information_exchange-1",
-      "title": "CJIS [Information Exchange Agreements] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.information_exchange#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.information_exchange#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.information_exchange"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d68d7df7-505d-563e-8d14-3fe146aaaeef",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.information_exchange-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Information Exchange Agreements] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -2082,6 +2082,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.media_protection-1",
+      "title": "CJIS [Media Protection] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.media_protection#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.media_protection#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86616d7d-1f00-5e25-9387-4f23584a525b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.media_protection-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Media Protection] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-MP-1",
       "title": "Access to digital and physical media containing CJI is restricted to authorized users",
       "props": [
@@ -2101,7 +2134,7 @@
       ],
       "links": [
        {
-        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "href": "#86616d7d-1f00-5e25-9387-4f23584a525b",
         "rel": "implementation"
        }
       ],
@@ -2134,7 +2167,7 @@
       ],
       "links": [
        {
-        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "href": "#86616d7d-1f00-5e25-9387-4f23584a525b",
         "rel": "implementation"
        }
       ],
@@ -2167,7 +2200,7 @@
       ],
       "links": [
        {
-        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "href": "#86616d7d-1f00-5e25-9387-4f23584a525b",
         "rel": "implementation"
        }
       ],
@@ -2200,7 +2233,7 @@
       ],
       "links": [
        {
-        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "href": "#86616d7d-1f00-5e25-9387-4f23584a525b",
         "rel": "implementation"
        }
       ],
@@ -2233,7 +2266,7 @@
       ],
       "links": [
        {
-        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "href": "#86616d7d-1f00-5e25-9387-4f23584a525b",
         "rel": "implementation"
        }
       ],
@@ -2266,7 +2299,7 @@
       ],
       "links": [
        {
-        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "href": "#86616d7d-1f00-5e25-9387-4f23584a525b",
         "rel": "implementation"
        }
       ],
@@ -2299,7 +2332,7 @@
       ],
       "links": [
        {
-        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
+        "href": "#86616d7d-1f00-5e25-9387-4f23584a525b",
         "rel": "implementation"
        }
       ],
@@ -2308,39 +2341,6 @@
         "id": "cjis-MP-7_stmt",
         "name": "statement",
         "prose": "Sanitization and destruction of media containing CJI is witnessed or carried out by authorized personnel and documented"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.media_protection-1",
-      "title": "CJIS [Media Protection] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.media_protection#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.media_protection#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.media_protection"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d32b84f3-4a31-579a-9aa9-f641612df745",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.media_protection-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Media Protection] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -2370,6 +2370,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.mobile_devices-1",
+      "title": "CJIS [Mobile Devices] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.mobile_devices#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.mobile_devices#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.mobile_devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#97d409ca-64c7-5d59-8173-1414618dcd43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.mobile_devices-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Mobile Devices] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-MD-1",
       "title": "Mobile devices that access, process, or store CJI are enrolled in centralized mobile device management (MDM)",
       "props": [
@@ -2389,7 +2422,7 @@
       ],
       "links": [
        {
-        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "href": "#97d409ca-64c7-5d59-8173-1414618dcd43",
         "rel": "implementation"
        }
       ],
@@ -2422,7 +2455,7 @@
       ],
       "links": [
        {
-        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "href": "#97d409ca-64c7-5d59-8173-1414618dcd43",
         "rel": "implementation"
        }
       ],
@@ -2455,7 +2488,7 @@
       ],
       "links": [
        {
-        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "href": "#97d409ca-64c7-5d59-8173-1414618dcd43",
         "rel": "implementation"
        }
       ],
@@ -2488,7 +2521,7 @@
       ],
       "links": [
        {
-        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "href": "#97d409ca-64c7-5d59-8173-1414618dcd43",
         "rel": "implementation"
        }
       ],
@@ -2521,7 +2554,7 @@
       ],
       "links": [
        {
-        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "href": "#97d409ca-64c7-5d59-8173-1414618dcd43",
         "rel": "implementation"
        }
       ],
@@ -2554,7 +2587,7 @@
       ],
       "links": [
        {
-        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "href": "#97d409ca-64c7-5d59-8173-1414618dcd43",
         "rel": "implementation"
        }
       ],
@@ -2587,7 +2620,7 @@
       ],
       "links": [
        {
-        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "href": "#97d409ca-64c7-5d59-8173-1414618dcd43",
         "rel": "implementation"
        }
       ],
@@ -2620,7 +2653,7 @@
       ],
       "links": [
        {
-        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
+        "href": "#97d409ca-64c7-5d59-8173-1414618dcd43",
         "rel": "implementation"
        }
       ],
@@ -2629,39 +2662,6 @@
         "id": "cjis-MD-8_stmt",
         "name": "statement",
         "prose": "Personally owned (BYOD) devices accessing CJI are governed by policy and technical controls before access is granted"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.mobile_devices-1",
-      "title": "CJIS [Mobile Devices] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.mobile_devices#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.mobile_devices#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.mobile_devices"
-       }
-      ],
-      "links": [
-       {
-        "href": "#dc981ef4-7d50-5fb4-904a-3844bf595871",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.mobile_devices-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Mobile Devices] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -2691,6 +2691,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.personnel_security-1",
+      "title": "CJIS [Personnel Security] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.personnel_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.personnel_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f2461dc-6e71-58ec-8129-6fdfc3e5a9f6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.personnel_security-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Personnel Security] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-PS-1",
       "title": "A state of residency and national fingerprint-based background check is completed before authorizing access to CJI",
       "props": [
@@ -2710,7 +2743,7 @@
       ],
       "links": [
        {
-        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "href": "#1f2461dc-6e71-58ec-8129-6fdfc3e5a9f6",
         "rel": "implementation"
        }
       ],
@@ -2743,7 +2776,7 @@
       ],
       "links": [
        {
-        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "href": "#1f2461dc-6e71-58ec-8129-6fdfc3e5a9f6",
         "rel": "implementation"
        }
       ],
@@ -2776,7 +2809,7 @@
       ],
       "links": [
        {
-        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "href": "#1f2461dc-6e71-58ec-8129-6fdfc3e5a9f6",
         "rel": "implementation"
        }
       ],
@@ -2809,7 +2842,7 @@
       ],
       "links": [
        {
-        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "href": "#1f2461dc-6e71-58ec-8129-6fdfc3e5a9f6",
         "rel": "implementation"
        }
       ],
@@ -2842,7 +2875,7 @@
       ],
       "links": [
        {
-        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "href": "#1f2461dc-6e71-58ec-8129-6fdfc3e5a9f6",
         "rel": "implementation"
        }
       ],
@@ -2875,7 +2908,7 @@
       ],
       "links": [
        {
-        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "href": "#1f2461dc-6e71-58ec-8129-6fdfc3e5a9f6",
         "rel": "implementation"
        }
       ],
@@ -2908,7 +2941,7 @@
       ],
       "links": [
        {
-        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "href": "#1f2461dc-6e71-58ec-8129-6fdfc3e5a9f6",
         "rel": "implementation"
        }
       ],
@@ -2941,7 +2974,7 @@
       ],
       "links": [
        {
-        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+        "href": "#1f2461dc-6e71-58ec-8129-6fdfc3e5a9f6",
         "rel": "implementation"
        }
       ],
@@ -2950,39 +2983,6 @@
         "id": "cjis-PS-8_stmt",
         "name": "statement",
         "prose": "Personnel with access to unescorted CJI are subject to state and agency support-personnel screening requirements"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.personnel_security-1",
-      "title": "CJIS [Personnel Security] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.personnel_security#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.personnel_security#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.personnel_security"
-       }
-      ],
-      "links": [
-       {
-        "href": "#e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.personnel_security-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Personnel Security] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -3012,6 +3012,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.physical_protection-1",
+      "title": "CJIS [Physical Protection] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.physical_protection#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.physical_protection#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ca813e8-8ed5-5b83-a475-dbb2b395285e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.physical_protection-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Physical Protection] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-PP-1",
       "title": "A physically secure location is established and documented for the storage, processing, and access of CJI",
       "props": [
@@ -3031,7 +3064,7 @@
       ],
       "links": [
        {
-        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "href": "#3ca813e8-8ed5-5b83-a475-dbb2b395285e",
         "rel": "implementation"
        }
       ],
@@ -3064,7 +3097,7 @@
       ],
       "links": [
        {
-        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "href": "#3ca813e8-8ed5-5b83-a475-dbb2b395285e",
         "rel": "implementation"
        }
       ],
@@ -3097,7 +3130,7 @@
       ],
       "links": [
        {
-        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "href": "#3ca813e8-8ed5-5b83-a475-dbb2b395285e",
         "rel": "implementation"
        }
       ],
@@ -3130,7 +3163,7 @@
       ],
       "links": [
        {
-        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "href": "#3ca813e8-8ed5-5b83-a475-dbb2b395285e",
         "rel": "implementation"
        }
       ],
@@ -3163,7 +3196,7 @@
       ],
       "links": [
        {
-        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "href": "#3ca813e8-8ed5-5b83-a475-dbb2b395285e",
         "rel": "implementation"
        }
       ],
@@ -3196,7 +3229,7 @@
       ],
       "links": [
        {
-        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "href": "#3ca813e8-8ed5-5b83-a475-dbb2b395285e",
         "rel": "implementation"
        }
       ],
@@ -3229,7 +3262,7 @@
       ],
       "links": [
        {
-        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
+        "href": "#3ca813e8-8ed5-5b83-a475-dbb2b395285e",
         "rel": "implementation"
        }
       ],
@@ -3238,39 +3271,6 @@
         "id": "cjis-PP-7_stmt",
         "name": "statement",
         "prose": "Information system distribution and transmission lines within the secure area are protected from interception and damage"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.physical_protection-1",
-      "title": "CJIS [Physical Protection] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.physical_protection#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.physical_protection#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.physical_protection"
-       }
-      ],
-      "links": [
-       {
-        "href": "#17d231cc-bb18-5018-b3c4-caffda308056",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.physical_protection-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Physical Protection] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -3300,6 +3300,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.security_awareness_training-1",
+      "title": "CJIS [Security Awareness Training] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.security_awareness_training#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.security_awareness_training#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.security_awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c98e525-6a5c-5188-a3f3-0e9f38aa0ef9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.security_awareness_training-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Security Awareness Training] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-SAT-1",
       "title": "Security awareness training is completed within six months of assignment for all personnel with access to CJI",
       "props": [
@@ -3319,7 +3352,7 @@
       ],
       "links": [
        {
-        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "href": "#5c98e525-6a5c-5188-a3f3-0e9f38aa0ef9",
         "rel": "implementation"
        }
       ],
@@ -3352,7 +3385,7 @@
       ],
       "links": [
        {
-        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "href": "#5c98e525-6a5c-5188-a3f3-0e9f38aa0ef9",
         "rel": "implementation"
        }
       ],
@@ -3385,7 +3418,7 @@
       ],
       "links": [
        {
-        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "href": "#5c98e525-6a5c-5188-a3f3-0e9f38aa0ef9",
         "rel": "implementation"
        }
       ],
@@ -3418,7 +3451,7 @@
       ],
       "links": [
        {
-        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "href": "#5c98e525-6a5c-5188-a3f3-0e9f38aa0ef9",
         "rel": "implementation"
        }
       ],
@@ -3451,7 +3484,7 @@
       ],
       "links": [
        {
-        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "href": "#5c98e525-6a5c-5188-a3f3-0e9f38aa0ef9",
         "rel": "implementation"
        }
       ],
@@ -3484,7 +3517,7 @@
       ],
       "links": [
        {
-        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "href": "#5c98e525-6a5c-5188-a3f3-0e9f38aa0ef9",
         "rel": "implementation"
        }
       ],
@@ -3517,7 +3550,7 @@
       ],
       "links": [
        {
-        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
+        "href": "#5c98e525-6a5c-5188-a3f3-0e9f38aa0ef9",
         "rel": "implementation"
        }
       ],
@@ -3526,39 +3559,6 @@
         "id": "cjis-SAT-7_stmt",
         "name": "statement",
         "prose": "Training addresses incident reporting responsibilities and recognition of security threats such as social engineering"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-cjis.security_awareness_training-1",
-      "title": "CJIS [Security Awareness Training] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cjis.security_awareness_training#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cjis.security_awareness_training#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.security_awareness_training"
-       }
-      ],
-      "links": [
-       {
-        "href": "#835619ec-f324-5281-8219-818f8e1b17ef",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-cjis.security_awareness_training-1_stmt",
-        "name": "statement",
-        "prose": "CJIS [Security Awareness Training] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -3588,6 +3588,39 @@
     ],
     "controls": [
      {
+      "id": "cjis-cjis.systems_communications_protection-1",
+      "title": "CJIS [Systems and Communications Protection and Information Integrity] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cjis.systems_communications_protection#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cjis.systems_communications_protection#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-cjis.systems_communications_protection-1_stmt",
+        "name": "statement",
+        "prose": "CJIS [Systems and Communications Protection and Information Integrity] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cjis-SC-1",
       "title": "CJI in transit is encrypted with FIPS 140-2/140-3 validated cryptography (minimum 128-bit)",
       "props": [
@@ -3607,7 +3640,7 @@
       ],
       "links": [
        {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
         "rel": "implementation"
        }
       ],
@@ -3616,270 +3649,6 @@
         "id": "cjis-SC-1_stmt",
         "name": "statement",
         "prose": "CJI in transit is encrypted with FIPS 140-2/140-3 validated cryptography (minimum 128-bit)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-SC-2",
-      "title": "CJI at rest is encrypted with FIPS 140-2/140-3 validated cryptography when stored outside a physically secure location",
-      "props": [
-       {
-        "name": "label",
-        "value": "SC-2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SC-2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.systems_communications_protection"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-SC-2_stmt",
-        "name": "statement",
-        "prose": "CJI at rest is encrypted with FIPS 140-2/140-3 validated cryptography when stored outside a physically secure location"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-SC-3",
-      "title": "Boundary protection is enforced (firewall between the CJI network and untrusted networks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SC-3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SC-3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.systems_communications_protection"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-SC-3_stmt",
-        "name": "statement",
-        "prose": "Boundary protection is enforced (firewall between the CJI network and untrusted networks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-SC-4",
-      "title": "The network is segmented so that CJI systems are isolated (VLAN/subnet separation) from non-criminal-justice systems",
-      "props": [
-       {
-        "name": "label",
-        "value": "SC-4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SC-4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.systems_communications_protection"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-SC-4_stmt",
-        "name": "statement",
-        "prose": "The network is segmented so that CJI systems are isolated (VLAN/subnet separation) from non-criminal-justice systems"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-SC-5",
-      "title": "Malicious code protection (antivirus/anti-malware) is deployed and signatures are kept current",
-      "props": [
-       {
-        "name": "label",
-        "value": "SC-5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SC-5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.systems_communications_protection"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-SC-5_stmt",
-        "name": "statement",
-        "prose": "Malicious code protection (antivirus/anti-malware) is deployed and signatures are kept current"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-SC-6",
-      "title": "Spam and spyware protection is deployed at gateways and workstations",
-      "props": [
-       {
-        "name": "label",
-        "value": "SC-6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SC-6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.systems_communications_protection"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-SC-6_stmt",
-        "name": "statement",
-        "prose": "Spam and spyware protection is deployed at gateways and workstations"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-SC-7",
-      "title": "A personal firewall is enabled on mobile/remote devices that access CJI outside the agency network",
-      "props": [
-       {
-        "name": "label",
-        "value": "SC-7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SC-7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.systems_communications_protection"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-SC-7_stmt",
-        "name": "statement",
-        "prose": "A personal firewall is enabled on mobile/remote devices that access CJI outside the agency network"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-SC-8",
-      "title": "Security patches and critical updates are applied in a timely, documented manner (patch management)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SC-8"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SC-8"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.systems_communications_protection"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-SC-8_stmt",
-        "name": "statement",
-        "prose": "Security patches and critical updates are applied in a timely, documented manner (patch management)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cjis-SC-9",
-      "title": "Intrusion detection/prevention capability monitors the CJI environment for malicious activity",
-      "props": [
-       {
-        "name": "label",
-        "value": "SC-9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SC-9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cjis.systems_communications_protection"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cjis-SC-9_stmt",
-        "name": "statement",
-        "prose": "Intrusion detection/prevention capability monitors the CJI environment for malicious activity"
        }
       ],
       "class": "compliance"
@@ -3904,7 +3673,7 @@
       ],
       "links": [
        {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
         "rel": "implementation"
        }
       ],
@@ -3937,7 +3706,7 @@
       ],
       "links": [
        {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
         "rel": "implementation"
        }
       ],
@@ -3970,7 +3739,7 @@
       ],
       "links": [
        {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
         "rel": "implementation"
        }
       ],
@@ -3984,16 +3753,16 @@
       "class": "compliance"
      },
      {
-      "id": "cjis-cjis.systems_communications_protection-1",
-      "title": "CJIS [Systems and Communications Protection and Information Integrity] %s: %s — not met",
+      "id": "cjis-SC-2",
+      "title": "CJI at rest is encrypted with FIPS 140-2/140-3 validated cryptography when stored outside a physically secure location",
       "props": [
        {
         "name": "label",
-        "value": "cjis.systems_communications_protection#1"
+        "value": "SC-2"
        },
        {
         "name": "alt-identifier",
-        "value": "cjis.systems_communications_protection#1"
+        "value": "SC-2"
        },
        {
         "name": "rego-package",
@@ -4003,15 +3772,246 @@
       ],
       "links": [
        {
-        "href": "#7649065b-7304-5904-9de1-20c4eb6f110a",
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cjis-cjis.systems_communications_protection-1_stmt",
+        "id": "cjis-SC-2_stmt",
         "name": "statement",
-        "prose": "CJIS [Systems and Communications Protection and Information Integrity] %s: %s — not met"
+        "prose": "CJI at rest is encrypted with FIPS 140-2/140-3 validated cryptography when stored outside a physically secure location"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-3",
+      "title": "Boundary protection is enforced (firewall between the CJI network and untrusted networks)",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-3_stmt",
+        "name": "statement",
+        "prose": "Boundary protection is enforced (firewall between the CJI network and untrusted networks)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-4",
+      "title": "The network is segmented so that CJI systems are isolated (VLAN/subnet separation) from non-criminal-justice systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-4_stmt",
+        "name": "statement",
+        "prose": "The network is segmented so that CJI systems are isolated (VLAN/subnet separation) from non-criminal-justice systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-5",
+      "title": "Malicious code protection (antivirus/anti-malware) is deployed and signatures are kept current",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-5_stmt",
+        "name": "statement",
+        "prose": "Malicious code protection (antivirus/anti-malware) is deployed and signatures are kept current"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-6",
+      "title": "Spam and spyware protection is deployed at gateways and workstations",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-6_stmt",
+        "name": "statement",
+        "prose": "Spam and spyware protection is deployed at gateways and workstations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-7",
+      "title": "A personal firewall is enabled on mobile/remote devices that access CJI outside the agency network",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-7_stmt",
+        "name": "statement",
+        "prose": "A personal firewall is enabled on mobile/remote devices that access CJI outside the agency network"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-8",
+      "title": "Security patches and critical updates are applied in a timely, documented manner (patch management)",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-8_stmt",
+        "name": "statement",
+        "prose": "Security patches and critical updates are applied in a timely, documented manner (patch management)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cjis-SC-9",
+      "title": "Intrusion detection/prevention capability monitors the CJI environment for malicious activity",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cjis.systems_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a30a6e2c-8321-5558-a6d4-324ff825a608",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cjis-SC-9_stmt",
+        "name": "statement",
+        "prose": "Intrusion detection/prevention capability monitors the CJI environment for malicious activity"
        }
       ],
       "class": "compliance"
@@ -4022,7 +4022,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "61829787-36f1-567c-8b81-cca5d49d6be5",
+     "uuid": "72dce89e-69e6-5b7d-86ea-86d299341b2b",
      "title": "cjis / access control",
      "props": [
       {
@@ -4033,13 +4033,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/access_control.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/access_control.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "f233f4e2-4f82-511f-ab9c-c8550ddf0243",
+     "uuid": "5cf003fd-3fe9-53bf-8ad2-5f9baa2fcc22",
      "title": "cjis / auditing accountability",
      "props": [
       {
@@ -4050,13 +4050,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/auditing_accountability.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/auditing_accountability.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "f5fa3cf8-be72-57d0-87ec-725b58ded8bd",
+     "uuid": "8dac2293-c590-5b1c-af67-689d5ce2090f",
      "title": "FBI CJIS Security Policy — Policy Area 7: Configuration Management",
      "props": [
       {
@@ -4067,13 +4067,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/configuration_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/configuration_management.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "19e7156e-274d-5373-9524-ebc1120cd95f",
+     "uuid": "272ca1f4-4f19-57f7-8b7b-f39cc5d24e07",
      "title": "cjis / formal audits",
      "props": [
       {
@@ -4084,13 +4084,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/formal_audits.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/formal_audits.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "3ca29dd6-772c-52f8-99cb-7ab1fbf625f1",
+     "uuid": "851566e5-3161-5534-8fdf-66a292eecdca",
      "title": "cjis / identification authentication",
      "props": [
       {
@@ -4101,13 +4101,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/identification_authentication.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/identification_authentication.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "144ceb99-ba52-5cd4-a1f4-8030d22e1f48",
+     "uuid": "d44f7e66-088e-5771-baca-5959c51d2441",
      "title": "FBI CJIS Security Policy — Policy Area 3: Incident Response",
      "props": [
       {
@@ -4118,13 +4118,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/incident_response.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/incident_response.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d68d7df7-505d-563e-8d14-3fe146aaaeef",
+     "uuid": "96622421-9c0f-5db5-8be0-e263ad685eb9",
      "title": "FBI CJIS Security Policy — Policy Area 1: Information Exchange Agreements",
      "props": [
       {
@@ -4135,13 +4135,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/information_exchange.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/information_exchange.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d32b84f3-4a31-579a-9aa9-f641612df745",
+     "uuid": "86616d7d-1f00-5e25-9387-4f23584a525b",
      "title": "FBI CJIS Security Policy — Policy Area 8: Media Protection",
      "props": [
       {
@@ -4152,13 +4152,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/media_protection.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/media_protection.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "dc981ef4-7d50-5fb4-904a-3844bf595871",
+     "uuid": "97d409ca-64c7-5d59-8173-1414618dcd43",
      "title": "FBI CJIS Security Policy — Policy Area 13: Mobile Devices",
      "props": [
       {
@@ -4169,13 +4169,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/mobile_devices.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/mobile_devices.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "e9fcbd26-bc99-5fe0-8085-63e9d2b881b5",
+     "uuid": "1f2461dc-6e71-58ec-8129-6fdfc3e5a9f6",
      "title": "FBI CJIS Security Policy — Policy Area 12: Personnel Security",
      "props": [
       {
@@ -4186,13 +4186,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/personnel_security.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/personnel_security.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "17d231cc-bb18-5018-b3c4-caffda308056",
+     "uuid": "3ca813e8-8ed5-5b83-a475-dbb2b395285e",
      "title": "FBI CJIS Security Policy — Policy Area 9: Physical Protection",
      "props": [
       {
@@ -4203,13 +4203,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/physical_protection.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/physical_protection.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "835619ec-f324-5281-8219-818f8e1b17ef",
+     "uuid": "5c98e525-6a5c-5188-a3f3-0e9f38aa0ef9",
      "title": "FBI CJIS Security Policy — Policy Area 2: Security Awareness Training",
      "props": [
       {
@@ -4220,13 +4220,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/security_awareness_training.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/security_awareness_training.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "7649065b-7304-5904-9de1-20c4eb6f110a",
+     "uuid": "a30a6e2c-8321-5558-a6d4-324ff825a608",
      "title": "cjis / systems communications protection",
      "props": [
       {
@@ -4237,7 +4237,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cjis/systems_communications_protection.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cjis/systems_communications_protection.rego",
        "media-type": "text/plain"
       }
      ]

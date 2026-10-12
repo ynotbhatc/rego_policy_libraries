@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "6cbca775-e858-59aa-8728-d07d4f8bec59",
+  "uuid": "cdd2f788-b9b6-5896-b07e-04628c6065f4",
   "metadata": {
    "title": "Rego Policy Libraries — meti_csm (METI Cybersecurity Management Guidelines Ver. 3.0 (Japan) — Appendix A check sheets)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,1623 +66,6 @@
     ],
     "controls": [
      {
-      "id": "meti_csm-P1-01",
-      "title": "Management positions cybersecurity risk as a key risk in business decisions and recognises the need for security investment to ensure business continuity",
-      "props": [
-       {
-        "name": "label",
-        "value": "P1-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P1-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-P1-01_stmt",
-        "name": "statement",
-        "prose": "Management positions cybersecurity risk as a key risk in business decisions and recognises the need for security investment to ensure business continuity"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-P1-02",
-      "title": "Management recognises its responsibility to reduce risks to acceptable levels through cybersecurity measures",
-      "props": [
-       {
-        "name": "label",
-        "value": "P1-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P1-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-P1-02_stmt",
-        "name": "statement",
-        "prose": "Management recognises its responsibility to reduce risks to acceptable levels through cybersecurity measures"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-P1-03",
-      "title": "Management regularly checks that its cybersecurity instructions are implemented and urges action when they are not",
-      "props": [
-       {
-        "name": "label",
-        "value": "P1-03"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P1-03"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-P1-03_stmt",
-        "name": "statement",
-        "prose": "Management regularly checks that its cybersecurity instructions are implemented and urges action when they are not"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-P2-01",
-      "title": "Management recognises that diverse supply-chain connections, not only order-receiving relationships, can significantly affect the company's and society's cybersecurity",
-      "props": [
-       {
-        "name": "label",
-        "value": "P2-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P2-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-P2-01_stmt",
-        "name": "statement",
-        "prose": "Management recognises that diverse supply-chain connections, not only order-receiving relationships, can significantly affect the company's and society's cybersecurity"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-P2-02",
-      "title": "Management confirms that the scope for identifying cybersecurity risk factors includes group companies and outsourced contractors",
-      "props": [
-       {
-        "name": "label",
-        "value": "P2-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P2-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-P2-02_stmt",
-        "name": "statement",
-        "prose": "Management confirms that the scope for identifying cybersecurity risk factors includes group companies and outsourced contractors"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-P2-03",
-      "title": "Management confirms the implementation state of comprehensive security measures across the supply chain, understanding any company can become a perpetrator",
-      "props": [
-       {
-        "name": "label",
-        "value": "P2-03"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P2-03"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-P2-03_stmt",
-        "name": "statement",
-        "prose": "Management confirms the implementation state of comprehensive security measures across the supply chain, understanding any company can become a perpetrator"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-P3-01",
-      "title": "Management is prepared to respond appropriately to an incident and practises communication on cybersecurity risks with relevant parties in normal times",
-      "props": [
-       {
-        "name": "label",
-        "value": "P3-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P3-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-P3-01_stmt",
-        "name": "statement",
-        "prose": "Management is prepared to respond appropriately to an incident and practises communication on cybersecurity risks with relevant parties in normal times"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-P3-02",
-      "title": "Management knows who is responsible for cybersecurity incidents within the company and is prepared to communicate appropriately in an emergency",
-      "props": [
-       {
-        "name": "label",
-        "value": "P3-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P3-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-P3-02_stmt",
-        "name": "statement",
-        "prose": "Management knows who is responsible for cybersecurity incidents within the company and is prepared to communicate appropriately in an emergency"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-P3-03",
-      "title": "Management understands what information must be disseminated to keep external stakeholders' trust when incidents occur at the company or its contractors",
-      "props": [
-       {
-        "name": "label",
-        "value": "P3-03"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P3-03"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-P3-03_stmt",
-        "name": "statement",
-        "prose": "Management understands what information must be disseminated to keep external stakeholders' trust when incidents occur at the company or its contractors"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D1-01",
-      "title": "Management recognises cybersecurity risk as one of the management risks it is responsible for",
-      "props": [
-       {
-        "name": "label",
-        "value": "D1-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D1-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D1-01_stmt",
-        "name": "statement",
-        "prose": "Management recognises cybersecurity risk as one of the management risks it is responsible for"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D1-02",
-      "title": "Management formulates and declares a basic cybersecurity policy that considers the cybersecurity risks of the organisation as a whole",
-      "props": [
-       {
-        "name": "label",
-        "value": "D1-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D1-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D1-02_stmt",
-        "name": "statement",
-        "prose": "Management formulates and declares a basic cybersecurity policy that considers the cybersecurity risks of the organisation as a whole"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D1-03",
-      "title": "Management understands the requirements of laws, contracts and guidelines and has them reflected in basic policies",
-      "props": [
-       {
-        "name": "label",
-        "value": "D1-03"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D1-03"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D1-03_stmt",
-        "name": "statement",
-        "prose": "Management understands the requirements of laws, contracts and guidelines and has them reflected in basic policies"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D2-01",
-      "title": "A cybersecurity risk management structure consisting of a CISO etc. is established based on the organisation's foundational policy",
-      "props": [
-       {
-        "name": "label",
-        "value": "D2-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D2-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D2-01_stmt",
-        "name": "statement",
-        "prose": "A cybersecurity risk management structure consisting of a CISO etc. is established based on the organisation's foundational policy"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D2-02",
-      "title": "The roles and responsibilities of each stakeholder in managing cybersecurity risk are clear",
-      "props": [
-       {
-        "name": "label",
-        "value": "D2-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D2-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D2-02_stmt",
-        "name": "statement",
-        "prose": "The roles and responsibilities of each stakeholder in managing cybersecurity risk are clear"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D2-03",
-      "title": "The relationship between the governance, internal control and business continuity risk systems and the cybersecurity risk management system is clear",
-      "props": [
-       {
-        "name": "label",
-        "value": "D2-03"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D2-03"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D2-03_stmt",
-        "name": "statement",
-        "prose": "The relationship between the governance, internal control and business continuity risk systems and the cybersecurity risk management system is clear"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D3-01",
-      "title": "Cybersecurity measures and the resources (budget, people) to implement them are clarified through management meetings",
-      "props": [
-       {
-        "name": "label",
-        "value": "D3-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D3-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D3-01_stmt",
-        "name": "statement",
-        "prose": "Cybersecurity measures and the resources (budget, people) to implement them are clarified through management meetings"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D3-02",
-      "title": "There is an appropriate separation between cybersecurity measures handled in-house and those outsourced",
-      "props": [
-       {
-        "name": "label",
-        "value": "D3-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D3-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D3-02_stmt",
-        "name": "statement",
-        "prose": "There is an appropriate separation between cybersecurity measures handled in-house and those outsourced"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D3-03",
-      "title": "Requirements for security personnel are clear; cybersecurity personnel are secured, developed systematically and treated satisfactorily",
-      "props": [
-       {
-        "name": "label",
-        "value": "D3-03"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D3-03"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D3-03_stmt",
-        "name": "statement",
-        "prose": "Requirements for security personnel are clear; cybersecurity personnel are secured, developed systematically and treated satisfactorily"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D3-04",
-      "title": "Cybersecurity knowledge and skills ('Plus-Security') are acquired by personnel in non-security roles",
-      "props": [
-       {
-        "name": "label",
-        "value": "D3-04"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D3-04"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D3-04_stmt",
-        "name": "statement",
-        "prose": "Cybersecurity knowledge and skills ('Plus-Security') are acquired by personnel in non-security roles"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D3-05",
-      "title": "For outsourced cybersecurity, appropriate external resources are selected and used considering the company's issues, budget and location",
-      "props": [
-       {
-        "name": "label",
-        "value": "D3-05"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D3-05"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D3-05_stmt",
-        "name": "statement",
-        "prose": "For outsourced cybersecurity, appropriate external resources are selected and used considering the company's issues, budget and location"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D4-01",
-      "title": "Digital environments, services and information to be protected are identified and measures prioritised by location, business value and other aspects",
-      "props": [
-       {
-        "name": "label",
-        "value": "D4-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D4-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D4-01_stmt",
-        "name": "statement",
-        "prose": "Digital environments, services and information to be protected are identified and measures prioritised by location, business value and other aspects"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D4-02",
-      "title": "Threats and vulnerabilities (including negligence and internal impropriety) against the protected assets are identified and their business impact understood",
-      "props": [
-       {
-        "name": "label",
-        "value": "D4-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D4-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D4-02_stmt",
-        "name": "statement",
-        "prose": "Threats and vulnerabilities (including negligence and internal impropriety) against the protected assets are identified and their business impact understood"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D4-03",
-      "title": "A risk response plan based on risk assessment results has been developed",
-      "props": [
-       {
-        "name": "label",
-        "value": "D4-03"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D4-03"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D4-03_stmt",
-        "name": "statement",
-        "prose": "A risk response plan based on risk assessment results has been developed"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D5-01",
-      "title": "Asset, configuration and patch management of critical systems are performed",
-      "props": [
-       {
-        "name": "label",
-        "value": "D5-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D5-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D5-01_stmt",
-        "name": "statement",
-        "prose": "Asset, configuration and patch management of critical systems are performed"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D5-02",
-      "title": "Measures prevent the use of shadow IT within the organisation",
-      "props": [
-       {
-        "name": "label",
-        "value": "D5-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D5-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D5-02_stmt",
-        "name": "statement",
-        "prose": "Measures prevent the use of shadow IT within the organisation"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D5-03",
-      "title": "Risk assessment is performed at system design and the necessary security features are implemented at development (security by design)",
-      "props": [
-       {
-        "name": "label",
-        "value": "D5-03"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D5-03"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D5-03_stmt",
-        "name": "statement",
-        "prose": "Risk assessment is performed at system design and the necessary security features are implemented at development (security by design)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D5-04",
-      "title": "Multiple technical measures are implemented for terminals and servers that perform critical tasks",
-      "props": [
-       {
-        "name": "label",
-        "value": "D5-04"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D5-04"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D5-04_stmt",
-        "name": "statement",
-        "prose": "Multiple technical measures are implemented for terminals and servers that perform critical tasks"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D5-05",
-      "title": "Multiple technical measures are in place for networks that perform critical tasks",
-      "props": [
-       {
-        "name": "label",
-        "value": "D5-05"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D5-05"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D5-05_stmt",
-        "name": "statement",
-        "prose": "Multiple technical measures are in place for networks that perform critical tasks"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D5-06",
-      "title": "Vulnerability countermeasures are planned and implemented: regular vulnerability checks, continuous patching and other mitigation",
-      "props": [
-       {
-        "name": "label",
-        "value": "D5-06"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D5-06"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D5-06_stmt",
-        "name": "statement",
-        "prose": "Vulnerability countermeasures are planned and implemented: regular vulnerability checks, continuous patching and other mitigation"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D5-07",
-      "title": "Logs from terminals and networks are collected and analysed",
-      "props": [
-       {
-        "name": "label",
-        "value": "D5-07"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D5-07"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D5-07_stmt",
-        "name": "statement",
-        "prose": "Logs from terminals and networks are collected and analysed"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D5-08",
-      "title": "Incident response mechanisms such as blocking communications when a cyberattack is detected are introduced",
-      "props": [
-       {
-        "name": "label",
-        "value": "D5-08"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D5-08"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D5-08_stmt",
-        "name": "statement",
-        "prose": "Incident response mechanisms such as blocking communications when a cyberattack is detected are introduced"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D5-09",
-      "title": "Incident management mechanisms are in place",
-      "props": [
-       {
-        "name": "label",
-        "value": "D5-09"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D5-09"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D5-09_stmt",
-        "name": "statement",
-        "prose": "Incident management mechanisms are in place"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D5-10",
-      "title": "Cybersecurity education and exercises are conducted for employees",
-      "props": [
-       {
-        "name": "label",
-        "value": "D5-10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D5-10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D5-10_stmt",
-        "name": "statement",
-        "prose": "Cybersecurity education and exercises are conducted for employees"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D6-01",
-      "title": "KPIs for cybersecurity operations management are defined",
-      "props": [
-       {
-        "name": "label",
-        "value": "D6-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D6-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D6-01_stmt",
-        "name": "statement",
-        "prose": "KPIs for cybersecurity operations management are defined"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D6-02",
-      "title": "Management regularly receives reports on the implementation status of cybersecurity measures, discusses them and gives directions",
-      "props": [
-       {
-        "name": "label",
-        "value": "D6-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D6-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D6-02_stmt",
-        "name": "statement",
-        "prose": "Management regularly receives reports on the implementation status of cybersecurity measures, discusses them and gives directions"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D6-03",
-      "title": "Cybersecurity audits are conducted and measures are reviewed in a timely manner based on the results",
-      "props": [
-       {
-        "name": "label",
-        "value": "D6-03"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D6-03"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D6-03_stmt",
-        "name": "statement",
-        "prose": "Cybersecurity audits are conducted and measures are reviewed in a timely manner based on the results"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D6-04",
-      "title": "There is communication with stakeholders about the state of action against cybersecurity risks",
-      "props": [
-       {
-        "name": "label",
-        "value": "D6-04"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D6-04"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D6-04_stmt",
-        "name": "statement",
-        "prose": "There is communication with stakeholders about the state of action against cybersecurity risks"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D7-01",
-      "title": "An incident response plan that considers the entire supply chain is developed",
-      "props": [
-       {
-        "name": "label",
-        "value": "D7-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D7-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D7-01_stmt",
-        "name": "statement",
-        "prose": "An incident response plan that considers the entire supply chain is developed"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D7-02",
-      "title": "A dedicated incident response team (CSIRT etc.) is established and maintained",
-      "props": [
-       {
-        "name": "label",
-        "value": "D7-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D7-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D7-02_stmt",
-        "name": "statement",
-        "prose": "A dedicated incident response team (CSIRT etc.) is established and maintained"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D7-03",
-      "title": "The content and timing of what is shared, reported or published outside the organisation during an incident are specified",
-      "props": [
-       {
-        "name": "label",
-        "value": "D7-03"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D7-03"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D7-03_stmt",
-        "name": "statement",
-        "prose": "The content and timing of what is shared, reported or published outside the organisation during an incident are specified"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D7-04",
-      "title": "Emergency response exercises for incidents are conducted regularly",
-      "props": [
-       {
-        "name": "label",
-        "value": "D7-04"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D7-04"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D7-04_stmt",
-        "name": "statement",
-        "prose": "Emergency response exercises for incidents are conducted regularly"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D7-05",
-      "title": "An implementation plan enables rapid log analysis and investigation at incident time to identify the scope of impact",
-      "props": [
-       {
-        "name": "label",
-        "value": "D7-05"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D7-05"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D7-05_stmt",
-        "name": "statement",
-        "prose": "An implementation plan enables rapid log analysis and investigation at incident time to identify the scope of impact"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D8-01",
-      "title": "A business recovery plan considering the entire supply chain in the event of damage is developed",
-      "props": [
-       {
-        "name": "label",
-        "value": "D8-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D8-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D8-01_stmt",
-        "name": "statement",
-        "prose": "A business recovery plan considering the entire supply chain in the event of damage is developed"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D8-02",
-      "title": "Recovery exercises are conducted regularly",
-      "props": [
-       {
-        "name": "label",
-        "value": "D8-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D8-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D8-02_stmt",
-        "name": "statement",
-        "prose": "Recovery exercises are conducted regularly"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D9-01",
-      "title": "The state of cybersecurity countermeasures in transactions and collaborations with group companies is understood",
-      "props": [
-       {
-        "name": "label",
-        "value": "D9-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D9-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D9-01_stmt",
-        "name": "statement",
-        "prose": "The state of cybersecurity countermeasures in transactions and collaborations with group companies is understood"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D9-02",
-      "title": "Appropriate measures are confirmed against the roles and responsibilities for cybersecurity risk agreed in contracts with business partners and contractors",
-      "props": [
-       {
-        "name": "label",
-        "value": "D9-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D9-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D9-02_stmt",
-        "name": "statement",
-        "prose": "Appropriate measures are confirmed against the roles and responsibilities for cybersecurity risk agreed in contracts with business partners and contractors"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D9-03",
-      "title": "Cybersecurity risk is confirmed not to exceed acceptable levels across the supply chain affecting the company's business",
-      "props": [
-       {
-        "name": "label",
-        "value": "D9-03"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D9-03"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D9-03_stmt",
-        "name": "statement",
-        "prose": "Cybersecurity risk is confirmed not to exceed acceptable levels across the supply chain affecting the company's business"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D10-01",
-      "title": "Warning information from related organisations and participation in the industry security community are used for the company's own countermeasures",
-      "props": [
-       {
-        "name": "label",
-        "value": "D10-01"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D10-01"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D10-01_stmt",
-        "name": "statement",
-        "prose": "Warning information from related organisations and participation in the industry security community are used for the company's own countermeasures"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-D10-02",
-      "title": "Incident information (malware infection, unauthorised access) is shared and reported to related organisations and communities and published appropriately",
-      "props": [
-       {
-        "name": "label",
-        "value": "D10-02"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "D10-02"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-D10-02_stmt",
-        "name": "statement",
-        "prose": "Incident information (malware infection, unauthorised access) is shared and reported to related organisations and communities and published appropriately"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "meti_csm-meti_csm.main-1",
       "title": "METI CSM %v (%v): %v — not attested",
       "props": [
@@ -1702,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
         "rel": "implementation"
        }
       ],
@@ -1735,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#d4317052-e382-5392-bffc-84b9a53a1fa7",
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
         "rel": "implementation"
        }
       ],
@@ -1748,7 +131,1624 @@
        {
         "id": "meti_csm-METI-CSM-Input-Contract_obj.1",
         "name": "assessment-objective",
-        "prose": "input.meti_csm.items must be an object of {\\\"<item id>\\\": true}"
+        "prose": "input.meti_csm.items must be an object of {\"<item id>\": true}"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D1-01",
+      "title": "Management recognises cybersecurity risk as one of the management risks it is responsible for",
+      "props": [
+       {
+        "name": "label",
+        "value": "D1-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D1-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D1-01_stmt",
+        "name": "statement",
+        "prose": "Management recognises cybersecurity risk as one of the management risks it is responsible for"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D1-02",
+      "title": "Management formulates and declares a basic cybersecurity policy that considers the cybersecurity risks of the organisation as a whole",
+      "props": [
+       {
+        "name": "label",
+        "value": "D1-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D1-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D1-02_stmt",
+        "name": "statement",
+        "prose": "Management formulates and declares a basic cybersecurity policy that considers the cybersecurity risks of the organisation as a whole"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D1-03",
+      "title": "Management understands the requirements of laws, contracts and guidelines and has them reflected in basic policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "D1-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D1-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D1-03_stmt",
+        "name": "statement",
+        "prose": "Management understands the requirements of laws, contracts and guidelines and has them reflected in basic policies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D10-01",
+      "title": "Warning information from related organisations and participation in the industry security community are used for the company's own countermeasures",
+      "props": [
+       {
+        "name": "label",
+        "value": "D10-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D10-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D10-01_stmt",
+        "name": "statement",
+        "prose": "Warning information from related organisations and participation in the industry security community are used for the company's own countermeasures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D10-02",
+      "title": "Incident information (malware infection, unauthorised access) is shared and reported to related organisations and communities and published appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "D10-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D10-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D10-02_stmt",
+        "name": "statement",
+        "prose": "Incident information (malware infection, unauthorised access) is shared and reported to related organisations and communities and published appropriately"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D2-01",
+      "title": "A cybersecurity risk management structure consisting of a CISO etc. is established based on the organisation's foundational policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "D2-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D2-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D2-01_stmt",
+        "name": "statement",
+        "prose": "A cybersecurity risk management structure consisting of a CISO etc. is established based on the organisation's foundational policy"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D2-02",
+      "title": "The roles and responsibilities of each stakeholder in managing cybersecurity risk are clear",
+      "props": [
+       {
+        "name": "label",
+        "value": "D2-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D2-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D2-02_stmt",
+        "name": "statement",
+        "prose": "The roles and responsibilities of each stakeholder in managing cybersecurity risk are clear"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D2-03",
+      "title": "The relationship between the governance, internal control and business continuity risk systems and the cybersecurity risk management system is clear",
+      "props": [
+       {
+        "name": "label",
+        "value": "D2-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D2-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D2-03_stmt",
+        "name": "statement",
+        "prose": "The relationship between the governance, internal control and business continuity risk systems and the cybersecurity risk management system is clear"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D3-01",
+      "title": "Cybersecurity measures and the resources (budget, people) to implement them are clarified through management meetings",
+      "props": [
+       {
+        "name": "label",
+        "value": "D3-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D3-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D3-01_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity measures and the resources (budget, people) to implement them are clarified through management meetings"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D3-02",
+      "title": "There is an appropriate separation between cybersecurity measures handled in-house and those outsourced",
+      "props": [
+       {
+        "name": "label",
+        "value": "D3-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D3-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D3-02_stmt",
+        "name": "statement",
+        "prose": "There is an appropriate separation between cybersecurity measures handled in-house and those outsourced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D3-03",
+      "title": "Requirements for security personnel are clear; cybersecurity personnel are secured, developed systematically and treated satisfactorily",
+      "props": [
+       {
+        "name": "label",
+        "value": "D3-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D3-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D3-03_stmt",
+        "name": "statement",
+        "prose": "Requirements for security personnel are clear; cybersecurity personnel are secured, developed systematically and treated satisfactorily"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D3-04",
+      "title": "Cybersecurity knowledge and skills ('Plus-Security') are acquired by personnel in non-security roles",
+      "props": [
+       {
+        "name": "label",
+        "value": "D3-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D3-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D3-04_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity knowledge and skills ('Plus-Security') are acquired by personnel in non-security roles"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D3-05",
+      "title": "For outsourced cybersecurity, appropriate external resources are selected and used considering the company's issues, budget and location",
+      "props": [
+       {
+        "name": "label",
+        "value": "D3-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D3-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D3-05_stmt",
+        "name": "statement",
+        "prose": "For outsourced cybersecurity, appropriate external resources are selected and used considering the company's issues, budget and location"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D4-01",
+      "title": "Digital environments, services and information to be protected are identified and measures prioritised by location, business value and other aspects",
+      "props": [
+       {
+        "name": "label",
+        "value": "D4-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D4-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D4-01_stmt",
+        "name": "statement",
+        "prose": "Digital environments, services and information to be protected are identified and measures prioritised by location, business value and other aspects"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D4-02",
+      "title": "Threats and vulnerabilities (including negligence and internal impropriety) against the protected assets are identified and their business impact understood",
+      "props": [
+       {
+        "name": "label",
+        "value": "D4-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D4-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D4-02_stmt",
+        "name": "statement",
+        "prose": "Threats and vulnerabilities (including negligence and internal impropriety) against the protected assets are identified and their business impact understood"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D4-03",
+      "title": "A risk response plan based on risk assessment results has been developed",
+      "props": [
+       {
+        "name": "label",
+        "value": "D4-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D4-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D4-03_stmt",
+        "name": "statement",
+        "prose": "A risk response plan based on risk assessment results has been developed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D5-01",
+      "title": "Asset, configuration and patch management of critical systems are performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "D5-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D5-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D5-01_stmt",
+        "name": "statement",
+        "prose": "Asset, configuration and patch management of critical systems are performed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D5-02",
+      "title": "Measures prevent the use of shadow IT within the organisation",
+      "props": [
+       {
+        "name": "label",
+        "value": "D5-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D5-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D5-02_stmt",
+        "name": "statement",
+        "prose": "Measures prevent the use of shadow IT within the organisation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D5-03",
+      "title": "Risk assessment is performed at system design and the necessary security features are implemented at development (security by design)",
+      "props": [
+       {
+        "name": "label",
+        "value": "D5-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D5-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D5-03_stmt",
+        "name": "statement",
+        "prose": "Risk assessment is performed at system design and the necessary security features are implemented at development (security by design)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D5-04",
+      "title": "Multiple technical measures are implemented for terminals and servers that perform critical tasks",
+      "props": [
+       {
+        "name": "label",
+        "value": "D5-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D5-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D5-04_stmt",
+        "name": "statement",
+        "prose": "Multiple technical measures are implemented for terminals and servers that perform critical tasks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D5-05",
+      "title": "Multiple technical measures are in place for networks that perform critical tasks",
+      "props": [
+       {
+        "name": "label",
+        "value": "D5-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D5-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D5-05_stmt",
+        "name": "statement",
+        "prose": "Multiple technical measures are in place for networks that perform critical tasks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D5-06",
+      "title": "Vulnerability countermeasures are planned and implemented: regular vulnerability checks, continuous patching and other mitigation",
+      "props": [
+       {
+        "name": "label",
+        "value": "D5-06"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D5-06"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D5-06_stmt",
+        "name": "statement",
+        "prose": "Vulnerability countermeasures are planned and implemented: regular vulnerability checks, continuous patching and other mitigation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D5-07",
+      "title": "Logs from terminals and networks are collected and analysed",
+      "props": [
+       {
+        "name": "label",
+        "value": "D5-07"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D5-07"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D5-07_stmt",
+        "name": "statement",
+        "prose": "Logs from terminals and networks are collected and analysed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D5-08",
+      "title": "Incident response mechanisms such as blocking communications when a cyberattack is detected are introduced",
+      "props": [
+       {
+        "name": "label",
+        "value": "D5-08"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D5-08"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D5-08_stmt",
+        "name": "statement",
+        "prose": "Incident response mechanisms such as blocking communications when a cyberattack is detected are introduced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D5-09",
+      "title": "Incident management mechanisms are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "D5-09"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D5-09"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D5-09_stmt",
+        "name": "statement",
+        "prose": "Incident management mechanisms are in place"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D5-10",
+      "title": "Cybersecurity education and exercises are conducted for employees",
+      "props": [
+       {
+        "name": "label",
+        "value": "D5-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D5-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D5-10_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity education and exercises are conducted for employees"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D6-01",
+      "title": "KPIs for cybersecurity operations management are defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "D6-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D6-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D6-01_stmt",
+        "name": "statement",
+        "prose": "KPIs for cybersecurity operations management are defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D6-02",
+      "title": "Management regularly receives reports on the implementation status of cybersecurity measures, discusses them and gives directions",
+      "props": [
+       {
+        "name": "label",
+        "value": "D6-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D6-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D6-02_stmt",
+        "name": "statement",
+        "prose": "Management regularly receives reports on the implementation status of cybersecurity measures, discusses them and gives directions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D6-03",
+      "title": "Cybersecurity audits are conducted and measures are reviewed in a timely manner based on the results",
+      "props": [
+       {
+        "name": "label",
+        "value": "D6-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D6-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D6-03_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity audits are conducted and measures are reviewed in a timely manner based on the results"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D6-04",
+      "title": "There is communication with stakeholders about the state of action against cybersecurity risks",
+      "props": [
+       {
+        "name": "label",
+        "value": "D6-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D6-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D6-04_stmt",
+        "name": "statement",
+        "prose": "There is communication with stakeholders about the state of action against cybersecurity risks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D7-01",
+      "title": "An incident response plan that considers the entire supply chain is developed",
+      "props": [
+       {
+        "name": "label",
+        "value": "D7-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D7-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D7-01_stmt",
+        "name": "statement",
+        "prose": "An incident response plan that considers the entire supply chain is developed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D7-02",
+      "title": "A dedicated incident response team (CSIRT etc.) is established and maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "D7-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D7-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D7-02_stmt",
+        "name": "statement",
+        "prose": "A dedicated incident response team (CSIRT etc.) is established and maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D7-03",
+      "title": "The content and timing of what is shared, reported or published outside the organisation during an incident are specified",
+      "props": [
+       {
+        "name": "label",
+        "value": "D7-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D7-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D7-03_stmt",
+        "name": "statement",
+        "prose": "The content and timing of what is shared, reported or published outside the organisation during an incident are specified"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D7-04",
+      "title": "Emergency response exercises for incidents are conducted regularly",
+      "props": [
+       {
+        "name": "label",
+        "value": "D7-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D7-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D7-04_stmt",
+        "name": "statement",
+        "prose": "Emergency response exercises for incidents are conducted regularly"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D7-05",
+      "title": "An implementation plan enables rapid log analysis and investigation at incident time to identify the scope of impact",
+      "props": [
+       {
+        "name": "label",
+        "value": "D7-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D7-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D7-05_stmt",
+        "name": "statement",
+        "prose": "An implementation plan enables rapid log analysis and investigation at incident time to identify the scope of impact"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D8-01",
+      "title": "A business recovery plan considering the entire supply chain in the event of damage is developed",
+      "props": [
+       {
+        "name": "label",
+        "value": "D8-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D8-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D8-01_stmt",
+        "name": "statement",
+        "prose": "A business recovery plan considering the entire supply chain in the event of damage is developed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D8-02",
+      "title": "Recovery exercises are conducted regularly",
+      "props": [
+       {
+        "name": "label",
+        "value": "D8-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D8-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D8-02_stmt",
+        "name": "statement",
+        "prose": "Recovery exercises are conducted regularly"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D9-01",
+      "title": "The state of cybersecurity countermeasures in transactions and collaborations with group companies is understood",
+      "props": [
+       {
+        "name": "label",
+        "value": "D9-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D9-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D9-01_stmt",
+        "name": "statement",
+        "prose": "The state of cybersecurity countermeasures in transactions and collaborations with group companies is understood"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D9-02",
+      "title": "Appropriate measures are confirmed against the roles and responsibilities for cybersecurity risk agreed in contracts with business partners and contractors",
+      "props": [
+       {
+        "name": "label",
+        "value": "D9-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D9-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D9-02_stmt",
+        "name": "statement",
+        "prose": "Appropriate measures are confirmed against the roles and responsibilities for cybersecurity risk agreed in contracts with business partners and contractors"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-D9-03",
+      "title": "Cybersecurity risk is confirmed not to exceed acceptable levels across the supply chain affecting the company's business",
+      "props": [
+       {
+        "name": "label",
+        "value": "D9-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "D9-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-D9-03_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity risk is confirmed not to exceed acceptable levels across the supply chain affecting the company's business"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-P1-01",
+      "title": "Management positions cybersecurity risk as a key risk in business decisions and recognises the need for security investment to ensure business continuity",
+      "props": [
+       {
+        "name": "label",
+        "value": "P1-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P1-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-P1-01_stmt",
+        "name": "statement",
+        "prose": "Management positions cybersecurity risk as a key risk in business decisions and recognises the need for security investment to ensure business continuity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-P1-02",
+      "title": "Management recognises its responsibility to reduce risks to acceptable levels through cybersecurity measures",
+      "props": [
+       {
+        "name": "label",
+        "value": "P1-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P1-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-P1-02_stmt",
+        "name": "statement",
+        "prose": "Management recognises its responsibility to reduce risks to acceptable levels through cybersecurity measures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-P1-03",
+      "title": "Management regularly checks that its cybersecurity instructions are implemented and urges action when they are not",
+      "props": [
+       {
+        "name": "label",
+        "value": "P1-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P1-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-P1-03_stmt",
+        "name": "statement",
+        "prose": "Management regularly checks that its cybersecurity instructions are implemented and urges action when they are not"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-P2-01",
+      "title": "Management recognises that diverse supply-chain connections, not only order-receiving relationships, can significantly affect the company's and society's cybersecurity",
+      "props": [
+       {
+        "name": "label",
+        "value": "P2-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P2-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-P2-01_stmt",
+        "name": "statement",
+        "prose": "Management recognises that diverse supply-chain connections, not only order-receiving relationships, can significantly affect the company's and society's cybersecurity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-P2-02",
+      "title": "Management confirms that the scope for identifying cybersecurity risk factors includes group companies and outsourced contractors",
+      "props": [
+       {
+        "name": "label",
+        "value": "P2-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P2-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-P2-02_stmt",
+        "name": "statement",
+        "prose": "Management confirms that the scope for identifying cybersecurity risk factors includes group companies and outsourced contractors"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-P2-03",
+      "title": "Management confirms the implementation state of comprehensive security measures across the supply chain, understanding any company can become a perpetrator",
+      "props": [
+       {
+        "name": "label",
+        "value": "P2-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P2-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-P2-03_stmt",
+        "name": "statement",
+        "prose": "Management confirms the implementation state of comprehensive security measures across the supply chain, understanding any company can become a perpetrator"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-P3-01",
+      "title": "Management is prepared to respond appropriately to an incident and practises communication on cybersecurity risks with relevant parties in normal times",
+      "props": [
+       {
+        "name": "label",
+        "value": "P3-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P3-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-P3-01_stmt",
+        "name": "statement",
+        "prose": "Management is prepared to respond appropriately to an incident and practises communication on cybersecurity risks with relevant parties in normal times"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-P3-02",
+      "title": "Management knows who is responsible for cybersecurity incidents within the company and is prepared to communicate appropriately in an emergency",
+      "props": [
+       {
+        "name": "label",
+        "value": "P3-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P3-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-P3-02_stmt",
+        "name": "statement",
+        "prose": "Management knows who is responsible for cybersecurity incidents within the company and is prepared to communicate appropriately in an emergency"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-P3-03",
+      "title": "Management understands what information must be disseminated to keep external stakeholders' trust when incidents occur at the company or its contractors",
+      "props": [
+       {
+        "name": "label",
+        "value": "P3-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P3-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-P3-03_stmt",
+        "name": "statement",
+        "prose": "Management understands what information must be disseminated to keep external stakeholders' trust when incidents occur at the company or its contractors"
        }
       ],
       "class": "compliance"
@@ -1759,7 +1759,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "d4317052-e382-5392-bffc-84b9a53a1fa7",
+     "uuid": "bff8203f-a990-52c0-a25c-40ad66c8d600",
      "title": "METI Cybersecurity Management Guidelines Ver. 3.0 (Japan) — Appendix A check sheets",
      "props": [
       {
@@ -1770,7 +1770,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/meti_csm/meti_csm_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/meti_csm/meti_csm_main.rego",
        "media-type": "text/plain"
       }
      ]

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "2c0aa0b7-d667-5ee3-838c-dcb7c8dcf15a",
+  "uuid": "d99712d4-2008-5a89-bb7e-ad113bf8be42",
   "metadata": {
    "title": "Rego Policy Libraries — fedramp_20x (FedRAMP 20x — Key Security Indicators (KSI))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "fedramp_20x-FedRAMP-20x-Input-Contract",
-      "title": "unrecognized target_class %v — must be \\\"b\\\" or \\\"c\\\" (evaluated at Class C; Class D/High is not available in 20x yet)",
+      "title": "unrecognized target_class %v — must be \"b\" or \"c\" (evaluated at Class C; Class D/High is not available in 20x yet)",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -93,12 +93,12 @@
        {
         "id": "fedramp_20x-FedRAMP-20x-Input-Contract_stmt",
         "name": "statement",
-        "prose": "unrecognized target_class %v — must be \\\"b\\\" or \\\"c\\\" (evaluated at Class C; Class D/High is not available in 20x yet)"
+        "prose": "unrecognized target_class %v — must be \"b\" or \"c\" (evaluated at Class C; Class D/High is not available in 20x yet)"
        },
        {
         "id": "fedramp_20x-FedRAMP-20x-Input-Contract_obj.1",
         "name": "assessment-objective",
-        "prose": "ksis must be an object of {\\\"<KSI id>\\\": true} attestations"
+        "prose": "ksis must be an object of {\"<KSI id>\": true} attestations"
        },
        {
         "id": "fedramp_20x-FedRAMP-20x-Input-Contract_obj.2",
@@ -128,7 +128,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -143,7 +143,7 @@
      },
      {
       "id": "fedramp_20x-KSI-CED-RAT",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The effectiveness of relevant cybersecurity education and training is persistently reviewed, including at least general training for all employees, role-specific training for employees in high risk ro",
       "props": [
        {
         "name": "label",
@@ -161,7 +161,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -169,788 +169,14 @@
        {
         "id": "fedramp_20x-KSI-CED-RAT_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "fedramp_20x-family",
-      "title": "Cloud Native Architecture",
-      "props": [
-       {
-        "name": "label",
-        "value": "family"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "family"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "fedramp_20x.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "fedramp_20x-family_stmt",
-        "name": "statement",
-        "prose": "Cloud Native Architecture"
-       },
-       {
-        "id": "fedramp_20x-family_obj.1",
-        "name": "assessment-objective",
-        "prose": "Cloud Native Architecture"
-       },
-       {
-        "id": "fedramp_20x-family_obj.2",
-        "name": "assessment-objective",
-        "prose": "Cloud Native Architecture"
-       },
-       {
-        "id": "fedramp_20x-family_obj.3",
-        "name": "assessment-objective",
-        "prose": "Cloud Native Architecture"
-       },
-       {
-        "id": "fedramp_20x-family_obj.4",
-        "name": "assessment-objective",
-        "prose": "Cloud Native Architecture"
-       },
-       {
-        "id": "fedramp_20x-family_obj.5",
-        "name": "assessment-objective",
-        "prose": "Cloud Native Architecture"
-       },
-       {
-        "id": "fedramp_20x-family_obj.6",
-        "name": "assessment-objective",
-        "prose": "Cloud Native Architecture"
-       },
-       {
-        "id": "fedramp_20x-family_obj.7",
-        "name": "assessment-objective",
-        "prose": "Cloud Native Architecture"
-       },
-       {
-        "id": "fedramp_20x-family_obj.8",
-        "name": "assessment-objective",
-        "prose": "Identity and Access Management"
-       },
-       {
-        "id": "fedramp_20x-family_obj.9",
-        "name": "assessment-objective",
-        "prose": "Identity and Access Management"
-       },
-       {
-        "id": "fedramp_20x-family_obj.10",
-        "name": "assessment-objective",
-        "prose": "Identity and Access Management"
-       },
-       {
-        "id": "fedramp_20x-family_obj.11",
-        "name": "assessment-objective",
-        "prose": "Identity and Access Management"
-       },
-       {
-        "id": "fedramp_20x-family_obj.12",
-        "name": "assessment-objective",
-        "prose": "Identity and Access Management"
-       },
-       {
-        "id": "fedramp_20x-family_obj.13",
-        "name": "assessment-objective",
-        "prose": "Identity and Access Management"
-       },
-       {
-        "id": "fedramp_20x-family_obj.14",
-        "name": "assessment-objective",
-        "prose": "Monitoring, Logging, and Auditing"
-       },
-       {
-        "id": "fedramp_20x-family_obj.15",
-        "name": "assessment-objective",
-        "prose": "Monitoring, Logging, and Auditing"
-       },
-       {
-        "id": "fedramp_20x-family_obj.16",
-        "name": "assessment-objective",
-        "prose": "Monitoring, Logging, and Auditing"
-       },
-       {
-        "id": "fedramp_20x-family_obj.17",
-        "name": "assessment-objective",
-        "prose": "Monitoring, Logging, and Auditing"
-       },
-       {
-        "id": "fedramp_20x-family_obj.18",
-        "name": "assessment-objective",
-        "prose": "Monitoring, Logging, and Auditing"
-       },
-       {
-        "id": "fedramp_20x-family_obj.19",
-        "name": "assessment-objective",
-        "prose": "Cybersecurity Education"
-       },
-       {
-        "id": "fedramp_20x-family_obj.20",
-        "name": "assessment-objective",
-        "prose": "Change Management"
-       },
-       {
-        "id": "fedramp_20x-family_obj.21",
-        "name": "assessment-objective",
-        "prose": "Change Management"
-       },
-       {
-        "id": "fedramp_20x-family_obj.22",
-        "name": "assessment-objective",
-        "prose": "Change Management"
-       },
-       {
-        "id": "fedramp_20x-family_obj.23",
-        "name": "assessment-objective",
-        "prose": "Change Management"
-       },
-       {
-        "id": "fedramp_20x-family_obj.24",
-        "name": "assessment-objective",
-        "prose": "Incident Response"
-       },
-       {
-        "id": "fedramp_20x-family_obj.25",
-        "name": "assessment-objective",
-        "prose": "Incident Response"
-       },
-       {
-        "id": "fedramp_20x-family_obj.26",
-        "name": "assessment-objective",
-        "prose": "Incident Response"
-       },
-       {
-        "id": "fedramp_20x-family_obj.27",
-        "name": "assessment-objective",
-        "prose": "Policy and Inventory"
-       },
-       {
-        "id": "fedramp_20x-family_obj.28",
-        "name": "assessment-objective",
-        "prose": "Policy and Inventory"
-       },
-       {
-        "id": "fedramp_20x-family_obj.29",
-        "name": "assessment-objective",
-        "prose": "Policy and Inventory"
-       },
-       {
-        "id": "fedramp_20x-family_obj.30",
-        "name": "assessment-objective",
-        "prose": "Policy and Inventory"
-       },
-       {
-        "id": "fedramp_20x-family_obj.31",
-        "name": "assessment-objective",
-        "prose": "Policy and Inventory"
-       },
-       {
-        "id": "fedramp_20x-family_obj.32",
-        "name": "assessment-objective",
-        "prose": "Recovery Planning"
-       },
-       {
-        "id": "fedramp_20x-family_obj.33",
-        "name": "assessment-objective",
-        "prose": "Recovery Planning"
-       },
-       {
-        "id": "fedramp_20x-family_obj.34",
-        "name": "assessment-objective",
-        "prose": "Recovery Planning"
-       },
-       {
-        "id": "fedramp_20x-family_obj.35",
-        "name": "assessment-objective",
-        "prose": "Recovery Planning"
-       },
-       {
-        "id": "fedramp_20x-family_obj.36",
-        "name": "assessment-objective",
-        "prose": "Supply Chain Risk"
-       },
-       {
-        "id": "fedramp_20x-family_obj.37",
-        "name": "assessment-objective",
-        "prose": "Supply Chain Risk"
-       },
-       {
-        "id": "fedramp_20x-family_obj.38",
-        "name": "assessment-objective",
-        "prose": "Service Configuration"
-       },
-       {
-        "id": "fedramp_20x-family_obj.39",
-        "name": "assessment-objective",
-        "prose": "Service Configuration"
-       },
-       {
-        "id": "fedramp_20x-family_obj.40",
-        "name": "assessment-objective",
-        "prose": "Service Configuration"
-       },
-       {
-        "id": "fedramp_20x-family_obj.41",
-        "name": "assessment-objective",
-        "prose": "Service Configuration"
-       },
-       {
-        "id": "fedramp_20x-family_obj.42",
-        "name": "assessment-objective",
-        "prose": "Service Configuration"
-       },
-       {
-        "id": "fedramp_20x-family_obj.43",
-        "name": "assessment-objective",
-        "prose": "Service Configuration"
-       },
-       {
-        "id": "fedramp_20x-family_obj.44",
-        "name": "assessment-objective",
-        "prose": "Service Configuration"
-       },
-       {
-        "id": "fedramp_20x-family_obj.45",
-        "name": "assessment-objective",
-        "prose": "Service Configuration"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "fedramp_20x-name",
-      "title": "Reviewing Change Procedures",
-      "props": [
-       {
-        "name": "label",
-        "value": "name"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "name"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "fedramp_20x.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "fedramp_20x-name_stmt",
-        "name": "statement",
-        "prose": "Reviewing Change Procedures"
-       },
-       {
-        "id": "fedramp_20x-name_obj.1",
-        "name": "assessment-objective",
-        "prose": "Validating Throughout Deployment"
-       },
-       {
-        "id": "fedramp_20x-name_obj.2",
-        "name": "assessment-objective",
-        "prose": "Defining Functionality and Privileges"
-       },
-       {
-        "id": "fedramp_20x-name_obj.3",
-        "name": "assessment-objective",
-        "prose": "Implementing Best Practices"
-       },
-       {
-        "id": "fedramp_20x-name_obj.4",
-        "name": "assessment-objective",
-        "prose": "Minimizing Attack Surface"
-       },
-       {
-        "id": "fedramp_20x-name_obj.5",
-        "name": "assessment-objective",
-        "prose": "Optimizing for Availability"
-       },
-       {
-        "id": "fedramp_20x-name_obj.6",
-        "name": "assessment-objective",
-        "prose": "Restricting Network Traffic"
-       },
-       {
-        "id": "fedramp_20x-name_obj.7",
-        "name": "assessment-objective",
-        "prose": "Automating Account Management"
-       },
-       {
-        "id": "fedramp_20x-name_obj.8",
-        "name": "assessment-objective",
-        "prose": "Adopting Passwordless Methods"
-       },
-       {
-        "id": "fedramp_20x-name_obj.9",
-        "name": "assessment-objective",
-        "prose": "Securing Non-User Authentication"
-       },
-       {
-        "id": "fedramp_20x-name_obj.10",
-        "name": "assessment-objective",
-        "prose": "Responding to Suspicious Activity"
-       },
-       {
-        "id": "fedramp_20x-name_obj.11",
-        "name": "assessment-objective",
-        "prose": "Generating After Action Reports"
-       },
-       {
-        "id": "fedramp_20x-name_obj.12",
-        "name": "assessment-objective",
-        "prose": "Reviewing Incident Response Procedures"
-       },
-       {
-        "id": "fedramp_20x-name_obj.13",
-        "name": "assessment-objective",
-        "prose": "Evaluating Configurations"
-       },
-       {
-        "id": "fedramp_20x-name_obj.14",
-        "name": "assessment-objective",
-        "prose": "Operating SIEM Capability"
-       },
-       {
-        "id": "fedramp_20x-name_obj.15",
-        "name": "assessment-objective",
-        "prose": "Reviewing Executive Support"
-       },
-       {
-        "id": "fedramp_20x-name_obj.16",
-        "name": "assessment-objective",
-        "prose": "Reviewing Investments in Security"
-       },
-       {
-        "id": "fedramp_20x-name_obj.17",
-        "name": "assessment-objective",
-        "prose": "Reviewing Security in the SDLC"
-       },
-       {
-        "id": "fedramp_20x-name_obj.18",
-        "name": "assessment-objective",
-        "prose": "Reviewing Vulnerability Disclosures"
-       },
-       {
-        "id": "fedramp_20x-name_obj.19",
-        "name": "assessment-objective",
-        "prose": "Aligning Backups with Objectives"
-       },
-       {
-        "id": "fedramp_20x-name_obj.20",
-        "name": "assessment-objective",
-        "prose": "Reviewing Recovery Objectives"
-       },
-       {
-        "id": "fedramp_20x-name_obj.21",
-        "name": "assessment-objective",
-        "prose": "Testing Recovery Capabilities"
-       },
-       {
-        "id": "fedramp_20x-name_obj.22",
-        "name": "assessment-objective",
-        "prose": "Mitigating Supply Chain Risk"
-       },
-       {
-        "id": "fedramp_20x-name_obj.23",
-        "name": "assessment-objective",
-        "prose": "Monitoring Supply Chain Risk"
-       },
-       {
-        "id": "fedramp_20x-name_obj.24",
-        "name": "assessment-objective",
-        "prose": "Automating Configuration Management"
-       },
-       {
-        "id": "fedramp_20x-name_obj.25",
-        "name": "assessment-objective",
-        "prose": "Automating Secret Management"
-       },
-       {
-        "id": "fedramp_20x-name_obj.26",
-        "name": "assessment-objective",
-        "prose": "Evaluating and Improving Security"
-       },
-       {
-        "id": "fedramp_20x-name_obj.27",
-        "name": "assessment-objective",
-        "prose": "Validating Communications"
-       },
-       {
-        "id": "fedramp_20x-name_obj.28",
-        "name": "assessment-objective",
-        "prose": "Validating Resource Integrity"
-       },
-       {
-        "id": "fedramp_20x-name_obj.29",
-        "name": "assessment-objective",
-        "prose": "Reviewing All Training"
-       },
-       {
-        "id": "fedramp_20x-name_obj.30",
-        "name": "assessment-objective",
-        "prose": "Logging Changes"
-       },
-       {
-        "id": "fedramp_20x-name_obj.31",
-        "name": "assessment-objective",
-        "prose": "Redeploying vs Modifying"
-       },
-       {
-        "id": "fedramp_20x-name_obj.32",
-        "name": "assessment-objective",
-        "prose": "Enforcing Intended State"
-       },
-       {
-        "id": "fedramp_20x-name_obj.33",
-        "name": "assessment-objective",
-        "prose": "Reviewing Protections"
-       },
-       {
-        "id": "fedramp_20x-name_obj.34",
-        "name": "assessment-objective",
-        "prose": "Using Logical Networking"
-       },
-       {
-        "id": "fedramp_20x-name_obj.35",
-        "name": "assessment-objective",
-        "prose": "Ensuring Least Privilege"
-       },
-       {
-        "id": "fedramp_20x-name_obj.36",
-        "name": "assessment-objective",
-        "prose": "Authorizing Just-in-Time"
-       },
-       {
-        "id": "fedramp_20x-name_obj.37",
-        "name": "assessment-objective",
-        "prose": "Reviewing Past Incidents"
-       },
-       {
-        "id": "fedramp_20x-name_obj.38",
-        "name": "assessment-objective",
-        "prose": "Authorizing Log Access"
-       },
-       {
-        "id": "fedramp_20x-name_obj.39",
-        "name": "assessment-objective",
-        "prose": "Logging Event Types"
-       },
-       {
-        "id": "fedramp_20x-name_obj.40",
-        "name": "assessment-objective",
-        "prose": "Reviewing Logs"
-       },
-       {
-        "id": "fedramp_20x-name_obj.41",
-        "name": "assessment-objective",
-        "prose": "Generating Inventories"
-       },
-       {
-        "id": "fedramp_20x-name_obj.42",
-        "name": "assessment-objective",
-        "prose": "Aligning Recovery Plan"
-       },
-       {
-        "id": "fedramp_20x-name_obj.43",
-        "name": "assessment-objective",
-        "prose": "Preventing Residual Risk"
-       },
-       {
-        "id": "fedramp_20x-name_obj.44",
-        "name": "assessment-objective",
-        "prose": "Removing Unwanted Data"
-       },
-       {
-        "id": "fedramp_20x-name_obj.45",
-        "name": "assessment-objective",
-        "prose": "Securing Information"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "fedramp_20x-req",
-      "title": "The effectiveness of relevant cybersecurity education and training is persistently reviewed, including at least general training for all employees, role-specific training for employees in high risk ro",
-      "props": [
-       {
-        "name": "label",
-        "value": "req"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "req"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "fedramp_20x.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "fedramp_20x-req_stmt",
-        "name": "statement",
         "prose": "The effectiveness of relevant cybersecurity education and training is persistently reviewed, including at least general training for all employees, role-specific training for employees in high risk roles, training for development and engineering staff on secure software delivery, and training for staff involved with incident response or disaster recovery."
-       },
-       {
-        "id": "fedramp_20x-req_obj.1",
-        "name": "assessment-objective",
-        "prose": "Modifications to the cloud service offering are logged and monitored."
-       },
-       {
-        "id": "fedramp_20x-req_obj.2",
-        "name": "assessment-objective",
-        "prose": "Changes to machine-based information resources are executed through the redeployment of version controlled resources rather than direct modification wherever reasonable."
-       },
-       {
-        "id": "fedramp_20x-req_obj.3",
-        "name": "assessment-objective",
-        "prose": "The effectiveness of documented change management procedures is persistently reviewed."
-       },
-       {
-        "id": "fedramp_20x-req_obj.4",
-        "name": "assessment-objective",
-        "prose": "Persistent testing and validation of changes throughout deployment is automated."
-       },
-       {
-        "id": "fedramp_20x-req_obj.5",
-        "name": "assessment-objective",
-        "prose": "The functionality and privileges for infrastructure and services are strictly defined."
-       },
-       {
-        "id": "fedramp_20x-req_obj.6",
-        "name": "assessment-objective",
-        "prose": "Automated services are used to persistently assess the security of all machine-based information resources and automatically enforce their intended operational state."
-       },
-       {
-        "id": "fedramp_20x-req_obj.7",
-        "name": "assessment-objective",
-        "prose": "The use and configuration of third-party machine-based information resources is persistently compared against the original provider's best practices and guidance."
-       },
-       {
-        "id": "fedramp_20x-req_obj.8",
-        "name": "assessment-objective",
-        "prose": "Machine-based information resources are persistently reviewed to ensure they have a minimal attack surface and that lateral movement is minimized if compromised."
-       },
-       {
-        "id": "fedramp_20x-req_obj.9",
-        "name": "assessment-objective",
-        "prose": "Machine-based information resources are persistently reviewed to ensure they are appropriately optimized for high availability and rapid recovery."
-       },
-       {
-        "id": "fedramp_20x-req_obj.10",
-        "name": "assessment-objective",
-        "prose": "Machine-based information resources are persistently reviewed to ensure they are appropriately configured to limit inbound and outbound network traffic."
-       },
-       {
-        "id": "fedramp_20x-req_obj.11",
-        "name": "assessment-objective",
-        "prose": "The effectiveness of protection against denial of service attacks and other unwanted activity for machine-based information resources is persistently reviewed."
-       },
-       {
-        "id": "fedramp_20x-req_obj.12",
-        "name": "assessment-objective",
-        "prose": "Logical networking and related capabilities are used and persistently reviewed to enforce traffic flow controls."
-       },
-       {
-        "id": "fedramp_20x-req_obj.13",
-        "name": "assessment-objective",
-        "prose": "The lifecycle and privileges of all accounts, roles, and groups are securely managed using automation."
-       },
-       {
-        "id": "fedramp_20x-req_obj.14",
-        "name": "assessment-objective",
-        "prose": "Secure passwordless methods are used for user authentication and authorization when feasible, otherwise strong passwords with phishing-resistant MFA is used."
-       },
-       {
-        "id": "fedramp_20x-req_obj.15",
-        "name": "assessment-objective",
-        "prose": "Identity and access management measures are used and persistently reviewed to ensure each user or device can only access the resources they need."
-       },
-       {
-        "id": "fedramp_20x-req_obj.16",
-        "name": "assessment-objective",
-        "prose": "A least-privileged, role and attribute-based, and just-in-time security authorization model is used and persistently reviewed for all user and non-user accounts and services."
-       },
-       {
-        "id": "fedramp_20x-req_obj.17",
-        "name": "assessment-objective",
-        "prose": "Appropriately secure authentication methods are used and persistently reviewed for non-user accounts and services."
-       },
-       {
-        "id": "fedramp_20x-req_obj.18",
-        "name": "assessment-objective",
-        "prose": "Accounts with privileged access are disabled or otherwise secured in response to suspicious activity."
-       },
-       {
-        "id": "fedramp_20x-req_obj.19",
-        "name": "assessment-objective",
-        "prose": "Incident after action reports are generated and lessons learned are persistently incorporated."
-       },
-       {
-        "id": "fedramp_20x-req_obj.20",
-        "name": "assessment-objective",
-        "prose": "The effectiveness of documented incident response procedures is persistently reviewed."
-       },
-       {
-        "id": "fedramp_20x-req_obj.21",
-        "name": "assessment-objective",
-        "prose": "Past incidents are persistently reviewed for patterns or vulnerabilities that were not previously apparent or identified."
-       },
-       {
-        "id": "fedramp_20x-req_obj.22",
-        "name": "assessment-objective",
-        "prose": "A least-privileged, role and attribute-based, and just-in-time access authorization model is used and persistently reviewed for access to log data based on organizationally defined data sensitivity."
-       },
-       {
-        "id": "fedramp_20x-req_obj.23",
-        "name": "assessment-objective",
-        "prose": "The configuration of machine-based information resources, especially infrastructure as code, is persistently evaluated and tested."
-       },
-       {
-        "id": "fedramp_20x-req_obj.24",
-        "name": "assessment-objective",
-        "prose": "A list of information resources and event types that will be logged, monitored, and audited is maintained and persistently reviewed to ensure these activities occur."
-       },
-       {
-        "id": "fedramp_20x-req_obj.25",
-        "name": "assessment-objective",
-        "prose": "A Security Information and Event Management (SIEM) or similar system(s) is used and persistently reviewed for centralized, tamper-resistant logging of events, activities, and changes."
-       },
-       {
-        "id": "fedramp_20x-req_obj.26",
-        "name": "assessment-objective",
-        "prose": "Logs are persistently reviewed and audited."
-       },
-       {
-        "id": "fedramp_20x-req_obj.27",
-        "name": "assessment-objective",
-        "prose": "Authoritative sources are used to automatically generate real-time inventories of all information resources when needed."
-       },
-       {
-        "id": "fedramp_20x-req_obj.28",
-        "name": "assessment-objective",
-        "prose": "Executive support for achieving the provider's security goals is persistently reviewed and demonstrated."
-       },
-       {
-        "id": "fedramp_20x-req_obj.29",
-        "name": "assessment-objective",
-        "prose": "The effectiveness of the provider's investments in achieving security goals is persistently reviewed."
-       },
-       {
-        "id": "fedramp_20x-req_obj.30",
-        "name": "assessment-objective",
-        "prose": "The effectiveness of building security and privacy considerations into the Software Development Lifecycle and aligning with CISA Secure By Design principles is persistently reviewed."
-       },
-       {
-        "id": "fedramp_20x-req_obj.31",
-        "name": "assessment-objective",
-        "prose": "The effectiveness of the provider's vulnerability disclosure program is persistently reviewed."
-       },
-       {
-        "id": "fedramp_20x-req_obj.32",
-        "name": "assessment-objective",
-        "prose": "The alignment of machine-based information resource backups with defined recovery objectives is persistently reviewed."
-       },
-       {
-        "id": "fedramp_20x-req_obj.33",
-        "name": "assessment-objective",
-        "prose": "The alignment of recovery plans with defined recovery objectives is persistently reviewed."
-       },
-       {
-        "id": "fedramp_20x-req_obj.34",
-        "name": "assessment-objective",
-        "prose": "The desired Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO) are defined and persistently reviewed for alignment with the provider's business needs and capabilities."
-       },
-       {
-        "id": "fedramp_20x-req_obj.35",
-        "name": "assessment-objective",
-        "prose": "The capability to recover from incidents and contingencies aligned with defined recovery objectives is persistently tested."
-       },
-       {
-        "id": "fedramp_20x-req_obj.36",
-        "name": "assessment-objective",
-        "prose": "Persistently identify, review, and mitigate potential supply chain risks."
-       },
-       {
-        "id": "fedramp_20x-req_obj.37",
-        "name": "assessment-objective",
-        "prose": "Third party software information resources are automatically monitored for upstream vulnerabilities using mechanisms that may include contractual notification requirements or active monitoring services."
-       },
-       {
-        "id": "fedramp_20x-req_obj.38",
-        "name": "assessment-objective",
-        "prose": "The configuration of machine-based information resources is managed using automation and persistently reviewed for drift."
-       },
-       {
-        "id": "fedramp_20x-req_obj.39",
-        "name": "assessment-objective",
-        "prose": "Management, protection, and regular rotation of digital keys, certificates, and other secrets is automated and persistently reviewed."
-       },
-       {
-        "id": "fedramp_20x-req_obj.40",
-        "name": "assessment-objective",
-        "prose": "Information resources are persistently evaluated for opportunities to improve security and those improvements are persistently made."
-       },
-       {
-        "id": "fedramp_20x-req_obj.41",
-        "name": "assessment-objective",
-        "prose": "Plans, procedures, and the state of information resources are persistently reviewed after making changes to limit and remove unwanted residual elements that would likely negatively affect the confidentiality, integrity, or availability of federal customer data."
-       },
-       {
-        "id": "fedramp_20x-req_obj.42",
-        "name": "assessment-objective",
-        "prose": "Unwanted federal customer data is removed promptly when requested by an agency in alignment with customer agreements, including from backups if appropriate; this typically applies when a customer spills information or when a customer seeks to remove information from a service due to a change in usage."
-       },
-       {
-        "id": "fedramp_20x-req_obj.43",
-        "name": "assessment-objective",
-        "prose": "Information is encrypted or otherwise secured from unwanted access or modification."
-       },
-       {
-        "id": "fedramp_20x-req_obj.44",
-        "name": "assessment-objective",
-        "prose": "The authenticity and integrity of communications between machine-based information resources is persistently validated using automation."
-       },
-       {
-        "id": "fedramp_20x-req_obj.45",
-        "name": "assessment-objective",
-        "prose": "Use cryptographic methods to validate the integrity of machine-based information resources."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CMT-LMC",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Modifications to the cloud service offering are logged and monitored.",
       "props": [
        {
         "name": "label",
@@ -968,7 +194,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -976,14 +202,14 @@
        {
         "id": "fedramp_20x-KSI-CMT-LMC_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Modifications to the cloud service offering are logged and monitored."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CMT-RMV",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Changes to machine-based information resources are executed through the redeployment of version controlled resources rather than direct modification wherever reasonable.",
       "props": [
        {
         "name": "label",
@@ -1001,7 +227,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1009,14 +235,14 @@
        {
         "id": "fedramp_20x-KSI-CMT-RMV_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Changes to machine-based information resources are executed through the redeployment of version controlled resources rather than direct modification wherever reasonable."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CMT-RVP",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The effectiveness of documented change management procedures is persistently reviewed.",
       "props": [
        {
         "name": "label",
@@ -1034,7 +260,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1042,14 +268,14 @@
        {
         "id": "fedramp_20x-KSI-CMT-RVP_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The effectiveness of documented change management procedures is persistently reviewed."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CMT-VTD",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Persistent testing and validation of changes throughout deployment is automated.",
       "props": [
        {
         "name": "label",
@@ -1067,7 +293,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1075,14 +301,14 @@
        {
         "id": "fedramp_20x-KSI-CMT-VTD_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Persistent testing and validation of changes throughout deployment is automated."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CNA-DFP",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The functionality and privileges for infrastructure and services are strictly defined.",
       "props": [
        {
         "name": "label",
@@ -1100,7 +326,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1108,14 +334,14 @@
        {
         "id": "fedramp_20x-KSI-CNA-DFP_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The functionality and privileges for infrastructure and services are strictly defined."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CNA-EIS",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Automated services are used to persistently assess the security of all machine-based information resources and automatically enforce their intended operational state.",
       "props": [
        {
         "name": "label",
@@ -1133,7 +359,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1141,14 +367,14 @@
        {
         "id": "fedramp_20x-KSI-CNA-EIS_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Automated services are used to persistently assess the security of all machine-based information resources and automatically enforce their intended operational state."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CNA-IBP",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The use and configuration of third-party machine-based information resources is persistently compared against the original provider's best practices and guidance.",
       "props": [
        {
         "name": "label",
@@ -1166,7 +392,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1174,14 +400,14 @@
        {
         "id": "fedramp_20x-KSI-CNA-IBP_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The use and configuration of third-party machine-based information resources is persistently compared against the original provider's best practices and guidance."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CNA-MAT",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Machine-based information resources are persistently reviewed to ensure they have a minimal attack surface and that lateral movement is minimized if compromised.",
       "props": [
        {
         "name": "label",
@@ -1199,7 +425,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1207,14 +433,14 @@
        {
         "id": "fedramp_20x-KSI-CNA-MAT_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Machine-based information resources are persistently reviewed to ensure they have a minimal attack surface and that lateral movement is minimized if compromised."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CNA-OFA",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Machine-based information resources are persistently reviewed to ensure they are appropriately optimized for high availability and rapid recovery.",
       "props": [
        {
         "name": "label",
@@ -1232,7 +458,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1240,14 +466,14 @@
        {
         "id": "fedramp_20x-KSI-CNA-OFA_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Machine-based information resources are persistently reviewed to ensure they are appropriately optimized for high availability and rapid recovery."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CNA-RNT",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Machine-based information resources are persistently reviewed to ensure they are appropriately configured to limit inbound and outbound network traffic.",
       "props": [
        {
         "name": "label",
@@ -1265,7 +491,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1273,14 +499,14 @@
        {
         "id": "fedramp_20x-KSI-CNA-RNT_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Machine-based information resources are persistently reviewed to ensure they are appropriately configured to limit inbound and outbound network traffic."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CNA-RVP",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The effectiveness of protection against denial of service attacks and other unwanted activity for machine-based information resources is persistently reviewed.",
       "props": [
        {
         "name": "label",
@@ -1298,7 +524,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1306,14 +532,14 @@
        {
         "id": "fedramp_20x-KSI-CNA-RVP_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The effectiveness of protection against denial of service attacks and other unwanted activity for machine-based information resources is persistently reviewed."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-CNA-ULN",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Logical networking and related capabilities are used and persistently reviewed to enforce traffic flow controls.",
       "props": [
        {
         "name": "label",
@@ -1331,7 +557,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1339,14 +565,14 @@
        {
         "id": "fedramp_20x-KSI-CNA-ULN_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Logical networking and related capabilities are used and persistently reviewed to enforce traffic flow controls."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-IAM-AAM",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The lifecycle and privileges of all accounts, roles, and groups are securely managed using automation.",
       "props": [
        {
         "name": "label",
@@ -1364,7 +590,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1372,14 +598,14 @@
        {
         "id": "fedramp_20x-KSI-IAM-AAM_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The lifecycle and privileges of all accounts, roles, and groups are securely managed using automation."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-IAM-APM",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Secure passwordless methods are used for user authentication and authorization when feasible, otherwise strong passwords with phishing-resistant MFA is used.",
       "props": [
        {
         "name": "label",
@@ -1397,7 +623,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1405,14 +631,14 @@
        {
         "id": "fedramp_20x-KSI-IAM-APM_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Secure passwordless methods are used for user authentication and authorization when feasible, otherwise strong passwords with phishing-resistant MFA is used."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-IAM-ELP",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Identity and access management measures are used and persistently reviewed to ensure each user or device can only access the resources they need.",
       "props": [
        {
         "name": "label",
@@ -1430,7 +656,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1438,14 +664,14 @@
        {
         "id": "fedramp_20x-KSI-IAM-ELP_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Identity and access management measures are used and persistently reviewed to ensure each user or device can only access the resources they need."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-IAM-JIT",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "A least-privileged, role and attribute-based, and just-in-time security authorization model is used and persistently reviewed for all user and non-user accounts and services.",
       "props": [
        {
         "name": "label",
@@ -1463,7 +689,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1471,14 +697,14 @@
        {
         "id": "fedramp_20x-KSI-IAM-JIT_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "A least-privileged, role and attribute-based, and just-in-time security authorization model is used and persistently reviewed for all user and non-user accounts and services."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-IAM-SNU",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Appropriately secure authentication methods are used and persistently reviewed for non-user accounts and services.",
       "props": [
        {
         "name": "label",
@@ -1496,7 +722,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1504,14 +730,14 @@
        {
         "id": "fedramp_20x-KSI-IAM-SNU_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Appropriately secure authentication methods are used and persistently reviewed for non-user accounts and services."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-IAM-SUS",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Accounts with privileged access are disabled or otherwise secured in response to suspicious activity.",
       "props": [
        {
         "name": "label",
@@ -1529,7 +755,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1537,14 +763,14 @@
        {
         "id": "fedramp_20x-KSI-IAM-SUS_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Accounts with privileged access are disabled or otherwise secured in response to suspicious activity."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-INR-AAR",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Incident after action reports are generated and lessons learned are persistently incorporated.",
       "props": [
        {
         "name": "label",
@@ -1562,7 +788,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1570,14 +796,14 @@
        {
         "id": "fedramp_20x-KSI-INR-AAR_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Incident after action reports are generated and lessons learned are persistently incorporated."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-INR-RIR",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The effectiveness of documented incident response procedures is persistently reviewed.",
       "props": [
        {
         "name": "label",
@@ -1595,7 +821,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1603,14 +829,14 @@
        {
         "id": "fedramp_20x-KSI-INR-RIR_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The effectiveness of documented incident response procedures is persistently reviewed."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-INR-RPI",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Past incidents are persistently reviewed for patterns or vulnerabilities that were not previously apparent or identified.",
       "props": [
        {
         "name": "label",
@@ -1628,7 +854,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1636,14 +862,14 @@
        {
         "id": "fedramp_20x-KSI-INR-RPI_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Past incidents are persistently reviewed for patterns or vulnerabilities that were not previously apparent or identified."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-MLA-ALA",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "A least-privileged, role and attribute-based, and just-in-time access authorization model is used and persistently reviewed for access to log data based on organizationally defined data sensitivity.",
       "props": [
        {
         "name": "label",
@@ -1661,7 +887,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1669,14 +895,14 @@
        {
         "id": "fedramp_20x-KSI-MLA-ALA_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "A least-privileged, role and attribute-based, and just-in-time access authorization model is used and persistently reviewed for access to log data based on organizationally defined data sensitivity."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-MLA-EVC",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The configuration of machine-based information resources, especially infrastructure as code, is persistently evaluated and tested.",
       "props": [
        {
         "name": "label",
@@ -1694,7 +920,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1702,14 +928,14 @@
        {
         "id": "fedramp_20x-KSI-MLA-EVC_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The configuration of machine-based information resources, especially infrastructure as code, is persistently evaluated and tested."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-MLA-LET",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "A list of information resources and event types that will be logged, monitored, and audited is maintained and persistently reviewed to ensure these activities occur.",
       "props": [
        {
         "name": "label",
@@ -1727,7 +953,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1735,14 +961,14 @@
        {
         "id": "fedramp_20x-KSI-MLA-LET_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "A list of information resources and event types that will be logged, monitored, and audited is maintained and persistently reviewed to ensure these activities occur."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-MLA-OSM",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "A Security Information and Event Management (SIEM) or similar system(s) is used and persistently reviewed for centralized, tamper-resistant logging of events, activities, and changes.",
       "props": [
        {
         "name": "label",
@@ -1760,7 +986,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1768,14 +994,14 @@
        {
         "id": "fedramp_20x-KSI-MLA-OSM_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "A Security Information and Event Management (SIEM) or similar system(s) is used and persistently reviewed for centralized, tamper-resistant logging of events, activities, and changes."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-MLA-RVL",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Logs are persistently reviewed and audited.",
       "props": [
        {
         "name": "label",
@@ -1793,7 +1019,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1801,14 +1027,14 @@
        {
         "id": "fedramp_20x-KSI-MLA-RVL_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Logs are persistently reviewed and audited."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-PIY-GIV",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Authoritative sources are used to automatically generate real-time inventories of all information resources when needed.",
       "props": [
        {
         "name": "label",
@@ -1826,7 +1052,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1834,14 +1060,14 @@
        {
         "id": "fedramp_20x-KSI-PIY-GIV_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Authoritative sources are used to automatically generate real-time inventories of all information resources when needed."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-PIY-RES",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Executive support for achieving the provider's security goals is persistently reviewed and demonstrated.",
       "props": [
        {
         "name": "label",
@@ -1859,7 +1085,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1867,14 +1093,14 @@
        {
         "id": "fedramp_20x-KSI-PIY-RES_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Executive support for achieving the provider's security goals is persistently reviewed and demonstrated."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-PIY-RIS",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The effectiveness of the provider's investments in achieving security goals is persistently reviewed.",
       "props": [
        {
         "name": "label",
@@ -1892,7 +1118,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1900,14 +1126,14 @@
        {
         "id": "fedramp_20x-KSI-PIY-RIS_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The effectiveness of the provider's investments in achieving security goals is persistently reviewed."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-PIY-RSD",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The effectiveness of building security and privacy considerations into the Software Development Lifecycle and aligning with CISA Secure By Design principles is persistently reviewed.",
       "props": [
        {
         "name": "label",
@@ -1925,7 +1151,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1933,14 +1159,14 @@
        {
         "id": "fedramp_20x-KSI-PIY-RSD_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The effectiveness of building security and privacy considerations into the Software Development Lifecycle and aligning with CISA Secure By Design principles is persistently reviewed."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-PIY-RVD",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The effectiveness of the provider's vulnerability disclosure program is persistently reviewed.",
       "props": [
        {
         "name": "label",
@@ -1958,7 +1184,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1966,14 +1192,14 @@
        {
         "id": "fedramp_20x-KSI-PIY-RVD_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The effectiveness of the provider's vulnerability disclosure program is persistently reviewed."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-RPL-ABO",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The alignment of machine-based information resource backups with defined recovery objectives is persistently reviewed.",
       "props": [
        {
         "name": "label",
@@ -1991,7 +1217,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -1999,14 +1225,14 @@
        {
         "id": "fedramp_20x-KSI-RPL-ABO_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The alignment of machine-based information resource backups with defined recovery objectives is persistently reviewed."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-RPL-ARP",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The alignment of recovery plans with defined recovery objectives is persistently reviewed.",
       "props": [
        {
         "name": "label",
@@ -2024,7 +1250,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2032,14 +1258,14 @@
        {
         "id": "fedramp_20x-KSI-RPL-ARP_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The alignment of recovery plans with defined recovery objectives is persistently reviewed."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-RPL-RRO",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The desired Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO) are defined and persistently reviewed for alignment with the provider's business needs and capabilities.",
       "props": [
        {
         "name": "label",
@@ -2057,7 +1283,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2065,14 +1291,14 @@
        {
         "id": "fedramp_20x-KSI-RPL-RRO_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The desired Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO) are defined and persistently reviewed for alignment with the provider's business needs and capabilities."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-RPL-TRC",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The capability to recover from incidents and contingencies aligned with defined recovery objectives is persistently tested.",
       "props": [
        {
         "name": "label",
@@ -2090,7 +1316,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2098,14 +1324,14 @@
        {
         "id": "fedramp_20x-KSI-RPL-TRC_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The capability to recover from incidents and contingencies aligned with defined recovery objectives is persistently tested."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-SCR-MIT",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Persistently identify, review, and mitigate potential supply chain risks.",
       "props": [
        {
         "name": "label",
@@ -2123,7 +1349,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2131,14 +1357,14 @@
        {
         "id": "fedramp_20x-KSI-SCR-MIT_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Persistently identify, review, and mitigate potential supply chain risks."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-SCR-MON",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Third party software information resources are automatically monitored for upstream vulnerabilities using mechanisms that may include contractual notification requirements or active monitoring service",
       "props": [
        {
         "name": "label",
@@ -2156,7 +1382,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2164,14 +1390,14 @@
        {
         "id": "fedramp_20x-KSI-SCR-MON_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Third party software information resources are automatically monitored for upstream vulnerabilities using mechanisms that may include contractual notification requirements or active monitoring services."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-SVC-ACM",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The configuration of machine-based information resources is managed using automation and persistently reviewed for drift.",
       "props": [
        {
         "name": "label",
@@ -2189,7 +1415,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2197,14 +1423,14 @@
        {
         "id": "fedramp_20x-KSI-SVC-ACM_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The configuration of machine-based information resources is managed using automation and persistently reviewed for drift."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-SVC-ASM",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Management, protection, and regular rotation of digital keys, certificates, and other secrets is automated and persistently reviewed.",
       "props": [
        {
         "name": "label",
@@ -2222,7 +1448,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2230,14 +1456,14 @@
        {
         "id": "fedramp_20x-KSI-SVC-ASM_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Management, protection, and regular rotation of digital keys, certificates, and other secrets is automated and persistently reviewed."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-SVC-EIS",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Information resources are persistently evaluated for opportunities to improve security and those improvements are persistently made.",
       "props": [
        {
         "name": "label",
@@ -2255,7 +1481,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2263,14 +1489,14 @@
        {
         "id": "fedramp_20x-KSI-SVC-EIS_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Information resources are persistently evaluated for opportunities to improve security and those improvements are persistently made."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-SVC-PRR",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Plans, procedures, and the state of information resources are persistently reviewed after making changes to limit and remove unwanted residual elements that would likely negatively affect the confiden",
       "props": [
        {
         "name": "label",
@@ -2288,7 +1514,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2296,14 +1522,14 @@
        {
         "id": "fedramp_20x-KSI-SVC-PRR_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Plans, procedures, and the state of information resources are persistently reviewed after making changes to limit and remove unwanted residual elements that would likely negatively affect the confidentiality, integrity, or availability of federal customer data."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-SVC-RUD",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Unwanted federal customer data is removed promptly when requested by an agency in alignment with customer agreements, including from backups if appropriate; this typically applies when a customer spil",
       "props": [
        {
         "name": "label",
@@ -2321,7 +1547,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2329,14 +1555,14 @@
        {
         "id": "fedramp_20x-KSI-SVC-RUD_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Unwanted federal customer data is removed promptly when requested by an agency in alignment with customer agreements, including from backups if appropriate; this typically applies when a customer spills information or when a customer seeks to remove information from a service due to a change in usage."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-SVC-SIN",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Information is encrypted or otherwise secured from unwanted access or modification.",
       "props": [
        {
         "name": "label",
@@ -2354,7 +1580,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2362,14 +1588,14 @@
        {
         "id": "fedramp_20x-KSI-SVC-SIN_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Information is encrypted or otherwise secured from unwanted access or modification."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-SVC-VCM",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "The authenticity and integrity of communications between machine-based information resources is persistently validated using automation.",
       "props": [
        {
         "name": "label",
@@ -2387,7 +1613,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2395,14 +1621,14 @@
        {
         "id": "fedramp_20x-KSI-SVC-VCM_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "The authenticity and integrity of communications between machine-based information resources is persistently validated using automation."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp_20x-KSI-SVC-VRI",
-      "title": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body.",
+      "title": "Use cryptographic methods to validate the integrity of machine-based information resources.",
       "props": [
        {
         "name": "label",
@@ -2420,7 +1646,7 @@
       ],
       "links": [
        {
-        "href": "#c370ef66-742c-50c9-99c9-0bf3826499df",
+        "href": "#d035494e-69ec-5e7b-973a-ae62617eab79",
         "rel": "implementation"
        }
       ],
@@ -2428,7 +1654,7 @@
        {
         "id": "fedramp_20x-KSI-SVC-VRI_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp_20x/fedramp_20x_main.rego (package fedramp_20x.main); see the rule body."
+        "prose": "Use cryptographic methods to validate the integrity of machine-based information resources."
        }
       ],
       "class": "compliance"
@@ -2439,7 +1665,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "c370ef66-742c-50c9-99c9-0bf3826499df",
+     "uuid": "d035494e-69ec-5e7b-973a-ae62617eab79",
      "title": "FedRAMP 20x — Key Security Indicators (KSI)",
      "props": [
       {
@@ -2450,7 +1676,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/fedramp_20x/fedramp_20x_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/fedramp_20x/fedramp_20x_main.rego",
        "media-type": "text/plain"
       }
      ]

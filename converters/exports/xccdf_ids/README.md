@@ -2,7 +2,7 @@
 
 **Status:** shipping
 **Kind:** export (Tier 1, data)
-**Covers:** the CIS host and SaaS modules (761 benchmark sections on 10 platforms)
+**Covers:** the CIS host and SaaS modules (1,126 benchmark sections on 15 platforms, host, cloud, Kubernetes and SaaS)
 **Consumers:** CIS-CAT Pro users who want to put their scan next to our evaluation
 
 CIS-CAT names a rule `xccdf_org.cisecurity.benchmarks_rule_<section>_<Title_with_underscores>`. We carry

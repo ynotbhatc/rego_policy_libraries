@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "5cbbdbfc-cac8-51e5-b6d4-c41c4c5f1ab3",
+  "uuid": "a8cae962-03bc-5348-bda1-59a80fa04699",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_debian_11 (Ubuntu uses AppArmor instead of SELinux)",
+   "title": "Rego Policy Libraries — cis_debian_11 (CIS Debian 11 Benchmark - Complete Compliance Assessment)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,312 +43,6 @@
    ]
   },
   "groups": [
-   {
-    "id": "cis_debian_11-apparmor_validation",
-    "class": "rego-module",
-    "title": "Ubuntu uses AppArmor instead of SELinux",
-    "props": [
-     {
-      "name": "rego-package",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "cis_debian_11.apparmor"
-     },
-     {
-      "name": "rego-file",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "benchmarks/cis/debian_11/apparmor_validation.rego"
-     },
-     {
-      "name": "class",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "security"
-     }
-    ],
-    "controls": [
-     {
-      "id": "cis_debian_11-section",
-      "title": "1.6 Mandatory Access Controls (AppArmor)",
-      "props": [
-       {
-        "name": "label",
-        "value": "section"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "section"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_debian_11.apparmor"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f133657f-646f-5092-b9c3-ed934d0fa49c",
-        "rel": "implementation"
-       },
-       {
-        "href": "#77e0e2ae-f31d-54a8-aaa7-f602e36cb01e",
-        "rel": "implementation"
-       },
-       {
-        "href": "#f7a56430-7246-5b7b-8561-437d3ec1c86b",
-        "rel": "implementation"
-       },
-       {
-        "href": "#505dc5c3-df58-5977-9bd6-89d6f671a4b3",
-        "rel": "implementation"
-       },
-       {
-        "href": "#136b49ce-9c0f-5fd5-bcc9-85b59e7cea3d",
-        "rel": "implementation"
-       },
-       {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
-        "rel": "implementation"
-       },
-       {
-        "href": "#39979be5-c291-5cc0-aee6-7152b3b4b9e5",
-        "rel": "implementation"
-       },
-       {
-        "href": "#acad4e86-3556-5785-8c6f-aae952554407",
-        "rel": "implementation"
-       },
-       {
-        "href": "#a4f18520-272b-5ea7-aa0f-1d524a4de2c8",
-        "rel": "implementation"
-       },
-       {
-        "href": "#7a5c3aae-2477-51e0-a28a-7535a51ea162",
-        "rel": "implementation"
-       },
-       {
-        "href": "#4b040ea6-df33-59d8-b5c6-6c6be50b80db",
-        "rel": "implementation"
-       },
-       {
-        "href": "#d8bac561-b0b5-50e9-af76-cfed89023a37",
-        "rel": "implementation"
-       },
-       {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_debian_11-section_stmt",
-        "name": "statement",
-        "prose": "1.6 Mandatory Access Controls (AppArmor)"
-       },
-       {
-        "id": "cis_debian_11-section_obj.1",
-        "name": "assessment-objective",
-        "prose": "4.1 Configure System Accounting (auditd)"
-       },
-       {
-        "id": "cis_debian_11-section_obj.2",
-        "name": "assessment-objective",
-        "prose": "1.3-1.5 Boot Security and Process Hardening"
-       },
-       {
-        "id": "cis_debian_11-section_obj.3",
-        "name": "assessment-objective",
-        "prose": "5.1 Configure time-based job schedulers"
-       },
-       {
-        "id": "cis_debian_11-section_obj.4",
-        "name": "assessment-objective",
-        "prose": "6.1 System File Permissions"
-       },
-       {
-        "id": "cis_debian_11-section_obj.5",
-        "name": "assessment-objective",
-        "prose": "1.2-1.8 Initial System Setup"
-       },
-       {
-        "id": "cis_debian_11-section_obj.6",
-        "name": "assessment-objective",
-        "prose": "4.2 Logging Configuration"
-       },
-       {
-        "id": "cis_debian_11-section_obj.7",
-        "name": "assessment-objective",
-        "prose": "3.1-3.3 Network Configuration"
-       },
-       {
-        "id": "cis_debian_11-section_obj.8",
-        "name": "assessment-objective",
-        "prose": "5.4-5.5 PAM and Password Policies"
-       },
-       {
-        "id": "cis_debian_11-section_obj.9",
-        "name": "assessment-objective",
-        "prose": "2.1-2.3 Service Configuration"
-       },
-       {
-        "id": "cis_debian_11-section_obj.10",
-        "name": "assessment-objective",
-        "prose": "5.2 Configure SSH Server"
-       },
-       {
-        "id": "cis_debian_11-section_obj.11",
-        "name": "assessment-objective",
-        "prose": "5.3 Configure Sudo"
-       },
-       {
-        "id": "cis_debian_11-section_obj.12",
-        "name": "assessment-objective",
-        "prose": "6.2 User and Group Settings"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_debian_11-benchmark",
-      "title": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
-      "props": [
-       {
-        "name": "label",
-        "value": "benchmark"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "benchmark"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_debian_11.apparmor"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f133657f-646f-5092-b9c3-ed934d0fa49c",
-        "rel": "implementation"
-       },
-       {
-        "href": "#77e0e2ae-f31d-54a8-aaa7-f602e36cb01e",
-        "rel": "implementation"
-       },
-       {
-        "href": "#f7a56430-7246-5b7b-8561-437d3ec1c86b",
-        "rel": "implementation"
-       },
-       {
-        "href": "#505dc5c3-df58-5977-9bd6-89d6f671a4b3",
-        "rel": "implementation"
-       },
-       {
-        "href": "#136b49ce-9c0f-5fd5-bcc9-85b59e7cea3d",
-        "rel": "implementation"
-       },
-       {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
-        "rel": "implementation"
-       },
-       {
-        "href": "#39979be5-c291-5cc0-aee6-7152b3b4b9e5",
-        "rel": "implementation"
-       },
-       {
-        "href": "#acad4e86-3556-5785-8c6f-aae952554407",
-        "rel": "implementation"
-       },
-       {
-        "href": "#a4f18520-272b-5ea7-aa0f-1d524a4de2c8",
-        "rel": "implementation"
-       },
-       {
-        "href": "#7a5c3aae-2477-51e0-a28a-7535a51ea162",
-        "rel": "implementation"
-       },
-       {
-        "href": "#4b040ea6-df33-59d8-b5c6-6c6be50b80db",
-        "rel": "implementation"
-       },
-       {
-        "href": "#d8bac561-b0b5-50e9-af76-cfed89023a37",
-        "rel": "implementation"
-       },
-       {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_debian_11-benchmark_stmt",
-        "name": "statement",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.1",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.2",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.3",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.4",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.5",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.6",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.7",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.8",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.9",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.10",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.11",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       },
-       {
-        "id": "cis_debian_11-benchmark_obj.12",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)"
-       }
-      ],
-      "class": "security"
-     }
-    ]
-   },
    {
     "id": "cis_debian_11-cis_debian_11_complete",
     "class": "rego-module",
@@ -391,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#ea3f64ed-7ddf-5a14-b538-ec275c31ca0c",
+        "href": "#4266d69f-b6f6-5e62-ab95-dbda1ddef784",
         "rel": "implementation"
        }
       ],
@@ -424,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#ea3f64ed-7ddf-5a14-b538-ec275c31ca0c",
+        "href": "#4266d69f-b6f6-5e62-ab95-dbda1ddef784",
         "rel": "implementation"
        }
       ],
@@ -481,7 +175,7 @@
       ],
       "links": [
        {
-        "href": "#505dc5c3-df58-5977-9bd6-89d6f671a4b3",
+        "href": "#755bfba0-b3e6-5704-802c-28a35ff731e0",
         "rel": "implementation"
        }
       ],
@@ -519,7 +213,7 @@
       ],
       "links": [
        {
-        "href": "#505dc5c3-df58-5977-9bd6-89d6f671a4b3",
+        "href": "#755bfba0-b3e6-5704-802c-28a35ff731e0",
         "rel": "implementation"
        }
       ],
@@ -562,7 +256,7 @@
       ],
       "links": [
        {
-        "href": "#505dc5c3-df58-5977-9bd6-89d6f671a4b3",
+        "href": "#755bfba0-b3e6-5704-802c-28a35ff731e0",
         "rel": "implementation"
        }
       ],
@@ -600,7 +294,7 @@
       ],
       "links": [
        {
-        "href": "#505dc5c3-df58-5977-9bd6-89d6f671a4b3",
+        "href": "#755bfba0-b3e6-5704-802c-28a35ff731e0",
         "rel": "implementation"
        }
       ],
@@ -638,7 +332,7 @@
       ],
       "links": [
        {
-        "href": "#505dc5c3-df58-5977-9bd6-89d6f671a4b3",
+        "href": "#755bfba0-b3e6-5704-802c-28a35ff731e0",
         "rel": "implementation"
        }
       ],
@@ -676,7 +370,7 @@
       ],
       "links": [
        {
-        "href": "#505dc5c3-df58-5977-9bd6-89d6f671a4b3",
+        "href": "#755bfba0-b3e6-5704-802c-28a35ff731e0",
         "rel": "implementation"
        }
       ],
@@ -714,7 +408,7 @@
       ],
       "links": [
        {
-        "href": "#505dc5c3-df58-5977-9bd6-89d6f671a4b3",
+        "href": "#755bfba0-b3e6-5704-802c-28a35ff731e0",
         "rel": "implementation"
        }
       ],
@@ -752,7 +446,7 @@
       ],
       "links": [
        {
-        "href": "#505dc5c3-df58-5977-9bd6-89d6f671a4b3",
+        "href": "#755bfba0-b3e6-5704-802c-28a35ff731e0",
         "rel": "implementation"
        }
       ],
@@ -795,7 +489,7 @@
       ],
       "links": [
        {
-        "href": "#505dc5c3-df58-5977-9bd6-89d6f671a4b3",
+        "href": "#755bfba0-b3e6-5704-802c-28a35ff731e0",
         "rel": "implementation"
        }
       ],
@@ -862,7 +556,7 @@
       ],
       "links": [
        {
-        "href": "#136b49ce-9c0f-5fd5-bcc9-85b59e7cea3d",
+        "href": "#4907002f-c09f-58f4-9372-88e8fa1d8b26",
         "rel": "implementation"
        }
       ],
@@ -919,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -952,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -985,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1018,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1051,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1084,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1122,7 +816,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1155,7 +849,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1188,7 +882,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1221,7 +915,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1254,7 +948,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1297,7 +991,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1340,7 +1034,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1383,7 +1077,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1416,7 +1110,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1449,7 +1143,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1482,7 +1176,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1515,7 +1209,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1548,7 +1242,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1581,7 +1275,7 @@
       ],
       "links": [
        {
-        "href": "#9ad9789e-5780-5b87-be11-5e43e8b46133",
+        "href": "#02471ccd-911a-5c23-b021-cf024ec60f13",
         "rel": "implementation"
        }
       ],
@@ -1619,39 +1313,6 @@
     ],
     "controls": [
      {
-      "id": "cis_debian_11-rsyslog",
-      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "rsyslog"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "rsyslog"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_debian_11.logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#39979be5-c291-5cc0-aee6-7152b3b4b9e5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_debian_11-rsyslog_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_debian_11-journald",
       "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body.",
       "props": [
@@ -1671,13 +1332,46 @@
       ],
       "links": [
        {
-        "href": "#39979be5-c291-5cc0-aee6-7152b3b4b9e5",
+        "href": "#942b77c5-915a-5e2a-b08e-741b95cf4039",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_debian_11-journald_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-rsyslog",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "rsyslog"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "rsyslog"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#942b77c5-915a-5e2a-b08e-741b95cf4039",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-rsyslog_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body."
        }
@@ -1728,7 +1422,7 @@
       ],
       "links": [
        {
-        "href": "#acad4e86-3556-5785-8c6f-aae952554407",
+        "href": "#ac071fae-7ae3-56ac-98af-479c067f6862",
         "rel": "implementation"
        }
       ],
@@ -1785,7 +1479,7 @@
       ],
       "links": [
        {
-        "href": "#d8bac561-b0b5-50e9-af76-cfed89023a37",
+        "href": "#bd87dc65-e23e-5401-91cd-bd8be3fc0a06",
         "rel": "implementation"
        }
       ],
@@ -1818,7 +1512,7 @@
       ],
       "links": [
        {
-        "href": "#d8bac561-b0b5-50e9-af76-cfed89023a37",
+        "href": "#bd87dc65-e23e-5401-91cd-bd8be3fc0a06",
         "rel": "implementation"
        }
       ],
@@ -1851,7 +1545,7 @@
       ],
       "links": [
        {
-        "href": "#d8bac561-b0b5-50e9-af76-cfed89023a37",
+        "href": "#bd87dc65-e23e-5401-91cd-bd8be3fc0a06",
         "rel": "implementation"
        }
       ],
@@ -1884,7 +1578,7 @@
       ],
       "links": [
        {
-        "href": "#d8bac561-b0b5-50e9-af76-cfed89023a37",
+        "href": "#bd87dc65-e23e-5401-91cd-bd8be3fc0a06",
         "rel": "implementation"
        }
       ],
@@ -1917,7 +1611,7 @@
       ],
       "links": [
        {
-        "href": "#d8bac561-b0b5-50e9-af76-cfed89023a37",
+        "href": "#bd87dc65-e23e-5401-91cd-bd8be3fc0a06",
         "rel": "implementation"
        }
       ],
@@ -1950,7 +1644,7 @@
       ],
       "links": [
        {
-        "href": "#d8bac561-b0b5-50e9-af76-cfed89023a37",
+        "href": "#bd87dc65-e23e-5401-91cd-bd8be3fc0a06",
         "rel": "implementation"
        }
       ],
@@ -1988,7 +1682,7 @@
       ],
       "links": [
        {
-        "href": "#d8bac561-b0b5-50e9-af76-cfed89023a37",
+        "href": "#bd87dc65-e23e-5401-91cd-bd8be3fc0a06",
         "rel": "implementation"
        }
       ],
@@ -2026,7 +1720,7 @@
       ],
       "links": [
        {
-        "href": "#d8bac561-b0b5-50e9-af76-cfed89023a37",
+        "href": "#bd87dc65-e23e-5401-91cd-bd8be3fc0a06",
         "rel": "implementation"
        }
       ],
@@ -2088,7 +1782,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2121,7 +1815,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2154,7 +1848,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2187,7 +1881,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2220,7 +1914,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2253,7 +1947,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2286,7 +1980,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2319,7 +2013,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2372,7 +2066,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2405,7 +2099,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2438,7 +2132,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2471,7 +2165,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2504,7 +2198,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2537,7 +2231,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2570,7 +2264,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2603,7 +2297,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2636,7 +2330,7 @@
       ],
       "links": [
        {
-        "href": "#08ee6abb-4e01-5d63-bbf7-baec432d0479",
+        "href": "#c39284bc-a007-5512-b80e-f17dc2e8fdc3",
         "rel": "implementation"
        }
       ],
@@ -2665,58 +2359,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "f133657f-646f-5092-b9c3-ed934d0fa49c",
-     "title": "Ubuntu uses AppArmor instead of SELinux",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_debian_11.apparmor"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/apparmor_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "77e0e2ae-f31d-54a8-aaa7-f602e36cb01e",
-     "title": "CIS 4.1.1.1: Ensure audit is installed",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_debian_11.auditd"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/auditd_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "f7a56430-7246-5b7b-8561-437d3ec1c86b",
-     "title": "CIS 1.3.1: AIDE installed",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_debian_11.boot_security"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/boot_security_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "ea3f64ed-7ddf-5a14-b538-ec275c31ca0c",
+     "uuid": "4266d69f-b6f6-5e62-ab95-dbda1ddef784",
      "title": "CIS Debian 11 Benchmark - Complete Compliance Assessment",
      "props": [
       {
@@ -2727,13 +2370,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/cis_debian_11_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/debian_11/cis_debian_11_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "505dc5c3-df58-5977-9bd6-89d6f671a4b3",
+     "uuid": "755bfba0-b3e6-5704-802c-28a35ff731e0",
      "title": "CIS 5.1.1: Ensure cron daemon is enabled and running",
      "props": [
       {
@@ -2744,13 +2387,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/cron_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/debian_11/cron_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "136b49ce-9c0f-5fd5-bcc9-85b59e7cea3d",
+     "uuid": "4907002f-c09f-58f4-9372-88e8fa1d8b26",
      "title": "CIS 6.1.x: Critical system file permissions",
      "props": [
       {
@@ -2761,13 +2404,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/file_permissions_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/debian_11/file_permissions_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "9ad9789e-5780-5b87-be11-5e43e8b46133",
+     "uuid": "02471ccd-911a-5c23-b021-cf024ec60f13",
      "title": "CIS 1.2: Configure Software Updates (Ubuntu uses apt)",
      "props": [
       {
@@ -2778,13 +2421,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/initial_setup_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/debian_11/initial_setup_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "39979be5-c291-5cc0-aee6-7152b3b4b9e5",
+     "uuid": "942b77c5-915a-5e2a-b08e-741b95cf4039",
      "title": "CIS 4.2.1.1: rsyslog installed",
      "props": [
       {
@@ -2795,13 +2438,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/logging_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/debian_11/logging_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "acad4e86-3556-5785-8c6f-aae952554407",
+     "uuid": "ac071fae-7ae3-56ac-98af-479c067f6862",
      "title": "CIS 3.x: Kernel sysctl parameters",
      "props": [
       {
@@ -2812,64 +2455,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/network_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/debian_11/network_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a4f18520-272b-5ea7-aa0f-1d524a4de2c8",
-     "title": "CIS 5.4.1: Ensure password creation requirements are configured (pwquality)",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_debian_11.pam"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/pam_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "7a5c3aae-2477-51e0-a28a-7535a51ea162",
-     "title": "CIS 2.1.x: Disable automounting",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_debian_11.services"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/services_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "4b040ea6-df33-59d8-b5c6-6c6be50b80db",
-     "title": "CIS 5.2.1: Ensure permissions on /etc/ssh/sshd_config are configured",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_debian_11.ssh"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/ssh_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "d8bac561-b0b5-50e9-af76-cfed89023a37",
+     "uuid": "bd87dc65-e23e-5401-91cd-bd8be3fc0a06",
      "title": "CIS 5.3.1: Ensure sudo is installed",
      "props": [
       {
@@ -2880,13 +2472,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/sudo_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/debian_11/sudo_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "08ee6abb-4e01-5d63-bbf7-baec432d0479",
+     "uuid": "c39284bc-a007-5512-b80e-f17dc2e8fdc3",
      "title": "CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords",
      "props": [
       {
@@ -2897,7 +2489,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/debian_11/user_group_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/debian_11/user_group_validation.rego",
        "media-type": "text/plain"
       }
      ]

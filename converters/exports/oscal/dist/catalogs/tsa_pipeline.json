@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "7867322c-9925-53d2-aa94-34458c253de2",
+  "uuid": "04f23a55-8d02-52e2-81d4-c2006ada7fde",
   "metadata": {
    "title": "Rego Policy Libraries — tsa_pipeline (TSA Security Directive Pipeline-2021-01G — \\\"Enhancing Pipeline Cybersecurity\\)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "href": "#524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
         "rel": "implementation"
        }
       ],
@@ -128,7 +128,7 @@
       ],
       "links": [
        {
-        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "href": "#524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
         "rel": "implementation"
        }
       ],
@@ -161,7 +161,7 @@
       ],
       "links": [
        {
-        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "href": "#524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
         "rel": "implementation"
        }
       ],
@@ -194,7 +194,7 @@
       ],
       "links": [
        {
-        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "href": "#524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
         "rel": "implementation"
        }
       ],
@@ -227,7 +227,7 @@
       ],
       "links": [
        {
-        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "href": "#524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
         "rel": "implementation"
        }
       ],
@@ -260,7 +260,7 @@
       ],
       "links": [
        {
-        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "href": "#524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
         "rel": "implementation"
        }
       ],
@@ -303,7 +303,7 @@
       ],
       "links": [
        {
-        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "href": "#524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
         "rel": "implementation"
        }
       ],
@@ -341,7 +341,7 @@
       ],
       "links": [
        {
-        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "href": "#524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
         "rel": "implementation"
        }
       ],
@@ -374,7 +374,7 @@
       ],
       "links": [
        {
-        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "href": "#524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
         "rel": "implementation"
        }
       ],
@@ -407,7 +407,7 @@
       ],
       "links": [
        {
-        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "href": "#524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
         "rel": "implementation"
        }
       ],
@@ -440,7 +440,7 @@
       ],
       "links": [
        {
-        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "href": "#524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
         "rel": "implementation"
        }
       ],
@@ -478,204 +478,6 @@
     ],
     "controls": [
      {
-      "id": "tsa_pipeline-II.C.5.a",
-      "title": "Name of the reporting individual and contact information",
-      "props": [
-       {
-        "name": "label",
-        "value": "II.C.5.a"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "II.C.5.a"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "tsa_pipeline.sd01_reporting"
-       }
-      ],
-      "links": [
-       {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "tsa_pipeline-II.C.5.a_stmt",
-        "name": "statement",
-        "prose": "Name of the reporting individual and contact information"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "tsa_pipeline-II.C.5.b",
-      "title": "The affected pipeline(s) and/or facilities, including identifying information and location",
-      "props": [
-       {
-        "name": "label",
-        "value": "II.C.5.b"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "II.C.5.b"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "tsa_pipeline.sd01_reporting"
-       }
-      ],
-      "links": [
-       {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "tsa_pipeline-II.C.5.b_stmt",
-        "name": "statement",
-        "prose": "The affected pipeline(s) and/or facilities, including identifying information and location"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "tsa_pipeline-II.C.5.c",
-      "title": "Description of the threat, incident, or activity (earliest known date of compromise, date of detection, who was notified, observed indicators, known threat information)",
-      "props": [
-       {
-        "name": "label",
-        "value": "II.C.5.c"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "II.C.5.c"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "tsa_pipeline.sd01_reporting"
-       }
-      ],
-      "links": [
-       {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "tsa_pipeline-II.C.5.c_stmt",
-        "name": "statement",
-        "prose": "Description of the threat, incident, or activity (earliest known date of compromise, date of detection, who was notified, observed indicators, known threat information)"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "tsa_pipeline-II.C.5.d",
-      "title": "Description of the incident's impact or potential impact on Information or Operational Technology systems and operations",
-      "props": [
-       {
-        "name": "label",
-        "value": "II.C.5.d"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "II.C.5.d"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "tsa_pipeline.sd01_reporting"
-       }
-      ],
-      "links": [
-       {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "tsa_pipeline-II.C.5.d_stmt",
-        "name": "statement",
-        "prose": "Description of the incident's impact or potential impact on Information or Operational Technology systems and operations"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "tsa_pipeline-II.C.5.e",
-      "title": "Description of all responses planned or under consideration",
-      "props": [
-       {
-        "name": "label",
-        "value": "II.C.5.e"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "II.C.5.e"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "tsa_pipeline.sd01_reporting"
-       }
-      ],
-      "links": [
-       {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "tsa_pipeline-II.C.5.e_stmt",
-        "name": "statement",
-        "prose": "Description of all responses planned or under consideration"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "tsa_pipeline-II.C.5.f",
-      "title": "Any additional relevant information",
-      "props": [
-       {
-        "name": "label",
-        "value": "II.C.5.f"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "II.C.5.f"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "tsa_pipeline.sd01_reporting"
-       }
-      ],
-      "links": [
-       {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "tsa_pipeline-II.C.5.f_stmt",
-        "name": "statement",
-        "prose": "Any additional relevant information"
-       }
-      ],
-      "class": "ot"
-     },
-     {
       "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C",
       "title": "No documented procedure for reporting cybersecurity incidents to CISA for systems the Owner/Operator has responsibility to operate and/or maintain",
       "props": [
@@ -695,7 +497,7 @@
       ],
       "links": [
        {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
         "rel": "implementation"
        }
       ],
@@ -728,7 +530,7 @@
       ],
       "links": [
        {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
         "rel": "implementation"
        }
       ],
@@ -761,7 +563,7 @@
       ],
       "links": [
        {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
         "rel": "implementation"
        }
       ],
@@ -799,7 +601,7 @@
       ],
       "links": [
        {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
         "rel": "implementation"
        }
       ],
@@ -832,7 +634,7 @@
       ],
       "links": [
        {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
         "rel": "implementation"
        }
       ],
@@ -865,7 +667,7 @@
       ],
       "links": [
        {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
         "rel": "implementation"
        }
       ],
@@ -898,7 +700,7 @@
       ],
       "links": [
        {
-        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
         "rel": "implementation"
        }
       ],
@@ -912,6 +714,204 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.5.f_obj.1",
         "name": "assessment-objective",
         "prose": "Supplemental information for incident '%s' was provided %v hours after becoming available — it must be provided within 24 hours"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-II.C.5.f",
+      "title": "Any additional relevant information",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.f"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.f"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.f_stmt",
+        "name": "statement",
+        "prose": "Any additional relevant information"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-II.C.5.b",
+      "title": "The affected pipeline(s) and/or facilities, including identifying information and location",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.b_stmt",
+        "name": "statement",
+        "prose": "The affected pipeline(s) and/or facilities, including identifying information and location"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-II.C.5.d",
+      "title": "Description of the incident's impact or potential impact on Information or Operational Technology systems and operations",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.d_stmt",
+        "name": "statement",
+        "prose": "Description of the incident's impact or potential impact on Information or Operational Technology systems and operations"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-II.C.5.e",
+      "title": "Description of all responses planned or under consideration",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.e_stmt",
+        "name": "statement",
+        "prose": "Description of all responses planned or under consideration"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-II.C.5.a",
+      "title": "Name of the reporting individual and contact information",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.a_stmt",
+        "name": "statement",
+        "prose": "Name of the reporting individual and contact information"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-II.C.5.c",
+      "title": "Description of the threat, incident, or activity (earliest known date of compromise, date of detection, who was notified, observed indicators, known threat information)",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2044a323-a60b-538f-92ee-f5a21894cbae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.c_stmt",
+        "name": "statement",
+        "prose": "Description of the threat, incident, or activity (earliest known date of compromise, date of detection, who was notified, observed indicators, known threat information)"
        }
       ],
       "class": "ot"
@@ -960,7 +960,7 @@
       ],
       "links": [
        {
-        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "href": "#30bf231a-7bf9-55b9-90e4-1438435c2cb9",
         "rel": "implementation"
        }
       ],
@@ -993,7 +993,7 @@
       ],
       "links": [
        {
-        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "href": "#30bf231a-7bf9-55b9-90e4-1438435c2cb9",
         "rel": "implementation"
        }
       ],
@@ -1026,7 +1026,7 @@
       ],
       "links": [
        {
-        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "href": "#30bf231a-7bf9-55b9-90e4-1438435c2cb9",
         "rel": "implementation"
        }
       ],
@@ -1059,7 +1059,7 @@
       ],
       "links": [
        {
-        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "href": "#30bf231a-7bf9-55b9-90e4-1438435c2cb9",
         "rel": "implementation"
        }
       ],
@@ -1097,7 +1097,7 @@
       ],
       "links": [
        {
-        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "href": "#30bf231a-7bf9-55b9-90e4-1438435c2cb9",
         "rel": "implementation"
        }
       ],
@@ -1130,7 +1130,7 @@
       ],
       "links": [
        {
-        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "href": "#30bf231a-7bf9-55b9-90e4-1438435c2cb9",
         "rel": "implementation"
        }
       ],
@@ -1192,7 +1192,7 @@
       ],
       "links": [
        {
-        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "href": "#349e237c-5c22-54aa-80ab-b8e52b02e4ad",
         "rel": "implementation"
        }
       ],
@@ -1230,7 +1230,7 @@
       ],
       "links": [
        {
-        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "href": "#349e237c-5c22-54aa-80ab-b8e52b02e4ad",
         "rel": "implementation"
        }
       ],
@@ -1263,7 +1263,7 @@
       ],
       "links": [
        {
-        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "href": "#349e237c-5c22-54aa-80ab-b8e52b02e4ad",
         "rel": "implementation"
        }
       ],
@@ -1296,7 +1296,7 @@
       ],
       "links": [
        {
-        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "href": "#349e237c-5c22-54aa-80ab-b8e52b02e4ad",
         "rel": "implementation"
        }
       ],
@@ -1334,7 +1334,7 @@
       ],
       "links": [
        {
-        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "href": "#349e237c-5c22-54aa-80ab-b8e52b02e4ad",
         "rel": "implementation"
        }
       ],
@@ -1372,7 +1372,7 @@
       ],
       "links": [
        {
-        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "href": "#349e237c-5c22-54aa-80ab-b8e52b02e4ad",
         "rel": "implementation"
        }
       ],
@@ -1415,7 +1415,7 @@
       ],
       "links": [
        {
-        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "href": "#349e237c-5c22-54aa-80ab-b8e52b02e4ad",
         "rel": "implementation"
        }
       ],
@@ -1453,7 +1453,7 @@
       ],
       "links": [
        {
-        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "href": "#349e237c-5c22-54aa-80ab-b8e52b02e4ad",
         "rel": "implementation"
        }
       ],
@@ -1486,7 +1486,7 @@
       ],
       "links": [
        {
-        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "href": "#349e237c-5c22-54aa-80ab-b8e52b02e4ad",
         "rel": "implementation"
        }
       ],
@@ -1519,7 +1519,7 @@
       ],
       "links": [
        {
-        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "href": "#349e237c-5c22-54aa-80ab-b8e52b02e4ad",
         "rel": "implementation"
        }
       ],
@@ -1581,7 +1581,7 @@
       ],
       "links": [
        {
-        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "href": "#e5af0ade-b3bc-55c2-b62a-e70a8035b11c",
         "rel": "implementation"
        }
       ],
@@ -1619,7 +1619,7 @@
       ],
       "links": [
        {
-        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "href": "#e5af0ade-b3bc-55c2-b62a-e70a8035b11c",
         "rel": "implementation"
        }
       ],
@@ -1652,7 +1652,7 @@
       ],
       "links": [
        {
-        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "href": "#e5af0ade-b3bc-55c2-b62a-e70a8035b11c",
         "rel": "implementation"
        }
       ],
@@ -1700,7 +1700,7 @@
       ],
       "links": [
        {
-        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "href": "#e5af0ade-b3bc-55c2-b62a-e70a8035b11c",
         "rel": "implementation"
        }
       ],
@@ -1738,7 +1738,7 @@
       ],
       "links": [
        {
-        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "href": "#e5af0ade-b3bc-55c2-b62a-e70a8035b11c",
         "rel": "implementation"
        }
       ],
@@ -1781,7 +1781,7 @@
       ],
       "links": [
        {
-        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "href": "#e5af0ade-b3bc-55c2-b62a-e70a8035b11c",
         "rel": "implementation"
        }
       ],
@@ -1814,7 +1814,7 @@
       ],
       "links": [
        {
-        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "href": "#e5af0ade-b3bc-55c2-b62a-e70a8035b11c",
         "rel": "implementation"
        }
       ],
@@ -1847,7 +1847,7 @@
       ],
       "links": [
        {
-        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "href": "#e5af0ade-b3bc-55c2-b62a-e70a8035b11c",
         "rel": "implementation"
        }
       ],
@@ -1880,7 +1880,7 @@
       ],
       "links": [
        {
-        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "href": "#e5af0ade-b3bc-55c2-b62a-e70a8035b11c",
         "rel": "implementation"
        }
       ],
@@ -1913,7 +1913,7 @@
       ],
       "links": [
        {
-        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "href": "#e5af0ade-b3bc-55c2-b62a-e70a8035b11c",
         "rel": "implementation"
        }
       ],
@@ -1975,7 +1975,7 @@
       ],
       "links": [
        {
-        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "href": "#83b90988-eb32-5617-a597-8623bcb6ad52",
         "rel": "implementation"
        }
       ],
@@ -2008,7 +2008,7 @@
       ],
       "links": [
        {
-        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "href": "#83b90988-eb32-5617-a597-8623bcb6ad52",
         "rel": "implementation"
        }
       ],
@@ -2041,7 +2041,7 @@
       ],
       "links": [
        {
-        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "href": "#83b90988-eb32-5617-a597-8623bcb6ad52",
         "rel": "implementation"
        }
       ],
@@ -2074,7 +2074,7 @@
       ],
       "links": [
        {
-        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "href": "#83b90988-eb32-5617-a597-8623bcb6ad52",
         "rel": "implementation"
        }
       ],
@@ -2107,7 +2107,7 @@
       ],
       "links": [
        {
-        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "href": "#83b90988-eb32-5617-a597-8623bcb6ad52",
         "rel": "implementation"
        }
       ],
@@ -2140,7 +2140,7 @@
       ],
       "links": [
        {
-        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "href": "#83b90988-eb32-5617-a597-8623bcb6ad52",
         "rel": "implementation"
        }
       ],
@@ -2202,7 +2202,7 @@
       ],
       "links": [
        {
-        "href": "#aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+        "href": "#afb6eb00-904d-529d-9600-6662b4115b78",
         "rel": "implementation"
        }
       ],
@@ -2250,7 +2250,7 @@
       ],
       "links": [
        {
-        "href": "#aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+        "href": "#afb6eb00-904d-529d-9600-6662b4115b78",
         "rel": "implementation"
        }
       ],
@@ -2283,7 +2283,7 @@
       ],
       "links": [
        {
-        "href": "#aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+        "href": "#afb6eb00-904d-529d-9600-6662b4115b78",
         "rel": "implementation"
        }
       ],
@@ -2331,7 +2331,7 @@
       ],
       "links": [
        {
-        "href": "#aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+        "href": "#afb6eb00-904d-529d-9600-6662b4115b78",
         "rel": "implementation"
        }
       ],
@@ -2364,7 +2364,7 @@
       ],
       "links": [
        {
-        "href": "#aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+        "href": "#afb6eb00-904d-529d-9600-6662b4115b78",
         "rel": "implementation"
        }
       ],
@@ -2421,7 +2421,7 @@
       ],
       "links": [
        {
-        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "href": "#303c7cae-dfcf-599b-b914-1cf5bd5af059",
         "rel": "implementation"
        }
       ],
@@ -2474,7 +2474,7 @@
       ],
       "links": [
        {
-        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "href": "#303c7cae-dfcf-599b-b914-1cf5bd5af059",
         "rel": "implementation"
        }
       ],
@@ -2517,7 +2517,7 @@
       ],
       "links": [
        {
-        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "href": "#303c7cae-dfcf-599b-b914-1cf5bd5af059",
         "rel": "implementation"
        }
       ],
@@ -2550,7 +2550,7 @@
       ],
       "links": [
        {
-        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "href": "#303c7cae-dfcf-599b-b914-1cf5bd5af059",
         "rel": "implementation"
        }
       ],
@@ -2583,7 +2583,7 @@
       ],
       "links": [
        {
-        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "href": "#303c7cae-dfcf-599b-b914-1cf5bd5af059",
         "rel": "implementation"
        }
       ],
@@ -2616,7 +2616,7 @@
       ],
       "links": [
        {
-        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "href": "#303c7cae-dfcf-599b-b914-1cf5bd5af059",
         "rel": "implementation"
        }
       ],
@@ -2649,7 +2649,7 @@
       ],
       "links": [
        {
-        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "href": "#303c7cae-dfcf-599b-b914-1cf5bd5af059",
         "rel": "implementation"
        }
       ],
@@ -2682,7 +2682,7 @@
       ],
       "links": [
        {
-        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "href": "#303c7cae-dfcf-599b-b914-1cf5bd5af059",
         "rel": "implementation"
        }
       ],
@@ -2739,7 +2739,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -2782,7 +2782,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -2815,7 +2815,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -2848,7 +2848,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -2881,7 +2881,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -2914,7 +2914,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -2947,7 +2947,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -2990,7 +2990,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -3023,7 +3023,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -3061,7 +3061,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -3094,7 +3094,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -3127,7 +3127,7 @@
       ],
       "links": [
        {
-        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "href": "#98147d25-c363-51db-b6ac-1d452fa0e363",
         "rel": "implementation"
        }
       ],
@@ -3189,7 +3189,7 @@
       ],
       "links": [
        {
-        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "href": "#55d9d413-48cf-565e-9fb2-49bf62c44fcb",
         "rel": "implementation"
        }
       ],
@@ -3222,7 +3222,7 @@
       ],
       "links": [
        {
-        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "href": "#55d9d413-48cf-565e-9fb2-49bf62c44fcb",
         "rel": "implementation"
        }
       ],
@@ -3255,7 +3255,7 @@
       ],
       "links": [
        {
-        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "href": "#55d9d413-48cf-565e-9fb2-49bf62c44fcb",
         "rel": "implementation"
        }
       ],
@@ -3293,7 +3293,7 @@
       ],
       "links": [
        {
-        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "href": "#55d9d413-48cf-565e-9fb2-49bf62c44fcb",
         "rel": "implementation"
        }
       ],
@@ -3331,7 +3331,7 @@
       ],
       "links": [
        {
-        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "href": "#55d9d413-48cf-565e-9fb2-49bf62c44fcb",
         "rel": "implementation"
        }
       ],
@@ -3369,7 +3369,7 @@
       ],
       "links": [
        {
-        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "href": "#55d9d413-48cf-565e-9fb2-49bf62c44fcb",
         "rel": "implementation"
        }
       ],
@@ -3402,7 +3402,7 @@
       ],
       "links": [
        {
-        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "href": "#55d9d413-48cf-565e-9fb2-49bf62c44fcb",
         "rel": "implementation"
        }
       ],
@@ -3459,7 +3459,7 @@
       ],
       "links": [
        {
-        "href": "#e8482f6d-143c-5e5f-a1cf-731adc221b27",
+        "href": "#1846ed02-4e80-5263-b51c-406977dbb70a",
         "rel": "implementation"
        }
       ],
@@ -3497,7 +3497,7 @@
       ],
       "links": [
        {
-        "href": "#e8482f6d-143c-5e5f-a1cf-731adc221b27",
+        "href": "#1846ed02-4e80-5263-b51c-406977dbb70a",
         "rel": "implementation"
        }
       ],
@@ -3530,7 +3530,7 @@
       ],
       "links": [
        {
-        "href": "#e8482f6d-143c-5e5f-a1cf-731adc221b27",
+        "href": "#1846ed02-4e80-5263-b51c-406977dbb70a",
         "rel": "implementation"
        }
       ],
@@ -3573,7 +3573,7 @@
       ],
       "links": [
        {
-        "href": "#e8482f6d-143c-5e5f-a1cf-731adc221b27",
+        "href": "#1846ed02-4e80-5263-b51c-406977dbb70a",
         "rel": "implementation"
        }
       ],
@@ -3606,7 +3606,7 @@
       ],
       "links": [
        {
-        "href": "#e8482f6d-143c-5e5f-a1cf-731adc221b27",
+        "href": "#1846ed02-4e80-5263-b51c-406977dbb70a",
         "rel": "implementation"
        }
       ],
@@ -3673,7 +3673,7 @@
       ],
       "links": [
        {
-        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "href": "#c3cf047a-4696-530a-8a16-eaaef37b7ee6",
         "rel": "implementation"
        }
       ],
@@ -3716,7 +3716,7 @@
       ],
       "links": [
        {
-        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "href": "#c3cf047a-4696-530a-8a16-eaaef37b7ee6",
         "rel": "implementation"
        }
       ],
@@ -3749,7 +3749,7 @@
       ],
       "links": [
        {
-        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "href": "#c3cf047a-4696-530a-8a16-eaaef37b7ee6",
         "rel": "implementation"
        }
       ],
@@ -3782,7 +3782,7 @@
       ],
       "links": [
        {
-        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "href": "#c3cf047a-4696-530a-8a16-eaaef37b7ee6",
         "rel": "implementation"
        }
       ],
@@ -3815,7 +3815,7 @@
       ],
       "links": [
        {
-        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "href": "#c3cf047a-4696-530a-8a16-eaaef37b7ee6",
         "rel": "implementation"
        }
       ],
@@ -3848,7 +3848,7 @@
       ],
       "links": [
        {
-        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "href": "#c3cf047a-4696-530a-8a16-eaaef37b7ee6",
         "rel": "implementation"
        }
       ],
@@ -3881,7 +3881,7 @@
       ],
       "links": [
        {
-        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "href": "#c3cf047a-4696-530a-8a16-eaaef37b7ee6",
         "rel": "implementation"
        }
       ],
@@ -3919,7 +3919,7 @@
       ],
       "links": [
        {
-        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "href": "#c3cf047a-4696-530a-8a16-eaaef37b7ee6",
         "rel": "implementation"
        }
       ],
@@ -3952,7 +3952,7 @@
       ],
       "links": [
        {
-        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "href": "#c3cf047a-4696-530a-8a16-eaaef37b7ee6",
         "rel": "implementation"
        }
       ],
@@ -3985,7 +3985,7 @@
       ],
       "links": [
        {
-        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "href": "#c3cf047a-4696-530a-8a16-eaaef37b7ee6",
         "rel": "implementation"
        }
       ],
@@ -4018,7 +4018,7 @@
       ],
       "links": [
        {
-        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "href": "#c3cf047a-4696-530a-8a16-eaaef37b7ee6",
         "rel": "implementation"
        }
       ],
@@ -4042,7 +4042,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "1ceef7a2-bf3e-5212-bed8-579877b44065",
+     "uuid": "524e08d7-6d79-5655-a7c5-09bb62b7cb9a",
      "title": "TSA Security Directive Pipeline-2021-01G — \\\"Enhancing Pipeline Cybersecurity\\",
      "props": [
       {
@@ -4053,13 +4053,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd01_cybersecurity_coordinator.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd01_cybersecurity_coordinator.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+     "uuid": "2044a323-a60b-538f-92ee-f5a21894cbae",
      "title": "TSA Security Directive Pipeline-2021-01G — \\\"Enhancing Pipeline Cybersecurity\\",
      "props": [
       {
@@ -4070,13 +4070,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd01_incident_reporting.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd01_incident_reporting.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+     "uuid": "30bf231a-7bf9-55b9-90e4-1438435c2cb9",
      "title": "TSA Security Directive Pipeline-2021-01G — \\\"Enhancing Pipeline Cybersecurity\\",
      "props": [
       {
@@ -4087,13 +4087,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd01_vulnerability_assessment.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd01_vulnerability_assessment.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a89d4184-5a08-5e89-90da-ed73a9cf417d",
+     "uuid": "349e237c-5c22-54aa-80ab-b8e52b02e4ad",
      "title": "TSA Security Directive Pipeline-2021-02G",
      "props": [
       {
@@ -4104,13 +4104,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_access_control.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_access_control.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "c65ceb75-7625-5232-acf5-c5aea5752a26",
+     "uuid": "e5af0ade-b3bc-55c2-b62a-e70a8035b11c",
      "title": "TSA Security Directive Pipeline-2021-02G",
      "props": [
       {
@@ -4121,13 +4121,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_assessment_plan.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_assessment_plan.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "646b4220-2f5e-5cd8-81fa-cf22f203337e",
+     "uuid": "83b90988-eb32-5617-a597-8623bcb6ad52",
      "title": "TSA Security Directive Pipeline-2021-02G",
      "props": [
       {
@@ -4138,13 +4138,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_continuous_monitoring.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_continuous_monitoring.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+     "uuid": "afb6eb00-904d-529d-9600-6662b4115b78",
      "title": "TSA Security Directive Pipeline-2021-02G — \\\"Pipeline Cybersecurity Mitigation",
      "props": [
       {
@@ -4155,13 +4155,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_critical_cyber_systems.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_critical_cyber_systems.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "57ccb210-33c8-5812-8f78-f537f9b0a97b",
+     "uuid": "303c7cae-dfcf-599b-b914-1cf5bd5af059",
      "title": "TSA Security Directive Pipeline-2021-02G",
      "props": [
       {
@@ -4172,13 +4172,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_implementation_plan.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_implementation_plan.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "500c1c0c-21f4-5bcc-b444-3ef796732295",
+     "uuid": "98147d25-c363-51db-b6ac-1d452fa0e363",
      "title": "TSA Security Directive Pipeline-2021-02G",
      "props": [
       {
@@ -4189,13 +4189,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_incident_response_plan.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_incident_response_plan.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "7b4e3e50-65e2-5443-935b-8757f17bb499",
+     "uuid": "55d9d413-48cf-565e-9fb2-49bf62c44fcb",
      "title": "TSA Security Directive Pipeline-2021-02G",
      "props": [
       {
@@ -4206,13 +4206,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_network_segmentation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_network_segmentation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "e8482f6d-143c-5e5f-a1cf-731adc221b27",
+     "uuid": "1846ed02-4e80-5263-b51c-406977dbb70a",
      "title": "TSA Security Directive Pipeline-2021-02G",
      "props": [
       {
@@ -4223,13 +4223,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_patch_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_patch_management.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+     "uuid": "c3cf047a-4696-530a-8a16-eaaef37b7ee6",
      "title": "TSA Security Directive Pipeline-2021-02G",
      "props": [
       {
@@ -4240,7 +4240,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_records.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_records.rego",
        "media-type": "text/plain"
       }
      ]

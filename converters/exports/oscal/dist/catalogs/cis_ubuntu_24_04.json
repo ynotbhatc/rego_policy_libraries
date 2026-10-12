@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "cfb24000-3583-5fb1-b821-4ac310bbf126",
+  "uuid": "e573a7e4-3e44-578c-994a-d3151ac460d8",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_ubuntu_24_04 (Ubuntu uses AppArmor instead of SELinux)",
+   "title": "Rego Policy Libraries — cis_ubuntu_24_04 (CIS Ubuntu 24.04 LTS Benchmark - Complete Compliance Assessment)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,312 +43,6 @@
    ]
   },
   "groups": [
-   {
-    "id": "cis_ubuntu_24_04-apparmor_validation",
-    "class": "rego-module",
-    "title": "Ubuntu uses AppArmor instead of SELinux",
-    "props": [
-     {
-      "name": "rego-package",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "cis_ubuntu_24_04.apparmor"
-     },
-     {
-      "name": "rego-file",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "benchmarks/cis/ubuntu_24_04/apparmor_validation.rego"
-     },
-     {
-      "name": "class",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "security"
-     }
-    ],
-    "controls": [
-     {
-      "id": "cis_ubuntu_24_04-section",
-      "title": "1.6 Mandatory Access Controls (AppArmor)",
-      "props": [
-       {
-        "name": "label",
-        "value": "section"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "section"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_24_04.apparmor"
-       }
-      ],
-      "links": [
-       {
-        "href": "#631d7ddd-01d3-5ce3-bf31-1ba994c11f2e",
-        "rel": "implementation"
-       },
-       {
-        "href": "#07a08148-f8be-5328-8304-b6f3ff2b06e8",
-        "rel": "implementation"
-       },
-       {
-        "href": "#7f5a3456-151c-5335-9bc5-c91bc2382641",
-        "rel": "implementation"
-       },
-       {
-        "href": "#0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
-        "rel": "implementation"
-       },
-       {
-        "href": "#7b6adf5d-c9c8-5ab5-beda-e8132bedd4e1",
-        "rel": "implementation"
-       },
-       {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
-        "rel": "implementation"
-       },
-       {
-        "href": "#4209bac1-d364-500f-8b2e-4500d0401375",
-        "rel": "implementation"
-       },
-       {
-        "href": "#7436e618-434d-5c7d-bb43-231d9b873553",
-        "rel": "implementation"
-       },
-       {
-        "href": "#8f185d0b-994a-5e89-9805-de7f72bd479c",
-        "rel": "implementation"
-       },
-       {
-        "href": "#0d7b6fd8-b9cb-5835-8021-f6bbc95a223f",
-        "rel": "implementation"
-       },
-       {
-        "href": "#f5e6cb0a-3120-55c5-bb6d-2a3dc9d63f38",
-        "rel": "implementation"
-       },
-       {
-        "href": "#01fb3c4d-d336-511e-afb5-f82f1515fa96",
-        "rel": "implementation"
-       },
-       {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_24_04-section_stmt",
-        "name": "statement",
-        "prose": "1.6 Mandatory Access Controls (AppArmor)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.1",
-        "name": "assessment-objective",
-        "prose": "4.1 Configure System Accounting (auditd)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.2",
-        "name": "assessment-objective",
-        "prose": "1.3-1.5 Boot Security and Process Hardening"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.3",
-        "name": "assessment-objective",
-        "prose": "5.1 Configure time-based job schedulers"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.4",
-        "name": "assessment-objective",
-        "prose": "6.1 System File Permissions"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.5",
-        "name": "assessment-objective",
-        "prose": "1.2-1.8 Initial System Setup"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.6",
-        "name": "assessment-objective",
-        "prose": "4.2 Logging Configuration"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.7",
-        "name": "assessment-objective",
-        "prose": "3.1-3.3 Network Configuration"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.8",
-        "name": "assessment-objective",
-        "prose": "5.4-5.5 PAM and Password Policies"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.9",
-        "name": "assessment-objective",
-        "prose": "2.1-2.3 Service Configuration"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.10",
-        "name": "assessment-objective",
-        "prose": "5.2 Configure SSH Server"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.11",
-        "name": "assessment-objective",
-        "prose": "5.3 Configure Sudo"
-       },
-       {
-        "id": "cis_ubuntu_24_04-section_obj.12",
-        "name": "assessment-objective",
-        "prose": "6.2 User and Group Settings"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_24_04-benchmark",
-      "title": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
-      "props": [
-       {
-        "name": "label",
-        "value": "benchmark"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "benchmark"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_24_04.apparmor"
-       }
-      ],
-      "links": [
-       {
-        "href": "#631d7ddd-01d3-5ce3-bf31-1ba994c11f2e",
-        "rel": "implementation"
-       },
-       {
-        "href": "#07a08148-f8be-5328-8304-b6f3ff2b06e8",
-        "rel": "implementation"
-       },
-       {
-        "href": "#7f5a3456-151c-5335-9bc5-c91bc2382641",
-        "rel": "implementation"
-       },
-       {
-        "href": "#0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
-        "rel": "implementation"
-       },
-       {
-        "href": "#7b6adf5d-c9c8-5ab5-beda-e8132bedd4e1",
-        "rel": "implementation"
-       },
-       {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
-        "rel": "implementation"
-       },
-       {
-        "href": "#4209bac1-d364-500f-8b2e-4500d0401375",
-        "rel": "implementation"
-       },
-       {
-        "href": "#7436e618-434d-5c7d-bb43-231d9b873553",
-        "rel": "implementation"
-       },
-       {
-        "href": "#8f185d0b-994a-5e89-9805-de7f72bd479c",
-        "rel": "implementation"
-       },
-       {
-        "href": "#0d7b6fd8-b9cb-5835-8021-f6bbc95a223f",
-        "rel": "implementation"
-       },
-       {
-        "href": "#f5e6cb0a-3120-55c5-bb6d-2a3dc9d63f38",
-        "rel": "implementation"
-       },
-       {
-        "href": "#01fb3c4d-d336-511e-afb5-f82f1515fa96",
-        "rel": "implementation"
-       },
-       {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_24_04-benchmark_stmt",
-        "name": "statement",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.1",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.2",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.3",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.4",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.5",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.6",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.7",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.8",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.9",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.10",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.11",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       },
-       {
-        "id": "cis_ubuntu_24_04-benchmark_obj.12",
-        "name": "assessment-objective",
-        "prose": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)"
-       }
-      ],
-      "class": "security"
-     }
-    ]
-   },
    {
     "id": "cis_ubuntu_24_04-cis_ubuntu_24_04_complete",
     "class": "rego-module",
@@ -391,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#1d3d3909-a895-58aa-af36-d600b9ef8214",
+        "href": "#ff9b5337-bb18-596d-aaeb-48617a12faf6",
         "rel": "implementation"
        }
       ],
@@ -424,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#1d3d3909-a895-58aa-af36-d600b9ef8214",
+        "href": "#ff9b5337-bb18-596d-aaeb-48617a12faf6",
         "rel": "implementation"
        }
       ],
@@ -481,7 +175,7 @@
       ],
       "links": [
        {
-        "href": "#0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
+        "href": "#819324bc-029d-5784-abdd-01ccee52ebbd",
         "rel": "implementation"
        }
       ],
@@ -519,7 +213,7 @@
       ],
       "links": [
        {
-        "href": "#0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
+        "href": "#819324bc-029d-5784-abdd-01ccee52ebbd",
         "rel": "implementation"
        }
       ],
@@ -562,7 +256,7 @@
       ],
       "links": [
        {
-        "href": "#0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
+        "href": "#819324bc-029d-5784-abdd-01ccee52ebbd",
         "rel": "implementation"
        }
       ],
@@ -600,7 +294,7 @@
       ],
       "links": [
        {
-        "href": "#0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
+        "href": "#819324bc-029d-5784-abdd-01ccee52ebbd",
         "rel": "implementation"
        }
       ],
@@ -638,7 +332,7 @@
       ],
       "links": [
        {
-        "href": "#0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
+        "href": "#819324bc-029d-5784-abdd-01ccee52ebbd",
         "rel": "implementation"
        }
       ],
@@ -676,7 +370,7 @@
       ],
       "links": [
        {
-        "href": "#0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
+        "href": "#819324bc-029d-5784-abdd-01ccee52ebbd",
         "rel": "implementation"
        }
       ],
@@ -714,7 +408,7 @@
       ],
       "links": [
        {
-        "href": "#0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
+        "href": "#819324bc-029d-5784-abdd-01ccee52ebbd",
         "rel": "implementation"
        }
       ],
@@ -752,7 +446,7 @@
       ],
       "links": [
        {
-        "href": "#0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
+        "href": "#819324bc-029d-5784-abdd-01ccee52ebbd",
         "rel": "implementation"
        }
       ],
@@ -795,7 +489,7 @@
       ],
       "links": [
        {
-        "href": "#0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
+        "href": "#819324bc-029d-5784-abdd-01ccee52ebbd",
         "rel": "implementation"
        }
       ],
@@ -862,7 +556,7 @@
       ],
       "links": [
        {
-        "href": "#7b6adf5d-c9c8-5ab5-beda-e8132bedd4e1",
+        "href": "#01b02034-cc55-5322-ad01-25757b2075d7",
         "rel": "implementation"
        }
       ],
@@ -919,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -952,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -985,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1018,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1051,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1084,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1122,7 +816,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1155,7 +849,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1188,7 +882,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1221,7 +915,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1254,7 +948,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1297,7 +991,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1340,7 +1034,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1383,7 +1077,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1416,7 +1110,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1449,7 +1143,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1482,7 +1176,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1515,7 +1209,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1548,7 +1242,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1581,7 +1275,7 @@
       ],
       "links": [
        {
-        "href": "#93779a58-a28e-5c29-8ad7-75cafe886b14",
+        "href": "#a2ffba13-9bf0-5031-abaa-110a1ddab739",
         "rel": "implementation"
        }
       ],
@@ -1590,6 +1284,1464 @@
         "id": "cis_ubuntu_24_04-CIS-1.8.4_stmt",
         "name": "statement",
         "prose": "GDM idle delay is %d seconds, should be 900 or less"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_ubuntu_24_04-l2_validation",
+    "class": "rego-module",
+    "title": "Level 2 extends Level 1 with stricter settings suited for high-security",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_ubuntu_2404.l2"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/ubuntu_24_04/l2_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.2",
+      "title": "freevxfs module not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.2_stmt",
+        "name": "statement",
+        "prose": "freevxfs module not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.3",
+      "title": "jffs2 module not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.3_stmt",
+        "name": "statement",
+        "prose": "jffs2 module not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.4",
+      "title": "hfs module not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.4_stmt",
+        "name": "statement",
+        "prose": "hfs module not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.5",
+      "title": "hfsplus module not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.5_stmt",
+        "name": "statement",
+        "prose": "hfsplus module not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.6",
+      "title": "squashfs module not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.6_stmt",
+        "name": "statement",
+        "prose": "squashfs module not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.7",
+      "title": "udf module not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.1.7_stmt",
+        "name": "statement",
+        "prose": "udf module not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.2.1",
+      "title": "/tmp not on a separate partition",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.2.1_stmt",
+        "name": "statement",
+        "prose": "/tmp not on a separate partition"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.2.2",
+      "title": "/tmp not mounted with nodev",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.2.2_stmt",
+        "name": "statement",
+        "prose": "/tmp not mounted with nodev"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.2.3",
+      "title": "/tmp not mounted with nosuid",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.2.3_stmt",
+        "name": "statement",
+        "prose": "/tmp not mounted with nosuid"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.2.4",
+      "title": "/tmp not mounted with noexec",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.2.4_stmt",
+        "name": "statement",
+        "prose": "/tmp not mounted with noexec"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.3.1",
+      "title": "/var not on a separate partition",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.3.1_stmt",
+        "name": "statement",
+        "prose": "/var not on a separate partition"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.4.1",
+      "title": "/var/tmp not on a separate partition",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.4.1_stmt",
+        "name": "statement",
+        "prose": "/var/tmp not on a separate partition"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.5.1",
+      "title": "/var/log not on a separate partition",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.5.1_stmt",
+        "name": "statement",
+        "prose": "/var/log not on a separate partition"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.6.1",
+      "title": "/var/log/audit not on a separate partition",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.6.1_stmt",
+        "name": "statement",
+        "prose": "/var/log/audit not on a separate partition"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.7.1",
+      "title": "/home not on a separate partition",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.7.1_stmt",
+        "name": "statement",
+        "prose": "/home not on a separate partition"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.1.7.2",
+      "title": "/home not mounted with nodev",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.1.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.1.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.1.7.2_stmt",
+        "name": "statement",
+        "prose": "/home not mounted with nodev"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.3.1",
+      "title": "AppArmor not installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.3.1_stmt",
+        "name": "statement",
+        "prose": "AppArmor not installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.3.2",
+      "title": "AppArmor not enabled at boot",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.3.2_stmt",
+        "name": "statement",
+        "prose": "AppArmor not enabled at boot"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.3.3",
+      "title": "Not all AppArmor profiles loaded in enforce mode",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.3.3_stmt",
+        "name": "statement",
+        "prose": "Not all AppArmor profiles loaded in enforce mode"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-1.5.4",
+      "title": "Core dumps not restricted (fs.suid_dumpable != 0)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.5.4_stmt",
+        "name": "statement",
+        "prose": "Core dumps not restricted (fs.suid_dumpable != 0)"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.5.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Hard core dump limit not set to 0 in limits.conf"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-2.3.1",
+      "title": "ftp client installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-2.3.1_stmt",
+        "name": "statement",
+        "prose": "ftp client installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-2.3.2",
+      "title": "ldap-utils (LDAP client) installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-2.3.2_stmt",
+        "name": "statement",
+        "prose": "ldap-utils (LDAP client) installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-2.3.3",
+      "title": "nis (NIS client) installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-2.3.3_stmt",
+        "name": "statement",
+        "prose": "nis (NIS client) installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-2.3.4",
+      "title": "telnet client installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-2.3.4_stmt",
+        "name": "statement",
+        "prose": "telnet client installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-2.3.5",
+      "title": "rsh-client installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-2.3.5_stmt",
+        "name": "statement",
+        "prose": "rsh-client installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-3.1.2",
+      "title": "Wireless interfaces active on server",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-3.1.2_stmt",
+        "name": "statement",
+        "prose": "Wireless interfaces active on server"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-3.3.1",
+      "title": "IPv6 router advertisements not disabled (all)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-3.3.1_stmt",
+        "name": "statement",
+        "prose": "IPv6 router advertisements not disabled (all)"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-3.3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "IPv6 router advertisements not disabled (default)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-3.3.2",
+      "title": "IPv6 redirects accepted",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-3.3.2_stmt",
+        "name": "statement",
+        "prose": "IPv6 redirects accepted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-4.1.3.1",
+      "title": "Audit rule for /usr/bin/chsh missing",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.1.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.1.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-4.1.3.1_stmt",
+        "name": "statement",
+        "prose": "Audit rule for /usr/bin/chsh missing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-4.1.3.2",
+      "title": "Audit rule for /usr/bin/newgrp missing",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.1.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.1.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-4.1.3.2_stmt",
+        "name": "statement",
+        "prose": "Audit rule for /usr/bin/newgrp missing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-4.1.3.3",
+      "title": "Audit rule for /usr/bin/chage missing",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.1.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.1.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-4.1.3.3_stmt",
+        "name": "statement",
+        "prose": "Audit rule for /usr/bin/chage missing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-4.1.3.4",
+      "title": "Audit rule for /usr/sbin/usermod missing",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.1.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.1.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-4.1.3.4_stmt",
+        "name": "statement",
+        "prose": "Audit rule for /usr/sbin/usermod missing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-4.1.4.1",
+      "title": "File deletion events not audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.1.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.1.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-4.1.4.1_stmt",
+        "name": "statement",
+        "prose": "File deletion events not audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-4.1.5",
+      "title": "sudoers changes not audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-4.1.5_stmt",
+        "name": "statement",
+        "prose": "sudoers changes not audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-5.2.7",
+      "title": "AllowTcpForwarding not set to 'no'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-5.2.7_stmt",
+        "name": "statement",
+        "prose": "AllowTcpForwarding not set to 'no'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-5.2.8",
+      "title": "LoginGraceTime not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-5.2.8_stmt",
+        "name": "statement",
+        "prose": "LoginGraceTime not configured"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-5.2.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "LoginGraceTime exceeds 60 seconds"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-5.2.22",
+      "title": "MaxSessions exceeds 10",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.2.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.2.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-5.2.22_stmt",
+        "name": "statement",
+        "prose": "MaxSessions exceeds 10"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-5.4.1.5",
+      "title": "INACTIVE password lock not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.4.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.4.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-5.4.1.5_stmt",
+        "name": "statement",
+        "prose": "INACTIVE password lock not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-cis_ubuntu_2404.l2-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_24_04/l2_validation.rego (package cis_ubuntu_2404.l2); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_2404.l2#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_2404.l2#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-cis_ubuntu_2404.l2-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_24_04/l2_validation.rego (package cis_ubuntu_2404.l2); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-6.1.11",
+      "title": "Unowned files found on filesystem",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-6.1.11_stmt",
+        "name": "statement",
+        "prose": "Unowned files found on filesystem"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-6.1.12",
+      "title": "Ungrouped files found on filesystem",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-6.1.12_stmt",
+        "name": "statement",
+        "prose": "Ungrouped files found on filesystem"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-6.1.13",
+      "title": "Unexpected SUID executables found",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-6.1.13_stmt",
+        "name": "statement",
+        "prose": "Unexpected SUID executables found"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-CIS-L2-6.1.14",
+      "title": "Unexpected SGID executables found",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_2404.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-6.1.14_stmt",
+        "name": "statement",
+        "prose": "Unexpected SGID executables found"
        }
       ],
       "class": "security"
@@ -1619,39 +2771,6 @@
     ],
     "controls": [
      {
-      "id": "cis_ubuntu_24_04-rsyslog",
-      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_24_04/logging_validation.rego (package cis_ubuntu_24_04.logging); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "rsyslog"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "rsyslog"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_24_04.logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4209bac1-d364-500f-8b2e-4500d0401375",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_24_04-rsyslog_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_24_04/logging_validation.rego (package cis_ubuntu_24_04.logging); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_ubuntu_24_04-journald",
       "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_24_04/logging_validation.rego (package cis_ubuntu_24_04.logging); see the rule body.",
       "props": [
@@ -1671,13 +2790,46 @@
       ],
       "links": [
        {
-        "href": "#4209bac1-d364-500f-8b2e-4500d0401375",
+        "href": "#13aafb73-4279-58b3-8a75-966fcb9f4bed",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_ubuntu_24_04-journald_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_24_04/logging_validation.rego (package cis_ubuntu_24_04.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_24_04-rsyslog",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_24_04/logging_validation.rego (package cis_ubuntu_24_04.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "rsyslog"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "rsyslog"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_24_04.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#13aafb73-4279-58b3-8a75-966fcb9f4bed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_24_04-rsyslog_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_24_04/logging_validation.rego (package cis_ubuntu_24_04.logging); see the rule body."
        }
@@ -1728,7 +2880,7 @@
       ],
       "links": [
        {
-        "href": "#7436e618-434d-5c7d-bb43-231d9b873553",
+        "href": "#5802abeb-39ed-5e33-ae9f-224be58d1c97",
         "rel": "implementation"
        }
       ],
@@ -1785,7 +2937,7 @@
       ],
       "links": [
        {
-        "href": "#01fb3c4d-d336-511e-afb5-f82f1515fa96",
+        "href": "#53e38d1c-f88e-5cd3-bfd6-f1ba55b6597d",
         "rel": "implementation"
        }
       ],
@@ -1818,7 +2970,7 @@
       ],
       "links": [
        {
-        "href": "#01fb3c4d-d336-511e-afb5-f82f1515fa96",
+        "href": "#53e38d1c-f88e-5cd3-bfd6-f1ba55b6597d",
         "rel": "implementation"
        }
       ],
@@ -1851,7 +3003,7 @@
       ],
       "links": [
        {
-        "href": "#01fb3c4d-d336-511e-afb5-f82f1515fa96",
+        "href": "#53e38d1c-f88e-5cd3-bfd6-f1ba55b6597d",
         "rel": "implementation"
        }
       ],
@@ -1884,7 +3036,7 @@
       ],
       "links": [
        {
-        "href": "#01fb3c4d-d336-511e-afb5-f82f1515fa96",
+        "href": "#53e38d1c-f88e-5cd3-bfd6-f1ba55b6597d",
         "rel": "implementation"
        }
       ],
@@ -1917,7 +3069,7 @@
       ],
       "links": [
        {
-        "href": "#01fb3c4d-d336-511e-afb5-f82f1515fa96",
+        "href": "#53e38d1c-f88e-5cd3-bfd6-f1ba55b6597d",
         "rel": "implementation"
        }
       ],
@@ -1950,7 +3102,7 @@
       ],
       "links": [
        {
-        "href": "#01fb3c4d-d336-511e-afb5-f82f1515fa96",
+        "href": "#53e38d1c-f88e-5cd3-bfd6-f1ba55b6597d",
         "rel": "implementation"
        }
       ],
@@ -1988,7 +3140,7 @@
       ],
       "links": [
        {
-        "href": "#01fb3c4d-d336-511e-afb5-f82f1515fa96",
+        "href": "#53e38d1c-f88e-5cd3-bfd6-f1ba55b6597d",
         "rel": "implementation"
        }
       ],
@@ -2026,7 +3178,7 @@
       ],
       "links": [
        {
-        "href": "#01fb3c4d-d336-511e-afb5-f82f1515fa96",
+        "href": "#53e38d1c-f88e-5cd3-bfd6-f1ba55b6597d",
         "rel": "implementation"
        }
       ],
@@ -2088,7 +3240,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2121,7 +3273,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2154,7 +3306,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2187,7 +3339,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2220,7 +3372,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2253,7 +3405,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2286,7 +3438,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2319,7 +3471,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2372,7 +3524,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2405,7 +3557,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2438,7 +3590,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2471,7 +3623,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2504,7 +3656,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2537,7 +3689,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2570,7 +3722,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2603,7 +3755,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2636,7 +3788,7 @@
       ],
       "links": [
        {
-        "href": "#888ec6da-371a-5ef5-a861-40aef5f88836",
+        "href": "#ca63a825-8a3b-55a0-bb83-737aa129540b",
         "rel": "implementation"
        }
       ],
@@ -2665,58 +3817,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "631d7ddd-01d3-5ce3-bf31-1ba994c11f2e",
-     "title": "Ubuntu uses AppArmor instead of SELinux",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_ubuntu_24_04.apparmor"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/apparmor_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "07a08148-f8be-5328-8304-b6f3ff2b06e8",
-     "title": "CIS 4.1.1.1: Ensure audit is installed",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_ubuntu_24_04.auditd"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/auditd_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "7f5a3456-151c-5335-9bc5-c91bc2382641",
-     "title": "CIS 1.3.1: AIDE installed",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_ubuntu_24_04.boot_security"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/boot_security_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "1d3d3909-a895-58aa-af36-d600b9ef8214",
+     "uuid": "ff9b5337-bb18-596d-aaeb-48617a12faf6",
      "title": "CIS Ubuntu 24.04 LTS Benchmark - Complete Compliance Assessment",
      "props": [
       {
@@ -2727,13 +3828,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/cis_ubuntu_24_04_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/ubuntu_24_04/cis_ubuntu_24_04_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "0e9cf3a0-ae7b-59d7-b6e1-cb66cfa3821f",
+     "uuid": "819324bc-029d-5784-abdd-01ccee52ebbd",
      "title": "CIS 5.1.1: Ensure cron daemon is enabled and running",
      "props": [
       {
@@ -2744,13 +3845,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/cron_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/ubuntu_24_04/cron_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "7b6adf5d-c9c8-5ab5-beda-e8132bedd4e1",
+     "uuid": "01b02034-cc55-5322-ad01-25757b2075d7",
      "title": "CIS 6.1.x: Critical system file permissions",
      "props": [
       {
@@ -2761,13 +3862,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/file_permissions_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/ubuntu_24_04/file_permissions_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "93779a58-a28e-5c29-8ad7-75cafe886b14",
+     "uuid": "a2ffba13-9bf0-5031-abaa-110a1ddab739",
      "title": "CIS 1.2: Configure Software Updates (Ubuntu uses apt)",
      "props": [
       {
@@ -2778,13 +3879,30 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/initial_setup_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/ubuntu_24_04/initial_setup_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "4209bac1-d364-500f-8b2e-4500d0401375",
+     "uuid": "0cb733aa-7efe-5ff2-8a84-8a42dbe3dce5",
+     "title": "Level 2 extends Level 1 with stricter settings suited for high-security",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_2404.l2"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/ubuntu_24_04/l2_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "13aafb73-4279-58b3-8a75-966fcb9f4bed",
      "title": "CIS 4.2.1.1: rsyslog installed",
      "props": [
       {
@@ -2795,13 +3913,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/logging_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/ubuntu_24_04/logging_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "7436e618-434d-5c7d-bb43-231d9b873553",
+     "uuid": "5802abeb-39ed-5e33-ae9f-224be58d1c97",
      "title": "CIS 3.x: Kernel sysctl parameters",
      "props": [
       {
@@ -2812,64 +3930,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/network_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/ubuntu_24_04/network_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "8f185d0b-994a-5e89-9805-de7f72bd479c",
-     "title": "CIS 5.4.1: Ensure password creation requirements are configured (pwquality)",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_ubuntu_24_04.pam"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/pam_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "0d7b6fd8-b9cb-5835-8021-f6bbc95a223f",
-     "title": "CIS 2.1.x: Disable automounting",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_ubuntu_24_04.services"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/services_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "f5e6cb0a-3120-55c5-bb6d-2a3dc9d63f38",
-     "title": "CIS 5.2.1: Ensure permissions on /etc/ssh/sshd_config are configured",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_ubuntu_24_04.ssh"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/ssh_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "01fb3c4d-d336-511e-afb5-f82f1515fa96",
+     "uuid": "53e38d1c-f88e-5cd3-bfd6-f1ba55b6597d",
      "title": "CIS 5.3.1: Ensure sudo is installed",
      "props": [
       {
@@ -2880,13 +3947,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/sudo_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/ubuntu_24_04/sudo_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "888ec6da-371a-5ef5-a861-40aef5f88836",
+     "uuid": "ca63a825-8a3b-55a0-bb83-737aa129540b",
      "title": "CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords",
      "props": [
       {
@@ -2897,7 +3964,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_24_04/user_group_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/ubuntu_24_04/user_group_validation.rego",
        "media-type": "text/plain"
       }
      ]

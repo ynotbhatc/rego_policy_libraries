@@ -81,7 +81,7 @@ converters/                    Rego → X (own section): packaging, interchange 
 ```
 
 Headline count: **740 policy files** (996 including tests) across the above directories, as of 2026-10-12. Count it, do not quote it: total minus test-named files (tests/ dirs, test_*, *_test.rego).
-Count it, never quote it — `git ls-tree -r HEAD --name-only | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'` — the number drifts with every merge. Control-level checks (one file holds one to a few hundred): `make count` (`scripts/count_controls.py`), which also restamps `docs/metrics.json` for the README badge; CI fails if README or metrics.json disagree with the count. 7,867 at 2.2.0.
+Count it, never quote it — `git ls-tree -r HEAD --name-only | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'` — the number drifts with every merge. Control-level checks (one file holds one to a few hundred): `make count` (`scripts/count_controls.py`, which reads OPA's parser via `scripts/rego_ast.py` and restamps `docs/metrics.json`); CI fails if README or metrics.json disagree. 7,560 at 2.3.0 (7,867 at 2.2.0 was a regex over-count).
 
 ## Skill: Rego v1 syntax (MANDATORY)
 

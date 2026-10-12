@@ -1,0 +1,697 @@
+{
+ "catalog": {
+  "uuid": "255b2e33-7f14-5b4b-a311-0a68f1b8b52e",
+  "metadata": {
+   "title": "Rego Policy Libraries — enforcement_cicd (CI/CD Pipeline Security Governance)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "enforcement_cicd"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "enforcement_cicd-cicd_pipeline",
+    "class": "rego-module",
+    "title": "CI/CD Pipeline Security Governance",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cicd.pipeline"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/cicd/cicd_pipeline.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_cicd-cicd.pipeline-1",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-Permissions",
+      "title": "Workflow uses 'permissions: write-all' — minimize to least privilege",
+      "props": [
+       {
+        "name": "label",
+        "value": "Permissions"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Permissions"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-Permissions_stmt",
+        "name": "statement",
+        "prose": "Workflow uses 'permissions: write-all' — minimize to least privilege"
+       },
+       {
+        "id": "enforcement_cicd-Permissions_obj.1",
+        "name": "assessment-objective",
+        "prose": "Workflow grants 'contents: write' at workflow level — restrict to job level"
+       },
+       {
+        "id": "enforcement_cicd-Permissions_obj.2",
+        "name": "assessment-objective",
+        "prose": "Workflow grants 'packages: write' without attestation workflow justification"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-2",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-3",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-4",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-5",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-6",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-7",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-8",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-9",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-10",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-11",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-12",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-13",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-14",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-14_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-15",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-15_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-cicd.pipeline-16",
+      "title": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cicd.pipeline#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cicd.pipeline#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-cicd.pipeline-16_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/cicd/cicd_pipeline.rego (package cicd.pipeline); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_cicd-Dependencies",
+      "title": "No dependency-review or SBOM generation step found in CI workflow",
+      "props": [
+       {
+        "name": "label",
+        "value": "Dependencies"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Dependencies"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cicd.pipeline"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82dcd500-e972-5c92-a123-bd2f1b1234d9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_cicd-Dependencies_stmt",
+        "name": "statement",
+        "prose": "No dependency-review or SBOM generation step found in CI workflow"
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "82dcd500-e972-5c92-a123-bd2f1b1234d9",
+     "title": "CI/CD Pipeline Security Governance",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cicd.pipeline"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/enforcement/cicd/cicd_pipeline.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

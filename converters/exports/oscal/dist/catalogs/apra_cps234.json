@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "f9d35da2-24b5-5aa6-aac7-7e82f6fc3a61",
+  "uuid": "68a5cb68-a7ce-515b-9f3e-a150c5876186",
   "metadata": {
    "title": "Rego Policy Libraries — apra_cps234 (APRA CPS 234 Information Security (Australia, July 2019))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,798 +66,6 @@
     ],
     "controls": [
      {
-      "id": "apra_cps234-13",
-      "title": "The Board is ultimately responsible for information security and ensures it is maintained commensurate with the size and extent of threats, enabling continued sound operation",
-      "props": [
-       {
-        "name": "label",
-        "value": "13"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "13"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-13_stmt",
-        "name": "statement",
-        "prose": "The Board is ultimately responsible for information security and ensures it is maintained commensurate with the size and extent of threats, enabling continued sound operation"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-14",
-      "title": "Information security roles and responsibilities of the Board, senior management, governing bodies and individuals (decision-making, approval, oversight, operations) are clearly defined",
-      "props": [
-       {
-        "name": "label",
-        "value": "14"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "14"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-14_stmt",
-        "name": "statement",
-        "prose": "Information security roles and responsibilities of the Board, senior management, governing bodies and individuals (decision-making, approval, oversight, operations) are clearly defined"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-15",
-      "title": "An information security capability commensurate with the size and extent of threats to information assets is maintained",
-      "props": [
-       {
-        "name": "label",
-        "value": "15"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "15"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-15_stmt",
-        "name": "statement",
-        "prose": "An information security capability commensurate with the size and extent of threats to information assets is maintained"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-16",
-      "title": "The information security capability of each related party or third party managing information assets is assessed, commensurate with the potential consequences of an incident",
-      "props": [
-       {
-        "name": "label",
-        "value": "16"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "16"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-16_stmt",
-        "name": "statement",
-        "prose": "The information security capability of each related party or third party managing information assets is assessed, commensurate with the potential consequences of an incident"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-17",
-      "title": "The capability is actively maintained against changes in vulnerabilities and threats, including from changes to information assets or the business environment",
-      "props": [
-       {
-        "name": "label",
-        "value": "17"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "17"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-17_stmt",
-        "name": "statement",
-        "prose": "The capability is actively maintained against changes in vulnerabilities and threats, including from changes to information assets or the business environment"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-18",
-      "title": "An information security policy framework commensurate with exposures to vulnerabilities and threats is maintained",
-      "props": [
-       {
-        "name": "label",
-        "value": "18"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "18"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-18_stmt",
-        "name": "statement",
-        "prose": "An information security policy framework commensurate with exposures to vulnerabilities and threats is maintained"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-19",
-      "title": "The policy framework provides direction on the responsibilities of all parties obliged to maintain information security (staff, contractors, consultants, related and third parties, customers)",
-      "props": [
-       {
-        "name": "label",
-        "value": "19"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "19"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-19_stmt",
-        "name": "statement",
-        "prose": "The policy framework provides direction on the responsibilities of all parties obliged to maintain information security (staff, contractors, consultants, related and third parties, customers)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-20",
-      "title": "Information assets, including those managed by related and third parties, are classified by criticality and sensitivity reflecting the potential financial and non-financial impact of an incident",
-      "props": [
-       {
-        "name": "label",
-        "value": "20"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "20"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-20_stmt",
-        "name": "statement",
-        "prose": "Information assets, including those managed by related and third parties, are classified by criticality and sensitivity reflecting the potential financial and non-financial impact of an incident"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-21",
-      "title": "Information security controls protect information assets, implemented in a timely manner and commensurate with vulnerabilities and threats, criticality and sensitivity, life-cycle stage, and the poten",
-      "props": [
-       {
-        "name": "label",
-        "value": "21"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "21"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-21_stmt",
-        "name": "statement",
-        "prose": "Information security controls protect information assets, implemented in a timely manner and commensurate with vulnerabilities and threats, criticality and sensitivity, life-cycle stage, and the potential consequences of an incident"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-22",
-      "title": "The design of each related party's or third party's information security controls protecting the entity's information assets is evaluated",
-      "props": [
-       {
-        "name": "label",
-        "value": "22"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "22"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-22_stmt",
-        "name": "statement",
-        "prose": "The design of each related party's or third party's information security controls protecting the entity's information assets is evaluated"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-23",
-      "title": "Robust mechanisms detect and respond to information security incidents in a timely manner",
-      "props": [
-       {
-        "name": "label",
-        "value": "23"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "23"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-23_stmt",
-        "name": "statement",
-        "prose": "Robust mechanisms detect and respond to information security incidents in a timely manner"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-24",
-      "title": "Information security response plans are maintained for incidents that could plausibly occur",
-      "props": [
-       {
-        "name": "label",
-        "value": "24"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "24"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-24_stmt",
-        "name": "statement",
-        "prose": "Information security response plans are maintained for incidents that could plausibly occur"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-25",
-      "title": "Response plans include mechanisms for managing all stages from detection to post-incident review, and for escalation and reporting to the Board, governing bodies and responsible individuals",
-      "props": [
-       {
-        "name": "label",
-        "value": "25"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "25"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-25_stmt",
-        "name": "statement",
-        "prose": "Response plans include mechanisms for managing all stages from detection to post-incident review, and for escalation and reporting to the Board, governing bodies and responsible individuals"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-26",
-      "title": "Information security response plans are reviewed and tested annually to ensure they remain effective and fit-for-purpose",
-      "props": [
-       {
-        "name": "label",
-        "value": "26"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "26"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-26_stmt",
-        "name": "statement",
-        "prose": "Information security response plans are reviewed and tested annually to ensure they remain effective and fit-for-purpose"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-27",
-      "title": "Control effectiveness is tested through a systematic testing program whose nature and frequency match the rate of change in threats, asset criticality and sensitivity, incident consequences, exposure ",
-      "props": [
-       {
-        "name": "label",
-        "value": "27"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "27"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-27_stmt",
-        "name": "statement",
-        "prose": "Control effectiveness is tested through a systematic testing program whose nature and frequency match the rate of change in threats, asset criticality and sensitivity, incident consequences, exposure to untrusted environments, and the materiality and frequency of change"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-28",
-      "title": "Where reliance is placed on a related party's or third party's control testing, the nature and frequency of that testing is assessed against paragraph 27(a)–(e)",
-      "props": [
-       {
-        "name": "label",
-        "value": "28"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "28"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-28_stmt",
-        "name": "statement",
-        "prose": "Where reliance is placed on a related party's or third party's control testing, the nature and frequency of that testing is assessed against paragraph 27(a)–(e)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-29",
-      "title": "Testing results that identify control deficiencies which cannot be remediated in a timely manner are escalated and reported to the Board or senior management",
-      "props": [
-       {
-        "name": "label",
-        "value": "29"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "29"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-29_stmt",
-        "name": "statement",
-        "prose": "Testing results that identify control deficiencies which cannot be remediated in a timely manner are escalated and reported to the Board or senior management"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-30",
-      "title": "Testing is conducted by appropriately skilled and functionally independent specialists",
-      "props": [
-       {
-        "name": "label",
-        "value": "30"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "30"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-30_stmt",
-        "name": "statement",
-        "prose": "Testing is conducted by appropriately skilled and functionally independent specialists"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-31",
-      "title": "The sufficiency of the testing program is reviewed at least annually or on material change to information assets or the business environment",
-      "props": [
-       {
-        "name": "label",
-        "value": "31"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "31"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-31_stmt",
-        "name": "statement",
-        "prose": "The sufficiency of the testing program is reviewed at least annually or on material change to information assets or the business environment"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-32",
-      "title": "Internal audit reviews the design and operating effectiveness of information security controls, including those maintained by related and third parties (control assurance)",
-      "props": [
-       {
-        "name": "label",
-        "value": "32"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "32"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-32_stmt",
-        "name": "statement",
-        "prose": "Internal audit reviews the design and operating effectiveness of information security controls, including those maintained by related and third parties (control assurance)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-33",
-      "title": "Information security control assurance is provided by appropriately skilled personnel",
-      "props": [
-       {
-        "name": "label",
-        "value": "33"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "33"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-33_stmt",
-        "name": "statement",
-        "prose": "Information security control assurance is provided by appropriately skilled personnel"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-34",
-      "title": "Internal audit assesses control assurance provided by a related or third party where an incident could materially affect the entity or its customers and audit intends to rely on that assurance",
-      "props": [
-       {
-        "name": "label",
-        "value": "34"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "34"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-34_stmt",
-        "name": "statement",
-        "prose": "Internal audit assesses control assurance provided by a related or third party where an incident could materially affect the entity or its customers and audit intends to rely on that assurance"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-35",
-      "title": "APRA is notified as soon as possible and no later than 72 hours after becoming aware of an information security incident that materially affected (or could materially affect) the entity or its custome",
-      "props": [
-       {
-        "name": "label",
-        "value": "35"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "35"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-35_stmt",
-        "name": "statement",
-        "prose": "APRA is notified as soon as possible and no later than 72 hours after becoming aware of an information security incident that materially affected (or could materially affect) the entity or its customers, or that was notified to another regulator"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-36",
-      "title": "APRA is notified as soon as possible and no later than 10 business days after becoming aware of a material control weakness the entity expects not to remediate in a timely manner",
-      "props": [
-       {
-        "name": "label",
-        "value": "36"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "36"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-36_stmt",
-        "name": "statement",
-        "prose": "APRA is notified as soon as possible and no later than 10 business days after becoming aware of a material control weakness the entity expects not to remediate in a timely manner"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "apra_cps234-CPS-234-para-16-22-28-34",
       "title": "apra_cps234.third_party_managed_assets must be declared true or false — whether related parties or third parties manage information assets cannot be assumed",
       "props": [
@@ -877,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
         "rel": "implementation"
        }
       ],
@@ -910,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
         "rel": "implementation"
        }
       ],
@@ -943,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
         "rel": "implementation"
        }
       ],
@@ -956,7 +164,799 @@
        {
         "id": "apra_cps234-CPS-234-Input-Contract_obj.1",
         "name": "assessment-objective",
-        "prose": "input.apra_cps234.controls must be an object of {\\\"<paragraph>\\\": true}"
+        "prose": "input.apra_cps234.controls must be an object of {\"<paragraph>\": true}"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-13",
+      "title": "The Board is ultimately responsible for information security and ensures it is maintained commensurate with the size and extent of threats, enabling continued sound operation",
+      "props": [
+       {
+        "name": "label",
+        "value": "13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-13_stmt",
+        "name": "statement",
+        "prose": "The Board is ultimately responsible for information security and ensures it is maintained commensurate with the size and extent of threats, enabling continued sound operation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-14",
+      "title": "Information security roles and responsibilities of the Board, senior management, governing bodies and individuals (decision-making, approval, oversight, operations) are clearly defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-14_stmt",
+        "name": "statement",
+        "prose": "Information security roles and responsibilities of the Board, senior management, governing bodies and individuals (decision-making, approval, oversight, operations) are clearly defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-15",
+      "title": "An information security capability commensurate with the size and extent of threats to information assets is maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-15_stmt",
+        "name": "statement",
+        "prose": "An information security capability commensurate with the size and extent of threats to information assets is maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-16",
+      "title": "The information security capability of each related party or third party managing information assets is assessed, commensurate with the potential consequences of an incident",
+      "props": [
+       {
+        "name": "label",
+        "value": "16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-16_stmt",
+        "name": "statement",
+        "prose": "The information security capability of each related party or third party managing information assets is assessed, commensurate with the potential consequences of an incident"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-17",
+      "title": "The capability is actively maintained against changes in vulnerabilities and threats, including from changes to information assets or the business environment",
+      "props": [
+       {
+        "name": "label",
+        "value": "17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-17_stmt",
+        "name": "statement",
+        "prose": "The capability is actively maintained against changes in vulnerabilities and threats, including from changes to information assets or the business environment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-18",
+      "title": "An information security policy framework commensurate with exposures to vulnerabilities and threats is maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-18_stmt",
+        "name": "statement",
+        "prose": "An information security policy framework commensurate with exposures to vulnerabilities and threats is maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-19",
+      "title": "The policy framework provides direction on the responsibilities of all parties obliged to maintain information security (staff, contractors, consultants, related and third parties, customers)",
+      "props": [
+       {
+        "name": "label",
+        "value": "19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-19_stmt",
+        "name": "statement",
+        "prose": "The policy framework provides direction on the responsibilities of all parties obliged to maintain information security (staff, contractors, consultants, related and third parties, customers)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-20",
+      "title": "Information assets, including those managed by related and third parties, are classified by criticality and sensitivity reflecting the potential financial and non-financial impact of an incident",
+      "props": [
+       {
+        "name": "label",
+        "value": "20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-20_stmt",
+        "name": "statement",
+        "prose": "Information assets, including those managed by related and third parties, are classified by criticality and sensitivity reflecting the potential financial and non-financial impact of an incident"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-21",
+      "title": "Information security controls protect information assets, implemented in a timely manner and commensurate with vulnerabilities and threats, criticality and sensitivity, life-cycle stage, and the poten",
+      "props": [
+       {
+        "name": "label",
+        "value": "21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-21_stmt",
+        "name": "statement",
+        "prose": "Information security controls protect information assets, implemented in a timely manner and commensurate with vulnerabilities and threats, criticality and sensitivity, life-cycle stage, and the potential consequences of an incident"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-22",
+      "title": "The design of each related party's or third party's information security controls protecting the entity's information assets is evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-22_stmt",
+        "name": "statement",
+        "prose": "The design of each related party's or third party's information security controls protecting the entity's information assets is evaluated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-23",
+      "title": "Robust mechanisms detect and respond to information security incidents in a timely manner",
+      "props": [
+       {
+        "name": "label",
+        "value": "23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-23_stmt",
+        "name": "statement",
+        "prose": "Robust mechanisms detect and respond to information security incidents in a timely manner"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-24",
+      "title": "Information security response plans are maintained for incidents that could plausibly occur",
+      "props": [
+       {
+        "name": "label",
+        "value": "24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-24_stmt",
+        "name": "statement",
+        "prose": "Information security response plans are maintained for incidents that could plausibly occur"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-25",
+      "title": "Response plans include mechanisms for managing all stages from detection to post-incident review, and for escalation and reporting to the Board, governing bodies and responsible individuals",
+      "props": [
+       {
+        "name": "label",
+        "value": "25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-25_stmt",
+        "name": "statement",
+        "prose": "Response plans include mechanisms for managing all stages from detection to post-incident review, and for escalation and reporting to the Board, governing bodies and responsible individuals"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-26",
+      "title": "Information security response plans are reviewed and tested annually to ensure they remain effective and fit-for-purpose",
+      "props": [
+       {
+        "name": "label",
+        "value": "26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-26_stmt",
+        "name": "statement",
+        "prose": "Information security response plans are reviewed and tested annually to ensure they remain effective and fit-for-purpose"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-27",
+      "title": "Control effectiveness is tested through a systematic testing program whose nature and frequency match the rate of change in threats, asset criticality and sensitivity, incident consequences, exposure ",
+      "props": [
+       {
+        "name": "label",
+        "value": "27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-27_stmt",
+        "name": "statement",
+        "prose": "Control effectiveness is tested through a systematic testing program whose nature and frequency match the rate of change in threats, asset criticality and sensitivity, incident consequences, exposure to untrusted environments, and the materiality and frequency of change"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-28",
+      "title": "Where reliance is placed on a related party's or third party's control testing, the nature and frequency of that testing is assessed against paragraph 27(a)–(e)",
+      "props": [
+       {
+        "name": "label",
+        "value": "28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-28_stmt",
+        "name": "statement",
+        "prose": "Where reliance is placed on a related party's or third party's control testing, the nature and frequency of that testing is assessed against paragraph 27(a)–(e)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-29",
+      "title": "Testing results that identify control deficiencies which cannot be remediated in a timely manner are escalated and reported to the Board or senior management",
+      "props": [
+       {
+        "name": "label",
+        "value": "29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-29_stmt",
+        "name": "statement",
+        "prose": "Testing results that identify control deficiencies which cannot be remediated in a timely manner are escalated and reported to the Board or senior management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-30",
+      "title": "Testing is conducted by appropriately skilled and functionally independent specialists",
+      "props": [
+       {
+        "name": "label",
+        "value": "30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-30_stmt",
+        "name": "statement",
+        "prose": "Testing is conducted by appropriately skilled and functionally independent specialists"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-31",
+      "title": "The sufficiency of the testing program is reviewed at least annually or on material change to information assets or the business environment",
+      "props": [
+       {
+        "name": "label",
+        "value": "31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-31_stmt",
+        "name": "statement",
+        "prose": "The sufficiency of the testing program is reviewed at least annually or on material change to information assets or the business environment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-32",
+      "title": "Internal audit reviews the design and operating effectiveness of information security controls, including those maintained by related and third parties (control assurance)",
+      "props": [
+       {
+        "name": "label",
+        "value": "32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-32_stmt",
+        "name": "statement",
+        "prose": "Internal audit reviews the design and operating effectiveness of information security controls, including those maintained by related and third parties (control assurance)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-33",
+      "title": "Information security control assurance is provided by appropriately skilled personnel",
+      "props": [
+       {
+        "name": "label",
+        "value": "33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-33_stmt",
+        "name": "statement",
+        "prose": "Information security control assurance is provided by appropriately skilled personnel"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-34",
+      "title": "Internal audit assesses control assurance provided by a related or third party where an incident could materially affect the entity or its customers and audit intends to rely on that assurance",
+      "props": [
+       {
+        "name": "label",
+        "value": "34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-34_stmt",
+        "name": "statement",
+        "prose": "Internal audit assesses control assurance provided by a related or third party where an incident could materially affect the entity or its customers and audit intends to rely on that assurance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-35",
+      "title": "APRA is notified as soon as possible and no later than 72 hours after becoming aware of an information security incident that materially affected (or could materially affect) the entity or its custome",
+      "props": [
+       {
+        "name": "label",
+        "value": "35"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "35"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-35_stmt",
+        "name": "statement",
+        "prose": "APRA is notified as soon as possible and no later than 72 hours after becoming aware of an information security incident that materially affected (or could materially affect) the entity or its customers, or that was notified to another regulator"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-36",
+      "title": "APRA is notified as soon as possible and no later than 10 business days after becoming aware of a material control weakness the entity expects not to remediate in a timely manner",
+      "props": [
+       {
+        "name": "label",
+        "value": "36"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "36"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-36_stmt",
+        "name": "statement",
+        "prose": "APRA is notified as soon as possible and no later than 10 business days after becoming aware of a material control weakness the entity expects not to remediate in a timely manner"
        }
       ],
       "class": "compliance"
@@ -967,7 +967,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "74d039c0-f5ca-5dd5-93d1-426dbe234cf2",
+     "uuid": "e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
      "title": "APRA CPS 234 Information Security (Australia, July 2019)",
      "props": [
       {
@@ -978,7 +978,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/apra_cps234/cps234_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/apra_cps234/cps234_main.rego",
        "media-type": "text/plain"
       }
      ]
