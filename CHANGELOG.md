@@ -9,6 +9,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- **India — Digital Personal Data Protection Act, 2023 + DPDP Rules, 2025** — `frameworks/privacy/dpdp_india/`,
+  `dpdp.main`, written from the Act and the Rules as gazetted (G.S.R. 846(E), 13 November 2025):
+  s.4 lawful basis, s.5/Rule 3 notice, s.6 consent, s.8 general obligations, **Rule 6 reasonable security
+  safeguards** (encryption/masking/tokens, access control, access logs, backups, one-year log retention,
+  processor contracts), **Rule 7 breach intimation** (Data Principals without delay; Board without delay and
+  the detailed report within 72 hours), Rule 8 retention and Third Schedule three-year erasure with the
+  48-hour notice, s.9/Rules 10–12 children (verifiable parental consent with identity due diligence, no
+  tracking or targeted ads), s.10/Rule 13 Significant Data Fiduciary (DPO in India, independent auditor,
+  annual DPIA and audit, algorithmic due diligence, data-localisation of notified data), ss.11–14/Rule 14
+  rights, s.16/Rule 15 transfers, Rule 23 Government requests. Four scope flags must be declared true or
+  false. The report carries the phased commencement dates (substantive duties 2027-05-13) and the Schedule
+  penalty tiers. 10 tests. Vocabulary gains source `meity`.
 - **CERT-In Directions under s.70B(6) of the IT Act (India, 28 April 2022)** — `frameworks/regional/cert_in/`,
   `cert_in.main`. Directions (i)–(vi) and Annexures I–III from the CERT-In text: NIC/NPL time
   synchronisation, **6-hour incident reporting** with all **twenty Annexure I incident types** as
