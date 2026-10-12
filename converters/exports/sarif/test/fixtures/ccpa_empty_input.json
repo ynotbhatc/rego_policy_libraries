@@ -1,0 +1,1190 @@
+{
+  "result": [
+    {
+      "expressions": [
+        {
+          "value": {
+            "admt": {
+              "_access_checks": {
+                "denials_explained": "CCPA §7222(f): denials of verified access requests are not explained, or partial denials withhold the disclosable remainder",
+                "easy_methods_no_dark_patterns": "CCPA §7222(d): methods to request access to ADMT are not easy to use or use dark patterns",
+                "logic_explained": "CCPA §7222(b)(2): access response does not explain the ADMT logic — how the consumer's personal information produced the output, the parameters and the specific output",
+                "non_retaliation_and_rights_instructions": "CCPA §7222(b)(4): access response lacks the non-retaliation statement and direct instructions/links for exercising other CCPA rights",
+                "outcome_and_human_role_explained": "CCPA §7222(b)(3): access response does not explain the outcome — whether the output was the sole factor, the other factors, the human's role, and any planned future use of the output",
+                "secure_transmission": "CCPA §7222(g): requested information is not transmitted with reasonable security measures",
+                "service_provider_assistance": "CCPA §7222(i): service providers and contractors do not assist with access-to-ADMT requests",
+                "specific_purpose_explained": "CCPA §7222(b)(1): access response does not state the specific purpose for which ADMT was used for the consumer",
+                "verification_per_article_5": "CCPA §7222(e): access requests are not verified per Article 5, or unverifiable requestors are not told so"
+              },
+              "_assessment_exception_checks": {
+                "used_solely_for_stated_purpose": "CCPA §7221(b)(2)-(3): exception claimed but the ADMT is not used solely for the assessment of ability to perform (admission/hiring) or solely for work allocation/compensation",
+                "works_for_purpose_without_unlawful_discrimination": "CCPA §7221(b)(2)(B)/(3)(B): exception claimed without evidence that the ADMT works for its purpose and does not unlawfully discriminate on protected characteristics"
+              },
+              "_exception": "",
+              "_exceptions": [
+                "admission_or_hiring",
+                "human_appeal",
+                "work_allocation_or_compensation"
+              ],
+              "_human_appeal_checks": {
+                "appeal_method_clear_and_easy": "CCPA §7221(b)(1)(B): human-appeal exception claimed but the appeal method is not clearly described, easy, minimal-step, and compliant with §§7003, 7004, 7021 and Article 5 verification",
+                "reviewer_designated_with_authority_to_overturn": "CCPA §7221(b)(1)(A): human-appeal exception claimed but no designated human reviewer who understands the ADMT output, considers the consumer's information and has authority to change the decision"
+              },
+              "_in": {},
+              "_notice_checks": {
+                "access_right_and_method_described": "CCPA §7220(c)(3): Pre-use Notice does not describe the right to access ADMT and how to submit the request",
+                "at_or_before_collection": "CCPA §7220(b)(2): Pre-use Notice not presented prominently at or before collection of the personal information the ADMT will process (or before repurposing already-collected data)",
+                "how_it_works_explained": "CCPA §7220(c)(5): Pre-use Notice lacks the plain-language explanation of how the ADMT processes personal information (categories that affect the output), the type of output and how it is used (sole factor, other factors, human role), and the alternative process for consumers who opt out",
+                "in_primary_interaction_manner": "CCPA §7220(b)(3): Pre-use Notice not presented in the manner in which the business primarily interacts with the consumer",
+                "non_retaliation_stated": "CCPA §7220(c)(4): Pre-use Notice does not state that the business is prohibited from retaliating for exercising CCPA rights",
+                "opt_out_right_and_method_described": "CCPA §7220(c)(2): Pre-use Notice does not describe the right to opt out of ADMT and how to submit the request (or, under an exception, the appeal route or the exception relied on)",
+                "provided": "CCPA §7220(a): no Pre-use Notice informing consumers of the ADMT use and of their rights to opt out of and access ADMT",
+                "specific_purpose_stated": "CCPA §7220(c)(1): Pre-use Notice does not give a plain-language, specific purpose for the ADMT (generic 'to make a significant decision' is not permitted)"
+              },
+              "_opt_out_checks": {
+                "authorized_agents_accepted": "CCPA §7221(j): opt-out requests from authorized agents with the consumer's signed permission are not accepted",
+                "ceases_within_15_business_days": "CCPA §7221(n)(1): after a post-initiation opt-out, processing with the ADMT does not cease within 15 business days",
+                "confirmation_provided": "CCPA §7221(h): no means for the consumer to confirm the opt-out was processed",
+                "easy_minimal_steps_no_dark_patterns": "CCPA §7221(d): opt-out method is not easy to execute with minimal steps and §7004 compliance (no dark patterns)",
+                "fraud_denials_explained": "CCPA §7221(g): opt-out requests denied as fraudulent without a documented good-faith belief and an explanation to the requestor",
+                "no_account_or_extra_information_required": "CCPA §7221(e): opt-out requires creating an account or information beyond what is needed to direct the opt-out",
+                "no_retaliation": "CCPA §7221(l): consumers who opt out are retaliated against (Civ. Code §1798.125, Article 7)",
+                "no_verification_required": "CCPA §7221(f): opt-out is treated as a verifiable consumer request — verification must not be required",
+                "not_cookie_banner_only": "CCPA §7221(c)(4): a cookie banner or cookie controls is the only opt-out mechanism — not acceptable, the method must be specific to ADMT",
+                "offered": "CCPA §7221(a): consumers are not given the ability to opt out of ADMT for significant decisions and no §7221(b) exception is claimed",
+                "online_form_via_named_link": "CCPA §7221(c)(1): online business does not offer an interactive opt-out form reachable from a link in the Pre-use Notice whose title says what is being opted out of (e.g. 'Opt-out of Automated Decisionmaking Technology')",
+                "pre_processing_opt_out_honored": "CCPA §7221(m): processing with the ADMT is initiated despite an opt-out received before processing began",
+                "service_providers_notified": "CCPA §7221(n)(2): service providers, contractors and other recipients are not notified of the opt-out and instructed to comply within the same timeframe",
+                "single_opt_out_of_all_offered": "CCPA §7221(i): granular choices offered without a single option to opt out of all ADMT uses",
+                "twelve_month_wait_before_reconsent": "CCPA §7221(k): business re-asks opted-out consumers for consent within 12 months of the opt-out",
+                "two_or_more_methods": "CCPA §7221(c): fewer than two designated opt-out methods, or none reflects how the business primarily interacts with consumers"
+              },
+              "compliance_date": "2027-01-01T00:00:00Z",
+              "compliance_report": {
+                "compliance_date": "2027-01-01",
+                "compliance_date_reached": false,
+                "compliant": false,
+                "domain": "Automated Decisionmaking Technology",
+                "opt_out_exception_claimed": "",
+                "standard": "CCPA Regulations — Article 11 Automated Decisionmaking Technology (11 CCR §§7200–7222, effective 2026-01-01)",
+                "uses_admt_for_significant_decisions": "undeclared",
+                "violation_count": 1,
+                "violations": [
+                  "CCPA §7200(a): uses_admt_for_significant_decisions must be declared true or false — whether ADMT makes significant decisions about consumers cannot be assumed"
+                ]
+              },
+              "compliant": false,
+              "violations": [
+                "CCPA §7200(a): uses_admt_for_significant_decisions must be declared true or false — whether ADMT makes significant decisions about consumers cannot be assumed"
+              ]
+            },
+            "business_obligations": {
+              "compliance_report": {
+                "compliant": false,
+                "domain": "Business Obligations (§1798.130–§1798.185)",
+                "standard": "CCPA/CPRA",
+                "violation_count": 17,
+                "violations": [
+                  "CCPA §1798.100(b): Categories of personal information and purposes not disclosed in notice at collection",
+                  "CCPA §1798.100(b): Notice not provided at or before point of personal information collection",
+                  "CCPA §1798.100(b): Retention periods or criteria for determination not disclosed in notice at collection",
+                  "CCPA §1798.100(b): Sale or sharing of personal information not disclosed with opt-out link where applicable",
+                  "CCPA §1798.130: Comprehensive privacy policy not published or not updated annually",
+                  "CCPA §1798.130: Privacy policy does not include contact information for privacy requests",
+                  "CCPA §1798.130: Privacy policy does not include disclosure of CCPA consumer rights",
+                  "CCPA §1798.130: Privacy policy does not list categories of personal information collected in prior 12 months",
+                  "CCPA §1798.130: Privacy policy does not list categories of third parties personal information is shared with",
+                  "CCPA §1798.130: Privacy policy does not list purposes for which personal information is collected",
+                  "CCPA §1798.135(b): Personnel handling privacy requests not trained on CCPA requirements",
+                  "CCPA §1798.135(b): Privacy training not documented or not refreshed annually",
+                  "CCPA §1798.140: Service provider contracts do not prohibit selling of personal information",
+                  "CCPA §1798.140: Subprocessor restrictions not included in service provider contracts",
+                  "CCPA §1798.140: Written contracts with service providers not in place limiting use of personal information",
+                  "CPRA §1798.185(a)(3): Annual metrics on rights requests not reported (required for large businesses)",
+                  "CPRA §1798.185(a)(3): Records of privacy requests and responses not retained for 24 months"
+                ]
+              },
+              "compliant": false,
+              "violations": [
+                "CCPA §1798.100(b): Categories of personal information and purposes not disclosed in notice at collection",
+                "CCPA §1798.100(b): Notice not provided at or before point of personal information collection",
+                "CCPA §1798.100(b): Retention periods or criteria for determination not disclosed in notice at collection",
+                "CCPA §1798.100(b): Sale or sharing of personal information not disclosed with opt-out link where applicable",
+                "CCPA §1798.130: Comprehensive privacy policy not published or not updated annually",
+                "CCPA §1798.130: Privacy policy does not include contact information for privacy requests",
+                "CCPA §1798.130: Privacy policy does not include disclosure of CCPA consumer rights",
+                "CCPA §1798.130: Privacy policy does not list categories of personal information collected in prior 12 months",
+                "CCPA §1798.130: Privacy policy does not list categories of third parties personal information is shared with",
+                "CCPA §1798.130: Privacy policy does not list purposes for which personal information is collected",
+                "CCPA §1798.135(b): Personnel handling privacy requests not trained on CCPA requirements",
+                "CCPA §1798.135(b): Privacy training not documented or not refreshed annually",
+                "CCPA §1798.140: Service provider contracts do not prohibit selling of personal information",
+                "CCPA §1798.140: Subprocessor restrictions not included in service provider contracts",
+                "CCPA §1798.140: Written contracts with service providers not in place limiting use of personal information",
+                "CPRA §1798.185(a)(3): Annual metrics on rights requests not reported (required for large businesses)",
+                "CPRA §1798.185(a)(3): Records of privacy requests and responses not retained for 24 months"
+              ]
+            },
+            "consumer_rights": {
+              "compliance_report": {
+                "compliant": false,
+                "domain": "Consumer Rights (§1798.100–§1798.125)",
+                "standard": "CCPA/CPRA",
+                "violation_count": 21,
+                "violations": [
+                  "CCPA §1798.100: Identity verification process for right-to-know requests not established",
+                  "CCPA §1798.100: Response to right-to-know request not fulfilled within 45 days",
+                  "CCPA §1798.100: Two disclosure requests per 12-month period not honored",
+                  "CCPA §1798.105: Confirmation of deletion not provided to consumer",
+                  "CCPA §1798.105: Deletion not propagated to service providers and contractors",
+                  "CCPA §1798.105: Deletion process for personal information not established",
+                  "CCPA §1798.105: Exceptions to deletion (legal obligation, security) not documented",
+                  "CCPA §1798.110: Categories of personal information collected, purposes, and third parties not disclosed",
+                  "CCPA §1798.115: Specific pieces of personal information not provided to consumer upon request",
+                  "CCPA §1798.120: Opt-out of sale or sharing not honored within 15 business days",
+                  "CCPA §1798.120: Opted-out consumers re-enrolled for sale or sharing within 12 months without consent",
+                  "CCPA §1798.125: Consumers denied goods, services, or charged different prices for opting out",
+                  "CCPA §1798.125: Consumers penalized for exercising privacy rights",
+                  "CCPA §1798.135: 'Do Not Sell or Share My Personal Information' link not present on homepage",
+                  "CCPA §1798.135: Global Privacy Control (GPC) signal not honored",
+                  "CPRA §1798.106: Correction not propagated to third parties",
+                  "CPRA §1798.106: Process for consumers to correct inaccurate personal information not defined",
+                  "CPRA §1798.106: Response to right-to-correct request not fulfilled within 45 days",
+                  "CPRA §1798.121: 'Limit the Use of My Sensitive Personal Information' link not available",
+                  "CPRA §1798.121: Request to limit sensitive personal information use not honored within 15 business days",
+                  "CPRA §1798.121: Sensitive personal information use not limited to specified purposes when consumer requests"
+                ]
+              },
+              "compliant": false,
+              "violations": [
+                "CCPA §1798.100: Identity verification process for right-to-know requests not established",
+                "CCPA §1798.100: Response to right-to-know request not fulfilled within 45 days",
+                "CCPA §1798.100: Two disclosure requests per 12-month period not honored",
+                "CCPA §1798.105: Confirmation of deletion not provided to consumer",
+                "CCPA §1798.105: Deletion not propagated to service providers and contractors",
+                "CCPA §1798.105: Deletion process for personal information not established",
+                "CCPA §1798.105: Exceptions to deletion (legal obligation, security) not documented",
+                "CCPA §1798.110: Categories of personal information collected, purposes, and third parties not disclosed",
+                "CCPA §1798.115: Specific pieces of personal information not provided to consumer upon request",
+                "CCPA §1798.120: Opt-out of sale or sharing not honored within 15 business days",
+                "CCPA §1798.120: Opted-out consumers re-enrolled for sale or sharing within 12 months without consent",
+                "CCPA §1798.125: Consumers denied goods, services, or charged different prices for opting out",
+                "CCPA §1798.125: Consumers penalized for exercising privacy rights",
+                "CCPA §1798.135: 'Do Not Sell or Share My Personal Information' link not present on homepage",
+                "CCPA §1798.135: Global Privacy Control (GPC) signal not honored",
+                "CPRA §1798.106: Correction not propagated to third parties",
+                "CPRA §1798.106: Process for consumers to correct inaccurate personal information not defined",
+                "CPRA §1798.106: Response to right-to-correct request not fulfilled within 45 days",
+                "CPRA §1798.121: 'Limit the Use of My Sensitive Personal Information' link not available",
+                "CPRA §1798.121: Request to limit sensitive personal information use not honored within 15 business days",
+                "CPRA §1798.121: Sensitive personal information use not limited to specified purposes when consumer requests"
+              ]
+            },
+            "cybersecurity_audits": {
+              "_applicable": true,
+              "_auditor_checks": {
+                "all_requested_information_provided": "CCPA §7122(b): business did not make all requested relevant information available to the auditor",
+                "documents_retained_five_years": "CCPA §7122(g): audit documents not retained for at least five years after completion (business and auditor)",
+                "facts_disclosed_in_good_faith": "CCPA §7122(c): business did not disclose all relevant facts to the auditor in good faith / misrepresented a fact",
+                "findings_rely_on_evidence_not_management_attestation": "CCPA §7122(d): audit findings rely primarily on management assertions or attestations rather than on specific evidence (documents, sampling and testing, interviews)",
+                "no_participation_in_assessed_activities": "CCPA §7122(a)(2): auditor participated in activities they assess (developing procedures, preparing documents, recommending or operating the cybersecurity program)",
+                "objective_and_independent": "CCPA §7122(a)(2): auditor is not free of influence from the business — objective and impartial judgment not evidenced",
+                "qualified": "CCPA §7122(a)(1): auditor lacks demonstrated knowledge of cybersecurity and of auditing a cybersecurity program",
+                "report_delivered_to_responsible_executive": "CCPA §7122(f): audit report not provided to the executive with direct responsibility for the cybersecurity program",
+                "uses_accepted_standards": "CCPA §7122(a): audit does not use procedures and standards accepted in the auditing profession (AICPA, PCAOB, ISACA, ISO)"
+              },
+              "_certification_checks": {
+                "includes_required_contents": "CCPA §7124(d): certification lacks required contents — business name and contact, completion statement, period covered by month and year, electronically signed penalty-of-perjury attestation, submitter name/title/date",
+                "submitted_by_april_1": "CCPA §7124(b): certification not submitted by April 1 following the audit year",
+                "submitted_by_responsible_executive": "CCPA §7124(c): certification not completed by an executive directly responsible for audit compliance, with sufficient knowledge and authority to submit",
+                "submitted_to_agency": "CCPA §7124(a): written certification of audit completion not submitted to the California Privacy Protection Agency"
+              },
+              "_in": {},
+              "_report_checks": {
+                "describes_gaps_and_weaknesses": "CCPA §7123(e)(3): report does not identify and describe in detail the status of gaps or weaknesses that increase risk to personal information",
+                "describes_information_system": "CCPA §7123(e)(1): report does not describe the information system, the policies/procedures assessed, the criteria used and the specific evidence examined, with the justification for the findings",
+                "documents_remediation_plan_with_timeframe": "CCPA §7123(e)(4): report does not document the business's plan and timeframe to address identified gaps and weaknesses",
+                "identifies_components_and_effectiveness": "CCPA §7123(e)(2): report does not identify the applicable components, how the business implements and enforces them, and their effectiveness",
+                "identifies_corrections_to_prior_reports": "CCPA §7123(e)(5): report does not identify corrections or amendments to prior audit reports",
+                "includes_breach_notifications_if_any": "CCPA §7123(e)(9)-(10): report does not include samples or descriptions of any consumer breach notifications (Civ. Code §1798.82) or regulator notifications made during the period, with dates, details and remediation",
+                "names_auditor_and_qualifications": "CCPA §7123(e)(7): report does not include the auditor's name, affiliation and relevant qualifications",
+                "names_responsible_individuals": "CCPA §7123(e)(6): report does not include the titles of up to three qualified individuals responsible for the cybersecurity program",
+                "signed_independence_statement": "CCPA §7123(e)(8): report lacks the highest-ranking auditor's signed, dated certification of independent review, impartial judgment, and no primary reliance on management attestations"
+              },
+              "compliance_report": {
+                "applicable": true,
+                "compliant": false,
+                "components_assessed": 0,
+                "components_not_applicable": 0,
+                "components_required": 18,
+                "domain": "Cybersecurity Audits",
+                "first_report_deadline": "unset — revenue_tier missing",
+                "revenue_tier": "unset",
+                "standard": "CCPA Regulations — Article 9 Cybersecurity Audits (11 CCR §§7120–7124, effective 2026-01-01)",
+                "violation_count": 44,
+                "violations": [
+                  "CCPA §7120(a): no cybersecurity audit completed — a business whose processing presents significant risk to consumers' security must complete one",
+                  "CCPA §7121: cybersecurity audit does not cover the required 12-month period (Jan 1 through Jan 1 of the following year for the business's tier)",
+                  "CCPA §7122(a)(1): auditor lacks demonstrated knowledge of cybersecurity and of auditing a cybersecurity program",
+                  "CCPA §7122(a)(2): auditor is not free of influence from the business — objective and impartial judgment not evidenced",
+                  "CCPA §7122(a)(2): auditor participated in activities they assess (developing procedures, preparing documents, recommending or operating the cybersecurity program)",
+                  "CCPA §7122(a): audit does not use procedures and standards accepted in the auditing profession (AICPA, PCAOB, ISACA, ISO)",
+                  "CCPA §7122(b): business did not make all requested relevant information available to the auditor",
+                  "CCPA §7122(c): business did not disclose all relevant facts to the auditor in good faith / misrepresented a fact",
+                  "CCPA §7122(d): audit findings rely primarily on management assertions or attestations rather than on specific evidence (documents, sampling and testing, interviews)",
+                  "CCPA §7122(f): audit report not provided to the executive with direct responsibility for the cybersecurity program",
+                  "CCPA §7122(g): audit documents not retained for at least five years after completion (business and auditor)",
+                  "CCPA §7123(b)(1): audit did not assess the establishment, implementation and maintenance of the cybersecurity program and its written policies and procedures",
+                  "CCPA §7123(b)(3): audit did not assess how the business implements and enforces compliance with its cybersecurity program and the applicable components",
+                  "CCPA §7123(c)(1): authentication — phishing-resistant MFA for personnel, service providers and contractors; strong unique passwords/passphrases — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(10): segmentation of the information system (firewalls, routers, switches) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(11): limitation and control of ports, services and protocols — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(12): cybersecurity awareness — current knowledge of changing threats and countermeasures — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(13): cybersecurity education and training at start, annually, and after a breach, for everyone with system access — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(14): secure development and coding best practices, including code review and testing — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(15): oversight of service providers, contractors and third parties (§§7051, 7053) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(16): retention schedules and proper disposal (shredding, erasing, rendering unreadable) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(17): incident response management — documented plan and tested capabilities — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(18): business-continuity and disaster-recovery plans, data-recovery capabilities and backups — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(2): encryption of personal information at rest and in transit — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(3): account management and access controls — least privilege, privileged-account restriction and PAM, monitored account creation, physical access — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(4): inventory and management of personal information (maps, classification, tagging) and of hardware/software (allowlisting, approval processes) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(5): secure configuration — updates/upgrades, on-prem and cloud hardening, masking of sensitive PI by default, security patch management, change management — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(6): internal and external vulnerability scans, penetration testing, vulnerability disclosure and reporting — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(7): audit-log management — centralized storage, retention and monitoring of logs — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(8): network monitoring and defenses — bot/intrusion detection and prevention, data-loss prevention — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(9): antivirus and antimalware protections — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(e)(1): report does not describe the information system, the policies/procedures assessed, the criteria used and the specific evidence examined, with the justification for the findings",
+                  "CCPA §7123(e)(2): report does not identify the applicable components, how the business implements and enforces them, and their effectiveness",
+                  "CCPA §7123(e)(3): report does not identify and describe in detail the status of gaps or weaknesses that increase risk to personal information",
+                  "CCPA §7123(e)(4): report does not document the business's plan and timeframe to address identified gaps and weaknesses",
+                  "CCPA §7123(e)(5): report does not identify corrections or amendments to prior audit reports",
+                  "CCPA §7123(e)(6): report does not include the titles of up to three qualified individuals responsible for the cybersecurity program",
+                  "CCPA §7123(e)(7): report does not include the auditor's name, affiliation and relevant qualifications",
+                  "CCPA §7123(e)(8): report lacks the highest-ranking auditor's signed, dated certification of independent review, impartial judgment, and no primary reliance on management attestations",
+                  "CCPA §7123(e)(9)-(10): report does not include samples or descriptions of any consumer breach notifications (Civ. Code §1798.82) or regulator notifications made during the period, with dates, details and remediation",
+                  "CCPA §7124(a): written certification of audit completion not submitted to the California Privacy Protection Agency",
+                  "CCPA §7124(b): certification not submitted by April 1 following the audit year",
+                  "CCPA §7124(c): certification not completed by an executive directly responsible for audit compliance, with sufficient knowledge and authority to submit",
+                  "CCPA §7124(d): certification lacks required contents — business name and contact, completion statement, period covered by month and year, electronically signed penalty-of-perjury attestation, submitter name/title/date"
+                ]
+              },
+              "compliant": false,
+              "components": {
+                "c01_authentication": "§7123(c)(1): authentication — phishing-resistant MFA for personnel, service providers and contractors; strong unique passwords/passphrases",
+                "c02_encryption": "§7123(c)(2): encryption of personal information at rest and in transit",
+                "c03_account_management_access_control": "§7123(c)(3): account management and access controls — least privilege, privileged-account restriction and PAM, monitored account creation, physical access",
+                "c04_inventory": "§7123(c)(4): inventory and management of personal information (maps, classification, tagging) and of hardware/software (allowlisting, approval processes)",
+                "c05_secure_configuration": "§7123(c)(5): secure configuration — updates/upgrades, on-prem and cloud hardening, masking of sensitive PI by default, security patch management, change management",
+                "c06_vulnerability_scans_pentest_disclosure": "§7123(c)(6): internal and external vulnerability scans, penetration testing, vulnerability disclosure and reporting",
+                "c07_audit_log_management": "§7123(c)(7): audit-log management — centralized storage, retention and monitoring of logs",
+                "c08_network_monitoring_defenses": "§7123(c)(8): network monitoring and defenses — bot/intrusion detection and prevention, data-loss prevention",
+                "c09_antivirus_antimalware": "§7123(c)(9): antivirus and antimalware protections",
+                "c10_segmentation": "§7123(c)(10): segmentation of the information system (firewalls, routers, switches)",
+                "c11_ports_services_protocols": "§7123(c)(11): limitation and control of ports, services and protocols",
+                "c12_cybersecurity_awareness": "§7123(c)(12): cybersecurity awareness — current knowledge of changing threats and countermeasures",
+                "c13_education_training": "§7123(c)(13): cybersecurity education and training at start, annually, and after a breach, for everyone with system access",
+                "c14_secure_development": "§7123(c)(14): secure development and coding best practices, including code review and testing",
+                "c15_service_provider_oversight": "§7123(c)(15): oversight of service providers, contractors and third parties (§§7051, 7053)",
+                "c16_retention_and_disposal": "§7123(c)(16): retention schedules and proper disposal (shredding, erasing, rendering unreadable)",
+                "c17_incident_response": "§7123(c)(17): incident response management — documented plan and tested capabilities",
+                "c18_bcdr_backups": "§7123(c)(18): business-continuity and disaster-recovery plans, data-recovery capabilities and backups"
+              },
+              "first_report_deadline": {
+                "50m_to_100m": "2029-04-01T00:00:00Z",
+                "over_100m": "2028-04-01T00:00:00Z",
+                "under_50m": "2030-04-01T00:00:00Z"
+              },
+              "violations": [
+                "CCPA §7120(a): no cybersecurity audit completed — a business whose processing presents significant risk to consumers' security must complete one",
+                "CCPA §7121: cybersecurity audit does not cover the required 12-month period (Jan 1 through Jan 1 of the following year for the business's tier)",
+                "CCPA §7122(a)(1): auditor lacks demonstrated knowledge of cybersecurity and of auditing a cybersecurity program",
+                "CCPA §7122(a)(2): auditor is not free of influence from the business — objective and impartial judgment not evidenced",
+                "CCPA §7122(a)(2): auditor participated in activities they assess (developing procedures, preparing documents, recommending or operating the cybersecurity program)",
+                "CCPA §7122(a): audit does not use procedures and standards accepted in the auditing profession (AICPA, PCAOB, ISACA, ISO)",
+                "CCPA §7122(b): business did not make all requested relevant information available to the auditor",
+                "CCPA §7122(c): business did not disclose all relevant facts to the auditor in good faith / misrepresented a fact",
+                "CCPA §7122(d): audit findings rely primarily on management assertions or attestations rather than on specific evidence (documents, sampling and testing, interviews)",
+                "CCPA §7122(f): audit report not provided to the executive with direct responsibility for the cybersecurity program",
+                "CCPA §7122(g): audit documents not retained for at least five years after completion (business and auditor)",
+                "CCPA §7123(b)(1): audit did not assess the establishment, implementation and maintenance of the cybersecurity program and its written policies and procedures",
+                "CCPA §7123(b)(3): audit did not assess how the business implements and enforces compliance with its cybersecurity program and the applicable components",
+                "CCPA §7123(c)(1): authentication — phishing-resistant MFA for personnel, service providers and contractors; strong unique passwords/passphrases — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(10): segmentation of the information system (firewalls, routers, switches) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(11): limitation and control of ports, services and protocols — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(12): cybersecurity awareness — current knowledge of changing threats and countermeasures — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(13): cybersecurity education and training at start, annually, and after a breach, for everyone with system access — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(14): secure development and coding best practices, including code review and testing — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(15): oversight of service providers, contractors and third parties (§§7051, 7053) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(16): retention schedules and proper disposal (shredding, erasing, rendering unreadable) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(17): incident response management — documented plan and tested capabilities — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(18): business-continuity and disaster-recovery plans, data-recovery capabilities and backups — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(2): encryption of personal information at rest and in transit — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(3): account management and access controls — least privilege, privileged-account restriction and PAM, monitored account creation, physical access — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(4): inventory and management of personal information (maps, classification, tagging) and of hardware/software (allowlisting, approval processes) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(5): secure configuration — updates/upgrades, on-prem and cloud hardening, masking of sensitive PI by default, security patch management, change management — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(6): internal and external vulnerability scans, penetration testing, vulnerability disclosure and reporting — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(7): audit-log management — centralized storage, retention and monitoring of logs — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(8): network monitoring and defenses — bot/intrusion detection and prevention, data-loss prevention — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(c)(9): antivirus and antimalware protections — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                "CCPA §7123(e)(1): report does not describe the information system, the policies/procedures assessed, the criteria used and the specific evidence examined, with the justification for the findings",
+                "CCPA §7123(e)(2): report does not identify the applicable components, how the business implements and enforces them, and their effectiveness",
+                "CCPA §7123(e)(3): report does not identify and describe in detail the status of gaps or weaknesses that increase risk to personal information",
+                "CCPA §7123(e)(4): report does not document the business's plan and timeframe to address identified gaps and weaknesses",
+                "CCPA §7123(e)(5): report does not identify corrections or amendments to prior audit reports",
+                "CCPA §7123(e)(6): report does not include the titles of up to three qualified individuals responsible for the cybersecurity program",
+                "CCPA §7123(e)(7): report does not include the auditor's name, affiliation and relevant qualifications",
+                "CCPA §7123(e)(8): report lacks the highest-ranking auditor's signed, dated certification of independent review, impartial judgment, and no primary reliance on management attestations",
+                "CCPA §7123(e)(9)-(10): report does not include samples or descriptions of any consumer breach notifications (Civ. Code §1798.82) or regulator notifications made during the period, with dates, details and remediation",
+                "CCPA §7124(a): written certification of audit completion not submitted to the California Privacy Protection Agency",
+                "CCPA §7124(b): certification not submitted by April 1 following the audit year",
+                "CCPA §7124(c): certification not completed by an executive directly responsible for audit compliance, with sufficient knowledge and authority to submit",
+                "CCPA §7124(d): certification lacks required contents — business name and contact, completion statement, period covered by month and year, electronically signed penalty-of-perjury attestation, submitter name/title/date"
+              ]
+            },
+            "data_practices": {
+              "compliance_report": {
+                "compliant": false,
+                "domain": "Data Practices (§1798.100, §1798.150, §1798.185)",
+                "standard": "CCPA/CPRA",
+                "violation_count": 14,
+                "violations": [
+                  "CCPA §1798.150: Consumer notification after breach delayed unreasonably",
+                  "CCPA §1798.150: Reasonable security measures not implemented for personal information",
+                  "CCPA §1798.150: Security incidents not reported to CPPA within 72 hours",
+                  "CPRA §1798.100(a)(3): Personal information collected for purposes not disclosed to consumer",
+                  "CPRA §1798.100(a)(3): Personal information collection not limited to what is reasonably necessary",
+                  "CPRA §1798.100(a)(3): Personal information retained longer than necessary for disclosed purpose",
+                  "CPRA §1798.100(a)(3): Personal information sold or shared beyond disclosed categories",
+                  "CPRA §1798.100(a)(3): Personal information used for purposes materially different from those disclosed",
+                  "CPRA §1798.100(a)(3): Personal information used in manner incompatible with disclosed purpose",
+                  "CPRA §1798.100(a)(3): Retention schedule for personal information not established or not documented",
+                  "CPRA §1798.100(a)(3): Retention schedule not technically enforced with automated deletion",
+                  "CPRA §1798.185(a)(15): Data Protection Assessments not available for submission to CPPA upon request",
+                  "CPRA §1798.185(a)(15): Data Protection Assessments not conducted for high-risk processing (profiling, sensitive PI, sharing)",
+                  "CPRA §1798.185(a)(15): Data Protection Assessments not reviewed annually"
+                ]
+              },
+              "compliant": false,
+              "violations": [
+                "CCPA §1798.150: Consumer notification after breach delayed unreasonably",
+                "CCPA §1798.150: Reasonable security measures not implemented for personal information",
+                "CCPA §1798.150: Security incidents not reported to CPPA within 72 hours",
+                "CPRA §1798.100(a)(3): Personal information collected for purposes not disclosed to consumer",
+                "CPRA §1798.100(a)(3): Personal information collection not limited to what is reasonably necessary",
+                "CPRA §1798.100(a)(3): Personal information retained longer than necessary for disclosed purpose",
+                "CPRA §1798.100(a)(3): Personal information sold or shared beyond disclosed categories",
+                "CPRA §1798.100(a)(3): Personal information used for purposes materially different from those disclosed",
+                "CPRA §1798.100(a)(3): Personal information used in manner incompatible with disclosed purpose",
+                "CPRA §1798.100(a)(3): Retention schedule for personal information not established or not documented",
+                "CPRA §1798.100(a)(3): Retention schedule not technically enforced with automated deletion",
+                "CPRA §1798.185(a)(15): Data Protection Assessments not available for submission to CPPA upon request",
+                "CPRA §1798.185(a)(15): Data Protection Assessments not conducted for high-risk processing (profiling, sensitive PI, sharing)",
+                "CPRA §1798.185(a)(15): Data Protection Assessments not reviewed annually"
+              ]
+            },
+            "main": {
+              "compliance_report": {
+                "compliant": false,
+                "framework": "California Consumer Privacy Act (CCPA / CPRA)",
+                "modules": {
+                  "admt": {
+                    "compliant": false,
+                    "details": {
+                      "compliance_date": "2027-01-01",
+                      "compliance_date_reached": false,
+                      "compliant": false,
+                      "domain": "Automated Decisionmaking Technology",
+                      "opt_out_exception_claimed": "",
+                      "standard": "CCPA Regulations — Article 11 Automated Decisionmaking Technology (11 CCR §§7200–7222, effective 2026-01-01)",
+                      "uses_admt_for_significant_decisions": "undeclared",
+                      "violation_count": 1,
+                      "violations": [
+                        "CCPA §7200(a): uses_admt_for_significant_decisions must be declared true or false — whether ADMT makes significant decisions about consumers cannot be assumed"
+                      ]
+                    }
+                  },
+                  "business_obligations": {
+                    "compliant": false,
+                    "details": {
+                      "compliant": false,
+                      "domain": "Business Obligations (§1798.130–§1798.185)",
+                      "standard": "CCPA/CPRA",
+                      "violation_count": 17,
+                      "violations": [
+                        "CCPA §1798.100(b): Categories of personal information and purposes not disclosed in notice at collection",
+                        "CCPA §1798.100(b): Notice not provided at or before point of personal information collection",
+                        "CCPA §1798.100(b): Retention periods or criteria for determination not disclosed in notice at collection",
+                        "CCPA §1798.100(b): Sale or sharing of personal information not disclosed with opt-out link where applicable",
+                        "CCPA §1798.130: Comprehensive privacy policy not published or not updated annually",
+                        "CCPA §1798.130: Privacy policy does not include contact information for privacy requests",
+                        "CCPA §1798.130: Privacy policy does not include disclosure of CCPA consumer rights",
+                        "CCPA §1798.130: Privacy policy does not list categories of personal information collected in prior 12 months",
+                        "CCPA §1798.130: Privacy policy does not list categories of third parties personal information is shared with",
+                        "CCPA §1798.130: Privacy policy does not list purposes for which personal information is collected",
+                        "CCPA §1798.135(b): Personnel handling privacy requests not trained on CCPA requirements",
+                        "CCPA §1798.135(b): Privacy training not documented or not refreshed annually",
+                        "CCPA §1798.140: Service provider contracts do not prohibit selling of personal information",
+                        "CCPA §1798.140: Subprocessor restrictions not included in service provider contracts",
+                        "CCPA §1798.140: Written contracts with service providers not in place limiting use of personal information",
+                        "CPRA §1798.185(a)(3): Annual metrics on rights requests not reported (required for large businesses)",
+                        "CPRA §1798.185(a)(3): Records of privacy requests and responses not retained for 24 months"
+                      ]
+                    }
+                  },
+                  "consumer_rights": {
+                    "compliant": false,
+                    "details": {
+                      "compliant": false,
+                      "domain": "Consumer Rights (§1798.100–§1798.125)",
+                      "standard": "CCPA/CPRA",
+                      "violation_count": 21,
+                      "violations": [
+                        "CCPA §1798.100: Identity verification process for right-to-know requests not established",
+                        "CCPA §1798.100: Response to right-to-know request not fulfilled within 45 days",
+                        "CCPA §1798.100: Two disclosure requests per 12-month period not honored",
+                        "CCPA §1798.105: Confirmation of deletion not provided to consumer",
+                        "CCPA §1798.105: Deletion not propagated to service providers and contractors",
+                        "CCPA §1798.105: Deletion process for personal information not established",
+                        "CCPA §1798.105: Exceptions to deletion (legal obligation, security) not documented",
+                        "CCPA §1798.110: Categories of personal information collected, purposes, and third parties not disclosed",
+                        "CCPA §1798.115: Specific pieces of personal information not provided to consumer upon request",
+                        "CCPA §1798.120: Opt-out of sale or sharing not honored within 15 business days",
+                        "CCPA §1798.120: Opted-out consumers re-enrolled for sale or sharing within 12 months without consent",
+                        "CCPA §1798.125: Consumers denied goods, services, or charged different prices for opting out",
+                        "CCPA §1798.125: Consumers penalized for exercising privacy rights",
+                        "CCPA §1798.135: 'Do Not Sell or Share My Personal Information' link not present on homepage",
+                        "CCPA §1798.135: Global Privacy Control (GPC) signal not honored",
+                        "CPRA §1798.106: Correction not propagated to third parties",
+                        "CPRA §1798.106: Process for consumers to correct inaccurate personal information not defined",
+                        "CPRA §1798.106: Response to right-to-correct request not fulfilled within 45 days",
+                        "CPRA §1798.121: 'Limit the Use of My Sensitive Personal Information' link not available",
+                        "CPRA §1798.121: Request to limit sensitive personal information use not honored within 15 business days",
+                        "CPRA §1798.121: Sensitive personal information use not limited to specified purposes when consumer requests"
+                      ]
+                    }
+                  },
+                  "cybersecurity_audits": {
+                    "compliant": false,
+                    "details": {
+                      "applicable": true,
+                      "compliant": false,
+                      "components_assessed": 0,
+                      "components_not_applicable": 0,
+                      "components_required": 18,
+                      "domain": "Cybersecurity Audits",
+                      "first_report_deadline": "unset — revenue_tier missing",
+                      "revenue_tier": "unset",
+                      "standard": "CCPA Regulations — Article 9 Cybersecurity Audits (11 CCR §§7120–7124, effective 2026-01-01)",
+                      "violation_count": 44,
+                      "violations": [
+                        "CCPA §7120(a): no cybersecurity audit completed — a business whose processing presents significant risk to consumers' security must complete one",
+                        "CCPA §7121: cybersecurity audit does not cover the required 12-month period (Jan 1 through Jan 1 of the following year for the business's tier)",
+                        "CCPA §7122(a)(1): auditor lacks demonstrated knowledge of cybersecurity and of auditing a cybersecurity program",
+                        "CCPA §7122(a)(2): auditor is not free of influence from the business — objective and impartial judgment not evidenced",
+                        "CCPA §7122(a)(2): auditor participated in activities they assess (developing procedures, preparing documents, recommending or operating the cybersecurity program)",
+                        "CCPA §7122(a): audit does not use procedures and standards accepted in the auditing profession (AICPA, PCAOB, ISACA, ISO)",
+                        "CCPA §7122(b): business did not make all requested relevant information available to the auditor",
+                        "CCPA §7122(c): business did not disclose all relevant facts to the auditor in good faith / misrepresented a fact",
+                        "CCPA §7122(d): audit findings rely primarily on management assertions or attestations rather than on specific evidence (documents, sampling and testing, interviews)",
+                        "CCPA §7122(f): audit report not provided to the executive with direct responsibility for the cybersecurity program",
+                        "CCPA §7122(g): audit documents not retained for at least five years after completion (business and auditor)",
+                        "CCPA §7123(b)(1): audit did not assess the establishment, implementation and maintenance of the cybersecurity program and its written policies and procedures",
+                        "CCPA §7123(b)(3): audit did not assess how the business implements and enforces compliance with its cybersecurity program and the applicable components",
+                        "CCPA §7123(c)(1): authentication — phishing-resistant MFA for personnel, service providers and contractors; strong unique passwords/passphrases — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(10): segmentation of the information system (firewalls, routers, switches) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(11): limitation and control of ports, services and protocols — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(12): cybersecurity awareness — current knowledge of changing threats and countermeasures — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(13): cybersecurity education and training at start, annually, and after a breach, for everyone with system access — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(14): secure development and coding best practices, including code review and testing — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(15): oversight of service providers, contractors and third parties (§§7051, 7053) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(16): retention schedules and proper disposal (shredding, erasing, rendering unreadable) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(17): incident response management — documented plan and tested capabilities — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(18): business-continuity and disaster-recovery plans, data-recovery capabilities and backups — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(2): encryption of personal information at rest and in transit — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(3): account management and access controls — least privilege, privileged-account restriction and PAM, monitored account creation, physical access — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(4): inventory and management of personal information (maps, classification, tagging) and of hardware/software (allowlisting, approval processes) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(5): secure configuration — updates/upgrades, on-prem and cloud hardening, masking of sensitive PI by default, security patch management, change management — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(6): internal and external vulnerability scans, penetration testing, vulnerability disclosure and reporting — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(7): audit-log management — centralized storage, retention and monitoring of logs — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(8): network monitoring and defenses — bot/intrusion detection and prevention, data-loss prevention — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(c)(9): antivirus and antimalware protections — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                        "CCPA §7123(e)(1): report does not describe the information system, the policies/procedures assessed, the criteria used and the specific evidence examined, with the justification for the findings",
+                        "CCPA §7123(e)(2): report does not identify the applicable components, how the business implements and enforces them, and their effectiveness",
+                        "CCPA §7123(e)(3): report does not identify and describe in detail the status of gaps or weaknesses that increase risk to personal information",
+                        "CCPA §7123(e)(4): report does not document the business's plan and timeframe to address identified gaps and weaknesses",
+                        "CCPA §7123(e)(5): report does not identify corrections or amendments to prior audit reports",
+                        "CCPA §7123(e)(6): report does not include the titles of up to three qualified individuals responsible for the cybersecurity program",
+                        "CCPA §7123(e)(7): report does not include the auditor's name, affiliation and relevant qualifications",
+                        "CCPA §7123(e)(8): report lacks the highest-ranking auditor's signed, dated certification of independent review, impartial judgment, and no primary reliance on management attestations",
+                        "CCPA §7123(e)(9)-(10): report does not include samples or descriptions of any consumer breach notifications (Civ. Code §1798.82) or regulator notifications made during the period, with dates, details and remediation",
+                        "CCPA §7124(a): written certification of audit completion not submitted to the California Privacy Protection Agency",
+                        "CCPA §7124(b): certification not submitted by April 1 following the audit year",
+                        "CCPA §7124(c): certification not completed by an executive directly responsible for audit compliance, with sufficient knowledge and authority to submit",
+                        "CCPA §7124(d): certification lacks required contents — business name and contact, completion statement, period covered by month and year, electronically signed penalty-of-perjury attestation, submitter name/title/date"
+                      ]
+                    }
+                  },
+                  "data_practices": {
+                    "compliant": false,
+                    "details": {
+                      "compliant": false,
+                      "domain": "Data Practices (§1798.100, §1798.150, §1798.185)",
+                      "standard": "CCPA/CPRA",
+                      "violation_count": 14,
+                      "violations": [
+                        "CCPA §1798.150: Consumer notification after breach delayed unreasonably",
+                        "CCPA §1798.150: Reasonable security measures not implemented for personal information",
+                        "CCPA §1798.150: Security incidents not reported to CPPA within 72 hours",
+                        "CPRA §1798.100(a)(3): Personal information collected for purposes not disclosed to consumer",
+                        "CPRA §1798.100(a)(3): Personal information collection not limited to what is reasonably necessary",
+                        "CPRA §1798.100(a)(3): Personal information retained longer than necessary for disclosed purpose",
+                        "CPRA §1798.100(a)(3): Personal information sold or shared beyond disclosed categories",
+                        "CPRA §1798.100(a)(3): Personal information used for purposes materially different from those disclosed",
+                        "CPRA §1798.100(a)(3): Personal information used in manner incompatible with disclosed purpose",
+                        "CPRA §1798.100(a)(3): Retention schedule for personal information not established or not documented",
+                        "CPRA §1798.100(a)(3): Retention schedule not technically enforced with automated deletion",
+                        "CPRA §1798.185(a)(15): Data Protection Assessments not available for submission to CPPA upon request",
+                        "CPRA §1798.185(a)(15): Data Protection Assessments not conducted for high-risk processing (profiling, sensitive PI, sharing)",
+                        "CPRA §1798.185(a)(15): Data Protection Assessments not reviewed annually"
+                      ]
+                    }
+                  },
+                  "risk_assessments": {
+                    "compliant": false,
+                    "details": {
+                      "activities_assessed_before_processing": [],
+                      "activities_in_use": [],
+                      "compliant": false,
+                      "domain": "Risk Assessments",
+                      "first_submission_deadline": "2028-04-01",
+                      "legacy_assessment_deadline": "2027-12-31",
+                      "standard": "CCPA Regulations — Article 10 Risk Assessments (11 CCR §§7150–7157, effective 2026-01-01)",
+                      "violation_count": 6,
+                      "violations": [
+                        "CCPA §7150(b)(1): selling or sharing personal information — activity not declared (activities.selling_or_sharing.in_use must be true or false)",
+                        "CCPA §7150(b)(2): processing sensitive personal information (beyond the HR-administration carve-out) — activity not declared (activities.sensitive_personal_information.in_use must be true or false)",
+                        "CCPA §7150(b)(3): using ADMT for a significant decision concerning a consumer — activity not declared (activities.admt_significant_decision.in_use must be true or false)",
+                        "CCPA §7150(b)(4): automated inference about a consumer from systematic observation as applicant, student, employee or contractor — activity not declared (activities.inference_from_observation_work_or_education.in_use must be true or false)",
+                        "CCPA §7150(b)(5): automated inference about a consumer based on presence in a sensitive location — activity not declared (activities.inference_in_sensitive_location.in_use must be true or false)",
+                        "CCPA §7150(b)(6): processing personal information to train ADMT for significant decisions, or facial/emotion-recognition or other identification/profiling technology — activity not declared (activities.training_admt_or_biometric_technology.in_use must be true or false)"
+                      ]
+                    }
+                  },
+                  "sensitive_data": {
+                    "compliant": false,
+                    "details": {
+                      "compliant": false,
+                      "domain": "Sensitive Personal Information (§1798.140(ae), §1798.185(a)(21))",
+                      "standard": "CCPA/CPRA",
+                      "violation_count": 15,
+                      "violations": [
+                        "CPRA §1798.140(ae): Access controls for genetic data not implemented",
+                        "CPRA §1798.140(ae): Account credentials stored in plaintext",
+                        "CPRA §1798.140(ae): Collection of religious or philosophical beliefs data not minimized",
+                        "CPRA §1798.140(ae): Collection of union membership data not minimized",
+                        "CPRA §1798.140(ae): Consent not obtained for collection of biometric data",
+                        "CPRA §1798.140(ae): Data Protection Impact Assessments not conducted for processing racial or ethnic origin data",
+                        "CPRA §1798.140(ae): Genetic data sold or shared without restriction",
+                        "CPRA §1798.140(ae): HIPAA-aligned controls not applied to health information where applicable",
+                        "CPRA §1798.140(ae): Mail, email, or text message content accessed for purposes other than delivery",
+                        "CPRA §1798.140(ae): Precise geolocation data (within 1,852m) collected without explicit purpose limitation",
+                        "CPRA §1798.140(ae): Retention of biometric data not limited to stated purpose",
+                        "CPRA §1798.140(ae): SSN and government ID data not access-limited and not encrypted",
+                        "CPRA §1798.140(ae): Sex life or sexual orientation data collected without demonstrated necessity",
+                        "CPRA §1798.185(a)(21): Consumers cannot opt out of automated decisions affecting them significantly",
+                        "CPRA §1798.185(a)(21): Explanation of automated decision-making logic not available upon request"
+                      ]
+                    }
+                  }
+                },
+                "modules_passing": 0,
+                "modules_total": 7,
+                "overall_compliant": false,
+                "standard": "CCPA/CPRA — California Consumer Privacy Act (as amended by CPRA 2023) + 2025 CPPA Regulations (cybersecurity audits, risk assessments, ADMT; effective 2026-01-01)",
+                "total_controls": 7,
+                "violation_count": 118,
+                "violations": [
+                  "CCPA §1798.100: Identity verification process for right-to-know requests not established",
+                  "CCPA §1798.100: Response to right-to-know request not fulfilled within 45 days",
+                  "CCPA §1798.100: Two disclosure requests per 12-month period not honored",
+                  "CCPA §1798.105: Confirmation of deletion not provided to consumer",
+                  "CCPA §1798.105: Deletion not propagated to service providers and contractors",
+                  "CCPA §1798.105: Deletion process for personal information not established",
+                  "CCPA §1798.105: Exceptions to deletion (legal obligation, security) not documented",
+                  "CCPA §1798.110: Categories of personal information collected, purposes, and third parties not disclosed",
+                  "CCPA §1798.115: Specific pieces of personal information not provided to consumer upon request",
+                  "CCPA §1798.120: Opt-out of sale or sharing not honored within 15 business days",
+                  "CCPA §1798.120: Opted-out consumers re-enrolled for sale or sharing within 12 months without consent",
+                  "CCPA §1798.125: Consumers denied goods, services, or charged different prices for opting out",
+                  "CCPA §1798.125: Consumers penalized for exercising privacy rights",
+                  "CCPA §1798.135: 'Do Not Sell or Share My Personal Information' link not present on homepage",
+                  "CCPA §1798.135: Global Privacy Control (GPC) signal not honored",
+                  "CPRA §1798.106: Correction not propagated to third parties",
+                  "CPRA §1798.106: Process for consumers to correct inaccurate personal information not defined",
+                  "CPRA §1798.106: Response to right-to-correct request not fulfilled within 45 days",
+                  "CPRA §1798.121: 'Limit the Use of My Sensitive Personal Information' link not available",
+                  "CPRA §1798.121: Request to limit sensitive personal information use not honored within 15 business days",
+                  "CPRA §1798.121: Sensitive personal information use not limited to specified purposes when consumer requests",
+                  "CCPA §1798.100(b): Categories of personal information and purposes not disclosed in notice at collection",
+                  "CCPA §1798.100(b): Notice not provided at or before point of personal information collection",
+                  "CCPA §1798.100(b): Retention periods or criteria for determination not disclosed in notice at collection",
+                  "CCPA §1798.100(b): Sale or sharing of personal information not disclosed with opt-out link where applicable",
+                  "CCPA §1798.130: Comprehensive privacy policy not published or not updated annually",
+                  "CCPA §1798.130: Privacy policy does not include contact information for privacy requests",
+                  "CCPA §1798.130: Privacy policy does not include disclosure of CCPA consumer rights",
+                  "CCPA §1798.130: Privacy policy does not list categories of personal information collected in prior 12 months",
+                  "CCPA §1798.130: Privacy policy does not list categories of third parties personal information is shared with",
+                  "CCPA §1798.130: Privacy policy does not list purposes for which personal information is collected",
+                  "CCPA §1798.135(b): Personnel handling privacy requests not trained on CCPA requirements",
+                  "CCPA §1798.135(b): Privacy training not documented or not refreshed annually",
+                  "CCPA §1798.140: Service provider contracts do not prohibit selling of personal information",
+                  "CCPA §1798.140: Subprocessor restrictions not included in service provider contracts",
+                  "CCPA §1798.140: Written contracts with service providers not in place limiting use of personal information",
+                  "CPRA §1798.185(a)(3): Annual metrics on rights requests not reported (required for large businesses)",
+                  "CPRA §1798.185(a)(3): Records of privacy requests and responses not retained for 24 months",
+                  "CPRA §1798.140(ae): Access controls for genetic data not implemented",
+                  "CPRA §1798.140(ae): Account credentials stored in plaintext",
+                  "CPRA §1798.140(ae): Collection of religious or philosophical beliefs data not minimized",
+                  "CPRA §1798.140(ae): Collection of union membership data not minimized",
+                  "CPRA §1798.140(ae): Consent not obtained for collection of biometric data",
+                  "CPRA §1798.140(ae): Data Protection Impact Assessments not conducted for processing racial or ethnic origin data",
+                  "CPRA §1798.140(ae): Genetic data sold or shared without restriction",
+                  "CPRA §1798.140(ae): HIPAA-aligned controls not applied to health information where applicable",
+                  "CPRA §1798.140(ae): Mail, email, or text message content accessed for purposes other than delivery",
+                  "CPRA §1798.140(ae): Precise geolocation data (within 1,852m) collected without explicit purpose limitation",
+                  "CPRA §1798.140(ae): Retention of biometric data not limited to stated purpose",
+                  "CPRA §1798.140(ae): SSN and government ID data not access-limited and not encrypted",
+                  "CPRA §1798.140(ae): Sex life or sexual orientation data collected without demonstrated necessity",
+                  "CPRA §1798.185(a)(21): Consumers cannot opt out of automated decisions affecting them significantly",
+                  "CPRA §1798.185(a)(21): Explanation of automated decision-making logic not available upon request",
+                  "CCPA §1798.150: Consumer notification after breach delayed unreasonably",
+                  "CCPA §1798.150: Reasonable security measures not implemented for personal information",
+                  "CCPA §1798.150: Security incidents not reported to CPPA within 72 hours",
+                  "CPRA §1798.100(a)(3): Personal information collected for purposes not disclosed to consumer",
+                  "CPRA §1798.100(a)(3): Personal information collection not limited to what is reasonably necessary",
+                  "CPRA §1798.100(a)(3): Personal information retained longer than necessary for disclosed purpose",
+                  "CPRA §1798.100(a)(3): Personal information sold or shared beyond disclosed categories",
+                  "CPRA §1798.100(a)(3): Personal information used for purposes materially different from those disclosed",
+                  "CPRA §1798.100(a)(3): Personal information used in manner incompatible with disclosed purpose",
+                  "CPRA §1798.100(a)(3): Retention schedule for personal information not established or not documented",
+                  "CPRA §1798.100(a)(3): Retention schedule not technically enforced with automated deletion",
+                  "CPRA §1798.185(a)(15): Data Protection Assessments not available for submission to CPPA upon request",
+                  "CPRA §1798.185(a)(15): Data Protection Assessments not conducted for high-risk processing (profiling, sensitive PI, sharing)",
+                  "CPRA §1798.185(a)(15): Data Protection Assessments not reviewed annually",
+                  "CCPA §7120(a): no cybersecurity audit completed — a business whose processing presents significant risk to consumers' security must complete one",
+                  "CCPA §7121: cybersecurity audit does not cover the required 12-month period (Jan 1 through Jan 1 of the following year for the business's tier)",
+                  "CCPA §7122(a)(1): auditor lacks demonstrated knowledge of cybersecurity and of auditing a cybersecurity program",
+                  "CCPA §7122(a)(2): auditor is not free of influence from the business — objective and impartial judgment not evidenced",
+                  "CCPA §7122(a)(2): auditor participated in activities they assess (developing procedures, preparing documents, recommending or operating the cybersecurity program)",
+                  "CCPA §7122(a): audit does not use procedures and standards accepted in the auditing profession (AICPA, PCAOB, ISACA, ISO)",
+                  "CCPA §7122(b): business did not make all requested relevant information available to the auditor",
+                  "CCPA §7122(c): business did not disclose all relevant facts to the auditor in good faith / misrepresented a fact",
+                  "CCPA §7122(d): audit findings rely primarily on management assertions or attestations rather than on specific evidence (documents, sampling and testing, interviews)",
+                  "CCPA §7122(f): audit report not provided to the executive with direct responsibility for the cybersecurity program",
+                  "CCPA §7122(g): audit documents not retained for at least five years after completion (business and auditor)",
+                  "CCPA §7123(b)(1): audit did not assess the establishment, implementation and maintenance of the cybersecurity program and its written policies and procedures",
+                  "CCPA §7123(b)(3): audit did not assess how the business implements and enforces compliance with its cybersecurity program and the applicable components",
+                  "CCPA §7123(c)(1): authentication — phishing-resistant MFA for personnel, service providers and contractors; strong unique passwords/passphrases — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(10): segmentation of the information system (firewalls, routers, switches) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(11): limitation and control of ports, services and protocols — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(12): cybersecurity awareness — current knowledge of changing threats and countermeasures — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(13): cybersecurity education and training at start, annually, and after a breach, for everyone with system access — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(14): secure development and coding best practices, including code review and testing — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(15): oversight of service providers, contractors and third parties (§§7051, 7053) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(16): retention schedules and proper disposal (shredding, erasing, rendering unreadable) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(17): incident response management — documented plan and tested capabilities — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(18): business-continuity and disaster-recovery plans, data-recovery capabilities and backups — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(2): encryption of personal information at rest and in transit — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(3): account management and access controls — least privilege, privileged-account restriction and PAM, monitored account creation, physical access — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(4): inventory and management of personal information (maps, classification, tagging) and of hardware/software (allowlisting, approval processes) — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(5): secure configuration — updates/upgrades, on-prem and cloud hardening, masking of sensitive PI by default, security patch management, change management — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(6): internal and external vulnerability scans, penetration testing, vulnerability disclosure and reporting — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(7): audit-log management — centralized storage, retention and monitoring of logs — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(8): network monitoring and defenses — bot/intrusion detection and prevention, data-loss prevention — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(c)(9): antivirus and antimalware protections — component not assessed by the cybersecurity audit and not recorded as not-applicable",
+                  "CCPA §7123(e)(1): report does not describe the information system, the policies/procedures assessed, the criteria used and the specific evidence examined, with the justification for the findings",
+                  "CCPA §7123(e)(2): report does not identify the applicable components, how the business implements and enforces them, and their effectiveness",
+                  "CCPA §7123(e)(3): report does not identify and describe in detail the status of gaps or weaknesses that increase risk to personal information",
+                  "CCPA §7123(e)(4): report does not document the business's plan and timeframe to address identified gaps and weaknesses",
+                  "CCPA §7123(e)(5): report does not identify corrections or amendments to prior audit reports",
+                  "CCPA §7123(e)(6): report does not include the titles of up to three qualified individuals responsible for the cybersecurity program",
+                  "CCPA §7123(e)(7): report does not include the auditor's name, affiliation and relevant qualifications",
+                  "CCPA §7123(e)(8): report lacks the highest-ranking auditor's signed, dated certification of independent review, impartial judgment, and no primary reliance on management attestations",
+                  "CCPA §7123(e)(9)-(10): report does not include samples or descriptions of any consumer breach notifications (Civ. Code §1798.82) or regulator notifications made during the period, with dates, details and remediation",
+                  "CCPA §7124(a): written certification of audit completion not submitted to the California Privacy Protection Agency",
+                  "CCPA §7124(b): certification not submitted by April 1 following the audit year",
+                  "CCPA §7124(c): certification not completed by an executive directly responsible for audit compliance, with sufficient knowledge and authority to submit",
+                  "CCPA §7124(d): certification lacks required contents — business name and contact, completion statement, period covered by month and year, electronically signed penalty-of-perjury attestation, submitter name/title/date",
+                  "CCPA §7150(b)(1): selling or sharing personal information — activity not declared (activities.selling_or_sharing.in_use must be true or false)",
+                  "CCPA §7150(b)(2): processing sensitive personal information (beyond the HR-administration carve-out) — activity not declared (activities.sensitive_personal_information.in_use must be true or false)",
+                  "CCPA §7150(b)(3): using ADMT for a significant decision concerning a consumer — activity not declared (activities.admt_significant_decision.in_use must be true or false)",
+                  "CCPA §7150(b)(4): automated inference about a consumer from systematic observation as applicant, student, employee or contractor — activity not declared (activities.inference_from_observation_work_or_education.in_use must be true or false)",
+                  "CCPA §7150(b)(5): automated inference about a consumer based on presence in a sensitive location — activity not declared (activities.inference_in_sensitive_location.in_use must be true or false)",
+                  "CCPA §7150(b)(6): processing personal information to train ADMT for significant decisions, or facial/emotion-recognition or other identification/profiling technology — activity not declared (activities.training_admt_or_biometric_technology.in_use must be true or false)",
+                  "CCPA §7200(a): uses_admt_for_significant_decisions must be declared true or false — whether ADMT makes significant decisions about consumers cannot be assumed"
+                ]
+              },
+              "modules_passing": 0,
+              "overall_compliant": false
+            },
+            "main_test": {
+              "test_report_wellformed_on_empty_input": true
+            },
+            "regulations_2026_test": {
+              "_access_ok": {
+                "denials_explained": true,
+                "easy_methods_no_dark_patterns": true,
+                "logic_explained": true,
+                "non_retaliation_and_rights_instructions": true,
+                "outcome_and_human_role_explained": true,
+                "secure_transmission": true,
+                "service_provider_assistance": true,
+                "specific_purpose_explained": true,
+                "verification_per_article_5": true
+              },
+              "_activities_none": {
+                "admt_significant_decision": {
+                  "in_use": false
+                },
+                "inference_from_observation_work_or_education": {
+                  "in_use": false
+                },
+                "inference_in_sensitive_location": {
+                  "in_use": false
+                },
+                "selling_or_sharing": {
+                  "in_use": false
+                },
+                "sensitive_personal_information": {
+                  "in_use": false
+                },
+                "training_admt_or_biometric_technology": {
+                  "in_use": false
+                }
+              },
+              "_activities_one": {
+                "admt_significant_decision": {
+                  "in_use": false
+                },
+                "inference_from_observation_work_or_education": {
+                  "in_use": false
+                },
+                "inference_in_sensitive_location": {
+                  "in_use": false
+                },
+                "selling_or_sharing": {
+                  "assessment_completed_before_processing": true,
+                  "in_use": true
+                },
+                "sensitive_personal_information": {
+                  "in_use": false
+                },
+                "training_admt_or_biometric_technology": {
+                  "in_use": false
+                }
+              },
+              "_admt_input": {
+                "ccpa": {
+                  "admt": {
+                    "access": {
+                      "denials_explained": true,
+                      "easy_methods_no_dark_patterns": true,
+                      "logic_explained": true,
+                      "non_retaliation_and_rights_instructions": true,
+                      "outcome_and_human_role_explained": true,
+                      "secure_transmission": true,
+                      "service_provider_assistance": true,
+                      "specific_purpose_explained": true,
+                      "verification_per_article_5": true
+                    },
+                    "opt_out": {
+                      "authorized_agents_accepted": true,
+                      "ceases_within_15_business_days": true,
+                      "confirmation_provided": true,
+                      "easy_minimal_steps_no_dark_patterns": true,
+                      "fraud_denials_explained": true,
+                      "no_account_or_extra_information_required": true,
+                      "no_retaliation": true,
+                      "no_verification_required": true,
+                      "not_cookie_banner_only": true,
+                      "offered": true,
+                      "online_form_via_named_link": true,
+                      "pre_processing_opt_out_honored": true,
+                      "service_providers_notified": true,
+                      "single_opt_out_of_all_offered": true,
+                      "twelve_month_wait_before_reconsent": true,
+                      "two_or_more_methods": true
+                    },
+                    "pre_use_notice": {
+                      "access_right_and_method_described": true,
+                      "at_or_before_collection": true,
+                      "how_it_works_explained": true,
+                      "in_primary_interaction_manner": true,
+                      "non_retaliation_stated": true,
+                      "opt_out_right_and_method_described": true,
+                      "provided": true,
+                      "specific_purpose_stated": true
+                    },
+                    "uses_admt_for_significant_decisions": true
+                  }
+                }
+              },
+              "_all_components": {
+                "c01_authentication": true,
+                "c02_encryption": true,
+                "c03_account_management_access_control": true,
+                "c04_inventory": true,
+                "c05_secure_configuration": true,
+                "c06_vulnerability_scans_pentest_disclosure": true,
+                "c07_audit_log_management": true,
+                "c08_network_monitoring_defenses": true,
+                "c09_antivirus_antimalware": true,
+                "c10_segmentation": true,
+                "c11_ports_services_protocols": true,
+                "c12_cybersecurity_awareness": true,
+                "c13_education_training": true,
+                "c14_secure_development": true,
+                "c15_service_provider_oversight": true,
+                "c16_retention_and_disposal": true,
+                "c17_incident_response": true,
+                "c18_bcdr_backups": true
+              },
+              "_audit_input": {
+                "ccpa": {
+                  "cybersecurity_audits": {
+                    "audit": {
+                      "completed": true,
+                      "covers_required_period": true
+                    },
+                    "auditor": {
+                      "all_requested_information_provided": true,
+                      "documents_retained_five_years": true,
+                      "facts_disclosed_in_good_faith": true,
+                      "findings_rely_on_evidence_not_management_attestation": true,
+                      "internal": true,
+                      "no_participation_in_assessed_activities": true,
+                      "objective_and_independent": true,
+                      "qualified": true,
+                      "report_delivered_to_responsible_executive": true,
+                      "reports_to_executive_without_cyber_responsibility": true,
+                      "uses_accepted_standards": true
+                    },
+                    "certification": {
+                      "includes_required_contents": true,
+                      "submitted_by_april_1": true,
+                      "submitted_by_responsible_executive": true,
+                      "submitted_to_agency": true
+                    },
+                    "components": {
+                      "assessed": {
+                        "c01_authentication": true,
+                        "c02_encryption": true,
+                        "c03_account_management_access_control": true,
+                        "c04_inventory": true,
+                        "c05_secure_configuration": true,
+                        "c06_vulnerability_scans_pentest_disclosure": true,
+                        "c07_audit_log_management": true,
+                        "c08_network_monitoring_defenses": true,
+                        "c09_antivirus_antimalware": true,
+                        "c10_segmentation": true,
+                        "c11_ports_services_protocols": true,
+                        "c12_cybersecurity_awareness": true,
+                        "c13_education_training": true,
+                        "c14_secure_development": true,
+                        "c15_service_provider_oversight": true,
+                        "c16_retention_and_disposal": true,
+                        "c17_incident_response": true,
+                        "c18_bcdr_backups": true
+                      },
+                      "implementation_and_enforcement_assessed": true,
+                      "program_documentation_assessed": true
+                    },
+                    "report": {
+                      "describes_gaps_and_weaknesses": true,
+                      "describes_information_system": true,
+                      "documents_remediation_plan_with_timeframe": true,
+                      "identifies_components_and_effectiveness": true,
+                      "identifies_corrections_to_prior_reports": true,
+                      "includes_breach_notifications_if_any": true,
+                      "names_auditor_and_qualifications": true,
+                      "names_responsible_individuals": true,
+                      "signed_independence_statement": true
+                    },
+                    "revenue_tier": "over_100m"
+                  }
+                }
+              },
+              "_auditor_ok": {
+                "all_requested_information_provided": true,
+                "documents_retained_five_years": true,
+                "facts_disclosed_in_good_faith": true,
+                "findings_rely_on_evidence_not_management_attestation": true,
+                "no_participation_in_assessed_activities": true,
+                "objective_and_independent": true,
+                "qualified": true,
+                "report_delivered_to_responsible_executive": true,
+                "uses_accepted_standards": true
+              },
+              "_cert_ok": {
+                "includes_required_contents": true,
+                "submitted_by_april_1": true,
+                "submitted_by_responsible_executive": true,
+                "submitted_to_agency": true
+              },
+              "_notice_ok": {
+                "access_right_and_method_described": true,
+                "at_or_before_collection": true,
+                "how_it_works_explained": true,
+                "in_primary_interaction_manner": true,
+                "non_retaliation_stated": true,
+                "opt_out_right_and_method_described": true,
+                "provided": true,
+                "specific_purpose_stated": true
+              },
+              "_opt_out_ok": {
+                "authorized_agents_accepted": true,
+                "ceases_within_15_business_days": true,
+                "confirmation_provided": true,
+                "easy_minimal_steps_no_dark_patterns": true,
+                "fraud_denials_explained": true,
+                "no_account_or_extra_information_required": true,
+                "no_retaliation": true,
+                "no_verification_required": true,
+                "not_cookie_banner_only": true,
+                "offered": true,
+                "online_form_via_named_link": true,
+                "pre_processing_opt_out_honored": true,
+                "service_providers_notified": true,
+                "single_opt_out_of_all_offered": true,
+                "twelve_month_wait_before_reconsent": true,
+                "two_or_more_methods": true
+              },
+              "_ra_input": {
+                "ccpa": {
+                  "risk_assessments": {
+                    "activities": {
+                      "admt_significant_decision": {
+                        "in_use": false
+                      },
+                      "inference_from_observation_work_or_education": {
+                        "in_use": false
+                      },
+                      "inference_in_sensitive_location": {
+                        "in_use": false
+                      },
+                      "selling_or_sharing": {
+                        "assessment_completed_before_processing": true,
+                        "in_use": true
+                      },
+                      "sensitive_personal_information": {
+                        "in_use": false
+                      },
+                      "training_admt_or_biometric_technology": {
+                        "in_use": false
+                      }
+                    },
+                    "report": {
+                      "benefits_specific": true,
+                      "categories_and_minimum_pi_identified": true,
+                      "contributors_identified": true,
+                      "decision_to_initiate_documented": true,
+                      "negative_impacts_with_sources": true,
+                      "operational_elements_documented": true,
+                      "purpose_specific_not_generic": true,
+                      "reviewed_and_approved_by_decision_authority": true,
+                      "safeguards_documented": true
+                    },
+                    "stakeholders": {
+                      "processing_employees_included": true
+                    },
+                    "submission": {
+                      "includes_required_contents": true,
+                      "reports_available_within_30_days_of_request": true,
+                      "submitted_by_april_1": true,
+                      "submitted_by_responsible_executive": true
+                    },
+                    "timing": {
+                      "retained_five_years_or_duration_of_processing": true,
+                      "reviewed_at_least_every_three_years": true,
+                      "updated_within_45_days_of_material_change": true
+                    }
+                  }
+                }
+              },
+              "_ra_report_ok": {
+                "benefits_specific": true,
+                "categories_and_minimum_pi_identified": true,
+                "contributors_identified": true,
+                "decision_to_initiate_documented": true,
+                "negative_impacts_with_sources": true,
+                "operational_elements_documented": true,
+                "purpose_specific_not_generic": true,
+                "reviewed_and_approved_by_decision_authority": true,
+                "safeguards_documented": true
+              },
+              "_ra_submission_ok": {
+                "includes_required_contents": true,
+                "reports_available_within_30_days_of_request": true,
+                "submitted_by_april_1": true,
+                "submitted_by_responsible_executive": true
+              },
+              "_ra_timing_ok": {
+                "retained_five_years_or_duration_of_processing": true,
+                "reviewed_at_least_every_three_years": true,
+                "updated_within_45_days_of_material_change": true
+              },
+              "_report_ok": {
+                "describes_gaps_and_weaknesses": true,
+                "describes_information_system": true,
+                "documents_remediation_plan_with_timeframe": true,
+                "identifies_components_and_effectiveness": true,
+                "identifies_corrections_to_prior_reports": true,
+                "includes_breach_notifications_if_any": true,
+                "names_auditor_and_qualifications": true,
+                "names_responsible_individuals": true,
+                "signed_independence_statement": true
+              },
+              "test_admt_aggregate_response_needs_more_than_four_uses": true,
+              "test_admt_cookie_banner_only_is_flagged": true,
+              "test_admt_declared_not_used_is_compliant": true,
+              "test_admt_empty_input_fails_closed": true,
+              "test_admt_full_evidence_is_compliant": true,
+              "test_admt_human_appeal_exception_replaces_opt_out": true,
+              "test_admt_human_appeal_exception_without_reviewer_is_flagged": true,
+              "test_admt_report_carries_compliance_date": true,
+              "test_admt_unknown_exception_is_flagged_and_opt_out_not_required": true,
+              "test_admt_used_without_evidence_is_many_violations": true,
+              "test_audits_component_may_be_excused_as_not_applicable": true,
+              "test_audits_deadline_not_flagged_before_2028": true,
+              "test_audits_empty_input_fails_closed": true,
+              "test_audits_full_evidence_is_compliant": true,
+              "test_audits_internal_auditor_needs_independent_reporting_line": true,
+              "test_audits_missed_first_report_deadline_after_2028": true,
+              "test_audits_missing_component_is_one_violation": true,
+              "test_audits_not_applicable_below_thresholds_has_no_violations": true,
+              "test_audits_not_applicable_declaration_contradicted_by_thresholds": true,
+              "test_ra_activity_in_use_with_full_evidence_is_compliant": true,
+              "test_ra_activity_without_prior_assessment_is_flagged": true,
+              "test_ra_admt_activity_requires_logic_and_output": true,
+              "test_ra_empty_input_fails_closed": true,
+              "test_ra_legacy_processing_scheduled_before_deadline_is_fine": true,
+              "test_ra_legacy_processing_unassessed_after_deadline": true,
+              "test_ra_no_activities_in_use_is_compliant_once_declared": true
+            },
+            "risk_assessments": {
+              "_in": {},
+              "_report_checks": {
+                "benefits_specific": "CCPA §7152(a)(4): benefits to the business, consumer, stakeholders and public not identified specifically",
+                "categories_and_minimum_pi_identified": "CCPA §7152(a)(2): categories of personal information (including sensitive PI) and the minimum PI necessary for the purpose not documented",
+                "contributors_identified": "CCPA §7152(a)(8): individuals who provided information for the assessment not identified (legal counsel excepted)",
+                "decision_to_initiate_documented": "CCPA §7152(a)(7): whether the business will initiate the processing not documented",
+                "negative_impacts_with_sources": "CCPA §7152(a)(5): negative impacts to consumers' privacy, with their sources and causes, not identified (security, discrimination, loss of control, coercion, economic, physical, reputational, psychological harms)",
+                "operational_elements_documented": "CCPA §7152(a)(3): operational elements not documented — collection/use/disclosure/retention method and sources, retention periods or criteria, consumer interaction method and purpose, approximate consumer count, disclosures made, and recipients with purposes",
+                "purpose_specific_not_generic": "CCPA §7152(a)(1): purpose of processing not identified specifically (generic purposes such as 'to improve our services' are not permitted)",
+                "reviewed_and_approved_by_decision_authority": "CCPA §7152(a)(9): review/approval date and the names and positions of reviewers not documented, or the approver lacks authority to decide whether the processing proceeds",
+                "safeguards_documented": "CCPA §7152(a)(6): safeguards planned for the processing (and for each identified negative impact) not documented"
+              },
+              "_submission_checks": {
+                "includes_required_contents": "CCPA §7157(b): submission lacks required contents — business name and contact, period covered, count of assessments per §7150(b) activity, categories of PI/sensitive PI involved, penalty-of-perjury attestation, submitter name/title/date",
+                "reports_available_within_30_days_of_request": "CCPA §7157(e): business cannot produce full risk assessment reports within 30 calendar days of an Agency or Attorney General request",
+                "submitted_by_april_1": "CCPA §7157(a): risk assessment information not submitted to the Agency by April 1 following the assessment year (2028-04-01 for 2026–2027 assessments)",
+                "submitted_by_responsible_executive": "CCPA §7157(c): submission not made by an executive directly responsible for risk-assessment compliance with sufficient knowledge and authority"
+              },
+              "_timing_checks": {
+                "retained_five_years_or_duration_of_processing": "CCPA §7155(c): risk assessments (original and updated) not retained for the duration of processing or five years after completion, whichever is later",
+                "reviewed_at_least_every_three_years": "CCPA §7155(a)(2): risk assessments not reviewed and updated at least once every three years",
+                "updated_within_45_days_of_material_change": "CCPA §7155(a)(3): risk assessments not updated within 45 calendar days of a material change (new or larger negative impacts, weakened safeguards)"
+              },
+              "activities": {
+                "admt_significant_decision": "§7150(b)(3): using ADMT for a significant decision concerning a consumer",
+                "inference_from_observation_work_or_education": "§7150(b)(4): automated inference about a consumer from systematic observation as applicant, student, employee or contractor",
+                "inference_in_sensitive_location": "§7150(b)(5): automated inference about a consumer based on presence in a sensitive location",
+                "selling_or_sharing": "§7150(b)(1): selling or sharing personal information",
+                "sensitive_personal_information": "§7150(b)(2): processing sensitive personal information (beyond the HR-administration carve-out)",
+                "training_admt_or_biometric_technology": "§7150(b)(6): processing personal information to train ADMT for significant decisions, or facial/emotion-recognition or other identification/profiling technology"
+              },
+              "compliance_report": {
+                "activities_assessed_before_processing": [],
+                "activities_in_use": [],
+                "compliant": false,
+                "domain": "Risk Assessments",
+                "first_submission_deadline": "2028-04-01",
+                "legacy_assessment_deadline": "2027-12-31",
+                "standard": "CCPA Regulations — Article 10 Risk Assessments (11 CCR §§7150–7157, effective 2026-01-01)",
+                "violation_count": 6,
+                "violations": [
+                  "CCPA §7150(b)(1): selling or sharing personal information — activity not declared (activities.selling_or_sharing.in_use must be true or false)",
+                  "CCPA §7150(b)(2): processing sensitive personal information (beyond the HR-administration carve-out) — activity not declared (activities.sensitive_personal_information.in_use must be true or false)",
+                  "CCPA §7150(b)(3): using ADMT for a significant decision concerning a consumer — activity not declared (activities.admt_significant_decision.in_use must be true or false)",
+                  "CCPA §7150(b)(4): automated inference about a consumer from systematic observation as applicant, student, employee or contractor — activity not declared (activities.inference_from_observation_work_or_education.in_use must be true or false)",
+                  "CCPA §7150(b)(5): automated inference about a consumer based on presence in a sensitive location — activity not declared (activities.inference_in_sensitive_location.in_use must be true or false)",
+                  "CCPA §7150(b)(6): processing personal information to train ADMT for significant decisions, or facial/emotion-recognition or other identification/profiling technology — activity not declared (activities.training_admt_or_biometric_technology.in_use must be true or false)"
+                ]
+              },
+              "compliant": false,
+              "first_submission_deadline": "2028-04-01T00:00:00Z",
+              "legacy_assessment_deadline": "2027-12-31T23:59:59Z",
+              "violations": [
+                "CCPA §7150(b)(1): selling or sharing personal information — activity not declared (activities.selling_or_sharing.in_use must be true or false)",
+                "CCPA §7150(b)(2): processing sensitive personal information (beyond the HR-administration carve-out) — activity not declared (activities.sensitive_personal_information.in_use must be true or false)",
+                "CCPA §7150(b)(3): using ADMT for a significant decision concerning a consumer — activity not declared (activities.admt_significant_decision.in_use must be true or false)",
+                "CCPA §7150(b)(4): automated inference about a consumer from systematic observation as applicant, student, employee or contractor — activity not declared (activities.inference_from_observation_work_or_education.in_use must be true or false)",
+                "CCPA §7150(b)(5): automated inference about a consumer based on presence in a sensitive location — activity not declared (activities.inference_in_sensitive_location.in_use must be true or false)",
+                "CCPA §7150(b)(6): processing personal information to train ADMT for significant decisions, or facial/emotion-recognition or other identification/profiling technology — activity not declared (activities.training_admt_or_biometric_technology.in_use must be true or false)"
+              ]
+            },
+            "sensitive_data": {
+              "compliance_report": {
+                "compliant": false,
+                "domain": "Sensitive Personal Information (§1798.140(ae), §1798.185(a)(21))",
+                "standard": "CCPA/CPRA",
+                "violation_count": 15,
+                "violations": [
+                  "CPRA §1798.140(ae): Access controls for genetic data not implemented",
+                  "CPRA §1798.140(ae): Account credentials stored in plaintext",
+                  "CPRA §1798.140(ae): Collection of religious or philosophical beliefs data not minimized",
+                  "CPRA §1798.140(ae): Collection of union membership data not minimized",
+                  "CPRA §1798.140(ae): Consent not obtained for collection of biometric data",
+                  "CPRA §1798.140(ae): Data Protection Impact Assessments not conducted for processing racial or ethnic origin data",
+                  "CPRA §1798.140(ae): Genetic data sold or shared without restriction",
+                  "CPRA §1798.140(ae): HIPAA-aligned controls not applied to health information where applicable",
+                  "CPRA §1798.140(ae): Mail, email, or text message content accessed for purposes other than delivery",
+                  "CPRA §1798.140(ae): Precise geolocation data (within 1,852m) collected without explicit purpose limitation",
+                  "CPRA §1798.140(ae): Retention of biometric data not limited to stated purpose",
+                  "CPRA §1798.140(ae): SSN and government ID data not access-limited and not encrypted",
+                  "CPRA §1798.140(ae): Sex life or sexual orientation data collected without demonstrated necessity",
+                  "CPRA §1798.185(a)(21): Consumers cannot opt out of automated decisions affecting them significantly",
+                  "CPRA §1798.185(a)(21): Explanation of automated decision-making logic not available upon request"
+                ]
+              },
+              "compliant": false,
+              "violations": [
+                "CPRA §1798.140(ae): Access controls for genetic data not implemented",
+                "CPRA §1798.140(ae): Account credentials stored in plaintext",
+                "CPRA §1798.140(ae): Collection of religious or philosophical beliefs data not minimized",
+                "CPRA §1798.140(ae): Collection of union membership data not minimized",
+                "CPRA §1798.140(ae): Consent not obtained for collection of biometric data",
+                "CPRA §1798.140(ae): Data Protection Impact Assessments not conducted for processing racial or ethnic origin data",
+                "CPRA §1798.140(ae): Genetic data sold or shared without restriction",
+                "CPRA §1798.140(ae): HIPAA-aligned controls not applied to health information where applicable",
+                "CPRA §1798.140(ae): Mail, email, or text message content accessed for purposes other than delivery",
+                "CPRA §1798.140(ae): Precise geolocation data (within 1,852m) collected without explicit purpose limitation",
+                "CPRA §1798.140(ae): Retention of biometric data not limited to stated purpose",
+                "CPRA §1798.140(ae): SSN and government ID data not access-limited and not encrypted",
+                "CPRA §1798.140(ae): Sex life or sexual orientation data collected without demonstrated necessity",
+                "CPRA §1798.185(a)(21): Consumers cannot opt out of automated decisions affecting them significantly",
+                "CPRA §1798.185(a)(21): Explanation of automated decision-making logic not available upon request"
+              ]
+            }
+          },
+          "text": "data.ccpa",
+          "location": {
+            "row": 1,
+            "col": 1
+          }
+        }
+      ]
+    }
+  ]
+}

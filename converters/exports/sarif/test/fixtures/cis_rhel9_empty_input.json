@@ -1,0 +1,176 @@
+{
+  "result": [
+    {
+      "expressions": [
+        {
+          "value": {
+            "benchmark": "CIS Red Hat Enterprise Linux 9 Benchmark v2.0.0",
+            "compliance_percentage": 0,
+            "compliant": false,
+            "controls_basis": "distinct CIS control IDs evaluated by this policy set",
+            "failed_controls": 224,
+            "framework": "cis_rhel9",
+            "passed_controls": 0,
+            "section_compliance_percentage": 0,
+            "section_results": {
+              "section_1_1_filesystem": {
+                "compliant": false,
+                "controls_covered": 50,
+                "violation_count": 5
+              },
+              "section_1_2_1_7_1_8_initial_setup": {
+                "compliant": false,
+                "controls_covered": 23,
+                "violation_count": 5
+              },
+              "section_1_3_1_4_1_5_boot_security": {
+                "compliant": false,
+                "controls_covered": 18,
+                "violation_count": 6
+              },
+              "section_1_6_selinux": {
+                "compliant": false,
+                "controls_covered": 10,
+                "violation_count": 1
+              },
+              "section_2_services": {
+                "compliant": false,
+                "controls_covered": 30,
+                "violation_count": 3
+              },
+              "section_3_network": {
+                "compliant": false,
+                "controls_covered": 20,
+                "violation_count": 5
+              },
+              "section_4_1_auditd": {
+                "compliant": false,
+                "controls_covered": 40,
+                "violation_count": 24
+              },
+              "section_4_2_logging": {
+                "compliant": false,
+                "controls_covered": 17,
+                "violation_count": 3
+              },
+              "section_5_1_cron": {
+                "compliant": false,
+                "controls_covered": 9,
+                "violation_count": 3
+              },
+              "section_5_2_ssh": {
+                "compliant": false,
+                "controls_covered": 21,
+                "violation_count": 8
+              },
+              "section_5_3_sudo": {
+                "compliant": false,
+                "controls_covered": 10,
+                "violation_count": 2
+              },
+              "section_5_4_5_5_pam": {
+                "compliant": false,
+                "controls_covered": 19,
+                "violation_count": 7
+              },
+              "section_6_1_file_permissions": {
+                "compliant": false,
+                "controls_covered": 14,
+                "violation_count": 1
+              },
+              "section_6_2_user_group": {
+                "compliant": false,
+                "controls_covered": 19,
+                "violation_count": 1
+              }
+            },
+            "total_controls": 224,
+            "version": "v2.0.0",
+            "violations": [
+              "CIS 1.1: FAIL-CLOSED - filesystem facts 'disabled_filesystem_modules' were not supplied; the section cannot be evaluated and is reported non-compliant",
+              "CIS 1.1: FAIL-CLOSED - filesystem facts 'separate_partitions' were not supplied; the section cannot be evaluated and is reported non-compliant",
+              "CIS 1.1: FAIL-CLOSED - filesystem facts 'mount_options' were not supplied; the section cannot be evaluated and is reported non-compliant",
+              "CIS 1.1: FAIL-CLOSED - filesystem facts 'sticky_bit' were not supplied; the section cannot be evaluated and is reported non-compliant",
+              "CIS 1.1: FAIL-CLOSED - filesystem facts 'usb_storage' were not supplied; the section cannot be evaluated and is reported non-compliant",
+              "CIS 4.2.1.1: rsyslog is not installed",
+              "CIS 4.2.x: logrotate is not installed (logs may fill disk)",
+              "CIS 4.2.2.3: systemd-journald service is not active",
+              "SSH Private Keys: One or more SSH host keys have insecure permissions",
+              "CIS 1.1.23: autofs is not compliant (should be disabled/masked)",
+              "CIS 2.1.1: No time synchronization service is active",
+              "CIS 2.1.1: Time synchronization not properly configured (active services: 0)",
+              "CIS 3.x: FAIL-CLOSED - network facts 'sysctl_parameters' were not supplied; the section cannot be evaluated and is reported non-compliant",
+              "CIS 3.x: FAIL-CLOSED - network facts 'ip_forwarding' were not supplied; the section cannot be evaluated and is reported non-compliant",
+              "CIS 3.x: FAIL-CLOSED - network facts 'ipv6' were not supplied; the section cannot be evaluated and is reported non-compliant",
+              "CIS 3.x: FAIL-CLOSED - network facts 'firewall' were not supplied; the section cannot be evaluated and is reported non-compliant",
+              "CIS 3.x: FAIL-CLOSED - network facts 'wireless_interfaces' were not supplied; the section cannot be evaluated and is reported non-compliant",
+              "CIS 5.2.15: SSH ClientAliveInterval not configured",
+              "CIS 5.2.17: SSH Banner not configured",
+              "CIS 5.2.18: SSH UsePAM not configured",
+              "CIS 5.2.20: SSH MaxStartups not configured",
+              "CIS 5.2.4: SSH LogLevel not configured",
+              "CIS 5.2.6: SSH MaxAuthTries not configured",
+              "CIS 5.2.7: SSH IgnoreRhosts not configured",
+              "CIS 5.2.9: SSH PermitRootLogin not configured",
+              "CIS 4.1.1.1: audit package not installed",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/group",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/gshadow",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/hosts",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/issue",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/issue.net",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/localtime",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/passwd",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/security/opasswd",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/selinux",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/shadow",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/sudoers",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /etc/sudoers.d",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /sbin/insmod",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /sbin/modprobe",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /sbin/rmmod",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /usr/share/selinux",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /var/log/btmp",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /var/log/lastlog",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /var/log/sudo.log",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /var/log/wtmp",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /var/run/faillock",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: /var/run/utmp",
+              "CIS 4.1.3.x: Missing or incomplete audit rule for: system call monitoring",
+              "CIS 5.4.1: pwquality package not installed",
+              "CIS 5.4.2: pam_faillock not configured in PAM",
+              "CIS 5.4.3: Password reuse limitation not configured (remember parameter missing)",
+              "CIS 5.4.4: Password hashing algorithm not set to SHA-512 or yescrypt",
+              "CIS 5.5.1.4: Inactive password lock not configured",
+              "CIS 5.5.4: Default umask not configured",
+              "CIS 5.5.5: TMOUT not configured",
+              "CIS 5.3.1: sudo package not installed",
+              "CIS 5.3.7: Access to su command not restricted (pam_wheel.so not configured)",
+              "CIS 1.6.1.1: SELinux (libselinux) not installed",
+              "CIS 6.2: FAIL-CLOSED - user_group facts were not supplied; the section cannot be evaluated and is reported non-compliant",
+              "CIS 5.1.1: cron daemon (crond) is not enabled",
+              "CIS 5.1.8: /etc/cron.allow does not exist - should be created",
+              "CIS 5.1.9: /etc/at.allow does not exist - should be created",
+              "CIS 1.3.1: AIDE is not installed",
+              "CIS 1.4.1: GRUB bootloader password is not set",
+              "CIS 1.4.3: Authentication not required for single user mode",
+              "CIS 1.5.1: Core dumps not disabled via limits.conf (hard core should be 0)",
+              "CIS 1.5.1: Core dumps not disabled via sysctl (fs.suid_dumpable should be 0)",
+              "CIS 1.5.2: kernel.randomize_va_space not configured (should be 2)",
+              "CIS 1.2.3: Global gpgcheck is not enabled in /etc/dnf/dnf.conf",
+              "CIS 1.7.1: /etc/motd does not exist",
+              "CIS 1.7.2: /etc/issue does not exist",
+              "CIS 1.7.3: /etc/issue.net does not exist",
+              "CIS 1.9: System-wide crypto policy is not configured",
+              "FAIL-CLOSED: no facts supplied for cis_rhel9 — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input."
+            ]
+          },
+          "text": "data.cis_rhel9.main.compliance_report",
+          "location": {
+            "row": 1,
+            "col": 1
+          }
+        }
+      ]
+    }
+  ]
+}

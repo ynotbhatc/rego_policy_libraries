@@ -55,6 +55,8 @@ check-converters:
 	@bash converters/packaging/iac_scanners/test/roundtrip.sh
 	@bash converters/packaging/terraform_platforms/test/roundtrip.sh
 	@bash converters/exports/oscal/test/roundtrip.sh
+	@bash converters/exports/sarif/test/roundtrip.sh
+	@bash converters/exports/ocsf/test/roundtrip.sh
 	@git diff --exit-code -- converters/packaging/gatekeeper/dist >/dev/null || { echo 'gatekeeper dist/ is stale: run build.py and commit'; exit 1; }
 	@python3 converters/exports/oscal/build.py >/dev/null && git diff --exit-code -- converters/exports/oscal/dist >/dev/null || { echo 'oscal dist/ is stale: run make oscal and commit'; exit 1; }
 

@@ -23,8 +23,8 @@ meet is in [`CONTRACT.md`](CONTRACT.md). Status at a glance is the table in §2 
 | Status | Targets |
 |---|---|
 | shipping | **Tier 0 complete:** `packaging/wasm` (4 bundles, 92 entrypoints, round-trip), `packaging/bundles` (GHCR publish; signing planned), `packaging/gatekeeper` (2 ConstraintTemplates + Constraints, round-trip, Artifact Hub metadata), `packaging/kubewarden` (3 policies, round-trip), `packaging/iac_scanners` (Conftest layout, round-trip with conftest), `packaging/terraform_platforms` (TFC/Spacelift/env0 policy set, round-trip) |
-| shipping | Tier 1: **oscal catalog** (`exports/oscal/dist/catalogs/<framework>.json`, 125 catalogs, OSCAL 1.2.3) |
-| planned | Tier 1 next: oscal component-definition + assessment-results, sarif, ocsf, crosswalk_csv, xccdf_ids; then Tier 2 generators; Trivy/KICS/Regula/Snyk adapters inside iac_scanners |
+| shipping | Tier 1: **oscal catalog** (`exports/oscal/dist/catalogs/<framework>.json`, 125 catalogs, OSCAL 1.2.3); **sarif** and **ocsf** runtime exports from `compliance_report` output, sharing one control id with the catalogs |
+| planned | Tier 1 next: oscal component-definition + assessment-results, crosswalk_csv, xccdf_ids; then Tier 2 generators; Trivy/KICS/Regula/Snyk adapters inside iac_scanners |
 
 ## 1. Where the checks are, and what shape their input takes
 
@@ -60,8 +60,8 @@ Effort: S = days, M = weeks, L = a quarter. Reach = who can consume the library 
 | 7 | **OSCAL catalog** — **shipping** (`exports/oscal`) | one catalog per framework from the shared control inventory (`scripts/inventory_controls.py`); committed under `dist/catalogs/`, schema-validated in CI | all frameworks (5,559 distinct controls) | M | compliance-trestle, RegScale, Xacta, Telos, FedRAMP automation, any OSCAL importer. Puts us beside SCF on the interchange axis while staying executable. |
 | 8 | **OSCAL component-definition** | the library as a component with `implemented-requirements` linking each control to its Rego rule | all | S after 7 | SSP generators |
 | 9 | **OSCAL assessment-results** | emit from `compliance_report` output at evaluation time | all | S | audit evidence that GRC tools ingest directly |
-| 10 | **SARIF** | `compliance_report` → SARIF 2.1 (rule = control id, result = violation) | all | S | GitHub code scanning, Azure DevOps, every SARIF viewer |
-| 11 | **OCSF Compliance Finding** | `compliance_report` → OCSF 1.x `compliance_finding` class | all | S | Splunk, Microsoft Sentinel, Amazon Security Lake, Google SecOps |
+| 10 | **SARIF** — **shipping** (`exports/sarif`) | `compliance_report` → SARIF 2.1.0 (rule = OSCAL control id, result = violation), schema-validated | all | S | GitHub code scanning, Azure DevOps, every SARIF viewer |
+| 11 | **OCSF Compliance Finding** — **shipping** (`exports/ocsf`) | `compliance_report` → OCSF 1.9.0 `compliance_finding` (one event per violation, uid = OSCAL control id), schema-validated | all | S | Splunk, Microsoft Sentinel, Amazon Security Lake, Google SecOps |
 | 12 | **Crosswalk CSV in SCF / NIST CSF column layout** | from the registry and the `crosswalk/` tree | all frameworks | S | GRC platforms (Vanta, Drata, Secureframe, Hyperproof) that import control mappings |
 | 13 | **CIS-CAT / XCCDF profile ids** | emit the XCCDF rule ids each CIS policy implements so CIS-CAT results can be joined to ours | cis (2,096) | S | CIS-CAT users compare their scan to our evaluation |
 
