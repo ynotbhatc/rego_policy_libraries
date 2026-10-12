@@ -20,6 +20,7 @@ git ls-files | grep -c '\.rego$'                                          # incl
 ```
 
 [![control-level checks](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fraw.githubusercontent.com%2Fynotbhatc%2Frego_policy_libraries%2Fmain%2FREADME.md&search=%28%5B0-9%2C%5D%2B%29%20control-level%20checks&replace=%241&label=control-level%20checks&color=blue)](docs/COMPARISON.md)
+[![control-level checks (endpoint)](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fynotbhatc%2Frego_policy_libraries%2Fmain%2Fdocs%2Fmetrics.json)](docs/COMPARISON.md)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
 [![Rego](https://img.shields.io/badge/Rego-v1-green)](https://www.openpolicyagent.org/docs/latest/policy-language/)
