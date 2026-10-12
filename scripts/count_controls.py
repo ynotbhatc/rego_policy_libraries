@@ -20,7 +20,8 @@ Usage: python3 scripts/count_controls.py [root]   (default: repo root)
 Make:  make count
 """
 import re, sys, pathlib
-root = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent)
+_args = [a for a in sys.argv[1:] if not a.startswith("--")]
+root = pathlib.Path(_args[0]) if _args else pathlib.Path(__file__).resolve().parent.parent
 body_re = re.compile(r'^\s*(violations?|deny|warn|findings?)\s+contains\s+\w+\s+if\b')
 map_start = re.compile(r'^([A-Za-z_][A-Za-z0-9_]*)\s*:=\s*\{\s*$')
 obj_row = re.compile(r'^\s*"[A-Za-z0-9][A-Za-z0-9._ -]*":\s*\{')
@@ -41,4 +42,14 @@ for f in root.rglob('*.rego'):
         if cur and not exclude.match(cur):
             if obj_row.match(line): obj += 1
             elif str_row.match(line) and include.search(cur): strs += 1
-print(f"files={files} bodies={bodies} table_object_rows={obj} table_string_rows={strs} total={bodies+obj+strs}")
+total = bodies + obj + strs
+print(f"files={files} bodies={bodies} table_object_rows={obj} table_string_rows={strs} total={total}")
+if "--check-readme" in sys.argv:
+    readme = (root / "README.md").read_text(errors="ignore")
+    quoted = [int(x.replace(",", "")) for x in re.findall(r"\*\*([0-9][0-9,]+) control-level checks", readme)]
+    if not quoted:
+        print("README.md quotes no control-level count"); sys.exit(1)
+    bad = [q for q in quoted if q != total]
+    if bad:
+        print(f"README.md quotes {bad} control-level checks; make count says {total}. Restamp the README."); sys.exit(1)
+    print(f"README.md control-level count matches ({total}).")

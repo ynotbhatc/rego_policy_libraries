@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/count_controls.py'
       - 'Makefile'
+      - 'README.md'
       - '**/*.rego'
       - '.github/workflows/opa-test.yml'
       - 'scripts/check_cis_ids.py'
@@ -16,6 +17,7 @@ on:
     paths:
       - 'scripts/count_controls.py'
       - 'Makefile'
+      - 'README.md'
       - '**/*.rego'
       - '.github/workflows/opa-test.yml'
       - 'scripts/check_cis_ids.py'
@@ -49,7 +51,7 @@ jobs:
           opa version
 
       - name: Count control-level checks (scripts/count_controls.py must run clean)
-        run: python3 scripts/count_controls.py
+        run: python3 scripts/count_controls.py --check-readme
 
       - name: Syntax check — benchmarks
         run: |

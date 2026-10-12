@@ -3,6 +3,9 @@
 > **740 production-ready Rego policies** (996 including tests; **7,867 control-level checks** by `make count`; counted at main 2026-10-12) for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles), CIS Controls v8.1, DISA STIGs, CISA SCuBA M365, NSA/CISA Kubernetes Hardening, NIST, Zero Trust (CISA ZTMM v2.0), SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, FBI CJIS, IRS Pub 1075, ACSC Essential Eight, APRA CPS 234, HKMA TM-G-1/TM-C-1 (Hong Kong), MAS TRM (Singapore), BNM RMiT (Malaysia), CERT-In Directions and DPDP Act (India), METI Cybersecurity Management Guidelines (Japan), UK Cyber Essentials, BSI C5, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
 >
 > Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
+>
+> **The largest open library of executable compliance policy anyone can verify — 7,867 control-level checks across 54 tracked standards — and the broadest regulatory coverage of any machine-readable policy library, open or closed.** The first half is a number CI recomputes on every merge (`make count`) and fails if this line drifts; the second half is the framework list below, which no other library matches. How we measured both, against every public library we could find: [docs/HOW_BIG.md](docs/HOW_BIG.md).
+>
 
 <sub>The count above is restamped by the docs pass that accompanies each merge batch;
 between batches it can drift slightly low. The exact number at any commit:</sub>
