@@ -45,7 +45,7 @@ A one-fetch check caught it. This registry is that check, systematized.
 | SOC 2 (TSC) | 2017 TSC, 2022 revised points of focus | AICPA | irregular; points-of-focus revisions | verify | aicpa-cima.com (TSC) |
 | HIPAA Security Rule | current rule (NPRM RIN 0945-AA22 NOT finalized; moved to Long-Term Actions, final projected **Jul 2027**) | HHS OCR | final rule will require full module regeneration | watch through 2027 | hhs.gov/hipaa |
 | GLBA Safeguards Rule | 16 CFR 314 as amended (breach notif. May 2024) — verified no newer amendment 2026-10-06 | FTC | amendment-driven | — | ftc.gov/legal-library (Safeguards Rule) |
-| CCPA/CPRA | current regs | Cal. AG / CPPA | **CPPA rulemaking is ongoing (ADMT, cybersecurity audits) — watch actively** (verify) | rolling | cppa.ca.gov/regulations |
+| CCPA/CPRA | current regs + **2025 CPPA regulations (OAL-approved 2025-09-22, effective 2026-01-01) — implemented 2026-10-12**: Art. 9 cybersecurity audits (`ccpa.cybersecurity_audits`), Art. 10 risk assessments (`ccpa.risk_assessments`), Art. 11 ADMT (`ccpa.admt`); first audit reports 2028-04-01 (>$100M) / 2029 / 2030, ADMT compliance 2027-01-01 | Cal. AG / CPPA | CPPA rulemaking continues (insurance, updates) — watch | 2027-01-01 (ADMT), 2028-04-01 (first certifications) | cppa.ca.gov/regulations |
 | GDPR | 2016/679 | EU | stable text; guidance evolves (EDPB) | — | edpb.europa.eu |
 | EU AI Act | Reg. 2024/1689 **as amended by Digital Omnibus Reg. 2026/1744** (in force 2026-07-27): Annex III high-risk → 2027-12-02, Annex I → 2028-08-02, Art.50 live since 2026-08-02, +2 new Art.5 prohibitions — **module update pending (#168)** | EU | omnibus-driven | 2027-12-02 gate | artificialintelligenceact.eu |
 | EU CRA | Reg. 2024/2847 | EU | phased applicability through 2027 | phase dates | eur-lex (2024/2847) |
@@ -57,7 +57,7 @@ A one-fetch check caught it. This registry is that check, systematized.
 | CMMC | 2.0 (final rule Dec 2024, phased) | DoD | phased rollout through ~2028 | phase dates | dodcio.defense.gov/cmmc |
 | NY DFS | 23 NYCRR 500 2nd amendment — **final tranche enforceable 2025-11-01** (universal MFA §500.12, full asset inventory §500.13(a)); **date-gate audit pending (#171)** | NYDFS | no 3rd amendment as of 2026-10 | — | dfs.ny.gov |
 | ITAR | 22 CFR 120–130 — **4 substantive final rules 2025–26** (USML eff. 2025-09-15, Cyprus §126.1 2025-10-01, AUKUS 2025-12-30, Syria §126.1 removal 2026-10-01); **regeneration pending (#170)** | State/DDTC | rolling; Part 130 NPRM proposed 2026-06-15 | rolling | pmddtc.state.gov |
-| COBIT | 2019 (current as of 2026-10-06) — **COBIT 7 imminent**: Foundations cert cutover 2026-10-27, framework content "later this year" | ISACA | ~7 years | re-check after 2026-10-27 | isaca.org/resources/cobit |
+| COBIT | 2019 — **COBIT 7 publishes 2026-10 (ISACA: Foundation certificate cutover 2026-10-27; COBIT 2019 exam retires 2027-04-26)**. Module stays 2019 until the COBIT 7 framework content is published; then regenerate `frameworks/management/cobit/` (#194) | ISACA | ~7 years | regenerate after publication (Nov 2026) | isaca.org/resources/cobit |
 | SWIFT CSP | CSCF v-year | SWIFT | **annual CSCF release, attestation deadline each December** | annual | swift.com (CSP) |
 | HITRUST CSF | pinned in module | HITRUST | ~annual minor releases (verify) | annual | hitrustalliance.net |
 | TISAX | pinned in module | ENX/VDA | ISA catalog updates (verify) | verify | enx.com/tisax |

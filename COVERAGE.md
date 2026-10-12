@@ -29,7 +29,7 @@ took so two people do not write the same test.
 | `frameworks/critical_infrastructure` | 43 |
 | `frameworks/management` | 37 |
 | `frameworks/compliance` | 24 |
-| `frameworks/privacy` | 18 |
+| `frameworks/privacy` | 21 |
 | `frameworks/financial` | 15 |
 | `frameworks/sovereignty` | 11 |
 | `governance/eu_ai_act` | 5 |
@@ -1286,11 +1286,14 @@ took so two people do not write the same test.
 
 </details>
 
-<details><summary><code>frameworks/privacy/ccpa</code> — 4 file(s)</summary>
+<details><summary><code>frameworks/privacy/ccpa</code> — 7 file(s)</summary>
 
+- `ccpa_admt.rego`
 - `ccpa_business_obligations.rego`
+- `ccpa_cybersecurity_audits.rego`
 - `ccpa_consumer_rights.rego`
 - `ccpa_data_practices.rego`
+- `ccpa_risk_assessments.rego`
 - `ccpa_sensitive_data.rego`
 
 </details>
