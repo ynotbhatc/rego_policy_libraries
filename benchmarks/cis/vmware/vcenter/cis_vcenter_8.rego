@@ -5,6 +5,14 @@
 #   framework: cis_vmware
 #   source: cis
 #   domains: [virtualization, vmware]
+#   coverage:
+#     checks: 73
+#     cited: 73
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_vcenter_8
 
 import rego.v1
@@ -634,4 +642,12 @@ findings := [{
 	"details": sprintf("Found %d configuration violations across vCenter security domains", [count(violations)]),
 	"violations": violations,
 	"remediation": "Review and implement the recommended VMware vCenter security configurations including proper service account management, SSL/TLS hardening, authentication and authorization controls, comprehensive logging and monitoring, database security, operating system hardening, and performance monitoring security"
+#   coverage:
+#     checks: 73
+#     cited: 73
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }]

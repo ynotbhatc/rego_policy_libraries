@@ -59,11 +59,18 @@ def inspect_annotations(root: str = ".") -> dict[str, list[dict]]:
     One invocation on the repo root, so a package redeclared across trees
     (which OPA rejects) is caught here rather than at load time.
     """
-    res = subprocess.run(["opa", "inspect", "-a", "-f", "json", root], capture_output=True, text=True)
-    if res.returncode != 0:
-        sys.exit(f"opa inspect failed:\n{res.stderr}")
+    # One invocation per policy tree: the converters/ tree holds generated copies of policies (packaging
+    # outputs, Conftest layouts) that redeclare package annotations and must never be inspected here.
+    trees = [d for d in ("benchmarks", "frameworks", "governance", "enforcement", "threat_detection", "crosswalk")
+             if Path(root, d).is_dir()] or [root]
+    anns: list[dict] = []
+    for tree in trees:
+        res = subprocess.run(["opa", "inspect", "-a", "-f", "json", str(Path(root, tree))], capture_output=True, text=True)
+        if res.returncode != 0:
+            sys.exit(f"opa inspect failed on {tree}:\n{res.stderr}")
+        anns.extend(json.loads(res.stdout).get("annotations") or [])
     by_pkg: dict[str, list[dict]] = {}
-    for ann in json.loads(res.stdout).get("annotations") or []:
+    for ann in anns:
         if ann.get("annotations", {}).get("scope") != "package":
             continue
         pkg = ".".join(str(seg["value"]) for seg in ann["path"][1:])

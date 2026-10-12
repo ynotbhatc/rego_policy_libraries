@@ -5,6 +5,17 @@
 #   framework: ny_dfs
 #   source: ny-dfs
 #   domains: [financial, us-state]
+#   coverage:
+#     checks: 35
+#     cited: 33
+#     expected: 44
+#     found: 35
+#     scope: module
+#     density: partial
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package ny_dfs.main
 
 import rego.v1
@@ -350,3 +361,14 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+#   coverage:
+#     checks: 35
+#     cited: 33
+#     expected: 44
+#     found: 35
+#     scope: module
+#     density: partial
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

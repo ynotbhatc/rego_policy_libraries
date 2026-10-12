@@ -5,6 +5,14 @@
 #   framework: finops
 #   source: finops-foundation
 #   domains: [finops, cost]
+#   coverage:
+#     checks: 17
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package finops.tagging
 
 # FinOps / Cost Governance — Resource Tagging & Organization Policy
@@ -248,3 +256,11 @@ compliance_report := {
 		"budget":             [v | some v in violations; contains(v, "Budget:")],
 	},
 }
+#   coverage:
+#     checks: 17
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

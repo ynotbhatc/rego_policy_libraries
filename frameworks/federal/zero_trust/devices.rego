@@ -5,6 +5,14 @@
 #   framework: zero_trust
 #   source: nist
 #   domains: [us-federal, zero-trust]
+#   coverage:
+#     checks: 12
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package zero_trust.devices
 
 import rego.v1
@@ -100,3 +108,11 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": pillar_compliant,
 }
+#   coverage:
+#     checks: 12
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

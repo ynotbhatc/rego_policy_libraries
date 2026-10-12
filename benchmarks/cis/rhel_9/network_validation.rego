@@ -5,6 +5,14 @@
 #   framework: cis_rhel_9
 #   source: cis
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 14
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_rhel9.network
 
 # CIS RHEL 9 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration
@@ -348,3 +356,11 @@ report := {
 	"collection_timestamp": input.collection_timestamp,
 }
 
+#   coverage:
+#     checks: 14
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

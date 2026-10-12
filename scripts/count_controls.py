@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Count control-level checks across the library, from OPA's own parser (scripts/rego_ast.py holds the rule).
+"""Count control-level checks across the library, from OPA's own parser (scripts/rego_ast.py holds the rule):
+per module, every distinct control id it evaluates, plus each violation rule or check entry that carries no id.
 
 Usage: python3 scripts/count_controls.py [root] [--write-json] [--check-readme]
        --write-json   writes docs/metrics.json (shields.io endpoint schema) for the README badge
@@ -8,19 +9,16 @@ Make:  make count
 """
 import json, re, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from rego_ast import parse_tree, tables, bodies, count_table
+from rego_ast import parse_tree, checks, items
 
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
 root = pathlib.Path(args[0]) if args else pathlib.Path(__file__).resolve().parent.parent
 asts = parse_tree(root)
-b = obj = strs = 0
+total = cited = uncited = 0
 for rel, ast in asts.items():
-    b += sum(1 for _ in bodies(ast))
-    for name, rows in tables(ast):
-        o, s = count_table(name, rows)
-        obj += o; strs += s
-total = b + obj + strs
-print(f"files={len(asts)} bodies={b} table_object_rows={obj} table_string_rows={strs} total={total}")
+    n, ids, u = checks(ast)
+    total += n; cited += len(ids); uncited += u
+print(f"files={len(asts)} cited_controls={cited} uncited_checks={uncited} total={total}")
 METRICS = root / "docs" / "metrics.json"
 metrics = {"schemaVersion": 1, "label": "control-level checks", "message": f"{total:,}", "color": "blue"}
 if "--write-json" in sys.argv:

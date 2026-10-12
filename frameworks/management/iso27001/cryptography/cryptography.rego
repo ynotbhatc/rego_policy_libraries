@@ -5,6 +5,14 @@
 #   framework: iso27001
 #   source: iso
 #   domains: [isms]
+#   coverage:
+#     checks: 15
+#     cited: 4
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package iso27001.cryptography
 
 import rego.v1
@@ -347,4 +355,12 @@ compliance_details := {
     },
     "hsm_usage": hsm_usage,
     "overall_compliant": compliant
+#   coverage:
+#     checks: 15
+#     cited: 4
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

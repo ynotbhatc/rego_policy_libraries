@@ -5,6 +5,14 @@
 #   framework: digital_sovereignty
 #   source: aac
 #   domains: [sovereignty, data-residency]
+#   coverage:
+#     checks: 22
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package digital_sovereignty.operational_sovereignty
 
 import rego.v1
@@ -411,3 +419,11 @@ default foreign_access_request_policy := false
 default pam_deployed := false
 default privileged_access_review_current := false
 default remote_operations_controlled := false
+#   coverage:
+#     checks: 22
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

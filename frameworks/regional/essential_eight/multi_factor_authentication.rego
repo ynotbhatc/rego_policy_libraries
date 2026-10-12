@@ -5,6 +5,14 @@
 #   framework: essential_eight
 #   source: acsc
 #   domains: [australia]
+#   coverage:
+#     checks: 11
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package essential_eight.multi_factor_authentication
 
 import rego.v1
@@ -53,3 +61,11 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": strategy_compliant,
 }
+#   coverage:
+#     checks: 11
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

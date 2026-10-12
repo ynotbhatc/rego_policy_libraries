@@ -5,6 +5,14 @@
 #   framework: cis_ubuntu_24_04
 #   source: cis
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 11
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_ubuntu_24_04.auditd
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 4.1: Configure System Accounting (auditd)
@@ -201,3 +209,11 @@ report := {
 	"section": "4.1 Configure System Accounting (auditd)",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }
+#   coverage:
+#     checks: 11
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

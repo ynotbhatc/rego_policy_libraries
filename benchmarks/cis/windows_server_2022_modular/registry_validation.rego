@@ -5,6 +5,14 @@
 #   framework: cis_windows_server_2022_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 22
+#     cited: 22
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_windows_server_2022.registry
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 18: Administrative Templates (Registry)
@@ -186,3 +194,11 @@ report := {
 	"section": "18 Administrative Templates (Registry)",
 	"benchmark": "CIS Windows Server 2022 v5.0.0",
 }
+#   coverage:
+#     checks: 22
+#     cited: 22
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

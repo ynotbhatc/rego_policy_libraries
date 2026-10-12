@@ -5,6 +5,14 @@
 #   framework: cis_rhel_8
 #   source: cis
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 26
+#     cited: 15
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_rhel8.ssh
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.2: SSH Server Configuration
@@ -226,3 +234,11 @@ report := {
 	"section": "5.2 SSH Server Configuration",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
+#   coverage:
+#     checks: 26
+#     cited: 15
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

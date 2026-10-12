@@ -5,6 +5,14 @@
 #   framework: ncsc_caf
 #   source: uk-ncsc
 #   domains: [uk, critical-infrastructure]
+#   coverage:
+#     checks: 3
+#     cited: 0
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package ncsc_caf.b3_data_security
 
 import rego.v1
@@ -254,3 +262,11 @@ compliance_report := {
         "B3.d": co_b3d_details,
     },
 }
+#   coverage:
+#     checks: 3
+#     cited: 0
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

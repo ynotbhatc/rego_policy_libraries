@@ -5,6 +5,17 @@
 #   framework: cisa_cpg
 #   source: cisa
 #   domains: [us-federal, critical-infrastructure]
+#   coverage:
+#     checks: 34
+#     cited: 25
+#     expected: 34
+#     found: 34
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cisa_cpg.main
 
 import rego.v1
@@ -266,3 +277,14 @@ compliance_report := {
 	"function_summary": function_summary,
 	"version_mapping_note": "Goal IDs follow CPG 2.0. For assessments recorded against v1.0.1 IDs, consult the v1.0.1-to-2.0 mapping table in the CPG 2.0 report (e.g. old 1.A Asset Inventory = new 2.A; old 2.H MFA = new 3.F).",
 }
+#   coverage:
+#     checks: 34
+#     cited: 25
+#     expected: 34
+#     found: 34
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

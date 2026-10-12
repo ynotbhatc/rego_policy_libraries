@@ -5,6 +5,14 @@
 #   framework: cis_mobile_devices
 #   source: cis
 #   domains: [mobile, ios]
+#   coverage:
+#     checks: 24
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis.mobile.ios
 
 import rego.v1
@@ -198,4 +206,12 @@ ios_device_compliance := {
     "location_services_configured": location_services_configured,
     "advertising_tracking_disabled": advertising_tracking_disabled,
     "overall_compliant": ios_device_compliant
+#   coverage:
+#     checks: 24
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

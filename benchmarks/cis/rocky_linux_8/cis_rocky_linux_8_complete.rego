@@ -5,6 +5,14 @@
 #   framework: cis_rocky_linux_8
 #   source: cis
 #   domains: [linux, rocky]
+#   coverage:
+#     checks: 14
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_rocky_linux_8
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Complete Validation
@@ -224,3 +232,11 @@ generate_recommendations := [recommendation |
 		"remediation": sprintf("Review and implement CIS Rocky Linux 8 control %s: %s", [violation.control, violation.title]),
 	}
 ]
+#   coverage:
+#     checks: 14
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

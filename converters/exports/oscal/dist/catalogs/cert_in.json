@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "5a9a8c43-09c2-5a1c-b14f-04bbb735e4aa",
+  "uuid": "24df184b-64d3-547c-b998-ad9d79f2fc14",
   "metadata": {
    "title": "Rego Policy Libraries — cert_in (CERT-In Directions under s.70B(6) IT Act (28 April 2022))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,303 +66,6 @@
     ],
     "controls": [
      {
-      "id": "cert_in-cert_in.main-1",
-      "title": "CERT-In %v (cert_in.%v undeclared)",
-      "props": [
-       {
-        "name": "label",
-        "value": "cert_in.main#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cert_in.main#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cert_in.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cert_in-cert_in.main-1_stmt",
-        "name": "statement",
-        "prose": "CERT-In %v (cert_in.%v undeclared)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cert_in-cert_in.main-2",
-      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cert_in.main#2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cert_in.main#2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cert_in.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cert_in-cert_in.main-2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cert_in-cert_in.main-3",
-      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cert_in.main#3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cert_in.main#3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cert_in.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cert_in-cert_in.main-3_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cert_in-cert_in.main-4",
-      "title": "CERT-In Annexure I (%v): \"%v\" is not a reportable incident type in the entity's procedure",
-      "props": [
-       {
-        "name": "label",
-        "value": "cert_in.main#4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cert_in.main#4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cert_in.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cert_in-cert_in.main-4_stmt",
-        "name": "statement",
-        "prose": "CERT-In Annexure I (%v): \"%v\" is not a reportable incident type in the entity's procedure"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cert_in-cert_in.main-5",
-      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cert_in.main#5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cert_in.main#5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cert_in.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cert_in-cert_in.main-5_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cert_in-cert_in.main-6",
-      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cert_in.main#6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cert_in.main#6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cert_in.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cert_in-cert_in.main-6_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cert_in-cert_in.main-7",
-      "title": "CERT-In direction (v) (%v): subscriber registration does not capture %v",
-      "props": [
-       {
-        "name": "label",
-        "value": "cert_in.main#7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cert_in.main#7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cert_in.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cert_in-cert_in.main-7_stmt",
-        "name": "statement",
-        "prose": "CERT-In direction (v) (%v): subscriber registration does not capture %v"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cert_in-CERT-In-direction-v",
-      "title": "subscriber registration information is not retained for 5 years (or longer where law mandates) after cancellation or withdrawal of the registration",
-      "props": [
-       {
-        "name": "label",
-        "value": "CERT-In direction (v)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CERT-In direction (v)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cert_in.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cert_in-CERT-In-direction-v_stmt",
-        "name": "statement",
-        "prose": "subscriber registration information is not retained for 5 years (or longer where law mandates) after cancellation or withdrawal of the registration"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cert_in-cert_in.main-8",
-      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cert_in.main#8"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cert_in.main#8"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cert_in.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cert_in-cert_in.main-8_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "cert_in-is_virtual_asset_service_provider",
       "title": "direction (vi) — whether the entity is a virtual asset service provider, exchange or custodian wallet provider must be declared true or false",
       "props": [
@@ -382,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -415,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -429,16 +132,16 @@
       "class": "compliance"
      },
      {
-      "id": "cert_in-CERT-In-direction-i",
-      "title": "not all ICT system clocks are synchronised to a standard time source",
+      "id": "cert_in-cert_in.main-1",
+      "title": "CERT-In %v (cert_in.%v undeclared)",
       "props": [
        {
         "name": "label",
-        "value": "CERT-In direction (i)"
+        "value": "cert_in.main#1"
        },
        {
         "name": "alt-identifier",
-        "value": "CERT-In direction (i)"
+        "value": "cert_in.main#1"
        },
        {
         "name": "rego-package",
@@ -448,35 +151,30 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cert_in-CERT-In-direction-i_stmt",
+        "id": "cert_in-cert_in.main-1_stmt",
         "name": "statement",
-        "prose": "not all ICT system clocks are synchronised to a standard time source"
-       },
-       {
-        "id": "cert_in-CERT-In-direction-i_obj.1",
-        "name": "assessment-objective",
-        "prose": "time source is not the NIC or NPL NTP server, or a server traceable to them (a multi-geography entity may use another standard source only if it does not deviate from NPL/NIC)"
+        "prose": "CERT-In %v (cert_in.%v undeclared)"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "cert_in-CERT-In-direction-ii",
-      "title": "reports do not follow the methods and formats published on cert-in.org.in",
+      "id": "cert_in-all_ict_clocks_synchronised",
+      "title": "CERT-In direction (i): not all ICT system clocks are synchronised to a standard time source",
       "props": [
        {
         "name": "label",
-        "value": "CERT-In direction (ii)"
+        "value": "all_ict_clocks_synchronised"
        },
        {
         "name": "alt-identifier",
-        "value": "CERT-In direction (ii)"
+        "value": "all_ict_clocks_synchronised"
        },
        {
         "name": "rego-package",
@@ -486,25 +184,213 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cert_in-CERT-In-direction-ii_stmt",
+        "id": "cert_in-all_ict_clocks_synchronised_stmt",
         "name": "statement",
-        "prose": "reports do not follow the methods and formats published on cert-in.org.in"
+        "prose": "CERT-In direction (i): not all ICT system clocks are synchronised to a standard time source"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-source_is_nic_npl_or_traceable",
+      "title": "CERT-In direction (i): time source is not the NIC or NPL NTP server, or a server traceable to them (a multi-geography entity may use another standard source only if it does not deviate from NPL/NIC)",
+      "props": [
+       {
+        "name": "label",
+        "value": "source_is_nic_npl_or_traceable"
        },
        {
-        "id": "cert_in-CERT-In-direction-ii_obj.1",
-        "name": "assessment-objective",
-        "prose": "reportable cyber incidents are not reported to CERT-In within 6 hours of being noticed or brought to notice"
+        "name": "alt-identifier",
+        "value": "source_is_nic_npl_or_traceable"
        },
        {
-        "id": "cert_in-CERT-In-direction-ii_obj.2",
-        "name": "assessment-objective",
-        "prose": "the CERT-In reporting channels (incident@cert-in.org.in, 1800-11-4949, published formats) are not built into the incident procedure"
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-source_is_nic_npl_or_traceable_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (i): time source is not the NIC or NPL NTP server, or a server traceable to them (a multi-geography entity may use another standard source only if it does not deviate from NPL/NIC)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-2",
+      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-procedure_uses_certin_published_format",
+      "title": "CERT-In direction (ii): reports do not follow the methods and formats published on cert-in.org.in",
+      "props": [
+       {
+        "name": "label",
+        "value": "procedure_uses_certin_published_format"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "procedure_uses_certin_published_format"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-procedure_uses_certin_published_format_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (ii): reports do not follow the methods and formats published on cert-in.org.in"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-reported_within_6_hours_of_noticing",
+      "title": "CERT-In direction (ii): reportable cyber incidents are not reported to CERT-In within 6 hours of being noticed or brought to notice",
+      "props": [
+       {
+        "name": "label",
+        "value": "reported_within_6_hours_of_noticing"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "reported_within_6_hours_of_noticing"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-reported_within_6_hours_of_noticing_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (ii): reportable cyber incidents are not reported to CERT-In within 6 hours of being noticed or brought to notice"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-reporting_channels_configured",
+      "title": "CERT-In direction (ii): the CERT-In reporting channels (incident@cert-in.org.in, 1800-11-4949, published formats) are not built into the incident procedure",
+      "props": [
+       {
+        "name": "label",
+        "value": "reporting_channels_configured"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "reporting_channels_configured"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-reporting_channels_configured_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (ii): the CERT-In reporting channels (incident@cert-in.org.in, 1800-11-4949, published formats) are not built into the incident procedure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-3",
+      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -529,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -562,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -595,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -628,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -661,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -694,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -727,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -760,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -793,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -826,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -859,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -892,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -925,7 +811,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -958,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -991,7 +877,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1024,7 +910,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1057,7 +943,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1090,7 +976,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1123,7 +1009,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1156,7 +1042,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1170,16 +1056,16 @@
       "class": "compliance"
      },
      {
-      "id": "cert_in-CERT-In-direction-iii",
-      "title": "no process to take action, provide information (up to near real-time) or assist CERT-In within the timeframe its order specifies",
+      "id": "cert_in-cert_in.main-4",
+      "title": "CERT-In Annexure I (%v): \"%v\" is not a reportable incident type in the entity's procedure",
       "props": [
        {
         "name": "label",
-        "value": "CERT-In direction (iii)"
+        "value": "cert_in.main#4"
        },
        {
         "name": "alt-identifier",
-        "value": "CERT-In direction (iii)"
+        "value": "cert_in.main#4"
        },
        {
         "name": "rego-package",
@@ -1189,40 +1075,30 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cert_in-CERT-In-direction-iii_stmt",
+        "id": "cert_in-cert_in.main-4_stmt",
         "name": "statement",
-        "prose": "no process to take action, provide information (up to near real-time) or assist CERT-In within the timeframe its order specifies"
-       },
-       {
-        "id": "cert_in-CERT-In-direction-iii_obj.1",
-        "name": "assessment-objective",
-        "prose": "no Point of Contact designated to interface with CERT-In"
-       },
-       {
-        "id": "cert_in-CERT-In-direction-iii_obj.2",
-        "name": "assessment-objective",
-        "prose": "Point of Contact information is not updated when it changes"
+        "prose": "CERT-In Annexure I (%v): \"%v\" is not a reportable incident type in the entity's procedure"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "cert_in-CERT-In-direction-iii-Annexure-II",
-      "title": "Point of Contact details (name, designation, organisation, address, email, mobile, phone, fax) not sent to info@cert-in.org.in in the prescribed format",
+      "id": "cert_in-acts_on_certin_orders_within_specified_timeframe",
+      "title": "CERT-In direction (iii): no process to take action, provide information (up to near real-time) or assist CERT-In within the timeframe its order specifies",
       "props": [
        {
         "name": "label",
-        "value": "CERT-In direction (iii) / Annexure II"
+        "value": "acts_on_certin_orders_within_specified_timeframe"
        },
        {
         "name": "alt-identifier",
-        "value": "CERT-In direction (iii) / Annexure II"
+        "value": "acts_on_certin_orders_within_specified_timeframe"
        },
        {
         "name": "rego-package",
@@ -1232,30 +1108,30 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cert_in-CERT-In-direction-iii-Annexure-II_stmt",
+        "id": "cert_in-acts_on_certin_orders_within_specified_timeframe_stmt",
         "name": "statement",
-        "prose": "Point of Contact details (name, designation, organisation, address, email, mobile, phone, fax) not sent to info@cert-in.org.in in the prescribed format"
+        "prose": "CERT-In direction (iii): no process to take action, provide information (up to near real-time) or assist CERT-In within the timeframe its order specifies"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "cert_in-CERT-In-direction-iv",
-      "title": "logs are not enabled on all ICT systems",
+      "id": "cert_in-poc_designated",
+      "title": "CERT-In direction (iii): no Point of Contact designated to interface with CERT-In",
       "props": [
        {
         "name": "label",
-        "value": "CERT-In direction (iv)"
+        "value": "poc_designated"
        },
        {
         "name": "alt-identifier",
-        "value": "CERT-In direction (iv)"
+        "value": "poc_designated"
        },
        {
         "name": "rego-package",
@@ -1265,30 +1141,279 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cert_in-CERT-In-direction-iv_stmt",
+        "id": "cert_in-poc_designated_stmt",
         "name": "statement",
-        "prose": "logs are not enabled on all ICT systems"
+        "prose": "CERT-In direction (iii): no Point of Contact designated to interface with CERT-In"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-poc_kept_updated",
+      "title": "CERT-In direction (iii): Point of Contact information is not updated when it changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "poc_kept_updated"
        },
        {
-        "id": "cert_in-CERT-In-direction-iv_obj.1",
-        "name": "assessment-objective",
-        "prose": "logs are not provided to CERT-In with incident reports or when ordered"
+        "name": "alt-identifier",
+        "value": "poc_kept_updated"
        },
        {
-        "id": "cert_in-CERT-In-direction-iv_obj.2",
-        "name": "assessment-objective",
-        "prose": "logs are not maintained securely for a rolling period of 180 days"
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-poc_kept_updated_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (iii): Point of Contact information is not updated when it changes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-poc_registered_in_annexure_ii_format",
+      "title": "CERT-In direction (iii) / Annexure II: Point of Contact details (name, designation, organisation, address, email, mobile, phone, fax) not sent to info@cert-in.org.in in the prescribed format",
+      "props": [
+       {
+        "name": "label",
+        "value": "poc_registered_in_annexure_ii_format"
        },
        {
-        "id": "cert_in-CERT-In-direction-iv_obj.3",
-        "name": "assessment-objective",
-        "prose": "logs are not maintained within the Indian jurisdiction"
+        "name": "alt-identifier",
+        "value": "poc_registered_in_annexure_ii_format"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-poc_registered_in_annexure_ii_format_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (iii) / Annexure II: Point of Contact details (name, designation, organisation, address, email, mobile, phone, fax) not sent to info@cert-in.org.in in the prescribed format"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-5",
+      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-logs_enabled_on_all_ict_systems",
+      "title": "CERT-In direction (iv): logs are not enabled on all ICT systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "logs_enabled_on_all_ict_systems"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "logs_enabled_on_all_ict_systems"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-logs_enabled_on_all_ict_systems_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (iv): logs are not enabled on all ICT systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-logs_provided_with_incident_reports_or_on_order",
+      "title": "CERT-In direction (iv): logs are not provided to CERT-In with incident reports or when ordered",
+      "props": [
+       {
+        "name": "label",
+        "value": "logs_provided_with_incident_reports_or_on_order"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "logs_provided_with_incident_reports_or_on_order"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-logs_provided_with_incident_reports_or_on_order_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (iv): logs are not provided to CERT-In with incident reports or when ordered"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-logs_retained_180_days_rolling",
+      "title": "CERT-In direction (iv): logs are not maintained securely for a rolling period of 180 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "logs_retained_180_days_rolling"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "logs_retained_180_days_rolling"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-logs_retained_180_days_rolling_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (iv): logs are not maintained securely for a rolling period of 180 days"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-logs_stored_within_indian_jurisdiction",
+      "title": "CERT-In direction (iv): logs are not maintained within the Indian jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "logs_stored_within_indian_jurisdiction"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "logs_stored_within_indian_jurisdiction"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-logs_stored_within_indian_jurisdiction_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (iv): logs are not maintained within the Indian jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-6",
+      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -1313,7 +1438,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1346,7 +1471,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1379,7 +1504,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1412,7 +1537,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1445,7 +1570,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1478,7 +1603,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1511,7 +1636,7 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
@@ -1525,16 +1650,16 @@
       "class": "compliance"
      },
      {
-      "id": "cert_in-CERT-In-direction-vi",
-      "title": "KYC information and financial transaction records are not retained for five years",
+      "id": "cert_in-cert_in.main-7",
+      "title": "CERT-In direction (v) (%v): subscriber registration does not capture %v",
       "props": [
        {
         "name": "label",
-        "value": "CERT-In direction (vi)"
+        "value": "cert_in.main#7"
        },
        {
         "name": "alt-identifier",
-        "value": "CERT-In direction (vi)"
+        "value": "cert_in.main#7"
        },
        {
         "name": "rego-package",
@@ -1544,35 +1669,30 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cert_in-CERT-In-direction-vi_stmt",
+        "id": "cert_in-cert_in.main-7_stmt",
         "name": "statement",
-        "prose": "KYC information and financial transaction records are not retained for five years"
-       },
-       {
-        "id": "cert_in-CERT-In-direction-vi_obj.1",
-        "name": "assessment-objective",
-        "prose": "transaction records do not allow each transaction to be reconstructed — party identification with IP addresses, timestamps and time zones, transaction ID, public keys/addresses/accounts, nature and date, amount"
+        "prose": "CERT-In direction (v) (%v): subscriber registration does not capture %v"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "cert_in-CERT-In-direction-vi-Annexure-III",
-      "title": "KYC information is not obtained with the RBI KYC Directions 2016 / SEBI April 2020 / DoT S-KYC officially valid documents (or RBI CDD for business entities) and maintained",
+      "id": "cert_in-cert_in.main-8",
+      "title": "CERT-In direction (v): subscriber registration information is not retained for 5 years (or longer where law mandates) after cancellation or withdrawal of the registration",
       "props": [
        {
         "name": "label",
-        "value": "CERT-In direction (vi) / Annexure III"
+        "value": "cert_in.main#8"
        },
        {
         "name": "alt-identifier",
-        "value": "CERT-In direction (vi) / Annexure III"
+        "value": "cert_in.main#8"
        },
        {
         "name": "rego-package",
@@ -1582,15 +1702,147 @@
       ],
       "links": [
        {
-        "href": "#58d0feff-a650-5537-981a-0d64953a348a",
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cert_in-CERT-In-direction-vi-Annexure-III_stmt",
+        "id": "cert_in-cert_in.main-8_stmt",
         "name": "statement",
-        "prose": "KYC information is not obtained with the RBI KYC Directions 2016 / SEBI April 2020 / DoT S-KYC officially valid documents (or RBI CDD for business entities) and maintained"
+        "prose": "CERT-In direction (v): subscriber registration information is not retained for 5 years (or longer where law mandates) after cancellation or withdrawal of the registration"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-kyc_and_transaction_records_retained_5_years",
+      "title": "CERT-In direction (vi): KYC information and financial transaction records are not retained for five years",
+      "props": [
+       {
+        "name": "label",
+        "value": "kyc_and_transaction_records_retained_5_years"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kyc_and_transaction_records_retained_5_years"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-kyc_and_transaction_records_retained_5_years_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (vi): KYC information and financial transaction records are not retained for five years"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-kyc_per_annexure_iii_maintained",
+      "title": "CERT-In direction (vi) / Annexure III: KYC information is not obtained with the RBI KYC Directions 2016 / SEBI April 2020 / DoT S-KYC officially valid documents (or RBI CDD for business entities) and ",
+      "props": [
+       {
+        "name": "label",
+        "value": "kyc_per_annexure_iii_maintained"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kyc_per_annexure_iii_maintained"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-kyc_per_annexure_iii_maintained_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (vi) / Annexure III: KYC information is not obtained with the RBI KYC Directions 2016 / SEBI April 2020 / DoT S-KYC officially valid documents (or RBI CDD for business entities) and maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-transactions_reconstructable",
+      "title": "CERT-In direction (vi): transaction records do not allow each transaction to be reconstructed — party identification with IP addresses, timestamps and time zones, transaction ID, public keys/addresses",
+      "props": [
+       {
+        "name": "label",
+        "value": "transactions_reconstructable"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "transactions_reconstructable"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-transactions_reconstructable_stmt",
+        "name": "statement",
+        "prose": "CERT-In direction (vi): transaction records do not allow each transaction to be reconstructed — party identification with IP addresses, timestamps and time zones, transaction ID, public keys/addresses/accounts, nature and date, amount"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cert_in-cert_in.main-9",
+      "title": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cert_in.main#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cert_in.main#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cert_in.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cert_in-cert_in.main-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/regional/cert_in/cert_in_main.rego (package cert_in.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -1601,7 +1853,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "58d0feff-a650-5537-981a-0d64953a348a",
+     "uuid": "b83da1ed-1d4d-5064-8eab-f60cf201a3e0",
      "title": "CERT-In Directions under s.70B(6) IT Act (28 April 2022)",
      "props": [
       {
@@ -1612,7 +1864,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/cert_in/cert_in_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regional/cert_in/cert_in_main.rego",
        "media-type": "text/plain"
       }
      ]

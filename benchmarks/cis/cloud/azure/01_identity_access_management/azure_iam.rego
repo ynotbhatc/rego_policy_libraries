@@ -5,6 +5,14 @@
 #   framework: cis_cloud
 #   source: cis
 #   domains: [cloud, azure]
+#   coverage:
+#     checks: 24
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis.azure.iam
 
 import rego.v1
@@ -195,4 +203,12 @@ azure_iam_compliance := {
     "no_custom_subscription_owner_roles": no_custom_subscription_owner_roles,
     "subscription_owners_not_elevated": subscription_owners_not_elevated,
     "overall_compliant": azure_iam_compliant
+#   coverage:
+#     checks: 24
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

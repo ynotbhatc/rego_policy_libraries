@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "76e5b0cd-731c-5c13-874e-5da4ed6e7117",
+  "uuid": "1816c8c1-5090-50e5-ba7b-49c4acd26c46",
   "metadata": {
    "title": "Rego Policy Libraries — stig_windows_server_2019 (DISA STIG for windows server 2019 - Simplified Complete Assessment)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,171 @@
     ],
     "controls": [
      {
+      "id": "stig_windows_server_2019-WN22-PK-000010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-PK-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-PK-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42f69213-3ddb-5500-8d94-6f37b1f9e13b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN22-PK-000010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN22-SO-000030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42f69213-3ddb-5500-8d94-6f37b1f9e13b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN22-SO-000030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN22-00-000020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-00-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-00-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42f69213-3ddb-5500-8d94-6f37b1f9e13b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN22-00-000020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN22-AC-000010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-AC-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-AC-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42f69213-3ddb-5500-8d94-6f37b1f9e13b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN22-AC-000010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN22-AC-000040",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-AC-000040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-AC-000040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42f69213-3ddb-5500-8d94-6f37b1f9e13b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN22-AC-000040_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_windows_server_2019-assessment_metadata",
       "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body.",
       "props": [
@@ -85,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#4afb4749-50c2-5e56-8e35-d8b76a5cd3b3",
+        "href": "#42f69213-3ddb-5500-8d94-6f37b1f9e13b",
         "rel": "implementation"
        }
       ],
@@ -118,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#4afb4749-50c2-5e56-8e35-d8b76a5cd3b3",
+        "href": "#42f69213-3ddb-5500-8d94-6f37b1f9e13b",
         "rel": "implementation"
        }
       ],
@@ -137,7 +302,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "4afb4749-50c2-5e56-8e35-d8b76a5cd3b3",
+     "uuid": "42f69213-3ddb-5500-8d94-6f37b1f9e13b",
      "title": "DISA STIG for windows server 2019 - Simplified Complete Assessment",
      "props": [
       {
@@ -148,7 +313,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego",
        "media-type": "text/plain"
       }
      ]

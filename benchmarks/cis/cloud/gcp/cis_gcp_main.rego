@@ -5,6 +5,14 @@
 #   framework: cis_cloud
 #   source: cis
 #   domains: [cloud, gcp]
+#   coverage:
+#     checks: 57
+#     cited: 57
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_gcp.main
 
 import rego.v1
@@ -476,3 +484,11 @@ compliance_report := {
 		"gke": [v | some v in _violations; contains(v, "CIS GCP 8.")],
 	},
 }
+#   coverage:
+#     checks: 57
+#     cited: 57
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

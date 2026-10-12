@@ -22,6 +22,14 @@
 #   framework: scuba_m365
 #   source: cisa
 #   domains: [saas, m365]
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package scuba_m365.powerplatform
 
 import rego.v1
@@ -93,3 +101,11 @@ compliance_report := {
 	"shall_violation_count": count(shall_violations),
 	"should_violation_count": count(should_violations),
 }
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

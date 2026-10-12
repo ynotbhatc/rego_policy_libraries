@@ -5,6 +5,14 @@
 #   framework: nist_ssdf
 #   source: nist
 #   domains: [us-federal, secure-development]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nist_ssdf.main
 
 # NIST SSDF (SP 800-218 v1.1) — Master Orchestrator
@@ -79,3 +87,11 @@ compliance_report := {
 		"RV": data.nist_ssdf.rv.compliance_report,
 	},
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

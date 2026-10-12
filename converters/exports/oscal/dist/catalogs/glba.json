@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "209e5948-5c29-5da3-a427-96a327193b0f",
+  "uuid": "d4a1239e-96b2-5e75-b35a-8b5cdefe21ad",
   "metadata": {
    "title": "Rego Policy Libraries — glba (Gramm-Leach-Bliley Act — FTC Safeguards Rule, 16 CFR Part 314)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "glba-glba.main-1",
-      "title": "16 CFR 314.4(a): Qualified Individual not designated to oversee, implement, and enforce the information security program",
+      "id": "glba-16-CFR-314.4-a",
+      "title": "Qualified Individual not designated to oversee, implement, and enforce the information security program",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#1"
+        "value": "16 CFR 314.4(a)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#1"
+        "value": "16 CFR 314.4(a)"
        },
        {
         "name": "rego-package",
@@ -85,30 +85,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-1_stmt",
+        "id": "glba-16-CFR-314.4-a_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(a): Qualified Individual not designated to oversee, implement, and enforce the information security program"
+        "prose": "Qualified Individual not designated to oversee, implement, and enforce the information security program"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-2",
-      "title": "16 CFR 314.4(b)(1): Written risk assessment not performed",
+      "id": "glba-16-CFR-314.4-b-1",
+      "title": "Written risk assessment not performed",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#2"
+        "value": "16 CFR 314.4(b)(1)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#2"
+        "value": "16 CFR 314.4(b)(1)"
        },
        {
         "name": "rego-package",
@@ -118,30 +118,35 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-2_stmt",
+        "id": "glba-16-CFR-314.4-b-1_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(b)(1): Written risk assessment not performed"
+        "prose": "Written risk assessment not performed"
+       },
+       {
+        "id": "glba-16-CFR-314.4-b-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Risk assessment lacks documented criteria for evaluating and categorizing security risks and threats"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-3",
-      "title": "16 CFR 314.4(b)(1): Risk assessment lacks documented criteria for evaluating and categorizing security risks and threats",
+      "id": "glba-16-CFR-314.4-b-2",
+      "title": "Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#3"
+        "value": "16 CFR 314.4(b)(2)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#3"
+        "value": "16 CFR 314.4(b)(2)"
        },
        {
         "name": "rego-package",
@@ -151,30 +156,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-3_stmt",
+        "id": "glba-16-CFR-314.4-b-2_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(b)(1): Risk assessment lacks documented criteria for evaluating and categorizing security risks and threats"
+        "prose": "Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-4",
-      "title": "16 CFR 314.4(b)(2): Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks",
+      "id": "glba-16-CFR-314.4-c-1",
+      "title": "Access controls do not authenticate users before permitting access to customer information",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#4"
+        "value": "16 CFR 314.4(c)(1)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#4"
+        "value": "16 CFR 314.4(c)(1)"
        },
        {
         "name": "rego-package",
@@ -184,30 +189,40 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-4_stmt",
+        "id": "glba-16-CFR-314.4-c-1_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(b)(2): Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks"
+        "prose": "Access controls do not authenticate users before permitting access to customer information"
+       },
+       {
+        "id": "glba-16-CFR-314.4-c-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Access to customer information not limited to what is needed to perform duties and functions"
+       },
+       {
+        "id": "glba-16-CFR-314.4-c-1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Access permissions to customer information not periodically reviewed"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-5",
-      "title": "16 CFR 314.4(c)(1): Access controls do not authenticate users before permitting access to customer information",
+      "id": "glba-16-CFR-314.4-c-2",
+      "title": "Customer information not identified and its location not inventoried",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#5"
+        "value": "16 CFR 314.4(c)(2)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#5"
+        "value": "16 CFR 314.4(c)(2)"
        },
        {
         "name": "rego-package",
@@ -217,30 +232,35 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-5_stmt",
+        "id": "glba-16-CFR-314.4-c-2_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(1): Access controls do not authenticate users before permitting access to customer information"
+        "prose": "Customer information not identified and its location not inventoried"
+       },
+       {
+        "id": "glba-16-CFR-314.4-c-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Systems, devices, platforms, and personnel handling customer information not inventoried"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-6",
-      "title": "16 CFR 314.4(c)(1): Access to customer information not limited to what is needed to perform duties and functions",
+      "id": "glba-16-CFR-314.4-c-3",
+      "title": "Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#6"
+        "value": "16 CFR 314.4(c)(3)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#6"
+        "value": "16 CFR 314.4(c)(3)"
        },
        {
         "name": "rego-package",
@@ -250,30 +270,35 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-6_stmt",
+        "id": "glba-16-CFR-314.4-c-3_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(1): Access to customer information not limited to what is needed to perform duties and functions"
+        "prose": "Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented"
+       },
+       {
+        "id": "glba-16-CFR-314.4-c-3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Customer information not encrypted at rest, and no Qualified-Individual-approved compensating controls documented"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-7",
-      "title": "16 CFR 314.4(c)(1): Access permissions to customer information not periodically reviewed",
+      "id": "glba-16-CFR-314.4-c-4",
+      "title": "Secure development practices not adopted for in-house applications handling customer information",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#7"
+        "value": "16 CFR 314.4(c)(4)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#7"
+        "value": "16 CFR 314.4(c)(4)"
        },
        {
         "name": "rego-package",
@@ -283,30 +308,35 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-7_stmt",
+        "id": "glba-16-CFR-314.4-c-4_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(1): Access permissions to customer information not periodically reviewed"
+        "prose": "Secure development practices not adopted for in-house applications handling customer information"
+       },
+       {
+        "id": "glba-16-CFR-314.4-c-4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Security of externally developed applications handling customer information not assessed"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-8",
-      "title": "16 CFR 314.4(c)(2): Customer information not identified and its location not inventoried",
+      "id": "glba-16-CFR-314.4-c-5",
+      "title": "MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#8"
+        "value": "16 CFR 314.4(c)(5)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#8"
+        "value": "16 CFR 314.4(c)(5)"
        },
        {
         "name": "rego-package",
@@ -316,30 +346,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-8_stmt",
+        "id": "glba-16-CFR-314.4-c-5_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(2): Customer information not identified and its location not inventoried"
+        "prose": "MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-9",
-      "title": "16 CFR 314.4(c)(2): Systems, devices, platforms, and personnel handling customer information not inventoried",
+      "id": "glba-16-CFR-314.4-c-6",
+      "title": "Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#9"
+        "value": "16 CFR 314.4(c)(6)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#9"
+        "value": "16 CFR 314.4(c)(6)"
        },
        {
         "name": "rego-package",
@@ -349,30 +379,35 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-9_stmt",
+        "id": "glba-16-CFR-314.4-c-6_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(2): Systems, devices, platforms, and personnel handling customer information not inventoried"
+        "prose": "Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement"
+       },
+       {
+        "id": "glba-16-CFR-314.4-c-6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Data retention policy not periodically reviewed to minimize unnecessary retention of customer information"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-10",
-      "title": "16 CFR 314.4(c)(3): Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented",
+      "id": "glba-16-CFR-314.4-c-7",
+      "title": "Change management procedures not adopted for the information system",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#10"
+        "value": "16 CFR 314.4(c)(7)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#10"
+        "value": "16 CFR 314.4(c)(7)"
        },
        {
         "name": "rego-package",
@@ -382,30 +417,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-10_stmt",
+        "id": "glba-16-CFR-314.4-c-7_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(3): Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented"
+        "prose": "Change management procedures not adopted for the information system"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-11",
-      "title": "16 CFR 314.4(c)(3): Customer information not encrypted at rest, and no Qualified-Individual-approved compensating controls documented",
+      "id": "glba-16-CFR-314.4-c-8",
+      "title": "Activity of authorized users not monitored and logged",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#11"
+        "value": "16 CFR 314.4(c)(8)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#11"
+        "value": "16 CFR 314.4(c)(8)"
        },
        {
         "name": "rego-package",
@@ -415,30 +450,35 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-11_stmt",
+        "id": "glba-16-CFR-314.4-c-8_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(3): Customer information not encrypted at rest, and no Qualified-Individual-approved compensating controls documented"
+        "prose": "Activity of authorized users not monitored and logged"
+       },
+       {
+        "id": "glba-16-CFR-314.4-c-8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unauthorized access to, use of, or tampering with customer information not detected"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-12",
-      "title": "16 CFR 314.4(c)(4): Secure development practices not adopted for in-house applications handling customer information",
+      "id": "glba-16-CFR-314.4-d-2-i",
+      "title": "Neither continuous monitoring nor annual penetration testing is in place",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#12"
+        "value": "16 CFR 314.4(d)(2)(i)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#12"
+        "value": "16 CFR 314.4(d)(2)(i)"
        },
        {
         "name": "rego-package",
@@ -448,30 +488,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-12_stmt",
+        "id": "glba-16-CFR-314.4-d-2-i_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(4): Secure development practices not adopted for in-house applications handling customer information"
+        "prose": "Neither continuous monitoring nor annual penetration testing is in place"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-13",
-      "title": "16 CFR 314.4(c)(4): Security of externally developed applications handling customer information not assessed",
+      "id": "glba-16-CFR-314.4-d-2-ii",
+      "title": "Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#13"
+        "value": "16 CFR 314.4(d)(2)(ii)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#13"
+        "value": "16 CFR 314.4(d)(2)(ii)"
        },
        {
         "name": "rego-package",
@@ -481,30 +521,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-13_stmt",
+        "id": "glba-16-CFR-314.4-d-2-ii_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(4): Security of externally developed applications handling customer information not assessed"
+        "prose": "Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-14",
-      "title": "16 CFR 314.4(c)(5): MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual",
+      "id": "glba-16-CFR-314.4-e-1",
+      "title": "Security awareness training not provided to personnel",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#14"
+        "value": "16 CFR 314.4(e)(1)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#14"
+        "value": "16 CFR 314.4(e)(1)"
        },
        {
         "name": "rego-package",
@@ -514,30 +554,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-14_stmt",
+        "id": "glba-16-CFR-314.4-e-1_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(5): MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual"
+        "prose": "Security awareness training not provided to personnel"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-15",
-      "title": "16 CFR 314.4(c)(6): Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement",
+      "id": "glba-16-CFR-314.4-e-2",
+      "title": "Qualified information security personnel not employed or engaged",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#15"
+        "value": "16 CFR 314.4(e)(2)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#15"
+        "value": "16 CFR 314.4(e)(2)"
        },
        {
         "name": "rego-package",
@@ -547,30 +587,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-15_stmt",
+        "id": "glba-16-CFR-314.4-e-2_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(6): Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement"
+        "prose": "Qualified information security personnel not employed or engaged"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-16",
-      "title": "16 CFR 314.4(c)(6): Data retention policy not periodically reviewed to minimize unnecessary retention of customer information",
+      "id": "glba-16-CFR-314.4-e-4",
+      "title": "Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#16"
+        "value": "16 CFR 314.4(e)(4)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#16"
+        "value": "16 CFR 314.4(e)(4)"
        },
        {
         "name": "rego-package",
@@ -580,30 +620,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-16_stmt",
+        "id": "glba-16-CFR-314.4-e-4_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(6): Data retention policy not periodically reviewed to minimize unnecessary retention of customer information"
+        "prose": "Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-17",
-      "title": "16 CFR 314.4(c)(7): Change management procedures not adopted for the information system",
+      "id": "glba-16-CFR-314.4-f-1",
+      "title": "Service providers not selected based on ability to maintain appropriate safeguards",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#17"
+        "value": "16 CFR 314.4(f)(1)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#17"
+        "value": "16 CFR 314.4(f)(1)"
        },
        {
         "name": "rego-package",
@@ -613,30 +653,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-17_stmt",
+        "id": "glba-16-CFR-314.4-f-1_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(7): Change management procedures not adopted for the information system"
+        "prose": "Service providers not selected based on ability to maintain appropriate safeguards"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-18",
-      "title": "16 CFR 314.4(c)(8): Activity of authorized users not monitored and logged",
+      "id": "glba-16-CFR-314.4-f-2",
+      "title": "Service provider contracts do not require implementation and maintenance of safeguards",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#18"
+        "value": "16 CFR 314.4(f)(2)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#18"
+        "value": "16 CFR 314.4(f)(2)"
        },
        {
         "name": "rego-package",
@@ -646,30 +686,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-18_stmt",
+        "id": "glba-16-CFR-314.4-f-2_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(8): Activity of authorized users not monitored and logged"
+        "prose": "Service provider contracts do not require implementation and maintenance of safeguards"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-19",
-      "title": "16 CFR 314.4(c)(8): Unauthorized access to, use of, or tampering with customer information not detected",
+      "id": "glba-16-CFR-314.4-f-3",
+      "title": "Service providers not periodically assessed based on the risk they present",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#19"
+        "value": "16 CFR 314.4(f)(3)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#19"
+        "value": "16 CFR 314.4(f)(3)"
        },
        {
         "name": "rego-package",
@@ -679,30 +719,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-19_stmt",
+        "id": "glba-16-CFR-314.4-f-3_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(c)(8): Unauthorized access to, use of, or tampering with customer information not detected"
+        "prose": "Service providers not periodically assessed based on the risk they present"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-20",
-      "title": "16 CFR 314.4(d)(2)(i): Neither continuous monitoring nor annual penetration testing is in place",
+      "id": "glba-16-CFR-314.4-g",
+      "title": "Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#20"
+        "value": "16 CFR 314.4(g)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#20"
+        "value": "16 CFR 314.4(g)"
        },
        {
         "name": "rego-package",
@@ -712,30 +752,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-20_stmt",
+        "id": "glba-16-CFR-314.4-g_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(d)(2)(i): Neither continuous monitoring nor annual penetration testing is in place"
+        "prose": "Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-21",
-      "title": "16 CFR 314.4(d)(2)(ii): Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place",
+      "id": "glba-16-CFR-314.4-h",
+      "title": "Written incident response plan not established",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#21"
+        "value": "16 CFR 314.4(h)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#21"
+        "value": "16 CFR 314.4(h)"
        },
        {
         "name": "rego-package",
@@ -745,30 +785,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-21_stmt",
+        "id": "glba-16-CFR-314.4-h_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(d)(2)(ii): Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place"
+        "prose": "Written incident response plan not established"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-22",
-      "title": "16 CFR 314.4(e)(1): Security awareness training not provided to personnel",
+      "id": "glba-16-CFR-314.4-h-3",
+      "title": "Roles, responsibilities, and levels of decision-making authority not defined in incident response plan",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#22"
+        "value": "16 CFR 314.4(h)(3)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#22"
+        "value": "16 CFR 314.4(h)(3)"
        },
        {
         "name": "rego-package",
@@ -778,30 +818,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-22_stmt",
+        "id": "glba-16-CFR-314.4-h-3_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(e)(1): Security awareness training not provided to personnel"
+        "prose": "Roles, responsibilities, and levels of decision-making authority not defined in incident response plan"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-23",
-      "title": "16 CFR 314.4(e)(2): Qualified information security personnel not employed or engaged",
+      "id": "glba-16-CFR-314.4-h-7",
+      "title": "Incident response plan lacks process for evaluation and revision following a security event",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#23"
+        "value": "16 CFR 314.4(h)(7)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#23"
+        "value": "16 CFR 314.4(h)(7)"
        },
        {
         "name": "rego-package",
@@ -811,30 +851,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-23_stmt",
+        "id": "glba-16-CFR-314.4-h-7_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(e)(2): Qualified information security personnel not employed or engaged"
+        "prose": "Incident response plan lacks process for evaluation and revision following a security event"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-24",
-      "title": "16 CFR 314.4(e)(4): Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures",
+      "id": "glba-16-CFR-314.4-i",
+      "title": "Qualified Individual has not reported in writing to the board (or equivalent) at least annually",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#24"
+        "value": "16 CFR 314.4(i)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#24"
+        "value": "16 CFR 314.4(i)"
        },
        {
         "name": "rego-package",
@@ -844,30 +884,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-24_stmt",
+        "id": "glba-16-CFR-314.4-i_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(e)(4): Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures"
+        "prose": "Qualified Individual has not reported in writing to the board (or equivalent) at least annually"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-25",
-      "title": "16 CFR 314.4(f)(1): Service providers not selected based on ability to maintain appropriate safeguards",
+      "id": "glba-16-CFR-314.4-i-1-2",
+      "title": "Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#25"
+        "value": "16 CFR 314.4(i)(1)-(2)"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#25"
+        "value": "16 CFR 314.4(i)(1)-(2)"
        },
        {
         "name": "rego-package",
@@ -877,30 +917,30 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-25_stmt",
+        "id": "glba-16-CFR-314.4-i-1-2_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(f)(1): Service providers not selected based on ability to maintain appropriate safeguards"
+        "prose": "Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "glba-glba.main-26",
-      "title": "16 CFR 314.4(f)(2): Service provider contracts do not require implementation and maintenance of safeguards",
+      "id": "glba-16-CFR-314.5",
+      "title": "Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers",
       "props": [
        {
         "name": "label",
-        "value": "glba.main#26"
+        "value": "16 CFR 314.5"
        },
        {
         "name": "alt-identifier",
-        "value": "glba.main#26"
+        "value": "16 CFR 314.5"
        },
        {
         "name": "rego-package",
@@ -910,279 +950,15 @@
       ],
       "links": [
        {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
+        "href": "#d02a664c-9790-5962-a92f-4a28d8392252",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "glba-glba.main-26_stmt",
+        "id": "glba-16-CFR-314.5_stmt",
         "name": "statement",
-        "prose": "16 CFR 314.4(f)(2): Service provider contracts do not require implementation and maintenance of safeguards"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "glba-glba.main-27",
-      "title": "16 CFR 314.4(f)(3): Service providers not periodically assessed based on the risk they present",
-      "props": [
-       {
-        "name": "label",
-        "value": "glba.main#27"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "glba.main#27"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "glba.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "glba-glba.main-27_stmt",
-        "name": "statement",
-        "prose": "16 CFR 314.4(f)(3): Service providers not periodically assessed based on the risk they present"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "glba-glba.main-28",
-      "title": "16 CFR 314.4(g): Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact",
-      "props": [
-       {
-        "name": "label",
-        "value": "glba.main#28"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "glba.main#28"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "glba.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "glba-glba.main-28_stmt",
-        "name": "statement",
-        "prose": "16 CFR 314.4(g): Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "glba-glba.main-29",
-      "title": "16 CFR 314.4(h): Written incident response plan not established",
-      "props": [
-       {
-        "name": "label",
-        "value": "glba.main#29"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "glba.main#29"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "glba.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "glba-glba.main-29_stmt",
-        "name": "statement",
-        "prose": "16 CFR 314.4(h): Written incident response plan not established"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "glba-glba.main-30",
-      "title": "16 CFR 314.4(h)(3): Roles, responsibilities, and levels of decision-making authority not defined in incident response plan",
-      "props": [
-       {
-        "name": "label",
-        "value": "glba.main#30"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "glba.main#30"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "glba.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "glba-glba.main-30_stmt",
-        "name": "statement",
-        "prose": "16 CFR 314.4(h)(3): Roles, responsibilities, and levels of decision-making authority not defined in incident response plan"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "glba-glba.main-31",
-      "title": "16 CFR 314.4(h)(7): Incident response plan lacks process for evaluation and revision following a security event",
-      "props": [
-       {
-        "name": "label",
-        "value": "glba.main#31"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "glba.main#31"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "glba.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "glba-glba.main-31_stmt",
-        "name": "statement",
-        "prose": "16 CFR 314.4(h)(7): Incident response plan lacks process for evaluation and revision following a security event"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "glba-glba.main-32",
-      "title": "16 CFR 314.4(i): Qualified Individual has not reported in writing to the board (or equivalent) at least annually",
-      "props": [
-       {
-        "name": "label",
-        "value": "glba.main#32"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "glba.main#32"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "glba.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "glba-glba.main-32_stmt",
-        "name": "statement",
-        "prose": "16 CFR 314.4(i): Qualified Individual has not reported in writing to the board (or equivalent) at least annually"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "glba-glba.main-33",
-      "title": "16 CFR 314.4(i)(1)-(2): Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses",
-      "props": [
-       {
-        "name": "label",
-        "value": "glba.main#33"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "glba.main#33"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "glba.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "glba-glba.main-33_stmt",
-        "name": "statement",
-        "prose": "16 CFR 314.4(i)(1)-(2): Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "glba-glba.main-34",
-      "title": "16 CFR 314.5: Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers",
-      "props": [
-       {
-        "name": "label",
-        "value": "glba.main#34"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "glba.main#34"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "glba.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#cd3de1ae-be16-5a0a-b589-062f6deeea61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "glba-glba.main-34_stmt",
-        "name": "statement",
-        "prose": "16 CFR 314.5: Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers"
+        "prose": "Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers"
        }
       ],
       "class": "compliance"
@@ -1193,7 +969,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "cd3de1ae-be16-5a0a-b589-062f6deeea61",
+     "uuid": "d02a664c-9790-5962-a92f-4a28d8392252",
      "title": "Gramm-Leach-Bliley Act — FTC Safeguards Rule, 16 CFR Part 314",
      "props": [
       {
@@ -1204,7 +980,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/glba/glba_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/glba/glba_main.rego",
        "media-type": "text/plain"
       }
      ]

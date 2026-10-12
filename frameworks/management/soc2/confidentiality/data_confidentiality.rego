@@ -8,6 +8,14 @@
 #   framework: soc2
 #   source: aicpa
 #   domains: [assurance]
+#   coverage:
+#     checks: 20
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package soc2.confidentiality.data_confidentiality
 
 import rego.v1
@@ -303,4 +311,12 @@ confidentiality_findings := findings if {
         "data_access_anomaly_detection": data_access_anomaly_detection,
         "overall_score": confidentiality_score
     }
+#   coverage:
+#     checks: 20
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

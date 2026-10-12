@@ -5,6 +5,14 @@
 #   framework: cis_rocky_linux_8
 #   source: cis
 #   domains: [linux, rocky]
+#   coverage:
+#     checks: 26
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_rocky_linux_8.ssh
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.2: SSH Server Configuration
@@ -231,3 +239,11 @@ report := {
 	"section": "5.2 SSH Server Configuration",
 	"benchmark": "CIS Rocky Linux 8 v3.0.0",
 }
+#   coverage:
+#     checks: 26
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

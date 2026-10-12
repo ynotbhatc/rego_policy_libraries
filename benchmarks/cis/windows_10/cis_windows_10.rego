@@ -5,6 +5,14 @@
 #   framework: cis_windows_10
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 11
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_windows_10
 
 # CIS Microsoft Windows 10 Enterprise Benchmark v4.0.0  
@@ -500,4 +508,12 @@ detailed_findings := {
     "windows_defender_violations": windows_defender_violations,
     "windows_firewall_violations": windows_firewall_violations,
     "administrative_templates_violations": administrative_templates_violations
+#   coverage:
+#     checks: 11
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

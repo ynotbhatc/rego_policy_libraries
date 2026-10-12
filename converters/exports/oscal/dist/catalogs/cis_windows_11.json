@@ -1,0 +1,7023 @@
+{
+ "catalog": {
+  "uuid": "9660f6c8-63e4-5052-8dd7-6dab91038598",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_windows_11 (CIS Microsoft Windows 11 Enterprise Benchmark v5.0.1)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_windows_11"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_windows_11-cis_windows_11",
+    "class": "rego-module",
+    "title": "CIS Microsoft Windows 11 Enterprise Benchmark v5.0.1",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.windows_11"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_11/cis_windows_11.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_11-1.1.1",
+      "title": "Enforce password history - 24 passwords remembered",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-1.1.1_stmt",
+        "name": "statement",
+        "prose": "Enforce password history - 24 passwords remembered"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-1.1.2",
+      "title": "Maximum password age - 365 days or fewer",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-1.1.2_stmt",
+        "name": "statement",
+        "prose": "Maximum password age - 365 days or fewer"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-1.1.3",
+      "title": "Minimum password age - 1 day or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-1.1.3_stmt",
+        "name": "statement",
+        "prose": "Minimum password age - 1 day or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-1.1.4",
+      "title": "Minimum password length - 14 characters or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-1.1.4_stmt",
+        "name": "statement",
+        "prose": "Minimum password length - 14 characters or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-1.1.5",
+      "title": "Password must meet complexity requirements - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-1.1.5_stmt",
+        "name": "statement",
+        "prose": "Password must meet complexity requirements - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-1.1.6",
+      "title": "Store passwords using reversible encryption - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-1.1.6_stmt",
+        "name": "statement",
+        "prose": "Store passwords using reversible encryption - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-1.2.1",
+      "title": "Account lockout duration - 15 minutes or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-1.2.1_stmt",
+        "name": "statement",
+        "prose": "Account lockout duration - 15 minutes or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-1.2.2",
+      "title": "Account lockout threshold - 5 invalid attempts or fewer",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-1.2.2_stmt",
+        "name": "statement",
+        "prose": "Account lockout threshold - 5 invalid attempts or fewer"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-1.2.3",
+      "title": "Reset account lockout counter after - 15 minutes or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-1.2.3_stmt",
+        "name": "statement",
+        "prose": "Reset account lockout counter after - 15 minutes or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.2.1",
+      "title": "Audit account logon events - Success, Failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.2.1_stmt",
+        "name": "statement",
+        "prose": "Audit account logon events - Success, Failure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.2.2",
+      "title": "Audit account management - Success, Failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.2.2_stmt",
+        "name": "statement",
+        "prose": "Audit account management - Success, Failure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.2.3",
+      "title": "Audit directory service access - Failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.2.3_stmt",
+        "name": "statement",
+        "prose": "Audit directory service access - Failure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.2.4",
+      "title": "Audit logon events - Success, Failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.2.4_stmt",
+        "name": "statement",
+        "prose": "Audit logon events - Success, Failure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.2.5",
+      "title": "Audit object access - Failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.2.5_stmt",
+        "name": "statement",
+        "prose": "Audit object access - Failure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.2.6",
+      "title": "Audit policy change - Success, Failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.2.6_stmt",
+        "name": "statement",
+        "prose": "Audit policy change - Success, Failure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.2.7",
+      "title": "Audit privilege use - Failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.2.7_stmt",
+        "name": "statement",
+        "prose": "Audit privilege use - Failure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.2.8",
+      "title": "Audit process tracking - No Auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.2.8_stmt",
+        "name": "statement",
+        "prose": "Audit process tracking - No Auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.2.9",
+      "title": "Audit system events - Success, Failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.2.9_stmt",
+        "name": "statement",
+        "prose": "Audit system events - Success, Failure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.1",
+      "title": "Access Credential Manager as a trusted caller - No One",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.1_stmt",
+        "name": "statement",
+        "prose": "Access Credential Manager as a trusted caller - No One"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.2",
+      "title": "Access this computer from the network - Administrators Authenticated Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.2_stmt",
+        "name": "statement",
+        "prose": "Access this computer from the network - Administrators Authenticated Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.3",
+      "title": "Act as part of the operating system - No One",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.3_stmt",
+        "name": "statement",
+        "prose": "Act as part of the operating system - No One"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.4",
+      "title": "Allow log on locally - Administrators Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.4_stmt",
+        "name": "statement",
+        "prose": "Allow log on locally - Administrators Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.5",
+      "title": "Allow log on through Remote Desktop Services - Administrators Remote Desktop Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.5_stmt",
+        "name": "statement",
+        "prose": "Allow log on through Remote Desktop Services - Administrators Remote Desktop Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.6",
+      "title": "Back up files and directories - Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.6_stmt",
+        "name": "statement",
+        "prose": "Back up files and directories - Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.7",
+      "title": "Change the system time - Administrators LOCAL SERVICE",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.7_stmt",
+        "name": "statement",
+        "prose": "Change the system time - Administrators LOCAL SERVICE"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.8",
+      "title": "Change the time zone - Administrators LOCAL SERVICE Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.8_stmt",
+        "name": "statement",
+        "prose": "Change the time zone - Administrators LOCAL SERVICE Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.9",
+      "title": "Create a pagefile - Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.9_stmt",
+        "name": "statement",
+        "prose": "Create a pagefile - Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.10",
+      "title": "Create a token object - No One",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.10_stmt",
+        "name": "statement",
+        "prose": "Create a token object - No One"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.11",
+      "title": "Create global objects - Administrators LOCAL SERVICE NETWORK SERVICE SERVICE",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.11_stmt",
+        "name": "statement",
+        "prose": "Create global objects - Administrators LOCAL SERVICE NETWORK SERVICE SERVICE"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.12",
+      "title": "Create permanent shared objects - No One",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.12_stmt",
+        "name": "statement",
+        "prose": "Create permanent shared objects - No One"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.13",
+      "title": "Create symbolic links - Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.13_stmt",
+        "name": "statement",
+        "prose": "Create symbolic links - Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.14",
+      "title": "Debug programs - Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.14_stmt",
+        "name": "statement",
+        "prose": "Debug programs - Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.15",
+      "title": "Deny access to this computer from the network - Guests Local account",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.15_stmt",
+        "name": "statement",
+        "prose": "Deny access to this computer from the network - Guests Local account"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.16",
+      "title": "Deny log on as a batch job - Guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.16_stmt",
+        "name": "statement",
+        "prose": "Deny log on as a batch job - Guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.17",
+      "title": "Deny log on as a service - No One",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.17_stmt",
+        "name": "statement",
+        "prose": "Deny log on as a service - No One"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.18",
+      "title": "Deny log on locally - Guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.18_stmt",
+        "name": "statement",
+        "prose": "Deny log on locally - Guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.3.1.19",
+      "title": "Deny log on through Remote Desktop Services - Guests Local account",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.3.1.19_stmt",
+        "name": "statement",
+        "prose": "Deny log on through Remote Desktop Services - Guests Local account"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.4.1",
+      "title": "Accounts: Block Microsoft accounts - Users can't add or log on with Microsoft accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.4.1_stmt",
+        "name": "statement",
+        "prose": "Accounts: Block Microsoft accounts - Users can't add or log on with Microsoft accounts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.4.2",
+      "title": "Accounts: Guest account status - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.4.2_stmt",
+        "name": "statement",
+        "prose": "Accounts: Guest account status - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.4.3",
+      "title": "Accounts: Limit local account use of blank passwords to console logon only - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.4.3_stmt",
+        "name": "statement",
+        "prose": "Accounts: Limit local account use of blank passwords to console logon only - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.4.4",
+      "title": "Accounts: Rename administrator account - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.4.4_stmt",
+        "name": "statement",
+        "prose": "Accounts: Rename administrator account - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.4.5",
+      "title": "Accounts: Rename guest account - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.4.5_stmt",
+        "name": "statement",
+        "prose": "Accounts: Rename guest account - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.4.6",
+      "title": "Audit: Force audit policy subcategory settings - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.4.6_stmt",
+        "name": "statement",
+        "prose": "Audit: Force audit policy subcategory settings - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.4.7",
+      "title": "Audit: Shut down system immediately if unable to log security audits - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.4.7_stmt",
+        "name": "statement",
+        "prose": "Audit: Shut down system immediately if unable to log security audits - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.4.8",
+      "title": "DCOM: Enable Distributed COM on this computer - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.4.8_stmt",
+        "name": "statement",
+        "prose": "DCOM: Enable Distributed COM on this computer - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.4.9",
+      "title": "Devices: Allowed to format and eject removable media - Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.4.9_stmt",
+        "name": "statement",
+        "prose": "Devices: Allowed to format and eject removable media - Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-2.4.10",
+      "title": "Devices: Prevent users from installing printer drivers - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-2.4.10_stmt",
+        "name": "statement",
+        "prose": "Devices: Prevent users from installing printer drivers - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.1.1",
+      "title": "Application: Control Event Log behavior when the log file reaches its maximum size - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.1.1_stmt",
+        "name": "statement",
+        "prose": "Application: Control Event Log behavior when the log file reaches its maximum size - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.1.2",
+      "title": "Application: Maximum Log Size - 32 768 KB or greater",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.1.2_stmt",
+        "name": "statement",
+        "prose": "Application: Maximum Log Size - 32 768 KB or greater"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.1.3",
+      "title": "Application: Specify the maximum log file size - 32 768 KB or greater",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.1.3_stmt",
+        "name": "statement",
+        "prose": "Application: Specify the maximum log file size - 32 768 KB or greater"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.1.4",
+      "title": "Application: Restrict Guest access to Application event log - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.1.4_stmt",
+        "name": "statement",
+        "prose": "Application: Restrict Guest access to Application event log - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.1.5",
+      "title": "Application: Retention method for Application event log - As needed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.1.5_stmt",
+        "name": "statement",
+        "prose": "Application: Retention method for Application event log - As needed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.2.1",
+      "title": "Security: Control Event Log behavior when the log file reaches its maximum size - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.2.1_stmt",
+        "name": "statement",
+        "prose": "Security: Control Event Log behavior when the log file reaches its maximum size - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.2.2",
+      "title": "Security: Maximum Log Size - 196 608 KB or greater",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.2.2_stmt",
+        "name": "statement",
+        "prose": "Security: Maximum Log Size - 196 608 KB or greater"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.2.3",
+      "title": "Security: Specify the maximum log file size - 196 608 KB or greater",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.2.3_stmt",
+        "name": "statement",
+        "prose": "Security: Specify the maximum log file size - 196 608 KB or greater"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.2.4",
+      "title": "Security: Restrict Guest access to Security event log - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.2.4_stmt",
+        "name": "statement",
+        "prose": "Security: Restrict Guest access to Security event log - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.2.5",
+      "title": "Security: Retention method for Security event log - As needed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.2.5_stmt",
+        "name": "statement",
+        "prose": "Security: Retention method for Security event log - As needed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.3.1",
+      "title": "System: Control Event Log behavior when the log file reaches its maximum size - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.3.1_stmt",
+        "name": "statement",
+        "prose": "System: Control Event Log behavior when the log file reaches its maximum size - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.3.2",
+      "title": "System: Maximum Log Size - 32 768 KB or greater",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.3.2_stmt",
+        "name": "statement",
+        "prose": "System: Maximum Log Size - 32 768 KB or greater"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.3.3",
+      "title": "System: Specify the maximum log file size - 32 768 KB or greater",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.3.3_stmt",
+        "name": "statement",
+        "prose": "System: Specify the maximum log file size - 32 768 KB or greater"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.3.4",
+      "title": "System: Restrict Guest access to System event log - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.3.4_stmt",
+        "name": "statement",
+        "prose": "System: Restrict Guest access to System event log - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-3.3.5",
+      "title": "System: Retention method for System event log - As needed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-3.3.5_stmt",
+        "name": "statement",
+        "prose": "System: Retention method for System event log - As needed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-4.1",
+      "title": "Configure 'Administrators' - Only necessary accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-4.1_stmt",
+        "name": "statement",
+        "prose": "Configure 'Administrators' - Only necessary accounts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-4.2",
+      "title": "Configure 'Remote Desktop Users' - Only necessary accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-4.2_stmt",
+        "name": "statement",
+        "prose": "Configure 'Remote Desktop Users' - Only necessary accounts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-4.3",
+      "title": "Configure 'Power Users' - Empty or necessary accounts only",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-4.3_stmt",
+        "name": "statement",
+        "prose": "Configure 'Power Users' - Empty or necessary accounts only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.1",
+      "title": "Application Layer Gateway Service - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.1_stmt",
+        "name": "statement",
+        "prose": "Application Layer Gateway Service - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.2",
+      "title": "Application Management - Manual or Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.2_stmt",
+        "name": "statement",
+        "prose": "Application Management - Manual or Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.3",
+      "title": "BitLocker Drive Encryption Service - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.3_stmt",
+        "name": "statement",
+        "prose": "BitLocker Drive Encryption Service - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.4",
+      "title": "Certificate Propagation - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.4_stmt",
+        "name": "statement",
+        "prose": "Certificate Propagation - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.5",
+      "title": "Computer Browser - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.5_stmt",
+        "name": "statement",
+        "prose": "Computer Browser - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.6",
+      "title": "Cryptographic Services - Automatic",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.6_stmt",
+        "name": "statement",
+        "prose": "Cryptographic Services - Automatic"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.7",
+      "title": "DHCP Client - Automatic",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.7_stmt",
+        "name": "statement",
+        "prose": "DHCP Client - Automatic"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.8",
+      "title": "Distributed Link Tracking Client - Automatic",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.8_stmt",
+        "name": "statement",
+        "prose": "Distributed Link Tracking Client - Automatic"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.9",
+      "title": "DNS Client - Automatic",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.9_stmt",
+        "name": "statement",
+        "prose": "DNS Client - Automatic"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.10",
+      "title": "File Replication - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.10_stmt",
+        "name": "statement",
+        "prose": "File Replication - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.11",
+      "title": "Fax - Disabled or Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.11_stmt",
+        "name": "statement",
+        "prose": "Fax - Disabled or Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.12",
+      "title": "Function Discovery Provider Host - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.12_stmt",
+        "name": "statement",
+        "prose": "Function Discovery Provider Host - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.13",
+      "title": "Function Discovery Resource Publication - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.13_stmt",
+        "name": "statement",
+        "prose": "Function Discovery Resource Publication - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.14",
+      "title": "Help and Support - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.14_stmt",
+        "name": "statement",
+        "prose": "Help and Support - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.15",
+      "title": "Human Interface Device Access - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.15_stmt",
+        "name": "statement",
+        "prose": "Human Interface Device Access - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.16",
+      "title": "IIS Admin Service - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.16_stmt",
+        "name": "statement",
+        "prose": "IIS Admin Service - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.17",
+      "title": "Indexing Service - Manual or Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.17_stmt",
+        "name": "statement",
+        "prose": "Indexing Service - Manual or Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.18",
+      "title": "Internet Connection Sharing - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.18_stmt",
+        "name": "statement",
+        "prose": "Internet Connection Sharing - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.19",
+      "title": "IP Helper - Automatic",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.19_stmt",
+        "name": "statement",
+        "prose": "IP Helper - Automatic"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.20",
+      "title": "IPSec Services - Manual or Automatic",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.20_stmt",
+        "name": "statement",
+        "prose": "IPSec Services - Manual or Automatic"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.21",
+      "title": "KDC Proxy Server service - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.21_stmt",
+        "name": "statement",
+        "prose": "KDC Proxy Server service - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.22",
+      "title": "Link-Layer Topology Discovery Mapper - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.22_stmt",
+        "name": "statement",
+        "prose": "Link-Layer Topology Discovery Mapper - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.23",
+      "title": "LM Hosts - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.23_stmt",
+        "name": "statement",
+        "prose": "LM Hosts - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.24",
+      "title": "Messenger - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.24_stmt",
+        "name": "statement",
+        "prose": "Messenger - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.25",
+      "title": "Microsoft FTP Service - Disabled or Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.25_stmt",
+        "name": "statement",
+        "prose": "Microsoft FTP Service - Disabled or Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.26",
+      "title": "Microsoft iSCSI Initiator Service - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.26_stmt",
+        "name": "statement",
+        "prose": "Microsoft iSCSI Initiator Service - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.27",
+      "title": "Net Logon - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.27_stmt",
+        "name": "statement",
+        "prose": "Net Logon - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.28",
+      "title": "Netlogon - Automatic (DC only)",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.28_stmt",
+        "name": "statement",
+        "prose": "Netlogon - Automatic (DC only)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.29",
+      "title": "Network Access Protection Agent - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.29_stmt",
+        "name": "statement",
+        "prose": "Network Access Protection Agent - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.30",
+      "title": "Network Connections - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.30_stmt",
+        "name": "statement",
+        "prose": "Network Connections - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.31",
+      "title": "Network List Service - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.31_stmt",
+        "name": "statement",
+        "prose": "Network List Service - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.32",
+      "title": "Network Location Awareness - Automatic",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.32_stmt",
+        "name": "statement",
+        "prose": "Network Location Awareness - Automatic"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.33",
+      "title": "Network Store Interface Service - Automatic",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.33_stmt",
+        "name": "statement",
+        "prose": "Network Store Interface Service - Automatic"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.34",
+      "title": "Offline Files - Disabled or Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.34_stmt",
+        "name": "statement",
+        "prose": "Offline Files - Disabled or Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.35",
+      "title": "Peer Name Resolution Protocol - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.35"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.35"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.35_stmt",
+        "name": "statement",
+        "prose": "Peer Name Resolution Protocol - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.36",
+      "title": "Peer Networking Grouping - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.36"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.36"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.36_stmt",
+        "name": "statement",
+        "prose": "Peer Networking Grouping - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.37",
+      "title": "Peer Networking Identity Manager - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.37"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.37"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.37_stmt",
+        "name": "statement",
+        "prose": "Peer Networking Identity Manager - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.38",
+      "title": "PNRP Machine Name Publication Service - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.38"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.38"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.38_stmt",
+        "name": "statement",
+        "prose": "PNRP Machine Name Publication Service - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.39",
+      "title": "Portable Device Enumerator Service - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.39"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.39"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.39_stmt",
+        "name": "statement",
+        "prose": "Portable Device Enumerator Service - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.40",
+      "title": "Print Spooler - Automatic",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.40"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.40"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.40_stmt",
+        "name": "statement",
+        "prose": "Print Spooler - Automatic"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.41",
+      "title": "Protected Storage - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.41"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.41"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.41_stmt",
+        "name": "statement",
+        "prose": "Protected Storage - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.42",
+      "title": "Remote Access Auto Connection Manager - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.42"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.42"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.42_stmt",
+        "name": "statement",
+        "prose": "Remote Access Auto Connection Manager - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.43",
+      "title": "Remote Access Connection Manager - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.43"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.43"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.43_stmt",
+        "name": "statement",
+        "prose": "Remote Access Connection Manager - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.44",
+      "title": "Remote Desktop Configuration - Manual",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.44"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.44"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.44_stmt",
+        "name": "statement",
+        "prose": "Remote Desktop Configuration - Manual"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-5.45",
+      "title": "Remote Desktop Services - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.45"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.45"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-5.45_stmt",
+        "name": "statement",
+        "prose": "Remote Desktop Services - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.1",
+      "title": "Disable Autoplay for non-volume devices - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.1_stmt",
+        "name": "statement",
+        "prose": "Disable Autoplay for non-volume devices - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.2",
+      "title": "Set the default behavior for AutoRun - Enabled: Do not execute any autorun commands",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.2_stmt",
+        "name": "statement",
+        "prose": "Set the default behavior for AutoRun - Enabled: Do not execute any autorun commands"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.3",
+      "title": "Turn off Autoplay - Enabled: All drives",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.3_stmt",
+        "name": "statement",
+        "prose": "Turn off Autoplay - Enabled: All drives"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.4",
+      "title": "Do not display the password reveal button - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.4_stmt",
+        "name": "statement",
+        "prose": "Do not display the password reveal button - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.5",
+      "title": "Enumerate administrator accounts on elevation - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.5_stmt",
+        "name": "statement",
+        "prose": "Enumerate administrator accounts on elevation - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.6",
+      "title": "Require trusted path for credential entry - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.6_stmt",
+        "name": "statement",
+        "prose": "Require trusted path for credential entry - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.7",
+      "title": "Configure Windows SmartScreen - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.7_stmt",
+        "name": "statement",
+        "prose": "Configure Windows SmartScreen - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.8",
+      "title": "Turn on Windows SmartScreen - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.8_stmt",
+        "name": "statement",
+        "prose": "Turn on Windows SmartScreen - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.9",
+      "title": "Configure Windows Defender SmartScreen - Enabled: Warn",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.9_stmt",
+        "name": "statement",
+        "prose": "Configure Windows Defender SmartScreen - Enabled: Warn"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.10",
+      "title": "Prevent the usage of OneDrive for file storage - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.10_stmt",
+        "name": "statement",
+        "prose": "Prevent the usage of OneDrive for file storage - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.11",
+      "title": "Allow Cortana - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.11_stmt",
+        "name": "statement",
+        "prose": "Allow Cortana - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.12",
+      "title": "Allow Cortana above lock screen - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.12_stmt",
+        "name": "statement",
+        "prose": "Allow Cortana above lock screen - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.13",
+      "title": "Allow indexing of encrypted files - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.13_stmt",
+        "name": "statement",
+        "prose": "Allow indexing of encrypted files - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.14",
+      "title": "Allow search and Cortana to use location - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.14_stmt",
+        "name": "statement",
+        "prose": "Allow search and Cortana to use location - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.15",
+      "title": "Do not preserve zone information in file attachments - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.15_stmt",
+        "name": "statement",
+        "prose": "Do not preserve zone information in file attachments - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.16",
+      "title": "Notify antivirus programs when opening attachments - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.16_stmt",
+        "name": "statement",
+        "prose": "Notify antivirus programs when opening attachments - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.17",
+      "title": "Configure Windows spotlight on lock screen - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.17_stmt",
+        "name": "statement",
+        "prose": "Configure Windows spotlight on lock screen - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.18",
+      "title": "Do not suggest third-party content in Windows spotlight - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.18_stmt",
+        "name": "statement",
+        "prose": "Do not suggest third-party content in Windows spotlight - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.19",
+      "title": "Turn off all Windows spotlight features - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.19_stmt",
+        "name": "statement",
+        "prose": "Turn off all Windows spotlight features - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-6.20",
+      "title": "Turn off Windows spotlight on Settings - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-6.20_stmt",
+        "name": "statement",
+        "prose": "Turn off Windows spotlight on Settings - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.1.1",
+      "title": "%systemroot%\\system32\\config\\SAM - SYSTEM: Full Control Administrators: Full Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.1.1_stmt",
+        "name": "statement",
+        "prose": "%systemroot%\\system32\\config\\SAM - SYSTEM: Full Control Administrators: Full Control"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.1.2",
+      "title": "%systemroot%\\system32\\config\\SECURITY - SYSTEM: Full Control Administrators: Full Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.1.2_stmt",
+        "name": "statement",
+        "prose": "%systemroot%\\system32\\config\\SECURITY - SYSTEM: Full Control Administrators: Full Control"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.1.3",
+      "title": "%systemroot%\\system32\\config\\SOFTWARE - SYSTEM: Full Control Administrators: Full Control Users: Read",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.1.3_stmt",
+        "name": "statement",
+        "prose": "%systemroot%\\system32\\config\\SOFTWARE - SYSTEM: Full Control Administrators: Full Control Users: Read"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.1.4",
+      "title": "%systemroot%\\system32\\config\\SYSTEM - SYSTEM: Full Control Administrators: Full Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.1.4_stmt",
+        "name": "statement",
+        "prose": "%systemroot%\\system32\\config\\SYSTEM - SYSTEM: Full Control Administrators: Full Control"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.1.5",
+      "title": "%systemroot%\\system32\\svchost.exe - TrustedInstaller: Full Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.1.5_stmt",
+        "name": "statement",
+        "prose": "%systemroot%\\system32\\svchost.exe - TrustedInstaller: Full Control"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.1.6",
+      "title": "%systemroot%\\system32\\winlogon.exe - TrustedInstaller: Full Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.1.6_stmt",
+        "name": "statement",
+        "prose": "%systemroot%\\system32\\winlogon.exe - TrustedInstaller: Full Control"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.2.1",
+      "title": "Program Files folder permissions - Administrators: Full Control SYSTEM: Full Control Users: Read & Execute",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.2.1_stmt",
+        "name": "statement",
+        "prose": "Program Files folder permissions - Administrators: Full Control SYSTEM: Full Control Users: Read & Execute"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.2.2",
+      "title": "Windows folder permissions - TrustedInstaller: Full Control Administrators: Modify SYSTEM: Full Control Users: Read & Execute",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.2.2_stmt",
+        "name": "statement",
+        "prose": "Windows folder permissions - TrustedInstaller: Full Control Administrators: Modify SYSTEM: Full Control Users: Read & Execute"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.3.1",
+      "title": "Registry Editor - Administrators only",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.3.1_stmt",
+        "name": "statement",
+        "prose": "Registry Editor - Administrators only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.3.2",
+      "title": "Command Prompt - Users: Access allowed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.3.2_stmt",
+        "name": "statement",
+        "prose": "Command Prompt - Users: Access allowed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.3.3",
+      "title": "Control Panel - Users: Access allowed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.3.3_stmt",
+        "name": "statement",
+        "prose": "Control Panel - Users: Access allowed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-7.3.4",
+      "title": "Run command - Users: Access allowed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-7.3.4_stmt",
+        "name": "statement",
+        "prose": "Run command - Users: Access allowed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.1",
+      "title": "Turn off Microsoft Peer-to-Peer Networking Services - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.1_stmt",
+        "name": "statement",
+        "prose": "Turn off Microsoft Peer-to-Peer Networking Services - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.2",
+      "title": "Prohibit installation and configuration of Network Bridge - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.2_stmt",
+        "name": "statement",
+        "prose": "Prohibit installation and configuration of Network Bridge - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.3",
+      "title": "Prohibit use of Internet Connection Sharing - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.3_stmt",
+        "name": "statement",
+        "prose": "Prohibit use of Internet Connection Sharing - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.4",
+      "title": "Require domain users to elevate when setting network location - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.4_stmt",
+        "name": "statement",
+        "prose": "Require domain users to elevate when setting network location - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.5",
+      "title": "Hardened UNC Paths - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.5_stmt",
+        "name": "statement",
+        "prose": "Hardened UNC Paths - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.6",
+      "title": "Minimize connections to multiple Internet sources - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.6_stmt",
+        "name": "statement",
+        "prose": "Minimize connections to multiple Internet sources - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.7",
+      "title": "Prohibit connection to non-domain networks - Enabled (if domain joined)",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.7_stmt",
+        "name": "statement",
+        "prose": "Prohibit connection to non-domain networks - Enabled (if domain joined)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.8",
+      "title": "Turn off Windows Connect Now - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.8_stmt",
+        "name": "statement",
+        "prose": "Turn off Windows Connect Now - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.9",
+      "title": "Turn off Windows Connect Now wizard - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.9_stmt",
+        "name": "statement",
+        "prose": "Turn off Windows Connect Now wizard - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.10",
+      "title": "Turn off Internet download for Web publishing and online ordering wizards - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.10_stmt",
+        "name": "statement",
+        "prose": "Turn off Internet download for Web publishing and online ordering wizards - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.11",
+      "title": "Turn off printing over HTTP - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.11_stmt",
+        "name": "statement",
+        "prose": "Turn off printing over HTTP - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.12",
+      "title": "Turn off Registration if URL connection is referring to Microsoft.com - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.12_stmt",
+        "name": "statement",
+        "prose": "Turn off Registration if URL connection is referring to Microsoft.com - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.13",
+      "title": "Turn off Search Companion content file updates - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.13_stmt",
+        "name": "statement",
+        "prose": "Turn off Search Companion content file updates - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.14",
+      "title": "Turn off the Order Prints picture task - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.14_stmt",
+        "name": "statement",
+        "prose": "Turn off the Order Prints picture task - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.15",
+      "title": "Turn off the Publish to Web task for files and folders - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.15_stmt",
+        "name": "statement",
+        "prose": "Turn off the Publish to Web task for files and folders - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.16",
+      "title": "Turn off the Windows Messenger Customer Experience Improvement Program - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.16_stmt",
+        "name": "statement",
+        "prose": "Turn off the Windows Messenger Customer Experience Improvement Program - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.17",
+      "title": "Turn off Windows Customer Experience Improvement Program - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.17_stmt",
+        "name": "statement",
+        "prose": "Turn off Windows Customer Experience Improvement Program - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.18",
+      "title": "Turn off Windows Error Reporting - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.18_stmt",
+        "name": "statement",
+        "prose": "Turn off Windows Error Reporting - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.19",
+      "title": "Support device authentication using certificate - Enabled: Automatic",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.19_stmt",
+        "name": "statement",
+        "prose": "Support device authentication using certificate - Enabled: Automatic"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.20",
+      "title": "Enumeration policy for external devices incompatible with Kernel DMA Protection - Enabled: Block All",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.20_stmt",
+        "name": "statement",
+        "prose": "Enumeration policy for external devices incompatible with Kernel DMA Protection - Enabled: Block All"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.21",
+      "title": "Boot-Start Driver Initialization Policy - Enabled: Good unknown and bad but critical",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.21_stmt",
+        "name": "statement",
+        "prose": "Boot-Start Driver Initialization Policy - Enabled: Good unknown and bad but critical"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.22",
+      "title": "Configure registry policy processing - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.22_stmt",
+        "name": "statement",
+        "prose": "Configure registry policy processing - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.23",
+      "title": "Configure system restore point creation frequency - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.23_stmt",
+        "name": "statement",
+        "prose": "Configure system restore point creation frequency - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.24",
+      "title": "Turn off access to the Store - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.24_stmt",
+        "name": "statement",
+        "prose": "Turn off access to the Store - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.25",
+      "title": "Turn off the Store application - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.25_stmt",
+        "name": "statement",
+        "prose": "Turn off the Store application - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.1.26",
+      "title": "Turn off Automatic Download and Install of updates - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.1.26_stmt",
+        "name": "statement",
+        "prose": "Turn off Automatic Download and Install of updates - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.1",
+      "title": "Prevent access to registry editing tools - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.1_stmt",
+        "name": "statement",
+        "prose": "Prevent access to registry editing tools - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.2",
+      "title": "Prevent access to the command prompt - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.2_stmt",
+        "name": "statement",
+        "prose": "Prevent access to the command prompt - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.3",
+      "title": "Always install with elevated privileges - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.3_stmt",
+        "name": "statement",
+        "prose": "Always install with elevated privileges - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.4",
+      "title": "Turn off toast notifications on the lock screen - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.4_stmt",
+        "name": "statement",
+        "prose": "Turn off toast notifications on the lock screen - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.5",
+      "title": "Turn off Help Experience Improvement Program - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.5_stmt",
+        "name": "statement",
+        "prose": "Turn off Help Experience Improvement Program - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.6",
+      "title": "Do not preserve zone information in file attachments - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.6_stmt",
+        "name": "statement",
+        "prose": "Do not preserve zone information in file attachments - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.7",
+      "title": "Notify antivirus programs when opening attachments - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.7_stmt",
+        "name": "statement",
+        "prose": "Notify antivirus programs when opening attachments - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.8",
+      "title": "Configure Windows spotlight on lock screen - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.8_stmt",
+        "name": "statement",
+        "prose": "Configure Windows spotlight on lock screen - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.9",
+      "title": "Do not suggest third-party content in Windows spotlight - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.9_stmt",
+        "name": "statement",
+        "prose": "Do not suggest third-party content in Windows spotlight - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.10",
+      "title": "Turn off all Windows spotlight features - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.10_stmt",
+        "name": "statement",
+        "prose": "Turn off all Windows spotlight features - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.11",
+      "title": "Turn off Windows spotlight on Action Center - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.11_stmt",
+        "name": "statement",
+        "prose": "Turn off Windows spotlight on Action Center - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.12",
+      "title": "Turn off Windows spotlight on Settings - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.12_stmt",
+        "name": "statement",
+        "prose": "Turn off Windows spotlight on Settings - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.13",
+      "title": "Do not use diagnostic data for tailored experiences - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.13_stmt",
+        "name": "statement",
+        "prose": "Do not use diagnostic data for tailored experiences - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.14",
+      "title": "Turn off Microsoft consumer experiences - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.14_stmt",
+        "name": "statement",
+        "prose": "Turn off Microsoft consumer experiences - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.15",
+      "title": "Require pin for pairing - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.15_stmt",
+        "name": "statement",
+        "prose": "Require pin for pairing - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.16",
+      "title": "Do not display network selection UI - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.16_stmt",
+        "name": "statement",
+        "prose": "Do not display network selection UI - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.17",
+      "title": "Do not enumerate connected USB devices on the lock screen - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.17_stmt",
+        "name": "statement",
+        "prose": "Do not enumerate connected USB devices on the lock screen - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.18",
+      "title": "Prevent enabling lock screen camera - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.18_stmt",
+        "name": "statement",
+        "prose": "Prevent enabling lock screen camera - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.19",
+      "title": "Prevent enabling lock screen slide show - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.19_stmt",
+        "name": "statement",
+        "prose": "Prevent enabling lock screen slide show - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.20",
+      "title": "Allow input personalization - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.20_stmt",
+        "name": "statement",
+        "prose": "Allow input personalization - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.21",
+      "title": "Turn off the advertising ID - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.21_stmt",
+        "name": "statement",
+        "prose": "Turn off the advertising ID - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.22",
+      "title": "Turn off location for this device - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.22_stmt",
+        "name": "statement",
+        "prose": "Turn off location for this device - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.23",
+      "title": "Turn off all location privacy settings - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.23_stmt",
+        "name": "statement",
+        "prose": "Turn off all location privacy settings - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.24",
+      "title": "Configure Authenticated Proxy usage for Connected User Experience and Telemetry - Enabled: Disable Authenticated Proxy usage",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.24_stmt",
+        "name": "statement",
+        "prose": "Configure Authenticated Proxy usage for Connected User Experience and Telemetry - Enabled: Disable Authenticated Proxy usage"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.25",
+      "title": "Do not show feedback notifications - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.25_stmt",
+        "name": "statement",
+        "prose": "Do not show feedback notifications - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-8.2.26",
+      "title": "Turn off Automatic Download and Install of updates - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-8.2.26_stmt",
+        "name": "statement",
+        "prose": "Turn off Automatic Download and Install of updates - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-9.1",
+      "title": "Configure Attack Surface Reduction rules - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-9.1_stmt",
+        "name": "statement",
+        "prose": "Configure Attack Surface Reduction rules - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-9.2",
+      "title": "Configure detection for potentially unwanted applications - Enabled: Block",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-9.2_stmt",
+        "name": "statement",
+        "prose": "Configure detection for potentially unwanted applications - Enabled: Block"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-9.3",
+      "title": "Turn off Windows Defender AntiVirus - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-9.3_stmt",
+        "name": "statement",
+        "prose": "Turn off Windows Defender AntiVirus - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-9.4",
+      "title": "Configure real-time protection - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-9.4_stmt",
+        "name": "statement",
+        "prose": "Configure real-time protection - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-9.5",
+      "title": "Scan all downloaded files and attachments - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-9.5_stmt",
+        "name": "statement",
+        "prose": "Scan all downloaded files and attachments - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-9.6",
+      "title": "Turn on behavior monitoring - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-9.6_stmt",
+        "name": "statement",
+        "prose": "Turn on behavior monitoring - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-9.7",
+      "title": "Turn on process scanning whenever real-time protection is enabled - Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-9.7_stmt",
+        "name": "statement",
+        "prose": "Turn on process scanning whenever real-time protection is enabled - Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-9.8",
+      "title": "Configure local setting override for reporting to Microsoft MAPS - Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-9.8_stmt",
+        "name": "statement",
+        "prose": "Configure local setting override for reporting to Microsoft MAPS - Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-10.1.1",
+      "title": "Domain Profile: Firewall state - On",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-10.1.1_stmt",
+        "name": "statement",
+        "prose": "Domain Profile: Firewall state - On"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-10.1.2",
+      "title": "Domain Profile: Inbound connections - Block (default)",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-10.1.2_stmt",
+        "name": "statement",
+        "prose": "Domain Profile: Inbound connections - Block (default)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-10.2.1",
+      "title": "Private Profile: Firewall state - On",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-10.2.1_stmt",
+        "name": "statement",
+        "prose": "Private Profile: Firewall state - On"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-10.2.2",
+      "title": "Private Profile: Inbound connections - Block (default)",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-10.2.2_stmt",
+        "name": "statement",
+        "prose": "Private Profile: Inbound connections - Block (default)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-10.3.1",
+      "title": "Public Profile: Firewall state - On",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-10.3.1_stmt",
+        "name": "statement",
+        "prose": "Public Profile: Firewall state - On"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-10.3.2",
+      "title": "Public Profile: Inbound connections - Block (default)",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-10.3.2_stmt",
+        "name": "statement",
+        "prose": "Public Profile: Inbound connections - Block (default)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-11.1",
+      "title": "Audit Policy: Account Logon: Credential Validation - Success and Failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-11.1_stmt",
+        "name": "statement",
+        "prose": "Audit Policy: Account Logon: Credential Validation - Success and Failure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11-11.2",
+      "title": "Audit Policy: Account Management: User Account Management - Success and Failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "11.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "11.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11-11.2_stmt",
+        "name": "statement",
+        "prose": "Audit Policy: Account Management: User Account Management - Success and Failure"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "1f1dd1c2-a0ff-5902-9066-897c69e6e1ef",
+     "title": "CIS Microsoft Windows 11 Enterprise Benchmark v5.0.1",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.windows_11"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/windows_11/cis_windows_11.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

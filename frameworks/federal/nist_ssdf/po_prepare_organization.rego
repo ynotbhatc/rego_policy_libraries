@@ -5,6 +5,14 @@
 #   framework: nist_ssdf
 #   source: nist
 #   domains: [us-federal, secure-development]
+#   coverage:
+#     checks: 13
+#     cited: 13
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nist_ssdf.po
 
 # NIST SSDF (SP 800-218 v1.1) — Practice Group: Prepare the Organization (PO)
@@ -123,3 +131,11 @@ compliance_report := {
 	"violation_count": count(violations),
 	"compliant": compliant,
 }
+#   coverage:
+#     checks: 13
+#     cited: 13
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

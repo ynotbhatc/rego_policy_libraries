@@ -71,11 +71,18 @@ check-converters:
 	@python3 converters/exports/crosswalk_csv/build.py >/dev/null && git diff --exit-code -- converters/exports/crosswalk_csv/dist >/dev/null || { echo 'crosswalk_csv dist/ is stale: run make crosswalk and commit'; exit 1; }
 	@python3 converters/exports/xccdf_ids/build.py >/dev/null && git diff --exit-code -- converters/exports/xccdf_ids/dist >/dev/null || { echo 'xccdf_ids dist/ is stale: run make xccdf and commit'; exit 1; }
 
+coverage:
+	@echo "=== Stamping custom.coverage into every module's METADATA + docs/COVERAGE_SCAN.md ==="
+	@python3 scripts/coverage_stamp.py --report docs/COVERAGE_SCAN.md
+
+check-coverage:
+	@python3 scripts/coverage_stamp.py --check
+
 metadata:
 	@echo "=== Checking policy METADATA annotations ==="
 	@python3 scripts/check_metadata.py
 
-check: lint test metadata
+check: lint test metadata check-coverage
 
 OPA_SECURITY_URL  ?= http://localhost:8181
 OPA_COMPLIANCE_URL ?= http://localhost:8182

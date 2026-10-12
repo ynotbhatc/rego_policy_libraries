@@ -5,6 +5,14 @@
 #   framework: cis_amazon_linux_2023
 #   source: cis
 #   domains: [linux, amazon-linux]
+#   coverage:
+#     checks: 11
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_amazon_linux_2023.logging
 
 # CIS Amazon Linux 2023 Section 4.2.x - Logging Configuration
@@ -243,3 +251,11 @@ report := {
 	"collection_timestamp": input.collection_timestamp,
 }
 
+#   coverage:
+#     checks: 11
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

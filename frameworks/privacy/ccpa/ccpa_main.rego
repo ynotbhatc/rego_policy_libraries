@@ -5,6 +5,17 @@
 #   framework: ccpa
 #   source: us-state
 #   domains: [privacy, us-state]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     expected: 7
+#     found: 146
+#     scope: directory
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package ccpa.main
 
 import rego.v1
@@ -101,3 +112,14 @@ compliance_report := {
 		},
 	},
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     expected: 7
+#     found: 146
+#     scope: directory
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

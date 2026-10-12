@@ -5,6 +5,14 @@
 #   framework: stig_windows_11
 #   source: disa
 #   domains: [windows]
+#   coverage:
+#     checks: 12
+#     cited: 12
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package stig.windows_11.registry_other
 
 # DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide
@@ -225,3 +233,11 @@ findings := [
 default compliant := false
 
 compliant if count([f | some f in findings; f.status == "Open"]) == 0
+#   coverage:
+#     checks: 12
+#     cited: 12
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

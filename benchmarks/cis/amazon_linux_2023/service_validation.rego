@@ -5,6 +5,14 @@
 #   framework: cis_amazon_linux_2023
 #   source: cis
 #   domains: [linux, amazon-linux]
+#   coverage:
+#     checks: 13
+#     cited: 13
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_amazon_linux_2023.services
 
 # CIS Amazon Linux 2023 Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x - Service Configuration
@@ -319,3 +327,11 @@ report := {
 	"collection_timestamp": input.collection_timestamp,
 }
 
+#   coverage:
+#     checks: 13
+#     cited: 13
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

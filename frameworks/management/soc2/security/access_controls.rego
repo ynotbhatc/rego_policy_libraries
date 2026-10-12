@@ -8,6 +8,14 @@
 #   framework: soc2
 #   source: aicpa
 #   domains: [assurance]
+#   coverage:
+#     checks: 12
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package soc2.security.access_controls
 
 import rego.v1
@@ -202,4 +210,12 @@ security_findings := findings if {
         "container_security_enforced": container_security_enforced,
         "overall_score": security_score
     }
+#   coverage:
+#     checks: 12
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

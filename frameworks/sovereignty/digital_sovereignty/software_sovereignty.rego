@@ -5,6 +5,14 @@
 #   framework: digital_sovereignty
 #   source: aac
 #   domains: [sovereignty, data-residency]
+#   coverage:
+#     checks: 22
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package digital_sovereignty.software_sovereignty
 
 import rego.v1
@@ -417,3 +425,11 @@ default private_registry_used := false
 default sbom_coverage_adequate := false
 default sbom_current := false
 default sbom_maintained := false
+#   coverage:
+#     checks: 22
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

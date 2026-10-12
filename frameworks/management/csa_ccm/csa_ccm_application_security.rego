@@ -5,6 +5,14 @@
 #   framework: csa_ccm
 #   source: csa
 #   domains: [cloud]
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package csa_ccm.application_security
 
 import rego.v1
@@ -174,3 +182,11 @@ compliance_report := {
     "violation_count": count(violations),
     "violations": violations,
 }
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

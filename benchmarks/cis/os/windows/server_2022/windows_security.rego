@@ -5,6 +5,14 @@
 #   framework: cis_os
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 37
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis.windows.server2022
 
 import rego.v1
@@ -343,4 +351,12 @@ windows_server_compliance := {
     "machine_password_max_age": machine_password_max_age,
     "require_strong_session_key": require_strong_session_key,
     "overall_compliant": windows_server_compliant
+#   coverage:
+#     checks: 37
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

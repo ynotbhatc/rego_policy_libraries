@@ -5,6 +5,14 @@
 #   framework: cis_rocky_linux_9
 #   source: cis
 #   domains: [linux, rocky]
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_rocky_linux_9.cron
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 5.1: Configure time-based job schedulers
@@ -150,3 +158,11 @@ report := {
 	"section": "5.1 Configure time-based job schedulers",
 	"benchmark": "DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 (applied to Rocky Linux 9)",
 }
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

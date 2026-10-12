@@ -5,6 +5,14 @@
 #   framework: nist_sp_800_171
 #   source: nist
 #   domains: [us-federal, security-controls]
+#   coverage:
+#     checks: 22
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package nist.sp800_171.access_control
 
 import rego.v1
@@ -217,4 +225,12 @@ nist_sp800_171_ac_compliance := {
     "portable_storage_limits": portable_storage_limits,
     "public_system_cui_control": public_system_cui_control,
     "overall_compliant": nist_sp800_171_ac_compliant
+#   coverage:
+#     checks: 22
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

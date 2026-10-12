@@ -12,6 +12,14 @@
 #   framework: supply_chain_ssdf_genai
 #   source: nist
 #   domains: [supply-chain, secure-development, ai]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package supply_chain.ssdf_genai
 
 import rego.v1
@@ -37,3 +45,11 @@ report := {
 	"reuses_substrate": reuses_substrate,
 	"note": "AI-generated artifacts run the same substrate controls; the coverage triage forces focused review when AI output touches the spine.",
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

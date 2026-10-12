@@ -5,6 +5,14 @@
 #   framework: iso27701
 #   source: iso
 #   domains: [privacy, isms]
+#   coverage:
+#     checks: 8
+#     cited: 8
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package iso27701.pims_requirements
 
 import rego.v1
@@ -102,3 +110,11 @@ compliance_report := {
 	"violation_count": count(violations),
 	"violations": violations,
 }
+#   coverage:
+#     checks: 8
+#     cited: 8
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

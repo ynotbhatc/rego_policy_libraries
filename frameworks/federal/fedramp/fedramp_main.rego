@@ -5,6 +5,14 @@
 #   framework: fedramp
 #   source: fedramp
 #   domains: [us-federal, cloud]
+#   coverage:
+#     checks: 25
+#     cited: 19
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package fedramp
 
 import rego.v1
@@ -344,3 +352,11 @@ fedramp_compliance_report := {
         },
     },
 }
+#   coverage:
+#     checks: 25
+#     cited: 19
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

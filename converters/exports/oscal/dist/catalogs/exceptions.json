@@ -1,0 +1,126 @@
+{
+ "catalog": {
+  "uuid": "6eaa0044-d02e-5736-af8b-79c9ac1c7794",
+  "metadata": {
+   "title": "Rego Policy Libraries — exceptions (Security exception waivers — waived, never hidden)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "exceptions"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "exceptions-waivers",
+    "class": "rego-module",
+    "title": "Security exception waivers — waived, never hidden",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "exceptions"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/exceptions/waivers.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "exceptions-exceptions-1",
+      "title": "Implemented by a Rego rule in governance/exceptions/waivers.rego (package exceptions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "exceptions#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "exceptions#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "exceptions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2ef5ad7-63c5-5bc4-bfb4-beaa378e10b8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "exceptions-exceptions-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/exceptions/waivers.rego (package exceptions); see the rule body."
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "f2ef5ad7-63c5-5bc4-bfb4-beaa378e10b8",
+     "title": "Security exception waivers — waived, never hidden",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "exceptions"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/governance/exceptions/waivers.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

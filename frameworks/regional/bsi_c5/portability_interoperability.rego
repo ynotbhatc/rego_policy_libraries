@@ -5,6 +5,14 @@
 #   framework: bsi_c5
 #   source: bsi
 #   domains: [germany, cloud]
+#   coverage:
+#     checks: 3
+#     cited: 2
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package bsi_c5.portability_interoperability
 
 import rego.v1
@@ -39,3 +47,11 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": domain_compliant,
 }
+#   coverage:
+#     checks: 3
+#     cited: 2
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

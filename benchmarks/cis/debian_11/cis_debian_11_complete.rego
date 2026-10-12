@@ -5,6 +5,14 @@
 #   framework: cis_debian_11
 #   source: cis
 #   domains: [linux, debian]
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_debian_11
 
 # CIS Debian 11 Benchmark - Complete Compliance Assessment
@@ -186,3 +194,11 @@ compliance_assessment := {
 # For audit-of-record use this library MUST be formally mapped against
 # the CIS Debian Linux 11 Benchmark before results are relied upon.
 total_controls_covered := 240
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

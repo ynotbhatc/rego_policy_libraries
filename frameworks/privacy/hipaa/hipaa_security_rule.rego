@@ -5,6 +5,14 @@
 #   framework: hipaa
 #   source: hhs
 #   domains: [privacy, healthcare]
+#   coverage:
+#     checks: 17
+#     cited: 4
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: report
+#     as_of: v2.3.1
 package hipaa.security_rule
 
 import rego.v1
@@ -281,3 +289,11 @@ report := {
 		"patient_rights": patient_rights_technical,
 	},
 }
+#   coverage:
+#     checks: 17
+#     cited: 4
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: report
+#     as_of: v2.3.0

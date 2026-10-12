@@ -5,6 +5,14 @@
 #   framework: cis_azure
 #   source: cis
 #   domains: [cloud, azure]
+#   coverage:
+#     checks: 44
+#     cited: 44
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_azure.l2
 
 # CIS Microsoft Azure Foundations Benchmark v3.0.0 - Level 2 Additional Controls
@@ -265,3 +273,11 @@ compliance_report := {
 	"l2_violation_list": [v | some v in violations],
 	"note": "Level 2 controls supplement Level 1. Intended for regulated Azure workloads (FedRAMP High, PCI-DSS, HIPAA, HITRUST).",
 }
+#   coverage:
+#     checks: 44
+#     cited: 44
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -1,0 +1,192 @@
+{
+ "catalog": {
+  "uuid": "e4229e5c-729e-57b3-8b6f-761ef137ce23",
+  "metadata": {
+   "title": "Rego Policy Libraries — corporate (Corporate Password Policy Implementation)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "corporate"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "corporate-password_policy",
+    "class": "rego-module",
+    "title": "Corporate Password Policy Implementation",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "corporate.password"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/corporate/password_policy.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "corporate-At-least-3-character-classes",
+      "title": "Implemented by a Rego rule in frameworks/management/corporate/password_policy.rego (package corporate.password); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "At least 3 character classes"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "At least 3 character classes"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "corporate.password"
+       }
+      ],
+      "links": [
+       {
+        "href": "#070799a7-91de-5945-b4bd-8d93332031b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "corporate-At-least-3-character-classes_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/corporate/password_policy.rego (package corporate.password); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "corporate-Cannot-reuse-last-12-passwords",
+      "title": "Implemented by a Rego rule in frameworks/management/corporate/password_policy.rego (package corporate.password); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Cannot reuse last 12 passwords"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Cannot reuse last 12 passwords"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "corporate.password"
+       }
+      ],
+      "links": [
+       {
+        "href": "#070799a7-91de-5945-b4bd-8d93332031b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "corporate-Cannot-reuse-last-12-passwords_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/corporate/password_policy.rego (package corporate.password); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "corporate-No-personal-info-or-common-patterns",
+      "title": "Implemented by a Rego rule in frameworks/management/corporate/password_policy.rego (package corporate.password); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "No personal info or common patterns"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "No personal info or common patterns"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "corporate.password"
+       }
+      ],
+      "links": [
+       {
+        "href": "#070799a7-91de-5945-b4bd-8d93332031b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "corporate-No-personal-info-or-common-patterns_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/corporate/password_policy.rego (package corporate.password); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "070799a7-91de-5945-b4bd-8d93332031b0",
+     "title": "Corporate Password Policy Implementation",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "corporate.password"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/management/corporate/password_policy.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

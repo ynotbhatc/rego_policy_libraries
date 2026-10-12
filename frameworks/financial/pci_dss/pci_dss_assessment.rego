@@ -13,6 +13,14 @@
 #   framework: pci_dss
 #   source: pci-ssc
 #   domains: [financial, payment-cards]
+#   coverage:
+#     checks: 1
+#     cited: 1
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package pci_dss
 
 import rego.v1
@@ -40,3 +48,11 @@ pci_dss_assessment := {
 		"req_12_governance": main.requirement_12_compliant,
 	},
 }
+#   coverage:
+#     checks: 1
+#     cited: 1
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

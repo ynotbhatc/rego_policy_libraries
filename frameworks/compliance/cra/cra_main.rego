@@ -5,6 +5,14 @@
 #   framework: cra
 #   source: eu
 #   domains: [eu, product-security]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cra.main
 
 import rego.v1
@@ -186,3 +194,11 @@ compliance_report := {
 		},
 	},
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

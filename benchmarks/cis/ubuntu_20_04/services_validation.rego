@@ -5,6 +5,14 @@
 #   framework: cis_ubuntu_20_04
 #   source: cis
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 11
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_ubuntu_20_04.services
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 2.1.x, 2.2.x, 2.3.x: Service Configuration
@@ -185,3 +193,11 @@ report := {
 	"section": "2.1-2.3 Service Configuration",
 	"benchmark": "CIS Ubuntu 20.04 v3.0.0",
 }
+#   coverage:
+#     checks: 11
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

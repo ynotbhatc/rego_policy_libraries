@@ -5,6 +5,14 @@
 #   framework: geisa
 #   source: geisa
 #   domains: [ot, energy, smart-grid]
+#   coverage:
+#     checks: 9
+#     cited: 0
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package governance.geisa.api
 
 import rego.v1
@@ -106,3 +114,11 @@ compliance_report := {
 	"geisa_version": object.get(input, ["discovery_response", "geisa_version"], "unknown"),
 	"platform_discovery_status": object.get(input, ["discovery_response", "status_code"], 0),
 }
+#   coverage:
+#     checks: 9
+#     cited: 0
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

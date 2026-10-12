@@ -5,6 +5,14 @@
 #   framework: stig_cisco_ios_xe_router
 #   source: disa
 #   domains: [network, cisco]
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.cisco_ios_xe_router
 
 # DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide — Master Aggregator
@@ -53,3 +61,11 @@ compliance_report := {
 	"failed_controls": count(open_findings),
 	"compliant": fully_compliant,
 }
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

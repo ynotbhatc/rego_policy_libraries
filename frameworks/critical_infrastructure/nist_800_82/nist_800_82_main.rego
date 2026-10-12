@@ -5,6 +5,17 @@
 #   framework: nist_800_82
 #   source: nist
 #   domains: [ot, industrial]
+#   coverage:
+#     checks: 23
+#     cited: 23
+#     expected: 32
+#     found: 23
+#     scope: module
+#     density: partial
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nist_800_82.main
 
 import rego.v1
@@ -276,3 +287,14 @@ compliance_report := {
         "supply_chain":         [v | some v in violations; contains(v, "SR-")],
     },
 }
+#   coverage:
+#     checks: 23
+#     cited: 23
+#     expected: 32
+#     found: 23
+#     scope: module
+#     density: partial
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

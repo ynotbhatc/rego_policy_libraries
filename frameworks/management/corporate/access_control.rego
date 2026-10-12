@@ -5,6 +5,14 @@
 #   framework: corporate
 #   source: aac
 #   domains: [corporate]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package corporate.access.control
 
 import rego.v1
@@ -676,4 +684,12 @@ access_control_metadata := {
     "enforcement_level": "mandatory",
     "review_frequency": "quarterly",
     "exception_approval_required": true
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

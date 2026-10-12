@@ -27,6 +27,14 @@
 #   framework: meti_csm
 #   source: meti
 #   domains: [japan, it-governance]
+#   coverage:
+#     checks: 52
+#     cited: 49
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package meti_csm.main
 
 import rego.v1
@@ -153,3 +161,11 @@ compliance_report := {
 	"violation_count": count(violations),
 	"violations": violations,
 }
+#   coverage:
+#     checks: 52
+#     cited: 49
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

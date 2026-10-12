@@ -5,6 +5,14 @@
 #   framework: stig_postgresql_16
 #   source: disa
 #   domains: [database, postgresql]
+#   coverage:
+#     checks: 13
+#     cited: 13
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package stig.postgresql_16.core
 
 # DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide
@@ -245,3 +253,11 @@ findings := [
 default compliant := false
 
 compliant if count([f | some f in findings; f.status == "Open"]) == 0
+#   coverage:
+#     checks: 13
+#     cited: 13
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

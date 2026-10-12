@@ -5,6 +5,14 @@
 #   framework: cis_windows_server_2016
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 8
+#     cited: 8
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_windows_server_2016
 
 # CIS Microsoft Windows Server 2016 Benchmark v1.4.0
@@ -425,4 +433,12 @@ detailed_findings := {
     "registry_violations": registry_violations,
     "security_options_violations": security_options_violations,
     "advanced_audit_violations": advanced_audit_violations
+#   coverage:
+#     checks: 8
+#     cited: 8
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

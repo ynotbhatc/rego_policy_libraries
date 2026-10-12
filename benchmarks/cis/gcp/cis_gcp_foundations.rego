@@ -5,6 +5,14 @@
 #   framework: cis_gcp
 #   source: cis
 #   domains: [cloud, gcp]
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_gcp_foundations
 
 # CIS Google Cloud Platform Foundation Benchmark v4.0.0
@@ -321,4 +329,12 @@ detailed_findings := {
     "storage_violations": storage_violations,
     "sql_violations": sql_violations,
     "bigquery_violations": bigquery_violations
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

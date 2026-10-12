@@ -5,6 +5,14 @@
 #   framework: cis_os
 #   source: cis
 #   domains: [linux]
+#   coverage:
+#     checks: 11
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis.filesystem
 
 import rego.v1
@@ -96,4 +104,12 @@ filesystem_compliance := {
     "tmp_nosuid": tmp_nosuid,
     "tmp_noexec": tmp_noexec,
     "overall_compliant": filesystem_compliant
+#   coverage:
+#     checks: 11
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

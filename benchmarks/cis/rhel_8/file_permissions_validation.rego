@@ -5,6 +5,14 @@
 #   framework: cis_rhel_8
 #   source: cis
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 17
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_rhel8.file_permissions
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 6.1: System File Permissions
@@ -143,3 +151,11 @@ report := {
 	"section": "6.1 System File Permissions",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
+#   coverage:
+#     checks: 17
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

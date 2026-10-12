@@ -5,6 +5,17 @@
 #   framework: nist_sp_800_171
 #   source: nist
 #   domains: [us-federal, security-controls]
+#   coverage:
+#     checks: 12
+#     cited: 6
+#     expected: 6
+#     found: 12
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nist.sp800_171.maintenance
 
 import rego.v1
@@ -121,3 +132,14 @@ compliance_report := {
         "3.7.6_maintenance_supervision": maintenance_supervision,
     },
 }
+#   coverage:
+#     checks: 12
+#     cited: 6
+#     expected: 6
+#     found: 12
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -35,6 +35,14 @@
 #   framework: ai
 #   source: aac
 #   domains: [ai]
+#   coverage:
+#     checks: 10
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package ai_governance
 
 import rego.v1
@@ -167,3 +175,11 @@ audit_entry := {
     "approval_obtained": authorization.approval_obtained,
     "deny_reasons": deny_reasons
 }
+#   coverage:
+#     checks: 10
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

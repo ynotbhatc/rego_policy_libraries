@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "c44c5847-89d0-5dd2-bafc-4b3117ad075a",
+  "uuid": "416de8ba-4e9b-5438-89a4-7818fe6b63a7",
   "metadata": {
    "title": "Rego Policy Libraries — pqc (Post-Quantum Cryptography (PQC) Readiness — v1.0)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "pqc-PQC-Input-Contract",
-      "title": "unrecognized profile %v — must be one of general, federal, nss (profile-gated checks were NOT evaluated)",
+      "id": "pqc-pqc.main-1",
+      "title": "PQC Input Contract: unrecognized profile %v — must be one of general, federal, nss (profile-gated checks were NOT evaluated)",
       "props": [
        {
         "name": "label",
-        "value": "PQC Input Contract"
+        "value": "pqc.main#1"
        },
        {
         "name": "alt-identifier",
-        "value": "PQC Input Contract"
+        "value": "pqc.main#1"
        },
        {
         "name": "rego-package",
@@ -85,25 +85,15 @@
       ],
       "links": [
        {
-        "href": "#b2a4ca86-6272-58e2-8b5d-9ac7d49cef0f",
+        "href": "#0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "pqc-PQC-Input-Contract_stmt",
+        "id": "pqc-pqc.main-1_stmt",
         "name": "statement",
-        "prose": "unrecognized profile %v — must be one of general, federal, nss (profile-gated checks were NOT evaluated)"
-       },
-       {
-        "id": "pqc-PQC-Input-Contract_obj.1",
-        "name": "assessment-objective",
-        "prose": "crypto_inventory must be an array of asset records (data-driven algorithm checks were NOT evaluated)"
-       },
-       {
-        "id": "pqc-PQC-Input-Contract_obj.2",
-        "name": "assessment-objective",
-        "prose": "crypto_inventory[%v] is malformed — asset, algorithm (single token), and a valid usage (key_establishment|signature|symmetric|hashing) are required"
+        "prose": "PQC Input Contract: unrecognized profile %v — must be one of general, federal, nss (profile-gated checks were NOT evaluated)"
        }
       ],
       "class": "compliance"
@@ -128,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#b2a4ca86-6272-58e2-8b5d-9ac7d49cef0f",
+        "href": "#0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
         "rel": "implementation"
        }
       ],
@@ -171,7 +161,7 @@
       ],
       "links": [
        {
-        "href": "#b2a4ca86-6272-58e2-8b5d-9ac7d49cef0f",
+        "href": "#0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
         "rel": "implementation"
        }
       ],
@@ -209,7 +199,7 @@
       ],
       "links": [
        {
-        "href": "#b2a4ca86-6272-58e2-8b5d-9ac7d49cef0f",
+        "href": "#0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
         "rel": "implementation"
        }
       ],
@@ -238,6 +228,72 @@
       "class": "compliance"
      },
      {
+      "id": "pqc-pqc.main-2",
+      "title": "PQC Input Contract: crypto_inventory must be an array of asset records (data-driven algorithm checks were NOT evaluated)",
+      "props": [
+       {
+        "name": "label",
+        "value": "pqc.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pqc.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-pqc.main-2_stmt",
+        "name": "statement",
+        "prose": "PQC Input Contract: crypto_inventory must be an array of asset records (data-driven algorithm checks were NOT evaluated)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-pqc.main-3",
+      "title": "PQC Input Contract: crypto_inventory[%v] is malformed — asset, algorithm (single token), and a valid usage (key_establishment|signature|symmetric|hashing) are required",
+      "props": [
+       {
+        "name": "label",
+        "value": "pqc.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pqc.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-pqc.main-3_stmt",
+        "name": "statement",
+        "prose": "PQC Input Contract: crypto_inventory[%v] is malformed — asset, algorithm (single token), and a valid usage (key_establishment|signature|symmetric|hashing) are required"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "pqc-PQC-FIPS-180-4",
       "title": "Asset '%s' uses broken hash algorithm '%s', which is disallowed for all cryptographic use",
       "props": [
@@ -257,7 +313,7 @@
       ],
       "links": [
        {
-        "href": "#b2a4ca86-6272-58e2-8b5d-9ac7d49cef0f",
+        "href": "#0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
         "rel": "implementation"
        }
       ],
@@ -271,16 +327,16 @@
       "class": "compliance"
      },
      {
-      "id": "pqc-PQC-Crypto-Agility",
-      "title": "Cryptographic algorithms cannot be replaced without application redesign",
+      "id": "pqc-pqc.main-4",
+      "title": "PQC Crypto-Agility: Cryptographic algorithms cannot be replaced without application redesign",
       "props": [
        {
         "name": "label",
-        "value": "PQC Crypto-Agility"
+        "value": "pqc.main#4"
        },
        {
         "name": "alt-identifier",
-        "value": "PQC Crypto-Agility"
+        "value": "pqc.main#4"
        },
        {
         "name": "rego-package",
@@ -290,25 +346,81 @@
       ],
       "links": [
        {
-        "href": "#b2a4ca86-6272-58e2-8b5d-9ac7d49cef0f",
+        "href": "#0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "pqc-PQC-Crypto-Agility_stmt",
+        "id": "pqc-pqc.main-4_stmt",
         "name": "statement",
-        "prose": "Cryptographic algorithms cannot be replaced without application redesign"
+        "prose": "PQC Crypto-Agility: Cryptographic algorithms cannot be replaced without application redesign"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-pqc.main-5",
+      "title": "PQC Crypto-Agility: No maintained inventory of cryptographic libraries and their PQC support status",
+      "props": [
+       {
+        "name": "label",
+        "value": "pqc.main#5"
        },
        {
-        "id": "pqc-PQC-Crypto-Agility_obj.1",
-        "name": "assessment-objective",
-        "prose": "No maintained inventory of cryptographic libraries and their PQC support status"
+        "name": "alt-identifier",
+        "value": "pqc.main#5"
        },
        {
-        "id": "pqc-PQC-Crypto-Agility_obj.2",
-        "name": "assessment-objective",
-        "prose": "Vendor PQC roadmaps and FIPS 140-3 PQC validation status are not tracked"
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-pqc.main-5_stmt",
+        "name": "statement",
+        "prose": "PQC Crypto-Agility: No maintained inventory of cryptographic libraries and their PQC support status"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-pqc.main-6",
+      "title": "PQC Crypto-Agility: Vendor PQC roadmaps and FIPS 140-3 PQC validation status are not tracked",
+      "props": [
+       {
+        "name": "label",
+        "value": "pqc.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pqc.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-pqc.main-6_stmt",
+        "name": "statement",
+        "prose": "PQC Crypto-Agility: Vendor PQC roadmaps and FIPS 140-3 PQC validation status are not tracked"
        }
       ],
       "class": "compliance"
@@ -333,7 +445,7 @@
       ],
       "links": [
        {
-        "href": "#b2a4ca86-6272-58e2-8b5d-9ac7d49cef0f",
+        "href": "#0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
         "rel": "implementation"
        }
       ],
@@ -367,7 +479,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "b2a4ca86-6272-58e2-8b5d-9ac7d49cef0f",
+     "uuid": "0528070d-6cbd-580e-8d5b-fe0c27ba2ecd",
      "title": "Post-Quantum Cryptography (PQC) Readiness — v1.0",
      "props": [
       {
@@ -378,7 +490,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/pqc/pqc_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/pqc/pqc_main.rego",
        "media-type": "text/plain"
       }
      ]

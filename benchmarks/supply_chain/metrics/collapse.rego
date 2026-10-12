@@ -10,6 +10,14 @@
 #   framework: supply_chain_metrics
 #   source: aac
 #   domains: [supply-chain]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package supply_chain.metrics
 
 import rego.v1
@@ -45,3 +53,11 @@ collapse_report := {
 	"distinct_themes_referenced": distinct_themes_referenced,
 	"note": "Independent frameworks' requirements reference a small shared substrate — the empirical collapse.",
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

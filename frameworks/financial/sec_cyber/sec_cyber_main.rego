@@ -5,6 +5,17 @@
 #   framework: sec_cyber
 #   source: sec
 #   domains: [financial, public-company]
+#   coverage:
+#     checks: 8
+#     cited: 8
+#     expected: 22
+#     found: 8
+#     scope: module
+#     density: sparse
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package sec_cyber.main
 
 import rego.v1
@@ -187,3 +198,14 @@ compliance_report := {
         "risk_management_program":   [v | some v in violations; contains(v, "§229.106(b)(1)")],
     },
 }
+#   coverage:
+#     checks: 8
+#     cited: 8
+#     expected: 22
+#     found: 8
+#     scope: module
+#     density: sparse
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

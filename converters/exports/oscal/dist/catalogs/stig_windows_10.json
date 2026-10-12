@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "07061b98-79a3-5887-a278-26a553361d58",
+  "uuid": "63ce381a-a575-587d-8277-4c5ce70e36be",
   "metadata": {
    "title": "Rego Policy Libraries — stig_windows_10 (DISA STIG for windows 10 - Simplified Complete Assessment)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,171 @@
     ],
     "controls": [
      {
+      "id": "stig_windows_10-WN10-PK-000010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_10/stig_windows_10_complete.rego (package stig.windows_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN10-PK-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN10-PK-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d78766f7-2572-5de6-8b4a-807b942fd7eb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_10-WN10-PK-000010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_10/stig_windows_10_complete.rego (package stig.windows_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_10-WN10-SO-000030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_10/stig_windows_10_complete.rego (package stig.windows_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN10-SO-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN10-SO-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d78766f7-2572-5de6-8b4a-807b942fd7eb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_10-WN10-SO-000030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_10/stig_windows_10_complete.rego (package stig.windows_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_10-WN10-00-000020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_10/stig_windows_10_complete.rego (package stig.windows_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN10-00-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN10-00-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d78766f7-2572-5de6-8b4a-807b942fd7eb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_10-WN10-00-000020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_10/stig_windows_10_complete.rego (package stig.windows_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_10-WN10-AC-000010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_10/stig_windows_10_complete.rego (package stig.windows_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN10-AC-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN10-AC-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d78766f7-2572-5de6-8b4a-807b942fd7eb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_10-WN10-AC-000010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_10/stig_windows_10_complete.rego (package stig.windows_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_10-WN10-AC-000040",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_10/stig_windows_10_complete.rego (package stig.windows_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN10-AC-000040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN10-AC-000040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d78766f7-2572-5de6-8b4a-807b942fd7eb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_10-WN10-AC-000040_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_10/stig_windows_10_complete.rego (package stig.windows_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_windows_10-assessment_metadata",
       "title": "Implemented by a Rego rule in benchmarks/stig/windows_10/stig_windows_10_complete.rego (package stig.windows_10); see the rule body.",
       "props": [
@@ -85,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#daafd84a-4b1d-5f58-9339-3fe436d372b9",
+        "href": "#d78766f7-2572-5de6-8b4a-807b942fd7eb",
         "rel": "implementation"
        }
       ],
@@ -118,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#daafd84a-4b1d-5f58-9339-3fe436d372b9",
+        "href": "#d78766f7-2572-5de6-8b4a-807b942fd7eb",
         "rel": "implementation"
        }
       ],
@@ -137,7 +302,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "daafd84a-4b1d-5f58-9339-3fe436d372b9",
+     "uuid": "d78766f7-2572-5de6-8b4a-807b942fd7eb",
      "title": "DISA STIG for windows 10 - Simplified Complete Assessment",
      "props": [
       {
@@ -148,7 +313,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/windows_10/stig_windows_10_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/windows_10/stig_windows_10_complete.rego",
        "media-type": "text/plain"
       }
      ]

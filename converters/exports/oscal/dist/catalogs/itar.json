@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "9a9060e1-e21a-5001-8b8d-01d5f8677cea",
+  "uuid": "0225d2ee-5c5f-5697-9590-45f6e7ac9682",
   "metadata": {
    "title": "Rego Policy Libraries — itar (ITAR — International Traffic in Arms Regulations, 22 CFR Parts 120-130)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
@@ -198,16 +198,16 @@
       "class": "compliance"
      },
      {
-      "id": "itar-ITAR",
-      "title": "Logical access controls not implemented on systems storing ITAR technical data (authentication, authorization, segregation from general data)",
+      "id": "itar-itar.main-2",
+      "title": "ITAR: Logical access controls not implemented on systems storing ITAR technical data (authentication, authorization, segregation from general data)",
       "props": [
        {
         "name": "label",
-        "value": "ITAR"
+        "value": "itar.main#2"
        },
        {
         "name": "alt-identifier",
-        "value": "ITAR"
+        "value": "itar.main#2"
        },
        {
         "name": "rego-package",
@@ -217,40 +217,48 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "itar-ITAR_stmt",
+        "id": "itar-itar.main-2_stmt",
         "name": "statement",
-        "prose": "Logical access controls not implemented on systems storing ITAR technical data (authentication, authorization, segregation from general data)"
+        "prose": "ITAR: Logical access controls not implemented on systems storing ITAR technical data (authentication, authorization, segregation from general data)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "itar-itar.main-3",
+      "title": "ITAR: Physical access controls not implemented where ITAR technical data or defense articles are located",
+      "props": [
+       {
+        "name": "label",
+        "value": "itar.main#3"
        },
        {
-        "id": "itar-ITAR_obj.1",
-        "name": "assessment-objective",
-        "prose": "Physical access controls not implemented where ITAR technical data or defense articles are located"
+        "name": "alt-identifier",
+        "value": "itar.main#3"
        },
        {
-        "id": "itar-ITAR_obj.2",
-        "name": "assessment-objective",
-        "prose": "Written export compliance program not established (DDTC compliance program guidelines)"
-       },
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "itar.main"
+       }
+      ],
+      "links": [
        {
-        "id": "itar-ITAR_obj.3",
-        "name": "assessment-objective",
-        "prose": "Export-control training not provided to personnel with access to ITAR technical data"
-       },
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
        {
-        "id": "itar-ITAR_obj.4",
-        "name": "assessment-objective",
-        "prose": "ITAR safeguarding obligations not flowed down to subcontractors and service providers handling technical data"
-       },
-       {
-        "id": "itar-ITAR_obj.5",
-        "name": "assessment-objective",
-        "prose": "Access to ITAR technical data not logged (who accessed what, when — the record a deemed-export investigation requires)"
+        "id": "itar-itar.main-3_stmt",
+        "name": "statement",
+        "prose": "ITAR: Physical access controls not implemented where ITAR technical data or defense articles are located"
        }
       ],
       "class": "compliance"
@@ -275,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
@@ -308,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
@@ -341,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
@@ -374,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
@@ -383,6 +391,39 @@
         "id": "itar-ITAR-22-CFR-120.54-b-1_stmt",
         "name": "statement",
         "prose": "Means of decryption not withheld from third parties — end-to-end encryption requires that decryption capability is provided to no third party"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "itar-itar.main-4",
+      "title": "ITAR: Written export compliance program not established (DDTC compliance program guidelines)",
+      "props": [
+       {
+        "name": "label",
+        "value": "itar.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "itar.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "itar.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "itar-itar.main-4_stmt",
+        "name": "statement",
+        "prose": "ITAR: Written export compliance program not established (DDTC compliance program guidelines)"
        }
       ],
       "class": "compliance"
@@ -407,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
@@ -416,6 +457,72 @@
         "id": "itar-ITAR-22-CFR-120.67_stmt",
         "name": "statement",
         "prose": "Empowered Official not designated for export authorization decisions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "itar-itar.main-5",
+      "title": "ITAR: Export-control training not provided to personnel with access to ITAR technical data",
+      "props": [
+       {
+        "name": "label",
+        "value": "itar.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "itar.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "itar.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "itar-itar.main-5_stmt",
+        "name": "statement",
+        "prose": "ITAR: Export-control training not provided to personnel with access to ITAR technical data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "itar-itar.main-6",
+      "title": "ITAR: ITAR safeguarding obligations not flowed down to subcontractors and service providers handling technical data",
+      "props": [
+       {
+        "name": "label",
+        "value": "itar.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "itar.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "itar.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "itar-itar.main-6_stmt",
+        "name": "statement",
+        "prose": "ITAR: ITAR safeguarding obligations not flowed down to subcontractors and service providers handling technical data"
        }
       ],
       "class": "compliance"
@@ -440,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
@@ -473,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#4ec9963f-ddd7-589d-907c-7500094862f0",
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
         "rel": "implementation"
        }
       ],
@@ -485,6 +592,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "itar-itar.main-7",
+      "title": "ITAR: Access to ITAR technical data not logged (who accessed what, when — the record a deemed-export investigation requires)",
+      "props": [
+       {
+        "name": "label",
+        "value": "itar.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "itar.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "itar.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b355006-aaab-5e62-a04e-4b6107c550d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "itar-itar.main-7_stmt",
+        "name": "statement",
+        "prose": "ITAR: Access to ITAR technical data not logged (who accessed what, when — the record a deemed-export investigation requires)"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    }
@@ -492,7 +632,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "4ec9963f-ddd7-589d-907c-7500094862f0",
+     "uuid": "0b355006-aaab-5e62-a04e-4b6107c550d0",
      "title": "ITAR — International Traffic in Arms Regulations, 22 CFR Parts 120-130",
      "props": [
       {
@@ -503,7 +643,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regulatory/itar/itar_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regulatory/itar/itar_main.rego",
        "media-type": "text/plain"
       }
      ]

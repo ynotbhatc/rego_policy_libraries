@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "a06e01dc-b445-5cb3-b0e6-cf6b66435bcb",
+  "uuid": "a6381b6a-d904-50ec-9363-9ac90155dfea",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_os (CIS Benchmark compliance rules for Linux systems)",
+   "title": "Rego Policy Libraries — cis_os (CIS Benchmark - Access, Authentication and Authorization)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,888 @@
    ]
   },
   "groups": [
+   {
+    "id": "cis_os-access_control",
+    "class": "rego-module",
+    "title": "CIS Benchmark - Access, Authentication and Authorization",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.access_control"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/os/linux/redhat/access_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_os-cis.access_control-1",
+      "title": "cron daily permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-1_stmt",
+        "name": "statement",
+        "prose": "cron daily permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-2",
+      "title": "cron enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-2_stmt",
+        "name": "statement",
+        "prose": "cron enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-3",
+      "title": "cron hourly permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-3_stmt",
+        "name": "statement",
+        "prose": "cron hourly permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-4",
+      "title": "cron monthly permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-4_stmt",
+        "name": "statement",
+        "prose": "cron monthly permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-5",
+      "title": "cron weekly permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-5_stmt",
+        "name": "statement",
+        "prose": "cron weekly permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-6",
+      "title": "crontab permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-6_stmt",
+        "name": "statement",
+        "prose": "crontab permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-7",
+      "title": "ssh access limited",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-7_stmt",
+        "name": "statement",
+        "prose": "ssh access limited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-8",
+      "title": "ssh banner configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-8_stmt",
+        "name": "statement",
+        "prose": "ssh banner configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-9",
+      "title": "ssh crypto policy not overridden",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-9_stmt",
+        "name": "statement",
+        "prose": "ssh crypto policy not overridden"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-10",
+      "title": "ssh empty passwords disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-10_stmt",
+        "name": "statement",
+        "prose": "ssh empty passwords disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-11",
+      "title": "ssh hostbased auth disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-11_stmt",
+        "name": "statement",
+        "prose": "ssh hostbased auth disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-12",
+      "title": "ssh idle timeout configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-12_stmt",
+        "name": "statement",
+        "prose": "ssh idle timeout configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-13",
+      "title": "ssh ignorerhosts enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-13_stmt",
+        "name": "statement",
+        "prose": "ssh ignorerhosts enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-14",
+      "title": "ssh login grace time limited",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-14_stmt",
+        "name": "statement",
+        "prose": "ssh login grace time limited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-15",
+      "title": "ssh loglevel appropriate",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-15_stmt",
+        "name": "statement",
+        "prose": "ssh loglevel appropriate"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-16",
+      "title": "ssh max sessions limited",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-16_stmt",
+        "name": "statement",
+        "prose": "ssh max sessions limited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-17",
+      "title": "ssh max startups configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-17_stmt",
+        "name": "statement",
+        "prose": "ssh max startups configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-18",
+      "title": "ssh maxauthtries limited",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-18_stmt",
+        "name": "statement",
+        "prose": "ssh maxauthtries limited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-19",
+      "title": "ssh pam enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-19_stmt",
+        "name": "statement",
+        "prose": "ssh pam enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-20",
+      "title": "ssh private key permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-20_stmt",
+        "name": "statement",
+        "prose": "ssh private key permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-21",
+      "title": "ssh public key permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-21_stmt",
+        "name": "statement",
+        "prose": "ssh public key permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-22",
+      "title": "ssh root login disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-22_stmt",
+        "name": "statement",
+        "prose": "ssh root login disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-23",
+      "title": "ssh tcp forwarding disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-23_stmt",
+        "name": "statement",
+        "prose": "ssh tcp forwarding disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-24",
+      "title": "ssh user environment disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-24_stmt",
+        "name": "statement",
+        "prose": "ssh user environment disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-25",
+      "title": "ssh x11 forwarding disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-25_stmt",
+        "name": "statement",
+        "prose": "ssh x11 forwarding disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.access_control-26",
+      "title": "sshd config permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.access_control#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.access_control#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c56ec691-546e-5bd7-9991-655de75b97a6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.access_control-26_stmt",
+        "name": "statement",
+        "prose": "sshd config permissions"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "cis_os-cis_policy",
     "class": "rego-module",
@@ -85,7 +967,7 @@
       ],
       "links": [
        {
-        "href": "#e328a917-af3b-5011-8744-22d9bf263342",
+        "href": "#b342ed74-5442-54ea-a7a0-c19cc10c6686",
         "rel": "implementation"
        }
       ],
@@ -118,7 +1000,7 @@
       ],
       "links": [
        {
-        "href": "#e328a917-af3b-5011-8744-22d9bf263342",
+        "href": "#b342ed74-5442-54ea-a7a0-c19cc10c6686",
         "rel": "implementation"
        }
       ],
@@ -151,7 +1033,7 @@
       ],
       "links": [
        {
-        "href": "#e328a917-af3b-5011-8744-22d9bf263342",
+        "href": "#b342ed74-5442-54ea-a7a0-c19cc10c6686",
         "rel": "implementation"
        }
       ],
@@ -184,7 +1066,7 @@
       ],
       "links": [
        {
-        "href": "#e328a917-af3b-5011-8744-22d9bf263342",
+        "href": "#b342ed74-5442-54ea-a7a0-c19cc10c6686",
         "rel": "implementation"
        }
       ],
@@ -193,6 +1075,912 @@
         "id": "cis_os-ssh_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/os/linux/redhat/cis_policy.rego (package cis_redhat_legacy); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_os-filesystem",
+    "class": "rego-module",
+    "title": "CIS Benchmark - Initial Setup and Filesystem Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.filesystem"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/os/linux/redhat/filesystem.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_os-cis.filesystem-1",
+      "title": "cramfs disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.filesystem#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.filesystem#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c21914c7-4146-5a61-9f48-e6f6748d4634",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.filesystem-1_stmt",
+        "name": "statement",
+        "prose": "cramfs disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.filesystem-2",
+      "title": "freevxfs disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.filesystem#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.filesystem#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c21914c7-4146-5a61-9f48-e6f6748d4634",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.filesystem-2_stmt",
+        "name": "statement",
+        "prose": "freevxfs disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.filesystem-3",
+      "title": "hfs disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.filesystem#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.filesystem#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c21914c7-4146-5a61-9f48-e6f6748d4634",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.filesystem-3_stmt",
+        "name": "statement",
+        "prose": "hfs disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.filesystem-4",
+      "title": "hfsplus disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.filesystem#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.filesystem#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c21914c7-4146-5a61-9f48-e6f6748d4634",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.filesystem-4_stmt",
+        "name": "statement",
+        "prose": "hfsplus disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.filesystem-5",
+      "title": "jffs2 disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.filesystem#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.filesystem#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c21914c7-4146-5a61-9f48-e6f6748d4634",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.filesystem-5_stmt",
+        "name": "statement",
+        "prose": "jffs2 disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.filesystem-6",
+      "title": "squashfs disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.filesystem#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.filesystem#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c21914c7-4146-5a61-9f48-e6f6748d4634",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.filesystem-6_stmt",
+        "name": "statement",
+        "prose": "squashfs disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.filesystem-7",
+      "title": "tmp configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.filesystem#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.filesystem#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c21914c7-4146-5a61-9f48-e6f6748d4634",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.filesystem-7_stmt",
+        "name": "statement",
+        "prose": "tmp configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.filesystem-8",
+      "title": "tmp nodev",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.filesystem#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.filesystem#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c21914c7-4146-5a61-9f48-e6f6748d4634",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.filesystem-8_stmt",
+        "name": "statement",
+        "prose": "tmp nodev"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.filesystem-9",
+      "title": "tmp noexec",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.filesystem#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.filesystem#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c21914c7-4146-5a61-9f48-e6f6748d4634",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.filesystem-9_stmt",
+        "name": "statement",
+        "prose": "tmp noexec"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.filesystem-10",
+      "title": "tmp nosuid",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.filesystem#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.filesystem#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c21914c7-4146-5a61-9f48-e6f6748d4634",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.filesystem-10_stmt",
+        "name": "statement",
+        "prose": "tmp nosuid"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.filesystem-11",
+      "title": "udf disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.filesystem#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.filesystem#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c21914c7-4146-5a61-9f48-e6f6748d4634",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.filesystem-11_stmt",
+        "name": "statement",
+        "prose": "udf disabled"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_os-network",
+    "class": "rego-module",
+    "title": "CIS Benchmark - Network Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.network"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/os/linux/redhat/network.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_os-cis.network-1",
+      "title": "bogus icmp ignored",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-1_stmt",
+        "name": "statement",
+        "prose": "bogus icmp ignored"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-2",
+      "title": "broadcast icmp ignored",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-2_stmt",
+        "name": "statement",
+        "prose": "broadcast icmp ignored"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-3",
+      "title": "icmp redirects disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-3_stmt",
+        "name": "statement",
+        "prose": "icmp redirects disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-4",
+      "title": "ip forwarding disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-4_stmt",
+        "name": "statement",
+        "prose": "ip forwarding disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-5",
+      "title": "ipv6 disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-5_stmt",
+        "name": "statement",
+        "prose": "ipv6 disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-6",
+      "title": "ipv6 icmp redirects disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-6_stmt",
+        "name": "statement",
+        "prose": "ipv6 icmp redirects disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-7",
+      "title": "ipv6 router advertisements disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-7_stmt",
+        "name": "statement",
+        "prose": "ipv6 router advertisements disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-8",
+      "title": "ipv6 source routing disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-8_stmt",
+        "name": "statement",
+        "prose": "ipv6 source routing disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-9",
+      "title": "packet redirect disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-9_stmt",
+        "name": "statement",
+        "prose": "packet redirect disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-10",
+      "title": "reverse path filtering",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-10_stmt",
+        "name": "statement",
+        "prose": "reverse path filtering"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-11",
+      "title": "secure icmp redirects disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-11_stmt",
+        "name": "statement",
+        "prose": "secure icmp redirects disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-12",
+      "title": "source routing disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-12_stmt",
+        "name": "statement",
+        "prose": "source routing disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-13",
+      "title": "suspicious packets logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-13_stmt",
+        "name": "statement",
+        "prose": "suspicious packets logged"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-14",
+      "title": "tcp syn cookies",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-14_stmt",
+        "name": "statement",
+        "prose": "tcp syn cookies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.network-15",
+      "title": "wireless disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a27d33a2-5897-5b62-a7a0-dec725058390",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.network-15_stmt",
+        "name": "statement",
+        "prose": "wireless disabled"
        }
       ],
       "class": "security"
@@ -241,7 +2029,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -274,7 +2062,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -307,7 +2095,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -340,7 +2128,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -373,7 +2161,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -406,7 +2194,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -439,7 +2227,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -472,7 +2260,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -505,7 +2293,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -538,7 +2326,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -571,7 +2359,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -604,7 +2392,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -637,7 +2425,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -670,7 +2458,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -703,7 +2491,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -736,7 +2524,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -769,7 +2557,7 @@
       ],
       "links": [
        {
-        "href": "#16fbda31-9d86-5742-b5ae-341aaa4789ac",
+        "href": "#b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
         "rel": "implementation"
        }
       ],
@@ -826,7 +2614,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -859,7 +2647,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -892,7 +2680,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -925,7 +2713,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -958,7 +2746,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -991,7 +2779,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1024,7 +2812,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1057,7 +2845,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1090,7 +2878,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1123,7 +2911,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1156,7 +2944,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1189,7 +2977,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1222,7 +3010,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1255,7 +3043,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1288,7 +3076,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1321,7 +3109,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1354,7 +3142,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1387,7 +3175,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1420,7 +3208,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1453,7 +3241,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1486,7 +3274,7 @@
       ],
       "links": [
        {
-        "href": "#ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+        "href": "#c2326e2e-773f-5a68-ac15-798f0a4cc482",
         "rel": "implementation"
        }
       ],
@@ -1543,7 +3331,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1576,7 +3364,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1609,7 +3397,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1642,7 +3430,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1675,7 +3463,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1708,7 +3496,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1741,7 +3529,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1774,7 +3562,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1807,7 +3595,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1840,7 +3628,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1873,7 +3661,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1906,7 +3694,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1939,7 +3727,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -1972,7 +3760,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -2005,7 +3793,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -2038,7 +3826,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -2071,7 +3859,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -2104,7 +3892,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -2137,7 +3925,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -2170,7 +3958,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -2203,7 +3991,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -2236,7 +4024,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -2269,7 +4057,7 @@
       ],
       "links": [
        {
-        "href": "#02b0c09c-e103-5bfb-adf2-15aed9365465",
+        "href": "#c663e643-3d52-5acd-8ca2-60c676f6475d",
         "rel": "implementation"
        }
       ],
@@ -2283,12 +4071,2222 @@
       "class": "security"
      }
     ]
+   },
+   {
+    "id": "cis_os-filesystem",
+    "class": "rego-module",
+    "title": "CIS Ubuntu Linux Benchmark",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.ubuntu.initial_setup"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/os/linux/ubuntu/01_initial_setup/filesystem.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-1",
+      "title": "automounting disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-1_stmt",
+        "name": "statement",
+        "prose": "automounting disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-2",
+      "title": "cramfs disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-2_stmt",
+        "name": "statement",
+        "prose": "cramfs disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-3",
+      "title": "dev shm nodev",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-3_stmt",
+        "name": "statement",
+        "prose": "dev shm nodev"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-4",
+      "title": "dev shm noexec",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-4_stmt",
+        "name": "statement",
+        "prose": "dev shm noexec"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-5",
+      "title": "dev shm nosuid",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-5_stmt",
+        "name": "statement",
+        "prose": "dev shm nosuid"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-6",
+      "title": "freevxfs disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-6_stmt",
+        "name": "statement",
+        "prose": "freevxfs disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-7",
+      "title": "hfs disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-7_stmt",
+        "name": "statement",
+        "prose": "hfs disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-8",
+      "title": "hfsplus disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-8_stmt",
+        "name": "statement",
+        "prose": "hfsplus disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-9",
+      "title": "home nodev",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-9_stmt",
+        "name": "statement",
+        "prose": "home nodev"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-10",
+      "title": "home partition configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-10_stmt",
+        "name": "statement",
+        "prose": "home partition configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-11",
+      "title": "jffs2 disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-11_stmt",
+        "name": "statement",
+        "prose": "jffs2 disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-12",
+      "title": "removable media nodev",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-12_stmt",
+        "name": "statement",
+        "prose": "removable media nodev"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-13",
+      "title": "removable media noexec",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-13_stmt",
+        "name": "statement",
+        "prose": "removable media noexec"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-14",
+      "title": "removable media nosuid",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-14_stmt",
+        "name": "statement",
+        "prose": "removable media nosuid"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-15",
+      "title": "sticky bit set",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-15_stmt",
+        "name": "statement",
+        "prose": "sticky bit set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-16",
+      "title": "tmp nodev",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-16_stmt",
+        "name": "statement",
+        "prose": "tmp nodev"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-17",
+      "title": "tmp noexec",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-17_stmt",
+        "name": "statement",
+        "prose": "tmp noexec"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-18",
+      "title": "tmp nosuid",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-18_stmt",
+        "name": "statement",
+        "prose": "tmp nosuid"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-19",
+      "title": "tmp partition configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-19_stmt",
+        "name": "statement",
+        "prose": "tmp partition configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-20",
+      "title": "udf disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-20_stmt",
+        "name": "statement",
+        "prose": "udf disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-21",
+      "title": "usb storage disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-21_stmt",
+        "name": "statement",
+        "prose": "usb storage disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-22",
+      "title": "var log audit partition configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-22_stmt",
+        "name": "statement",
+        "prose": "var log audit partition configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-23",
+      "title": "var log partition configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-23_stmt",
+        "name": "statement",
+        "prose": "var log partition configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-24",
+      "title": "var partition configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-24_stmt",
+        "name": "statement",
+        "prose": "var partition configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-25",
+      "title": "var tmp nodev",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-25_stmt",
+        "name": "statement",
+        "prose": "var tmp nodev"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-26",
+      "title": "var tmp noexec",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-26_stmt",
+        "name": "statement",
+        "prose": "var tmp noexec"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-27",
+      "title": "var tmp nosuid",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-27_stmt",
+        "name": "statement",
+        "prose": "var tmp nosuid"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.ubuntu.initial_setup-28",
+      "title": "var tmp partition configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.ubuntu.initial_setup#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.ubuntu.initial_setup#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.ubuntu.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa64aa57-84c2-5cfb-b841-303153c13dde",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.ubuntu.initial_setup-28_stmt",
+        "name": "statement",
+        "prose": "var tmp partition configured"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_os-windows_security",
+    "class": "rego-module",
+    "title": "CIS Microsoft Windows Server 2022 Benchmark",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.windows.server2022"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/os/windows/server_2022/windows_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_os-cis.windows.server2022-1",
+      "title": "access credential manager restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-1_stmt",
+        "name": "statement",
+        "prose": "access credential manager restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-2",
+      "title": "act as os restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-2_stmt",
+        "name": "statement",
+        "prose": "act as os restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-3",
+      "title": "adjust memory quotas restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-3_stmt",
+        "name": "statement",
+        "prose": "adjust memory quotas restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-4",
+      "title": "backup privilege restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-4_stmt",
+        "name": "statement",
+        "prose": "backup privilege restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-5",
+      "title": "change system time restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-5_stmt",
+        "name": "statement",
+        "prose": "change system time restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-6",
+      "title": "change time zone restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-6_stmt",
+        "name": "statement",
+        "prose": "change time zone restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-7",
+      "title": "create global objects restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-7_stmt",
+        "name": "statement",
+        "prose": "create global objects restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-8",
+      "title": "create pagefile restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-8_stmt",
+        "name": "statement",
+        "prose": "create pagefile restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-9",
+      "title": "create permanent objects restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-9_stmt",
+        "name": "statement",
+        "prose": "create permanent objects restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-10",
+      "title": "create symbolic links restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-10_stmt",
+        "name": "statement",
+        "prose": "create symbolic links restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-11",
+      "title": "create token restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-11_stmt",
+        "name": "statement",
+        "prose": "create token restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-12",
+      "title": "debug programs restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-12_stmt",
+        "name": "statement",
+        "prose": "debug programs restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-13",
+      "title": "deny batch logon includes guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-13_stmt",
+        "name": "statement",
+        "prose": "deny batch logon includes guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-14",
+      "title": "deny local logon includes guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-14_stmt",
+        "name": "statement",
+        "prose": "deny local logon includes guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-15",
+      "title": "deny network access includes guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-15_stmt",
+        "name": "statement",
+        "prose": "deny network access includes guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-16",
+      "title": "deny rdp logon includes guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-16_stmt",
+        "name": "statement",
+        "prose": "deny rdp logon includes guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-17",
+      "title": "deny service logon includes guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-17_stmt",
+        "name": "statement",
+        "prose": "deny service logon includes guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-18",
+      "title": "disable machine password changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-18_stmt",
+        "name": "statement",
+        "prose": "disable machine password changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-19",
+      "title": "encrypt secure channel",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-19_stmt",
+        "name": "statement",
+        "prose": "encrypt secure channel"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-20",
+      "title": "encrypt secure channel when possible",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-20_stmt",
+        "name": "statement",
+        "prose": "encrypt secure channel when possible"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-21",
+      "title": "force audit policy subcategory",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-21_stmt",
+        "name": "statement",
+        "prose": "force audit policy subcategory"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-22",
+      "title": "format removable media restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-22_stmt",
+        "name": "statement",
+        "prose": "format removable media restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-23",
+      "title": "limit blank passwords",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-23_stmt",
+        "name": "statement",
+        "prose": "limit blank passwords"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-24",
+      "title": "local logon restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-24_stmt",
+        "name": "statement",
+        "prose": "local logon restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-25",
+      "title": "machine password max age",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-25_stmt",
+        "name": "statement",
+        "prose": "machine password max age"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-26",
+      "title": "network access restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-26_stmt",
+        "name": "statement",
+        "prose": "network access restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-27",
+      "title": "password complexity enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-27_stmt",
+        "name": "statement",
+        "prose": "password complexity enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-28",
+      "title": "password history enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-28_stmt",
+        "name": "statement",
+        "prose": "password history enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-29",
+      "title": "password max age",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-29_stmt",
+        "name": "statement",
+        "prose": "password max age"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-30",
+      "title": "password min age",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-30_stmt",
+        "name": "statement",
+        "prose": "password min age"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-31",
+      "title": "password min length",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-31_stmt",
+        "name": "statement",
+        "prose": "password min length"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-32",
+      "title": "prevent printer driver install",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-32_stmt",
+        "name": "statement",
+        "prose": "prevent printer driver install"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-33",
+      "title": "rdp logon restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-33_stmt",
+        "name": "statement",
+        "prose": "rdp logon restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-34",
+      "title": "require strong session key",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-34_stmt",
+        "name": "statement",
+        "prose": "require strong session key"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-35",
+      "title": "reversible encryption disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#35"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#35"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-35_stmt",
+        "name": "statement",
+        "prose": "reversible encryption disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-36",
+      "title": "shutdown on audit failure",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#36"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#36"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-36_stmt",
+        "name": "statement",
+        "prose": "shutdown on audit failure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_os-cis.windows.server2022-37",
+      "title": "sign secure channel when possible",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.windows.server2022#37"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.windows.server2022#37"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.windows.server2022"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a72633-5b94-5455-ba91-1bbd4ad84f90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_os-cis.windows.server2022-37_stmt",
+        "name": "statement",
+        "prose": "sign secure channel when possible"
+       }
+      ],
+      "class": "security"
+     }
+    ]
    }
   ],
   "back-matter": {
    "resources": [
     {
-     "uuid": "e328a917-af3b-5011-8744-22d9bf263342",
+     "uuid": "c56ec691-546e-5bd7-9991-655de75b97a6",
+     "title": "CIS Benchmark - Access, Authentication and Authorization",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.access_control"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/os/linux/redhat/access_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b342ed74-5442-54ea-a7a0-c19cc10c6686",
      "title": "CIS Benchmark compliance rules for Linux systems",
      "props": [
       {
@@ -2299,13 +6297,47 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/os/linux/redhat/cis_policy.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/os/linux/redhat/cis_policy.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "16fbda31-9d86-5742-b5ae-341aaa4789ac",
+     "uuid": "c21914c7-4146-5a61-9f48-e6f6748d4634",
+     "title": "CIS Benchmark - Initial Setup and Filesystem Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.filesystem"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/os/linux/redhat/filesystem.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a27d33a2-5897-5b62-a7a0-dec725058390",
+     "title": "CIS Benchmark - Network Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.network"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/os/linux/redhat/network.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b3609e1e-d0ff-5ed5-9a2f-2ae631205f92",
      "title": "CIS RHEL 9 Benchmark v2.0.0 - Section 5.2: PAM (Pluggable Authentication Modules)",
      "props": [
       {
@@ -2316,13 +6348,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/os/linux/rhel_9_legacy/modules/pam_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/os/linux/rhel_9_legacy/modules/pam_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "ff66d95e-7d6f-59f3-837f-4414bf8c3ee9",
+     "uuid": "c2326e2e-773f-5a68-ac15-798f0a4cc482",
      "title": "CIS RHEL 9 Benchmark v2.0.0 - Section 5.1: SSH Server Configuration",
      "props": [
       {
@@ -2333,13 +6365,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/os/linux/rhel_9_legacy/modules/ssh_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/os/linux/rhel_9_legacy/modules/ssh_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "02b0c09c-e103-5bfb-adf2-15aed9365465",
+     "uuid": "c663e643-3d52-5acd-8ca2-60c676f6475d",
      "title": "CIS RHEL 9 Benchmark v2.0.0 - Sections 5.3-5.4 & 6.2: User Accounts and Environment",
      "props": [
       {
@@ -2350,7 +6382,41 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/os/linux/rhel_9_legacy/modules/user_accounts_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/os/linux/rhel_9_legacy/modules/user_accounts_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "aa64aa57-84c2-5cfb-b841-303153c13dde",
+     "title": "CIS Ubuntu Linux Benchmark",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.ubuntu.initial_setup"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/os/linux/ubuntu/01_initial_setup/filesystem.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "27a72633-5b94-5455-ba91-1bbd4ad84f90",
+     "title": "CIS Microsoft Windows Server 2022 Benchmark",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.windows.server2022"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/os/windows/server_2022/windows_security.rego",
        "media-type": "text/plain"
       }
      ]

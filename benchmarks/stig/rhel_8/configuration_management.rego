@@ -5,6 +5,14 @@
 #   framework: stig_rhel_8
 #   source: disa
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 17
+#     cited: 16
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.rhel_8.configuration_management
 
 # DISA STIG for RHEL 8 - Configuration Management Module
@@ -339,3 +347,11 @@ compliance_report := {
 	"findings": findings,
 	"compliant": compliant,
 }
+#   coverage:
+#     checks: 17
+#     cited: 16
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

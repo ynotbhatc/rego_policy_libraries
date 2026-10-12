@@ -14,6 +14,14 @@
 #   framework: cis_controls_v8
 #   source: cis
 #   domains: [security-controls]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_controls_v8.main
 
 import rego.v1
@@ -90,3 +98,11 @@ compliance_report := {
 	},
 	"compliant": compliant,
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

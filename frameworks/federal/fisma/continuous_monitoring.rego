@@ -5,6 +5,14 @@
 #   framework: fisma
 #   source: nist
 #   domains: [us-federal]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package fisma.continuous_monitoring
 
 import rego.v1
@@ -414,4 +422,12 @@ continuous_monitoring_metadata := {
 	"purpose": "Ongoing monitoring of security controls and system security posture",
 	"scope": "Federal information systems subject to FISMA requirements",
 	"last_updated": "2025-01-06",
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

@@ -5,6 +5,14 @@
 #   framework: stig_amazon_linux_2023
 #   source: disa
 #   domains: [linux, amazon-linux]
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.amazon_linux_2023
 
 # DISA STIG — Amazon Linux 2023 Security Technical Implementation Guide — Master Aggregator
@@ -54,3 +62,11 @@ compliance_report := {
 	"failed_controls": count(open_findings),
 	"compliant": fully_compliant,
 }
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

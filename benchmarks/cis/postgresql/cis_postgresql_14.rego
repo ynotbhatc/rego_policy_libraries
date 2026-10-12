@@ -5,6 +5,17 @@
 #   framework: cis_postgresql
 #   source: cis
 #   domains: [database, postgresql]
+#   coverage:
+#     checks: 168
+#     cited: 168
+#     expected: 168
+#     found: 168
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis.postgresql_14
 
 import rego.v1
@@ -1421,4 +1432,15 @@ compliance_requirements_met if {
 	compliance.requirements_documented == true
 	compliance.controls_implemented == true
 	compliance.regular_audits == true
+#   coverage:
+#     checks: 168
+#     cited: 168
+#     expected: 168
+#     found: 168
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0
 }

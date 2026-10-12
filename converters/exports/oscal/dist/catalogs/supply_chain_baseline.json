@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "3b3c0060-a89f-5711-81f1-b9fdc6ea4f35",
+  "uuid": "e1d505f1-813e-5271-b290-1f20e968137c",
   "metadata": {
    "title": "Rego Policy Libraries — supply_chain_baseline (AAC Supply-Chain Baseline — the default check (the supply-chain spine))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "supply_chain_baseline-Supply-chain-baseline",
-      "title": "'%s' not satisfied (800-53 %v)",
+      "id": "supply_chain_baseline-supply_chain.baseline-1",
+      "title": "Supply-chain baseline: '%s' not satisfied (800-53 %v)",
       "props": [
        {
         "name": "label",
-        "value": "Supply-chain baseline"
+        "value": "supply_chain.baseline#1"
        },
        {
         "name": "alt-identifier",
-        "value": "Supply-chain baseline"
+        "value": "supply_chain.baseline#1"
        },
        {
         "name": "rego-package",
@@ -85,15 +85,15 @@
       ],
       "links": [
        {
-        "href": "#2c8ae8e7-f842-5e0d-83af-e3922a9ac3a5",
+        "href": "#4884ae20-dbfb-5181-8294-1a938ac8d46b",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "supply_chain_baseline-Supply-chain-baseline_stmt",
+        "id": "supply_chain_baseline-supply_chain.baseline-1_stmt",
         "name": "statement",
-        "prose": "'%s' not satisfied (800-53 %v)"
+        "prose": "Supply-chain baseline: '%s' not satisfied (800-53 %v)"
        }
       ],
       "class": "security"
@@ -104,7 +104,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "2c8ae8e7-f842-5e0d-83af-e3922a9ac3a5",
+     "uuid": "4884ae20-dbfb-5181-8294-1a938ac8d46b",
      "title": "AAC Supply-Chain Baseline — the default check (the supply-chain spine)",
      "props": [
       {
@@ -115,7 +115,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/supply_chain/baseline/baseline.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/supply_chain/baseline/baseline.rego",
        "media-type": "text/plain"
       }
      ]

@@ -5,6 +5,17 @@
 #   framework: cis_oracle
 #   source: cis
 #   domains: [database, oracle]
+#   coverage:
+#     checks: 178
+#     cited: 178
+#     expected: 178
+#     found: 178
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis.oracle_19c
 
 import rego.v1
@@ -1542,4 +1553,15 @@ network_monitoring_ids if {
 	monitoring.enabled == true
 	monitoring.intrusion_detection == true
 	monitoring.real_time_alerts == true
+#   coverage:
+#     checks: 178
+#     cited: 178
+#     expected: 178
+#     found: 178
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0
 }

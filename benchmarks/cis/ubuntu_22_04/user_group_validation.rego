@@ -5,6 +5,14 @@
 #   framework: cis_ubuntu_22_04
 #   source: cis
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 17
+#     cited: 17
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_ubuntu_22_04.user_group
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 6.2: User and Group Settings
@@ -166,3 +174,11 @@ report := {
 	"section": "6.2 User and Group Settings",
 	"benchmark": "CIS Ubuntu 22.04 v3.0.0",
 }
+#   coverage:
+#     checks: 17
+#     cited: 17
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

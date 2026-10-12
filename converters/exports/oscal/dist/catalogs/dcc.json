@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "724dbabc-ce02-50d1-b5d0-18682272598e",
+  "uuid": "abbf8885-275f-5b2c-92d3-0ac64babacf4",
   "metadata": {
    "title": "Rego Policy Libraries — dcc (UK MoD Defence Cyber Certification (DCC) — DEF STAN 05-138 Issue 4)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,51 +66,8 @@
     ],
     "controls": [
      {
-      "id": "dcc-DCC-Input-Contract",
-      "title": "unrecognized target_level %v — must be 0, 1, 2 or 3 (evaluated at Level 3)",
-      "props": [
-       {
-        "name": "label",
-        "value": "DCC Input Contract"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "DCC Input Contract"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dcc.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dcc-DCC-Input-Contract_stmt",
-        "name": "statement",
-        "prose": "unrecognized target_level %v — must be 0, 1, 2 or 3 (evaluated at Level 3)"
-       },
-       {
-        "id": "dcc-DCC-Input-Contract_obj.1",
-        "name": "assessment-objective",
-        "prose": "controls must be an object of {\"<control id>\": true} attestations"
-       },
-       {
-        "id": "dcc-DCC-Input-Contract_obj.2",
-        "name": "assessment-objective",
-        "prose": "attestation for unknown control id %v — not a DEF STAN 05-138 Issue 4 control"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "dcc-dcc.main-1",
-      "title": "DCC %s (%s, Objective %s — %s): the Supplier shall %s — not attested",
+      "title": "DCC Input Contract: unrecognized target_level %v — must be 0, 1, 2 or 3 (evaluated at Level 3)",
       "props": [
        {
         "name": "label",
@@ -128,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -136,14 +93,113 @@
        {
         "id": "dcc-dcc.main-1_stmt",
         "name": "statement",
+        "prose": "DCC Input Contract: unrecognized target_level %v — must be 0, 1, 2 or 3 (evaluated at Level 3)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dcc-dcc.main-2",
+      "title": "DCC %s (%s, Objective %s — %s): the Supplier shall %s — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "dcc.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dcc.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dcc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dcc-dcc.main-2_stmt",
+        "name": "statement",
         "prose": "DCC %s (%s, Objective %s — %s): the Supplier shall %s — not attested"
        }
       ],
       "class": "compliance"
      },
      {
+      "id": "dcc-dcc.main-3",
+      "title": "DCC Input Contract: controls must be an object of {\"<control id>\": true} attestations",
+      "props": [
+       {
+        "name": "label",
+        "value": "dcc.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dcc.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dcc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dcc-dcc.main-3_stmt",
+        "name": "statement",
+        "prose": "DCC Input Contract: controls must be an object of {\"<control id>\": true} attestations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dcc-dcc.main-4",
+      "title": "DCC Input Contract: attestation for unknown control id %v — not a DEF STAN 05-138 Issue 4 control",
+      "props": [
+       {
+        "name": "label",
+        "value": "dcc.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dcc.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dcc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dcc-dcc.main-4_stmt",
+        "name": "statement",
+        "prose": "DCC Input Contract: attestation for unknown control id %v — not a DEF STAN 05-138 Issue 4 control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "dcc-0001",
-      "title": "hold Cyber Essentials certification covering the contract scope, maintained for the contract duration",
+      "title": "Cyber Essentials",
       "props": [
        {
         "name": "label",
@@ -161,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -169,14 +225,14 @@
        {
         "id": "dcc-0001_stmt",
         "name": "statement",
-        "prose": "hold Cyber Essentials certification covering the contract scope, maintained for the contract duration"
+        "prose": "Cyber Essentials"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-0002",
-      "title": "hold Cyber Essentials Plus certification covering the contract scope, maintained for the contract duration",
+      "title": "Cyber Essentials Plus",
       "props": [
        {
         "name": "label",
@@ -194,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -202,14 +258,14 @@
        {
         "id": "dcc-0002_stmt",
         "name": "statement",
-        "prose": "hold Cyber Essentials Plus certification covering the contract scope, maintained for the contract duration"
+        "prose": "Cyber Essentials Plus"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1100",
-      "title": "have management policies and processes governing security of network and information systems supporting Functions and protection of Data",
+      "title": "Governance",
       "props": [
        {
         "name": "label",
@@ -227,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -235,14 +291,14 @@
        {
         "id": "dcc-1100_stmt",
         "name": "statement",
-        "prose": "have management policies and processes governing security of network and information systems supporting Functions and protection of Data"
+        "prose": "Governance"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1101",
-      "title": "have organisational security management led at board level and articulated in corresponding policies",
+      "title": "Board direction",
       "props": [
        {
         "name": "label",
@@ -260,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -268,14 +324,14 @@
        {
         "id": "dcc-1101_stmt",
         "name": "statement",
-        "prose": "have organisational security management led at board level and articulated in corresponding policies"
+        "prose": "Board direction"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1102",
-      "title": "establish security roles and responsibilities at all levels with clear channels for communicating and escalating risks",
+      "title": "Roles and responsibilities",
       "props": [
        {
         "name": "label",
@@ -293,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -301,14 +357,14 @@
        {
         "id": "dcc-1102_stmt",
         "name": "statement",
-        "prose": "establish security roles and responsibilities at all levels with clear channels for communicating and escalating risks"
+        "prose": "Roles and responsibilities"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1103",
-      "title": "have senior-level accountability with appropriately delegated decision-making authority, considering security risks alongside other organisational risks",
+      "title": "Decision-making",
       "props": [
        {
         "name": "label",
@@ -326,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -334,14 +390,14 @@
        {
         "id": "dcc-1103_stmt",
         "name": "statement",
-        "prose": "have senior-level accountability with appropriately delegated decision-making authority, considering security risks alongside other organisational risks"
+        "prose": "Decision-making"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1200",
-      "title": "identify, assess, understand and remediate security risks to network and information systems, with an organisational approach to risk management",
+      "title": "Risk management",
       "props": [
        {
         "name": "label",
@@ -359,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -367,14 +423,14 @@
        {
         "id": "dcc-1200_stmt",
         "name": "statement",
-        "prose": "identify, assess, understand and remediate security risks to network and information systems, with an organisational approach to risk management"
+        "prose": "Risk management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1201",
-      "title": "have effective internal processes for managing risks and communicating associated activities and solutions",
+      "title": "Risk management process",
       "props": [
        {
         "name": "label",
@@ -392,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -400,14 +456,14 @@
        {
         "id": "dcc-1201_stmt",
         "name": "statement",
-        "prose": "have effective internal processes for managing risks and communicating associated activities and solutions"
+        "prose": "Risk management process"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1202",
-      "title": "periodically assess risk to operations, assets and individuals resulting from system operation and Data processing, storage or transmission",
+      "title": "Periodically assess risk",
       "props": [
        {
         "name": "label",
@@ -425,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -433,14 +489,14 @@
        {
         "id": "dcc-1202_stmt",
         "name": "statement",
-        "prose": "periodically assess risk to operations, assets and individuals resulting from system operation and Data processing, storage or transmission"
+        "prose": "Periodically assess risk"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1203",
-      "title": "create and maintain up-to-date network diagrams detailing boundaries, internal and external connections, and systems",
+      "title": "Network diagrams",
       "props": [
        {
         "name": "label",
@@ -458,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -466,14 +522,14 @@
        {
         "id": "dcc-1203_stmt",
         "name": "statement",
-        "prose": "create and maintain up-to-date network diagrams detailing boundaries, internal and external connections, and systems"
+        "prose": "Network diagrams"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1204",
-      "title": "implement threat intelligence capabilities informing security architecture, monitoring, threat hunting, advisories, response and recovery",
+      "title": "Threat intelligence capabilities",
       "props": [
        {
         "name": "label",
@@ -491,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -499,14 +555,14 @@
        {
         "id": "dcc-1204_stmt",
         "name": "statement",
-        "prose": "implement threat intelligence capabilities informing security architecture, monitoring, threat hunting, advisories, response and recovery"
+        "prose": "Threat intelligence capabilities"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1205",
-      "title": "gain validation of the effectiveness of security across technology, people and processes supporting Functions and Data",
+      "title": "Assurance",
       "props": [
        {
         "name": "label",
@@ -524,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -532,14 +588,14 @@
        {
         "id": "dcc-1205_stmt",
         "name": "statement",
-        "prose": "gain validation of the effectiveness of security across technology, people and processes supporting Functions and Data"
+        "prose": "Assurance"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1206",
-      "title": "monitor security controls on an ongoing basis, recording deficiencies, reporting to leadership and mitigating within agreed timeframes",
+      "title": "Internal controls assurance",
       "props": [
        {
         "name": "label",
@@ -557,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -565,14 +621,14 @@
        {
         "id": "dcc-1206_stmt",
         "name": "statement",
-        "prose": "monitor security controls on an ongoing basis, recording deficiencies, reporting to leadership and mitigating within agreed timeframes"
+        "prose": "Internal controls assurance"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1300",
-      "title": "determine and understand everything required to deliver and support Functions and protect Data, including people, systems and supporting infrastructure",
+      "title": "Asset management",
       "props": [
        {
         "name": "label",
@@ -590,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -598,14 +654,14 @@
        {
         "id": "dcc-1300_stmt",
         "name": "statement",
-        "prose": "determine and understand everything required to deliver and support Functions and protect Data, including people, systems and supporting infrastructure"
+        "prose": "Asset management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1301",
-      "title": "employ automated discovery and management tools maintaining an up-to-date, complete inventory of data, people, systems and infrastructure",
+      "title": "Automated asset inventory management",
       "props": [
        {
         "name": "label",
@@ -623,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -631,14 +687,14 @@
        {
         "id": "dcc-1301_stmt",
         "name": "statement",
-        "prose": "employ automated discovery and management tools maintaining an up-to-date, complete inventory of data, people, systems and infrastructure"
+        "prose": "Automated asset inventory management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1400",
-      "title": "understand and manage security risks arising from dependencies on external suppliers, with appropriate measures where third-party services are used",
+      "title": "Supply chain",
       "props": [
        {
         "name": "label",
@@ -656,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -664,14 +720,14 @@
        {
         "id": "dcc-1400_stmt",
         "name": "statement",
-        "prose": "understand and manage security risks arising from dependencies on external suppliers, with appropriate measures where third-party services are used"
+        "prose": "Supply chain"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1401",
-      "title": "establish, document and maintain trust relationships with external service providers based on defined security and privacy requirements",
+      "title": "External provider trusted relationships",
       "props": [
        {
         "name": "label",
@@ -689,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -697,14 +753,14 @@
        {
         "id": "dcc-1401_stmt",
         "name": "statement",
-        "prose": "establish, document and maintain trust relationships with external service providers based on defined security and privacy requirements"
+        "prose": "External provider trusted relationships"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1500",
-      "title": "restrict and monitor physical access to facilities where Data is stored or processed using industry-standard controls, with regular log review",
+      "title": "Physical access controls",
       "props": [
        {
         "name": "label",
@@ -722,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -730,14 +786,14 @@
        {
         "id": "dcc-1500_stmt",
         "name": "statement",
-        "prose": "restrict and monitor physical access to facilities where Data is stored or processed using industry-standard controls, with regular log review"
+        "prose": "Physical access controls"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1501",
-      "title": "maintain an inventory of physical access devices with unique identifiers and named assignees",
+      "title": "Physical access device management",
       "props": [
        {
         "name": "label",
@@ -755,7 +811,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -763,14 +819,14 @@
        {
         "id": "dcc-1501_stmt",
         "name": "statement",
-        "prose": "maintain an inventory of physical access devices with unique identifiers and named assignees"
+        "prose": "Physical access device management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1502",
-      "title": "restrict physical access to sensitive areas to authorised staff and maintain an inventory of privileged physical access",
+      "title": "Physical access restrictions",
       "props": [
        {
         "name": "label",
@@ -788,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -796,14 +852,14 @@
        {
         "id": "dcc-1502_stmt",
         "name": "statement",
-        "prose": "restrict physical access to sensitive areas to authorised staff and maintain an inventory of privileged physical access"
+        "prose": "Physical access restrictions"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-1503",
-      "title": "log visitor access and exit, require distinct visitor badges, escort visitors, and recover badges at day end",
+      "title": "Visitor access management",
       "props": [
        {
         "name": "label",
@@ -821,7 +877,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -829,14 +885,14 @@
        {
         "id": "dcc-1503_stmt",
         "name": "statement",
-        "prose": "log visitor access and exit, require distinct visitor badges, escort visitors, and recover badges at day end"
+        "prose": "Visitor access management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2100",
-      "title": "develop, enact and regularly review cyber security and resilience policies and processes managing risk of adverse impact",
+      "title": "Resilience policy and process development",
       "props": [
        {
         "name": "label",
@@ -854,7 +910,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -862,14 +918,14 @@
        {
         "id": "dcc-2100_stmt",
         "name": "statement",
-        "prose": "develop, enact and regularly review cyber security and resilience policies and processes managing risk of adverse impact"
+        "prose": "Resilience policy and process development"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2101",
-      "title": "implement security policies and processes demonstrating continuing security benefit to Functions and Data",
+      "title": "Policy and process implementation",
       "props": [
        {
         "name": "label",
@@ -887,7 +943,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -895,14 +951,14 @@
        {
         "id": "dcc-2101_stmt",
         "name": "statement",
-        "prose": "implement security policies and processes demonstrating continuing security benefit to Functions and Data"
+        "prose": "Policy and process implementation"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2200",
-      "title": "understand, document and manage access to networks, information systems and removable media, with all accounts verified, authenticated and authorised",
+      "title": "Identity and access control",
       "props": [
        {
         "name": "label",
@@ -920,7 +976,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -928,14 +984,14 @@
        {
         "id": "dcc-2200_stmt",
         "name": "statement",
-        "prose": "understand, document and manage access to networks, information systems and removable media, with all accounts verified, authenticated and authorised"
+        "prose": "Identity and access control"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2201",
-      "title": "implement MFA mechanisms controlling access to critical or sensitive systems and organisational operations",
+      "title": "Access control - multi-factor authentication",
       "props": [
        {
         "name": "label",
@@ -953,7 +1009,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -961,14 +1017,14 @@
        {
         "id": "dcc-2201_stmt",
         "name": "statement",
-        "prose": "implement MFA mechanisms controlling access to critical or sensitive systems and organisational operations"
+        "prose": "Access control - multi-factor authentication"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2202",
-      "title": "fully understand and trust the devices used to access networks and systems supporting Functions and processing Data",
+      "title": "Device management",
       "props": [
        {
         "name": "label",
@@ -986,7 +1042,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -994,14 +1050,14 @@
        {
         "id": "dcc-2202_stmt",
         "name": "statement",
-        "prose": "fully understand and trust the devices used to access networks and systems supporting Functions and processing Data"
+        "prose": "Device management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2203",
-      "title": "closely manage privileged user access and actions on networks and information systems",
+      "title": "Privileged user management",
       "props": [
        {
         "name": "label",
@@ -1019,7 +1075,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1027,14 +1083,14 @@
        {
         "id": "dcc-2203_stmt",
         "name": "statement",
-        "prose": "closely manage privileged user access and actions on networks and information systems"
+        "prose": "Privileged user management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2204",
-      "title": "configure systems to provide only essential capabilities, prohibiting or restricting non-essential ports, protocols, programmes and services",
+      "title": "Principle of least functionality",
       "props": [
        {
         "name": "label",
@@ -1052,7 +1108,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1060,14 +1116,14 @@
        {
         "id": "dcc-2204_stmt",
         "name": "statement",
-        "prose": "configure systems to provide only essential capabilities, prohibiting or restricting non-essential ports, protocols, programmes and services"
+        "prose": "Principle of least functionality"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2205",
-      "title": "closely manage all user accounts and apply least privilege across networks and information systems",
+      "title": "Least privilege",
       "props": [
        {
         "name": "label",
@@ -1085,7 +1141,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1093,14 +1149,14 @@
        {
         "id": "dcc-2205_stmt",
         "name": "statement",
-        "prose": "closely manage all user accounts and apply least privilege across networks and information systems"
+        "prose": "Least privilege"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2206",
-      "title": "limit access to audit and security logging data to privileged user groups with a confirmed requirement",
+      "title": "Least privilege - audit system",
       "props": [
        {
         "name": "label",
@@ -1118,7 +1174,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1126,14 +1182,14 @@
        {
         "id": "dcc-2206_stmt",
         "name": "statement",
-        "prose": "limit access to audit and security logging data to privileged user groups with a confirmed requirement"
+        "prose": "Least privilege - audit system"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2207",
-      "title": "develop a policy and implement separation-of-duties methodology for standard and privileged accounts",
+      "title": "Separation of duties",
       "props": [
        {
         "name": "label",
@@ -1151,7 +1207,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1159,14 +1215,14 @@
        {
         "id": "dcc-2207_stmt",
         "name": "statement",
-        "prose": "develop a policy and implement separation-of-duties methodology for standard and privileged accounts"
+        "prose": "Separation of duties"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2208",
-      "title": "closely manage identity and access control for users, admins, devices and systems",
+      "title": "Identity and Access Management (IdAM)",
       "props": [
        {
         "name": "label",
@@ -1184,7 +1240,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1192,14 +1248,14 @@
        {
         "id": "dcc-2208_stmt",
         "name": "statement",
-        "prose": "closely manage identity and access control for users, admins, devices and systems"
+        "prose": "Identity and Access Management (IdAM)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2209",
-      "title": "implement automated mechanisms supporting management of system accounts, including processes acting for authorised users",
+      "title": "Limit access to authorised entities",
       "props": [
        {
         "name": "label",
@@ -1217,7 +1273,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1225,14 +1281,14 @@
        {
         "id": "dcc-2209_stmt",
         "name": "statement",
-        "prose": "implement automated mechanisms supporting management of system accounts, including processes acting for authorised users"
+        "prose": "Limit access to authorised entities"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2210",
-      "title": "issue, manage, verify, revoke and audit identities and credentials for authorised transactions, users and processes",
+      "title": "Limit to authorised transactions",
       "props": [
        {
         "name": "label",
@@ -1250,7 +1306,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1258,14 +1314,14 @@
        {
         "id": "dcc-2210_stmt",
         "name": "statement",
-        "prose": "issue, manage, verify, revoke and audit identities and credentials for authorised transactions, users and processes"
+        "prose": "Limit to authorised transactions"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2211",
-      "title": "securely store, transmit and manage first-time and one-time passwords, requiring immediate change after first logon",
+      "title": "Secure first-time password management",
       "props": [
        {
         "name": "label",
@@ -1283,7 +1339,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1291,14 +1347,14 @@
        {
         "id": "dcc-2211_stmt",
         "name": "statement",
-        "prose": "securely store, transmit and manage first-time and one-time passwords, requiring immediate change after first logon"
+        "prose": "Secure first-time password management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2212",
-      "title": "employ automated mechanisms for generation, protection, storage, rotation and cryptographic management of passwords",
+      "title": "Automated password management",
       "props": [
        {
         "name": "label",
@@ -1316,7 +1372,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1324,14 +1380,14 @@
        {
         "id": "dcc-2212_stmt",
         "name": "statement",
-        "prose": "employ automated mechanisms for generation, protection, storage, rotation and cryptographic management of passwords"
+        "prose": "Automated password management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2213",
-      "title": "deploy technical controls managing credential quality reflecting industry standards for length, complexity, reuse history and insecure patterns",
+      "title": "Automated password quality check",
       "props": [
        {
         "name": "label",
@@ -1349,7 +1405,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1357,14 +1413,14 @@
        {
         "id": "dcc-2213_stmt",
         "name": "statement",
-        "prose": "deploy technical controls managing credential quality reflecting industry standards for length, complexity, reuse history and insecure patterns"
+        "prose": "Automated password quality check"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2214",
-      "title": "lock accounts after at most ten failed logons for a minimum of 15 minutes, increasing on repeat lockouts",
+      "title": "Repeated unsuccessful logon handling",
       "props": [
        {
         "name": "label",
@@ -1382,7 +1438,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1390,14 +1446,14 @@
        {
         "id": "dcc-2214_stmt",
         "name": "statement",
-        "prose": "lock accounts after at most ten failed logons for a minimum of 15 minutes, increasing on repeat lockouts"
+        "prose": "Repeated unsuccessful logon handling"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2215",
-      "title": "enforce technical control protecting against capture and retransmission of authentication information",
+      "title": "Replay-resistant authentication",
       "props": [
        {
         "name": "label",
@@ -1415,7 +1471,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1423,14 +1479,14 @@
        {
         "id": "dcc-2215_stmt",
         "name": "statement",
-        "prose": "enforce technical control protecting against capture and retransmission of authentication information"
+        "prose": "Replay-resistant authentication"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2216",
-      "title": "prevent non-privileged users executing privileged functions and capture such attempts in audit logs",
+      "title": "Privilege failure handling",
       "props": [
        {
         "name": "label",
@@ -1448,7 +1504,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1456,14 +1512,14 @@
        {
         "id": "dcc-2216_stmt",
         "name": "statement",
-        "prose": "prevent non-privileged users executing privileged functions and capture such attempts in audit logs"
+        "prose": "Privilege failure handling"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2217",
-      "title": "inventory all generic, service and system accounts, each owned by a single named accountable individual",
+      "title": "Service accounts",
       "props": [
        {
         "name": "label",
@@ -1481,7 +1537,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1489,14 +1545,14 @@
        {
         "id": "dcc-2217_stmt",
         "name": "statement",
-        "prose": "inventory all generic, service and system accounts, each owned by a single named accountable individual"
+        "prose": "Service accounts"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2218",
-      "title": "identify system users, processes acting on behalf of users, and devices",
+      "title": "System users and processes",
       "props": [
        {
         "name": "label",
@@ -1514,7 +1570,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1522,14 +1578,14 @@
        {
         "id": "dcc-2218_stmt",
         "name": "statement",
-        "prose": "identify system users, processes acting on behalf of users, and devices"
+        "prose": "System users and processes"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2300",
-      "title": "appropriately protect data stored or transmitted electronically from unauthorised access, modification or deletion",
+      "title": "Data security",
       "props": [
        {
         "name": "label",
@@ -1547,7 +1603,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1555,14 +1611,14 @@
        {
         "id": "dcc-2300_stmt",
         "name": "statement",
-        "prose": "appropriately protect data stored or transmitted electronically from unauthorised access, modification or deletion"
+        "prose": "Data security"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2301",
-      "title": "understand and classify data important to Functions, including storage, movement, protective markings and impact of compromise",
+      "title": "Understanding data",
       "props": [
        {
         "name": "label",
@@ -1580,7 +1636,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1588,14 +1644,14 @@
        {
         "id": "dcc-2301_stmt",
         "name": "statement",
-        "prose": "understand and classify data important to Functions, including storage, movement, protective markings and impact of compromise"
+        "prose": "Understanding data"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2302",
-      "title": "protect and control data in transit, using encryption where appropriate, including transfers to third parties",
+      "title": "Data in transit",
       "props": [
        {
         "name": "label",
@@ -1613,7 +1669,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1621,14 +1677,14 @@
        {
         "id": "dcc-2302_stmt",
         "name": "statement",
-        "prose": "protect and control data in transit, using encryption where appropriate, including transfers to third parties"
+        "prose": "Data in transit"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2303",
-      "title": "terminate network connections at session end or after a defined period of inactivity",
+      "title": "Management of established network connections",
       "props": [
        {
         "name": "label",
@@ -1646,7 +1702,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1654,14 +1710,14 @@
        {
         "id": "dcc-2303_stmt",
         "name": "statement",
-        "prose": "terminate network connections at session end or after a defined period of inactivity"
+        "prose": "Management of established network connections"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2304",
-      "title": "require authorisation and authentication of all users and devices on trusted wireless networks, encrypted with WPA2 or above",
+      "title": "Wireless network access control",
       "props": [
        {
         "name": "label",
@@ -1679,7 +1735,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1687,14 +1743,14 @@
        {
         "id": "dcc-2304_stmt",
         "name": "statement",
-        "prose": "require authorisation and authentication of all users and devices on trusted wireless networks, encrypted with WPA2 or above"
+        "prose": "Wireless network access control"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2305",
-      "title": "enforce MFA, encryption of all transmitted data, and disabled split-tunnelling for staff VPN remote access",
+      "title": "Remote Access - VPN",
       "props": [
        {
         "name": "label",
@@ -1712,7 +1768,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1720,14 +1776,14 @@
        {
         "id": "dcc-2305_stmt",
         "name": "statement",
-        "prose": "enforce MFA, encryption of all transmitted data, and disabled split-tunnelling for staff VPN remote access"
+        "prose": "Remote Access - VPN"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2306",
-      "title": "employ cryptographic mechanisms protecting the confidentiality of remote access sessions",
+      "title": "Remote access sessions",
       "props": [
        {
         "name": "label",
@@ -1745,7 +1801,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1753,14 +1809,14 @@
        {
         "id": "dcc-2306_stmt",
         "name": "statement",
-        "prose": "employ cryptographic mechanisms protecting the confidentiality of remote access sessions"
+        "prose": "Remote access sessions"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2307",
-      "title": "route remote access via managed access control points",
+      "title": "Managed access control points",
       "props": [
        {
         "name": "label",
@@ -1778,7 +1834,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1786,14 +1842,14 @@
        {
         "id": "dcc-2307_stmt",
         "name": "statement",
-        "prose": "route remote access via managed access control points"
+        "prose": "Managed access control points"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2308",
-      "title": "appropriately protect the confidentiality of soft and hard copies of stored data for all Functions",
+      "title": "Stored data",
       "props": [
        {
         "name": "label",
@@ -1811,7 +1867,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1819,14 +1875,14 @@
        {
         "id": "dcc-2308_stmt",
         "name": "statement",
-        "prose": "appropriately protect the confidentiality of soft and hard copies of stored data for all Functions"
+        "prose": "Stored data"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2309",
-      "title": "protect, such as through encryption, data important to Functions and all Data on mobile devices",
+      "title": "Mobile data",
       "props": [
        {
         "name": "label",
@@ -1844,7 +1900,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1852,14 +1908,14 @@
        {
         "id": "dcc-2309_stmt",
         "name": "statement",
-        "prose": "protect, such as through encryption, data important to Functions and all Data on mobile devices"
+        "prose": "Mobile data"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2310",
-      "title": "inventory, encrypt and restrict removable storage media to corporately owned or authorised devices",
+      "title": "Removable media",
       "props": [
        {
         "name": "label",
@@ -1877,7 +1933,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1885,14 +1941,14 @@
        {
         "id": "dcc-2310_stmt",
         "name": "statement",
-        "prose": "inventory, encrypt and restrict removable storage media to corporately owned or authorised devices"
+        "prose": "Removable media"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2311",
-      "title": "maintain and communicate a list of authorised off-premise working locations",
+      "title": "Authorised working locations",
       "props": [
        {
         "name": "label",
@@ -1910,7 +1966,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1918,14 +1974,14 @@
        {
         "id": "dcc-2311_stmt",
         "name": "statement",
-        "prose": "maintain and communicate a list of authorised off-premise working locations"
+        "prose": "Authorised working locations"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2312",
-      "title": "employ technical controls and user education reducing security risk of off-premise working",
+      "title": "Security at alternate working locations",
       "props": [
        {
         "name": "label",
@@ -1943,7 +1999,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1951,14 +2007,14 @@
        {
         "id": "dcc-2312_stmt",
         "name": "statement",
-        "prose": "employ technical controls and user education reducing security risk of off-premise working"
+        "prose": "Security at alternate working locations"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2313",
-      "title": "appropriately sanitise devices, equipment and removable media holding important data before reuse or disposal",
+      "title": "Media/equipment sanitisation",
       "props": [
        {
         "name": "label",
@@ -1976,7 +2032,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -1984,14 +2040,14 @@
        {
         "id": "dcc-2313_stmt",
         "name": "statement",
-        "prose": "appropriately sanitise devices, equipment and removable media holding important data before reuse or disposal"
+        "prose": "Media/equipment sanitisation"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2314",
-      "title": "ensure processing of personal data complies with the General Data Protection Regulation",
+      "title": "Ensure UK GDPR compliance",
       "props": [
        {
         "name": "label",
@@ -2009,7 +2065,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2017,14 +2073,14 @@
        {
         "id": "dcc-2314_stmt",
         "name": "statement",
-        "prose": "ensure processing of personal data complies with the General Data Protection Regulation"
+        "prose": "Ensure UK GDPR compliance"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2315",
-      "title": "implement DMARC, DKIM and SPF to verify email source authenticity",
+      "title": "Email authentication methods",
       "props": [
        {
         "name": "label",
@@ -2042,7 +2098,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2050,14 +2106,14 @@
        {
         "id": "dcc-2315_stmt",
         "name": "statement",
-        "prose": "implement DMARC, DKIM and SPF to verify email source authenticity"
+        "prose": "Email authentication methods"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2316",
-      "title": "monitor and control the flow of all PII and government information per approved authorisations, legislation and contract",
+      "title": "PII processing/transparency - control flow",
       "props": [
        {
         "name": "label",
@@ -2075,7 +2131,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2083,14 +2139,14 @@
        {
         "id": "dcc-2316_stmt",
         "name": "statement",
-        "prose": "monitor and control the flow of all PII and government information per approved authorisations, legislation and contract"
+        "prose": "PII processing/transparency - control flow"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2317",
-      "title": "implement and maintain full disk encryption on all endpoints to industry standards such as AES-256 or FIPS equivalent",
+      "title": "Endpoint encryption",
       "props": [
        {
         "name": "label",
@@ -2108,7 +2164,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2116,14 +2172,14 @@
        {
         "id": "dcc-2317_stmt",
         "name": "statement",
-        "prose": "implement and maintain full disk encryption on all endpoints to industry standards such as AES-256 or FIPS equivalent"
+        "prose": "Endpoint encryption"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2318",
-      "title": "employ nationally or departmentally approved cryptography when protecting all Data (e.g. FIPS 140-2 or comparable)",
+      "title": "Approved cryptographic methods",
       "props": [
        {
         "name": "label",
@@ -2141,7 +2197,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2149,14 +2205,14 @@
        {
         "id": "dcc-2318_stmt",
         "name": "statement",
-        "prose": "employ nationally or departmentally approved cryptography when protecting all Data (e.g. FIPS 140-2 or comparable)"
+        "prose": "Approved cryptographic methods"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2319",
-      "title": "establish and manage cryptographic keys using approved solutions (e.g. FIPS 140-2 or comparable)",
+      "title": "Securely manage cryptographic keys",
       "props": [
        {
         "name": "label",
@@ -2174,7 +2230,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2182,14 +2238,14 @@
        {
         "id": "dcc-2319_stmt",
         "name": "statement",
-        "prose": "establish and manage cryptographic keys using approved solutions (e.g. FIPS 140-2 or comparable)"
+        "prose": "Securely manage cryptographic keys"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2320",
-      "title": "implement tooling to monitor and restrict access to and use of removable media, external websites and email",
+      "title": "Data Loss Prevention (DLP)",
       "props": [
        {
         "name": "label",
@@ -2207,7 +2263,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2215,14 +2271,14 @@
        {
         "id": "dcc-2320_stmt",
         "name": "statement",
-        "prose": "implement tooling to monitor and restrict access to and use of removable media, external websites and email"
+        "prose": "Data Loss Prevention (DLP)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2321",
-      "title": "designate and train authorised individuals and review content so publicly accessible systems contain no non-public information",
+      "title": "Publicly accessible data",
       "props": [
        {
         "name": "label",
@@ -2240,7 +2296,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2248,14 +2304,14 @@
        {
         "id": "dcc-2321_stmt",
         "name": "statement",
-        "prose": "designate and train authorised individuals and review content so publicly accessible systems contain no non-public information"
+        "prose": "Publicly accessible data"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2322",
-      "title": "ensure mobile devices accessing the corporate environment are configured and managed using industry-recognised solutions such as MDM",
+      "title": "Mobile devices/BYOD",
       "props": [
        {
         "name": "label",
@@ -2273,7 +2329,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2281,14 +2337,14 @@
        {
         "id": "dcc-2322_stmt",
         "name": "statement",
-        "prose": "ensure mobile devices accessing the corporate environment are configured and managed using industry-recognised solutions such as MDM"
+        "prose": "Mobile devices/BYOD"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2323",
-      "title": "securely destroy all Data no longer needed or at Agreement end, with confirmed erasure and attestation where contracted",
+      "title": "Secure destruction",
       "props": [
        {
         "name": "label",
@@ -2306,7 +2362,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2314,14 +2370,14 @@
        {
         "id": "dcc-2323_stmt",
         "name": "statement",
-        "prose": "securely destroy all Data no longer needed or at Agreement end, with confirmed erasure and attestation where contracted"
+        "prose": "Secure destruction"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2400",
-      "title": "protect from cyber attack the networks, systems and technology critical to Functions and Data, informed by organisational risk",
+      "title": "System security",
       "props": [
        {
         "name": "label",
@@ -2339,7 +2395,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2347,14 +2403,14 @@
        {
         "id": "dcc-2400_stmt",
         "name": "statement",
-        "prose": "protect from cyber attack the networks, systems and technology critical to Functions and Data, informed by organisational risk"
+        "prose": "System security"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2401",
-      "title": "securely configure the network and information systems supporting business Functions and protecting Data",
+      "title": "Secure configuration",
       "props": [
        {
         "name": "label",
@@ -2372,7 +2428,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2380,14 +2436,14 @@
        {
         "id": "dcc-2401_stmt",
         "name": "statement",
-        "prose": "securely configure the network and information systems supporting business Functions and protecting Data"
+        "prose": "Secure configuration"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2402",
-      "title": "implement a vulnerability and patch management process with monthly scans, CVSS v3-prioritised patching, and a Risk Treatment Plan",
+      "title": "Vulnerability management",
       "props": [
        {
         "name": "label",
@@ -2405,7 +2461,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2413,14 +2469,14 @@
        {
         "id": "dcc-2402_stmt",
         "name": "statement",
-        "prose": "implement a vulnerability and patch management process with monthly scans, CVSS v3-prioritised patching, and a Risk Treatment Plan"
+        "prose": "Vulnerability management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2403",
-      "title": "conduct penetration testing at least every 12 months against externally facing systems, remediating deficiencies and retaining records",
+      "title": "Penetration testing",
       "props": [
        {
         "name": "label",
@@ -2438,7 +2494,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2446,14 +2502,14 @@
        {
         "id": "dcc-2403_stmt",
         "name": "statement",
-        "prose": "conduct penetration testing at least every 12 months against externally facing systems, remediating deficiencies and retaining records"
+        "prose": "Penetration testing"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2404",
-      "title": "document, publish and review change control procedures at least every 12 months, with approval and audit trail before changes",
+      "title": "Change management",
       "props": [
        {
         "name": "label",
@@ -2471,7 +2527,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2479,14 +2535,14 @@
        {
         "id": "dcc-2404_stmt",
         "name": "statement",
-        "prose": "document, publish and review change control procedures at least every 12 months, with approval and audit trail before changes"
+        "prose": "Change management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2405",
-      "title": "maintain a patch management programme addressing known vulnerabilities within industry best-practice timelines, including emergency out-of-band patching",
+      "title": "Patch management",
       "props": [
        {
         "name": "label",
@@ -2504,7 +2560,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2512,14 +2568,14 @@
        {
         "id": "dcc-2405_stmt",
         "name": "statement",
-        "prose": "maintain a patch management programme addressing known vulnerabilities within industry best-practice timelines, including emergency out-of-band patching"
+        "prose": "Patch management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2406",
-      "title": "require users to accept warning notices before system access covering monitoring, prohibited use, penalties and consent to recording",
+      "title": "Privacy warning notices - prior to access",
       "props": [
        {
         "name": "label",
@@ -2537,7 +2593,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2545,14 +2601,14 @@
        {
         "id": "dcc-2406_stmt",
         "name": "statement",
-        "prose": "require users to accept warning notices before system access covering monitoring, prohibited use, penalties and consent to recording"
+        "prose": "Privacy warning notices - prior to access"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2407",
-      "title": "require authenticated users to accept warning notices before accessing systems with specific handling requirements",
+      "title": "Privacy warning notices - specific handling",
       "props": [
        {
         "name": "label",
@@ -2570,7 +2626,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2578,14 +2634,14 @@
        {
         "id": "dcc-2407_stmt",
         "name": "statement",
-        "prose": "require authenticated users to accept warning notices before accessing systems with specific handling requirements"
+        "prose": "Privacy warning notices - specific handling"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2408",
-      "title": "automatically lock user sessions after a predefined period, with the lock screen concealing previously displayed information",
+      "title": "Screen locking/timeouts",
       "props": [
        {
         "name": "label",
@@ -2603,7 +2659,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2611,14 +2667,14 @@
        {
         "id": "dcc-2408_stmt",
         "name": "statement",
-        "prose": "automatically lock user sessions after a predefined period, with the lock screen concealing previously displayed information"
+        "prose": "Screen locking/timeouts"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2409",
-      "title": "identify software authorised to execute, blocking all other programs by default with permit-by-exception",
+      "title": "Identify allowed programs",
       "props": [
        {
         "name": "label",
@@ -2636,7 +2692,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2644,14 +2700,14 @@
        {
         "id": "dcc-2409_stmt",
         "name": "statement",
-        "prose": "identify software authorised to execute, blocking all other programs by default with permit-by-exception"
+        "prose": "Identify allowed programs"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2410",
-      "title": "review and manage the list of authorised software programs at least every 90 days",
+      "title": "Review the list of approved software",
       "props": [
        {
         "name": "label",
@@ -2669,7 +2725,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2677,14 +2733,14 @@
        {
         "id": "dcc-2410_stmt",
         "name": "statement",
-        "prose": "review and manage the list of authorised software programs at least every 90 days"
+        "prose": "Review the list of approved software"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2411",
-      "title": "enforce endpoint internet controls preventing malware, blocking undesirable sites, sandboxing downloads and terminating idle sessions",
+      "title": "Secured Internet access",
       "props": [
        {
         "name": "label",
@@ -2702,7 +2758,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2710,14 +2766,14 @@
        {
         "id": "dcc-2411_stmt",
         "name": "statement",
-        "prose": "enforce endpoint internet controls preventing malware, blocking undesirable sites, sandboxing downloads and terminating idle sessions"
+        "prose": "Secured Internet access"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2412",
-      "title": "establish usage restrictions and guidance for VoIP with controls to authorise, monitor and control its use",
+      "title": "Voice over Internet Protocol (VoIP)",
       "props": [
        {
         "name": "label",
@@ -2735,7 +2791,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2743,14 +2799,14 @@
        {
         "id": "dcc-2412_stmt",
         "name": "statement",
-        "prose": "establish usage restrictions and guidance for VoIP with controls to authorise, monitor and control its use"
+        "prose": "Voice over Internet Protocol (VoIP)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2413",
-      "title": "define acceptable and unacceptable mobile code and control its identification, authorisation, monitoring and use",
+      "title": "Mobile code management",
       "props": [
        {
         "name": "label",
@@ -2768,7 +2824,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2776,14 +2832,14 @@
        {
         "id": "dcc-2413_stmt",
         "name": "statement",
-        "prose": "define acceptable and unacceptable mobile code and control its identification, authorisation, monitoring and use"
+        "prose": "Mobile code management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2414",
-      "title": "use secure network management and communication protocols protecting session authenticity",
+      "title": "Communication authenticity protection",
       "props": [
        {
         "name": "label",
@@ -2801,7 +2857,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2809,14 +2865,14 @@
        {
         "id": "dcc-2414_stmt",
         "name": "statement",
-        "prose": "use secure network management and communication protocols protecting session authenticity"
+        "prose": "Communication authenticity protection"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2415",
-      "title": "employ automated mechanisms detecting misconfigured or unauthorised system components",
+      "title": "Automatically identify and address misconfigurations and unauthorised components",
       "props": [
        {
         "name": "label",
@@ -2834,7 +2890,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2842,14 +2898,14 @@
        {
         "id": "dcc-2415_stmt",
         "name": "statement",
-        "prose": "employ automated mechanisms detecting misconfigured or unauthorised system components"
+        "prose": "Automatically identify and address misconfigurations and unauthorised components"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2416",
-      "title": "prevent unauthorised and unintended information transfer via shared system resources",
+      "title": "Shared system resources",
       "props": [
        {
         "name": "label",
@@ -2867,7 +2923,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2875,14 +2931,14 @@
        {
         "id": "dcc-2416_stmt",
         "name": "statement",
-        "prose": "prevent unauthorised and unintended information transfer via shared system resources"
+        "prose": "Shared system resources"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2417",
-      "title": "ensure all remote users acquire appropriate authorisation before accessing or executing privileged functions",
+      "title": "Authorise remote execution of privileged commands",
       "props": [
        {
         "name": "label",
@@ -2900,7 +2956,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2908,14 +2964,14 @@
        {
         "id": "dcc-2417_stmt",
         "name": "statement",
-        "prose": "ensure all remote users acquire appropriate authorisation before accessing or executing privileged functions"
+        "prose": "Authorise remote execution of privileged commands"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2418",
-      "title": "implement and document system hardening procedures and baseline configurations, restricting unsupported software and hardware",
+      "title": "Baseline configurations and inventories",
       "props": [
        {
         "name": "label",
@@ -2933,7 +2989,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2941,14 +2997,14 @@
        {
         "id": "dcc-2418_stmt",
         "name": "statement",
-        "prose": "implement and document system hardening procedures and baseline configurations, restricting unsupported software and hardware"
+        "prose": "Baseline configurations and inventories"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2419",
-      "title": "configure systems so credentials such as passwords are not displayed as cleartext during input",
+      "title": "Obscure authentication information",
       "props": [
        {
         "name": "label",
@@ -2966,7 +3022,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -2974,14 +3030,14 @@
        {
         "id": "dcc-2419_stmt",
         "name": "statement",
-        "prose": "configure systems so credentials such as passwords are not displayed as cleartext during input"
+        "prose": "Obscure authentication information"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2420",
-      "title": "configure systems to minimise failed-logon feedback that could aid compromise of authentication mechanisms",
+      "title": "Authentication feedback",
       "props": [
        {
         "name": "label",
@@ -2999,7 +3055,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3007,14 +3063,14 @@
        {
         "id": "dcc-2420_stmt",
         "name": "statement",
-        "prose": "configure systems to minimise failed-logon feedback that could aid compromise of authentication mechanisms"
+        "prose": "Authentication feedback"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2421",
-      "title": "implement NTP to a recognised authoritative source, synchronising every network device clock for consistent audit timestamps",
+      "title": "Network Time Protocol (NTP)",
       "props": [
        {
         "name": "label",
@@ -3032,7 +3088,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3040,14 +3096,14 @@
        {
         "id": "dcc-2421_stmt",
         "name": "statement",
-        "prose": "implement NTP to a recognised authoritative source, synchronising every network device clock for consistent audit timestamps"
+        "prose": "Network Time Protocol (NTP)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2422",
-      "title": "define, document, approve and enforce physical and logical access restrictions for changes to organisational systems",
+      "title": "Physical and logical access restrictions",
       "props": [
        {
         "name": "label",
@@ -3065,7 +3121,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3073,14 +3129,14 @@
        {
         "id": "dcc-2422_stmt",
         "name": "statement",
-        "prose": "define, document, approve and enforce physical and logical access restrictions for changes to organisational systems"
+        "prose": "Physical and logical access restrictions"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2423",
-      "title": "maintain an automated asset register of system components, including data location and ownership",
+      "title": "Trusted source repository",
       "props": [
        {
         "name": "label",
@@ -3098,7 +3154,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3106,14 +3162,14 @@
        {
         "id": "dcc-2423_stmt",
         "name": "statement",
-        "prose": "maintain an automated asset register of system components, including data location and ownership"
+        "prose": "Trusted source repository"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2424",
-      "title": "store administrator credentials via an approved secured mechanism with quarterly audits confirming the control functions",
+      "title": "Implement audit for stored credentials outside policy",
       "props": [
        {
         "name": "label",
@@ -3131,7 +3187,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3139,14 +3195,14 @@
        {
         "id": "dcc-2424_stmt",
         "name": "statement",
-        "prose": "store administrator credentials via an approved secured mechanism with quarterly audits confirming the control functions"
+        "prose": "Implement audit for stored credentials outside policy"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2425",
-      "title": "implement an integrity verification tool detecting unauthorised changes to web-facing and critical software and firmware, auto-triggering incident response",
+      "title": "Use integrity verification tools",
       "props": [
        {
         "name": "label",
@@ -3164,7 +3220,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3172,14 +3228,14 @@
        {
         "id": "dcc-2425_stmt",
         "name": "statement",
-        "prose": "implement an integrity verification tool detecting unauthorised changes to web-facing and critical software and firmware, auto-triggering incident response"
+        "prose": "Use integrity verification tools"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2426",
-      "title": "regularly audit anti-malware capabilities verifying they are current, functional, managed, and updating signatures and software",
+      "title": "Anti-malware capabilities",
       "props": [
        {
         "name": "label",
@@ -3197,7 +3253,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3205,14 +3261,14 @@
        {
         "id": "dcc-2426_stmt",
         "name": "statement",
-        "prose": "regularly audit anti-malware capabilities verifying they are current, functional, managed, and updating signatures and software"
+        "prose": "Anti-malware capabilities"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2427",
-      "title": "monitor, control and protect communications at external and key internal boundaries, including all remote workers",
+      "title": "Monitor/protect communications at boundaries",
       "props": [
        {
         "name": "label",
@@ -3230,7 +3286,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3238,14 +3294,14 @@
        {
         "id": "dcc-2427_stmt",
         "name": "statement",
-        "prose": "monitor, control and protect communications at external and key internal boundaries, including all remote workers"
+        "prose": "Monitor/protect communications at boundaries"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2428",
-      "title": "control and limit connections to external systems by an allow-list on the network boundary",
+      "title": "Verify/limit access to external system connections",
       "props": [
        {
         "name": "label",
@@ -3263,7 +3319,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3271,14 +3327,14 @@
        {
         "id": "dcc-2428_stmt",
         "name": "statement",
-        "prose": "control and limit connections to external systems by an allow-list on the network boundary"
+        "prose": "Verify/limit access to external system connections"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2429",
-      "title": "block unauthorised inbound connections by default, with firewall rules approved, documented and justified by business need",
+      "title": "Verify/limit access from external system connections",
       "props": [
        {
         "name": "label",
@@ -3296,7 +3352,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3304,14 +3360,14 @@
        {
         "id": "dcc-2429_stmt",
         "name": "statement",
-        "prose": "block unauthorised inbound connections by default, with firewall rules approved, documented and justified by business need"
+        "prose": "Verify/limit access from external system connections"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2430",
-      "title": "promptly remove or disable firewall rules no longer required or fulfilling no business need",
+      "title": "External system connection review",
       "props": [
        {
         "name": "label",
@@ -3329,7 +3385,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3337,14 +3393,14 @@
        {
         "id": "dcc-2430_stmt",
         "name": "statement",
-        "prose": "promptly remove or disable firewall rules no longer required or fulfilling no business need"
+        "prose": "External system connection review"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2500",
-      "title": "build resilience against cyber attack and system failure into design, implementation, operation and management of systems",
+      "title": "Resilient networks and systems",
       "props": [
        {
         "name": "label",
@@ -3362,7 +3418,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3370,14 +3426,14 @@
        {
         "id": "dcc-2500_stmt",
         "name": "statement",
-        "prose": "build resilience against cyber attack and system failure into design, implementation, operation and management of systems"
+        "prose": "Resilient networks and systems"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2501",
-      "title": "design networks and systems to be resilient and appropriately segregated, with resource limitations mitigated",
+      "title": "Design for resilience",
       "props": [
        {
         "name": "label",
@@ -3395,7 +3451,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3403,14 +3459,14 @@
        {
         "id": "dcc-2501_stmt",
         "name": "statement",
-        "prose": "design networks and systems to be resilient and appropriately segregated, with resource limitations mitigated"
+        "prose": "Design for resilience"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2502",
-      "title": "develop recovery plans for all systems that deliver Functions and protect Data",
+      "title": "Resilience preparation",
       "props": [
        {
         "name": "label",
@@ -3428,7 +3484,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3436,14 +3492,14 @@
        {
         "id": "dcc-2502_stmt",
         "name": "statement",
-        "prose": "develop recovery plans for all systems that deliver Functions and protect Data"
+        "prose": "Resilience preparation"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2503",
-      "title": "develop recovery plans for all delivering systems, tested at least annually with deficiencies recorded and resolved within timelines",
+      "title": "Resilience preparation with testing",
       "props": [
        {
         "name": "label",
@@ -3461,7 +3517,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3469,14 +3525,14 @@
        {
         "id": "dcc-2503_stmt",
         "name": "statement",
-        "prose": "develop recovery plans for all delivering systems, tested at least annually with deficiencies recorded and resolved within timelines"
+        "prose": "Resilience preparation with testing"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2504",
-      "title": "hold accessible, secured current backups needed to recover Functions and protect Data, with encryption and integrity validation",
+      "title": "Backups",
       "props": [
        {
         "name": "label",
@@ -3494,7 +3550,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3502,14 +3558,14 @@
        {
         "id": "dcc-2504_stmt",
         "name": "statement",
-        "prose": "hold accessible, secured current backups needed to recover Functions and protect Data, with encryption and integrity validation"
+        "prose": "Backups"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2505",
-      "title": "hold secured current backups with encryption, integrity validation, secure offsite storage, and regular recovery testing",
+      "title": "Resilient backups",
       "props": [
        {
         "name": "label",
@@ -3527,7 +3583,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3535,14 +3591,14 @@
        {
         "id": "dcc-2505_stmt",
         "name": "statement",
-        "prose": "hold secured current backups with encryption, integrity validation, secure offsite storage, and regular recovery testing"
+        "prose": "Resilient backups"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2506",
-      "title": "protect physical movement of backup media using locked containers, certified couriers, chain of custody and cryptographic protection",
+      "title": "Physical transport of backups",
       "props": [
        {
         "name": "label",
@@ -3560,7 +3616,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3568,14 +3624,14 @@
        {
         "id": "dcc-2506_stmt",
         "name": "statement",
-        "prose": "protect physical movement of backup media using locked containers, certified couriers, chain of custody and cryptographic protection"
+        "prose": "Physical transport of backups"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2507",
-      "title": "ensure firewalls block every network path and service not explicitly CAB-authorised, removing unsupported exceptions",
+      "title": "Deny traffic by default at interfaces",
       "props": [
        {
         "name": "label",
@@ -3593,7 +3649,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3601,14 +3657,14 @@
        {
         "id": "dcc-2507_stmt",
         "name": "statement",
-        "prose": "ensure firewalls block every network path and service not explicitly CAB-authorised, removing unsupported exceptions"
+        "prose": "Deny traffic by default at interfaces"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2508",
-      "title": "implement network segmentation separating publicly accessible components from internal network components",
+      "title": "Separate public and internal subnetworks",
       "props": [
        {
         "name": "label",
@@ -3626,7 +3682,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3634,14 +3690,14 @@
        {
         "id": "dcc-2508_stmt",
         "name": "statement",
-        "prose": "implement network segmentation separating publicly accessible components from internal network components"
+        "prose": "Separate public and internal subnetworks"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2509",
-      "title": "implement tooling to detect, block and report malicious or spam emails entering the network",
+      "title": "Managed email filtering",
       "props": [
        {
         "name": "label",
@@ -3659,7 +3715,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3667,14 +3723,14 @@
        {
         "id": "dcc-2509_stmt",
         "name": "statement",
-        "prose": "implement tooling to detect, block and report malicious or spam emails entering the network"
+        "prose": "Managed email filtering"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2510",
-      "title": "check all media containing diagnostic or test programs for malicious code before use on the organisational network",
+      "title": "Diagnostic programmes",
       "props": [
        {
         "name": "label",
@@ -3692,7 +3748,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3700,14 +3756,14 @@
        {
         "id": "dcc-2510_stmt",
         "name": "statement",
-        "prose": "check all media containing diagnostic or test programs for malicious code before use on the organisational network"
+        "prose": "Diagnostic programmes"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2511",
-      "title": "ensure good-practice tooling, techniques and mechanisms are authorised or provided to maintenance personnel",
+      "title": "Maintenance activities",
       "props": [
        {
         "name": "label",
@@ -3725,7 +3781,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3733,14 +3789,14 @@
        {
         "id": "dcc-2511_stmt",
         "name": "statement",
-        "prose": "ensure good-practice tooling, techniques and mechanisms are authorised or provided to maintenance personnel"
+        "prose": "Maintenance activities"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2512",
-      "title": "require MFA for nonlocal maintenance sessions via external connections, terminating connections when maintenance completes",
+      "title": "MFA for remote maintenance activities",
       "props": [
        {
         "name": "label",
@@ -3758,7 +3814,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3766,14 +3822,14 @@
        {
         "id": "dcc-2512_stmt",
         "name": "statement",
-        "prose": "require MFA for nonlocal maintenance sessions via external connections, terminating connections when maintenance completes"
+        "prose": "MFA for remote maintenance activities"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2513",
-      "title": "designate authorised, qualified personnel to supervise maintenance personnel lacking required physical access authorisations",
+      "title": "Maintenance personnel supervision",
       "props": [
        {
         "name": "label",
@@ -3791,7 +3847,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3799,14 +3855,14 @@
        {
         "id": "dcc-2513_stmt",
         "name": "statement",
-        "prose": "designate authorised, qualified personnel to supervise maintenance personnel lacking required physical access authorisations"
+        "prose": "Maintenance personnel supervision"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2600",
-      "title": "ensure staff have appropriate awareness, knowledge and skills to perform their roles securely",
+      "title": "Staff awareness and training",
       "props": [
        {
         "name": "label",
@@ -3824,7 +3880,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3832,14 +3888,14 @@
        {
         "id": "dcc-2600_stmt",
         "name": "statement",
-        "prose": "ensure staff have appropriate awareness, knowledge and skills to perform their roles securely"
+        "prose": "Staff awareness and training"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2601",
-      "title": "develop and maintain a positive cyber security culture making information security part of day-to-day activity",
+      "title": "Cyber security culture",
       "props": [
        {
         "name": "label",
@@ -3857,7 +3913,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3865,14 +3921,14 @@
        {
         "id": "dcc-2601_stmt",
         "name": "statement",
-        "prose": "develop and maintain a positive cyber security culture making information security part of day-to-day activity"
+        "prose": "Cyber security culture"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2602",
-      "title": "train supporting personnel in cyber security with awareness training at least every 12 months covering phishing, APTs and breaches",
+      "title": "Cyber security training",
       "props": [
        {
         "name": "label",
@@ -3890,7 +3946,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3898,14 +3954,14 @@
        {
         "id": "dcc-2602_stmt",
         "name": "statement",
-        "prose": "train supporting personnel in cyber security with awareness training at least every 12 months covering phishing, APTs and breaches"
+        "prose": "Cyber security training"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2603",
-      "title": "make managers, administrators and users aware of security risks and policies, reviewed at least every 12 months",
+      "title": "Staff risk awareness",
       "props": [
        {
         "name": "label",
@@ -3923,7 +3979,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3931,14 +3987,14 @@
        {
         "id": "dcc-2603_stmt",
         "name": "statement",
-        "prose": "make managers, administrators and users aware of security risks and policies, reviewed at least every 12 months"
+        "prose": "Staff risk awareness"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2604",
-      "title": "enforce an Acceptable Use Policy covering social media, public posting, clear desk/screen and asset handling",
+      "title": "Acceptable Use Policy",
       "props": [
        {
         "name": "label",
@@ -3956,7 +4012,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3964,14 +4020,14 @@
        {
         "id": "dcc-2604_stmt",
         "name": "statement",
-        "prose": "enforce an Acceptable Use Policy covering social media, public posting, clear desk/screen and asset handling"
+        "prose": "Acceptable Use Policy"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2605",
-      "title": "conduct practical awareness-training exercises aligned with current threat scenarios, with feedback to participants and supervisors",
+      "title": "Annual threat focused training feedback",
       "props": [
        {
         "name": "label",
@@ -3989,7 +4045,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -3997,14 +4053,14 @@
        {
         "id": "dcc-2605_stmt",
         "name": "statement",
-        "prose": "conduct practical awareness-training exercises aligned with current threat scenarios, with feedback to participants and supervisors"
+        "prose": "Annual threat focused training feedback"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2700",
-      "title": "perform background verification on Personnel accessing Data, including credentials, employment history and BPSS",
+      "title": "Personnel pre-employment checks",
       "props": [
        {
         "name": "label",
@@ -4022,7 +4078,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4030,14 +4086,14 @@
        {
         "id": "dcc-2700_stmt",
         "name": "statement",
-        "prose": "perform background verification on Personnel accessing Data, including credentials, employment history and BPSS"
+        "prose": "Personnel pre-employment checks"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2701",
-      "title": "define and implement a policy applying BPSS and National Security Vetting checks as appropriate",
+      "title": "Personnel security vetting",
       "props": [
        {
         "name": "label",
@@ -4055,7 +4111,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4063,14 +4119,14 @@
        {
         "id": "dcc-2701_stmt",
         "name": "statement",
-        "prose": "define and implement a policy applying BPSS and National Security Vetting checks as appropriate"
+        "prose": "Personnel security vetting"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2702",
-      "title": "define and implement a joiners, movers and leavers policy securing organisational hardware, software and systems",
+      "title": "Joiners, movers and leavers",
       "props": [
        {
         "name": "label",
@@ -4088,7 +4144,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4096,14 +4152,14 @@
        {
         "id": "dcc-2702_stmt",
         "name": "statement",
-        "prose": "define and implement a joiners, movers and leavers policy securing organisational hardware, software and systems"
+        "prose": "Joiners, movers and leavers"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2703",
-      "title": "implement training and processes for reporting suspicious activity without fear of recrimination, with a disciplinary process for violations",
+      "title": "Whistleblowing",
       "props": [
        {
         "name": "label",
@@ -4121,7 +4177,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4129,14 +4185,14 @@
        {
         "id": "dcc-2703_stmt",
         "name": "statement",
-        "prose": "implement training and processes for reporting suspicious activity without fear of recrimination, with a disciplinary process for violations"
+        "prose": "Whistleblowing"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-2704",
-      "title": "implement and maintain fire suppression, temperature and humidity controls, and backup power where appropriate",
+      "title": "Environmental controls",
       "props": [
        {
         "name": "label",
@@ -4154,7 +4210,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4162,14 +4218,14 @@
        {
         "id": "dcc-2704_stmt",
         "name": "statement",
-        "prose": "implement and maintain fire suppression, temperature and humidity controls, and backup power where appropriate"
+        "prose": "Environmental controls"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3100",
-      "title": "monitor the security status of networks and systems to detect problems and track protective-measure effectiveness",
+      "title": "Security monitoring",
       "props": [
        {
         "name": "label",
@@ -4187,7 +4243,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4195,14 +4251,14 @@
        {
         "id": "dcc-3100_stmt",
         "name": "statement",
-        "prose": "monitor the security status of networks and systems to detect problems and track protective-measure effectiveness"
+        "prose": "Security monitoring"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3101",
-      "title": "establish and document security event monitoring covering events, frequency, roles and an escalation matrix",
+      "title": "Monitor security controls",
       "props": [
        {
         "name": "label",
@@ -4220,7 +4276,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4228,14 +4284,14 @@
        {
         "id": "dcc-3101_stmt",
         "name": "statement",
-        "prose": "establish and document security event monitoring covering events, frequency, roles and an escalation matrix"
+        "prose": "Monitor security controls"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3102",
-      "title": "document 24x7x365 security event monitoring of all information systems with correlation tools, roles and escalation matrix",
+      "title": "Continuously monitor security controls",
       "props": [
        {
         "name": "label",
@@ -4253,7 +4309,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4261,14 +4317,14 @@
        {
         "id": "dcc-3102_stmt",
         "name": "statement",
-        "prose": "document 24x7x365 security event monitoring of all information systems with correlation tools, roles and escalation matrix"
+        "prose": "Continuously monitor security controls"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3103",
-      "title": "hold logging data securely with business-need-only read access, protected audit tools and a documented retention period",
+      "title": "Securing logs",
       "props": [
        {
         "name": "label",
@@ -4286,7 +4342,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4294,14 +4350,14 @@
        {
         "id": "dcc-3103_stmt",
         "name": "statement",
-        "prose": "hold logging data securely with business-need-only read access, protected audit tools and a documented retention period"
+        "prose": "Securing logs"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3104",
-      "title": "provide evidence from monitoring tooling verifying the reliability of identified and triggered alerts for triage",
+      "title": "Security event triage",
       "props": [
        {
         "name": "label",
@@ -4319,7 +4375,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4327,14 +4383,14 @@
        {
         "id": "dcc-3104_stmt",
         "name": "statement",
-        "prose": "provide evidence from monitoring tooling verifying the reliability of identified and triggered alerts for triage"
+        "prose": "Security event triage"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3105",
-      "title": "contextualise alerts with threat and system knowledge, engaging Incident Response when an incident is identified",
+      "title": "Identifying security incidents",
       "props": [
        {
         "name": "label",
@@ -4352,7 +4408,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4360,14 +4416,14 @@
        {
         "id": "dcc-3105_stmt",
         "name": "statement",
-        "prose": "contextualise alerts with threat and system knowledge, engaging Incident Response when an incident is identified"
+        "prose": "Identifying security incidents"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3106",
-      "title": "ensure monitoring staff skills, tools and roles reflect governance requirements, expected threats and system complexity",
+      "title": "Monitoring tools and skills",
       "props": [
        {
         "name": "label",
@@ -4385,7 +4441,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4393,14 +4449,14 @@
        {
         "id": "dcc-3106_stmt",
         "name": "statement",
-        "prose": "ensure monitoring staff skills, tools and roles reflect governance requirements, expected threats and system complexity"
+        "prose": "Monitoring tools and skills"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3107",
-      "title": "generate event logs archived 12 months minimum, capturing key security events, reviewed weekly with 6-monthly event-type reviews",
+      "title": "Create, retain and correlate audit logs",
       "props": [
        {
         "name": "label",
@@ -4418,7 +4474,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4426,14 +4482,14 @@
        {
         "id": "dcc-3107_stmt",
         "name": "statement",
-        "prose": "generate event logs archived 12 months minimum, capturing key security events, reviewed weekly with 6-monthly event-type reviews"
+        "prose": "Create, retain and correlate audit logs"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3108",
-      "title": "implement audit record reduction and report generation supporting on-demand review without altering content or time ordering",
+      "title": "Audit reduction and report generation",
       "props": [
        {
         "name": "label",
@@ -4451,7 +4507,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4459,14 +4515,14 @@
        {
         "id": "dcc-3108_stmt",
         "name": "statement",
-        "prose": "implement audit record reduction and report generation supporting on-demand review without altering content or time ordering"
+        "prose": "Audit reduction and report generation"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3109",
-      "title": "integrate audit record review, triage, analysis and reporting with governance and incident management",
+      "title": "Integration of records with incident management",
       "props": [
        {
         "name": "label",
@@ -4484,7 +4540,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4492,14 +4548,14 @@
        {
         "id": "dcc-3109_stmt",
         "name": "statement",
-        "prose": "integrate audit record review, triage, analysis and reporting with governance and incident management"
+        "prose": "Integration of records with incident management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3110",
-      "title": "monitor system security alerts and advisories and take action in response",
+      "title": "Monitor alerts/advisories and take action",
       "props": [
        {
         "name": "label",
@@ -4517,7 +4573,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4525,14 +4581,14 @@
        {
         "id": "dcc-3110_stmt",
         "name": "statement",
-        "prose": "monitor system security alerts and advisories and take action in response"
+        "prose": "Monitor alerts/advisories and take action"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3200",
-      "title": "detect malicious activity even when it evades standard signature-based solutions or such solutions are undeployable",
+      "title": "Proactive security event discovery",
       "props": [
        {
         "name": "label",
@@ -4550,7 +4606,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4558,14 +4614,14 @@
        {
         "id": "dcc-3200_stmt",
         "name": "statement",
-        "prose": "detect malicious activity even when it evades standard signature-based solutions or such solutions are undeployable"
+        "prose": "Proactive security event discovery"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3201",
-      "title": "define examples of abnormal system behaviour to aid detection of hard-to-identify malicious activity",
+      "title": "System abnormalities for attack detection",
       "props": [
        {
         "name": "label",
@@ -4583,7 +4639,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4591,14 +4647,14 @@
        {
         "id": "dcc-3201_stmt",
         "name": "statement",
-        "prose": "define examples of abnormal system behaviour to aid detection of hard-to-identify malicious activity"
+        "prose": "System abnormalities for attack detection"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3202",
-      "title": "implement reasonable and proportionate measures detecting malicious activity affecting Functions and Data protection",
+      "title": "Proactive attack discovery",
       "props": [
        {
         "name": "label",
@@ -4616,7 +4672,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4624,14 +4680,14 @@
        {
         "id": "dcc-3202_stmt",
         "name": "statement",
-        "prose": "implement reasonable and proportionate measures detecting malicious activity affecting Functions and Data protection"
+        "prose": "Proactive attack discovery"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3203",
-      "title": "monitor security alerts and advisories and respond using agreed and managed indicators of compromise",
+      "title": "Use indicators of compromise from alerts",
       "props": [
        {
         "name": "label",
@@ -4649,7 +4705,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4657,14 +4713,14 @@
        {
         "id": "dcc-3203_stmt",
         "name": "statement",
-        "prose": "monitor security alerts and advisories and respond using agreed and managed indicators of compromise"
+        "prose": "Use indicators of compromise from alerts"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-3204",
-      "title": "detect unauthorised hardware, software and firmware, then disable network access, isolate components and notify security operations",
+      "title": "Presence of unauthorised system components",
       "props": [
        {
         "name": "label",
@@ -4682,7 +4738,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4690,14 +4746,14 @@
        {
         "id": "dcc-3204_stmt",
         "name": "statement",
-        "prose": "detect unauthorised hardware, software and firmware, then disable network access, isolate components and notify security operations"
+        "prose": "Presence of unauthorised system components"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-4100",
-      "title": "implement well-defined, tested incident management processes ensuring continuity of Functions and Data protection",
+      "title": "Response and recovery planning",
       "props": [
        {
         "name": "label",
@@ -4715,7 +4771,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4723,14 +4779,14 @@
        {
         "id": "dcc-4100_stmt",
         "name": "statement",
-        "prose": "implement well-defined, tested incident management processes ensuring continuity of Functions and Data protection"
+        "prose": "Response and recovery planning"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-4101",
-      "title": "have an up-to-date incident response plan grounded in risk assessment, covering a range of incident scenarios",
+      "title": "Response plan",
       "props": [
        {
         "name": "label",
@@ -4748,7 +4804,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4756,14 +4812,14 @@
        {
         "id": "dcc-4101_stmt",
         "name": "statement",
-        "prose": "have an up-to-date incident response plan grounded in risk assessment, covering a range of incident scenarios"
+        "prose": "Response plan"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-4102",
-      "title": "be capable of enacting the incident response plan, limiting impact and coordinating incident handling with contingency planning",
+      "title": "Response and recovery capability",
       "props": [
        {
         "name": "label",
@@ -4781,7 +4837,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4789,14 +4845,14 @@
        {
         "id": "dcc-4102_stmt",
         "name": "statement",
-        "prose": "be capable of enacting the incident response plan, limiting impact and coordinating incident handling with contingency planning"
+        "prose": "Response and recovery capability"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-4103",
-      "title": "exercise response plans at least every 12 months using past incidents and threat-intelligence-informed scenarios",
+      "title": "Testing and exercising",
       "props": [
        {
         "name": "label",
@@ -4814,7 +4870,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4822,14 +4878,14 @@
        {
         "id": "dcc-4103_stmt",
         "name": "statement",
-        "prose": "exercise response plans at least every 12 months using past incidents and threat-intelligence-informed scenarios"
+        "prose": "Testing and exercising"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-4104",
-      "title": "establish an operational incident handling capability covering preparation, detection, forensic analysis, containment, recovery and reporting",
+      "title": "Incident handling capability",
       "props": [
        {
         "name": "label",
@@ -4847,7 +4903,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4855,14 +4911,14 @@
        {
         "id": "dcc-4104_stmt",
         "name": "statement",
-        "prose": "establish an operational incident handling capability covering preparation, detection, forensic analysis, containment, recovery and reporting"
+        "prose": "Incident handling capability"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-4105",
-      "title": "conduct data exfiltration tests at network boundaries at least every 12 months against authorised and covert channels",
+      "title": "Exfiltration tests",
       "props": [
        {
         "name": "label",
@@ -4880,7 +4936,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4888,14 +4944,14 @@
        {
         "id": "dcc-4105_stmt",
         "name": "statement",
-        "prose": "conduct data exfiltration tests at network boundaries at least every 12 months against authorised and covert channels"
+        "prose": "Exfiltration tests"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-4106",
-      "title": "audit the identity of internal users associated with denied communications",
+      "title": "Attempted unauthorised connections from staff",
       "props": [
        {
         "name": "label",
@@ -4913,7 +4969,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4921,14 +4977,14 @@
        {
         "id": "dcc-4106_stmt",
         "name": "statement",
-        "prose": "audit the identity of internal users associated with denied communications"
+        "prose": "Attempted unauthorised connections from staff"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-4200",
-      "title": "incorporate root cause analysis and lessons learned into response procedures, with improvements implemented within 30 days of analysis",
+      "title": "Lessons learned",
       "props": [
        {
         "name": "label",
@@ -4946,7 +5002,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4954,14 +5010,14 @@
        {
         "id": "dcc-4200_stmt",
         "name": "statement",
-        "prose": "incorporate root cause analysis and lessons learned into response procedures, with improvements implemented within 30 days of analysis"
+        "prose": "Lessons learned"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-4201",
-      "title": "perform Business Continuity Risk Assessments for outage or Data Breach risks, recorded in a risk register with mitigating controls",
+      "title": "Business Continuity Risk Assessments",
       "props": [
        {
         "name": "label",
@@ -4979,7 +5035,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -4987,14 +5043,14 @@
        {
         "id": "dcc-4201_stmt",
         "name": "statement",
-        "prose": "perform Business Continuity Risk Assessments for outage or Data Breach risks, recorded in a risk register with mitigating controls"
+        "prose": "Business Continuity Risk Assessments"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dcc-4202",
-      "title": "assess the requirement for redundant networking and telecommunication systems, implementing and protecting them where required",
+      "title": "Operation resilience for equipment",
       "props": [
        {
         "name": "label",
@@ -5012,7 +5068,7 @@
       ],
       "links": [
        {
-        "href": "#fc923512-e8a8-5978-b732-fd6338de557b",
+        "href": "#23f96984-707b-5cb4-bf36-ac194b55341a",
         "rel": "implementation"
        }
       ],
@@ -5020,7 +5076,7 @@
        {
         "id": "dcc-4202_stmt",
         "name": "statement",
-        "prose": "assess the requirement for redundant networking and telecommunication systems, implementing and protecting them where required"
+        "prose": "Operation resilience for equipment"
        }
       ],
       "class": "compliance"
@@ -5031,7 +5087,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "fc923512-e8a8-5978-b732-fd6338de557b",
+     "uuid": "23f96984-707b-5cb4-bf36-ac194b55341a",
      "title": "UK MoD Defence Cyber Certification (DCC) — DEF STAN 05-138 Issue 4",
      "props": [
       {
@@ -5042,7 +5098,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/dcc/dcc_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regional/dcc/dcc_main.rego",
        "media-type": "text/plain"
       }
      ]

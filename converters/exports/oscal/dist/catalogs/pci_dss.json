@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "4fbc4268-6cfb-5522-b370-1a21fe9847e2",
+  "uuid": "8c284030-808e-5f1a-a0f5-16ec85b62dda",
   "metadata": {
    "title": "Rego Policy Libraries — pci_dss (PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,204 @@
     ],
     "controls": [
      {
+      "id": "pci_dss-pci_dss.access_control.requirement_7-1",
+      "title": "job function access",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_7#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_7#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_7-1_stmt",
+        "name": "statement",
+        "prose": "job function access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_7-2",
+      "title": "least privilege",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_7#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_7#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_7-2_stmt",
+        "name": "statement",
+        "prose": "least privilege"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_7-3",
+      "title": "privileged access",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_7#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_7#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_7-3_stmt",
+        "name": "statement",
+        "prose": "privileged access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_7-4",
+      "title": "rbac",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_7#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_7#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_7-4_stmt",
+        "name": "statement",
+        "prose": "rbac"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_7-5",
+      "title": "third party access",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_7#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_7#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_7-5_stmt",
+        "name": "statement",
+        "prose": "third party access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_7-6",
+      "title": "user access reviews",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_7#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_7#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_7-6_stmt",
+        "name": "statement",
+        "prose": "user access reviews"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "pci_dss-requirement_7_1",
       "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_7.rego (package pci_dss.access_control.requirement_7); see the rule body.",
       "props": [
@@ -85,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#9e0428c2-98ab-5cae-9832-bc7af709ffc0",
+        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
         "rel": "implementation"
        }
       ],
@@ -118,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#9e0428c2-98ab-5cae-9832-bc7af709ffc0",
+        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
         "rel": "implementation"
        }
       ],
@@ -151,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#9e0428c2-98ab-5cae-9832-bc7af709ffc0",
+        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
         "rel": "implementation"
        }
       ],
@@ -189,6 +387,270 @@
     ],
     "controls": [
      {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-1",
+      "title": "factors protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-1_stmt",
+        "name": "statement",
+        "prose": "factors protected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-2",
+      "title": "first use change",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-2_stmt",
+        "name": "statement",
+        "prose": "first use change"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-3",
+      "title": "password requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-3_stmt",
+        "name": "statement",
+        "prose": "password requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-4",
+      "title": "all cde access",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-4_stmt",
+        "name": "statement",
+        "prose": "all cde access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-5",
+      "title": "cde admin",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-5_stmt",
+        "name": "statement",
+        "prose": "cde admin"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-6",
+      "title": "remote access",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-6_stmt",
+        "name": "statement",
+        "prose": "remote access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-7",
+      "title": "replay resistant",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-7_stmt",
+        "name": "statement",
+        "prose": "replay resistant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-8",
+      "title": "system secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-8_stmt",
+        "name": "statement",
+        "prose": "system secure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "pci_dss-requirement_8_1",
       "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body.",
       "props": [
@@ -208,7 +670,7 @@
       ],
       "links": [
        {
-        "href": "#c7beb066-16be-5416-8674-e8e91da93bc1",
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
         "rel": "implementation"
        }
       ],
@@ -241,7 +703,7 @@
       ],
       "links": [
        {
-        "href": "#c7beb066-16be-5416-8674-e8e91da93bc1",
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
         "rel": "implementation"
        }
       ],
@@ -274,7 +736,7 @@
       ],
       "links": [
        {
-        "href": "#c7beb066-16be-5416-8674-e8e91da93bc1",
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
         "rel": "implementation"
        }
       ],
@@ -307,7 +769,7 @@
       ],
       "links": [
        {
-        "href": "#c7beb066-16be-5416-8674-e8e91da93bc1",
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
         "rel": "implementation"
        }
       ],
@@ -340,7 +802,7 @@
       ],
       "links": [
        {
-        "href": "#c7beb066-16be-5416-8674-e8e91da93bc1",
+        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
         "rel": "implementation"
        }
       ],
@@ -349,6 +811,855 @@
         "id": "pci_dss-requirement_8_6_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/access_control/requirement_8.rego (package pci_dss.access_control.requirement_8); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-requirement_3",
+    "class": "rego-module",
+    "title": "PCI DSS Requirement 3 - Protect Stored Account Data",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.data_protection.requirement_3"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/data_protection/requirement_3.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-1",
+      "title": "cloud database encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-1_stmt",
+        "name": "statement",
+        "prose": "cloud database encryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-2",
+      "title": "cloud encryption services",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-2_stmt",
+        "name": "statement",
+        "prose": "cloud encryption services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-3",
+      "title": "cloud storage encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-3_stmt",
+        "name": "statement",
+        "prose": "cloud storage encryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-4",
+      "title": "container data encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-4_stmt",
+        "name": "statement",
+        "prose": "container data encryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-5",
+      "title": "container registry security",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-5_stmt",
+        "name": "statement",
+        "prose": "container registry security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-6",
+      "title": "openshift storage encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-6_stmt",
+        "name": "statement",
+        "prose": "openshift storage encryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-7",
+      "title": "cardholder data purging",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-7_stmt",
+        "name": "statement",
+        "prose": "cardholder data purging"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-8",
+      "title": "data retention policy implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-8_stmt",
+        "name": "statement",
+        "prose": "data retention policy implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-9",
+      "title": "quarterly data discovery",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-9_stmt",
+        "name": "statement",
+        "prose": "quarterly data discovery"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-10",
+      "title": "sad post auth deletion",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-10_stmt",
+        "name": "statement",
+        "prose": "sad post auth deletion"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-11",
+      "title": "cvc storage prohibited",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-11_stmt",
+        "name": "statement",
+        "prose": "cvc storage prohibited"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-12",
+      "title": "magnetic stripe data prohibited",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-12_stmt",
+        "name": "statement",
+        "prose": "magnetic stripe data prohibited"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-13",
+      "title": "pin storage prohibited",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-13_stmt",
+        "name": "statement",
+        "prose": "pin storage prohibited"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-14",
+      "title": "pan display restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-14_stmt",
+        "name": "statement",
+        "prose": "pan display restricted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-15",
+      "title": "pan masking implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-15_stmt",
+        "name": "statement",
+        "prose": "pan masking implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-16",
+      "title": "screen protection implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-16_stmt",
+        "name": "statement",
+        "prose": "screen protection implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-17",
+      "title": "database encryption implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-17_stmt",
+        "name": "statement",
+        "prose": "database encryption implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-18",
+      "title": "filesystem encryption implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-18_stmt",
+        "name": "statement",
+        "prose": "filesystem encryption implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-19",
+      "title": "pan encryption implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-19_stmt",
+        "name": "statement",
+        "prose": "pan encryption implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-20",
+      "title": "key distribution secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-20_stmt",
+        "name": "statement",
+        "prose": "key distribution secure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-21",
+      "title": "key management policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-21_stmt",
+        "name": "statement",
+        "prose": "key management policies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-22",
+      "title": "key storage protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-22_stmt",
+        "name": "statement",
+        "prose": "key storage protected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-23",
+      "title": "crypto architecture documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-23_stmt",
+        "name": "statement",
+        "prose": "crypto architecture documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-24",
+      "title": "crypto key administration",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-24_stmt",
+        "name": "statement",
+        "prose": "crypto key administration"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-25",
+      "title": "key lifecycle management",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-25_stmt",
+        "name": "statement",
+        "prose": "key lifecycle management"
        }
       ],
       "class": "compliance"
@@ -378,6 +1689,303 @@
     ],
     "controls": [
      {
+      "id": "pci_dss-pci_dss.data_protection.requirement_4-1",
+      "title": "api transmission",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_4#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_4#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_4-1_stmt",
+        "name": "statement",
+        "prose": "api transmission"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_4-2",
+      "title": "certificate management",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_4#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_4#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_4-2_stmt",
+        "name": "statement",
+        "prose": "certificate management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_4-3",
+      "title": "messaging pan prohibited",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_4#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_4#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_4-3_stmt",
+        "name": "statement",
+        "prose": "messaging pan prohibited"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_4-4",
+      "title": "payment page encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_4#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_4#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_4-4_stmt",
+        "name": "statement",
+        "prose": "payment page encryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_4-5",
+      "title": "pos terminal encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_4#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_4#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_4-5_stmt",
+        "name": "statement",
+        "prose": "pos terminal encryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_4-6",
+      "title": "strong cryptography for pan",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_4#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_4#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_4-6_stmt",
+        "name": "statement",
+        "prose": "strong cryptography for pan"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_4-7",
+      "title": "trusted keys certificates",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_4#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_4#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_4-7_stmt",
+        "name": "statement",
+        "prose": "trusted keys certificates"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_4-8",
+      "title": "weak protocols disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_4#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_4#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_4-8_stmt",
+        "name": "statement",
+        "prose": "weak protocols disabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_4-9",
+      "title": "wireless pan transmission",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_4#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_4#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_4-9_stmt",
+        "name": "statement",
+        "prose": "wireless pan transmission"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "pci_dss-requirement_4_1",
       "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/data_protection/requirement_4.rego (package pci_dss.data_protection.requirement_4); see the rule body.",
       "props": [
@@ -397,7 +2005,7 @@
       ],
       "links": [
        {
-        "href": "#20dacb15-bf4a-59b6-8896-cbea3781e1e8",
+        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
         "rel": "implementation"
        }
       ],
@@ -430,7 +2038,7 @@
       ],
       "links": [
        {
-        "href": "#20dacb15-bf4a-59b6-8896-cbea3781e1e8",
+        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
         "rel": "implementation"
        }
       ],
@@ -468,6 +2076,237 @@
     ],
     "controls": [
      {
+      "id": "pci_dss-pci_dss.governance.requirement_12-1",
+      "title": "communication plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.governance.requirement_12#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.governance.requirement_12#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.governance.requirement_12-1_stmt",
+        "name": "statement",
+        "prose": "communication plan"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.governance.requirement_12-2",
+      "title": "forensic readiness",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.governance.requirement_12#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.governance.requirement_12#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.governance.requirement_12-2_stmt",
+        "name": "statement",
+        "prose": "forensic readiness"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.governance.requirement_12-3",
+      "title": "incident response plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.governance.requirement_12#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.governance.requirement_12#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.governance.requirement_12-3_stmt",
+        "name": "statement",
+        "prose": "incident response plan"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.governance.requirement_12-4",
+      "title": "incident scope",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.governance.requirement_12#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.governance.requirement_12#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.governance.requirement_12-4_stmt",
+        "name": "statement",
+        "prose": "incident scope"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.governance.requirement_12-5",
+      "title": "risk management",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.governance.requirement_12#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.governance.requirement_12#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.governance.requirement_12-5_stmt",
+        "name": "statement",
+        "prose": "risk management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.governance.requirement_12-6",
+      "title": "targeted risk analysis",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.governance.requirement_12#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.governance.requirement_12#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.governance.requirement_12-6_stmt",
+        "name": "statement",
+        "prose": "targeted risk analysis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.governance.requirement_12-7",
+      "title": "technology review",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.governance.requirement_12#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.governance.requirement_12#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.governance.requirement_12-7_stmt",
+        "name": "statement",
+        "prose": "technology review"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "pci_dss-requirement_12_1",
       "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/governance/requirement_12.rego (package pci_dss.governance.requirement_12); see the rule body.",
       "props": [
@@ -487,7 +2326,7 @@
       ],
       "links": [
        {
-        "href": "#913d92a6-04a6-5123-a5ff-1e121e86ddac",
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
         "rel": "implementation"
        }
       ],
@@ -520,7 +2359,7 @@
       ],
       "links": [
        {
-        "href": "#913d92a6-04a6-5123-a5ff-1e121e86ddac",
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
         "rel": "implementation"
        }
       ],
@@ -553,7 +2392,7 @@
       ],
       "links": [
        {
-        "href": "#913d92a6-04a6-5123-a5ff-1e121e86ddac",
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
         "rel": "implementation"
        }
       ],
@@ -586,7 +2425,7 @@
       ],
       "links": [
        {
-        "href": "#913d92a6-04a6-5123-a5ff-1e121e86ddac",
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
         "rel": "implementation"
        }
       ],
@@ -619,7 +2458,7 @@
       ],
       "links": [
        {
-        "href": "#913d92a6-04a6-5123-a5ff-1e121e86ddac",
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
         "rel": "implementation"
        }
       ],
@@ -652,7 +2491,7 @@
       ],
       "links": [
        {
-        "href": "#913d92a6-04a6-5123-a5ff-1e121e86ddac",
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
         "rel": "implementation"
        }
       ],
@@ -685,7 +2524,7 @@
       ],
       "links": [
        {
-        "href": "#913d92a6-04a6-5123-a5ff-1e121e86ddac",
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
         "rel": "implementation"
        }
       ],
@@ -718,7 +2557,7 @@
       ],
       "links": [
        {
-        "href": "#913d92a6-04a6-5123-a5ff-1e121e86ddac",
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
         "rel": "implementation"
        }
       ],
@@ -751,7 +2590,7 @@
       ],
       "links": [
        {
-        "href": "#913d92a6-04a6-5123-a5ff-1e121e86ddac",
+        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
         "rel": "implementation"
        }
       ],
@@ -789,6 +2628,138 @@
     ],
     "controls": [
      {
+      "id": "pci_dss-pci_dss.logging_monitoring.requirement_10-1",
+      "title": "automated analysis",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.logging_monitoring.requirement_10#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.logging_monitoring.requirement_10#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.logging_monitoring.requirement_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.logging_monitoring.requirement_10-1_stmt",
+        "name": "statement",
+        "prose": "automated analysis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.logging_monitoring.requirement_10-2",
+      "title": "daily review",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.logging_monitoring.requirement_10#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.logging_monitoring.requirement_10#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.logging_monitoring.requirement_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.logging_monitoring.requirement_10-2_stmt",
+        "name": "statement",
+        "prose": "daily review"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.logging_monitoring.requirement_10-3",
+      "title": "exceptions followed up",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.logging_monitoring.requirement_10#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.logging_monitoring.requirement_10#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.logging_monitoring.requirement_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.logging_monitoring.requirement_10-3_stmt",
+        "name": "statement",
+        "prose": "exceptions followed up"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.logging_monitoring.requirement_10-4",
+      "title": "periodic review",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.logging_monitoring.requirement_10#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.logging_monitoring.requirement_10#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.logging_monitoring.requirement_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.logging_monitoring.requirement_10-4_stmt",
+        "name": "statement",
+        "prose": "periodic review"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "pci_dss-requirement_10_1",
       "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (package pci_dss.logging_monitoring.requirement_10); see the rule body.",
       "props": [
@@ -808,7 +2779,7 @@
       ],
       "links": [
        {
-        "href": "#a2973d2f-166a-5596-863e-86347051170e",
+        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
         "rel": "implementation"
        }
       ],
@@ -841,7 +2812,7 @@
       ],
       "links": [
        {
-        "href": "#a2973d2f-166a-5596-863e-86347051170e",
+        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
         "rel": "implementation"
        }
       ],
@@ -874,7 +2845,7 @@
       ],
       "links": [
        {
-        "href": "#a2973d2f-166a-5596-863e-86347051170e",
+        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
         "rel": "implementation"
        }
       ],
@@ -907,7 +2878,7 @@
       ],
       "links": [
        {
-        "href": "#a2973d2f-166a-5596-863e-86347051170e",
+        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
         "rel": "implementation"
        }
       ],
@@ -940,7 +2911,7 @@
       ],
       "links": [
        {
-        "href": "#a2973d2f-166a-5596-863e-86347051170e",
+        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
         "rel": "implementation"
        }
       ],
@@ -973,7 +2944,7 @@
       ],
       "links": [
        {
-        "href": "#a2973d2f-166a-5596-863e-86347051170e",
+        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
         "rel": "implementation"
        }
       ],
@@ -1006,7 +2977,7 @@
       ],
       "links": [
        {
-        "href": "#a2973d2f-166a-5596-863e-86347051170e",
+        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
         "rel": "implementation"
        }
       ],
@@ -1044,6 +3015,171 @@
     ],
     "controls": [
      {
+      "id": "pci_dss-pci_dss.malware_protection.requirement_5-1",
+      "title": "active protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.malware_protection.requirement_5#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.malware_protection.requirement_5#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.malware_protection.requirement_5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.malware_protection.requirement_5-1_stmt",
+        "name": "statement",
+        "prose": "active protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.malware_protection.requirement_5-2",
+      "title": "antimalware deployed",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.malware_protection.requirement_5#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.malware_protection.requirement_5#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.malware_protection.requirement_5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.malware_protection.requirement_5-2_stmt",
+        "name": "statement",
+        "prose": "antimalware deployed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.malware_protection.requirement_5-3",
+      "title": "antimalware maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.malware_protection.requirement_5#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.malware_protection.requirement_5#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.malware_protection.requirement_5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.malware_protection.requirement_5-3_stmt",
+        "name": "statement",
+        "prose": "antimalware maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.malware_protection.requirement_5-4",
+      "title": "logs maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.malware_protection.requirement_5#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.malware_protection.requirement_5#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.malware_protection.requirement_5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.malware_protection.requirement_5-4_stmt",
+        "name": "statement",
+        "prose": "logs maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.malware_protection.requirement_5-5",
+      "title": "risk evaluation",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.malware_protection.requirement_5#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.malware_protection.requirement_5#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.malware_protection.requirement_5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.malware_protection.requirement_5-5_stmt",
+        "name": "statement",
+        "prose": "risk evaluation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "pci_dss-enhanced_controls",
       "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body.",
       "props": [
@@ -1063,11 +3199,11 @@
       ],
       "links": [
        {
-        "href": "#38ee419e-74f9-516b-8d45-ae72b41ac4c7",
+        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
         "rel": "implementation"
        },
        {
-        "href": "#928cd319-2bd3-5cb0-9e9e-80d35d85dbc1",
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
         "rel": "implementation"
        }
       ],
@@ -1105,7 +3241,7 @@
       ],
       "links": [
        {
-        "href": "#38ee419e-74f9-516b-8d45-ae72b41ac4c7",
+        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
         "rel": "implementation"
        }
       ],
@@ -1138,7 +3274,7 @@
       ],
       "links": [
        {
-        "href": "#38ee419e-74f9-516b-8d45-ae72b41ac4c7",
+        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
         "rel": "implementation"
        }
       ],
@@ -1171,7 +3307,7 @@
       ],
       "links": [
        {
-        "href": "#38ee419e-74f9-516b-8d45-ae72b41ac4c7",
+        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
         "rel": "implementation"
        }
       ],
@@ -1204,7 +3340,7 @@
       ],
       "links": [
        {
-        "href": "#38ee419e-74f9-516b-8d45-ae72b41ac4c7",
+        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
         "rel": "implementation"
        }
       ],
@@ -1213,6 +3349,657 @@
         "id": "pci_dss-requirement_5_4_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "pci_dss-requirement_1",
+    "class": "rego-module",
+    "title": "PCI DSS Requirement 1 - Install and Maintain Network Security Controls",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pci_dss.network_security.requirement_1"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/pci_dss/network_security/requirement_1.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-1",
+      "title": "cloud security groups configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-1_stmt",
+        "name": "statement",
+        "prose": "cloud security groups configured"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-2",
+      "title": "cloud waf implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-2_stmt",
+        "name": "statement",
+        "prose": "cloud waf implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-3",
+      "title": "vpc configuration secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-3_stmt",
+        "name": "statement",
+        "prose": "vpc configuration secure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-4",
+      "title": "network access logging",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-4_stmt",
+        "name": "statement",
+        "prose": "network access logging"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-5",
+      "title": "network security correlation",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-5_stmt",
+        "name": "statement",
+        "prose": "network security correlation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-6",
+      "title": "network traffic monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-6_stmt",
+        "name": "statement",
+        "prose": "network traffic monitoring"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-7",
+      "title": "container network isolation",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-7_stmt",
+        "name": "statement",
+        "prose": "container network isolation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-8",
+      "title": "openshift network policies cde",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-8_stmt",
+        "name": "statement",
+        "prose": "openshift network policies cde"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-9",
+      "title": "openshift sdn security",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-9_stmt",
+        "name": "statement",
+        "prose": "openshift sdn security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-10",
+      "title": "service mesh pci security",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-10_stmt",
+        "name": "statement",
+        "prose": "service mesh pci security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-11",
+      "title": "network security controls maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-11_stmt",
+        "name": "statement",
+        "prose": "network security controls maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-12",
+      "title": "network security policies established",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-12_stmt",
+        "name": "statement",
+        "prose": "network security policies established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-13",
+      "title": "network security roles defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-13_stmt",
+        "name": "statement",
+        "prose": "network security roles defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-14",
+      "title": "direct internet access prohibited",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-14_stmt",
+        "name": "statement",
+        "prose": "direct internet access prohibited"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-15",
+      "title": "inbound traffic restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-15_stmt",
+        "name": "statement",
+        "prose": "inbound traffic restricted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-16",
+      "title": "outbound traffic restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-16_stmt",
+        "name": "statement",
+        "prose": "outbound traffic restricted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-17",
+      "title": "dmz properly configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-17_stmt",
+        "name": "statement",
+        "prose": "dmz properly configured"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-18",
+      "title": "nat implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-18_stmt",
+        "name": "statement",
+        "prose": "nat implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-19",
+      "title": "network segmentation implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-19_stmt",
+        "name": "statement",
+        "prose": "network segmentation implemented"
        }
       ],
       "class": "compliance"
@@ -1261,7 +4048,7 @@
       ],
       "links": [
        {
-        "href": "#79d04b9d-36d7-501f-8520-bb035510584e",
+        "href": "#f4921c1e-604f-576f-a666-56785f025827",
         "rel": "implementation"
        }
       ],
@@ -1299,6 +4086,435 @@
     ],
     "controls": [
      {
+      "id": "pci_dss-pci_dss.main-1",
+      "title": "cde scope defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-1_stmt",
+        "name": "statement",
+        "prose": "cde scope defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-2",
+      "title": "req 10 logging monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-2_stmt",
+        "name": "statement",
+        "prose": "req 10 logging monitoring"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-3",
+      "title": "req 11 security testing",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-3_stmt",
+        "name": "statement",
+        "prose": "req 11 security testing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-4",
+      "title": "req 12 governance",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-4_stmt",
+        "name": "statement",
+        "prose": "req 12 governance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-5",
+      "title": "req 1 network security",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-5_stmt",
+        "name": "statement",
+        "prose": "req 1 network security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-6",
+      "title": "req 2 system hardening",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-6_stmt",
+        "name": "statement",
+        "prose": "req 2 system hardening"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-7",
+      "title": "req 3 stored data",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-7_stmt",
+        "name": "statement",
+        "prose": "req 3 stored data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-8",
+      "title": "req 4 transmission security",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-8_stmt",
+        "name": "statement",
+        "prose": "req 4 transmission security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-9",
+      "title": "req 5 malware protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-9_stmt",
+        "name": "statement",
+        "prose": "req 5 malware protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-10",
+      "title": "req 6 secure development",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-10_stmt",
+        "name": "statement",
+        "prose": "req 6 secure development"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-11",
+      "title": "req 7 access restriction",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-11_stmt",
+        "name": "statement",
+        "prose": "req 7 access restriction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-12",
+      "title": "req 8 authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-12_stmt",
+        "name": "statement",
+        "prose": "req 8 authentication"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.main-13",
+      "title": "req 9 physical access",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.main#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.main#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.main-13_stmt",
+        "name": "statement",
+        "prose": "req 9 physical access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "pci_dss-compliance_status",
       "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/pci_dss_main.rego (package pci_dss.main); see the rule body.",
       "props": [
@@ -1318,7 +4534,7 @@
       ],
       "links": [
        {
-        "href": "#024da3a0-87d5-542b-84d8-eeffda219373",
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
         "rel": "implementation"
        }
       ],
@@ -1351,7 +4567,7 @@
       ],
       "links": [
        {
-        "href": "#024da3a0-87d5-542b-84d8-eeffda219373",
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
         "rel": "implementation"
        }
       ],
@@ -1384,7 +4600,7 @@
       ],
       "links": [
        {
-        "href": "#024da3a0-87d5-542b-84d8-eeffda219373",
+        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
         "rel": "implementation"
        }
       ],
@@ -1422,6 +4638,237 @@
     ],
     "controls": [
      {
+      "id": "pci_dss-pci_dss.physical_security.requirement_9-1",
+      "title": "badge system",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.physical_security.requirement_9#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.physical_security.requirement_9#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.physical_security.requirement_9-1_stmt",
+        "name": "statement",
+        "prose": "badge system"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.physical_security.requirement_9-2",
+      "title": "physical access controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.physical_security.requirement_9#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.physical_security.requirement_9#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.physical_security.requirement_9-2_stmt",
+        "name": "statement",
+        "prose": "physical access controls"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.physical_security.requirement_9-3",
+      "title": "public jacks disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.physical_security.requirement_9#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.physical_security.requirement_9#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.physical_security.requirement_9-3_stmt",
+        "name": "statement",
+        "prose": "public jacks disabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.physical_security.requirement_9-4",
+      "title": "disk destruction",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.physical_security.requirement_9#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.physical_security.requirement_9#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.physical_security.requirement_9-4_stmt",
+        "name": "statement",
+        "prose": "disk destruction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.physical_security.requirement_9-5",
+      "title": "media controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.physical_security.requirement_9#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.physical_security.requirement_9#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.physical_security.requirement_9-5_stmt",
+        "name": "statement",
+        "prose": "media controls"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.physical_security.requirement_9-6",
+      "title": "media destruction",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.physical_security.requirement_9#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.physical_security.requirement_9#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.physical_security.requirement_9-6_stmt",
+        "name": "statement",
+        "prose": "media destruction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.physical_security.requirement_9-7",
+      "title": "media distribution",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.physical_security.requirement_9#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.physical_security.requirement_9#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.physical_security.requirement_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.physical_security.requirement_9-7_stmt",
+        "name": "statement",
+        "prose": "media distribution"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "pci_dss-requirement_9_1",
       "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/physical_security/requirement_9.rego (package pci_dss.physical_security.requirement_9); see the rule body.",
       "props": [
@@ -1441,7 +4888,7 @@
       ],
       "links": [
        {
-        "href": "#06a927d6-bc1e-5554-8c10-d85152797d57",
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
         "rel": "implementation"
        }
       ],
@@ -1474,7 +4921,7 @@
       ],
       "links": [
        {
-        "href": "#06a927d6-bc1e-5554-8c10-d85152797d57",
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
         "rel": "implementation"
        }
       ],
@@ -1507,7 +4954,7 @@
       ],
       "links": [
        {
-        "href": "#06a927d6-bc1e-5554-8c10-d85152797d57",
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
         "rel": "implementation"
        }
       ],
@@ -1540,7 +4987,7 @@
       ],
       "links": [
        {
-        "href": "#06a927d6-bc1e-5554-8c10-d85152797d57",
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
         "rel": "implementation"
        }
       ],
@@ -1573,7 +5020,7 @@
       ],
       "links": [
        {
-        "href": "#06a927d6-bc1e-5554-8c10-d85152797d57",
+        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
         "rel": "implementation"
        }
       ],
@@ -1611,6 +5058,501 @@
     ],
     "controls": [
      {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-1",
+      "title": "code review",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-1_stmt",
+        "name": "statement",
+        "prose": "code review"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-2",
+      "title": "developer training",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-2_stmt",
+        "name": "statement",
+        "prose": "developer training"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-3",
+      "title": "preproduction testing",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-3_stmt",
+        "name": "statement",
+        "prose": "preproduction testing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-4",
+      "title": "secure sdlc",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-4_stmt",
+        "name": "statement",
+        "prose": "secure sdlc"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-5",
+      "title": "auth attacks prevented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-5_stmt",
+        "name": "statement",
+        "prose": "auth attacks prevented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-6",
+      "title": "injection prevented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-6_stmt",
+        "name": "statement",
+        "prose": "injection prevented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-7",
+      "title": "insecure crypto prevented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-7_stmt",
+        "name": "statement",
+        "prose": "insecure crypto prevented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-8",
+      "title": "memory corruption prevented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-8_stmt",
+        "name": "statement",
+        "prose": "memory corruption prevented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-9",
+      "title": "xss prevented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-9_stmt",
+        "name": "statement",
+        "prose": "xss prevented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-10",
+      "title": "patch management",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-10_stmt",
+        "name": "statement",
+        "prose": "patch management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-11",
+      "title": "software inventory",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-11_stmt",
+        "name": "statement",
+        "prose": "software inventory"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-12",
+      "title": "vulnerability identification",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-12_stmt",
+        "name": "statement",
+        "prose": "vulnerability identification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-13",
+      "title": "automated attack detection",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-13_stmt",
+        "name": "statement",
+        "prose": "automated attack detection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-14",
+      "title": "waf implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-14_stmt",
+        "name": "statement",
+        "prose": "waf implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.secure_development.requirement_6-15",
+      "title": "web app pen testing",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.secure_development.requirement_6#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.secure_development.requirement_6#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.secure_development.requirement_6-15_stmt",
+        "name": "statement",
+        "prose": "web app pen testing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "pci_dss-requirement_6_1",
       "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body.",
       "props": [
@@ -1630,7 +5572,7 @@
       ],
       "links": [
        {
-        "href": "#928cd319-2bd3-5cb0-9e9e-80d35d85dbc1",
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
         "rel": "implementation"
        }
       ],
@@ -1663,7 +5605,7 @@
       ],
       "links": [
        {
-        "href": "#928cd319-2bd3-5cb0-9e9e-80d35d85dbc1",
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
         "rel": "implementation"
        }
       ],
@@ -1696,7 +5638,7 @@
       ],
       "links": [
        {
-        "href": "#928cd319-2bd3-5cb0-9e9e-80d35d85dbc1",
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
         "rel": "implementation"
        }
       ],
@@ -1729,7 +5671,7 @@
       ],
       "links": [
        {
-        "href": "#928cd319-2bd3-5cb0-9e9e-80d35d85dbc1",
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
         "rel": "implementation"
        }
       ],
@@ -1762,7 +5704,7 @@
       ],
       "links": [
        {
-        "href": "#928cd319-2bd3-5cb0-9e9e-80d35d85dbc1",
+        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
         "rel": "implementation"
        }
       ],
@@ -1819,7 +5761,7 @@
       ],
       "links": [
        {
-        "href": "#36395b37-eb9a-5df7-8dbf-d4a852e9af8e",
+        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
         "rel": "implementation"
        }
       ],
@@ -1852,7 +5794,7 @@
       ],
       "links": [
        {
-        "href": "#36395b37-eb9a-5df7-8dbf-d4a852e9af8e",
+        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
         "rel": "implementation"
        }
       ],
@@ -1885,7 +5827,7 @@
       ],
       "links": [
        {
-        "href": "#36395b37-eb9a-5df7-8dbf-d4a852e9af8e",
+        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
         "rel": "implementation"
        }
       ],
@@ -1918,7 +5860,7 @@
       ],
       "links": [
        {
-        "href": "#36395b37-eb9a-5df7-8dbf-d4a852e9af8e",
+        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
         "rel": "implementation"
        }
       ],
@@ -1951,7 +5893,7 @@
       ],
       "links": [
        {
-        "href": "#36395b37-eb9a-5df7-8dbf-d4a852e9af8e",
+        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
         "rel": "implementation"
        }
       ],
@@ -1984,7 +5926,7 @@
       ],
       "links": [
        {
-        "href": "#36395b37-eb9a-5df7-8dbf-d4a852e9af8e",
+        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
         "rel": "implementation"
        }
       ],
@@ -2022,6 +5964,237 @@
     ],
     "controls": [
      {
+      "id": "pci_dss-pci_dss.system_hardening.requirement_2-1",
+      "title": "database",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.system_hardening.requirement_2#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.system_hardening.requirement_2#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.system_hardening.requirement_2-1_stmt",
+        "name": "statement",
+        "prose": "database"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.system_hardening.requirement_2-2",
+      "title": "network devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.system_hardening.requirement_2#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.system_hardening.requirement_2#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.system_hardening.requirement_2-2_stmt",
+        "name": "statement",
+        "prose": "network devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.system_hardening.requirement_2-3",
+      "title": "os",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.system_hardening.requirement_2#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.system_hardening.requirement_2#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.system_hardening.requirement_2-3_stmt",
+        "name": "statement",
+        "prose": "os"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.system_hardening.requirement_2-4",
+      "title": "default passwords changed",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.system_hardening.requirement_2#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.system_hardening.requirement_2#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.system_hardening.requirement_2-4_stmt",
+        "name": "statement",
+        "prose": "default passwords changed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.system_hardening.requirement_2-5",
+      "title": "known vulnerabilities mitigated",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.system_hardening.requirement_2#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.system_hardening.requirement_2#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.system_hardening.requirement_2-5_stmt",
+        "name": "statement",
+        "prose": "known vulnerabilities mitigated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.system_hardening.requirement_2-6",
+      "title": "single primary function",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.system_hardening.requirement_2#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.system_hardening.requirement_2#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.system_hardening.requirement_2-6_stmt",
+        "name": "statement",
+        "prose": "single primary function"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.system_hardening.requirement_2-7",
+      "title": "unnecessary functionality removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.system_hardening.requirement_2#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.system_hardening.requirement_2#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.system_hardening.requirement_2-7_stmt",
+        "name": "statement",
+        "prose": "unnecessary functionality removed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "pci_dss-hardening_by_component",
       "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/system_hardening/requirement_2.rego (package pci_dss.system_hardening.requirement_2); see the rule body.",
       "props": [
@@ -2041,7 +6214,7 @@
       ],
       "links": [
        {
-        "href": "#37d1682d-24bb-5468-a177-06e59708a5d0",
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
         "rel": "implementation"
        }
       ],
@@ -2074,7 +6247,7 @@
       ],
       "links": [
        {
-        "href": "#37d1682d-24bb-5468-a177-06e59708a5d0",
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
         "rel": "implementation"
        }
       ],
@@ -2107,7 +6280,7 @@
       ],
       "links": [
        {
-        "href": "#37d1682d-24bb-5468-a177-06e59708a5d0",
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
         "rel": "implementation"
        }
       ],
@@ -2140,7 +6313,7 @@
       ],
       "links": [
        {
-        "href": "#37d1682d-24bb-5468-a177-06e59708a5d0",
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
         "rel": "implementation"
        }
       ],
@@ -2173,7 +6346,7 @@
       ],
       "links": [
        {
-        "href": "#37d1682d-24bb-5468-a177-06e59708a5d0",
+        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
         "rel": "implementation"
        }
       ],
@@ -2192,7 +6365,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "9e0428c2-98ab-5cae-9832-bc7af709ffc0",
+     "uuid": "ada54b21-a094-5f1f-b261-42d31bbb35f7",
      "title": "PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data",
      "props": [
       {
@@ -2203,13 +6376,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/access_control/requirement_7.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/access_control/requirement_7.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "c7beb066-16be-5416-8674-e8e91da93bc1",
+     "uuid": "8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
      "title": "PCI DSS v4.0 Requirement 8 - Identify Users and Authenticate Access to System Components",
      "props": [
       {
@@ -2220,13 +6393,30 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/access_control/requirement_8.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/access_control/requirement_8.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "20dacb15-bf4a-59b6-8896-cbea3781e1e8",
+     "uuid": "d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+     "title": "PCI DSS Requirement 3 - Protect Stored Account Data",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.data_protection.requirement_3"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/data_protection/requirement_3.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "46dfdda3-3c13-5f00-9959-5a04f9a2d552",
      "title": "PCI DSS v4.0 Requirement 4 - Protect Cardholder Data with Strong Cryptography",
      "props": [
       {
@@ -2237,13 +6427,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/data_protection/requirement_4.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/data_protection/requirement_4.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "913d92a6-04a6-5123-a5ff-1e121e86ddac",
+     "uuid": "de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
      "title": "PCI DSS v4.0 Requirement 12 - Support Information Security with Organizational",
      "props": [
       {
@@ -2254,13 +6444,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/governance/requirement_12.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/governance/requirement_12.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a2973d2f-166a-5596-863e-86347051170e",
+     "uuid": "0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
      "title": "PCI DSS v4.0 Requirement 10 - Log and Monitor All Access to System Components",
      "props": [
       {
@@ -2271,13 +6461,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "38ee419e-74f9-516b-8d45-ae72b41ac4c7",
+     "uuid": "bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
      "title": "PCI DSS v4.0 Requirement 5 - Protect All Systems and Networks from Malicious Software",
      "props": [
       {
@@ -2288,13 +6478,30 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/malware_protection/requirement_5.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/malware_protection/requirement_5.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "79d04b9d-36d7-501f-8520-bb035510584e",
+     "uuid": "468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+     "title": "PCI DSS Requirement 1 - Install and Maintain Network Security Controls",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pci_dss.network_security.requirement_1"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/network_security/requirement_1.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f4921c1e-604f-576f-a666-56785f025827",
      "title": "Consumer endpoint for the compliance-repo pci_dss_compliance role",
      "props": [
       {
@@ -2305,13 +6512,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/pci_dss_assessment.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/pci_dss_assessment.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "024da3a0-87d5-542b-84d8-eeffda219373",
+     "uuid": "a2011f73-5bbd-5890-9805-ea96b71bd350",
      "title": "PCI DSS v4.0 - Main Aggregation Policy (All 12 Requirements)",
      "props": [
       {
@@ -2322,13 +6529,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/pci_dss_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/pci_dss_main.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "06a927d6-bc1e-5554-8c10-d85152797d57",
+     "uuid": "dec84fe3-de92-59a2-a103-f737f35e790b",
      "title": "PCI DSS v4.0 Requirement 9 - Restrict Physical Access to Cardholder Data",
      "props": [
       {
@@ -2339,13 +6546,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/physical_security/requirement_9.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/physical_security/requirement_9.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "928cd319-2bd3-5cb0-9e9e-80d35d85dbc1",
+     "uuid": "d5ed6a10-377a-5429-b118-5911ab5472f7",
      "title": "PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software",
      "props": [
       {
@@ -2356,13 +6563,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/secure_development/requirement_6.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/secure_development/requirement_6.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "36395b37-eb9a-5df7-8dbf-d4a852e9af8e",
+     "uuid": "b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
      "title": "PCI DSS v4.0 Requirement 11 - Test Security of Systems and Networks Regularly",
      "props": [
       {
@@ -2373,13 +6580,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/security_testing/requirement_11.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/security_testing/requirement_11.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "37d1682d-24bb-5468-a177-06e59708a5d0",
+     "uuid": "1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
      "title": "PCI DSS v4.0 Requirement 2 - Apply Secure Configurations to All System Components",
      "props": [
       {
@@ -2390,7 +6597,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/pci_dss/system_hardening/requirement_2.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/system_hardening/requirement_2.rego",
        "media-type": "text/plain"
       }
      ]

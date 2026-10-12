@@ -5,6 +5,14 @@
 #   framework: stig_windows_server_2019
 #   source: disa
 #   domains: [windows]
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package stig.windows_server_2019
 
 # DISA STIG for windows server 2019 - Simplified Complete Assessment
@@ -120,3 +128,11 @@ stig_assessment := {
 }
 
 compliance_status := "Compliant" if compliant else := "Non-Compliant"
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

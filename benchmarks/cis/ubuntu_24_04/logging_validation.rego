@@ -5,6 +5,14 @@
 #   framework: cis_ubuntu_24_04
 #   source: cis
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 13
+#     cited: 13
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_ubuntu_24_04.logging
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 4.2: Logging Configuration
@@ -139,3 +147,11 @@ report := {
 	"section": "4.2 Logging Configuration",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }
+#   coverage:
+#     checks: 13
+#     cited: 13
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

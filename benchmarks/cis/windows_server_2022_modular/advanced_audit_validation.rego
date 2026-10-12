@@ -5,6 +5,14 @@
 #   framework: cis_windows_server_2022_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 25
+#     cited: 25
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_windows_server_2022.advanced_audit
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 17: Advanced Audit Policy Configuration
@@ -227,3 +235,11 @@ report := {
 	"section": "17 Advanced Audit Policy Configuration",
 	"benchmark": "CIS Windows Server 2022 v5.0.0",
 }
+#   coverage:
+#     checks: 25
+#     cited: 25
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

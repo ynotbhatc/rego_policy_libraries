@@ -1,0 +1,656 @@
+{
+ "catalog": {
+  "uuid": "6cd2d4bc-4c11-5e1e-a814-97328991d35f",
+  "metadata": {
+   "title": "Rego Policy Libraries — enforcement_aap (AAP job policy — what variables may enter automation)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "enforcement_aap"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "enforcement_aap-extra_vars_control",
+    "class": "rego-module",
+    "title": "AAP job policy — what variables may enter automation",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "aac.aap.policy"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/aap/extra_vars_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_aap-aac.aap.policy-1",
+      "title": "extra_var '%s' is explicitly denied.",
+      "props": [
+       {
+        "name": "label",
+        "value": "aac.aap.policy#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aac.aap.policy#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f5f62a9-e673-5f21-83bf-a0ddd926ecf7",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a8448246-7043-51db-aa51-d5dc8b1136df",
+        "rel": "implementation"
+       },
+       {
+        "href": "#875ad324-f5e0-565f-a414-0265fee5ef8b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#f6526e12-3a07-5734-81aa-c093581c724b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#26d8a0dc-7ec9-53e9-a8eb-0874cea59118",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-aac.aap.policy-1_stmt",
+        "name": "statement",
+        "prose": "extra_var '%s' is explicitly denied."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Change freeze in effect for %s — automation is blocked. Apply the '%s' label with an approved change record to override."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Job template name '%s' does not match the required convention %s."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-1_obj.3",
+        "name": "assessment-objective",
+        "prose": "User '%s' is not permitted to target inventory '%s' (permitted: %v)."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-1_obj.4",
+        "name": "assessment-objective",
+        "prose": "Job carries the forbidden label '%s' — execution is blocked."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_aap-aac.aap.policy-2",
+      "title": "extra_var '%s' is not in the approved allowlist %v.",
+      "props": [
+       {
+        "name": "label",
+        "value": "aac.aap.policy#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aac.aap.policy#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f5f62a9-e673-5f21-83bf-a0ddd926ecf7",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a8448246-7043-51db-aa51-d5dc8b1136df",
+        "rel": "implementation"
+       },
+       {
+        "href": "#875ad324-f5e0-565f-a414-0265fee5ef8b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#f6526e12-3a07-5734-81aa-c093581c724b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#26d8a0dc-7ec9-53e9-a8eb-0874cea59118",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-aac.aap.policy-2_stmt",
+        "name": "statement",
+        "prose": "extra_var '%s' is not in the approved allowlist %v."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "%s is not an approved day for automation (allowed: %v)."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Job template name is %d characters; the maximum is %d."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-2_obj.3",
+        "name": "assessment-objective",
+        "prose": "User '%s' has no inventory binding and unbound launches are disabled."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-2_obj.4",
+        "name": "assessment-objective",
+        "prose": "Required label '%s' is missing."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_aap-aac.aap.policy-3",
+      "title": "extra_var '%s' looks like a secret — pass it through a credential or Ansible Vault, not extra_vars.",
+      "props": [
+       {
+        "name": "label",
+        "value": "aac.aap.policy#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aac.aap.policy#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f5f62a9-e673-5f21-83bf-a0ddd926ecf7",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a8448246-7043-51db-aa51-d5dc8b1136df",
+        "rel": "implementation"
+       },
+       {
+        "href": "#875ad324-f5e0-565f-a414-0265fee5ef8b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#f6526e12-3a07-5734-81aa-c093581c724b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#26d8a0dc-7ec9-53e9-a8eb-0874cea59118",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-aac.aap.policy-3_stmt",
+        "name": "statement",
+        "prose": "extra_var '%s' looks like a secret — pass it through a credential or Ansible Vault, not extra_vars."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-3_obj.1",
+        "name": "assessment-objective",
+        "prose": "%02d:00 %s is outside the approved change window %02d:00-%02d:00."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Job template name '%s' contains the forbidden term '%s'."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Inventory organization (%d) does not match the job template's organization (%d)."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-3_obj.4",
+        "name": "assessment-objective",
+        "prose": "Inventory '%s' matches '%s', which requires the label '%s'."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_aap-aac.aap.policy-4",
+      "title": "extra_var '%s' value '%s' does not match the required format %s.",
+      "props": [
+       {
+        "name": "label",
+        "value": "aac.aap.policy#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aac.aap.policy#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f5f62a9-e673-5f21-83bf-a0ddd926ecf7",
+        "rel": "implementation"
+       },
+       {
+        "href": "#a8448246-7043-51db-aa51-d5dc8b1136df",
+        "rel": "implementation"
+       },
+       {
+        "href": "#875ad324-f5e0-565f-a414-0265fee5ef8b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#f6526e12-3a07-5734-81aa-c093581c724b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#26d8a0dc-7ec9-53e9-a8eb-0874cea59118",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-aac.aap.policy-4_stmt",
+        "name": "statement",
+        "prose": "extra_var '%s' value '%s' does not match the required format %s."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Maintenance mode is active for inventory '%s' (reason: %s). Automation is blocked until it is cleared."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Project source '%s' uses SSH — HTTPS is required so access is brokered by a managed credential."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-4_obj.3",
+        "name": "assessment-objective",
+        "prose": "Superuser '%s' may not launch automation directly — use a scoped service account so the action is attributable."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-4_obj.4",
+        "name": "assessment-objective",
+        "prose": "Exactly one of %v must be present; none were."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_aap-aac.aap.policy-5",
+      "title": "extra_var '%s' is not permitted for teams %v (permitted: %v).",
+      "props": [
+       {
+        "name": "label",
+        "value": "aac.aap.policy#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aac.aap.policy#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f5f62a9-e673-5f21-83bf-a0ddd926ecf7",
+        "rel": "implementation"
+       },
+       {
+        "href": "#875ad324-f5e0-565f-a414-0265fee5ef8b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#f6526e12-3a07-5734-81aa-c093581c724b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#26d8a0dc-7ec9-53e9-a8eb-0874cea59118",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-aac.aap.policy-5_stmt",
+        "name": "statement",
+        "prose": "extra_var '%s' is not permitted for teams %v (permitted: %v)."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Project repository '%s' is not an approved automation source (allowed: %v)."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Credential '%s' is global (no owning organization) — scope it to an organization before use."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-5_obj.3",
+        "name": "assessment-objective",
+        "prose": "Exactly one of %v must be present; found %v."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_aap-aac.aap.policy-6",
+      "title": "User's teams %v have no extra_vars binding and unbound use is disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "aac.aap.policy#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aac.aap.policy#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f5f62a9-e673-5f21-83bf-a0ddd926ecf7",
+        "rel": "implementation"
+       },
+       {
+        "href": "#875ad324-f5e0-565f-a414-0265fee5ef8b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#f6526e12-3a07-5734-81aa-c093581c724b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#26d8a0dc-7ec9-53e9-a8eb-0874cea59118",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-aac.aap.policy-6_stmt",
+        "name": "statement",
+        "prose": "User's teams %v have no extra_vars binding and unbound use is disabled."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Project branch '%s' is not approved for execution (allowed: %v)."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-6_obj.2",
+        "name": "assessment-objective",
+        "prose": "Credential '%s' (prefix '%s') does not match inventory '%s' (prefix '%s') — likely an environment mismatch."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-6_obj.3",
+        "name": "assessment-objective",
+        "prose": "Label '%s' value '%s' does not match the required format %s."
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   },
+   {
+    "id": "enforcement_aap-naming_and_source",
+    "class": "rego-module",
+    "title": "AAP job policy — naming standards and trusted automation sources",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "aac.aap.policy"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/aap/naming_and_source.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_aap-aac.aap.policy-7",
+      "title": "Project is pinned to commit %s rather than a named branch — automation must run from a reviewable ref.",
+      "props": [
+       {
+        "name": "label",
+        "value": "aac.aap.policy#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aac.aap.policy#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#875ad324-f5e0-565f-a414-0265fee5ef8b",
+        "rel": "implementation"
+       },
+       {
+        "href": "#26d8a0dc-7ec9-53e9-a8eb-0874cea59118",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-aac.aap.policy-7_stmt",
+        "name": "statement",
+        "prose": "Project is pinned to commit %s rather than a named branch — automation must run from a reviewable ref."
+       },
+       {
+        "id": "enforcement_aap-aac.aap.policy-7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Label '%s' is required in 'key:value' form matching %s, but no value was supplied."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_aap-aac.aap.policy-8",
+      "title": "All automation is blocked: %s.",
+      "props": [
+       {
+        "name": "label",
+        "value": "aac.aap.policy#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aac.aap.policy#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#875ad324-f5e0-565f-a414-0265fee5ef8b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-aac.aap.policy-8_stmt",
+        "name": "statement",
+        "prose": "All automation is blocked: %s."
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "7f5f62a9-e673-5f21-83bf-a0ddd926ecf7",
+     "title": "AAP job policy — what variables may enter automation",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "aac.aap.policy"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/enforcement/aap/extra_vars_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a8448246-7043-51db-aa51-d5dc8b1136df",
+     "title": "AAP job policy — time-of-day windows, change freezes, and maintenance mode",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "aac.aap.policy"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/enforcement/aap/maintenance_window.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "875ad324-f5e0-565f-a414-0265fee5ef8b",
+     "title": "AAP job policy — naming standards and trusted automation sources",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "aac.aap.policy"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/enforcement/aap/naming_and_source.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f6526e12-3a07-5734-81aa-c093581c724b",
+     "title": "AAP job policy — who may automate what",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "aac.aap.policy"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/enforcement/aap/owner_scope.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "26d8a0dc-7ec9-53e9-a8eb-0874cea59118",
+     "title": "AAP job policy — label-driven gating",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "aac.aap.policy"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/enforcement/aap/required_labels.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

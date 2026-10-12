@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "51191f17-56d4-57ae-bb50-b9f6412d5414",
+  "uuid": "e09b26b5-ce0a-500f-88e5-ce01e45bff8d",
   "metadata": {
    "title": "Rego Policy Libraries — fedramp (FedRAMP — Federal Risk and Authorization Management Program)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,645 @@
     ],
     "controls": [
      {
+      "id": "fedramp-fedramp-1",
+      "title": "FedRAMP: Service is not FedRAMP authorized and not in process. Federal agencies may only use FedRAMP authorized cloud services for federal data.",
+      "props": [
+       {
+        "name": "label",
+        "value": "fedramp#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "fedramp#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-fedramp-1_stmt",
+        "name": "statement",
+        "prose": "FedRAMP: Service is not FedRAMP authorized and not in process. Federal agencies may only use FedRAMP authorized cloud services for federal data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-fedramp-2",
+      "title": "FedRAMP: Authorization type '%v' is not valid. Must be ATO (Agency) or P-ATO (JAB).",
+      "props": [
+       {
+        "name": "label",
+        "value": "fedramp#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "fedramp#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-fedramp-2_stmt",
+        "name": "statement",
+        "prose": "FedRAMP: Authorization type '%v' is not valid. Must be ATO (Agency) or P-ATO (JAB)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-fedramp-3",
+      "title": "FedRAMP: ATO/P-ATO expires in %v days. Initiate renewal at least 90 days before expiration.",
+      "props": [
+       {
+        "name": "label",
+        "value": "fedramp#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "fedramp#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-fedramp-3_stmt",
+        "name": "statement",
+        "prose": "FedRAMP: ATO/P-ATO expires in %v days. Initiate renewal at least 90 days before expiration."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-SC-28-1",
+      "title": "Cryptographic modules are not FIPS 140-2 or 140-3 validated. FedRAMP requires FIPS-validated cryptography for federal data.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP SC-28(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP SC-28(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-SC-28-1_stmt",
+        "name": "statement",
+        "prose": "Cryptographic modules are not FIPS 140-2 or 140-3 validated. FedRAMP requires FIPS-validated cryptography for federal data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-fedramp-4",
+      "title": "FedRAMP: FIPS 140-2 validation level must be at least Level 1. Level 2 is required for sensitive applications.",
+      "props": [
+       {
+        "name": "label",
+        "value": "fedramp#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "fedramp#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-fedramp-4_stmt",
+        "name": "statement",
+        "prose": "FedRAMP: FIPS 140-2 validation level must be at least Level 1. Level 2 is required for sensitive applications."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-SC-8-1",
+      "title": "Cryptographic algorithm '%v' is not approved for federal use. Use NSA Suite B or CNSA Suite algorithms.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP SC-8(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP SC-8(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-SC-8-1_stmt",
+        "name": "statement",
+        "prose": "Cryptographic algorithm '%v' is not approved for federal use. Use NSA Suite B or CNSA Suite algorithms."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-fedramp-5",
+      "title": "FedRAMP: Federal data stored in non-US location '%v'. FedRAMP requires federal data to remain within US territories unless explicitly authorized.",
+      "props": [
+       {
+        "name": "label",
+        "value": "fedramp#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "fedramp#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-fedramp-5_stmt",
+        "name": "statement",
+        "prose": "FedRAMP: Federal data stored in non-US location '%v'. FedRAMP requires federal data to remain within US territories unless explicitly authorized."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-fedramp-6",
+      "title": "FedRAMP: Federal data processed in non-US location '%v'. Data processing must occur within US territories.",
+      "props": [
+       {
+        "name": "label",
+        "value": "fedramp#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "fedramp#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-fedramp-6_stmt",
+        "name": "statement",
+        "prose": "FedRAMP: Federal data processed in non-US location '%v'. Data processing must occur within US territories."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-PS-3",
+      "title": "Personnel '%v' has administrative access but is not a US person and has no foreign national waiver. Moderate/High requires US persons for admin access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP PS-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP PS-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-PS-3_stmt",
+        "name": "statement",
+        "prose": "Personnel '%v' has administrative access but is not a US person and has no foreign national waiver. Moderate/High requires US persons for admin access."
+       },
+       {
+        "id": "fedramp-FedRAMP-PS-3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Personnel '%v' has administrative access without a completed background check. Background checks are required for all admin personnel."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-CA-7",
+      "title": "No Continuous Monitoring (ConMon) program documented. FedRAMP requires a formal ConMon program.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP CA-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP CA-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-CA-7_stmt",
+        "name": "statement",
+        "prose": "No Continuous Monitoring (ConMon) program documented. FedRAMP requires a formal ConMon program."
+       },
+       {
+        "id": "fedramp-FedRAMP-CA-7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Monthly ConMon report has not been submitted to the authorizing official. Monthly reporting is required."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-RA-5",
+      "title": "Monthly vulnerability scans are not configured. FedRAMP requires vulnerability scans of all system components monthly.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP RA-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP RA-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-RA-5_stmt",
+        "name": "statement",
+        "prose": "Monthly vulnerability scans are not configured. FedRAMP requires vulnerability scans of all system components monthly."
+       },
+       {
+        "id": "fedramp-FedRAMP-RA-5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Last vulnerability scan was %v days ago. FedRAMP requires monthly scanning."
+       },
+       {
+        "id": "fedramp-FedRAMP-RA-5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Monthly OS-level vulnerability scans are not configured. Separate OS-level scans are required."
+       },
+       {
+        "id": "fedramp-FedRAMP-RA-5_obj.3",
+        "name": "assessment-objective",
+        "prose": "Web application scans are not configured. FedRAMP requires web application vulnerability scanning."
+       },
+       {
+        "id": "fedramp-FedRAMP-RA-5_obj.4",
+        "name": "assessment-objective",
+        "prose": "Database vulnerability scans are not configured. FedRAMP requires database scanning for systems with databases."
+       },
+       {
+        "id": "fedramp-FedRAMP-RA-5_obj.5",
+        "name": "assessment-objective",
+        "prose": "High-severity vulnerabilities have been open for %v days. FedRAMP requires remediation of High vulnerabilities within 30 days."
+       },
+       {
+        "id": "fedramp-FedRAMP-RA-5_obj.6",
+        "name": "assessment-objective",
+        "prose": "Critical vulnerabilities have been open for %v days. FedRAMP requires remediation of Critical vulnerabilities within 15 days."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-CA-2",
+      "title": "System has not been assessed by a FedRAMP-recognized Third Party Assessment Organization (3PAO). 3PAO assessment is required for authorization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP CA-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP CA-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-CA-2_stmt",
+        "name": "statement",
+        "prose": "System has not been assessed by a FedRAMP-recognized Third Party Assessment Organization (3PAO). 3PAO assessment is required for authorization."
+       },
+       {
+        "id": "fedramp-FedRAMP-CA-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Last 3PAO assessment was %v days ago. Annual third-party assessment is required to maintain authorization."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-CA-8",
+      "title": "Annual penetration testing is not configured. Moderate and High systems require annual pen testing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP CA-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP CA-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-CA-8_stmt",
+        "name": "statement",
+        "prose": "Annual penetration testing is not configured. Moderate and High systems require annual pen testing."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-IR-8",
+      "title": "Incident response plan has not been reviewed and approved. Moderate/High systems require an approved IR plan.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP IR-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP IR-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-IR-8_stmt",
+        "name": "statement",
+        "prose": "Incident response plan has not been reviewed and approved. Moderate/High systems require an approved IR plan."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-CP-7",
+      "title": "High-impact systems require alternative processing sites. No redundant processing site is configured.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP CP-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP CP-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-CP-7_stmt",
+        "name": "statement",
+        "prose": "High-impact systems require alternative processing sites. No redundant processing site is configured."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-PE-3-1",
+      "title": "High-impact systems require two-person rule for critical operations. Implement dual authorization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP PE-3(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP PE-3(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-PE-3-1_stmt",
+        "name": "statement",
+        "prose": "High-impact systems require two-person rule for critical operations. Implement dual authorization."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-SR-2",
+      "title": "No supply chain risk management plan. Moderate and High systems must assess and manage supply chain risks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP SR-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP SR-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-SR-2_stmt",
+        "name": "statement",
+        "prose": "No supply chain risk management plan. Moderate and High systems must assess and manage supply chain risks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-FedRAMP-SR-4",
+      "title": "Component '%v' provenance has not been verified. Component origin must be verified for Moderate/High systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FedRAMP SR-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FedRAMP SR-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-FedRAMP-SR-4_stmt",
+        "name": "statement",
+        "prose": "Component '%v' provenance has not been verified. Component origin must be verified for Moderate/High systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "fedramp-authorization",
       "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
       "props": [
@@ -85,11 +724,11 @@
       ],
       "links": [
        {
-        "href": "#a13dcb8e-c0f6-5aec-af1e-a2b5d8e7d1be",
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
         "rel": "implementation"
        },
        {
-        "href": "#0fbb83d6-a1e9-53e6-8aec-e30dc437ed60",
+        "href": "#17fc6c48-ad12-5155-a191-982283150ffa",
         "rel": "implementation"
        }
       ],
@@ -127,11 +766,11 @@
       ],
       "links": [
        {
-        "href": "#a13dcb8e-c0f6-5aec-af1e-a2b5d8e7d1be",
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
         "rel": "implementation"
        },
        {
-        "href": "#0fbb83d6-a1e9-53e6-8aec-e30dc437ed60",
+        "href": "#17fc6c48-ad12-5155-a191-982283150ffa",
         "rel": "implementation"
        }
       ],
@@ -169,11 +808,11 @@
       ],
       "links": [
        {
-        "href": "#a13dcb8e-c0f6-5aec-af1e-a2b5d8e7d1be",
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
         "rel": "implementation"
        },
        {
-        "href": "#0fbb83d6-a1e9-53e6-8aec-e30dc437ed60",
+        "href": "#17fc6c48-ad12-5155-a191-982283150ffa",
         "rel": "implementation"
        }
       ],
@@ -211,11 +850,11 @@
       ],
       "links": [
        {
-        "href": "#a13dcb8e-c0f6-5aec-af1e-a2b5d8e7d1be",
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
         "rel": "implementation"
        },
        {
-        "href": "#0fbb83d6-a1e9-53e6-8aec-e30dc437ed60",
+        "href": "#17fc6c48-ad12-5155-a191-982283150ffa",
         "rel": "implementation"
        }
       ],
@@ -253,11 +892,11 @@
       ],
       "links": [
        {
-        "href": "#a13dcb8e-c0f6-5aec-af1e-a2b5d8e7d1be",
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
         "rel": "implementation"
        },
        {
-        "href": "#0fbb83d6-a1e9-53e6-8aec-e30dc437ed60",
+        "href": "#17fc6c48-ad12-5155-a191-982283150ffa",
         "rel": "implementation"
        }
       ],
@@ -295,11 +934,11 @@
       ],
       "links": [
        {
-        "href": "#a13dcb8e-c0f6-5aec-af1e-a2b5d8e7d1be",
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
         "rel": "implementation"
        },
        {
-        "href": "#0fbb83d6-a1e9-53e6-8aec-e30dc437ed60",
+        "href": "#17fc6c48-ad12-5155-a191-982283150ffa",
         "rel": "implementation"
        }
       ],
@@ -337,11 +976,11 @@
       ],
       "links": [
        {
-        "href": "#a13dcb8e-c0f6-5aec-af1e-a2b5d8e7d1be",
+        "href": "#2b98e761-cae9-5c53-839a-bbd159f92fe4",
         "rel": "implementation"
        },
        {
-        "href": "#0fbb83d6-a1e9-53e6-8aec-e30dc437ed60",
+        "href": "#17fc6c48-ad12-5155-a191-982283150ffa",
         "rel": "implementation"
        }
       ],
@@ -365,7 +1004,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "a13dcb8e-c0f6-5aec-af1e-a2b5d8e7d1be",
+     "uuid": "2b98e761-cae9-5c53-839a-bbd159f92fe4",
      "title": "FedRAMP — Federal Risk and Authorization Management Program",
      "props": [
       {
@@ -376,13 +1015,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/fedramp/fedramp_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/fedramp/fedramp_main.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "0fbb83d6-a1e9-53e6-8aec-e30dc437ed60",
+     "uuid": "17fc6c48-ad12-5155-a191-982283150ffa",
      "title": "FedRAMP main adapter — exposes the standard contract",
      "props": [
       {
@@ -393,7 +1032,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/fedramp/fedramp_main_adapter.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/fedramp/fedramp_main_adapter.rego",
        "media-type": "text/plain"
       }
      ]

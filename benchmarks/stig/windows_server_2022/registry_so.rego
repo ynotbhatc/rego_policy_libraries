@@ -5,6 +5,14 @@
 #   framework: stig_windows_server_2022
 #   source: disa
 #   domains: [windows]
+#   coverage:
+#     checks: 41
+#     cited: 41
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package stig.windows_server_2022.registry_so
 
 # DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide
@@ -718,3 +726,11 @@ findings := [
 default compliant := false
 
 compliant if count([f | some f in findings; f.status == "Open"]) == 0
+#   coverage:
+#     checks: 41
+#     cited: 41
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

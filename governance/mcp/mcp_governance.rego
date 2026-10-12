@@ -5,6 +5,14 @@
 #   framework: mcp
 #   source: aac
 #   domains: [ai, mcp]
+#   coverage:
+#     checks: 4
+#     cited: 0
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package ai_governance.mcp
 
 import rego.v1
@@ -384,3 +392,11 @@ response := {
 	"tool": object.get(input, ["tool"], ""),
 	"agent": object.get(input, ["agent"], ""),
 }
+#   coverage:
+#     checks: 4
+#     cited: 0
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

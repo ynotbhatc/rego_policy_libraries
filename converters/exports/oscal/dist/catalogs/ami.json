@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "9d2da59c-d22b-5534-82b9-6d920420c6c9",
+  "uuid": "464b5eaa-7345-514d-b931-3106b5085c46",
   "metadata": {
-   "title": "Rego Policy Libraries — ami (AMI Head-End System Security Policy)",
+   "title": "Rego Policy Libraries — ami (AMI 2.0 Device Compliance Policy)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,63 @@
    ]
   },
   "groups": [
+   {
+    "id": "ami-ami_device_compliance",
+    "class": "rego-module",
+    "title": "AMI 2.0 Device Compliance Policy",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ami.device.compliance"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/ami/device_compliance/ami_device_compliance.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ami-ami.device.compliance-1",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/ami/device_compliance/ami_device_compliance.rego (package ami.device.compliance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ami.device.compliance#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ami.device.compliance#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ami.device.compliance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e0eee71-342c-5ab0-aea5-447b35991dae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ami-ami.device.compliance-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/ami/device_compliance/ami_device_compliance.rego (package ami.device.compliance); see the rule body."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
    {
     "id": "ami-ami_headend_security",
     "class": "rego-module",
@@ -85,7 +142,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -118,7 +175,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -151,7 +208,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -184,7 +241,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -217,7 +274,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -250,7 +307,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -283,7 +340,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -316,7 +373,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -349,7 +406,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -382,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -415,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -448,7 +505,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -481,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -514,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -547,7 +604,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -580,7 +637,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -613,7 +670,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -646,7 +703,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -679,7 +736,7 @@
       ],
       "links": [
        {
-        "href": "#ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+        "href": "#7de755be-38de-5819-8ba8-ed73784c78f9",
         "rel": "implementation"
        }
       ],
@@ -736,7 +793,7 @@
       ],
       "links": [
        {
-        "href": "#c1895a1b-0415-5455-ae16-3eb538ae670c",
+        "href": "#1a2537c7-a5c2-58f3-8973-5452487a9200",
         "rel": "implementation"
        }
       ],
@@ -774,7 +831,7 @@
       ],
       "links": [
        {
-        "href": "#c1895a1b-0415-5455-ae16-3eb538ae670c",
+        "href": "#1a2537c7-a5c2-58f3-8973-5452487a9200",
         "rel": "implementation"
        }
       ],
@@ -807,7 +864,7 @@
       ],
       "links": [
        {
-        "href": "#c1895a1b-0415-5455-ae16-3eb538ae670c",
+        "href": "#1a2537c7-a5c2-58f3-8973-5452487a9200",
         "rel": "implementation"
        }
       ],
@@ -840,7 +897,7 @@
       ],
       "links": [
        {
-        "href": "#c1895a1b-0415-5455-ae16-3eb538ae670c",
+        "href": "#1a2537c7-a5c2-58f3-8973-5452487a9200",
         "rel": "implementation"
        }
       ],
@@ -873,7 +930,7 @@
       ],
       "links": [
        {
-        "href": "#c1895a1b-0415-5455-ae16-3eb538ae670c",
+        "href": "#1a2537c7-a5c2-58f3-8973-5452487a9200",
         "rel": "implementation"
        }
       ],
@@ -906,7 +963,7 @@
       ],
       "links": [
        {
-        "href": "#c1895a1b-0415-5455-ae16-3eb538ae670c",
+        "href": "#1a2537c7-a5c2-58f3-8973-5452487a9200",
         "rel": "implementation"
        }
       ],
@@ -963,7 +1020,7 @@
       ],
       "links": [
        {
-        "href": "#17415b61-ead9-5714-8de4-e164007ee6b0",
+        "href": "#16274b55-5e4f-5479-8060-1ec05e810ea6",
         "rel": "implementation"
        }
       ],
@@ -996,7 +1053,7 @@
       ],
       "links": [
        {
-        "href": "#17415b61-ead9-5714-8de4-e164007ee6b0",
+        "href": "#16274b55-5e4f-5479-8060-1ec05e810ea6",
         "rel": "implementation"
        }
       ],
@@ -1029,7 +1086,7 @@
       ],
       "links": [
        {
-        "href": "#17415b61-ead9-5714-8de4-e164007ee6b0",
+        "href": "#16274b55-5e4f-5479-8060-1ec05e810ea6",
         "rel": "implementation"
        }
       ],
@@ -1067,7 +1124,7 @@
       ],
       "links": [
        {
-        "href": "#17415b61-ead9-5714-8de4-e164007ee6b0",
+        "href": "#16274b55-5e4f-5479-8060-1ec05e810ea6",
         "rel": "implementation"
        }
       ],
@@ -1100,7 +1157,7 @@
       ],
       "links": [
        {
-        "href": "#17415b61-ead9-5714-8de4-e164007ee6b0",
+        "href": "#16274b55-5e4f-5479-8060-1ec05e810ea6",
         "rel": "implementation"
        }
       ],
@@ -1157,7 +1214,7 @@
       ],
       "links": [
        {
-        "href": "#5ca55ff6-6b61-5c15-92c2-f0ace478d0bb",
+        "href": "#50c291e4-9109-517a-afb2-d33a955045a7",
         "rel": "implementation"
        }
       ],
@@ -1214,7 +1271,7 @@
       ],
       "links": [
        {
-        "href": "#1956e4dd-6c9b-5549-9181-0b3bb4391273",
+        "href": "#9d686fb9-e9e9-59d9-ab5a-c14f3bc43d17",
         "rel": "implementation"
        }
       ],
@@ -1252,7 +1309,7 @@
       ],
       "links": [
        {
-        "href": "#1956e4dd-6c9b-5549-9181-0b3bb4391273",
+        "href": "#9d686fb9-e9e9-59d9-ab5a-c14f3bc43d17",
         "rel": "implementation"
        }
       ],
@@ -1285,7 +1342,7 @@
       ],
       "links": [
        {
-        "href": "#1956e4dd-6c9b-5549-9181-0b3bb4391273",
+        "href": "#9d686fb9-e9e9-59d9-ab5a-c14f3bc43d17",
         "rel": "implementation"
        }
       ],
@@ -1318,7 +1375,7 @@
       ],
       "links": [
        {
-        "href": "#1956e4dd-6c9b-5549-9181-0b3bb4391273",
+        "href": "#9d686fb9-e9e9-59d9-ab5a-c14f3bc43d17",
         "rel": "implementation"
        }
       ],
@@ -1351,7 +1408,7 @@
       ],
       "links": [
        {
-        "href": "#1956e4dd-6c9b-5549-9181-0b3bb4391273",
+        "href": "#9d686fb9-e9e9-59d9-ab5a-c14f3bc43d17",
         "rel": "implementation"
        }
       ],
@@ -1408,7 +1465,7 @@
       ],
       "links": [
        {
-        "href": "#fb495331-b3fe-58ee-9214-e5cbe3b7b4c4",
+        "href": "#5a23b30e-b4aa-5ac2-b5a6-0ed2a836b7b2",
         "rel": "implementation"
        }
       ],
@@ -1441,7 +1498,7 @@
       ],
       "links": [
        {
-        "href": "#fb495331-b3fe-58ee-9214-e5cbe3b7b4c4",
+        "href": "#5a23b30e-b4aa-5ac2-b5a6-0ed2a836b7b2",
         "rel": "implementation"
        }
       ],
@@ -1484,7 +1541,7 @@
       ],
       "links": [
        {
-        "href": "#fb495331-b3fe-58ee-9214-e5cbe3b7b4c4",
+        "href": "#5a23b30e-b4aa-5ac2-b5a6-0ed2a836b7b2",
         "rel": "implementation"
        }
       ],
@@ -1517,7 +1574,7 @@
       ],
       "links": [
        {
-        "href": "#fb495331-b3fe-58ee-9214-e5cbe3b7b4c4",
+        "href": "#5a23b30e-b4aa-5ac2-b5a6-0ed2a836b7b2",
         "rel": "implementation"
        }
       ],
@@ -1574,7 +1631,7 @@
       ],
       "links": [
        {
-        "href": "#3e474409-fe11-5eab-974c-7f3eef093a44",
+        "href": "#bbc9118d-3d09-59ca-8f4a-9710a4d195dc",
         "rel": "implementation"
        }
       ],
@@ -1612,7 +1669,7 @@
       ],
       "links": [
        {
-        "href": "#3e474409-fe11-5eab-974c-7f3eef093a44",
+        "href": "#bbc9118d-3d09-59ca-8f4a-9710a4d195dc",
         "rel": "implementation"
        }
       ],
@@ -1645,7 +1702,7 @@
       ],
       "links": [
        {
-        "href": "#3e474409-fe11-5eab-974c-7f3eef093a44",
+        "href": "#bbc9118d-3d09-59ca-8f4a-9710a4d195dc",
         "rel": "implementation"
        }
       ],
@@ -1678,7 +1735,7 @@
       ],
       "links": [
        {
-        "href": "#3e474409-fe11-5eab-974c-7f3eef093a44",
+        "href": "#bbc9118d-3d09-59ca-8f4a-9710a4d195dc",
         "rel": "implementation"
        }
       ],
@@ -1711,7 +1768,7 @@
       ],
       "links": [
        {
-        "href": "#3e474409-fe11-5eab-974c-7f3eef093a44",
+        "href": "#bbc9118d-3d09-59ca-8f4a-9710a4d195dc",
         "rel": "implementation"
        }
       ],
@@ -1744,7 +1801,7 @@
       ],
       "links": [
        {
-        "href": "#3e474409-fe11-5eab-974c-7f3eef093a44",
+        "href": "#bbc9118d-3d09-59ca-8f4a-9710a4d195dc",
         "rel": "implementation"
        }
       ],
@@ -1801,7 +1858,7 @@
       ],
       "links": [
        {
-        "href": "#7d148f0e-5466-5bad-9374-195da60fc310",
+        "href": "#71bc8738-f7ad-59e5-b45d-bd17a8ba158c",
         "rel": "implementation"
        }
       ],
@@ -1834,7 +1891,7 @@
       ],
       "links": [
        {
-        "href": "#7d148f0e-5466-5bad-9374-195da60fc310",
+        "href": "#71bc8738-f7ad-59e5-b45d-bd17a8ba158c",
         "rel": "implementation"
        }
       ],
@@ -1867,7 +1924,7 @@
       ],
       "links": [
        {
-        "href": "#7d148f0e-5466-5bad-9374-195da60fc310",
+        "href": "#71bc8738-f7ad-59e5-b45d-bd17a8ba158c",
         "rel": "implementation"
        }
       ],
@@ -1910,7 +1967,7 @@
       ],
       "links": [
        {
-        "href": "#7d148f0e-5466-5bad-9374-195da60fc310",
+        "href": "#71bc8738-f7ad-59e5-b45d-bd17a8ba158c",
         "rel": "implementation"
        }
       ],
@@ -1943,7 +2000,7 @@
       ],
       "links": [
        {
-        "href": "#7d148f0e-5466-5bad-9374-195da60fc310",
+        "href": "#71bc8738-f7ad-59e5-b45d-bd17a8ba158c",
         "rel": "implementation"
        }
       ],
@@ -1976,7 +2033,7 @@
       ],
       "links": [
        {
-        "href": "#7d148f0e-5466-5bad-9374-195da60fc310",
+        "href": "#71bc8738-f7ad-59e5-b45d-bd17a8ba158c",
         "rel": "implementation"
        }
       ],
@@ -1995,7 +2052,24 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "ff16c549-aa9e-5808-88aa-50b738b5ba8a",
+     "uuid": "7e0eee71-342c-5ab0-aea5-447b35991dae",
+     "title": "AMI 2.0 Device Compliance Policy",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ami.device.compliance"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/ami/device_compliance/ami_device_compliance.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "7de755be-38de-5819-8ba8-ed73784c78f9",
      "title": "AMI Head-End System Security Policy",
      "props": [
       {
@@ -2006,13 +2080,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/ami/headend/ami_headend_security.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/ami/headend/ami_headend_security.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "c1895a1b-0415-5455-ae16-3eb538ae670c",
+     "uuid": "1a2537c7-a5c2-58f3-8973-5452487a9200",
      "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
      "props": [
       {
@@ -2023,13 +2097,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_access_control.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_access_control.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "17415b61-ead9-5714-8de4-e164007ee6b0",
+     "uuid": "16274b55-5e4f-5479-8060-1ec05e810ea6",
      "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
      "props": [
       {
@@ -2040,13 +2114,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_audit.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_audit.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "5ca55ff6-6b61-5c15-92c2-f0ace478d0bb",
+     "uuid": "50c291e4-9109-517a-afb2-d33a955045a7",
      "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
      "props": [
       {
@@ -2057,13 +2131,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "1956e4dd-6c9b-5549-9181-0b3bb4391273",
+     "uuid": "9d686fb9-e9e9-59d9-ab5a-c14f3bc43d17",
      "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
      "props": [
       {
@@ -2074,13 +2148,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_config_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_config_management.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "fb495331-b3fe-58ee-9214-e5cbe3b7b4c4",
+     "uuid": "5a23b30e-b4aa-5ac2-b5a6-0ed2a836b7b2",
      "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
      "props": [
       {
@@ -2091,13 +2165,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_identification_auth.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_identification_auth.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "3e474409-fe11-5eab-974c-7f3eef093a44",
+     "uuid": "bbc9118d-3d09-59ca-8f4a-9710a4d195dc",
      "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
      "props": [
       {
@@ -2108,13 +2182,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_incident_response.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_incident_response.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "7d148f0e-5466-5bad-9374-195da60fc310",
+     "uuid": "71bc8738-f7ad-59e5-b45d-bd17a8ba158c",
      "title": "NIST IR 7628 Rev 1 - Smart Grid Cybersecurity",
      "props": [
       {
@@ -2125,7 +2199,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_system_comms.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_system_comms.rego",
        "media-type": "text/plain"
       }
      ]

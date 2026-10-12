@@ -5,6 +5,14 @@
 #   framework: cis_network
 #   source: cis
 #   domains: [network, cisco]
+#   coverage:
+#     checks: 40
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis.network.cisco
 
 import rego.v1
@@ -381,4 +389,12 @@ cisco_device_compliance := {
     "service_timestamps_log_configured": service_timestamps_log_configured,
     "file_privilege_configured": file_privilege_configured,
     "overall_compliant": cisco_device_compliant
+#   coverage:
+#     checks: 40
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

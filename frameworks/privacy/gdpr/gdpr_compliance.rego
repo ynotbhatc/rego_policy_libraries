@@ -5,6 +5,14 @@
 #   framework: gdpr
 #   source: eu
 #   domains: [privacy, eu]
+#   coverage:
+#     checks: 24
+#     cited: 6
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: report
+#     as_of: v2.3.1
 package gdpr.compliance
 
 import rego.v1
@@ -297,3 +305,11 @@ report := {
 		"processor_agreements": processor_agreements,
 	},
 }
+#   coverage:
+#     checks: 24
+#     cited: 6
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: report
+#     as_of: v2.3.0

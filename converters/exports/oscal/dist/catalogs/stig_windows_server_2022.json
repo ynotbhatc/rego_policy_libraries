@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "20564098-ea60-5798-bee6-6cfcc4867941",
+  "uuid": "da029a38-cfbc-5aaf-9fe5-e447c60ae1e9",
   "metadata": {
-   "title": "Rego Policy Libraries — stig_windows_server_2022 (DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide — Master Aggregator)",
+   "title": "Rego Policy Libraries — stig_windows_server_2022 (DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,3510 @@
    ]
   },
   "groups": [
+   {
+    "id": "stig_windows_server_2022-registry_cc",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_server_2022.registry_cc"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_server_2022/registry_cc.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000040",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000040_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000050",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000050_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000060",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000060_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000070",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000070_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000080",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000080_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000090",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000090_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000110",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000110_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000130",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000130_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000140",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000140_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000150",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000150_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000160",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000160_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000170",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000170_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000180",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000180_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000190",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000190_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000210",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000210_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000220",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000220_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000230",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000230_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000240",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000240_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000250",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000250"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000250"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000250_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000260",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000260"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000260"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000260_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000270",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000270_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000280",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000280"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000280"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000280_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000290",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000290"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000290"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000290_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000310",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000310_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000320",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000320_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000330",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000330_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000340",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000340"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000340"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000340_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000350",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000350"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000350"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000350_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000360",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000360_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000370",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000370"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000370"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000370_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000380",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000380"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000380"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000380_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000390",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000390"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000390"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000390_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000410",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000410_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000420",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000420"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000420"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000420_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000430",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000430_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000440",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000440"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000440"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000440_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000450",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000450"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000450"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000450_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000460",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000460"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000460"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000460_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000470",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000470"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000470"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000470_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000480",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000480"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000480"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000480_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000490",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000490"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000490"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000490_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000510",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000510"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000510"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000510_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000520",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000520"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000520"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000520_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-CC-000530",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-CC-000530"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-CC-000530"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f7c05966-50db-5834-b505-abddb12f2ee3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-CC-000530_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_windows_server_2022-registry_other",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_server_2022.registry_other"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_server_2022/registry_other.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_server_2022-WN22-00-000390",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-00-000390"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-00-000390"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-00-000390_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-00-000400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-00-000400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-00-000400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-00-000400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-DC-000320",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-DC-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-DC-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-DC-000320_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-DC-000330",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-DC-000330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-DC-000330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-DC-000330_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-MS-000020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-MS-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-MS-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-MS-000020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-MS-000030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-MS-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-MS-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-MS-000030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-MS-000040",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-MS-000040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-MS-000040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-MS-000040_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-MS-000050",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-MS-000050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-MS-000050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-MS-000050_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-MS-000060",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-MS-000060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-MS-000060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-MS-000060_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-MS-000140",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-MS-000140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-MS-000140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-MS-000140_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-UC-000010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-UC-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-UC-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-UC-000010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_windows_server_2022-registry_so",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_server_2022.registry_so"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_server_2022/registry_so.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000050",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000050_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000060",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000060_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000070",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000070_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000080",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000080_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000090",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000090_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000110",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000110_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000120",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000120"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000120"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000120_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000130",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000130_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000140",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000140_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000150",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000150_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000160",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000160_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000170",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000170_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000180",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000180_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000190",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000190_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000220",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000220_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000230",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000230_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000240",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000240_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000250",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000250"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000250"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000250_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000260",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000260"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000260"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000260_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000270",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000270_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000280",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000280"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000280"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000280_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000290",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000290"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000290"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000290_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000310",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000310_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000320",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000320_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000330",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000330_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000340",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000340"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000340"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000340_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000350",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000350"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000350"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000350_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000360",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000360_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000370",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000370"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000370"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000370_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000380",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000380"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000380"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000380_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000390",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000390"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000390"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000390_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000410",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000410_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000420",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000420"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000420"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000420_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000430",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000430_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000440",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000440"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000440"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000440_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2022-WN22-SO-000450",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN22-SO-000450"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN22-SO-000450"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2022.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f6018db4-70ff-56b0-9736-e5a3a1321e92",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2022-WN22-SO-000450_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "stig_windows_server_2022-stig_windows_server_2022_complete",
     "class": "rego-module",
@@ -85,7 +3589,7 @@
       ],
       "links": [
        {
-        "href": "#009536a3-1b2c-5999-a754-5de6a0e17950",
+        "href": "#89ebccd2-ffd9-5b6d-a0c5-b5381dba88ca",
         "rel": "implementation"
        }
       ],
@@ -118,7 +3622,7 @@
       ],
       "links": [
        {
-        "href": "#009536a3-1b2c-5999-a754-5de6a0e17950",
+        "href": "#89ebccd2-ffd9-5b6d-a0c5-b5381dba88ca",
         "rel": "implementation"
        }
       ],
@@ -137,7 +3641,58 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "009536a3-1b2c-5999-a754-5de6a0e17950",
+     "uuid": "f7c05966-50db-5834-b505-abddb12f2ee3",
+     "title": "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_server_2022.registry_cc"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/windows_server_2022/registry_cc.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d8104e7d-4b91-506c-8d65-e39a49fcbdf3",
+     "title": "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_server_2022.registry_other"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/windows_server_2022/registry_other.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f6018db4-70ff-56b0-9736-e5a3a1321e92",
+     "title": "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_server_2022.registry_so"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/windows_server_2022/registry_so.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "89ebccd2-ffd9-5b6d-a0c5-b5381dba88ca",
      "title": "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -148,7 +3703,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/windows_server_2022/stig_windows_server_2022_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/windows_server_2022/stig_windows_server_2022_complete.rego",
        "media-type": "text/plain"
       }
      ]

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "a893597a-0c79-53ae-82c4-d9dedafe4d70",
+  "uuid": "77be0211-b53e-56b5-9e4c-c669bfa948ac",
   "metadata": {
    "title": "Rego Policy Libraries — dpdp_india (India DPDP Act 2023 + DPDP Rules 2025 — Data Fiduciary obligations)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,600 +66,6 @@
     ],
     "controls": [
      {
-      "id": "dpdp_india-dpdp.main-1",
-      "title": "DPDP %v (dpdp.%v undeclared)",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-1_stmt",
-        "name": "statement",
-        "prose": "DPDP %v (dpdp.%v undeclared)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-2",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-3",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-3_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-4",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-4_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-5",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-5_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-DPDP-Act-s.8-2",
-      "title": "Data Processors are engaged without a valid contract",
-      "props": [
-       {
-        "name": "label",
-        "value": "DPDP Act s.8(2)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "DPDP Act s.8(2)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-DPDP-Act-s.8-2_stmt",
-        "name": "statement",
-        "prose": "Data Processors are engaged without a valid contract"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-DPDP-Act-s.8-7-b",
-      "title": "the fiduciary does not cause its Data Processors to erase personal data it made available to them",
-      "props": [
-       {
-        "name": "label",
-        "value": "DPDP Act s.8(7)(b)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "DPDP Act s.8(7)(b)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-DPDP-Act-s.8-7-b_stmt",
-        "name": "statement",
-        "prose": "the fiduciary does not cause its Data Processors to erase personal data it made available to them"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-6",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-6_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-DPDP-Rule-6-1-f",
-      "title": "contracts with Data Processors lack the provision requiring reasonable security safeguards",
-      "props": [
-       {
-        "name": "label",
-        "value": "DPDP Rule 6(1)(f)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "DPDP Rule 6(1)(f)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-DPDP-Rule-6-1-f_stmt",
-        "name": "statement",
-        "prose": "contracts with Data Processors lack the provision requiring reasonable security safeguards"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-7",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-7_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-8",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#8"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#8"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-8_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-DPDP-Rule-8-1-Third-Schedule",
-      "title": "personal data is not erased three years after the Data Principal last approached the fiduciary or exercised her rights (or Rules commencement, whichever is latest), except account-access and virtual-t",
-      "props": [
-       {
-        "name": "label",
-        "value": "DPDP Rule 8(1) / Third Schedule"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "DPDP Rule 8(1) / Third Schedule"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-DPDP-Rule-8-1-Third-Schedule_stmt",
-        "name": "statement",
-        "prose": "personal data is not erased three years after the Data Principal last approached the fiduciary or exercised her rights (or Rules commencement, whichever is latest), except account-access and virtual-token purposes"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-DPDP-Rule-8-2",
-      "title": "Data Principals are not informed at least forty-eight hours before the erasure period completes that their data will be erased unless they log in or initiate contact",
-      "props": [
-       {
-        "name": "label",
-        "value": "DPDP Rule 8(2)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "DPDP Rule 8(2)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-DPDP-Rule-8-2_stmt",
-        "name": "statement",
-        "prose": "Data Principals are not informed at least forty-eight hours before the erasure period completes that their data will be erased unless they log in or initiate contact"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-9",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-9_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-10",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-10_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-11",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#11"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#11"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-11_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-12",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#12"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#12"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-12_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dpdp_india-dpdp.main-13",
-      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dpdp.main#13"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dpdp.main#13"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dpdp.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dpdp_india-dpdp.main-13_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "dpdp_india-in_third_schedule_class",
       "title": "Rule 8(1) / Third Schedule — whether the fiduciary is an e-commerce entity (≥2 crore users), online gaming intermediary (≥50 lakh) or social media intermediary (≥2 crore) must be declared true or fals",
       "props": [
@@ -679,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -712,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -745,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -778,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -787,6 +193,39 @@
         "id": "dpdp_india-uses_data_processors_stmt",
         "name": "statement",
         "prose": "s.8(2) / Rule 6(1)(f) — whether Data Processors act on the fiduciary's behalf must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-1",
+      "title": "DPDP %v (dpdp.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-1_stmt",
+        "name": "statement",
+        "prose": "DPDP %v (dpdp.%v undeclared)"
        }
       ],
       "class": "compliance"
@@ -811,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -844,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -853,6 +292,39 @@
         "id": "dpdp_india-DPDP-Act-s.7_stmt",
         "name": "statement",
         "prose": "processing without consent is claimed on grounds outside the s.7(a)–(i) list (voluntary provision for a specified purpose, State benefits, legal functions, court orders, medical emergency, epidemic, disaster, employment)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-2",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -877,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -910,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -943,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -976,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1009,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1042,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1075,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1108,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1117,6 +589,39 @@
         "id": "dpdp_india-standalone_and_plain_language_stmt",
         "name": "statement",
         "prose": "DPDP Rule 3(a)–(b): the notice is not presented and understandable independently of other information, in clear and plain language"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-3",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -1141,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1174,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1207,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1240,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1278,7 +783,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1311,7 +816,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1344,7 +849,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1353,6 +858,39 @@
         "id": "dpdp_india-DPDP-Act-s.6-4_stmt",
         "name": "statement",
         "prose": "withdrawing consent is not as easy as giving it"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-4",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -1377,7 +915,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1410,7 +948,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1443,7 +981,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1476,7 +1014,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1509,7 +1047,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1542,7 +1080,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1551,6 +1089,105 @@
         "id": "dpdp_india-DPDP-Act-s.8-4_stmt",
         "name": "statement",
         "prose": "no appropriate technical and organisational measures ensure effective observance of the Act and Rules"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-5",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.8-2",
+      "title": "Data Processors are engaged without a valid contract",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.8(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.8(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-2_stmt",
+        "name": "statement",
+        "prose": "Data Processors are engaged without a valid contract"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Act-s.8-7-b",
+      "title": "the fiduciary does not cause its Data Processors to erase personal data it made available to them",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Act s.8(7)(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Act s.8(7)(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Act-s.8-7-b_stmt",
+        "name": "statement",
+        "prose": "the fiduciary does not cause its Data Processors to erase personal data it made available to them"
        }
       ],
       "class": "compliance"
@@ -1575,7 +1212,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1608,7 +1245,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1641,7 +1278,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1674,7 +1311,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1707,7 +1344,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1740,7 +1377,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1749,6 +1386,72 @@
         "id": "dpdp_india-DPDP-Rule-6-1-g_stmt",
         "name": "statement",
         "prose": "no technical and organisational measures ensure effective observance of the security safeguards"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-6",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-6-1-f",
+      "title": "contracts with Data Processors lack the provision requiring reasonable security safeguards",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 6(1)(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 6(1)(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-6-1-f_stmt",
+        "name": "statement",
+        "prose": "contracts with Data Processors lack the provision requiring reasonable security safeguards"
        }
       ],
       "class": "compliance"
@@ -1773,7 +1476,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1806,7 +1509,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1839,7 +1542,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1872,7 +1575,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1881,6 +1584,39 @@
         "id": "dpdp_india-DPDP-Rule-7-1_stmt",
         "name": "statement",
         "prose": "affected Data Principals are not intimated without delay through their user account or a registered mode of communication"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-7",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -1905,7 +1641,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1938,7 +1674,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -1947,6 +1683,105 @@
         "id": "dpdp_india-DPDP-Rule-8-3_stmt",
         "name": "statement",
         "prose": "personal data, associated traffic data and processing logs are not retained for at least one year from processing and then erased (unless another law or a Government notification requires longer)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-8",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-8-1-Third-Schedule",
+      "title": "personal data is not erased three years after the Data Principal last approached the fiduciary or exercised her rights (or Rules commencement, whichever is latest), except account-access and virtual-t",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 8(1) / Third Schedule"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 8(1) / Third Schedule"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-8-1-Third-Schedule_stmt",
+        "name": "statement",
+        "prose": "personal data is not erased three years after the Data Principal last approached the fiduciary or exercised her rights (or Rules commencement, whichever is latest), except account-access and virtual-token purposes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-DPDP-Rule-8-2",
+      "title": "Data Principals are not informed at least forty-eight hours before the erasure period completes that their data will be erased unless they log in or initiate contact",
+      "props": [
+       {
+        "name": "label",
+        "value": "DPDP Rule 8(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DPDP Rule 8(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-DPDP-Rule-8-2_stmt",
+        "name": "statement",
+        "prose": "Data Principals are not informed at least forty-eight hours before the erasure period completes that their data will be erased unless they log in or initiate contact"
        }
       ],
       "class": "compliance"
@@ -1971,7 +1806,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2004,7 +1839,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2037,7 +1872,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2070,7 +1905,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2103,7 +1938,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2136,7 +1971,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2145,6 +1980,39 @@
         "id": "dpdp_india-DPDP-Act-s.9-1-Rule-10-1_stmt",
         "name": "statement",
         "prose": "verifiable consent of the parent (or lawful guardian) is not obtained before processing a child's personal data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-9",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -2169,7 +2037,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2202,7 +2070,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2235,7 +2103,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2268,7 +2136,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2301,7 +2169,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2334,7 +2202,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2343,6 +2211,39 @@
         "id": "dpdp_india-DPDP-Rule-13-2_stmt",
         "name": "statement",
         "prose": "the person carrying out the DPIA and audit does not furnish the Board a report of significant observations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-10",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -2367,7 +2268,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2400,7 +2301,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2433,7 +2334,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2466,7 +2367,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2499,7 +2400,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2508,6 +2409,39 @@
         "id": "dpdp_india-DPDP-Act-s.14-Rule-14-4_stmt",
         "name": "statement",
         "prose": "the Data Principal cannot nominate an individual to exercise her rights on death or incapacity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-11",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -2532,7 +2466,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2565,7 +2499,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2574,6 +2508,39 @@
         "id": "dpdp_india-DPDP-Act-s.16-1_stmt",
         "name": "statement",
         "prose": "personal data is transferred to a country or territory the Central Government has notified as restricted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-12",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -2598,7 +2565,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2631,7 +2598,7 @@
       ],
       "links": [
        {
-        "href": "#ff8c5ece-2036-57a0-9f70-c373937ba945",
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
         "rel": "implementation"
        }
       ],
@@ -2643,6 +2610,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "dpdp_india-dpdp.main-13",
+      "title": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpdp.main#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpdp.main#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dpdp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dpdp_india-dpdp.main-13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/dpdp_india/dpdp_main.rego (package dpdp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
      }
     ]
    }
@@ -2650,7 +2650,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "ff8c5ece-2036-57a0-9f70-c373937ba945",
+     "uuid": "e6c7cc7f-1e2d-5ef1-8613-f11a9d21eb9e",
      "title": "India DPDP Act 2023 + DPDP Rules 2025 — Data Fiduciary obligations",
      "props": [
       {
@@ -2661,7 +2661,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/dpdp_india/dpdp_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/privacy/dpdp_india/dpdp_main.rego",
        "media-type": "text/plain"
       }
      ]

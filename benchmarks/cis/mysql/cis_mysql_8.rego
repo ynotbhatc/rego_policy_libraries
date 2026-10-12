@@ -5,6 +5,17 @@
 #   framework: cis_mysql
 #   source: cis
 #   domains: [database, mysql]
+#   coverage:
+#     checks: 156
+#     cited: 156
+#     expected: 156
+#     found: 156
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis.mysql_8
 
 import rego.v1
@@ -1173,4 +1184,15 @@ gtid_mode_enabled if {
 
 enforce_gtid_consistency_enabled if {
 	input.mysql.config.enforce_gtid_consistency == "ON"
+#   coverage:
+#     checks: 156
+#     cited: 156
+#     expected: 156
+#     found: 156
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0
 }

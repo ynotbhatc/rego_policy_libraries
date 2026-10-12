@@ -5,6 +5,14 @@
 #   framework: nist_ssdf
 #   source: nist
 #   domains: [us-federal, secure-development]
+#   coverage:
+#     checks: 16
+#     cited: 16
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nist_ssdf.pw
 
 # NIST SSDF (SP 800-218 v1.1) — Practice Group: Produce Well-Secured Software (PW)
@@ -153,3 +161,11 @@ compliance_report := {
 	"violation_count": count(violations),
 	"compliant": compliant,
 }
+#   coverage:
+#     checks: 16
+#     cited: 16
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

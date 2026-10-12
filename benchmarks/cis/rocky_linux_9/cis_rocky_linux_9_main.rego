@@ -5,6 +5,14 @@
 #   framework: cis_rocky_linux_9
 #   source: cis
 #   domains: [linux, rocky]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_rocky_linux_9.main
 
 # Bridge: expose cis_rocky_linux_9 under the /v1/data/<framework>/main/compliance_report
@@ -116,3 +124,11 @@ compliance_report := {
 	"violations": _violations,
 	"section_results": _sections,
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: cis_ubuntu_22_04
 #   source: cis
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 4
+#     cited: 2
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_ubuntu_22_04.filesystem
 
 # CIS Ubuntu 22.04 - Section 1.1 Filesystem Configuration
@@ -111,3 +119,11 @@ compliance_report := {
 	"total_violations": count(violations),
 	"violations": violations,
 }
+#   coverage:
+#     checks: 4
+#     cited: 2
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

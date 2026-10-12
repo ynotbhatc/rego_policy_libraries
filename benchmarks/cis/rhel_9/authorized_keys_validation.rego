@@ -5,6 +5,14 @@
 #   framework: cis_rhel_9
 #   source: cis
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 6
+#     cited: 6
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_rhel9.authorized_keys
 
 import rego.v1
@@ -199,3 +207,11 @@ compliance_report := {
 		not approved_fingerprint(k.fingerprint)
 	]),
 }
+#   coverage:
+#     checks: 6
+#     cited: 6
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

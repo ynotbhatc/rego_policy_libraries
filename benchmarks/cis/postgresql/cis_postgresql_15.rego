@@ -5,6 +5,17 @@
 #   framework: cis_postgresql
 #   source: cis
 #   domains: [database, postgresql]
+#   coverage:
+#     checks: 172
+#     cited: 172
+#     expected: 172
+#     found: 172
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis.postgresql_15
 
 import rego.v1
@@ -1445,4 +1456,15 @@ unnecessary_extensions_disabled if {
 	approved_extensions := ["pgaudit", "pg_stat_statements", "uuid-ossp", "citext", "pgcrypto"]
 	unapproved_extensions := [ext | ext := enabled_extensions[_]; not ext.name in approved_extensions]
 	count(unapproved_extensions) == 0
+#   coverage:
+#     checks: 172
+#     cited: 172
+#     expected: 172
+#     found: 172
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0
 }

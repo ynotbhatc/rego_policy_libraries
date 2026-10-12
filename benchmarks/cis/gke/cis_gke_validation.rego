@@ -85,6 +85,17 @@
 #   framework: cis_gke
 #   source: cis
 #   domains: [kubernetes, cloud, gcp]
+#   coverage:
+#     checks: 40
+#     cited: 40
+#     expected: 40
+#     found: 40
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_gke.main
 
 import rego.v1
@@ -336,3 +347,14 @@ compliance_report := {
 	"violation_count": count(violations),
 	"section_summary": section_summary,
 }
+#   coverage:
+#     checks: 40
+#     cited: 40
+#     expected: 40
+#     found: 40
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

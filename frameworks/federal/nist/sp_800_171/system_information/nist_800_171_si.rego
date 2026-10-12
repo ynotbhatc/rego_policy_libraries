@@ -5,6 +5,17 @@
 #   framework: nist_sp_800_171
 #   source: nist
 #   domains: [us-federal, security-controls]
+#   coverage:
+#     checks: 13
+#     cited: 7
+#     expected: 7
+#     found: 13
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nist.sp800_171.system_information
 
 import rego.v1
@@ -142,3 +153,14 @@ compliance_report := {
         "3.14.7_unauthorized_use_detection": unauthorized_use_detection,
     },
 }
+#   coverage:
+#     checks: 13
+#     cited: 7
+#     expected: 7
+#     found: 13
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

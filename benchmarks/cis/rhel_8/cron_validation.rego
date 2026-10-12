@@ -5,6 +5,14 @@
 #   framework: cis_rhel_8
 #   source: cis
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_rhel8.cron
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.1: Configure time-based job schedulers
@@ -150,3 +158,11 @@ report := {
 	"section": "5.1 Configure time-based job schedulers",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

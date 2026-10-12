@@ -5,6 +5,14 @@
 #   framework: cis_vmware
 #   source: cis
 #   domains: [virtualization, vmware]
+#   coverage:
+#     checks: 96
+#     cited: 96
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_esxi_8
 
 import rego.v1
@@ -736,4 +744,12 @@ findings := [{
 	"details": sprintf("Found %d configuration violations across ESXi security domains", [count(violations)]),
 	"violations": violations,
 	"remediation": "Review and implement the recommended VMware ESXi security configurations including proper host hardening, network security policies, storage access controls, virtual machine security settings, comprehensive access control mechanisms, audit logging, system hardening standards, and compliance monitoring procedures"
+#   coverage:
+#     checks: 96
+#     cited: 96
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }]

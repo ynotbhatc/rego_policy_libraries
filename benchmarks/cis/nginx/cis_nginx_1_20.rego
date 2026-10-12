@@ -5,6 +5,14 @@
 #   framework: cis_nginx
 #   source: cis
 #   domains: [web-server]
+#   coverage:
+#     checks: 97
+#     cited: 97
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_nginx_1_20
 
 import rego.v1
@@ -603,4 +611,12 @@ findings := [
         "violations": violations,
         "remediation": "Review and implement the recommended NGINX security configurations including proper installation, secure configuration directives, comprehensive logging, SSL/TLS hardening, module security, access controls, and performance security settings"
     }
+#   coverage:
+#     checks: 97
+#     cited: 97
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 ]

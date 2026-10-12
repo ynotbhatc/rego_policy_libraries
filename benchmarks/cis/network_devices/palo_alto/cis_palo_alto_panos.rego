@@ -5,6 +5,14 @@
 #   framework: cis_network_devices
 #   source: cis
 #   domains: [network, palo-alto]
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_palo_alto_panos
 
 # CIS Palo Alto PAN-OS Benchmark v1.2.0
@@ -246,4 +254,12 @@ detailed_findings := {
     "logging_violations": logging_violations,
     "network_security_violations": network_security_violations,
     "device_management_violations": device_management_violations
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

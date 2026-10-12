@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "5b394f36-690e-59e0-a673-3055e013093e",
+  "uuid": "567b0e59-eed2-5148-bde4-8bb2fb6e6bc0",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_rocky_linux_8 (CIS Rocky Linux 8 Benchmark v3.0.0 - Complete Validation)",
+   "title": "Rego Policy Libraries — cis_rocky_linux_8 (CIS Rocky Linux 8 Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,540 @@
    ]
   },
   "groups": [
+   {
+    "id": "cis_rocky_linux_8-auditd_validation",
+    "class": "rego-module",
+    "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rocky_linux_8.auditd"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rocky_linux_8/auditd_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rocky_linux_8-CIS-4.1.1.1",
+      "title": "audit package not installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.1.1_stmt",
+        "name": "statement",
+        "prose": "audit package not installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.1.1.2",
+      "title": "auditd service not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.1.2_stmt",
+        "name": "statement",
+        "prose": "auditd service not enabled"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "auditd service not running"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.1.1.3",
+      "title": "audit=1 not set in bootloader configuration",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.1.3_stmt",
+        "name": "statement",
+        "prose": "audit=1 not set in bootloader configuration"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.1.1.4",
+      "title": "audit_backlog_limit not configured (should be 8192 or higher)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.1.4_stmt",
+        "name": "statement",
+        "prose": "audit_backlog_limit not configured (should be 8192 or higher)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.1.2.1",
+      "title": "max_log_file not configured in auditd.conf",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.2.1_stmt",
+        "name": "statement",
+        "prose": "max_log_file not configured in auditd.conf"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.1.2.2",
+      "title": "max_log_file_action set to delete (logs will be deleted)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.2.2_stmt",
+        "name": "statement",
+        "prose": "max_log_file_action set to delete (logs will be deleted)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "max_log_file_action set to ignore (no action on full logs)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.1.2.3",
+      "title": "space_left_action not appropriate (should be email, exec, single, or halt)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.2.3_stmt",
+        "name": "statement",
+        "prose": "space_left_action not appropriate (should be email, exec, single, or halt)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "admin_space_left_action not appropriate (should be single or halt)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.auditd#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.auditd#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.1.3.21",
+      "title": "Audit configuration not set to immutable (missing '-e 2')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.3.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.3.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.3.21_stmt",
+        "name": "statement",
+        "prose": "Audit configuration not set to immutable (missing '-e 2')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.auditd#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.auditd#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.auditd#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.auditd#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.auditd#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.auditd#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.auditd#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.auditd#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.auditd#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.auditd#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-7",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.auditd#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.auditd#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.auditd-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/auditd_validation.rego (package cis_rocky_linux_8.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "cis_rocky_linux_8-cis_rocky_linux_8_complete",
     "class": "rego-module",
@@ -85,7 +619,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -118,7 +652,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -151,7 +685,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -184,7 +718,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -217,7 +751,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -250,7 +784,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -283,7 +817,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -316,7 +850,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -349,7 +883,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -382,7 +916,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -415,7 +949,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -448,7 +982,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -481,7 +1015,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -514,7 +1048,7 @@
       ],
       "links": [
        {
-        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "href": "#e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
         "rel": "implementation"
        }
       ],
@@ -571,7 +1105,7 @@
       ],
       "links": [
        {
-        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
+        "href": "#9b3186f6-ef61-58c0-a689-0451d8167493",
         "rel": "implementation"
        }
       ],
@@ -609,7 +1143,7 @@
       ],
       "links": [
        {
-        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
+        "href": "#9b3186f6-ef61-58c0-a689-0451d8167493",
         "rel": "implementation"
        }
       ],
@@ -652,7 +1186,7 @@
       ],
       "links": [
        {
-        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
+        "href": "#9b3186f6-ef61-58c0-a689-0451d8167493",
         "rel": "implementation"
        }
       ],
@@ -690,7 +1224,7 @@
       ],
       "links": [
        {
-        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
+        "href": "#9b3186f6-ef61-58c0-a689-0451d8167493",
         "rel": "implementation"
        }
       ],
@@ -728,7 +1262,7 @@
       ],
       "links": [
        {
-        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
+        "href": "#9b3186f6-ef61-58c0-a689-0451d8167493",
         "rel": "implementation"
        }
       ],
@@ -766,7 +1300,7 @@
       ],
       "links": [
        {
-        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
+        "href": "#9b3186f6-ef61-58c0-a689-0451d8167493",
         "rel": "implementation"
        }
       ],
@@ -804,7 +1338,7 @@
       ],
       "links": [
        {
-        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
+        "href": "#9b3186f6-ef61-58c0-a689-0451d8167493",
         "rel": "implementation"
        }
       ],
@@ -842,7 +1376,7 @@
       ],
       "links": [
        {
-        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
+        "href": "#9b3186f6-ef61-58c0-a689-0451d8167493",
         "rel": "implementation"
        }
       ],
@@ -885,7 +1419,7 @@
       ],
       "links": [
        {
-        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
+        "href": "#9b3186f6-ef61-58c0-a689-0451d8167493",
         "rel": "implementation"
        }
       ],
@@ -933,6 +1467,534 @@
     ],
     "controls": [
      {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-7",
+      "title": "SSH Private Keys: One or more SSH host keys have insecure permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-7_stmt",
+        "name": "statement",
+        "prose": "SSH Private Keys: One or more SSH host keys have insecure permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-8",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-9",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-10",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-11",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-12",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-13",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-14",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-14_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-15",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-15_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-16",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.file_permissions#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.file_permissions#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.file_permissions-16_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_rocky_linux_8-security_risks",
       "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/file_permissions_validation.rego (package cis_rocky_linux_8.file_permissions); see the rule body.",
       "props": [
@@ -952,7 +2014,7 @@
       ],
       "links": [
        {
-        "href": "#5c733883-641f-55af-a02d-70f463ce9abf",
+        "href": "#732aea0a-10ce-5a4b-8627-d7d446a98014",
         "rel": "implementation"
        }
       ],
@@ -1009,7 +2071,7 @@
       ],
       "links": [
        {
-        "href": "#28bd538e-334e-5cf3-b4aa-5c6450a53f44",
+        "href": "#9937f4f8-cc2a-5209-ac70-4e6d2ed0bb9a",
         "rel": "implementation"
        }
       ],
@@ -1042,7 +2104,7 @@
       ],
       "links": [
        {
-        "href": "#28bd538e-334e-5cf3-b4aa-5c6450a53f44",
+        "href": "#9937f4f8-cc2a-5209-ac70-4e6d2ed0bb9a",
         "rel": "implementation"
        }
       ],
@@ -1051,6 +2113,105 @@
         "id": "cis_rocky_linux_8-cis_rocky_linux_8.filesystem-2_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/filesystem_validation.rego (package cis_rocky_linux_8.filesystem); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-1.1.1.x",
+      "title": "Filesystem module '%s' is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.1.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.1.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9937f4f8-cc2a-5209-ac70-4e6d2ed0bb9a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-1.1.1.x_stmt",
+        "name": "statement",
+        "prose": "Filesystem module '%s' is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-1.1.2",
+      "title": "/tmp is not configured on a separate partition",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9937f4f8-cc2a-5209-ac70-4e6d2ed0bb9a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-1.1.2_stmt",
+        "name": "statement",
+        "prose": "/tmp is not configured on a separate partition"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-1.1.6",
+      "title": "/var is not configured on a separate partition",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9937f4f8-cc2a-5209-ac70-4e6d2ed0bb9a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-1.1.6_stmt",
+        "name": "statement",
+        "prose": "/var is not configured on a separate partition"
        }
       ],
       "class": "security"
@@ -1099,7 +2260,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1132,7 +2293,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1170,7 +2331,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1203,7 +2364,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1246,7 +2407,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1289,7 +2450,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1332,7 +2493,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1365,7 +2526,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1398,7 +2559,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1431,7 +2592,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1464,7 +2625,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1497,7 +2658,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1530,7 +2691,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1568,7 +2729,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1601,7 +2762,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1639,7 +2800,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1672,7 +2833,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1705,7 +2866,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1738,7 +2899,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1771,7 +2932,7 @@
       ],
       "links": [
        {
-        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
+        "href": "#7db848be-3ee9-56c1-9b44-07b11811d8e8",
         "rel": "implementation"
        }
       ],
@@ -1814,6 +2975,440 @@
     ],
     "controls": [
      {
+      "id": "cis_rocky_linux_8-CIS-4.2.1.1",
+      "title": "rsyslog is not installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.2.1.1_stmt",
+        "name": "statement",
+        "prose": "rsyslog is not installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.2.1.2",
+      "title": "rsyslog service is not active",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.2.1.2_stmt",
+        "name": "statement",
+        "prose": "rsyslog service is not active"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-4.2.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "rsyslog service is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.logging#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.logging#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.logging#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.logging#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.2.1.5",
+      "title": "No rsyslog logging rules configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.2.1.5_stmt",
+        "name": "statement",
+        "prose": "No rsyslog logging rules configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.logging#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.logging#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.2.1.6",
+      "title": "rsyslog not configured to send logs to remote host",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.2.1.6_stmt",
+        "name": "statement",
+        "prose": "rsyslog not configured to send logs to remote host"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.logging#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.logging#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.logging#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.logging#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.2.2.3",
+      "title": "systemd-journald service is not active",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.2.2.3_stmt",
+        "name": "statement",
+        "prose": "systemd-journald service is not active"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.logging#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.logging#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-7",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.logging#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.logging#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.logging-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-4.2.x",
+      "title": "logrotate is not installed (logs may fill disk)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-4.2.x_stmt",
+        "name": "statement",
+        "prose": "logrotate is not installed (logs may fill disk)"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_rocky_linux_8-journald",
       "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body.",
       "props": [
@@ -1833,7 +3428,7 @@
       ],
       "links": [
        {
-        "href": "#ab547522-d50c-5bd9-9acc-7ef3cd568e73",
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
         "rel": "implementation"
        }
       ],
@@ -1866,7 +3461,7 @@
       ],
       "links": [
        {
-        "href": "#ab547522-d50c-5bd9-9acc-7ef3cd568e73",
+        "href": "#b148b90a-809a-5ed3-9ff6-aded571e1357",
         "rel": "implementation"
        }
       ],
@@ -1904,6 +3499,605 @@
     ],
     "controls": [
      {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-3.2.8",
+      "title": "TCP SYN cookies not enabled (vulnerable to SYN flood attacks)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-3.2.8_stmt",
+        "name": "statement",
+        "prose": "TCP SYN cookies not enabled (vulnerable to SYN flood attacks)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-3.2.7",
+      "title": "Reverse path filtering not enabled (vulnerable to IP spoofing)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-3.2.7_stmt",
+        "name": "statement",
+        "prose": "Reverse path filtering not enabled (vulnerable to IP spoofing)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-3.2.4",
+      "title": "Martian packet logging not enabled (won't detect spoofing attempts)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-3.2.4_stmt",
+        "name": "statement",
+        "prose": "Martian packet logging not enabled (won't detect spoofing attempts)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-3.2.5",
+      "title": "Broadcast ICMP not ignored (vulnerable to Smurf attacks)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-3.2.5_stmt",
+        "name": "statement",
+        "prose": "Broadcast ICMP not ignored (vulnerable to Smurf attacks)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-3.1.2",
+      "title": "Sending ICMP redirects is enabled (man-in-the-middle risk)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-3.1.2_stmt",
+        "name": "statement",
+        "prose": "Sending ICMP redirects is enabled (man-in-the-middle risk)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-3.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Sending ICMP redirects enabled on default interface"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-7",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-8",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-9",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-10",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-11",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-12",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-3.5.x",
+      "title": "Using legacy iptables instead of firewalld or nftables",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.5.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.5.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-3.5.x_stmt",
+        "name": "statement",
+        "prose": "Using legacy iptables instead of firewalld or nftables"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_rocky_linux_8-firewall",
       "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
       "props": [
@@ -1923,7 +4117,7 @@
       ],
       "links": [
        {
-        "href": "#9a5ff714-0f0a-5206-9f23-f2d1e689706c",
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
         "rel": "implementation"
        }
       ],
@@ -1956,7 +4150,7 @@
       ],
       "links": [
        {
-        "href": "#9a5ff714-0f0a-5206-9f23-f2d1e689706c",
+        "href": "#d7cfbda3-b985-579c-8009-76951eb4c5de",
         "rel": "implementation"
        }
       ],
@@ -2013,7 +4207,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2046,7 +4240,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2084,7 +4278,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2122,7 +4316,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2165,7 +4359,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2203,7 +4397,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2236,7 +4430,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2269,7 +4463,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2302,7 +4496,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2335,7 +4529,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2373,7 +4567,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2406,7 +4600,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2439,7 +4633,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2472,7 +4666,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2510,7 +4704,7 @@
       ],
       "links": [
        {
-        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+        "href": "#3b227549-98a6-5468-9978-1989c0d6a694",
         "rel": "implementation"
        }
       ],
@@ -2577,7 +4771,7 @@
       ],
       "links": [
        {
-        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
+        "href": "#91fc9cf1-ba7f-535e-b5c3-24e17d9d22bf",
         "rel": "implementation"
        }
       ],
@@ -2610,7 +4804,7 @@
       ],
       "links": [
        {
-        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
+        "href": "#91fc9cf1-ba7f-535e-b5c3-24e17d9d22bf",
         "rel": "implementation"
        }
       ],
@@ -2648,7 +4842,7 @@
       ],
       "links": [
        {
-        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
+        "href": "#91fc9cf1-ba7f-535e-b5c3-24e17d9d22bf",
         "rel": "implementation"
        }
       ],
@@ -2686,7 +4880,7 @@
       ],
       "links": [
        {
-        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
+        "href": "#91fc9cf1-ba7f-535e-b5c3-24e17d9d22bf",
         "rel": "implementation"
        }
       ],
@@ -2724,7 +4918,7 @@
       ],
       "links": [
        {
-        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
+        "href": "#91fc9cf1-ba7f-535e-b5c3-24e17d9d22bf",
         "rel": "implementation"
        }
       ],
@@ -2757,7 +4951,7 @@
       ],
       "links": [
        {
-        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
+        "href": "#91fc9cf1-ba7f-535e-b5c3-24e17d9d22bf",
         "rel": "implementation"
        }
       ],
@@ -2790,7 +4984,7 @@
       ],
       "links": [
        {
-        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
+        "href": "#91fc9cf1-ba7f-535e-b5c3-24e17d9d22bf",
         "rel": "implementation"
        }
       ],
@@ -2823,7 +5017,7 @@
       ],
       "links": [
        {
-        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
+        "href": "#91fc9cf1-ba7f-535e-b5c3-24e17d9d22bf",
         "rel": "implementation"
        }
       ],
@@ -2856,7 +5050,7 @@
       ],
       "links": [
        {
-        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
+        "href": "#91fc9cf1-ba7f-535e-b5c3-24e17d9d22bf",
         "rel": "implementation"
        }
       ],
@@ -2870,6 +5064,1406 @@
         "id": "cis_rocky_linux_8-CIS-1.6_obj.1",
         "name": "assessment-objective",
         "prose": "High number of SELinux denials (%d) - review /var/log/audit/audit.log"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rocky_linux_8-services_validation",
+    "class": "rego-module",
+    "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rocky_linux_8.services"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rocky_linux_8/services_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rocky_linux_8-CIS-1.1.23",
+      "title": "autofs service is active (should be disabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-1.1.23_stmt",
+        "name": "statement",
+        "prose": "autofs service is active (should be disabled)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-1.1.23_obj.1",
+        "name": "assessment-objective",
+        "prose": "autofs service is enabled (should be disabled)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-1.1.23_obj.2",
+        "name": "assessment-objective",
+        "prose": "autofs is not compliant (should be disabled/masked)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.1.1",
+      "title": "No time synchronization service is active",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.1.1_stmt",
+        "name": "statement",
+        "prose": "No time synchronization service is active"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-2.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Time synchronization not properly configured (active services: %d)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-2.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Multiple time synchronization services active (should only have one): %v"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.1.1.1",
+      "title": "chronyd is selected but not active",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.1.1.1_stmt",
+        "name": "statement",
+        "prose": "chronyd is selected but not active"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-2.1.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "chronyd is selected but not enabled"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-2.1.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "chronyd has no time sources configured (servers: %d, pools: %d)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.2.x",
+      "title": "Unnecessary service '%s' is active (risk: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.2.x_stmt",
+        "name": "statement",
+        "prose": "Unnecessary service '%s' is active (risk: %s)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-2.2.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unnecessary service '%s' is enabled (risk: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.2.14",
+      "title": "telnet server is active (CRITICAL: uses cleartext authentication)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.2.14_stmt",
+        "name": "statement",
+        "prose": "telnet server is active (CRITICAL: uses cleartext authentication)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.3.1",
+      "title": "rsh server is active (CRITICAL: uses cleartext authentication)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.3.1_stmt",
+        "name": "statement",
+        "prose": "rsh server is active (CRITICAL: uses cleartext authentication)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.2.11",
+      "title": "FTP server is active (WARNING: may use cleartext authentication)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.2.11_stmt",
+        "name": "statement",
+        "prose": "FTP server is active (WARNING: may use cleartext authentication)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.2.2",
+      "title": "Avahi server is active (WARNING: broadcasts system information)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.2.2_stmt",
+        "name": "statement",
+        "prose": "Avahi server is active (WARNING: broadcasts system information)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.2.12",
+      "title": "Web server package installed: %s (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.2.12_stmt",
+        "name": "statement",
+        "prose": "Web server package installed: %s (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.3.x",
+      "title": "Unnecessary client package installed: %s (%s, severity: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.3.x_stmt",
+        "name": "statement",
+        "prose": "Unnecessary client package installed: %s (%s, severity: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.3.4",
+      "title": "telnet client is installed (CRITICAL: cleartext protocol)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.3.4_stmt",
+        "name": "statement",
+        "prose": "telnet client is installed (CRITICAL: cleartext protocol)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.3.2",
+      "title": "rsh client is installed (CRITICAL: cleartext protocol)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.3.2_stmt",
+        "name": "statement",
+        "prose": "rsh client is installed (CRITICAL: cleartext protocol)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-2.2.1",
+      "title": "X Window System package installed on server: %s (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-2.2.1_stmt",
+        "name": "statement",
+        "prose": "X Window System package installed on server: %s (%s)"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_rocky_linux_8-ssh_validation",
+    "class": "rego-module",
+    "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.2: SSH Server Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_rocky_linux_8.ssh"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rocky_linux_8/ssh_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.1",
+      "title": "/etc/ssh/sshd_config permissions not 0600",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.1_stmt",
+        "name": "statement",
+        "prose": "/etc/ssh/sshd_config permissions not 0600"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/ssh/sshd_config not owned by root"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/ssh/sshd_config group not root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.4",
+      "title": "SSH LogLevel not set to INFO or VERBOSE",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.4_stmt",
+        "name": "statement",
+        "prose": "SSH LogLevel not set to INFO or VERBOSE"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH LogLevel not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.5",
+      "title": "SSH X11Forwarding is enabled (should be 'no')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.5_stmt",
+        "name": "statement",
+        "prose": "SSH X11Forwarding is enabled (should be 'no')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.6",
+      "title": "SSH MaxAuthTries not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.6_stmt",
+        "name": "statement",
+        "prose": "SSH MaxAuthTries not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.7",
+      "title": "SSH IgnoreRhosts not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.7_stmt",
+        "name": "statement",
+        "prose": "SSH IgnoreRhosts not enabled"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH IgnoreRhosts not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.8",
+      "title": "SSH HostbasedAuthentication is enabled (should be 'no')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.8_stmt",
+        "name": "statement",
+        "prose": "SSH HostbasedAuthentication is enabled (should be 'no')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.9",
+      "title": "SSH PermitRootLogin not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.9_stmt",
+        "name": "statement",
+        "prose": "SSH PermitRootLogin not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.10",
+      "title": "SSH PermitEmptyPasswords is enabled (should be 'no')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.10_stmt",
+        "name": "statement",
+        "prose": "SSH PermitEmptyPasswords is enabled (should be 'no')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.11",
+      "title": "SSH PermitUserEnvironment is enabled (should be 'no')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.11_stmt",
+        "name": "statement",
+        "prose": "SSH PermitUserEnvironment is enabled (should be 'no')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-7",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-8",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-9",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.15",
+      "title": "SSH ClientAliveInterval not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.15_stmt",
+        "name": "statement",
+        "prose": "SSH ClientAliveInterval not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-10",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-11",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.17",
+      "title": "SSH Banner not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.17_stmt",
+        "name": "statement",
+        "prose": "SSH Banner not configured"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.17_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH Banner set to 'none'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.18",
+      "title": "SSH UsePAM not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.18_stmt",
+        "name": "statement",
+        "prose": "SSH UsePAM not configured"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.18_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH UsePAM not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.19",
+      "title": "SSH AllowTcpForwarding is enabled (should be 'no')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.19_stmt",
+        "name": "statement",
+        "prose": "SSH AllowTcpForwarding is enabled (should be 'no')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-CIS-5.2.20",
+      "title": "SSH MaxStartups not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.20_stmt",
+        "name": "statement",
+        "prose": "SSH MaxStartups not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-12",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.ssh#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.ssh#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.ssh-12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/ssh_validation.rego (package cis_rocky_linux_8.ssh); see the rule body."
        }
       ],
       "class": "security"
@@ -2918,7 +6512,7 @@
       ],
       "links": [
        {
-        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
+        "href": "#1f5852f2-c511-50ea-af54-592b8da22d0e",
         "rel": "implementation"
        }
       ],
@@ -2951,7 +6545,7 @@
       ],
       "links": [
        {
-        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
+        "href": "#1f5852f2-c511-50ea-af54-592b8da22d0e",
         "rel": "implementation"
        }
       ],
@@ -2984,7 +6578,7 @@
       ],
       "links": [
        {
-        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
+        "href": "#1f5852f2-c511-50ea-af54-592b8da22d0e",
         "rel": "implementation"
        }
       ],
@@ -3022,7 +6616,7 @@
       ],
       "links": [
        {
-        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
+        "href": "#1f5852f2-c511-50ea-af54-592b8da22d0e",
         "rel": "implementation"
        }
       ],
@@ -3055,7 +6649,7 @@
       ],
       "links": [
        {
-        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
+        "href": "#1f5852f2-c511-50ea-af54-592b8da22d0e",
         "rel": "implementation"
        }
       ],
@@ -3088,7 +6682,7 @@
       ],
       "links": [
        {
-        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
+        "href": "#1f5852f2-c511-50ea-af54-592b8da22d0e",
         "rel": "implementation"
        }
       ],
@@ -3126,7 +6720,7 @@
       ],
       "links": [
        {
-        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
+        "href": "#1f5852f2-c511-50ea-af54-592b8da22d0e",
         "rel": "implementation"
        }
       ],
@@ -3164,7 +6758,7 @@
       ],
       "links": [
        {
-        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
+        "href": "#1f5852f2-c511-50ea-af54-592b8da22d0e",
         "rel": "implementation"
        }
       ],
@@ -3236,7 +6830,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3269,7 +6863,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3302,7 +6896,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3335,7 +6929,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3368,7 +6962,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3401,7 +6995,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3434,7 +7028,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3467,7 +7061,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3525,7 +7119,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3558,7 +7152,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3591,7 +7185,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3624,7 +7218,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3657,7 +7251,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3690,7 +7284,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3723,7 +7317,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3756,7 +7350,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3789,7 +7383,7 @@
       ],
       "links": [
        {
-        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
+        "href": "#42115861-5f72-57a3-8aab-b28e42923613",
         "rel": "implementation"
        }
       ],
@@ -3818,7 +7412,24 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+     "uuid": "e1db0938-6ea8-5dd0-b2c8-7d1ac17e2147",
+     "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rocky_linux_8.auditd"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/auditd_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e36dc7d3-9a36-5962-bf65-333c2d6eaefa",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Complete Validation",
      "props": [
       {
@@ -3829,13 +7440,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "3efe6646-65c0-509d-b17f-ab41b1e705fa",
+     "uuid": "9b3186f6-ef61-58c0-a689-0451d8167493",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers",
      "props": [
       {
@@ -3846,13 +7457,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/cron_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/cron_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "5c733883-641f-55af-a02d-70f463ce9abf",
+     "uuid": "732aea0a-10ce-5a4b-8627-d7d446a98014",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 6.1: System File Permissions",
      "props": [
       {
@@ -3863,13 +7474,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/file_permissions_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/file_permissions_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "28bd538e-334e-5cf3-b4aa-5c6450a53f44",
+     "uuid": "9937f4f8-cc2a-5209-ac70-4e6d2ed0bb9a",
      "title": "CIS Rocky Linux 8 Section 1.1 - Filesystem Configuration",
      "props": [
       {
@@ -3880,13 +7491,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/filesystem_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/filesystem_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "e1724405-2226-5bd2-bae2-0204dd1fa915",
+     "uuid": "7db848be-3ee9-56c1-9b44-07b11811d8e8",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup",
      "props": [
       {
@@ -3897,13 +7508,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/initial_setup_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/initial_setup_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "ab547522-d50c-5bd9-9acc-7ef3cd568e73",
+     "uuid": "b148b90a-809a-5ed3-9ff6-aded571e1357",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 4.2: Logging Configuration",
      "props": [
       {
@@ -3914,13 +7525,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/logging_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/logging_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "9a5ff714-0f0a-5206-9f23-f2d1e689706c",
+     "uuid": "d7cfbda3-b985-579c-8009-76951eb4c5de",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration",
      "props": [
       {
@@ -3931,13 +7542,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/network_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/network_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
+     "uuid": "3b227549-98a6-5468-9978-1989c0d6a694",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.4/5.5: PAM and User Accounts",
      "props": [
       {
@@ -3948,13 +7559,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/pam_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/pam_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
+     "uuid": "91fc9cf1-ba7f-535e-b5c3-24e17d9d22bf",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 1.6: Mandatory Access Controls (SELinux)",
      "props": [
       {
@@ -3965,13 +7576,47 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/selinux_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/selinux_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "6fac3349-c16b-5ad5-8f89-5e28608e0b70",
+     "uuid": "277a3a10-30ce-5c47-bf2a-ddd1a7c4e944",
+     "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rocky_linux_8.services"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/services_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "4f38affa-5797-572e-bbef-ad3d2f3a9f32",
+     "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.2: SSH Server Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_rocky_linux_8.ssh"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/ssh_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "1f5852f2-c511-50ea-af54-592b8da22d0e",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.3: Configure privilege escalation",
      "props": [
       {
@@ -3982,13 +7627,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/sudo_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/sudo_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d328ad91-6ee3-5729-81fc-00d62f6c3044",
+     "uuid": "42115861-5f72-57a3-8aab-b28e42923613",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 6.2: User and Group Settings",
      "props": [
       {
@@ -3999,7 +7644,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/user_group_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/rocky_linux_8/user_group_validation.rego",
        "media-type": "text/plain"
       }
      ]

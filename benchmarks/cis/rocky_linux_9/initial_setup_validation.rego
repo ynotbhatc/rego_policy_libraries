@@ -5,6 +5,14 @@
 #   framework: cis_rocky_linux_9
 #   source: cis
 #   domains: [linux, rocky]
+#   coverage:
+#     checks: 20
+#     cited: 20
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_rocky_linux_9.initial_setup
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup
@@ -229,3 +237,11 @@ report := {
 	"section": "1.2, 1.7-1.9 Initial System Setup",
 	"benchmark": "DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 (applied to Rocky Linux 9)",
 }
+#   coverage:
+#     checks: 20
+#     cited: 20
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

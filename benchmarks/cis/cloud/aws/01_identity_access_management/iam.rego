@@ -5,6 +5,14 @@
 #   framework: cis_cloud
 #   source: cis
 #   domains: [cloud, aws]
+#   coverage:
+#     checks: 14
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis.aws.iam
 
 import rego.v1
@@ -129,4 +137,12 @@ aws_iam_compliance := {
     "root_mfa_enabled": root_mfa_enabled,
     "root_hardware_mfa_enabled": root_hardware_mfa_enabled,
     "overall_compliant": aws_iam_compliant
+#   coverage:
+#     checks: 14
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

@@ -16,6 +16,14 @@
 #   framework: irs_1075
 #   source: irs
 #   domains: [us-federal, tax]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package irs_1075.main
 
 import rego.v1
@@ -102,3 +110,11 @@ compliance_report := {
 	"violation_count": count(all_violations),
 	"compliant": compliant,
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

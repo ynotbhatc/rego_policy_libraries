@@ -5,6 +5,17 @@
 #   framework: nist_sp_800_171
 #   source: nist
 #   domains: [us-federal, security-controls]
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     expected: 2
+#     found: 2
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nist.sp800_171.personnel_security
 
 import rego.v1
@@ -58,3 +69,14 @@ compliance_report := {
         "3.9.2_personnel_actions_protection": personnel_actions_protection,
     },
 }
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     expected: 2
+#     found: 2
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

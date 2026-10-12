@@ -5,6 +5,14 @@
 #   framework: gdpr
 #   source: eu
 #   domains: [privacy, eu]
+#   coverage:
+#     checks: 10
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package gdpr.data_transfers
 
 import rego.v1
@@ -233,3 +241,11 @@ report := {
 		"transparency_to_data_subjects": data_subjects_informed_of_transfers,
 	},
 }
+#   coverage:
+#     checks: 10
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

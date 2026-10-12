@@ -5,6 +5,17 @@
 #   framework: iso_42001
 #   source: iso
 #   domains: [ai]
+#   coverage:
+#     checks: 38
+#     cited: 38
+#     expected: 38
+#     found: 38
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package iso_42001.main
 
 import rego.v1
@@ -280,3 +291,14 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+#   coverage:
+#     checks: 38
+#     cited: 38
+#     expected: 38
+#     found: 38
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

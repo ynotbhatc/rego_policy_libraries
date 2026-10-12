@@ -5,6 +5,14 @@
 #   framework: iso27001
 #   source: iso
 #   domains: [isms]
+#   coverage:
+#     checks: 13
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package iso27001.access_control
 
 import rego.v1
@@ -243,4 +251,12 @@ compliance_details := {
         "source_code_access": source_code_access_control
     },
     "overall_compliant": compliant
+#   coverage:
+#     checks: 13
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

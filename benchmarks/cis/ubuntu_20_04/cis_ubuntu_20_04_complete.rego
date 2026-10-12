@@ -5,6 +5,14 @@
 #   framework: cis_ubuntu_20_04
 #   source: cis
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_ubuntu_20_04
 
 # CIS Ubuntu 20.04 LTS Benchmark - Complete Compliance Assessment
@@ -186,3 +194,11 @@ compliance_assessment := {
 # For audit-of-record use this library MUST be formally mapped against
 # the CIS Ubuntu 20.04 LTS Benchmark before results are relied upon.
 total_controls_covered := 240
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

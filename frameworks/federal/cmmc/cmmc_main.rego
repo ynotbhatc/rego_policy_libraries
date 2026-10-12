@@ -5,6 +5,14 @@
 #   framework: cmmc
 #   source: dod
 #   domains: [us-federal, defense]
+#   coverage:
+#     checks: 14
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package cmmc
 
 import rego.v1
@@ -265,3 +273,11 @@ cmmc_compliance_report := {
         "3.14_system_information_integrity":    si_report,
     },
 }
+#   coverage:
+#     checks: 14
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

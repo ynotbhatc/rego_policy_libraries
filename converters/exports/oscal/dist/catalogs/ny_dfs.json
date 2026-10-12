@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "f771ce45-997f-5d31-a044-b3015d3edc90",
+  "uuid": "a97c9b47-8c8d-5bea-9d12-81813be543c3",
   "metadata": {
    "title": "Rego Policy Libraries — ny_dfs (New York Department of Financial Services — 23 NYCRR Part 500)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,8 +66,830 @@
     ],
     "controls": [
      {
+      "id": "ny_dfs-23-NYCRR-500.2",
+      "title": "Cybersecurity program not established to protect information systems and nonpublic information",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.2_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity program not established to protect information systems and nonpublic information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.2-b",
+      "title": "Cybersecurity program not designed based on covered entity's risk assessment",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.2(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.2(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.2-b_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity program not designed based on covered entity's risk assessment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.3",
+      "title": "Written cybersecurity policy not implemented and maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.3_stmt",
+        "name": "statement",
+        "prose": "Written cybersecurity policy not implemented and maintained"
+       },
+       {
+        "id": "ny_dfs-23-NYCRR-500.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity policy not approved by senior officer or board"
+       },
+       {
+        "id": "ny_dfs-23-NYCRR-500.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity policy not reviewed at least annually"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.4-a",
+      "title": "Qualified CISO not designated to oversee cybersecurity program",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.4(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.4(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.4-a_stmt",
+        "name": "statement",
+        "prose": "Qualified CISO not designated to oversee cybersecurity program"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.4-b",
+      "title": "CISO has not provided annual report to board on cybersecurity program",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.4(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.4(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.4-b_stmt",
+        "name": "statement",
+        "prose": "CISO has not provided annual report to board on cybersecurity program"
+       },
+       {
+        "id": "ny_dfs-23-NYCRR-500.4-b_obj.1",
+        "name": "assessment-objective",
+        "prose": "CISO annual report does not address material cybersecurity issues"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.5-a-1",
+      "title": "Annual penetration testing of information systems not performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.5(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.5(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.5-a-1_stmt",
+        "name": "statement",
+        "prose": "Annual penetration testing of information systems not performed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.5-a-2",
+      "title": "Bi-annual automated vulnerability scans not conducted",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.5(a)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.5(a)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.5-a-2_stmt",
+        "name": "statement",
+        "prose": "Bi-annual automated vulnerability scans not conducted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.5",
+      "title": "Penetration test and vulnerability assessment findings not tracked to remediation",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.5_stmt",
+        "name": "statement",
+        "prose": "Penetration test and vulnerability assessment findings not tracked to remediation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.6-a",
+      "title": "Audit trail systems not designed to protect against tampering and alteration",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.6(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.6(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.6-a_stmt",
+        "name": "statement",
+        "prose": "Audit trail systems not designed to protect against tampering and alteration"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.6-b",
+      "title": "Financial records audit trail not retained for minimum 3 years",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.6(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.6(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.6-b_stmt",
+        "name": "statement",
+        "prose": "Financial records audit trail not retained for minimum 3 years"
+       },
+       {
+        "id": "ny_dfs-23-NYCRR-500.6-b_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity event audit trail not retained for minimum 5 years"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.7",
+      "title": "Least privilege not enforced — access limited to what is necessary for job function",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.7_stmt",
+        "name": "statement",
+        "prose": "Least privilege not enforced — access limited to what is necessary for job function"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.7-b",
+      "title": "Privileged account access not reviewed at least annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.7(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.7(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.7-b_stmt",
+        "name": "statement",
+        "prose": "Privileged account access not reviewed at least annually"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.7-c",
+      "title": "Access not promptly revoked for terminated employees",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.7(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.7(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.7-c_stmt",
+        "name": "statement",
+        "prose": "Access not promptly revoked for terminated employees"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.7-d",
+      "title": "Strong password policy not enforced for system access",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.7(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.7(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.7-d_stmt",
+        "name": "statement",
+        "prose": "Strong password policy not enforced for system access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.9",
+      "title": "Cybersecurity risk assessment not conducted",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.9_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity risk assessment not conducted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.9-a",
+      "title": "Risk assessment not reviewed and updated periodically",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.9(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.9(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.9-a_stmt",
+        "name": "statement",
+        "prose": "Risk assessment not reviewed and updated periodically"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.9-a-2",
+      "title": "Risk assessment does not address risks to nonpublic information",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.9(a)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.9(a)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.9-a-2_stmt",
+        "name": "statement",
+        "prose": "Risk assessment does not address risks to nonpublic information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.10-a",
+      "title": "Qualified cybersecurity personnel not employed or engaged",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.10(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.10(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.10-a_stmt",
+        "name": "statement",
+        "prose": "Qualified cybersecurity personnel not employed or engaged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.10-b",
+      "title": "Annual cybersecurity training not provided to all relevant personnel",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.10(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.10(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.10-b_stmt",
+        "name": "statement",
+        "prose": "Annual cybersecurity training not provided to all relevant personnel"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.11",
+      "title": "Written third-party service provider security policy not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.11_stmt",
+        "name": "statement",
+        "prose": "Written third-party service provider security policy not implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.11-a-1",
+      "title": "Third-party contracts do not require implementation of security controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.11(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.11(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.11-a-1_stmt",
+        "name": "statement",
+        "prose": "Third-party contracts do not require implementation of security controls"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.11-a-2",
+      "title": "Third-party contracts do not require prompt notification of cybersecurity events",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.11(a)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.11(a)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.11-a-2_stmt",
+        "name": "statement",
+        "prose": "Third-party contracts do not require prompt notification of cybersecurity events"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.11-a-3",
+      "title": "Periodic due diligence of third-party service providers not conducted",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.11(a)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.11(a)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.11-a-3_stmt",
+        "name": "statement",
+        "prose": "Periodic due diligence of third-party service providers not conducted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ny_dfs-23-NYCRR-500.12",
+      "title": "MFA not implemented for remote access to information systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "23 NYCRR 500.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "23 NYCRR 500.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ny_dfs.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ny_dfs-23-NYCRR-500.12_stmt",
+        "name": "statement",
+        "prose": "MFA not implemented for remote access to information systems"
+       },
+       {
+        "id": "ny_dfs-23-NYCRR-500.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "MFA not implemented for third-party access to internal networks"
+       },
+       {
+        "id": "ny_dfs-23-NYCRR-500.12_obj.2",
+        "name": "assessment-objective",
+        "prose": "MFA not implemented for privileged account access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "ny_dfs-ny_dfs.main-1",
-      "title": "23 NYCRR 500.2: Cybersecurity program not established to protect information systems and nonpublic information",
+      "title": "23 NYCRR 500.12 (second amendment, enforceable 2025-11-01): MFA not enforced for all individuals accessing any information system, and no CISO-approved compensating controls are documented",
       "props": [
        {
         "name": "label",
@@ -85,7 +907,7 @@
       ],
       "links": [
        {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
         "rel": "implementation"
        }
       ],
@@ -93,14 +915,14 @@
        {
         "id": "ny_dfs-ny_dfs.main-1_stmt",
         "name": "statement",
-        "prose": "23 NYCRR 500.2: Cybersecurity program not established to protect information systems and nonpublic information"
+        "prose": "23 NYCRR 500.12 (second amendment, enforceable 2025-11-01): MFA not enforced for all individuals accessing any information system, and no CISO-approved compensating controls are documented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "ny_dfs-ny_dfs.main-2",
-      "title": "23 NYCRR 500.2(b): Cybersecurity program not designed based on covered entity's risk assessment",
+      "title": "23 NYCRR 500.13(a) (second amendment, enforceable 2025-11-01): complete asset inventory of information systems not maintained",
       "props": [
        {
         "name": "label",
@@ -118,7 +940,7 @@
       ],
       "links": [
        {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
         "rel": "implementation"
        }
       ],
@@ -126,1012 +948,22 @@
        {
         "id": "ny_dfs-ny_dfs.main-2_stmt",
         "name": "statement",
-        "prose": "23 NYCRR 500.2(b): Cybersecurity program not designed based on covered entity's risk assessment"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-3",
-      "title": "23 NYCRR 500.3: Written cybersecurity policy not implemented and maintained",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-3_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.3: Written cybersecurity policy not implemented and maintained"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-4",
-      "title": "23 NYCRR 500.3: Cybersecurity policy not approved by senior officer or board",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-4_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.3: Cybersecurity policy not approved by senior officer or board"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-5",
-      "title": "23 NYCRR 500.3: Cybersecurity policy not reviewed at least annually",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-5_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.3: Cybersecurity policy not reviewed at least annually"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-6",
-      "title": "23 NYCRR 500.4(a): Qualified CISO not designated to oversee cybersecurity program",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-6_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.4(a): Qualified CISO not designated to oversee cybersecurity program"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-7",
-      "title": "23 NYCRR 500.4(b): CISO has not provided annual report to board on cybersecurity program",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-7_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.4(b): CISO has not provided annual report to board on cybersecurity program"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-8",
-      "title": "23 NYCRR 500.4(b): CISO annual report does not address material cybersecurity issues",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#8"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#8"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-8_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.4(b): CISO annual report does not address material cybersecurity issues"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-9",
-      "title": "23 NYCRR 500.5(a)(1): Annual penetration testing of information systems not performed",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-9_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.5(a)(1): Annual penetration testing of information systems not performed"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-10",
-      "title": "23 NYCRR 500.5(a)(2): Bi-annual automated vulnerability scans not conducted",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-10_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.5(a)(2): Bi-annual automated vulnerability scans not conducted"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-11",
-      "title": "23 NYCRR 500.5: Penetration test and vulnerability assessment findings not tracked to remediation",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#11"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#11"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-11_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.5: Penetration test and vulnerability assessment findings not tracked to remediation"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-12",
-      "title": "23 NYCRR 500.6(a): Audit trail systems not designed to protect against tampering and alteration",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#12"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#12"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-12_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.6(a): Audit trail systems not designed to protect against tampering and alteration"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-13",
-      "title": "23 NYCRR 500.6(b): Financial records audit trail not retained for minimum 3 years",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#13"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#13"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-13_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.6(b): Financial records audit trail not retained for minimum 3 years"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-14",
-      "title": "23 NYCRR 500.6(b): Cybersecurity event audit trail not retained for minimum 5 years",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#14"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#14"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-14_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.6(b): Cybersecurity event audit trail not retained for minimum 5 years"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-15",
-      "title": "23 NYCRR 500.7: Least privilege not enforced — access limited to what is necessary for job function",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#15"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#15"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-15_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.7: Least privilege not enforced — access limited to what is necessary for job function"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-16",
-      "title": "23 NYCRR 500.7(b): Privileged account access not reviewed at least annually",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#16"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#16"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-16_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.7(b): Privileged account access not reviewed at least annually"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-17",
-      "title": "23 NYCRR 500.7(c): Access not promptly revoked for terminated employees",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#17"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#17"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-17_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.7(c): Access not promptly revoked for terminated employees"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-18",
-      "title": "23 NYCRR 500.7(d): Strong password policy not enforced for system access",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#18"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#18"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-18_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.7(d): Strong password policy not enforced for system access"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-19",
-      "title": "23 NYCRR 500.9: Cybersecurity risk assessment not conducted",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#19"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#19"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-19_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.9: Cybersecurity risk assessment not conducted"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-20",
-      "title": "23 NYCRR 500.9(a): Risk assessment not reviewed and updated periodically",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#20"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#20"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-20_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.9(a): Risk assessment not reviewed and updated periodically"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-21",
-      "title": "23 NYCRR 500.9(a)(2): Risk assessment does not address risks to nonpublic information",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#21"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#21"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-21_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.9(a)(2): Risk assessment does not address risks to nonpublic information"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-22",
-      "title": "23 NYCRR 500.10(a): Qualified cybersecurity personnel not employed or engaged",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#22"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#22"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-22_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.10(a): Qualified cybersecurity personnel not employed or engaged"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-23",
-      "title": "23 NYCRR 500.10(b): Annual cybersecurity training not provided to all relevant personnel",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#23"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#23"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-23_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.10(b): Annual cybersecurity training not provided to all relevant personnel"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-24",
-      "title": "23 NYCRR 500.11: Written third-party service provider security policy not implemented",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#24"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#24"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-24_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.11: Written third-party service provider security policy not implemented"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-25",
-      "title": "23 NYCRR 500.11(a)(1): Third-party contracts do not require implementation of security controls",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#25"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#25"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-25_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.11(a)(1): Third-party contracts do not require implementation of security controls"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-26",
-      "title": "23 NYCRR 500.11(a)(2): Third-party contracts do not require prompt notification of cybersecurity events",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#26"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#26"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-26_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.11(a)(2): Third-party contracts do not require prompt notification of cybersecurity events"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-27",
-      "title": "23 NYCRR 500.11(a)(3): Periodic due diligence of third-party service providers not conducted",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#27"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#27"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-27_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.11(a)(3): Periodic due diligence of third-party service providers not conducted"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-28",
-      "title": "23 NYCRR 500.12: MFA not implemented for remote access to information systems",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#28"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#28"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-28_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.12: MFA not implemented for remote access to information systems"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-29",
-      "title": "23 NYCRR 500.12: MFA not implemented for third-party access to internal networks",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#29"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#29"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-29_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.12: MFA not implemented for third-party access to internal networks"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-30",
-      "title": "23 NYCRR 500.12: MFA not implemented for privileged account access",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#30"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#30"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-30_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.12: MFA not implemented for privileged account access"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-31",
-      "title": "23 NYCRR 500.12 (second amendment, enforceable 2025-11-01): MFA not enforced for all individuals accessing any information system, and no CISO-approved compensating controls are documented",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#31"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#31"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-31_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.12 (second amendment, enforceable 2025-11-01): MFA not enforced for all individuals accessing any information system, and no CISO-approved compensating controls are documented"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-32",
-      "title": "23 NYCRR 500.13(a) (second amendment, enforceable 2025-11-01): complete asset inventory of information systems not maintained",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#32"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#32"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-32_stmt",
-        "name": "statement",
         "prose": "23 NYCRR 500.13(a) (second amendment, enforceable 2025-11-01): complete asset inventory of information systems not maintained"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ny_dfs-ny_dfs.main-33",
-      "title": "23 NYCRR 500.13(a): asset inventory does not track the required fields — owner, location, classification/sensitivity, support expiration date, recovery time objectives",
+      "id": "ny_dfs-23-NYCRR-500.13-a",
+      "title": "asset inventory does not track the required fields — owner, location, classification/sensitivity, support expiration date, recovery time objectives",
       "props": [
        {
         "name": "label",
-        "value": "ny_dfs.main#33"
+        "value": "23 NYCRR 500.13(a)"
        },
        {
         "name": "alt-identifier",
-        "value": "ny_dfs.main#33"
+        "value": "23 NYCRR 500.13(a)"
        },
        {
         "name": "rego-package",
@@ -1141,30 +973,30 @@
       ],
       "links": [
        {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ny_dfs-ny_dfs.main-33_stmt",
+        "id": "ny_dfs-23-NYCRR-500.13-a_stmt",
         "name": "statement",
-        "prose": "23 NYCRR 500.13(a): asset inventory does not track the required fields — owner, location, classification/sensitivity, support expiration date, recovery time objectives"
+        "prose": "asset inventory does not track the required fields — owner, location, classification/sensitivity, support expiration date, recovery time objectives"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ny_dfs-ny_dfs.main-34",
-      "title": "23 NYCRR 500.13: Data retention and disposal policy not documented",
+      "id": "ny_dfs-23-NYCRR-500.13",
+      "title": "Data retention and disposal policy not documented",
       "props": [
        {
         "name": "label",
-        "value": "ny_dfs.main#34"
+        "value": "23 NYCRR 500.13"
        },
        {
         "name": "alt-identifier",
-        "value": "ny_dfs.main#34"
+        "value": "23 NYCRR 500.13"
        },
        {
         "name": "rego-package",
@@ -1174,30 +1006,35 @@
       ],
       "links": [
        {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ny_dfs-ny_dfs.main-34_stmt",
+        "id": "ny_dfs-23-NYCRR-500.13_stmt",
         "name": "statement",
-        "prose": "23 NYCRR 500.13: Data retention and disposal policy not documented"
+        "prose": "Data retention and disposal policy not documented"
+       },
+       {
+        "id": "ny_dfs-23-NYCRR-500.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Nonpublic information not securely disposed when no longer needed"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ny_dfs-ny_dfs.main-35",
-      "title": "23 NYCRR 500.13: Nonpublic information not securely disposed when no longer needed",
+      "id": "ny_dfs-23-NYCRR-500.14-a",
+      "title": "Annual cybersecurity awareness training not provided to all personnel",
       "props": [
        {
         "name": "label",
-        "value": "ny_dfs.main#35"
+        "value": "23 NYCRR 500.14(a)"
        },
        {
         "name": "alt-identifier",
-        "value": "ny_dfs.main#35"
+        "value": "23 NYCRR 500.14(a)"
        },
        {
         "name": "rego-package",
@@ -1207,30 +1044,30 @@
       ],
       "links": [
        {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ny_dfs-ny_dfs.main-35_stmt",
+        "id": "ny_dfs-23-NYCRR-500.14-a_stmt",
         "name": "statement",
-        "prose": "23 NYCRR 500.13: Nonpublic information not securely disposed when no longer needed"
+        "prose": "Annual cybersecurity awareness training not provided to all personnel"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ny_dfs-ny_dfs.main-36",
-      "title": "23 NYCRR 500.14(a): Annual cybersecurity awareness training not provided to all personnel",
+      "id": "ny_dfs-23-NYCRR-500.14-b",
+      "title": "Monitoring systems not in place to detect anomalous activity",
       "props": [
        {
         "name": "label",
-        "value": "ny_dfs.main#36"
+        "value": "23 NYCRR 500.14(b)"
        },
        {
         "name": "alt-identifier",
-        "value": "ny_dfs.main#36"
+        "value": "23 NYCRR 500.14(b)"
        },
        {
         "name": "rego-package",
@@ -1240,30 +1077,35 @@
       ],
       "links": [
        {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ny_dfs-ny_dfs.main-36_stmt",
+        "id": "ny_dfs-23-NYCRR-500.14-b_stmt",
         "name": "statement",
-        "prose": "23 NYCRR 500.14(a): Annual cybersecurity awareness training not provided to all personnel"
+        "prose": "Monitoring systems not in place to detect anomalous activity"
+       },
+       {
+        "id": "ny_dfs-23-NYCRR-500.14-b_obj.1",
+        "name": "assessment-objective",
+        "prose": "Authorized user activity not monitored to detect unauthorized access"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ny_dfs-ny_dfs.main-37",
-      "title": "23 NYCRR 500.14(b): Monitoring systems not in place to detect anomalous activity",
+      "id": "ny_dfs-23-NYCRR-500.15",
+      "title": "Nonpublic information not encrypted in transit over external networks",
       "props": [
        {
         "name": "label",
-        "value": "ny_dfs.main#37"
+        "value": "23 NYCRR 500.15"
        },
        {
         "name": "alt-identifier",
-        "value": "ny_dfs.main#37"
+        "value": "23 NYCRR 500.15"
        },
        {
         "name": "rego-package",
@@ -1273,30 +1115,35 @@
       ],
       "links": [
        {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ny_dfs-ny_dfs.main-37_stmt",
+        "id": "ny_dfs-23-NYCRR-500.15_stmt",
         "name": "statement",
-        "prose": "23 NYCRR 500.14(b): Monitoring systems not in place to detect anomalous activity"
+        "prose": "Nonpublic information not encrypted in transit over external networks"
+       },
+       {
+        "id": "ny_dfs-23-NYCRR-500.15_obj.1",
+        "name": "assessment-objective",
+        "prose": "Nonpublic information not encrypted at rest"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ny_dfs-ny_dfs.main-38",
-      "title": "23 NYCRR 500.14(b): Authorized user activity not monitored to detect unauthorized access",
+      "id": "ny_dfs-23-NYCRR-500.16",
+      "title": "Written incident response plan not established and maintained",
       "props": [
        {
         "name": "label",
-        "value": "ny_dfs.main#38"
+        "value": "23 NYCRR 500.16"
        },
        {
         "name": "alt-identifier",
-        "value": "ny_dfs.main#38"
+        "value": "23 NYCRR 500.16"
        },
        {
         "name": "rego-package",
@@ -1306,30 +1153,40 @@
       ],
       "links": [
        {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ny_dfs-ny_dfs.main-38_stmt",
+        "id": "ny_dfs-23-NYCRR-500.16_stmt",
         "name": "statement",
-        "prose": "23 NYCRR 500.14(b): Authorized user activity not monitored to detect unauthorized access"
+        "prose": "Written incident response plan not established and maintained"
+       },
+       {
+        "id": "ny_dfs-23-NYCRR-500.16_obj.1",
+        "name": "assessment-objective",
+        "prose": "Incident response plan not tested at least annually"
+       },
+       {
+        "id": "ny_dfs-23-NYCRR-500.16_obj.2",
+        "name": "assessment-objective",
+        "prose": "Business continuity plan not established for material cybersecurity events"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ny_dfs-ny_dfs.main-39",
-      "title": "23 NYCRR 500.15: Nonpublic information not encrypted in transit over external networks",
+      "id": "ny_dfs-23-NYCRR-500.16-b-1",
+      "title": "Roles and responsibilities not defined in incident response plan",
       "props": [
        {
         "name": "label",
-        "value": "ny_dfs.main#39"
+        "value": "23 NYCRR 500.16(b)(1)"
        },
        {
         "name": "alt-identifier",
-        "value": "ny_dfs.main#39"
+        "value": "23 NYCRR 500.16(b)(1)"
        },
        {
         "name": "rego-package",
@@ -1339,30 +1196,30 @@
       ],
       "links": [
        {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ny_dfs-ny_dfs.main-39_stmt",
+        "id": "ny_dfs-23-NYCRR-500.16-b-1_stmt",
         "name": "statement",
-        "prose": "23 NYCRR 500.15: Nonpublic information not encrypted in transit over external networks"
+        "prose": "Roles and responsibilities not defined in incident response plan"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ny_dfs-ny_dfs.main-40",
-      "title": "23 NYCRR 500.15: Nonpublic information not encrypted at rest",
+      "id": "ny_dfs-23-NYCRR-500.17-a",
+      "title": "Process not established to notify DFS Superintendent within 72 hours of material cybersecurity event",
       "props": [
        {
         "name": "label",
-        "value": "ny_dfs.main#40"
+        "value": "23 NYCRR 500.17(a)"
        },
        {
         "name": "alt-identifier",
-        "value": "ny_dfs.main#40"
+        "value": "23 NYCRR 500.17(a)"
        },
        {
         "name": "rego-package",
@@ -1372,30 +1229,30 @@
       ],
       "links": [
        {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ny_dfs-ny_dfs.main-40_stmt",
+        "id": "ny_dfs-23-NYCRR-500.17-a_stmt",
         "name": "statement",
-        "prose": "23 NYCRR 500.15: Nonpublic information not encrypted at rest"
+        "prose": "Process not established to notify DFS Superintendent within 72 hours of material cybersecurity event"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ny_dfs-ny_dfs.main-41",
-      "title": "23 NYCRR 500.16: Written incident response plan not established and maintained",
+      "id": "ny_dfs-23-NYCRR-500.17-b",
+      "title": "Annual certification of compliance not filed with DFS Superintendent",
       "props": [
        {
         "name": "label",
-        "value": "ny_dfs.main#41"
+        "value": "23 NYCRR 500.17(b)"
        },
        {
         "name": "alt-identifier",
-        "value": "ny_dfs.main#41"
+        "value": "23 NYCRR 500.17(b)"
        },
        {
         "name": "rego-package",
@@ -1405,180 +1262,15 @@
       ],
       "links": [
        {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+        "href": "#030a002c-51c1-5fb9-ae62-eed26634aa67",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ny_dfs-ny_dfs.main-41_stmt",
+        "id": "ny_dfs-23-NYCRR-500.17-b_stmt",
         "name": "statement",
-        "prose": "23 NYCRR 500.16: Written incident response plan not established and maintained"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-42",
-      "title": "23 NYCRR 500.16: Incident response plan not tested at least annually",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#42"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#42"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-42_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.16: Incident response plan not tested at least annually"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-43",
-      "title": "23 NYCRR 500.16(b)(1): Roles and responsibilities not defined in incident response plan",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#43"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#43"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-43_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.16(b)(1): Roles and responsibilities not defined in incident response plan"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-44",
-      "title": "23 NYCRR 500.16: Business continuity plan not established for material cybersecurity events",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#44"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#44"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-44_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.16: Business continuity plan not established for material cybersecurity events"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-45",
-      "title": "23 NYCRR 500.17(a): Process not established to notify DFS Superintendent within 72 hours of material cybersecurity event",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#45"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#45"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-45_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.17(a): Process not established to notify DFS Superintendent within 72 hours of material cybersecurity event"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ny_dfs-ny_dfs.main-46",
-      "title": "23 NYCRR 500.17(b): Annual certification of compliance not filed with DFS Superintendent",
-      "props": [
-       {
-        "name": "label",
-        "value": "ny_dfs.main#46"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ny_dfs.main#46"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ny_dfs.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ny_dfs-ny_dfs.main-46_stmt",
-        "name": "statement",
-        "prose": "23 NYCRR 500.17(b): Annual certification of compliance not filed with DFS Superintendent"
+        "prose": "Annual certification of compliance not filed with DFS Superintendent"
        }
       ],
       "class": "compliance"
@@ -1589,7 +1281,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "6030a09b-5b3a-5c5a-bc8c-2c31118118c1",
+     "uuid": "030a002c-51c1-5fb9-ae62-eed26634aa67",
      "title": "New York Department of Financial Services — 23 NYCRR Part 500",
      "props": [
       {
@@ -1600,7 +1292,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/ny_dfs/ny_dfs_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/ny_dfs/ny_dfs_main.rego",
        "media-type": "text/plain"
       }
      ]

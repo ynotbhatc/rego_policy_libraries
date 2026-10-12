@@ -5,6 +5,14 @@
 #   framework: geisa
 #   source: geisa
 #   domains: [ot, energy, smart-grid]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package governance.geisa.compliance
 
 import rego.v1
@@ -98,3 +106,11 @@ compliance_report := {
 		"vee": vee.compliance_report,
 	},
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

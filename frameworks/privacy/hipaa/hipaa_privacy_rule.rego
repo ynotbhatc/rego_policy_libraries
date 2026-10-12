@@ -5,6 +5,14 @@
 #   framework: hipaa
 #   source: hhs
 #   domains: [privacy, healthcare]
+#   coverage:
+#     checks: 12
+#     cited: 4
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package hipaa.privacy_rule
 
 import rego.v1
@@ -291,3 +299,11 @@ report := {
 	"business_associates": business_associate_agreements,
 	"documentation_retention": documentation_retention,
 }
+#   coverage:
+#     checks: 12
+#     cited: 4
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

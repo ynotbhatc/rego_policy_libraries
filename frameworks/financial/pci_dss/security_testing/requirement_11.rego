@@ -7,6 +7,14 @@
 #   framework: pci_dss
 #   source: pci-ssc
 #   domains: [financial, payment-cards]
+#   coverage:
+#     checks: 6
+#     cited: 6
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package pci_dss.security_testing.requirement_11
 
 import rego.v1
@@ -215,3 +223,11 @@ pci_requirement_11_findings := {
 	"overall_score": pci_requirement_11_score,
 	"overall_compliant": pci_requirement_11_compliant,
 }
+#   coverage:
+#     checks: 6
+#     cited: 6
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: cis_windows_server_2022_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 21
+#     cited: 21
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_windows_server_2022.security_options
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 2.3: Security Options
@@ -180,3 +188,11 @@ report := {
 	"section": "2.3 Security Options",
 	"benchmark": "CIS Windows Server 2022 v5.0.0",
 }
+#   coverage:
+#     checks: 21
+#     cited: 21
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

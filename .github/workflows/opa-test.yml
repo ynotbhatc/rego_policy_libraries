@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
     paths:
+      - 'scripts/coverage_stamp.py'
+      - 'scripts/rego_ast.py'
+      - 'scripts/inventory_controls.py'
       - 'scripts/build_site.py'
       - 'scripts/gen_pages_catalog.py'
       - 'compare/**'
@@ -23,6 +26,9 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - 'scripts/coverage_stamp.py'
+      - 'scripts/rego_ast.py'
+      - 'scripts/inventory_controls.py'
       - 'scripts/build_site.py'
       - 'scripts/gen_pages_catalog.py'
       - 'compare/**'
@@ -73,6 +79,9 @@ jobs:
         run: |
           python3 scripts/build_site.py
           test "$(grep -c '<loc>' sitemap.xml)" -ge 60
+
+      - name: Coverage stamps are current (custom.coverage in every module's METADATA)
+        run: make check-coverage
 
       - name: Validate workflow YAML (a bad workflow file registers silently and never runs)
         run: python3 -c "import glob,yaml; [yaml.safe_load(open(f)) for f in glob.glob('.github/workflows/*.yml')]; print('workflows parse')"

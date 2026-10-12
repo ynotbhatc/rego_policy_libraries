@@ -34,6 +34,17 @@
 #   framework: pss_kubernetes
 #   source: kubernetes
 #   domains: [kubernetes, container]
+#   coverage:
+#     checks: 32
+#     cited: 0
+#     expected: 18
+#     found: 32
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package k8s_pss.main
 
 import rego.v1
@@ -419,3 +430,14 @@ compliance_report := {
 	"restricted_additional_violation_count": count(restricted_violations),
 	"scope_note": "Evaluates one Pod manifest (input.pod) or workload pod template. 12 baseline controls + 6 restricted controls; a control may emit multiple findings (one per offending container/volume/field). Default target profile is restricted — pass pss_profile: baseline to opt down explicitly.",
 }
+#   coverage:
+#     checks: 32
+#     cited: 0
+#     expected: 18
+#     found: 32
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -21,6 +21,14 @@
 #   framework: enforcement_terraform
 #   source: aac
 #   domains: [iac, terraform]
+#   coverage:
+#     checks: 13
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package enforcement.terraform.plan
 
 import rego.v1
@@ -217,3 +225,11 @@ compliance_report := {
 	"violations": [v | some v in violation],
 	"findings": [f | some f in findings],
 }
+#   coverage:
+#     checks: 13
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

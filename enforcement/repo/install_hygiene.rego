@@ -49,6 +49,14 @@
 #   framework: enforcement_repo
 #   source: aac
 #   domains: [git]
+#   coverage:
+#     checks: 3
+#     cited: 3
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package aac.repo.install_hygiene
 
 import rego.v1
@@ -206,3 +214,11 @@ tracking_report := {
 	"violation_count": count(tracking_violation),
 	"compliant": tracking_compliant,
 }
+#   coverage:
+#     checks: 3
+#     cited: 3
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

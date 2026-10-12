@@ -5,6 +5,14 @@
 #   framework: cjis
 #   source: fbi
 #   domains: [us-federal, justice]
+#   coverage:
+#     checks: 9
+#     cited: 8
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cjis.incident_response
 
 import rego.v1
@@ -43,3 +51,11 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": area_compliant,
 }
+#   coverage:
+#     checks: 9
+#     cited: 8
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

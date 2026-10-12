@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "6b36b49b-c564-5af4-80fb-f11f479079a7",
+  "uuid": "8f4b9eba-f99d-58ee-b04b-a5b3cce6325c",
   "metadata": {
    "title": "Rego Policy Libraries — bnm_rmit (BNM Risk Management in Technology (RMiT), September 2026 — Part B standards)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,110 +66,6 @@
     ],
     "controls": [
      {
-      "id": "bnm_rmit-bnm_rmit.main-1",
-      "title": "%v (bnm_rmit.%v undeclared)",
-      "props": [
-       {
-        "name": "label",
-        "value": "bnm_rmit.main#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "bnm_rmit.main#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "bnm_rmit.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "bnm_rmit-bnm_rmit.main-1_stmt",
-        "name": "statement",
-        "prose": "%v (bnm_rmit.%v undeclared)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "bnm_rmit-bnm_rmit.main-2",
-      "title": "RMiT S %v (%v): %v — not attested",
-      "props": [
-       {
-        "name": "label",
-        "value": "bnm_rmit.main#2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "bnm_rmit.main#2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "bnm_rmit.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "bnm_rmit-bnm_rmit.main-2_stmt",
-        "name": "statement",
-        "prose": "RMiT S %v (%v): %v — not attested"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "bnm_rmit-RMiT-Input-Contract",
-      "title": "attestation for unknown paragraph %v — not an S paragraph of Part B §§8–15",
-      "props": [
-       {
-        "name": "label",
-        "value": "RMiT Input Contract"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RMiT Input Contract"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "bnm_rmit.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "bnm_rmit-RMiT-Input-Contract_stmt",
-        "name": "statement",
-        "prose": "attestation for unknown paragraph %v — not an S paragraph of Part B §§8–15"
-       },
-       {
-        "id": "bnm_rmit-RMiT-Input-Contract_obj.1",
-        "name": "assessment-objective",
-        "prose": "input.bnm_rmit.standards must be an object of {\"<paragraph>\": true}"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "bnm_rmit-designated_ncii_entity",
       "title": "RMiT 11.4 — whether the institution is designated a National Critical Information Infrastructure entity under the Cyber Security Act 2024 must be declared true or false",
       "props": [
@@ -189,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -222,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -255,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -288,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -321,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -354,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -387,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -420,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -453,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -486,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -519,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -552,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -585,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -618,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -651,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -684,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -717,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -750,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -783,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -816,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -849,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -882,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -915,7 +811,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -948,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -981,7 +877,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1014,7 +910,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1047,7 +943,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1080,7 +976,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1113,7 +1009,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1146,7 +1042,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1179,7 +1075,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1212,7 +1108,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1245,7 +1141,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1278,7 +1174,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1311,7 +1207,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1344,7 +1240,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1377,7 +1273,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1410,7 +1306,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1443,7 +1339,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1476,7 +1372,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1509,7 +1405,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1542,7 +1438,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1575,7 +1471,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1608,7 +1504,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1641,7 +1537,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1674,7 +1570,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1707,7 +1603,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1740,7 +1636,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1773,7 +1669,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1806,7 +1702,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1839,7 +1735,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1872,7 +1768,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1905,7 +1801,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1938,7 +1834,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -1971,7 +1867,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2004,7 +1900,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2037,7 +1933,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2070,7 +1966,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2103,7 +1999,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2136,7 +2032,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2169,7 +2065,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2202,7 +2098,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2235,7 +2131,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2268,7 +2164,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2301,7 +2197,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2334,7 +2230,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2367,7 +2263,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2400,7 +2296,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2433,7 +2329,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2466,7 +2362,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2499,7 +2395,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2532,7 +2428,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2565,7 +2461,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2598,7 +2494,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2631,7 +2527,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2664,7 +2560,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2697,7 +2593,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2730,7 +2626,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2763,7 +2659,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2796,7 +2692,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2829,7 +2725,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2862,7 +2758,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2895,7 +2791,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2928,7 +2824,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2961,7 +2857,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -2994,7 +2890,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3027,7 +2923,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3060,7 +2956,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3093,7 +2989,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3126,7 +3022,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3159,7 +3055,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3192,7 +3088,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3225,7 +3121,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3258,7 +3154,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3291,7 +3187,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3324,7 +3220,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3357,7 +3253,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3390,7 +3286,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3423,7 +3319,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3456,7 +3352,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3489,7 +3385,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3522,7 +3418,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3555,7 +3451,7 @@
       ],
       "links": [
        {
-        "href": "#336d0440-491b-5739-8294-85d2162d21c6",
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
         "rel": "implementation"
        }
       ],
@@ -3567,6 +3463,138 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "bnm_rmit-bnm_rmit.main-1",
+      "title": "%v (bnm_rmit.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "bnm_rmit.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bnm_rmit.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bnm_rmit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bnm_rmit-bnm_rmit.main-1_stmt",
+        "name": "statement",
+        "prose": "%v (bnm_rmit.%v undeclared)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bnm_rmit-bnm_rmit.main-2",
+      "title": "RMiT S %v (%v): %v — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "bnm_rmit.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bnm_rmit.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bnm_rmit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bnm_rmit-bnm_rmit.main-2_stmt",
+        "name": "statement",
+        "prose": "RMiT S %v (%v): %v — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bnm_rmit-bnm_rmit.main-3",
+      "title": "RMiT Input Contract: attestation for unknown paragraph %v — not an S paragraph of Part B §§8–15",
+      "props": [
+       {
+        "name": "label",
+        "value": "bnm_rmit.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bnm_rmit.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bnm_rmit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bnm_rmit-bnm_rmit.main-3_stmt",
+        "name": "statement",
+        "prose": "RMiT Input Contract: attestation for unknown paragraph %v — not an S paragraph of Part B §§8–15"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bnm_rmit-bnm_rmit.main-4",
+      "title": "RMiT Input Contract: input.bnm_rmit.standards must be an object of {\"<paragraph>\": true}",
+      "props": [
+       {
+        "name": "label",
+        "value": "bnm_rmit.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bnm_rmit.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bnm_rmit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#555f573f-aaad-56f3-a431-99cca21e41c6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bnm_rmit-bnm_rmit.main-4_stmt",
+        "name": "statement",
+        "prose": "RMiT Input Contract: input.bnm_rmit.standards must be an object of {\"<paragraph>\": true}"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    }
@@ -3574,7 +3602,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "336d0440-491b-5739-8294-85d2162d21c6",
+     "uuid": "555f573f-aaad-56f3-a431-99cca21e41c6",
      "title": "BNM Risk Management in Technology (RMiT), September 2026 — Part B standards",
      "props": [
       {
@@ -3585,7 +3613,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/bnm_rmit/rmit_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/bnm_rmit/rmit_main.rego",
        "media-type": "text/plain"
       }
      ]

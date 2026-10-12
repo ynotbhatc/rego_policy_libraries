@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "1279849b-ab22-52c3-b68d-0873ef886b2d",
+  "uuid": "24ea023d-164b-5867-aaf1-43c21c6270f7",
   "metadata": {
-   "title": "Rego Policy Libraries — stig_postgresql_16 (DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide — Master Aggregator)",
+   "title": "Rego Policy Libraries — stig_postgresql_16 (DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,459 @@
    ]
   },
   "groups": [
+   {
+    "id": "stig_postgresql_16-core",
+    "class": "rego-module",
+    "title": "DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.postgresql_16.core"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/postgresql_16/core.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_postgresql_16-CD16-00-000200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-000200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-000200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-000200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-000300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-000300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-002700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-002700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-002700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-002700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-003800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-003800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-003800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-003800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-003900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-003900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-003900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-003900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-004100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-004100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-004100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-004100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-004400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-004400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-004400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-004400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-005200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-005200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-005200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-005200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-008300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-008300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-008300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-008300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-008500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-008500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-008500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-008500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-009300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-009300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-009300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-009300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-011800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-011800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-011800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-011800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_postgresql_16-CD16-00-011900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CD16-00-011900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CD16-00-011900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.postgresql_16.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6d360d46-e39e-5867-9099-56acb9804c5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_postgresql_16-CD16-00-011900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "stig_postgresql_16-stig_postgresql_16_complete",
     "class": "rego-module",
@@ -85,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#9d9ae553-f8d2-5475-bbbf-63f8f8b95394",
+        "href": "#50d68555-0a12-50d9-a580-17d0212d907d",
         "rel": "implementation"
        }
       ],
@@ -118,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#9d9ae553-f8d2-5475-bbbf-63f8f8b95394",
+        "href": "#50d68555-0a12-50d9-a580-17d0212d907d",
         "rel": "implementation"
        }
       ],
@@ -137,7 +590,24 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "9d9ae553-f8d2-5475-bbbf-63f8f8b95394",
+     "uuid": "6d360d46-e39e-5867-9099-56acb9804c5c",
+     "title": "DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.postgresql_16.core"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/postgresql_16/core.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "50d68555-0a12-50d9-a580-17d0212d907d",
      "title": "DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -148,7 +618,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/postgresql_16/stig_postgresql_16_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/postgresql_16/stig_postgresql_16_complete.rego",
        "media-type": "text/plain"
       }
      ]

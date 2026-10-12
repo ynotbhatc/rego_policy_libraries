@@ -2,7 +2,7 @@
 
 **Status:** shipping
 **Kind:** export (Tier 1, data)
-**Covers:** the CIS host and SaaS modules (1,126 benchmark sections on 15 platforms, host, cloud, Kubernetes and SaaS)
+**Covers:** the CIS host and SaaS modules (2,128 benchmark sections on 17 platforms: host, cloud, Kubernetes, databases, web servers and SaaS)
 **Consumers:** CIS-CAT Pro users who want to put their scan next to our evaluation
 
 CIS-CAT names a rule `xccdf_org.cisecurity.benchmarks_rule_<section>_<Title_with_underscores>`. We carry
@@ -21,4 +21,4 @@ are DERIVED from a sibling benchmark (Debian 11 from Ubuntu 20.04, Ubuntu 24.04 
 sibling, so treat those rows as a hint, not a key.
 
 `test/roundtrip.sh` proves every CIS section in the inventory appears once per platform, prefixes are
-well-formed, every row carries a benchmark name, and RHEL 9 1.3.1 joins `..._rule_1.3.1_Ensure_AIDE_is_installed`.
+well-formed, at least 90 % of rows carry a benchmark name (modules that do not declare one in their report literal leave it empty), and RHEL 9 1.3.1 joins `..._rule_1.3.1_Ensure_AIDE_is_installed`.

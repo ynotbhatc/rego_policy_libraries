@@ -1,0 +1,5241 @@
+{
+ "catalog": {
+  "uuid": "662f7ee4-033f-55cd-9e4e-f903df1bd145",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_mysql (CIS MySQL 8.0 Benchmark v1.2.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_mysql"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_mysql-cis_mysql_8",
+    "class": "rego-module",
+    "title": "CIS MySQL 8.0 Benchmark v1.2.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.mysql_8"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mysql/cis_mysql_8.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mysql-1.1",
+      "title": "Place Databases on Non-System Partitions",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-1.1_stmt",
+        "name": "statement",
+        "prose": "Place Databases on Non-System Partitions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-1.2",
+      "title": "Use Dedicated Least Privileged Account for MySQL Daemon/Service",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-1.2_stmt",
+        "name": "statement",
+        "prose": "Use Dedicated Least Privileged Account for MySQL Daemon/Service"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-1.3",
+      "title": "Disable MySQL Command History",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-1.3_stmt",
+        "name": "statement",
+        "prose": "Disable MySQL Command History"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-1.4",
+      "title": "Verify That the MYSQL_PWD Environment Variable Is Not In Use",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-1.4_stmt",
+        "name": "statement",
+        "prose": "Verify That the MYSQL_PWD Environment Variable Is Not In Use"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-1.5",
+      "title": "Disable Interactive Login",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-1.5_stmt",
+        "name": "statement",
+        "prose": "Disable Interactive Login"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-1.6",
+      "title": "Verify That 'MYSQL_PWD' Is Not Set In Users' Profiles",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-1.6_stmt",
+        "name": "statement",
+        "prose": "Verify That 'MYSQL_PWD' Is Not Set In Users' Profiles"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-1.7",
+      "title": "Verify That the 'mysql' Database Is Not Accessible by Unauthorized Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-1.7_stmt",
+        "name": "statement",
+        "prose": "Verify That the 'mysql' Database Is Not Accessible by Unauthorized Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-1.8",
+      "title": "Place MySQL Logs on Non-System Partitions",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-1.8_stmt",
+        "name": "statement",
+        "prose": "Place MySQL Logs on Non-System Partitions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.1",
+      "title": "Ensure 'local_infile' Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'local_infile' Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.2",
+      "title": "Ensure 'mysqld' Is Not Started with '--skip-grant-tables'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure 'mysqld' Is Not Started with '--skip-grant-tables'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.3",
+      "title": "Ensure 'mysqld' Is Not Started with '--skip-networking'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'mysqld' Is Not Started with '--skip-networking'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.4",
+      "title": "Ensure 'mysqld' Is Not Started with '--skip-show-database'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'mysqld' Is Not Started with '--skip-show-database'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.5",
+      "title": "Ensure 'symbolic-links' Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'symbolic-links' Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.6",
+      "title": "Ensure 'secure_file_priv' Is Not Empty",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'secure_file_priv' Is Not Empty"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.7",
+      "title": "Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.7_stmt",
+        "name": "statement",
+        "prose": "Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.8",
+      "title": "Ensure 'sql_mode' Contains 'ERROR_FOR_DIVISION_BY_ZERO'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.8_stmt",
+        "name": "statement",
+        "prose": "Ensure 'sql_mode' Contains 'ERROR_FOR_DIVISION_BY_ZERO'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.9",
+      "title": "Ensure 'sql_mode' Contains 'NO_AUTO_CREATE_USER'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.9_stmt",
+        "name": "statement",
+        "prose": "Ensure 'sql_mode' Contains 'NO_AUTO_CREATE_USER'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.10",
+      "title": "Ensure 'sql_mode' Contains 'NO_ENGINE_SUBSTITUTION'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.10_stmt",
+        "name": "statement",
+        "prose": "Ensure 'sql_mode' Contains 'NO_ENGINE_SUBSTITUTION'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.11",
+      "title": "Ensure 'sql_mode' Contains 'ONLY_FULL_GROUP_BY'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.11_stmt",
+        "name": "statement",
+        "prose": "Ensure 'sql_mode' Contains 'ONLY_FULL_GROUP_BY'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.12",
+      "title": "Ensure 'sql_mode' Contains 'NO_AUTO_VALUE_ON_ZERO'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.12_stmt",
+        "name": "statement",
+        "prose": "Ensure 'sql_mode' Contains 'NO_AUTO_VALUE_ON_ZERO'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.13",
+      "title": "Ensure Password Complexity Is In Place",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.13_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Complexity Is In Place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.14",
+      "title": "Ensure Password Reuse Is Limited",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.14_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Reuse Is Limited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.15",
+      "title": "Ensure Password Expiration Is Less Than Or Equal To 90 Days",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.15_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Expiration Is Less Than Or Equal To 90 Days"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.16",
+      "title": "Ensure 'default_password_lifetime' Is Less Than Or Equal To 90",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.16_stmt",
+        "name": "statement",
+        "prose": "Ensure 'default_password_lifetime' Is Less Than Or Equal To 90"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.17",
+      "title": "Ensure 'validate_password_length' Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.17_stmt",
+        "name": "statement",
+        "prose": "Ensure 'validate_password_length' Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.18",
+      "title": "Ensure 'validate_password_mixed_case_count' Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.18_stmt",
+        "name": "statement",
+        "prose": "Ensure 'validate_password_mixed_case_count' Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.19",
+      "title": "Ensure 'validate_password_number_count' Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.19_stmt",
+        "name": "statement",
+        "prose": "Ensure 'validate_password_number_count' Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.20",
+      "title": "Ensure 'validate_password_special_char_count' Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.20_stmt",
+        "name": "statement",
+        "prose": "Ensure 'validate_password_special_char_count' Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.21",
+      "title": "Ensure No Wildcards In User Hostnames",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.21_stmt",
+        "name": "statement",
+        "prose": "Ensure No Wildcards In User Hostnames"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-2.22",
+      "title": "Ensure No Anonymous Accounts Exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-2.22_stmt",
+        "name": "statement",
+        "prose": "Ensure No Anonymous Accounts Exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.1",
+      "title": "Ensure 'datadir' Has Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'datadir' Has Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.2",
+      "title": "Ensure 'log_bin_basename' Files Have Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_bin_basename' Files Have Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.3",
+      "title": "Ensure 'log_error' Has Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_error' Has Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.4",
+      "title": "Ensure 'slow_query_log' Has Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'slow_query_log' Has Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.5",
+      "title": "Ensure 'relay_log_basename' Files Have Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'relay_log_basename' Files Have Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.6",
+      "title": "Ensure 'general_log_file' Has Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'general_log_file' Has Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.7",
+      "title": "Ensure SSL Key Files Have Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.7_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL Key Files Have Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.8",
+      "title": "Ensure SSL Certificate Files Have Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.8_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL Certificate Files Have Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.9",
+      "title": "Ensure 'plugin_dir' Has Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.9_stmt",
+        "name": "statement",
+        "prose": "Ensure 'plugin_dir' Has Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.10",
+      "title": "Ensure 'mysql' Directory Has Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.10_stmt",
+        "name": "statement",
+        "prose": "Ensure 'mysql' Directory Has Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.11",
+      "title": "Ensure 'mysql' Binary Has Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.11_stmt",
+        "name": "statement",
+        "prose": "Ensure 'mysql' Binary Has Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-3.12",
+      "title": "Ensure 'mysqld' Binary Has Appropriate Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-3.12_stmt",
+        "name": "statement",
+        "prose": "Ensure 'mysqld' Binary Has Appropriate Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.1",
+      "title": "Ensure Latest Security Patches Are Applied",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Latest Security Patches Are Applied"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.2",
+      "title": "Ensure the 'test' Database Is Not Installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure the 'test' Database Is Not Installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.3",
+      "title": "Ensure 'old_passwords' Is Not Used",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'old_passwords' Is Not Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.4",
+      "title": "Ensure 'safe-user-create' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'safe-user-create' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.5",
+      "title": "Ensure 'skip-symbolic-links' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'skip-symbolic-links' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.6",
+      "title": "Ensure 'secure-auth' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'secure-auth' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.7",
+      "title": "Ensure 'skip-show-database' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.7_stmt",
+        "name": "statement",
+        "prose": "Ensure 'skip-show-database' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.8",
+      "title": "Ensure 'local-infile' Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.8_stmt",
+        "name": "statement",
+        "prose": "Ensure 'local-infile' Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.9",
+      "title": "Ensure 'mysqld' Is Not Started with '--skip-grant-tables'",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.9_stmt",
+        "name": "statement",
+        "prose": "Ensure 'mysqld' Is Not Started with '--skip-grant-tables'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.10",
+      "title": "Ensure MySQL Is Run Under a Sandbox",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.10_stmt",
+        "name": "statement",
+        "prose": "Ensure MySQL Is Run Under a Sandbox"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.11",
+      "title": "Ensure 'allow-suspicious-udfs' Is Set to 'FALSE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.11_stmt",
+        "name": "statement",
+        "prose": "Ensure 'allow-suspicious-udfs' Is Set to 'FALSE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.12",
+      "title": "Ensure 'automatic_sp_privileges' Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.12_stmt",
+        "name": "statement",
+        "prose": "Ensure 'automatic_sp_privileges' Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.13",
+      "title": "Ensure SQL_MODE Contains 'STRICT_TRANS_TABLES'",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.13_stmt",
+        "name": "statement",
+        "prose": "Ensure SQL_MODE Contains 'STRICT_TRANS_TABLES'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.14",
+      "title": "Ensure 'log-raw' Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.14_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log-raw' Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.15",
+      "title": "Ensure 'password_lifetime' Is Less Than Or Equal To 90",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.15_stmt",
+        "name": "statement",
+        "prose": "Ensure 'password_lifetime' Is Less Than Or Equal To 90"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.16",
+      "title": "Ensure 'password_reuse_interval' Is Greater Than Or Equal To 365",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.16_stmt",
+        "name": "statement",
+        "prose": "Ensure 'password_reuse_interval' Is Greater Than Or Equal To 365"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.17",
+      "title": "Ensure 'password_require_current' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.17_stmt",
+        "name": "statement",
+        "prose": "Ensure 'password_require_current' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.18",
+      "title": "Ensure 'default_table_encryption' Is Set to 'ON'",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.18_stmt",
+        "name": "statement",
+        "prose": "Ensure 'default_table_encryption' Is Set to 'ON'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.19",
+      "title": "Ensure 'table_encryption_privilege_check' Is Set to 'ON'",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.19_stmt",
+        "name": "statement",
+        "prose": "Ensure 'table_encryption_privilege_check' Is Set to 'ON'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.20",
+      "title": "Ensure 'audit_log_policy' Is Set to 'ALL'",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.20_stmt",
+        "name": "statement",
+        "prose": "Ensure 'audit_log_policy' Is Set to 'ALL'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.21",
+      "title": "Ensure 'audit_log_rotate_on_size' Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.21_stmt",
+        "name": "statement",
+        "prose": "Ensure 'audit_log_rotate_on_size' Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.22",
+      "title": "Ensure 'audit_log_format' Is Set to 'JSON'",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.22_stmt",
+        "name": "statement",
+        "prose": "Ensure 'audit_log_format' Is Set to 'JSON'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.23",
+      "title": "Ensure 'binlog_encryption' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.23_stmt",
+        "name": "statement",
+        "prose": "Ensure 'binlog_encryption' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.24",
+      "title": "Ensure 'binlog_row_image' Is Set to 'FULL'",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.24_stmt",
+        "name": "statement",
+        "prose": "Ensure 'binlog_row_image' Is Set to 'FULL'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.25",
+      "title": "Ensure 'log_slave_updates' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.25_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_slave_updates' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.26",
+      "title": "Ensure 'master_info_repository' Is Set to 'TABLE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.26_stmt",
+        "name": "statement",
+        "prose": "Ensure 'master_info_repository' Is Set to 'TABLE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.27",
+      "title": "Ensure 'relay_log_info_repository' Is Set to 'TABLE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.27_stmt",
+        "name": "statement",
+        "prose": "Ensure 'relay_log_info_repository' Is Set to 'TABLE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-4.28",
+      "title": "Ensure Binary and Relay Logs Are Encrypted",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-4.28_stmt",
+        "name": "statement",
+        "prose": "Ensure Binary and Relay Logs Are Encrypted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.1",
+      "title": "Ensure Only Administrative Users Have Full Database Access",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Only Administrative Users Have Full Database Access"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.2",
+      "title": "Ensure 'file_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure 'file_priv' Is Not Set to 'Y' for Non-Administrative Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.3",
+      "title": "Ensure 'process_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'process_priv' Is Not Set to 'Y' for Non-Administrative Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.4",
+      "title": "Ensure 'super_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'super_priv' Is Not Set to 'Y' for Non-Administrative Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.5",
+      "title": "Ensure 'shutdown_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'shutdown_priv' Is Not Set to 'Y' for Non-Administrative Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.6",
+      "title": "Ensure 'create_user_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'create_user_priv' Is Not Set to 'Y' for Non-Administrative Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.7",
+      "title": "Ensure 'grant_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.7_stmt",
+        "name": "statement",
+        "prose": "Ensure 'grant_priv' Is Not Set to 'Y' for Non-Administrative Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.8",
+      "title": "Ensure 'repl_slave_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.8_stmt",
+        "name": "statement",
+        "prose": "Ensure 'repl_slave_priv' Is Not Set to 'Y' for Non-Administrative Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.9",
+      "title": "Ensure DML/DDL Grants Are Limited to Specific Databases and Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.9_stmt",
+        "name": "statement",
+        "prose": "Ensure DML/DDL Grants Are Limited to Specific Databases and Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.10",
+      "title": "Ensure No Users Have Wildcard Hostnames",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.10_stmt",
+        "name": "statement",
+        "prose": "Ensure No Users Have Wildcard Hostnames"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.11",
+      "title": "Ensure No Anonymous Accounts Exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.11_stmt",
+        "name": "statement",
+        "prose": "Ensure No Anonymous Accounts Exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.12",
+      "title": "Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES' for All Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.12_stmt",
+        "name": "statement",
+        "prose": "Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES' for All Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.13",
+      "title": "Ensure MySQL Users' Passwords Are Strong",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.13_stmt",
+        "name": "statement",
+        "prose": "Ensure MySQL Users' Passwords Are Strong"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.14",
+      "title": "Ensure No Users Have Empty Passwords",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.14_stmt",
+        "name": "statement",
+        "prose": "Ensure No Users Have Empty Passwords"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.15",
+      "title": "Ensure No Duplicate MySQL User Accounts Exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.15_stmt",
+        "name": "statement",
+        "prose": "Ensure No Duplicate MySQL User Accounts Exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.16",
+      "title": "Ensure Password Expiration Is Set For All Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.16_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Expiration Is Set For All Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.17",
+      "title": "Ensure All Users Are Assigned to Appropriate Roles",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.17_stmt",
+        "name": "statement",
+        "prose": "Ensure All Users Are Assigned to Appropriate Roles"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-5.18",
+      "title": "Ensure Administrative Users Are Separated From Application Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-5.18_stmt",
+        "name": "statement",
+        "prose": "Ensure Administrative Users Are Separated From Application Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.1",
+      "title": "Ensure 'log_error' Is Not Empty",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_error' Is Not Empty"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.2",
+      "title": "Ensure Log Files Are Stored on a Non-System Partition",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Log Files Are Stored on a Non-System Partition"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.3",
+      "title": "Ensure 'log_error_verbosity' Is Not Set to '1'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_error_verbosity' Is Not Set to '1'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.4",
+      "title": "Ensure 'log_warnings' Is Set to '2'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_warnings' Is Set to '2'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.5",
+      "title": "Ensure 'log_raw' Is Set to 'OFF'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_raw' Is Set to 'OFF'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.6",
+      "title": "Ensure audit_log_policy Is Set to log logins",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.6_stmt",
+        "name": "statement",
+        "prose": "Ensure audit_log_policy Is Set to log logins"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.7",
+      "title": "Ensure audit_log_connection_policy Is Not Set to 'NONE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.7_stmt",
+        "name": "statement",
+        "prose": "Ensure audit_log_connection_policy Is Not Set to 'NONE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.8",
+      "title": "Ensure audit_log_exclude_accounts Is Configured Correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.8_stmt",
+        "name": "statement",
+        "prose": "Ensure audit_log_exclude_accounts Is Configured Correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.9",
+      "title": "Ensure audit_log_include_accounts Is Configured Correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.9_stmt",
+        "name": "statement",
+        "prose": "Ensure audit_log_include_accounts Is Configured Correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.10",
+      "title": "Ensure Logs Are Rotated",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Logs Are Rotated"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.11",
+      "title": "Ensure Log Files Are Not Stored in '/tmp'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.11_stmt",
+        "name": "statement",
+        "prose": "Ensure Log Files Are Not Stored in '/tmp'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.12",
+      "title": "Ensure 'general_log_file' Is Set to a Non-Default Location",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.12_stmt",
+        "name": "statement",
+        "prose": "Ensure 'general_log_file' Is Set to a Non-Default Location"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.13",
+      "title": "Ensure 'general_log' Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.13_stmt",
+        "name": "statement",
+        "prose": "Ensure 'general_log' Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.14",
+      "title": "Ensure 'slow_query_log' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.14_stmt",
+        "name": "statement",
+        "prose": "Ensure 'slow_query_log' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.15",
+      "title": "Ensure 'slow_query_log_file' Is Set",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.15_stmt",
+        "name": "statement",
+        "prose": "Ensure 'slow_query_log_file' Is Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.16",
+      "title": "Ensure 'long_query_time' Is Set to 10 or Less",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.16_stmt",
+        "name": "statement",
+        "prose": "Ensure 'long_query_time' Is Set to 10 or Less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.17",
+      "title": "Ensure 'log_queries_not_using_indexes' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.17_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_queries_not_using_indexes' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.18",
+      "title": "Ensure 'log_throttle_queries_not_using_indexes' Is Set to 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.18_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_throttle_queries_not_using_indexes' Is Set to 0"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.19",
+      "title": "Ensure Binary Logging Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.19_stmt",
+        "name": "statement",
+        "prose": "Ensure Binary Logging Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.20",
+      "title": "Ensure 'binlog_format' Is Set to 'ROW'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.20_stmt",
+        "name": "statement",
+        "prose": "Ensure 'binlog_format' Is Set to 'ROW'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.21",
+      "title": "Ensure 'sync_binlog' Is Set to 1",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.21_stmt",
+        "name": "statement",
+        "prose": "Ensure 'sync_binlog' Is Set to 1"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.22",
+      "title": "Ensure 'expire_logs_days' Is Set to 30 or Less",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.22_stmt",
+        "name": "statement",
+        "prose": "Ensure 'expire_logs_days' Is Set to 30 or Less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.23",
+      "title": "Ensure 'max_binlog_size' Is Set",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.23_stmt",
+        "name": "statement",
+        "prose": "Ensure 'max_binlog_size' Is Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-6.24",
+      "title": "Ensure audit plugin Is Active",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-6.24_stmt",
+        "name": "statement",
+        "prose": "Ensure audit plugin Is Active"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.1",
+      "title": "Ensure Password Validation Plugin Is Installed and Active",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Validation Plugin Is Installed and Active"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.2",
+      "title": "Ensure Password Complexity Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Complexity Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.3",
+      "title": "Ensure Password Policy Is in Force",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.3_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Policy Is in Force"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.4",
+      "title": "Ensure Password Reuse Is Limited",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Reuse Is Limited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.5",
+      "title": "Ensure Password Expiration Is in Force",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Expiration Is in Force"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.6",
+      "title": "Ensure MySQL Passwords Are Not Stored in History",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.6_stmt",
+        "name": "statement",
+        "prose": "Ensure MySQL Passwords Are Not Stored in History"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.7",
+      "title": "Ensure No Users Have Wildcard Hostnames",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.7_stmt",
+        "name": "statement",
+        "prose": "Ensure No Users Have Wildcard Hostnames"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.8",
+      "title": "Ensure No Anonymous Accounts Exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.8_stmt",
+        "name": "statement",
+        "prose": "Ensure No Anonymous Accounts Exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.9",
+      "title": "Ensure All Users Are Assigned to Roles",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.9_stmt",
+        "name": "statement",
+        "prose": "Ensure All Users Are Assigned to Roles"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.10",
+      "title": "Ensure Default Roles Are Set for All Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Default Roles Are Set for All Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.11",
+      "title": "Ensure Password Lifetime Is Set",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.11_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Lifetime Is Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.12",
+      "title": "Ensure Account Locking Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.12_stmt",
+        "name": "statement",
+        "prose": "Ensure Account Locking Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.13",
+      "title": "Ensure 'default_authentication_plugin' Is Set",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.13_stmt",
+        "name": "statement",
+        "prose": "Ensure 'default_authentication_plugin' Is Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.14",
+      "title": "Ensure SHA256 Password Authentication Plugin Is Used",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.14_stmt",
+        "name": "statement",
+        "prose": "Ensure SHA256 Password Authentication Plugin Is Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.15",
+      "title": "Ensure Caching SHA2 Authentication Plugin Is Used",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.15_stmt",
+        "name": "statement",
+        "prose": "Ensure Caching SHA2 Authentication Plugin Is Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-7.16",
+      "title": "Ensure Connection Control Plugin Is Installed and Active",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-7.16_stmt",
+        "name": "statement",
+        "prose": "Ensure Connection Control Plugin Is Installed and Active"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.1",
+      "title": "Ensure 'bind_address' Is Set to a Specific Interface",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'bind_address' Is Set to a Specific Interface"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.2",
+      "title": "Ensure 'port' Is Set to a Non-Default Value",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.2_stmt",
+        "name": "statement",
+        "prose": "Ensure 'port' Is Set to a Non-Default Value"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.3",
+      "title": "Ensure 'skip_networking' Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'skip_networking' Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.4",
+      "title": "Ensure 'skip_name_resolve' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'skip_name_resolve' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.5",
+      "title": "Ensure SSL Is Configured and Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.5_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL Is Configured and Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.6",
+      "title": "Ensure 'ssl_type' Is Set to 'ANY', 'X509', or 'SPECIFIED' for All Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ssl_type' Is Set to 'ANY', 'X509', or 'SPECIFIED' for All Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.7",
+      "title": "Ensure Certificates Are Valid",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.7_stmt",
+        "name": "statement",
+        "prose": "Ensure Certificates Are Valid"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.8",
+      "title": "Ensure SSL Certificates Use Strong Cryptographic Algorithms",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.8_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL Certificates Use Strong Cryptographic Algorithms"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.9",
+      "title": "Ensure 'require_secure_transport' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.9_stmt",
+        "name": "statement",
+        "prose": "Ensure 'require_secure_transport' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.10",
+      "title": "Ensure 'tls_version' Contains Secure TLS Versions",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.10_stmt",
+        "name": "statement",
+        "prose": "Ensure 'tls_version' Contains Secure TLS Versions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.11",
+      "title": "Ensure 'ssl_cipher' Is Configured with Secure Ciphers",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.11_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ssl_cipher' Is Configured with Secure Ciphers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.12",
+      "title": "Ensure Connection Limits Are Set",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.12_stmt",
+        "name": "statement",
+        "prose": "Ensure Connection Limits Are Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.13",
+      "title": "Ensure 'connect_timeout' Is Set to 10 or Less",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.13_stmt",
+        "name": "statement",
+        "prose": "Ensure 'connect_timeout' Is Set to 10 or Less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-8.14",
+      "title": "Ensure 'interactive_timeout' and 'wait_timeout' Are Set",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-8.14_stmt",
+        "name": "statement",
+        "prose": "Ensure 'interactive_timeout' and 'wait_timeout' Are Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.1",
+      "title": "Ensure Replication Traffic Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Replication Traffic Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.2",
+      "title": "Ensure 'master_ssl_verify_server_cert' Is Set to 'ON'",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.2_stmt",
+        "name": "statement",
+        "prose": "Ensure 'master_ssl_verify_server_cert' Is Set to 'ON'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.3",
+      "title": "Ensure 'master_ssl_ca' Is Set on Slaves",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'master_ssl_ca' Is Set on Slaves"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.4",
+      "title": "Ensure 'master_ssl_capath' Is Set on Slaves",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'master_ssl_capath' Is Set on Slaves"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.5",
+      "title": "Ensure 'master_ssl_cert' Is Set on Slaves",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'master_ssl_cert' Is Set on Slaves"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.6",
+      "title": "Ensure 'master_ssl_key' Is Set on Slaves",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'master_ssl_key' Is Set on Slaves"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.7",
+      "title": "Ensure 'master_ssl_crl' Is Set on Slaves",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.7_stmt",
+        "name": "statement",
+        "prose": "Ensure 'master_ssl_crl' Is Set on Slaves"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.8",
+      "title": "Ensure 'master_ssl_crlpath' Is Set on Slaves",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.8_stmt",
+        "name": "statement",
+        "prose": "Ensure 'master_ssl_crlpath' Is Set on Slaves"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.9",
+      "title": "Ensure 'slave_ssl_verify_server_cert' Is Set to 'ON'",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.9_stmt",
+        "name": "statement",
+        "prose": "Ensure 'slave_ssl_verify_server_cert' Is Set to 'ON'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.10",
+      "title": "Ensure Replication User Has Limited Privileges",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Replication User Has Limited Privileges"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.11",
+      "title": "Ensure 'log_slave_updates' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.11_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_slave_updates' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.12",
+      "title": "Ensure 'slave_compressed_protocol' Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.12_stmt",
+        "name": "statement",
+        "prose": "Ensure 'slave_compressed_protocol' Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.13",
+      "title": "Ensure 'gtid_mode' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.13_stmt",
+        "name": "statement",
+        "prose": "Ensure 'gtid_mode' Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-9.14",
+      "title": "Ensure 'enforce_gtid_consistency' Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f992512c-bcc6-5f09-a821-16815b153786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-9.14_stmt",
+        "name": "statement",
+        "prose": "Ensure 'enforce_gtid_consistency' Is Enabled"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "f992512c-bcc6-5f09-a821-16815b153786",
+     "title": "CIS MySQL 8.0 Benchmark v1.2.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.mysql_8"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/mysql/cis_mysql_8.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

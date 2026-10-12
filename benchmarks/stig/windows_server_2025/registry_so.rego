@@ -5,6 +5,14 @@
 #   framework: stig_windows_server_2025
 #   source: disa
 #   domains: [windows]
+#   coverage:
+#     checks: 39
+#     cited: 39
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package stig.windows_server_2025.registry_so
 
 # DISA STIG — Microsoft Windows Server 2025 Security Technical Implementation Guide
@@ -684,3 +692,11 @@ findings := [
 default compliant := false
 
 compliant if count([f | some f in findings; f.status == "Open"]) == 0
+#   coverage:
+#     checks: 39
+#     cited: 39
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
