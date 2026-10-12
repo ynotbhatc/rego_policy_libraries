@@ -16,7 +16,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package stig.apache_2_4_unix.main
 
 import data.stig.apache_2_4_unix
@@ -75,11 +75,3 @@ compliance_report := object.union(_upstream, {
 compliant := _compliant
 
 violations := _open_findings
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

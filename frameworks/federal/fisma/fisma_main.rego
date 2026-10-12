@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package fisma.main
 
 import rego.v1
@@ -608,12 +608,4 @@ fisma_metadata := {
 	"enforcement_mechanism": "OMB oversight and reporting requirements",
 	"penalties": "Varies by agency policy and contract requirements",
 	"scope": "All federal information systems and data",
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0
 }

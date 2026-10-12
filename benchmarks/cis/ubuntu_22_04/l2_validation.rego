@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_ubuntu_2204.l2
 
 # CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 - Level 2 Additional Controls
@@ -275,11 +275,3 @@ compliance_report := {
 	"l2_violation_list": [v | some v in violations],
 	"note": "Level 2 controls supplement Level 1. A system must pass Level 1 AND Level 2 to be fully Level 2 compliant.",
 }
-#   coverage:
-#     checks: 43
-#     cited: 42
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

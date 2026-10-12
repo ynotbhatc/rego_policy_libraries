@@ -15,7 +15,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package soc2.infrastructure.security
 
 import rego.v1
@@ -482,12 +482,4 @@ security_infrastructure_findings := findings if {
         },
         "overall_score": security_infrastructure_score
     }
-#   coverage:
-#     checks: 30
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

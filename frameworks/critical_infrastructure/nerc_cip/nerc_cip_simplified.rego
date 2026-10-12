@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nerc.cip.simplified
 
 import rego.v1
@@ -299,12 +299,4 @@ nerc_cip_metadata := {
 	"enforcement_level": "mandatory",
 	"penalties": "Financial penalties up to $1M per day per violation",
 	"scope": "Bulk Electric System (BES) cyber assets and systems",
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

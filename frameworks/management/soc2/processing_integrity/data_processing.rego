@@ -15,7 +15,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package soc2.processing_integrity.data_processing
 
 import rego.v1
@@ -267,12 +267,4 @@ processing_integrity_findings := findings if {
         "data_lineage_tracked": data_lineage_tracked,
         "overall_score": processing_integrity_score
     }
-#   coverage:
-#     checks: 17
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

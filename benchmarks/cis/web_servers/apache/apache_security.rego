@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [web-server]
 #   coverage:
-#     checks: 38
+#     checks: 37
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis.server.apache
 
 import rego.v1
@@ -381,12 +381,4 @@ apache_server_compliance := {
     "default_content_removed": default_content_removed,
     "etag_disabled": etag_disabled,
     "overall_compliant": apache_server_compliant
-#   coverage:
-#     checks: 38
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

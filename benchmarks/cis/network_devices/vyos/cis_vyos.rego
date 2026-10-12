@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_vyos
 
 # CIS VyOS Router Hardening Benchmark v1.0.0
@@ -397,11 +397,3 @@ compliance_assessment := {
         "timezone": object.get(object.get(input, "system", {}), "time-zone", "unknown"),
     },
 }
-#   coverage:
-#     checks: 26
-#     cited: 26
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

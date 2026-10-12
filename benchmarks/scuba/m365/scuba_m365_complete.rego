@@ -43,7 +43,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package scuba_m365.main
 
 import data.scuba_m365.aad
@@ -135,11 +135,3 @@ compliance_report := {
 	"product_summary": product_summary,
 	"scope_note": "SHALL = mandatory, SHOULD = recommended per the baseline; shall_compliant reports the mandatory floor. SHOULD deviations for mission need belong in the caller's documented exception process — this report never suppresses them.",
 }
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

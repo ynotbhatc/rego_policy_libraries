@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package digital_sovereignty.infrastructure_sovereignty
 
 import rego.v1
@@ -506,11 +506,3 @@ default exit_strategy_documented := false
 default fisa_702_response_procedure_documented := false
 default foreign_provider_concentration_within_limits := false
 default vendor_lockin_cost_assessed := false
-#   coverage:
-#     checks: 28
-#     cited: 2
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

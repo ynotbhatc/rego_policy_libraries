@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cobit.main
 
 import rego.v1
@@ -169,14 +169,3 @@ compliance_report := {
 	"violation_count": count(violations),
 	"scope_note": "Attestation of governance-system existence at objective-cluster granularity. COBIT capability-level maturity assessment is not machine-assessable and is not claimed here. Technical substance behind APO13/DSS05 is assessed by the ISO 27001, NIST CSF, and CIS modules.",
 }
-#   coverage:
-#     checks: 18
-#     cited: 18
-#     expected: 18
-#     found: 18
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

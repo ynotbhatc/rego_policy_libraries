@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.sp800_53.system_information_integrity
 
 import rego.v1
@@ -92,11 +92,3 @@ compliance_report := {
     "violation_count": count(violation),
     "compliant": compliant,
 }
-#   coverage:
-#     checks: 12
-#     cited: 12
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

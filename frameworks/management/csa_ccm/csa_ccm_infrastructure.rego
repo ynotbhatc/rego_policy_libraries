@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package csa_ccm.infrastructure
 
 import rego.v1
@@ -217,11 +217,3 @@ compliance_report := {
     "violation_count": count(violations),
     "violations": violations,
 }
-#   coverage:
-#     checks: 11
-#     cited: 11
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

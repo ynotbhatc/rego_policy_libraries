@@ -23,7 +23,7 @@ reader walks the tree and picks up every report node.
 | `rule.helpUri` | the Rego file at the release tag |
 | `logicalLocations` | the Rego package the report came from |
 | `properties.mapped` | `false` when the message prefix is not a control the inventory knows (section-level fail-closed notices); the result is kept, never dropped |
-| `--all-rules` | embed every inventory control as a rule (11,076), for viewers that show the rule set |
+| `--all-rules` | embed every inventory control as a rule (11,124), for viewers that show the rule set |
 
 `test/roundtrip.sh` evaluates CIS RHEL 9 and CCPA on empty input (fail-closed, so every section reports),
 converts, and proves result count == violation count, every result names a rule that exists, at least 60 %

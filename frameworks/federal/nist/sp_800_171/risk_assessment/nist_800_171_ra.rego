@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.sp800_171.risk_assessment
 
 import rego.v1
@@ -91,14 +91,3 @@ compliance_report := {
         "3.11.3_vulnerability_remediation": vulnerability_remediation,
     },
 }
-#   coverage:
-#     checks: 3
-#     cited: 3
-#     expected: 3
-#     found: 3
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

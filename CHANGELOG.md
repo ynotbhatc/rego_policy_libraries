@@ -8,6 +8,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.3.2] - 2026-10-12
+
+### Changed — verification pass on the 2.3.1 count: 11,693
+
+Re-checking 2.3.1 by hand against seven modules of different shapes found one defect: the check-map shape dropped
+names that merely *contained* a plumbing word (`shared_accounts_managed` matched `count`). The exclusion list is
+now anchored on whole words; 48 checks return. 2.3.1's stamping also left a second, misplaced `coverage:` block at
+the end of every stamped module (harmless to OPA, wrong all the same); the stamper now removes every existing
+block before writing one, and `make check-coverage` fails unless exactly one sits inside `custom:`.
+
+Reproducibility, on today's tree: the 2.2.0 counter says 7,912, the 2.3.0 counter says 7,560, the 2.3.1 counter
+says 11,645, this one says 11,693. Each earlier number is what its rule could see, not a different library.
+
+
 ## [2.3.1] - 2026-10-12
 
 ### Changed — the count reads every policy shape: 11,645 control-level checks

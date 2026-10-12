@@ -1,6 +1,6 @@
 # How big is this library, honestly?
 
-**Measured 2026-10-12 at v2.3.1.** Every number below for another project was taken from that project's public
+**Measured 2026-10-12 at v2.3.2.** Every number below for another project was taken from that project's public
 repository on the same day (file counts by type), or from its published figures where no repository is public.
 Ours is `make count` (`scripts/count_controls.py`), which CI reruns on every merge and compares with the README.
 
@@ -9,7 +9,7 @@ Ours is `make count` (`scripts/count_controls.py`), which CI reruns on every mer
 > The largest open library of executable compliance policy anyone can verify, and the broadest regulatory
 > coverage of any machine-readable policy library, open or closed.
 
-- **"Largest open … anyone can verify"** rests on the control-level count: 11,645 checks at v2.3.1 (counted by OPA's parser across every policy shape; 2.2.0's 7,867 came from a line-based counter and 2.3.0's 7,560 read only one of six shapes — see CHANGELOG 2.3.0 and 2.3.1). The next
+- **"Largest open … anyone can verify"** rests on the control-level count: 11,693 checks at v2.3.2 (counted by OPA's parser across every policy shape; 2.2.0's 7,867 came from a line-based counter and 2.3.0's 7,560 read only one of six shapes — see CHANGELOG 2.3.0 and 2.3.1). The next
   largest public set is Azure Policy's built-in definitions (5,130), then ComplianceAsCode (2,574). Units differ
   slightly (one Azure definition is one resource-property check; one of our table rows is one attested control),
   which is why the claim says *verify*, not *by any measure*.
@@ -35,7 +35,7 @@ Ours is `make count` (`scripts/count_controls.py`), which CI reruns on every mer
 | Secure Controls Framework | one catalogue control | 1,534 | mapped to 262 frameworks | **no** (CSV / OSCAL) |
 | Steampipe AWS compliance mod | one SQL control | 1,361 | ~17 benchmarks | yes, AWS only |
 | Checkov | one IaC policy | ~1,000+ (vendor figure) | IaC | yes, IaC only |
-| **Rego Policy Libraries** | one Rego policy file (one to a few hundred controls each) | **740 files, 11,645 control-level checks** | 54 tracked standards, 130+ framework directories | yes, every domain above |
+| **Rego Policy Libraries** | one Rego policy file (one to a few hundred controls each) | **740 files, 11,693 control-level checks** | 54 tracked standards, 130+ framework directories | yes, every domain above |
 | trivy-checks (Aqua) | one Rego check | 563 | cloud, k8s, docker | yes |
 | Kubescape regolibrary (ARMO) | one Rego rule (Kubernetes misconfiguration) | 304 rules, 290 controls | 19 frameworks, all Kubernetes (CIS K8s/EKS/AKS/GKE, NSA, MITRE, SOC 2) | yes, Kubernetes only |
 | Kyverno policies | one admission policy | 180 | Kubernetes | yes |

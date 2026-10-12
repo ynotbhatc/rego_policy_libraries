@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_aws.l2
 
 # CIS Amazon Web Services Foundations Benchmark v7.0.0 - Level 2 Additional Controls
@@ -259,11 +259,3 @@ compliance_report := {
 	"l2_violation_list": [v | some v in violations],
 	"note": "Level 2 controls supplement Level 1. Intended for regulated cloud workloads (FedRAMP High, PCI-DSS, HIPAA, DoD).",
 }
-#   coverage:
-#     checks: 41
-#     cited: 41
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

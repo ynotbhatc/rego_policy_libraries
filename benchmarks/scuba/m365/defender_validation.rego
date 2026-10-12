@@ -37,7 +37,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package scuba_m365.defender
 
 import rego.v1
@@ -171,11 +171,3 @@ compliance_report := {
 	"shall_violation_count": count(shall_violations),
 	"should_violation_count": count(should_violations),
 }
-#   coverage:
-#     checks: 19
-#     cited: 19
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

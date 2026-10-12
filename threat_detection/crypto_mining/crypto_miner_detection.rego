@@ -16,7 +16,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package security.crypto_miner_detection
 
 import rego.v1
@@ -295,11 +295,3 @@ recommendation := "No crypto mining indicators detected. System is compliant." i
 recommendation := "IMMEDIATE ACTION REQUIRED: Crypto mining software detected. Initiate remediation playbook to remove unauthorized mining software." if {
     not compliant
 }
-#   coverage:
-#     checks: 16
-#     cited: 1
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

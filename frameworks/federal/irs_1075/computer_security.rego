@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package irs_1075.computer_security
 
 import rego.v1
@@ -58,11 +58,3 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": area_compliant,
 }
-#   coverage:
-#     checks: 14
-#     cited: 13
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

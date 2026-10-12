@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_gcp.l2
 
 # CIS Google Cloud Platform Foundation Benchmark v4.0.0 - Level 2 Additional Controls
@@ -311,11 +311,3 @@ compliance_report := {
 	"l2_violation_list": [v | some v in violations],
 	"note": "Level 2 controls supplement Level 1. Intended for regulated GCP workloads (FedRAMP High, PCI-DSS, HIPAA, DoD).",
 }
-#   coverage:
-#     checks: 45
-#     cited: 45
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

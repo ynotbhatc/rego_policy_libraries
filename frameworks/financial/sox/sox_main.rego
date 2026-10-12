@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package sox.main
 
 import rego.v1
@@ -519,12 +519,4 @@ _count_medium_findings := count([finding |
     section := sox_detailed_findings[section_key]
     finding := section[_]
     finding.risk_level == "MEDIUM"
-#   coverage:
-#     checks: 23
-#     cited: 23
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0
 ])

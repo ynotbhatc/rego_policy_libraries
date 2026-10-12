@@ -32,7 +32,7 @@ jobs:
           sudo mv oras /usr/local/bin/
 
       - name: Pull the policy bundle (pin a release tag; :latest tracks main)
-        run: oras pull ghcr.io/ynotbhatc/rego_policy_libraries:v2.3.1   # writes bundle.tar.gz
+        run: oras pull ghcr.io/ynotbhatc/rego_policy_libraries:v2.3.2   # writes bundle.tar.gz
 
       - name: Evaluate and fail the job on non-compliance
         run: |
@@ -65,7 +65,7 @@ list of violations, never a pass.
         uses: actions/checkout@v4
         with:
           repository: ynotbhatc/rego_policy_libraries
-          ref: v2.3.1
+          ref: v2.3.2
           path: rego_policy_libraries
       - uses: open-policy-agent/conftest-action@v1
         with:
@@ -84,14 +84,14 @@ compliance:
   script:
     - curl -sL -o /usr/local/bin/opa https://github.com/open-policy-agent/opa/releases/download/v1.10.0/opa_linux_amd64_static && chmod +x /usr/local/bin/opa
     - curl -sL https://github.com/oras-project/oras/releases/download/v1.2.2/oras_1.2.2_linux_amd64.tar.gz | tar -xz -C /usr/local/bin oras
-    - oras pull ghcr.io/ynotbhatc/rego_policy_libraries:v2.3.1
+    - oras pull ghcr.io/ynotbhatc/rego_policy_libraries:v2.3.2
     - opa eval -b bundle.tar.gz -i facts.json 'data.cis_rhel9.main.compliance_report.compliant' -f raw | grep -qx true
 ```
 
 ## 4. Without a registry
 
 ```
-git clone --depth 1 --branch v2.3.1 https://github.com/ynotbhatc/rego_policy_libraries
+git clone --depth 1 --branch v2.3.2 https://github.com/ynotbhatc/rego_policy_libraries
 opa eval -d rego_policy_libraries/benchmarks/cis/rhel_9 -i facts.json 'data.cis_rhel9.main.compliance_report'
 ```
 

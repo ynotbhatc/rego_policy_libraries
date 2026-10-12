@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_amazon_linux_2023
 
 # CIS Amazon Linux 2023 Benchmark v2.0.0 - Complete Validation
@@ -382,11 +382,3 @@ executive_summary := {
 	"critical_issues": count(critical_risks),
 	"top_priorities": [rec | some rec in generate_recommendations; rec.priority == "critical"],
 }
-#   coverage:
-#     checks: 14
-#     cited: 14
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

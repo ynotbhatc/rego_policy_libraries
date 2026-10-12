@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package gdpr.cookies_tracking
 
 import rego.v1
@@ -268,11 +268,3 @@ report := {
 	},
 	"childrens_data": childrens_data,
 }
-#   coverage:
-#     checks: 17
-#     cited: 5
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

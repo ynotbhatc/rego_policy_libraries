@@ -23,7 +23,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package supply_chain.slsa
 
 import rego.v1
@@ -54,11 +54,3 @@ report := {
 	"build_level": level,
 	"reuses_substrate": reuses_substrate,
 }
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: unrecognised
-#     basis: role
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

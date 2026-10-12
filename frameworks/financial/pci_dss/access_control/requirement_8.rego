@@ -8,13 +8,13 @@
 #   source: pci-ssc
 #   domains: [financial, payment-cards]
 #   coverage:
-#     checks: 13
+#     checks: 16
 #     cited: 5
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package pci_dss.access_control.requirement_8
 
 import rego.v1
@@ -222,11 +222,3 @@ pci_requirement_8_findings := {
 	"overall_score": pci_requirement_8_score,
 	"overall_compliant": pci_requirement_8_compliant,
 }
-#   coverage:
-#     checks: 13
-#     cited: 5
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

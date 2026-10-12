@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package csa_ccm.human_resources
 
 import rego.v1
@@ -207,11 +207,3 @@ compliance_report := {
     "violation_count": count(violations),
     "violations": violations,
 }
-#   coverage:
-#     checks: 9
-#     cited: 9
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

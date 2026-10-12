@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel8.auditd
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 4.1: Configure System Accounting (auditd)
@@ -219,11 +219,3 @@ report := {
 	"section": "4.1 Configure System Accounting (auditd)",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
-#   coverage:
-#     checks: 15
-#     cited: 8
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

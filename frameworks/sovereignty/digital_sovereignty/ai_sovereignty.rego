@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package digital_sovereignty.ai_sovereignty
 
 import rego.v1
@@ -426,11 +426,3 @@ default ai_bias_audit_conducted := false
 default ai_fairness_controls_implemented := false
 default ai_governance_policy := false
 default shadow_ai_controlled := false
-#   coverage:
-#     checks: 22
-#     cited: 2
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

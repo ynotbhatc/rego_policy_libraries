@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package crosswalk.correlation
 
 import rego.v1
@@ -84,11 +84,3 @@ summary := {
 	"satisfied": sort([c | some c in satisfied_controls]),
 	"gaps": sort([c | some c in gap_controls]),
 }
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: unrecognised
-#     basis: role
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

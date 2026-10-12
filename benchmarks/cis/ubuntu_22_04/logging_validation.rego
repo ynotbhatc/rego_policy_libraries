@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_ubuntu_22_04.logging
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 4.2: Logging Configuration
@@ -147,11 +147,3 @@ report := {
 	"section": "4.2 Logging Configuration",
 	"benchmark": "CIS Ubuntu 22.04 v3.0.0",
 }
-#   coverage:
-#     checks: 13
-#     cited: 13
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

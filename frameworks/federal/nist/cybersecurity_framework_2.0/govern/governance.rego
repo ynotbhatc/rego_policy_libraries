@@ -6,13 +6,13 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 34
+#     checks: 35
 #     cited: 15
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.csf.govern
 
 import rego.v1
@@ -284,12 +284,4 @@ violation contains msg if {
 violation contains msg if {
     not cybersecurity_procedures
     msg := "CSF GV.PO-02: Procedures to implement cybersecurity policy not maintained"
-#   coverage:
-#     checks: 34
-#     cited: 15
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

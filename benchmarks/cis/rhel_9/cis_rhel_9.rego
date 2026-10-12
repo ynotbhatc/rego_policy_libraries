@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis.rhel_9
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0
@@ -595,12 +595,4 @@ detailed_findings := {
     "logging_violations": logging_violations,
     "access_auth_violations": access_auth_violations,
     "system_maintenance_violations": system_maintenance_violations
-#   coverage:
-#     checks: 6
-#     cited: 6
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

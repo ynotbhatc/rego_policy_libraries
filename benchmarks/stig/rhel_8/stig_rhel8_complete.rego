@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package stig.rhel_8
 
 # DISA STIG for RHEL 8 - Master Aggregator
@@ -123,11 +123,3 @@ compliance_report := {
 	"failed_controls": count(open_findings),
 	"compliant": fully_compliant,
 }
-#   coverage:
-#     checks: 3
-#     cited: 3
-#     density: sparse
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

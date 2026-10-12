@@ -6,16 +6,16 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 17
+#     checks: 18
 #     cited: 9
 #     expected: 9
-#     found: 17
+#     found: 18
 #     scope: module
 #     density: full
 #     basis: declared-total
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.sp800_171.audit_accountability
 
 import rego.v1
@@ -180,14 +180,3 @@ compliance_report := {
         "3.3.9_audit_management_limited": audit_management_limited,
     },
 }
-#   coverage:
-#     checks: 17
-#     cited: 9
-#     expected: 9
-#     found: 17
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

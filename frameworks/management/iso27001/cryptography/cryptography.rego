@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package iso27001.cryptography
 
 import rego.v1
@@ -355,12 +355,4 @@ compliance_details := {
     },
     "hsm_usage": hsm_usage,
     "overall_compliant": compliant
-#   coverage:
-#     checks: 15
-#     cited: 4
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

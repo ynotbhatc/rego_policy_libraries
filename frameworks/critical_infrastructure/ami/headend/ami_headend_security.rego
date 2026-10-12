@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package ami.headend.security
 
 import rego.v1
@@ -293,11 +293,3 @@ compliance_report := {
     "compliant": compliant,
     "violations": violations,
 }
-#   coverage:
-#     checks: 19
-#     cited: 19
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

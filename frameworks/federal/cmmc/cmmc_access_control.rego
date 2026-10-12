@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cmmc.access_control
 
 import rego.v1
@@ -238,11 +238,3 @@ compliance_report := {
     "level_2_passing": count(level_2_violations) == 0,
     "passing":         22 - count(violations),
 }
-#   coverage:
-#     checks: 38
-#     cited: 18
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

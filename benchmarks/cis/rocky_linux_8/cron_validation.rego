@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rocky_linux_8.cron
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers
@@ -158,11 +158,3 @@ report := {
 	"section": "5.1 Configure time-based job schedulers",
 	"benchmark": "CIS Rocky Linux 8 v3.0.0",
 }
-#   coverage:
-#     checks: 9
-#     cited: 9
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

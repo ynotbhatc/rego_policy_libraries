@@ -30,7 +30,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package supply_chain.substrate
 
 import rego.v1
@@ -115,11 +115,3 @@ unsatisfied contains k if {
 	some k, v in theme_status
 	v == false
 }
-#   coverage:
-#     checks: 14
-#     cited: 7
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

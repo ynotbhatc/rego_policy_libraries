@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.sp800_171.security_assessment
 
 import rego.v1
@@ -108,14 +108,3 @@ compliance_report := {
         "3.12.4_system_security_plan": system_security_plan,
     },
 }
-#   coverage:
-#     checks: 7
-#     cited: 4
-#     expected: 4
-#     found: 7
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

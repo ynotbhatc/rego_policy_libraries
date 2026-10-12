@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist_ssdf.rv
 
 # NIST SSDF (SP 800-218 v1.1) — Practice Group: Respond to Vulnerabilities (RV)
@@ -104,11 +104,3 @@ compliance_report := {
 	"violation_count": count(violations),
 	"compliant": compliant,
 }
-#   coverage:
-#     checks: 9
-#     cited: 9
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

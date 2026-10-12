@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package hipaa.main
 
 import rego.v1
@@ -102,11 +102,3 @@ report := {
 		"security_safeguards_score_pct": security_safeguards_score,
 	},
 }
-#   coverage:
-#     checks: 4
-#     cited: 4
-#     density: sparse
-#     basis: size
-#     tested: true
-#     entrypoint: report
-#     as_of: v2.3.0

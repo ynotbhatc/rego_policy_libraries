@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis.ubuntu.initial_setup
 
 import rego.v1
@@ -245,12 +245,4 @@ ubuntu_filesystem_compliance := {
     "automounting_disabled": automounting_disabled,
     "usb_storage_disabled": usb_storage_disabled,
     "overall_compliant": ubuntu_filesystem_compliant
-#   coverage:
-#     checks: 28
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

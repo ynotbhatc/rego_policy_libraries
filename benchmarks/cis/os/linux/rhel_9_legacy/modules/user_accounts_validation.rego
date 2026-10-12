@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel9.user_accounts_validation
 
 import rego.v1
@@ -522,11 +522,3 @@ passed_user_accounts_controls := total_user_accounts_controls - count(user_accou
 
 # User accounts compliance percentage
 user_accounts_compliance_percentage := (passed_user_accounts_controls / total_user_accounts_controls) * 100
-#   coverage:
-#     checks: 23
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package zero_trust.applications_workloads
 
 import rego.v1
@@ -71,11 +71,3 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": pillar_compliant,
 }
-#   coverage:
-#     checks: 13
-#     cited: 12
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

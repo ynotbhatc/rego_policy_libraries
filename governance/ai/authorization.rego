@@ -22,7 +22,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package ai_governance.authorization
 
 import rego.v1
@@ -190,11 +190,3 @@ authorization_report := {
     "approval_obtained": approval_obtained,
     "justification_valid": justification_valid
 }
-#   coverage:
-#     checks: 5
-#     cited: 5
-#     density: sparse
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package iso27001.communications_security
 
 import rego.v1
@@ -241,11 +241,3 @@ compliance_details := {
 	"dns_security": dns_security,
 	"overall_compliant": compliant,
 }
-#   coverage:
-#     checks: 11
-#     cited: 2
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

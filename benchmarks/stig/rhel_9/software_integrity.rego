@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package stig.rhel_9.software_integrity
 
 # DISA STIG for RHEL 9 - Software Integrity Module
@@ -339,11 +339,3 @@ compliance_report := {
 	"findings": findings,
 	"compliant": compliant,
 }
-#   coverage:
-#     checks: 13
-#     cited: 12
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

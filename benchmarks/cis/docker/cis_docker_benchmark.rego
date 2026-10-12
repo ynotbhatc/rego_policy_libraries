@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_docker
 
 # CIS Docker Benchmark v1.8.0
@@ -241,12 +241,4 @@ detailed_findings := {
     "container_runtime_violations": container_runtime_violations,
     "docker_security_violations": docker_security_violations,
     "swarm_config_violations": swarm_config_violations
-#   coverage:
-#     checks: 7
-#     cited: 7
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

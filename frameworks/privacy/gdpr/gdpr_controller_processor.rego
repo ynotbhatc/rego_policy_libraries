@@ -6,13 +6,13 @@
 #   source: eu
 #   domains: [privacy, eu]
 #   coverage:
-#     checks: 8
+#     checks: 11
 #     cited: 3
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package gdpr.controller_processor
 
 import rego.v1
@@ -227,11 +227,3 @@ report := {
 	"supervisory_authority": supervisory_authority_cooperation,
 	"security_of_processing": security_of_processing,
 }
-#   coverage:
-#     checks: 8
-#     cited: 3
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

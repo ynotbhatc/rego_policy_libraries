@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package ncsc_caf.d1_response_recovery
 
 import rego.v1
@@ -263,11 +263,3 @@ compliance_report := {
         "D1.c": co_d1c_details,
     },
 }
-#   coverage:
-#     checks: 3
-#     cited: 0
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel9.selinux
 
 import rego.v1
@@ -130,11 +130,3 @@ violations contains msg if {
 compliant if {
     count(violations) == 0
 }
-#   coverage:
-#     checks: 9
-#     cited: 9
-#     density: sparse
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

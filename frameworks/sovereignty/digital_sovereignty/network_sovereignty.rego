@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package digital_sovereignty.network_sovereignty
 
 import rego.v1
@@ -417,11 +417,3 @@ default foreign_destination_alerting := false
 default netflow_monitoring := false
 default public_dns_blocked := false
 default rpki_deployed := false
-#   coverage:
-#     checks: 23
-#     cited: 1
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

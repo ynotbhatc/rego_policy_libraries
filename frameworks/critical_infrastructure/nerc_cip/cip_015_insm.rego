@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nerc_cip_cip015
 
 import rego.v1
@@ -389,11 +389,3 @@ cip_015_compliance_report := {
         "penalties": "Up to $1M per day per violation"
     }
 }
-#   coverage:
-#     checks: 10
-#     cited: 3
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

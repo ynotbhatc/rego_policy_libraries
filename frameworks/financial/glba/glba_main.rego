@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package glba.main
 
 import rego.v1
@@ -318,14 +318,3 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
-#   coverage:
-#     checks: 26
-#     cited: 26
-#     expected: 33
-#     found: 26
-#     scope: module
-#     density: partial
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

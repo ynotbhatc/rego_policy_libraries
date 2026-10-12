@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel8.initial_setup
 
 # CIS RHEL 8 Benchmark v4.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup
@@ -237,11 +237,3 @@ report := {
 	"section": "1.2, 1.7-1.9 Initial System Setup",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
-#   coverage:
-#     checks: 20
-#     cited: 20
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

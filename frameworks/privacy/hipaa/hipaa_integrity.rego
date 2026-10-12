@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package hipaa.integrity
 
 import rego.v1
@@ -182,11 +182,3 @@ compliance_report := {
         "secure_destruction":   count(violation_destruction) == 0,
     },
 }
-#   coverage:
-#     checks: 7
-#     cited: 3
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

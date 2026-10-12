@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel9.auditd
 
 # CIS RHEL 9 Section 4.1.x - Configure System Accounting (auditd)
@@ -291,11 +291,3 @@ report := {
 	"section": "4.1 Configure System Accounting (auditd)",
 	"rules_checked": count(required_rules),
 }
-#   coverage:
-#     checks: 15
-#     cited: 8
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel8.network
 
 # CIS RHEL 8 Benchmark v4.0.0 - Sections 3.1/3.2/3.3: Network Configuration
@@ -189,11 +189,3 @@ report := {
 	"section": "3.1-3.3 Network Configuration",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
-#   coverage:
-#     checks: 21
-#     cited: 9
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

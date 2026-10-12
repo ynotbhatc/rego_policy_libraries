@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis.windows_11
 
 import rego.v1
@@ -1425,15 +1425,4 @@ user_account_mgmt_audit if {
 	audit := input.system.advanced_audit_policy.account_management.user_account_management
 	"Success" in audit
 	"Failure" in audit
-#   coverage:
-#     checks: 210
-#     cited: 210
-#     expected: 267
-#     found: 210
-#     scope: module
-#     density: partial
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0
 }

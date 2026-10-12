@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package iec_62443_main
 
 import rego.v1
@@ -269,11 +269,3 @@ iec_62443_compliance_report := {
 
     "all_violations": all_violations,
 }
-#   coverage:
-#     checks: 11
-#     cited: 11
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

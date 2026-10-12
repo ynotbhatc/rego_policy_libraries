@@ -24,7 +24,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cyber_essentials.main
 
 import rego.v1
@@ -101,11 +101,3 @@ compliance_report := {
 	"violation_count": count(all_violations),
 	"compliant": compliant,
 }
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

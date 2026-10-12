@@ -7,7 +7,7 @@
 ```
 python3 converters/packaging/kubewarden/build.py     # -> out/<policy>/{policy.wasm, metadata.yml, adapter.rego}
 kwctl annotate -m out/k8s-pss-restricted/metadata.yml -o annotated.wasm out/k8s-pss-restricted/policy.wasm
-kwctl push annotated.wasm ghcr.io/ynotbhatc/kubewarden/k8s-pss-restricted:v2.3.1
+kwctl push annotated.wasm ghcr.io/ynotbhatc/kubewarden/k8s-pss-restricted:v2.3.2
 ```
 
 `test/roundtrip.sh` evaluates adapter + policy with plain OPA on AdmissionReview fixtures and checks that the

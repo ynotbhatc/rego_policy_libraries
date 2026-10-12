@@ -66,7 +66,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package ferpa.main
 
 import rego.v1
@@ -301,14 +301,3 @@ compliance_report := {
 	"area_summary": area_summary,
 	"scope_note": "Program-level assessment of an educational agency/institution's FERPA obligations. Inputs are attestation/GRC facts, not device facts; a caller must wire an authoritative source (GRC export or attestation intake) before treating results as evidence.",
 }
-#   coverage:
-#     checks: 32
-#     cited: 31
-#     expected: 32
-#     found: 32
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

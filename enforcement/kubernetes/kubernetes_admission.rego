@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package kubernetes.admission
 
 # Kubernetes Admission Control — Security and Operations Policy
@@ -338,11 +338,3 @@ compliance_report := {
 	"violations":            [v | some v in violations],
 	"violations_by_category": violations_by_category,
 }
-#   coverage:
-#     checks: 27
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

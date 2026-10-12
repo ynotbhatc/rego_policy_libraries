@@ -15,7 +15,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package soc2.privacy.data_privacy
 
 import rego.v1
@@ -329,12 +329,4 @@ privacy_findings := findings if {
         "regional_privacy_compliance": regional_privacy_compliance,
         "overall_score": privacy_score
     }
-#   coverage:
-#     checks: 21
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rocky_linux_8.auditd
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)
@@ -219,11 +219,3 @@ report := {
 	"section": "4.1 Configure System Accounting (auditd)",
 	"benchmark": "CIS Rocky Linux 8 v3.0.0",
 }
-#   coverage:
-#     checks: 15
-#     cited: 8
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

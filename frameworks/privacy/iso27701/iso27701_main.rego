@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package iso27701.main
 
 import rego.v1
@@ -80,14 +80,3 @@ compliance_report := {
 		},
 	},
 }
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     expected: 134
-#     found: 54
-#     scope: directory
-#     density: sparse
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

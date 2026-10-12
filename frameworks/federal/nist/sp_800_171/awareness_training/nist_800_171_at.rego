@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.sp800_171.awareness_training
 
 import rego.v1
@@ -88,14 +88,3 @@ compliance_report := {
         "3.2.3_threat_recognition_training": threat_recognition_training,
     },
 }
-#   coverage:
-#     checks: 6
-#     cited: 3
-#     expected: 3
-#     found: 6
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

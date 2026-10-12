@@ -24,7 +24,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package aac.aap.policy
 
 import rego.v1
@@ -173,11 +173,3 @@ team_extra_vars := {
 	"allowed": count(_tev_violations) == 0,
 	"violations": [v | some v in _tev_violations],
 }
-#   coverage:
-#     checks: 6
-#     cited: 0
-#     density: sparse
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

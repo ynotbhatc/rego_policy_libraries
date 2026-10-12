@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis.access_control
 
 import rego.v1
@@ -274,12 +274,4 @@ access_control_compliance := {
     "ssh_max_sessions_limited": ssh_max_sessions_limited,
     "ssh_crypto_policy_not_overridden": ssh_crypto_policy_not_overridden,
     "overall_compliant": access_control_compliant
-#   coverage:
-#     checks: 26
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

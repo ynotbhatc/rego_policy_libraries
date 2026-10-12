@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package irs_1075.restricting_access
 
 import rego.v1
@@ -52,11 +52,3 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": area_compliant,
 }
-#   coverage:
-#     checks: 8
-#     cited: 7
-#     density: sparse
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

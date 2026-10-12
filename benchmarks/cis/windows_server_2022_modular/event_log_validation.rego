@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_windows_server_2022.event_log
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 18.9: Event Log Configuration
@@ -112,11 +112,3 @@ report := {
 	"section": "18.9.26 Event Log Service",
 	"benchmark": "CIS Windows Server 2022 v5.0.0",
 }
-#   coverage:
-#     checks: 11
-#     cited: 11
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

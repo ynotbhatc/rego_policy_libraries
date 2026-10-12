@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_kubernetes.l2
 
 # CIS Kubernetes Benchmark v1.10.0 - Level 2 Additional Controls
@@ -234,11 +234,3 @@ compliance_report := {
 	"l2_violation_list": [v | some v in violations],
 	"note": "Level 2 controls supplement Level 1. Designed for regulated Kubernetes workloads (FedRAMP High, PCI-DSS, HIPAA, DoD IL4/IL5).",
 }
-#   coverage:
-#     checks: 42
-#     cited: 42
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

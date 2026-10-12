@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_fortinet_fortigate
 
 # CIS Fortinet FortiGate Benchmark v1.3.0
@@ -299,12 +299,4 @@ detailed_findings := {
     "vpn_violations": vpn_violations,
     "wireless_violations": wireless_violations,
     "security_fabric_violations": security_fabric_violations
-#   coverage:
-#     checks: 8
-#     cited: 8
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

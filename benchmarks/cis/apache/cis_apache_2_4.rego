@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis.apache_2_4
 
 import rego.v1
@@ -1234,15 +1234,4 @@ log_files_secured if {
 non_printable_escaped if {
 	access_log := input.apache.config.access_log
 	contains(access_log.format, "%{c}T")  # Escape sequences enabled
-#   coverage:
-#     checks: 142
-#     cited: 142
-#     expected: 142
-#     found: 142
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0
 }

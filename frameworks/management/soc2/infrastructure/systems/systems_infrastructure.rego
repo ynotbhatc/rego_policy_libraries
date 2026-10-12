@@ -9,13 +9,13 @@
 #   source: aicpa
 #   domains: [assurance]
 #   coverage:
-#     checks: 17
+#     checks: 20
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package soc2.infrastructure.systems
 
 import rego.v1
@@ -432,12 +432,4 @@ systems_infrastructure_findings := findings if {
         },
         "overall_score": systems_infrastructure_score
     }
-#   coverage:
-#     checks: 17
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

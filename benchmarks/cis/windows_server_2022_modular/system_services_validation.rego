@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_windows_server_2022.system_services
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 5: System Services
@@ -219,11 +219,3 @@ report := {
 	"section": "5 System Services",
 	"benchmark": "CIS Windows Server 2022 v5.0.0",
 }
-#   coverage:
-#     checks: 26
-#     cited: 26
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

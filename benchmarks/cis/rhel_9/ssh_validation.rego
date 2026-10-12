@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel9.ssh
 
 # CIS RHEL 9 Section 5.2.x - SSH Server Configuration
@@ -335,11 +335,3 @@ report := {
 	"controls_checked": 21,
 	"section": "5.2 SSH Server Configuration",
 }
-#   coverage:
-#     checks: 26
-#     cited: 14
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

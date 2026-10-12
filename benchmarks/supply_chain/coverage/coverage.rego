@@ -22,7 +22,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package supply_chain.coverage
 
 import rego.v1
@@ -67,11 +67,3 @@ report := {
 	"coverage_score": score,
 	"evaluation_depth": evaluation_depth,
 }
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: unrecognised
-#     basis: role
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

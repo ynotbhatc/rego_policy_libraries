@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package crosswalk.framework_overlay
 
 import rego.v1
@@ -104,11 +104,3 @@ summary := {
 	"frameworks_pending": frameworks_pending,
 	"coverage": coverage,
 }
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: unrecognised
-#     basis: role
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

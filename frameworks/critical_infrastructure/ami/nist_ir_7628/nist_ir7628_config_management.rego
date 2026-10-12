@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package ami.nist_ir7628.config_management
 
 import rego.v1
@@ -118,11 +118,3 @@ compliance_report := {
     "compliant": compliant,
     "violations": violations,
 }
-#   coverage:
-#     checks: 5
-#     cited: 5
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0
