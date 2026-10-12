@@ -47,6 +47,11 @@ wasm:
 
 check-converters:
 	@bash converters/packaging/wasm/test/roundtrip.sh
+	@bash converters/packaging/gatekeeper/test/roundtrip.sh
+	@bash converters/packaging/kubewarden/test/roundtrip.sh
+	@bash converters/packaging/iac_scanners/test/roundtrip.sh
+	@bash converters/packaging/terraform_platforms/test/roundtrip.sh
+	@git diff --exit-code -- converters/packaging/gatekeeper/dist >/dev/null || { echo 'gatekeeper dist/ is stale: run build.py and commit'; exit 1; }
 
 metadata:
 	@echo "=== Checking policy METADATA annotations ==="

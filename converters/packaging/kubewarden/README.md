@@ -1,9 +1,15 @@
 # Rego → Kubewarden policies
 
-**Status:** planned
-**Kind:** packaging
-**Covers:** ~60
-**How:** wasm plus Kubewarden metadata.yml, published to a registry
+**Status:** shipping (generator, round-trip test); registry publish and Artifact Hub listing need `kwctl push` from CI
+**Kind:** packaging — OPA wasm with a `policy/main` entrypoint that answers an AdmissionReview
+**Covers:** `k8s-pss-baseline`, `k8s-pss-restricted` (Pod Security Standards) and `k8s-aac-admission`
 
-Not built yet. When it is: the generator lives here, output goes to `out/` (git-ignored) and to the release,
-and `test/` holds the round-trip fixture required by [`../../CONTRACT.md`](../../CONTRACT.md).
+```
+python3 converters/packaging/kubewarden/build.py     # -> out/<policy>/{policy.wasm, metadata.yml, adapter.rego}
+kwctl annotate -m out/k8s-pss-restricted/metadata.yml -o annotated.wasm out/k8s-pss-restricted/policy.wasm
+kwctl push annotated.wasm ghcr.io/ynotbhatc/kubewarden/k8s-pss-restricted:v2.2.0
+```
+
+`test/roundtrip.sh` evaluates adapter + policy with plain OPA on AdmissionReview fixtures and checks that the
+response denies exactly when the original policy reports violations, with the same messages. `kwctl run` is the
+in-engine equivalent.
