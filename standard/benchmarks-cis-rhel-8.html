@@ -10,19 +10,40 @@
 <meta property="og:description" content="16 open-source Rego policies encoding CIS Benchmark for Red Hat Enterprise Linux 8. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rhel-8.html">
-<style>body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 860px; margin: 60px auto; padding: 0 24px; color: #24292f; }
-    h1 { font-size: 2em; border-bottom: 1px solid #d0d7de; padding-bottom: 12px; }
-    h2 { font-size: 1.3em; margin-top: 32px; }
-    a { color: #0969da; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .badge { display: inline-block; background: #1f6feb; color: white; border-radius: 4px; padding: 3px 10px; font-size: 0.85em; margin-right: 6px; }
-    table { border-collapse: collapse; width: 100%; margin: 16px 0; }
-    th { background: #f6f8fa; text-align: left; padding: 8px 12px; border: 1px solid #d0d7de; }
-    td { padding: 8px 12px; border: 1px solid #d0d7de; }
-    tr:nth-child(even) { background: #f6f8fa; }
-    .hero { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 24px; margin: 24px 0; }
-    code { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 4px; padding: 2px 6px; font-size: 0.9em; }
-    pre { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; overflow-x: auto; }</style>
+<style>:root { --ink:#1b202b; --muted:#5c6573; --line:#d0d7de; --page:#ffffff; --card:#f6f8fa; --accent:#1f6feb; --accent2:#0f8f83; }
+    * { box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--ink); background:var(--page); margin:0; line-height:1.5; }
+    .wrap { max-width:1040px; margin:0 auto; padding:0 20px 64px; }
+    header { background:linear-gradient(160deg,#0d1117,#1f2a44); color:#fff; padding:44px 20px 36px; }
+    header .wrap { padding-bottom:0; }
+    h1 { font-size:2.1em; margin:0 0 8px; letter-spacing:-.02em; }
+    .tag { color:#c9d4e6; font-size:1.05em; max-width:70ch; margin:0 0 18px; }
+    .stats { display:flex; gap:26px; flex-wrap:wrap; margin-top:10px; }
+    .stat b { display:block; font-size:1.7em; line-height:1; }
+    .stat span { color:#9db0cc; font-size:.85em; text-transform:uppercase; letter-spacing:.05em; }
+    .cta { margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
+    .cta a { background:#fff; color:#12213b; text-decoration:none; font-weight:600; padding:9px 16px; border-radius:7px; font-size:.92em; }
+    .cta a.ghost { background:transparent; color:#fff; border:1px solid #46587a; }
+    pre { background:#0b0f17; color:#d7e0ee; border-radius:8px; padding:16px; overflow-x:auto; font-size:.86em; margin:22px 0 0; }
+    .search { position:sticky; top:0; background:var(--page); padding:18px 0 10px; border-bottom:1px solid var(--line); z-index:5; }
+    .search input { width:100%; padding:12px 14px; font-size:1em; border:1.5px solid var(--line); border-radius:9px; }
+    .cat { margin-top:30px; }
+    .cat-head h2 { font-size:1.28em; margin:0 0 2px; }
+    .cat-total { background:var(--accent); color:#fff; font-size:.6em; vertical-align:middle; border-radius:20px; padding:3px 9px; margin-left:6px; }
+    .cat-head p { color:var(--muted); margin:0 0 12px; font-size:.92em; }
+    .mods { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:8px; }
+    .mod { display:flex; justify-content:space-between; align-items:center; gap:10px; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 13px; transition:border-color .12s,transform .12s; }
+    .mod:hover { border-color:var(--accent); transform:translateY(-1px); }
+    .mod-name { font-weight:600; font-size:.93em; }
+    .mod-count { background:#fff; border:1px solid var(--line); color:var(--muted); border-radius:20px; padding:1px 9px; font-size:.8em; font-variant-numeric:tabular-nums; }
+    .empty { color:var(--muted); padding:30px 0; display:none; }
+    footer { border-top:1px solid var(--line); margin-top:48px; padding-top:20px; color:var(--muted); font-size:.9em; }
+    footer a { color:var(--accent); text-decoration:none; }
+    @media (prefers-color-scheme:dark) {
+      :root { --ink:#e6edf3; --muted:#9198a1; --line:#30363d; --page:#0d1117; --card:#161b22; }
+      .mod-count { background:#0d1117; }
+      .cta a { background:#e6edf3; }
+    }</style>
 </head>
 <body>
 <h1>CIS RHEL 8 — Rego Policies for OPA</h1>

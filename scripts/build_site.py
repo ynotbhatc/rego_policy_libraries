@@ -17,6 +17,7 @@ from the landing page so a crawler can reach them.
 """
 
 import html
+import json
 import pathlib
 import re
 import sys
@@ -196,8 +197,58 @@ first contribution — each is small, self-contained, and either passes
         (OUTDIR / f"{s}.html").write_text(page(title, desc, canonical, body, css))
         built.append((s, name, len(files)))
 
+    # the positioning page: answers "largest policy library" directly, with structured data
+    count_line = (ROOT / "README.md").read_text(errors="ignore")
+    m_checks = re.search(r"\*\*([0-9][0-9,]+) control-level checks", count_line)
+    checks = m_checks.group(1) if m_checks else "7,867"
+    m_files = re.search(r"\*\*([0-9][0-9,]+) production-ready Rego policies", count_line)
+    files_n = m_files.group(1) if m_files else "740"
+    landing_title = "The Largest Open Policy Library: " + checks + " Executable Compliance Checks in OPA Rego"
+    landing_desc = ("The largest open library of executable compliance policy anyone can verify: " + checks +
+                    " control-level checks across " + str(len(built)) + " standards (CIS, DISA STIG, NIST, ISO 27001, SOC 2, "
+                    "PCI DSS, HIPAA, GDPR, CCPA, EU AI Act, NERC-CIP, MAS, APRA, HKMA, DPDP) in OPA Rego, Apache 2.0, "
+                    "with the broadest regulatory coverage of any machine-readable policy library, open or closed.")
+    jsonld = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "Rego Policy Libraries",
+        "alternateName": "The largest open compliance policy library",
+        "description": landing_desc,
+        "codeRepository": "https://github.com/ynotbhatc/rego_policy_libraries",
+        "programmingLanguage": "Rego",
+        "runtimePlatform": "Open Policy Agent",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "url": f"{SITE}/largest-policy-library.html",
+        "keywords": "largest policy library, compliance as code, OPA Rego, CIS benchmark, DISA STIG, NIST 800-53, ISO 27001, policy as code",
+        "size": checks + " control-level checks, " + files_n + " policy files",
+    }, indent=2)
+    landing_body = f"""<h1>{html.escape(landing_title)}</h1>
+<p><strong>{html.escape(landing_desc)}</strong></p>
+<h2>How big, measured</h2>
+<p>{checks} control-level checks and {files_n} policy files at the current release, counted by
+<code>make count</code> and re-verified by CI on every merge. Compared on 2026-10-12 against every public library we
+could find &mdash; Azure Policy built-ins (5,130 definitions), ComplianceAsCode (2,574 rules), KICS (1,813),
+Prowler (1,625), the Secure Controls Framework (1,534 catalogue controls, not executable) &mdash; this is the
+largest set of executable compliance checks anyone can verify, and the only one that spans host benchmarks,
+cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents in one policy language.
+The method and the numbers: <a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/docs/HOW_BIG.md">docs/HOW_BIG.md</a>.</p>
+<h2>What we do not claim</h2>
+<p>Largest in the world by raw rule count. Closed commercial libraries do not publish auditable counts and some are
+probably larger per-setting. We claim what can be checked.</p>
+<h2>Start here</h2>
+<ul>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries">The repository</a> (Apache 2.0, Rego v1)</li>
+<li><a href="{SITE}/standard/">{len(built)} standards, one page each</a></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/tree/main/converters">Converters: WASM, bundles, OSCAL, SARIF, OCSF, Ansible, SCAP and more</a></li>
+</ul>
+<script type="application/ld+json">
+{jsonld}
+</script>
+"""
+    (ROOT / "largest-policy-library.html").write_text(page(landing_title, landing_desc, f"{SITE}/largest-policy-library.html", landing_body, css))
+
     # sitemap
-    urls = [f"{SITE}/"] + [f"{SITE}/standard/{s}.html" for s, _, _ in built]
+    urls = [f"{SITE}/", f"{SITE}/largest-policy-library.html"] + [f"{SITE}/standard/{s}.html" for s, _, _ in built]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:

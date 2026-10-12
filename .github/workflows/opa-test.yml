@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'converters/**'
       - 'scripts/count_controls.py'
       - 'Makefile'
       - 'README.md'
@@ -15,6 +16,7 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - 'converters/**'
       - 'scripts/count_controls.py'
       - 'Makefile'
       - 'README.md'
@@ -52,6 +54,11 @@ jobs:
 
       - name: Count control-level checks (scripts/count_controls.py must run clean)
         run: python3 scripts/count_controls.py --check-readme
+
+      - name: Converters — build wasm and run the round-trip test (skips without a wasm engine)
+        run: |
+          make wasm
+          make check-converters
 
       - name: Syntax check — benchmarks
         run: |
