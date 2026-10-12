@@ -15,14 +15,14 @@ import rego.v1
 
 # Import all validation modules
 import data.cis_windows_server_2022.account_policies
-import data.cis_windows_server_2022.local_policies
+import data.cis_windows_server_2022.advanced_audit
+import data.cis_windows_server_2022.bitlocker
 import data.cis_windows_server_2022.event_log
-import data.cis_windows_server_2022.system_services
+import data.cis_windows_server_2022.local_policies
 import data.cis_windows_server_2022.registry
 import data.cis_windows_server_2022.security_options
-import data.cis_windows_server_2022.advanced_audit
+import data.cis_windows_server_2022.system_services
 import data.cis_windows_server_2022.windows_defender
-import data.cis_windows_server_2022.bitlocker
 
 # CIS Level 2 additional controls
 # Activated when input.profile == "level2"
@@ -32,12 +32,51 @@ import data.cis_windows_server_2022.l2
 # MAIN COMPLIANCE RULE
 # =============================================================================
 
+# =============================================================================
+# ASSESSMENT COVERAGE — which sections actually received facts
+# =============================================================================
+#
+# Every module expresses its controls as "violate if the fact says X". A
+# section whose input keys were never collected produces no violations and
+# would count as compliant — a pass for an assessment that evaluated nothing.
+# The map names the input keys each section reads; a section is ASSESSED only
+# when at least one of them is present, and an unassessed section is never
+# counted as compliant.
+
+section_inputs := {
+	"section_1_account_policies": ["account_policies"],
+	"section_2_local_policies": ["local_policies"],
+	"section_3_event_log": ["event_log"],
+	"section_5_system_services": ["services"],
+	"section_6_registry": ["registry"],
+	"section_7_security_options": ["security_options"],
+	"section_8_advanced_audit": ["audit_policy", "advanced_audit"],
+	"section_9_windows_defender": ["windows_defender"],
+	"section_10_bitlocker": ["bitlocker"],
+}
+
+section_assessed(name) if {
+	some k in section_inputs[name]
+	input[k]
+}
+
+missing_inputs := {name: [k | some k in section_inputs[name]; not input[k]] | some name, _ in section_inputs}
+
+not_assessed_sections := sort([name | some name, _ in section_inputs; not section_assessed(name)])
+
+assessed_sections := count(section_inputs) - count(not_assessed_sections)
+
+assessment_coverage_percentage := round((assessed_sections * 100) / count(section_inputs))
+
+section_assessment := {name: {"assessed": section_assessed(name) == true, "missing_inputs": missing_inputs[name]} | some name, _ in section_inputs}
+
 # Required by library rule #5: without a default, a never-firing rule is
 # undefined (not false), and an undefined field collapses the enclosing
 # object to {} at the OPA endpoint.
 default compliant := false
 
 compliant if {
+	count(not_assessed_sections) == 0
 	account_policies.compliant
 	local_policies.compliant
 	event_log.compliant
@@ -122,9 +161,11 @@ section_compliance := {
 
 total_violations := count(all_violations)
 
+# A section counts as compliant only if it was actually assessed (fail-closed).
 compliant_sections := [name |
 	some name, section in section_compliance
 	section.compliant == true
+	section_assessed(name)
 ]
 
 total_sections := count(section_compliance)

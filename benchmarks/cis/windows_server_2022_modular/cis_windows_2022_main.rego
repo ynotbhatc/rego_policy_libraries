@@ -23,8 +23,8 @@ package cis_windows_server_2022.main
 #    the published CIS benchmark. Reporting the benchmark's headline number
 #    would overstate coverage. See "controls_basis" in the report.
 
-import rego.v1
 import data.cis_windows_server_2022 as bench
+import rego.v1
 
 default _compliant := false
 
@@ -70,6 +70,28 @@ default _bench_violations := []
 
 _bench_violations := [v | some v in bench.all_violations]
 
+# PARTIAL INPUT: sections that received none of their input keys are NOT
+# ASSESSED — listed, reported as an explicit violation, and counted as failed.
+default _not_assessed := []
+
+_not_assessed := bench.not_assessed_sections
+
+default _missing_inputs := {}
+
+_missing_inputs := bench.missing_inputs
+
+_not_assessed_msgs := [sprintf("NOT ASSESSED: %s — required input not collected: %s", [name, concat(", ", _missing_inputs[name])]) | some name in _not_assessed]
+
+# The Windows sections carry no per-section control count, so unassessed
+# sections are weighted equally against the control basis.
+default _unassessed_controls := 0
+
+_unassessed_controls := round((_total_controls * count(_not_assessed)) / count(bench.section_inputs)) if count(bench.section_inputs) > 0
+
+default _coverage := 0
+
+_coverage := bench.assessment_coverage_percentage
+
 default _sections := {}
 
 _sections := bench.section_compliance
@@ -78,12 +100,12 @@ _total_controls := 196
 
 _violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_supplied
 
-_violations := _bench_violations if _facts_supplied
+_violations := array.concat(_bench_violations, _not_assessed_msgs) if _facts_supplied
 
 # No facts => every control is unverified, which counts as failed, not passed.
 _failed := _total_controls if not _facts_supplied
 
-_failed := count(_bench_violations) if _facts_supplied
+_failed := min([_total_controls, count(_bench_violations) + _unassessed_controls]) if _facts_supplied
 
 # Clamp: more violations than known controls must not yield a negative count.
 _passed := max([0, _total_controls - _failed])
@@ -105,4 +127,7 @@ compliance_report := {
 	"compliant": _compliant,
 	"violations": _violations,
 	"section_results": _sections,
+	"sections_not_assessed": _not_assessed,
+	"missing_inputs": _missing_inputs,
+	"assessment_coverage_percentage": _coverage,
 }
