@@ -20,7 +20,8 @@ Usage: python3 scripts/count_controls.py [root]   (default: repo root)
 Make:  make count
 """
 import re, sys, pathlib
-root = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent)
+_args = [a for a in sys.argv[1:] if not a.startswith("--")]
+root = pathlib.Path(_args[0]) if _args else pathlib.Path(__file__).resolve().parent.parent
 body_re = re.compile(r'^\s*(violations?|deny|warn|findings?)\s+contains\s+\w+\s+if\b')
 map_start = re.compile(r'^([A-Za-z_][A-Za-z0-9_]*)\s*:=\s*\{\s*$')
 obj_row = re.compile(r'^\s*"[A-Za-z0-9][A-Za-z0-9._ -]*":\s*\{')
