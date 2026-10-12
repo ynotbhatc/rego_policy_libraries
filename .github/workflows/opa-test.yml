@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
     paths:
+      - 'scripts/count_controls.py'
+      - 'Makefile'
       - '**/*.rego'
       - '.github/workflows/opa-test.yml'
       - 'scripts/check_cis_ids.py'
@@ -12,6 +14,8 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - 'scripts/count_controls.py'
+      - 'Makefile'
       - '**/*.rego'
       - '.github/workflows/opa-test.yml'
       - 'scripts/check_cis_ids.py'
@@ -43,6 +47,9 @@ jobs:
           sudo mv opa_linux_amd64_static /usr/local/bin/opa
           rm -f opa.sha256
           opa version
+
+      - name: Count control-level checks (scripts/count_controls.py must run clean)
+        run: python3 scripts/count_controls.py
 
       - name: Syntax check — benchmarks
         run: |
