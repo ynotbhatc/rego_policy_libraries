@@ -9,6 +9,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- **HKMA Supervisory Policy Manual TM-G-1 General Principles for Technology Risk Management + TM-C-1
+  Supervisory Approach on Cyber Risk Management (Hong Kong)** — `frameworks/financial/hkma_trm/`,
+  `hkma_trm.main`, written from the HKMA texts: one control per TM-G-1 paragraph that sets an expectation
+  across IT governance, security management, system development and change, information processing,
+  communications networks and service providers (62), plus the five duties TM-C-1 (29 Nov 2024, statutory)
+  places on AIs: proportionate framework, prompt incident reporting to the HKMA, regular C-RAF assessments,
+  Secure Tertiary Data Backup, CISP intelligence sharing. WLAN, technology outsourcing and overseas-IT
+  paragraphs are gated by flags that must be declared true or false. 9 tests. Vocabulary gains source
+  `hkma` and domain `hong-kong`.
 - **APRA Prudential Standard CPS 234 Information Security (Australia, July 2019)** —
   `frameworks/financial/apra_cps234/`, `apra_cps234.main`, written from the APRA text: one control per
   requirement paragraph 13–36 (24 controls) across roles, capability, policy framework, classification,
