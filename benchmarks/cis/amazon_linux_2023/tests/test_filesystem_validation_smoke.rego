@@ -10,3 +10,9 @@ test_filesystem_validation_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_filesystem_validation_report_wellformed_on_empty_input if {
+	report := data.cis_amazon_linux_2023.filesystem.report with input as {}
+	is_object(report)
+	count(report) > 0
+}
+

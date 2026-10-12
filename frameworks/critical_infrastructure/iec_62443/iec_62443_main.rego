@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package iec_62443_main
 
 import rego.v1

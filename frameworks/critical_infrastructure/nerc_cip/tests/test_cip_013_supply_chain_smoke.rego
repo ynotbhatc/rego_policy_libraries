@@ -10,6 +10,17 @@ test_cip_013_supply_chain_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_cip_013_supply_chain_report_wellformed_on_empty_input if {
+	report := data.nerc_cip.cip_013.report with input as {}
+	is_object(report)
+	count(report) > 0
+}
+
+test_cip_013_supply_chain_fail_closed_on_empty_input if {
+	report := data.nerc_cip.cip_013.report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
 test_cip_013_supply_chain_violations_on_empty_input if {
 	v := data.nerc_cip.cip_013.violations with input as {}
 	count(v) > 0

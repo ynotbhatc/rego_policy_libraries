@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package iec_62443.part3_2
 
 import rego.v1

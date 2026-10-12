@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_rhel8.file_permissions
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 6.1: System File Permissions
@@ -79,7 +79,7 @@ critical_file_violations contains "SSH Private Keys: One or more SSH host keys h
 
 # CIS 6.1.10: World-writable files
 world_writable_violations contains sprintf("CIS 6.1.10: World-writable file found: %s (mode: %s, owner: %s)", [file.path, file.mode, file.owner]) if {
-	count(input.world_writable.files) > 0
+	count(object.get(input, ["world_writable", "files"], [])) > 0
 	some file in input.world_writable.files
 }
 
@@ -90,7 +90,7 @@ world_writable_violations contains sprintf("CIS 6.1.10: %d world-writable files 
 
 # CIS 6.1.11: Unowned files
 ownership_violations contains sprintf("CIS 6.1.11: Unowned file found: %s (UID: %d, mode: %s)", [file.path, file.uid, file.mode]) if {
-	count(input.unowned_files.files) > 0
+	count(object.get(input, ["unowned_files", "files"], [])) > 0
 	some file in input.unowned_files.files
 }
 
@@ -101,7 +101,7 @@ ownership_violations contains sprintf("CIS 6.1.11: %d unowned files found on sys
 
 # CIS 6.1.12: Ungrouped files
 ownership_violations contains sprintf("CIS 6.1.12: Ungrouped file found: %s (GID: %d, mode: %s)", [file.path, file.gid, file.mode]) if {
-	count(input.ungrouped_files.files) > 0
+	count(object.get(input, ["ungrouped_files", "files"], [])) > 0
 	some file in input.ungrouped_files.files
 }
 
@@ -142,12 +142,12 @@ report := {
 	"total_violations": count(violations),
 	"violations": violations,
 	"security_risks": {
-		"world_writable_files": input.world_writable.count,
-		"unowned_files": input.unowned_files.count,
-		"ungrouped_files": input.ungrouped_files.count,
-		"unknown_suid_binaries": input.suid_files.unknown_count,
-		"sgid_binaries": input.sgid_files.count,
-		"non_compliant_critical_files": input.critical_files.non_compliant_count,
+		"world_writable_files": object.get(input, ["world_writable", "count"], null),
+		"unowned_files": object.get(input, ["unowned_files", "count"], null),
+		"ungrouped_files": object.get(input, ["ungrouped_files", "count"], null),
+		"unknown_suid_binaries": object.get(input, ["suid_files", "unknown_count"], null),
+		"sgid_binaries": object.get(input, ["sgid_files", "count"], null),
+		"non_compliant_critical_files": object.get(input, ["critical_files", "non_compliant_count"], null),
 	},
 	"section": "6.1 System File Permissions",
 	"benchmark": "CIS RHEL 8 v4.0.0",

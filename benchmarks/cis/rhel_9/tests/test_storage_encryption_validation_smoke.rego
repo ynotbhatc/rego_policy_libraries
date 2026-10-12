@@ -16,3 +16,12 @@ test_storage_encryption_validation_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_storage_encryption_validation_fail_closed_on_empty_input if {
+	report := data.cis_rhel9.storage_encryption.compliance_report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
+test_storage_encryption_validation_violations_on_empty_input if {
+	v := data.cis_rhel9.storage_encryption.violations with input as {}
+	count(v) > 0
+}

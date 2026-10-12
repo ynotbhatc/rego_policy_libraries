@@ -6,14 +6,14 @@
 #   source: finops-foundation
 #   domains: [finops, cost]
 #   coverage:
-#     checks: 17
+#     checks: 18
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package finops.tagging
 
 # FinOps / Cost Governance â€” Resource Tagging & Organization Policy
@@ -35,6 +35,11 @@ package finops.tagging
 import rego.v1
 
 default compliant := false
+
+# Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
+violations contains "FINOPS: FAIL-CLOSED - facts 'input.resources' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+	not input.resources
+}
 
 compliant if { count(violations) == 0 }
 
@@ -154,13 +159,8 @@ violations contains sprintf("Expiry: Resource '%s' expiry date '%s' is invalid â
 is_past_date(date_str) if {
 	parts := split(date_str, "-")
 	count(parts) == 3
-	year := to_number(parts[0])
-	month := to_number(parts[1])
-	day := to_number(parts[2])
-	current_ns := time.now_ns()
-	resource_ns := time.parse_rfc3339_ns(sprintf("%s-01T00:00:00Z", [concat("-", [parts[0], parts[1]])]))
-	# Approximate check: year/month comparison
-	year < 2025
+	# the date itself, compared with now (the earlier "year < 2025" approximation went stale every January)
+	time.parse_rfc3339_ns(sprintf("%sT00:00:00Z", [date_str])) < time.now_ns()
 }
 
 # =============================================================================

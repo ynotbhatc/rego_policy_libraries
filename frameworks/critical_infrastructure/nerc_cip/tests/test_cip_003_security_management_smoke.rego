@@ -10,6 +10,17 @@ test_cip_003_security_management_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_cip_003_security_management_report_wellformed_on_empty_input if {
+	report := data.nerc_cip.cip_003.report with input as {}
+	is_object(report)
+	count(report) > 0
+}
+
+test_cip_003_security_management_fail_closed_on_empty_input if {
+	report := data.nerc_cip.cip_003.report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
 test_cip_003_security_management_violations_on_empty_input if {
 	v := data.nerc_cip.cip_003.violations with input as {}
 	count(v) > 0

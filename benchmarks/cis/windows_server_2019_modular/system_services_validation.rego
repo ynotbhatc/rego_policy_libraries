@@ -12,8 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package cis_windows_server_2019.system_services
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 5: System Services
@@ -23,6 +23,8 @@ import rego.v1
 default compliant := false
 
 compliant if {
+	# fail-closed: no facts, no compliance
+	input.services
 	count(violations) == 0
 }
 

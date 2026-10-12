@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_rhel8.ssh
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.2: SSH Server Configuration

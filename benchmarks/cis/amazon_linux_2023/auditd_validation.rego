@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_amazon_linux_2023.auditd
 
 # CIS Amazon Linux 2023 Section 4.1.x - Configure System Accounting (auditd)

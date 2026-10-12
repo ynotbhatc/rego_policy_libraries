@@ -16,3 +16,12 @@ test_user_group_validation_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_user_group_validation_fail_closed_on_empty_input if {
+	report := data.cis_rocky_linux_9.user_group.report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
+test_user_group_validation_violations_on_empty_input if {
+	v := data.cis_rocky_linux_9.user_group.violations with input as {}
+	count(v) > 0
+}

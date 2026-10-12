@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package technical_debt.scoring
 
 import rego.v1
@@ -906,7 +906,7 @@ get_estimate("cis_gcp", violation) := effort_catalog.cis_gcp["_default"] if {
 }
 
 # Unknown framework — global fallback
-get_estimate(framework, _violation) := _global_default if {
+get_estimate(framework, _) := _global_default if {
     not effort_catalog[framework]
 }
 
@@ -935,7 +935,7 @@ _age_mult(days) := 1.0  if { days < 30 }
 # ---------------------------------------------------------------------------
 
 # Object violation with severity field (DS, CIS-DB-schema objects)
-_violation_sev(violation, _default) := violation.severity if {
+_violation_sev(violation, _) := violation.severity if {
     not is_string(violation)
     violation.severity
 }

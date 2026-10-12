@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package eu_ai_act.prohibited
 
 import rego.v1

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis.server.apache
 
 import rego.v1
@@ -198,15 +198,15 @@ other_directories_options_minimized if {
     }
 }
 
-apache_directory_check_passes(path, dir, doc_root) if {
+apache_directory_check_passes(path, _, _) if {
     path == "/"
 }
 
-apache_directory_check_passes(path, dir, doc_root) if {
+apache_directory_check_passes(path, _, doc_root) if {
     path == doc_root
 }
 
-apache_directory_check_passes(path, dir, doc_root) if {
+apache_directory_check_passes(_, dir, _) if {
     not contains(dir.options, "Includes")
     not contains(dir.options, "ExecCGI")
 }

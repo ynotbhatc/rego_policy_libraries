@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 12
+#     checks: 13
 #     cited: 8
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package cis_rhel9.storage_encryption
 
 import rego.v1
@@ -176,6 +176,11 @@ violations contains msg if {
 }
 
 # ── Compliance ────────────────────────────────────────────────────────────────
+
+# Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
+violations contains "STIG RHEL-09-672010: FAIL-CLOSED - facts 'input.storage_encryption' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+	not input.storage_encryption
+}
 
 compliant if {
 	count(violations) == 0

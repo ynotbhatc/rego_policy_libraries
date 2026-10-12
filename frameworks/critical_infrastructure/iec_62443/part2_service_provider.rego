@@ -6,14 +6,14 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 16
+#     checks: 17
 #     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package iec_62443.part2_4
 
 import rego.v1
@@ -194,6 +194,11 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 # Compliance Aggregation
 # ---------------------------------------------------------------------------
+
+# Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
+violations contains "IEC 62443-2-4 SP.01: FAIL-CLOSED - facts 'input.service_provider' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+	not input.service_provider
+}
 
 compliant if { count(violations) == 0 }
 

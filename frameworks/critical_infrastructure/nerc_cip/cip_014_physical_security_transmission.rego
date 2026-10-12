@@ -13,10 +13,26 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_014
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default applicable_stations_identified := false
+default physical_security_plan_third_party_reviewed := false
+default physical_security_plans_developed := false
+default physical_threat_assessments_performed := false
+default plan_implementation_timely := false
+default plan_updated_after_topology_changes := false
+default rc_notified_of_verification := false
+default risk_assessment_current := false
+default risk_assessment_methodology_adequate := false
+default risk_assessment_performed := false
+default security_plans_reviewed := false
+default station_physical_security_plans := false
+default third_party_verification_performed := false
+default third_party_verification_timely := false
 
 # CIP-014-3: Physical Security of Transmission Stations and Substations
 # Requirement: Identify and protect Transmission stations and Transmission
@@ -106,7 +122,7 @@ rc_notified_of_verification if {
 # applicable transmission stations identified in R1
 
 applicable_stations_identified if {
-	count(input.applicable_transmission_stations) > 0
+	count(object.get(input, ["applicable_transmission_stations"], [])) > 0
 	every station in input.applicable_transmission_stations {
 		station.station_id
 		station.station_name
@@ -117,7 +133,7 @@ applicable_stations_identified if {
 
 # No applicable stations means no further requirements under CIP-014
 no_applicable_stations if {
-	count(input.applicable_transmission_stations) == 0
+	count(object.get(input, ["applicable_transmission_stations"], [])) == 0
 	input.transmission_risk_assessment.no_applicable_stations_documented == true
 }
 
@@ -404,7 +420,7 @@ report := {
 		"R6_third_party_review": physical_security_plan_third_party_reviewed,
 	},
 	"station_summary": {
-		"total_applicable_stations": count(input.applicable_transmission_stations),
+		"total_applicable_stations": count(object.get(input, ["applicable_transmission_stations"], [])),
 		"stations_with_plans": count([s | s := input.applicable_transmission_stations[_]; input.station_security_plans[s.station_id].documented == true]),
 	},
 	"violations": violations,

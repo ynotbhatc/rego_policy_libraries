@@ -12,8 +12,8 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package governance.geisa.compliance
 
 import rego.v1
@@ -74,6 +74,8 @@ all_violations := array.concat(
 # ─── Overall compliance ───────────────────────────────────────────────────────
 
 compliant if {
+	# fail-closed: no facts, no compliance
+	input.manifest
 	api.compliant
 	adm.compliant
 	lee.compliant

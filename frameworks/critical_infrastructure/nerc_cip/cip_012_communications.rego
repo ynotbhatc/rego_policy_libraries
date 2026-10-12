@@ -13,10 +13,23 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_012
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default backup_communication_protected := false
+default communication_authentication := false
+default communication_contingency_plans_established := false
+default communication_data_classified := false
+default communication_encryption := false
+default communication_log_review := false
+default communication_monitoring_enabled := false
+default communication_plan_current := false
+default communication_protection_implemented := false
+default communication_protection_tested := false
+default control_center_communications_identified := false
 
 # CIP-012-1: Communications Between Control Centers
 # Requirement: Protect the confidentiality and integrity of Real-time Assessment
@@ -38,7 +51,7 @@ control_center_communications_identified if {
 	input.control_center_communications.inventory_maintained == true
 	input.control_center_communications.criticality_assessed == true
 	input.control_center_communications.protection_requirements_defined == true
-	count(input.control_center_communications.links) > 0
+	count(object.get(input, ["control_center_communications", "links"], [])) > 0
 }
 
 # All communication links must have their data types classified
@@ -258,7 +271,7 @@ report := {
 		"R5_protection_tested": communication_protection_tested,
 	},
 	"link_summary": {
-		"total_links": count(input.control_center_communications.links),
+		"total_links": count(object.get(input, ["control_center_communications", "links"], [])),
 		"protected_links": count([l | l := input.control_center_communications.links[_]; l.encryption_enabled == true]),
 	},
 	"violations": violations,

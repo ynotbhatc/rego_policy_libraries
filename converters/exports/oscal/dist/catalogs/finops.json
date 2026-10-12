@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "52fd0ff6-8314-5a82-85cb-e51c17debe3d",
+  "uuid": "d26ce6d0-630f-57bb-9a90-98dcdfb68274",
   "metadata": {
    "title": "Rego Policy Libraries — finops (FinOps / Cost Governance — Resource Tagging & Organization Policy)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.4",
+   "version": "2.3.5",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "finops-finops.tagging-1",
-      "title": "Implemented by a Rego rule in governance/finops/finops_tagging.rego (package finops.tagging); see the rule body.",
+      "title": "FINOPS: FAIL-CLOSED - facts 'input.resources' were not supplied; this module cannot be evaluated and is reported non-compliant",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -93,7 +93,7 @@
        {
         "id": "finops-finops.tagging-1_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/finops/finops_tagging.rego (package finops.tagging); see the rule body."
+        "prose": "FINOPS: FAIL-CLOSED - facts 'input.resources' were not supplied; this module cannot be evaluated and is reported non-compliant"
        }
       ],
       "class": "governance"
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -415,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -448,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -481,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -514,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -547,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -580,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
@@ -613,13 +613,46 @@
       ],
       "links": [
        {
-        "href": "#f6db1872-71c5-5e81-be8f-d57e0024266e",
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "finops-finops.tagging-17_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/finops/finops_tagging.rego (package finops.tagging); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "finops-finops.tagging-18",
+      "title": "Implemented by a Rego rule in governance/finops/finops_tagging.rego (package finops.tagging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "finops.tagging#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "finops.tagging#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "finops.tagging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "finops-finops.tagging-18_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in governance/finops/finops_tagging.rego (package finops.tagging); see the rule body."
        }
@@ -632,7 +665,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "f6db1872-71c5-5e81-be8f-d57e0024266e",
+     "uuid": "36e242b3-2f18-5ab5-acac-fcdfc4ea6b60",
      "title": "FinOps / Cost Governance — Resource Tagging & Organization Policy",
      "props": [
       {
@@ -643,7 +676,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.4/governance/finops/finops_tagging.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/governance/finops/finops_tagging.rego",
        "media-type": "text/plain"
       }
      ]

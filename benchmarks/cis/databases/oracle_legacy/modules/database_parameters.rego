@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_oracle.database_parameters
 
 # CIS Oracle Database 19c Benchmark - Section 2.2
@@ -242,25 +242,25 @@ report := {
 	"violations": violations,
 	"critical_parameters": critical_parameter_summary,
 	"audit_configuration": {
-		"audit_sys_operations": input.parameters.AUDIT_SYS_OPERATIONS,
-		"audit_trail": input.parameters.AUDIT_TRAIL,
-		"unified_auditing_enabled": input.unified_auditing.enabled,
+		"audit_sys_operations": object.get(input, ["parameters", "AUDIT_SYS_OPERATIONS"], null),
+		"audit_trail": object.get(input, ["parameters", "AUDIT_TRAIL"], null),
+		"unified_auditing_enabled": object.get(input, ["unified_auditing", "enabled"], null),
 	},
 	"security_parameters": {
-		"remote_os_authent": input.parameters.REMOTE_OS_AUTHENT,
-		"remote_os_roles": input.parameters.REMOTE_OS_ROLES,
-		"os_roles": input.parameters.OS_ROLES,
-		"case_sensitive_logon": input.parameters.SEC_CASE_SENSITIVE_LOGON,
+		"remote_os_authent": object.get(input, ["parameters", "REMOTE_OS_AUTHENT"], null),
+		"remote_os_roles": object.get(input, ["parameters", "REMOTE_OS_ROLES"], null),
+		"os_roles": object.get(input, ["parameters", "OS_ROLES"], null),
+		"case_sensitive_logon": object.get(input, ["parameters", "SEC_CASE_SENSITIVE_LOGON"], null),
 	},
 	"risk_level": risk_level,
-	"collection_timestamp": input.collection_timestamp,
+	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
 
 critical_parameter_summary := {
-	"remote_os_authent_disabled": input.parameters.REMOTE_OS_AUTHENT == "FALSE",
-	"remote_os_roles_disabled": input.parameters.REMOTE_OS_ROLES == "FALSE",
-	"auditing_enabled": input.parameters.AUDIT_TRAIL != "NONE",
-	"o7_dictionary_protected": input.parameters.O7_DICTIONARY_ACCESSIBILITY == "FALSE",
+	"remote_os_authent_disabled": object.get(input, ["parameters", "REMOTE_OS_AUTHENT"], null) == "FALSE",
+	"remote_os_roles_disabled": object.get(input, ["parameters", "REMOTE_OS_ROLES"], null) == "FALSE",
+	"auditing_enabled": object.get(input, ["parameters", "AUDIT_TRAIL"], null) != "NONE",
+	"o7_dictionary_protected": object.get(input, ["parameters", "O7_DICTIONARY_ACCESSIBILITY"], null) == "FALSE",
 }
 
 risk_level := "critical" if {

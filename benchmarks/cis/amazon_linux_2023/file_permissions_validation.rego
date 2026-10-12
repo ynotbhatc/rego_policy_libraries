@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_amazon_linux_2023.file_permissions
 
 # CIS Amazon Linux 2023 Section 6.1.x - System File Permissions
@@ -103,7 +103,7 @@ critical_file_violations contains violation if {
 # =============================================================================
 
 world_writable_violations contains violation if {
-	count(input.world_writable.files) > 0
+	count(object.get(input, ["world_writable", "files"], [])) > 0
 	some file in input.world_writable.files
 	violation := sprintf("CIS 6.1.10: World-writable file found: %s (mode: %s, owner: %s)", [
 		file.path,
@@ -125,7 +125,7 @@ world_writable_violations contains violation if {
 # =============================================================================
 
 ownership_violations contains violation if {
-	count(input.unowned_files.files) > 0
+	count(object.get(input, ["unowned_files", "files"], [])) > 0
 	some file in input.unowned_files.files
 	violation := sprintf("CIS 6.1.11: Unowned file found: %s (UID: %d, mode: %s)", [
 		file.path,
@@ -147,7 +147,7 @@ ownership_violations contains violation if {
 # =============================================================================
 
 ownership_violations contains violation if {
-	count(input.ungrouped_files.files) > 0
+	count(object.get(input, ["ungrouped_files", "files"], [])) > 0
 	some file in input.ungrouped_files.files
 	violation := sprintf("CIS 6.1.12: Ungrouped file found: %s (GID: %d, mode: %s)", [
 		file.path,
@@ -223,12 +223,12 @@ critical_file_violations contains violation if {
 # =============================================================================
 
 compliance_summary := {
-	"critical_files_correct": input.compliance_checks.critical_files_correct,
-	"no_world_writable_files": input.compliance_checks.no_world_writable_files,
-	"no_unowned_files": input.compliance_checks.no_unowned_files,
-	"no_ungrouped_files": input.compliance_checks.no_ungrouped_files,
-	"suid_files_reviewed": input.compliance_checks.suid_files_reviewed,
-	"ssh_keys_secure": input.compliance_checks.ssh_keys_secure,
+	"critical_files_correct": object.get(input, ["compliance_checks", "critical_files_correct"], null),
+	"no_world_writable_files": object.get(input, ["compliance_checks", "no_world_writable_files"], null),
+	"no_unowned_files": object.get(input, ["compliance_checks", "no_unowned_files"], null),
+	"no_ungrouped_files": object.get(input, ["compliance_checks", "no_ungrouped_files"], null),
+	"suid_files_reviewed": object.get(input, ["compliance_checks", "suid_files_reviewed"], null),
+	"ssh_keys_secure": object.get(input, ["compliance_checks", "ssh_keys_secure"], null),
 	"overall_compliant": count(violations) == 0,
 }
 
@@ -254,24 +254,24 @@ non_compliant_critical_files contains file if {
 
 # SUID binary summary
 suid_summary := {
-	"total_count": input.suid_files.total_count,
-	"known_count": input.suid_files.known_count,
-	"unknown_count": input.suid_files.unknown_count,
-	"requires_review": input.suid_files.requires_review,
+	"total_count": object.get(input, ["suid_files", "total_count"], null),
+	"known_count": object.get(input, ["suid_files", "known_count"], null),
+	"unknown_count": object.get(input, ["suid_files", "unknown_count"], null),
+	"requires_review": object.get(input, ["suid_files", "requires_review"], null),
 	"unknown_binaries": [path |
-		some file in input.suid_files.unknown_binaries
+		some file in object.get(input, ["suid_files", "unknown_binaries"], [])
 		path := file.path
 	],
 }
 
 # Security risk summary
 security_risks := {
-	"world_writable_files": input.world_writable.count,
-	"unowned_files": input.unowned_files.count,
-	"ungrouped_files": input.ungrouped_files.count,
-	"unknown_suid_binaries": input.suid_files.unknown_count,
-	"sgid_binaries": input.sgid_files.count,
-	"non_compliant_critical_files": input.critical_files.non_compliant_count,
+	"world_writable_files": object.get(input, ["world_writable", "count"], null),
+	"unowned_files": object.get(input, ["unowned_files", "count"], null),
+	"ungrouped_files": object.get(input, ["ungrouped_files", "count"], null),
+	"unknown_suid_binaries": object.get(input, ["suid_files", "unknown_count"], null),
+	"sgid_binaries": object.get(input, ["sgid_files", "count"], null),
+	"non_compliant_critical_files": object.get(input, ["critical_files", "non_compliant_count"], null),
 }
 
 # Overall risk level
@@ -296,6 +296,6 @@ report := {
 	"security_risks": security_risks,
 	"non_compliant_critical_files": non_compliant_critical_files,
 	"suid_summary": suid_summary,
-	"collection_timestamp": input.collection_timestamp,
+	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
 

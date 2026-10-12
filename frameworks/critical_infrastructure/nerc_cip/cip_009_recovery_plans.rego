@@ -13,10 +13,24 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_009
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default activation_criteria_tested := false
+default backup_processes_documented := false
+default backup_testing_performed := false
+default log_preservation_process := false
+default network_reconnection_process := false
+default plans_communicated := false
+default post_event_plan_updates := false
+default recovery_plan_activation_criteria := false
+default recovery_plan_roles_defined := false
+default recovery_plans_current := false
+default recovery_plans_documented := false
+default recovery_testing_performed := false
 
 # CIP-009-6: Recovery Plans for BES Cyber Systems
 # Requirement: Recovery plans for BES Cyber Systems to support the

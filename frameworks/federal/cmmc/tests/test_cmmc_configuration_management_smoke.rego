@@ -16,3 +16,12 @@ test_cmmc_configuration_management_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_cmmc_configuration_management_fail_closed_on_empty_input if {
+	report := data.cmmc.configuration_management.compliance_report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
+test_cmmc_configuration_management_violations_on_empty_input if {
+	v := data.cmmc.configuration_management.violations with input as {}
+	count(v) > 0
+}

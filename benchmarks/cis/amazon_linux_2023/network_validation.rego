@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: none
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_amazon_linux_2023.network
 
 # CIS Amazon Linux 2023 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration
@@ -238,11 +238,11 @@ network_interface_violations contains violation if {
 # =============================================================================
 
 compliance_summary := {
-	"all_sysctl_compliant": input.compliance_checks.all_sysctl_compliant,
-	"ip_forwarding_disabled": input.compliance_checks.ip_forwarding_disabled,
-	"ipv6_compliant": input.compliance_checks.ipv6_compliant,
-	"no_wireless_interfaces": input.compliance_checks.no_wireless_interfaces,
-	"firewall_active": input.compliance_checks.firewall_active,
+	"all_sysctl_compliant": object.get(input, ["compliance_checks", "all_sysctl_compliant"], null),
+	"ip_forwarding_disabled": object.get(input, ["compliance_checks", "ip_forwarding_disabled"], null),
+	"ipv6_compliant": object.get(input, ["compliance_checks", "ipv6_compliant"], null),
+	"no_wireless_interfaces": object.get(input, ["compliance_checks", "no_wireless_interfaces"], null),
+	"firewall_active": object.get(input, ["compliance_checks", "firewall_active"], null),
 	"overall_compliant": count(violations) == 0,
 }
 
@@ -270,41 +270,41 @@ critical_sysctl_issues contains param if {
 
 # IP forwarding status
 ip_forwarding_status := {
-	"ipv4_forwarding": input.ip_forwarding.ipv4_forwarding,
-	"ipv6_forwarding": input.ip_forwarding.ipv6_forwarding,
-	"ipv4_compliant": input.ip_forwarding.ipv4_compliant,
-	"ipv6_compliant": input.ip_forwarding.ipv6_compliant,
-	"fully_compliant": input.ip_forwarding.fully_compliant,
+	"ipv4_forwarding": object.get(input, ["ip_forwarding", "ipv4_forwarding"], null),
+	"ipv6_forwarding": object.get(input, ["ip_forwarding", "ipv6_forwarding"], null),
+	"ipv4_compliant": object.get(input, ["ip_forwarding", "ipv4_compliant"], null),
+	"ipv6_compliant": object.get(input, ["ip_forwarding", "ipv6_compliant"], null),
+	"fully_compliant": object.get(input, ["ip_forwarding", "fully_compliant"], null),
 }
 
 # IPv6 status
 ipv6_status := {
-	"status": input.ipv6.status,
-	"disabled": input.ipv6.disabled,
-	"address_count": input.ipv6.address_count,
-	"compliant": input.ipv6.compliant,
+	"status": object.get(input, ["ipv6", "status"], null),
+	"disabled": object.get(input, ["ipv6", "disabled"], null),
+	"address_count": object.get(input, ["ipv6", "address_count"], null),
+	"compliant": object.get(input, ["ipv6", "compliant"], null),
 }
 
 # Network interface summary
 interface_summary := {
-	"total_interfaces": input.network_interfaces.interface_count,
-	"wireless_interfaces": input.wireless_interfaces.count,
-	"has_wireless": input.wireless_interfaces.has_wireless,
+	"total_interfaces": object.get(input, ["network_interfaces", "interface_count"], null),
+	"wireless_interfaces": object.get(input, ["wireless_interfaces", "count"], null),
+	"has_wireless": object.get(input, ["wireless_interfaces", "has_wireless"], null),
 }
 
 # Firewall status
 firewall_status := {
-	"type": input.firewall.type,
-	"active": input.firewall.active,
-	"compliant": input.firewall.compliant,
+	"type": object.get(input, ["firewall", "type"], null),
+	"active": object.get(input, ["firewall", "active"], null),
+	"compliant": object.get(input, ["firewall", "compliant"], null),
 }
 
 # Sysctl parameter summary
 sysctl_summary := {
-	"total_parameters_checked": count(input.sysctl_parameters.expected_parameters),
-	"compliant_count": input.sysctl_parameters.compliant_count,
-	"non_compliant_count": input.sysctl_parameters.non_compliant_count,
-	"all_compliant": input.sysctl_parameters.all_compliant,
+	"total_parameters_checked": count(object.get(input, ["sysctl_parameters", "expected_parameters"], [])),
+	"compliant_count": object.get(input, ["sysctl_parameters", "compliant_count"], null),
+	"non_compliant_count": object.get(input, ["sysctl_parameters", "non_compliant_count"], null),
+	"all_compliant": object.get(input, ["sysctl_parameters", "all_compliant"], null),
 }
 
 # Risk assessment based on violations
@@ -333,6 +333,6 @@ report := {
 	"interface_summary": interface_summary,
 	"firewall_status": firewall_status,
 	"sysctl_summary": sysctl_summary,
-	"collection_timestamp": input.collection_timestamp,
+	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
 

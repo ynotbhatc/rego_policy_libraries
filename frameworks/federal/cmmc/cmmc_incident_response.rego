@@ -6,14 +6,14 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 9
+#     checks: 10
 #     cited: 3
-#     density: section
-#     basis: role
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package cmmc.incident_response
 
 import rego.v1
@@ -74,6 +74,14 @@ violation_ir_3 contains msg if {
 violations contains msg if { some msg in violation_ir_1 }
 violations contains msg if { some msg in violation_ir_2 }
 violations contains msg if { some msg in violation_ir_3 }
+
+# Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
+violations contains "CMMC IR.L2-3.6.1: FAIL-CLOSED - facts 'input.incident_response' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+	not input.incident_response
+}
+
+# fail-closed: non-empty violations (including the no-facts notice) make this false, never undefined
+default compliant := false
 
 compliant if { count(violations) == 0 }
 

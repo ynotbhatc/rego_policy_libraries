@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_rhel9.user_group
 
 import rego.v1

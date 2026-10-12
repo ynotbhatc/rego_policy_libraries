@@ -16,3 +16,12 @@ test_fr4_data_confidentiality_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_fr4_data_confidentiality_fail_closed_on_empty_input if {
+	report := data.iec_62443.fr4.compliance_report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
+test_fr4_data_confidentiality_violations_on_empty_input if {
+	v := data.iec_62443.fr4.violations with input as {}
+	count(v) > 0
+}

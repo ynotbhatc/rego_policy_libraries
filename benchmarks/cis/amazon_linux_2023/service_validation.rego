@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_amazon_linux_2023.services
 
 # CIS Amazon Linux 2023 Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x - Service Configuration
@@ -228,10 +228,10 @@ package_violations contains violation if {
 # MTA should be configured for local-only mode (not a violation to have MTA)
 # This is informational
 mta_info := {
-	"has_mta": input.mta.has_mta,
-	"active_mta": input.mta.active_mta,
+	"has_mta": object.get(input, ["mta", "has_mta"], null),
+	"active_mta": object.get(input, ["mta", "active_mta"], null),
 	"packages": [p["package"] |
-		some p in input.mta.packages
+		some p in object.get(input, ["mta", "packages"], [])
 		p.installed
 	],
 }
@@ -241,14 +241,14 @@ mta_info := {
 # =============================================================================
 
 compliance_summary := {
-	"autofs_disabled": input.compliance_checks.autofs_disabled,
-	"time_sync_configured": input.compliance_checks.time_sync_configured,
-	"chronyd_running": input.compliance_checks.chronyd_running,
-	"chronyd_has_servers": input.compliance_checks.chronyd_has_servers,
-	"no_unnecessary_services": input.compliance_checks.no_unnecessary_services,
-	"no_webserver": input.compliance_checks.no_webserver,
-	"no_client_packages": input.compliance_checks.no_client_packages,
-	"no_x11": input.compliance_checks.no_x11,
+	"autofs_disabled": object.get(input, ["compliance_checks", "autofs_disabled"], null),
+	"time_sync_configured": object.get(input, ["compliance_checks", "time_sync_configured"], null),
+	"chronyd_running": object.get(input, ["compliance_checks", "chronyd_running"], null),
+	"chronyd_has_servers": object.get(input, ["compliance_checks", "chronyd_has_servers"], null),
+	"no_unnecessary_services": object.get(input, ["compliance_checks", "no_unnecessary_services"], null),
+	"no_webserver": object.get(input, ["compliance_checks", "no_webserver"], null),
+	"no_client_packages": object.get(input, ["compliance_checks", "no_client_packages"], null),
+	"no_x11": object.get(input, ["compliance_checks", "no_x11"], null),
 	"overall_compliant": count(violations) == 0,
 }
 
@@ -282,36 +282,36 @@ enabled_unnecessary_services contains service if {
 # Installed unnecessary packages
 installed_unnecessary_packages := {
 	"webserver": [p["package"] |
-		some p in input.webserver.packages
+		some p in object.get(input, ["webserver", "packages"], [])
 		p.installed
 	],
 	"client_packages": [p["package"] |
-		some p in input.client_packages.analysis
+		some p in object.get(input, ["client_packages", "analysis"], [])
 		p.installed
 	],
 	"x11": [p["package"] |
-		some p in input.x11.packages
+		some p in object.get(input, ["x11", "packages"], [])
 		p.installed
 	],
 }
 
 # Time synchronization status
 time_sync_status := {
-	"active_service": input.time_synchronization.active_service,
-	"has_active_service": input.time_synchronization.has_active_service,
-	"chronyd_installed": input.chronyd.installed,
-	"chronyd_active": input.chronyd.service_active,
-	"chronyd_enabled": input.chronyd.service_enabled,
-	"chronyd_servers": input.chronyd.servers_configured,
-	"chronyd_pools": input.chronyd.pools_configured,
+	"active_service": object.get(input, ["time_synchronization", "active_service"], null),
+	"has_active_service": object.get(input, ["time_synchronization", "has_active_service"], null),
+	"chronyd_installed": object.get(input, ["chronyd", "installed"], null),
+	"chronyd_active": object.get(input, ["chronyd", "service_active"], null),
+	"chronyd_enabled": object.get(input, ["chronyd", "service_enabled"], null),
+	"chronyd_servers": object.get(input, ["chronyd", "servers_configured"], null),
+	"chronyd_pools": object.get(input, ["chronyd", "pools_configured"], null),
 }
 
 # Service inventory summary
 service_inventory := {
-	"total_enabled": input.all_services.enabled.count,
-	"total_active": input.all_services.active.count,
-	"unnecessary_found_active": input.unnecessary_services.found_active,
-	"unnecessary_found_enabled": input.unnecessary_services.found_enabled,
+	"total_enabled": object.get(input, ["all_services", "enabled", "count"], null),
+	"total_active": object.get(input, ["all_services", "active", "count"], null),
+	"unnecessary_found_active": object.get(input, ["unnecessary_services", "found_active"], null),
+	"unnecessary_found_enabled": object.get(input, ["unnecessary_services", "found_enabled"], null),
 }
 
 report := {
@@ -325,6 +325,6 @@ report := {
 	"time_sync_status": time_sync_status,
 	"service_inventory": service_inventory,
 	"mta_info": mta_info,
-	"collection_timestamp": input.collection_timestamp,
+	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
 

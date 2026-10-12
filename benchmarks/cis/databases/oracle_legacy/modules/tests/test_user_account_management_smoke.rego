@@ -10,3 +10,9 @@ test_user_account_management_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_user_account_management_report_wellformed_on_empty_input if {
+	report := data.cis_oracle.user_account_management.report with input as {}
+	is_object(report)
+	count(report) > 0
+}
+

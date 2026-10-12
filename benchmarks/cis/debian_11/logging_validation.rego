@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_debian_11.logging
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 4.2: Logging Configuration
@@ -114,7 +114,7 @@ log_file_violations contains msg if {
 }
 
 log_file_violations contains msg if {
-	count(input.excessive_permissions.files) > 0
+	count(object.get(input, ["excessive_permissions", "files"], [])) > 0
 	some file in input.excessive_permissions.files
 	msg := sprintf("CIS 4.2.3: Log file '%s' has excessive permissions (mode: %s, issue: %s)", [file.file, file.mode, file.issue])
 }
@@ -133,17 +133,17 @@ report := {
 	"journald_violations": count(journald_violations),
 	"log_file_violations": count(log_file_violations),
 	"rsyslog": {
-		"installed": input.rsyslog.installed,
-		"service_active": input.rsyslog.service_active,
-		"service_enabled": input.rsyslog.service_enabled,
-		"file_create_mode": input.rsyslog.file_create_mode,
-		"logging_rules_count": input.rsyslog.logging_rules_count,
+		"installed": object.get(input, ["rsyslog", "installed"], null),
+		"service_active": object.get(input, ["rsyslog", "service_active"], null),
+		"service_enabled": object.get(input, ["rsyslog", "service_enabled"], null),
+		"file_create_mode": object.get(input, ["rsyslog", "file_create_mode"], null),
+		"logging_rules_count": object.get(input, ["rsyslog", "logging_rules_count"], null),
 	},
 	"journald": {
-		"service_active": input.journald.service_active,
-		"storage_mode": input.journald.storage_mode,
-		"compress_enabled": input.journald.compress_enabled,
-		"forward_to_syslog": input.journald.forward_to_syslog,
+		"service_active": object.get(input, ["journald", "service_active"], null),
+		"storage_mode": object.get(input, ["journald", "storage_mode"], null),
+		"compress_enabled": object.get(input, ["journald", "compress_enabled"], null),
+		"forward_to_syslog": object.get(input, ["journald", "forward_to_syslog"], null),
 	},
 	"section": "4.2 Logging Configuration",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",

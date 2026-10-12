@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package kubernetes.admission
 
 # Kubernetes Admission Control — Security and Operations Policy

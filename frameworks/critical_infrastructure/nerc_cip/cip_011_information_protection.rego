@@ -13,10 +13,24 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_011
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default bcsi_access_need_to_know := false
+default bcsi_access_reviewed := false
+default bcsi_categories_addressed := false
+default bcsi_electronic_access_controlled := false
+default bcsi_physical_access_controlled := false
+default bcsi_storage_protected := false
+default bcsi_transmission_protected := false
+default bes_cyber_system_information_identified := false
+default information_access_controls_enforced := false
+default information_disposal_procedures_implemented := false
+default information_protection_program := false
+default media_sanitization_verified := false
 
 # CIP-011-3: Information Protection
 # Requirement: Prevent unauthorized access to BES Cyber System Information

@@ -30,7 +30,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package owasp_llm.main
 
 import rego.v1

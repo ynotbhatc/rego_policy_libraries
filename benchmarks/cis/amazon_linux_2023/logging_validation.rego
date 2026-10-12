@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_amazon_linux_2023.logging
 
 # CIS Amazon Linux 2023 Section 4.2.x - Logging Configuration
@@ -168,7 +168,7 @@ log_file_violations contains violation if {
 
 # Files with excessive permissions
 log_file_violations contains violation if {
-	count(input.excessive_permissions.files) > 0
+	count(object.get(input, ["excessive_permissions", "files"], [])) > 0
 	some file in input.excessive_permissions.files
 	violation := sprintf("CIS 4.2.3: Log file '%s' has excessive permissions (mode: %s, issue: %s)", [
 		file.file,
@@ -191,14 +191,14 @@ rsyslog_violations contains violation if {
 # =============================================================================
 
 compliance_summary := {
-	"rsyslog_installed_and_enabled": input.compliance_checks.rsyslog_installed_and_enabled,
-	"journald_active_and_configured": input.compliance_checks.journald_active_and_configured,
-	"journald_forwards_to_rsyslog": input.compliance_checks.journald_forwards_to_rsyslog,
-	"rsyslog_file_permissions_configured": input.compliance_checks.rsyslog_file_permissions_configured,
-	"log_files_have_correct_permissions": input.compliance_checks.log_files_have_correct_permissions,
-	"no_excessive_log_permissions": input.compliance_checks.no_excessive_log_permissions,
-	"remote_logging_configured": input.compliance_checks.remote_logging_configured,
-	"logrotate_installed": input.compliance_checks.logrotate_installed,
+	"rsyslog_installed_and_enabled": object.get(input, ["compliance_checks", "rsyslog_installed_and_enabled"], null),
+	"journald_active_and_configured": object.get(input, ["compliance_checks", "journald_active_and_configured"], null),
+	"journald_forwards_to_rsyslog": object.get(input, ["compliance_checks", "journald_forwards_to_rsyslog"], null),
+	"rsyslog_file_permissions_configured": object.get(input, ["compliance_checks", "rsyslog_file_permissions_configured"], null),
+	"log_files_have_correct_permissions": object.get(input, ["compliance_checks", "log_files_have_correct_permissions"], null),
+	"no_excessive_log_permissions": object.get(input, ["compliance_checks", "no_excessive_log_permissions"], null),
+	"remote_logging_configured": object.get(input, ["compliance_checks", "remote_logging_configured"], null),
+	"logrotate_installed": object.get(input, ["compliance_checks", "logrotate_installed"], null),
 	"overall_compliant": count(violations) == 0,
 }
 
@@ -222,22 +222,22 @@ non_compliant_log_files contains file if {
 
 # rsyslog configuration summary
 rsyslog_summary := {
-	"installed": input.rsyslog.installed,
-	"service_active": input.rsyslog.service_active,
-	"service_enabled": input.rsyslog.service_enabled,
-	"file_create_mode": input.rsyslog.file_create_mode,
-	"logging_rules_count": input.rsyslog.logging_rules_count,
-	"remote_logging_configured": input.rsyslog.remote_logging_configured,
-	"compliant": input.rsyslog.compliant,
+	"installed": object.get(input, ["rsyslog", "installed"], null),
+	"service_active": object.get(input, ["rsyslog", "service_active"], null),
+	"service_enabled": object.get(input, ["rsyslog", "service_enabled"], null),
+	"file_create_mode": object.get(input, ["rsyslog", "file_create_mode"], null),
+	"logging_rules_count": object.get(input, ["rsyslog", "logging_rules_count"], null),
+	"remote_logging_configured": object.get(input, ["rsyslog", "remote_logging_configured"], null),
+	"compliant": object.get(input, ["rsyslog", "compliant"], null),
 }
 
 # journald configuration summary
 journald_summary := {
-	"service_active": input.journald.service_active,
-	"storage_mode": input.journald.storage_mode,
-	"compress_enabled": input.journald.compress_enabled,
-	"forward_to_syslog": input.journald.forward_to_syslog,
-	"compliant": input.journald.compliant,
+	"service_active": object.get(input, ["journald", "service_active"], null),
+	"storage_mode": object.get(input, ["journald", "storage_mode"], null),
+	"compress_enabled": object.get(input, ["journald", "compress_enabled"], null),
+	"forward_to_syslog": object.get(input, ["journald", "forward_to_syslog"], null),
+	"compliant": object.get(input, ["journald", "compliant"], null),
 }
 
 report := {
@@ -248,7 +248,7 @@ report := {
 	"rsyslog_summary": rsyslog_summary,
 	"journald_summary": journald_summary,
 	"non_compliant_log_files": non_compliant_log_files,
-	"excessive_permissions_count": input.excessive_permissions.count,
-	"collection_timestamp": input.collection_timestamp,
+	"excessive_permissions_count": object.get(input, ["excessive_permissions", "count"], null),
+	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
 

@@ -16,3 +16,12 @@ test_cmmc_incident_response_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_cmmc_incident_response_fail_closed_on_empty_input if {
+	report := data.cmmc.incident_response.compliance_report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
+test_cmmc_incident_response_violations_on_empty_input if {
+	v := data.cmmc.incident_response.violations with input as {}
+	count(v) > 0
+}

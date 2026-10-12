@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package stig.postgresql_16.core
 
 # DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: none
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_amazon_linux_2023.filesystem
 
 # CIS Amazon Linux 2023 Section 1.1.x - Filesystem Configuration
@@ -152,7 +152,7 @@ sticky_bit_violations contains violation if {
 }
 
 sticky_bit_violations contains violation if {
-	count(input.sticky_bit.world_writable_without_sticky) > 0
+	count(object.get(input, ["sticky_bit", "world_writable_without_sticky"], [])) > 0
 	some path in input.sticky_bit.world_writable_without_sticky
 	violation := sprintf("CIS 1.1.22: World-writable directory without sticky bit found: %s", [path])
 }
@@ -185,13 +185,13 @@ usb_storage_violation contains violation if {
 
 # Section-level compliance checks
 compliance_summary := {
-	"all_filesystem_modules_disabled": input.compliance_checks.all_fs_modules_disabled,
-	"all_required_partitions_present": input.compliance_checks.all_required_partitions_present,
-	"all_mount_options_correct": input.compliance_checks.all_mount_options_correct,
-	"tmp_partition_secure": input.compliance_checks.tmp_partition_secure,
-	"dev_shm_secure": input.compliance_checks.dev_shm_secure,
-	"sticky_bit_compliant": input.compliance_checks.sticky_bit_compliant,
-	"usb_storage_compliant": input.compliance_checks.usb_storage_compliant,
+	"all_filesystem_modules_disabled": object.get(input, ["compliance_checks", "all_fs_modules_disabled"], null),
+	"all_required_partitions_present": object.get(input, ["compliance_checks", "all_required_partitions_present"], null),
+	"all_mount_options_correct": object.get(input, ["compliance_checks", "all_mount_options_correct"], null),
+	"tmp_partition_secure": object.get(input, ["compliance_checks", "tmp_partition_secure"], null),
+	"dev_shm_secure": object.get(input, ["compliance_checks", "dev_shm_secure"], null),
+	"sticky_bit_compliant": object.get(input, ["compliance_checks", "sticky_bit_compliant"], null),
+	"usb_storage_compliant": object.get(input, ["compliance_checks", "usb_storage_compliant"], null),
 	"overall_compliant": count(violations) == 0,
 }
 
@@ -229,6 +229,6 @@ report := {
 	"compliance_summary": compliance_summary,
 	"non_compliant_modules": non_compliant_modules,
 	"non_compliant_partitions": non_compliant_partitions,
-	"collection_timestamp": input.collection_timestamp,
+	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
 

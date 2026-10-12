@@ -13,10 +13,22 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_006
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default eacms_physically_protected := false
+default pacs_physically_protected := false
+default physical_access_alerting_configured := false
+default physical_access_authorization_reviewed := false
+default physical_access_controls_implemented := false
+default physical_access_monitoring_enabled := false
+default physical_security_perimeters_defined := false
+default physical_security_plan_current := false
+default physical_security_plan_documented := false
+default visitor_control_program_established := false
 
 # CIP-006-6: Physical Security of BES Cyber Systems
 # Requirement: Manage physical access to BES Cyber Systems by specifying

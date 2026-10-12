@@ -16,3 +16,12 @@ test_geisa_adm_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_geisa_adm_fail_closed_on_empty_input if {
+	report := data.governance.geisa.adm.compliance_report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
+test_geisa_adm_violations_on_empty_input if {
+	v := data.governance.geisa.adm.violations with input as {}
+	count(v) > 0
+}

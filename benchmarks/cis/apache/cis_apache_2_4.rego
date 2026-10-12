@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis.apache_2_4
 
 import rego.v1
@@ -151,7 +151,6 @@ apache_user_home_non_privileged if {
 }
 
 core_dump_directory_secured if {
-	core_dump_dir := input.apache.config.core_dump_directory
 	core_dump_permissions := input.apache.file_permissions.core_dump_directory
 	core_dump_permissions.owner == "root"
 	core_dump_permissions.group == "apache"

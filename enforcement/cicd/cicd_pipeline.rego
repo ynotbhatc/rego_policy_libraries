@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cicd.pipeline
 
 # CI/CD Pipeline Security Governance
@@ -122,7 +122,7 @@ violations contains sprintf("Secrets: Job '%s' passes secret '%s' as a positiona
 	not is_safe_secret_usage(step["run"], secret_ref)
 }
 
-is_safe_secret_usage(run_script, _secret_ref) if {
+is_safe_secret_usage(run_script, _) if {
 	contains(run_script, "env.")
 }
 

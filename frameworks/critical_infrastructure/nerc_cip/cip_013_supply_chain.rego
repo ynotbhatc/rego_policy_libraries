@@ -13,10 +13,24 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_013
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default cip_senior_manager_approved := false
+default incident_coordination_process := false
+default incident_response_coordination_established := false
+default software_authenticity_verification_process := false
+default supply_chain_cyber_security_plan_implemented := false
+default supply_chain_monitoring_implemented := false
+default supply_chain_plan_review_current := false
+default vendor_contracts_include_security_requirements := false
+default vendor_incident_notification_process := false
+default vendor_remote_access_controlled := false
+default vendor_risk_assessments_performed := false
+default vendor_vulnerability_notification_process := false
 
 # CIP-013-2: Supply Chain Risk Management
 # Requirement: Mitigate cyber security risks in the supply chain for industrial
@@ -301,7 +315,7 @@ report := {
 		"R6_ir_coordination": incident_response_coordination_established,
 	},
 	"vendor_summary": {
-		"total_vendors": count(input.vendors),
+		"total_vendors": count(object.get(input, ["vendors"], [])),
 		"critical_vendors": count([v | v := input.vendors[_]; v.criticality_level in ["high", "medium"]]),
 		"assessed_vendors": count([v | v := input.vendors[_]; input.vendor_risk_assessments[v.vendor_id].completed == true]),
 	},

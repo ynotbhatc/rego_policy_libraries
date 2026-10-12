@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis.server.mysql
 
 import rego.v1
@@ -25,7 +25,6 @@ import rego.v1
 latest_version_used if {
     version_parts := split(input.mysql_info.version, ".")
     major := to_number(version_parts[0])
-    minor := to_number(version_parts[1])
     major >= 8
 }
 
@@ -196,7 +195,6 @@ log_error_verbosity_appropriate if {
 log_warnings_appropriate if {
     version_parts := split(input.mysql_info.version, ".")
     major := to_number(version_parts[0])
-    minor := to_number(version_parts[1])
     major >= 8
 }
 

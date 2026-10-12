@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis.rhel_10
 
 # CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft)

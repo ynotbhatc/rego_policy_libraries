@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_oracle.listener_configuration
 
 # CIS Oracle Database 19c Benchmark - Section 2.1
@@ -166,14 +166,14 @@ report := {
 	"total_violations": count(violations),
 	"violations": violations,
 	"listener_summary": {
-		"total_listeners": count(input.listeners),
-		"extproc_enabled": count([l | some l in input.listeners; some s in l.services; contains(lower(s), "extproc")]),
-		"admin_restrictions_off": count([l | some l in input.listeners; l.admin_restrictions != "ON"]),
-		"using_default_port": count([l | some l in input.listeners; l.port == 1521]),
-		"not_password_protected": count([l | some l in input.listeners; l.password_protected == false]),
+		"total_listeners": count(object.get(input, ["listeners"], [])),
+		"extproc_enabled": count([l | some l in object.get(input, ["listeners"], []); some s in l.services; contains(lower(s), "extproc")]),
+		"admin_restrictions_off": count([l | some l in object.get(input, ["listeners"], []); l.admin_restrictions != "ON"]),
+		"using_default_port": count([l | some l in object.get(input, ["listeners"], []); l.port == 1521]),
+		"not_password_protected": count([l | some l in object.get(input, ["listeners"], []); l.password_protected == false]),
 	},
 	"risk_level": risk_level,
-	"collection_timestamp": input.collection_timestamp,
+	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
 
 risk_level := "critical" if {

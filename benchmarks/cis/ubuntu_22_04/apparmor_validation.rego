@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_ubuntu_22_04.apparmor
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 1.6: Mandatory Access Controls
@@ -92,11 +92,11 @@ service_violations contains msg if {
 
 # AppArmor status
 apparmor_status := {
-	"installed": input.apparmor.installed,
-	"service_active": input.apparmor.service_active,
-	"enforce_profiles": input.apparmor.enforce_profiles,
-	"complain_profiles": input.apparmor.complain_profiles,
-	"unloaded_profiles": input.apparmor.unloaded_profiles,
+	"installed": object.get(input, ["apparmor", "installed"], null),
+	"service_active": object.get(input, ["apparmor", "service_active"], null),
+	"enforce_profiles": object.get(input, ["apparmor", "enforce_profiles"], null),
+	"complain_profiles": object.get(input, ["apparmor", "complain_profiles"], null),
+	"unloaded_profiles": object.get(input, ["apparmor", "unloaded_profiles"], null),
 }
 
 report := {

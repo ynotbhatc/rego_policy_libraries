@@ -23,7 +23,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package supply_chain.coverage
 
 import rego.v1
@@ -63,7 +63,7 @@ evaluation_depth := "standard" if {
 evaluation_depth := "light" if score < 3
 
 report := {
-	"artifact": object.get(input.artifact, "name", "(unnamed)"),
+	"artifact": object.get(input, ["artifact", "name"], "(unnamed)"),
 	"touched_families": touched_families,
 	"coverage_score": score,
 	"evaluation_depth": evaluation_depth,

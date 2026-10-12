@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: none
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_esxi_8
 
 import rego.v1

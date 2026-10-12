@@ -6,14 +6,14 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 12
+#     checks: 13
 #     cited: 3
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package iec_62443.fr4
 
 import rego.v1
@@ -179,6 +179,11 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 # Compliance Aggregation
 # ---------------------------------------------------------------------------
+
+# Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
+violations contains "IEC 62443 SR 4.1 SL%v (DC): FAIL-CLOSED - facts 'input.ics_systems' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+	not input.ics_systems
+}
 
 compliant if { count(violations) == 0 }
 

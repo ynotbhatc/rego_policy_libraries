@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_oracle.installation_patches
 
 # CIS Oracle Database 19c Benchmark - Section 1
@@ -133,18 +133,18 @@ report := {
 	"total_violations": count(violations),
 	"violations": violations,
 	"oracle_version": {
-		"version": input.oracle_version.version,
-		"supported": input.oracle_version.supported,
-		"end_of_support": input.oracle_version.end_of_support,
+		"version": object.get(input, ["oracle_version", "version"], null),
+		"supported": object.get(input, ["oracle_version", "supported"], null),
+		"end_of_support": object.get(input, ["oracle_version", "end_of_support"], null),
 	},
 	"patch_status": {
-		"last_patch_date": input.critical_patches.last_patch_date,
-		"days_since_last_patch": input.critical_patches.days_since_last_patch,
-		"critical_missing": input.critical_patches.critical_missing,
-		"total_missing": count(input.critical_patches.missing_patches),
+		"last_patch_date": object.get(input, ["critical_patches", "last_patch_date"], null),
+		"days_since_last_patch": object.get(input, ["critical_patches", "days_since_last_patch"], null),
+		"critical_missing": object.get(input, ["critical_patches", "critical_missing"], null),
+		"total_missing": count(object.get(input, ["critical_patches", "missing_patches"], [])),
 	},
 	"risk_level": risk_level,
-	"collection_timestamp": input.collection_timestamp,
+	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
 
 risk_level := "critical" if {
@@ -154,5 +154,5 @@ risk_level := "critical" if {
 } else := "high" if {
 	input.critical_patches.days_since_last_patch > 180
 } else := "medium" if {
-	count(input.critical_patches.missing_patches) > 0
+	count(object.get(input, ["critical_patches", "missing_patches"], [])) > 0
 } else := "low"

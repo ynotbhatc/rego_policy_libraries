@@ -16,3 +16,7 @@ test_ami_device_compliance_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_ami_device_compliance_fail_closed_on_empty_input if {
+	report := data.ami.device.compliance.compliance_report with input as {}
+	not object.get(report, "compliant", false) == true
+}

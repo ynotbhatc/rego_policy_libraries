@@ -13,10 +13,23 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_003
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default cip_senior_manager_designated := false
+default cybersecurity_policies_established := false
+default delegation_documented := false
+default information_sharing_plan_exists := false
+default low_impact_plan_implemented := false
+default low_impact_plan_reviewed := false
+default policy_review_current := false
+default removable_media_controls := false
+default required_policy_areas_covered := false
+default transient_asset_security_controls := false
+default transient_cyber_asset_policy := false
 
 # CIP-003-8: Security Management Controls
 # Requirement: Specify consistent and sustainable security management controls

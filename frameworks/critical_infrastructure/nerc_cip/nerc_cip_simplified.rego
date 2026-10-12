@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc.cip.simplified
 
 import rego.v1
@@ -197,8 +197,6 @@ nerc_cip_compliance_score := score if {
 
 # NERC CIP Violations
 nerc_cip_violations := violations if {
-	all_violations := []
-
 	categorization_violations := [violation |
 		not bes_cyber_system_categorization_compliant
 		violation := {

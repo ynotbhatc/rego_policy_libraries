@@ -10,3 +10,9 @@ test_network_validation_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_network_validation_report_wellformed_on_empty_input if {
+	report := data.cis_rocky_linux_8.network.report with input as {}
+	is_object(report)
+	count(report) > 0
+}
+

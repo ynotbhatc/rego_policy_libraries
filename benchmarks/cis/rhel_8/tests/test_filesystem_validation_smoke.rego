@@ -16,3 +16,8 @@ test_filesystem_validation_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_filesystem_validation_fail_closed_on_empty_input if {
+	report := data.cis_rhel8.filesystem.report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+

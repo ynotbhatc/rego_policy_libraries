@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package stig.ubuntu_22_04
 
 # DISA STIG — Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide — Master Aggregator

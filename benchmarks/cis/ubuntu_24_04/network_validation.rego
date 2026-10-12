@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: orchestrator
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_ubuntu_24_04.network
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Sections 3.1/3.2/3.3: Network Configuration
@@ -191,7 +191,7 @@ report := {
 	"ip_forwarding_violations": count(ip_forwarding_violations),
 	"ipv6_violations": count(ipv6_violations),
 	"network_interface_violations": count(network_interface_violations),
-	"firewall": {"type": input.firewall.type, "active": input.firewall.active},
+	"firewall": {"type": object.get(input, ["firewall", "type"], null), "active": object.get(input, ["firewall", "active"], null)},
 	"section": "3.1-3.3 Network Configuration",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }

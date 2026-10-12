@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package tsa_pipeline.sd02_assessment_plan
 
 import rego.v1
