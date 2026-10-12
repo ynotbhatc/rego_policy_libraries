@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package stig.ubuntu_20_04
 
 # DISA STIG for Ubuntu 20.04 LTS - Simplified Complete Assessment

@@ -50,13 +50,13 @@
 #   source: aac
 #   domains: [git]
 #   coverage:
-#     checks: 3
+#     checks: 4
 #     cited: 3
 #     density: sparse
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package aac.repo.install_hygiene
 
 import rego.v1

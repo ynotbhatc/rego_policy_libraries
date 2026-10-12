@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [database, oracle]
 #   coverage:
-#     checks: 8
+#     checks: 20
 #     cited: 8
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_oracle.user_account_management
 
 # CIS Oracle Database 19c Benchmark - Section 3

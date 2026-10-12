@@ -6,13 +6,13 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 12
+#     checks: 23
 #     cited: 12
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package eu_ai_act.gpai
 
 import rego.v1

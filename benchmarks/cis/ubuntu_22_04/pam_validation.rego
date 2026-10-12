@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 12
+#     checks: 19
 #     cited: 12
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_ubuntu_22_04.pam
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 5.4-5.5: PAM and Password Policies

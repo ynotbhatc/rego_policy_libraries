@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 9
+#     checks: 13
 #     cited: 9
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rhel9.selinux
 
 import rego.v1

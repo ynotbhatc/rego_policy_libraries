@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_debian_11.filesystem
 
 # CIS Debian 11 - Section 1.1 Filesystem Configuration

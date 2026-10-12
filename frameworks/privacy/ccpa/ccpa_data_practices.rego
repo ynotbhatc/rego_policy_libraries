@@ -6,13 +6,13 @@
 #   source: us-state
 #   domains: [privacy, us-state]
 #   coverage:
-#     checks: 3
+#     checks: 14
 #     cited: 3
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package ccpa.data_practices
 
 import rego.v1

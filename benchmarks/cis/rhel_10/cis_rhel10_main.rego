@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis.rhel_10.main
 
 # Bridge: expose cis.rhel_10 under the /v1/data/<framework>/main/compliance_report

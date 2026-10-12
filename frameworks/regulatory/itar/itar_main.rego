@@ -10,12 +10,12 @@
 #     cited: 10
 #     expected: 17
 #     found: 17
-#     scope: module
+#     scope: directory
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package itar.main
 
 import rego.v1

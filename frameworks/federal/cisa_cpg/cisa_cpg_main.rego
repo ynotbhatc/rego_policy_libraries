@@ -6,16 +6,16 @@
 #   source: cisa
 #   domains: [us-federal, critical-infrastructure]
 #   coverage:
-#     checks: 34
+#     checks: 35
 #     cited: 25
 #     expected: 34
-#     found: 34
-#     scope: module
+#     found: 35
+#     scope: directory
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cisa_cpg.main
 
 import rego.v1

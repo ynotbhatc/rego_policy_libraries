@@ -12,13 +12,13 @@
 #   source: cis
 #   domains: [saas, m365]
 #   coverage:
-#     checks: 10
+#     checks: 13
 #     cited: 5
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_m365.sharepoint
 
 import rego.v1

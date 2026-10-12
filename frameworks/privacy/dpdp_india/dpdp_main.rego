@@ -40,13 +40,13 @@
 #   source: meity
 #   domains: [privacy, india]
 #   coverage:
-#     checks: 78
+#     checks: 79
 #     cited: 65
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package dpdp.main
 
 import rego.v1

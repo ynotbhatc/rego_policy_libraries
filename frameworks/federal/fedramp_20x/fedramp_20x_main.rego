@@ -42,13 +42,13 @@
 #   source: fedramp
 #   domains: [us-federal, cloud]
 #   coverage:
-#     checks: 48
+#     checks: 50
 #     cited: 47
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package fedramp_20x.main
 
 import rego.v1

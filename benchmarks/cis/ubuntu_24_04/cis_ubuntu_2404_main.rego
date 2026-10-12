@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_ubuntu_24_04.main
 
 # Bridge: expose cis_ubuntu_24_04 under the /v1/data/<framework>/main/compliance_report

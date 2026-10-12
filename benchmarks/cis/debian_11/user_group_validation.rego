@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 17
+#     checks: 23
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_debian_11.user_group
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 6.2: User and Group Settings

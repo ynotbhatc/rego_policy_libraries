@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 9
+#     checks: 11
 #     cited: 9
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_amazon_linux_2023.filesystem
 
 # CIS Amazon Linux 2023 Section 1.1.x - Filesystem Configuration

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package stig.openshift_4.core
 
 # DISA STIG — Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide

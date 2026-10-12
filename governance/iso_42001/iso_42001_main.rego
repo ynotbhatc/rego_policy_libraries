@@ -10,12 +10,12 @@
 #     cited: 38
 #     expected: 38
 #     found: 38
-#     scope: module
+#     scope: directory
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package iso_42001.main
 
 import rego.v1

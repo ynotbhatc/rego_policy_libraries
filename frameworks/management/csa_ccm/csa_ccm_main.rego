@@ -9,13 +9,13 @@
 #     checks: 16
 #     cited: 16
 #     expected: 197
-#     found: 16
-#     scope: module
-#     density: sparse
+#     found: 565
+#     scope: directory
+#     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package csa_ccm.main
 
 import rego.v1

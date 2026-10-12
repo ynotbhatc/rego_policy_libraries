@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rhel8.filesystem
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 1.1: Filesystem Configuration

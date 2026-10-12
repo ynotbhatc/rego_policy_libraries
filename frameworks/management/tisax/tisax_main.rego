@@ -6,16 +6,16 @@
 #   source: enx
 #   domains: [automotive]
 #   coverage:
-#     checks: 50
+#     checks: 52
 #     cited: 50
 #     expected: 51
-#     found: 50
-#     scope: module
+#     found: 52
+#     scope: directory
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package tisax.main
 
 import rego.v1

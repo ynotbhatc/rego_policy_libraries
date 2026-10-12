@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 8
+#     checks: 14
 #     cited: 8
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rhel8.sudo
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.3: Configure privilege escalation

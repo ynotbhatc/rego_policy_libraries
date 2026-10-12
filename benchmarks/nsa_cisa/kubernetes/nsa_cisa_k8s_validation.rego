@@ -54,16 +54,16 @@
 #   source: cisa
 #   domains: [kubernetes, container]
 #   coverage:
-#     checks: 5
+#     checks: 43
 #     cited: 5
 #     expected: 43
-#     found: 5
+#     found: 43
 #     scope: module
-#     density: sparse
+#     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package nsa_cisa_k8s.main
 
 import rego.v1

@@ -6,13 +6,13 @@
 #   source: tsa
 #   domains: [ot, pipeline]
 #   coverage:
-#     checks: 10
+#     checks: 18
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package tsa_pipeline.sd02_assessment_plan
 
 import rego.v1

@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 13
+#     checks: 20
 #     cited: 13
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_amazon_linux_2023.services
 
 # CIS Amazon Linux 2023 Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x - Service Configuration

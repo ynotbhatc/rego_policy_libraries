@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_ubuntu_20_04.filesystem
 
 # CIS Ubuntu 20.04 - Section 1.1 Filesystem Configuration

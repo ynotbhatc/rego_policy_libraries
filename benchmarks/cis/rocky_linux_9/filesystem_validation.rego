@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rocky_linux_9.filesystem
 
 # CIS Rocky Linux 9 Section 1.1 - Filesystem Configuration

@@ -6,13 +6,13 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 9
+#     checks: 13
 #     cited: 2
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package iec_62443.fr6
 
 import rego.v1

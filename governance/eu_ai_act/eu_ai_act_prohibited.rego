@@ -6,13 +6,13 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 12
+#     checks: 31
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package eu_ai_act.prohibited
 
 import rego.v1

@@ -6,16 +6,16 @@
 #   source: us-federal
 #   domains: [financial, banking]
 #   coverage:
-#     checks: 26
+#     checks: 34
 #     cited: 26
 #     expected: 33
-#     found: 26
-#     scope: module
-#     density: partial
+#     found: 34
+#     scope: directory
+#     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package glba.main
 
 import rego.v1

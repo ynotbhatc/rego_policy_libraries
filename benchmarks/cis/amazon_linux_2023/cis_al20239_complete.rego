@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_amazon_linux_2023
 
 # CIS Amazon Linux 2023 Benchmark v2.0.0 - Complete Validation

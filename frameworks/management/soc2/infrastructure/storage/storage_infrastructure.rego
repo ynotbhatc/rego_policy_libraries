@@ -15,7 +15,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package soc2.infrastructure.storage
 
 import rego.v1

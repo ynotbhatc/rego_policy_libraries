@@ -61,12 +61,12 @@
 #     cited: 31
 #     expected: 32
 #     found: 32
-#     scope: module
+#     scope: directory
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package ferpa.main
 
 import rego.v1

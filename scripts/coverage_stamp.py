@@ -33,6 +33,11 @@ from rego_ast import parse_tree, checks, tables, package, rule_name  # noqa: E40
 
 ORCH = re.compile(r"(_main|_complete|_simplified)\.rego$")
 TOTAL_KEYS = ("total_controls", "controls_total", "total_recommendations", "total_checks")
+# Modules legitimately below their own declared total, with the reason. Everything else below 90 % fails --check.
+KNOWN_GAPS = {
+    "frameworks/privacy/iso27701/iso27701_main.rego": "ISO/IEC 27701 text is licensed; 67 of 134 controls written from public summaries",
+    "benchmarks/cis/windows_11/cis_windows_11.rego": "CIS Windows 11 benchmark text is licensed; 210 of 267 recommendations implemented",
+}
 KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "as_of")
 
 
@@ -74,13 +79,16 @@ def scan(root=ROOT):
                      "_package": pkg, "_uncited": uncited, "_has_meta": "# METADATA" in (root / rel).read_text(errors="ignore")}
     # density. An orchestrator declares the whole framework's total while its controls live in sibling modules,
     # so a declaring file with no checks of its own is judged on its directory's sum (scope: directory).
-    by_dir = collections.Counter()
-    for rel, r in rows.items():
-        by_dir[rel.rsplit("/", 1)[0]] += r["checks"]
+    # An orchestrator (<name>_main / _complete / _simplified) declares the whole framework's total while the
+    # controls live in sibling modules and sub-directories, so it is judged on its directory subtree (scope:
+    # directory); any other declaring module is judged on itself.
+    def subtree(rel):
+        d = rel.rsplit("/", 1)[0] + "/"
+        return sum(r2["checks"] for rel2, r2 in rows.items() if rel2.startswith(d))
     for rel, r in rows.items():
         n, expected = r["checks"], r["expected"]
-        if n == 0 and expected:
-            found, scope = by_dir[rel.rsplit("/", 1)[0]], "directory"
+        if expected and (ORCH.search(rel) or n == 0):
+            found, scope = subtree(rel), "directory"
         else:
             found, scope = n, "module"
         if expected:
@@ -215,7 +223,16 @@ def main():
         for rel, why in stale[:30]:
             print(f"STALE {rel}: {why}")
         print(f"coverage stamps: {'all current' if not stale else str(len(stale)) + ' stale — run: python3 scripts/coverage_stamp.py'}")
-        return 1 if stale else 0
+        # the counting rule is validated against every module's own declared total: a module that declares
+        # total_controls and is found below 90 % of it is either a real gap (named here) or a counter regression
+        rows = scan()
+        below = sorted(rel for rel, r in rows.items() if r["expected"] and r["found"] < 0.9 * r["expected"])
+        unexpected = [rel for rel in below if rel not in KNOWN_GAPS]
+        print(f"declared totals: {sum(1 for r in rows.values() if r['expected']) - len(below)} of {sum(1 for r in rows.values() if r['expected'])} modules within 10 % of their own declared total; known gaps: {len(KNOWN_GAPS)}")
+        if unexpected:
+            for rel in unexpected:
+                print(f"BELOW DECLARED {rel}: found {rows[rel]['found']} of {rows[rel]['expected']} — a real gap (add to KNOWN_GAPS with its reason) or a counter regression")
+        return 1 if (stale or unexpected) else 0
     rows, changed, skipped = stamp()
     print(f"stamped {changed} modules ({len(rows)} scanned, {len(skipped)} without a METADATA block skipped)")
     if a.json:

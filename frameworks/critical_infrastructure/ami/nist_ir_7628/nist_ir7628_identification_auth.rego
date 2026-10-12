@@ -6,13 +6,13 @@
 #   source: nist
 #   domains: [ot, energy, smart-grid]
 #   coverage:
-#     checks: 4
+#     checks: 6
 #     cited: 4
 #     density: sparse
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package ami.nist_ir7628.identification_auth
 
 import rego.v1

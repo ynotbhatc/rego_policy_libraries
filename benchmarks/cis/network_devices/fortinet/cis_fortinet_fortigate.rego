@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_fortinet_fortigate
 
 # CIS Fortinet FortiGate Benchmark v1.3.0

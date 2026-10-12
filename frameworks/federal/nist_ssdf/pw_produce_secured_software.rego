@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package nist_ssdf.pw
 
 # NIST SSDF (SP 800-218 v1.1) — Practice Group: Produce Well-Secured Software (PW)

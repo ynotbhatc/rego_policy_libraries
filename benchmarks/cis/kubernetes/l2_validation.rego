@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_kubernetes.l2
 
 # CIS Kubernetes Benchmark v1.10.0 - Level 2 Additional Controls

@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 20
+#     checks: 30
 #     cited: 20
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_rhel8.initial_setup
 
 # CIS RHEL 8 Benchmark v4.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup

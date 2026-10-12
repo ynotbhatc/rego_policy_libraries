@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.2
+#     as_of: v2.3.3
 package cis_palo_alto_panos
 
 # CIS Palo Alto PAN-OS Benchmark v1.2.0
