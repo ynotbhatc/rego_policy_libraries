@@ -21,7 +21,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_controls_v8.main
 
 import rego.v1

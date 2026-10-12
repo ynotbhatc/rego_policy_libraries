@@ -10,9 +10,9 @@
 #     cited: 13
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_rhel8.services
 
 # CIS RHEL 8 Benchmark v4.0.0 - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration

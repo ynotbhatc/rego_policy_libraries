@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 2
 #     cited: 2
-#     density: stub
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package stig.ms_sql_2016
 
 # DISA STIG — MS SQL Server 2016 Instance Security Technical Implementation Guide — Master Aggregator

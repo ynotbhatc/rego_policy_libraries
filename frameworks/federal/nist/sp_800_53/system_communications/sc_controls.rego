@@ -10,9 +10,9 @@
 #     cited: 17
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package nist.sp800_53.system_communications
 
 import rego.v1

@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis.windows_11
 
 import rego.v1

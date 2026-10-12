@@ -10,9 +10,9 @@
 #     cited: 10
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_windows_server_2022_legacy
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0

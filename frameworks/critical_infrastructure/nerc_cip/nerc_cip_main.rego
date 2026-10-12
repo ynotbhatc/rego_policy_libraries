@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 46
 #     cited: 16
-#     density: sized
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package nerc_cip_main
 
 import rego.v1

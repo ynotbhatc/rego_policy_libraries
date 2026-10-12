@@ -8,6 +8,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.3.4] - 2026-10-12
+
+### Added — a smoke test for every module, and roles in the coverage scan
+
+- `scripts/gen_tests.py` wrote a smoke test for every module that had none (554 files under `tests/`). Each
+  asserts only what its module was proven to do on empty input: it evaluates without a runtime error; its report
+  is an object; its report is not compliant (fail-closed); its violations are non-empty. The suite grows from
+  1,954 to 3,345 tests; the CI discovery floor is ratcheted to 3,000.
+- `docs/TEST_GENERATION.md` lists what the generator could **not** assert, which is the real finding: **111
+  modules are compliant on empty input** (fail-open) and 72 produce no violation on empty input. The library's
+  rule is fail-closed; these are the work queue for it.
+- The coverage scan now stamps roles: `section` (a small module an orchestrator in the same tree aggregates),
+  `orchestrator`, `overlay` (supply-chain scoring, crosswalk) and `gate` (enforcement and governance decisions).
+  Of the 165 modules that looked sparse by size, 147 are one of those by design; 18 are genuinely thin and
+  `docs/COVERAGE_SCAN.md` names them.
+
+
 ## [2.3.3] - 2026-10-12
 
 ### Changed — a check is a distinct check, not a distinct citation: 13,758, validated against 47 declared totals

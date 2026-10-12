@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 3
 #     cited: 3
-#     density: sparse
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package stig.rhel_8
 
 # DISA STIG for RHEL 8 - Master Aggregator

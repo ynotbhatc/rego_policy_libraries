@@ -10,9 +10,9 @@
 #     cited: 27
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package stig.sles_15.core
 
 # DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide

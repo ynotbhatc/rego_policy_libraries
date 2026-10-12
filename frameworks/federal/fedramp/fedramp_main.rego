@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 34
 #     cited: 19
-#     density: sized
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package fedramp
 
 import rego.v1

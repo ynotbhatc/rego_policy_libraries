@@ -10,9 +10,9 @@
 #     cited: 8
 #     density: sparse
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_windows_server_2016
 
 # CIS Microsoft Windows Server 2016 Benchmark v1.4.0

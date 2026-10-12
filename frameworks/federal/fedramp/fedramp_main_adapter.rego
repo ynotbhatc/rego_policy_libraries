@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 7
 #     cited: 7
-#     density: sparse
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package fedramp.main
 
 import rego.v1

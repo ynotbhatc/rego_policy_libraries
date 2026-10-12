@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 5
 #     cited: 0
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package ncsc_caf.c1_security_monitoring
 
 import rego.v1

@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 5
 #     cited: 5
-#     density: sparse
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package nist.ai_rmf.main
 
 import rego.v1

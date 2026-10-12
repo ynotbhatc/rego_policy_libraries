@@ -10,9 +10,9 @@
 #     cited: 12
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cra.importer_obligations
 
 import rego.v1

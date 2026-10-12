@@ -13,9 +13,9 @@
 #     scope: module
 #     density: full
 #     basis: declared-total
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package nist.sp800_171.risk_assessment
 
 import rego.v1

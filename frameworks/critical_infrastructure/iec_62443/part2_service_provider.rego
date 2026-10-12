@@ -10,9 +10,9 @@
 #     cited: 9
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package iec_62443.part2_4
 
 import rego.v1

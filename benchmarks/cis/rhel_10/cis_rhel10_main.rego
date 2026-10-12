@@ -10,9 +10,9 @@
 #     cited: 0
 #     density: orchestrator
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis.rhel_10.main
 
 # Bridge: expose cis.rhel_10 under the /v1/data/<framework>/main/compliance_report

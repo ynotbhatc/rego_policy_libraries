@@ -10,11 +10,11 @@
 #   coverage:
 #     checks: 6
 #     cited: 6
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package pci_dss.security_testing.requirement_11
 
 import rego.v1

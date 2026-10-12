@@ -10,9 +10,9 @@
 #     cited: 16
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_ubuntu_20_04.network
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration

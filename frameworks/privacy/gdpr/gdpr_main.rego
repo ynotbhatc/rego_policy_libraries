@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 4
 #     cited: 4
-#     density: sparse
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package gdpr.main
 
 import rego.v1

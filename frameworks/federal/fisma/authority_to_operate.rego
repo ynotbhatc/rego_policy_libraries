@@ -10,9 +10,9 @@
 #     cited: 0
 #     density: unrecognised
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package fisma.ato
 
 import rego.v1

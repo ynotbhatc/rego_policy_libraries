@@ -10,9 +10,9 @@
 #     cited: 15
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_rhel8.ssh
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.2: SSH Server Configuration

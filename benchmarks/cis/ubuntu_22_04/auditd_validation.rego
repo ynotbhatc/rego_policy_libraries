@@ -10,9 +10,9 @@
 #     cited: 11
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_ubuntu_22_04.auditd
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)

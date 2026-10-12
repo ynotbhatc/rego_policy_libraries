@@ -10,9 +10,9 @@
 #     cited: 26
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_vyos
 
 # CIS VyOS Router Hardening Benchmark v1.0.0

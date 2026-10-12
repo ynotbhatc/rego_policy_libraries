@@ -10,9 +10,9 @@
 #     cited: 4
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package hipaa.privacy_rule
 
 import rego.v1

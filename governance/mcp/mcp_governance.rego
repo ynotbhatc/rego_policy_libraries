@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 4
 #     cited: 0
-#     density: sparse
-#     basis: size
+#     density: gate
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package ai_governance.mcp
 
 import rego.v1

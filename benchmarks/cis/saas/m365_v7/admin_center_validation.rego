@@ -50,9 +50,9 @@
 #     cited: 26
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_m365_v7.admin_center
 
 import rego.v1

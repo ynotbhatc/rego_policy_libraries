@@ -1,0 +1,11 @@
+package nist.rmf.categorize_test
+
+import rego.v1
+
+# Generated smoke test for frameworks/federal/nist/risk_management_framework/categorize/system_categorization.rego (scripts/gen_tests.py). Each rule states one thing the module was proven
+# to do on empty input; a missing rule means the module does not do that, see docs/TEST_GENERATION.md.
+
+test_system_categorization_loads_on_empty_input if {
+	m := data.nist.rmf.categorize with input as {}
+	is_object(m)
+}

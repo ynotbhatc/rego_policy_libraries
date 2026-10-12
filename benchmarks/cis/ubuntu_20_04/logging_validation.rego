@@ -10,9 +10,9 @@
 #     cited: 13
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_ubuntu_20_04.logging
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 4.2: Logging Configuration

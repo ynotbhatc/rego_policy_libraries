@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 15
 #     cited: 15
-#     density: sized
-#     basis: size
-#     tested: false
+#     density: orchestrator
+#     basis: role
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package sox.simplified
 
 import rego.v1

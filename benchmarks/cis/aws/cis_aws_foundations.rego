@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 5
 #     cited: 5
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_aws
 
 # CIS Amazon Web Services Foundations Benchmark v7.0.0

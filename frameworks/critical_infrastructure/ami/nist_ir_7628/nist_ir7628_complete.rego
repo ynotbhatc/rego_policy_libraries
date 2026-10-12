@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 1
 #     cited: 1
-#     density: stub
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package ami.nist_ir7628.complete
 
 import rego.v1

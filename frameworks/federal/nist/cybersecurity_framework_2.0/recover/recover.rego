@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 6
 #     cited: 6
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package nist.csf.recover
 
 import rego.v1

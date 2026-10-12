@@ -39,6 +39,10 @@ KNOWN_GAPS = {
     "benchmarks/cis/windows_11/cis_windows_11.rego": "CIS Windows 11 benchmark text is licensed; 210 of 267 recommendations implemented",
 }
 KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "as_of")
+# modules that evaluate nothing of their own by design
+OVERLAYS = {"benchmarks/supply_chain/", "crosswalk/"}
+GATES = {"enforcement/", "governance/ai/action_classification.rego", "governance/ai/context_validation.rego", "governance/ai/authorization.rego",
+         "governance/exceptions/", "governance/mcp/", "governance/oidc/"}
 
 
 def version():
@@ -82,6 +86,12 @@ def scan(root=ROOT):
     # An orchestrator (<name>_main / _complete / _simplified) declares the whole framework's total while the
     # controls live in sibling modules and sub-directories, so it is judged on its directory subtree (scope:
     # directory); any other declaring module is judged on itself.
+    orch_dirs = {rel.rsplit("/", 1)[0] + "/" for rel in rows if ORCH.search(rel) and not rel.startswith(tuple(OVERLAYS))}
+    def has_orchestrator(rel):
+        return (not ORCH.search(rel)) and any(rel.startswith(d) and rel != d for d in orch_dirs)
+    def siblings(rel):
+        d = rel.rsplit("/", 1)[0] + "/"
+        return sum(1 for rel2 in rows if rel2.startswith(d) and rel2 != rel)
     def subtree(rel):
         d = rel.rsplit("/", 1)[0] + "/"
         return sum(r2["checks"] for rel2, r2 in rows.items() if rel2.startswith(d))
@@ -95,8 +105,16 @@ def scan(root=ROOT):
             ratio = found / expected
             density, basis = ("full" if ratio >= 0.9 else "partial" if ratio >= 0.5 else "sparse"), "declared-total"
             r["found"], r["scope"] = found, scope
+        elif any(rel.startswith(o) for o in OVERLAYS):
+            density, basis = "overlay", "role"        # scores or correlates other modules; holds no checks of its own
+        elif any(rel.startswith(g) for g in GATES):
+            density, basis = "gate", "role"           # allow/deny decision for an operational gate, not control findings
+        elif ORCH.search(rel) and (n == 0 or siblings(rel) > 0):
+            density, basis = "orchestrator", "role"   # aggregates section modules; its few own checks are fail-closed notices
         elif n == 0:
-            density, basis = ("orchestrator", "role") if ORCH.search(rel) else ("unrecognised", "role")
+            density, basis = "unrecognised", "role"
+        elif n < 10 and has_orchestrator(rel):
+            density, basis = "section", "role"        # one section of a framework whose orchestrator aggregates it
         else:
             density, basis = ("sized" if n >= 10 else "sparse" if n >= 3 else "stub"), "size"
         r["density"], r["basis"] = density, basis
@@ -183,9 +201,9 @@ def report(rows, out_path):
          "## How to read it", "",
          "- **checks**: distinct control ids a module evaluates plus any violation rule without an id (the `make count` rule, `scripts/rego_ast.py`).",
          "- **expected**: only when the module itself declares a total in its report literal (`total_controls: 172`). We do not invent expectations.",
-         "- **density**: `full` / `partial` / `sparse` against a declared total; without one, `sized` (≥ 10), `sparse` (3–9), `stub` (1–2) say only how big the module is. `orchestrator` aggregates section modules and holds no checks of its own. `unrecognised` means zero checks in a shape the counter does not read yet: a counter work item, not a verdict on the policy.", "",
+         "- **density**: `full` / `partial` / `sparse` against a declared total; without one, `sized` (≥ 10), `sparse` (3–9), `stub` (1–2) say only how big the module is. `section` is a small module that an orchestrator in the same tree aggregates (judged there). `orchestrator` aggregates section modules and holds no checks of its own. `overlay` scores or correlates other modules (supply chain, crosswalk) and `gate` is an allow/deny decision; both hold no control checks by design. `unrecognised` means zero checks in a shape the counter does not read yet: a counter work item, not a verdict on the policy.", "",
          "## Distribution", "", "| density | modules |", "|---|---|"]
-    for k in ("full", "partial", "sparse", "stub", "sized", "orchestrator", "unrecognised"):
+    for k in ("full", "partial", "sparse", "stub", "sized", "section", "orchestrator", "overlay", "gate", "unrecognised"):
         L.append(f"| {k} | {by_density.get(k, 0)} |")
     L += ["", "## By family", "", "| family | modules | checks | declared total (modules declaring) | tested modules |", "|---|---|---|---|---|"]
     for k, f in sorted(fw.items(), key=lambda x: -x[1]["checks"]):

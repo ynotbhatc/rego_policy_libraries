@@ -37,11 +37,11 @@
 #   coverage:
 #     checks: 1
 #     cited: 0
-#     density: stub
-#     basis: size
+#     density: gate
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package exceptions
 
 import rego.v1

@@ -10,9 +10,9 @@
 #     cited: 44
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_azure.l2
 
 # CIS Microsoft Azure Foundations Benchmark v3.0.0 - Level 2 Additional Controls

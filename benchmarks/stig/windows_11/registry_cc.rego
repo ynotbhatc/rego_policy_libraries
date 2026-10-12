@@ -10,9 +10,9 @@
 #     cited: 54
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package stig.windows_11.registry_cc
 
 # DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide

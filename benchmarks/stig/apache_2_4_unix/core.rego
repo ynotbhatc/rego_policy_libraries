@@ -10,9 +10,9 @@
 #     cited: 10
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package stig.apache_2_4_unix.core
 
 # DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide

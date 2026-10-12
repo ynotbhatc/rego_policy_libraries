@@ -10,9 +10,9 @@
 #     cited: 13
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_rocky_linux_8.services
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration

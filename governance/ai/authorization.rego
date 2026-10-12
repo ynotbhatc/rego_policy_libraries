@@ -18,11 +18,11 @@
 #   coverage:
 #     checks: 5
 #     cited: 5
-#     density: sparse
-#     basis: size
+#     density: gate
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package ai_governance.authorization
 
 import rego.v1

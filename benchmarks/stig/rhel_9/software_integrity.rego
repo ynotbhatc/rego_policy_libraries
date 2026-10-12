@@ -10,9 +10,9 @@
 #     cited: 12
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package stig.rhel_9.software_integrity
 
 # DISA STIG for RHEL 9 - Software Integrity Module

@@ -19,11 +19,11 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     density: unrecognised
+#     density: overlay
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package supply_chain.slsa
 
 import rego.v1

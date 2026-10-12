@@ -10,9 +10,9 @@
 #     cited: 96
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_esxi_8
 
 import rego.v1

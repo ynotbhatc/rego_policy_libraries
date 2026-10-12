@@ -11,11 +11,11 @@
 #   coverage:
 #     checks: 16
 #     cited: 3
-#     density: sized
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package pci_dss.main
 
 import rego.v1

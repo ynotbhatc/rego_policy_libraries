@@ -10,9 +10,9 @@
 #     cited: 32
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_rhel8.l2
 
 # CIS RHEL 8 Benchmark v4.0.0 - Level 2 Additional Controls

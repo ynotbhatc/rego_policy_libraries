@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 20
 #     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
+#     density: gate
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cicd.pipeline
 
 # CI/CD Pipeline Security Governance

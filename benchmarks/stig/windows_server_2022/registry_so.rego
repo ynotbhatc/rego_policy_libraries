@@ -10,9 +10,9 @@
 #     cited: 41
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package stig.windows_server_2022.registry_so
 
 # DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide

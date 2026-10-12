@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 6
 #     cited: 5
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package ami.nist_ir7628.config_management
 
 import rego.v1

@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 8
 #     cited: 8
-#     density: sparse
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis.rhel_10
 
 # CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft)

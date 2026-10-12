@@ -47,11 +47,11 @@
 #   coverage:
 #     checks: 4
 #     cited: 0
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_m365_v7.attestation
 
 import rego.v1

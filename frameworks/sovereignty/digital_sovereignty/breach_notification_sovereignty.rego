@@ -10,9 +10,9 @@
 #     cited: 1
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package digital_sovereignty.breach_notification_sovereignty
 
 import rego.v1

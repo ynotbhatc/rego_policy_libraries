@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 2
 #     cited: 2
-#     density: stub
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_ubuntu_20_04
 
 # CIS Ubuntu 20.04 LTS Benchmark - Complete Compliance Assessment

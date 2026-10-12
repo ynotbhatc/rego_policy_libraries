@@ -18,11 +18,11 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     density: unrecognised
+#     density: gate
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package ai_governance.classification
 
 import rego.v1

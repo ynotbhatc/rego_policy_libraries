@@ -39,11 +39,11 @@
 #   coverage:
 #     checks: 109
 #     cited: 106
-#     density: sized
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package mas_trm.main
 
 import rego.v1

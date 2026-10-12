@@ -10,9 +10,9 @@
 #     cited: 17
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_windows_server_2019.windows_defender
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.42: Windows Defender Antivirus

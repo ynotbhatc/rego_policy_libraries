@@ -10,9 +10,9 @@
 #     cited: 8
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_rocky_linux_8.network
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration

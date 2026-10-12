@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 7
 #     cited: 7
-#     density: sparse
-#     basis: size
-#     tested: false
+#     density: section
+#     basis: role
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_docker
 
 # CIS Docker Benchmark v1.8.0

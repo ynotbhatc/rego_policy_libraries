@@ -52,11 +52,11 @@
 #   coverage:
 #     checks: 4
 #     cited: 3
-#     density: sparse
-#     basis: size
+#     density: gate
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package aac.repo.install_hygiene
 
 import rego.v1

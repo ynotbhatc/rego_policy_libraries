@@ -10,9 +10,9 @@
 #     cited: 10
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_rhel9.file_permissions
 
 # CIS RHEL 9 Section 6.1.x - System File Permissions

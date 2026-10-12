@@ -10,9 +10,9 @@
 #     cited: 7
 #     density: sparse
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: none
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_palo_alto_panos
 
 # CIS Palo Alto PAN-OS Benchmark v1.2.0

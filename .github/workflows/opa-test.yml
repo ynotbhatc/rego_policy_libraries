@@ -172,7 +172,7 @@ jobs:
           # count. The floor is the pre-existing suite size (348) rather
           # than the current total, so that a branch which does not carry
           # this tree's tests still passes. Ratchet it upward deliberately.
-          MIN_TESTS=348
+          MIN_TESTS=3000
           count=$(opa test . --ignore .github --ignore converters 2>&1 | grep -oE 'PASS: [0-9]+' | grep -oE '[0-9]+')
           echo "tests run: ${count:-0} (floor: $MIN_TESTS)"
           if [ "${count:-0}" -lt "$MIN_TESTS" ]; then

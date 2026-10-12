@@ -10,9 +10,9 @@
 #     cited: 16
 #     density: sized
 #     basis: size
-#     tested: false
+#     tested: true
 #     entrypoint: report
-#     as_of: v2.3.3
+#     as_of: v2.3.4
 package cis_rhel8.pam
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.4/5.5: PAM and User Accounts
