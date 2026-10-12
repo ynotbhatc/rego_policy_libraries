@@ -2,7 +2,7 @@
 
 > **Generated** — do not edit by hand. Refresh with `python3 scripts/coverage_report.py > COVERAGE.md`
 
-**127 of 619 policy files have tests (21%).** 139 test files, 492 policies still uncovered.
+**230 of 735 policy files have tests (31%).** 251 test files, 505 policies still uncovered.
 
 ## Why this file exists
 
@@ -32,8 +32,9 @@ took so two people do not write the same test.
 | `frameworks/privacy` | 21 |
 | `frameworks/financial` | 17 |
 | `frameworks/sovereignty` | 11 |
-| `governance/eu_ai_act` | 5 |
+| `benchmarks/supply_chain` | 9 |
 | `governance/geisa` | 5 |
+| `governance/eu_ai_act` | 4 |
 | `enforcement/kubernetes` | 2 |
 | `enforcement/cicd` | 1 |
 | `enforcement/dockerfile` | 1 |
@@ -645,6 +646,60 @@ took so two people do not write the same test.
 
 </details>
 
+<details><summary><code>benchmarks/supply_chain/_substrate</code> — 1 file(s)</summary>
+
+- `substrate.rego`
+
+</details>
+
+<details><summary><code>benchmarks/supply_chain/baseline</code> — 1 file(s)</summary>
+
+- `baseline.rego`
+
+</details>
+
+<details><summary><code>benchmarks/supply_chain/coverage</code> — 1 file(s)</summary>
+
+- `coverage.rego`
+
+</details>
+
+<details><summary><code>benchmarks/supply_chain/metrics</code> — 1 file(s)</summary>
+
+- `collapse.rego`
+
+</details>
+
+<details><summary><code>benchmarks/supply_chain/s2c2f</code> — 1 file(s)</summary>
+
+- `s2c2f.rego`
+
+</details>
+
+<details><summary><code>benchmarks/supply_chain/scrm_800_161</code> — 1 file(s)</summary>
+
+- `scrm.rego`
+
+</details>
+
+<details><summary><code>benchmarks/supply_chain/slsa</code> — 1 file(s)</summary>
+
+- `slsa.rego`
+
+</details>
+
+<details><summary><code>benchmarks/supply_chain/ssdf</code> — 1 file(s)</summary>
+
+- `ssdf.rego`
+
+</details>
+
+<details><summary><code>benchmarks/supply_chain/ssdf_genai</code> — 1 file(s)</summary>
+
+- `ssdf_genai.rego`
+
+</details>
+
 <details><summary><code>enforcement/cicd</code> — 1 file(s)</summary>
 
 - `cicd_pipeline.rego`
@@ -1074,10 +1129,10 @@ took so two people do not write the same test.
 
 </details>
 
-<details><summary><code>frameworks/financial/mas_trm</code> — 2 file(s)</summary>
+<details><summary><code>frameworks/financial/dora</code> — 2 file(s)</summary>
 
-- `mas_trm_controls_a.rego`
-- `mas_trm_main.rego`
+- `dora_rts_subcontracting.rego`
+- `dora_rts_tlpt.rego`
 
 </details>
 
@@ -1297,8 +1352,8 @@ took so two people do not write the same test.
 
 - `ccpa_admt.rego`
 - `ccpa_business_obligations.rego`
-- `ccpa_cybersecurity_audits.rego`
 - `ccpa_consumer_rights.rego`
+- `ccpa_cybersecurity_audits.rego`
 - `ccpa_data_practices.rego`
 - `ccpa_risk_assessments.rego`
 - `ccpa_sensitive_data.rego`
@@ -1356,12 +1411,11 @@ took so two people do not write the same test.
 
 </details>
 
-<details><summary><code>governance/eu_ai_act</code> — 5 file(s)</summary>
+<details><summary><code>governance/eu_ai_act</code> — 4 file(s)</summary>
 
 - `eu_ai_act_governance.rego`
 - `eu_ai_act_gpai.rego`
 - `eu_ai_act_high_risk.rego`
-- `eu_ai_act_prohibited.rego`
 - `eu_ai_act_transparency.rego`
 
 </details>

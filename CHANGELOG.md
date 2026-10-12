@@ -9,6 +9,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- **CERT-In Directions under s.70B(6) of the IT Act (India, 28 April 2022)** — `frameworks/regional/cert_in/`,
+  `cert_in.main`. Directions (i)–(vi) and Annexures I–III from the CERT-In text: NIC/NPL time
+  synchronisation, **6-hour incident reporting** with all **twenty Annexure I incident types** as
+  individual checks, CERT-In orders and the Annexure II Point of Contact, **180-day rolling logs kept
+  within India**, subscriber registration (7 fields, 5-year retention) for data centre / VPS / cloud /
+  VPN providers, and KYC + reconstructable transaction records for virtual asset service providers.
+  The two sector flags must be declared true or false; undeclared is a violation. 12 tests. Vocabulary
+  gains source `cert-in` and domain `india`.
 - **MAS Technology Risk Management Guidelines (Singapore, January 2021)** — `frameworks/financial/mas_trm/`,
   `mas_trm.main`. One control per Guidelines paragraph that states a "should": **237 controls across
   chapters 3–15** (governance, TRM framework, project management and security-by-design, software
