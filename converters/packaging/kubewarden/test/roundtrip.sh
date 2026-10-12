@@ -11,6 +11,10 @@ for fx in "$HERE"/fixtures/*.json; do
   case "$pol" in
     k8s-pss-baseline|k8s-pss-restricted)
       prof="${pol#k8s-pss-}"
+      if [[ "$name" == *unmappable* ]]; then
+        r="$(opa eval -d "$OUT/$pol" -i "$fx" 'data.policy.main.response' -f json | python3 -c 'import json,sys; r=json.load(sys.stdin)["result"][0]["expressions"][0]["value"]; print(r["allowed"], "refusing" in r["status"]["message"])')"
+        if [ "$r" == "False True" ]; then echo "PASS $name (unmappable kind -> denied with reason)"; else echo "FAIL $name: $r"; fail=1; fi; continue
+      fi
       orig="$(python3 -c "import json; d=json.load(open('$fx')); o=d['request']['object']; pod=o if o['kind']=='Pod' else {'kind':'Pod','metadata':o['metadata'],'spec':o['spec']['template']['spec']}; print(json.dumps({'pod':pod,'pss_profile':'$prof'}))" | opa eval -I -d "$ROOT/benchmarks/pss/kubernetes" 'data.k8s_pss.main.effective_violations' -f json | python3 -c 'import json,sys; print(sorted(json.load(sys.stdin)["result"][0]["expressions"][0]["value"]))')";;
     k8s-aac-admission)
       orig="$(opa eval -d "$ROOT/enforcement/kubernetes" -i "$fx" 'data.kubernetes.admission.violations' -f json | python3 -c 'import json,sys; print(sorted(json.load(sys.stdin)["result"][0]["expressions"][0]["value"]))')";;

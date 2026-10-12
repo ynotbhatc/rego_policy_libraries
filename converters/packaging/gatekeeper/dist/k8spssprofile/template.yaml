@@ -41,6 +41,11 @@ spec:
               violation contains {"msg": msg} if {
               	some msg in data.lib.k8s_pss.main.effective_violations with input as {"pod": _pod, "pss_profile": object.get(input.parameters, "profile", "restricted")}
               }
+
+              # Fail-closed: a matched object with no pod spec this template can evaluate is a violation.
+              violation contains {"msg": sprintf("object kind %v has no pod spec this constraint can evaluate — refusing", [object.get(input.review.object, "kind", "unknown")])} if {
+              	not _pod
+              }
             libs:
             - |
               # Kubernetes Pod Security Standards (PSS)

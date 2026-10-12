@@ -36,6 +36,19 @@ violations := v if {
 	v := %(violations)s
 }
 
+# Fail-closed: a request this policy is bound to but cannot map (no pod spec found, or the
+# kind is not one it understands) is denied with a reason, never allowed by silence.
+violations := {sprintf("request object has no pod spec this policy can evaluate (kind %%v) — refusing", [object.get(input, ["request", "object", "kind"], "unknown")])} if {
+	not _pod
+	not _passthrough
+}
+
+default allowed := false
+
+allowed if {
+	count(violations) == 0
+}
+
 main := {
 \t"apiVersion": "admission.k8s.io/v1",
 \t"kind": "AdmissionReview",
@@ -57,7 +70,7 @@ POLICIES = [
      "violations": 'data.k8s_pss.main.effective_violations with input as {"pod": _pod, "pss_profile": "restricted"}',
      "rules": None},
     {"name": "k8s-aac-admission", "dir": "enforcement/kubernetes", "files": ["kubernetes_admission.rego"], "entry": "policy/main",
-     "violations": 'data.kubernetes.admission.violations',
+     "violations": 'data.kubernetes.admission.violations', "passthrough": True,
      "rules": [{"apiGroups": ["", "apps", "batch"], "apiVersions": ["v1"], "resources": ["pods", "deployments", "statefulsets", "daemonsets", "jobs", "cronjobs", "services", "namespaces"], "operations": ["CREATE", "UPDATE"]}]},
 ]
 POLICIES[1]["rules"] = POLICIES[0]["rules"]
@@ -66,6 +79,7 @@ POLICIES[1]["rules"] = POLICIES[0]["rules"]
 def build(p):
     out = OUT / p["name"]; out.mkdir(parents=True, exist_ok=True)
     adapter = ADAPTER % {"violations": p["violations"]}
+    adapter = adapter.replace("_passthrough", "true" if p.get("passthrough") else "false")
     (out / "adapter.rego").write_text(adapter)
     srcs = [ROOT / p["dir"] / f for f in p["files"]] if p["files"] else [f for f in sorted((ROOT / p["dir"]).glob("*.rego")) if not f.name.startswith("test_") and not f.name.endswith("_test.rego")]
     bundle = out / "policy.tar.gz"
