@@ -42,6 +42,11 @@ _pod := {"kind": "Pod", "metadata": input.review.object.metadata, "spec": input.
 violation contains {"msg": msg} if {
 \tsome msg in data.lib.k8s_pss.main.effective_violations with input as {"pod": _pod, "pss_profile": object.get(input.parameters, "profile", "restricted")}
 }
+
+# Fail-closed: a matched object with no pod spec this template can evaluate is a violation.
+violation contains {"msg": sprintf("object kind %v has no pod spec this constraint can evaluate — refusing", [object.get(input.review.object, "kind", "unknown")])} if {
+\tnot _pod
+}
 ''',
         "match_kinds": [{"apiGroups": [""], "kinds": ["Pod"]}, {"apiGroups": ["apps"], "kinds": ["Deployment", "StatefulSet", "DaemonSet", "ReplicaSet"]}, {"apiGroups": ["batch"], "kinds": ["Job", "CronJob"]}],
         "constraint_params": {"profile": "restricted"},

@@ -6,6 +6,10 @@ python3 "$HERE/../build.py" >/dev/null
 fail=0
 for fx in "$HERE"/fixtures/*.json; do
   name="$(basename "$fx" .json)"
+  if ! python3 -c "import json,sys; sys.exit(0 if 'plan' in json.load(open('$fx')) else 1)"; then
+    d="$(opa eval -d "$OUT" -i "$fx" 'data.terraform_cloud.allowed' -f raw)"; m="$(opa eval -d "$OUT" -i "$fx" 'count(data.terraform_cloud.main.violations)' -f raw)"
+    if [ "$d" == "false" ] && [ "$m" == "1" ]; then echo "PASS $name (no plan -> denied with reason)"; else echo "FAIL $name: allowed=$d violations=$m"; fail=1; fi; continue
+  fi
   a="$(python3 -c "import json; print(json.dumps(json.load(open('$fx'))['plan']))" | opa eval -I -d "$ROOT/enforcement/terraform/terraform_plan_validation.rego" 'data.enforcement.terraform.plan.violation' -f json | python3 -c 'import json,sys; print(sorted(json.load(sys.stdin)["result"][0]["expressions"][0]["value"]))')"
   b="$(opa eval -d "$OUT" -i "$fx" 'data.terraform_cloud.main.violations' -f json | python3 -c 'import json,sys; print(sorted(json.load(sys.stdin)["result"][0]["expressions"][0]["value"]))')"
   if [ "$a" == "$b" ]; then echo "PASS $name ($(echo "$a" | tr -cd ',' | wc -c | tr -d ' ')+ violations)"; else echo "FAIL $name"; echo " gate   : $a"; echo " adapter: $b"; fail=1; fi

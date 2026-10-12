@@ -17,15 +17,28 @@ ADAPTER = '''package terraform_cloud
 import rego.v1
 
 # Terraform Cloud supplies the plan JSON at input.plan; the library gate reads a plan JSON at the root.
+# Fail-closed: no plan in the input is itself a violation, and `allowed` defaults to false,
+# so a missing or malformed payload never evaluates to "allowed".
+default allowed := false
+
 violations := v if {
+	is_object(input.plan)
 	v := data.enforcement.terraform.plan.violation with input as input.plan
 }
 
-main := {"allowed": count(violations) == 0, "violations": sort(violations)}
+violations := {"Terraform Cloud input has no plan object (input.plan) — refusing to evaluate"} if {
+	not is_object(input.plan)
+}
+
+allowed if {
+	count(violations) == 0
+}
+
+main := {"allowed": allowed, "violations": sort(violations)}
 '''
 
 MANIFEST = '''policy "aac-terraform-plan-gate" {
-  query             = "data.terraform_cloud.main.allowed"
+  query             = "data.terraform_cloud.allowed"
   enforcement_level = "mandatory"
   description       = "AAC Rego Policy Libraries — enforcement/terraform/terraform_plan_validation.rego via converters/packaging/terraform_platforms"
 }
