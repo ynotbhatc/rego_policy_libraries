@@ -6,13 +6,24 @@ either **packages** Rego for an engine that already runs it, **exports** the met
 into an interchange format, or **generates** an equivalent check in another engine's language for the
 subset of policies whose input that engine can gather.
 
-Layout: one subdirectory per target, each with its own README stating status (`planned`, `building`,
+Layout: three tiers, one subdirectory per target —
+
+```
+converters/
+├── packaging/    Tier 0 — Rego runs as-is: wasm, bundles, gatekeeper, kubewarden, iac_scanners, terraform_platforms
+├── exports/      Tier 1 — interchange from METADATA and the control tables: oscal, sarif, ocsf, crosswalk_csv, xccdf_ids
+└── generators/   Tier 2 — per-engine equivalents: ansible, scap, inspec, wazuh_sca, cel_kyverno, azure_policy,
+                  aws_config_guard, steampipe, sentinel, sigma, prowler
+```
+
+Each target directory has its own README stating status (`planned`, `building`,
 `shipping`), what it covers, how to run it, and its round-trip test. The contract every converter must
 meet is in [`CONTRACT.md`](CONTRACT.md). Status at a glance is the table in §2 below.
 
 | Status | Targets |
 |---|---|
-| planned | all 24 below — this directory was created 2026-10-12 with the roadmap; the first build is WASM + signed bundles |
+| shipping | `packaging/wasm` (build + round-trip test), `packaging/bundles` (GHCR publish, existing workflow) |
+| planned | everything else; next are gatekeeper and kubewarden, then the Tier 1 exports |
 
 ## 1. Where the checks are, and what shape their input takes
 

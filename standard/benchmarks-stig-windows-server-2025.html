@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Windows Server 2025 Rego Policies for Open Policy Agent (OPA)</title>
+<meta name="description" content="5 open-source Rego policies encoding benchmarks/stig/windows_server_2025 policies. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
+<link rel="canonical" href="https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2025.html">
+<meta property="og:title" content="Windows Server 2025 Rego Policies for Open Policy Agent (OPA)">
+<meta property="og:description" content="5 open-source Rego policies encoding benchmarks/stig/windows_server_2025 policies. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2025.html">
+<style>:root { --ink:#1b202b; --muted:#5c6573; --line:#d0d7de; --page:#ffffff; --card:#f6f8fa; --accent:#1f6feb; --accent2:#0f8f83; }
+    * { box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--ink); background:var(--page); margin:0; line-height:1.5; }
+    .wrap { max-width:1040px; margin:0 auto; padding:0 20px 64px; }
+    header { background:linear-gradient(160deg,#0d1117,#1f2a44); color:#fff; padding:44px 20px 36px; }
+    header .wrap { padding-bottom:0; }
+    h1 { font-size:2.1em; margin:0 0 8px; letter-spacing:-.02em; }
+    .tag { color:#c9d4e6; font-size:1.05em; max-width:70ch; margin:0 0 18px; }
+    .stats { display:flex; gap:26px; flex-wrap:wrap; margin-top:10px; }
+    .stat b { display:block; font-size:1.7em; line-height:1; }
+    .stat span { color:#9db0cc; font-size:.85em; text-transform:uppercase; letter-spacing:.05em; }
+    .cta { margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
+    .cta a { background:#fff; color:#12213b; text-decoration:none; font-weight:600; padding:9px 16px; border-radius:7px; font-size:.92em; }
+    .cta a.ghost { background:transparent; color:#fff; border:1px solid #46587a; }
+    pre { background:#0b0f17; color:#d7e0ee; border-radius:8px; padding:16px; overflow-x:auto; font-size:.86em; margin:22px 0 0; }
+    .search { position:sticky; top:0; background:var(--page); padding:18px 0 10px; border-bottom:1px solid var(--line); z-index:5; }
+    .search input { width:100%; padding:12px 14px; font-size:1em; border:1.5px solid var(--line); border-radius:9px; }
+    .cat { margin-top:30px; }
+    .cat-head h2 { font-size:1.28em; margin:0 0 2px; }
+    .cat-total { background:var(--accent); color:#fff; font-size:.6em; vertical-align:middle; border-radius:20px; padding:3px 9px; margin-left:6px; }
+    .cat-head p { color:var(--muted); margin:0 0 12px; font-size:.92em; }
+    .mods { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:8px; }
+    .mod { display:flex; justify-content:space-between; align-items:center; gap:10px; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 13px; transition:border-color .12s,transform .12s; }
+    .mod:hover { border-color:var(--accent); transform:translateY(-1px); }
+    .mod-name { font-weight:600; font-size:.93em; }
+    .mod-count { background:#fff; border:1px solid var(--line); color:var(--muted); border-radius:20px; padding:1px 9px; font-size:.8em; font-variant-numeric:tabular-nums; }
+    .empty { color:var(--muted); padding:30px 0; display:none; }
+    footer { border-top:1px solid var(--line); margin-top:48px; padding-top:20px; color:var(--muted); font-size:.9em; }
+    footer a { color:var(--accent); text-decoration:none; }
+    @media (prefers-color-scheme:dark) {
+      :root { --ink:#e6edf3; --muted:#9198a1; --line:#30363d; --page:#0d1117; --card:#161b22; }
+      .mod-count { background:#0d1117; }
+      .cta a { background:#e6edf3; }
+    }</style>
+</head>
+<body>
+<h1>Windows Server 2025 — Rego Policies for OPA</h1>
+<p>5 open-source Rego policies encoding benchmarks/stig/windows_server_2025 policies. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.</p>
+
+<h2>What this is</h2>
+<p><strong>5 Rego policy files</strong> encoding benchmarks/stig/windows_server_2025 policies, part of the
+<a href="https://ynotbhatc.github.io/rego_policy_libraries/">Rego Policy Libraries</a> — a standalone, dependency-free
+collection of Open Policy Agent policies for published security and compliance
+standards. No orchestrator, no agent, no vendor runtime.</p>
+
+<h2>Load and query it</h2>
+<pre><code>git clone https://github.com/ynotbhatc/rego_policy_libraries.git
+opa eval -d rego_policy_libraries/benchmarks/stig/windows_server_2025 -f pretty 'data'</code></pre>
+<p>Or load into a running OPA:</p>
+<pre><code>for f in rego_policy_libraries/benchmarks/stig/windows_server_2025/*.rego; do
+  curl -X PUT --data-binary @"$f" "$OPA/v1/policies/$(basename $f .rego)"
+done</code></pre>
+
+<h2>Two ways to use these policies</h2>
+<p><strong>Gating a change of state</strong> — evaluate a proposed action before it
+proceeds, and refuse it if it violates the standard. <strong>Measuring state</strong> —
+evaluate collected facts about an environment against the standard to produce
+compliance evidence. The same policy content serves both; only the integration
+differs.</p>
+
+<h2>Policy modules</h2>
+<ul>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/benchmarks/stig/windows_server_2025/registry_cc.rego"><code>registry_cc.rego</code></a> <span style="opacity:.7">stig.windows_server_2025.registry_cc</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/benchmarks/stig/windows_server_2025/registry_other.rego"><code>registry_other.rego</code></a> <span style="opacity:.7">stig.windows_server_2025.registry_other</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/benchmarks/stig/windows_server_2025/registry_so.rego"><code>registry_so.rego</code></a> <span style="opacity:.7">stig.windows_server_2025.registry_so</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/benchmarks/stig/windows_server_2025/stig_windows_server_2025_complete.rego"><code>stig_windows_server_2025_complete.rego</code></a> <span style="opacity:.7">stig.windows_server_2025</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/benchmarks/stig/windows_server_2025/stig_windows_server_2025_main.rego"><code>stig_windows_server_2025_main.rego</code></a> <span style="opacity:.7">stig.windows_server_2025.main</span></li>
+</ul>
+
+<h2>Contributing</h2>
+<p>Test coverage is published in
+<a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/COVERAGE.md">COVERAGE.md</a>, and uncovered policies are the best
+first contribution — each is small, self-contained, and either passes
+<code>opa test</code> or does not. See
+<a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
+
+<h2>Links</h2>
+<ul>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries">Repository</a> (Apache 2.0)</li>
+<li><a href="https://ynotbhatc.github.io/rego_policy_libraries/">All standards</a></li>
+<li><a href="https://www.openpolicyagent.org/">Open Policy Agent</a></li>
+</ul>
+
+</body>
+</html>

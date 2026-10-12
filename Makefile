@@ -42,6 +42,12 @@ count:
 	@echo "=== Control-level check count (scripts/count_controls.py) ==="
 	@python3 scripts/count_controls.py
 
+wasm:
+	@python3 converters/packaging/wasm/build.py
+
+check-converters:
+	@bash converters/packaging/wasm/test/roundtrip.sh
+
 metadata:
 	@echo "=== Checking policy METADATA annotations ==="
 	@python3 scripts/check_metadata.py
