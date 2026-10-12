@@ -9,6 +9,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- **APRA Prudential Standard CPS 234 Information Security (Australia, July 2019)** —
+  `frameworks/financial/apra_cps234/`, `apra_cps234.main`, written from the APRA text: one control per
+  requirement paragraph 13–36 (24 controls) across roles, capability, policy framework, classification,
+  controls, incident management, testing, internal audit and APRA notification. The four paragraphs that
+  condition on related-party or third-party management of information assets (16, 22, 28, 34) are gated by
+  `third_party_managed_assets`, which must be declared true or false. The 72-hour incident and
+  10-business-day control-weakness notification clocks are in the report. 8 tests. Vocabulary gains source `apra`.
 - **METI Cybersecurity Management Guidelines Ver. 3.0 (Japan, 2023)** — `frameworks/regional/meti_csm/`,
   `meti_csm.main`, written from the METI/IPA English text: Appendix A-1 (the three principles
   management must recognise, 9 items) and A-2 (the ten directions, 40 items), **49 items** each carrying
