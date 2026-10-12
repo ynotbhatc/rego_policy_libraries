@@ -9,6 +9,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- **METI Cybersecurity Management Guidelines Ver. 3.0 (Japan, 2023)** — `frameworks/regional/meti_csm/`,
+  `meti_csm.main`, written from the METI/IPA English text: Appendix A-1 (the three principles
+  management must recognise, 9 items) and A-2 (the ten directions, 40 items), **49 items** each carrying
+  the NIST CSF subcategory references the Guidelines print beside it. Attestation shape with a
+  per-principle / per-direction gap report. Fail-closed; nothing can be scoped out. 10 tests.
+  Vocabulary gains source `meti` and domain `japan`.
 - **India — Digital Personal Data Protection Act, 2023 + DPDP Rules, 2025** — `frameworks/privacy/dpdp_india/`,
   `dpdp.main`, written from the Act and the Rules as gazetted (G.S.R. 846(E), 13 November 2025):
   s.4 lawful basis, s.5/Rule 3 notice, s.6 consent, s.8 general obligations, **Rule 6 reasonable security
