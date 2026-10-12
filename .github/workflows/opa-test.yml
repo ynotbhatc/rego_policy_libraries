@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
     paths:
+      - 'scripts/build_site.py'
+      - 'scripts/gen_pages_catalog.py'
+      - 'compare/**'
+      - 'largest-policy-library.html'
+      - 'sitemap.xml'
       - '.github/workflows/converters.yml'
       - 'docs/ci-examples/**'
       - 'converters/**'
@@ -18,6 +23,11 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - 'scripts/build_site.py'
+      - 'scripts/gen_pages_catalog.py'
+      - 'compare/**'
+      - 'largest-policy-library.html'
+      - 'sitemap.xml'
       - '.github/workflows/converters.yml'
       - 'docs/ci-examples/**'
       - 'converters/**'
@@ -58,6 +68,11 @@ jobs:
 
       - name: Count control-level checks (scripts/count_controls.py must run clean)
         run: python3 scripts/count_controls.py --check-readme
+
+      - name: Site builds (scripts/build_site.py must run clean and list every page in sitemap.xml)
+        run: |
+          python3 scripts/build_site.py
+          test "$(grep -c '<loc>' sitemap.xml)" -ge 60
 
       - name: Validate workflow YAML (a bad workflow file registers silently and never runs)
         run: python3 -c "import glob,yaml; [yaml.safe_load(open(f)) for f in glob.glob('.github/workflows/*.yml')]; print('workflows parse')"
