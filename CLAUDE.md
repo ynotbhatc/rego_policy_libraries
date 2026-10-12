@@ -77,7 +77,7 @@ threat_detection/              Behavioral threat patterns
 ```
 
 Headline count: **740 policy files** (996 including tests) across the above directories, as of 2026-10-12. Count it, do not quote it: total minus test-named files (tests/ dirs, test_*, *_test.rego).
-Count it, never quote it — `git ls-tree -r HEAD --name-only | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'` — the number drifts with every merge.
+Count it, never quote it — `git ls-tree -r HEAD --name-only | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'` — the number drifts with every merge. Control-level checks (one file holds one to a few hundred): `make count` (`scripts/count_controls.py`); 7,867 at 2.2.0.
 
 ## Skill: Rego v1 syntax (MANDATORY)
 
