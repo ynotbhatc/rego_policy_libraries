@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package iec_62443.fr5
 
 import rego.v1
@@ -236,11 +236,3 @@ compliance_report := {
     "compliant":                compliant,
     "violations":               violations,
 }
-#   coverage:
-#     checks: 10
-#     cited: 4
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

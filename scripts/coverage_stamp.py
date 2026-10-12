@@ -120,9 +120,11 @@ def stamp(root=ROOT):
         if not m:
             skipped.append(rel); continue
         block = render_block(cov)
-        body = m.group(1)
-        new_body = COV_RE.sub("", body) + block
-        new_src = src[:m.start(1)] + new_body + src[m.end(1):]
+        # remove every existing coverage block wherever it sits (a misplaced one from an earlier run included),
+        # then write exactly one inside the custom block
+        src = COV_RE.sub("", src)
+        m = CUSTOM_RE.search(src)
+        new_src = src[:m.end(1)] + block + src[m.end(1):]
         if new_src != src:
             p.write_text(new_src); changed += 1
     return rows, changed, skipped
@@ -145,7 +147,10 @@ def check(root=ROOT):
     for rel, cov in rows.items():
         if not cov["_has_meta"]:
             continue
-        got = parse_stamp((root / rel).read_text())
+        text = (root / rel).read_text()
+        if len(COV_RE.findall(text)) != 1:
+            stale.append((rel, f"{len(COV_RE.findall(text))} coverage blocks; exactly one expected inside custom")); continue
+        got = parse_stamp(text)
         want = {k: (str(cov[k]).lower() if isinstance(cov[k], bool) else str(cov[k])) for k in KEYS if cov.get(k) is not None}
         if got is None:
             stale.append((rel, "no coverage stamp")); continue

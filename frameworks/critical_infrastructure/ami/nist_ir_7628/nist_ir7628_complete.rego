@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package ami.nist_ir7628.complete
 
 import rego.v1
@@ -110,11 +110,3 @@ compliance_assessment := {
         "SG.IR": incident_response.compliance_report,
     },
 }
-#   coverage:
-#     checks: 1
-#     cited: 1
-#     density: stub
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

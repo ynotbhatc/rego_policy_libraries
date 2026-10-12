@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.ai_rmf
 
 import rego.v1
@@ -306,11 +306,3 @@ ai_rmf_compliance_report := {
         },
     },
 }
-#   coverage:
-#     checks: 41
-#     cited: 35
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

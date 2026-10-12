@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package swift_csp.main
 
 import rego.v1
@@ -332,14 +332,3 @@ compliance_report := {
         "detect_respond":      array.concat([v | some v in mandatory_violations; contains(v, "CSP 6.")], [v | some v in mandatory_violations; contains(v, "CSP 7.")]),
     },
 }
-#   coverage:
-#     checks: 23
-#     cited: 23
-#     expected: 32
-#     found: 23
-#     scope: module
-#     density: partial
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

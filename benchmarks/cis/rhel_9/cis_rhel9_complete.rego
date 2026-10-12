@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel9
 
 # CIS RHEL 9 Benchmark v2.0.0 - Complete Validation
@@ -545,11 +545,3 @@ generate_recommendations contains recommendation if {
 		"controls": "CIS 5.2 / STIG RHEL-09-255xxx / NIST IA-3",
 	}
 }
-#   coverage:
-#     checks: 17
-#     cited: 17
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

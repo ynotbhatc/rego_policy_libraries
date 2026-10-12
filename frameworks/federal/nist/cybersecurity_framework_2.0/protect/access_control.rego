@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.csf.protect
 
 import rego.v1
@@ -320,12 +320,4 @@ violation contains msg if {
 violation contains msg if {
     not backup_processes
     msg := "CSF PR.IP-04: Backups not conducted, maintained, and tested"
-#   coverage:
-#     checks: 39
-#     cited: 15
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

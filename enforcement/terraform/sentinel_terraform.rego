@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package sentinel.terraform
 
 import rego.v1
@@ -118,11 +118,3 @@ result := {
     "violations":      [v | some v in violations],
     "required_tags":   [t | some t in required_tags],
 }
-#   coverage:
-#     checks: 3
-#     cited: 3
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

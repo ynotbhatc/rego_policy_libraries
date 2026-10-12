@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "8c284030-808e-5f1a-a0f5-16ec85b62dda",
+  "uuid": "15a6bea9-c24a-53e1-8053-958ea755d448",
   "metadata": {
    "title": "Rego Policy Libraries — pci_dss (PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.1",
+   "version": "2.3.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "href": "#5679a147-8e14-58ed-a4ed-0dc10ec2284c",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "href": "#5679a147-8e14-58ed-a4ed-0dc10ec2284c",
         "rel": "implementation"
        }
       ],
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "href": "#5679a147-8e14-58ed-a4ed-0dc10ec2284c",
         "rel": "implementation"
        }
       ],
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "href": "#5679a147-8e14-58ed-a4ed-0dc10ec2284c",
         "rel": "implementation"
        }
       ],
@@ -199,7 +199,7 @@
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_7-5",
-      "title": "third party access",
+      "title": "system accounts",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "href": "#5679a147-8e14-58ed-a4ed-0dc10ec2284c",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_7-5_stmt",
         "name": "statement",
-        "prose": "third party access"
+        "prose": "system accounts"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_7-6",
-      "title": "user access reviews",
+      "title": "third party access",
       "props": [
        {
         "name": "label",
@@ -250,13 +250,46 @@
       ],
       "links": [
        {
-        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "href": "#5679a147-8e14-58ed-a4ed-0dc10ec2284c",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "pci_dss-pci_dss.access_control.requirement_7-6_stmt",
+        "name": "statement",
+        "prose": "third party access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_7-7",
+      "title": "user access reviews",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_7#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_7#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5679a147-8e14-58ed-a4ed-0dc10ec2284c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_7-7_stmt",
         "name": "statement",
         "prose": "user access reviews"
        }
@@ -283,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "href": "#5679a147-8e14-58ed-a4ed-0dc10ec2284c",
         "rel": "implementation"
        }
       ],
@@ -316,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "href": "#5679a147-8e14-58ed-a4ed-0dc10ec2284c",
         "rel": "implementation"
        }
       ],
@@ -349,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#ada54b21-a094-5f1f-b261-42d31bbb35f7",
+        "href": "#5679a147-8e14-58ed-a4ed-0dc10ec2284c",
         "rel": "implementation"
        }
       ],
@@ -388,7 +421,7 @@
     "controls": [
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-1",
-      "title": "factors protected",
+      "title": "account lifecycle",
       "props": [
        {
         "name": "label",
@@ -406,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -414,14 +447,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-1_stmt",
         "name": "statement",
-        "prose": "factors protected"
+        "prose": "account lifecycle"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-2",
-      "title": "first use change",
+      "title": "unique user ids",
       "props": [
        {
         "name": "label",
@@ -439,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -447,14 +480,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-2_stmt",
         "name": "statement",
-        "prose": "first use change"
+        "prose": "unique user ids"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-3",
-      "title": "password requirements",
+      "title": "vendor accounts",
       "props": [
        {
         "name": "label",
@@ -472,7 +505,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -480,14 +513,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-3_stmt",
         "name": "statement",
-        "prose": "password requirements"
+        "prose": "vendor accounts"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-4",
-      "title": "all cde access",
+      "title": "factors protected",
       "props": [
        {
         "name": "label",
@@ -505,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -513,14 +546,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-4_stmt",
         "name": "statement",
-        "prose": "all cde access"
+        "prose": "factors protected"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-5",
-      "title": "cde admin",
+      "title": "first use change",
       "props": [
        {
         "name": "label",
@@ -538,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -546,14 +579,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-5_stmt",
         "name": "statement",
-        "prose": "cde admin"
+        "prose": "first use change"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-6",
-      "title": "remote access",
+      "title": "password requirements",
       "props": [
        {
         "name": "label",
@@ -571,7 +604,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -579,14 +612,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-6_stmt",
         "name": "statement",
-        "prose": "remote access"
+        "prose": "password requirements"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-7",
-      "title": "replay resistant",
+      "title": "all cde access",
       "props": [
        {
         "name": "label",
@@ -604,7 +637,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -612,14 +645,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-7_stmt",
         "name": "statement",
-        "prose": "replay resistant"
+        "prose": "all cde access"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-8",
-      "title": "system secure",
+      "title": "cde admin",
       "props": [
        {
         "name": "label",
@@ -637,13 +670,112 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-8_stmt",
+        "name": "statement",
+        "prose": "cde admin"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-9",
+      "title": "remote access",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-9_stmt",
+        "name": "statement",
+        "prose": "remote access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-10",
+      "title": "replay resistant",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-10_stmt",
+        "name": "statement",
+        "prose": "replay resistant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-11",
+      "title": "system secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-11_stmt",
         "name": "statement",
         "prose": "system secure"
        }
@@ -670,7 +802,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -703,7 +835,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -736,7 +868,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -769,7 +901,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -802,7 +934,7 @@
       ],
       "links": [
        {
-        "href": "#8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+        "href": "#c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
         "rel": "implementation"
        }
       ],
@@ -859,7 +991,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -892,7 +1024,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -925,7 +1057,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -958,7 +1090,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -991,7 +1123,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1024,7 +1156,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1039,7 +1171,7 @@
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-7",
-      "title": "cardholder data purging",
+      "title": "account data inventory maintained",
       "props": [
        {
         "name": "label",
@@ -1057,7 +1189,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1065,14 +1197,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-7_stmt",
         "name": "statement",
-        "prose": "cardholder data purging"
+        "prose": "account data inventory maintained"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-8",
-      "title": "data retention policy implemented",
+      "title": "account data protection policies",
       "props": [
        {
         "name": "label",
@@ -1090,7 +1222,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1098,14 +1230,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-8_stmt",
         "name": "statement",
-        "prose": "data retention policy implemented"
+        "prose": "account data protection policies"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-9",
-      "title": "quarterly data discovery",
+      "title": "data protection roles defined",
       "props": [
        {
         "name": "label",
@@ -1123,7 +1255,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1131,14 +1263,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-9_stmt",
         "name": "statement",
-        "prose": "quarterly data discovery"
+        "prose": "data protection roles defined"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-10",
-      "title": "sad post auth deletion",
+      "title": "cardholder data purging",
       "props": [
        {
         "name": "label",
@@ -1156,7 +1288,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1164,14 +1296,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-10_stmt",
         "name": "statement",
-        "prose": "sad post auth deletion"
+        "prose": "cardholder data purging"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-11",
-      "title": "cvc storage prohibited",
+      "title": "data retention policy implemented",
       "props": [
        {
         "name": "label",
@@ -1189,7 +1321,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1197,14 +1329,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-11_stmt",
         "name": "statement",
-        "prose": "cvc storage prohibited"
+        "prose": "data retention policy implemented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-12",
-      "title": "magnetic stripe data prohibited",
+      "title": "quarterly data discovery",
       "props": [
        {
         "name": "label",
@@ -1222,7 +1354,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1230,14 +1362,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-12_stmt",
         "name": "statement",
-        "prose": "magnetic stripe data prohibited"
+        "prose": "quarterly data discovery"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-13",
-      "title": "pin storage prohibited",
+      "title": "sad post auth deletion",
       "props": [
        {
         "name": "label",
@@ -1255,7 +1387,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1263,14 +1395,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-13_stmt",
         "name": "statement",
-        "prose": "pin storage prohibited"
+        "prose": "sad post auth deletion"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-14",
-      "title": "pan display restricted",
+      "title": "cvc storage prohibited",
       "props": [
        {
         "name": "label",
@@ -1288,7 +1420,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1296,14 +1428,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-14_stmt",
         "name": "statement",
-        "prose": "pan display restricted"
+        "prose": "cvc storage prohibited"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-15",
-      "title": "pan masking implemented",
+      "title": "magnetic stripe data prohibited",
       "props": [
        {
         "name": "label",
@@ -1321,7 +1453,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1329,14 +1461,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-15_stmt",
         "name": "statement",
-        "prose": "pan masking implemented"
+        "prose": "magnetic stripe data prohibited"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-16",
-      "title": "screen protection implemented",
+      "title": "pin storage prohibited",
       "props": [
        {
         "name": "label",
@@ -1354,7 +1486,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1362,14 +1494,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-16_stmt",
         "name": "statement",
-        "prose": "screen protection implemented"
+        "prose": "pin storage prohibited"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-17",
-      "title": "database encryption implemented",
+      "title": "pan display restricted",
       "props": [
        {
         "name": "label",
@@ -1387,7 +1519,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1395,14 +1527,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-17_stmt",
         "name": "statement",
-        "prose": "database encryption implemented"
+        "prose": "pan display restricted"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-18",
-      "title": "filesystem encryption implemented",
+      "title": "pan masking implemented",
       "props": [
        {
         "name": "label",
@@ -1420,7 +1552,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1428,14 +1560,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-18_stmt",
         "name": "statement",
-        "prose": "filesystem encryption implemented"
+        "prose": "pan masking implemented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-19",
-      "title": "pan encryption implemented",
+      "title": "screen protection implemented",
       "props": [
        {
         "name": "label",
@@ -1453,7 +1585,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1461,14 +1593,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-19_stmt",
         "name": "statement",
-        "prose": "pan encryption implemented"
+        "prose": "screen protection implemented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-20",
-      "title": "key distribution secure",
+      "title": "database encryption implemented",
       "props": [
        {
         "name": "label",
@@ -1486,7 +1618,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1494,14 +1626,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-20_stmt",
         "name": "statement",
-        "prose": "key distribution secure"
+        "prose": "database encryption implemented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-21",
-      "title": "key management policies",
+      "title": "filesystem encryption implemented",
       "props": [
        {
         "name": "label",
@@ -1519,7 +1651,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1527,14 +1659,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-21_stmt",
         "name": "statement",
-        "prose": "key management policies"
+        "prose": "filesystem encryption implemented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-22",
-      "title": "key storage protected",
+      "title": "pan encryption implemented",
       "props": [
        {
         "name": "label",
@@ -1552,7 +1684,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1560,14 +1692,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-22_stmt",
         "name": "statement",
-        "prose": "key storage protected"
+        "prose": "pan encryption implemented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-23",
-      "title": "crypto architecture documented",
+      "title": "key distribution secure",
       "props": [
        {
         "name": "label",
@@ -1585,7 +1717,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1593,14 +1725,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-23_stmt",
         "name": "statement",
-        "prose": "crypto architecture documented"
+        "prose": "key distribution secure"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-24",
-      "title": "crypto key administration",
+      "title": "key generation standards",
       "props": [
        {
         "name": "label",
@@ -1618,7 +1750,7 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
@@ -1626,14 +1758,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-24_stmt",
         "name": "statement",
-        "prose": "crypto key administration"
+        "prose": "key generation standards"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_3-25",
-      "title": "key lifecycle management",
+      "title": "key management policies",
       "props": [
        {
         "name": "label",
@@ -1651,13 +1783,145 @@
       ],
       "links": [
        {
-        "href": "#d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_3-25_stmt",
+        "name": "statement",
+        "prose": "key management policies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-26",
+      "title": "key storage protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-26_stmt",
+        "name": "statement",
+        "prose": "key storage protected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-27",
+      "title": "crypto architecture documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-27_stmt",
+        "name": "statement",
+        "prose": "crypto architecture documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-28",
+      "title": "crypto key administration",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-28_stmt",
+        "name": "statement",
+        "prose": "crypto key administration"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_3-29",
+      "title": "key lifecycle management",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_3#29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_3#29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1eb2a5c3-674e-5c76-8838-581f3fce29e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_3-29_stmt",
         "name": "statement",
         "prose": "key lifecycle management"
        }
@@ -1690,7 +1954,7 @@
     "controls": [
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_4-1",
-      "title": "api transmission",
+      "title": "accepted standards",
       "props": [
        {
         "name": "label",
@@ -1708,7 +1972,7 @@
       ],
       "links": [
        {
-        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
         "rel": "implementation"
        }
       ],
@@ -1716,14 +1980,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_4-1_stmt",
         "name": "statement",
-        "prose": "api transmission"
+        "prose": "accepted standards"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_4-2",
-      "title": "certificate management",
+      "title": "api transmission",
       "props": [
        {
         "name": "label",
@@ -1741,7 +2005,7 @@
       ],
       "links": [
        {
-        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
         "rel": "implementation"
        }
       ],
@@ -1749,14 +2013,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_4-2_stmt",
         "name": "statement",
-        "prose": "certificate management"
+        "prose": "api transmission"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_4-3",
-      "title": "messaging pan prohibited",
+      "title": "certificate management",
       "props": [
        {
         "name": "label",
@@ -1774,7 +2038,7 @@
       ],
       "links": [
        {
-        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
         "rel": "implementation"
        }
       ],
@@ -1782,14 +2046,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_4-3_stmt",
         "name": "statement",
-        "prose": "messaging pan prohibited"
+        "prose": "certificate management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_4-4",
-      "title": "payment page encryption",
+      "title": "messaging pan prohibited",
       "props": [
        {
         "name": "label",
@@ -1807,7 +2071,7 @@
       ],
       "links": [
        {
-        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
         "rel": "implementation"
        }
       ],
@@ -1815,14 +2079,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_4-4_stmt",
         "name": "statement",
-        "prose": "payment page encryption"
+        "prose": "messaging pan prohibited"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_4-5",
-      "title": "pos terminal encryption",
+      "title": "payment page encryption",
       "props": [
        {
         "name": "label",
@@ -1840,7 +2104,7 @@
       ],
       "links": [
        {
-        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
         "rel": "implementation"
        }
       ],
@@ -1848,14 +2112,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_4-5_stmt",
         "name": "statement",
-        "prose": "pos terminal encryption"
+        "prose": "payment page encryption"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_4-6",
-      "title": "strong cryptography for pan",
+      "title": "pos terminal encryption",
       "props": [
        {
         "name": "label",
@@ -1873,7 +2137,7 @@
       ],
       "links": [
        {
-        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
         "rel": "implementation"
        }
       ],
@@ -1881,14 +2145,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_4-6_stmt",
         "name": "statement",
-        "prose": "strong cryptography for pan"
+        "prose": "pos terminal encryption"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_4-7",
-      "title": "trusted keys certificates",
+      "title": "strong cryptography for pan",
       "props": [
        {
         "name": "label",
@@ -1906,7 +2170,7 @@
       ],
       "links": [
        {
-        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
         "rel": "implementation"
        }
       ],
@@ -1914,14 +2178,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_4-7_stmt",
         "name": "statement",
-        "prose": "trusted keys certificates"
+        "prose": "strong cryptography for pan"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_4-8",
-      "title": "weak protocols disabled",
+      "title": "trusted keys certificates",
       "props": [
        {
         "name": "label",
@@ -1939,7 +2203,7 @@
       ],
       "links": [
        {
-        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
         "rel": "implementation"
        }
       ],
@@ -1947,14 +2211,14 @@
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_4-8_stmt",
         "name": "statement",
-        "prose": "weak protocols disabled"
+        "prose": "trusted keys certificates"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.data_protection.requirement_4-9",
-      "title": "wireless pan transmission",
+      "title": "weak protocols disabled",
       "props": [
        {
         "name": "label",
@@ -1972,13 +2236,46 @@
       ],
       "links": [
        {
-        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "pci_dss-pci_dss.data_protection.requirement_4-9_stmt",
+        "name": "statement",
+        "prose": "weak protocols disabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.data_protection.requirement_4-10",
+      "title": "wireless pan transmission",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.data_protection.requirement_4#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.data_protection.requirement_4#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.data_protection.requirement_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.data_protection.requirement_4-10_stmt",
         "name": "statement",
         "prose": "wireless pan transmission"
        }
@@ -2005,7 +2302,7 @@
       ],
       "links": [
        {
-        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
         "rel": "implementation"
        }
       ],
@@ -2038,7 +2335,7 @@
       ],
       "links": [
        {
-        "href": "#46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+        "href": "#13505fc2-015e-532b-a171-9ef3e09d1338",
         "rel": "implementation"
        }
       ],
@@ -2095,7 +2392,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2128,7 +2425,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2161,7 +2458,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2194,7 +2491,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2227,7 +2524,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2260,7 +2557,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2293,7 +2590,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2302,6 +2599,105 @@
         "id": "pci_dss-pci_dss.governance.requirement_12-7_stmt",
         "name": "statement",
         "prose": "technology review"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.governance.requirement_12-8",
+      "title": "third party acknowledgment",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.governance.requirement_12#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.governance.requirement_12#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.governance.requirement_12-8_stmt",
+        "name": "statement",
+        "prose": "third party acknowledgment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.governance.requirement_12-9",
+      "title": "third party risk",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.governance.requirement_12#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.governance.requirement_12#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.governance.requirement_12-9_stmt",
+        "name": "statement",
+        "prose": "third party risk"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.governance.requirement_12-10",
+      "title": "tpsp accountability",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.governance.requirement_12#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.governance.requirement_12#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.governance.requirement_12"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.governance.requirement_12-10_stmt",
+        "name": "statement",
+        "prose": "tpsp accountability"
        }
       ],
       "class": "compliance"
@@ -2326,7 +2722,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2359,7 +2755,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2392,7 +2788,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2425,7 +2821,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2458,7 +2854,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2491,7 +2887,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2524,7 +2920,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2557,7 +2953,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2590,7 +2986,7 @@
       ],
       "links": [
        {
-        "href": "#de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+        "href": "#3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
         "rel": "implementation"
        }
       ],
@@ -2647,7 +3043,7 @@
       ],
       "links": [
        {
-        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "href": "#36714870-3219-5f79-9957-ff87a5640fcb",
         "rel": "implementation"
        }
       ],
@@ -2680,7 +3076,7 @@
       ],
       "links": [
        {
-        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "href": "#36714870-3219-5f79-9957-ff87a5640fcb",
         "rel": "implementation"
        }
       ],
@@ -2713,7 +3109,7 @@
       ],
       "links": [
        {
-        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "href": "#36714870-3219-5f79-9957-ff87a5640fcb",
         "rel": "implementation"
        }
       ],
@@ -2746,7 +3142,7 @@
       ],
       "links": [
        {
-        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "href": "#36714870-3219-5f79-9957-ff87a5640fcb",
         "rel": "implementation"
        }
       ],
@@ -2779,7 +3175,7 @@
       ],
       "links": [
        {
-        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "href": "#36714870-3219-5f79-9957-ff87a5640fcb",
         "rel": "implementation"
        }
       ],
@@ -2812,7 +3208,7 @@
       ],
       "links": [
        {
-        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "href": "#36714870-3219-5f79-9957-ff87a5640fcb",
         "rel": "implementation"
        }
       ],
@@ -2845,7 +3241,7 @@
       ],
       "links": [
        {
-        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "href": "#36714870-3219-5f79-9957-ff87a5640fcb",
         "rel": "implementation"
        }
       ],
@@ -2878,7 +3274,7 @@
       ],
       "links": [
        {
-        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "href": "#36714870-3219-5f79-9957-ff87a5640fcb",
         "rel": "implementation"
        }
       ],
@@ -2911,7 +3307,7 @@
       ],
       "links": [
        {
-        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "href": "#36714870-3219-5f79-9957-ff87a5640fcb",
         "rel": "implementation"
        }
       ],
@@ -2944,7 +3340,7 @@
       ],
       "links": [
        {
-        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "href": "#36714870-3219-5f79-9957-ff87a5640fcb",
         "rel": "implementation"
        }
       ],
@@ -2977,7 +3373,7 @@
       ],
       "links": [
        {
-        "href": "#0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+        "href": "#36714870-3219-5f79-9957-ff87a5640fcb",
         "rel": "implementation"
        }
       ],
@@ -3034,7 +3430,7 @@
       ],
       "links": [
        {
-        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "href": "#256e78d9-2e8e-5f75-a8b2-7e16a635a5a5",
         "rel": "implementation"
        }
       ],
@@ -3067,7 +3463,7 @@
       ],
       "links": [
        {
-        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "href": "#256e78d9-2e8e-5f75-a8b2-7e16a635a5a5",
         "rel": "implementation"
        }
       ],
@@ -3100,7 +3496,7 @@
       ],
       "links": [
        {
-        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "href": "#256e78d9-2e8e-5f75-a8b2-7e16a635a5a5",
         "rel": "implementation"
        }
       ],
@@ -3133,7 +3529,7 @@
       ],
       "links": [
        {
-        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "href": "#256e78d9-2e8e-5f75-a8b2-7e16a635a5a5",
         "rel": "implementation"
        }
       ],
@@ -3166,7 +3562,7 @@
       ],
       "links": [
        {
-        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "href": "#256e78d9-2e8e-5f75-a8b2-7e16a635a5a5",
         "rel": "implementation"
        }
       ],
@@ -3199,11 +3595,11 @@
       ],
       "links": [
        {
-        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "href": "#256e78d9-2e8e-5f75-a8b2-7e16a635a5a5",
         "rel": "implementation"
        },
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -3241,7 +3637,7 @@
       ],
       "links": [
        {
-        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "href": "#256e78d9-2e8e-5f75-a8b2-7e16a635a5a5",
         "rel": "implementation"
        }
       ],
@@ -3274,7 +3670,7 @@
       ],
       "links": [
        {
-        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "href": "#256e78d9-2e8e-5f75-a8b2-7e16a635a5a5",
         "rel": "implementation"
        }
       ],
@@ -3307,7 +3703,7 @@
       ],
       "links": [
        {
-        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "href": "#256e78d9-2e8e-5f75-a8b2-7e16a635a5a5",
         "rel": "implementation"
        }
       ],
@@ -3340,7 +3736,7 @@
       ],
       "links": [
        {
-        "href": "#bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+        "href": "#256e78d9-2e8e-5f75-a8b2-7e16a635a5a5",
         "rel": "implementation"
        }
       ],
@@ -3397,7 +3793,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3430,7 +3826,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3463,7 +3859,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3496,7 +3892,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3529,7 +3925,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3562,7 +3958,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3595,7 +3991,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3628,7 +4024,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3661,7 +4057,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3694,7 +4090,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3727,7 +4123,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3760,7 +4156,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3793,7 +4189,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3808,7 +4204,7 @@
      },
      {
       "id": "pci_dss-pci_dss.network_security.requirement_1-14",
-      "title": "direct internet access prohibited",
+      "title": "firewall configuration standards",
       "props": [
        {
         "name": "label",
@@ -3826,7 +4222,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3834,14 +4230,14 @@
        {
         "id": "pci_dss-pci_dss.network_security.requirement_1-14_stmt",
         "name": "statement",
-        "prose": "direct internet access prohibited"
+        "prose": "firewall configuration standards"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.network_security.requirement_1-15",
-      "title": "inbound traffic restricted",
+      "title": "firewall rules documented",
       "props": [
        {
         "name": "label",
@@ -3859,7 +4255,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3867,14 +4263,14 @@
        {
         "id": "pci_dss-pci_dss.network_security.requirement_1-15_stmt",
         "name": "statement",
-        "prose": "inbound traffic restricted"
+        "prose": "firewall rules documented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.network_security.requirement_1-16",
-      "title": "outbound traffic restricted",
+      "title": "network connections controlled",
       "props": [
        {
         "name": "label",
@@ -3892,7 +4288,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3900,14 +4296,14 @@
        {
         "id": "pci_dss-pci_dss.network_security.requirement_1-16_stmt",
         "name": "statement",
-        "prose": "outbound traffic restricted"
+        "prose": "network connections controlled"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.network_security.requirement_1-17",
-      "title": "dmz properly configured",
+      "title": "direct internet access prohibited",
       "props": [
        {
         "name": "label",
@@ -3925,7 +4321,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3933,14 +4329,14 @@
        {
         "id": "pci_dss-pci_dss.network_security.requirement_1-17_stmt",
         "name": "statement",
-        "prose": "dmz properly configured"
+        "prose": "direct internet access prohibited"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.network_security.requirement_1-18",
-      "title": "nat implemented",
+      "title": "inbound traffic restricted",
       "props": [
        {
         "name": "label",
@@ -3958,7 +4354,7 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
@@ -3966,14 +4362,14 @@
        {
         "id": "pci_dss-pci_dss.network_security.requirement_1-18_stmt",
         "name": "statement",
-        "prose": "nat implemented"
+        "prose": "inbound traffic restricted"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.network_security.requirement_1-19",
-      "title": "network segmentation implemented",
+      "title": "outbound traffic restricted",
       "props": [
        {
         "name": "label",
@@ -3991,13 +4387,112 @@
       ],
       "links": [
        {
-        "href": "#468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "pci_dss-pci_dss.network_security.requirement_1-19_stmt",
+        "name": "statement",
+        "prose": "outbound traffic restricted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-20",
+      "title": "dmz properly configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-20_stmt",
+        "name": "statement",
+        "prose": "dmz properly configured"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-21",
+      "title": "nat implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-21_stmt",
+        "name": "statement",
+        "prose": "nat implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.network_security.requirement_1-22",
+      "title": "network segmentation implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.network_security.requirement_1#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.network_security.requirement_1#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.network_security.requirement_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f9a6061c-9a88-5594-98ff-39baace8f068",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.network_security.requirement_1-22_stmt",
         "name": "statement",
         "prose": "network segmentation implemented"
        }
@@ -4048,7 +4543,7 @@
       ],
       "links": [
        {
-        "href": "#f4921c1e-604f-576f-a666-56785f025827",
+        "href": "#9e9dbec6-b9ca-5954-a6a3-7f132a3bf3e7",
         "rel": "implementation"
        }
       ],
@@ -4105,7 +4600,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4138,7 +4633,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4171,7 +4666,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4204,7 +4699,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4237,7 +4732,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4270,7 +4765,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4303,7 +4798,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4336,7 +4831,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4369,7 +4864,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4402,7 +4897,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4435,7 +4930,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4468,7 +4963,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4501,7 +4996,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4534,7 +5029,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4567,7 +5062,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4600,7 +5095,7 @@
       ],
       "links": [
        {
-        "href": "#a2011f73-5bbd-5890-9805-ea96b71bd350",
+        "href": "#96a5f670-42a3-53fd-8458-c76f92c56a7c",
         "rel": "implementation"
        }
       ],
@@ -4657,7 +5152,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -4690,7 +5185,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -4723,7 +5218,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -4756,7 +5251,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -4789,7 +5284,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -4822,7 +5317,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -4855,7 +5350,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -4888,7 +5383,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -4921,7 +5416,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -4954,7 +5449,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -4987,7 +5482,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -5020,7 +5515,7 @@
       ],
       "links": [
        {
-        "href": "#dec84fe3-de92-59a2-a103-f737f35e790b",
+        "href": "#f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
         "rel": "implementation"
        }
       ],
@@ -5077,7 +5572,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5110,7 +5605,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5143,7 +5638,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5176,7 +5671,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5209,7 +5704,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5242,7 +5737,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5275,7 +5770,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5308,7 +5803,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5341,7 +5836,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5374,7 +5869,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5407,7 +5902,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5440,7 +5935,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5473,7 +5968,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5506,7 +6001,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5539,7 +6034,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5572,7 +6067,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5605,7 +6100,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5638,7 +6133,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5671,7 +6166,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5704,7 +6199,7 @@
       ],
       "links": [
        {
-        "href": "#d5ed6a10-377a-5429-b118-5911ab5472f7",
+        "href": "#ba6feffd-c34d-5c5c-94da-0dde87e05302",
         "rel": "implementation"
        }
       ],
@@ -5761,7 +6256,7 @@
       ],
       "links": [
        {
-        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
+        "href": "#08f61b22-01f2-5ade-b8de-ee4515d6bd21",
         "rel": "implementation"
        }
       ],
@@ -5794,7 +6289,7 @@
       ],
       "links": [
        {
-        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
+        "href": "#08f61b22-01f2-5ade-b8de-ee4515d6bd21",
         "rel": "implementation"
        }
       ],
@@ -5827,7 +6322,7 @@
       ],
       "links": [
        {
-        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
+        "href": "#08f61b22-01f2-5ade-b8de-ee4515d6bd21",
         "rel": "implementation"
        }
       ],
@@ -5860,7 +6355,7 @@
       ],
       "links": [
        {
-        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
+        "href": "#08f61b22-01f2-5ade-b8de-ee4515d6bd21",
         "rel": "implementation"
        }
       ],
@@ -5893,7 +6388,7 @@
       ],
       "links": [
        {
-        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
+        "href": "#08f61b22-01f2-5ade-b8de-ee4515d6bd21",
         "rel": "implementation"
        }
       ],
@@ -5926,7 +6421,7 @@
       ],
       "links": [
        {
-        "href": "#b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
+        "href": "#08f61b22-01f2-5ade-b8de-ee4515d6bd21",
         "rel": "implementation"
        }
       ],
@@ -5983,7 +6478,7 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
@@ -5998,7 +6493,7 @@
      },
      {
       "id": "pci_dss-pci_dss.system_hardening.requirement_2-2",
-      "title": "network devices",
+      "title": "hardening standards applied",
       "props": [
        {
         "name": "label",
@@ -6016,7 +6511,7 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
@@ -6024,14 +6519,14 @@
        {
         "id": "pci_dss-pci_dss.system_hardening.requirement_2-2_stmt",
         "name": "statement",
-        "prose": "network devices"
+        "prose": "hardening standards applied"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.system_hardening.requirement_2-3",
-      "title": "os",
+      "title": "network devices",
       "props": [
        {
         "name": "label",
@@ -6049,7 +6544,7 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
@@ -6057,14 +6552,14 @@
        {
         "id": "pci_dss-pci_dss.system_hardening.requirement_2-3_stmt",
         "name": "statement",
-        "prose": "os"
+        "prose": "network devices"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.system_hardening.requirement_2-4",
-      "title": "default passwords changed",
+      "title": "os",
       "props": [
        {
         "name": "label",
@@ -6082,7 +6577,7 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
@@ -6090,14 +6585,14 @@
        {
         "id": "pci_dss-pci_dss.system_hardening.requirement_2-4_stmt",
         "name": "statement",
-        "prose": "default passwords changed"
+        "prose": "os"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.system_hardening.requirement_2-5",
-      "title": "known vulnerabilities mitigated",
+      "title": "policies established",
       "props": [
        {
         "name": "label",
@@ -6115,7 +6610,7 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
@@ -6123,14 +6618,14 @@
        {
         "id": "pci_dss-pci_dss.system_hardening.requirement_2-5_stmt",
         "name": "statement",
-        "prose": "known vulnerabilities mitigated"
+        "prose": "policies established"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.system_hardening.requirement_2-6",
-      "title": "single primary function",
+      "title": "roles defined",
       "props": [
        {
         "name": "label",
@@ -6148,7 +6643,7 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
@@ -6156,14 +6651,14 @@
        {
         "id": "pci_dss-pci_dss.system_hardening.requirement_2-6_stmt",
         "name": "statement",
-        "prose": "single primary function"
+        "prose": "roles defined"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.system_hardening.requirement_2-7",
-      "title": "unnecessary functionality removed",
+      "title": "standards maintained",
       "props": [
        {
         "name": "label",
@@ -6181,13 +6676,145 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "pci_dss-pci_dss.system_hardening.requirement_2-7_stmt",
+        "name": "statement",
+        "prose": "standards maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.system_hardening.requirement_2-8",
+      "title": "default passwords changed",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.system_hardening.requirement_2#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.system_hardening.requirement_2#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.system_hardening.requirement_2-8_stmt",
+        "name": "statement",
+        "prose": "default passwords changed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.system_hardening.requirement_2-9",
+      "title": "known vulnerabilities mitigated",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.system_hardening.requirement_2#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.system_hardening.requirement_2#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.system_hardening.requirement_2-9_stmt",
+        "name": "statement",
+        "prose": "known vulnerabilities mitigated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.system_hardening.requirement_2-10",
+      "title": "single primary function",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.system_hardening.requirement_2#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.system_hardening.requirement_2#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.system_hardening.requirement_2-10_stmt",
+        "name": "statement",
+        "prose": "single primary function"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.system_hardening.requirement_2-11",
+      "title": "unnecessary functionality removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.system_hardening.requirement_2#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.system_hardening.requirement_2#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.system_hardening.requirement_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.system_hardening.requirement_2-11_stmt",
         "name": "statement",
         "prose": "unnecessary functionality removed"
        }
@@ -6214,7 +6841,7 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
@@ -6247,7 +6874,7 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
@@ -6280,7 +6907,7 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
@@ -6313,7 +6940,7 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
@@ -6346,7 +6973,7 @@
       ],
       "links": [
        {
-        "href": "#1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+        "href": "#46a20b36-bcaa-59f6-84b8-68cac53e99d7",
         "rel": "implementation"
        }
       ],
@@ -6365,7 +6992,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "ada54b21-a094-5f1f-b261-42d31bbb35f7",
+     "uuid": "5679a147-8e14-58ed-a4ed-0dc10ec2284c",
      "title": "PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data",
      "props": [
       {
@@ -6376,13 +7003,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/access_control/requirement_7.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/access_control/requirement_7.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "8f681d94-1db8-5cb1-a4f2-5ad5805acf73",
+     "uuid": "c9ca5c5f-8fbe-580d-a845-ee9c3f913513",
      "title": "PCI DSS v4.0 Requirement 8 - Identify Users and Authenticate Access to System Components",
      "props": [
       {
@@ -6393,13 +7020,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/access_control/requirement_8.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/access_control/requirement_8.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d99ac142-d0bf-55b5-8e53-f5d1db2b6568",
+     "uuid": "1eb2a5c3-674e-5c76-8838-581f3fce29e9",
      "title": "PCI DSS Requirement 3 - Protect Stored Account Data",
      "props": [
       {
@@ -6410,13 +7037,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/data_protection/requirement_3.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/data_protection/requirement_3.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "46dfdda3-3c13-5f00-9959-5a04f9a2d552",
+     "uuid": "13505fc2-015e-532b-a171-9ef3e09d1338",
      "title": "PCI DSS v4.0 Requirement 4 - Protect Cardholder Data with Strong Cryptography",
      "props": [
       {
@@ -6427,13 +7054,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/data_protection/requirement_4.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/data_protection/requirement_4.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "de735bc2-0b7a-5213-a1f2-ce1aa51a40cc",
+     "uuid": "3ee4b2ce-fb14-56fc-933c-b6bcb8d413ee",
      "title": "PCI DSS v4.0 Requirement 12 - Support Information Security with Organizational",
      "props": [
       {
@@ -6444,13 +7071,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/governance/requirement_12.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/governance/requirement_12.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "0a3c6602-bd92-5f99-bdb4-142e29b48e1f",
+     "uuid": "36714870-3219-5f79-9957-ff87a5640fcb",
      "title": "PCI DSS v4.0 Requirement 10 - Log and Monitor All Access to System Components",
      "props": [
       {
@@ -6461,13 +7088,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "bf8c2467-d54e-50cc-b7d8-8318f9d98eb7",
+     "uuid": "256e78d9-2e8e-5f75-a8b2-7e16a635a5a5",
      "title": "PCI DSS v4.0 Requirement 5 - Protect All Systems and Networks from Malicious Software",
      "props": [
       {
@@ -6478,13 +7105,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/malware_protection/requirement_5.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/malware_protection/requirement_5.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "468b87ef-65b7-5ff1-847f-4c2290a2e1b0",
+     "uuid": "f9a6061c-9a88-5594-98ff-39baace8f068",
      "title": "PCI DSS Requirement 1 - Install and Maintain Network Security Controls",
      "props": [
       {
@@ -6495,13 +7122,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/network_security/requirement_1.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/network_security/requirement_1.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "f4921c1e-604f-576f-a666-56785f025827",
+     "uuid": "9e9dbec6-b9ca-5954-a6a3-7f132a3bf3e7",
      "title": "Consumer endpoint for the compliance-repo pci_dss_compliance role",
      "props": [
       {
@@ -6512,13 +7139,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/pci_dss_assessment.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/pci_dss_assessment.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a2011f73-5bbd-5890-9805-ea96b71bd350",
+     "uuid": "96a5f670-42a3-53fd-8458-c76f92c56a7c",
      "title": "PCI DSS v4.0 - Main Aggregation Policy (All 12 Requirements)",
      "props": [
       {
@@ -6529,13 +7156,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/pci_dss_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/pci_dss_main.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "dec84fe3-de92-59a2-a103-f737f35e790b",
+     "uuid": "f1544d31-8cab-5dbd-b5d7-53f32d5b7658",
      "title": "PCI DSS v4.0 Requirement 9 - Restrict Physical Access to Cardholder Data",
      "props": [
       {
@@ -6546,13 +7173,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/physical_security/requirement_9.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/physical_security/requirement_9.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d5ed6a10-377a-5429-b118-5911ab5472f7",
+     "uuid": "ba6feffd-c34d-5c5c-94da-0dde87e05302",
      "title": "PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software",
      "props": [
       {
@@ -6563,13 +7190,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/secure_development/requirement_6.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/secure_development/requirement_6.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b2e27b4a-5cc8-5e41-9fea-ff1dff3f449f",
+     "uuid": "08f61b22-01f2-5ade-b8de-ee4515d6bd21",
      "title": "PCI DSS v4.0 Requirement 11 - Test Security of Systems and Networks Regularly",
      "props": [
       {
@@ -6580,13 +7207,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/security_testing/requirement_11.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/security_testing/requirement_11.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "1abfc2d3-c4ac-5a47-9082-cf6b41dc0366",
+     "uuid": "46a20b36-bcaa-59f6-84b8-68cac53e99d7",
      "title": "PCI DSS v4.0 Requirement 2 - Apply Secure Configurations to All System Components",
      "props": [
       {
@@ -6597,7 +7224,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/pci_dss/system_hardening/requirement_2.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.2/frameworks/financial/pci_dss/system_hardening/requirement_2.rego",
        "media-type": "text/plain"
       }
      ]

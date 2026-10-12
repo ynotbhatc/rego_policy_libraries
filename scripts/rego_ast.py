@@ -153,10 +153,11 @@ TEXT_KEYS = ("text", "title", "desc", "description", "name", "req", "requirement
 CHECKMAP_SKIP = {"compliant", "violations", "achievement", "status", "summary", "report", "total", "score", "level",
                  "findings", "passed", "failed", "percentage", "compliance_percentage", "details", "input", "data"}
 # report plumbing never counts as a check, whatever object it sits in
-CHECKMAP_SKIP_RE = re.compile(r"(summary|total|section|count|percentage|status|result|_violations$|_findings$|assessed|"
-                              r"cluster_name|requirements_met|modules$|partitions$|evaluated|compliant|timestamp|version|"
-                              r"benchmark|framework|standard|domain|name$|title|description|severity|remediation|recommendation|"
-                              r"^(gaps|not_covered|satisfied|approved|requires_approval|affected_|achieved|maturity|.*_list$|.*_score$))", re.I)
+CHECKMAP_SKIP_RE = re.compile(
+    r"(^|_)(summary|total|totals|section|sections|count|counts|percentage|status|result|results|assessed|evaluated|compliant|"
+    r"timestamp|version|benchmark|framework|standard|domain|name|title|description|severity|remediation|recommendation|"
+    r"gaps|not_covered|satisfied|approved|requires_approval|achieved|maturity|list|score|modules|partitions|cluster|"
+    r"requirements_met|violations|findings)(_|$)", re.I)
 CITE = re.compile(r"^([A-Za-z0-9§][A-Za-z0-9 §.\-()/_]{0,58}?)\s*:\s+(.+)$")
 
 

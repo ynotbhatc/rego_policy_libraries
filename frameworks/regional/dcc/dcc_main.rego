@@ -61,7 +61,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package dcc.main
 
 import rego.v1
@@ -908,11 +908,3 @@ controls := {
 		"req": "assess the requirement for redundant networking and telecommunication systems, implementing and protecting them where required",
 	},
 }
-#   coverage:
-#     checks: 152
-#     cited: 148
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

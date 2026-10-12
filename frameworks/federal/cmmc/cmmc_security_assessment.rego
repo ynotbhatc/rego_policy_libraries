@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cmmc.security_assessment
 
 import rego.v1
@@ -153,11 +153,3 @@ compliance_report := {
     "compliant": compliant,
     "violations": all_violations,
 }
-#   coverage:
-#     checks: 4
-#     cited: 4
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

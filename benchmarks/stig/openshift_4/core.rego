@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package stig.openshift_4.core
 
 # DISA STIG — Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide
@@ -267,11 +267,3 @@ findings := [
 default compliant := false
 
 compliant if count([f | some f in findings; f.status == "Open"]) == 0
-#   coverage:
-#     checks: 14
-#     cited: 14
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_amazon_linux_2023.file_permissions
 
 # CIS Amazon Linux 2023 Section 6.1.x - System File Permissions
@@ -298,11 +298,3 @@ report := {
 	"collection_timestamp": input.collection_timestamp,
 }
 
-#   coverage:
-#     checks: 12
-#     cited: 10
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

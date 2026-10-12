@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel8.selinux
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 1.6: Mandatory Access Controls (SELinux)
@@ -136,11 +136,3 @@ report := {
 	"section": "1.6 Mandatory Access Controls",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
-#   coverage:
-#     checks: 9
-#     cited: 9
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

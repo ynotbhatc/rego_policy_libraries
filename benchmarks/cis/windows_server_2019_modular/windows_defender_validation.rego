@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_windows_server_2019.windows_defender
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.42: Windows Defender Antivirus
@@ -172,11 +172,3 @@ report := {
 	"section": "18.10.42 Windows Defender / 9 Windows Firewall",
 	"benchmark": "CIS Windows Server 2019 v4.0.0",
 }
-#   coverage:
-#     checks: 17
-#     cited: 17
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

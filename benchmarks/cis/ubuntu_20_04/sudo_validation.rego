@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_ubuntu_20_04.sudo
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 5.3: Configure Sudo
@@ -100,11 +100,3 @@ report := {
 	"section": "5.3 Configure Sudo",
 	"benchmark": "CIS Ubuntu 20.04 v3.0.0",
 }
-#   coverage:
-#     checks: 8
-#     cited: 8
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

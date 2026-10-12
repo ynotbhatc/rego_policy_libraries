@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_windows_server_2022.main
 
 # Bridge: expose cis_windows_server_2022 under the /v1/data/<framework>/main/compliance_report
@@ -139,11 +139,3 @@ compliance_report := {
 	"missing_inputs": _missing_inputs,
 	"assessment_coverage_percentage": _coverage,
 }
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

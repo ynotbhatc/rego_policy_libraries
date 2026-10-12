@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package governance.geisa.adm
 
 import rego.v1
@@ -116,11 +116,3 @@ compliance_report := {
 	"registered_objects": object.get(input, ["lwm2m", "registered_objects"], []),
 	"object9": object.get(input, ["lwm2m", "object9"], {}),
 }
-#   coverage:
-#     checks: 9
-#     cited: 0
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

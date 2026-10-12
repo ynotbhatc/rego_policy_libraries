@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package hitrust.main
 
 import rego.v1
@@ -447,14 +447,3 @@ compliance_report := {
         "privacy":                  [v | some v in violations; contains(v, "CSF 18.")],
     },
 }
-#   coverage:
-#     checks: 63
-#     cited: 63
-#     expected: 59
-#     found: 63
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

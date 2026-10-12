@@ -19,7 +19,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package supply_chain.ssdf_genai
 
 import rego.v1
@@ -45,11 +45,3 @@ report := {
 	"reuses_substrate": reuses_substrate,
 	"note": "AI-generated artifacts run the same substrate controls; the coverage triage forces focused review when AI output touches the spine.",
 }
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: unrecognised
-#     basis: role
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

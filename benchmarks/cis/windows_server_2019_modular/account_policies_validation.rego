@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_windows_server_2019.account_policies
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 1: Account Policies
@@ -117,11 +117,3 @@ report := {
 	"section": "1 Account Policies",
 	"benchmark": "CIS Windows Server 2019 v4.0.0",
 }
-#   coverage:
-#     checks: 11
-#     cited: 11
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

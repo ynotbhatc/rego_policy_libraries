@@ -15,7 +15,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package pci_dss.main
 
 import rego.v1
@@ -227,11 +227,3 @@ pci_dss_detailed_findings := {
 		"requirement_12": requirement_12.pci_requirement_12_findings,
 	},
 }
-#   coverage:
-#     checks: 16
-#     cited: 3
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

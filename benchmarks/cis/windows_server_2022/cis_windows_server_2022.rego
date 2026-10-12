@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_windows_server_2022_legacy
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0
@@ -539,12 +539,4 @@ detailed_findings := {
     "advanced_audit_violations": advanced_audit_violations,
     "windows_defender_violations": windows_defender_violations,
     "bitlocker_violations": bitlocker_violations
-#   coverage:
-#     checks: 10
-#     cited: 10
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

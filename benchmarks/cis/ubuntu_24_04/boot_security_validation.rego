@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_ubuntu_24_04.boot_security
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Sections 1.3-1.5: Boot Security and Process Hardening
@@ -126,11 +126,3 @@ report := {
 	"section": "1.3-1.5 Boot Security and Process Hardening",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }
-#   coverage:
-#     checks: 10
-#     cited: 10
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

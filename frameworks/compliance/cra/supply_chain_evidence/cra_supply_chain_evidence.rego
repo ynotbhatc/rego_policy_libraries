@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cra.supply_chain_evidence
 
 import data.supply_chain.slsa
@@ -146,11 +146,3 @@ compliance_report := {
 		"slsa_compliant": slsa.compliant,
 	},
 }
-#   coverage:
-#     checks: 7
-#     cited: 6
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

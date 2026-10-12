@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package fisma.ato
 
 import rego.v1
@@ -442,12 +442,4 @@ ato_metadata := {
 	"scope": "Federal information systems subject to FISMA requirements",
 	"decision_types": ["Authorize", "Authorize with Conditions", "Interim Authorize", "Deny"],
 	"last_updated": "2025-01-06",
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: unrecognised
-#     basis: role
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

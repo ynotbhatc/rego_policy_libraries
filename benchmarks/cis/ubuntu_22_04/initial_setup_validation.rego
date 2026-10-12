@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_ubuntu_22_04.initial_setup
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8: Initial System Setup
@@ -191,11 +191,3 @@ report := {
 	"section": "1.2-1.8 Initial System Setup",
 	"benchmark": "CIS Ubuntu 22.04 v3.0.0",
 }
-#   coverage:
-#     checks: 20
-#     cited: 20
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

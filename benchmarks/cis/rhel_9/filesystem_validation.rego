@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel9.filesystem
 
 # CIS RHEL 9 Section 1.1.x - Filesystem Configuration
@@ -257,11 +257,3 @@ report := {
 	"collection_timestamp": input.collection_timestamp,
 }
 
-#   coverage:
-#     checks: 9
-#     cited: 9
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

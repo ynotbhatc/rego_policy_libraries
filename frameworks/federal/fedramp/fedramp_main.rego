@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package fedramp
 
 import rego.v1
@@ -352,11 +352,3 @@ fedramp_compliance_report := {
         },
     },
 }
-#   coverage:
-#     checks: 25
-#     cited: 19
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

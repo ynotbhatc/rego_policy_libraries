@@ -6,13 +6,13 @@
 #   source: aac
 #   domains: [sovereignty, data-residency]
 #   coverage:
-#     checks: 22
+#     checks: 21
 #     cited: 2
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package digital_sovereignty.data_residency
 
 import rego.v1
@@ -358,11 +358,3 @@ default data_flow_inventory_maintained := false
 default metadata_in_jurisdiction := false
 default no_vendor_log_access := false
 default telemetry_in_jurisdiction := false
-#   coverage:
-#     checks: 22
-#     cited: 2
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

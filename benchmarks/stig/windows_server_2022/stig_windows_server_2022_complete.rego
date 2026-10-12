@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package stig.windows_server_2022
 
 # DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide — Master Aggregator
@@ -70,11 +70,3 @@ compliance_report := {
 	"failed_controls": count(open_findings),
 	"compliant": fully_compliant,
 }
-#   coverage:
-#     checks: 2
-#     cited: 2
-#     density: stub
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

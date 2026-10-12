@@ -57,7 +57,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package coppa.main
 
 import rego.v1
@@ -235,14 +235,3 @@ compliance_report := {
 	"area_summary": area_summary,
 	"scope_note": "Applies to operators of child-directed sites/services or with actual knowledge of collecting children's personal information. Program-level assessment over attestation/GRC facts; wire an authoritative source before treating results as evidence. Controls marked [2025] encode the 90 FR 16918 amendments.",
 }
-#   coverage:
-#     checks: 19
-#     cited: 11
-#     expected: 21
-#     found: 19
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

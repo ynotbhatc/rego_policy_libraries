@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_amazon_linux_2023.initial_setup
 
 import rego.v1
@@ -232,11 +232,3 @@ violations contains msg if {
 compliant if {
     count(violations) == 0
 }
-#   coverage:
-#     checks: 20
-#     cited: 20
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

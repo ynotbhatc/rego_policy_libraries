@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [database, mysql]
 #   coverage:
-#     checks: 31
+#     checks: 32
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis.server.mysql
 
 import rego.v1
@@ -326,12 +326,4 @@ mysql_server_compliance := {
     "ssl_enabled": ssl_enabled,
     "ssl_required_remote_users": ssl_required_remote_users,
     "overall_compliant": mysql_server_compliant
-#   coverage:
-#     checks: 31
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

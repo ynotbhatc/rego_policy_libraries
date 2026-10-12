@@ -99,7 +99,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_eks.main
 
 import rego.v1
@@ -397,14 +397,3 @@ compliance_report := {
 	"violation_count": count(violations),
 	"section_summary": section_summary,
 }
-#   coverage:
-#     checks: 49
-#     cited: 49
-#     expected: 49
-#     found: 49
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

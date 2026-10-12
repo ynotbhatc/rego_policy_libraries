@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_debian_11.cron
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 5.1: Configure time-based job schedulers
@@ -158,11 +158,3 @@ report := {
 	"section": "5.1 Configure time-based job schedulers",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
 }
-#   coverage:
-#     checks: 9
-#     cited: 9
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

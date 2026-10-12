@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [web-server]
 #   coverage:
-#     checks: 20
+#     checks: 21
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis.server.nginx
 
 import rego.v1
@@ -272,12 +272,4 @@ nginx_server_compliance := {
     "max_body_size_configured": max_body_size_configured,
     "buffer_overflow_prevention": buffer_overflow_prevention,
     "overall_compliant": nginx_server_compliant
-#   coverage:
-#     checks: 20
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

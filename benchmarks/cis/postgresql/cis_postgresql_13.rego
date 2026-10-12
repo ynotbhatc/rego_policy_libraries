@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis.postgresql_13
 
 import rego.v1
@@ -1398,15 +1398,4 @@ compliance_requirements_met if {
 	compliance.requirements_documented == true
 	compliance.controls_implemented == true
 	compliance.regular_audits == true
-#   coverage:
-#     checks: 164
-#     cited: 164
-#     expected: 164
-#     found: 164
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0
 }

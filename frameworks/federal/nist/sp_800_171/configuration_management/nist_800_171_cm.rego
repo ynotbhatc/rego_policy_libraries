@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.sp800_171.configuration_management
 
 import rego.v1
@@ -182,14 +182,3 @@ compliance_report := {
         "3.4.9_user_installed_software_controlled": user_installed_software_controlled,
     },
 }
-#   coverage:
-#     checks: 18
-#     cited: 9
-#     expected: 9
-#     found: 18
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

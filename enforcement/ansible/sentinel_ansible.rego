@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package sentinel.ansible
 
 import rego.v1
@@ -131,11 +131,3 @@ result := {
     "violation_count": count(violations),
     "violations":      [v | some v in violations],
 }
-#   coverage:
-#     checks: 4
-#     cited: 4
-#     density: sparse
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

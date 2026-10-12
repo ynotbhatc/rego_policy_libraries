@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cjis.systems_communications_protection
 
 import rego.v1
@@ -54,11 +54,3 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": area_compliant,
 }
-#   coverage:
-#     checks: 13
-#     cited: 12
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

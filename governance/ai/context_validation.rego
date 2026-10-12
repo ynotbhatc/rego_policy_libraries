@@ -21,7 +21,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package ai_governance.context
 
 import rego.v1
@@ -131,11 +131,3 @@ context_report := {
     "context_valid": context_valid,
     "operation_blocked": operation_blocked
 }
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: unrecognised
-#     basis: role
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

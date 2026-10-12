@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_controls_v8.c05
 
 import rego.v1
@@ -49,11 +49,3 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": control_compliant,
 }
-#   coverage:
-#     checks: 7
-#     cited: 6
-#     density: sparse
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

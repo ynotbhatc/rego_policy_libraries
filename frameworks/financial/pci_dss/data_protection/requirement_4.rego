@@ -9,13 +9,13 @@
 #   source: pci-ssc
 #   domains: [financial, payment-cards]
 #   coverage:
-#     checks: 11
+#     checks: 12
 #     cited: 2
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package pci_dss.data_protection.requirement_4
 
 import rego.v1
@@ -210,11 +210,3 @@ pci_requirement_4_findings := {
 	"overall_score": pci_requirement_4_score,
 	"overall_compliant": pci_requirement_4_compliant,
 }
-#   coverage:
-#     checks: 11
-#     cited: 2
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

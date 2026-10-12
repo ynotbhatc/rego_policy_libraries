@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package digital_sovereignty.breach_notification_sovereignty
 
 import rego.v1
@@ -292,11 +292,3 @@ default notification_procedure_documented := false
 default notification_timeline_compliant := false
 default processor_notification_procedure_exists := false
 default supervisory_authority_in_jurisdiction := false
-#   coverage:
-#     checks: 21
-#     cited: 1
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

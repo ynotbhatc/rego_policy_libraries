@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cicd.pipeline
 
 # CI/CD Pipeline Security Governance
@@ -318,11 +318,3 @@ compliance_report := {
 	"violations_by_category": violations_by_category,
 	"pipeline_type":       object.get(input, ["_metadata", "pipeline_type"], "github_actions"),
 }
-#   coverage:
-#     checks: 20
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

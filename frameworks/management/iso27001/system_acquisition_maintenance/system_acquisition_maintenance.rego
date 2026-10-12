@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package iso27001.system_acquisition_maintenance
 
 import rego.v1
@@ -336,11 +336,3 @@ compliance_details := {
 	},
 	"overall_compliant": compliant,
 }
-#   coverage:
-#     checks: 16
-#     cited: 4
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

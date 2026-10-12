@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package governance.oidc
 
 import rego.v1
@@ -154,11 +154,3 @@ summary := {
 } if {
     token_valid
 }
-#   coverage:
-#     checks: 3
-#     cited: 0
-#     density: sparse
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

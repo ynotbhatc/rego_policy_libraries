@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package ccpa.admt
 
 import rego.v1
@@ -192,11 +192,3 @@ compliance_report := {
 	"violation_count": count(violations),
 	"violations": violations,
 }
-#   coverage:
-#     checks: 45
-#     cited: 40
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

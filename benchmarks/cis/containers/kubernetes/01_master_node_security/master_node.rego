@@ -6,13 +6,13 @@
 #   source: cis
 #   domains: [container, kubernetes]
 #   coverage:
-#     checks: 22
+#     checks: 23
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis.kubernetes.master
 
 import rego.v1
@@ -213,12 +213,4 @@ kubernetes_master_compliance := {
     "admission_control_service_account": admission_control_service_account,
     "admission_control_namespace_lifecycle": admission_control_namespace_lifecycle,
     "overall_compliant": kubernetes_master_compliant
-#   coverage:
-#     checks: 22
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

@@ -23,7 +23,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_m365.fabric
 
 import rego.v1
@@ -86,11 +86,3 @@ compliance_report := {
     "compliant": compliant,
     "coverage_note": "Graph v1.0 doesn't expose the full Fabric admin surface; supplement with Fabric Admin REST API",
 }
-#   coverage:
-#     checks: 12
-#     cited: 6
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

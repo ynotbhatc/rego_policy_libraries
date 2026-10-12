@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package ncsc_caf.b4_system_security
 
 import rego.v1
@@ -330,11 +330,3 @@ compliance_report := {
         "B4.d": co_b4d_details,
     },
 }
-#   coverage:
-#     checks: 4
-#     cited: 0
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

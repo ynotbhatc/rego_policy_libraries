@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package stig.windows_11.registry_cc
 
 # DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide
@@ -948,11 +948,3 @@ findings := [
 default compliant := false
 
 compliant if count([f | some f in findings; f.status == "Open"]) == 0
-#   coverage:
-#     checks: 54
-#     cited: 54
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

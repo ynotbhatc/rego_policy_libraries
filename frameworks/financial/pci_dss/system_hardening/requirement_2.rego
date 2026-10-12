@@ -9,13 +9,13 @@
 #   source: pci-ssc
 #   domains: [financial, payment-cards]
 #   coverage:
-#     checks: 12
+#     checks: 16
 #     cited: 5
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package pci_dss.system_hardening.requirement_2
 
 import rego.v1
@@ -213,11 +213,3 @@ pci_requirement_2_findings := {
 	"overall_score": pci_requirement_2_score,
 	"overall_compliant": pci_requirement_2_compliant,
 }
-#   coverage:
-#     checks: 12
-#     cited: 5
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

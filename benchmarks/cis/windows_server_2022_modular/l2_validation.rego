@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_windows_server_2022.l2
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Level 2 Additional Controls
@@ -248,11 +248,3 @@ compliance_report := {
 	"l2_violation_list": [v | some v in violations],
 	"note": "Level 2 controls supplement Level 1. May impact functionality — designed for high-security environments.",
 }
-#   coverage:
-#     checks: 45
-#     cited: 45
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

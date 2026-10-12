@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package bsi_c5.communication_security
 
 import rego.v1
@@ -48,11 +48,3 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": domain_compliant,
 }
-#   coverage:
-#     checks: 4
-#     cited: 3
-#     density: sparse
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

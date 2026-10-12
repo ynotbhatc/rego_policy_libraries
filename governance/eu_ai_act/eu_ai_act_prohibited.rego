@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package eu_ai_act.prohibited
 
 import rego.v1
@@ -287,11 +287,3 @@ compliance_report := {
 		"5(1)(bb) — Child sexual abuse material (Reg. 2026/1744, from 2026-12-02)",
 	],
 }
-#   coverage:
-#     checks: 12
-#     cited: 10
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cra.conformity_assessment
 
 import rego.v1
@@ -107,11 +107,3 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": compliant,
 }
-#   coverage:
-#     checks: 10
-#     cited: 10
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_ubuntu_20_04.cron
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers
@@ -158,11 +158,3 @@ report := {
 	"section": "5.1 Configure time-based job schedulers",
 	"benchmark": "CIS Ubuntu 20.04 v3.0.0",
 }
-#   coverage:
-#     checks: 9
-#     cited: 9
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

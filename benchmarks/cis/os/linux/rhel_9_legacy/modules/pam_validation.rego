@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel9.pam_validation
 
 import rego.v1
@@ -400,11 +400,3 @@ passed_pam_controls := total_pam_controls - count(pam_violations)
 
 # PAM compliance percentage
 pam_compliance_percentage := (passed_pam_controls / total_pam_controls) * 100
-#   coverage:
-#     checks: 17
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

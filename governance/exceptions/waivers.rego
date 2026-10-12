@@ -41,7 +41,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package exceptions
 
 import rego.v1
@@ -113,11 +113,3 @@ decision := {
 	"expired_matches": expired_matches,
 	"waiver_entries_loaded": count(waiver_entries),
 }
-#   coverage:
-#     checks: 1
-#     cited: 0
-#     density: stub
-#     basis: size
-#     tested: true
-#     entrypoint: none
-#     as_of: v2.3.0

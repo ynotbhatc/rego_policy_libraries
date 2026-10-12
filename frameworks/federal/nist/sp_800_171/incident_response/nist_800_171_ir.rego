@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.sp800_171.incident_response
 
 import rego.v1
@@ -91,14 +91,3 @@ compliance_report := {
         "3.6.3_incident_response_testing": incident_response_testing,
     },
 }
-#   coverage:
-#     checks: 6
-#     cited: 3
-#     expected: 3
-#     found: 6
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

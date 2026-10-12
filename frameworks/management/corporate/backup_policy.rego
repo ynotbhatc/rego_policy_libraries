@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package corporate.backup
 
 import rego.v1
@@ -575,12 +575,4 @@ backup_policy_metadata := {
     "enforcement_level": "mandatory",
     "review_frequency": "annual",
     "exception_approval_required": true
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: unrecognised
-#     basis: role
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

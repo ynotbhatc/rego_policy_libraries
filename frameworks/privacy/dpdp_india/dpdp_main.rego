@@ -46,7 +46,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package dpdp.main
 
 import rego.v1
@@ -312,11 +312,3 @@ compliance_report := {
 	"violation_count": count(violations),
 	"violations": violations,
 }
-#   coverage:
-#     checks: 78
-#     cited: 65
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

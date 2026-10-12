@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package tsa_pipeline.sd02_access_control
 
 import rego.v1
@@ -226,11 +226,3 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
-#   coverage:
-#     checks: 10
-#     cited: 10
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel9.ssh_validation
 
 import rego.v1
@@ -544,11 +544,3 @@ passed_ssh_controls := total_ssh_controls - count(ssh_violations)
 
 # SSH compliance percentage
 ssh_compliance_percentage := (passed_ssh_controls / total_ssh_controls) * 100
-#   coverage:
-#     checks: 21
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

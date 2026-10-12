@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_windows_server_2019.local_policies
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.2: User Rights Assignment
@@ -160,11 +160,3 @@ report := {
 	"section": "2.2 User Rights Assignment",
 	"benchmark": "CIS Windows Server 2019 v4.0.0",
 }
-#   coverage:
-#     checks: 20
-#     cited: 20
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

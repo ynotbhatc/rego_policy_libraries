@@ -15,7 +15,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package soc2.infrastructure.applications_services
 
 import rego.v1
@@ -527,12 +527,4 @@ applications_services_findings := findings if {
         },
         "overall_score": applications_services_score
     }
-#   coverage:
-#     checks: 33
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

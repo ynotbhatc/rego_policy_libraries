@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package essential_eight.user_application_hardening
 
 import rego.v1
@@ -62,11 +62,3 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": strategy_compliant,
 }
-#   coverage:
-#     checks: 17
-#     cited: 16
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

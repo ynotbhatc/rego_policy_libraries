@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rocky_linux_8.filesystem
 
 # CIS Rocky Linux 8 Section 1.1 - Filesystem Configuration
@@ -77,11 +77,3 @@ var_partition_exists if {
 	some mount in input.mounts
 	mount.mount == "/var"
 }
-#   coverage:
-#     checks: 5
-#     cited: 3
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

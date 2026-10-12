@@ -48,7 +48,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package fedramp_20x.main
 
 import rego.v1
@@ -351,11 +351,3 @@ ksis := {
 		"req": "Use cryptographic methods to validate the integrity of machine-based information resources.",
 	},
 }
-#   coverage:
-#     checks: 48
-#     cited: 47
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

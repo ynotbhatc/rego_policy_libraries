@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rocky_linux_8.file_permissions
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 6.1: System File Permissions
@@ -151,11 +151,3 @@ report := {
 	"section": "6.1 System File Permissions",
 	"benchmark": "CIS Rocky Linux 8 v3.0.0",
 }
-#   coverage:
-#     checks: 17
-#     cited: 1
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

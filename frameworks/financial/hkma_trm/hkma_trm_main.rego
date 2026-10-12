@@ -34,7 +34,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package hkma_trm.main
 
 import rego.v1
@@ -196,11 +196,3 @@ compliance_report := {
 	"violation_count": count(violations),
 	"violations": violations,
 }
-#   coverage:
-#     checks: 74
-#     cited: 70
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

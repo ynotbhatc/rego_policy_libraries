@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package eu_ai_act.gpai
 
 import rego.v1
@@ -186,11 +186,3 @@ compliance_report := {
 		"Article 56 — Codes of practice",
 	],
 }
-#   coverage:
-#     checks: 12
-#     cited: 12
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

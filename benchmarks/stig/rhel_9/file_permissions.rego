@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package stig.rhel_9.file_permissions
 
 # DISA STIG for RHEL 9 - File Permissions Module
@@ -380,11 +380,3 @@ compliance_report := {
 	"findings": findings,
 	"compliant": compliant,
 }
-#   coverage:
-#     checks: 14
-#     cited: 13
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

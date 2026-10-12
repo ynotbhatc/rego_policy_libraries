@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package stig.ubuntu_22_04.core
 
 # DISA STIG — Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide
@@ -405,11 +405,3 @@ findings := [
 default compliant := false
 
 compliant if count([f | some f in findings; f.status == "Open"]) == 0
-#   coverage:
-#     checks: 22
-#     cited: 22
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

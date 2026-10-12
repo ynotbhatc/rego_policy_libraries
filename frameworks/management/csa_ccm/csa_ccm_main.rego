@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package csa_ccm.main
 
 import rego.v1
@@ -142,14 +142,3 @@ compliance_report := {
     "domains_total": 16,
     "domains": domain_reports,
 }
-#   coverage:
-#     checks: 16
-#     cited: 16
-#     expected: 197
-#     found: 16
-#     scope: module
-#     density: sparse
-#     basis: declared-total
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

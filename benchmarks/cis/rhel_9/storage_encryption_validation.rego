@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_rhel9.storage_encryption
 
 import rego.v1
@@ -189,11 +189,3 @@ compliance_report := {
 	"crypto_policy": object.get(input, ["storage_encryption", "crypto_policy"], "unknown"),
 	"luks_volume_count": count(object.get(input, ["storage_encryption", "luks_volumes"], [])),
 }
-#   coverage:
-#     checks: 8
-#     cited: 8
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

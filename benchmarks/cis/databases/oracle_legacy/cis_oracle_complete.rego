@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_oracle
 
 # CIS Oracle Database 19c Benchmark - Complete Validation
@@ -194,11 +194,3 @@ generate_recommendations contains recommendation if {
 		"controls": "CIS 2.2.2",
 	}
 }
-#   coverage:
-#     checks: 4
-#     cited: 4
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

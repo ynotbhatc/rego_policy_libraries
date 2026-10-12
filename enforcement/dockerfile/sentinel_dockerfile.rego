@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package sentinel.dockerfile
 
 import rego.v1
@@ -330,11 +330,3 @@ result := {
     "violation_count": count(all_violations),
     "violations":      all_violations,
 }
-#   coverage:
-#     checks: 12
-#     cited: 12
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

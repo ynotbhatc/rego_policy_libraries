@@ -12,7 +12,7 @@
 #     basis: role
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package fisma.ssp
 
 import rego.v1
@@ -464,12 +464,4 @@ ssp_metadata := {
 	"purpose": "System Security Plan validation and quality assessment",
 	"scope": "Federal information systems requiring FISMA compliance",
 	"last_updated": "2025-01-06",
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: unrecognised
-#     basis: role
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

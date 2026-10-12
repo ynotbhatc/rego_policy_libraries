@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package ami.device.compliance
 
 import rego.v1
@@ -254,11 +254,3 @@ compliance_report := {
     "per_device_violations": device_violations,
     "all_violations": all_violations,
 }
-#   coverage:
-#     checks: 1
-#     cited: 0
-#     density: stub
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

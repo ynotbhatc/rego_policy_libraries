@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.sp800_171.physical_protection
 
 import rego.v1
@@ -132,14 +132,3 @@ compliance_report := {
         "3.10.6_alternate_work_site_safeguards": alternate_work_site_safeguards,
     },
 }
-#   coverage:
-#     checks: 12
-#     cited: 6
-#     expected: 6
-#     found: 12
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

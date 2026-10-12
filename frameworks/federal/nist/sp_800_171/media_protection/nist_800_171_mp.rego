@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.sp800_171.media_protection
 
 import rego.v1
@@ -178,14 +178,3 @@ compliance_report := {
         "3.8.9_backup_cui_protected": backup_cui_protected,
     },
 }
-#   coverage:
-#     checks: 18
-#     cited: 9
-#     expected: 9
-#     found: 18
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

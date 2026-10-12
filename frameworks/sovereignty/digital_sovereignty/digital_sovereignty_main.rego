@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package digital_sovereignty.main
 
 import rego.v1
@@ -252,11 +252,3 @@ default breach_notification_sovereignty_compliant := false
 default geopolitical_sovereignty_compliant := false
 default dora_sovereignty_compliant := false
 default cyber_resilience_sovereignty_compliant := false
-#   coverage:
-#     checks: 12
-#     cited: 12
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: report
-#     as_of: v2.3.0

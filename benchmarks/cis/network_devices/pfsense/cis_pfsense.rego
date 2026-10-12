@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_pfsense
 
 # CIS pfSense / OPNsense Firewall Hardening Benchmark v1.0.0
@@ -421,11 +421,3 @@ compliance_assessment := {
         "platform": object.get(input,        "platform", "pfsense"),
     },
 }
-#   coverage:
-#     checks: 19
-#     cited: 19
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0

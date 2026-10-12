@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package governance.geisa.lee
 
 import rego.v1
@@ -87,11 +87,3 @@ compliance_report := {
 	"isolated": object.get(input, ["container", "isolated"], false),
 	"network_mode": object.get(input, ["container", "network_mode"], "unknown"),
 }
-#   coverage:
-#     checks: 6
-#     cited: 0
-#     density: sparse
-#     basis: size
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

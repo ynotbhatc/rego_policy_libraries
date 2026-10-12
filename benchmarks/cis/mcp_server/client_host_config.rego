@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_mcp_server.client_host_config
 
 import rego.v1
@@ -59,11 +59,3 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": section_compliant,
 }
-#   coverage:
-#     checks: 11
-#     cited: 10
-#     density: sized
-#     basis: size
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

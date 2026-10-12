@@ -17,4 +17,4 @@ Every converter under `converters/` meets all of these before it is marked `ship
 6. **Coverage is stated, not implied.** The README lists which directories and how many control-level checks
    the converter covers (`scripts/count_controls.py <dir>`), and what it leaves out and why.
 7. **Versioned with the library.** Output is tagged with the library release it came from
-   (`v2.3.1`) and published with that release.
+   (`v2.3.2`) and published with that release.

@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package cis_oracle.database_parameters
 
 # CIS Oracle Database 19c Benchmark - Section 2.2
@@ -275,11 +275,3 @@ risk_level := "critical" if {
 } else := "medium" if {
 	count(violations) > 0
 } else := "low"
-#   coverage:
-#     checks: 16
-#     cited: 16
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

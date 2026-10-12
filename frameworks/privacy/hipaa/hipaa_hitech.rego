@@ -6,13 +6,13 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 10
+#     checks: 13
 #     cited: 5
 #     density: sized
 #     basis: size
 #     tested: false
 #     entrypoint: report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package hipaa.hitech
 
 import rego.v1
@@ -243,11 +243,3 @@ report := {
 	},
 	"minimum_necessary": hitech_minimum_necessary,
 }
-#   coverage:
-#     checks: 10
-#     cited: 5
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: report
-#     as_of: v2.3.0

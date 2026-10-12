@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: false
 #     entrypoint: none
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package sox.itgc
 
 import rego.v1
@@ -560,12 +560,4 @@ _get_financial_application_findings := findings if {
         not check.check
         finding := check.message
     ]
-#   coverage:
-#     checks: 28
-#     cited: 0
-#     density: sized
-#     basis: size
-#     tested: false
-#     entrypoint: none
-#     as_of: v2.3.0
 }

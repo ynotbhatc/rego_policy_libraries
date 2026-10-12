@@ -15,7 +15,7 @@
 #     basis: declared-total
 #     tested: false
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package nist.sp800_171.identification_authentication
 
 import rego.v1
@@ -205,14 +205,3 @@ compliance_report := {
         "3.5.11_authentication_feedback_obscured": authentication_feedback_obscured,
     },
 }
-#   coverage:
-#     checks: 22
-#     cited: 11
-#     expected: 11
-#     found: 22
-#     scope: module
-#     density: full
-#     basis: declared-total
-#     tested: false
-#     entrypoint: compliance_report
-#     as_of: v2.3.0

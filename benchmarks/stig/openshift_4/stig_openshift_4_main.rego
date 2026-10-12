@@ -22,7 +22,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     as_of: v2.3.1
+#     as_of: v2.3.2
 package stig.openshift_4.main
 
 import data.stig.openshift_4
@@ -113,11 +113,3 @@ compliance_report := object.union(_upstream, {
 compliant := _compliant
 
 violations := _open_findings
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: true
-#     entrypoint: compliance_report
-#     as_of: v2.3.0
