@@ -56,6 +56,7 @@ A one-fetch check caught it. This registry is that check, systematized.
 | NIST AI RMF | 1.0 (+ GenAI profile 2024) | NIST | profile additions | verify | nist.gov/itl/ai-risk-management-framework |
 | CMMC | 2.0 (final rule Dec 2024, phased) | DoD | phased rollout through ~2028 | phase dates | dodcio.defense.gov/cmmc |
 | NY DFS | 23 NYCRR 500 2nd amendment — **final tranche enforceable 2025-11-01** (universal MFA §500.12, full asset inventory §500.13(a)); **date-gate audit pending (#171)** | NYDFS | no 3rd amendment as of 2026-10 | — | dfs.ny.gov |
+| MAS TRM (Singapore) | Guidelines of 18 January 2021 (implemented 2026-10-12, 237 controls) | MAS | revised ~2013→2021; MAS consults before revision | watch mas.gov.sg consultations | mas.gov.sg/regulation/guidelines/technology-risk-management-guidelines |
 | ITAR | 22 CFR 120–130 — **4 substantive final rules 2025–26** (USML eff. 2025-09-15, Cyprus §126.1 2025-10-01, AUKUS 2025-12-30, Syria §126.1 removal 2026-10-01); **regeneration pending (#170)** | State/DDTC | rolling; Part 130 NPRM proposed 2026-06-15 | rolling | pmddtc.state.gov |
 | COBIT | 2019 — **COBIT 7 publishes 2026-10 (ISACA: Foundation certificate cutover 2026-10-27; COBIT 2019 exam retires 2027-04-26)**. Module stays 2019 until the COBIT 7 framework content is published; then regenerate `frameworks/management/cobit/` (#194) | ISACA | ~7 years | regenerate after publication (Nov 2026) | isaca.org/resources/cobit |
 | SWIFT CSP | CSCF v-year | SWIFT | **annual CSCF release, attestation deadline each December** | annual | swift.com (CSP) |
