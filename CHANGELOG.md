@@ -8,7 +8,32 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
-_Nothing yet._
+### Added
+- **CCPA — the 2025 CPPA regulations (effective 2026-01-01)** as three new modules under
+  `frameworks/privacy/ccpa/`, written from the OAL-approved text (approved 2025-09-22):
+  - `ccpa.cybersecurity_audits` — Article 9, §§7120–7124: §7120 applicability thresholds
+    (with a contradiction check when a business declares itself out of scope), §7121 first-report
+    deadlines by revenue tier (2028/2029/2030-04-01, date-gated), §7122 auditor qualification and
+    independence (internal-auditor reporting line), all **18 §7123(c) components** (each may be
+    recorded not-applicable by the auditor), the §7123(e) report contents, and §7124 certification
+    to the Agency. 44 checks.
+  - `ccpa.risk_assessments` — Article 10, §§7150–7157: the six §7150(b) triggering activities
+    (each must be declared in_use true/false — undeclared is a violation), §7151 stakeholder
+    involvement, the nine §7152(a) report requirements plus the ADMT logic/output requirement,
+    §7153 provider duties, §7155 timing (three-year review, 45-day material-change update, legacy
+    processing by 2027-12-31, five-year retention) and §7157 submission to the Agency. 26 checks.
+  - `ccpa.admt` — Article 11, §§7200–7222: Pre-use Notice contents (§7220), the opt-out right
+    with the three §7221(b) exceptions and their conditions, sixteen §7221 opt-out mechanics
+    (two methods, named link, no cookie-banner-only, no verification, 15-business-day cessation,
+    service-provider notification), and the §7222 access right. Compliance date 2027-01-01 is
+    reported, and gaps are reported before it. 36 checks.
+  - `ccpa.main` now orchestrates 7 modules (was 4). 27 new tests in
+    `frameworks/privacy/ccpa/tests/test_ccpa_2026_regulations.rego`.
+
+### Changed
+- `STANDARDS_UPDATE_REGISTRY.md`: CCPA row moved from "rulemaking ongoing" to implemented;
+  COBIT row records COBIT 7's publication (ISACA, Foundation cutover 2026-10-27) and that the
+  module stays COBIT 2019 until the COBIT 7 content is published and regenerated.
 
 ---
 
