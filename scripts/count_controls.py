@@ -41,4 +41,14 @@ for f in root.rglob('*.rego'):
         if cur and not exclude.match(cur):
             if obj_row.match(line): obj += 1
             elif str_row.match(line) and include.search(cur): strs += 1
-print(f"files={files} bodies={bodies} table_object_rows={obj} table_string_rows={strs} total={bodies+obj+strs}")
+total = bodies + obj + strs
+print(f"files={files} bodies={bodies} table_object_rows={obj} table_string_rows={strs} total={total}")
+if "--check-readme" in sys.argv:
+    readme = (root / "README.md").read_text(errors="ignore")
+    quoted = [int(x.replace(",", "")) for x in re.findall(r"\*\*([0-9][0-9,]+) control-level checks", readme)]
+    if not quoted:
+        print("README.md quotes no control-level count"); sys.exit(1)
+    bad = [q for q in quoted if q != total]
+    if bad:
+        print(f"README.md quotes {bad} control-level checks; make count says {total}. Restamp the README."); sys.exit(1)
+    print(f"README.md control-level count matches ({total}).")
