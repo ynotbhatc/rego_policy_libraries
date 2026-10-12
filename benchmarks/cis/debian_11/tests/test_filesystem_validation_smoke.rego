@@ -10,3 +10,9 @@ test_filesystem_validation_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_filesystem_validation_report_wellformed_on_empty_input if {
+	report := data.cis_debian_11.filesystem.compliance_report with input as {}
+	is_object(report)
+	count(report) > 0
+}
+

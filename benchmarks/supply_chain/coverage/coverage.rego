@@ -22,6 +22,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: report
+#     guard: n/a
 #     as_of: v2.3.4
 package supply_chain.coverage
 

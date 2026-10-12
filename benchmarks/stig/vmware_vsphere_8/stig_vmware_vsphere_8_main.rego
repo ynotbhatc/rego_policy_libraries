@@ -16,6 +16,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
+#     guard: self
 #     as_of: v2.3.4
 package stig.vmware_vsphere_8.main
 

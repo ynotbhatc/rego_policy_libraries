@@ -12,6 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
+#     guard: n/a
 #     as_of: v2.3.4
 package stig.cisco_ios_xe_router.core
 

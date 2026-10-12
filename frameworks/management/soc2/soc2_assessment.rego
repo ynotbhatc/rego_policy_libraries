@@ -18,6 +18,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: none
+#     guard: n/a
 #     as_of: v2.3.4
 package soc2
 

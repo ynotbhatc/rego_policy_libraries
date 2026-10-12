@@ -14,6 +14,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: none
+#     guard: n/a
 #     as_of: v2.3.4
 package pci_dss.security_testing.requirement_11
 

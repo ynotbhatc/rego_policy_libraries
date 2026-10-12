@@ -12,6 +12,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
+#     guard: orchestrator
 #     as_of: v2.3.4
 package cis_ubuntu_22_04.filesystem
 

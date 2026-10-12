@@ -12,6 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: report
+#     guard: orchestrator
 #     as_of: v2.3.4
 package cis_debian_11.user_group
 

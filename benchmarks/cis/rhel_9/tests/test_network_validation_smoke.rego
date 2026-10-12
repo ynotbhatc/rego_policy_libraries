@@ -10,3 +10,7 @@ test_network_validation_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_network_validation_violations_on_empty_input if {
+	v := data.cis_rhel9.network.violations with input as {}
+	count(v) > 0
+}

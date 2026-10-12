@@ -12,6 +12,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
+#     guard: self
 #     as_of: v2.3.4
 package ncsc_caf.c1_security_monitoring
 

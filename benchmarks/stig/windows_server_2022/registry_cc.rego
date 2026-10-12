@@ -12,6 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
+#     guard: n/a
 #     as_of: v2.3.4
 package stig.windows_server_2022.registry_cc
 

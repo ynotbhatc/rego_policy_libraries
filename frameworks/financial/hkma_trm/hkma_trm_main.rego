@@ -34,6 +34,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
+#     guard: self
 #     as_of: v2.3.4
 package hkma_trm.main
 

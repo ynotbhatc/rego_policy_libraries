@@ -12,6 +12,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
+#     guard: none
 #     as_of: v2.3.4
 package governance.geisa.compliance
 

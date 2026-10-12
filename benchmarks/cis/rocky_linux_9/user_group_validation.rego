@@ -12,6 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: report
+#     guard: none
 #     as_of: v2.3.4
 package cis_rocky_linux_9.user_group
 

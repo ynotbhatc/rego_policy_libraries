@@ -31,6 +31,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
+#     guard: none
 #     as_of: v2.3.4
 package cis_m365_v7.main
 

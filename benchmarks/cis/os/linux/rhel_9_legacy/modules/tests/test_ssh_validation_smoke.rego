@@ -10,3 +10,7 @@ test_ssh_validation_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_ssh_validation_violations_on_empty_input if {
+	v := data.cis_rhel9.ssh_validation.violations with input as {}
+	count(v) > 0
+}

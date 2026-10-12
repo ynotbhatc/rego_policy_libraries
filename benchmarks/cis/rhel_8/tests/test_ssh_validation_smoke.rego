@@ -16,3 +16,12 @@ test_ssh_validation_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_ssh_validation_fail_closed_on_empty_input if {
+	report := data.cis_rhel8.ssh.report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
+test_ssh_validation_violations_on_empty_input if {
+	v := data.cis_rhel8.ssh.violations with input as {}
+	count(v) > 0
+}

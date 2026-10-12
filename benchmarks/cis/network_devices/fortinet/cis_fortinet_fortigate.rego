@@ -12,6 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
+#     guard: self
 #     as_of: v2.3.4
 package cis_fortinet_fortigate
 

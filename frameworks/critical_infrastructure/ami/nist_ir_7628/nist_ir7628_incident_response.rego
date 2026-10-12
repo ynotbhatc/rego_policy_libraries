@@ -12,6 +12,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
+#     guard: self
 #     as_of: v2.3.4
 package ami.nist_ir7628.incident_response
 

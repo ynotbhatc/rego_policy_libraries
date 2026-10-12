@@ -15,6 +15,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
+#     guard: n/a
 #     as_of: v2.3.4
 package pci_dss.data_protection.requirement_4
 

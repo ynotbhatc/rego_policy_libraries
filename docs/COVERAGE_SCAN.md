@@ -224,6 +224,48 @@ Zero checks found, not an orchestrator. Either the module expresses checks in a 
 - `frameworks/management/corporate/environment_controls.rego`
 - `governance/geisa/geisa_compliance.rego`
 
+## Fail-closed guard (543 self, 24 by orchestrator, 35 none, 138 n/a)
+
+Measured by evaluating the whole tree on empty input. `self`: the module's own report is not compliant on empty input. `orchestrator`: the module is silent on empty input, but an orchestrator in its tree that references it is fail-closed, so the gap is caught one level up (by design for sectioned benchmarks). `none`: silent on empty input and nothing above it catches that — **these are fail-open**, the work queue for the library's fail-closed rule.
+
+### Fail-open modules, no guard (35)
+
+- `benchmarks/cis/amazon_linux_2023/filesystem_validation.rego`
+- `benchmarks/cis/amazon_linux_2023/network_validation.rego`
+- `benchmarks/cis/amazon_linux_2023/user_group_validation.rego`
+- `benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego`
+- `benchmarks/cis/gcp/cis_gcp_foundations.rego`
+- `benchmarks/cis/nginx/cis_nginx_1_20.rego`
+- `benchmarks/cis/openshift/cis_openshift_4.rego`
+- `benchmarks/cis/os/linux/rhel_9_legacy/modules/pam_validation.rego`
+- `benchmarks/cis/rhel_8/filesystem_validation.rego`
+- `benchmarks/cis/rhel_8/network_validation.rego`
+- `benchmarks/cis/rhel_8/user_group_validation.rego`
+- `benchmarks/cis/rhel_9/authorized_keys_validation.rego`
+- `benchmarks/cis/rhel_9/storage_encryption_validation.rego`
+- `benchmarks/cis/rocky_linux_8/network_validation.rego`
+- `benchmarks/cis/rocky_linux_8/user_group_validation.rego`
+- `benchmarks/cis/rocky_linux_9/network_validation.rego`
+- `benchmarks/cis/rocky_linux_9/user_group_validation.rego`
+- `benchmarks/cis/saas/m365/exchange_validation.rego`
+- `benchmarks/cis/saas/m365_v7/cis_m365_v7_complete.rego`
+- `benchmarks/cis/vmware/esxi/cis_esxi_8.rego`
+- `benchmarks/cis/vmware/vcenter/cis_vcenter_8.rego`
+- `benchmarks/cis/windows_server_2019_modular/system_services_validation.rego`
+- `benchmarks/cis/windows_server_2022_modular/system_services_validation.rego`
+- `frameworks/critical_infrastructure/ami/device_compliance/ami_device_compliance.rego`
+- `frameworks/critical_infrastructure/iec_62443/fr4_data_confidentiality.rego`
+- `frameworks/critical_infrastructure/iec_62443/part2_service_provider.rego`
+- `frameworks/federal/cmmc/cmmc_configuration_management.rego`
+- `frameworks/federal/cmmc/cmmc_incident_response.rego`
+- `governance/finops/finops_tagging.rego`
+- `governance/geisa/geisa_adm.rego`
+- `governance/geisa/geisa_api.rego`
+- `governance/geisa/geisa_compliance.rego`
+- `governance/geisa/geisa_lee.rego`
+- `governance/geisa/geisa_vee.rego`
+- `threat_detection/crypto_mining/crypto_miner_detection.rego`
+
 ## Modules with checks but no test file (0)
 
 Work queue, same as docs/COVERAGE.md.

@@ -16,6 +16,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
+#     guard: none
 #     as_of: v2.3.4
 package security.crypto_miner_detection
 

@@ -21,3 +21,7 @@ test_pam_validation_fail_closed_on_empty_input if {
 	not object.get(report, "compliant", false) == true
 }
 
+test_pam_validation_violations_on_empty_input if {
+	v := data.cis_rocky_linux_9.pam.violations with input as {}
+	count(v) > 0
+}

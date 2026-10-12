@@ -28,6 +28,7 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
+#     guard: n/a
 #     as_of: v2.3.4
 package enforcement.terraform.plan
 

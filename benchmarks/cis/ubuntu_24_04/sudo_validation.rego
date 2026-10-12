@@ -12,6 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: report
+#     guard: self
 #     as_of: v2.3.4
 package cis_ubuntu_24_04.sudo
 

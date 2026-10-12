@@ -20,6 +20,12 @@ What is stamped (custom.coverage):
              unrecognised   0 checks in a shape the counter does not read: a work item for the counter
   basis      declared-total | size | role
   tested     a test file exists for the package
+  guard      where fail-closed is enforced for this module, measured by evaluating the whole tree on empty input:
+             self          the module's own report is not compliant (or it emits violations) on empty input
+             orchestrator  the module is silent on empty input, but an orchestrator in its tree that references
+                           its package is not compliant on empty input, so the gap is caught one level up
+             none          the module is silent on empty input and nothing above it catches that: fail-open
+             n/a           overlays, gates and modules with no report or violations rule
   entrypoint compliance_report | report | none
   as_of      library version the scan was made at (CHANGELOG)
 Nothing here is an opinion about quality; it is what the parser sees, and --check keeps it true.
@@ -38,7 +44,7 @@ KNOWN_GAPS = {
     "frameworks/privacy/iso27701/iso27701_main.rego": "ISO/IEC 27701 text is licensed; 67 of 134 controls written from public summaries",
     "benchmarks/cis/windows_11/cis_windows_11.rego": "CIS Windows 11 benchmark text is licensed; 210 of 267 recommendations implemented",
 }
-KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "as_of")
+KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "guard", "as_of")
 # modules that evaluate nothing of their own by design
 OVERLAYS = {"benchmarks/supply_chain/", "crosswalk/"}
 GATES = {"enforcement/", "governance/ai/action_classification.rego", "governance/ai/context_validation.rego", "governance/ai/authorization.rego",
@@ -48,6 +54,40 @@ GATES = {"enforcement/", "governance/ai/action_classification.rego", "governance
 def version():
     m = re.search(r"^## \[(\d+\.\d+\.\d+)\]", (ROOT / "CHANGELOG.md").read_text(), re.M)
     return "v" + (m.group(1) if m else "0.0.0")
+
+
+def empty_input_state(root=ROOT):
+    """{package: (compliant, violation_count, has_report)} from one `opa eval` of the whole policy tree on {}."""
+    import json, subprocess, tempfile
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+        f.write("{}"); empty = f.name
+    trees = [d for d in ("benchmarks", "frameworks", "governance", "enforcement", "threat_detection", "crosswalk") if (root / d).is_dir()]
+    cmd = ["opa", "eval", "-f", "json", "--ignore", ".github", "--ignore", "converters", "--ignore", "tests", "-i", empty, "data"]
+    for d in trees:
+        cmd += ["-d", str(root / d)]
+    out = subprocess.run(cmd, capture_output=True, text=True)
+    if out.returncode != 0:
+        raise SystemExit("opa eval on empty input failed:\n" + out.stderr[:500])
+    data = json.loads(out.stdout)["result"][0]["expressions"][0]["value"]
+    state = {}
+    def lookup(pkg):
+        node = data
+        for seg in pkg.split("."):
+            if not isinstance(node, dict) or seg not in node:
+                return None
+            node = node[seg]
+        return node if isinstance(node, dict) else None
+    def record(pkg):
+        node = lookup(pkg)
+        if node is None:
+            state[pkg] = (None, None, False); return
+        rep = node.get("compliance_report", node.get("report"))
+        comp = rep.get("compliant") if isinstance(rep, dict) else None
+        if comp is None and isinstance(rep, dict):
+            comp = rep.get("overall_compliant")
+        v = node.get("violations")
+        state[pkg] = (comp, (len(v) if isinstance(v, (list, dict)) else None), isinstance(rep, dict))
+    return record, state
 
 
 def tested_packages():
@@ -66,6 +106,7 @@ def scan(root=ROOT):
     asts = parse_tree(root)
     tested = tested_packages()
     ver = version()
+    record, state = empty_input_state(root)
     rows = {}
     for rel, ast in asts.items():
         n, ids, uncited = checks(ast)
@@ -78,8 +119,9 @@ def scan(root=ROOT):
                     if k in TOTAL_KEYS and v["type"] == "number":
                         expected = int(v["value"])
         pkg = package(ast)
+        record(pkg)
         rows[rel] = {"checks": n, "cited": len(ids), "expected": expected, "found": None, "scope": None,
-                     "tested": pkg in tested, "entrypoint": entry, "as_of": ver,
+                     "tested": pkg in tested, "entrypoint": entry, "guard": None, "as_of": ver,
                      "_package": pkg, "_uncited": uncited, "_has_meta": "# METADATA" in (root / rel).read_text(errors="ignore")}
     # density. An orchestrator declares the whole framework's total while its controls live in sibling modules,
     # so a declaring file with no checks of its own is judged on its directory's sum (scope: directory).
@@ -118,6 +160,24 @@ def scan(root=ROOT):
         else:
             density, basis = ("sized" if n >= 10 else "sparse" if n >= 3 else "stub"), "size"
         r["density"], r["basis"] = density, basis
+    # guard: where fail-closed is enforced, from the empty-input evaluation
+    orch_files = {rel2: rows[rel2]["_package"] for rel2 in rows if ORCH.search(rel2)}
+    orch_src = {rel2: (root / rel2).read_text(errors="ignore") for rel2 in orch_files}
+    for rel, r in rows.items():
+        pkg = r["_package"]; comp, vn, has_rep = state.get(pkg, (None, None, False))
+        if r["density"] in ("overlay", "gate") or (not has_rep and r["entrypoint"] == "none" and vn is None):
+            r["guard"] = "n/a"; continue
+        if comp is False or (vn or 0) > 0:
+            r["guard"] = "self"; continue
+        # silent on empty input: is an orchestrator above it fail-closed and does it reference this package?
+        guarded = False
+        for orel, opkg in orch_files.items():
+            if orel == rel or not rel.startswith(orel.rsplit("/", 1)[0] + "/"):
+                continue
+            ocomp, ovn, _ = state.get(opkg, (None, None, False))
+            if (ocomp is False or (ovn or 0) > 0) and (pkg in orch_src[orel] or pkg.rsplit(".", 1)[-1] in orch_src[orel]):
+                guarded = True; break
+        r["guard"] = "orchestrator" if guarded else "none"
     return rows
 
 
@@ -223,6 +283,11 @@ def report(rows, out_path):
     unrec = [rel for rel, r in rows.items() if r["density"] == "unrecognised"]
     L += ["", f"## Unrecognised shapes ({len(unrec)})", "", "Zero checks found, not an orchestrator. Either the module expresses checks in a form `scripts/rego_ast.py` does not read yet (extend the counter) or it is an overlay with no checks of its own (crosswalk, supply-chain substrate, enforcement gates with computed messages).", ""]
     L += [f"- `{rel}`" for rel in sorted(unrec)]
+    none = sorted(rel for rel, r in rows.items() if r["guard"] == "none")
+    byg = collections.Counter(r["guard"] for r in rows.values())
+    L += ["", f"## Fail-closed guard ({byg.get('self', 0)} self, {byg.get('orchestrator', 0)} by orchestrator, {byg.get('none', 0)} none, {byg.get('n/a', 0)} n/a)", "",
+          "Measured by evaluating the whole tree on empty input. `self`: the module's own report is not compliant on empty input. `orchestrator`: the module is silent on empty input, but an orchestrator in its tree that references it is fail-closed, so the gap is caught one level up (by design for sectioned benchmarks). `none`: silent on empty input and nothing above it catches that — **these are fail-open**, the work queue for the library's fail-closed rule.", "",
+          f"### Fail-open modules, no guard ({len(none)})", ""] + [f"- `{rel}`" for rel in none]
     untested = [rel for rel, r in rows.items() if not r["tested"] and r["checks"] > 0]
     L += ["", f"## Modules with checks but no test file ({len(untested)})", "", "Work queue, same as docs/COVERAGE.md.", ""]
     L += [f"- `{rel}`" for rel in sorted(untested)]
