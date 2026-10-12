@@ -16,10 +16,12 @@ scaffolding) are excluded by name. A violation body that iterates a table is
 counted once in addition to the rows it iterates; that over-counts by one per
 table, which is noise at this scale.
 
-Usage: python3 scripts/count_controls.py [root]   (default: repo root)
+Usage: python3 scripts/count_controls.py [root] [--write-json] [--check-readme]
+       --write-json   writes docs/metrics.json (shields.io endpoint schema) for the README badge
+       --check-readme fails if README.md or docs/metrics.json disagree with the count (CI)
 Make:  make count
 """
-import re, sys, pathlib
+import json, re, sys, pathlib
 _args = [a for a in sys.argv[1:] if not a.startswith("--")]
 root = pathlib.Path(_args[0]) if _args else pathlib.Path(__file__).resolve().parent.parent
 body_re = re.compile(r'^\s*(violations?|deny|warn|findings?)\s+contains\s+\w+\s+if\b')
@@ -31,7 +33,8 @@ exclude = re.compile(r'^(sections|chapters|groups|first_report_deadline|notifica
 bodies = obj = strs = files = 0
 for f in root.rglob('*.rego'):
     rel = f.relative_to(root).as_posix()
-    if re.search(r'(^|/)(test_|.*_test\.rego$)', rel) or '/tests/' in rel: continue
+    # tests are not controls; converters/ holds generated copies and adapters of policies counted elsewhere
+    if re.search(r'(^|/)(test_|.*_test\.rego$)', rel) or '/tests/' in rel or rel.startswith('converters/'): continue
     files += 1
     cur = None
     for line in f.read_text(errors='ignore').splitlines():
@@ -44,7 +47,20 @@ for f in root.rglob('*.rego'):
             elif str_row.match(line) and include.search(cur): strs += 1
 total = bodies + obj + strs
 print(f"files={files} bodies={bodies} table_object_rows={obj} table_string_rows={strs} total={total}")
+METRICS = root / "docs" / "metrics.json"
+metrics = {"schemaVersion": 1, "label": "control-level checks", "message": f"{total:,}", "color": "blue"}
+if "--write-json" in sys.argv:
+    METRICS.parent.mkdir(exist_ok=True)
+    METRICS.write_text(json.dumps(metrics, indent=2) + "\n")
+    print(f"wrote {METRICS.relative_to(root)}")
 if "--check-readme" in sys.argv:
+    # the shields endpoint file must agree with the count, like the README
+    if METRICS.exists():
+        current = json.loads(METRICS.read_text())
+        if current.get("message") != metrics["message"]:
+            print(f"docs/metrics.json says {current.get('message')}; make count says {metrics['message']}. Run: python3 scripts/count_controls.py --write-json"); sys.exit(1)
+    else:
+        print("docs/metrics.json missing; run: python3 scripts/count_controls.py --write-json"); sys.exit(1)
     readme = (root / "README.md").read_text(errors="ignore")
     quoted = [int(x.replace(",", "")) for x in re.findall(r"\*\*([0-9][0-9,]+) control-level checks", readme)]
     if not quoted:

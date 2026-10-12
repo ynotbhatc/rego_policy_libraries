@@ -39,8 +39,8 @@ test:
 	exit $$RC
 
 count:
-	@echo "=== Control-level check count (scripts/count_controls.py) ==="
-	@python3 scripts/count_controls.py
+	@echo "=== Control-level check count (scripts/count_controls.py) — also restamps docs/metrics.json ==="
+	@python3 scripts/count_controls.py --write-json
 
 wasm:
 	@python3 converters/packaging/wasm/build.py
