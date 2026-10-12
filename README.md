@@ -568,6 +568,16 @@ Pointers to other great policy-as-code work in the community — **full credit t
 
 ---
 
+## Converters — using the library from other engines
+
+Rego is the native language of OPA, Enterprise OPA, Conftest, Gatekeeper, Kubewarden, Trivy, KICS, Regula,
+Snyk IaC, Styra, Terraform Cloud and Spacelift, so most platforms run these policies as they are. For
+everything else, [`converters/`](converters/) is the library's second product: packaging (WASM for every
+language SDK, signed bundles), interchange exports (OSCAL, SARIF, OCSF, crosswalk CSV) and per-engine generators
+(Ansible, SCAP, InSpec, Wazuh, CEL/Kyverno, Azure Policy, AWS Config, Steampipe, Sentinel, Sigma, Prowler).
+Each target has its own directory, status and round-trip test; the roadmap and the order of work are in
+[`converters/README.md`](converters/README.md).
+
 ## Contributing
 
 1. Place new `.rego` files in the appropriate taxonomy path

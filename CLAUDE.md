@@ -74,6 +74,10 @@ enforcement/                   Policy-as-Code gatekeepers (Sentinel-style)
 
 threat_detection/              Behavioral threat patterns
 └── crypto_mining/             Crypto-miner indicators
+
+converters/                    Rego → X (own section): packaging, interchange exports,
+                               per-engine generators. One dir per target, each with status,
+                               coverage and a round-trip test (converters/CONTRACT.md)
 ```
 
 Headline count: **740 policy files** (996 including tests) across the above directories, as of 2026-10-12. Count it, do not quote it: total minus test-named files (tests/ dirs, test_*, *_test.rego).
