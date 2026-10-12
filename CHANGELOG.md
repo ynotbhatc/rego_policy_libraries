@@ -8,6 +8,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+_Nothing yet._
+
+---
+
+## [2.2.0] - 2026-10-12
+
+The Asia-Pacific release. **740 policy files** (996 including tests, counted at main 2026-10-12),
+**7,867 control-level checks** (`make count`, new in this release; 7,104 at 2.1.1). 1,945 tests pass. No policy is removed or renamed; `enforcement/aap` is unchanged. Eleven new
+frameworks in one day: the CCPA 2025 regulations (three modules) and seven Asia-Pacific regimes —
+Singapore, India (two), Japan, Australia, Hong Kong, Malaysia — each written from the regulator's own
+text, each an attestation module that fails closed and reports gaps by chapter or section.
+Metadata vocabulary gains sources `mas`, `cert-in`, `meity`, `meti`, `apra`, `hkma`, `bnm` and domains
+`singapore`, `india`, `japan`, `hong-kong`, `malaysia`.
+
 ### Added
 - **Bank Negara Malaysia — Risk Management in Technology (RMiT), 25 September 2026** —
   `frameworks/financial/bnm_rmit/`, `bnm_rmit.main`, written from BNM/RH/PD 028-98 as published: one control
