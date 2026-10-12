@@ -27,7 +27,7 @@ violations := v if {
 }
 
 violations := {"Terraform Cloud input has no plan object (input.plan) — refusing to evaluate"} if {
-	not is_object(input.plan)
+	not is_object(object.get(input, "plan", null))
 }
 
 allowed if {

@@ -8,7 +8,7 @@ opa check --strict "$OUT/policy" && echo "PASS conftest layout compiles ($(find 
 if command -v conftest >/dev/null; then
   fx="$HERE/../../terraform_platforms/test/fixtures/plan-with-public-bucket.json"
   python3 -c "import json; print(json.dumps(json.load(open('$fx'))['plan']))" > /tmp/conftest-plan.json
-  conftest test --policy "$OUT/policy" --namespace enforcement.terraform.plan /tmp/conftest-plan.json --output json | python3 -c 'import json,sys; r=json.load(sys.stdin); print("PASS conftest ran:", sum(len(x.get("failures",[])) for x in r), "failures")'
+  conftest test --no-fail --policy "$OUT/policy" --namespace enforcement.terraform.plan /tmp/conftest-plan.json --output json | python3 -c 'import json,sys; r=json.load(sys.stdin); print("PASS conftest ran:", sum(len(x.get("failures",[])) for x in r), "failures")'
 else
   echo "NOTE: conftest not installed here; layout verified with opa check only"
 fi
