@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "da109b3c-284e-55d9-a84d-72e6bda3f720",
+  "uuid": "57da6b38-c0a2-5d20-b08f-45ade6090486",
   "metadata": {
    "title": "Rego Policy Libraries — supply_chain_substrate (AAC Supply-Chain Control Substrate)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "supply_chain_substrate-sbom",
-      "title": "Component inventory / SBOM",
+      "id": "supply_chain_substrate-build_hardening",
+      "title": "Build-environment hardening",
       "props": [
        {
         "name": "label",
-        "value": "sbom"
+        "value": "build_hardening"
        },
        {
         "name": "alt-identifier",
-        "value": "sbom"
+        "value": "build_hardening"
        },
        {
         "name": "rego-package",
@@ -85,15 +85,48 @@
       ],
       "links": [
        {
-        "href": "#f1b42196-5608-52b5-8d31-b803f73fb32f",
+        "href": "#c90fa6d1-d690-5cc7-a0d9-f9b9d2d0383f",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "supply_chain_substrate-sbom_stmt",
+        "id": "supply_chain_substrate-build_hardening_stmt",
         "name": "statement",
-        "prose": "Component inventory / SBOM"
+        "prose": "Build-environment hardening"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "supply_chain_substrate-dependencies",
+      "title": "Dependency trust & vetting",
+      "props": [
+       {
+        "name": "label",
+        "value": "dependencies"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dependencies"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.substrate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c90fa6d1-d690-5cc7-a0d9-f9b9d2d0383f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "supply_chain_substrate-dependencies_stmt",
+        "name": "statement",
+        "prose": "Dependency trust & vetting"
        }
       ],
       "class": "security"
@@ -118,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#f1b42196-5608-52b5-8d31-b803f73fb32f",
+        "href": "#c90fa6d1-d690-5cc7-a0d9-f9b9d2d0383f",
         "rel": "implementation"
        }
       ],
@@ -127,6 +160,39 @@
         "id": "supply_chain_substrate-provenance_stmt",
         "name": "statement",
         "prose": "Build provenance / attestation"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "supply_chain_substrate-sbom",
+      "title": "Component inventory / SBOM",
+      "props": [
+       {
+        "name": "label",
+        "value": "sbom"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sbom"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.substrate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c90fa6d1-d690-5cc7-a0d9-f9b9d2d0383f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "supply_chain_substrate-sbom_stmt",
+        "name": "statement",
+        "prose": "Component inventory / SBOM"
        }
       ],
       "class": "security"
@@ -151,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#f1b42196-5608-52b5-8d31-b803f73fb32f",
+        "href": "#c90fa6d1-d690-5cc7-a0d9-f9b9d2d0383f",
         "rel": "implementation"
        }
       ],
@@ -184,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#f1b42196-5608-52b5-8d31-b803f73fb32f",
+        "href": "#c90fa6d1-d690-5cc7-a0d9-f9b9d2d0383f",
         "rel": "implementation"
        }
       ],
@@ -193,39 +259,6 @@
         "id": "supply_chain_substrate-source_control_stmt",
         "name": "statement",
         "prose": "Source & change control"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "supply_chain_substrate-dependencies",
-      "title": "Dependency trust & vetting",
-      "props": [
-       {
-        "name": "label",
-        "value": "dependencies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dependencies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "supply_chain.substrate"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f1b42196-5608-52b5-8d31-b803f73fb32f",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "supply_chain_substrate-dependencies_stmt",
-        "name": "statement",
-        "prose": "Dependency trust & vetting"
        }
       ],
       "class": "security"
@@ -250,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#f1b42196-5608-52b5-8d31-b803f73fb32f",
+        "href": "#c90fa6d1-d690-5cc7-a0d9-f9b9d2d0383f",
         "rel": "implementation"
        }
       ],
@@ -262,39 +295,6 @@
        }
       ],
       "class": "security"
-     },
-     {
-      "id": "supply_chain_substrate-build_hardening",
-      "title": "Build-environment hardening",
-      "props": [
-       {
-        "name": "label",
-        "value": "build_hardening"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "build_hardening"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "supply_chain.substrate"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f1b42196-5608-52b5-8d31-b803f73fb32f",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "supply_chain_substrate-build_hardening_stmt",
-        "name": "statement",
-        "prose": "Build-environment hardening"
-       }
-      ],
-      "class": "security"
      }
     ]
    }
@@ -302,7 +302,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "f1b42196-5608-52b5-8d31-b803f73fb32f",
+     "uuid": "c90fa6d1-d690-5cc7-a0d9-f9b9d2d0383f",
      "title": "AAC Supply-Chain Control Substrate",
      "props": [
       {
@@ -313,7 +313,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/supply_chain/_substrate/substrate.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/supply_chain/_substrate/substrate.rego",
        "media-type": "text/plain"
       }
      ]

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "34ecc81e-0522-57eb-8c77-b2868d1ba7f7",
+  "uuid": "c8dd3b41-911b-5102-a886-ba028a5bc385",
   "metadata": {
    "title": "Rego Policy Libraries — cis_windows_10 (CIS Microsoft Windows 10 Enterprise Benchmark v4.0.0)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,39 +66,6 @@
     ],
     "controls": [
      {
-      "id": "cis_windows_10-sections",
-      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "sections"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "sections"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_windows_10"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_windows_10-sections_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_windows_10-account_policies",
       "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
       "props": [
@@ -118,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
+        "href": "#2e293275-15f5-592b-b805-84d43c12e880",
         "rel": "implementation"
        }
       ],
@@ -132,16 +99,16 @@
       "class": "security"
      },
      {
-      "id": "cis_windows_10-local_policies",
+      "id": "cis_windows_10-administrative_templates",
       "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "local_policies"
+        "value": "administrative_templates"
        },
        {
         "name": "alt-identifier",
-        "value": "local_policies"
+        "value": "administrative_templates"
        },
        {
         "name": "rego-package",
@@ -151,178 +118,13 @@
       ],
       "links": [
        {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
+        "href": "#2e293275-15f5-592b-b805-84d43c12e880",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_windows_10-local_policies_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_windows_10-event_log",
-      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "event_log"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "event_log"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_windows_10"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_windows_10-event_log_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_windows_10-restricted_groups",
-      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "restricted_groups"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "restricted_groups"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_windows_10"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_windows_10-restricted_groups_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_windows_10-system_services",
-      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "system_services"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "system_services"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_windows_10"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_windows_10-system_services_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_windows_10-registry",
-      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "registry"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "registry"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_windows_10"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_windows_10-registry_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_windows_10-security_options",
-      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "security_options"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "security_options"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_windows_10"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_windows_10-security_options_stmt",
+        "id": "cis_windows_10-administrative_templates_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
        }
@@ -349,13 +151,211 @@
       ],
       "links": [
        {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
+        "href": "#2e293275-15f5-592b-b805-84d43c12e880",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_windows_10-advanced_audit_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_10-event_log",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "event_log"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "event_log"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2e293275-15f5-592b-b805-84d43c12e880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_10-event_log_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_10-local_policies",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "local_policies"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "local_policies"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2e293275-15f5-592b-b805-84d43c12e880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_10-local_policies_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_10-registry",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "registry"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "registry"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2e293275-15f5-592b-b805-84d43c12e880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_10-registry_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_10-restricted_groups",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "restricted_groups"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "restricted_groups"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2e293275-15f5-592b-b805-84d43c12e880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_10-restricted_groups_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_10-security_options",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "security_options"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "security_options"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2e293275-15f5-592b-b805-84d43c12e880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_10-security_options_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_10-system_services",
+      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "system_services"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "system_services"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2e293275-15f5-592b-b805-84d43c12e880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_10-system_services_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
        }
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
+        "href": "#2e293275-15f5-592b-b805-84d43c12e880",
         "rel": "implementation"
        }
       ],
@@ -415,46 +415,13 @@
       ],
       "links": [
        {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
+        "href": "#2e293275-15f5-592b-b805-84d43c12e880",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_windows_10-windows_firewall_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_windows_10-administrative_templates",
-      "title": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "administrative_templates"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "administrative_templates"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_windows_10"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8cc77ea7-958e-59e5-9c56-6412abc2b664",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_windows_10-administrative_templates_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/windows_10/cis_windows_10.rego (package cis_windows_10); see the rule body."
        }
@@ -467,7 +434,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "8cc77ea7-958e-59e5-9c56-6412abc2b664",
+     "uuid": "2e293275-15f5-592b-b805-84d43c12e880",
      "title": "CIS Microsoft Windows 10 Enterprise Benchmark v4.0.0",
      "props": [
       {
@@ -478,7 +445,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/windows_10/cis_windows_10.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/windows_10/cis_windows_10.rego",
        "media-type": "text/plain"
       }
      ]

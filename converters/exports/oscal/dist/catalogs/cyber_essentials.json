@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "21471336-6ce5-5e3a-b9e3-77fe836fc348",
+  "uuid": "c4073657-8ea6-570e-9838-934d2b019c60",
   "metadata": {
    "title": "Rego Policy Libraries — cyber_essentials (UK Cyber Essentials (Willow question set, effective April 2025) — Control)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,39 @@
     ],
     "controls": [
      {
+      "id": "cyber_essentials-cyber_essentials.firewalls-1",
+      "title": "Cyber Essentials [Firewalls] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cyber_essentials.firewalls#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cyber_essentials.firewalls#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cyber_essentials.firewalls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0a7ab9e8-549d-55af-a1b2-2b0f45ca5584",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cyber_essentials-cyber_essentials.firewalls-1_stmt",
+        "name": "statement",
+        "prose": "Cyber Essentials [Firewalls] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cyber_essentials-FW-1",
       "title": "Every in-scope device is protected by a correctly configured boundary or software firewall",
       "props": [
@@ -85,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#dc0393e8-67da-59e0-8a1b-a159800f3bbd",
+        "href": "#0a7ab9e8-549d-55af-a1b2-2b0f45ca5584",
         "rel": "implementation"
        }
       ],
@@ -118,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#dc0393e8-67da-59e0-8a1b-a159800f3bbd",
+        "href": "#0a7ab9e8-549d-55af-a1b2-2b0f45ca5584",
         "rel": "implementation"
        }
       ],
@@ -151,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#dc0393e8-67da-59e0-8a1b-a159800f3bbd",
+        "href": "#0a7ab9e8-549d-55af-a1b2-2b0f45ca5584",
         "rel": "implementation"
        }
       ],
@@ -184,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#dc0393e8-67da-59e0-8a1b-a159800f3bbd",
+        "href": "#0a7ab9e8-549d-55af-a1b2-2b0f45ca5584",
         "rel": "implementation"
        }
       ],
@@ -217,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#dc0393e8-67da-59e0-8a1b-a159800f3bbd",
+        "href": "#0a7ab9e8-549d-55af-a1b2-2b0f45ca5584",
         "rel": "implementation"
        }
       ],
@@ -250,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#dc0393e8-67da-59e0-8a1b-a159800f3bbd",
+        "href": "#0a7ab9e8-549d-55af-a1b2-2b0f45ca5584",
         "rel": "implementation"
        }
       ],
@@ -259,39 +292,6 @@
         "id": "cyber_essentials-FW-6_stmt",
         "name": "statement",
         "prose": "Software firewalls are enabled on devices used on untrusted networks, including remote working"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cyber_essentials-cyber_essentials.firewalls-1",
-      "title": "Cyber Essentials [Firewalls] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cyber_essentials.firewalls#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cyber_essentials.firewalls#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cyber_essentials.firewalls"
-       }
-      ],
-      "links": [
-       {
-        "href": "#dc0393e8-67da-59e0-8a1b-a159800f3bbd",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cyber_essentials-cyber_essentials.firewalls-1_stmt",
-        "name": "statement",
-        "prose": "Cyber Essentials [Firewalls] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -321,6 +321,39 @@
     ],
     "controls": [
      {
+      "id": "cyber_essentials-cyber_essentials.malware_protection-1",
+      "title": "Cyber Essentials [Malware Protection] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cyber_essentials.malware_protection#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cyber_essentials.malware_protection#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cyber_essentials.malware_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#354d4c62-cc24-5122-9999-a8b8465aaf37",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cyber_essentials-cyber_essentials.malware_protection-1_stmt",
+        "name": "statement",
+        "prose": "Cyber Essentials [Malware Protection] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cyber_essentials-MW-1",
       "title": "Every in-scope device is protected by anti-malware software or an application allow list",
       "props": [
@@ -340,7 +373,7 @@
       ],
       "links": [
        {
-        "href": "#653e29f6-765c-5f7c-9906-8466d71b945f",
+        "href": "#354d4c62-cc24-5122-9999-a8b8465aaf37",
         "rel": "implementation"
        }
       ],
@@ -373,7 +406,7 @@
       ],
       "links": [
        {
-        "href": "#653e29f6-765c-5f7c-9906-8466d71b945f",
+        "href": "#354d4c62-cc24-5122-9999-a8b8465aaf37",
         "rel": "implementation"
        }
       ],
@@ -406,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#653e29f6-765c-5f7c-9906-8466d71b945f",
+        "href": "#354d4c62-cc24-5122-9999-a8b8465aaf37",
         "rel": "implementation"
        }
       ],
@@ -439,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#653e29f6-765c-5f7c-9906-8466d71b945f",
+        "href": "#354d4c62-cc24-5122-9999-a8b8465aaf37",
         "rel": "implementation"
        }
       ],
@@ -448,39 +481,6 @@
         "id": "cyber_essentials-MW-4_stmt",
         "name": "statement",
         "prose": "Where application allow-listing is used, only approved applications execute and the approved list is actively maintained"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cyber_essentials-cyber_essentials.malware_protection-1",
-      "title": "Cyber Essentials [Malware Protection] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cyber_essentials.malware_protection#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cyber_essentials.malware_protection#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cyber_essentials.malware_protection"
-       }
-      ],
-      "links": [
-       {
-        "href": "#653e29f6-765c-5f7c-9906-8466d71b945f",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cyber_essentials-cyber_essentials.malware_protection-1_stmt",
-        "name": "statement",
-        "prose": "Cyber Essentials [Malware Protection] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -510,6 +510,39 @@
     ],
     "controls": [
      {
+      "id": "cyber_essentials-cyber_essentials.secure_configuration-1",
+      "title": "Cyber Essentials [Secure Configuration] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cyber_essentials.secure_configuration#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cyber_essentials.secure_configuration#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cyber_essentials.secure_configuration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d90261ab-17cc-56b9-8680-3ffe46ce58c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cyber_essentials-cyber_essentials.secure_configuration-1_stmt",
+        "name": "statement",
+        "prose": "Cyber Essentials [Secure Configuration] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cyber_essentials-SC-1",
       "title": "Unnecessary user accounts are removed or disabled",
       "props": [
@@ -529,7 +562,7 @@
       ],
       "links": [
        {
-        "href": "#19145684-61d0-5e83-8576-40f496dca7f5",
+        "href": "#d90261ab-17cc-56b9-8680-3ffe46ce58c8",
         "rel": "implementation"
        }
       ],
@@ -562,7 +595,7 @@
       ],
       "links": [
        {
-        "href": "#19145684-61d0-5e83-8576-40f496dca7f5",
+        "href": "#d90261ab-17cc-56b9-8680-3ffe46ce58c8",
         "rel": "implementation"
        }
       ],
@@ -595,7 +628,7 @@
       ],
       "links": [
        {
-        "href": "#19145684-61d0-5e83-8576-40f496dca7f5",
+        "href": "#d90261ab-17cc-56b9-8680-3ffe46ce58c8",
         "rel": "implementation"
        }
       ],
@@ -628,7 +661,7 @@
       ],
       "links": [
        {
-        "href": "#19145684-61d0-5e83-8576-40f496dca7f5",
+        "href": "#d90261ab-17cc-56b9-8680-3ffe46ce58c8",
         "rel": "implementation"
        }
       ],
@@ -661,7 +694,7 @@
       ],
       "links": [
        {
-        "href": "#19145684-61d0-5e83-8576-40f496dca7f5",
+        "href": "#d90261ab-17cc-56b9-8680-3ffe46ce58c8",
         "rel": "implementation"
        }
       ],
@@ -694,7 +727,7 @@
       ],
       "links": [
        {
-        "href": "#19145684-61d0-5e83-8576-40f496dca7f5",
+        "href": "#d90261ab-17cc-56b9-8680-3ffe46ce58c8",
         "rel": "implementation"
        }
       ],
@@ -703,39 +736,6 @@
         "id": "cyber_essentials-SC-6_stmt",
         "name": "statement",
         "prose": "Brute-force unlock protection: throttling to no more than 10 guesses in 5 minutes, or lockout after no more than 10 unsuccessful attempts"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cyber_essentials-cyber_essentials.secure_configuration-1",
-      "title": "Cyber Essentials [Secure Configuration] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cyber_essentials.secure_configuration#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cyber_essentials.secure_configuration#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cyber_essentials.secure_configuration"
-       }
-      ],
-      "links": [
-       {
-        "href": "#19145684-61d0-5e83-8576-40f496dca7f5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cyber_essentials-cyber_essentials.secure_configuration-1_stmt",
-        "name": "statement",
-        "prose": "Cyber Essentials [Secure Configuration] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -765,6 +765,39 @@
     ],
     "controls": [
      {
+      "id": "cyber_essentials-cyber_essentials.security_update_management-1",
+      "title": "Cyber Essentials [Security Update Management] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cyber_essentials.security_update_management#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cyber_essentials.security_update_management#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cyber_essentials.security_update_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b1f46a15-c48d-55e5-ba82-359b86197537",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cyber_essentials-cyber_essentials.security_update_management-1_stmt",
+        "name": "statement",
+        "prose": "Cyber Essentials [Security Update Management] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cyber_essentials-SU-1",
       "title": "All in-scope software is licensed and vendor-supported",
       "props": [
@@ -784,7 +817,7 @@
       ],
       "links": [
        {
-        "href": "#ef2a1b22-4842-5249-8598-2efb2209b8b7",
+        "href": "#b1f46a15-c48d-55e5-ba82-359b86197537",
         "rel": "implementation"
        }
       ],
@@ -817,7 +850,7 @@
       ],
       "links": [
        {
-        "href": "#ef2a1b22-4842-5249-8598-2efb2209b8b7",
+        "href": "#b1f46a15-c48d-55e5-ba82-359b86197537",
         "rel": "implementation"
        }
       ],
@@ -850,7 +883,7 @@
       ],
       "links": [
        {
-        "href": "#ef2a1b22-4842-5249-8598-2efb2209b8b7",
+        "href": "#b1f46a15-c48d-55e5-ba82-359b86197537",
         "rel": "implementation"
        }
       ],
@@ -883,7 +916,7 @@
       ],
       "links": [
        {
-        "href": "#ef2a1b22-4842-5249-8598-2efb2209b8b7",
+        "href": "#b1f46a15-c48d-55e5-ba82-359b86197537",
         "rel": "implementation"
        }
       ],
@@ -916,7 +949,7 @@
       ],
       "links": [
        {
-        "href": "#ef2a1b22-4842-5249-8598-2efb2209b8b7",
+        "href": "#b1f46a15-c48d-55e5-ba82-359b86197537",
         "rel": "implementation"
        }
       ],
@@ -925,39 +958,6 @@
         "id": "cyber_essentials-SU-5_stmt",
         "name": "statement",
         "prose": "Where the vendor publishes no severity detail, all updates are applied within 14 days of release"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cyber_essentials-cyber_essentials.security_update_management-1",
-      "title": "Cyber Essentials [Security Update Management] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cyber_essentials.security_update_management#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cyber_essentials.security_update_management#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cyber_essentials.security_update_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ef2a1b22-4842-5249-8598-2efb2209b8b7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cyber_essentials-cyber_essentials.security_update_management-1_stmt",
-        "name": "statement",
-        "prose": "Cyber Essentials [Security Update Management] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -987,6 +987,39 @@
     ],
     "controls": [
      {
+      "id": "cyber_essentials-cyber_essentials.user_access_control-1",
+      "title": "Cyber Essentials [User Access Control] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cyber_essentials.user_access_control#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cyber_essentials.user_access_control#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cyber_essentials.user_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de700b5e-6859-5841-9728-bcd227e6eadc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cyber_essentials-cyber_essentials.user_access_control-1_stmt",
+        "name": "statement",
+        "prose": "Cyber Essentials [User Access Control] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cyber_essentials-UA-1",
       "title": "User accounts are created only through an approval process and are unique to one person",
       "props": [
@@ -1006,7 +1039,7 @@
       ],
       "links": [
        {
-        "href": "#d5e6471d-ce53-51b6-a478-bb38574fd140",
+        "href": "#de700b5e-6859-5841-9728-bcd227e6eadc",
         "rel": "implementation"
        }
       ],
@@ -1039,7 +1072,7 @@
       ],
       "links": [
        {
-        "href": "#d5e6471d-ce53-51b6-a478-bb38574fd140",
+        "href": "#de700b5e-6859-5841-9728-bcd227e6eadc",
         "rel": "implementation"
        }
       ],
@@ -1072,7 +1105,7 @@
       ],
       "links": [
        {
-        "href": "#d5e6471d-ce53-51b6-a478-bb38574fd140",
+        "href": "#de700b5e-6859-5841-9728-bcd227e6eadc",
         "rel": "implementation"
        }
       ],
@@ -1105,7 +1138,7 @@
       ],
       "links": [
        {
-        "href": "#d5e6471d-ce53-51b6-a478-bb38574fd140",
+        "href": "#de700b5e-6859-5841-9728-bcd227e6eadc",
         "rel": "implementation"
        }
       ],
@@ -1138,7 +1171,7 @@
       ],
       "links": [
        {
-        "href": "#d5e6471d-ce53-51b6-a478-bb38574fd140",
+        "href": "#de700b5e-6859-5841-9728-bcd227e6eadc",
         "rel": "implementation"
        }
       ],
@@ -1171,7 +1204,7 @@
       ],
       "links": [
        {
-        "href": "#d5e6471d-ce53-51b6-a478-bb38574fd140",
+        "href": "#de700b5e-6859-5841-9728-bcd227e6eadc",
         "rel": "implementation"
        }
       ],
@@ -1204,7 +1237,7 @@
       ],
       "links": [
        {
-        "href": "#d5e6471d-ce53-51b6-a478-bb38574fd140",
+        "href": "#de700b5e-6859-5841-9728-bcd227e6eadc",
         "rel": "implementation"
        }
       ],
@@ -1216,39 +1249,6 @@
        }
       ],
       "class": "compliance"
-     },
-     {
-      "id": "cyber_essentials-cyber_essentials.user_access_control-1",
-      "title": "Cyber Essentials [User Access Control] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "cyber_essentials.user_access_control#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cyber_essentials.user_access_control#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cyber_essentials.user_access_control"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d5e6471d-ce53-51b6-a478-bb38574fd140",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cyber_essentials-cyber_essentials.user_access_control-1_stmt",
-        "name": "statement",
-        "prose": "Cyber Essentials [User Access Control] %s: %s — not met"
-       }
-      ],
-      "class": "compliance"
      }
     ]
    }
@@ -1256,7 +1256,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "dc0393e8-67da-59e0-8a1b-a159800f3bbd",
+     "uuid": "0a7ab9e8-549d-55af-a1b2-2b0f45ca5584",
      "title": "UK Cyber Essentials (Willow question set, effective April 2025) — Control",
      "props": [
       {
@@ -1267,13 +1267,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/cyber_essentials/firewalls.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/cyber_essentials/firewalls.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "653e29f6-765c-5f7c-9906-8466d71b945f",
+     "uuid": "354d4c62-cc24-5122-9999-a8b8465aaf37",
      "title": "UK Cyber Essentials (Willow question set, effective April 2025) — Control",
      "props": [
       {
@@ -1284,13 +1284,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/cyber_essentials/malware_protection.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/cyber_essentials/malware_protection.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "19145684-61d0-5e83-8576-40f496dca7f5",
+     "uuid": "d90261ab-17cc-56b9-8680-3ffe46ce58c8",
      "title": "UK Cyber Essentials (Willow question set, effective April 2025) — Control",
      "props": [
       {
@@ -1301,13 +1301,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/cyber_essentials/secure_configuration.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/cyber_essentials/secure_configuration.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "ef2a1b22-4842-5249-8598-2efb2209b8b7",
+     "uuid": "b1f46a15-c48d-55e5-ba82-359b86197537",
      "title": "UK Cyber Essentials (Willow question set, effective April 2025) — Control",
      "props": [
       {
@@ -1318,13 +1318,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/cyber_essentials/security_update_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/cyber_essentials/security_update_management.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d5e6471d-ce53-51b6-a478-bb38574fd140",
+     "uuid": "de700b5e-6859-5841-9728-bcd227e6eadc",
      "title": "UK Cyber Essentials (Willow question set, effective April 2025) — Control",
      "props": [
       {
@@ -1335,7 +1335,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/cyber_essentials/user_access_control.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/cyber_essentials/user_access_control.rego",
        "media-type": "text/plain"
       }
      ]

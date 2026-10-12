@@ -1,0 +1,2586 @@
+{
+ "catalog": {
+  "uuid": "efb1116d-fdbe-5f49-bd6f-3e54c5c6727d",
+  "metadata": {
+   "title": "Rego Policy Libraries — geisa (GEISA ADM Pillar — Application/Device Management via LwM2M)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "geisa"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "geisa-geisa_adm",
+    "class": "rego-module",
+    "title": "GEISA ADM Pillar — Application/Device Management via LwM2M",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance.geisa.adm"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/geisa/geisa_adm.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "geisa-ADM",
+      "title": "lwm2m input missing or not an object",
+      "props": [
+       {
+        "name": "label",
+        "value": "ADM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ADM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.adm"
+       }
+      ],
+      "links": [
+       {
+        "href": "#18fc50d7-96ee-5fb9-88b8-875842881128",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-ADM_stmt",
+        "name": "statement",
+        "prose": "lwm2m input missing or not an object"
+       },
+       {
+        "id": "geisa-ADM_obj.1",
+        "name": "assessment-objective",
+        "prose": "device is not registered with LwM2M server"
+       },
+       {
+        "id": "geisa-ADM_obj.2",
+        "name": "assessment-objective",
+        "prose": "Object /9 (Software Management) must be registered"
+       },
+       {
+        "id": "geisa-ADM_obj.3",
+        "name": "assessment-objective",
+        "prose": "lwm2m.object9 missing or not an object"
+       },
+       {
+        "id": "geisa-ADM_obj.4",
+        "name": "assessment-objective",
+        "prose": "activation_state must be 1 (Active)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.adm-1",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.adm#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.adm#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.adm"
+       }
+      ],
+      "links": [
+       {
+        "href": "#18fc50d7-96ee-5fb9-88b8-875842881128",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.adm-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.adm-2",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.adm#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.adm#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.adm"
+       }
+      ],
+      "links": [
+       {
+        "href": "#18fc50d7-96ee-5fb9-88b8-875842881128",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.adm-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.adm-3",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.adm#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.adm#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.adm"
+       }
+      ],
+      "links": [
+       {
+        "href": "#18fc50d7-96ee-5fb9-88b8-875842881128",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.adm-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.adm-4",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.adm#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.adm#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.adm"
+       }
+      ],
+      "links": [
+       {
+        "href": "#18fc50d7-96ee-5fb9-88b8-875842881128",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.adm-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body."
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   },
+   {
+    "id": "geisa-geisa_api",
+    "class": "rego-module",
+    "title": "GEISA API Pillar — Platform Discovery Compliance",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance.geisa.api"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/geisa/geisa_api.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "geisa-API",
+      "title": "platform discovery response missing or not an object",
+      "props": [
+       {
+        "name": "label",
+        "value": "API"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "API"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.api"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f150a5e9-bbaa-56d0-9d04-b749f05ee6bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-API_stmt",
+        "name": "statement",
+        "prose": "platform discovery response missing or not an object"
+       },
+       {
+        "id": "geisa-API_obj.1",
+        "name": "assessment-objective",
+        "prose": "GEISA version must be >= 1.0"
+       },
+       {
+        "id": "geisa-API_obj.2",
+        "name": "assessment-objective",
+        "prose": "discovery_response.pillars.api must be true"
+       },
+       {
+        "id": "geisa-API_obj.3",
+        "name": "assessment-objective",
+        "prose": "manifest.geisa.uses must include 'platform-discovery'"
+       },
+       {
+        "id": "geisa-API_obj.4",
+        "name": "assessment-objective",
+        "prose": "manifest.applicationId must be set"
+       },
+       {
+        "id": "geisa-API_obj.5",
+        "name": "assessment-objective",
+        "prose": "manifest.applicationId must be non-empty"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.api-1",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.api#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.api#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.api"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f150a5e9-bbaa-56d0-9d04-b749f05ee6bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.api-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.api-2",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.api#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.api#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.api"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f150a5e9-bbaa-56d0-9d04-b749f05ee6bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.api-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.api-3",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.api#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.api#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.api"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f150a5e9-bbaa-56d0-9d04-b749f05ee6bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.api-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body."
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   },
+   {
+    "id": "geisa-geisa_lee",
+    "class": "rego-module",
+    "title": "GEISA LEE Pillar — Lightweight Execution Environment",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance.geisa.lee"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/geisa/geisa_lee.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "geisa-LEE",
+      "title": "container input missing or not an object",
+      "props": [
+       {
+        "name": "label",
+        "value": "LEE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "LEE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.lee"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09f9d7e0-9ff6-5ca6-9533-7011dd1d4aba",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-LEE_stmt",
+        "name": "statement",
+        "prose": "container input missing or not an object"
+       },
+       {
+        "id": "geisa-LEE_obj.1",
+        "name": "assessment-objective",
+        "prose": "container.runtime must be set"
+       },
+       {
+        "id": "geisa-LEE_obj.2",
+        "name": "assessment-objective",
+        "prose": "container.runtime must be non-empty"
+       },
+       {
+        "id": "geisa-LEE_obj.3",
+        "name": "assessment-objective",
+        "prose": "container.isolated must be true"
+       },
+       {
+        "id": "geisa-LEE_obj.4",
+        "name": "assessment-objective",
+        "prose": "discovery_response must declare lee pillar as true"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.lee-1",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_lee.rego (package governance.geisa.lee); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.lee#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.lee#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.lee"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09f9d7e0-9ff6-5ca6-9533-7011dd1d4aba",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.lee-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_lee.rego (package governance.geisa.lee); see the rule body."
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   },
+   {
+    "id": "geisa-geisa_manifest_validation",
+    "class": "rego-module",
+    "title": "GEISA Application Manifest Validator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance.geisa.manifest_validation"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/geisa/geisa_manifest_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "geisa-Missing-required-top-level-key",
+      "title": "'geisa-application-manifest'",
+      "props": [
+       {
+        "name": "label",
+        "value": "Missing required top-level key"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Missing required top-level key"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-Missing-required-top-level-key_stmt",
+        "name": "statement",
+        "prose": "'geisa-application-manifest'"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-geisa-application-manifest",
+      "title": "missing required field 'manifest'",
+      "props": [
+       {
+        "name": "label",
+        "value": "geisa-application-manifest"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "geisa-application-manifest"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-geisa-application-manifest_stmt",
+        "name": "statement",
+        "prose": "missing required field 'manifest'"
+       },
+       {
+        "id": "geisa-geisa-application-manifest_obj.1",
+        "name": "assessment-objective",
+        "prose": "missing required field 'signature'"
+       },
+       {
+        "id": "geisa-geisa-application-manifest_obj.2",
+        "name": "assessment-objective",
+        "prose": "must be an object"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-geisa-application-manifest.manifest",
+      "title": "must be an object",
+      "props": [
+       {
+        "name": "label",
+        "value": "geisa-application-manifest.manifest"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "geisa-application-manifest.manifest"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-geisa-application-manifest.manifest_stmt",
+        "name": "statement",
+        "prose": "must be an object"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-1",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-2",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.app-id",
+      "title": "must be a string with at least 4 characters",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.app-id"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.app-id"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.app-id_stmt",
+        "name": "statement",
+        "prose": "must be a string with at least 4 characters"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.author",
+      "title": "must be a string with at least 4 characters",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.author"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.author"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.author_stmt",
+        "name": "statement",
+        "prose": "must be a string with at least 4 characters"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.name",
+      "title": "must be a string with at least 4 characters",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.name"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.name"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.name_stmt",
+        "name": "statement",
+        "prose": "must be a string with at least 4 characters"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.description",
+      "title": "must be a string",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.description"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.description"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.description_stmt",
+        "name": "statement",
+        "prose": "must be a string"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-3",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-4",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.api-access",
+      "title": "must be an object",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.api-access"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.api-access"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.api-access_stmt",
+        "name": "statement",
+        "prose": "must be an object"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-5",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.artifacts",
+      "title": "must contain at least 1 item",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.artifacts"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.artifacts"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.artifacts_stmt",
+        "name": "statement",
+        "prose": "must contain at least 1 item"
+       },
+       {
+        "id": "geisa-manifest.artifacts_obj.1",
+        "name": "assessment-objective",
+        "prose": "must be an array"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.external-dependencies",
+      "title": "must be an array",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.external-dependencies"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.external-dependencies"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.external-dependencies_stmt",
+        "name": "statement",
+        "prose": "must be an array"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-6",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.default-configuration",
+      "title": "must be an object",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.default-configuration"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.default-configuration"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.default-configuration_stmt",
+        "name": "statement",
+        "prose": "must be an object"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.compatibility",
+      "title": "must be an object",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.compatibility"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.compatibility"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.compatibility_stmt",
+        "name": "statement",
+        "prose": "must be an object"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-7",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-8",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-9",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.compatibility.toolchain-id",
+      "title": "must be a string between 4 and 256 characters",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.compatibility.toolchain-id"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.compatibility.toolchain-id"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.compatibility.toolchain-id_stmt",
+        "name": "statement",
+        "prose": "must be a string between 4 and 256 characters"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-10",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.resources",
+      "title": "must be an object",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.resources"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.resources"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.resources_stmt",
+        "name": "statement",
+        "prose": "must be an object"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.resources.app-ram",
+      "title": "must be an integer >= 1",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.resources.app-ram"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.resources.app-ram"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.resources.app-ram_stmt",
+        "name": "statement",
+        "prose": "must be an integer >= 1"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.resources.storage-persistent",
+      "title": "must be an integer >= 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.resources.storage-persistent"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.resources.storage-persistent"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.resources.storage-persistent_stmt",
+        "name": "statement",
+        "prose": "must be an integer >= 0"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.resources.storage-nonpersistent",
+      "title": "must be an integer >= 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.resources.storage-nonpersistent"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.resources.storage-nonpersistent"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.resources.storage-nonpersistent_stmt",
+        "name": "statement",
+        "prose": "must be an integer >= 0"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.resources.app-cpu",
+      "title": "must be an integer >= 1",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.resources.app-cpu"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.resources.app-cpu"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.resources.app-cpu_stmt",
+        "name": "statement",
+        "prose": "must be an integer >= 1"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.resources.threads",
+      "title": "must be an integer >= 1",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.resources.threads"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.resources.threads"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.resources.threads_stmt",
+        "name": "statement",
+        "prose": "must be an integer >= 1"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.default-launch-strategy",
+      "title": "must be an object",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.default-launch-strategy"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.default-launch-strategy"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.default-launch-strategy_stmt",
+        "name": "statement",
+        "prose": "must be an object"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.default-launch-strategy.max-restarts",
+      "title": "must be an integer >= 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.default-launch-strategy.max-restarts"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.default-launch-strategy.max-restarts"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.default-launch-strategy.max-restarts_stmt",
+        "name": "statement",
+        "prose": "must be an integer >= 0"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.default-launch-strategy.restart-period",
+      "title": "must be an integer >= 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.default-launch-strategy.restart-period"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.default-launch-strategy.restart-period"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.default-launch-strategy.restart-period_stmt",
+        "name": "statement",
+        "prose": "must be an integer >= 0"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-11",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-12",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-13",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.default-launch-strategy.auto-restart",
+      "title": "must be a boolean",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.default-launch-strategy.auto-restart"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.default-launch-strategy.auto-restart"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.default-launch-strategy.auto-restart_stmt",
+        "name": "statement",
+        "prose": "must be a boolean"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.default-launch-strategy.start-background",
+      "title": "must be a boolean",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.default-launch-strategy.start-background"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.default-launch-strategy.start-background"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.default-launch-strategy.start-background_stmt",
+        "name": "statement",
+        "prose": "must be a boolean"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.default-launch-strategy.watchdog",
+      "title": "must be a boolean",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.default-launch-strategy.watchdog"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.default-launch-strategy.watchdog"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.default-launch-strategy.watchdog_stmt",
+        "name": "statement",
+        "prose": "must be a boolean"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.default-launch-strategy.start-string",
+      "title": "must be a string",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.default-launch-strategy.start-string"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.default-launch-strategy.start-string"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.default-launch-strategy.start-string_stmt",
+        "name": "statement",
+        "prose": "must be a string"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.default-launch-strategy.stop-string",
+      "title": "must be a string",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.default-launch-strategy.stop-string"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.default-launch-strategy.stop-string"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.default-launch-strategy.stop-string_stmt",
+        "name": "statement",
+        "prose": "must be a string"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-14",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-14_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-15",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-15_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-16",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-16_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-17",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-17_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-18",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-18_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-19",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-19_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.communication",
+      "title": "must be an object",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.communication"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.communication"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.communication_stmt",
+        "name": "statement",
+        "prose": "must be an object"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.communication.FAN",
+      "title": "must be a boolean",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.communication.FAN"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.communication.FAN"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.communication.FAN_stmt",
+        "name": "statement",
+        "prose": "must be a boolean"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.communication.HAN",
+      "title": "must be a boolean",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.communication.HAN"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.communication.HAN"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.communication.HAN_stmt",
+        "name": "statement",
+        "prose": "must be a boolean"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.communication.messaging",
+      "title": "missing required field 'daily-messages'",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.communication.messaging"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.communication.messaging"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.communication.messaging_stmt",
+        "name": "statement",
+        "prose": "missing required field 'daily-messages'"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-manifest.communication.messaging.daily-messages",
+      "title": "must be an integer >= 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "manifest.communication.messaging.daily-messages"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "manifest.communication.messaging.daily-messages"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-manifest.communication.messaging.daily-messages_stmt",
+        "name": "statement",
+        "prose": "must be an integer >= 0"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-20",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-20_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-21",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-21_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-22",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-22_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-23",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-23_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-24",
+      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a918baa6-311f-53e5-8cf3-4f58a838a848",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-24_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   },
+   {
+    "id": "geisa-geisa_vee",
+    "class": "rego-module",
+    "title": "GEISA VEE Pillar — Virtual Execution Environment",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance.geisa.vee"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/geisa/geisa_vee.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "geisa-VEE",
+      "title": "discovery_response.pillars.vee is true but container.runtime is not VEE-capable",
+      "props": [
+       {
+        "name": "label",
+        "value": "VEE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "VEE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.vee"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b1b1679b-3f63-51aa-80ad-f5a015408a03",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-VEE_stmt",
+        "name": "statement",
+        "prose": "discovery_response.pillars.vee is true but container.runtime is not VEE-capable"
+       },
+       {
+        "id": "geisa-VEE_obj.1",
+        "name": "assessment-objective",
+        "prose": "discovery_response.pillars.vee is true but container input is missing"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "18fc50d7-96ee-5fb9-88b8-875842881128",
+     "title": "GEISA ADM Pillar — Application/Device Management via LwM2M",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "governance.geisa.adm"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/governance/geisa/geisa_adm.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f150a5e9-bbaa-56d0-9d04-b749f05ee6bd",
+     "title": "GEISA API Pillar — Platform Discovery Compliance",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "governance.geisa.api"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/governance/geisa/geisa_api.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "09f9d7e0-9ff6-5ca6-9533-7011dd1d4aba",
+     "title": "GEISA LEE Pillar — Lightweight Execution Environment",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "governance.geisa.lee"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/governance/geisa/geisa_lee.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a918baa6-311f-53e5-8cf3-4f58a838a848",
+     "title": "GEISA Application Manifest Validator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "governance.geisa.manifest_validation"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/governance/geisa/geisa_manifest_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b1b1679b-3f63-51aa-80ad-f5a015408a03",
+     "title": "GEISA VEE Pillar — Virtual Execution Environment",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "governance.geisa.vee"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/governance/geisa/geisa_vee.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

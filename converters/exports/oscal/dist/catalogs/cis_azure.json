@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "8ddd680d-0d7e-5cb0-b19b-9dd0f4a0f097",
+  "uuid": "12b4192b-1286-5b97-9f20-a1df706fc325",
   "metadata": {
    "title": "Rego Policy Libraries — cis_azure (CIS Microsoft Azure Foundations Benchmark v3.0.0)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "cis_azure-sections",
+      "id": "cis_azure-app_service",
       "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "sections"
+        "value": "app_service"
        },
        {
         "name": "alt-identifier",
-        "value": "sections"
+        "value": "app_service"
        },
        {
         "name": "rego-package",
@@ -85,112 +85,13 @@
       ],
       "links": [
        {
-        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "href": "#e289e412-88a7-5e91-936c-b626044a5210",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_azure-sections_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_azure-identity_access",
-      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "identity_access"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "identity_access"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_azure"
-       }
-      ],
-      "links": [
-       {
-        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_azure-identity_access_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_azure-security_center",
-      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "security_center"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "security_center"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_azure"
-       }
-      ],
-      "links": [
-       {
-        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_azure-security_center_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_azure-storage",
-      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "storage"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "storage"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_azure"
-       }
-      ],
-      "links": [
-       {
-        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_azure-storage_stmt",
+        "id": "cis_azure-app_service_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
        }
@@ -217,13 +118,79 @@
       ],
       "links": [
        {
-        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "href": "#e289e412-88a7-5e91-936c-b626044a5210",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_azure-database_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-identity_access",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "identity_access"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "identity_access"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e289e412-88a7-5e91-936c-b626044a5210",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-identity_access_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-key_vault",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "key_vault"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "key_vault"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e289e412-88a7-5e91-936c-b626044a5210",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-key_vault_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
        }
@@ -250,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "href": "#e289e412-88a7-5e91-936c-b626044a5210",
         "rel": "implementation"
        }
       ],
@@ -283,13 +250,79 @@
       ],
       "links": [
        {
-        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "href": "#e289e412-88a7-5e91-936c-b626044a5210",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_azure-networking_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-security_center",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "security_center"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "security_center"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e289e412-88a7-5e91-936c-b626044a5210",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-security_center_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-storage",
+      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "storage"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "storage"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e289e412-88a7-5e91-936c-b626044a5210",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-storage_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
        }
@@ -316,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "href": "#e289e412-88a7-5e91-936c-b626044a5210",
         "rel": "implementation"
        }
       ],
@@ -328,69 +361,1479 @@
        }
       ],
       "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_azure-l2_validation",
+    "class": "rego-module",
+    "title": "CIS Microsoft Azure Foundations Benchmark v3.0.0 - Level 2 Additional Controls",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_azure.l2"
      },
      {
-      "id": "cis_azure-key_vault",
-      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/azure/l2_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_azure-CIS-L2-1.1.1",
+      "title": "Ensure Security Defaults is enabled on Azure Active Directory",
       "props": [
        {
         "name": "label",
-        "value": "key_vault"
+        "value": "CIS L2 1.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "key_vault"
+        "value": "CIS L2 1.1.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_azure"
+        "value": "cis_azure.l2"
        }
       ],
       "links": [
        {
-        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_azure-key_vault_stmt",
+        "id": "cis_azure-CIS-L2-1.1.1_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+        "prose": "Ensure Security Defaults is enabled on Azure Active Directory"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_azure-app_service",
-      "title": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body.",
+      "id": "cis_azure-CIS-L2-1.1.4",
+      "title": "Ensure Guest Users Are Reviewed on a Regular Basis",
       "props": [
        {
         "name": "label",
-        "value": "app_service"
+        "value": "CIS L2 1.1.4"
        },
        {
         "name": "alt-identifier",
-        "value": "app_service"
+        "value": "CIS L2 1.1.4"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_azure"
+        "value": "cis_azure.l2"
        }
       ],
       "links": [
        {
-        "href": "#246d9973-a81e-576f-928a-f5279ce7c73e",
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_azure-app_service_stmt",
+        "id": "cis_azure-CIS-L2-1.1.4_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/azure/cis_azure_foundations.rego (package cis_azure); see the rule body."
+        "prose": "Ensure Guest Users Are Reviewed on a Regular Basis"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-1.2.1",
+      "title": "Ensure that Microsoft Authenticator is configured to show geographic location",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-1.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure that Microsoft Authenticator is configured to show geographic location"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-1.2.2",
+      "title": "Ensure that multi-factor authentication is required for all users",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-1.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that multi-factor authentication is required for all users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-1.3.2",
+      "title": "Ensure that 'Users can add gallery apps to My Apps' is set to 'No'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-1.3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that 'Users can add gallery apps to My Apps' is set to 'No'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-1.4.1",
+      "title": "Ensure that 'Restrict access to Azure AD administration portal' is set to 'Yes'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-1.4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure that 'Restrict access to Azure AD administration portal' is set to 'Yes'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-1.5.1",
+      "title": "Ensure that 'Number of methods required to reset' is set to '2'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-1.5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure that 'Number of methods required to reset' is set to '2'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-1.6.1",
+      "title": "Ensure Privileged Identity Management is used to manage role assignments",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-1.6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Privileged Identity Management is used to manage role assignments"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-1.7",
+      "title": "Ensure that Custom Subscription Administrator Roles are not created",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-1.7_stmt",
+        "name": "statement",
+        "prose": "Ensure that Custom Subscription Administrator Roles are not created"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-1.8",
+      "title": "Ensure that external users with Owner role are removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-1.8_stmt",
+        "name": "statement",
+        "prose": "Ensure that external users with Owner role are removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-2.1.1",
+      "title": "Ensure Microsoft Defender for Servers is set to 'On'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-2.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Microsoft Defender for Servers is set to 'On'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-2.1.2",
+      "title": "Ensure Microsoft Defender for Databases is set to 'On'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-2.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Microsoft Defender for Databases is set to 'On'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-2.1.3",
+      "title": "Ensure Microsoft Defender for Azure SQL is set to 'On'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-2.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure Microsoft Defender for Azure SQL is set to 'On'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-2.1.4",
+      "title": "Ensure Microsoft Defender for SQL Servers is set to 'On'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-2.1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Microsoft Defender for SQL Servers is set to 'On'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-2.1.5",
+      "title": "Ensure Microsoft Defender for Storage is set to 'On'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-2.1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Microsoft Defender for Storage is set to 'On'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-2.1.6",
+      "title": "Ensure Microsoft Defender for Containers is set to 'On'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-2.1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Microsoft Defender for Containers is set to 'On'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-2.1.7",
+      "title": "Ensure Microsoft Defender for Key Vault is set to 'On'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-2.1.7_stmt",
+        "name": "statement",
+        "prose": "Ensure Microsoft Defender for Key Vault is set to 'On'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-2.2.1",
+      "title": "Ensure Defender for Cloud's auto-provisioning of Log Analytics agent is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-2.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Defender for Cloud's auto-provisioning of Log Analytics agent is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-2.10",
+      "title": "Ensure that Microsoft Defender for Cloud integration with Microsoft Defender for Endpoint is selected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-2.10_stmt",
+        "name": "statement",
+        "prose": "Ensure that Microsoft Defender for Cloud integration with Microsoft Defender for Endpoint is selected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-3.1.1",
+      "title": "Ensure that 'Secure transfer required' is set to 'Enabled'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-3.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure that 'Secure transfer required' is set to 'Enabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-3.1.2",
+      "title": "Ensure that storage account access keys are periodically regenerated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-3.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that storage account access keys are periodically regenerated"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-3.1.3",
+      "title": "Ensure Storage logging is enabled for Queue service read/write/delete requests",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-3.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure Storage logging is enabled for Queue service read/write/delete requests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-3.1.4",
+      "title": "Ensure that shared access signature tokens expire within an hour",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-3.1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure that shared access signature tokens expire within an hour"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-3.1.6",
+      "title": "Ensure that 'Public access level' is set to Private for blob containers",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-3.1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure that 'Public access level' is set to Private for blob containers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-3.2.1",
+      "title": "Ensure soft-delete is enabled for Azure Blobs",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-3.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure soft-delete is enabled for Azure Blobs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-3.2.2",
+      "title": "Ensure soft-delete is enabled for Azure File Shares",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-3.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure soft-delete is enabled for Azure File Shares"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-4.1.1",
+      "title": "Ensure 'Auditing' is set to 'On' for Azure SQL Server",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-4.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'Auditing' is set to 'On' for Azure SQL Server"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-4.1.2",
+      "title": "Ensure that 'Data encryption' is set to 'On' for SQL Server",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-4.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that 'Data encryption' is set to 'On' for SQL Server"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-4.1.3",
+      "title": "Ensure that 'Threat Detection' is set to 'On' for SQL Server",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-4.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure that 'Threat Detection' is set to 'On' for SQL Server"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-4.2.1",
+      "title": "Ensure 'Enforce SSL connection' is enabled for PostgreSQL",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-4.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'Enforce SSL connection' is enabled for PostgreSQL"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-4.3.1",
+      "title": "Ensure 'Enforce SSL connection' is enabled for MySQL",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-4.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'Enforce SSL connection' is enabled for MySQL"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-5.1.1",
+      "title": "Ensure audit profile captures all activities",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-5.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure audit profile captures all activities"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-5.1.2",
+      "title": "Ensure diagnostic logging retention policy is set to 365 days or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-5.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure diagnostic logging retention policy is set to 365 days or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-5.2.1",
+      "title": "Ensure activity log alert exists for Create Policy Assignment",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-5.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure activity log alert exists for Create Policy Assignment"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-5.2.2",
+      "title": "Ensure activity log alert exists for Delete Policy Assignment",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-5.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure activity log alert exists for Delete Policy Assignment"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-5.2.4",
+      "title": "Ensure activity log alert exists for Create or Update Network Security Group",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-5.2.4_stmt",
+        "name": "statement",
+        "prose": "Ensure activity log alert exists for Create or Update Network Security Group"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-5.2.5",
+      "title": "Ensure activity log alert exists for Delete Network Security Group",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-5.2.5_stmt",
+        "name": "statement",
+        "prose": "Ensure activity log alert exists for Delete Network Security Group"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-5.2.7",
+      "title": "Ensure activity log alert exists for Create or Update Security Solution",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-5.2.7_stmt",
+        "name": "statement",
+        "prose": "Ensure activity log alert exists for Create or Update Security Solution"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-6.3",
+      "title": "Ensure that Network Watcher is 'Enabled'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-6.3_stmt",
+        "name": "statement",
+        "prose": "Ensure that Network Watcher is 'Enabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-6.4",
+      "title": "Ensure that Network Security Group Flow Log retention is greater than 90 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-6.4_stmt",
+        "name": "statement",
+        "prose": "Ensure that Network Security Group Flow Log retention is greater than 90 days"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-6.5",
+      "title": "Ensure that Network Security Group Flow logs are captured and sent to Log Analytics",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-6.5_stmt",
+        "name": "statement",
+        "prose": "Ensure that Network Security Group Flow logs are captured and sent to Log Analytics"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-7.1",
+      "title": "Ensure Virtual Machines are utilizing Managed Disks",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-7.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Virtual Machines are utilizing Managed Disks"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-7.2",
+      "title": "Ensure that 'OS disk' are encrypted with Customer Managed Key (CMK)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-7.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that 'OS disk' are encrypted with Customer Managed Key (CMK)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_azure-CIS-L2-7.3",
+      "title": "Ensure that 'Data disks' are encrypted with Customer Managed Key (CMK)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_azure.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_azure-CIS-L2-7.3_stmt",
+        "name": "statement",
+        "prose": "Ensure that 'Data disks' are encrypted with Customer Managed Key (CMK)"
        }
       ],
       "class": "security"
@@ -401,7 +1844,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "246d9973-a81e-576f-928a-f5279ce7c73e",
+     "uuid": "e289e412-88a7-5e91-936c-b626044a5210",
      "title": "CIS Microsoft Azure Foundations Benchmark v3.0.0",
      "props": [
       {
@@ -412,7 +1855,24 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/azure/cis_azure_foundations.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/azure/cis_azure_foundations.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "47cbf977-f3b7-505d-947a-e2fc5cd4f8cc",
+     "title": "CIS Microsoft Azure Foundations Benchmark v3.0.0 - Level 2 Additional Controls",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_azure.l2"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/azure/l2_validation.rego",
        "media-type": "text/plain"
       }
      ]

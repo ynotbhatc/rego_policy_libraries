@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "cb05405e-a772-5978-a020-bdabed34b326",
+  "uuid": "0b99afb9-bbb1-521f-ab76-643b4658e109",
   "metadata": {
    "title": "Rego Policy Libraries — cmmc (CMMC 2.0 — Access Control Domain (AC))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#c60c8b86-ec85-5211-8d42-9d71cf7b7e9e",
+        "href": "#4ee59a7c-0d61-534c-88e9-0766f7f30e82",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#c60c8b86-ec85-5211-8d42-9d71cf7b7e9e",
+        "href": "#4ee59a7c-0d61-534c-88e9-0766f7f30e82",
         "rel": "implementation"
        }
       ],
@@ -175,7 +175,7 @@
       ],
       "links": [
        {
-        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
         "rel": "implementation"
        }
       ],
@@ -208,7 +208,7 @@
       ],
       "links": [
        {
-        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
         "rel": "implementation"
        }
       ],
@@ -241,7 +241,7 @@
       ],
       "links": [
        {
-        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
         "rel": "implementation"
        }
       ],
@@ -274,7 +274,7 @@
       ],
       "links": [
        {
-        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
         "rel": "implementation"
        }
       ],
@@ -307,7 +307,7 @@
       ],
       "links": [
        {
-        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
         "rel": "implementation"
        }
       ],
@@ -340,7 +340,7 @@
       ],
       "links": [
        {
-        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
         "rel": "implementation"
        }
       ],
@@ -373,7 +373,7 @@
       ],
       "links": [
        {
-        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
         "rel": "implementation"
        }
       ],
@@ -406,7 +406,7 @@
       ],
       "links": [
        {
-        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
         "rel": "implementation"
        }
       ],
@@ -439,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
         "rel": "implementation"
        }
       ],
@@ -496,7 +496,7 @@
       ],
       "links": [
        {
-        "href": "#157eab50-1f55-50c5-9811-6decb5f8a736",
+        "href": "#068ba339-f4e6-5501-bbf3-3879370446d7",
         "rel": "implementation"
        }
       ],
@@ -529,7 +529,7 @@
       ],
       "links": [
        {
-        "href": "#157eab50-1f55-50c5-9811-6decb5f8a736",
+        "href": "#068ba339-f4e6-5501-bbf3-3879370446d7",
         "rel": "implementation"
        }
       ],
@@ -562,7 +562,7 @@
       ],
       "links": [
        {
-        "href": "#157eab50-1f55-50c5-9811-6decb5f8a736",
+        "href": "#068ba339-f4e6-5501-bbf3-3879370446d7",
         "rel": "implementation"
        }
       ],
@@ -600,105 +600,6 @@
     ],
     "controls": [
      {
-      "id": "cmmc-standard",
-      "title": "CMMC 2.0",
-      "props": [
-       {
-        "name": "label",
-        "value": "standard"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "standard"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cmmc"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3503588f-7371-5ff8-a761-02f1c6662a50",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cmmc-standard_stmt",
-        "name": "statement",
-        "prose": "CMMC 2.0"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cmmc-regulation",
-      "title": "32 CFR Part 170 / DFARS 252.204-7021",
-      "props": [
-       {
-        "name": "label",
-        "value": "regulation"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "regulation"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cmmc"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3503588f-7371-5ff8-a761-02f1c6662a50",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cmmc-regulation_stmt",
-        "name": "statement",
-        "prose": "32 CFR Part 170 / DFARS 252.204-7021"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "cmmc-nist_sp",
-      "title": "NIST SP 800-171 Rev 2",
-      "props": [
-       {
-        "name": "label",
-        "value": "nist_sp"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "nist_sp"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cmmc"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3503588f-7371-5ff8-a761-02f1c6662a50",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cmmc-nist_sp_stmt",
-        "name": "statement",
-        "prose": "NIST SP 800-171 Rev 2"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "cmmc-domains",
       "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
       "props": [
@@ -718,7 +619,7 @@
       ],
       "links": [
        {
-        "href": "#3503588f-7371-5ff8-a761-02f1c6662a50",
+        "href": "#97787b3a-89cd-55d1-a2bb-5486aef64649",
         "rel": "implementation"
        }
       ],
@@ -737,7 +638,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "c60c8b86-ec85-5211-8d42-9d71cf7b7e9e",
+     "uuid": "4ee59a7c-0d61-534c-88e9-0766f7f30e82",
      "title": "CMMC 2.0 — Access Control Domain (AC)",
      "props": [
       {
@@ -748,13 +649,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cmmc/cmmc_access_control.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cmmc/cmmc_access_control.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "61ca24b1-d2f8-54a6-8ec9-5c8b21b2b5d0",
+     "uuid": "f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
      "title": "CMMC 2.0 — Configuration Management Domain (CM)",
      "props": [
       {
@@ -765,13 +666,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cmmc/cmmc_configuration_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cmmc/cmmc_configuration_management.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "157eab50-1f55-50c5-9811-6decb5f8a736",
+     "uuid": "068ba339-f4e6-5501-bbf3-3879370446d7",
      "title": "CMMC 2.0 — Incident Response Domain (IR)",
      "props": [
       {
@@ -782,13 +683,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cmmc/cmmc_incident_response.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cmmc/cmmc_incident_response.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "3503588f-7371-5ff8-a761-02f1c6662a50",
+     "uuid": "97787b3a-89cd-55d1-a2bb-5486aef64649",
      "title": "CMMC 2.0 — Master Compliance Orchestrator",
      "props": [
       {
@@ -799,7 +700,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/cmmc/cmmc_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cmmc/cmmc_main.rego",
        "media-type": "text/plain"
       }
      ]

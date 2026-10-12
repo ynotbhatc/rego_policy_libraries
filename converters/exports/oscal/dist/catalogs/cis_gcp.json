@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "9940ad61-cca3-554e-92dd-ac2e63899ccf",
+  "uuid": "706a05fe-9ee1-55f7-8329-6615973b8b12",
   "metadata": {
    "title": "Rego Policy Libraries — cis_gcp (CIS Google Cloud Platform Foundation Benchmark v4.0.0)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "cis_gcp-sections",
+      "id": "cis_gcp-bigquery",
       "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "sections"
+        "value": "bigquery"
        },
        {
         "name": "alt-identifier",
-        "value": "sections"
+        "value": "bigquery"
        },
        {
         "name": "rego-package",
@@ -85,13 +85,13 @@
       ],
       "links": [
        {
-        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "href": "#4c22f5a4-f6c5-55b0-81ec-4d0c08d8a428",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_gcp-sections_stmt",
+        "id": "cis_gcp-bigquery_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
        }
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "href": "#4c22f5a4-f6c5-55b0-81ec-4d0c08d8a428",
         "rel": "implementation"
        }
       ],
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "href": "#4c22f5a4-f6c5-55b0-81ec-4d0c08d8a428",
         "rel": "implementation"
        }
       ],
@@ -184,79 +184,13 @@
       ],
       "links": [
        {
-        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "href": "#4c22f5a4-f6c5-55b0-81ec-4d0c08d8a428",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_gcp-networking_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_gcp-virtual_machines",
-      "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "virtual_machines"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "virtual_machines"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_gcp_foundations"
-       }
-      ],
-      "links": [
-       {
-        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_gcp-virtual_machines_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_gcp-storage",
-      "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "storage"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "storage"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_gcp_foundations"
-       }
-      ],
-      "links": [
-       {
-        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_gcp-storage_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
        }
@@ -283,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "href": "#4c22f5a4-f6c5-55b0-81ec-4d0c08d8a428",
         "rel": "implementation"
        }
       ],
@@ -297,16 +231,16 @@
       "class": "security"
      },
      {
-      "id": "cis_gcp-bigquery",
+      "id": "cis_gcp-storage",
       "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "bigquery"
+        "value": "storage"
        },
        {
         "name": "alt-identifier",
-        "value": "bigquery"
+        "value": "storage"
        },
        {
         "name": "rego-package",
@@ -316,15 +250,1557 @@
       ],
       "links": [
        {
-        "href": "#50146ea3-84d0-5165-98b1-bcd84832c2c1",
+        "href": "#4c22f5a4-f6c5-55b0-81ec-4d0c08d8a428",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_gcp-bigquery_stmt",
+        "id": "cis_gcp-storage_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-virtual_machines",
+      "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "virtual_machines"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "virtual_machines"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp_foundations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c22f5a4-f6c5-55b0-81ec-4d0c08d8a428",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-virtual_machines_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_gcp-l2_validation",
+    "class": "rego-module",
+    "title": "CIS Google Cloud Platform Foundation Benchmark v4.0.0 - Level 2 Additional Controls",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_gcp.l2"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/gcp/l2_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_gcp-CIS-L2-1.2",
+      "title": "Ensure that multi-factor authentication is enabled for all non-service accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that multi-factor authentication is enabled for all non-service accounts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-1.3",
+      "title": "Ensure that Security Key Enforcement is enabled for all admin accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure that Security Key Enforcement is enabled for all admin accounts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-1.7",
+      "title": "Ensure that Service Account has no Admin privileges",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-1.7_stmt",
+        "name": "statement",
+        "prose": "Ensure that Service Account has no Admin privileges"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-1.8",
+      "title": "Ensure that service account keys are rotated within 90 days or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-1.8_stmt",
+        "name": "statement",
+        "prose": "Ensure that service account keys are rotated within 90 days or less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-1.9",
+      "title": "Ensure that Separation of duties is enforced while assigning Service Account related roles to users",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-1.9_stmt",
+        "name": "statement",
+        "prose": "Ensure that Separation of duties is enforced while assigning Service Account related roles to users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-1.10",
+      "title": "Ensure that Cloud KMS cryptokeys are not anonymously or publicly accessible",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-1.10_stmt",
+        "name": "statement",
+        "prose": "Ensure that Cloud KMS cryptokeys are not anonymously or publicly accessible"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-1.15",
+      "title": "Ensure that organizational policies are configured to restrict the use of publicly accessible Cloud Storage buckets",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-1.15_stmt",
+        "name": "statement",
+        "prose": "Ensure that organizational policies are configured to restrict the use of publicly accessible Cloud Storage buckets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-1.16",
+      "title": "Ensure Essentials Contacts is configured for Organization",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-1.16_stmt",
+        "name": "statement",
+        "prose": "Ensure Essentials Contacts is configured for Organization"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-2.2",
+      "title": "Ensure that sinks are configured for all log entries",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that sinks are configured for all log entries"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-2.3",
+      "title": "Ensure that retention policies on log buckets are configured using Bucket Lock",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure that retention policies on log buckets are configured using Bucket Lock"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-2.4",
+      "title": "Ensure log metric filter and alerts exist for project ownership assignments",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-2.4_stmt",
+        "name": "statement",
+        "prose": "Ensure log metric filter and alerts exist for project ownership assignments"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-2.5",
+      "title": "Ensure log metric filter and alerts exist for audit configuration changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-2.5_stmt",
+        "name": "statement",
+        "prose": "Ensure log metric filter and alerts exist for audit configuration changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-2.6",
+      "title": "Ensure log metric filter and alerts exist for custom role changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-2.6_stmt",
+        "name": "statement",
+        "prose": "Ensure log metric filter and alerts exist for custom role changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-2.7",
+      "title": "Ensure log metric filter and alerts exist for VPC network firewall rule changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-2.7_stmt",
+        "name": "statement",
+        "prose": "Ensure log metric filter and alerts exist for VPC network firewall rule changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-2.8",
+      "title": "Ensure log metric filter and alerts exist for VPC network route changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-2.8_stmt",
+        "name": "statement",
+        "prose": "Ensure log metric filter and alerts exist for VPC network route changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-2.9",
+      "title": "Ensure log metric filter and alerts exist for VPC network changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-2.9_stmt",
+        "name": "statement",
+        "prose": "Ensure log metric filter and alerts exist for VPC network changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-2.10",
+      "title": "Ensure log metric filter and alerts exist for Cloud Storage IAM permission changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-2.10_stmt",
+        "name": "statement",
+        "prose": "Ensure log metric filter and alerts exist for Cloud Storage IAM permission changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-2.11",
+      "title": "Ensure log metric filter and alerts exist for SQL instance configuration changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-2.11_stmt",
+        "name": "statement",
+        "prose": "Ensure log metric filter and alerts exist for SQL instance configuration changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-3.1",
+      "title": "Ensure VPC Flow Logs is enabled for every subnet in a VPC Network",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure VPC Flow Logs is enabled for every subnet in a VPC Network"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-3.2",
+      "title": "Ensure legacy networks do not exist for older projects",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure legacy networks do not exist for older projects"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-3.7",
+      "title": "Ensure that RDP access is restricted from the Internet (0.0.0.0/0)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-3.7_stmt",
+        "name": "statement",
+        "prose": "Ensure that RDP access is restricted from the Internet (0.0.0.0/0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-3.8",
+      "title": "Ensure that SSH access is restricted from the Internet (0.0.0.0/0)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-3.8_stmt",
+        "name": "statement",
+        "prose": "Ensure that SSH access is restricted from the Internet (0.0.0.0/0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-3.10",
+      "title": "Ensure Firewall Rules for instances behind Identity Aware Proxy (IAP) only allow traffic from Google Cloud Load Balancing and Cloud IAP IP ranges",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-3.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Firewall Rules for instances behind Identity Aware Proxy (IAP) only allow traffic from Google Cloud Load Balancing and Cloud IAP IP ranges"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-3.11",
+      "title": "Ensure that Cloud DNS logging is enabled for all VPC networks",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-3.11_stmt",
+        "name": "statement",
+        "prose": "Ensure that Cloud DNS logging is enabled for all VPC networks"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-4.2",
+      "title": "Ensure that instances are not configured to use the default service account with full access to all Cloud APIs",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that instances are not configured to use the default service account with full access to all Cloud APIs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-4.3",
+      "title": "Ensure that instances are not configured to use the default service account",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure that instances are not configured to use the default service account"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-4.5",
+      "title": "Ensure 'Enable connecting to serial ports' is not enabled on VM instances",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-4.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'Enable connecting to serial ports' is not enabled on VM instances"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-4.6",
+      "title": "Ensure that IP forwarding is not enabled on Instances",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-4.6_stmt",
+        "name": "statement",
+        "prose": "Ensure that IP forwarding is not enabled on Instances"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-4.7",
+      "title": "Ensure VM disks for critical VMs are encrypted with Customer-Supplied Encryption Keys (CSEK)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-4.7_stmt",
+        "name": "statement",
+        "prose": "Ensure VM disks for critical VMs are encrypted with Customer-Supplied Encryption Keys (CSEK)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-4.8",
+      "title": "Ensure Compute instances are launched with Shielded VM enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-4.8_stmt",
+        "name": "statement",
+        "prose": "Ensure Compute instances are launched with Shielded VM enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-4.9",
+      "title": "Ensure Compute instances do not have public IP addresses",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-4.9_stmt",
+        "name": "statement",
+        "prose": "Ensure Compute instances do not have public IP addresses"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-4.11",
+      "title": "Ensure that Compute instances have Confidential Computing enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-4.11_stmt",
+        "name": "statement",
+        "prose": "Ensure that Compute instances have Confidential Computing enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-5.1",
+      "title": "Ensure that Cloud Storage bucket is not anonymously or publicly accessible",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure that Cloud Storage bucket is not anonymously or publicly accessible"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-5.2",
+      "title": "Ensure that Cloud Storage buckets have uniform bucket-level access enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that Cloud Storage buckets have uniform bucket-level access enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-6.1.1",
+      "title": "Ensure that a MySQL database instance does not allow anyone to connect with administrative privileges",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-6.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure that a MySQL database instance does not allow anyone to connect with administrative privileges"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-6.1.2",
+      "title": "Ensure that the MySQL database instance 'skip_show_database' flag is set to 'on'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-6.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that the MySQL database instance 'skip_show_database' flag is set to 'on'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-6.2.1",
+      "title": "Ensure that the PostgreSQL database instance 'log_checkpoints' flag is set to 'on'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-6.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure that the PostgreSQL database instance 'log_checkpoints' flag is set to 'on'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-6.2.2",
+      "title": "Ensure that the PostgreSQL database instance 'log_connections' flag is set to 'on'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-6.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that the PostgreSQL database instance 'log_connections' flag is set to 'on'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-6.2.3",
+      "title": "Ensure that the PostgreSQL database instance 'log_disconnections' flag is set to 'on'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-6.2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure that the PostgreSQL database instance 'log_disconnections' flag is set to 'on'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-6.2.4",
+      "title": "Ensure that the PostgreSQL database instance 'log_lock_waits' flag is set to 'on'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-6.2.4_stmt",
+        "name": "statement",
+        "prose": "Ensure that the PostgreSQL database instance 'log_lock_waits' flag is set to 'on'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-6.4",
+      "title": "Ensure that Cloud SQL database instances are not open to the world",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-6.4_stmt",
+        "name": "statement",
+        "prose": "Ensure that Cloud SQL database instances are not open to the world"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-6.6",
+      "title": "Ensure that Cloud SQL database instances do not have public IPs",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 6.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 6.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-6.6_stmt",
+        "name": "statement",
+        "prose": "Ensure that Cloud SQL database instances do not have public IPs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-7.1",
+      "title": "Ensure that BigQuery datasets are not anonymously or publicly accessible",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-7.1_stmt",
+        "name": "statement",
+        "prose": "Ensure that BigQuery datasets are not anonymously or publicly accessible"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-7.2",
+      "title": "Ensure that all BigQuery Tables are encrypted with Customer-managed encryption key (CMEK)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-7.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that all BigQuery Tables are encrypted with Customer-managed encryption key (CMEK)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-CIS-L2-7.3",
+      "title": "Ensure that a Default Customer-managed encryption key (CMEK) is specified for all BigQuery datasets",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5309639c-b82d-5d20-a633-497dcdafb9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-CIS-L2-7.3_stmt",
+        "name": "statement",
+        "prose": "Ensure that a Default Customer-managed encryption key (CMEK) is specified for all BigQuery datasets"
        }
       ],
       "class": "security"
@@ -335,7 +1811,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "50146ea3-84d0-5165-98b1-bcd84832c2c1",
+     "uuid": "4c22f5a4-f6c5-55b0-81ec-4d0c08d8a428",
      "title": "CIS Google Cloud Platform Foundation Benchmark v4.0.0",
      "props": [
       {
@@ -346,7 +1822,24 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/gcp/cis_gcp_foundations.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/gcp/cis_gcp_foundations.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "5309639c-b82d-5d20-a633-497dcdafb9cf",
+     "title": "CIS Google Cloud Platform Foundation Benchmark v4.0.0 - Level 2 Additional Controls",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_gcp.l2"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/gcp/l2_validation.rego",
        "media-type": "text/plain"
       }
      ]

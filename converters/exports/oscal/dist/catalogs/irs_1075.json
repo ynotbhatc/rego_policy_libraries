@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "8dd71548-e0ac-5181-9438-0b766eb01776",
+  "uuid": "e6f4d9fc-4917-5bb3-90e2-49835fb0f9ee",
   "metadata": {
    "title": "Rego Policy Libraries — irs_1075 (IRS Publication 1075 (Rev. 11-2021) — Section 9: Computer System Security)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,39 @@
     ],
     "controls": [
      {
+      "id": "irs_1075-irs_1075.computer_security-1",
+      "title": "IRS 1075 [Computer Security] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "irs_1075.computer_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "irs_1075.computer_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.computer_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-irs_1075.computer_security-1_stmt",
+        "name": "statement",
+        "prose": "IRS 1075 [Computer Security] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "irs_1075-CS-1",
       "title": "Logical access to FTI is authorized by role with least privilege (AC)",
       "props": [
@@ -85,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
         "rel": "implementation"
        }
       ],
@@ -94,270 +127,6 @@
         "id": "irs_1075-CS-1_stmt",
         "name": "statement",
         "prose": "Logical access to FTI is authorized by role with least privilege (AC)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-CS-2",
-      "title": "Remote access to FTI is authorized, encrypted, and monitored (AC-17)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CS-2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CS-2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.computer_security"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-CS-2_stmt",
-        "name": "statement",
-        "prose": "Remote access to FTI is authorized, encrypted, and monitored (AC-17)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-CS-3",
-      "title": "Multi-factor authentication is enforced for access to systems that receive, process, store, or transmit FTI (IA)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CS-3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CS-3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.computer_security"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-CS-3_stmt",
-        "name": "statement",
-        "prose": "Multi-factor authentication is enforced for access to systems that receive, process, store, or transmit FTI (IA)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-CS-4",
-      "title": "Audit logging captures access to FTI with user identity; logs are protected and reviewed (AU)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CS-4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CS-4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.computer_security"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-CS-4_stmt",
-        "name": "statement",
-        "prose": "Audit logging captures access to FTI with user identity; logs are protected and reviewed (AU)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-CS-5",
-      "title": "FTI is encrypted in transit with FIPS 140 validated cryptography (SC-8)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CS-5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CS-5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.computer_security"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-CS-5_stmt",
-        "name": "statement",
-        "prose": "FTI is encrypted in transit with FIPS 140 validated cryptography (SC-8)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-CS-6",
-      "title": "FTI is encrypted at rest with FIPS 140 validated cryptography (SC-28)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CS-6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CS-6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.computer_security"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-CS-6_stmt",
-        "name": "statement",
-        "prose": "FTI is encrypted at rest with FIPS 140 validated cryptography (SC-28)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-CS-7",
-      "title": "FTI systems are hardened to secure configuration baselines consistent with IRS SCSEMs (CM)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CS-7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CS-7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.computer_security"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-CS-7_stmt",
-        "name": "statement",
-        "prose": "FTI systems are hardened to secure configuration baselines consistent with IRS SCSEMs (CM)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-CS-8",
-      "title": "A current System Security Plan covers every system that receives, processes, stores, or transmits FTI (PL-2)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CS-8"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CS-8"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.computer_security"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-CS-8_stmt",
-        "name": "statement",
-        "prose": "A current System Security Plan covers every system that receives, processes, stores, or transmits FTI (PL-2)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-CS-9",
-      "title": "Security assessments are performed on FTI systems and weaknesses tracked in a POA&M (CA)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CS-9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CS-9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.computer_security"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-CS-9_stmt",
-        "name": "statement",
-        "prose": "Security assessments are performed on FTI systems and weaknesses tracked in a POA&M (CA)"
        }
       ],
       "class": "compliance"
@@ -382,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
         "rel": "implementation"
        }
       ],
@@ -415,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
         "rel": "implementation"
        }
       ],
@@ -448,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
         "rel": "implementation"
        }
       ],
@@ -481,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
         "rel": "implementation"
        }
       ],
@@ -495,16 +264,16 @@
       "class": "compliance"
      },
      {
-      "id": "irs_1075-irs_1075.computer_security-1",
-      "title": "IRS 1075 [Computer Security] %s: %s — not met",
+      "id": "irs_1075-CS-2",
+      "title": "Remote access to FTI is authorized, encrypted, and monitored (AC-17)",
       "props": [
        {
         "name": "label",
-        "value": "irs_1075.computer_security#1"
+        "value": "CS-2"
        },
        {
         "name": "alt-identifier",
-        "value": "irs_1075.computer_security#1"
+        "value": "CS-2"
        },
        {
         "name": "rego-package",
@@ -514,15 +283,246 @@
       ],
       "links": [
        {
-        "href": "#8c932fc4-6603-5ec6-abe2-60ffef00ffee",
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "irs_1075-irs_1075.computer_security-1_stmt",
+        "id": "irs_1075-CS-2_stmt",
         "name": "statement",
-        "prose": "IRS 1075 [Computer Security] %s: %s — not met"
+        "prose": "Remote access to FTI is authorized, encrypted, and monitored (AC-17)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "irs_1075-CS-3",
+      "title": "Multi-factor authentication is enforced for access to systems that receive, process, store, or transmit FTI (IA)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CS-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CS-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.computer_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-CS-3_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication is enforced for access to systems that receive, process, store, or transmit FTI (IA)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "irs_1075-CS-4",
+      "title": "Audit logging captures access to FTI with user identity; logs are protected and reviewed (AU)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CS-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CS-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.computer_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-CS-4_stmt",
+        "name": "statement",
+        "prose": "Audit logging captures access to FTI with user identity; logs are protected and reviewed (AU)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "irs_1075-CS-5",
+      "title": "FTI is encrypted in transit with FIPS 140 validated cryptography (SC-8)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CS-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CS-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.computer_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-CS-5_stmt",
+        "name": "statement",
+        "prose": "FTI is encrypted in transit with FIPS 140 validated cryptography (SC-8)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "irs_1075-CS-6",
+      "title": "FTI is encrypted at rest with FIPS 140 validated cryptography (SC-28)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CS-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CS-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.computer_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-CS-6_stmt",
+        "name": "statement",
+        "prose": "FTI is encrypted at rest with FIPS 140 validated cryptography (SC-28)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "irs_1075-CS-7",
+      "title": "FTI systems are hardened to secure configuration baselines consistent with IRS SCSEMs (CM)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CS-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CS-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.computer_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-CS-7_stmt",
+        "name": "statement",
+        "prose": "FTI systems are hardened to secure configuration baselines consistent with IRS SCSEMs (CM)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "irs_1075-CS-8",
+      "title": "A current System Security Plan covers every system that receives, processes, stores, or transmits FTI (PL-2)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CS-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CS-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.computer_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-CS-8_stmt",
+        "name": "statement",
+        "prose": "A current System Security Plan covers every system that receives, processes, stores, or transmits FTI (PL-2)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "irs_1075-CS-9",
+      "title": "Security assessments are performed on FTI systems and weaknesses tracked in a POA&M (CA)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CS-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CS-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.computer_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-CS-9_stmt",
+        "name": "statement",
+        "prose": "Security assessments are performed on FTI systems and weaknesses tracked in a POA&M (CA)"
        }
       ],
       "class": "compliance"
@@ -552,6 +552,39 @@
     ],
     "controls": [
      {
+      "id": "irs_1075-irs_1075.disposal-1",
+      "title": "IRS 1075 [Disposal] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "irs_1075.disposal#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "irs_1075.disposal#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.disposal"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5ae62a13-ca0c-5e62-8d0c-ee25d05cfb3b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-irs_1075.disposal-1_stmt",
+        "name": "statement",
+        "prose": "IRS 1075 [Disposal] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "irs_1075-DS-1",
       "title": "FTI is returned to the IRS or destroyed when no longer needed for the authorized purpose",
       "props": [
@@ -571,7 +604,7 @@
       ],
       "links": [
        {
-        "href": "#3ab67d02-87be-571e-9097-84c4763a3f4a",
+        "href": "#5ae62a13-ca0c-5e62-8d0c-ee25d05cfb3b",
         "rel": "implementation"
        }
       ],
@@ -604,7 +637,7 @@
       ],
       "links": [
        {
-        "href": "#3ab67d02-87be-571e-9097-84c4763a3f4a",
+        "href": "#5ae62a13-ca0c-5e62-8d0c-ee25d05cfb3b",
         "rel": "implementation"
        }
       ],
@@ -637,7 +670,7 @@
       ],
       "links": [
        {
-        "href": "#3ab67d02-87be-571e-9097-84c4763a3f4a",
+        "href": "#5ae62a13-ca0c-5e62-8d0c-ee25d05cfb3b",
         "rel": "implementation"
        }
       ],
@@ -670,7 +703,7 @@
       ],
       "links": [
        {
-        "href": "#3ab67d02-87be-571e-9097-84c4763a3f4a",
+        "href": "#5ae62a13-ca0c-5e62-8d0c-ee25d05cfb3b",
         "rel": "implementation"
        }
       ],
@@ -703,7 +736,7 @@
       ],
       "links": [
        {
-        "href": "#3ab67d02-87be-571e-9097-84c4763a3f4a",
+        "href": "#5ae62a13-ca0c-5e62-8d0c-ee25d05cfb3b",
         "rel": "implementation"
        }
       ],
@@ -736,7 +769,7 @@
       ],
       "links": [
        {
-        "href": "#3ab67d02-87be-571e-9097-84c4763a3f4a",
+        "href": "#5ae62a13-ca0c-5e62-8d0c-ee25d05cfb3b",
         "rel": "implementation"
        }
       ],
@@ -745,39 +778,6 @@
         "id": "irs_1075-DS-6_stmt",
         "name": "statement",
         "prose": "Devices with internal storage that processed FTI (printers, copiers, fax, multifunction devices) are sanitized before disposal or return"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-irs_1075.disposal-1",
-      "title": "IRS 1075 [Disposal] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "irs_1075.disposal#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "irs_1075.disposal#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.disposal"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3ab67d02-87be-571e-9097-84c4763a3f4a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-irs_1075.disposal-1_stmt",
-        "name": "statement",
-        "prose": "IRS 1075 [Disposal] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -807,6 +807,39 @@
     ],
     "controls": [
      {
+      "id": "irs_1075-irs_1075.incident_response-1",
+      "title": "IRS 1075 [Incident Response] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "irs_1075.incident_response#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "irs_1075.incident_response#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df7e0974-2a64-5f6b-8556-c854453a8671",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-irs_1075.incident_response-1_stmt",
+        "name": "statement",
+        "prose": "IRS 1075 [Incident Response] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "irs_1075-IR-1",
       "title": "Incident response procedures specifically cover FTI incidents, including unauthorized inspection or disclosure",
       "props": [
@@ -826,7 +859,7 @@
       ],
       "links": [
        {
-        "href": "#7717985e-055b-5ba6-9ffe-6714ec998031",
+        "href": "#df7e0974-2a64-5f6b-8556-c854453a8671",
         "rel": "implementation"
        }
       ],
@@ -859,7 +892,7 @@
       ],
       "links": [
        {
-        "href": "#7717985e-055b-5ba6-9ffe-6714ec998031",
+        "href": "#df7e0974-2a64-5f6b-8556-c854453a8671",
         "rel": "implementation"
        }
       ],
@@ -892,7 +925,7 @@
       ],
       "links": [
        {
-        "href": "#7717985e-055b-5ba6-9ffe-6714ec998031",
+        "href": "#df7e0974-2a64-5f6b-8556-c854453a8671",
         "rel": "implementation"
        }
       ],
@@ -925,7 +958,7 @@
       ],
       "links": [
        {
-        "href": "#7717985e-055b-5ba6-9ffe-6714ec998031",
+        "href": "#df7e0974-2a64-5f6b-8556-c854453a8671",
         "rel": "implementation"
        }
       ],
@@ -958,7 +991,7 @@
       ],
       "links": [
        {
-        "href": "#7717985e-055b-5ba6-9ffe-6714ec998031",
+        "href": "#df7e0974-2a64-5f6b-8556-c854453a8671",
         "rel": "implementation"
        }
       ],
@@ -991,7 +1024,7 @@
       ],
       "links": [
        {
-        "href": "#7717985e-055b-5ba6-9ffe-6714ec998031",
+        "href": "#df7e0974-2a64-5f6b-8556-c854453a8671",
         "rel": "implementation"
        }
       ],
@@ -1000,39 +1033,6 @@
         "id": "irs_1075-IR-6_stmt",
         "name": "statement",
         "prose": "Taxpayer notification is coordinated with the IRS and TIGTA before the agency notifies affected individuals"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-irs_1075.incident_response-1",
-      "title": "IRS 1075 [Incident Response] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "irs_1075.incident_response#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "irs_1075.incident_response#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.incident_response"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7717985e-055b-5ba6-9ffe-6714ec998031",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-irs_1075.incident_response-1_stmt",
-        "name": "statement",
-        "prose": "IRS 1075 [Incident Response] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -1062,6 +1062,39 @@
     ],
     "controls": [
      {
+      "id": "irs_1075-irs_1075.other_safeguards-1",
+      "title": "IRS 1075 [Other Safeguards] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "irs_1075.other_safeguards#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "irs_1075.other_safeguards#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.other_safeguards"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a4c0f755-9418-5577-9848-4593162d75e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-irs_1075.other_safeguards-1_stmt",
+        "name": "statement",
+        "prose": "IRS 1075 [Other Safeguards] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "irs_1075-OS-1",
       "title": "A safeguards program with a designated accountable official is established for FTI protection",
       "props": [
@@ -1081,7 +1114,7 @@
       ],
       "links": [
        {
-        "href": "#3ec47cee-8d65-5b03-bf1c-24e8950b8406",
+        "href": "#a4c0f755-9418-5577-9848-4593162d75e4",
         "rel": "implementation"
        }
       ],
@@ -1114,7 +1147,7 @@
       ],
       "links": [
        {
-        "href": "#3ec47cee-8d65-5b03-bf1c-24e8950b8406",
+        "href": "#a4c0f755-9418-5577-9848-4593162d75e4",
         "rel": "implementation"
        }
       ],
@@ -1147,7 +1180,7 @@
       ],
       "links": [
        {
-        "href": "#3ec47cee-8d65-5b03-bf1c-24e8950b8406",
+        "href": "#a4c0f755-9418-5577-9848-4593162d75e4",
         "rel": "implementation"
        }
       ],
@@ -1180,7 +1213,7 @@
       ],
       "links": [
        {
-        "href": "#3ec47cee-8d65-5b03-bf1c-24e8950b8406",
+        "href": "#a4c0f755-9418-5577-9848-4593162d75e4",
         "rel": "implementation"
        }
       ],
@@ -1213,7 +1246,7 @@
       ],
       "links": [
        {
-        "href": "#3ec47cee-8d65-5b03-bf1c-24e8950b8406",
+        "href": "#a4c0f755-9418-5577-9848-4593162d75e4",
         "rel": "implementation"
        }
       ],
@@ -1246,7 +1279,7 @@
       ],
       "links": [
        {
-        "href": "#3ec47cee-8d65-5b03-bf1c-24e8950b8406",
+        "href": "#a4c0f755-9418-5577-9848-4593162d75e4",
         "rel": "implementation"
        }
       ],
@@ -1255,39 +1288,6 @@
         "id": "irs_1075-OS-6_stmt",
         "name": "statement",
         "prose": "The agency supports IRS Office of Safeguards on-site reviews and provides requested records"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-irs_1075.other_safeguards-1",
-      "title": "IRS 1075 [Other Safeguards] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "irs_1075.other_safeguards#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "irs_1075.other_safeguards#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.other_safeguards"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3ec47cee-8d65-5b03-bf1c-24e8950b8406",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-irs_1075.other_safeguards-1_stmt",
-        "name": "statement",
-        "prose": "IRS 1075 [Other Safeguards] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -1317,6 +1317,39 @@
     ],
     "controls": [
      {
+      "id": "irs_1075-irs_1075.recordkeeping-1",
+      "title": "IRS 1075 [Recordkeeping] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "irs_1075.recordkeeping#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "irs_1075.recordkeeping#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.recordkeeping"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42d9523f-806e-5c6f-aabf-515a388e86ec",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-irs_1075.recordkeeping-1_stmt",
+        "name": "statement",
+        "prose": "IRS 1075 [Recordkeeping] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "irs_1075-RK-1",
       "title": "A permanent system of standardized records of requests for and receipts of FTI is maintained",
       "props": [
@@ -1336,7 +1369,7 @@
       ],
       "links": [
        {
-        "href": "#1510d8f1-f8de-5979-a758-126106528d92",
+        "href": "#42d9523f-806e-5c6f-aabf-515a388e86ec",
         "rel": "implementation"
        }
       ],
@@ -1369,7 +1402,7 @@
       ],
       "links": [
        {
-        "href": "#1510d8f1-f8de-5979-a758-126106528d92",
+        "href": "#42d9523f-806e-5c6f-aabf-515a388e86ec",
         "rel": "implementation"
        }
       ],
@@ -1402,7 +1435,7 @@
       ],
       "links": [
        {
-        "href": "#1510d8f1-f8de-5979-a758-126106528d92",
+        "href": "#42d9523f-806e-5c6f-aabf-515a388e86ec",
         "rel": "implementation"
        }
       ],
@@ -1435,7 +1468,7 @@
       ],
       "links": [
        {
-        "href": "#1510d8f1-f8de-5979-a758-126106528d92",
+        "href": "#42d9523f-806e-5c6f-aabf-515a388e86ec",
         "rel": "implementation"
        }
       ],
@@ -1468,7 +1501,7 @@
       ],
       "links": [
        {
-        "href": "#1510d8f1-f8de-5979-a758-126106528d92",
+        "href": "#42d9523f-806e-5c6f-aabf-515a388e86ec",
         "rel": "implementation"
        }
       ],
@@ -1501,7 +1534,7 @@
       ],
       "links": [
        {
-        "href": "#1510d8f1-f8de-5979-a758-126106528d92",
+        "href": "#42d9523f-806e-5c6f-aabf-515a388e86ec",
         "rel": "implementation"
        }
       ],
@@ -1510,39 +1543,6 @@
         "id": "irs_1075-RK-6_stmt",
         "name": "statement",
         "prose": "Recordkeeping logs are retained and available for IRS Office of Safeguards review"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-irs_1075.recordkeeping-1",
-      "title": "IRS 1075 [Recordkeeping] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "irs_1075.recordkeeping#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "irs_1075.recordkeeping#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.recordkeeping"
-       }
-      ],
-      "links": [
-       {
-        "href": "#1510d8f1-f8de-5979-a758-126106528d92",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-irs_1075.recordkeeping-1_stmt",
-        "name": "statement",
-        "prose": "IRS 1075 [Recordkeeping] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -1572,6 +1572,39 @@
     ],
     "controls": [
      {
+      "id": "irs_1075-irs_1075.reporting-1",
+      "title": "IRS 1075 [Reporting] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "irs_1075.reporting#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "irs_1075.reporting#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#52cbb284-2836-5d7e-ae96-41c0265c2b51",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-irs_1075.reporting-1_stmt",
+        "name": "statement",
+        "prose": "IRS 1075 [Reporting] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "irs_1075-RP-1",
       "title": "A Safeguard Security Report (SSR) is submitted annually to the IRS Office of Safeguards",
       "props": [
@@ -1591,7 +1624,7 @@
       ],
       "links": [
        {
-        "href": "#4532d69e-0aea-5388-969f-21520a7f38e9",
+        "href": "#52cbb284-2836-5d7e-ae96-41c0265c2b51",
         "rel": "implementation"
        }
       ],
@@ -1624,7 +1657,7 @@
       ],
       "links": [
        {
-        "href": "#4532d69e-0aea-5388-969f-21520a7f38e9",
+        "href": "#52cbb284-2836-5d7e-ae96-41c0265c2b51",
         "rel": "implementation"
        }
       ],
@@ -1657,7 +1690,7 @@
       ],
       "links": [
        {
-        "href": "#4532d69e-0aea-5388-969f-21520a7f38e9",
+        "href": "#52cbb284-2836-5d7e-ae96-41c0265c2b51",
         "rel": "implementation"
        }
       ],
@@ -1690,7 +1723,7 @@
       ],
       "links": [
        {
-        "href": "#4532d69e-0aea-5388-969f-21520a7f38e9",
+        "href": "#52cbb284-2836-5d7e-ae96-41c0265c2b51",
         "rel": "implementation"
        }
       ],
@@ -1723,7 +1756,7 @@
       ],
       "links": [
        {
-        "href": "#4532d69e-0aea-5388-969f-21520a7f38e9",
+        "href": "#52cbb284-2836-5d7e-ae96-41c0265c2b51",
         "rel": "implementation"
        }
       ],
@@ -1756,7 +1789,7 @@
       ],
       "links": [
        {
-        "href": "#4532d69e-0aea-5388-969f-21520a7f38e9",
+        "href": "#52cbb284-2836-5d7e-ae96-41c0265c2b51",
         "rel": "implementation"
        }
       ],
@@ -1765,39 +1798,6 @@
         "id": "irs_1075-RP-6_stmt",
         "name": "statement",
         "prose": "New facilities, systems, or uses of FTI are reported through SSR updates or 45-day notifications as applicable"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-irs_1075.reporting-1",
-      "title": "IRS 1075 [Reporting] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "irs_1075.reporting#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "irs_1075.reporting#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.reporting"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4532d69e-0aea-5388-969f-21520a7f38e9",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-irs_1075.reporting-1_stmt",
-        "name": "statement",
-        "prose": "IRS 1075 [Reporting] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -1827,6 +1827,39 @@
     ],
     "controls": [
      {
+      "id": "irs_1075-irs_1075.restricting_access-1",
+      "title": "IRS 1075 [Restricting Access] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "irs_1075.restricting_access#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "irs_1075.restricting_access#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.restricting_access"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ab8175d9-1753-587e-8c08-ef12d473e4fc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-irs_1075.restricting_access-1_stmt",
+        "name": "statement",
+        "prose": "IRS 1075 [Restricting Access] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "irs_1075-RA-1",
       "title": "Access to FTI is limited to personnel with a need-to-know for a purpose authorized by statute",
       "props": [
@@ -1846,7 +1879,7 @@
       ],
       "links": [
        {
-        "href": "#b292e983-7a29-5824-89d9-13b9ffdbdb1c",
+        "href": "#ab8175d9-1753-587e-8c08-ef12d473e4fc",
         "rel": "implementation"
        }
       ],
@@ -1879,7 +1912,7 @@
       ],
       "links": [
        {
-        "href": "#b292e983-7a29-5824-89d9-13b9ffdbdb1c",
+        "href": "#ab8175d9-1753-587e-8c08-ef12d473e4fc",
         "rel": "implementation"
        }
       ],
@@ -1912,7 +1945,7 @@
       ],
       "links": [
        {
-        "href": "#b292e983-7a29-5824-89d9-13b9ffdbdb1c",
+        "href": "#ab8175d9-1753-587e-8c08-ef12d473e4fc",
         "rel": "implementation"
        }
       ],
@@ -1945,7 +1978,7 @@
       ],
       "links": [
        {
-        "href": "#b292e983-7a29-5824-89d9-13b9ffdbdb1c",
+        "href": "#ab8175d9-1753-587e-8c08-ef12d473e4fc",
         "rel": "implementation"
        }
       ],
@@ -1978,7 +2011,7 @@
       ],
       "links": [
        {
-        "href": "#b292e983-7a29-5824-89d9-13b9ffdbdb1c",
+        "href": "#ab8175d9-1753-587e-8c08-ef12d473e4fc",
         "rel": "implementation"
        }
       ],
@@ -2011,7 +2044,7 @@
       ],
       "links": [
        {
-        "href": "#b292e983-7a29-5824-89d9-13b9ffdbdb1c",
+        "href": "#ab8175d9-1753-587e-8c08-ef12d473e4fc",
         "rel": "implementation"
        }
       ],
@@ -2044,7 +2077,7 @@
       ],
       "links": [
        {
-        "href": "#b292e983-7a29-5824-89d9-13b9ffdbdb1c",
+        "href": "#ab8175d9-1753-587e-8c08-ef12d473e4fc",
         "rel": "implementation"
        }
       ],
@@ -2053,39 +2086,6 @@
         "id": "irs_1075-RA-7_stmt",
         "name": "statement",
         "prose": "FTI access authorizations are reviewed and revoked promptly on role change or separation"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "irs_1075-irs_1075.restricting_access-1",
-      "title": "IRS 1075 [Restricting Access] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "irs_1075.restricting_access#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "irs_1075.restricting_access#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.restricting_access"
-       }
-      ],
-      "links": [
-       {
-        "href": "#b292e983-7a29-5824-89d9-13b9ffdbdb1c",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-irs_1075.restricting_access-1_stmt",
-        "name": "statement",
-        "prose": "IRS 1075 [Restricting Access] %s: %s — not met"
        }
       ],
       "class": "compliance"
@@ -2115,6 +2115,39 @@
     ],
     "controls": [
      {
+      "id": "irs_1075-irs_1075.secure_storage-1",
+      "title": "IRS 1075 [Secure Storage] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "irs_1075.secure_storage#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "irs_1075.secure_storage#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "irs_1075.secure_storage"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1fe37628-1d89-53d2-b0be-f04edb38d21c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "irs_1075-irs_1075.secure_storage-1_stmt",
+        "name": "statement",
+        "prose": "IRS 1075 [Secure Storage] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "irs_1075-SS-1",
       "title": "Minimum Protection Standards two-barrier rule: FTI is protected by two barriers (e.g., secured perimeter plus locked container or interior room)",
       "props": [
@@ -2134,7 +2167,7 @@
       ],
       "links": [
        {
-        "href": "#4254feae-064e-5220-a939-d7cf5ae84c9d",
+        "href": "#1fe37628-1d89-53d2-b0be-f04edb38d21c",
         "rel": "implementation"
        }
       ],
@@ -2167,7 +2200,7 @@
       ],
       "links": [
        {
-        "href": "#4254feae-064e-5220-a939-d7cf5ae84c9d",
+        "href": "#1fe37628-1d89-53d2-b0be-f04edb38d21c",
         "rel": "implementation"
        }
       ],
@@ -2200,7 +2233,7 @@
       ],
       "links": [
        {
-        "href": "#4254feae-064e-5220-a939-d7cf5ae84c9d",
+        "href": "#1fe37628-1d89-53d2-b0be-f04edb38d21c",
         "rel": "implementation"
        }
       ],
@@ -2233,7 +2266,7 @@
       ],
       "links": [
        {
-        "href": "#4254feae-064e-5220-a939-d7cf5ae84c9d",
+        "href": "#1fe37628-1d89-53d2-b0be-f04edb38d21c",
         "rel": "implementation"
        }
       ],
@@ -2266,7 +2299,7 @@
       ],
       "links": [
        {
-        "href": "#4254feae-064e-5220-a939-d7cf5ae84c9d",
+        "href": "#1fe37628-1d89-53d2-b0be-f04edb38d21c",
         "rel": "implementation"
        }
       ],
@@ -2299,7 +2332,7 @@
       ],
       "links": [
        {
-        "href": "#4254feae-064e-5220-a939-d7cf5ae84c9d",
+        "href": "#1fe37628-1d89-53d2-b0be-f04edb38d21c",
         "rel": "implementation"
        }
       ],
@@ -2332,7 +2365,7 @@
       ],
       "links": [
        {
-        "href": "#4254feae-064e-5220-a939-d7cf5ae84c9d",
+        "href": "#1fe37628-1d89-53d2-b0be-f04edb38d21c",
         "rel": "implementation"
        }
       ],
@@ -2344,39 +2377,6 @@
        }
       ],
       "class": "compliance"
-     },
-     {
-      "id": "irs_1075-irs_1075.secure_storage-1",
-      "title": "IRS 1075 [Secure Storage] %s: %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "irs_1075.secure_storage#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "irs_1075.secure_storage#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "irs_1075.secure_storage"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4254feae-064e-5220-a939-d7cf5ae84c9d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "irs_1075-irs_1075.secure_storage-1_stmt",
-        "name": "statement",
-        "prose": "IRS 1075 [Secure Storage] %s: %s — not met"
-       }
-      ],
-      "class": "compliance"
      }
     ]
    }
@@ -2384,7 +2384,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "8c932fc4-6603-5ec6-abe2-60ffef00ffee",
+     "uuid": "2d3585f5-21a9-5e1c-820c-c8f801f8b46b",
      "title": "IRS Publication 1075 (Rev. 11-2021) — Section 9: Computer System Security",
      "props": [
       {
@@ -2395,13 +2395,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/irs_1075/computer_security.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/irs_1075/computer_security.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "3ab67d02-87be-571e-9097-84c4763a3f4a",
+     "uuid": "5ae62a13-ca0c-5e62-8d0c-ee25d05cfb3b",
      "title": "IRS Publication 1075 (Rev. 11-2021) — Section 8: Disposing of FTI",
      "props": [
       {
@@ -2412,13 +2412,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/irs_1075/disposal.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/irs_1075/disposal.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "7717985e-055b-5ba6-9ffe-6714ec998031",
+     "uuid": "df7e0974-2a64-5f6b-8556-c854453a8671",
      "title": "IRS Publication 1075 (Rev. 11-2021) — Section 10: Data Incident Response",
      "props": [
       {
@@ -2429,13 +2429,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/irs_1075/incident_response.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/irs_1075/incident_response.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "3ec47cee-8d65-5b03-bf1c-24e8950b8406",
+     "uuid": "a4c0f755-9418-5577-9848-4593162d75e4",
      "title": "IRS Publication 1075 (Rev. 11-2021) — Section 6: Other Safeguards",
      "props": [
       {
@@ -2446,13 +2446,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/irs_1075/other_safeguards.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/irs_1075/other_safeguards.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "1510d8f1-f8de-5979-a758-126106528d92",
+     "uuid": "42d9523f-806e-5c6f-aabf-515a388e86ec",
      "title": "IRS Publication 1075 (Rev. 11-2021) — Section 3: Recordkeeping Requirement",
      "props": [
       {
@@ -2463,13 +2463,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/irs_1075/recordkeeping.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/irs_1075/recordkeeping.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "4532d69e-0aea-5388-969f-21520a7f38e9",
+     "uuid": "52cbb284-2836-5d7e-ae96-41c0265c2b51",
      "title": "IRS Publication 1075 (Rev. 11-2021) — Section 7: Reporting Requirements",
      "props": [
       {
@@ -2480,13 +2480,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/irs_1075/reporting.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/irs_1075/reporting.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b292e983-7a29-5824-89d9-13b9ffdbdb1c",
+     "uuid": "ab8175d9-1753-587e-8c08-ef12d473e4fc",
      "title": "IRS Publication 1075 (Rev. 11-2021) — Section 5: Restricting Access",
      "props": [
       {
@@ -2497,13 +2497,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/irs_1075/restricting_access.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/irs_1075/restricting_access.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "4254feae-064e-5220-a939-d7cf5ae84c9d",
+     "uuid": "1fe37628-1d89-53d2-b0be-f04edb38d21c",
      "title": "IRS Publication 1075 (Rev. 11-2021) — Section 4: Secure Storage",
      "props": [
       {
@@ -2514,7 +2514,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/irs_1075/secure_storage.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/irs_1075/secure_storage.rego",
        "media-type": "text/plain"
       }
      ]

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "9bcc831e-9064-5a9b-9c02-ad9aa9f22830",
+  "uuid": "311cd01e-162c-5631-8580-f3feb857e1ae",
   "metadata": {
    "title": "Rego Policy Libraries — ccpa (CCPA — Automated Decisionmaking Technology (11 CCR Article 11, §§7200–7222))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
@@ -94,374 +94,6 @@
         "id": "ccpa-CCPA-7200-a_stmt",
         "name": "statement",
         "prose": "uses_admt_for_significant_decisions must be declared true or false — whether ADMT makes significant decisions about consumers cannot be assumed"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7220-a",
-      "title": "no Pre-use Notice informing consumers of the ADMT use and of their rights to opt out of and access ADMT",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7220(a)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7220(a)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7220-a_stmt",
-        "name": "statement",
-        "prose": "no Pre-use Notice informing consumers of the ADMT use and of their rights to opt out of and access ADMT"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7220-b-2",
-      "title": "Pre-use Notice not presented prominently at or before collection of the personal information the ADMT will process (or before repurposing already-collected data)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7220(b)(2)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7220(b)(2)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7220-b-2_stmt",
-        "name": "statement",
-        "prose": "Pre-use Notice not presented prominently at or before collection of the personal information the ADMT will process (or before repurposing already-collected data)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7220-b-3",
-      "title": "Pre-use Notice not presented in the manner in which the business primarily interacts with the consumer",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7220(b)(3)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7220(b)(3)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7220-b-3_stmt",
-        "name": "statement",
-        "prose": "Pre-use Notice not presented in the manner in which the business primarily interacts with the consumer"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7220-c-1",
-      "title": "Pre-use Notice does not give a plain-language, specific purpose for the ADMT (generic 'to make a significant decision' is not permitted)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7220(c)(1)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7220(c)(1)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7220-c-1_stmt",
-        "name": "statement",
-        "prose": "Pre-use Notice does not give a plain-language, specific purpose for the ADMT (generic 'to make a significant decision' is not permitted)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7220-c-2",
-      "title": "Pre-use Notice does not describe the right to opt out of ADMT and how to submit the request (or, under an exception, the appeal route or the exception relied on)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7220(c)(2)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7220(c)(2)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7220-c-2_stmt",
-        "name": "statement",
-        "prose": "Pre-use Notice does not describe the right to opt out of ADMT and how to submit the request (or, under an exception, the appeal route or the exception relied on)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7220-c-3",
-      "title": "Pre-use Notice does not describe the right to access ADMT and how to submit the request",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7220(c)(3)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7220(c)(3)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7220-c-3_stmt",
-        "name": "statement",
-        "prose": "Pre-use Notice does not describe the right to access ADMT and how to submit the request"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7220-c-4",
-      "title": "Pre-use Notice does not state that the business is prohibited from retaliating for exercising CCPA rights",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7220(c)(4)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7220(c)(4)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7220-c-4_stmt",
-        "name": "statement",
-        "prose": "Pre-use Notice does not state that the business is prohibited from retaliating for exercising CCPA rights"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7220-c-5",
-      "title": "Pre-use Notice lacks the plain-language explanation of how the ADMT processes personal information (categories that affect the output), the type of output and how it is used (sole factor, other factor",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7220(c)(5)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7220(c)(5)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7220-c-5_stmt",
-        "name": "statement",
-        "prose": "Pre-use Notice lacks the plain-language explanation of how the ADMT processes personal information (categories that affect the output), the type of output and how it is used (sole factor, other factors, human role), and the alternative process for consumers who opt out"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-b",
-      "title": "opt_out.exception '%v' is not one of the three recognized exceptions (human_appeal, admission_or_hiring, work_allocation_or_compensation)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(b)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(b)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-b_stmt",
-        "name": "statement",
-        "prose": "opt_out.exception '%v' is not one of the three recognized exceptions (human_appeal, admission_or_hiring, work_allocation_or_compensation)"
-       },
-       {
-        "id": "ccpa-CCPA-7221-b_obj.1",
-        "name": "assessment-objective",
-        "prose": "opt_out.exception '%v' is not one of the three recognized exceptions (human_appeal, admission_or_hiring, work_allocation_or_compensation)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-b-1-A",
-      "title": "human-appeal exception claimed but no designated human reviewer who understands the ADMT output, considers the consumer's information and has authority to change the decision",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(b)(1)(A)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(b)(1)(A)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-b-1-A_stmt",
-        "name": "statement",
-        "prose": "human-appeal exception claimed but no designated human reviewer who understands the ADMT output, considers the consumer's information and has authority to change the decision"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-b-1-B",
-      "title": "human-appeal exception claimed but the appeal method is not clearly described, easy, minimal-step, and compliant with §§7003, 7004, 7021 and Article 5 verification",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(b)(1)(B)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(b)(1)(B)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-b-1-B_stmt",
-        "name": "statement",
-        "prose": "human-appeal exception claimed but the appeal method is not clearly described, easy, minimal-step, and compliant with §§7003, 7004, 7021 and Article 5 verification"
        }
       ],
       "class": "compliance"
@@ -486,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
@@ -495,6 +127,534 @@
         "id": "ccpa-ccpa.admt-1_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_admt.rego (package ccpa.admt); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-b",
+      "title": "opt_out.exception '%v' is not one of the three recognized exceptions (human_appeal, admission_or_hiring, work_allocation_or_compensation)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-b_stmt",
+        "name": "statement",
+        "prose": "opt_out.exception '%v' is not one of the three recognized exceptions (human_appeal, admission_or_hiring, work_allocation_or_compensation)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-ccpa.admt-2",
+      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_admt.rego (package ccpa.admt); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ccpa.admt#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ccpa.admt#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-ccpa.admt-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_admt.rego (package ccpa.admt); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-ccpa.admt-3",
+      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_admt.rego (package ccpa.admt); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ccpa.admt#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ccpa.admt#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-ccpa.admt-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_admt.rego (package ccpa.admt); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-ccpa.admt-4",
+      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_admt.rego (package ccpa.admt); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ccpa.admt#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ccpa.admt#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-ccpa.admt-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_admt.rego (package ccpa.admt); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-ccpa.admt-5",
+      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_admt.rego (package ccpa.admt); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ccpa.admt#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ccpa.admt#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-ccpa.admt-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_admt.rego (package ccpa.admt); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7222-j",
+      "title": "aggregate-level access responses are given without the ADMT having been used on the consumer more than four times in a 12-month period",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7222(j)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7222(j)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7222-j_stmt",
+        "name": "statement",
+        "prose": "aggregate-level access responses are given without the ADMT having been used on the consumer more than four times in a 12-month period"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7220-c-3",
+      "title": "Pre-use Notice does not describe the right to access ADMT and how to submit the request",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7220(c)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7220(c)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7220-c-3_stmt",
+        "name": "statement",
+        "prose": "Pre-use Notice does not describe the right to access ADMT and how to submit the request"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7220-b-2",
+      "title": "Pre-use Notice not presented prominently at or before collection of the personal information the ADMT will process (or before repurposing already-collected data)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7220(b)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7220(b)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7220-b-2_stmt",
+        "name": "statement",
+        "prose": "Pre-use Notice not presented prominently at or before collection of the personal information the ADMT will process (or before repurposing already-collected data)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7220-c-5",
+      "title": "Pre-use Notice lacks the plain-language explanation of how the ADMT processes personal information (categories that affect the output), the type of output and how it is used (sole factor, other factor",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7220(c)(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7220(c)(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7220-c-5_stmt",
+        "name": "statement",
+        "prose": "Pre-use Notice lacks the plain-language explanation of how the ADMT processes personal information (categories that affect the output), the type of output and how it is used (sole factor, other factors, human role), and the alternative process for consumers who opt out"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7220-b-3",
+      "title": "Pre-use Notice not presented in the manner in which the business primarily interacts with the consumer",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7220(b)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7220(b)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7220-b-3_stmt",
+        "name": "statement",
+        "prose": "Pre-use Notice not presented in the manner in which the business primarily interacts with the consumer"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7220-c-4",
+      "title": "Pre-use Notice does not state that the business is prohibited from retaliating for exercising CCPA rights",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7220(c)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7220(c)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7220-c-4_stmt",
+        "name": "statement",
+        "prose": "Pre-use Notice does not state that the business is prohibited from retaliating for exercising CCPA rights"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7220-c-2",
+      "title": "Pre-use Notice does not describe the right to opt out of ADMT and how to submit the request (or, under an exception, the appeal route or the exception relied on)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7220(c)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7220(c)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7220-c-2_stmt",
+        "name": "statement",
+        "prose": "Pre-use Notice does not describe the right to opt out of ADMT and how to submit the request (or, under an exception, the appeal route or the exception relied on)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7220-a",
+      "title": "no Pre-use Notice informing consumers of the ADMT use and of their rights to opt out of and access ADMT",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7220(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7220(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7220-a_stmt",
+        "name": "statement",
+        "prose": "no Pre-use Notice informing consumers of the ADMT use and of their rights to opt out of and access ADMT"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7220-c-1",
+      "title": "Pre-use Notice does not give a plain-language, specific purpose for the ADMT (generic 'to make a significant decision' is not permitted)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7220(c)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7220(c)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7220-c-1_stmt",
+        "name": "statement",
+        "prose": "Pre-use Notice does not give a plain-language, specific purpose for the ADMT (generic 'to make a significant decision' is not permitted)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-b-1-B",
+      "title": "human-appeal exception claimed but the appeal method is not clearly described, easy, minimal-step, and compliant with §§7003, 7004, 7021 and Article 5 verification",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(b)(1)(B)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(b)(1)(B)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-b-1-B_stmt",
+        "name": "statement",
+        "prose": "human-appeal exception claimed but the appeal method is not clearly described, easy, minimal-step, and compliant with §§7003, 7004, 7021 and Article 5 verification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-b-1-A",
+      "title": "human-appeal exception claimed but no designated human reviewer who understands the ADMT output, considers the consumer's information and has authority to change the decision",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(b)(1)(A)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(b)(1)(A)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-b-1-A_stmt",
+        "name": "statement",
+        "prose": "human-appeal exception claimed but no designated human reviewer who understands the ADMT output, considers the consumer's information and has authority to change the decision"
        }
       ],
       "class": "compliance"
@@ -519,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
@@ -552,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
@@ -561,369 +721,6 @@
         "id": "ccpa-CCPA-7221-b-2-B-3-B_stmt",
         "name": "statement",
         "prose": "exception claimed without evidence that the ADMT works for its purpose and does not unlawfully discriminate on protected characteristics"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-ccpa.admt-2",
-      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_admt.rego (package ccpa.admt); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "ccpa.admt#2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ccpa.admt#2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-ccpa.admt-2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_admt.rego (package ccpa.admt); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-a",
-      "title": "consumers are not given the ability to opt out of ADMT for significant decisions and no §7221(b) exception is claimed",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(a)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(a)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-a_stmt",
-        "name": "statement",
-        "prose": "consumers are not given the ability to opt out of ADMT for significant decisions and no §7221(b) exception is claimed"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-c",
-      "title": "fewer than two designated opt-out methods, or none reflects how the business primarily interacts with consumers",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(c)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(c)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-c_stmt",
-        "name": "statement",
-        "prose": "fewer than two designated opt-out methods, or none reflects how the business primarily interacts with consumers"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-c-1",
-      "title": "online business does not offer an interactive opt-out form reachable from a link in the Pre-use Notice whose title says what is being opted out of (e.g. 'Opt-out of Automated Decisionmaking Technology",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(c)(1)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(c)(1)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-c-1_stmt",
-        "name": "statement",
-        "prose": "online business does not offer an interactive opt-out form reachable from a link in the Pre-use Notice whose title says what is being opted out of (e.g. 'Opt-out of Automated Decisionmaking Technology')"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-c-4",
-      "title": "a cookie banner or cookie controls is the only opt-out mechanism — not acceptable, the method must be specific to ADMT",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(c)(4)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(c)(4)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-c-4_stmt",
-        "name": "statement",
-        "prose": "a cookie banner or cookie controls is the only opt-out mechanism — not acceptable, the method must be specific to ADMT"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-d",
-      "title": "opt-out method is not easy to execute with minimal steps and §7004 compliance (no dark patterns)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(d)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(d)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-d_stmt",
-        "name": "statement",
-        "prose": "opt-out method is not easy to execute with minimal steps and §7004 compliance (no dark patterns)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-e",
-      "title": "opt-out requires creating an account or information beyond what is needed to direct the opt-out",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(e)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(e)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-e_stmt",
-        "name": "statement",
-        "prose": "opt-out requires creating an account or information beyond what is needed to direct the opt-out"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-f",
-      "title": "opt-out is treated as a verifiable consumer request — verification must not be required",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(f)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(f)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-f_stmt",
-        "name": "statement",
-        "prose": "opt-out is treated as a verifiable consumer request — verification must not be required"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-g",
-      "title": "opt-out requests denied as fraudulent without a documented good-faith belief and an explanation to the requestor",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(g)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(g)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-g_stmt",
-        "name": "statement",
-        "prose": "opt-out requests denied as fraudulent without a documented good-faith belief and an explanation to the requestor"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-h",
-      "title": "no means for the consumer to confirm the opt-out was processed",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(h)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(h)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-h_stmt",
-        "name": "statement",
-        "prose": "no means for the consumer to confirm the opt-out was processed"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-i",
-      "title": "granular choices offered without a single option to opt out of all ADMT uses",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(i)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(i)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-i_stmt",
-        "name": "statement",
-        "prose": "granular choices offered without a single option to opt out of all ADMT uses"
        }
       ],
       "class": "compliance"
@@ -948,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
@@ -957,105 +754,6 @@
         "id": "ccpa-CCPA-7221-j_stmt",
         "name": "statement",
         "prose": "opt-out requests from authorized agents with the consumer's signed permission are not accepted"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-k",
-      "title": "business re-asks opted-out consumers for consent within 12 months of the opt-out",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(k)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(k)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-k_stmt",
-        "name": "statement",
-        "prose": "business re-asks opted-out consumers for consent within 12 months of the opt-out"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-l",
-      "title": "consumers who opt out are retaliated against (Civ. Code §1798.125, Article 7)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(l)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(l)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-l_stmt",
-        "name": "statement",
-        "prose": "consumers who opt out are retaliated against (Civ. Code §1798.125, Article 7)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7221-m",
-      "title": "processing with the ADMT is initiated despite an opt-out received before processing began",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7221(m)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7221(m)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7221-m_stmt",
-        "name": "statement",
-        "prose": "processing with the ADMT is initiated despite an opt-out received before processing began"
        }
       ],
       "class": "compliance"
@@ -1080,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
@@ -1089,6 +787,336 @@
         "id": "ccpa-CCPA-7221-n-1_stmt",
         "name": "statement",
         "prose": "after a post-initiation opt-out, processing with the ADMT does not cease within 15 business days"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-h",
+      "title": "no means for the consumer to confirm the opt-out was processed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(h)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(h)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-h_stmt",
+        "name": "statement",
+        "prose": "no means for the consumer to confirm the opt-out was processed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-d",
+      "title": "opt-out method is not easy to execute with minimal steps and §7004 compliance (no dark patterns)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-d_stmt",
+        "name": "statement",
+        "prose": "opt-out method is not easy to execute with minimal steps and §7004 compliance (no dark patterns)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-g",
+      "title": "opt-out requests denied as fraudulent without a documented good-faith belief and an explanation to the requestor",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(g)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(g)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-g_stmt",
+        "name": "statement",
+        "prose": "opt-out requests denied as fraudulent without a documented good-faith belief and an explanation to the requestor"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-e",
+      "title": "opt-out requires creating an account or information beyond what is needed to direct the opt-out",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-e_stmt",
+        "name": "statement",
+        "prose": "opt-out requires creating an account or information beyond what is needed to direct the opt-out"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-l",
+      "title": "consumers who opt out are retaliated against (Civ. Code §1798.125, Article 7)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(l)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(l)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-l_stmt",
+        "name": "statement",
+        "prose": "consumers who opt out are retaliated against (Civ. Code §1798.125, Article 7)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-f",
+      "title": "opt-out is treated as a verifiable consumer request — verification must not be required",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-f_stmt",
+        "name": "statement",
+        "prose": "opt-out is treated as a verifiable consumer request — verification must not be required"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-c-4",
+      "title": "a cookie banner or cookie controls is the only opt-out mechanism — not acceptable, the method must be specific to ADMT",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(c)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(c)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-c-4_stmt",
+        "name": "statement",
+        "prose": "a cookie banner or cookie controls is the only opt-out mechanism — not acceptable, the method must be specific to ADMT"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-a",
+      "title": "consumers are not given the ability to opt out of ADMT for significant decisions and no §7221(b) exception is claimed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-a_stmt",
+        "name": "statement",
+        "prose": "consumers are not given the ability to opt out of ADMT for significant decisions and no §7221(b) exception is claimed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-c-1",
+      "title": "online business does not offer an interactive opt-out form reachable from a link in the Pre-use Notice whose title says what is being opted out of (e.g. 'Opt-out of Automated Decisionmaking Technology",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(c)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(c)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-c-1_stmt",
+        "name": "statement",
+        "prose": "online business does not offer an interactive opt-out form reachable from a link in the Pre-use Notice whose title says what is being opted out of (e.g. 'Opt-out of Automated Decisionmaking Technology')"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7221-m",
+      "title": "processing with the ADMT is initiated despite an opt-out received before processing began",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7221(m)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7221(m)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7221-m_stmt",
+        "name": "statement",
+        "prose": "processing with the ADMT is initiated despite an opt-out received before processing began"
        }
       ],
       "class": "compliance"
@@ -1113,7 +1141,7 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
@@ -1127,16 +1155,16 @@
       "class": "compliance"
      },
      {
-      "id": "ccpa-CCPA-7222-j",
-      "title": "aggregate-level access responses are given without the ADMT having been used on the consumer more than four times in a 12-month period",
+      "id": "ccpa-CCPA-7221-i",
+      "title": "granular choices offered without a single option to opt out of all ADMT uses",
       "props": [
        {
         "name": "label",
-        "value": "CCPA §7222(j)"
+        "value": "CCPA §7221(i)"
        },
        {
         "name": "alt-identifier",
-        "value": "CCPA §7222(j)"
+        "value": "CCPA §7221(i)"
        },
        {
         "name": "rego-package",
@@ -1146,40 +1174,30 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-CCPA-7222-j_stmt",
+        "id": "ccpa-CCPA-7221-i_stmt",
         "name": "statement",
-        "prose": "aggregate-level access responses are given without the ADMT having been used on the consumer more than four times in a 12-month period"
-       },
-       {
-        "id": "ccpa-CCPA-7222-j_obj.1",
-        "name": "assessment-objective",
-        "prose": "aggregate-level access responses are given without the ADMT having been used on the consumer more than four times in a 12-month period"
-       },
-       {
-        "id": "ccpa-CCPA-7222-j_obj.2",
-        "name": "assessment-objective",
-        "prose": "aggregate-level access responses are given without the ADMT having been used on the consumer more than four times in a 12-month period"
+        "prose": "granular choices offered without a single option to opt out of all ADMT uses"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ccpa-CCPA-7222-b-1",
-      "title": "access response does not state the specific purpose for which ADMT was used for the consumer",
+      "id": "ccpa-CCPA-7221-k",
+      "title": "business re-asks opted-out consumers for consent within 12 months of the opt-out",
       "props": [
        {
         "name": "label",
-        "value": "CCPA §7222(b)(1)"
+        "value": "CCPA §7221(k)"
        },
        {
         "name": "alt-identifier",
-        "value": "CCPA §7222(b)(1)"
+        "value": "CCPA §7221(k)"
        },
        {
         "name": "rego-package",
@@ -1189,30 +1207,30 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-CCPA-7222-b-1_stmt",
+        "id": "ccpa-CCPA-7221-k_stmt",
         "name": "statement",
-        "prose": "access response does not state the specific purpose for which ADMT was used for the consumer"
+        "prose": "business re-asks opted-out consumers for consent within 12 months of the opt-out"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ccpa-CCPA-7222-b-2",
-      "title": "access response does not explain the ADMT logic — how the consumer's personal information produced the output, the parameters and the specific output",
+      "id": "ccpa-CCPA-7221-c",
+      "title": "fewer than two designated opt-out methods, or none reflects how the business primarily interacts with consumers",
       "props": [
        {
         "name": "label",
-        "value": "CCPA §7222(b)(2)"
+        "value": "CCPA §7221(c)"
        },
        {
         "name": "alt-identifier",
-        "value": "CCPA §7222(b)(2)"
+        "value": "CCPA §7221(c)"
        },
        {
         "name": "rego-package",
@@ -1222,147 +1240,15 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-CCPA-7222-b-2_stmt",
+        "id": "ccpa-CCPA-7221-c_stmt",
         "name": "statement",
-        "prose": "access response does not explain the ADMT logic — how the consumer's personal information produced the output, the parameters and the specific output"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7222-b-3",
-      "title": "access response does not explain the outcome — whether the output was the sole factor, the other factors, the human's role, and any planned future use of the output",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7222(b)(3)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7222(b)(3)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7222-b-3_stmt",
-        "name": "statement",
-        "prose": "access response does not explain the outcome — whether the output was the sole factor, the other factors, the human's role, and any planned future use of the output"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7222-b-4",
-      "title": "access response lacks the non-retaliation statement and direct instructions/links for exercising other CCPA rights",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7222(b)(4)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7222(b)(4)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7222-b-4_stmt",
-        "name": "statement",
-        "prose": "access response lacks the non-retaliation statement and direct instructions/links for exercising other CCPA rights"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7222-d",
-      "title": "methods to request access to ADMT are not easy to use or use dark patterns",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7222(d)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7222(d)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7222-d_stmt",
-        "name": "statement",
-        "prose": "methods to request access to ADMT are not easy to use or use dark patterns"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7222-e",
-      "title": "access requests are not verified per Article 5, or unverifiable requestors are not told so",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7222(e)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7222(e)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.admt"
-       }
-      ],
-      "links": [
-       {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7222-e_stmt",
-        "name": "statement",
-        "prose": "access requests are not verified per Article 5, or unverifiable requestors are not told so"
+        "prose": "fewer than two designated opt-out methods, or none reflects how the business primarily interacts with consumers"
        }
       ],
       "class": "compliance"
@@ -1387,7 +1273,7 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
@@ -1396,6 +1282,138 @@
         "id": "ccpa-CCPA-7222-f_stmt",
         "name": "statement",
         "prose": "denials of verified access requests are not explained, or partial denials withhold the disclosable remainder"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7222-d",
+      "title": "methods to request access to ADMT are not easy to use or use dark patterns",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7222(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7222(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7222-d_stmt",
+        "name": "statement",
+        "prose": "methods to request access to ADMT are not easy to use or use dark patterns"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7222-b-2",
+      "title": "access response does not explain the ADMT logic — how the consumer's personal information produced the output, the parameters and the specific output",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7222(b)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7222(b)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7222-b-2_stmt",
+        "name": "statement",
+        "prose": "access response does not explain the ADMT logic — how the consumer's personal information produced the output, the parameters and the specific output"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7222-b-4",
+      "title": "access response lacks the non-retaliation statement and direct instructions/links for exercising other CCPA rights",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7222(b)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7222(b)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7222-b-4_stmt",
+        "name": "statement",
+        "prose": "access response lacks the non-retaliation statement and direct instructions/links for exercising other CCPA rights"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7222-b-3",
+      "title": "access response does not explain the outcome — whether the output was the sole factor, the other factors, the human's role, and any planned future use of the output",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7222(b)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7222(b)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7222-b-3_stmt",
+        "name": "statement",
+        "prose": "access response does not explain the outcome — whether the output was the sole factor, the other factors, the human's role, and any planned future use of the output"
        }
       ],
       "class": "compliance"
@@ -1420,7 +1438,7 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
@@ -1453,7 +1471,7 @@
       ],
       "links": [
        {
-        "href": "#639ad611-35e3-5c9c-8377-da8b8de9d296",
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
         "rel": "implementation"
        }
       ],
@@ -1462,6 +1480,72 @@
         "id": "ccpa-CCPA-7222-i_stmt",
         "name": "statement",
         "prose": "service providers and contractors do not assist with access-to-ADMT requests"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7222-b-1",
+      "title": "access response does not state the specific purpose for which ADMT was used for the consumer",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7222(b)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7222(b)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7222-b-1_stmt",
+        "name": "statement",
+        "prose": "access response does not state the specific purpose for which ADMT was used for the consumer"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7222-e",
+      "title": "access requests are not verified per Article 5, or unverifiable requestors are not told so",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7222(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7222(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7222-e_stmt",
+        "name": "statement",
+        "prose": "access requests are not verified per Article 5, or unverifiable requestors are not told so"
        }
       ],
       "class": "compliance"
@@ -1510,7 +1594,7 @@
       ],
       "links": [
        {
-        "href": "#2969a145-ea01-56f6-8ded-2e49fff819e3",
+        "href": "#91b5b4e2-9508-58e0-8cb6-b642c330bc6c",
         "rel": "implementation"
        }
       ],
@@ -1568,7 +1652,7 @@
       ],
       "links": [
        {
-        "href": "#2969a145-ea01-56f6-8ded-2e49fff819e3",
+        "href": "#91b5b4e2-9508-58e0-8cb6-b642c330bc6c",
         "rel": "implementation"
        }
       ],
@@ -1616,7 +1700,7 @@
       ],
       "links": [
        {
-        "href": "#2969a145-ea01-56f6-8ded-2e49fff819e3",
+        "href": "#91b5b4e2-9508-58e0-8cb6-b642c330bc6c",
         "rel": "implementation"
        }
       ],
@@ -1654,7 +1738,7 @@
       ],
       "links": [
        {
-        "href": "#2969a145-ea01-56f6-8ded-2e49fff819e3",
+        "href": "#91b5b4e2-9508-58e0-8cb6-b642c330bc6c",
         "rel": "implementation"
        }
       ],
@@ -1692,7 +1776,7 @@
       ],
       "links": [
        {
-        "href": "#2969a145-ea01-56f6-8ded-2e49fff819e3",
+        "href": "#91b5b4e2-9508-58e0-8cb6-b642c330bc6c",
         "rel": "implementation"
        }
       ],
@@ -1735,7 +1819,7 @@
       ],
       "links": [
        {
-        "href": "#2969a145-ea01-56f6-8ded-2e49fff819e3",
+        "href": "#91b5b4e2-9508-58e0-8cb6-b642c330bc6c",
         "rel": "implementation"
        }
       ],
@@ -1792,7 +1876,7 @@
       ],
       "links": [
        {
-        "href": "#23516525-ea38-5a51-88de-a38d68cbcf42",
+        "href": "#4015f3ba-6e26-5092-9f47-25c115f3f7c0",
         "rel": "implementation"
        }
       ],
@@ -1825,7 +1909,7 @@
       ],
       "links": [
        {
-        "href": "#23516525-ea38-5a51-88de-a38d68cbcf42",
+        "href": "#4015f3ba-6e26-5092-9f47-25c115f3f7c0",
         "rel": "implementation"
        }
       ],
@@ -1858,7 +1942,7 @@
       ],
       "links": [
        {
-        "href": "#23516525-ea38-5a51-88de-a38d68cbcf42",
+        "href": "#4015f3ba-6e26-5092-9f47-25c115f3f7c0",
         "rel": "implementation"
        }
       ],
@@ -1901,7 +1985,7 @@
       ],
       "links": [
        {
-        "href": "#23516525-ea38-5a51-88de-a38d68cbcf42",
+        "href": "#4015f3ba-6e26-5092-9f47-25c115f3f7c0",
         "rel": "implementation"
        }
       ],
@@ -1949,7 +2033,7 @@
       ],
       "links": [
        {
-        "href": "#23516525-ea38-5a51-88de-a38d68cbcf42",
+        "href": "#4015f3ba-6e26-5092-9f47-25c115f3f7c0",
         "rel": "implementation"
        }
       ],
@@ -1987,7 +2071,7 @@
       ],
       "links": [
        {
-        "href": "#23516525-ea38-5a51-88de-a38d68cbcf42",
+        "href": "#4015f3ba-6e26-5092-9f47-25c115f3f7c0",
         "rel": "implementation"
        }
       ],
@@ -2025,7 +2109,7 @@
       ],
       "links": [
        {
-        "href": "#23516525-ea38-5a51-88de-a38d68cbcf42",
+        "href": "#4015f3ba-6e26-5092-9f47-25c115f3f7c0",
         "rel": "implementation"
        }
       ],
@@ -2068,7 +2152,7 @@
       ],
       "links": [
        {
-        "href": "#23516525-ea38-5a51-88de-a38d68cbcf42",
+        "href": "#4015f3ba-6e26-5092-9f47-25c115f3f7c0",
         "rel": "implementation"
        }
       ],
@@ -2111,7 +2195,7 @@
       ],
       "links": [
        {
-        "href": "#23516525-ea38-5a51-88de-a38d68cbcf42",
+        "href": "#4015f3ba-6e26-5092-9f47-25c115f3f7c0",
         "rel": "implementation"
        }
       ],
@@ -2173,7 +2257,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -2206,7 +2290,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -2239,7 +2323,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -2272,7 +2356,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -2291,16 +2375,16 @@
       "class": "compliance"
      },
      {
-      "id": "ccpa-CCPA-7122-a-1",
-      "title": "auditor lacks demonstrated knowledge of cybersecurity and of auditing a cybersecurity program",
+      "id": "ccpa-ccpa.cybersecurity_audits-1",
+      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego (package ccpa.cybersecurity_audits); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "CCPA §7122(a)(1)"
+        "value": "ccpa.cybersecurity_audits#1"
        },
        {
         "name": "alt-identifier",
-        "value": "CCPA §7122(a)(1)"
+        "value": "ccpa.cybersecurity_audits#1"
        },
        {
         "name": "rego-package",
@@ -2310,251 +2394,15 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-CCPA-7122-a-1_stmt",
+        "id": "ccpa-ccpa.cybersecurity_audits-1_stmt",
         "name": "statement",
-        "prose": "auditor lacks demonstrated knowledge of cybersecurity and of auditing a cybersecurity program"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7122-a",
-      "title": "audit does not use procedures and standards accepted in the auditing profession (AICPA, PCAOB, ISACA, ISO)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7122(a)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7122(a)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7122-a_stmt",
-        "name": "statement",
-        "prose": "audit does not use procedures and standards accepted in the auditing profession (AICPA, PCAOB, ISACA, ISO)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7122-a-2",
-      "title": "auditor is not free of influence from the business — objective and impartial judgment not evidenced",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7122(a)(2)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7122(a)(2)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7122-a-2_stmt",
-        "name": "statement",
-        "prose": "auditor is not free of influence from the business — objective and impartial judgment not evidenced"
-       },
-       {
-        "id": "ccpa-CCPA-7122-a-2_obj.1",
-        "name": "assessment-objective",
-        "prose": "auditor participated in activities they assess (developing procedures, preparing documents, recommending or operating the cybersecurity program)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7122-b",
-      "title": "business did not make all requested relevant information available to the auditor",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7122(b)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7122(b)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7122-b_stmt",
-        "name": "statement",
-        "prose": "business did not make all requested relevant information available to the auditor"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7122-c",
-      "title": "business did not disclose all relevant facts to the auditor in good faith / misrepresented a fact",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7122(c)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7122(c)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7122-c_stmt",
-        "name": "statement",
-        "prose": "business did not disclose all relevant facts to the auditor in good faith / misrepresented a fact"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7122-d",
-      "title": "audit findings rely primarily on management assertions or attestations rather than on specific evidence (documents, sampling and testing, interviews)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7122(d)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7122(d)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7122-d_stmt",
-        "name": "statement",
-        "prose": "audit findings rely primarily on management assertions or attestations rather than on specific evidence (documents, sampling and testing, interviews)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7122-f",
-      "title": "audit report not provided to the executive with direct responsibility for the cybersecurity program",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7122(f)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7122(f)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7122-f_stmt",
-        "name": "statement",
-        "prose": "audit report not provided to the executive with direct responsibility for the cybersecurity program"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7122-g",
-      "title": "audit documents not retained for at least five years after completion (business and auditor)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7122(g)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7122(g)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7122-g_stmt",
-        "name": "statement",
-        "prose": "audit documents not retained for at least five years after completion (business and auditor)"
+        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego (package ccpa.cybersecurity_audits); see the rule body."
        }
       ],
       "class": "compliance"
@@ -2579,7 +2427,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -2588,620 +2436,21 @@
         "id": "ccpa-CCPA-7122-a-3_stmt",
         "name": "statement",
         "prose": "internal highest-ranking auditor does not report to an executive who lacks direct responsibility for the cybersecurity program (and whose evaluation/compensation that executive sets)"
-       },
-       {
-        "id": "ccpa-CCPA-7122-a-3_obj.1",
-        "name": "assessment-objective",
-        "prose": "internal highest-ranking auditor does not report to an executive who lacks direct responsibility for the cybersecurity program (and whose evaluation/compensation that executive sets)"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ccpa-c01_authentication",
-      "title": "§7123(c)(1): authentication — phishing-resistant MFA for personnel, service providers and contractors; strong unique passwords/passphrases",
-      "props": [
-       {
-        "name": "label",
-        "value": "c01_authentication"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c01_authentication"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c01_authentication_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(1): authentication — phishing-resistant MFA for personnel, service providers and contractors; strong unique passwords/passphrases"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c02_encryption",
-      "title": "§7123(c)(2): encryption of personal information at rest and in transit",
-      "props": [
-       {
-        "name": "label",
-        "value": "c02_encryption"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c02_encryption"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c02_encryption_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(2): encryption of personal information at rest and in transit"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c03_account_management_access_control",
-      "title": "§7123(c)(3): account management and access controls — least privilege, privileged-account restriction and PAM, monitored account creation, physical access",
-      "props": [
-       {
-        "name": "label",
-        "value": "c03_account_management_access_control"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c03_account_management_access_control"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c03_account_management_access_control_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(3): account management and access controls — least privilege, privileged-account restriction and PAM, monitored account creation, physical access"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c04_inventory",
-      "title": "§7123(c)(4): inventory and management of personal information (maps, classification, tagging) and of hardware/software (allowlisting, approval processes)",
-      "props": [
-       {
-        "name": "label",
-        "value": "c04_inventory"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c04_inventory"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c04_inventory_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(4): inventory and management of personal information (maps, classification, tagging) and of hardware/software (allowlisting, approval processes)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c05_secure_configuration",
-      "title": "§7123(c)(5): secure configuration — updates/upgrades, on-prem and cloud hardening, masking of sensitive PI by default, security patch management, change management",
-      "props": [
-       {
-        "name": "label",
-        "value": "c05_secure_configuration"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c05_secure_configuration"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c05_secure_configuration_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(5): secure configuration — updates/upgrades, on-prem and cloud hardening, masking of sensitive PI by default, security patch management, change management"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c06_vulnerability_scans_pentest_disclosure",
-      "title": "§7123(c)(6): internal and external vulnerability scans, penetration testing, vulnerability disclosure and reporting",
-      "props": [
-       {
-        "name": "label",
-        "value": "c06_vulnerability_scans_pentest_disclosure"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c06_vulnerability_scans_pentest_disclosure"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c06_vulnerability_scans_pentest_disclosure_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(6): internal and external vulnerability scans, penetration testing, vulnerability disclosure and reporting"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c07_audit_log_management",
-      "title": "§7123(c)(7): audit-log management — centralized storage, retention and monitoring of logs",
-      "props": [
-       {
-        "name": "label",
-        "value": "c07_audit_log_management"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c07_audit_log_management"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c07_audit_log_management_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(7): audit-log management — centralized storage, retention and monitoring of logs"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c08_network_monitoring_defenses",
-      "title": "§7123(c)(8): network monitoring and defenses — bot/intrusion detection and prevention, data-loss prevention",
-      "props": [
-       {
-        "name": "label",
-        "value": "c08_network_monitoring_defenses"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c08_network_monitoring_defenses"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c08_network_monitoring_defenses_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(8): network monitoring and defenses — bot/intrusion detection and prevention, data-loss prevention"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c09_antivirus_antimalware",
-      "title": "§7123(c)(9): antivirus and antimalware protections",
-      "props": [
-       {
-        "name": "label",
-        "value": "c09_antivirus_antimalware"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c09_antivirus_antimalware"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c09_antivirus_antimalware_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(9): antivirus and antimalware protections"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c10_segmentation",
-      "title": "§7123(c)(10): segmentation of the information system (firewalls, routers, switches)",
-      "props": [
-       {
-        "name": "label",
-        "value": "c10_segmentation"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c10_segmentation"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c10_segmentation_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(10): segmentation of the information system (firewalls, routers, switches)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c11_ports_services_protocols",
-      "title": "§7123(c)(11): limitation and control of ports, services and protocols",
-      "props": [
-       {
-        "name": "label",
-        "value": "c11_ports_services_protocols"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c11_ports_services_protocols"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c11_ports_services_protocols_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(11): limitation and control of ports, services and protocols"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c12_cybersecurity_awareness",
-      "title": "§7123(c)(12): cybersecurity awareness — current knowledge of changing threats and countermeasures",
-      "props": [
-       {
-        "name": "label",
-        "value": "c12_cybersecurity_awareness"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c12_cybersecurity_awareness"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c12_cybersecurity_awareness_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(12): cybersecurity awareness — current knowledge of changing threats and countermeasures"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c13_education_training",
-      "title": "§7123(c)(13): cybersecurity education and training at start, annually, and after a breach, for everyone with system access",
-      "props": [
-       {
-        "name": "label",
-        "value": "c13_education_training"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c13_education_training"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c13_education_training_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(13): cybersecurity education and training at start, annually, and after a breach, for everyone with system access"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c14_secure_development",
-      "title": "§7123(c)(14): secure development and coding best practices, including code review and testing",
-      "props": [
-       {
-        "name": "label",
-        "value": "c14_secure_development"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c14_secure_development"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c14_secure_development_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(14): secure development and coding best practices, including code review and testing"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c15_service_provider_oversight",
-      "title": "§7123(c)(15): oversight of service providers, contractors and third parties (§§7051, 7053)",
-      "props": [
-       {
-        "name": "label",
-        "value": "c15_service_provider_oversight"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c15_service_provider_oversight"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c15_service_provider_oversight_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(15): oversight of service providers, contractors and third parties (§§7051, 7053)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c16_retention_and_disposal",
-      "title": "§7123(c)(16): retention schedules and proper disposal (shredding, erasing, rendering unreadable)",
-      "props": [
-       {
-        "name": "label",
-        "value": "c16_retention_and_disposal"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c16_retention_and_disposal"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c16_retention_and_disposal_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(16): retention schedules and proper disposal (shredding, erasing, rendering unreadable)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c17_incident_response",
-      "title": "§7123(c)(17): incident response management — documented plan and tested capabilities",
-      "props": [
-       {
-        "name": "label",
-        "value": "c17_incident_response"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c17_incident_response"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c17_incident_response_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(17): incident response management — documented plan and tested capabilities"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-c18_bcdr_backups",
-      "title": "§7123(c)(18): business-continuity and disaster-recovery plans, data-recovery capabilities and backups",
-      "props": [
-       {
-        "name": "label",
-        "value": "c18_bcdr_backups"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "c18_bcdr_backups"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-c18_bcdr_backups_stmt",
-        "name": "statement",
-        "prose": "§7123(c)(18): business-continuity and disaster-recovery plans, data-recovery capabilities and backups"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-ccpa.cybersecurity_audits-1",
+      "id": "ccpa-ccpa.cybersecurity_audits-2",
       "title": "CCPA %v — component not assessed by the cybersecurity audit and not recorded as not-applicable",
       "props": [
        {
         "name": "label",
-        "value": "ccpa.cybersecurity_audits#1"
+        "value": "ccpa.cybersecurity_audits#2"
        },
        {
         "name": "alt-identifier",
-        "value": "ccpa.cybersecurity_audits#1"
+        "value": "ccpa.cybersecurity_audits#2"
        },
        {
         "name": "rego-package",
@@ -3211,13 +2460,13 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-ccpa.cybersecurity_audits-1_stmt",
+        "id": "ccpa-ccpa.cybersecurity_audits-2_stmt",
         "name": "statement",
         "prose": "CCPA %v — component not assessed by the cybersecurity audit and not recorded as not-applicable"
        }
@@ -3244,7 +2493,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -3277,7 +2526,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -3291,16 +2540,16 @@
       "class": "compliance"
      },
      {
-      "id": "ccpa-CCPA-7123-e-1",
-      "title": "report does not describe the information system, the policies/procedures assessed, the criteria used and the specific evidence examined, with the justification for the findings",
+      "id": "ccpa-ccpa.cybersecurity_audits-3",
+      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego (package ccpa.cybersecurity_audits); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "CCPA §7123(e)(1)"
+        "value": "ccpa.cybersecurity_audits#3"
        },
        {
         "name": "alt-identifier",
-        "value": "CCPA §7123(e)(1)"
+        "value": "ccpa.cybersecurity_audits#3"
        },
        {
         "name": "rego-package",
@@ -3310,30 +2559,30 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-CCPA-7123-e-1_stmt",
+        "id": "ccpa-ccpa.cybersecurity_audits-3_stmt",
         "name": "statement",
-        "prose": "report does not describe the information system, the policies/procedures assessed, the criteria used and the specific evidence examined, with the justification for the findings"
+        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego (package ccpa.cybersecurity_audits); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ccpa-CCPA-7123-e-2",
-      "title": "report does not identify the applicable components, how the business implements and enforces them, and their effectiveness",
+      "id": "ccpa-ccpa.cybersecurity_audits-4",
+      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego (package ccpa.cybersecurity_audits); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "CCPA §7123(e)(2)"
+        "value": "ccpa.cybersecurity_audits#4"
        },
        {
         "name": "alt-identifier",
-        "value": "CCPA §7123(e)(2)"
+        "value": "ccpa.cybersecurity_audits#4"
        },
        {
         "name": "rego-package",
@@ -3343,15 +2592,878 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-CCPA-7123-e-2_stmt",
+        "id": "ccpa-ccpa.cybersecurity_audits-4_stmt",
         "name": "statement",
-        "prose": "report does not identify the applicable components, how the business implements and enforces them, and their effectiveness"
+        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego (package ccpa.cybersecurity_audits); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7122-b",
+      "title": "business did not make all requested relevant information available to the auditor",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7122(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7122(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7122-b_stmt",
+        "name": "statement",
+        "prose": "business did not make all requested relevant information available to the auditor"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7122-g",
+      "title": "audit documents not retained for at least five years after completion (business and auditor)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7122(g)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7122(g)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7122-g_stmt",
+        "name": "statement",
+        "prose": "audit documents not retained for at least five years after completion (business and auditor)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7122-c",
+      "title": "business did not disclose all relevant facts to the auditor in good faith / misrepresented a fact",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7122(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7122(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7122-c_stmt",
+        "name": "statement",
+        "prose": "business did not disclose all relevant facts to the auditor in good faith / misrepresented a fact"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7122-d",
+      "title": "audit findings rely primarily on management assertions or attestations rather than on specific evidence (documents, sampling and testing, interviews)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7122(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7122(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7122-d_stmt",
+        "name": "statement",
+        "prose": "audit findings rely primarily on management assertions or attestations rather than on specific evidence (documents, sampling and testing, interviews)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7122-a-2",
+      "title": "auditor participated in activities they assess (developing procedures, preparing documents, recommending or operating the cybersecurity program)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7122(a)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7122(a)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7122-a-2_stmt",
+        "name": "statement",
+        "prose": "auditor participated in activities they assess (developing procedures, preparing documents, recommending or operating the cybersecurity program)"
+       },
+       {
+        "id": "ccpa-CCPA-7122-a-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "auditor is not free of influence from the business — objective and impartial judgment not evidenced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7122-a-1",
+      "title": "auditor lacks demonstrated knowledge of cybersecurity and of auditing a cybersecurity program",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7122(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7122(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7122-a-1_stmt",
+        "name": "statement",
+        "prose": "auditor lacks demonstrated knowledge of cybersecurity and of auditing a cybersecurity program"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7122-f",
+      "title": "audit report not provided to the executive with direct responsibility for the cybersecurity program",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7122(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7122(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7122-f_stmt",
+        "name": "statement",
+        "prose": "audit report not provided to the executive with direct responsibility for the cybersecurity program"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7122-a",
+      "title": "audit does not use procedures and standards accepted in the auditing profession (AICPA, PCAOB, ISACA, ISO)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7122(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7122(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7122-a_stmt",
+        "name": "statement",
+        "prose": "audit does not use procedures and standards accepted in the auditing profession (AICPA, PCAOB, ISACA, ISO)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c01_authentication",
+      "title": "§7123(c)(1): authentication — phishing-resistant MFA for personnel, service providers and contractors; strong unique passwords/passphrases",
+      "props": [
+       {
+        "name": "label",
+        "value": "c01_authentication"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c01_authentication"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c01_authentication_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(1): authentication — phishing-resistant MFA for personnel, service providers and contractors; strong unique passwords/passphrases"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c02_encryption",
+      "title": "§7123(c)(2): encryption of personal information at rest and in transit",
+      "props": [
+       {
+        "name": "label",
+        "value": "c02_encryption"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c02_encryption"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c02_encryption_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(2): encryption of personal information at rest and in transit"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c03_account_management_access_control",
+      "title": "§7123(c)(3): account management and access controls — least privilege, privileged-account restriction and PAM, monitored account creation, physical access",
+      "props": [
+       {
+        "name": "label",
+        "value": "c03_account_management_access_control"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c03_account_management_access_control"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c03_account_management_access_control_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(3): account management and access controls — least privilege, privileged-account restriction and PAM, monitored account creation, physical access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c04_inventory",
+      "title": "§7123(c)(4): inventory and management of personal information (maps, classification, tagging) and of hardware/software (allowlisting, approval processes)",
+      "props": [
+       {
+        "name": "label",
+        "value": "c04_inventory"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c04_inventory"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c04_inventory_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(4): inventory and management of personal information (maps, classification, tagging) and of hardware/software (allowlisting, approval processes)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c05_secure_configuration",
+      "title": "§7123(c)(5): secure configuration — updates/upgrades, on-prem and cloud hardening, masking of sensitive PI by default, security patch management, change management",
+      "props": [
+       {
+        "name": "label",
+        "value": "c05_secure_configuration"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c05_secure_configuration"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c05_secure_configuration_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(5): secure configuration — updates/upgrades, on-prem and cloud hardening, masking of sensitive PI by default, security patch management, change management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c06_vulnerability_scans_pentest_disclosure",
+      "title": "§7123(c)(6): internal and external vulnerability scans, penetration testing, vulnerability disclosure and reporting",
+      "props": [
+       {
+        "name": "label",
+        "value": "c06_vulnerability_scans_pentest_disclosure"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c06_vulnerability_scans_pentest_disclosure"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c06_vulnerability_scans_pentest_disclosure_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(6): internal and external vulnerability scans, penetration testing, vulnerability disclosure and reporting"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c07_audit_log_management",
+      "title": "§7123(c)(7): audit-log management — centralized storage, retention and monitoring of logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "c07_audit_log_management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c07_audit_log_management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c07_audit_log_management_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(7): audit-log management — centralized storage, retention and monitoring of logs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c08_network_monitoring_defenses",
+      "title": "§7123(c)(8): network monitoring and defenses — bot/intrusion detection and prevention, data-loss prevention",
+      "props": [
+       {
+        "name": "label",
+        "value": "c08_network_monitoring_defenses"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c08_network_monitoring_defenses"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c08_network_monitoring_defenses_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(8): network monitoring and defenses — bot/intrusion detection and prevention, data-loss prevention"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c09_antivirus_antimalware",
+      "title": "§7123(c)(9): antivirus and antimalware protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "c09_antivirus_antimalware"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c09_antivirus_antimalware"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c09_antivirus_antimalware_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(9): antivirus and antimalware protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c10_segmentation",
+      "title": "§7123(c)(10): segmentation of the information system (firewalls, routers, switches)",
+      "props": [
+       {
+        "name": "label",
+        "value": "c10_segmentation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c10_segmentation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c10_segmentation_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(10): segmentation of the information system (firewalls, routers, switches)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c11_ports_services_protocols",
+      "title": "§7123(c)(11): limitation and control of ports, services and protocols",
+      "props": [
+       {
+        "name": "label",
+        "value": "c11_ports_services_protocols"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c11_ports_services_protocols"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c11_ports_services_protocols_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(11): limitation and control of ports, services and protocols"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c12_cybersecurity_awareness",
+      "title": "§7123(c)(12): cybersecurity awareness — current knowledge of changing threats and countermeasures",
+      "props": [
+       {
+        "name": "label",
+        "value": "c12_cybersecurity_awareness"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c12_cybersecurity_awareness"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c12_cybersecurity_awareness_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(12): cybersecurity awareness — current knowledge of changing threats and countermeasures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c13_education_training",
+      "title": "§7123(c)(13): cybersecurity education and training at start, annually, and after a breach, for everyone with system access",
+      "props": [
+       {
+        "name": "label",
+        "value": "c13_education_training"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c13_education_training"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c13_education_training_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(13): cybersecurity education and training at start, annually, and after a breach, for everyone with system access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c14_secure_development",
+      "title": "§7123(c)(14): secure development and coding best practices, including code review and testing",
+      "props": [
+       {
+        "name": "label",
+        "value": "c14_secure_development"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c14_secure_development"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c14_secure_development_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(14): secure development and coding best practices, including code review and testing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c15_service_provider_oversight",
+      "title": "§7123(c)(15): oversight of service providers, contractors and third parties (§§7051, 7053)",
+      "props": [
+       {
+        "name": "label",
+        "value": "c15_service_provider_oversight"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c15_service_provider_oversight"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c15_service_provider_oversight_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(15): oversight of service providers, contractors and third parties (§§7051, 7053)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c16_retention_and_disposal",
+      "title": "§7123(c)(16): retention schedules and proper disposal (shredding, erasing, rendering unreadable)",
+      "props": [
+       {
+        "name": "label",
+        "value": "c16_retention_and_disposal"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c16_retention_and_disposal"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c16_retention_and_disposal_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(16): retention schedules and proper disposal (shredding, erasing, rendering unreadable)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c17_incident_response",
+      "title": "§7123(c)(17): incident response management — documented plan and tested capabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "c17_incident_response"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c17_incident_response"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c17_incident_response_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(17): incident response management — documented plan and tested capabilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-c18_bcdr_backups",
+      "title": "§7123(c)(18): business-continuity and disaster-recovery plans, data-recovery capabilities and backups",
+      "props": [
+       {
+        "name": "label",
+        "value": "c18_bcdr_backups"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c18_bcdr_backups"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-c18_bcdr_backups_stmt",
+        "name": "statement",
+        "prose": "§7123(c)(18): business-continuity and disaster-recovery plans, data-recovery capabilities and backups"
        }
       ],
       "class": "compliance"
@@ -3376,7 +3488,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -3385,6 +3497,39 @@
         "id": "ccpa-CCPA-7123-e-3_stmt",
         "name": "statement",
         "prose": "report does not identify and describe in detail the status of gaps or weaknesses that increase risk to personal information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7123-e-1",
+      "title": "report does not describe the information system, the policies/procedures assessed, the criteria used and the specific evidence examined, with the justification for the findings",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7123(e)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7123(e)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7123-e-1_stmt",
+        "name": "statement",
+        "prose": "report does not describe the information system, the policies/procedures assessed, the criteria used and the specific evidence examined, with the justification for the findings"
        }
       ],
       "class": "compliance"
@@ -3409,7 +3554,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -3418,6 +3563,39 @@
         "id": "ccpa-CCPA-7123-e-4_stmt",
         "name": "statement",
         "prose": "report does not document the business's plan and timeframe to address identified gaps and weaknesses"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7123-e-2",
+      "title": "report does not identify the applicable components, how the business implements and enforces them, and their effectiveness",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7123(e)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7123(e)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7123-e-2_stmt",
+        "name": "statement",
+        "prose": "report does not identify the applicable components, how the business implements and enforces them, and their effectiveness"
        }
       ],
       "class": "compliance"
@@ -3442,7 +3620,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -3451,105 +3629,6 @@
         "id": "ccpa-CCPA-7123-e-5_stmt",
         "name": "statement",
         "prose": "report does not identify corrections or amendments to prior audit reports"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7123-e-6",
-      "title": "report does not include the titles of up to three qualified individuals responsible for the cybersecurity program",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7123(e)(6)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7123(e)(6)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7123-e-6_stmt",
-        "name": "statement",
-        "prose": "report does not include the titles of up to three qualified individuals responsible for the cybersecurity program"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7123-e-7",
-      "title": "report does not include the auditor's name, affiliation and relevant qualifications",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7123(e)(7)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7123(e)(7)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7123-e-7_stmt",
-        "name": "statement",
-        "prose": "report does not include the auditor's name, affiliation and relevant qualifications"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7123-e-8",
-      "title": "report lacks the highest-ranking auditor's signed, dated certification of independent review, impartial judgment, and no primary reliance on management attestations",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7123(e)(8)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7123(e)(8)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7123-e-8_stmt",
-        "name": "statement",
-        "prose": "report lacks the highest-ranking auditor's signed, dated certification of independent review, impartial judgment, and no primary reliance on management attestations"
        }
       ],
       "class": "compliance"
@@ -3574,7 +3653,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -3588,16 +3667,16 @@
       "class": "compliance"
      },
      {
-      "id": "ccpa-ccpa.cybersecurity_audits-2",
-      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego (package ccpa.cybersecurity_audits); see the rule body.",
+      "id": "ccpa-CCPA-7123-e-7",
+      "title": "report does not include the auditor's name, affiliation and relevant qualifications",
       "props": [
        {
         "name": "label",
-        "value": "ccpa.cybersecurity_audits#2"
+        "value": "CCPA §7123(e)(7)"
        },
        {
         "name": "alt-identifier",
-        "value": "ccpa.cybersecurity_audits#2"
+        "value": "CCPA §7123(e)(7)"
        },
        {
         "name": "rego-package",
@@ -3607,30 +3686,30 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-ccpa.cybersecurity_audits-2_stmt",
+        "id": "ccpa-CCPA-7123-e-7_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego (package ccpa.cybersecurity_audits); see the rule body."
+        "prose": "report does not include the auditor's name, affiliation and relevant qualifications"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "ccpa-CCPA-7124-a",
-      "title": "written certification of audit completion not submitted to the California Privacy Protection Agency",
+      "id": "ccpa-CCPA-7123-e-6",
+      "title": "report does not include the titles of up to three qualified individuals responsible for the cybersecurity program",
       "props": [
        {
         "name": "label",
-        "value": "CCPA §7124(a)"
+        "value": "CCPA §7123(e)(6)"
        },
        {
         "name": "alt-identifier",
-        "value": "CCPA §7124(a)"
+        "value": "CCPA §7123(e)(6)"
        },
        {
         "name": "rego-package",
@@ -3640,15 +3719,81 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-CCPA-7124-a_stmt",
+        "id": "ccpa-CCPA-7123-e-6_stmt",
         "name": "statement",
-        "prose": "written certification of audit completion not submitted to the California Privacy Protection Agency"
+        "prose": "report does not include the titles of up to three qualified individuals responsible for the cybersecurity program"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7123-e-8",
+      "title": "report lacks the highest-ranking auditor's signed, dated certification of independent review, impartial judgment, and no primary reliance on management attestations",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7123(e)(8)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7123(e)(8)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7123-e-8_stmt",
+        "name": "statement",
+        "prose": "report lacks the highest-ranking auditor's signed, dated certification of independent review, impartial judgment, and no primary reliance on management attestations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7124-d",
+      "title": "certification lacks required contents — business name and contact, completion statement, period covered by month and year, electronically signed penalty-of-perjury attestation, submitter name/title/da",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7124(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7124(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7124-d_stmt",
+        "name": "statement",
+        "prose": "certification lacks required contents — business name and contact, completion statement, period covered by month and year, electronically signed penalty-of-perjury attestation, submitter name/title/date"
        }
       ],
       "class": "compliance"
@@ -3673,7 +3818,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -3706,7 +3851,7 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
@@ -3720,16 +3865,16 @@
       "class": "compliance"
      },
      {
-      "id": "ccpa-CCPA-7124-d",
-      "title": "certification lacks required contents — business name and contact, completion statement, period covered by month and year, electronically signed penalty-of-perjury attestation, submitter name/title/da",
+      "id": "ccpa-CCPA-7124-a",
+      "title": "written certification of audit completion not submitted to the California Privacy Protection Agency",
       "props": [
        {
         "name": "label",
-        "value": "CCPA §7124(d)"
+        "value": "CCPA §7124(a)"
        },
        {
         "name": "alt-identifier",
-        "value": "CCPA §7124(d)"
+        "value": "CCPA §7124(a)"
        },
        {
         "name": "rego-package",
@@ -3739,48 +3884,15 @@
       ],
       "links": [
        {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+        "href": "#55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-CCPA-7124-d_stmt",
+        "id": "ccpa-CCPA-7124-a_stmt",
         "name": "statement",
-        "prose": "certification lacks required contents — business name and contact, completion statement, period covered by month and year, electronically signed penalty-of-perjury attestation, submitter name/title/date"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-ccpa.cybersecurity_audits-3",
-      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego (package ccpa.cybersecurity_audits); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "ccpa.cybersecurity_audits#3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ccpa.cybersecurity_audits#3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.cybersecurity_audits"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-ccpa.cybersecurity_audits-3_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego (package ccpa.cybersecurity_audits); see the rule body."
+        "prose": "written certification of audit completion not submitted to the California Privacy Protection Agency"
        }
       ],
       "class": "compliance"
@@ -3829,7 +3941,7 @@
       ],
       "links": [
        {
-        "href": "#45bf9a53-7ace-5dff-a6b6-e8a34a9c6037",
+        "href": "#941eedc4-a992-58f3-9b03-df18865eb1ef",
         "rel": "implementation"
        }
       ],
@@ -3897,7 +4009,7 @@
       ],
       "links": [
        {
-        "href": "#45bf9a53-7ace-5dff-a6b6-e8a34a9c6037",
+        "href": "#941eedc4-a992-58f3-9b03-df18865eb1ef",
         "rel": "implementation"
        }
       ],
@@ -3940,7 +4052,7 @@
       ],
       "links": [
        {
-        "href": "#45bf9a53-7ace-5dff-a6b6-e8a34a9c6037",
+        "href": "#941eedc4-a992-58f3-9b03-df18865eb1ef",
         "rel": "implementation"
        }
       ],
@@ -3988,204 +4100,6 @@
     ],
     "controls": [
      {
-      "id": "ccpa-selling_or_sharing",
-      "title": "§7150(b)(1): selling or sharing personal information",
-      "props": [
-       {
-        "name": "label",
-        "value": "selling_or_sharing"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "selling_or_sharing"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-selling_or_sharing_stmt",
-        "name": "statement",
-        "prose": "§7150(b)(1): selling or sharing personal information"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-sensitive_personal_information",
-      "title": "§7150(b)(2): processing sensitive personal information (beyond the HR-administration carve-out)",
-      "props": [
-       {
-        "name": "label",
-        "value": "sensitive_personal_information"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "sensitive_personal_information"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-sensitive_personal_information_stmt",
-        "name": "statement",
-        "prose": "§7150(b)(2): processing sensitive personal information (beyond the HR-administration carve-out)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-admt_significant_decision",
-      "title": "§7150(b)(3): using ADMT for a significant decision concerning a consumer",
-      "props": [
-       {
-        "name": "label",
-        "value": "admt_significant_decision"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "admt_significant_decision"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-admt_significant_decision_stmt",
-        "name": "statement",
-        "prose": "§7150(b)(3): using ADMT for a significant decision concerning a consumer"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-inference_from_observation_work_or_education",
-      "title": "§7150(b)(4): automated inference about a consumer from systematic observation as applicant, student, employee or contractor",
-      "props": [
-       {
-        "name": "label",
-        "value": "inference_from_observation_work_or_education"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "inference_from_observation_work_or_education"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-inference_from_observation_work_or_education_stmt",
-        "name": "statement",
-        "prose": "§7150(b)(4): automated inference about a consumer from systematic observation as applicant, student, employee or contractor"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-inference_in_sensitive_location",
-      "title": "§7150(b)(5): automated inference about a consumer based on presence in a sensitive location",
-      "props": [
-       {
-        "name": "label",
-        "value": "inference_in_sensitive_location"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "inference_in_sensitive_location"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-inference_in_sensitive_location_stmt",
-        "name": "statement",
-        "prose": "§7150(b)(5): automated inference about a consumer based on presence in a sensitive location"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-training_admt_or_biometric_technology",
-      "title": "§7150(b)(6): processing personal information to train ADMT for significant decisions, or facial/emotion-recognition or other identification/profiling technology",
-      "props": [
-       {
-        "name": "label",
-        "value": "training_admt_or_biometric_technology"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "training_admt_or_biometric_technology"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-training_admt_or_biometric_technology_stmt",
-        "name": "statement",
-        "prose": "§7150(b)(6): processing personal information to train ADMT for significant decisions, or facial/emotion-recognition or other identification/profiling technology"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "ccpa-ccpa.risk_assessments-1",
       "title": "CCPA %v — activity not declared (activities.%v.in_use must be true or false)",
       "props": [
@@ -4205,7 +4119,7 @@
       ],
       "links": [
        {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
         "rel": "implementation"
        }
       ],
@@ -4238,7 +4152,7 @@
       ],
       "links": [
        {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
         "rel": "implementation"
        }
       ],
@@ -4271,7 +4185,7 @@
       ],
       "links": [
        {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
         "rel": "implementation"
        }
       ],
@@ -4285,16 +4199,16 @@
       "class": "compliance"
      },
      {
-      "id": "ccpa-CCPA-7152-a-1",
-      "title": "purpose of processing not identified specifically (generic purposes such as 'to improve our services' are not permitted)",
+      "id": "ccpa-ccpa.risk_assessments-3",
+      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_risk_assessments.rego (package ccpa.risk_assessments); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "CCPA §7152(a)(1)"
+        "value": "ccpa.risk_assessments#3"
        },
        {
         "name": "alt-identifier",
-        "value": "CCPA §7152(a)(1)"
+        "value": "ccpa.risk_assessments#3"
        },
        {
         "name": "rego-package",
@@ -4304,279 +4218,15 @@
       ],
       "links": [
        {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-CCPA-7152-a-1_stmt",
+        "id": "ccpa-ccpa.risk_assessments-3_stmt",
         "name": "statement",
-        "prose": "purpose of processing not identified specifically (generic purposes such as 'to improve our services' are not permitted)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7152-a-2",
-      "title": "categories of personal information (including sensitive PI) and the minimum PI necessary for the purpose not documented",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7152(a)(2)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7152(a)(2)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7152-a-2_stmt",
-        "name": "statement",
-        "prose": "categories of personal information (including sensitive PI) and the minimum PI necessary for the purpose not documented"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7152-a-3",
-      "title": "operational elements not documented — collection/use/disclosure/retention method and sources, retention periods or criteria, consumer interaction method and purpose, approximate consumer count, disclo",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7152(a)(3)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7152(a)(3)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7152-a-3_stmt",
-        "name": "statement",
-        "prose": "operational elements not documented — collection/use/disclosure/retention method and sources, retention periods or criteria, consumer interaction method and purpose, approximate consumer count, disclosures made, and recipients with purposes"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7152-a-4",
-      "title": "benefits to the business, consumer, stakeholders and public not identified specifically",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7152(a)(4)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7152(a)(4)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7152-a-4_stmt",
-        "name": "statement",
-        "prose": "benefits to the business, consumer, stakeholders and public not identified specifically"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7152-a-5",
-      "title": "negative impacts to consumers' privacy, with their sources and causes, not identified (security, discrimination, loss of control, coercion, economic, physical, reputational, psychological harms)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7152(a)(5)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7152(a)(5)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7152-a-5_stmt",
-        "name": "statement",
-        "prose": "negative impacts to consumers' privacy, with their sources and causes, not identified (security, discrimination, loss of control, coercion, economic, physical, reputational, psychological harms)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7152-a-6",
-      "title": "safeguards planned for the processing (and for each identified negative impact) not documented",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7152(a)(6)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7152(a)(6)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7152-a-6_stmt",
-        "name": "statement",
-        "prose": "safeguards planned for the processing (and for each identified negative impact) not documented"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7152-a-7",
-      "title": "whether the business will initiate the processing not documented",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7152(a)(7)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7152(a)(7)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7152-a-7_stmt",
-        "name": "statement",
-        "prose": "whether the business will initiate the processing not documented"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7152-a-8",
-      "title": "individuals who provided information for the assessment not identified (legal counsel excepted)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7152(a)(8)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7152(a)(8)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7152-a-8_stmt",
-        "name": "statement",
-        "prose": "individuals who provided information for the assessment not identified (legal counsel excepted)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7152-a-9",
-      "title": "review/approval date and the names and positions of reviewers not documented, or the approver lacks authority to decide whether the processing proceeds",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7152(a)(9)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7152(a)(9)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7152-a-9_stmt",
-        "name": "statement",
-        "prose": "review/approval date and the names and positions of reviewers not documented, or the approver lacks authority to decide whether the processing proceeds"
+        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_risk_assessments.rego (package ccpa.risk_assessments); see the rule body."
        }
       ],
       "class": "compliance"
@@ -4601,7 +4251,7 @@
       ],
       "links": [
        {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
         "rel": "implementation"
        }
       ],
@@ -4609,11 +4259,6 @@
        {
         "id": "ccpa-CCPA-7152-a-3-G_stmt",
         "name": "statement",
-        "prose": "for ADMT used in significant decisions, the assessment does not document the logic (assumptions, limitations) and the output and how it drives the decision"
-       },
-       {
-        "id": "ccpa-CCPA-7152-a-3-G_obj.1",
-        "name": "assessment-objective",
         "prose": "for ADMT used in significant decisions, the assessment does not document the logic (assumptions, limitations) and the output and how it drives the decision"
        }
       ],
@@ -4639,7 +4284,7 @@
       ],
       "links": [
        {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
         "rel": "implementation"
        }
       ],
@@ -4648,6 +4293,638 @@
         "id": "ccpa-CCPA-7153-a_stmt",
         "name": "statement",
         "prose": "business makes ADMT trained on personal information available to other businesses for significant decisions but does not provide them the facts needed for their own risk assessments"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-ccpa.risk_assessments-4",
+      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_risk_assessments.rego (package ccpa.risk_assessments); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ccpa.risk_assessments#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ccpa.risk_assessments#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-ccpa.risk_assessments-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_risk_assessments.rego (package ccpa.risk_assessments); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7155-b",
+      "title": "processing that began before the regulations' effective date and continues was not risk-assessed by 2027-12-31",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7155(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7155(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7155-b_stmt",
+        "name": "statement",
+        "prose": "processing that began before the regulations' effective date and continues was not risk-assessed by 2027-12-31"
+       },
+       {
+        "id": "ccpa-CCPA-7155-b_obj.1",
+        "name": "assessment-objective",
+        "prose": "pre-existing processing continues without a risk assessment and none is scheduled before the 2027-12-31 deadline"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-ccpa.risk_assessments-5",
+      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_risk_assessments.rego (package ccpa.risk_assessments); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ccpa.risk_assessments#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ccpa.risk_assessments#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-ccpa.risk_assessments-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_risk_assessments.rego (package ccpa.risk_assessments); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-admt_significant_decision",
+      "title": "§7150(b)(3): using ADMT for a significant decision concerning a consumer",
+      "props": [
+       {
+        "name": "label",
+        "value": "admt_significant_decision"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "admt_significant_decision"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-admt_significant_decision_stmt",
+        "name": "statement",
+        "prose": "§7150(b)(3): using ADMT for a significant decision concerning a consumer"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-inference_from_observation_work_or_education",
+      "title": "§7150(b)(4): automated inference about a consumer from systematic observation as applicant, student, employee or contractor",
+      "props": [
+       {
+        "name": "label",
+        "value": "inference_from_observation_work_or_education"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "inference_from_observation_work_or_education"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-inference_from_observation_work_or_education_stmt",
+        "name": "statement",
+        "prose": "§7150(b)(4): automated inference about a consumer from systematic observation as applicant, student, employee or contractor"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-inference_in_sensitive_location",
+      "title": "§7150(b)(5): automated inference about a consumer based on presence in a sensitive location",
+      "props": [
+       {
+        "name": "label",
+        "value": "inference_in_sensitive_location"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "inference_in_sensitive_location"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-inference_in_sensitive_location_stmt",
+        "name": "statement",
+        "prose": "§7150(b)(5): automated inference about a consumer based on presence in a sensitive location"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-selling_or_sharing",
+      "title": "§7150(b)(1): selling or sharing personal information",
+      "props": [
+       {
+        "name": "label",
+        "value": "selling_or_sharing"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "selling_or_sharing"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-selling_or_sharing_stmt",
+        "name": "statement",
+        "prose": "§7150(b)(1): selling or sharing personal information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-sensitive_personal_information",
+      "title": "§7150(b)(2): processing sensitive personal information (beyond the HR-administration carve-out)",
+      "props": [
+       {
+        "name": "label",
+        "value": "sensitive_personal_information"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sensitive_personal_information"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-sensitive_personal_information_stmt",
+        "name": "statement",
+        "prose": "§7150(b)(2): processing sensitive personal information (beyond the HR-administration carve-out)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-training_admt_or_biometric_technology",
+      "title": "§7150(b)(6): processing personal information to train ADMT for significant decisions, or facial/emotion-recognition or other identification/profiling technology",
+      "props": [
+       {
+        "name": "label",
+        "value": "training_admt_or_biometric_technology"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "training_admt_or_biometric_technology"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-training_admt_or_biometric_technology_stmt",
+        "name": "statement",
+        "prose": "§7150(b)(6): processing personal information to train ADMT for significant decisions, or facial/emotion-recognition or other identification/profiling technology"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7152-a-4",
+      "title": "benefits to the business, consumer, stakeholders and public not identified specifically",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7152(a)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7152(a)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7152-a-4_stmt",
+        "name": "statement",
+        "prose": "benefits to the business, consumer, stakeholders and public not identified specifically"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7152-a-2",
+      "title": "categories of personal information (including sensitive PI) and the minimum PI necessary for the purpose not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7152(a)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7152(a)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7152-a-2_stmt",
+        "name": "statement",
+        "prose": "categories of personal information (including sensitive PI) and the minimum PI necessary for the purpose not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7152-a-8",
+      "title": "individuals who provided information for the assessment not identified (legal counsel excepted)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7152(a)(8)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7152(a)(8)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7152-a-8_stmt",
+        "name": "statement",
+        "prose": "individuals who provided information for the assessment not identified (legal counsel excepted)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7152-a-7",
+      "title": "whether the business will initiate the processing not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7152(a)(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7152(a)(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7152-a-7_stmt",
+        "name": "statement",
+        "prose": "whether the business will initiate the processing not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7152-a-5",
+      "title": "negative impacts to consumers' privacy, with their sources and causes, not identified (security, discrimination, loss of control, coercion, economic, physical, reputational, psychological harms)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7152(a)(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7152(a)(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7152-a-5_stmt",
+        "name": "statement",
+        "prose": "negative impacts to consumers' privacy, with their sources and causes, not identified (security, discrimination, loss of control, coercion, economic, physical, reputational, psychological harms)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7152-a-3",
+      "title": "operational elements not documented — collection/use/disclosure/retention method and sources, retention periods or criteria, consumer interaction method and purpose, approximate consumer count, disclo",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7152(a)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7152(a)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7152-a-3_stmt",
+        "name": "statement",
+        "prose": "operational elements not documented — collection/use/disclosure/retention method and sources, retention periods or criteria, consumer interaction method and purpose, approximate consumer count, disclosures made, and recipients with purposes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7152-a-1",
+      "title": "purpose of processing not identified specifically (generic purposes such as 'to improve our services' are not permitted)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7152(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7152(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7152-a-1_stmt",
+        "name": "statement",
+        "prose": "purpose of processing not identified specifically (generic purposes such as 'to improve our services' are not permitted)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7152-a-9",
+      "title": "review/approval date and the names and positions of reviewers not documented, or the approver lacks authority to decide whether the processing proceeds",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7152(a)(9)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7152(a)(9)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7152-a-9_stmt",
+        "name": "statement",
+        "prose": "review/approval date and the names and positions of reviewers not documented, or the approver lacks authority to decide whether the processing proceeds"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7152-a-6",
+      "title": "safeguards planned for the processing (and for each identified negative impact) not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7152(a)(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7152(a)(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7152-a-6_stmt",
+        "name": "statement",
+        "prose": "safeguards planned for the processing (and for each identified negative impact) not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7155-c",
+      "title": "risk assessments (original and updated) not retained for the duration of processing or five years after completion, whichever is later",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7155(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7155(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7155-c_stmt",
+        "name": "statement",
+        "prose": "risk assessments (original and updated) not retained for the duration of processing or five years after completion, whichever is later"
        }
       ],
       "class": "compliance"
@@ -4672,7 +4949,7 @@
       ],
       "links": [
        {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
         "rel": "implementation"
        }
       ],
@@ -4705,7 +4982,7 @@
       ],
       "links": [
        {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
         "rel": "implementation"
        }
       ],
@@ -4714,115 +4991,6 @@
         "id": "ccpa-CCPA-7155-a-3_stmt",
         "name": "statement",
         "prose": "risk assessments not updated within 45 calendar days of a material change (new or larger negative impacts, weakened safeguards)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7155-c",
-      "title": "risk assessments (original and updated) not retained for the duration of processing or five years after completion, whichever is later",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7155(c)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7155(c)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7155-c_stmt",
-        "name": "statement",
-        "prose": "risk assessments (original and updated) not retained for the duration of processing or five years after completion, whichever is later"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7155-b",
-      "title": "processing that began before the regulations' effective date and continues was not risk-assessed by 2027-12-31",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7155(b)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7155(b)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7155-b_stmt",
-        "name": "statement",
-        "prose": "processing that began before the regulations' effective date and continues was not risk-assessed by 2027-12-31"
-       },
-       {
-        "id": "ccpa-CCPA-7155-b_obj.1",
-        "name": "assessment-objective",
-        "prose": "processing that began before the regulations' effective date and continues was not risk-assessed by 2027-12-31"
-       },
-       {
-        "id": "ccpa-CCPA-7155-b_obj.2",
-        "name": "assessment-objective",
-        "prose": "pre-existing processing continues without a risk assessment and none is scheduled before the 2027-12-31 deadline"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7157-a",
-      "title": "risk assessment information not submitted to the Agency by April 1 following the assessment year (2028-04-01 for 2026–2027 assessments)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7157(a)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7157(a)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7157-a_stmt",
-        "name": "statement",
-        "prose": "risk assessment information not submitted to the Agency by April 1 following the assessment year (2028-04-01 for 2026–2027 assessments)"
        }
       ],
       "class": "compliance"
@@ -4847,7 +5015,7 @@
       ],
       "links": [
        {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
         "rel": "implementation"
        }
       ],
@@ -4856,39 +5024,6 @@
         "id": "ccpa-CCPA-7157-b_stmt",
         "name": "statement",
         "prose": "submission lacks required contents — business name and contact, period covered, count of assessments per §7150(b) activity, categories of PI/sensitive PI involved, penalty-of-perjury attestation, submitter name/title/date"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "ccpa-CCPA-7157-c",
-      "title": "submission not made by an executive directly responsible for risk-assessment compliance with sufficient knowledge and authority",
-      "props": [
-       {
-        "name": "label",
-        "value": "CCPA §7157(c)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CCPA §7157(c)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ccpa.risk_assessments"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ccpa-CCPA-7157-c_stmt",
-        "name": "statement",
-        "prose": "submission not made by an executive directly responsible for risk-assessment compliance with sufficient knowledge and authority"
        }
       ],
       "class": "compliance"
@@ -4913,7 +5048,7 @@
       ],
       "links": [
        {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
         "rel": "implementation"
        }
       ],
@@ -4927,16 +5062,16 @@
       "class": "compliance"
      },
      {
-      "id": "ccpa-ccpa.risk_assessments-3",
-      "title": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_risk_assessments.rego (package ccpa.risk_assessments); see the rule body.",
+      "id": "ccpa-CCPA-7157-a",
+      "title": "risk assessment information not submitted to the Agency by April 1 following the assessment year (2028-04-01 for 2026–2027 assessments)",
       "props": [
        {
         "name": "label",
-        "value": "ccpa.risk_assessments#3"
+        "value": "CCPA §7157(a)"
        },
        {
         "name": "alt-identifier",
-        "value": "ccpa.risk_assessments#3"
+        "value": "CCPA §7157(a)"
        },
        {
         "name": "rego-package",
@@ -4946,15 +5081,48 @@
       ],
       "links": [
        {
-        "href": "#a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ccpa-ccpa.risk_assessments-3_stmt",
+        "id": "ccpa-CCPA-7157-a_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_risk_assessments.rego (package ccpa.risk_assessments); see the rule body."
+        "prose": "risk assessment information not submitted to the Agency by April 1 following the assessment year (2028-04-01 for 2026–2027 assessments)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-CCPA-7157-c",
+      "title": "submission not made by an executive directly responsible for risk-assessment compliance with sufficient knowledge and authority",
+      "props": [
+       {
+        "name": "label",
+        "value": "CCPA §7157(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CCPA §7157(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#019a342c-8423-5ab3-9712-9c13320a9880",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-CCPA-7157-c_stmt",
+        "name": "statement",
+        "prose": "submission not made by an executive directly responsible for risk-assessment compliance with sufficient knowledge and authority"
        }
       ],
       "class": "compliance"
@@ -5003,7 +5171,7 @@
       ],
       "links": [
        {
-        "href": "#0ac5bf1e-80bd-5544-ab49-7177662549ea",
+        "href": "#9bf0218a-c48a-5e1d-97d5-ebc92c06e971",
         "rel": "implementation"
        }
       ],
@@ -5096,7 +5264,7 @@
       ],
       "links": [
        {
-        "href": "#0ac5bf1e-80bd-5544-ab49-7177662549ea",
+        "href": "#9bf0218a-c48a-5e1d-97d5-ebc92c06e971",
         "rel": "implementation"
        }
       ],
@@ -5120,7 +5288,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "639ad611-35e3-5c9c-8377-da8b8de9d296",
+     "uuid": "42ec4c63-2aeb-5669-a29c-5fbc030e3dfc",
      "title": "CCPA — Automated Decisionmaking Technology (11 CCR Article 11, §§7200–7222)",
      "props": [
       {
@@ -5131,13 +5299,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/ccpa/ccpa_admt.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/ccpa/ccpa_admt.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "2969a145-ea01-56f6-8ded-2e49fff819e3",
+     "uuid": "91b5b4e2-9508-58e0-8cb6-b642c330bc6c",
      "title": "Ccpa Business Obligations",
      "props": [
       {
@@ -5148,13 +5316,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/ccpa/ccpa_business_obligations.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/ccpa/ccpa_business_obligations.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "23516525-ea38-5a51-88de-a38d68cbcf42",
+     "uuid": "4015f3ba-6e26-5092-9f47-25c115f3f7c0",
      "title": "Ccpa Consumer Rights",
      "props": [
       {
@@ -5165,13 +5333,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/ccpa/ccpa_consumer_rights.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/ccpa/ccpa_consumer_rights.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "6d86aaaa-b0b4-5d06-9da7-8e429c47ff8e",
+     "uuid": "55cc8c2c-a559-5ef5-bc60-32ce305ff01a",
      "title": "CCPA — Cybersecurity Audits (11 CCR Article 9, §§7120–7124)",
      "props": [
       {
@@ -5182,13 +5350,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/ccpa/ccpa_cybersecurity_audits.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "45bf9a53-7ace-5dff-a6b6-e8a34a9c6037",
+     "uuid": "941eedc4-a992-58f3-9b03-df18865eb1ef",
      "title": "Ccpa Data Practices",
      "props": [
       {
@@ -5199,13 +5367,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/ccpa/ccpa_data_practices.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/ccpa/ccpa_data_practices.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a0f4c2e9-a8b9-592a-ada9-7383a820a928",
+     "uuid": "019a342c-8423-5ab3-9712-9c13320a9880",
      "title": "CCPA — Risk Assessments (11 CCR Article 10, §§7150–7157)",
      "props": [
       {
@@ -5216,13 +5384,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/ccpa/ccpa_risk_assessments.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/ccpa/ccpa_risk_assessments.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "0ac5bf1e-80bd-5544-ab49-7177662549ea",
+     "uuid": "9bf0218a-c48a-5e1d-97d5-ebc92c06e971",
      "title": "Ccpa Sensitive Data",
      "props": [
       {
@@ -5233,7 +5401,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/ccpa/ccpa_sensitive_data.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/ccpa/ccpa_sensitive_data.rego",
        "media-type": "text/plain"
       }
      ]

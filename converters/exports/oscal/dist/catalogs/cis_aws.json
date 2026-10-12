@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "33be0e2e-7c55-5b03-a60d-45f02abace13",
+  "uuid": "99a329ac-2c27-5dfd-b072-e2d35a9e3c8c",
   "metadata": {
    "title": "Rego Policy Libraries — cis_aws (CIS Amazon Web Services Foundations Benchmark v7.0.0)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,39 +66,6 @@
     ],
     "controls": [
      {
-      "id": "cis_aws-sections",
-      "title": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "sections"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "sections"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_aws"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_aws-sections_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_aws-identity_access",
       "title": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body.",
       "props": [
@@ -118,46 +85,13 @@
       ],
       "links": [
        {
-        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+        "href": "#a39e5374-5f43-5d99-a2d8-e5f630eae37c",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_aws-identity_access_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_aws-storage",
-      "title": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "storage"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "storage"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_aws"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_aws-storage_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body."
        }
@@ -184,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+        "href": "#a39e5374-5f43-5d99-a2d8-e5f630eae37c",
         "rel": "implementation"
        }
       ],
@@ -217,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+        "href": "#a39e5374-5f43-5d99-a2d8-e5f630eae37c",
         "rel": "implementation"
        }
       ],
@@ -250,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+        "href": "#a39e5374-5f43-5d99-a2d8-e5f630eae37c",
         "rel": "implementation"
        }
       ],
@@ -262,6 +196,1416 @@
        }
       ],
       "class": "security"
+     },
+     {
+      "id": "cis_aws-storage",
+      "title": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "storage"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "storage"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39e5374-5f43-5d99-a2d8-e5f630eae37c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-storage_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_aws-l2_validation",
+    "class": "rego-module",
+    "title": "CIS Amazon Web Services Foundations Benchmark v7.0.0 - Level 2 Additional Controls",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_aws.l2"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/aws/l2_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_aws-CIS-L2-1.5",
+      "title": "Ensure IAM password policy requires at least one uppercase letter",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM password policy requires at least one uppercase letter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.6",
+      "title": "Ensure IAM password policy requires at least one lowercase letter",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM password policy requires at least one lowercase letter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.7",
+      "title": "Ensure IAM password policy requires at least one symbol",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.7_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM password policy requires at least one symbol"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.8",
+      "title": "Ensure IAM password policy requires at least one number",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.8_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM password policy requires at least one number"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.9",
+      "title": "Ensure IAM password policy requires minimum length of 14 or greater",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.9_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM password policy requires minimum length of 14 or greater"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.10",
+      "title": "Ensure IAM password policy prevents password reuse — 24 passwords",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.10_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM password policy prevents password reuse — 24 passwords"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.11",
+      "title": "Ensure IAM password policy expires passwords within 365 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.11_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM password policy expires passwords within 365 days"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.14",
+      "title": "Ensure access keys are rotated every 90 days or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.14_stmt",
+        "name": "statement",
+        "prose": "Ensure access keys are rotated every 90 days or less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.15",
+      "title": "Ensure IAM users receive permissions only through groups",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.15_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM users receive permissions only through groups"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.16",
+      "title": "Ensure IAM policies are attached only to groups or roles (not users)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.16_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM policies are attached only to groups or roles (not users)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.17",
+      "title": "Ensure a support role has been created to manage incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.17_stmt",
+        "name": "statement",
+        "prose": "Ensure a support role has been created to manage incidents"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.19",
+      "title": "Ensure that all expired SSL/TLS certificates stored in AWS IAM are removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.19_stmt",
+        "name": "statement",
+        "prose": "Ensure that all expired SSL/TLS certificates stored in AWS IAM are removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.20",
+      "title": "Ensure that IAM Access analyzer is enabled for all regions",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.20_stmt",
+        "name": "statement",
+        "prose": "Ensure that IAM Access analyzer is enabled for all regions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-1.22",
+      "title": "Ensure IAM user is not created with access to management console",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 1.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 1.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-1.22_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM user is not created with access to management console"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-2.1.1",
+      "title": "Ensure all S3 buckets employ encryption-at-rest",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-2.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure all S3 buckets employ encryption-at-rest"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-2.1.2",
+      "title": "Ensure S3 Bucket Policy is set to deny HTTP requests",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-2.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure S3 Bucket Policy is set to deny HTTP requests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-2.1.5",
+      "title": "Ensure S3 Bucket access logging is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-2.1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure S3 Bucket access logging is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-2.2.1",
+      "title": "Ensure EBS volume encryption is enabled in all regions",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-2.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure EBS volume encryption is enabled in all regions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-2.3.1",
+      "title": "Ensure AWS RDS database instance is not publicly accessible",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-2.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure AWS RDS database instance is not publicly accessible"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-2.3.2",
+      "title": "Ensure AWS RDS database instances are encrypted at rest",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-2.3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure AWS RDS database instances are encrypted at rest"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-2.3.3",
+      "title": "Ensure AWS RDS automated backups are enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-2.3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure AWS RDS automated backups are enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-2.4.1",
+      "title": "Ensure AWS Aurora database cluster is encrypted at rest",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 2.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 2.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-2.4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure AWS Aurora database cluster is encrypted at rest"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-3.1",
+      "title": "Ensure CloudTrail is enabled in all regions",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure CloudTrail is enabled in all regions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-3.2",
+      "title": "Ensure CloudTrail log file validation is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure CloudTrail log file validation is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-3.3",
+      "title": "Ensure AWS Config is enabled in all regions",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure AWS Config is enabled in all regions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-3.4",
+      "title": "Ensure CloudTrail trails are integrated with CloudWatch Logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-3.4_stmt",
+        "name": "statement",
+        "prose": "Ensure CloudTrail trails are integrated with CloudWatch Logs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-3.7",
+      "title": "Ensure CloudTrail logs are encrypted at rest using KMS CMKs",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-3.7_stmt",
+        "name": "statement",
+        "prose": "Ensure CloudTrail logs are encrypted at rest using KMS CMKs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-3.8",
+      "title": "Ensure rotation for customer created symmetric CMKs is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-3.8_stmt",
+        "name": "statement",
+        "prose": "Ensure rotation for customer created symmetric CMKs is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-3.10",
+      "title": "Ensure that Object-level logging for write events is enabled for S3 buckets",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-3.10_stmt",
+        "name": "statement",
+        "prose": "Ensure that Object-level logging for write events is enabled for S3 buckets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-3.11",
+      "title": "Ensure that Object-level logging for read events is enabled for S3 buckets",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 3.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 3.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-3.11_stmt",
+        "name": "statement",
+        "prose": "Ensure that Object-level logging for read events is enabled for S3 buckets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-4.3",
+      "title": "Ensure a log metric filter and alarm exists for usage of root account",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exists for usage of root account"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-4.7",
+      "title": "Ensure a log metric filter and alarm exists for disabling or deletion of CMKs",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-4.7_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exists for disabling or deletion of CMKs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-4.8",
+      "title": "Ensure a log metric filter and alarm exists for S3 bucket policy changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-4.8_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exists for S3 bucket policy changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-4.9",
+      "title": "Ensure a log metric filter and alarm exists for AWS Config configuration changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-4.9_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exists for AWS Config configuration changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-4.11",
+      "title": "Ensure a log metric filter and alarm exists for changes to Network Access Control Lists",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-4.11_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exists for changes to Network Access Control Lists"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-4.13",
+      "title": "Ensure a log metric filter and alarm exists for route table changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-4.13_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exists for route table changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-4.15",
+      "title": "Ensure a log metric filter and alarm exists for AWS Organizations changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 4.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 4.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-4.15_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exists for AWS Organizations changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-5.1",
+      "title": "Ensure no Network ACLs allow ingress from 0.0.0.0/0 to remote server administration ports",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure no Network ACLs allow ingress from 0.0.0.0/0 to remote server administration ports"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-5.3",
+      "title": "Ensure the default security group of every VPC restricts all traffic",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-5.3_stmt",
+        "name": "statement",
+        "prose": "Ensure the default security group of every VPC restricts all traffic"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-5.4",
+      "title": "Ensure routing tables for VPC peering are 'least access'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-5.4_stmt",
+        "name": "statement",
+        "prose": "Ensure routing tables for VPC peering are 'least access'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-CIS-L2-5.5",
+      "title": "Ensure VPC flow logging is enabled in all VPCs",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2 5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2 5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88986da0-7342-5f47-9e72-16189c047865",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-CIS-L2-5.5_stmt",
+        "name": "statement",
+        "prose": "Ensure VPC flow logging is enabled in all VPCs"
+       }
+      ],
+      "class": "security"
      }
     ]
    }
@@ -269,7 +1613,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "d8b988e7-fd48-5ad9-8bd7-2e4d10b470ed",
+     "uuid": "a39e5374-5f43-5d99-a2d8-e5f630eae37c",
      "title": "CIS Amazon Web Services Foundations Benchmark v7.0.0",
      "props": [
       {
@@ -280,7 +1624,24 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/aws/cis_aws_foundations.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/aws/cis_aws_foundations.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "88986da0-7342-5f47-9e72-16189c047865",
+     "title": "CIS Amazon Web Services Foundations Benchmark v7.0.0 - Level 2 Additional Controls",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_aws.l2"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/aws/l2_validation.rego",
        "media-type": "text/plain"
       }
      ]

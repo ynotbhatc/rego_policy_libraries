@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "537e2ca3-b427-5ec4-b5bd-296531162c01",
+  "uuid": "5b394f36-690e-59e0-a673-3055e013093e",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_rocky_linux_8 (CIS Rocky Linux 8 Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd))",
+   "title": "Rego Policy Libraries — cis_rocky_linux_8 (CIS Rocky Linux 8 Benchmark v3.0.0 - Complete Validation)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,294 +43,6 @@
    ]
   },
   "groups": [
-   {
-    "id": "cis_rocky_linux_8-auditd_validation",
-    "class": "rego-module",
-    "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)",
-    "props": [
-     {
-      "name": "rego-package",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "cis_rocky_linux_8.auditd"
-     },
-     {
-      "name": "rego-file",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "benchmarks/cis/rocky_linux_8/auditd_validation.rego"
-     },
-     {
-      "name": "class",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "security"
-     }
-    ],
-    "controls": [
-     {
-      "id": "cis_rocky_linux_8-section",
-      "title": "4.1 Configure System Accounting (auditd)",
-      "props": [
-       {
-        "name": "label",
-        "value": "section"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "section"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_8.auditd"
-       }
-      ],
-      "links": [
-       {
-        "href": "#09d18a5d-7c50-5694-9262-63191d20f058",
-        "rel": "implementation"
-       },
-       {
-        "href": "#9839c699-e5d8-5375-b863-cff25b49c23e",
-        "rel": "implementation"
-       },
-       {
-        "href": "#1ef14cbb-cddf-5ef6-a758-bde645bbcceb",
-        "rel": "implementation"
-       },
-       {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
-        "rel": "implementation"
-       },
-       {
-        "href": "#4cb160fa-65a2-5bf4-9dd8-804aa98bb72d",
-        "rel": "implementation"
-       },
-       {
-        "href": "#abbf10df-a380-5209-b177-84c148409bd5",
-        "rel": "implementation"
-       },
-       {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#fcc18daf-e990-599f-a616-550e82bfac9d",
-        "rel": "implementation"
-       },
-       {
-        "href": "#27ce1fe9-7175-50fd-8b65-2b2d7fd7f306",
-        "rel": "implementation"
-       },
-       {
-        "href": "#da731635-8336-5b00-9084-f92451d5235a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#3eb56575-891c-5d43-857e-cc7d146888e5",
-        "rel": "implementation"
-       },
-       {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_8-section_stmt",
-        "name": "statement",
-        "prose": "4.1 Configure System Accounting (auditd)"
-       },
-       {
-        "id": "cis_rocky_linux_8-section_obj.1",
-        "name": "assessment-objective",
-        "prose": "5.1 Configure time-based job schedulers"
-       },
-       {
-        "id": "cis_rocky_linux_8-section_obj.2",
-        "name": "assessment-objective",
-        "prose": "6.1 System File Permissions"
-       },
-       {
-        "id": "cis_rocky_linux_8-section_obj.3",
-        "name": "assessment-objective",
-        "prose": "1.2, 1.7-1.9 Initial System Setup"
-       },
-       {
-        "id": "cis_rocky_linux_8-section_obj.4",
-        "name": "assessment-objective",
-        "prose": "4.2 Logging Configuration"
-       },
-       {
-        "id": "cis_rocky_linux_8-section_obj.5",
-        "name": "assessment-objective",
-        "prose": "3.1-3.3 Network Configuration"
-       },
-       {
-        "id": "cis_rocky_linux_8-section_obj.6",
-        "name": "assessment-objective",
-        "prose": "5.4-5.5 PAM and User Accounts"
-       },
-       {
-        "id": "cis_rocky_linux_8-section_obj.7",
-        "name": "assessment-objective",
-        "prose": "1.6 Mandatory Access Controls"
-       },
-       {
-        "id": "cis_rocky_linux_8-section_obj.8",
-        "name": "assessment-objective",
-        "prose": "1.1.23, 2.1-2.3 Service Configuration"
-       },
-       {
-        "id": "cis_rocky_linux_8-section_obj.9",
-        "name": "assessment-objective",
-        "prose": "5.2 SSH Server Configuration"
-       },
-       {
-        "id": "cis_rocky_linux_8-section_obj.10",
-        "name": "assessment-objective",
-        "prose": "5.3 Configure Privilege Escalation"
-       },
-       {
-        "id": "cis_rocky_linux_8-section_obj.11",
-        "name": "assessment-objective",
-        "prose": "6.2 User and Group Settings"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_8-benchmark",
-      "title": "CIS Rocky Linux 8 v3.0.0",
-      "props": [
-       {
-        "name": "label",
-        "value": "benchmark"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "benchmark"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_8.auditd"
-       }
-      ],
-      "links": [
-       {
-        "href": "#09d18a5d-7c50-5694-9262-63191d20f058",
-        "rel": "implementation"
-       },
-       {
-        "href": "#9839c699-e5d8-5375-b863-cff25b49c23e",
-        "rel": "implementation"
-       },
-       {
-        "href": "#1ef14cbb-cddf-5ef6-a758-bde645bbcceb",
-        "rel": "implementation"
-       },
-       {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
-        "rel": "implementation"
-       },
-       {
-        "href": "#4cb160fa-65a2-5bf4-9dd8-804aa98bb72d",
-        "rel": "implementation"
-       },
-       {
-        "href": "#abbf10df-a380-5209-b177-84c148409bd5",
-        "rel": "implementation"
-       },
-       {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#fcc18daf-e990-599f-a616-550e82bfac9d",
-        "rel": "implementation"
-       },
-       {
-        "href": "#27ce1fe9-7175-50fd-8b65-2b2d7fd7f306",
-        "rel": "implementation"
-       },
-       {
-        "href": "#da731635-8336-5b00-9084-f92451d5235a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#3eb56575-891c-5d43-857e-cc7d146888e5",
-        "rel": "implementation"
-       },
-       {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_8-benchmark_stmt",
-        "name": "statement",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       },
-       {
-        "id": "cis_rocky_linux_8-benchmark_obj.1",
-        "name": "assessment-objective",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       },
-       {
-        "id": "cis_rocky_linux_8-benchmark_obj.2",
-        "name": "assessment-objective",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       },
-       {
-        "id": "cis_rocky_linux_8-benchmark_obj.3",
-        "name": "assessment-objective",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       },
-       {
-        "id": "cis_rocky_linux_8-benchmark_obj.4",
-        "name": "assessment-objective",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       },
-       {
-        "id": "cis_rocky_linux_8-benchmark_obj.5",
-        "name": "assessment-objective",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       },
-       {
-        "id": "cis_rocky_linux_8-benchmark_obj.6",
-        "name": "assessment-objective",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       },
-       {
-        "id": "cis_rocky_linux_8-benchmark_obj.7",
-        "name": "assessment-objective",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       },
-       {
-        "id": "cis_rocky_linux_8-benchmark_obj.8",
-        "name": "assessment-objective",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       },
-       {
-        "id": "cis_rocky_linux_8-benchmark_obj.9",
-        "name": "assessment-objective",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       },
-       {
-        "id": "cis_rocky_linux_8-benchmark_obj.10",
-        "name": "assessment-objective",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       },
-       {
-        "id": "cis_rocky_linux_8-benchmark_obj.11",
-        "name": "assessment-objective",
-        "prose": "CIS Rocky Linux 8 v3.0.0"
-       }
-      ],
-      "class": "security"
-     }
-    ]
-   },
    {
     "id": "cis_rocky_linux_8-cis_rocky_linux_8_complete",
     "class": "rego-module",
@@ -373,13 +85,46 @@
       ],
       "links": [
        {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_rocky_linux_8-section_1_1_filesystem_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-section_1_6_selinux",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_1_6_selinux"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_1_6_selinux"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-section_1_6_selinux_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
        }
@@ -406,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
         "rel": "implementation"
        }
       ],
@@ -439,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
         "rel": "implementation"
        }
       ],
@@ -472,46 +217,13 @@
       ],
       "links": [
        {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_rocky_linux_8-section_3_network_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_8-section_4_logging",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "section_4_logging"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "section_4_logging"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_8"
-       }
-      ],
-      "links": [
-       {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_8-section_4_logging_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
        }
@@ -538,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
         "rel": "implementation"
        }
       ],
@@ -552,16 +264,16 @@
       "class": "security"
      },
      {
-      "id": "cis_rocky_linux_8-section_5_2_ssh",
+      "id": "cis_rocky_linux_8-section_4_logging",
       "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "section_5_2_ssh"
+        "value": "section_4_logging"
        },
        {
         "name": "alt-identifier",
-        "value": "section_5_2_ssh"
+        "value": "section_4_logging"
        },
        {
         "name": "rego-package",
@@ -571,145 +283,13 @@
       ],
       "links": [
        {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rocky_linux_8-section_5_2_ssh_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_8-section_5_pam",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "section_5_pam"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "section_5_pam"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_8"
-       }
-      ],
-      "links": [
-       {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_8-section_5_pam_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_8-section_5_3_sudo",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "section_5_3_sudo"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "section_5_3_sudo"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_8"
-       }
-      ],
-      "links": [
-       {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_8-section_5_3_sudo_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_8-section_1_6_selinux",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "section_1_6_selinux"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "section_1_6_selinux"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_8"
-       }
-      ],
-      "links": [
-       {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_8-section_1_6_selinux_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_8-section_6_2_user_group",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "section_6_2_user_group"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "section_6_2_user_group"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_8"
-       }
-      ],
-      "links": [
-       {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_8-section_6_2_user_group_stmt",
+        "id": "cis_rocky_linux_8-section_4_logging_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
        }
@@ -736,13 +316,112 @@
       ],
       "links": [
        {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_rocky_linux_8-section_5_1_cron_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-section_5_2_ssh",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_5_2_ssh"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_5_2_ssh"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-section_5_2_ssh_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-section_5_3_sudo",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_5_3_sudo"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_5_3_sudo"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-section_5_3_sudo_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-section_5_pam",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_5_pam"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_5_pam"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-section_5_pam_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
        }
@@ -769,13 +448,46 @@
       ],
       "links": [
        {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_rocky_linux_8-section_6_1_file_permissions_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-section_6_2_user_group",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "section_6_2_user_group"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section_6_2_user_group"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-section_6_2_user_group_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego (package cis_rocky_linux_8); see the rule body."
        }
@@ -802,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
+        "href": "#01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
         "rel": "implementation"
        }
       ],
@@ -859,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#9839c699-e5d8-5375-b863-cff25b49c23e",
+        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
         "rel": "implementation"
        }
       ],
@@ -897,7 +609,7 @@
       ],
       "links": [
        {
-        "href": "#9839c699-e5d8-5375-b863-cff25b49c23e",
+        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
         "rel": "implementation"
        }
       ],
@@ -940,7 +652,7 @@
       ],
       "links": [
        {
-        "href": "#9839c699-e5d8-5375-b863-cff25b49c23e",
+        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
         "rel": "implementation"
        }
       ],
@@ -978,7 +690,7 @@
       ],
       "links": [
        {
-        "href": "#9839c699-e5d8-5375-b863-cff25b49c23e",
+        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
         "rel": "implementation"
        }
       ],
@@ -1016,7 +728,7 @@
       ],
       "links": [
        {
-        "href": "#9839c699-e5d8-5375-b863-cff25b49c23e",
+        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
         "rel": "implementation"
        }
       ],
@@ -1054,7 +766,7 @@
       ],
       "links": [
        {
-        "href": "#9839c699-e5d8-5375-b863-cff25b49c23e",
+        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
         "rel": "implementation"
        }
       ],
@@ -1092,7 +804,7 @@
       ],
       "links": [
        {
-        "href": "#9839c699-e5d8-5375-b863-cff25b49c23e",
+        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
         "rel": "implementation"
        }
       ],
@@ -1130,7 +842,7 @@
       ],
       "links": [
        {
-        "href": "#9839c699-e5d8-5375-b863-cff25b49c23e",
+        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
         "rel": "implementation"
        }
       ],
@@ -1173,7 +885,7 @@
       ],
       "links": [
        {
-        "href": "#9839c699-e5d8-5375-b863-cff25b49c23e",
+        "href": "#3efe6646-65c0-509d-b17f-ab41b1e705fa",
         "rel": "implementation"
        }
       ],
@@ -1240,7 +952,7 @@
       ],
       "links": [
        {
-        "href": "#1ef14cbb-cddf-5ef6-a758-bde645bbcceb",
+        "href": "#5c733883-641f-55af-a02d-70f463ce9abf",
         "rel": "implementation"
        }
       ],
@@ -1297,7 +1009,7 @@
       ],
       "links": [
        {
-        "href": "#b8a63979-eaef-54d1-b46b-1b4742f92dbb",
+        "href": "#28bd538e-334e-5cf3-b4aa-5c6450a53f44",
         "rel": "implementation"
        }
       ],
@@ -1330,7 +1042,7 @@
       ],
       "links": [
        {
-        "href": "#b8a63979-eaef-54d1-b46b-1b4742f92dbb",
+        "href": "#28bd538e-334e-5cf3-b4aa-5c6450a53f44",
         "rel": "implementation"
        }
       ],
@@ -1387,7 +1099,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1420,7 +1132,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1458,7 +1170,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1491,7 +1203,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1534,7 +1246,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1577,7 +1289,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1620,7 +1332,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1653,7 +1365,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1686,7 +1398,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1719,7 +1431,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1752,7 +1464,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1785,7 +1497,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1818,7 +1530,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1856,7 +1568,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1889,7 +1601,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1927,7 +1639,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1960,7 +1672,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -1993,7 +1705,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -2026,7 +1738,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -2059,7 +1771,7 @@
       ],
       "links": [
        {
-        "href": "#142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+        "href": "#e1724405-2226-5bd2-bae2-0204dd1fa915",
         "rel": "implementation"
        }
       ],
@@ -2102,39 +1814,6 @@
     ],
     "controls": [
      {
-      "id": "cis_rocky_linux_8-rsyslog",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "rsyslog"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "rsyslog"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_8.logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4cb160fa-65a2-5bf4-9dd8-804aa98bb72d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_8-rsyslog_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_rocky_linux_8-journald",
       "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body.",
       "props": [
@@ -2154,13 +1833,46 @@
       ],
       "links": [
        {
-        "href": "#4cb160fa-65a2-5bf4-9dd8-804aa98bb72d",
+        "href": "#ab547522-d50c-5bd9-9acc-7ef3cd568e73",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_rocky_linux_8-journald_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-rsyslog",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "rsyslog"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "rsyslog"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ab547522-d50c-5bd9-9acc-7ef3cd568e73",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-rsyslog_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/logging_validation.rego (package cis_rocky_linux_8.logging); see the rule body."
        }
@@ -2192,39 +1904,6 @@
     ],
     "controls": [
      {
-      "id": "cis_rocky_linux_8-ip_forwarding",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "ip_forwarding"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ip_forwarding"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_8.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#abbf10df-a380-5209-b177-84c148409bd5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_8-ip_forwarding_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_rocky_linux_8-firewall",
       "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
       "props": [
@@ -2244,13 +1923,46 @@
       ],
       "links": [
        {
-        "href": "#abbf10df-a380-5209-b177-84c148409bd5",
+        "href": "#9a5ff714-0f0a-5206-9f23-f2d1e689706c",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
         "id": "cis_rocky_linux_8-firewall_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_8-ip_forwarding",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ip_forwarding"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ip_forwarding"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a5ff714-0f0a-5206-9f23-f2d1e689706c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-ip_forwarding_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/rocky_linux_8/network_validation.rego (package cis_rocky_linux_8.network); see the rule body."
        }
@@ -2301,7 +2013,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2334,7 +2046,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2372,7 +2084,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2410,7 +2122,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2453,7 +2165,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2491,7 +2203,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2524,7 +2236,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2557,7 +2269,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2590,7 +2302,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2623,7 +2335,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2661,7 +2373,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2694,7 +2406,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2727,7 +2439,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2760,7 +2472,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2798,7 +2510,7 @@
       ],
       "links": [
        {
-        "href": "#c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+        "href": "#b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
         "rel": "implementation"
        }
       ],
@@ -2865,7 +2577,7 @@
       ],
       "links": [
        {
-        "href": "#fcc18daf-e990-599f-a616-550e82bfac9d",
+        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
         "rel": "implementation"
        }
       ],
@@ -2898,7 +2610,7 @@
       ],
       "links": [
        {
-        "href": "#fcc18daf-e990-599f-a616-550e82bfac9d",
+        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
         "rel": "implementation"
        }
       ],
@@ -2936,7 +2648,7 @@
       ],
       "links": [
        {
-        "href": "#fcc18daf-e990-599f-a616-550e82bfac9d",
+        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
         "rel": "implementation"
        }
       ],
@@ -2974,7 +2686,7 @@
       ],
       "links": [
        {
-        "href": "#fcc18daf-e990-599f-a616-550e82bfac9d",
+        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
         "rel": "implementation"
        }
       ],
@@ -3012,7 +2724,7 @@
       ],
       "links": [
        {
-        "href": "#fcc18daf-e990-599f-a616-550e82bfac9d",
+        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
         "rel": "implementation"
        }
       ],
@@ -3045,7 +2757,7 @@
       ],
       "links": [
        {
-        "href": "#fcc18daf-e990-599f-a616-550e82bfac9d",
+        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
         "rel": "implementation"
        }
       ],
@@ -3078,7 +2790,7 @@
       ],
       "links": [
        {
-        "href": "#fcc18daf-e990-599f-a616-550e82bfac9d",
+        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
         "rel": "implementation"
        }
       ],
@@ -3111,7 +2823,7 @@
       ],
       "links": [
        {
-        "href": "#fcc18daf-e990-599f-a616-550e82bfac9d",
+        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
         "rel": "implementation"
        }
       ],
@@ -3144,7 +2856,7 @@
       ],
       "links": [
        {
-        "href": "#fcc18daf-e990-599f-a616-550e82bfac9d",
+        "href": "#a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
         "rel": "implementation"
        }
       ],
@@ -3206,7 +2918,7 @@
       ],
       "links": [
        {
-        "href": "#3eb56575-891c-5d43-857e-cc7d146888e5",
+        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
         "rel": "implementation"
        }
       ],
@@ -3239,7 +2951,7 @@
       ],
       "links": [
        {
-        "href": "#3eb56575-891c-5d43-857e-cc7d146888e5",
+        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
         "rel": "implementation"
        }
       ],
@@ -3272,7 +2984,7 @@
       ],
       "links": [
        {
-        "href": "#3eb56575-891c-5d43-857e-cc7d146888e5",
+        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
         "rel": "implementation"
        }
       ],
@@ -3310,7 +3022,7 @@
       ],
       "links": [
        {
-        "href": "#3eb56575-891c-5d43-857e-cc7d146888e5",
+        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
         "rel": "implementation"
        }
       ],
@@ -3343,7 +3055,7 @@
       ],
       "links": [
        {
-        "href": "#3eb56575-891c-5d43-857e-cc7d146888e5",
+        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
         "rel": "implementation"
        }
       ],
@@ -3376,7 +3088,7 @@
       ],
       "links": [
        {
-        "href": "#3eb56575-891c-5d43-857e-cc7d146888e5",
+        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
         "rel": "implementation"
        }
       ],
@@ -3414,7 +3126,7 @@
       ],
       "links": [
        {
-        "href": "#3eb56575-891c-5d43-857e-cc7d146888e5",
+        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
         "rel": "implementation"
        }
       ],
@@ -3452,7 +3164,7 @@
       ],
       "links": [
        {
-        "href": "#3eb56575-891c-5d43-857e-cc7d146888e5",
+        "href": "#6fac3349-c16b-5ad5-8f89-5e28608e0b70",
         "rel": "implementation"
        }
       ],
@@ -3524,7 +3236,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3557,7 +3269,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3590,7 +3302,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3623,7 +3335,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3656,7 +3368,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3689,7 +3401,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3722,7 +3434,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3755,7 +3467,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3813,7 +3525,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3846,7 +3558,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3879,7 +3591,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3912,7 +3624,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3945,7 +3657,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -3978,7 +3690,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -4011,7 +3723,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -4044,7 +3756,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -4077,7 +3789,7 @@
       ],
       "links": [
        {
-        "href": "#660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+        "href": "#d328ad91-6ee3-5729-81fc-00d62f6c3044",
         "rel": "implementation"
        }
       ],
@@ -4106,24 +3818,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "09d18a5d-7c50-5694-9262-63191d20f058",
-     "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_rocky_linux_8.auditd"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/auditd_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "fc1f27c2-19f1-5f1f-839d-0cb6d14d5135",
+     "uuid": "01f7fe49-8b6d-5dda-a57d-0c10d5b02946",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Complete Validation",
      "props": [
       {
@@ -4134,13 +3829,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/cis_rocky_linux_8_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "9839c699-e5d8-5375-b863-cff25b49c23e",
+     "uuid": "3efe6646-65c0-509d-b17f-ab41b1e705fa",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers",
      "props": [
       {
@@ -4151,13 +3846,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/cron_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/cron_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "1ef14cbb-cddf-5ef6-a758-bde645bbcceb",
+     "uuid": "5c733883-641f-55af-a02d-70f463ce9abf",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 6.1: System File Permissions",
      "props": [
       {
@@ -4168,13 +3863,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/file_permissions_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/file_permissions_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b8a63979-eaef-54d1-b46b-1b4742f92dbb",
+     "uuid": "28bd538e-334e-5cf3-b4aa-5c6450a53f44",
      "title": "CIS Rocky Linux 8 Section 1.1 - Filesystem Configuration",
      "props": [
       {
@@ -4185,13 +3880,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/filesystem_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/filesystem_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "142aa3a2-a35e-5ca0-9414-4bc88a1c1803",
+     "uuid": "e1724405-2226-5bd2-bae2-0204dd1fa915",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup",
      "props": [
       {
@@ -4202,13 +3897,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/initial_setup_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/initial_setup_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "4cb160fa-65a2-5bf4-9dd8-804aa98bb72d",
+     "uuid": "ab547522-d50c-5bd9-9acc-7ef3cd568e73",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 4.2: Logging Configuration",
      "props": [
       {
@@ -4219,13 +3914,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/logging_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/logging_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "abbf10df-a380-5209-b177-84c148409bd5",
+     "uuid": "9a5ff714-0f0a-5206-9f23-f2d1e689706c",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration",
      "props": [
       {
@@ -4236,13 +3931,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/network_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/network_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "c2b291f6-3a79-507a-8571-fb8779cd4a7a",
+     "uuid": "b8e453b7-7823-5bc2-90c4-306d2f3ba30f",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.4/5.5: PAM and User Accounts",
      "props": [
       {
@@ -4253,13 +3948,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/pam_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/pam_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "fcc18daf-e990-599f-a616-550e82bfac9d",
+     "uuid": "a185002d-81c6-5ce6-ad5d-e7bc69653ba1",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 1.6: Mandatory Access Controls (SELinux)",
      "props": [
       {
@@ -4270,47 +3965,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/selinux_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/selinux_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "27ce1fe9-7175-50fd-8b65-2b2d7fd7f306",
-     "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_rocky_linux_8.services"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/services_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "da731635-8336-5b00-9084-f92451d5235a",
-     "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.2: SSH Server Configuration",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_rocky_linux_8.ssh"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/ssh_validation.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "3eb56575-891c-5d43-857e-cc7d146888e5",
+     "uuid": "6fac3349-c16b-5ad5-8f89-5e28608e0b70",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.3: Configure privilege escalation",
      "props": [
       {
@@ -4321,13 +3982,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/sudo_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/sudo_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "660fe4b1-55ca-5082-be2f-d59b80d35d5e",
+     "uuid": "d328ad91-6ee3-5729-81fc-00d62f6c3044",
      "title": "CIS Rocky Linux 8 Benchmark v3.0.0 - Section 6.2: User and Group Settings",
      "props": [
       {
@@ -4338,7 +3999,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rocky_linux_8/user_group_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/rocky_linux_8/user_group_validation.rego",
        "media-type": "text/plain"
       }
      ]

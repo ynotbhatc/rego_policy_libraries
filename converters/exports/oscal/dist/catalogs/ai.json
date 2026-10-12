@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "8a0f8cb9-945d-57ad-a9c9-6d868bde033b",
+  "uuid": "85d99761-deee-5453-a391-6247192e6a81",
   "metadata": {
    "title": "Rego Policy Libraries — ai (AI Governance - Master Policy)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#b084bd8c-c903-5493-9037-67e271027533",
+        "href": "#392da3c7-5c60-59bc-9dd0-f9f1aec3176c",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#b084bd8c-c903-5493-9037-67e271027533",
+        "href": "#392da3c7-5c60-59bc-9dd0-f9f1aec3176c",
         "rel": "implementation"
        }
       ],
@@ -156,16 +156,16 @@
     ],
     "controls": [
      {
-      "id": "ai-read_only",
+      "id": "ai-critical",
       "title": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "read_only"
+        "value": "critical"
        },
        {
         "name": "alt-identifier",
-        "value": "read_only"
+        "value": "critical"
        },
        {
         "name": "rego-package",
@@ -175,13 +175,46 @@
       ],
       "links": [
        {
-        "href": "#331de310-198f-538d-a484-64031feeac68",
+        "href": "#52ded260-cdbe-5c47-9e1f-57623ec4730b",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ai-read_only_stmt",
+        "id": "ai-critical_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-high",
+      "title": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "high"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "high"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance.authorization"
+       }
+      ],
+      "links": [
+       {
+        "href": "#52ded260-cdbe-5c47-9e1f-57623ec4730b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-high_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body."
        }
@@ -208,7 +241,7 @@
       ],
       "links": [
        {
-        "href": "#331de310-198f-538d-a484-64031feeac68",
+        "href": "#52ded260-cdbe-5c47-9e1f-57623ec4730b",
         "rel": "implementation"
        }
       ],
@@ -241,7 +274,7 @@
       ],
       "links": [
        {
-        "href": "#331de310-198f-538d-a484-64031feeac68",
+        "href": "#52ded260-cdbe-5c47-9e1f-57623ec4730b",
         "rel": "implementation"
        }
       ],
@@ -255,16 +288,16 @@
       "class": "governance"
      },
      {
-      "id": "ai-high",
+      "id": "ai-read_only",
       "title": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "high"
+        "value": "read_only"
        },
        {
         "name": "alt-identifier",
-        "value": "high"
+        "value": "read_only"
        },
        {
         "name": "rego-package",
@@ -274,46 +307,13 @@
       ],
       "links": [
        {
-        "href": "#331de310-198f-538d-a484-64031feeac68",
+        "href": "#52ded260-cdbe-5c47-9e1f-57623ec4730b",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "ai-high_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body."
-       }
-      ],
-      "class": "governance"
-     },
-     {
-      "id": "ai-critical",
-      "title": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "critical"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "critical"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "ai_governance.authorization"
-       }
-      ],
-      "links": [
-       {
-        "href": "#331de310-198f-538d-a484-64031feeac68",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "ai-critical_stmt",
+        "id": "ai-read_only_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body."
        }
@@ -326,7 +326,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "b084bd8c-c903-5493-9037-67e271027533",
+     "uuid": "392da3c7-5c60-59bc-9dd0-f9f1aec3176c",
      "title": "AI Governance - Master Policy",
      "props": [
       {
@@ -337,13 +337,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/ai/ai_governance_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/governance/ai/ai_governance_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "331de310-198f-538d-a484-64031feeac68",
+     "uuid": "52ded260-cdbe-5c47-9e1f-57623ec4730b",
      "title": "AI Governance - Authorization Policy",
      "props": [
       {
@@ -354,7 +354,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/ai/authorization.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/governance/ai/authorization.rego",
        "media-type": "text/plain"
       }
      ]

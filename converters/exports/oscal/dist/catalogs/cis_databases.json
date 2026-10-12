@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "28b4646c-ba94-519e-9a3d-a9b1c4cb8091",
+  "uuid": "32d7b44e-08df-52d6-abc2-a269c1710825",
   "metadata": {
    "title": "Rego Policy Libraries — cis_databases (CIS Oracle Database 19c Benchmark - Complete Validation)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.2.0",
+   "version": "2.3.0",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cis_databases-section_1_installation_patches",
-      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body.",
+      "title": "Installation and Patches",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#8bfdbeae-f437-5826-8e0c-4172743530de",
+        "href": "#c16ec6eb-217c-5876-a7b1-6b7423b44751",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "cis_databases-section_1_installation_patches_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body."
+        "prose": "Installation and Patches"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_databases-section_2_1_listener_configuration",
-      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body.",
+      "title": "Listener Configuration",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#8bfdbeae-f437-5826-8e0c-4172743530de",
+        "href": "#c16ec6eb-217c-5876-a7b1-6b7423b44751",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "cis_databases-section_2_1_listener_configuration_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body."
+        "prose": "Listener Configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_databases-section_2_2_database_parameters",
-      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body.",
+      "title": "Database Parameters",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#8bfdbeae-f437-5826-8e0c-4172743530de",
+        "href": "#c16ec6eb-217c-5876-a7b1-6b7423b44751",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "cis_databases-section_2_2_database_parameters_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body."
+        "prose": "Database Parameters"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_databases-section_3_user_account_management",
-      "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body.",
+      "title": "User Account Management",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#8bfdbeae-f437-5826-8e0c-4172743530de",
+        "href": "#c16ec6eb-217c-5876-a7b1-6b7423b44751",
         "rel": "implementation"
        }
       ],
@@ -192,7 +192,7 @@
        {
         "id": "cis_databases-section_3_user_account_management_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego (package cis_oracle); see the rule body."
+        "prose": "User Account Management"
        }
       ],
       "class": "security"
@@ -241,7 +241,7 @@
       ],
       "links": [
        {
-        "href": "#a16f3fff-c606-5840-b11e-52ecd1272af0",
+        "href": "#5102947c-55be-53ca-87f4-93fddeb48024",
         "rel": "implementation"
        }
       ],
@@ -274,7 +274,7 @@
       ],
       "links": [
        {
-        "href": "#a16f3fff-c606-5840-b11e-52ecd1272af0",
+        "href": "#5102947c-55be-53ca-87f4-93fddeb48024",
         "rel": "implementation"
        }
       ],
@@ -331,7 +331,7 @@
       ],
       "links": [
        {
-        "href": "#d91e2d38-5305-52a9-9598-bf7597a1ade5",
+        "href": "#671b6723-d3b7-5dda-a465-61cc9e9542e6",
         "rel": "implementation"
        }
       ],
@@ -364,7 +364,7 @@
       ],
       "links": [
        {
-        "href": "#d91e2d38-5305-52a9-9598-bf7597a1ade5",
+        "href": "#671b6723-d3b7-5dda-a465-61cc9e9542e6",
         "rel": "implementation"
        }
       ],
@@ -421,7 +421,7 @@
       ],
       "links": [
        {
-        "href": "#7da5450c-2e00-5125-bd4b-1340556d156e",
+        "href": "#37232d92-f469-50cc-a166-993e6f976cc2",
         "rel": "implementation"
        }
       ],
@@ -478,7 +478,7 @@
       ],
       "links": [
        {
-        "href": "#e0515b19-d794-5660-a555-74e3d4803dca",
+        "href": "#78b19316-8a7b-52c5-a581-1d42a367b04d",
         "rel": "implementation"
        }
       ],
@@ -511,7 +511,7 @@
       ],
       "links": [
        {
-        "href": "#e0515b19-d794-5660-a555-74e3d4803dca",
+        "href": "#78b19316-8a7b-52c5-a581-1d42a367b04d",
         "rel": "implementation"
        }
       ],
@@ -530,7 +530,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "8bfdbeae-f437-5826-8e0c-4172743530de",
+     "uuid": "c16ec6eb-217c-5876-a7b1-6b7423b44751",
      "title": "CIS Oracle Database 19c Benchmark - Complete Validation",
      "props": [
       {
@@ -541,13 +541,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a16f3fff-c606-5840-b11e-52ecd1272af0",
+     "uuid": "5102947c-55be-53ca-87f4-93fddeb48024",
      "title": "CIS Oracle Database 19c Benchmark - Section 2.2",
      "props": [
       {
@@ -558,13 +558,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d91e2d38-5305-52a9-9598-bf7597a1ade5",
+     "uuid": "671b6723-d3b7-5dda-a465-61cc9e9542e6",
      "title": "CIS Oracle Database 19c Benchmark - Section 1",
      "props": [
       {
@@ -575,13 +575,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/databases/oracle_legacy/modules/installation_patches.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/databases/oracle_legacy/modules/installation_patches.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "7da5450c-2e00-5125-bd4b-1340556d156e",
+     "uuid": "37232d92-f469-50cc-a166-993e6f976cc2",
      "title": "CIS Oracle Database 19c Benchmark - Section 2.1",
      "props": [
       {
@@ -592,13 +592,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/databases/oracle_legacy/modules/listener_configuration.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/databases/oracle_legacy/modules/listener_configuration.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "e0515b19-d794-5660-a555-74e3d4803dca",
+     "uuid": "78b19316-8a7b-52c5-a581-1d42a367b04d",
      "title": "CIS Oracle Database 19c Benchmark - Section 3",
      "props": [
       {
@@ -609,7 +609,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego",
        "media-type": "text/plain"
       }
      ]
