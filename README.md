@@ -4,7 +4,9 @@
 >
 > Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
 >
-> **The largest open library of executable compliance policy anyone can verify — 7,867 control-level checks across 54 tracked standards — and the broadest regulatory coverage of any machine-readable policy library, open or closed.** The first half is a number CI recomputes on every merge (`make count`) and fails if this line drifts; the second half is the framework list below, which no other library matches. How we measured both, against every public library we could find: [docs/HOW_BIG.md](docs/HOW_BIG.md).
+> **The largest open library of executable compliance policy anyone can verify — 7,867 control-level checks across 54 tracked standards — and the broadest regulatory coverage of any machine-readable policy library, open or closed.** The first half is a number CI recomputes on every merge (`make count`) and fails if this line drifts; the second half is the framework list below, which no other library matches. How we measured both, against every public library we could find: [docs/COMPARISON.md](docs/COMPARISON.md).
+> **Compared with:** Kubescape regolibrary (304 Rego rules, Kubernetes only), Kyverno policies (180), Gatekeeper library (49), trivy-checks (563), Checkov (~1,000, IaC), KICS (1,813, IaC), Prowler (1,625 cloud checks), Steampipe AWS mod (1,361), ComplianceAsCode (2,574 OS rules), Azure Policy built-ins (5,130, Azure), Secure Controls Framework (1,534 catalogue controls, not executable). **Runs unchanged in:** OPA, Enterprise OPA, Styra DAS, Conftest, Gatekeeper, Kubewarden, Trivy, KICS, Regula, Snyk IaC, Terraform Cloud, Spacelift, env0, Envoy/Istio. **Exports to:** WASM for every language SDK, signed bundles, OSCAL, SARIF, OCSF, Ansible, SCAP, InSpec, Wazuh, CEL/Kyverno, Azure Policy, AWS Config, Steampipe, Sentinel, Sigma, Prowler (see [`converters/`](converters/)).
+>
 >
 
 <sub>The count above is restamped by the docs pass that accompanies each merge batch;

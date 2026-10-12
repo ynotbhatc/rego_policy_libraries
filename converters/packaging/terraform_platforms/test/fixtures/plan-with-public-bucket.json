@@ -1,0 +1,6 @@
+{"plan":{"format_version":"1.2","resource_changes":[
+ {"address":"aws_s3_bucket.logs","type":"aws_s3_bucket","change":{"actions":["create"],"after":{"bucket":"logs","acl":"public-read","tags":{}}}},
+ {"address":"aws_security_group.web","type":"aws_security_group","change":{"actions":["create"],"after":{"name":"web","ingress":[{"from_port":22,"to_port":22,"protocol":"tcp","cidr_blocks":["0.0.0.0/0"]}],"tags":{}}}},
+ {"address":"aws_db_instance.main","type":"aws_db_instance","change":{"actions":["create"],"after":{"engine":"postgres","storage_encrypted":false,"publicly_accessible":true,"tags":{}}}},
+ {"address":"aws_instance.web","type":"aws_instance","change":{"actions":["create"],"after":{"ami":"ami-1","instance_type":"t3.micro","associate_public_ip_address":true,"tags":{}}}}
+]}}

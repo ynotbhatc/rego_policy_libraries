@@ -1,9 +1,14 @@
-# Rego → Terraform Cloud / Spacelift / env0 policy sets
+# Rego → Terraform Cloud / Enterprise, Spacelift, env0 policy set
 
-**Status:** planned
-**Kind:** packaging
-**Covers:** enforcement/terraform (17)
-**How:** OPA policy set manifest
+**Status:** shipping (generator, round-trip test)
+**Kind:** packaging — an adapter maps the platform's `input.plan` to the library gate's root input, plus the
+`policies.hcl` manifest Terraform Cloud reads
+**Covers:** `enforcement/terraform/terraform_plan_validation.rego` (17 checks)
 
-Not built yet. When it is: the generator lives here, output goes to `out/` (git-ignored) and to the release,
-and `test/` holds the round-trip fixture required by [`../../CONTRACT.md`](../../CONTRACT.md).
+```
+python3 converters/packaging/terraform_platforms/build.py   # -> out/policy-set/{adapter.rego, terraform_plan_validation.rego, policies.hcl}
+```
+
+Point a Terraform Cloud OPA policy set at `out/policy-set/` (or commit it to the VCS repo the policy set tracks).
+Spacelift and env0 take the same two Rego files with their own manifest conventions. `test/roundtrip.sh` evaluates the
+adapter on `{"plan": P}` and the gate on `P` and compares violations.

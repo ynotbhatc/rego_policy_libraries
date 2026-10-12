@@ -40,3 +40,8 @@ jobs:
           for f in *.tar.gz; do mv "$f" "wasm-${f}"; done
           mv manifest.json wasm-manifest.json
           gh release upload "${GITHUB_REF_NAME}" wasm-*.tar.gz wasm-manifest.json --clobber --repo "${GITHUB_REPOSITORY}"
+          cd "$GITHUB_WORKSPACE"
+          python3 converters/packaging/gatekeeper/build.py >/dev/null && (cd converters/packaging/gatekeeper/out && tar -czf ../../../../gatekeeper-templates.tar.gz templates constraints)
+          python3 converters/packaging/kubewarden/build.py >/dev/null && (cd converters/packaging/kubewarden/out && tar -czf ../../../../kubewarden-policies.tar.gz .)
+          python3 converters/packaging/terraform_platforms/build.py >/dev/null && (cd converters/packaging/terraform_platforms/out && tar -czf ../../../../terraform-cloud-policy-set.tar.gz policy-set)
+          gh release upload "${GITHUB_REF_NAME}" gatekeeper-templates.tar.gz kubewarden-policies.tar.gz terraform-cloud-policy-set.tar.gz --clobber --repo "${GITHUB_REPOSITORY}"

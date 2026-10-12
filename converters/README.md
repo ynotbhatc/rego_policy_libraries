@@ -22,8 +22,8 @@ meet is in [`CONTRACT.md`](CONTRACT.md). Status at a glance is the table in §2 
 
 | Status | Targets |
 |---|---|
-| shipping | `packaging/wasm` (build + round-trip test), `packaging/bundles` (GHCR publish, existing workflow) |
-| planned | everything else; next are gatekeeper and kubewarden, then the Tier 1 exports |
+| shipping | **Tier 0 complete:** `packaging/wasm` (4 bundles, 92 entrypoints, round-trip), `packaging/bundles` (GHCR publish; signing planned), `packaging/gatekeeper` (2 ConstraintTemplates + Constraints, round-trip, Artifact Hub metadata), `packaging/kubewarden` (3 policies, round-trip), `packaging/iac_scanners` (Conftest layout, round-trip with conftest), `packaging/terraform_platforms` (TFC/Spacelift/env0 policy set, round-trip) |
+| planned | Tier 1 exports next (oscal, sarif, ocsf, crosswalk_csv, xccdf_ids), then Tier 2 generators; Trivy/KICS/Regula/Snyk adapters inside iac_scanners |
 
 ## 1. Where the checks are, and what shape their input takes
 
