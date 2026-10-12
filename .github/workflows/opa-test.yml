@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'docs/ci-examples/**'
       - 'converters/**'
       - 'scripts/count_controls.py'
       - 'Makefile'
@@ -16,6 +17,7 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - 'docs/ci-examples/**'
       - 'converters/**'
       - 'scripts/count_controls.py'
       - 'Makefile'
@@ -54,6 +56,14 @@ jobs:
 
       - name: Count control-level checks (scripts/count_controls.py must run clean)
         run: python3 scripts/count_controls.py --check-readme
+
+      - name: Integration examples (docs/INTEGRATIONS.md must stay true — empty facts must fail closed)
+        run: |
+          set +e
+          bash docs/ci-examples/evaluate.sh benchmarks/cis/rhel_9 docs/ci-examples/empty-facts.json cis_rhel9 | head -3
+          rc=${PIPESTATUS[0]}
+          [ "$rc" -eq 1 ] || { echo "::error::evaluate.sh exit $rc, expected 1 (non-compliant) on empty facts"; exit 1; }
+          rm -f report.json
 
       - name: Converters — build wasm and run the round-trip test (skips without a wasm engine)
         run: |

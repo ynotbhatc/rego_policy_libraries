@@ -7,6 +7,8 @@
 > **The largest open library of executable compliance policy anyone can verify — 7,867 control-level checks across 54 tracked standards — and the broadest regulatory coverage of any machine-readable policy library, open or closed.** The first half is a number CI recomputes on every merge (`make count`) and fails if this line drifts; the second half is the framework list below, which no other library matches. How we measured both, against every public library we could find: [docs/COMPARISON.md](docs/COMPARISON.md).
 > **Compared with:** Kubescape regolibrary (304 Rego rules, Kubernetes only), Kyverno policies (180), Gatekeeper library (49), trivy-checks (563), Checkov (~1,000, IaC), KICS (1,813, IaC), Prowler (1,625 cloud checks), Steampipe AWS mod (1,361), ComplianceAsCode (2,574 OS rules), Azure Policy built-ins (5,130, Azure), Secure Controls Framework (1,534 catalogue controls, not executable). **Runs unchanged in:** OPA, Enterprise OPA, Styra DAS, Conftest, Gatekeeper, Kubewarden, Trivy, KICS, Regula, Snyk IaC, Terraform Cloud, Spacelift, env0, Envoy/Istio. **Exports to:** WASM for every language SDK, signed bundles, OSCAL, SARIF, OCSF, Ansible, SCAP, InSpec, Wazuh, CEL/Kyverno, Azure Policy, AWS Config, Steampipe, Sentinel, Sigma, Prowler (see [`converters/`](converters/)).
 >
+> **Use it in CI in sixty seconds:** [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md) — pull the GHCR bundle, evaluate your facts, fail the job on non-compliance; Conftest for the IaC gates.
+>
 >
 
 <sub>The count above is restamped by the docs pass that accompanies each merge batch;
@@ -17,6 +19,7 @@ git ls-files | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'   # poli
 git ls-files | grep -c '\.rego$'                                          # including tests
 ```
 
+[![control-level checks](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fraw.githubusercontent.com%2Fynotbhatc%2Frego_policy_libraries%2Fmain%2FREADME.md&search=%28%5B0-9%2C%5D%2B%29%20control-level%20checks&replace=%241&label=control-level%20checks&color=blue)](docs/COMPARISON.md)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
 [![Rego](https://img.shields.io/badge/Rego-v1-green)](https://www.openpolicyagent.org/docs/latest/policy-language/)
