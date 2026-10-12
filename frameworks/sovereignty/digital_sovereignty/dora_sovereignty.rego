@@ -5,6 +5,14 @@
 #   framework: digital_sovereignty
 #   source: aac
 #   domains: [sovereignty, data-residency]
+#   coverage:
+#     checks: 25
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package digital_sovereignty.dora_sovereignty
 
 import rego.v1
@@ -400,3 +408,11 @@ default intermediate_report_compliant := false
 default major_incident_criteria_defined := false
 default rto_rpo_defined := false
 default tlpt_compliant := false
+#   coverage:
+#     checks: 25
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

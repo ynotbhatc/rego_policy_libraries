@@ -5,6 +5,14 @@
 #   framework: dora
 #   source: eu
 #   domains: [financial, eu]
+#   coverage:
+#     checks: 30
+#     cited: 30
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package dora.rts_subcontracting
 
 import rego.v1
@@ -180,3 +188,11 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": compliant,
 }
+#   coverage:
+#     checks: 30
+#     cited: 30
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -1,0 +1,5967 @@
+{
+ "catalog": {
+  "uuid": "bafd54c1-b64c-5aad-bd08-7c4d6fe3b70e",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_oracle (CIS Oracle Database 19c Benchmark v2.0.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_oracle"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_oracle-cis_oracle_19c",
+    "class": "rego-module",
+    "title": "CIS Oracle Database 19c Benchmark v2.0.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.oracle_19c"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/oracle/cis_oracle_19c.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_oracle-1.1",
+      "title": "Ensure Oracle Installation Is From Authorized Sources",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Oracle Installation Is From Authorized Sources"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.2",
+      "title": "Ensure Latest Oracle Patches Are Applied",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Latest Oracle Patches Are Applied"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.3",
+      "title": "Ensure Oracle Home Directory Permissions Are Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure Oracle Home Directory Permissions Are Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.4",
+      "title": "Ensure Oracle Base Directory Permissions Are Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Oracle Base Directory Permissions Are Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.5",
+      "title": "Ensure Oracle Data Files Are on Non-System Partitions",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Oracle Data Files Are on Non-System Partitions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.6",
+      "title": "Ensure Oracle Software Is Not Installed on System Partitions",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Oracle Software Is Not Installed on System Partitions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.7",
+      "title": "Ensure Oracle processes do not run as root or with root privileges",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.7_stmt",
+        "name": "statement",
+        "prose": "Ensure Oracle processes do not run as root or with root privileges"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.8",
+      "title": "Ensure ORACLE_HOME and PATH environment variables are secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.8_stmt",
+        "name": "statement",
+        "prose": "Ensure ORACLE_HOME and PATH environment variables are secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.9",
+      "title": "Ensure Oracle inventory is secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.9_stmt",
+        "name": "statement",
+        "prose": "Ensure Oracle inventory is secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.10",
+      "title": "Ensure tnsnames.ora file is secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.10_stmt",
+        "name": "statement",
+        "prose": "Ensure tnsnames.ora file is secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.11",
+      "title": "Ensure sqlnet.ora file is secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.11_stmt",
+        "name": "statement",
+        "prose": "Ensure sqlnet.ora file is secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.12",
+      "title": "Ensure listener.ora file is secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.12_stmt",
+        "name": "statement",
+        "prose": "Ensure listener.ora file is secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.13",
+      "title": "Ensure default database accounts are secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.13_stmt",
+        "name": "statement",
+        "prose": "Ensure default database accounts are secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.14",
+      "title": "Ensure sample schemas are removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.14_stmt",
+        "name": "statement",
+        "prose": "Ensure sample schemas are removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.15",
+      "title": "Ensure database links are secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.15_stmt",
+        "name": "statement",
+        "prose": "Ensure database links are secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.16",
+      "title": "Ensure external procedures are secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.16_stmt",
+        "name": "statement",
+        "prose": "Ensure external procedures are secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.17",
+      "title": "Ensure UTL_FILE_DIR parameter is not set",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.17_stmt",
+        "name": "statement",
+        "prose": "Ensure UTL_FILE_DIR parameter is not set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.18",
+      "title": "Ensure REMOTE_OS_AUTHENT parameter is FALSE",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.18_stmt",
+        "name": "statement",
+        "prose": "Ensure REMOTE_OS_AUTHENT parameter is FALSE"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.19",
+      "title": "Ensure REMOTE_OS_ROLES parameter is FALSE",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.19_stmt",
+        "name": "statement",
+        "prose": "Ensure REMOTE_OS_ROLES parameter is FALSE"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.20",
+      "title": "Ensure SQL92_SECURITY parameter is TRUE",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.20_stmt",
+        "name": "statement",
+        "prose": "Ensure SQL92_SECURITY parameter is TRUE"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.21",
+      "title": "Ensure O7_DICTIONARY_ACCESSIBILITY parameter is FALSE",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.21_stmt",
+        "name": "statement",
+        "prose": "Ensure O7_DICTIONARY_ACCESSIBILITY parameter is FALSE"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.22",
+      "title": "Ensure SEC_CASE_SENSITIVE_LOGON parameter is TRUE",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.22_stmt",
+        "name": "statement",
+        "prose": "Ensure SEC_CASE_SENSITIVE_LOGON parameter is TRUE"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.23",
+      "title": "Ensure SEC_MAX_FAILED_LOGIN_ATTEMPTS parameter is set appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.23_stmt",
+        "name": "statement",
+        "prose": "Ensure SEC_MAX_FAILED_LOGIN_ATTEMPTS parameter is set appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.24",
+      "title": "Ensure SEC_PROTOCOL_ERROR_TRACE_ACTION parameter is set to LOG",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.24_stmt",
+        "name": "statement",
+        "prose": "Ensure SEC_PROTOCOL_ERROR_TRACE_ACTION parameter is set to LOG"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.25",
+      "title": "Ensure SEC_PROTOCOL_ERROR_FURTHER_ACTION parameter is set appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.25_stmt",
+        "name": "statement",
+        "prose": "Ensure SEC_PROTOCOL_ERROR_FURTHER_ACTION parameter is set appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.26",
+      "title": "Ensure SEC_RETURN_SERVER_RELEASE_BANNER parameter is FALSE",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.26_stmt",
+        "name": "statement",
+        "prose": "Ensure SEC_RETURN_SERVER_RELEASE_BANNER parameter is FALSE"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.27",
+      "title": "Ensure GLOBAL_NAMES parameter is TRUE",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.27_stmt",
+        "name": "statement",
+        "prose": "Ensure GLOBAL_NAMES parameter is TRUE"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-1.28",
+      "title": "Ensure database character set is appropriate",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-1.28_stmt",
+        "name": "statement",
+        "prose": "Ensure database character set is appropriate"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.1",
+      "title": "Ensure the Listener is not set to use the default port of 1521",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure the Listener is not set to use the default port of 1521"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.2",
+      "title": "Ensure the Listener Password is Set",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure the Listener Password is Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.3",
+      "title": "Ensure 'ADMIN_RESTRICTIONS' Is Set to 'ON'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ADMIN_RESTRICTIONS' Is Set to 'ON'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.4",
+      "title": "Ensure 'LOCAL_OS_AUTHENTICATION' is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'LOCAL_OS_AUTHENTICATION' is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.5",
+      "title": "Ensure 'SECURE_REGISTER' is set to 'ON'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SECURE_REGISTER' is set to 'ON'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.6",
+      "title": "Ensure 'SECURE_CONTROL' is set to 'ON'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SECURE_CONTROL' is set to 'ON'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.7",
+      "title": "Ensure the listener process runs as a non-privileged user",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.7_stmt",
+        "name": "statement",
+        "prose": "Ensure the listener process runs as a non-privileged user"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.8",
+      "title": "Ensure listener logging is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.8_stmt",
+        "name": "statement",
+        "prose": "Ensure listener logging is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.9",
+      "title": "Ensure listener log files are protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.9_stmt",
+        "name": "statement",
+        "prose": "Ensure listener log files are protected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.10",
+      "title": "Ensure connection rate limiting is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.10_stmt",
+        "name": "statement",
+        "prose": "Ensure connection rate limiting is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.11",
+      "title": "Ensure listener registration is secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.11_stmt",
+        "name": "statement",
+        "prose": "Ensure listener registration is secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.12",
+      "title": "Ensure TNS_ADMIN is set appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.12_stmt",
+        "name": "statement",
+        "prose": "Ensure TNS_ADMIN is set appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.13",
+      "title": "Ensure NAMES.DIRECTORY_PATH parameter is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.13_stmt",
+        "name": "statement",
+        "prose": "Ensure NAMES.DIRECTORY_PATH parameter is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.14",
+      "title": "Ensure SQLNET.AUTHENTICATION_SERVICES parameter is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.14_stmt",
+        "name": "statement",
+        "prose": "Ensure SQLNET.AUTHENTICATION_SERVICES parameter is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.15",
+      "title": "Ensure SQLNET.AUTHENTICATION_GSSAPI_SERVICE parameter is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.15_stmt",
+        "name": "statement",
+        "prose": "Ensure SQLNET.AUTHENTICATION_GSSAPI_SERVICE parameter is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.16",
+      "title": "Ensure SQLNET.CRYPTO_SEED parameter is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.16_stmt",
+        "name": "statement",
+        "prose": "Ensure SQLNET.CRYPTO_SEED parameter is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.17",
+      "title": "Ensure connection timeout is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.17_stmt",
+        "name": "statement",
+        "prose": "Ensure connection timeout is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-2.18",
+      "title": "Ensure listener is configured for SSL/TLS",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-2.18_stmt",
+        "name": "statement",
+        "prose": "Ensure listener is configured for SSL/TLS"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.1",
+      "title": "Ensure 'AUDIT_SYS_OPERATIONS' Is Set to 'TRUE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'AUDIT_SYS_OPERATIONS' Is Set to 'TRUE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.2",
+      "title": "Ensure 'AUDIT_TRAIL' Is Set to 'DB', 'OS', 'DB, EXTENDED', or 'XML, EXTENDED'",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure 'AUDIT_TRAIL' Is Set to 'DB', 'OS', 'DB, EXTENDED', or 'XML, EXTENDED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.3",
+      "title": "Ensure 'AUDIT_FILE_DEST' Is Set to a Dedicated Directory",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'AUDIT_FILE_DEST' Is Set to a Dedicated Directory"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.4",
+      "title": "Ensure 'DB_ULTRA_SAFE' Is Set to 'DATA_AND_INDEX'",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'DB_ULTRA_SAFE' Is Set to 'DATA_AND_INDEX'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.5",
+      "title": "Ensure audit files are protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.5_stmt",
+        "name": "statement",
+        "prose": "Ensure audit files are protected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.6",
+      "title": "Ensure audit trail destinations are secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.6_stmt",
+        "name": "statement",
+        "prose": "Ensure audit trail destinations are secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.7",
+      "title": "Ensure comprehensive database activity auditing is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.7_stmt",
+        "name": "statement",
+        "prose": "Ensure comprehensive database activity auditing is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.8",
+      "title": "Ensure auditing of failed logon attempts is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.8_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of failed logon attempts is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.9",
+      "title": "Ensure auditing of successful logon attempts is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.9_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of successful logon attempts is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.10",
+      "title": "Ensure auditing of logoff events is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.10_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of logoff events is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.11",
+      "title": "Ensure auditing of database schema changes is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.11_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of database schema changes is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.12",
+      "title": "Ensure auditing of privilege grants and revokes is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.12_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of privilege grants and revokes is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.13",
+      "title": "Ensure auditing of data access is enabled for sensitive tables",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.13_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of data access is enabled for sensitive tables"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.14",
+      "title": "Ensure auditing of data modification is enabled for sensitive tables",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.14_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of data modification is enabled for sensitive tables"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.15",
+      "title": "Ensure auditing of administrative operations is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.15_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of administrative operations is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.16",
+      "title": "Ensure auditing of user creation and deletion is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.16_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of user creation and deletion is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.17",
+      "title": "Ensure auditing of role assignment changes is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.17_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of role assignment changes is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.18",
+      "title": "Ensure auditing of system privilege operations is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.18_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of system privilege operations is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.19",
+      "title": "Ensure auditing of object privilege operations is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.19_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of object privilege operations is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.20",
+      "title": "Ensure auditing of database startup and shutdown is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.20_stmt",
+        "name": "statement",
+        "prose": "Ensure auditing of database startup and shutdown is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.21",
+      "title": "Ensure log retention policies are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.21_stmt",
+        "name": "statement",
+        "prose": "Ensure log retention policies are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.22",
+      "title": "Ensure audit log monitoring and alerting is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.22_stmt",
+        "name": "statement",
+        "prose": "Ensure audit log monitoring and alerting is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.23",
+      "title": "Ensure Fine Grained Auditing (FGA) is enabled for sensitive data",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.23_stmt",
+        "name": "statement",
+        "prose": "Ensure Fine Grained Auditing (FGA) is enabled for sensitive data"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.24",
+      "title": "Ensure Database Vault auditing is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.24_stmt",
+        "name": "statement",
+        "prose": "Ensure Database Vault auditing is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.25",
+      "title": "Ensure audit cleanup jobs are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.25_stmt",
+        "name": "statement",
+        "prose": "Ensure audit cleanup jobs are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.26",
+      "title": "Ensure SYS and SYSTEM operations are audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.26_stmt",
+        "name": "statement",
+        "prose": "Ensure SYS and SYSTEM operations are audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.27",
+      "title": "Ensure public synonym operations are audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.27_stmt",
+        "name": "statement",
+        "prose": "Ensure public synonym operations are audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.28",
+      "title": "Ensure directory operations are audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.28_stmt",
+        "name": "statement",
+        "prose": "Ensure directory operations are audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.29",
+      "title": "Ensure database link operations are audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.29_stmt",
+        "name": "statement",
+        "prose": "Ensure database link operations are audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.30",
+      "title": "Ensure external procedure operations are audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.30_stmt",
+        "name": "statement",
+        "prose": "Ensure external procedure operations are audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.31",
+      "title": "Ensure network operations are audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.31_stmt",
+        "name": "statement",
+        "prose": "Ensure network operations are audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-3.32",
+      "title": "Ensure SQL*Loader operations are audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-3.32_stmt",
+        "name": "statement",
+        "prose": "Ensure SQL*Loader operations are audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.1",
+      "title": "Ensure All Default Passwords Are Changed",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure All Default Passwords Are Changed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.2",
+      "title": "Ensure All Sample Data and Users Are Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure All Sample Data and Users Are Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.3",
+      "title": "Ensure All Unnecessary Accounts Are Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure All Unnecessary Accounts Are Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.4",
+      "title": "Ensure All Default Accounts That Are Not Needed Are Locked",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.4_stmt",
+        "name": "statement",
+        "prose": "Ensure All Default Accounts That Are Not Needed Are Locked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.5",
+      "title": "Ensure Password Complexity Is Enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Complexity Is Enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.6",
+      "title": "Ensure Password Expiration Is Enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Expiration Is Enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.7",
+      "title": "Ensure Password Reuse Is Limited",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.7_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Reuse Is Limited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.8",
+      "title": "Ensure Account Lockout Policy Is Enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.8_stmt",
+        "name": "statement",
+        "prose": "Ensure Account Lockout Policy Is Enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.9",
+      "title": "Ensure Password Grace Period Is Limited",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.9_stmt",
+        "name": "statement",
+        "prose": "Ensure Password Grace Period Is Limited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.10",
+      "title": "Ensure Strong Authentication Methods Are Used",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Strong Authentication Methods Are Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.11",
+      "title": "Ensure Database Authentication Is Not Used for Application Accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.11_stmt",
+        "name": "statement",
+        "prose": "Ensure Database Authentication Is Not Used for Application Accounts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.12",
+      "title": "Ensure External Authentication Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.12_stmt",
+        "name": "statement",
+        "prose": "Ensure External Authentication Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.13",
+      "title": "Ensure Global Authentication Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.13_stmt",
+        "name": "statement",
+        "prose": "Ensure Global Authentication Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.14",
+      "title": "Ensure Database User Session Management Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.14_stmt",
+        "name": "statement",
+        "prose": "Ensure Database User Session Management Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.15",
+      "title": "Ensure Idle Time Limits Are Enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.15_stmt",
+        "name": "statement",
+        "prose": "Ensure Idle Time Limits Are Enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.16",
+      "title": "Ensure Connect Time Limits Are Enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.16_stmt",
+        "name": "statement",
+        "prose": "Ensure Connect Time Limits Are Enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.17",
+      "title": "Ensure Concurrent Session Limits Are Enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.17_stmt",
+        "name": "statement",
+        "prose": "Ensure Concurrent Session Limits Are Enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.18",
+      "title": "Ensure User Profile Management Is Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.18_stmt",
+        "name": "statement",
+        "prose": "Ensure User Profile Management Is Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.19",
+      "title": "Ensure Application User Account Management Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.19_stmt",
+        "name": "statement",
+        "prose": "Ensure Application User Account Management Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.20",
+      "title": "Ensure Service Account Management Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.20_stmt",
+        "name": "statement",
+        "prose": "Ensure Service Account Management Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.21",
+      "title": "Ensure Administrative Account Usage Is Monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.21_stmt",
+        "name": "statement",
+        "prose": "Ensure Administrative Account Usage Is Monitored"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.22",
+      "title": "Ensure Emergency Account Procedures Are Defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.22_stmt",
+        "name": "statement",
+        "prose": "Ensure Emergency Account Procedures Are Defined"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.23",
+      "title": "Ensure Account Lifecycle Management Is Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.23_stmt",
+        "name": "statement",
+        "prose": "Ensure Account Lifecycle Management Is Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-4.24",
+      "title": "Ensure Shared Account Usage Is Eliminated or Controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-4.24_stmt",
+        "name": "statement",
+        "prose": "Ensure Shared Account Usage Is Eliminated or Controlled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.1",
+      "title": "Ensure All Unnecessary Roles Are Dropped",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure All Unnecessary Roles Are Dropped"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.2",
+      "title": "Ensure No Users Have the DBA Role",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure No Users Have the DBA Role"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.3",
+      "title": "Ensure DBA Roles Are Protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.3_stmt",
+        "name": "statement",
+        "prose": "Ensure DBA Roles Are Protected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.4",
+      "title": "Ensure Custom DBA Roles Follow Principle of Least Privilege",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Custom DBA Roles Follow Principle of Least Privilege"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.5",
+      "title": "Ensure All Roles are Password Protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.5_stmt",
+        "name": "statement",
+        "prose": "Ensure All Roles are Password Protected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.6",
+      "title": "Ensure No Roles Are Granted to PUBLIC",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.6_stmt",
+        "name": "statement",
+        "prose": "Ensure No Roles Are Granted to PUBLIC"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.7",
+      "title": "Ensure DBA and Other Administrative Privileges Are Granted Only Where Needed",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.7_stmt",
+        "name": "statement",
+        "prose": "Ensure DBA and Other Administrative Privileges Are Granted Only Where Needed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.8",
+      "title": "Ensure 'GRANT ANY ROLE' Privilege Is Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.8_stmt",
+        "name": "statement",
+        "prose": "Ensure 'GRANT ANY ROLE' Privilege Is Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.9",
+      "title": "Ensure 'GRANT ANY PRIVILEGE' Privilege Is Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.9_stmt",
+        "name": "statement",
+        "prose": "Ensure 'GRANT ANY PRIVILEGE' Privilege Is Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.10",
+      "title": "Ensure 'GRANT ANY OBJECT PRIVILEGE' Privilege Is Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.10_stmt",
+        "name": "statement",
+        "prose": "Ensure 'GRANT ANY OBJECT PRIVILEGE' Privilege Is Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.11",
+      "title": "Ensure System Privileges Are Granted Appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.11_stmt",
+        "name": "statement",
+        "prose": "Ensure System Privileges Are Granted Appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.12",
+      "title": "Ensure Object Privileges Are Granted Appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.12_stmt",
+        "name": "statement",
+        "prose": "Ensure Object Privileges Are Granted Appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.13",
+      "title": "Ensure WITH ADMIN OPTION Is Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.13_stmt",
+        "name": "statement",
+        "prose": "Ensure WITH ADMIN OPTION Is Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.14",
+      "title": "Ensure WITH GRANT OPTION Is Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.14_stmt",
+        "name": "statement",
+        "prose": "Ensure WITH GRANT OPTION Is Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.15",
+      "title": "Ensure Role Hierarchies Are Appropriately Designed",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.15_stmt",
+        "name": "statement",
+        "prose": "Ensure Role Hierarchies Are Appropriately Designed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.16",
+      "title": "Ensure Application Roles Are Used for Application Access",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.16_stmt",
+        "name": "statement",
+        "prose": "Ensure Application Roles Are Used for Application Access"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.17",
+      "title": "Ensure Database Link Privileges Are Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.17_stmt",
+        "name": "statement",
+        "prose": "Ensure Database Link Privileges Are Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.18",
+      "title": "Ensure Directory Object Privileges Are Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.18_stmt",
+        "name": "statement",
+        "prose": "Ensure Directory Object Privileges Are Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.19",
+      "title": "Ensure Java Privileges Are Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.19_stmt",
+        "name": "statement",
+        "prose": "Ensure Java Privileges Are Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.20",
+      "title": "Ensure External Procedure Privileges Are Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.20_stmt",
+        "name": "statement",
+        "prose": "Ensure External Procedure Privileges Are Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.21",
+      "title": "Ensure Network Access Control List (ACL) Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.21_stmt",
+        "name": "statement",
+        "prose": "Ensure Network Access Control List (ACL) Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.22",
+      "title": "Ensure Privilege Analysis Is Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.22_stmt",
+        "name": "statement",
+        "prose": "Ensure Privilege Analysis Is Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.23",
+      "title": "Ensure Regular Privilege Reviews Are Conducted",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.23_stmt",
+        "name": "statement",
+        "prose": "Ensure Regular Privilege Reviews Are Conducted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.24",
+      "title": "Ensure Privilege Escalation Is Monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.24_stmt",
+        "name": "statement",
+        "prose": "Ensure Privilege Escalation Is Monitored"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.25",
+      "title": "Ensure Administrative Privilege Usage Is Logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.25_stmt",
+        "name": "statement",
+        "prose": "Ensure Administrative Privilege Usage Is Logged"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.26",
+      "title": "Ensure Application Context Usage Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.26_stmt",
+        "name": "statement",
+        "prose": "Ensure Application Context Usage Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.27",
+      "title": "Ensure Virtual Private Database Policies Are Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.27_stmt",
+        "name": "statement",
+        "prose": "Ensure Virtual Private Database Policies Are Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-5.28",
+      "title": "Ensure Definer Rights Are Used Appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-5.28_stmt",
+        "name": "statement",
+        "prose": "Ensure Definer Rights Are Used Appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.1",
+      "title": "Ensure Virtual Private Database (VPD) Is Configured for Sensitive Data",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Virtual Private Database (VPD) Is Configured for Sensitive Data"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.2",
+      "title": "Ensure Application Contexts Are Secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Application Contexts Are Secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.3",
+      "title": "Ensure Label Security Is Configured Where Appropriate",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.3_stmt",
+        "name": "statement",
+        "prose": "Ensure Label Security Is Configured Where Appropriate"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.4",
+      "title": "Ensure Data Redaction Is Configured for Sensitive Data",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Data Redaction Is Configured for Sensitive Data"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.5",
+      "title": "Ensure Column-Level Security Is Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Column-Level Security Is Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.6",
+      "title": "Ensure Row-Level Security Is Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Row-Level Security Is Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.7",
+      "title": "Ensure Views Are Used to Restrict Data Access",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.7_stmt",
+        "name": "statement",
+        "prose": "Ensure Views Are Used to Restrict Data Access"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.8",
+      "title": "Ensure Synonyms Are Used Appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.8_stmt",
+        "name": "statement",
+        "prose": "Ensure Synonyms Are Used Appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.9",
+      "title": "Ensure Database Vault Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.9_stmt",
+        "name": "statement",
+        "prose": "Ensure Database Vault Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.10",
+      "title": "Ensure Real Application Security Is Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Real Application Security Is Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.11",
+      "title": "Ensure Fine Grained Auditing (FGA) Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.11_stmt",
+        "name": "statement",
+        "prose": "Ensure Fine Grained Auditing (FGA) Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.12",
+      "title": "Ensure Data Classification Is Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.12_stmt",
+        "name": "statement",
+        "prose": "Ensure Data Classification Is Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.13",
+      "title": "Ensure Sensitive Data Discovery Is Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.13_stmt",
+        "name": "statement",
+        "prose": "Ensure Sensitive Data Discovery Is Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.14",
+      "title": "Ensure Data Masking Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.14_stmt",
+        "name": "statement",
+        "prose": "Ensure Data Masking Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.15",
+      "title": "Ensure Data Pump Security Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.15_stmt",
+        "name": "statement",
+        "prose": "Ensure Data Pump Security Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.16",
+      "title": "Ensure SQL*Loader Security Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.16_stmt",
+        "name": "statement",
+        "prose": "Ensure SQL*Loader Security Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.17",
+      "title": "Ensure External Table Security Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.17_stmt",
+        "name": "statement",
+        "prose": "Ensure External Table Security Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.18",
+      "title": "Ensure UTL_FILE Security Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.18_stmt",
+        "name": "statement",
+        "prose": "Ensure UTL_FILE Security Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.19",
+      "title": "Ensure DBMS_SCHEDULER Security Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.19_stmt",
+        "name": "statement",
+        "prose": "Ensure DBMS_SCHEDULER Security Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.20",
+      "title": "Ensure Advanced Queuing Security Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.20_stmt",
+        "name": "statement",
+        "prose": "Ensure Advanced Queuing Security Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.21",
+      "title": "Ensure XML Security Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.21_stmt",
+        "name": "statement",
+        "prose": "Ensure XML Security Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-6.22",
+      "title": "Ensure JSON Security Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-6.22_stmt",
+        "name": "statement",
+        "prose": "Ensure JSON Security Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.1",
+      "title": "Ensure Transparent Data Encryption (TDE) Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Transparent Data Encryption (TDE) Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.2",
+      "title": "Ensure TDE Wallet Security",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.2_stmt",
+        "name": "statement",
+        "prose": "Ensure TDE Wallet Security"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.3",
+      "title": "Ensure TDE Key Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.3_stmt",
+        "name": "statement",
+        "prose": "Ensure TDE Key Management"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.4",
+      "title": "Ensure Network Encryption Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Network Encryption Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.5",
+      "title": "Ensure Strong Encryption Algorithms Are Used",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Strong Encryption Algorithms Are Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.6",
+      "title": "Ensure Backup Encryption Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Backup Encryption Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.7",
+      "title": "Ensure Data Pump Encryption Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.7_stmt",
+        "name": "statement",
+        "prose": "Ensure Data Pump Encryption Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.8",
+      "title": "Ensure RMAN Encryption Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.8_stmt",
+        "name": "statement",
+        "prose": "Ensure RMAN Encryption Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.9",
+      "title": "Ensure Secure External Password Store",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.9_stmt",
+        "name": "statement",
+        "prose": "Ensure Secure External Password Store"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.10",
+      "title": "Ensure Crypto-related Init Parameters Are Set Securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Crypto-related Init Parameters Are Set Securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.11",
+      "title": "Ensure Key Rotation Policies Are Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.11_stmt",
+        "name": "statement",
+        "prose": "Ensure Key Rotation Policies Are Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.12",
+      "title": "Ensure Encryption Key Backup and Recovery",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.12_stmt",
+        "name": "statement",
+        "prose": "Ensure Encryption Key Backup and Recovery"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.13",
+      "title": "Ensure Application-Level Encryption Is Considered",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.13_stmt",
+        "name": "statement",
+        "prose": "Ensure Application-Level Encryption Is Considered"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.14",
+      "title": "Ensure Encryption Compliance Requirements Are Met",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.14_stmt",
+        "name": "statement",
+        "prose": "Ensure Encryption Compliance Requirements Are Met"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.15",
+      "title": "Ensure Encryption Performance Impact Is Monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.15_stmt",
+        "name": "statement",
+        "prose": "Ensure Encryption Performance Impact Is Monitored"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-7.16",
+      "title": "Ensure Hardware Security Module (HSM) Integration",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-7.16_stmt",
+        "name": "statement",
+        "prose": "Ensure Hardware Security Module (HSM) Integration"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-8.1",
+      "title": "Ensure Database Is Not Directly Accessible from Untrusted Networks",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-8.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Database Is Not Directly Accessible from Untrusted Networks"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-8.2",
+      "title": "Ensure Network Access Control Lists Are Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-8.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Network Access Control Lists Are Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-8.3",
+      "title": "Ensure Valid Node Checking Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-8.3_stmt",
+        "name": "statement",
+        "prose": "Ensure Valid Node Checking Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-8.4",
+      "title": "Ensure Connection Rate Limiting Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-8.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Connection Rate Limiting Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-8.5",
+      "title": "Ensure Network Encryption Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-8.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Network Encryption Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-8.6",
+      "title": "Ensure Network Data Integrity Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-8.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Network Data Integrity Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-8.7",
+      "title": "Ensure Strong Authentication Is Used for Network Connections",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-8.7_stmt",
+        "name": "statement",
+        "prose": "Ensure Strong Authentication Is Used for Network Connections"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-8.8",
+      "title": "Ensure Kerberos Authentication Is Configured Where Appropriate",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-8.8_stmt",
+        "name": "statement",
+        "prose": "Ensure Kerberos Authentication Is Configured Where Appropriate"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-8.9",
+      "title": "Ensure SSL/TLS Is Configured for Database Connections",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-8.9_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL/TLS Is Configured for Database Connections"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle-8.10",
+      "title": "Ensure Network Monitoring and Intrusion Detection",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#122d5bb4-a3e7-561e-add3-f038377a2875",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle-8.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Network Monitoring and Intrusion Detection"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "122d5bb4-a3e7-561e-add3-f038377a2875",
+     "title": "CIS Oracle Database 19c Benchmark v2.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.oracle_19c"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/oracle/cis_oracle_19c.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "8f5bff9d-704c-591c-b140-1a58d55c42cc",
+  "uuid": "a7ebd2cc-e3b7-560b-9305-5a1230f07389",
   "metadata": {
    "title": "Rego Policy Libraries — nist_sp_800_53 (NIST SP 800-53 Rev 5 - Access Control (AC) Family)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,765 @@
     ],
     "controls": [
      {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-1",
+      "title": "access control decisions",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-1_stmt",
+        "name": "statement",
+        "prose": "access control decisions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-2",
+      "title": "access control policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-2_stmt",
+        "name": "statement",
+        "prose": "access control policy"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-3",
+      "title": "access enforcement",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-3_stmt",
+        "name": "statement",
+        "prose": "access enforcement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-4",
+      "title": "automated marking",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-4_stmt",
+        "name": "statement",
+        "prose": "automated marking"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-5",
+      "title": "concurrent session control",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-5_stmt",
+        "name": "statement",
+        "prose": "concurrent session control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-6",
+      "title": "data mining protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-6_stmt",
+        "name": "statement",
+        "prose": "data mining protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-7",
+      "title": "external systems control",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-7_stmt",
+        "name": "statement",
+        "prose": "external systems control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-8",
+      "title": "information flow enforcement",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-8_stmt",
+        "name": "statement",
+        "prose": "information flow enforcement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-9",
+      "title": "information sharing control",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-9_stmt",
+        "name": "statement",
+        "prose": "information sharing control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-10",
+      "title": "least privilege",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-10_stmt",
+        "name": "statement",
+        "prose": "least privilege"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-11",
+      "title": "mobile device access control",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-11_stmt",
+        "name": "statement",
+        "prose": "mobile device access control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-12",
+      "title": "permitted actions restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-12_stmt",
+        "name": "statement",
+        "prose": "permitted actions restricted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-13",
+      "title": "previous logon notification",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-13_stmt",
+        "name": "statement",
+        "prose": "previous logon notification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-14",
+      "title": "publicly accessible content",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-14_stmt",
+        "name": "statement",
+        "prose": "publicly accessible content"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-15",
+      "title": "reference monitor",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-15_stmt",
+        "name": "statement",
+        "prose": "reference monitor"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-16",
+      "title": "remote access control",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-16_stmt",
+        "name": "statement",
+        "prose": "remote access control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-17",
+      "title": "security attributes",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-17_stmt",
+        "name": "statement",
+        "prose": "security attributes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-18",
+      "title": "separation of duties",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-18_stmt",
+        "name": "statement",
+        "prose": "separation of duties"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-19",
+      "title": "session lock",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-19_stmt",
+        "name": "statement",
+        "prose": "session lock"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-20",
+      "title": "session termination",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-20_stmt",
+        "name": "statement",
+        "prose": "session termination"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-21",
+      "title": "system use notification",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-21_stmt",
+        "name": "statement",
+        "prose": "system use notification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-22",
+      "title": "unsuccessful logon attempts",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-22_stmt",
+        "name": "statement",
+        "prose": "unsuccessful logon attempts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.access_control-23",
+      "title": "wireless access control",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.access_control#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.access_control#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.access_control-23_stmt",
+        "name": "statement",
+        "prose": "wireless access control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "nist_sp_800_53-NIST-AC-1",
       "title": "Access control policy/procedures not documented, disseminated, or reviewed",
       "props": [
@@ -85,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -118,7 +877,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -151,7 +910,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -184,7 +943,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -217,7 +976,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -250,7 +1009,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -283,7 +1042,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -316,7 +1075,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -349,7 +1108,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -382,7 +1141,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -415,7 +1174,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -448,7 +1207,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -481,7 +1240,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -514,7 +1273,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -547,7 +1306,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -580,7 +1339,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -613,7 +1372,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -646,7 +1405,7 @@
       ],
       "links": [
        {
-        "href": "#58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+        "href": "#9d55c2f3-49ce-5927-a8d6-197a757156a4",
         "rel": "implementation"
        }
       ],
@@ -703,7 +1462,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -736,7 +1495,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -769,7 +1528,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -802,7 +1561,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -835,7 +1594,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -868,7 +1627,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -901,7 +1660,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -934,7 +1693,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -967,7 +1726,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -1000,7 +1759,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -1033,7 +1792,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -1066,7 +1825,7 @@
       ],
       "links": [
        {
-        "href": "#0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+        "href": "#e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
         "rel": "implementation"
        }
       ],
@@ -1123,7 +1882,7 @@
       ],
       "links": [
        {
-        "href": "#323dde11-4f6c-58eb-946f-98b19125fd31",
+        "href": "#3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
         "rel": "implementation"
        }
       ],
@@ -1156,7 +1915,7 @@
       ],
       "links": [
        {
-        "href": "#323dde11-4f6c-58eb-946f-98b19125fd31",
+        "href": "#3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
         "rel": "implementation"
        }
       ],
@@ -1189,7 +1948,7 @@
       ],
       "links": [
        {
-        "href": "#323dde11-4f6c-58eb-946f-98b19125fd31",
+        "href": "#3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
         "rel": "implementation"
        }
       ],
@@ -1222,7 +1981,7 @@
       ],
       "links": [
        {
-        "href": "#323dde11-4f6c-58eb-946f-98b19125fd31",
+        "href": "#3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
         "rel": "implementation"
        }
       ],
@@ -1255,7 +2014,7 @@
       ],
       "links": [
        {
-        "href": "#323dde11-4f6c-58eb-946f-98b19125fd31",
+        "href": "#3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
         "rel": "implementation"
        }
       ],
@@ -1288,7 +2047,7 @@
       ],
       "links": [
        {
-        "href": "#323dde11-4f6c-58eb-946f-98b19125fd31",
+        "href": "#3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
         "rel": "implementation"
        }
       ],
@@ -1321,7 +2080,7 @@
       ],
       "links": [
        {
-        "href": "#323dde11-4f6c-58eb-946f-98b19125fd31",
+        "href": "#3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
         "rel": "implementation"
        }
       ],
@@ -1354,7 +2113,7 @@
       ],
       "links": [
        {
-        "href": "#323dde11-4f6c-58eb-946f-98b19125fd31",
+        "href": "#3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
         "rel": "implementation"
        }
       ],
@@ -1387,7 +2146,7 @@
       ],
       "links": [
        {
-        "href": "#323dde11-4f6c-58eb-946f-98b19125fd31",
+        "href": "#3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
         "rel": "implementation"
        }
       ],
@@ -1420,7 +2179,7 @@
       ],
       "links": [
        {
-        "href": "#323dde11-4f6c-58eb-946f-98b19125fd31",
+        "href": "#3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
         "rel": "implementation"
        }
       ],
@@ -1453,7 +2212,7 @@
       ],
       "links": [
        {
-        "href": "#323dde11-4f6c-58eb-946f-98b19125fd31",
+        "href": "#3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
         "rel": "implementation"
        }
       ],
@@ -1510,7 +2269,7 @@
       ],
       "links": [
        {
-        "href": "#7841fda9-fb76-5687-9d02-7bc05fc466ec",
+        "href": "#edec8c41-adf3-5df8-b4c5-3d8308027e40",
         "rel": "implementation"
        }
       ],
@@ -1543,7 +2302,7 @@
       ],
       "links": [
        {
-        "href": "#7841fda9-fb76-5687-9d02-7bc05fc466ec",
+        "href": "#edec8c41-adf3-5df8-b4c5-3d8308027e40",
         "rel": "implementation"
        }
       ],
@@ -1576,7 +2335,7 @@
       ],
       "links": [
        {
-        "href": "#7841fda9-fb76-5687-9d02-7bc05fc466ec",
+        "href": "#edec8c41-adf3-5df8-b4c5-3d8308027e40",
         "rel": "implementation"
        }
       ],
@@ -1609,7 +2368,7 @@
       ],
       "links": [
        {
-        "href": "#7841fda9-fb76-5687-9d02-7bc05fc466ec",
+        "href": "#edec8c41-adf3-5df8-b4c5-3d8308027e40",
         "rel": "implementation"
        }
       ],
@@ -1642,7 +2401,7 @@
       ],
       "links": [
        {
-        "href": "#7841fda9-fb76-5687-9d02-7bc05fc466ec",
+        "href": "#edec8c41-adf3-5df8-b4c5-3d8308027e40",
         "rel": "implementation"
        }
       ],
@@ -1675,7 +2434,7 @@
       ],
       "links": [
        {
-        "href": "#7841fda9-fb76-5687-9d02-7bc05fc466ec",
+        "href": "#edec8c41-adf3-5df8-b4c5-3d8308027e40",
         "rel": "implementation"
        }
       ],
@@ -1708,7 +2467,7 @@
       ],
       "links": [
        {
-        "href": "#7841fda9-fb76-5687-9d02-7bc05fc466ec",
+        "href": "#edec8c41-adf3-5df8-b4c5-3d8308027e40",
         "rel": "implementation"
        }
       ],
@@ -1741,7 +2500,7 @@
       ],
       "links": [
        {
-        "href": "#7841fda9-fb76-5687-9d02-7bc05fc466ec",
+        "href": "#edec8c41-adf3-5df8-b4c5-3d8308027e40",
         "rel": "implementation"
        }
       ],
@@ -1779,7 +2538,7 @@
       ],
       "links": [
        {
-        "href": "#7841fda9-fb76-5687-9d02-7bc05fc466ec",
+        "href": "#edec8c41-adf3-5df8-b4c5-3d8308027e40",
         "rel": "implementation"
        }
       ],
@@ -1812,7 +2571,7 @@
       ],
       "links": [
        {
-        "href": "#7841fda9-fb76-5687-9d02-7bc05fc466ec",
+        "href": "#edec8c41-adf3-5df8-b4c5-3d8308027e40",
         "rel": "implementation"
        }
       ],
@@ -1845,7 +2604,7 @@
       ],
       "links": [
        {
-        "href": "#7841fda9-fb76-5687-9d02-7bc05fc466ec",
+        "href": "#edec8c41-adf3-5df8-b4c5-3d8308027e40",
         "rel": "implementation"
        }
       ],
@@ -1902,7 +2661,7 @@
       ],
       "links": [
        {
-        "href": "#dce421b7-0dd9-5499-b88f-933ebcf630c9",
+        "href": "#7abf53f1-2b7d-5e18-ae56-452ba403ce34",
         "rel": "implementation"
        }
       ],
@@ -1935,7 +2694,7 @@
       ],
       "links": [
        {
-        "href": "#dce421b7-0dd9-5499-b88f-933ebcf630c9",
+        "href": "#7abf53f1-2b7d-5e18-ae56-452ba403ce34",
         "rel": "implementation"
        }
       ],
@@ -1968,7 +2727,7 @@
       ],
       "links": [
        {
-        "href": "#dce421b7-0dd9-5499-b88f-933ebcf630c9",
+        "href": "#7abf53f1-2b7d-5e18-ae56-452ba403ce34",
         "rel": "implementation"
        }
       ],
@@ -2001,7 +2760,7 @@
       ],
       "links": [
        {
-        "href": "#dce421b7-0dd9-5499-b88f-933ebcf630c9",
+        "href": "#7abf53f1-2b7d-5e18-ae56-452ba403ce34",
         "rel": "implementation"
        }
       ],
@@ -2034,7 +2793,7 @@
       ],
       "links": [
        {
-        "href": "#dce421b7-0dd9-5499-b88f-933ebcf630c9",
+        "href": "#7abf53f1-2b7d-5e18-ae56-452ba403ce34",
         "rel": "implementation"
        }
       ],
@@ -2067,7 +2826,7 @@
       ],
       "links": [
        {
-        "href": "#dce421b7-0dd9-5499-b88f-933ebcf630c9",
+        "href": "#7abf53f1-2b7d-5e18-ae56-452ba403ce34",
         "rel": "implementation"
        }
       ],
@@ -2100,7 +2859,7 @@
       ],
       "links": [
        {
-        "href": "#dce421b7-0dd9-5499-b88f-933ebcf630c9",
+        "href": "#7abf53f1-2b7d-5e18-ae56-452ba403ce34",
         "rel": "implementation"
        }
       ],
@@ -2133,7 +2892,7 @@
       ],
       "links": [
        {
-        "href": "#dce421b7-0dd9-5499-b88f-933ebcf630c9",
+        "href": "#7abf53f1-2b7d-5e18-ae56-452ba403ce34",
         "rel": "implementation"
        }
       ],
@@ -2166,7 +2925,7 @@
       ],
       "links": [
        {
-        "href": "#dce421b7-0dd9-5499-b88f-933ebcf630c9",
+        "href": "#7abf53f1-2b7d-5e18-ae56-452ba403ce34",
         "rel": "implementation"
        }
       ],
@@ -2223,7 +2982,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2256,7 +3015,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2289,7 +3048,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2322,7 +3081,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2355,7 +3114,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2388,7 +3147,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2421,7 +3180,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2454,7 +3213,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2487,7 +3246,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2520,7 +3279,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2553,7 +3312,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2586,7 +3345,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2619,7 +3378,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2652,7 +3411,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2685,7 +3444,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2718,7 +3477,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2751,7 +3510,7 @@
       ],
       "links": [
        {
-        "href": "#cadc7134-1459-5db2-b593-9e78407e6929",
+        "href": "#b541fbd9-012b-54cf-9088-584156f561f0",
         "rel": "implementation"
        }
       ],
@@ -2808,7 +3567,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -2841,7 +3600,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -2874,7 +3633,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -2907,7 +3666,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -2940,7 +3699,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -2973,7 +3732,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -3006,7 +3765,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -3039,7 +3798,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -3072,7 +3831,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -3105,7 +3864,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -3138,7 +3897,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -3171,7 +3930,7 @@
       ],
       "links": [
        {
-        "href": "#a464128e-761b-50a4-9bed-41825b845914",
+        "href": "#c66cb63b-1379-5073-8ab2-070a517fdace",
         "rel": "implementation"
        }
       ],
@@ -3190,7 +3949,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "58d8c8a6-ecc9-53c1-80de-ad8539ab9284",
+     "uuid": "9d55c2f3-49ce-5927-a8d6-197a757156a4",
      "title": "NIST SP 800-53 Rev 5 - Access Control (AC) Family",
      "props": [
       {
@@ -3201,13 +3960,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "0ace2762-55f3-5b40-94f8-cdef88e66b8c",
+     "uuid": "e89f8c6d-ba85-567d-b1ae-a93c474ced6b",
      "title": "NIST SP 800-53 Rev 5 — Audit and Accountability (AU) Family",
      "props": [
       {
@@ -3218,13 +3977,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/nist/sp_800_53/audit_accountability/au_controls.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/nist/sp_800_53/audit_accountability/au_controls.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "323dde11-4f6c-58eb-946f-98b19125fd31",
+     "uuid": "3ca89ebd-2b0e-52a2-b31a-73fcbc969a1a",
      "title": "NIST SP 800-53 Rev 5 — Configuration Management (CM) Family",
      "props": [
       {
@@ -3235,13 +3994,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/nist/sp_800_53/configuration_management/cm_controls.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/nist/sp_800_53/configuration_management/cm_controls.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "7841fda9-fb76-5687-9d02-7bc05fc466ec",
+     "uuid": "edec8c41-adf3-5df8-b4c5-3d8308027e40",
      "title": "NIST SP 800-53 Rev 5 — Identification and Authentication (IA) Family",
      "props": [
       {
@@ -3252,13 +4011,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/nist/sp_800_53/identification_authentication/ia_controls.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/nist/sp_800_53/identification_authentication/ia_controls.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "dce421b7-0dd9-5499-b88f-933ebcf630c9",
+     "uuid": "7abf53f1-2b7d-5e18-ae56-452ba403ce34",
      "title": "NIST SP 800-53 Rev 5 — Incident Response (IR) Family",
      "props": [
       {
@@ -3269,13 +4028,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/nist/sp_800_53/incident_response/ir_controls.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/nist/sp_800_53/incident_response/ir_controls.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "cadc7134-1459-5db2-b593-9e78407e6929",
+     "uuid": "b541fbd9-012b-54cf-9088-584156f561f0",
      "title": "NIST SP 800-53 Rev 5 — System and Communications Protection (SC) Family",
      "props": [
       {
@@ -3286,13 +4045,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/nist/sp_800_53/system_communications/sc_controls.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/nist/sp_800_53/system_communications/sc_controls.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a464128e-761b-50a4-9bed-41825b845914",
+     "uuid": "c66cb63b-1379-5073-8ab2-070a517fdace",
      "title": "NIST SP 800-53 Rev 5 — System and Information Integrity (SI) Family",
      "props": [
       {
@@ -3303,7 +4062,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego",
        "media-type": "text/plain"
       }
      ]

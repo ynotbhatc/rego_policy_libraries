@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "7d444141-d057-5b09-b017-c6e6bbca9702",
+  "uuid": "24b4a3f4-7a9c-565e-b72e-90f6f9fcfb88",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_windows_server_2019_modular (CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.9: BitLocker Drive Encryption)",
+   "title": "Rego Policy Libraries — cis_windows_server_2019_modular (CIS Windows Server 2019 Benchmark v4.0.0 - Section 1: Account Policies)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -44,6 +44,1302 @@
   },
   "groups": [
    {
+    "id": "cis_windows_server_2019_modular-account_policies_validation",
+    "class": "rego-module",
+    "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 1: Account Policies",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2019.account_policies"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2019_modular/account_policies_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.1.1",
+      "title": "Password history is %d, should be 24 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.1.1_stmt",
+        "name": "statement",
+        "prose": "Password history is %d, should be 24 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.1.2",
+      "title": "Maximum password age is %d days, should be 365 or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.1.2_stmt",
+        "name": "statement",
+        "prose": "Maximum password age is %d days, should be 365 or less"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Maximum password age is 0 (never expires) - should be 365 or less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.1.3",
+      "title": "Minimum password age is %d days, should be 1 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.1.3_stmt",
+        "name": "statement",
+        "prose": "Minimum password age is %d days, should be 1 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.1.4",
+      "title": "Minimum password length is %d, should be 14 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.1.4_stmt",
+        "name": "statement",
+        "prose": "Minimum password length is %d, should be 14 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.1.5",
+      "title": "Password complexity requirements are not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.1.5_stmt",
+        "name": "statement",
+        "prose": "Password complexity requirements are not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.1.6",
+      "title": "Relax minimum password length limits is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.1.6_stmt",
+        "name": "statement",
+        "prose": "Relax minimum password length limits is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.1.7",
+      "title": "Store passwords using reversible encryption is enabled (must be disabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.1.7_stmt",
+        "name": "statement",
+        "prose": "Store passwords using reversible encryption is enabled (must be disabled)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.2.1",
+      "title": "Account lockout duration is %d minutes, should be 15 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.2.1_stmt",
+        "name": "statement",
+        "prose": "Account lockout duration is %d minutes, should be 15 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.2.2",
+      "title": "Account lockout threshold is 0 (disabled) - should be 5 or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.2.2_stmt",
+        "name": "statement",
+        "prose": "Account lockout threshold is 0 (disabled) - should be 5 or less"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Account lockout threshold is %d, should be 10 or less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.2.3",
+      "title": "Administrator account lockout is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.2.3_stmt",
+        "name": "statement",
+        "prose": "Administrator account lockout is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.2.4",
+      "title": "Account lockout observation window is %d minutes, should be 15 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.2.4_stmt",
+        "name": "statement",
+        "prose": "Account lockout observation window is %d minutes, should be 15 or more"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_windows_server_2019_modular-advanced_audit_validation",
+    "class": "rego-module",
+    "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 17: Advanced Audit Policy Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2019.advanced_audit"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2019_modular/advanced_audit_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.1.1",
+      "title": "Audit Credential Validation - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.1.1_stmt",
+        "name": "statement",
+        "prose": "Audit Credential Validation - Success not configured"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit Credential Validation - Failure not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.2.1",
+      "title": "Audit Computer Account Management - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.2.1_stmt",
+        "name": "statement",
+        "prose": "Audit Computer Account Management - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.2.2",
+      "title": "Audit Other Account Management Events - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.2.2_stmt",
+        "name": "statement",
+        "prose": "Audit Other Account Management Events - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.2.3",
+      "title": "Audit Security Group Management - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.2.3_stmt",
+        "name": "statement",
+        "prose": "Audit Security Group Management - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.2.5",
+      "title": "Audit User Account Management - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.2.5_stmt",
+        "name": "statement",
+        "prose": "Audit User Account Management - Success not configured"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.2.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit User Account Management - Failure not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.3.1",
+      "title": "Audit Process Creation - Success not configured (required for SACL)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.3.1_stmt",
+        "name": "statement",
+        "prose": "Audit Process Creation - Success not configured (required for SACL)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.5.1",
+      "title": "Audit Account Lockout - Failure not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.5.1_stmt",
+        "name": "statement",
+        "prose": "Audit Account Lockout - Failure not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.5.2",
+      "title": "Audit Group Membership - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.5.2_stmt",
+        "name": "statement",
+        "prose": "Audit Group Membership - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.5.3",
+      "title": "Audit Logoff - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.5.3_stmt",
+        "name": "statement",
+        "prose": "Audit Logoff - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.5.4",
+      "title": "Audit Logon - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.5.4_stmt",
+        "name": "statement",
+        "prose": "Audit Logon - Success not configured"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.5.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit Logon - Failure not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.5.5",
+      "title": "Audit Other Logon/Logoff Events - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.5.5_stmt",
+        "name": "statement",
+        "prose": "Audit Other Logon/Logoff Events - Success not configured"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.5.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit Other Logon/Logoff Events - Failure not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.5.6",
+      "title": "Audit Special Logon - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.5.6_stmt",
+        "name": "statement",
+        "prose": "Audit Special Logon - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.6.1",
+      "title": "Audit Detailed File Share - Failure not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.6.1_stmt",
+        "name": "statement",
+        "prose": "Audit Detailed File Share - Failure not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.6.3",
+      "title": "Audit Other Object Access Events - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.6.3_stmt",
+        "name": "statement",
+        "prose": "Audit Other Object Access Events - Success not configured"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.6.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit Other Object Access Events - Failure not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.6.4",
+      "title": "Audit Removable Storage - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.6.4_stmt",
+        "name": "statement",
+        "prose": "Audit Removable Storage - Success not configured"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.6.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit Removable Storage - Failure not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.7.1",
+      "title": "Audit Audit Policy Change - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.7.1_stmt",
+        "name": "statement",
+        "prose": "Audit Audit Policy Change - Success not configured"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.7.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit Audit Policy Change - Failure not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.7.2",
+      "title": "Audit Authentication Policy Change - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.7.2_stmt",
+        "name": "statement",
+        "prose": "Audit Authentication Policy Change - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.7.4",
+      "title": "Audit MPSSVC Rule-Level Policy Change - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.7.4_stmt",
+        "name": "statement",
+        "prose": "Audit MPSSVC Rule-Level Policy Change - Success not configured"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.7.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit MPSSVC Rule-Level Policy Change - Failure not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.7.5",
+      "title": "Audit Other Policy Change Events - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.7.5_stmt",
+        "name": "statement",
+        "prose": "Audit Other Policy Change Events - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.8.1",
+      "title": "Audit Sensitive Privilege Use - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.8.1_stmt",
+        "name": "statement",
+        "prose": "Audit Sensitive Privilege Use - Success not configured"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.8.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit Sensitive Privilege Use - Failure not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.9.1",
+      "title": "Audit IPsec Driver - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.9.1_stmt",
+        "name": "statement",
+        "prose": "Audit IPsec Driver - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.9.2",
+      "title": "Audit Other System Events - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.9.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.9.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.9.2_stmt",
+        "name": "statement",
+        "prose": "Audit Other System Events - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.9.3",
+      "title": "Audit Security State Change - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.9.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.9.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.9.3_stmt",
+        "name": "statement",
+        "prose": "Audit Security State Change - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.9.4",
+      "title": "Audit Security System Extension - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.9.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.9.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.9.4_stmt",
+        "name": "statement",
+        "prose": "Audit Security System Extension - Success not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-17.9.5",
+      "title": "Audit System Integrity - Success not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 17.9.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 17.9.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.advanced_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.9.5_stmt",
+        "name": "statement",
+        "prose": "Audit System Integrity - Success not configured"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-17.9.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit System Integrity - Failure not configured"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
     "id": "cis_windows_server_2019_modular-bitlocker_validation",
     "class": "rego-module",
     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.9: BitLocker Drive Encryption",
@@ -66,6 +1362,318 @@
     ],
     "controls": [
      {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.9.1.1",
+      "title": "BitLocker 'Require additional authentication at startup' is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.9.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.9.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.bitlocker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ca1c6f6f-e4e6-57e7-b607-9ad4cbf57152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9.1.1_stmt",
+        "name": "statement",
+        "prose": "BitLocker 'Require additional authentication at startup' is not enabled"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "BitLocker 'Allow BitLocker without a compatible TPM' should be disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.9.1.2",
+      "title": "BitLocker TPM startup PIN is '%s', should require startup PIN",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.9.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.9.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.bitlocker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ca1c6f6f-e4e6-57e7-b607-9ad4cbf57152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9.1.2_stmt",
+        "name": "statement",
+        "prose": "BitLocker TPM startup PIN is '%s', should require startup PIN"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.9.1.3",
+      "title": "BitLocker minimum PIN length is %d, should be 6 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.9.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.9.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.bitlocker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ca1c6f6f-e4e6-57e7-b607-9ad4cbf57152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9.1.3_stmt",
+        "name": "statement",
+        "prose": "BitLocker minimum PIN length is %d, should be 6 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.9",
+      "title": "BitLocker OS drive is not encrypted",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.bitlocker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ca1c6f6f-e4e6-57e7-b607-9ad4cbf57152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9_stmt",
+        "name": "statement",
+        "prose": "BitLocker OS drive is not encrypted"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "BitLocker OS drive encryption method is '%s', should be XTS-AES 128 or 256"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.9.1.4",
+      "title": "BitLocker OS drive recovery information should be backed up to Active Directory",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.9.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.9.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.bitlocker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ca1c6f6f-e4e6-57e7-b607-9ad4cbf57152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9.1.4_stmt",
+        "name": "statement",
+        "prose": "BitLocker OS drive recovery information should be backed up to Active Directory"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.9.2.1",
+      "title": "Deny write access to fixed drives not protected by BitLocker should be enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.9.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.9.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.bitlocker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ca1c6f6f-e4e6-57e7-b607-9ad4cbf57152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9.2.1_stmt",
+        "name": "statement",
+        "prose": "Deny write access to fixed drives not protected by BitLocker should be enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.9.2",
+      "title": "Fixed drive '%s' is not BitLocker encrypted",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.9.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.9.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.bitlocker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ca1c6f6f-e4e6-57e7-b607-9ad4cbf57152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9.2_stmt",
+        "name": "statement",
+        "prose": "Fixed drive '%s' is not BitLocker encrypted"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Fixed drive '%s' encryption method is '%s', should be XTS-AES"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.9.3.1",
+      "title": "Deny write access to removable drives not protected by BitLocker should be enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.9.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.9.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.bitlocker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ca1c6f6f-e4e6-57e7-b607-9ad4cbf57152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9.3.1_stmt",
+        "name": "statement",
+        "prose": "Deny write access to removable drives not protected by BitLocker should be enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.9.3.2",
+      "title": "Deny write access to removable drives configured in another organization should be enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.9.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.9.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.bitlocker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ca1c6f6f-e4e6-57e7-b607-9ad4cbf57152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.9.3.2_stmt",
+        "name": "statement",
+        "prose": "Deny write access to removable drives configured in another organization should be enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_windows_server_2019_modular-encryption_status",
       "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/bitlocker_validation.rego (package cis_windows_server_2019.bitlocker); see the rule body.",
       "props": [
@@ -85,7 +1693,7 @@
       ],
       "links": [
        {
-        "href": "#6226bcb7-615f-5874-a4b7-c965f68e3edb",
+        "href": "#ca1c6f6f-e4e6-57e7-b607-9ad4cbf57152",
         "rel": "implementation"
        }
       ],
@@ -142,7 +1750,7 @@
       ],
       "links": [
        {
-        "href": "#6efed54c-9b7a-588d-acea-450022983da8",
+        "href": "#e327ccd4-e09d-5204-9ea9-99a2926f68f1",
         "rel": "implementation"
        }
       ],
@@ -175,7 +1783,7 @@
       ],
       "links": [
        {
-        "href": "#6efed54c-9b7a-588d-acea-450022983da8",
+        "href": "#e327ccd4-e09d-5204-9ea9-99a2926f68f1",
         "rel": "implementation"
        }
       ],
@@ -208,7 +1816,7 @@
       ],
       "links": [
        {
-        "href": "#6efed54c-9b7a-588d-acea-450022983da8",
+        "href": "#e327ccd4-e09d-5204-9ea9-99a2926f68f1",
         "rel": "implementation"
        }
       ],
@@ -241,7 +1849,7 @@
       ],
       "links": [
        {
-        "href": "#6efed54c-9b7a-588d-acea-450022983da8",
+        "href": "#e327ccd4-e09d-5204-9ea9-99a2926f68f1",
         "rel": "implementation"
        }
       ],
@@ -274,7 +1882,7 @@
       ],
       "links": [
        {
-        "href": "#6efed54c-9b7a-588d-acea-450022983da8",
+        "href": "#e327ccd4-e09d-5204-9ea9-99a2926f68f1",
         "rel": "implementation"
        }
       ],
@@ -307,7 +1915,7 @@
       ],
       "links": [
        {
-        "href": "#6efed54c-9b7a-588d-acea-450022983da8",
+        "href": "#e327ccd4-e09d-5204-9ea9-99a2926f68f1",
         "rel": "implementation"
        }
       ],
@@ -340,7 +1948,7 @@
       ],
       "links": [
        {
-        "href": "#6efed54c-9b7a-588d-acea-450022983da8",
+        "href": "#e327ccd4-e09d-5204-9ea9-99a2926f68f1",
         "rel": "implementation"
        }
       ],
@@ -373,7 +1981,7 @@
       ],
       "links": [
        {
-        "href": "#6efed54c-9b7a-588d-acea-450022983da8",
+        "href": "#e327ccd4-e09d-5204-9ea9-99a2926f68f1",
         "rel": "implementation"
        }
       ],
@@ -406,7 +2014,7 @@
       ],
       "links": [
        {
-        "href": "#6efed54c-9b7a-588d-acea-450022983da8",
+        "href": "#e327ccd4-e09d-5204-9ea9-99a2926f68f1",
         "rel": "implementation"
        }
       ],
@@ -439,7 +2047,7 @@
       ],
       "links": [
        {
-        "href": "#6efed54c-9b7a-588d-acea-450022983da8",
+        "href": "#e327ccd4-e09d-5204-9ea9-99a2926f68f1",
         "rel": "implementation"
        }
       ],
@@ -477,6 +2085,336 @@
     ],
     "controls": [
      {
+      "id": "cis_windows_server_2019_modular-CIS-18.9.26.1.1",
+      "title": "Application event log maximum size is %d KB, should be 32768 KB or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.9.26.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.9.26.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.event_log"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297f6cb5-d24b-5e5b-9077-4d66e0faf352",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.9.26.1.1_stmt",
+        "name": "statement",
+        "prose": "Application event log maximum size is %d KB, should be 32768 KB or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.9.26.1.2",
+      "title": "Application log retention is '%s', should be 'OverwriteAsNeeded'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.9.26.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.9.26.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.event_log"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297f6cb5-d24b-5e5b-9077-4d66e0faf352",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.9.26.1.2_stmt",
+        "name": "statement",
+        "prose": "Application log retention is '%s', should be 'OverwriteAsNeeded'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.9.26.2.1",
+      "title": "Security event log maximum size is %d KB, should be 196608 KB or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.9.26.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.9.26.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.event_log"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297f6cb5-d24b-5e5b-9077-4d66e0faf352",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.9.26.2.1_stmt",
+        "name": "statement",
+        "prose": "Security event log maximum size is %d KB, should be 196608 KB or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.9.26.2.2",
+      "title": "Security log retention is '%s', should be 'OverwriteAsNeeded'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.9.26.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.9.26.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.event_log"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297f6cb5-d24b-5e5b-9077-4d66e0faf352",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.9.26.2.2_stmt",
+        "name": "statement",
+        "prose": "Security log retention is '%s', should be 'OverwriteAsNeeded'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.9.26.3.1",
+      "title": "Setup event log maximum size is %d KB, should be 32768 KB or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.9.26.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.9.26.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.event_log"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297f6cb5-d24b-5e5b-9077-4d66e0faf352",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.9.26.3.1_stmt",
+        "name": "statement",
+        "prose": "Setup event log maximum size is %d KB, should be 32768 KB or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.9.26.3.2",
+      "title": "Setup log retention is '%s', should be 'OverwriteAsNeeded'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.9.26.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.9.26.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.event_log"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297f6cb5-d24b-5e5b-9077-4d66e0faf352",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.9.26.3.2_stmt",
+        "name": "statement",
+        "prose": "Setup log retention is '%s', should be 'OverwriteAsNeeded'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.9.26.4.1",
+      "title": "System event log maximum size is %d KB, should be 32768 KB or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.9.26.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.9.26.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.event_log"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297f6cb5-d24b-5e5b-9077-4d66e0faf352",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.9.26.4.1_stmt",
+        "name": "statement",
+        "prose": "System event log maximum size is %d KB, should be 32768 KB or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.9.26.4.2",
+      "title": "System log retention is '%s', should be 'OverwriteAsNeeded'",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.9.26.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.9.26.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.event_log"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297f6cb5-d24b-5e5b-9077-4d66e0faf352",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.9.26.4.2_stmt",
+        "name": "statement",
+        "prose": "System log retention is '%s', should be 'OverwriteAsNeeded'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.25",
+      "title": "Event Log service must be protected from tampering",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.event_log"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297f6cb5-d24b-5e5b-9077-4d66e0faf352",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.25_stmt",
+        "name": "statement",
+        "prose": "Event Log service must be protected from tampering"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.9.27",
+      "title": "Windows Event Log forwarding is not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.9.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.9.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.event_log"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297f6cb5-d24b-5e5b-9077-4d66e0faf352",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.9.27_stmt",
+        "name": "statement",
+        "prose": "Windows Event Log forwarding is not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_windows_server_2019_modular-event_log_sizes",
       "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/event_log_validation.rego (package cis_windows_server_2019.event_log); see the rule body.",
       "props": [
@@ -496,7 +2434,7 @@
       ],
       "links": [
        {
-        "href": "#cb9b965c-7f9d-5522-9f5d-9d8ebbee9253",
+        "href": "#297f6cb5-d24b-5e5b-9077-4d66e0faf352",
         "rel": "implementation"
        }
       ],
@@ -505,6 +2443,3044 @@
         "id": "cis_windows_server_2019_modular-event_log_sizes_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/event_log_validation.rego (package cis_windows_server_2019.event_log); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_windows_server_2019_modular-local_policies_validation",
+    "class": "rego-module",
+    "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.2: User Rights Assignment",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2019.local_policies"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2019_modular/local_policies_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.1",
+      "title": "'Access Credential Manager as a trusted caller' should be set to No One",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.1_stmt",
+        "name": "statement",
+        "prose": "'Access Credential Manager as a trusted caller' should be set to No One"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.2",
+      "title": "'Access this computer from the network' should include Authenticated Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.2_stmt",
+        "name": "statement",
+        "prose": "'Access this computer from the network' should include Authenticated Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.5",
+      "title": "'Allow log on locally' is not restricted to Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.5_stmt",
+        "name": "statement",
+        "prose": "'Allow log on locally' is not restricted to Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.6",
+      "title": "'Allow log on through Remote Desktop Services' is not restricted to Administrators and Remote Desktop Users",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.6_stmt",
+        "name": "statement",
+        "prose": "'Allow log on through Remote Desktop Services' is not restricted to Administrators and Remote Desktop Users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.7",
+      "title": "'Back up files and directories' is not restricted to Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.7_stmt",
+        "name": "statement",
+        "prose": "'Back up files and directories' is not restricted to Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.11",
+      "title": "'Create symbolic links' is not restricted to Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.11_stmt",
+        "name": "statement",
+        "prose": "'Create symbolic links' is not restricted to Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.13",
+      "title": "'Debug programs' is not restricted to Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.13_stmt",
+        "name": "statement",
+        "prose": "'Debug programs' is not restricted to Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.14",
+      "title": "'Deny access to this computer from the network' does not include Guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.14_stmt",
+        "name": "statement",
+        "prose": "'Deny access to this computer from the network' does not include Guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.15",
+      "title": "'Deny log on as a batch job' does not include Guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.15_stmt",
+        "name": "statement",
+        "prose": "'Deny log on as a batch job' does not include Guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.16",
+      "title": "'Deny log on as a service' does not include Guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.16_stmt",
+        "name": "statement",
+        "prose": "'Deny log on as a service' does not include Guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.17",
+      "title": "'Deny log on locally' does not include Guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.17_stmt",
+        "name": "statement",
+        "prose": "'Deny log on locally' does not include Guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.18",
+      "title": "'Deny log on through Remote Desktop Services' does not include Guests",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.18_stmt",
+        "name": "statement",
+        "prose": "'Deny log on through Remote Desktop Services' does not include Guests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.19",
+      "title": "'Enable computer and user accounts to be trusted for delegation' should be No One (MS only)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.19_stmt",
+        "name": "statement",
+        "prose": "'Enable computer and user accounts to be trusted for delegation' should be No One (MS only)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.21",
+      "title": "'Force shutdown from a remote system' is not restricted to Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.21_stmt",
+        "name": "statement",
+        "prose": "'Force shutdown from a remote system' is not restricted to Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.26",
+      "title": "'Manage auditing and security log' is not restricted to Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.26_stmt",
+        "name": "statement",
+        "prose": "'Manage auditing and security log' is not restricted to Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.32",
+      "title": "'Restore files and directories' is not restricted to Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.32_stmt",
+        "name": "statement",
+        "prose": "'Restore files and directories' is not restricted to Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.33",
+      "title": "'Shut down the system' is not restricted to Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.33_stmt",
+        "name": "statement",
+        "prose": "'Shut down the system' is not restricted to Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.2.35",
+      "title": "'Take ownership of files or other objects' is not restricted to Administrators",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.35"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.35"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.2.35_stmt",
+        "name": "statement",
+        "prose": "'Take ownership of files or other objects' is not restricted to Administrators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.2.1",
+      "title": "Audit: Force audit policy subcategory settings is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.2.1_stmt",
+        "name": "statement",
+        "prose": "Audit: Force audit policy subcategory settings is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.2.2",
+      "title": "Audit: Shut down system immediately if unable to log security audits is not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.local_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#82a5aa07-a84a-5e17-b031-7439f57a4900",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.2.2_stmt",
+        "name": "statement",
+        "prose": "Audit: Shut down system immediately if unable to log security audits is not configured"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_windows_server_2019_modular-registry_validation",
+    "class": "rego-module",
+    "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18: Administrative Templates (Registry)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2019.registry"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2019_modular/registry_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.3.1",
+      "title": "UAC restrictions for local accounts on network logon should be enabled (LocalAccountTokenFilterPolicy = 0)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.3.1_stmt",
+        "name": "statement",
+        "prose": "UAC restrictions for local accounts on network logon should be enabled (LocalAccountTokenFilterPolicy = 0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.3.3",
+      "title": "SMBv1 client driver should be disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.3.3_stmt",
+        "name": "statement",
+        "prose": "SMBv1 client driver should be disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.3.4",
+      "title": "SMBv1 server should be disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.3.4_stmt",
+        "name": "statement",
+        "prose": "SMBv1 server should be disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.3.5",
+      "title": "Structured Exception Handling Overwrite Protection (SEHOP) is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.3.5_stmt",
+        "name": "statement",
+        "prose": "Structured Exception Handling Overwrite Protection (SEHOP) is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.3.7",
+      "title": "WDigest Authentication is enabled (should be disabled to prevent plaintext credential storage)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.3.7_stmt",
+        "name": "statement",
+        "prose": "WDigest Authentication is enabled (should be disabled to prevent plaintext credential storage)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.4.1",
+      "title": "AutoAdminLogon is enabled (should be disabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.4.1_stmt",
+        "name": "statement",
+        "prose": "AutoAdminLogon is enabled (should be disabled)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.4.3",
+      "title": "IPv6 source routing protection is %d, should be 2 (highest protection)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.4.3_stmt",
+        "name": "statement",
+        "prose": "IPv6 source routing protection is %d, should be 2 (highest protection)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.4.4",
+      "title": "IPv4 source routing protection is %d, should be 2 (highest protection)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.4.4_stmt",
+        "name": "statement",
+        "prose": "IPv4 source routing protection is %d, should be 2 (highest protection)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.4.5",
+      "title": "ICMP redirect is enabled (should be disabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.4.5_stmt",
+        "name": "statement",
+        "prose": "ICMP redirect is enabled (should be disabled)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.4.8",
+      "title": "Security log warning level is %d%%, should be 90%% or higher",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.4.8_stmt",
+        "name": "statement",
+        "prose": "Security log warning level is %d%%, should be 90%% or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.4.11",
+      "title": "NetBIOS name release without authentication should be disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.4.11_stmt",
+        "name": "statement",
+        "prose": "NetBIOS name release without authentication should be disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.6.4.1",
+      "title": "NetBIOS node type is B-node (broadcast) - should be P-node or H-node",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.6.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.6.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.6.4.1_stmt",
+        "name": "statement",
+        "prose": "NetBIOS node type is B-node (broadcast) - should be P-node or H-node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.6.8.1",
+      "title": "Insecure guest logons to SMB servers are enabled (should be disabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.6.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.6.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.6.8.1_stmt",
+        "name": "statement",
+        "prose": "Insecure guest logons to SMB servers are enabled (should be disabled)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.6.9.1",
+      "title": "Microsoft Peer-to-Peer Networking Services should be disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.6.9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.6.9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.6.9.1_stmt",
+        "name": "statement",
+        "prose": "Microsoft Peer-to-Peer Networking Services should be disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.6.19.2.1",
+      "title": "Link-Local Multicast Name Resolution (LLMNR) should be disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.6.19.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.6.19.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.6.19.2.1_stmt",
+        "name": "statement",
+        "prose": "Link-Local Multicast Name Resolution (LLMNR) should be disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.8.36.1",
+      "title": "RDP encryption level is %d, should be 3 (High)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.8.36.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.8.36.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.8.36.1_stmt",
+        "name": "statement",
+        "prose": "RDP encryption level is %d, should be 3 (High)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.8.36.2",
+      "title": "Network Level Authentication (NLA) for RDP is not required",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.8.36.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.8.36.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.8.36.2_stmt",
+        "name": "statement",
+        "prose": "Network Level Authentication (NLA) for RDP is not required"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.9.17",
+      "title": "Allow Default Credentials delegation is enabled (should be disabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.9.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.9.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.9.17_stmt",
+        "name": "statement",
+        "prose": "Allow Default Credentials delegation is enabled (should be disabled)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.12.1",
+      "title": "AutoRun should be disabled for all drives",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.12.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.12.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.12.1_stmt",
+        "name": "statement",
+        "prose": "AutoRun should be disabled for all drives"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.12.2",
+      "title": "AutoPlay should be disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.12.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.12.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.12.2_stmt",
+        "name": "statement",
+        "prose": "AutoPlay should be disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.15.1",
+      "title": "Windows Error Reporting should be disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.15.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.15.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.15.1_stmt",
+        "name": "statement",
+        "prose": "Windows Error Reporting should be disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.57.1",
+      "title": "Device installation restrictions should be enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.57.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.57.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.registry"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2de40555-73cb-51ed-baba-12ca65a8815c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.57.1_stmt",
+        "name": "statement",
+        "prose": "Device installation restrictions should be enabled"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_windows_server_2019_modular-security_options_validation",
+    "class": "rego-module",
+    "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.3: Security Options",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2019.security_options"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2019_modular/security_options_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.1.1",
+      "title": "Built-in Administrator account should be disabled (or renamed)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.1.1_stmt",
+        "name": "statement",
+        "prose": "Built-in Administrator account should be disabled (or renamed)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.1.2",
+      "title": "Microsoft accounts should be blocked ('Users can't add or log on with Microsoft accounts')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.1.2_stmt",
+        "name": "statement",
+        "prose": "Microsoft accounts should be blocked ('Users can't add or log on with Microsoft accounts')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.1.3",
+      "title": "Guest account should be disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.1.3_stmt",
+        "name": "statement",
+        "prose": "Guest account should be disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.1.4",
+      "title": "'Limit local account use of blank passwords to console logon only' is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.1.4_stmt",
+        "name": "statement",
+        "prose": "'Limit local account use of blank passwords to console logon only' is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.1.5",
+      "title": "Built-in Administrator account should be renamed from default name",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.1.5_stmt",
+        "name": "statement",
+        "prose": "Built-in Administrator account should be renamed from default name"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.1.6",
+      "title": "Built-in Guest account should be renamed from default name",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.1.6_stmt",
+        "name": "statement",
+        "prose": "Built-in Guest account should be renamed from default name"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.7.1",
+      "title": "'Do not require CTRL+ALT+DEL' should be disabled (CTRL+ALT+DEL should be required)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.7.1_stmt",
+        "name": "statement",
+        "prose": "'Do not require CTRL+ALT+DEL' should be disabled (CTRL+ALT+DEL should be required)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.7.2",
+      "title": "'Don't display last signed-in' is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.7.2_stmt",
+        "name": "statement",
+        "prose": "'Don't display last signed-in' is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.7.4",
+      "title": "Machine inactivity limit is %d seconds, should be 900 or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.7.4_stmt",
+        "name": "statement",
+        "prose": "Machine inactivity limit is %d seconds, should be 900 or less"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.7.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Machine inactivity limit is 0 (disabled), should be 900 or less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.7.7",
+      "title": "Password expiry warning is %d days, should be 5 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.7.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.7.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.7.7_stmt",
+        "name": "statement",
+        "prose": "Password expiry warning is %d days, should be 5 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.11.1",
+      "title": "'Allow Local System to use computer identity for NTLM' is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.11.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.11.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.11.1_stmt",
+        "name": "statement",
+        "prose": "'Allow Local System to use computer identity for NTLM' is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.11.5",
+      "title": "LAN Manager authentication level is %d, should be 5 (NTLMv2 only, refuse LM and NTLM)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.11.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.11.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.11.5_stmt",
+        "name": "statement",
+        "prose": "LAN Manager authentication level is %d, should be 5 (NTLMv2 only, refuse LM and NTLM)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.11.6",
+      "title": "LDAP client signing should be set to Negotiate signing or Require signing",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.11.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.11.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.11.6_stmt",
+        "name": "statement",
+        "prose": "LDAP client signing should be set to Negotiate signing or Require signing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.11.7",
+      "title": "NTLM SSP minimum session security for NTLM-based clients should require NTLMv2 and 128-bit encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.11.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.11.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.11.7_stmt",
+        "name": "statement",
+        "prose": "NTLM SSP minimum session security for NTLM-based clients should require NTLMv2 and 128-bit encryption"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.11.8",
+      "title": "NTLM SSP minimum session security for NTLM-based servers should require NTLMv2 and 128-bit encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.11.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.11.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.11.8_stmt",
+        "name": "statement",
+        "prose": "NTLM SSP minimum session security for NTLM-based servers should require NTLMv2 and 128-bit encryption"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.15.1",
+      "title": "'Require case insensitivity for non-Windows subsystems' is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.15.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.15.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.15.1_stmt",
+        "name": "statement",
+        "prose": "'Require case insensitivity for non-Windows subsystems' is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.17.1",
+      "title": "UAC Admin Approval Mode for Built-in Administrator is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.17.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.17.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.17.1_stmt",
+        "name": "statement",
+        "prose": "UAC Admin Approval Mode for Built-in Administrator is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.17.2",
+      "title": "UAC admin elevation behavior is %d, should be 2 (prompt for consent on secure desktop)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.17.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.17.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.17.2_stmt",
+        "name": "statement",
+        "prose": "UAC admin elevation behavior is %d, should be 2 (prompt for consent on secure desktop)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.17.3",
+      "title": "UAC standard user elevation should be set to automatically deny",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.17.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.17.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.17.3_stmt",
+        "name": "statement",
+        "prose": "UAC standard user elevation should be set to automatically deny"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.17.4",
+      "title": "UAC 'Detect application installations and prompt for elevation' is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.17.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.17.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.17.4_stmt",
+        "name": "statement",
+        "prose": "UAC 'Detect application installations and prompt for elevation' is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.17.8",
+      "title": "UAC 'Run all administrators in Admin Approval Mode' is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.17.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.17.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.17.8_stmt",
+        "name": "statement",
+        "prose": "UAC 'Run all administrators in Admin Approval Mode' is not enabled"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_windows_server_2019_modular-system_services_validation",
+    "class": "rego-module",
+    "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 5: System Services",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_windows_server_2019.system_services"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/windows_server_2019_modular/system_services_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.1",
+      "title": "Bluetooth Audio Gateway Service (BTAGService) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.1_stmt",
+        "name": "statement",
+        "prose": "Bluetooth Audio Gateway Service (BTAGService) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.2",
+      "title": "Bluetooth Support Service (bthserv) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.2_stmt",
+        "name": "statement",
+        "prose": "Bluetooth Support Service (bthserv) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.3",
+      "title": "Computer Browser service (Browser) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.3_stmt",
+        "name": "statement",
+        "prose": "Computer Browser service (Browser) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.4",
+      "title": "Downloaded Maps Manager (MapsBroker) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.4_stmt",
+        "name": "statement",
+        "prose": "Downloaded Maps Manager (MapsBroker) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.5",
+      "title": "Geolocation Service (lfsvc) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.5_stmt",
+        "name": "statement",
+        "prose": "Geolocation Service (lfsvc) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.6",
+      "title": "IIS Admin Service should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.6_stmt",
+        "name": "statement",
+        "prose": "IIS Admin Service should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.7",
+      "title": "Infrared Monitor Service (irmon) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.7_stmt",
+        "name": "statement",
+        "prose": "Infrared Monitor Service (irmon) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.8",
+      "title": "Internet Connection Sharing (SharedAccess) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.8_stmt",
+        "name": "statement",
+        "prose": "Internet Connection Sharing (SharedAccess) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.9",
+      "title": "Link-Layer Topology Discovery Mapper (lltdsvc) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.9_stmt",
+        "name": "statement",
+        "prose": "Link-Layer Topology Discovery Mapper (lltdsvc) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.10",
+      "title": "Windows Subsystem for Linux (LxssManager) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.10_stmt",
+        "name": "statement",
+        "prose": "Windows Subsystem for Linux (LxssManager) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.11",
+      "title": "Microsoft FTP Service (FTPSVC) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.11_stmt",
+        "name": "statement",
+        "prose": "Microsoft FTP Service (FTPSVC) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.12",
+      "title": "Microsoft iSCSI Initiator (MSiSCSI) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.12_stmt",
+        "name": "statement",
+        "prose": "Microsoft iSCSI Initiator (MSiSCSI) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.13",
+      "title": "OpenSSH SSH Server (sshd) should be Disabled unless required (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.13_stmt",
+        "name": "statement",
+        "prose": "OpenSSH SSH Server (sshd) should be Disabled unless required (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.14",
+      "title": "Peer Name Resolution Protocol (PNRPsvc) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.14_stmt",
+        "name": "statement",
+        "prose": "Peer Name Resolution Protocol (PNRPsvc) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.15",
+      "title": "Peer Networking Grouping (p2psvc) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.15_stmt",
+        "name": "statement",
+        "prose": "Peer Networking Grouping (p2psvc) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.16",
+      "title": "Remote Desktop Configuration (SessionEnv) should not be Automatic unless RDS is required",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.16_stmt",
+        "name": "statement",
+        "prose": "Remote Desktop Configuration (SessionEnv) should not be Automatic unless RDS is required"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.17",
+      "title": "Remote Procedure Call Locator (RpcLocator) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.17_stmt",
+        "name": "statement",
+        "prose": "Remote Procedure Call Locator (RpcLocator) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.18",
+      "title": "Remote Registry service should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.18_stmt",
+        "name": "statement",
+        "prose": "Remote Registry service should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.19",
+      "title": "Routing and Remote Access service is Running (should be Disabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.19_stmt",
+        "name": "statement",
+        "prose": "Routing and Remote Access service is Running (should be Disabled)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.20",
+      "title": "SMBv1 server is enabled (should be disabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.20_stmt",
+        "name": "statement",
+        "prose": "SMBv1 server is enabled (should be disabled)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.21",
+      "title": "Simple TCP/IP Services (simptcp) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.21_stmt",
+        "name": "statement",
+        "prose": "Simple TCP/IP Services (simptcp) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.22",
+      "title": "SNMP Service should be Disabled unless required (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.22_stmt",
+        "name": "statement",
+        "prose": "SNMP Service should be Disabled unless required (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.23",
+      "title": "Telnet service (TlntSvr) should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.23_stmt",
+        "name": "statement",
+        "prose": "Telnet service (TlntSvr) should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.24",
+      "title": "TFTP Daemon should be Disabled (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.24_stmt",
+        "name": "statement",
+        "prose": "TFTP Daemon should be Disabled (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.25",
+      "title": "World Wide Web Publishing Service (W3SVC) should be Disabled unless IIS required (current: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.25_stmt",
+        "name": "statement",
+        "prose": "World Wide Web Publishing Service (W3SVC) should be Disabled unless IIS required (current: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.26",
+      "title": "Xbox Live Auth Manager (XblAuthManager) should be Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a819f18c-4ca9-5108-8ce6-520a17d3820b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.26_stmt",
+        "name": "statement",
+        "prose": "Xbox Live Auth Manager (XblAuthManager) should be Disabled"
        }
       ],
       "class": "security"
@@ -534,6 +5510,549 @@
     ],
     "controls": [
      {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.42.1",
+      "title": "Windows Defender Antivirus is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.42.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.42.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.1_stmt",
+        "name": "statement",
+        "prose": "Windows Defender Antivirus is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.42.5.1",
+      "title": "Windows Defender real-time protection is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.42.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.42.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.5.1_stmt",
+        "name": "statement",
+        "prose": "Windows Defender real-time protection is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.42.5.2",
+      "title": "Windows Defender behavior monitoring is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.42.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.42.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.5.2_stmt",
+        "name": "statement",
+        "prose": "Windows Defender behavior monitoring is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.42.5.3",
+      "title": "Windows Defender scanning of downloaded files and attachments is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.42.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.42.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.5.3_stmt",
+        "name": "statement",
+        "prose": "Windows Defender scanning of downloaded files and attachments is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.42.5.4",
+      "title": "Windows Defender file and program activity monitoring is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.42.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.42.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.5.4_stmt",
+        "name": "statement",
+        "prose": "Windows Defender file and program activity monitoring is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.42.6",
+      "title": "Windows Defender signature update interval is %d hours, should be 8 or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.42.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.42.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.6_stmt",
+        "name": "statement",
+        "prose": "Windows Defender signature update interval is %d hours, should be 8 or less"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Windows Defender signatures are %d days old, should be less than 7 days"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.42.7",
+      "title": "Windows Defender cloud-based protection (MAPS) is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.42.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.42.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.7_stmt",
+        "name": "statement",
+        "prose": "Windows Defender cloud-based protection (MAPS) is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.42.7.1",
+      "title": "Windows Defender 'Block at First Sight' is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.42.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.42.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.7.1_stmt",
+        "name": "statement",
+        "prose": "Windows Defender 'Block at First Sight' is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.42.3.1",
+      "title": "Attack Surface Reduction (ASR) rules are not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.42.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.42.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.3.1_stmt",
+        "name": "statement",
+        "prose": "Attack Surface Reduction (ASR) rules are not enabled"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Only %d ASR rules are configured, expected at least 3"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.42.3.2",
+      "title": "Controlled Folder Access is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.42.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.42.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.3.2_stmt",
+        "name": "statement",
+        "prose": "Controlled Folder Access is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-18.10.42.3.3",
+      "title": "Network Protection mode is '%s', should be Block or AuditMode",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 18.10.42.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 18.10.42.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.3.3_stmt",
+        "name": "statement",
+        "prose": "Network Protection mode is '%s', should be Block or AuditMode"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-18.10.42.3.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Network Protection is in AuditMode - consider enabling Block mode for full protection"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-9.1.1",
+      "title": "Windows Firewall Domain Profile is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 9.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 9.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-9.1.1_stmt",
+        "name": "statement",
+        "prose": "Windows Firewall Domain Profile is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-9.2.1",
+      "title": "Windows Firewall Private Profile is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 9.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 9.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-9.2.1_stmt",
+        "name": "statement",
+        "prose": "Windows Firewall Private Profile is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-9.3.1",
+      "title": "Windows Firewall Public Profile is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 9.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 9.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-9.3.1_stmt",
+        "name": "statement",
+        "prose": "Windows Firewall Public Profile is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-9.1.2",
+      "title": "Firewall Domain inbound default is '%s', should be Block",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 9.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 9.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-9.1.2_stmt",
+        "name": "statement",
+        "prose": "Firewall Domain inbound default is '%s', should be Block"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-9.3.2",
+      "title": "Firewall Public inbound default is '%s', should be Block",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 9.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 9.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.windows_defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-9.3.2_stmt",
+        "name": "statement",
+        "prose": "Firewall Public inbound default is '%s', should be Block"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_windows_server_2019_modular-defender_status",
       "title": "Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/windows_defender_validation.rego (package cis_windows_server_2019.windows_defender); see the rule body.",
       "props": [
@@ -553,7 +6072,7 @@
       ],
       "links": [
        {
-        "href": "#77e2143a-1286-5de1-af43-a65e2893708b",
+        "href": "#c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
         "rel": "implementation"
        }
       ],
@@ -572,7 +6091,41 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "6226bcb7-615f-5874-a4b7-c965f68e3edb",
+     "uuid": "e7cd15d5-0cca-50c7-a80e-10dc2827efc7",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 1: Account Policies",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.account_policies"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/windows_server_2019_modular/account_policies_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "dc34ccdb-1f18-53c4-ab40-ca19d811552b",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 17: Advanced Audit Policy Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.advanced_audit"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/windows_server_2019_modular/advanced_audit_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "ca1c6f6f-e4e6-57e7-b607-9ad4cbf57152",
      "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.9: BitLocker Drive Encryption",
      "props": [
       {
@@ -583,13 +6136,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/windows_server_2019_modular/bitlocker_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/windows_server_2019_modular/bitlocker_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "6efed54c-9b7a-588d-acea-450022983da8",
+     "uuid": "e327ccd4-e09d-5204-9ea9-99a2926f68f1",
      "title": "CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Complete Validation",
      "props": [
       {
@@ -600,13 +6153,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "cb9b965c-7f9d-5522-9f5d-9d8ebbee9253",
+     "uuid": "297f6cb5-d24b-5e5b-9077-4d66e0faf352",
      "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.9: Event Log Configuration",
      "props": [
       {
@@ -617,13 +6170,81 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/windows_server_2019_modular/event_log_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/windows_server_2019_modular/event_log_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "77e2143a-1286-5de1-af43-a65e2893708b",
+     "uuid": "82a5aa07-a84a-5e17-b031-7439f57a4900",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.2: User Rights Assignment",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.local_policies"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/windows_server_2019_modular/local_policies_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "2de40555-73cb-51ed-baba-12ca65a8815c",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18: Administrative Templates (Registry)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.registry"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/windows_server_2019_modular/registry_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b81d3560-3e50-5a8a-afc1-30e49876a5b6",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.3: Security Options",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.security_options"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/windows_server_2019_modular/security_options_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a819f18c-4ca9-5108-8ce6-520a17d3820b",
+     "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 5: System Services",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_windows_server_2019.system_services"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/windows_server_2019_modular/system_services_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "c1a966bf-65d8-5d81-ad40-8d53a03fc9fa",
      "title": "CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.42: Windows Defender Antivirus",
      "props": [
       {
@@ -634,7 +6255,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/windows_server_2019_modular/windows_defender_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/windows_server_2019_modular/windows_defender_validation.rego",
        "media-type": "text/plain"
       }
      ]

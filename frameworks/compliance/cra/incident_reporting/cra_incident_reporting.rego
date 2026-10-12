@@ -5,6 +5,14 @@
 #   framework: cra
 #   source: eu
 #   domains: [eu, product-security]
+#   coverage:
+#     checks: 10
+#     cited: 9
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cra.incident_reporting
 
 import rego.v1
@@ -146,3 +154,11 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": compliant,
 }
+#   coverage:
+#     checks: 10
+#     cited: 9
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

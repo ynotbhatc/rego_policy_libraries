@@ -5,6 +5,14 @@
 #   framework: cis_windows_server_2019_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_windows_server_2019.bitlocker
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.9: BitLocker Drive Encryption
@@ -130,3 +138,11 @@ report := {
 	"section": "18.10.9 BitLocker Drive Encryption",
 	"benchmark": "CIS Windows Server 2019 v4.0.0",
 }
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: cis_containers
 #   source: cis
 #   domains: [container]
+#   coverage:
+#     checks: 14
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis.docker.host
 
 import rego.v1
@@ -131,4 +139,12 @@ docker_host_compliance := {
     "docker_service_auditing": docker_service_auditing,
     "docker_socket_auditing": docker_socket_auditing,
     "overall_compliant": docker_host_compliant
+#   coverage:
+#     checks: 14
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

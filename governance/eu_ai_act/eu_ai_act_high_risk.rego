@@ -5,6 +5,14 @@
 #   framework: eu_ai_act
 #   source: eu
 #   domains: [ai, eu]
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package eu_ai_act.high_risk
 
 import rego.v1
@@ -349,3 +357,11 @@ compliance_report := {
 		"Article 17 — Quality Management System",
 	],
 }
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

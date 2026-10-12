@@ -5,6 +5,14 @@
 #   framework: stig_windows_10
 #   source: disa
 #   domains: [windows]
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package stig.windows_10
 
 # DISA STIG for windows 10 - Simplified Complete Assessment
@@ -120,3 +128,11 @@ stig_assessment := {
 }
 
 compliance_status := "Compliant" if compliant else := "Non-Compliant"
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

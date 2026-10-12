@@ -24,6 +24,14 @@
 #   framework: cis_saas
 #   source: cis
 #   domains: [saas, m365]
+#   coverage:
+#     checks: 10
+#     cited: 5
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_m365.identity
 
 import rego.v1
@@ -119,3 +127,11 @@ compliance_report := {
     "violation_count": count(violations),
     "compliant": compliant,
 }
+#   coverage:
+#     checks: 10
+#     cited: 5
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

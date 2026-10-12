@@ -5,6 +5,14 @@
 #   framework: cis_ubuntu_22_04
 #   source: cis
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_ubuntu_22_04
 
 # CIS Ubuntu 22.04 LTS Benchmark - Complete Compliance Assessment
@@ -220,3 +228,11 @@ l2_compliant if {
 }
 
 default l2_compliant := false
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: cmmc
 #   source: dod
 #   domains: [us-federal, defense]
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cmmc.personnel_security
 
 import rego.v1
@@ -91,3 +99,11 @@ compliance_report := {
     "compliant": compliant,
     "violations": all_violations,
 }
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

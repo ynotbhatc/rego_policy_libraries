@@ -9,6 +9,14 @@
 #   framework: stig_windows_11
 #   source: disa
 #   domains: [windows]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.windows_11.main
 
 import data.stig.windows_11
@@ -67,3 +75,11 @@ compliance_report := object.union(_upstream, {
 compliant := _compliant
 
 violations := _open_findings
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

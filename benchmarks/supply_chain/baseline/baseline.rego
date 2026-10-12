@@ -11,6 +11,14 @@
 #   framework: supply_chain_baseline
 #   source: aac
 #   domains: [supply-chain]
+#   coverage:
+#     checks: 1
+#     cited: 0
+#     density: stub
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package supply_chain.baseline
 
 import rego.v1
@@ -48,3 +56,11 @@ compliance_report := {
 default pct := 0.0
 
 pct := round((passed_controls / total_controls) * 1000) / 10 if total_controls > 0
+#   coverage:
+#     checks: 1
+#     cited: 0
+#     density: stub
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

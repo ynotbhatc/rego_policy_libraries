@@ -5,6 +5,14 @@
 #   framework: nist_ai_rmf
 #   source: nist
 #   domains: [us-federal, ai]
+#   coverage:
+#     checks: 5
+#     cited: 5
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nist.ai_rmf.main
 
 import rego.v1
@@ -52,3 +60,11 @@ compliance_report := {
     "total_controls":  total_controls,
     "function_summary": function_summary,
 }
+#   coverage:
+#     checks: 5
+#     cited: 5
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: ami
 #   source: nist
 #   domains: [ot, energy, smart-grid]
+#   coverage:
+#     checks: 1
+#     cited: 0
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package ami.device.compliance
 
 import rego.v1
@@ -246,3 +254,11 @@ compliance_report := {
     "per_device_violations": device_violations,
     "all_violations": all_violations,
 }
+#   coverage:
+#     checks: 1
+#     cited: 0
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

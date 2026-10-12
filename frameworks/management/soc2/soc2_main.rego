@@ -8,6 +8,14 @@
 #   framework: soc2
 #   source: aicpa
 #   domains: [assurance]
+#   coverage:
+#     checks: 3
+#     cited: 0
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package soc2.main
 
 import rego.v1
@@ -388,4 +396,12 @@ soc2_detailed_findings := findings if {
             "applications_services": applications_services.applications_services_findings
         }
     }
+#   coverage:
+#     checks: 3
+#     cited: 0
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0
 }

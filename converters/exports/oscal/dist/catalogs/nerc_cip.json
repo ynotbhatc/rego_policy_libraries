@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "a6e59ee9-5343-5903-aeb3-6c80ea2bd0a5",
+  "uuid": "8898f0cc-efb9-5f6a-8a48-00de8ee60dfc",
   "metadata": {
    "title": "Rego Policy Libraries — nerc_cip (CIP-002-5.1a: BES Cyber System Categorization)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#8a789b9a-fe3c-592a-b2b1-656bda938024",
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#8a789b9a-fe3c-592a-b2b1-656bda938024",
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
         "rel": "implementation"
        }
       ],
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#8a789b9a-fe3c-592a-b2b1-656bda938024",
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
         "rel": "implementation"
        }
       ],
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#8a789b9a-fe3c-592a-b2b1-656bda938024",
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
         "rel": "implementation"
        }
       ],
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#8a789b9a-fe3c-592a-b2b1-656bda938024",
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
         "rel": "implementation"
        }
       ],
@@ -226,6 +226,171 @@
         "id": "nerc_cip-nerc_cip.cip_002-5_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_002_asset_identification.rego (package nerc_cip.cip_002); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_002-6",
+      "title": "R1 categorization",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_002#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_002#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_002"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_002-6_stmt",
+        "name": "statement",
+        "prose": "R1 categorization"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_002-7",
+      "title": "R1 criteria documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_002#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_002#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_002"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_002-7_stmt",
+        "name": "statement",
+        "prose": "R1 criteria documented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_002-8",
+      "title": "R1 identification",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_002#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_002#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_002"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_002-8_stmt",
+        "name": "statement",
+        "prose": "R1 identification"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_002-9",
+      "title": "R2 annual review",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_002#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_002#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_002"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_002-9_stmt",
+        "name": "statement",
+        "prose": "R2 annual review"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_002-10",
+      "title": "R3 senior manager approval",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_002#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_002#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_002"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_002-10_stmt",
+        "name": "statement",
+        "prose": "R3 senior manager approval"
        }
       ],
       "class": "ot"
@@ -250,59 +415,59 @@
       ],
       "links": [
        {
-        "href": "#8a789b9a-fe3c-592a-b2b1-656bda938024",
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
         "rel": "implementation"
        },
        {
-        "href": "#a6373ff4-7997-59f6-8410-47d2836a9468",
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
         "rel": "implementation"
        },
        {
-        "href": "#59fd8fc8-0a0d-5079-9a2a-81ae2af50267",
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
         "rel": "implementation"
        },
        {
-        "href": "#53b834aa-ffa7-541b-b997-6ac88cadd9ca",
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
         "rel": "implementation"
        },
        {
-        "href": "#4e7c75fa-60bf-5c57-b1cf-0bf93da9b8dc",
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
         "rel": "implementation"
        },
        {
-        "href": "#1789f1e1-2d49-58dd-a913-370f38d26204",
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
         "rel": "implementation"
        },
        {
-        "href": "#b91b4a2a-c525-54dd-81e0-0389e6ae7145",
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
         "rel": "implementation"
        },
        {
-        "href": "#61cc183c-ba62-5913-bf9c-3fdf8d8fa378",
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
         "rel": "implementation"
        },
        {
-        "href": "#f8b10441-a792-5eed-bd43-fc3555243422",
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
         "rel": "implementation"
        },
        {
-        "href": "#eb6bc9dc-e189-53ab-9f34-6dd30faf987c",
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
         "rel": "implementation"
        },
        {
-        "href": "#3bc1b19e-3317-58a2-b6ab-e38b6ee528ee",
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
         "rel": "implementation"
        },
        {
-        "href": "#e7f6bd26-e3dd-51e0-b13b-d8fdce58fbda",
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
         "rel": "implementation"
        },
        {
-        "href": "#c00be430-ab77-5fd1-820f-8feb4ad35706",
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
         "rel": "implementation"
        },
        {
-        "href": "#7ef4e1c2-c756-5976-b9d9-a9b201c11769",
+        "href": "#069c4cd2-bfbd-5525-a90a-3e66df4886a7",
         "rel": "implementation"
        }
       ],
@@ -400,7 +565,7 @@
       ],
       "links": [
        {
-        "href": "#8a789b9a-fe3c-592a-b2b1-656bda938024",
+        "href": "#d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
         "rel": "implementation"
        }
       ],
@@ -457,7 +622,7 @@
       ],
       "links": [
        {
-        "href": "#a6373ff4-7997-59f6-8410-47d2836a9468",
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
         "rel": "implementation"
        }
       ],
@@ -490,7 +655,7 @@
       ],
       "links": [
        {
-        "href": "#a6373ff4-7997-59f6-8410-47d2836a9468",
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
         "rel": "implementation"
        }
       ],
@@ -523,7 +688,7 @@
       ],
       "links": [
        {
-        "href": "#a6373ff4-7997-59f6-8410-47d2836a9468",
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
         "rel": "implementation"
        }
       ],
@@ -556,7 +721,7 @@
       ],
       "links": [
        {
-        "href": "#a6373ff4-7997-59f6-8410-47d2836a9468",
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
         "rel": "implementation"
        }
       ],
@@ -589,7 +754,7 @@
       ],
       "links": [
        {
-        "href": "#a6373ff4-7997-59f6-8410-47d2836a9468",
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
         "rel": "implementation"
        }
       ],
@@ -598,6 +763,369 @@
         "id": "nerc_cip-nerc_cip.cip_003-5_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_003_security_management.rego (package nerc_cip.cip_003); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_003-6",
+      "title": "R1 cip senior manager",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_003#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_003#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_003-6_stmt",
+        "name": "statement",
+        "prose": "R1 cip senior manager"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_003-7",
+      "title": "R1 delegation documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_003#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_003#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_003-7_stmt",
+        "name": "statement",
+        "prose": "R1 delegation documented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_003-8",
+      "title": "R2 policies established",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_003#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_003#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_003-8_stmt",
+        "name": "statement",
+        "prose": "R2 policies established"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_003-9",
+      "title": "R2 policy areas covered",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_003#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_003#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_003-9_stmt",
+        "name": "statement",
+        "prose": "R2 policy areas covered"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_003-10",
+      "title": "R2 policy review current",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_003#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_003#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_003-10_stmt",
+        "name": "statement",
+        "prose": "R2 policy review current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_003-11",
+      "title": "R3 low impact plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_003#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_003#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_003-11_stmt",
+        "name": "statement",
+        "prose": "R3 low impact plan"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_003-12",
+      "title": "R3 low impact plan reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_003#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_003#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_003-12_stmt",
+        "name": "statement",
+        "prose": "R3 low impact plan reviewed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_003-13",
+      "title": "R4 removable media controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_003#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_003#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_003-13_stmt",
+        "name": "statement",
+        "prose": "R4 removable media controls"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_003-14",
+      "title": "R4 transient asset controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_003#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_003#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_003-14_stmt",
+        "name": "statement",
+        "prose": "R4 transient asset controls"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_003-15",
+      "title": "R4 transient asset policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_003#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_003#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_003-15_stmt",
+        "name": "statement",
+        "prose": "R4 transient asset policy"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_003-16",
+      "title": "R5 information sharing plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_003#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_003#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3fe6446-91a9-5379-81a1-cf1e4020382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_003-16_stmt",
+        "name": "statement",
+        "prose": "R5 information sharing plan"
        }
       ],
       "class": "ot"
@@ -646,7 +1174,7 @@
       ],
       "links": [
        {
-        "href": "#59fd8fc8-0a0d-5079-9a2a-81ae2af50267",
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
         "rel": "implementation"
        }
       ],
@@ -679,7 +1207,7 @@
       ],
       "links": [
        {
-        "href": "#59fd8fc8-0a0d-5079-9a2a-81ae2af50267",
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
         "rel": "implementation"
        }
       ],
@@ -712,7 +1240,7 @@
       ],
       "links": [
        {
-        "href": "#59fd8fc8-0a0d-5079-9a2a-81ae2af50267",
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
         "rel": "implementation"
        }
       ],
@@ -745,7 +1273,7 @@
       ],
       "links": [
        {
-        "href": "#59fd8fc8-0a0d-5079-9a2a-81ae2af50267",
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
         "rel": "implementation"
        }
       ],
@@ -778,7 +1306,7 @@
       ],
       "links": [
        {
-        "href": "#59fd8fc8-0a0d-5079-9a2a-81ae2af50267",
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
         "rel": "implementation"
        }
       ],
@@ -811,7 +1339,7 @@
       ],
       "links": [
        {
-        "href": "#59fd8fc8-0a0d-5079-9a2a-81ae2af50267",
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
         "rel": "implementation"
        }
       ],
@@ -844,7 +1372,7 @@
       ],
       "links": [
        {
-        "href": "#59fd8fc8-0a0d-5079-9a2a-81ae2af50267",
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
         "rel": "implementation"
        }
       ],
@@ -877,7 +1405,7 @@
       ],
       "links": [
        {
-        "href": "#59fd8fc8-0a0d-5079-9a2a-81ae2af50267",
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
         "rel": "implementation"
        }
       ],
@@ -886,6 +1414,369 @@
         "id": "nerc_cip-nerc_cip.cip_004-8_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_004_personnel_training.rego (package nerc_cip.cip_004); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_004-9",
+      "title": "R1 awareness current",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_004#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_004#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_004"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_004-9_stmt",
+        "name": "statement",
+        "prose": "R1 awareness current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_004-10",
+      "title": "R1 security awareness program",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_004#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_004#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_004"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_004-10_stmt",
+        "name": "statement",
+        "prose": "R1 security awareness program"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_004-11",
+      "title": "R2 records maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_004#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_004#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_004"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_004-11_stmt",
+        "name": "statement",
+        "prose": "R2 records maintained"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_004-12",
+      "title": "R2 training completed",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_004#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_004#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_004"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_004-12_stmt",
+        "name": "statement",
+        "prose": "R2 training completed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_004-13",
+      "title": "R2 training program",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_004#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_004#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_004"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_004-13_stmt",
+        "name": "statement",
+        "prose": "R2 training program"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_004-14",
+      "title": "R3 pra before access",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_004#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_004#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_004"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_004-14_stmt",
+        "name": "statement",
+        "prose": "R3 pra before access"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_004-15",
+      "title": "R3 pra current",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_004#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_004#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_004"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_004-15_stmt",
+        "name": "statement",
+        "prose": "R3 pra current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_004-16",
+      "title": "R4 access authorized",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_004#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_004#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_004"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_004-16_stmt",
+        "name": "statement",
+        "prose": "R4 access authorized"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_004-17",
+      "title": "R4 access reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_004#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_004#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_004"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_004-17_stmt",
+        "name": "statement",
+        "prose": "R4 access reviewed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_004-18",
+      "title": "R4 need to know verified",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_004#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_004#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_004"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_004-18_stmt",
+        "name": "statement",
+        "prose": "R4 need to know verified"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_004-19",
+      "title": "R5 revocation timely",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_004#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_004#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_004"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_004-19_stmt",
+        "name": "statement",
+        "prose": "R5 revocation timely"
        }
       ],
       "class": "ot"
@@ -910,7 +1801,7 @@
       ],
       "links": [
        {
-        "href": "#59fd8fc8-0a0d-5079-9a2a-81ae2af50267",
+        "href": "#d02533c5-2795-5f5f-b976-edb4edab89c7",
         "rel": "implementation"
        }
       ],
@@ -967,7 +1858,7 @@
       ],
       "links": [
        {
-        "href": "#53b834aa-ffa7-541b-b997-6ac88cadd9ca",
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
         "rel": "implementation"
        }
       ],
@@ -1000,7 +1891,7 @@
       ],
       "links": [
        {
-        "href": "#53b834aa-ffa7-541b-b997-6ac88cadd9ca",
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
         "rel": "implementation"
        }
       ],
@@ -1033,7 +1924,7 @@
       ],
       "links": [
        {
-        "href": "#53b834aa-ffa7-541b-b997-6ac88cadd9ca",
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
         "rel": "implementation"
        }
       ],
@@ -1066,7 +1957,7 @@
       ],
       "links": [
        {
-        "href": "#53b834aa-ffa7-541b-b997-6ac88cadd9ca",
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
         "rel": "implementation"
        }
       ],
@@ -1099,7 +1990,7 @@
       ],
       "links": [
        {
-        "href": "#53b834aa-ffa7-541b-b997-6ac88cadd9ca",
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
         "rel": "implementation"
        }
       ],
@@ -1132,7 +2023,7 @@
       ],
       "links": [
        {
-        "href": "#53b834aa-ffa7-541b-b997-6ac88cadd9ca",
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
         "rel": "implementation"
        }
       ],
@@ -1165,7 +2056,7 @@
       ],
       "links": [
        {
-        "href": "#53b834aa-ffa7-541b-b997-6ac88cadd9ca",
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
         "rel": "implementation"
        }
       ],
@@ -1198,7 +2089,7 @@
       ],
       "links": [
        {
-        "href": "#53b834aa-ffa7-541b-b997-6ac88cadd9ca",
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
         "rel": "implementation"
        }
       ],
@@ -1207,6 +2098,369 @@
         "id": "nerc_cip-nerc_cip.cip_005-8_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_005_electronic_security.rego (package nerc_cip.cip_005); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_005-9",
+      "title": "R1 1 systems in esp",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_005#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_005#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_005-9_stmt",
+        "name": "statement",
+        "prose": "R1 1 systems in esp"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_005-10",
+      "title": "R1 2 esps documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_005#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_005#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_005-10_stmt",
+        "name": "statement",
+        "prose": "R1 2 esps documented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_005-11",
+      "title": "R1 3 eap controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_005#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_005#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_005-11_stmt",
+        "name": "statement",
+        "prose": "R1 3 eap controls"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_005-12",
+      "title": "R1 4 deny by default",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_005#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_005#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_005-12_stmt",
+        "name": "statement",
+        "prose": "R1 4 deny by default"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_005-13",
+      "title": "R1 5 unused ports disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_005#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_005#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_005-13_stmt",
+        "name": "statement",
+        "prose": "R1 5 unused ports disabled"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_005-14",
+      "title": "R2 1 remote access auth",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_005#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_005#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_005-14_stmt",
+        "name": "statement",
+        "prose": "R2 1 remote access auth"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_005-15",
+      "title": "R2 2 remote access encrypted",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_005#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_005#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_005-15_stmt",
+        "name": "statement",
+        "prose": "R2 2 remote access encrypted"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_005-16",
+      "title": "R2 3 session timeout",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_005#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_005#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_005-16_stmt",
+        "name": "statement",
+        "prose": "R2 3 session timeout"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_005-17",
+      "title": "R2 4 session monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_005#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_005#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_005-17_stmt",
+        "name": "statement",
+        "prose": "R2 4 session monitoring"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_005-18",
+      "title": "R3 access logging",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_005#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_005#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_005-18_stmt",
+        "name": "statement",
+        "prose": "R3 access logging"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_005-19",
+      "title": "R3 esp monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_005#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_005#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_005-19_stmt",
+        "name": "statement",
+        "prose": "R3 esp monitoring"
        }
       ],
       "class": "ot"
@@ -1231,7 +2485,7 @@
       ],
       "links": [
        {
-        "href": "#53b834aa-ffa7-541b-b997-6ac88cadd9ca",
+        "href": "#c861f5f8-97bf-57a6-8b9c-50e20c569037",
         "rel": "implementation"
        }
       ],
@@ -1288,7 +2542,7 @@
       ],
       "links": [
        {
-        "href": "#4e7c75fa-60bf-5c57-b1cf-0bf93da9b8dc",
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
         "rel": "implementation"
        }
       ],
@@ -1321,7 +2575,7 @@
       ],
       "links": [
        {
-        "href": "#4e7c75fa-60bf-5c57-b1cf-0bf93da9b8dc",
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
         "rel": "implementation"
        }
       ],
@@ -1354,7 +2608,7 @@
       ],
       "links": [
        {
-        "href": "#4e7c75fa-60bf-5c57-b1cf-0bf93da9b8dc",
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
         "rel": "implementation"
        }
       ],
@@ -1387,7 +2641,7 @@
       ],
       "links": [
        {
-        "href": "#4e7c75fa-60bf-5c57-b1cf-0bf93da9b8dc",
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
         "rel": "implementation"
        }
       ],
@@ -1420,7 +2674,7 @@
       ],
       "links": [
        {
-        "href": "#4e7c75fa-60bf-5c57-b1cf-0bf93da9b8dc",
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
         "rel": "implementation"
        }
       ],
@@ -1453,7 +2707,7 @@
       ],
       "links": [
        {
-        "href": "#4e7c75fa-60bf-5c57-b1cf-0bf93da9b8dc",
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
         "rel": "implementation"
        }
       ],
@@ -1486,7 +2740,7 @@
       ],
       "links": [
        {
-        "href": "#4e7c75fa-60bf-5c57-b1cf-0bf93da9b8dc",
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
         "rel": "implementation"
        }
       ],
@@ -1495,6 +2749,336 @@
         "id": "nerc_cip-nerc_cip.cip_006-7_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego (package nerc_cip.cip_006); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-8",
+      "title": "R1 1 psps defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-8_stmt",
+        "name": "statement",
+        "prose": "R1 1 psps defined"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-9",
+      "title": "R1 2 access controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-9_stmt",
+        "name": "statement",
+        "prose": "R1 2 access controls"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-10",
+      "title": "R1 3 visitor management",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-10_stmt",
+        "name": "statement",
+        "prose": "R1 3 visitor management"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-11",
+      "title": "R1 4 monitoring enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-11_stmt",
+        "name": "statement",
+        "prose": "R1 4 monitoring enabled"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-12",
+      "title": "R1 alerting configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-12_stmt",
+        "name": "statement",
+        "prose": "R1 alerting configured"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-13",
+      "title": "R1 plan current",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-13_stmt",
+        "name": "statement",
+        "prose": "R1 plan current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-14",
+      "title": "R1 plan documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-14_stmt",
+        "name": "statement",
+        "prose": "R1 plan documented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-15",
+      "title": "R2 eacms protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-15_stmt",
+        "name": "statement",
+        "prose": "R2 eacms protected"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-16",
+      "title": "R2 pacs protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-16_stmt",
+        "name": "statement",
+        "prose": "R2 pacs protected"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-17",
+      "title": "R3 access authorization reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d276cf1d-8c64-5522-879c-6673dd304cdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-17_stmt",
+        "name": "statement",
+        "prose": "R3 access authorization reviewed"
        }
       ],
       "class": "ot"
@@ -1543,7 +3127,7 @@
       ],
       "links": [
        {
-        "href": "#1789f1e1-2d49-58dd-a913-370f38d26204",
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
         "rel": "implementation"
        }
       ],
@@ -1576,7 +3160,7 @@
       ],
       "links": [
        {
-        "href": "#1789f1e1-2d49-58dd-a913-370f38d26204",
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
         "rel": "implementation"
        }
       ],
@@ -1609,7 +3193,7 @@
       ],
       "links": [
        {
-        "href": "#1789f1e1-2d49-58dd-a913-370f38d26204",
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
         "rel": "implementation"
        }
       ],
@@ -1642,7 +3226,7 @@
       ],
       "links": [
        {
-        "href": "#1789f1e1-2d49-58dd-a913-370f38d26204",
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
         "rel": "implementation"
        }
       ],
@@ -1675,7 +3259,7 @@
       ],
       "links": [
        {
-        "href": "#1789f1e1-2d49-58dd-a913-370f38d26204",
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
         "rel": "implementation"
        }
       ],
@@ -1708,7 +3292,7 @@
       ],
       "links": [
        {
-        "href": "#1789f1e1-2d49-58dd-a913-370f38d26204",
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
         "rel": "implementation"
        }
       ],
@@ -1741,7 +3325,7 @@
       ],
       "links": [
        {
-        "href": "#1789f1e1-2d49-58dd-a913-370f38d26204",
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
         "rel": "implementation"
        }
       ],
@@ -1774,7 +3358,7 @@
       ],
       "links": [
        {
-        "href": "#1789f1e1-2d49-58dd-a913-370f38d26204",
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
         "rel": "implementation"
        }
       ],
@@ -1783,6 +3367,501 @@
         "id": "nerc_cip-nerc_cip.cip_007-8_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego (package nerc_cip.cip_007); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-9",
+      "title": "R1 1 ports policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-9_stmt",
+        "name": "statement",
+        "prose": "R1 1 ports policy"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-10",
+      "title": "R1 2 ports minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-10_stmt",
+        "name": "statement",
+        "prose": "R1 2 ports minimized"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-11",
+      "title": "R1 3 physical ports",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-11_stmt",
+        "name": "statement",
+        "prose": "R1 3 physical ports"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-12",
+      "title": "R2 1 patch tracking",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-12_stmt",
+        "name": "statement",
+        "prose": "R2 1 patch tracking"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-13",
+      "title": "R2 2 patch evaluation timely",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-13_stmt",
+        "name": "statement",
+        "prose": "R2 2 patch evaluation timely"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-14",
+      "title": "R2 3 patches applied",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-14_stmt",
+        "name": "statement",
+        "prose": "R2 3 patches applied"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-15",
+      "title": "R3 1 malicious code prevention",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-15_stmt",
+        "name": "statement",
+        "prose": "R3 1 malicious code prevention"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-16",
+      "title": "R3 2 malicious code response",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-16_stmt",
+        "name": "statement",
+        "prose": "R3 2 malicious code response"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-17",
+      "title": "R4 1 security event logging",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-17_stmt",
+        "name": "statement",
+        "prose": "R4 1 security event logging"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-18",
+      "title": "R4 2 security alerting",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-18_stmt",
+        "name": "statement",
+        "prose": "R4 2 security alerting"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-19",
+      "title": "R4 3 log review current",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-19_stmt",
+        "name": "statement",
+        "prose": "R4 3 log review current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-20",
+      "title": "R5 1 unique credentials",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-20_stmt",
+        "name": "statement",
+        "prose": "R5 1 unique credentials"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-21",
+      "title": "R5 2 password policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-21_stmt",
+        "name": "statement",
+        "prose": "R5 2 password policy"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-22",
+      "title": "R5 3 default passwords changed",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-22_stmt",
+        "name": "statement",
+        "prose": "R5 3 default passwords changed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_007-23",
+      "title": "R5 5 login limiting",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_007#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_007#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9281899d-b51a-5e6d-bc4b-147f4991c7bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_007-23_stmt",
+        "name": "statement",
+        "prose": "R5 5 login limiting"
        }
       ],
       "class": "ot"
@@ -1831,7 +3910,7 @@
       ],
       "links": [
        {
-        "href": "#b91b4a2a-c525-54dd-81e0-0389e6ae7145",
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
         "rel": "implementation"
        }
       ],
@@ -1864,7 +3943,7 @@
       ],
       "links": [
        {
-        "href": "#b91b4a2a-c525-54dd-81e0-0389e6ae7145",
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
         "rel": "implementation"
        }
       ],
@@ -1897,7 +3976,7 @@
       ],
       "links": [
        {
-        "href": "#b91b4a2a-c525-54dd-81e0-0389e6ae7145",
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
         "rel": "implementation"
        }
       ],
@@ -1930,7 +4009,7 @@
       ],
       "links": [
        {
-        "href": "#b91b4a2a-c525-54dd-81e0-0389e6ae7145",
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
         "rel": "implementation"
        }
       ],
@@ -1963,7 +4042,7 @@
       ],
       "links": [
        {
-        "href": "#b91b4a2a-c525-54dd-81e0-0389e6ae7145",
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
         "rel": "implementation"
        }
       ],
@@ -1996,7 +4075,7 @@
       ],
       "links": [
        {
-        "href": "#b91b4a2a-c525-54dd-81e0-0389e6ae7145",
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
         "rel": "implementation"
        }
       ],
@@ -2029,7 +4108,7 @@
       ],
       "links": [
        {
-        "href": "#b91b4a2a-c525-54dd-81e0-0389e6ae7145",
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
         "rel": "implementation"
        }
       ],
@@ -2062,7 +4141,7 @@
       ],
       "links": [
        {
-        "href": "#b91b4a2a-c525-54dd-81e0-0389e6ae7145",
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
         "rel": "implementation"
        }
       ],
@@ -2071,6 +4150,468 @@
         "id": "nerc_cip-nerc_cip.cip_008-8_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_008_incident_response.rego (package nerc_cip.cip_008); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-9",
+      "title": "R1 2 roles defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-9_stmt",
+        "name": "statement",
+        "prose": "R1 2 roles defined"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-10",
+      "title": "R1 3 handling processes",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-10_stmt",
+        "name": "statement",
+        "prose": "R1 3 handling processes"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-11",
+      "title": "R1 4 nerc reporting process",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-11_stmt",
+        "name": "statement",
+        "prose": "R1 4 nerc reporting process"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-12",
+      "title": "R1 5 classification process",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-12_stmt",
+        "name": "statement",
+        "prose": "R1 5 classification process"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-13",
+      "title": "R1 plan documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-13_stmt",
+        "name": "statement",
+        "prose": "R1 plan documented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-14",
+      "title": "R2 1 plan current",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-14_stmt",
+        "name": "statement",
+        "prose": "R2 1 plan current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-15",
+      "title": "R2 2 post incident updates",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-15_stmt",
+        "name": "statement",
+        "prose": "R2 2 post incident updates"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-16",
+      "title": "R2 3 plan communicated",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-16_stmt",
+        "name": "statement",
+        "prose": "R2 3 plan communicated"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-17",
+      "title": "R3 1 test documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-17_stmt",
+        "name": "statement",
+        "prose": "R3 1 test documented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-18",
+      "title": "R3 1 testing performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-18_stmt",
+        "name": "statement",
+        "prose": "R3 1 testing performed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-19",
+      "title": "R3 2 lessons learned",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-19_stmt",
+        "name": "statement",
+        "prose": "R3 2 lessons learned"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-20",
+      "title": "R4 team trained",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-20_stmt",
+        "name": "statement",
+        "prose": "R4 team trained"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-21",
+      "title": "R5 nerc notification timely",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-21_stmt",
+        "name": "statement",
+        "prose": "R5 nerc notification timely"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_008-22",
+      "title": "R5 reportable identification",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_008#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_008#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_008"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_008-22_stmt",
+        "name": "statement",
+        "prose": "R5 reportable identification"
        }
       ],
       "class": "ot"
@@ -2095,7 +4636,7 @@
       ],
       "links": [
        {
-        "href": "#b91b4a2a-c525-54dd-81e0-0389e6ae7145",
+        "href": "#01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
         "rel": "implementation"
        }
       ],
@@ -2152,7 +4693,7 @@
       ],
       "links": [
        {
-        "href": "#61cc183c-ba62-5913-bf9c-3fdf8d8fa378",
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
         "rel": "implementation"
        }
       ],
@@ -2185,7 +4726,7 @@
       ],
       "links": [
        {
-        "href": "#61cc183c-ba62-5913-bf9c-3fdf8d8fa378",
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
         "rel": "implementation"
        }
       ],
@@ -2218,7 +4759,7 @@
       ],
       "links": [
        {
-        "href": "#61cc183c-ba62-5913-bf9c-3fdf8d8fa378",
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
         "rel": "implementation"
        }
       ],
@@ -2251,7 +4792,7 @@
       ],
       "links": [
        {
-        "href": "#61cc183c-ba62-5913-bf9c-3fdf8d8fa378",
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
         "rel": "implementation"
        }
       ],
@@ -2284,7 +4825,7 @@
       ],
       "links": [
        {
-        "href": "#61cc183c-ba62-5913-bf9c-3fdf8d8fa378",
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
         "rel": "implementation"
        }
       ],
@@ -2317,7 +4858,7 @@
       ],
       "links": [
        {
-        "href": "#61cc183c-ba62-5913-bf9c-3fdf8d8fa378",
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
         "rel": "implementation"
        }
       ],
@@ -2326,6 +4867,402 @@
         "id": "nerc_cip-nerc_cip.cip_009-6_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_009_recovery_plans.rego (package nerc_cip.cip_009); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-7",
+      "title": "R1 1 activation criteria",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-7_stmt",
+        "name": "statement",
+        "prose": "R1 1 activation criteria"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-8",
+      "title": "R1 2 roles defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-8_stmt",
+        "name": "statement",
+        "prose": "R1 2 roles defined"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-9",
+      "title": "R1 3 backup processes",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-9_stmt",
+        "name": "statement",
+        "prose": "R1 3 backup processes"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-10",
+      "title": "R1 4 log preservation",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-10_stmt",
+        "name": "statement",
+        "prose": "R1 4 log preservation"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-11",
+      "title": "R1 5 network reconnection",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-11_stmt",
+        "name": "statement",
+        "prose": "R1 5 network reconnection"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-12",
+      "title": "R1 plans documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-12_stmt",
+        "name": "statement",
+        "prose": "R1 plans documented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-13",
+      "title": "R2 1 plans current",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-13_stmt",
+        "name": "statement",
+        "prose": "R2 1 plans current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-14",
+      "title": "R2 2 post event updates",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-14_stmt",
+        "name": "statement",
+        "prose": "R2 2 post event updates"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-15",
+      "title": "R2 3 plans communicated",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-15_stmt",
+        "name": "statement",
+        "prose": "R2 3 plans communicated"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-16",
+      "title": "R3 1 recovery tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-16_stmt",
+        "name": "statement",
+        "prose": "R3 1 recovery tested"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-17",
+      "title": "R3 2 backup tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-17_stmt",
+        "name": "statement",
+        "prose": "R3 2 backup tested"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_009-18",
+      "title": "R3 3 activation criteria tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_009#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_009#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_009"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3a447f74-f807-5fa2-8fb7-8d95e9199feb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_009-18_stmt",
+        "name": "statement",
+        "prose": "R3 3 activation criteria tested"
        }
       ],
       "class": "ot"
@@ -2374,7 +5311,7 @@
       ],
       "links": [
        {
-        "href": "#f8b10441-a792-5eed-bd43-fc3555243422",
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
         "rel": "implementation"
        }
       ],
@@ -2407,7 +5344,7 @@
       ],
       "links": [
        {
-        "href": "#f8b10441-a792-5eed-bd43-fc3555243422",
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
         "rel": "implementation"
        }
       ],
@@ -2440,7 +5377,7 @@
       ],
       "links": [
        {
-        "href": "#f8b10441-a792-5eed-bd43-fc3555243422",
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
         "rel": "implementation"
        }
       ],
@@ -2473,7 +5410,7 @@
       ],
       "links": [
        {
-        "href": "#f8b10441-a792-5eed-bd43-fc3555243422",
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
         "rel": "implementation"
        }
       ],
@@ -2506,7 +5443,7 @@
       ],
       "links": [
        {
-        "href": "#f8b10441-a792-5eed-bd43-fc3555243422",
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
         "rel": "implementation"
        }
       ],
@@ -2539,7 +5476,7 @@
       ],
       "links": [
        {
-        "href": "#f8b10441-a792-5eed-bd43-fc3555243422",
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
         "rel": "implementation"
        }
       ],
@@ -2572,7 +5509,7 @@
       ],
       "links": [
        {
-        "href": "#f8b10441-a792-5eed-bd43-fc3555243422",
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
         "rel": "implementation"
        }
       ],
@@ -2581,6 +5518,369 @@
         "id": "nerc_cip-nerc_cip.cip_010-7_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_010_configuration_management.rego (package nerc_cip.cip_010); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_010-8",
+      "title": "R1 2 baselines established",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_010#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_010#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_010-8_stmt",
+        "name": "statement",
+        "prose": "R1 2 baselines established"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_010-9",
+      "title": "R1 3 changes authorized",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_010#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_010#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_010-9_stmt",
+        "name": "statement",
+        "prose": "R1 3 changes authorized"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_010-10",
+      "title": "R1 4 unauthorized change monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_010#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_010#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_010-10_stmt",
+        "name": "statement",
+        "prose": "R1 4 unauthorized change monitoring"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_010-11",
+      "title": "R1 5 vulnerability monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_010#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_010#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_010-11_stmt",
+        "name": "statement",
+        "prose": "R1 5 vulnerability monitoring"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_010-12",
+      "title": "R1 6 software integrity",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_010#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_010#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_010-12_stmt",
+        "name": "statement",
+        "prose": "R1 6 software integrity"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_010-13",
+      "title": "R1 change management process",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_010#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_010#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_010-13_stmt",
+        "name": "statement",
+        "prose": "R1 change management process"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_010-14",
+      "title": "R2 monitoring timely",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_010#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_010#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_010-14_stmt",
+        "name": "statement",
+        "prose": "R2 monitoring timely"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_010-15",
+      "title": "R3 1 vulnerability assessments",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_010#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_010#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_010-15_stmt",
+        "name": "statement",
+        "prose": "R3 1 vulnerability assessments"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_010-16",
+      "title": "R3 3 authenticated scanning",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_010#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_010#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_010-16_stmt",
+        "name": "statement",
+        "prose": "R3 3 authenticated scanning"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_010-17",
+      "title": "R3 4 post change assessment",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_010#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_010#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_010-17_stmt",
+        "name": "statement",
+        "prose": "R3 4 post change assessment"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_010-18",
+      "title": "R4 transient asset config",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_010#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_010#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4df2308c-2d4e-5ba8-ab44-71a974feab7a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_010-18_stmt",
+        "name": "statement",
+        "prose": "R4 transient asset config"
        }
       ],
       "class": "ot"
@@ -2629,7 +5929,7 @@
       ],
       "links": [
        {
-        "href": "#eb6bc9dc-e189-53ab-9f34-6dd30faf987c",
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
         "rel": "implementation"
        }
       ],
@@ -2662,7 +5962,7 @@
       ],
       "links": [
        {
-        "href": "#eb6bc9dc-e189-53ab-9f34-6dd30faf987c",
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
         "rel": "implementation"
        }
       ],
@@ -2695,7 +5995,7 @@
       ],
       "links": [
        {
-        "href": "#eb6bc9dc-e189-53ab-9f34-6dd30faf987c",
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
         "rel": "implementation"
        }
       ],
@@ -2728,7 +6028,7 @@
       ],
       "links": [
        {
-        "href": "#eb6bc9dc-e189-53ab-9f34-6dd30faf987c",
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
         "rel": "implementation"
        }
       ],
@@ -2761,7 +6061,7 @@
       ],
       "links": [
        {
-        "href": "#eb6bc9dc-e189-53ab-9f34-6dd30faf987c",
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
         "rel": "implementation"
        }
       ],
@@ -2794,7 +6094,7 @@
       ],
       "links": [
        {
-        "href": "#eb6bc9dc-e189-53ab-9f34-6dd30faf987c",
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
         "rel": "implementation"
        }
       ],
@@ -2827,7 +6127,7 @@
       ],
       "links": [
        {
-        "href": "#eb6bc9dc-e189-53ab-9f34-6dd30faf987c",
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
         "rel": "implementation"
        }
       ],
@@ -2836,6 +6136,402 @@
         "id": "nerc_cip-nerc_cip.cip_011-7_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego (package nerc_cip.cip_011); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-8",
+      "title": "R1 1 bcsi identified",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-8_stmt",
+        "name": "statement",
+        "prose": "R1 1 bcsi identified"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-9",
+      "title": "R1 1 categories addressed",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-9_stmt",
+        "name": "statement",
+        "prose": "R1 1 categories addressed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-10",
+      "title": "R1 2 protection program",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-10_stmt",
+        "name": "statement",
+        "prose": "R1 2 protection program"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-11",
+      "title": "R2 access controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-11_stmt",
+        "name": "statement",
+        "prose": "R2 access controls"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-12",
+      "title": "R2 access reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-12_stmt",
+        "name": "statement",
+        "prose": "R2 access reviewed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-13",
+      "title": "R2 need to know",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-13_stmt",
+        "name": "statement",
+        "prose": "R2 need to know"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-14",
+      "title": "R3 disposal procedures",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-14_stmt",
+        "name": "statement",
+        "prose": "R3 disposal procedures"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-15",
+      "title": "R3 media sanitization",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-15_stmt",
+        "name": "statement",
+        "prose": "R3 media sanitization"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-16",
+      "title": "R electronic access controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-16_stmt",
+        "name": "statement",
+        "prose": "R electronic access controlled"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-17",
+      "title": "R physical access controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-17_stmt",
+        "name": "statement",
+        "prose": "R physical access controlled"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-18",
+      "title": "R storage protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-18_stmt",
+        "name": "statement",
+        "prose": "R storage protected"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-19",
+      "title": "R transmission protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed1c5985-c150-54db-9cff-cf64d2d56919",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-19_stmt",
+        "name": "statement",
+        "prose": "R transmission protected"
        }
       ],
       "class": "ot"
@@ -2884,7 +6580,7 @@
       ],
       "links": [
        {
-        "href": "#3bc1b19e-3317-58a2-b6ab-e38b6ee528ee",
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
         "rel": "implementation"
        }
       ],
@@ -2917,7 +6613,7 @@
       ],
       "links": [
        {
-        "href": "#3bc1b19e-3317-58a2-b6ab-e38b6ee528ee",
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
         "rel": "implementation"
        }
       ],
@@ -2950,7 +6646,7 @@
       ],
       "links": [
        {
-        "href": "#3bc1b19e-3317-58a2-b6ab-e38b6ee528ee",
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
         "rel": "implementation"
        }
       ],
@@ -2983,7 +6679,7 @@
       ],
       "links": [
        {
-        "href": "#3bc1b19e-3317-58a2-b6ab-e38b6ee528ee",
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
         "rel": "implementation"
        }
       ],
@@ -3016,7 +6712,7 @@
       ],
       "links": [
        {
-        "href": "#3bc1b19e-3317-58a2-b6ab-e38b6ee528ee",
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
         "rel": "implementation"
        }
       ],
@@ -3049,7 +6745,7 @@
       ],
       "links": [
        {
-        "href": "#3bc1b19e-3317-58a2-b6ab-e38b6ee528ee",
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
         "rel": "implementation"
        }
       ],
@@ -3058,6 +6754,369 @@
         "id": "nerc_cip-nerc_cip.cip_012-6_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_012_communications.rego (package nerc_cip.cip_012); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_012-7",
+      "title": "R1 communications identified",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_012#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_012#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_012"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_012-7_stmt",
+        "name": "statement",
+        "prose": "R1 communications identified"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_012-8",
+      "title": "R1 data classified",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_012#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_012#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_012"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_012-8_stmt",
+        "name": "statement",
+        "prose": "R1 data classified"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_012-9",
+      "title": "R2 authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_012#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_012#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_012"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_012-9_stmt",
+        "name": "statement",
+        "prose": "R2 authentication"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_012-10",
+      "title": "R2 encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_012#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_012#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_012"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_012-10_stmt",
+        "name": "statement",
+        "prose": "R2 encryption"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_012-11",
+      "title": "R2 protection implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_012#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_012#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_012"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_012-11_stmt",
+        "name": "statement",
+        "prose": "R2 protection implemented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_012-12",
+      "title": "R3 log review",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_012#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_012#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_012"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_012-12_stmt",
+        "name": "statement",
+        "prose": "R3 log review"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_012-13",
+      "title": "R3 monitoring enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_012#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_012#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_012"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_012-13_stmt",
+        "name": "statement",
+        "prose": "R3 monitoring enabled"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_012-14",
+      "title": "R4 backup protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_012#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_012#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_012"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_012-14_stmt",
+        "name": "statement",
+        "prose": "R4 backup protected"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_012-15",
+      "title": "R4 contingency plans",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_012#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_012#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_012"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_012-15_stmt",
+        "name": "statement",
+        "prose": "R4 contingency plans"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_012-16",
+      "title": "R5 plan current",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_012#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_012#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_012"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_012-16_stmt",
+        "name": "statement",
+        "prose": "R5 plan current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_012-17",
+      "title": "R5 protection tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_012#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_012#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_012"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_012-17_stmt",
+        "name": "statement",
+        "prose": "R5 protection tested"
        }
       ],
       "class": "ot"
@@ -3082,7 +7141,7 @@
       ],
       "links": [
        {
-        "href": "#3bc1b19e-3317-58a2-b6ab-e38b6ee528ee",
+        "href": "#38a2b721-87af-54d2-a7f7-091a2517248a",
         "rel": "implementation"
        }
       ],
@@ -3139,7 +7198,7 @@
       ],
       "links": [
        {
-        "href": "#e7f6bd26-e3dd-51e0-b13b-d8fdce58fbda",
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
         "rel": "implementation"
        }
       ],
@@ -3172,7 +7231,7 @@
       ],
       "links": [
        {
-        "href": "#e7f6bd26-e3dd-51e0-b13b-d8fdce58fbda",
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
         "rel": "implementation"
        }
       ],
@@ -3205,7 +7264,7 @@
       ],
       "links": [
        {
-        "href": "#e7f6bd26-e3dd-51e0-b13b-d8fdce58fbda",
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
         "rel": "implementation"
        }
       ],
@@ -3238,7 +7297,7 @@
       ],
       "links": [
        {
-        "href": "#e7f6bd26-e3dd-51e0-b13b-d8fdce58fbda",
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
         "rel": "implementation"
        }
       ],
@@ -3271,7 +7330,7 @@
       ],
       "links": [
        {
-        "href": "#e7f6bd26-e3dd-51e0-b13b-d8fdce58fbda",
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
         "rel": "implementation"
        }
       ],
@@ -3304,7 +7363,7 @@
       ],
       "links": [
        {
-        "href": "#e7f6bd26-e3dd-51e0-b13b-d8fdce58fbda",
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
         "rel": "implementation"
        }
       ],
@@ -3337,7 +7396,7 @@
       ],
       "links": [
        {
-        "href": "#e7f6bd26-e3dd-51e0-b13b-d8fdce58fbda",
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
         "rel": "implementation"
        }
       ],
@@ -3346,6 +7405,402 @@
         "id": "nerc_cip-nerc_cip.cip_013-7_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego (package nerc_cip.cip_013); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-8",
+      "title": "R1 2 1 vuln notification",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-8_stmt",
+        "name": "statement",
+        "prose": "R1 2 1 vuln notification"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-9",
+      "title": "R1 2 2 incident notification",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-9_stmt",
+        "name": "statement",
+        "prose": "R1 2 2 incident notification"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-10",
+      "title": "R1 2 3 software authenticity",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-10_stmt",
+        "name": "statement",
+        "prose": "R1 2 3 software authenticity"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-11",
+      "title": "R1 2 4 incident coordination",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-11_stmt",
+        "name": "statement",
+        "prose": "R1 2 4 incident coordination"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-12",
+      "title": "R1 2 5 vendor remote access",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-12_stmt",
+        "name": "statement",
+        "prose": "R1 2 5 vendor remote access"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-13",
+      "title": "R1 plan implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-13_stmt",
+        "name": "statement",
+        "prose": "R1 plan implemented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-14",
+      "title": "R2 vendor risk assessments",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-14_stmt",
+        "name": "statement",
+        "prose": "R2 vendor risk assessments"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-15",
+      "title": "R3 vendor contracts",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-15_stmt",
+        "name": "statement",
+        "prose": "R3 vendor contracts"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-16",
+      "title": "R4 supply chain monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-16_stmt",
+        "name": "statement",
+        "prose": "R4 supply chain monitoring"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-17",
+      "title": "R5 plan review current",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-17_stmt",
+        "name": "statement",
+        "prose": "R5 plan review current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-18",
+      "title": "R5 senior manager approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-18_stmt",
+        "name": "statement",
+        "prose": "R5 senior manager approved"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-19",
+      "title": "R6 ir coordination",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-19_stmt",
+        "name": "statement",
+        "prose": "R6 ir coordination"
        }
       ],
       "class": "ot"
@@ -3370,7 +7825,7 @@
       ],
       "links": [
        {
-        "href": "#e7f6bd26-e3dd-51e0-b13b-d8fdce58fbda",
+        "href": "#69951fa3-85c1-56e0-8276-b6b968dae193",
         "rel": "implementation"
        }
       ],
@@ -3427,7 +7882,7 @@
       ],
       "links": [
        {
-        "href": "#c00be430-ab77-5fd1-820f-8feb4ad35706",
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
         "rel": "implementation"
        }
       ],
@@ -3460,7 +7915,7 @@
       ],
       "links": [
        {
-        "href": "#c00be430-ab77-5fd1-820f-8feb4ad35706",
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
         "rel": "implementation"
        }
       ],
@@ -3493,7 +7948,7 @@
       ],
       "links": [
        {
-        "href": "#c00be430-ab77-5fd1-820f-8feb4ad35706",
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
         "rel": "implementation"
        }
       ],
@@ -3526,7 +7981,7 @@
       ],
       "links": [
        {
-        "href": "#c00be430-ab77-5fd1-820f-8feb4ad35706",
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
         "rel": "implementation"
        }
       ],
@@ -3559,7 +8014,7 @@
       ],
       "links": [
        {
-        "href": "#c00be430-ab77-5fd1-820f-8feb4ad35706",
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
         "rel": "implementation"
        }
       ],
@@ -3592,7 +8047,7 @@
       ],
       "links": [
        {
-        "href": "#c00be430-ab77-5fd1-820f-8feb4ad35706",
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
         "rel": "implementation"
        }
       ],
@@ -3625,7 +8080,7 @@
       ],
       "links": [
        {
-        "href": "#c00be430-ab77-5fd1-820f-8feb4ad35706",
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
         "rel": "implementation"
        }
       ],
@@ -3658,7 +8113,7 @@
       ],
       "links": [
        {
-        "href": "#c00be430-ab77-5fd1-820f-8feb4ad35706",
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
         "rel": "implementation"
        }
       ],
@@ -3667,6 +8122,468 @@
         "id": "nerc_cip-nerc_cip.cip_014-8_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego (package nerc_cip.cip_014); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-9",
+      "title": "R1 assessment current",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-9_stmt",
+        "name": "statement",
+        "prose": "R1 assessment current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-10",
+      "title": "R1 methodology adequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-10_stmt",
+        "name": "statement",
+        "prose": "R1 methodology adequate"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-11",
+      "title": "R1 risk assessment performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-11_stmt",
+        "name": "statement",
+        "prose": "R1 risk assessment performed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-12",
+      "title": "R2 rc notified",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-12_stmt",
+        "name": "statement",
+        "prose": "R2 rc notified"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-13",
+      "title": "R2 third party verification",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-13_stmt",
+        "name": "statement",
+        "prose": "R2 third party verification"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-14",
+      "title": "R2 verification timely",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-14_stmt",
+        "name": "statement",
+        "prose": "R2 verification timely"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-15",
+      "title": "R3 security plans in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-15_stmt",
+        "name": "statement",
+        "prose": "R3 security plans in place"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-16",
+      "title": "R3 stations identified",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-16_stmt",
+        "name": "statement",
+        "prose": "R3 stations identified"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-17",
+      "title": "R4 2 threat assessments",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-17_stmt",
+        "name": "statement",
+        "prose": "R4 2 threat assessments"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-18",
+      "title": "R4 3 implementation timely",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-18_stmt",
+        "name": "statement",
+        "prose": "R4 3 implementation timely"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-19",
+      "title": "R4 security plans adequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-19_stmt",
+        "name": "statement",
+        "prose": "R4 security plans adequate"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-20",
+      "title": "R5 1 plans reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-20_stmt",
+        "name": "statement",
+        "prose": "R5 1 plans reviewed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-21",
+      "title": "R5 2 updated after changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-21_stmt",
+        "name": "statement",
+        "prose": "R5 2 updated after changes"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-22",
+      "title": "R6 third party review",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-22_stmt",
+        "name": "statement",
+        "prose": "R6 third party review"
        }
       ],
       "class": "ot"
@@ -3691,7 +8608,7 @@
       ],
       "links": [
        {
-        "href": "#c00be430-ab77-5fd1-820f-8feb4ad35706",
+        "href": "#5501219a-c6d2-5c6e-bca8-f95557a5a49d",
         "rel": "implementation"
        }
       ],
@@ -3729,6 +8646,237 @@
     ],
     "controls": [
      {
+      "id": "nerc_cip-nerc_cip_cip015-1",
+      "title": "R1 insm categorization",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip_cip015#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip_cip015#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_cip015"
+       }
+      ],
+      "links": [
+       {
+        "href": "#069c4cd2-bfbd-5525-a90a-3e66df4886a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip_cip015-1_stmt",
+        "name": "statement",
+        "prose": "R1 insm categorization"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip_cip015-2",
+      "title": "R2 insm implementation",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip_cip015#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip_cip015#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_cip015"
+       }
+      ],
+      "links": [
+       {
+        "href": "#069c4cd2-bfbd-5525-a90a-3e66df4886a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip_cip015-2_stmt",
+        "name": "statement",
+        "prose": "R2 insm implementation"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip_cip015-3",
+      "title": "R3 documentation management",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip_cip015#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip_cip015#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_cip015"
+       }
+      ],
+      "links": [
+       {
+        "href": "#069c4cd2-bfbd-5525-a90a-3e66df4886a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip_cip015-3_stmt",
+        "name": "statement",
+        "prose": "R3 documentation management"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip_cip015-4",
+      "title": "R2 1 network baseline",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip_cip015#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip_cip015#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_cip015"
+       }
+      ],
+      "links": [
+       {
+        "href": "#069c4cd2-bfbd-5525-a90a-3e66df4886a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip_cip015-4_stmt",
+        "name": "statement",
+        "prose": "R2 1 network baseline"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip_cip015-5",
+      "title": "R2 2 anomaly detection",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip_cip015#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip_cip015#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_cip015"
+       }
+      ],
+      "links": [
+       {
+        "href": "#069c4cd2-bfbd-5525-a90a-3e66df4886a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip_cip015-5_stmt",
+        "name": "statement",
+        "prose": "R2 2 anomaly detection"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip_cip015-6",
+      "title": "R2 3 malicious comm detection",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip_cip015#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip_cip015#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_cip015"
+       }
+      ],
+      "links": [
+       {
+        "href": "#069c4cd2-bfbd-5525-a90a-3e66df4886a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip_cip015-6_stmt",
+        "name": "statement",
+        "prose": "R2 3 malicious comm detection"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip_cip015-7",
+      "title": "R2 4 response process",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip_cip015#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip_cip015#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_cip015"
+       }
+      ],
+      "links": [
+       {
+        "href": "#069c4cd2-bfbd-5525-a90a-3e66df4886a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip_cip015-7_stmt",
+        "name": "statement",
+        "prose": "R2 4 response process"
+       }
+      ],
+      "class": "ot"
+     },
+     {
       "id": "nerc_cip-metadata",
       "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_015_insm.rego (package nerc_cip_cip015); see the rule body.",
       "props": [
@@ -3748,11 +8896,11 @@
       ],
       "links": [
        {
-        "href": "#7ef4e1c2-c756-5976-b9d9-a9b201c11769",
+        "href": "#069c4cd2-bfbd-5525-a90a-3e66df4886a7",
         "rel": "implementation"
        },
        {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
         "rel": "implementation"
        }
       ],
@@ -3790,7 +8938,7 @@
       ],
       "links": [
        {
-        "href": "#7ef4e1c2-c756-5976-b9d9-a9b201c11769",
+        "href": "#069c4cd2-bfbd-5525-a90a-3e66df4886a7",
         "rel": "implementation"
        }
       ],
@@ -3828,6 +8976,519 @@
     ],
     "controls": [
      {
+      "id": "nerc_cip-CIP-003",
+      "title": "No designated CIP Senior Manager",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-003"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-003"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-003_stmt",
+        "name": "statement",
+        "prose": "No designated CIP Senior Manager"
+       },
+       {
+        "id": "nerc_cip-CIP-003_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity policies not documented"
+       },
+       {
+        "id": "nerc_cip-CIP-003_obj.2",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity policies not approved"
+       },
+       {
+        "id": "nerc_cip-CIP-003_obj.3",
+        "name": "assessment-objective",
+        "prose": "Security Management Controls"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-CIP-004",
+      "title": "Person %v has not completed CIP training",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-004"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-004"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-004_stmt",
+        "name": "statement",
+        "prose": "Person %v has not completed CIP training"
+       },
+       {
+        "id": "nerc_cip-CIP-004_obj.1",
+        "name": "assessment-objective",
+        "prose": "Person %v has no completed risk assessment"
+       },
+       {
+        "id": "nerc_cip-CIP-004_obj.2",
+        "name": "assessment-objective",
+        "prose": "Personnel and Training"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-CIP-005",
+      "title": "EAP %v does not enforce deny-by-default",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-005"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-005"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-005_stmt",
+        "name": "statement",
+        "prose": "EAP %v does not enforce deny-by-default"
+       },
+       {
+        "id": "nerc_cip-CIP-005_obj.1",
+        "name": "assessment-objective",
+        "prose": "EAP %v does not require authentication"
+       },
+       {
+        "id": "nerc_cip-CIP-005_obj.2",
+        "name": "assessment-objective",
+        "prose": "Electronic Security Perimeters"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-CIP-006",
+      "title": "Visitor control program is not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-006"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-006"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-006_stmt",
+        "name": "statement",
+        "prose": "Visitor control program is not documented"
+       },
+       {
+        "id": "nerc_cip-CIP-006_obj.1",
+        "name": "assessment-objective",
+        "prose": "Visitor escort procedures not defined"
+       },
+       {
+        "id": "nerc_cip-CIP-006_obj.2",
+        "name": "assessment-objective",
+        "prose": "Physical Security of BES Cyber Systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-CIP-007",
+      "title": "%v has unapplied/unmitigated patches",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-007"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-007"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-007_stmt",
+        "name": "statement",
+        "prose": "%v has unapplied/unmitigated patches"
+       },
+       {
+        "id": "nerc_cip-CIP-007_obj.1",
+        "name": "assessment-objective",
+        "prose": "%v missing malicious code protection"
+       },
+       {
+        "id": "nerc_cip-CIP-007_obj.2",
+        "name": "assessment-objective",
+        "prose": "%v does not require authentication"
+       },
+       {
+        "id": "nerc_cip-CIP-007_obj.3",
+        "name": "assessment-objective",
+        "prose": "Systems Security Management"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-CIP-008",
+      "title": "Incident response plan is not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-008"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-008"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-008_stmt",
+        "name": "statement",
+        "prose": "Incident response plan is not documented"
+       },
+       {
+        "id": "nerc_cip-CIP-008_obj.1",
+        "name": "assessment-objective",
+        "prose": "Incident response plan is not approved"
+       },
+       {
+        "id": "nerc_cip-CIP-008_obj.2",
+        "name": "assessment-objective",
+        "prose": "Incident reporting procedures not documented"
+       },
+       {
+        "id": "nerc_cip-CIP-008_obj.3",
+        "name": "assessment-objective",
+        "prose": "Incident Reporting and Response Planning"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-CIP-009",
+      "title": "%v recovery plan is not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-009"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-009"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-009_stmt",
+        "name": "statement",
+        "prose": "%v recovery plan is not documented"
+       },
+       {
+        "id": "nerc_cip-CIP-009_obj.1",
+        "name": "assessment-objective",
+        "prose": "%v recovery plan missing conditions"
+       },
+       {
+        "id": "nerc_cip-CIP-009_obj.2",
+        "name": "assessment-objective",
+        "prose": "%v backup procedures not documented"
+       },
+       {
+        "id": "nerc_cip-CIP-009_obj.3",
+        "name": "assessment-objective",
+        "prose": "Recovery Plans for BES Cyber Systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-CIP-010",
+      "title": "%v baseline configuration not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-010_stmt",
+        "name": "statement",
+        "prose": "%v baseline configuration not documented"
+       },
+       {
+        "id": "nerc_cip-CIP-010_obj.1",
+        "name": "assessment-objective",
+        "prose": "%v vulnerability assessment not performed"
+       },
+       {
+        "id": "nerc_cip-CIP-010_obj.2",
+        "name": "assessment-objective",
+        "prose": "Configuration Change Management"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-CIP-011",
+      "title": "BES Cyber System information inventory not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-011"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-011"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-011_stmt",
+        "name": "statement",
+        "prose": "BES Cyber System information inventory not maintained"
+       },
+       {
+        "id": "nerc_cip-CIP-011_obj.1",
+        "name": "assessment-objective",
+        "prose": "Information protection procedures not documented"
+       },
+       {
+        "id": "nerc_cip-CIP-011_obj.2",
+        "name": "assessment-objective",
+        "prose": "Information access controls not enforced"
+       },
+       {
+        "id": "nerc_cip-CIP-011_obj.3",
+        "name": "assessment-objective",
+        "prose": "Information disposal procedures not documented"
+       },
+       {
+        "id": "nerc_cip-CIP-011_obj.4",
+        "name": "assessment-objective",
+        "prose": "Information Protection"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-CIP-012",
+      "title": "Control center communications inventory not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-012"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-012"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-012_stmt",
+        "name": "statement",
+        "prose": "Control center communications inventory not maintained"
+       },
+       {
+        "id": "nerc_cip-CIP-012_obj.1",
+        "name": "assessment-objective",
+        "prose": "Link %v is not authenticated"
+       },
+       {
+        "id": "nerc_cip-CIP-012_obj.2",
+        "name": "assessment-objective",
+        "prose": "Communications Between Control Centers"
+       },
+       {
+        "id": "nerc_cip-CIP-012_obj.3",
+        "name": "assessment-objective",
+        "prose": "Link %v is not encrypted"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-CIP-013",
+      "title": "Supply chain risk management plan not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-013"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-013"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-013_stmt",
+        "name": "statement",
+        "prose": "Supply chain risk management plan not documented"
+       },
+       {
+        "id": "nerc_cip-CIP-013_obj.1",
+        "name": "assessment-objective",
+        "prose": "Supply chain risk management plan not approved"
+       },
+       {
+        "id": "nerc_cip-CIP-013_obj.2",
+        "name": "assessment-objective",
+        "prose": "Software integrity verification not implemented"
+       },
+       {
+        "id": "nerc_cip-CIP-013_obj.3",
+        "name": "assessment-objective",
+        "prose": "Supply Chain Risk Management"
+       }
+      ],
+      "class": "ot"
+     },
+     {
       "id": "nerc_cip-CIP-002",
       "title": "BES Cyber System Categorization",
       "props": [
@@ -3847,7 +9508,7 @@
       ],
       "links": [
        {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
         "rel": "implementation"
        }
       ],
@@ -3856,369 +9517,6 @@
         "id": "nerc_cip-CIP-002_stmt",
         "name": "statement",
         "prose": "BES Cyber System Categorization"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-003",
-      "title": "Security Management Controls",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-003"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-003"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-003_stmt",
-        "name": "statement",
-        "prose": "Security Management Controls"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-004",
-      "title": "Personnel and Training",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-004"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-004"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-004_stmt",
-        "name": "statement",
-        "prose": "Personnel and Training"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-005",
-      "title": "Electronic Security Perimeters",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-005"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-005"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-005_stmt",
-        "name": "statement",
-        "prose": "Electronic Security Perimeters"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-006",
-      "title": "Physical Security of BES Cyber Systems",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-006"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-006"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-006_stmt",
-        "name": "statement",
-        "prose": "Physical Security of BES Cyber Systems"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-007",
-      "title": "Systems Security Management",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-007"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-007"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-007_stmt",
-        "name": "statement",
-        "prose": "Systems Security Management"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-008",
-      "title": "Incident Reporting and Response Planning",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-008"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-008"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-008_stmt",
-        "name": "statement",
-        "prose": "Incident Reporting and Response Planning"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-009",
-      "title": "Recovery Plans for BES Cyber Systems",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-009"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-009"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-009_stmt",
-        "name": "statement",
-        "prose": "Recovery Plans for BES Cyber Systems"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-010",
-      "title": "Configuration Change Management",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-010"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-010"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-010_stmt",
-        "name": "statement",
-        "prose": "Configuration Change Management"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-011",
-      "title": "Information Protection",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-011"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-011"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-011_stmt",
-        "name": "statement",
-        "prose": "Information Protection"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-012",
-      "title": "Communications Between Control Centers",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-012"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-012"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-012_stmt",
-        "name": "statement",
-        "prose": "Communications Between Control Centers"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-013",
-      "title": "Supply Chain Risk Management",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-013"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-013"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-013_stmt",
-        "name": "statement",
-        "prose": "Supply Chain Risk Management"
        }
       ],
       "class": "ot"
@@ -4243,7 +9541,7 @@
       ],
       "links": [
        {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
         "rel": "implementation"
        }
       ],
@@ -4276,7 +9574,7 @@
       ],
       "links": [
        {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
         "rel": "implementation"
        }
       ],
@@ -4309,7 +9607,7 @@
       ],
       "links": [
        {
-        "href": "#51c9c295-0e41-53f2-b7cc-cb2ed149a053",
+        "href": "#2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
         "rel": "implementation"
        }
       ],
@@ -4328,7 +9626,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "8a789b9a-fe3c-592a-b2b1-656bda938024",
+     "uuid": "d8cc59a0-2582-521a-a9a5-f5e5d67a2763",
      "title": "CIP-002-5.1a: BES Cyber System Categorization",
      "props": [
       {
@@ -4339,13 +9637,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_002_asset_identification.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_002_asset_identification.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a6373ff4-7997-59f6-8410-47d2836a9468",
+     "uuid": "b3fe6446-91a9-5379-81a1-cf1e4020382b",
      "title": "CIP-003-8: Security Management Controls",
      "props": [
       {
@@ -4356,13 +9654,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_003_security_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_003_security_management.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "59fd8fc8-0a0d-5079-9a2a-81ae2af50267",
+     "uuid": "d02533c5-2795-5f5f-b976-edb4edab89c7",
      "title": "CIP-004-6: Personnel & Training",
      "props": [
       {
@@ -4373,13 +9671,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_004_personnel_training.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_004_personnel_training.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "53b834aa-ffa7-541b-b997-6ac88cadd9ca",
+     "uuid": "c861f5f8-97bf-57a6-8b9c-50e20c569037",
      "title": "CIP-005-7: Electronic Security Perimeters",
      "props": [
       {
@@ -4390,13 +9688,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_005_electronic_security.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_005_electronic_security.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "4e7c75fa-60bf-5c57-b1cf-0bf93da9b8dc",
+     "uuid": "d276cf1d-8c64-5522-879c-6673dd304cdc",
      "title": "CIP-006-6: Physical Security of BES Cyber Systems",
      "props": [
       {
@@ -4407,13 +9705,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "1789f1e1-2d49-58dd-a913-370f38d26204",
+     "uuid": "9281899d-b51a-5e6d-bc4b-147f4991c7bd",
      "title": "CIP-007-6: Systems Security Management",
      "props": [
       {
@@ -4424,13 +9722,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b91b4a2a-c525-54dd-81e0-0389e6ae7145",
+     "uuid": "01cd15d0-1ac7-51f0-852e-40a4e6525dd0",
      "title": "CIP-008-6: Incident Reporting and Response Planning",
      "props": [
       {
@@ -4441,13 +9739,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_008_incident_response.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_008_incident_response.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "61cc183c-ba62-5913-bf9c-3fdf8d8fa378",
+     "uuid": "3a447f74-f807-5fa2-8fb7-8d95e9199feb",
      "title": "CIP-009-6: Recovery Plans for BES Cyber Systems",
      "props": [
       {
@@ -4458,13 +9756,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_009_recovery_plans.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_009_recovery_plans.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "f8b10441-a792-5eed-bd43-fc3555243422",
+     "uuid": "4df2308c-2d4e-5ba8-ab44-71a974feab7a",
      "title": "CIP-010-4: Configuration Change Management and Vulnerability Assessments",
      "props": [
       {
@@ -4475,13 +9773,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_010_configuration_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_010_configuration_management.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "eb6bc9dc-e189-53ab-9f34-6dd30faf987c",
+     "uuid": "ed1c5985-c150-54db-9cff-cf64d2d56919",
      "title": "CIP-011-3: Information Protection",
      "props": [
       {
@@ -4492,13 +9790,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "3bc1b19e-3317-58a2-b6ab-e38b6ee528ee",
+     "uuid": "38a2b721-87af-54d2-a7f7-091a2517248a",
      "title": "CIP-012-1: Communications Between Control Centers",
      "props": [
       {
@@ -4509,13 +9807,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_012_communications.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_012_communications.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "e7f6bd26-e3dd-51e0-b13b-d8fdce58fbda",
+     "uuid": "69951fa3-85c1-56e0-8276-b6b968dae193",
      "title": "CIP-013-2: Supply Chain Risk Management",
      "props": [
       {
@@ -4526,13 +9824,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "c00be430-ab77-5fd1-820f-8feb4ad35706",
+     "uuid": "5501219a-c6d2-5c6e-bca8-f95557a5a49d",
      "title": "CIP-014-3: Physical Security of Transmission Stations and Substations",
      "props": [
       {
@@ -4543,13 +9841,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "7ef4e1c2-c756-5976-b9d9-a9b201c11769",
+     "uuid": "069c4cd2-bfbd-5525-a90a-3e66df4886a7",
      "title": "NERC CIP-015: Internal Network Security Monitoring (INSM)",
      "props": [
       {
@@ -4560,13 +9858,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/cip_015_insm.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/cip_015_insm.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "51c9c295-0e41-53f2-b7cc-cb2ed149a053",
+     "uuid": "2fd8faf5-6e0e-5f70-ba51-bdfb0afcd26e",
      "title": "NERC CIP (Critical Infrastructure Protection) Standards — Self-Contained Evaluator",
      "props": [
       {
@@ -4577,7 +9875,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/critical_infrastructure/nerc_cip/nerc_cip_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/critical_infrastructure/nerc_cip/nerc_cip_main.rego",
        "media-type": "text/plain"
       }
      ]

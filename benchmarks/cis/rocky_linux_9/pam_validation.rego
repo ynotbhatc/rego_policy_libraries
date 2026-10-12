@@ -5,6 +5,14 @@
 #   framework: cis_rocky_linux_9
 #   source: cis
 #   domains: [linux, rocky]
+#   coverage:
+#     checks: 15
+#     cited: 15
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_rocky_linux_9.pam
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 5.4/5.5: PAM and User Accounts
@@ -215,3 +223,11 @@ report := {
 	"section": "5.4-5.5 PAM and User Accounts",
 	"benchmark": "DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 (applied to Rocky Linux 9)",
 }
+#   coverage:
+#     checks: 15
+#     cited: 15
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

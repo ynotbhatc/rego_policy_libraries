@@ -5,6 +5,14 @@
 #   framework: cis_azure
 #   source: cis
 #   domains: [cloud, azure]
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_azure
 
 # CIS Microsoft Azure Foundations Benchmark v3.0.0
@@ -268,4 +276,12 @@ detailed_findings := {
     "virtual_machines_violations": virtual_machines_violations,
     "key_vault_violations": key_vault_violations,
     "app_service_violations": app_service_violations
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

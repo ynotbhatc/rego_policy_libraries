@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "de5eb59a-d39b-51b3-83dc-949290a6b827",
+  "uuid": "aa55f7e6-8c4d-5fbd-bea3-8c53495f51eb",
   "metadata": {
-   "title": "Rego Policy Libraries — stig_sles_15 (DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide — Master Aggregator)",
+   "title": "Rego Policy Libraries — stig_sles_15 (DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,921 @@
    ]
   },
   "groups": [
+   {
+    "id": "stig_sles_15-core",
+    "class": "rego-module",
+    "title": "DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.sles_15.core"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/sles_15/core.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_sles_15-SLES-15-010000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010035",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010035"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010035"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010035_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010045",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010045"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010045"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010045_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010046",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010046"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010046"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010046_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010160",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010160_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010180",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010180_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010190",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010190_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010220",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010220_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010270",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010270_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010280",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010280"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010280"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010280_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010330",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010330_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010430",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010430_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010450",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010450"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010450"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010450_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010510",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010510"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010510"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010510_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-010530",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-010530"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-010530"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-010530_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-020100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-020100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-020100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-020100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-020181",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-020181"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-020181"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-020181_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-020300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-020300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-020300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-020300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-040020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-040020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-040020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-040020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-040030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-040030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-040030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-040030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-040060",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-040060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-040060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-040060_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-040061",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-040061"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-040061"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-040061_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-040062",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-040062"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-040062"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-040062_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-040430",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-040430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-040430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-040430_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_sles_15-SLES-15-040440",
+      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SLES-15-040440"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SLES-15-040440"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.sles_15.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41d98366-d46a-5c7e-ba61-60777e754b32",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_sles_15-SLES-15-040440_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "stig_sles_15-stig_sles_15_complete",
     "class": "rego-module",
@@ -85,7 +1000,7 @@
       ],
       "links": [
        {
-        "href": "#14da66ea-25c3-5242-9d8e-247ad49440f6",
+        "href": "#26ef7a17-1c60-57df-bfc7-de03a4790e87",
         "rel": "implementation"
        }
       ],
@@ -118,7 +1033,7 @@
       ],
       "links": [
        {
-        "href": "#14da66ea-25c3-5242-9d8e-247ad49440f6",
+        "href": "#26ef7a17-1c60-57df-bfc7-de03a4790e87",
         "rel": "implementation"
        }
       ],
@@ -137,7 +1052,24 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "14da66ea-25c3-5242-9d8e-247ad49440f6",
+     "uuid": "41d98366-d46a-5c7e-ba61-60777e754b32",
+     "title": "DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.sles_15.core"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/sles_15/core.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "26ef7a17-1c60-57df-bfc7-de03a4790e87",
      "title": "DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -148,7 +1080,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/sles_15/stig_sles_15_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/sles_15/stig_sles_15_complete.rego",
        "media-type": "text/plain"
       }
      ]

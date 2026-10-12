@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "0b99afb9-bbb1-521f-ab76-643b4658e109",
+  "uuid": "8e971bd8-0b6a-5c2b-a1a0-a11bc68d39d9",
   "metadata": {
    "title": "Rego Policy Libraries — cmmc (CMMC 2.0 — Access Control Domain (AC))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,600 @@
     ],
     "controls": [
      {
+      "id": "cmmc-CMMC-AC.L1-3.1.1",
+      "title": "Unauthorized user '%v' has system access. Access must be limited to authorized users only.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L1-3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L1-3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L1-3.1.1_stmt",
+        "name": "statement",
+        "prose": "Unauthorized user '%v' has system access. Access must be limited to authorized users only."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L1-3.1.2",
+      "title": "Least privilege access is not enforced. Users must be limited to transactions necessary for their role.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L1-3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L1-3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L1-3.1.2_stmt",
+        "name": "statement",
+        "prose": "Least privilege access is not enforced. Users must be limited to transactions necessary for their role."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L1-3.1.20",
+      "title": "External system connections are not controlled. All connections to external systems must be verified and controlled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L1-3.1.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L1-3.1.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L1-3.1.20_stmt",
+        "name": "statement",
+        "prose": "External system connections are not controlled. All connections to external systems must be verified and controlled."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L1-3.1.22",
+      "title": "CUI system '%v' is publicly accessible without CUI posting controls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L1-3.1.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L1-3.1.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L1-3.1.22_stmt",
+        "name": "statement",
+        "prose": "CUI system '%v' is publicly accessible without CUI posting controls."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.3",
+      "title": "No CUI information flow controls implemented. Data flow enforcement is required at Level 2.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.3_stmt",
+        "name": "statement",
+        "prose": "No CUI information flow controls implemented. Data flow enforcement is required at Level 2."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.4",
+      "title": "Separation of duties is not implemented. No single user should be able to complete a high-risk action alone.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.4_stmt",
+        "name": "statement",
+        "prose": "Separation of duties is not implemented. No single user should be able to complete a high-risk action alone."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.5",
+      "title": "Privileged user '%v' has no documented justification. Least privilege must be enforced with documented need.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.5_stmt",
+        "name": "statement",
+        "prose": "Privileged user '%v' has no documented justification. Least privilege must be enforced with documented need."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.6",
+      "title": "Privileged user '%v' does not have a separate non-privileged account for routine tasks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.6_stmt",
+        "name": "statement",
+        "prose": "Privileged user '%v' does not have a separate non-privileged account for routine tasks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.7",
+      "title": "Privileged function execution is not audited. All privileged function use must be logged.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.7_stmt",
+        "name": "statement",
+        "prose": "Privileged function execution is not audited. All privileged function use must be logged."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.10",
+      "title": "Session lock timeout is %v minutes. Maximum 15 minutes of inactivity before lock is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.10_stmt",
+        "name": "statement",
+        "prose": "Session lock timeout is %v minutes. Maximum 15 minutes of inactivity before lock is required."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.11",
+      "title": "Sessions are not automatically terminated after inactivity. Implement session termination for CUI access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.11_stmt",
+        "name": "statement",
+        "prose": "Sessions are not automatically terminated after inactivity. Implement session termination for CUI access."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.12",
+      "title": "Remote access sessions are not monitored. All remote access to CUI systems must be monitored.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.12_stmt",
+        "name": "statement",
+        "prose": "Remote access sessions are not monitored. All remote access to CUI systems must be monitored."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.13",
+      "title": "Remote access does not use cryptographic mechanisms. VPN or equivalent encryption is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.13_stmt",
+        "name": "statement",
+        "prose": "Remote access does not use cryptographic mechanisms. VPN or equivalent encryption is required."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.14",
+      "title": "Remote access is not routed through managed access control points (e.g., jump servers, VPN gateways).",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.14_stmt",
+        "name": "statement",
+        "prose": "Remote access is not routed through managed access control points (e.g., jump servers, VPN gateways)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.15",
+      "title": "Remote execution of privileged commands is not controlled. Explicit authorization is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.15_stmt",
+        "name": "statement",
+        "prose": "Remote execution of privileged commands is not controlled. Explicit authorization is required."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.17",
+      "title": "Wireless access to CUI systems is not encrypted. WPA3 or equivalent is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.17_stmt",
+        "name": "statement",
+        "prose": "Wireless access to CUI systems is not encrypted. WPA3 or equivalent is required."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.18",
+      "title": "No mobile device policy for CUI access. Mobile devices connecting to CUI systems must be managed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.18_stmt",
+        "name": "statement",
+        "prose": "No mobile device policy for CUI access. Mobile devices connecting to CUI systems must be managed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.19",
+      "title": "Mobile devices accessing CUI do not enforce encryption. Full-device encryption is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.19_stmt",
+        "name": "statement",
+        "prose": "Mobile devices accessing CUI do not enforce encryption. Full-device encryption is required."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cmmc-cmmc.access_control-1",
       "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
       "props": [
@@ -85,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#4ee59a7c-0d61-534c-88e9-0766f7f30e82",
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
         "rel": "implementation"
        }
       ],
@@ -118,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#4ee59a7c-0d61-534c-88e9-0766f7f30e82",
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
         "rel": "implementation"
        }
       ],
@@ -127,6 +721,1144 @@
         "id": "cmmc-cmmc.access_control-2_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-3",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-4",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-5",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-6",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-7",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-8",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-9",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-10",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-11",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-12",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-13",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-14",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-14_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-15",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-15_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-16",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-16_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-17",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-17_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-18",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-18_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-19",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-19_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-20",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-20_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_audit_accountability",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Domain 3.3: Audit & Accountability",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.audit_accountability"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_audit_accountability.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-3.3.1",
+      "title": "System audit logging is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#64f0159c-ab1b-5718-a64d-e7991f381845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.3.1_stmt",
+        "name": "statement",
+        "prose": "System audit logging is not enabled"
+       },
+       {
+        "id": "cmmc-3.3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit log retention (%v days) is less than 90 days"
+       },
+       {
+        "id": "cmmc-3.3.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "auditd service is not active"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.3.2",
+      "title": "Individual user activity is not uniquely tracked in audit logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#64f0159c-ab1b-5718-a64d-e7991f381845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.3.2_stmt",
+        "name": "statement",
+        "prose": "Individual user activity is not uniquely tracked in audit logs"
+       },
+       {
+        "id": "cmmc-3.3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit rules are not configured to trace user actions"
+       },
+       {
+        "id": "cmmc-3.3.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "No audit rules configured for privileged command execution"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.3.3",
+      "title": "No documented process for reviewing and updating logged audit events",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#64f0159c-ab1b-5718-a64d-e7991f381845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.3.3_stmt",
+        "name": "statement",
+        "prose": "No documented process for reviewing and updating logged audit events"
+       },
+       {
+        "id": "cmmc-3.3.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit event review last performed %v days ago (must be annual)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.3.4",
+      "title": "Alerting for audit log process failures is not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#64f0159c-ab1b-5718-a64d-e7991f381845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.3.4_stmt",
+        "name": "statement",
+        "prose": "Alerting for audit log process failures is not configured"
+       },
+       {
+        "id": "cmmc-3.3.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "auditd space_left_action is set to 'ignore' — disk full events will not be alerted"
+       },
+       {
+        "id": "cmmc-3.3.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "auditd admin_space_left_action is set to 'ignore' — critical disk events will not be alerted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.3.5",
+      "title": "Audit logs are not centralized — cannot correlate across systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#64f0159c-ab1b-5718-a64d-e7991f381845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.3.5_stmt",
+        "name": "statement",
+        "prose": "Audit logs are not centralized — cannot correlate across systems"
+       },
+       {
+        "id": "cmmc-3.3.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "No SIEM or log correlation tool integrated for audit analysis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.3.6",
+      "title": "No capability for audit record reduction and report generation",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#64f0159c-ab1b-5718-a64d-e7991f381845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.3.6_stmt",
+        "name": "statement",
+        "prose": "No capability for audit record reduction and report generation"
+       },
+       {
+        "id": "cmmc-3.3.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "No log analysis tool configured for on-demand audit reporting"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.3.7",
+      "title": "NTP/chrony is not configured for clock synchronization",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#64f0159c-ab1b-5718-a64d-e7991f381845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.3.7_stmt",
+        "name": "statement",
+        "prose": "NTP/chrony is not configured for clock synchronization"
+       },
+       {
+        "id": "cmmc-3.3.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "No authoritative NTP time sources configured"
+       },
+       {
+        "id": "cmmc-3.3.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "Time synchronization service (chronyd/ntpd) is not active"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.3.8",
+      "title": "Audit log file permissions allow unauthorized access",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#64f0159c-ab1b-5718-a64d-e7991f381845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.3.8_stmt",
+        "name": "statement",
+        "prose": "Audit log file permissions allow unauthorized access"
+       },
+       {
+        "id": "cmmc-3.3.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit log directory permissions allow unauthorized access"
+       },
+       {
+        "id": "cmmc-3.3.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "auditd configuration is not protected from modification (missing -e 2)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.3.9",
+      "title": "Audit log management is not restricted to privileged users",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#64f0159c-ab1b-5718-a64d-e7991f381845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.3.9_stmt",
+        "name": "statement",
+        "prose": "Audit log management is not restricted to privileged users"
+       },
+       {
+        "id": "cmmc-3.3.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "No designated privileged users for audit management"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_awareness_training",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Domain 3.2: Awareness & Training",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.awareness_training"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_awareness_training.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-3.2.1",
+      "title": "No organizational security awareness program established",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#471c1fe8-613b-55a8-a7a1-85ee36f31788",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.2.1_stmt",
+        "name": "statement",
+        "prose": "No organizational security awareness program established"
+       },
+       {
+        "id": "cmmc-3.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Not all users have completed security awareness training"
+       },
+       {
+        "id": "cmmc-3.2.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Security awareness training interval (%v days) exceeds annual requirement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.2.2",
+      "title": "Role-based security training is not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#471c1fe8-613b-55a8-a7a1-85ee36f31788",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.2.2_stmt",
+        "name": "statement",
+        "prose": "Role-based security training is not implemented"
+       },
+       {
+        "id": "cmmc-3.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Privileged users have not received specialized security training"
+       },
+       {
+        "id": "cmmc-3.2.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Training completion records are not maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.2.3",
+      "title": "Phishing awareness training is not included in security program",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#471c1fe8-613b-55a8-a7a1-85ee36f31788",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.2.3_stmt",
+        "name": "statement",
+        "prose": "Phishing awareness training is not included in security program"
+       },
+       {
+        "id": "cmmc-3.2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Social engineering recognition training is not provided"
+       },
+       {
+        "id": "cmmc-3.2.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Insider threat awareness training is not provided"
        }
       ],
       "class": "compliance"
@@ -156,6 +1888,313 @@
     ],
     "controls": [
      {
+      "id": "cmmc-CMMC-CM.L2-3.4.1",
+      "title": "System '%v' has no documented baseline configuration. Baselines must be established for all CUI systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC CM.L2-3.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC CM.L2-3.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.1_stmt",
+        "name": "statement",
+        "prose": "System '%v' has no documented baseline configuration. Baselines must be established for all CUI systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-CM.L2-3.4.2",
+      "title": "System '%v' does not enforce security configuration settings. STIGs or CIS Benchmarks must be applied.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC CM.L2-3.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC CM.L2-3.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.2_stmt",
+        "name": "statement",
+        "prose": "System '%v' does not enforce security configuration settings. STIGs or CIS Benchmarks must be applied."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-CM.L2-3.4.3",
+      "title": "No change control process. All changes to CUI systems must go through an approval process.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC CM.L2-3.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC CM.L2-3.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.3_stmt",
+        "name": "statement",
+        "prose": "No change control process. All changes to CUI systems must go through an approval process."
+       },
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Changes are not reviewed before implementation. Security impact analysis is required for all changes."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-CM.L2-3.4.4",
+      "title": "No security impact analysis process. Changes must be analyzed for security impact before implementation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC CM.L2-3.4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC CM.L2-3.4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.4_stmt",
+        "name": "statement",
+        "prose": "No security impact analysis process. Changes must be analyzed for security impact before implementation."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-CM.L2-3.4.5",
+      "title": "Change access is not restricted. Only authorized personnel should be able to make changes to CUI systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC CM.L2-3.4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC CM.L2-3.4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.5_stmt",
+        "name": "statement",
+        "prose": "Change access is not restricted. Only authorized personnel should be able to make changes to CUI systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-CM.L2-3.4.6",
+      "title": "System '%v' has unnecessary services running: %v. Disable all non-essential services.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC CM.L2-3.4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC CM.L2-3.4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.6_stmt",
+        "name": "statement",
+        "prose": "System '%v' has unnecessary services running: %v. Disable all non-essential services."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-CM.L2-3.4.7",
+      "title": "Application whitelisting is not enabled. Only authorized software should be permitted to execute.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC CM.L2-3.4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC CM.L2-3.4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.7_stmt",
+        "name": "statement",
+        "prose": "Application whitelisting is not enabled. Only authorized software should be permitted to execute."
+       },
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unauthorized software detected on '%v': %v. Remove or authorize these programs."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-CM.L2-3.4.8",
+      "title": "Software policy is allow-by-default. Implement deny-by-exception (whitelist approach) for software execution.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC CM.L2-3.4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC CM.L2-3.4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.8_stmt",
+        "name": "statement",
+        "prose": "Software policy is allow-by-default. Implement deny-by-exception (whitelist approach) for software execution."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-CM.L2-3.4.9",
+      "title": "User-installed software is not controlled. Users must be prevented from installing unauthorized software.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC CM.L2-3.4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC CM.L2-3.4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.9_stmt",
+        "name": "statement",
+        "prose": "User-installed software is not controlled. Users must be prevented from installing unauthorized software."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cmmc-cmmc.configuration_management-1",
       "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
       "props": [
@@ -175,7 +2214,7 @@
       ],
       "links": [
        {
-        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
         "rel": "implementation"
        }
       ],
@@ -208,7 +2247,7 @@
       ],
       "links": [
        {
-        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
         "rel": "implementation"
        }
       ],
@@ -241,7 +2280,7 @@
       ],
       "links": [
        {
-        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
         "rel": "implementation"
        }
       ],
@@ -274,7 +2313,7 @@
       ],
       "links": [
        {
-        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
         "rel": "implementation"
        }
       ],
@@ -307,7 +2346,7 @@
       ],
       "links": [
        {
-        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
         "rel": "implementation"
        }
       ],
@@ -340,7 +2379,7 @@
       ],
       "links": [
        {
-        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
         "rel": "implementation"
        }
       ],
@@ -373,7 +2412,7 @@
       ],
       "links": [
        {
-        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
         "rel": "implementation"
        }
       ],
@@ -406,7 +2445,7 @@
       ],
       "links": [
        {
-        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
         "rel": "implementation"
        }
       ],
@@ -439,7 +2478,7 @@
       ],
       "links": [
        {
-        "href": "#f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
+        "href": "#aac882ec-d223-5b6a-925a-8f0412bdf894",
         "rel": "implementation"
        }
       ],
@@ -448,6 +2487,453 @@
         "id": "cmmc-cmmc.configuration_management-9_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_identification_authentication",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Domain 3.5: Identification & Authentication",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.identification_authentication"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_identification_authentication.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-3.5.1",
+      "title": "System users do not have unique identifiers",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.5.1_stmt",
+        "name": "statement",
+        "prose": "System users do not have unique identifiers"
+       },
+       {
+        "id": "cmmc-3.5.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "System processes and service accounts are not identified"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.5.2",
+      "title": "Authentication is not required before granting system access",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.5.2_stmt",
+        "name": "statement",
+        "prose": "Authentication is not required before granting system access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.5.3",
+      "title": "MFA is not enforced for privileged account access",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.5.3_stmt",
+        "name": "statement",
+        "prose": "MFA is not enforced for privileged account access"
+       },
+       {
+        "id": "cmmc-3.5.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "MFA is not enforced for network access to privileged accounts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.5.4",
+      "title": "Replay-resistant authentication is not implemented for network access",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.5.4_stmt",
+        "name": "statement",
+        "prose": "Replay-resistant authentication is not implemented for network access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.5.5",
+      "title": "No automated tool enforcing account management policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.5.5_stmt",
+        "name": "statement",
+        "prose": "No automated tool enforcing account management policies"
+       },
+       {
+        "id": "cmmc-3.5.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Inactive accounts disabled after %v days (must be ≤35)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.5.6",
+      "title": "No policy for managing and disabling inactive system identifiers",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.5.6_stmt",
+        "name": "statement",
+        "prose": "No policy for managing and disabling inactive system identifiers"
+       },
+       {
+        "id": "cmmc-3.5.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Terminated user accounts are not disabled immediately upon separation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.5.7",
+      "title": "Minimum password length %v is less than required 12 characters",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.5.7_stmt",
+        "name": "statement",
+        "prose": "Minimum password length %v is less than required 12 characters"
+       },
+       {
+        "id": "cmmc-3.5.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Password policy does not require uppercase characters"
+       },
+       {
+        "id": "cmmc-3.5.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "Password policy does not require numeric characters"
+       },
+       {
+        "id": "cmmc-3.5.7_obj.3",
+        "name": "assessment-objective",
+        "prose": "Password policy does not require special characters"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.5.8",
+      "title": "Password history only prevents reuse of %v passwords (minimum 5 required)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.5.8_stmt",
+        "name": "statement",
+        "prose": "Password history only prevents reuse of %v passwords (minimum 5 required)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.5.9",
+      "title": "Temporary passwords do not require immediate change on first use",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.5.9_stmt",
+        "name": "statement",
+        "prose": "Temporary passwords do not require immediate change on first use"
+       },
+       {
+        "id": "cmmc-3.5.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Temporary passwords expire after %v hours (must be ≤24)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.5.10",
+      "title": "Passwords are not stored using cryptographic hashing",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.5.10_stmt",
+        "name": "statement",
+        "prose": "Passwords are not stored using cryptographic hashing"
+       },
+       {
+        "id": "cmmc-3.5.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Passwords are hashed with MD5 — must use SHA-256 or stronger"
+       },
+       {
+        "id": "cmmc-3.5.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "Passwords are hashed with SHA-1 — must use SHA-256 or stronger"
+       },
+       {
+        "id": "cmmc-3.5.10_obj.3",
+        "name": "assessment-objective",
+        "prose": "Passwords are transmitted without encryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.5.11",
+      "title": "Authentication feedback (password echo) is not obscured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.5.11_stmt",
+        "name": "statement",
+        "prose": "Authentication feedback (password echo) is not obscured"
+       },
+       {
+        "id": "cmmc-3.5.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Failed authentication attempts reveal excessive detail about credentials"
        }
       ],
       "class": "compliance"
@@ -477,6 +2963,120 @@
     ],
     "controls": [
      {
+      "id": "cmmc-CMMC-IR.L2-3.6.1",
+      "title": "No documented incident response plan. An operational IR capability covering preparation, detection, containment, and recovery is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC IR.L2-3.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC IR.L2-3.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a67bcaf-d8c6-5fc3-8fb8-589da41153d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-IR.L2-3.6.1_stmt",
+        "name": "statement",
+        "prose": "No documented incident response plan. An operational IR capability covering preparation, detection, containment, and recovery is required."
+       },
+       {
+        "id": "cmmc-CMMC-IR.L2-3.6.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Incident response plan has not been tested. Plans must be exercised at least annually."
+       },
+       {
+        "id": "cmmc-CMMC-IR.L2-3.6.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Incident response plan is %v days old. Plans must be reviewed and updated annually."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-IR.L2-3.6.2",
+      "title": "No incident tracking system. All incidents affecting CUI must be tracked and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC IR.L2-3.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC IR.L2-3.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a67bcaf-d8c6-5fc3-8fb8-589da41153d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-IR.L2-3.6.2_stmt",
+        "name": "statement",
+        "prose": "No incident tracking system. All incidents affecting CUI must be tracked and documented."
+       },
+       {
+        "id": "cmmc-CMMC-IR.L2-3.6.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "DoD incident reporting procedure not defined. CUI incidents must be reported to appropriate authorities within 72 hours."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-IR.L2-3.6.3",
+      "title": "No tabletop exercise completed. Incident response capability must be tested through exercises.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC IR.L2-3.6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC IR.L2-3.6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a67bcaf-d8c6-5fc3-8fb8-589da41153d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-IR.L2-3.6.3_stmt",
+        "name": "statement",
+        "prose": "No tabletop exercise completed. Incident response capability must be tested through exercises."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cmmc-cmmc.incident_response-1",
       "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body.",
       "props": [
@@ -496,7 +3096,7 @@
       ],
       "links": [
        {
-        "href": "#068ba339-f4e6-5501-bbf3-3879370446d7",
+        "href": "#6a67bcaf-d8c6-5fc3-8fb8-589da41153d1",
         "rel": "implementation"
        }
       ],
@@ -529,7 +3129,7 @@
       ],
       "links": [
        {
-        "href": "#068ba339-f4e6-5501-bbf3-3879370446d7",
+        "href": "#6a67bcaf-d8c6-5fc3-8fb8-589da41153d1",
         "rel": "implementation"
        }
       ],
@@ -562,7 +3162,7 @@
       ],
       "links": [
        {
-        "href": "#068ba339-f4e6-5501-bbf3-3879370446d7",
+        "href": "#6a67bcaf-d8c6-5fc3-8fb8-589da41153d1",
         "rel": "implementation"
        }
       ],
@@ -600,6 +3200,435 @@
     ],
     "controls": [
      {
+      "id": "cmmc-cmmc-1",
+      "title": "3.10 physical protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-1_stmt",
+        "name": "statement",
+        "prose": "3.10 physical protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-2",
+      "title": "3.11 risk assessment",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-2_stmt",
+        "name": "statement",
+        "prose": "3.11 risk assessment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-3",
+      "title": "3.12 security assessment",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-3_stmt",
+        "name": "statement",
+        "prose": "3.12 security assessment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-4",
+      "title": "3.13 system communications",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-4_stmt",
+        "name": "statement",
+        "prose": "3.13 system communications"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-5",
+      "title": "3.14 system information integrity",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-5_stmt",
+        "name": "statement",
+        "prose": "3.14 system information integrity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-6",
+      "title": "3.1 access control",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-6_stmt",
+        "name": "statement",
+        "prose": "3.1 access control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-7",
+      "title": "3.2 awareness training",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-7_stmt",
+        "name": "statement",
+        "prose": "3.2 awareness training"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-8",
+      "title": "3.4 configuration management",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-8_stmt",
+        "name": "statement",
+        "prose": "3.4 configuration management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-9",
+      "title": "3.5 identification authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-9_stmt",
+        "name": "statement",
+        "prose": "3.5 identification authentication"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-10",
+      "title": "3.6 incident response",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-10_stmt",
+        "name": "statement",
+        "prose": "3.6 incident response"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-11",
+      "title": "3.7 maintenance",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-11_stmt",
+        "name": "statement",
+        "prose": "3.7 maintenance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-12",
+      "title": "3.8 media protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-12_stmt",
+        "name": "statement",
+        "prose": "3.8 media protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-13",
+      "title": "3.9 personnel security",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-13_stmt",
+        "name": "statement",
+        "prose": "3.9 personnel security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cmmc-domains",
       "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
       "props": [
@@ -619,7 +3648,7 @@
       ],
       "links": [
        {
-        "href": "#97787b3a-89cd-55d1-a2bb-5486aef64649",
+        "href": "#81c55b21-5d7d-546a-b9ce-cf8d93d99986",
         "rel": "implementation"
        }
       ],
@@ -633,12 +3662,2453 @@
       "class": "compliance"
      }
     ]
+   },
+   {
+    "id": "cmmc-cmmc_maintenance",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Domain 3.7: Maintenance",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.maintenance"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_maintenance.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-3.7.1",
+      "title": "No documented maintenance policy for organizational systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.maintenance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#117e5ae6-364a-511c-bca1-4374a509d6e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.7.1_stmt",
+        "name": "statement",
+        "prose": "No documented maintenance policy for organizational systems"
+       },
+       {
+        "id": "cmmc-3.7.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "System maintenance is not performed on a scheduled basis"
+       },
+       {
+        "id": "cmmc-3.7.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Maintenance activities are not recorded and retained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.7.2",
+      "title": "Maintenance personnel are not formally authorized and vetted",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.maintenance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#117e5ae6-364a-511c-bca1-4374a509d6e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.7.2_stmt",
+        "name": "statement",
+        "prose": "Maintenance personnel are not formally authorized and vetted"
+       },
+       {
+        "id": "cmmc-3.7.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Remote maintenance access is not controlled or monitored"
+       },
+       {
+        "id": "cmmc-3.7.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Maintenance tools are not reviewed and approved prior to use"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.7.3",
+      "title": "No procedure for sanitizing equipment removed for off-site maintenance",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.maintenance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#117e5ae6-364a-511c-bca1-4374a509d6e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.7.3_stmt",
+        "name": "statement",
+        "prose": "No procedure for sanitizing equipment removed for off-site maintenance"
+       },
+       {
+        "id": "cmmc-3.7.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Equipment removal for maintenance does not require authorization"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.7.4",
+      "title": "Diagnostic/test media is not scanned for malicious code before use",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.maintenance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#117e5ae6-364a-511c-bca1-4374a509d6e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.7.4_stmt",
+        "name": "statement",
+        "prose": "Diagnostic/test media is not scanned for malicious code before use"
+       },
+       {
+        "id": "cmmc-3.7.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Diagnostic and test program media is not controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.7.5",
+      "title": "MFA is not required for remote/nonlocal maintenance sessions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.maintenance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#117e5ae6-364a-511c-bca1-4374a509d6e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.7.5_stmt",
+        "name": "statement",
+        "prose": "MFA is not required for remote/nonlocal maintenance sessions"
+       },
+       {
+        "id": "cmmc-3.7.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Remote maintenance sessions are not terminated when complete"
+       },
+       {
+        "id": "cmmc-3.7.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Remote maintenance connections are not encrypted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.7.6",
+      "title": "Maintenance personnel without access authorization are not supervised",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.maintenance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#117e5ae6-364a-511c-bca1-4374a509d6e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.7.6_stmt",
+        "name": "statement",
+        "prose": "Maintenance personnel without access authorization are not supervised"
+       },
+       {
+        "id": "cmmc-3.7.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Escort is not required for maintenance personnel in CUI areas"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_media_protection",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Domain 3.8: Media Protection",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.media_protection"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_media_protection.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-3.8.1",
+      "title": "Digital media containing CUI is not protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6507591-a3c1-51f7-afa0-979194f156c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.8.1_stmt",
+        "name": "statement",
+        "prose": "Digital media containing CUI is not protected"
+       },
+       {
+        "id": "cmmc-3.8.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Paper media containing CUI is not protected"
+       },
+       {
+        "id": "cmmc-3.8.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Access to CUI media is not controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.8.2",
+      "title": "CUI media access is not restricted to authorized users",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6507591-a3c1-51f7-afa0-979194f156c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.8.2_stmt",
+        "name": "statement",
+        "prose": "CUI media access is not restricted to authorized users"
+       },
+       {
+        "id": "cmmc-3.8.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "No maintained list of users authorized to access CUI media"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.8.3",
+      "title": "No media sanitization policy before disposal or reuse",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6507591-a3c1-51f7-afa0-979194f156c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.8.3_stmt",
+        "name": "statement",
+        "prose": "No media sanitization policy before disposal or reuse"
+       },
+       {
+        "id": "cmmc-3.8.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Media sanitization does not comply with NIST SP 800-88 guidelines"
+       },
+       {
+        "id": "cmmc-3.8.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Media sanitization/destruction records are not maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.8.4",
+      "title": "No policy for marking media with CUI designations",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6507591-a3c1-51f7-afa0-979194f156c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.8.4_stmt",
+        "name": "statement",
+        "prose": "No policy for marking media with CUI designations"
+       },
+       {
+        "id": "cmmc-3.8.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "CUI media is not labeled with appropriate markings and distribution limits"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.8.5",
+      "title": "No controls for CUI media during transport",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6507591-a3c1-51f7-afa0-979194f156c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.8.5_stmt",
+        "name": "statement",
+        "prose": "No controls for CUI media during transport"
+       },
+       {
+        "id": "cmmc-3.8.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Chain of custody is not maintained for CUI media in transport"
+       },
+       {
+        "id": "cmmc-3.8.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "CUI media is not encrypted during transport"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.8.6",
+      "title": "CUI media is not encrypted at rest",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6507591-a3c1-51f7-afa0-979194f156c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.8.6_stmt",
+        "name": "statement",
+        "prose": "CUI media is not encrypted at rest"
+       },
+       {
+        "id": "cmmc-3.8.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Media encryption does not use FIPS-validated cryptographic modules"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.8.7",
+      "title": "No policy controlling use of removable media on system components",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6507591-a3c1-51f7-afa0-979194f156c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.8.7_stmt",
+        "name": "statement",
+        "prose": "No policy controlling use of removable media on system components"
+       },
+       {
+        "id": "cmmc-3.8.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unauthorized removable media is not blocked (USB, SD cards, etc.)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.8.8",
+      "title": "Portable storage devices without identifiable owners are not prohibited",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6507591-a3c1-51f7-afa0-979194f156c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.8.8_stmt",
+        "name": "statement",
+        "prose": "Portable storage devices without identifiable owners are not prohibited"
+       },
+       {
+        "id": "cmmc-3.8.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Portable storage devices are not required to be registered/identified"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.8.9",
+      "title": "Backup CUI is not encrypted at storage locations",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6507591-a3c1-51f7-afa0-979194f156c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.8.9_stmt",
+        "name": "statement",
+        "prose": "Backup CUI is not encrypted at storage locations"
+       },
+       {
+        "id": "cmmc-3.8.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Access to backup CUI storage locations is not controlled"
+       },
+       {
+        "id": "cmmc-3.8.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "Backup integrity is not verified to detect unauthorized modification"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_personnel_security",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Domain 3.9: Personnel Security",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.personnel_security"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_personnel_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-3.9.1",
+      "title": "Pre-employment screening is not performed before granting CUI access",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4621207d-eae7-546c-a0c5-d8ebb9700a54",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.9.1_stmt",
+        "name": "statement",
+        "prose": "Pre-employment screening is not performed before granting CUI access"
+       },
+       {
+        "id": "cmmc-3.9.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Background checks are not required for personnel accessing CUI systems"
+       },
+       {
+        "id": "cmmc-3.9.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Personnel screening records are not maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.9.2",
+      "title": "No documented procedure for revoking CUI access upon termination",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.9.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.9.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4621207d-eae7-546c-a0c5-d8ebb9700a54",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.9.2_stmt",
+        "name": "statement",
+        "prose": "No documented procedure for revoking CUI access upon termination"
+       },
+       {
+        "id": "cmmc-3.9.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "CUI system access is not revoked immediately upon personnel termination"
+       },
+       {
+        "id": "cmmc-3.9.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Equipment and credentials are not retrieved upon personnel termination"
+       },
+       {
+        "id": "cmmc-3.9.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "CUI access privileges are not reviewed when personnel transfer roles"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_physical_protection",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Domain 3.10: Physical Protection",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.physical_protection"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_physical_protection.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-3.10.1",
+      "title": "Physical access controls are not implemented for CUI systems/equipment",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#595ab7ad-2ebd-5011-9328-5862d99dbcf9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.10.1_stmt",
+        "name": "statement",
+        "prose": "Physical access controls are not implemented for CUI systems/equipment"
+       },
+       {
+        "id": "cmmc-3.10.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "No maintained list of individuals authorized for physical access"
+       },
+       {
+        "id": "cmmc-3.10.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Physical access logs are not maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.10.2",
+      "title": "Physical facility housing CUI systems is not monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#595ab7ad-2ebd-5011-9328-5862d99dbcf9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.10.2_stmt",
+        "name": "statement",
+        "prose": "Physical facility housing CUI systems is not monitored"
+       },
+       {
+        "id": "cmmc-3.10.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "No surveillance (CCTV or equivalent) protecting CUI facility"
+       },
+       {
+        "id": "cmmc-3.10.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Environmental controls (temperature, humidity, fire suppression) not implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.10.3",
+      "title": "Visitors to CUI areas are not required to be escorted",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#595ab7ad-2ebd-5011-9328-5862d99dbcf9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.10.3_stmt",
+        "name": "statement",
+        "prose": "Visitors to CUI areas are not required to be escorted"
+       },
+       {
+        "id": "cmmc-3.10.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Visitor activity logs are not maintained"
+       },
+       {
+        "id": "cmmc-3.10.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Visitors are not issued distinguishing badges or credentials"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.10.4",
+      "title": "Audit logs of physical access to CUI areas are not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#595ab7ad-2ebd-5011-9328-5862d99dbcf9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.10.4_stmt",
+        "name": "statement",
+        "prose": "Audit logs of physical access to CUI areas are not maintained"
+       },
+       {
+        "id": "cmmc-3.10.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Physical access logs retained for %v days (minimum 90 days required)"
+       },
+       {
+        "id": "cmmc-3.10.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Physical access audit logs are not reviewed on a regular basis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.10.5",
+      "title": "Physical access devices (keycards, badges) are not inventoried",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#595ab7ad-2ebd-5011-9328-5862d99dbcf9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.10.5_stmt",
+        "name": "statement",
+        "prose": "Physical access devices (keycards, badges) are not inventoried"
+       },
+       {
+        "id": "cmmc-3.10.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Lost or stolen physical access credentials are not immediately revoked"
+       },
+       {
+        "id": "cmmc-3.10.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Physical access device inventory is not audited at least annually"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.10.6",
+      "title": "No policy for safeguarding CUI at alternate work sites (remote work)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.physical_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#595ab7ad-2ebd-5011-9328-5862d99dbcf9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.10.6_stmt",
+        "name": "statement",
+        "prose": "No policy for safeguarding CUI at alternate work sites (remote work)"
+       },
+       {
+        "id": "cmmc-3.10.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Physical and technical controls at alternate CUI sites are not defined"
+       },
+       {
+        "id": "cmmc-3.10.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "VPN or equivalent is not required for CUI access at alternate sites"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_risk_assessment",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Domain 3.11: Risk Assessment",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.risk_assessment"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_risk_assessment.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-3.11.1",
+      "title": "No periodic risk assessment has been conducted for CUI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.11.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.11.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.risk_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b08ea48-c30f-52ae-b90d-ca029ea28662",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.11.1_stmt",
+        "name": "statement",
+        "prose": "No periodic risk assessment has been conducted for CUI systems"
+       },
+       {
+        "id": "cmmc-3.11.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Risk assessment conducted every %v days (must be at least annually)"
+       },
+       {
+        "id": "cmmc-3.11.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Risk assessment results are not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.11.2",
+      "title": "Vulnerability scanning is not enabled for CUI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.11.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.11.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.risk_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b08ea48-c30f-52ae-b90d-ca029ea28662",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.11.2_stmt",
+        "name": "statement",
+        "prose": "Vulnerability scanning is not enabled for CUI systems"
+       },
+       {
+        "id": "cmmc-3.11.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Vulnerability scans run every %v days (must be at least monthly)"
+       },
+       {
+        "id": "cmmc-3.11.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Vulnerability scan results are not reviewed and acted upon"
+       },
+       {
+        "id": "cmmc-3.11.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "New vulnerability disclosures do not trigger additional scans"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.11.3",
+      "title": "No vulnerability remediation policy aligned to risk assessment",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.11.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.11.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.risk_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b08ea48-c30f-52ae-b90d-ca029ea28662",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.11.3_stmt",
+        "name": "statement",
+        "prose": "No vulnerability remediation policy aligned to risk assessment"
+       },
+       {
+        "id": "cmmc-3.11.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Critical vulnerabilities remediated within %v days (must be ≤15)"
+       },
+       {
+        "id": "cmmc-3.11.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "High vulnerabilities remediated within %v days (must be ≤30)"
+       },
+       {
+        "id": "cmmc-3.11.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Vulnerability remediation status is not tracked to closure"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_security_assessment",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Domain 3.12: Security Assessment",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.security_assessment"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_security_assessment.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-3.12.1",
+      "title": "Security controls in CUI systems have not been periodically assessed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.12.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.12.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.security_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3319cda1-70b6-5b2b-a63a-767ce7451229",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.12.1_stmt",
+        "name": "statement",
+        "prose": "Security controls in CUI systems have not been periodically assessed"
+       },
+       {
+        "id": "cmmc-3.12.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Security control assessments conducted every %v days (must be at least annually)"
+       },
+       {
+        "id": "cmmc-3.12.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Security control assessment results are not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.12.2",
+      "title": "No Plan of Action and Milestones (POA&M) exists to address security deficiencies",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.12.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.12.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.security_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3319cda1-70b6-5b2b-a63a-767ce7451229",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.12.2_stmt",
+        "name": "statement",
+        "prose": "No Plan of Action and Milestones (POA&M) exists to address security deficiencies"
+       },
+       {
+        "id": "cmmc-3.12.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "POA&M does not track all identified security deficiencies and vulnerabilities"
+       },
+       {
+        "id": "cmmc-3.12.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "POA&M is not reviewed and updated on a regular basis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.12.3",
+      "title": "No continuous monitoring program for CUI system security controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.12.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.12.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.security_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3319cda1-70b6-5b2b-a63a-767ce7451229",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.12.3_stmt",
+        "name": "statement",
+        "prose": "No continuous monitoring program for CUI system security controls"
+       },
+       {
+        "id": "cmmc-3.12.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Security metrics are not collected to assess ongoing control effectiveness"
+       },
+       {
+        "id": "cmmc-3.12.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Security control effectiveness is not reviewed on an ongoing basis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.12.4",
+      "title": "No System Security Plan (SSP) exists for CUI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.12.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.12.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.security_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3319cda1-70b6-5b2b-a63a-767ce7451229",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.12.4_stmt",
+        "name": "statement",
+        "prose": "No System Security Plan (SSP) exists for CUI systems"
+       },
+       {
+        "id": "cmmc-3.12.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSP does not document system boundaries and connections to other systems"
+       },
+       {
+        "id": "cmmc-3.12.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "SSP does not describe CUI operating environment and security requirement implementation"
+       },
+       {
+        "id": "cmmc-3.12.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "System Security Plan is not reviewed and updated at least annually"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_system_communications_protection",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Domain 3.13: System and Communications Protection",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.system_communications_protection"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_system_communications_protection.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-3.13.1",
+      "title": "External network boundaries of CUI systems are not monitored and controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.1_stmt",
+        "name": "statement",
+        "prose": "External network boundaries of CUI systems are not monitored and controlled"
+       },
+       {
+        "id": "cmmc-3.13.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Key internal network boundaries are not protected (e.g., no segmentation)"
+       },
+       {
+        "id": "cmmc-3.13.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Network communications are not controlled at organizational boundaries"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.2",
+      "title": "Secure architecture design principles are not applied to CUI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.2_stmt",
+        "name": "statement",
+        "prose": "Secure architecture design principles are not applied to CUI systems"
+       },
+       {
+        "id": "cmmc-3.13.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Defense-in-depth strategy is not implemented for CUI protection"
+       },
+       {
+        "id": "cmmc-3.13.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Systems are not configured for least functionality (unnecessary features enabled)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.3",
+      "title": "System management interfaces are not separated from user interfaces",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.3_stmt",
+        "name": "statement",
+        "prose": "System management interfaces are not separated from user interfaces"
+       },
+       {
+        "id": "cmmc-3.13.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "User functionality and system management functionality share the same logical plane"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.4",
+      "title": "Shared system resources are not controlled to prevent unauthorized data transfer",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.4_stmt",
+        "name": "statement",
+        "prose": "Shared system resources are not controlled to prevent unauthorized data transfer"
+       },
+       {
+        "id": "cmmc-3.13.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Memory protection controls are not enabled (ASLR, DEP, etc.)"
+       },
+       {
+        "id": "cmmc-3.13.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "No controls to prevent covert channel information transfer via shared resources"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.5",
+      "title": "No DMZ or equivalent separation for publicly accessible system components",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.5_stmt",
+        "name": "statement",
+        "prose": "No DMZ or equivalent separation for publicly accessible system components"
+       },
+       {
+        "id": "cmmc-3.13.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Publicly accessible systems are not physically or logically separated from internal networks"
+       },
+       {
+        "id": "cmmc-3.13.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "CUI systems are not segregated from publicly accessible system components"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.6",
+      "title": "Network communications are not denied by default (permit-all policy in use)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.6_stmt",
+        "name": "statement",
+        "prose": "Network communications are not denied by default (permit-all policy in use)"
+       },
+       {
+        "id": "cmmc-3.13.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "No explicit allow rules — communications are not permitted by exception"
+       },
+       {
+        "id": "cmmc-3.13.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "Firewall/network rules are not reviewed at least annually"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.7",
+      "title": "Split tunneling is not prevented on VPN connections to CUI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.7_stmt",
+        "name": "statement",
+        "prose": "Split tunneling is not prevented on VPN connections to CUI systems"
+       },
+       {
+        "id": "cmmc-3.13.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "VPN configuration does not route all traffic through the secure tunnel"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.8",
+      "title": "CUI is transmitted without cryptographic protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.8_stmt",
+        "name": "statement",
+        "prose": "CUI is transmitted without cryptographic protection"
+       },
+       {
+        "id": "cmmc-3.13.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Transmission encryption does not use FIPS-validated cryptographic modules"
+       },
+       {
+        "id": "cmmc-3.13.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "TLS minimum version is %v (must be TLS 1.2 or higher)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.9",
+      "title": "Network sessions are not terminated after a period of inactivity",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.9_stmt",
+        "name": "statement",
+        "prose": "Network sessions are not terminated after a period of inactivity"
+       },
+       {
+        "id": "cmmc-3.13.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Network session timeout is %v minutes (must be ≤30)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.10",
+      "title": "No cryptographic key management policy exists",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.10_stmt",
+        "name": "statement",
+        "prose": "No cryptographic key management policy exists"
+       },
+       {
+        "id": "cmmc-3.13.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cryptographic keys are not generated using approved, secure methods"
+       },
+       {
+        "id": "cmmc-3.13.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "No policy for rotating cryptographic keys on a defined schedule"
+       },
+       {
+        "id": "cmmc-3.13.10_obj.3",
+        "name": "assessment-objective",
+        "prose": "Cryptographic keys are not stored with appropriate access controls and protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.11",
+      "title": "Cryptography protecting CUI confidentiality is not FIPS 140-2 validated",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.11_stmt",
+        "name": "statement",
+        "prose": "Cryptography protecting CUI confidentiality is not FIPS 140-2 validated"
+       },
+       {
+        "id": "cmmc-3.13.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Non-FIPS cryptographic algorithms are not prohibited for CUI protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.12",
+      "title": "Remote activation of cameras/microphones/collaborative devices is not prohibited",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.12_stmt",
+        "name": "statement",
+        "prose": "Remote activation of cameras/microphones/collaborative devices is not prohibited"
+       },
+       {
+        "id": "cmmc-3.13.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "No visual/audio indicator that cameras or microphones are active for present users"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.13",
+      "title": "No policy controlling the use of mobile code in CUI environments",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.13_stmt",
+        "name": "statement",
+        "prose": "No policy controlling the use of mobile code in CUI environments"
+       },
+       {
+        "id": "cmmc-3.13.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unauthorized mobile code (JavaScript, ActiveX, etc.) is not blocked"
+       },
+       {
+        "id": "cmmc-3.13.13_obj.2",
+        "name": "assessment-objective",
+        "prose": "Mobile code usage is not monitored in CUI systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.14",
+      "title": "No policy governing VoIP technology use in CUI environments",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.14_stmt",
+        "name": "statement",
+        "prose": "No policy governing VoIP technology use in CUI environments"
+       },
+       {
+        "id": "cmmc-3.13.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "VoIP traffic carrying CUI is not encrypted"
+       },
+       {
+        "id": "cmmc-3.13.14_obj.2",
+        "name": "assessment-objective",
+        "prose": "VoIP usage is not monitored in CUI system environments"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.15",
+      "title": "Communications session authenticity is not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.15_stmt",
+        "name": "statement",
+        "prose": "Communications session authenticity is not enforced"
+       },
+       {
+        "id": "cmmc-3.13.15_obj.1",
+        "name": "assessment-objective",
+        "prose": "Anti-replay protection is not implemented for communications sessions"
+       },
+       {
+        "id": "cmmc-3.13.15_obj.2",
+        "name": "assessment-objective",
+        "prose": "No controls to prevent session hijacking attacks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.13.16",
+      "title": "CUI is not encrypted at rest",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_communications_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eb49671-87c0-5735-9618-99d391b9f054",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.13.16_stmt",
+        "name": "statement",
+        "prose": "CUI is not encrypted at rest"
+       },
+       {
+        "id": "cmmc-3.13.16_obj.1",
+        "name": "assessment-objective",
+        "prose": "CUI at-rest encryption does not use FIPS-validated cryptographic modules"
+       },
+       {
+        "id": "cmmc-3.13.16_obj.2",
+        "name": "assessment-objective",
+        "prose": "Databases containing CUI are not encrypted"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "cmmc-cmmc_system_information_integrity",
+    "class": "rego-module",
+    "title": "CMMC 2.0 — Domain 3.14: System and Information Integrity",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cmmc.system_information_integrity"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cmmc/cmmc_system_information_integrity.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cmmc-3.14.1",
+      "title": "No policy for identifying and correcting system flaws in a timely manner",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a33adf14-99a8-5b2c-aa6a-c64e73bc6527",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.14.1_stmt",
+        "name": "statement",
+        "prose": "No policy for identifying and correcting system flaws in a timely manner"
+       },
+       {
+        "id": "cmmc-3.14.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "No patch management program to identify and remediate system vulnerabilities"
+       },
+       {
+        "id": "cmmc-3.14.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Critical patches applied within %v days (must be ≤30)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.14.2",
+      "title": "Anti-malware protection is not installed on CUI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a33adf14-99a8-5b2c-aa6a-c64e73bc6527",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.14.2_stmt",
+        "name": "statement",
+        "prose": "Anti-malware protection is not installed on CUI systems"
+       },
+       {
+        "id": "cmmc-3.14.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Real-time anti-malware scanning is not enabled"
+       },
+       {
+        "id": "cmmc-3.14.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Anti-malware protection does not cover all entry and exit points (email, web, removable media)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.14.3",
+      "title": "System security alerts and advisories are not monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a33adf14-99a8-5b2c-aa6a-c64e73bc6527",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.14.3_stmt",
+        "name": "statement",
+        "prose": "System security alerts and advisories are not monitored"
+       },
+       {
+        "id": "cmmc-3.14.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Not subscribed to threat intelligence or security advisory feeds (CISA, US-CERT, etc.)"
+       },
+       {
+        "id": "cmmc-3.14.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Security alerts and advisories are received but not acted upon"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.14.4",
+      "title": "Anti-malware signatures are not automatically updated when new releases are available",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a33adf14-99a8-5b2c-aa6a-c64e73bc6527",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.14.4_stmt",
+        "name": "statement",
+        "prose": "Anti-malware signatures are not automatically updated when new releases are available"
+       },
+       {
+        "id": "cmmc-3.14.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Anti-malware signatures updated every %v hours (must be ≤24)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.14.5",
+      "title": "Periodic anti-malware scans of CUI systems are not performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a33adf14-99a8-5b2c-aa6a-c64e73bc6527",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.14.5_stmt",
+        "name": "statement",
+        "prose": "Periodic anti-malware scans of CUI systems are not performed"
+       },
+       {
+        "id": "cmmc-3.14.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "System scans run every %v days (must be at least weekly)"
+       },
+       {
+        "id": "cmmc-3.14.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Real-time scanning of files is not performed when files are opened or executed"
+       },
+       {
+        "id": "cmmc-3.14.5_obj.3",
+        "name": "assessment-objective",
+        "prose": "Files downloaded from external sources are not scanned before use"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.14.6",
+      "title": "Intrusion detection/prevention system (IDS/IPS) is not deployed for CUI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a33adf14-99a8-5b2c-aa6a-c64e73bc6527",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.14.6_stmt",
+        "name": "statement",
+        "prose": "Intrusion detection/prevention system (IDS/IPS) is not deployed for CUI systems"
+       },
+       {
+        "id": "cmmc-3.14.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Inbound network traffic to CUI systems is not monitored for attacks"
+       },
+       {
+        "id": "cmmc-3.14.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "Outbound network traffic from CUI systems is not monitored for exfiltration indicators"
+       },
+       {
+        "id": "cmmc-3.14.6_obj.3",
+        "name": "assessment-objective",
+        "prose": "System monitoring does not detect indicators of attack or compromise"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-3.14.7",
+      "title": "Unauthorized use of CUI systems is not identified or detected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a33adf14-99a8-5b2c-aa6a-c64e73bc6527",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-3.14.7_stmt",
+        "name": "statement",
+        "prose": "Unauthorized use of CUI systems is not identified or detected"
+       },
+       {
+        "id": "cmmc-3.14.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "No baseline of normal system behavior established for anomaly comparison"
+       },
+       {
+        "id": "cmmc-3.14.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "Anomaly detection is not enabled to identify unusual system activity"
+       },
+       {
+        "id": "cmmc-3.14.7_obj.3",
+        "name": "assessment-objective",
+        "prose": "Alerts are not generated when unauthorized system use is detected"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
    }
   ],
   "back-matter": {
    "resources": [
     {
-     "uuid": "4ee59a7c-0d61-534c-88e9-0766f7f30e82",
+     "uuid": "9868f41c-7d95-5a4b-9040-7cbfd3270b1b",
      "title": "CMMC 2.0 — Access Control Domain (AC)",
      "props": [
       {
@@ -649,13 +6119,47 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cmmc/cmmc_access_control.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_access_control.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "f76b01ef-0b7b-5302-a1ff-31ec459b27f4",
+     "uuid": "64f0159c-ab1b-5718-a64d-e7991f381845",
+     "title": "CMMC 2.0 — Domain 3.3: Audit & Accountability",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.audit_accountability"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_audit_accountability.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "471c1fe8-613b-55a8-a7a1-85ee36f31788",
+     "title": "CMMC 2.0 — Domain 3.2: Awareness & Training",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.awareness_training"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_awareness_training.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "aac882ec-d223-5b6a-925a-8f0412bdf894",
      "title": "CMMC 2.0 — Configuration Management Domain (CM)",
      "props": [
       {
@@ -666,13 +6170,30 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cmmc/cmmc_configuration_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_configuration_management.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "068ba339-f4e6-5501-bbf3-3879370446d7",
+     "uuid": "41b9f65d-ae7a-5a41-b18d-ca504e5d2852",
+     "title": "CMMC 2.0 — Domain 3.5: Identification & Authentication",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.identification_authentication"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_identification_authentication.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "6a67bcaf-d8c6-5fc3-8fb8-589da41153d1",
      "title": "CMMC 2.0 — Incident Response Domain (IR)",
      "props": [
       {
@@ -683,13 +6204,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cmmc/cmmc_incident_response.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_incident_response.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "97787b3a-89cd-55d1-a2bb-5486aef64649",
+     "uuid": "81c55b21-5d7d-546a-b9ce-cf8d93d99986",
      "title": "CMMC 2.0 — Master Compliance Orchestrator",
      "props": [
       {
@@ -700,7 +6221,143 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/federal/cmmc/cmmc_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "117e5ae6-364a-511c-bca1-4374a509d6e1",
+     "title": "CMMC 2.0 — Domain 3.7: Maintenance",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.maintenance"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_maintenance.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "c6507591-a3c1-51f7-afa0-979194f156c2",
+     "title": "CMMC 2.0 — Domain 3.8: Media Protection",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.media_protection"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_media_protection.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "4621207d-eae7-546c-a0c5-d8ebb9700a54",
+     "title": "CMMC 2.0 — Domain 3.9: Personnel Security",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.personnel_security"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_personnel_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "595ab7ad-2ebd-5011-9328-5862d99dbcf9",
+     "title": "CMMC 2.0 — Domain 3.10: Physical Protection",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.physical_protection"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_physical_protection.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "0b08ea48-c30f-52ae-b90d-ca029ea28662",
+     "title": "CMMC 2.0 — Domain 3.11: Risk Assessment",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.risk_assessment"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_risk_assessment.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "3319cda1-70b6-5b2b-a63a-767ce7451229",
+     "title": "CMMC 2.0 — Domain 3.12: Security Assessment",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.security_assessment"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_security_assessment.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "5eb49671-87c0-5735-9618-99d391b9f054",
+     "title": "CMMC 2.0 — Domain 3.13: System and Communications Protection",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.system_communications_protection"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_system_communications_protection.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a33adf14-99a8-5b2c-aa6a-c64e73bc6527",
+     "title": "CMMC 2.0 — Domain 3.14: System and Information Integrity",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cmmc.system_information_integrity"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/federal/cmmc/cmmc_system_information_integrity.rego",
        "media-type": "text/plain"
       }
      ]

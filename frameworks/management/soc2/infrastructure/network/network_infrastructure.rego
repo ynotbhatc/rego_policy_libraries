@@ -8,6 +8,14 @@
 #   framework: soc2
 #   source: aicpa
 #   domains: [assurance]
+#   coverage:
+#     checks: 16
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package soc2.infrastructure.network
 
 import rego.v1
@@ -382,4 +390,12 @@ network_infrastructure_findings := findings if {
         },
         "overall_score": network_infrastructure_score
     }
+#   coverage:
+#     checks: 16
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

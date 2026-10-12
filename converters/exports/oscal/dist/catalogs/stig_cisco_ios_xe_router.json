@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "7941712e-12ee-5a05-80ed-930397785bfe",
+  "uuid": "35e920e3-ba35-548b-8b67-b94e69e341fe",
   "metadata": {
-   "title": "Rego Policy Libraries — stig_cisco_ios_xe_router (DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide — Master Aggregator)",
+   "title": "Rego Policy Libraries — stig_cisco_ios_xe_router (DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,360 @@
    ]
   },
   "groups": [
+   {
+    "id": "stig_cisco_ios_xe_router-core",
+    "class": "rego-module",
+    "title": "DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.cisco_ios_xe_router.core"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/cisco_ios_xe_router/core.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_cisco_ios_xe_router-CISC-ND-000470",
+      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISC-ND-000470"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISC-ND-000470"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.cisco_ios_xe_router.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#93cb93ad-9817-57f7-b783-555e3f1c610e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_cisco_ios_xe_router-CISC-ND-000470_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_cisco_ios_xe_router-CISC-ND-000550",
+      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISC-ND-000550"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISC-ND-000550"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.cisco_ios_xe_router.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#93cb93ad-9817-57f7-b783-555e3f1c610e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_cisco_ios_xe_router-CISC-ND-000550_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_cisco_ios_xe_router-CISC-ND-000620",
+      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISC-ND-000620"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISC-ND-000620"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.cisco_ios_xe_router.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#93cb93ad-9817-57f7-b783-555e3f1c610e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_cisco_ios_xe_router-CISC-ND-000620_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_cisco_ios_xe_router-CISC-ND-000720",
+      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISC-ND-000720"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISC-ND-000720"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.cisco_ios_xe_router.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#93cb93ad-9817-57f7-b783-555e3f1c610e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_cisco_ios_xe_router-CISC-ND-000720_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_cisco_ios_xe_router-CISC-ND-001200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISC-ND-001200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISC-ND-001200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.cisco_ios_xe_router.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#93cb93ad-9817-57f7-b783-555e3f1c610e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_cisco_ios_xe_router-CISC-ND-001200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_cisco_ios_xe_router-CISC-ND-001210",
+      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISC-ND-001210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISC-ND-001210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.cisco_ios_xe_router.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#93cb93ad-9817-57f7-b783-555e3f1c610e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_cisco_ios_xe_router-CISC-ND-001210_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_cisco_ios_xe_router-CISC-ND-001370",
+      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISC-ND-001370"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISC-ND-001370"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.cisco_ios_xe_router.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#93cb93ad-9817-57f7-b783-555e3f1c610e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_cisco_ios_xe_router-CISC-ND-001370_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_cisco_ios_xe_router-CISC-ND-001410",
+      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISC-ND-001410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISC-ND-001410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.cisco_ios_xe_router.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#93cb93ad-9817-57f7-b783-555e3f1c610e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_cisco_ios_xe_router-CISC-ND-001410_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_cisco_ios_xe_router-CISC-ND-001450",
+      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISC-ND-001450"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISC-ND-001450"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.cisco_ios_xe_router.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#93cb93ad-9817-57f7-b783-555e3f1c610e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_cisco_ios_xe_router-CISC-ND-001450_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_cisco_ios_xe_router-CISC-ND-001470",
+      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISC-ND-001470"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISC-ND-001470"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.cisco_ios_xe_router.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#93cb93ad-9817-57f7-b783-555e3f1c610e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_cisco_ios_xe_router-CISC-ND-001470_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "stig_cisco_ios_xe_router-stig_cisco_ios_xe_router_complete",
     "class": "rego-module",
@@ -85,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#ac6287b5-d8fd-5c66-8b2f-054eea10f7a1",
+        "href": "#5c690fbf-762f-558c-91fc-3dc5708984da",
         "rel": "implementation"
        }
       ],
@@ -118,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#ac6287b5-d8fd-5c66-8b2f-054eea10f7a1",
+        "href": "#5c690fbf-762f-558c-91fc-3dc5708984da",
         "rel": "implementation"
        }
       ],
@@ -137,7 +491,24 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "ac6287b5-d8fd-5c66-8b2f-054eea10f7a1",
+     "uuid": "93cb93ad-9817-57f7-b783-555e3f1c610e",
+     "title": "DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.cisco_ios_xe_router.core"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/cisco_ios_xe_router/core.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "5c690fbf-762f-558c-91fc-3dc5708984da",
      "title": "DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -148,7 +519,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/cisco_ios_xe_router/stig_cisco_ios_xe_router_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/cisco_ios_xe_router/stig_cisco_ios_xe_router_complete.rego",
        "media-type": "text/plain"
       }
      ]

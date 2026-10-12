@@ -24,6 +24,14 @@
 #   framework: cis_saas
 #   source: cis
 #   domains: [saas, m365]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_m365_v7.main
 
 import data.cis_m365_v7.admin_center
@@ -125,3 +133,11 @@ compliance_report := {
 	"assessed_controls_compliant": assessed_controls_compliant,
 	"interpretation": "This is a partial assessment. assessed_controls_compliant covers only evaluated_control_ids and must not be read as benchmark compliance.",
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "e61c9346-d5a9-5634-96a8-60f6cf0e61a5",
+  "uuid": "676c3b54-ba44-5c17-a307-4b19c56d8e3b",
   "metadata": {
-   "title": "Rego Policy Libraries — stig_kubernetes (DISA STIG — Kubernetes Security Technical Implementation Guide — Master Aggregator)",
+   "title": "Rego Policy Libraries — stig_kubernetes (DISA STIG — Kubernetes Security Technical Implementation Guide)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,789 @@
    ]
   },
   "groups": [
+   {
+    "id": "stig_kubernetes-core",
+    "class": "rego-module",
+    "title": "DISA STIG — Kubernetes Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.kubernetes.core"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/kubernetes/core.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_kubernetes-CNTR-K8-000160",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000160_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000170",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000170_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000220",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000220_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000290",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000290"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000290"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000290_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000330",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000330_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000360",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000360_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000370",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000370"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000370"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000370_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000380",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000380"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000380"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000380_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000440",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000440"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000440"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000440_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000850",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000850"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000850"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000850_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001160",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001160_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001161",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001161"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001161"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001161_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001162",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001162"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001162"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001162_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001480",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001480"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001480"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001480_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001620",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001620"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001620"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001620_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-002000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-002000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-002000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-002000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-002001",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-002001"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-002001"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-002001_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-002010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-002010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-002010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-002010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-002011",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-002011"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-002011"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-002011_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-002620",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-002620"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-002620"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-002620_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-002630",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-002630"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-002630"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-002630_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-002640",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-002640"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-002640"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-002640_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003110",
+      "title": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003110_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/kubernetes/core.rego (package stig.kubernetes.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "stig_kubernetes-stig_kubernetes_complete",
     "class": "rego-module",
@@ -85,7 +868,7 @@
       ],
       "links": [
        {
-        "href": "#4152fccb-955d-5001-8b66-a08d881e3f26",
+        "href": "#28d9cd96-1546-5eb8-93c0-080ccb4da865",
         "rel": "implementation"
        }
       ],
@@ -118,7 +901,7 @@
       ],
       "links": [
        {
-        "href": "#4152fccb-955d-5001-8b66-a08d881e3f26",
+        "href": "#28d9cd96-1546-5eb8-93c0-080ccb4da865",
         "rel": "implementation"
        }
       ],
@@ -137,7 +920,24 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "4152fccb-955d-5001-8b66-a08d881e3f26",
+     "uuid": "9f7222bd-8cb6-5455-a7f3-a2e90a738a4b",
+     "title": "DISA STIG — Kubernetes Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.kubernetes.core"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/kubernetes/core.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "28d9cd96-1546-5eb8-93c0-080ccb4da865",
      "title": "DISA STIG — Kubernetes Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -148,7 +948,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/kubernetes/stig_kubernetes_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/kubernetes/stig_kubernetes_complete.rego",
        "media-type": "text/plain"
       }
      ]

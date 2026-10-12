@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "f0784f10-663e-56a3-87ac-21cb3bc4d851",
+  "uuid": "712139a4-32d7-5339-8919-190bf0773e93",
   "metadata": {
    "title": "Rego Policy Libraries — hkma_trm (HKMA SPM TM-G-1 Technology Risk Management + TM-C-1 Cyber Risk (Hong Kong))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,110 +66,6 @@
     ],
     "controls": [
      {
-      "id": "hkma_trm-hkma_trm.main-1",
-      "title": "HKMA %v (hkma_trm.%v undeclared)",
-      "props": [
-       {
-        "name": "label",
-        "value": "hkma_trm.main#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "hkma_trm.main#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "hkma_trm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "hkma_trm-hkma_trm.main-1_stmt",
-        "name": "statement",
-        "prose": "HKMA %v (hkma_trm.%v undeclared)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "hkma_trm-hkma_trm.main-2",
-      "title": "HKMA %v %v: %v — not attested",
-      "props": [
-       {
-        "name": "label",
-        "value": "hkma_trm.main#2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "hkma_trm.main#2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "hkma_trm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "hkma_trm-hkma_trm.main-2_stmt",
-        "name": "statement",
-        "prose": "HKMA %v %v: %v — not attested"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "hkma_trm-HKMA-Input-Contract",
-      "title": "attestation for unknown paragraph %v — not in TM-G-1 §§2–7 or the TM-C-1 duties",
-      "props": [
-       {
-        "name": "label",
-        "value": "HKMA Input Contract"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "HKMA Input Contract"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "hkma_trm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "hkma_trm-HKMA-Input-Contract_stmt",
-        "name": "statement",
-        "prose": "attestation for unknown paragraph %v — not in TM-G-1 §§2–7 or the TM-C-1 duties"
-       },
-       {
-        "id": "hkma_trm-HKMA-Input-Contract_obj.1",
-        "name": "assessment-objective",
-        "prose": "input.hkma_trm.controls must be an object of {\"<paragraph>\": true}"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "hkma_trm-outsources_technology_services",
       "title": "TM-G-1 7.1 — whether the AI outsources technology services must be declared true or false",
       "props": [
@@ -189,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -222,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -255,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -288,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -321,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -354,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -387,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -420,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -453,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -486,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -519,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -552,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -585,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -618,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -651,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -684,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -717,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -750,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -783,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -816,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -849,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -882,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -915,7 +811,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -948,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -981,7 +877,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1014,7 +910,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1047,7 +943,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1080,7 +976,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1113,7 +1009,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1146,7 +1042,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1179,7 +1075,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1212,7 +1108,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1245,7 +1141,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1278,7 +1174,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1311,7 +1207,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1344,7 +1240,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1377,7 +1273,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1410,7 +1306,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1443,7 +1339,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1476,7 +1372,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1509,7 +1405,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1542,7 +1438,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1575,7 +1471,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1608,7 +1504,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1641,7 +1537,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1674,7 +1570,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1707,7 +1603,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1740,7 +1636,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1773,7 +1669,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1806,7 +1702,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1839,7 +1735,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1872,7 +1768,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1905,7 +1801,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1938,7 +1834,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -1971,7 +1867,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2004,7 +1900,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2037,7 +1933,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2070,7 +1966,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2103,7 +1999,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2136,7 +2032,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2169,7 +2065,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2202,7 +2098,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2235,7 +2131,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2268,7 +2164,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2301,7 +2197,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2334,7 +2230,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2367,7 +2263,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2400,7 +2296,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2433,7 +2329,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2466,7 +2362,7 @@
       ],
       "links": [
        {
-        "href": "#8aec9cb4-8328-5a9c-be7b-62b97062454c",
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
         "rel": "implementation"
        }
       ],
@@ -2478,6 +2374,138 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-hkma_trm.main-1",
+      "title": "HKMA %v (hkma_trm.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "hkma_trm.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hkma_trm.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-hkma_trm.main-1_stmt",
+        "name": "statement",
+        "prose": "HKMA %v (hkma_trm.%v undeclared)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-hkma_trm.main-2",
+      "title": "HKMA %v %v: %v — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "hkma_trm.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hkma_trm.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-hkma_trm.main-2_stmt",
+        "name": "statement",
+        "prose": "HKMA %v %v: %v — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-hkma_trm.main-3",
+      "title": "HKMA Input Contract: attestation for unknown paragraph %v — not in TM-G-1 §§2–7 or the TM-C-1 duties",
+      "props": [
+       {
+        "name": "label",
+        "value": "hkma_trm.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hkma_trm.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-hkma_trm.main-3_stmt",
+        "name": "statement",
+        "prose": "HKMA Input Contract: attestation for unknown paragraph %v — not in TM-G-1 §§2–7 or the TM-C-1 duties"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hkma_trm-hkma_trm.main-4",
+      "title": "HKMA Input Contract: input.hkma_trm.controls must be an object of {\"<paragraph>\": true}",
+      "props": [
+       {
+        "name": "label",
+        "value": "hkma_trm.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hkma_trm.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hkma_trm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hkma_trm-hkma_trm.main-4_stmt",
+        "name": "statement",
+        "prose": "HKMA Input Contract: input.hkma_trm.controls must be an object of {\"<paragraph>\": true}"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    }
@@ -2485,7 +2513,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "8aec9cb4-8328-5a9c-be7b-62b97062454c",
+     "uuid": "63a4e6a6-87ff-59e9-834b-2d51fe72a58d",
      "title": "HKMA SPM TM-G-1 Technology Risk Management + TM-C-1 Cyber Risk (Hong Kong)",
      "props": [
       {
@@ -2496,7 +2524,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/hkma_trm/hkma_trm_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/hkma_trm/hkma_trm_main.rego",
        "media-type": "text/plain"
       }
      ]

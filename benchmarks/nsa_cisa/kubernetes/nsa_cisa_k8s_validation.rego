@@ -53,6 +53,17 @@
 #   framework: nsa_cisa_kubernetes
 #   source: cisa
 #   domains: [kubernetes, container]
+#   coverage:
+#     checks: 5
+#     cited: 5
+#     expected: 43
+#     found: 5
+#     scope: module
+#     density: sparse
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nsa_cisa_k8s.main
 
 import rego.v1
@@ -319,3 +330,14 @@ compliance_report := {
 	"violation_count": count(violations),
 	"section_summary": section_summary,
 }
+#   coverage:
+#     checks: 5
+#     cited: 5
+#     expected: 43
+#     found: 5
+#     scope: module
+#     density: sparse
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

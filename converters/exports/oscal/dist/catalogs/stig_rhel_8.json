@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "ce18dbf8-165a-565f-9885-058c15cb626b",
+  "uuid": "e2078a3c-23f0-5480-86ad-464df6da4d13",
   "metadata": {
    "title": "Rego Policy Libraries — stig_rhel_8 (DISA STIG for RHEL 8 - Account and Authentication Module)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,336 @@
     ],
     "controls": [
      {
+      "id": "stig_rhel_8-RHEL-08-020000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-020000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-020000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6863c974-d113-54ed-8072-c1c58f370cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-020000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-020010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-020010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-020010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6863c974-d113-54ed-8072-c1c58f370cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-020010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-020020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-020020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-020020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6863c974-d113-54ed-8072-c1c58f370cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-020020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-020030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-020030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-020030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6863c974-d113-54ed-8072-c1c58f370cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-020030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-020040",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-020040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-020040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6863c974-d113-54ed-8072-c1c58f370cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-020040_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-020050",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-020050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-020050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6863c974-d113-54ed-8072-c1c58f370cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-020050_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-020060",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-020060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-020060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6863c974-d113-54ed-8072-c1c58f370cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-020060_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-020070",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-020070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-020070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6863c974-d113-54ed-8072-c1c58f370cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-020070_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-020080",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-020080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-020080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6863c974-d113-54ed-8072-c1c58f370cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-020080_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-020090",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-020090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-020090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6863c974-d113-54ed-8072-c1c58f370cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-020090_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_rhel_8-stig.rhel_8.account_auth-1",
       "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
       "props": [
@@ -85,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#c91e97bc-20a2-5cc3-ad9d-88e79b0368f3",
+        "href": "#6863c974-d113-54ed-8072-c1c58f370cbf",
         "rel": "implementation"
        }
       ],
@@ -123,6 +453,336 @@
     ],
     "controls": [
      {
+      "id": "stig_rhel_8-RHEL-08-030000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3d706c23-368a-55a5-aa68-a1e8415a7bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-030010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3d706c23-368a-55a5-aa68-a1e8415a7bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-030020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3d706c23-368a-55a5-aa68-a1e8415a7bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-030030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3d706c23-368a-55a5-aa68-a1e8415a7bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-030040",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3d706c23-368a-55a5-aa68-a1e8415a7bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030040_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-030050",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3d706c23-368a-55a5-aa68-a1e8415a7bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030050_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-030060",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3d706c23-368a-55a5-aa68-a1e8415a7bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030060_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-030070",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3d706c23-368a-55a5-aa68-a1e8415a7bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030070_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-030080",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3d706c23-368a-55a5-aa68-a1e8415a7bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030080_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-030090",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3d706c23-368a-55a5-aa68-a1e8415a7bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030090_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_rhel_8-stig.rhel_8.audit_logging-1",
       "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
       "props": [
@@ -142,7 +802,7 @@
       ],
       "links": [
        {
-        "href": "#01c2482e-65f6-563b-a48b-38630b4f7c13",
+        "href": "#3d706c23-368a-55a5-aa68-a1e8415a7bbc",
         "rel": "implementation"
        }
       ],
@@ -180,6 +840,534 @@
     ],
     "controls": [
      {
+      "id": "stig_rhel_8-RHEL-08-010000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010040",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010040_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010050",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010050_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010060",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010060_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010070",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010070_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010080",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010080_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010090",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010090_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010110",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010110_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010120",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010120"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010120"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010120_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010130",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010130_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010140",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010140_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010150",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010150_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_rhel_8-stig.rhel_8.configuration_management-1",
       "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
       "props": [
@@ -199,7 +1387,7 @@
       ],
       "links": [
        {
-        "href": "#14e3788f-1851-59f1-888d-e08d375f9812",
+        "href": "#e77cf486-bef9-585c-9fed-bbefcff1a7aa",
         "rel": "implementation"
        }
       ],
@@ -237,6 +1425,270 @@
     ],
     "controls": [
      {
+      "id": "stig_rhel_8-RHEL-08-010200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00c27f48-eb78-5631-b4a9-decba69197f2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010210",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00c27f48-eb78-5631-b4a9-decba69197f2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010210_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010220",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00c27f48-eb78-5631-b4a9-decba69197f2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010220_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010230",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00c27f48-eb78-5631-b4a9-decba69197f2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010230_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010240",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00c27f48-eb78-5631-b4a9-decba69197f2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010240_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010250",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010250"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010250"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00c27f48-eb78-5631-b4a9-decba69197f2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010250_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010260",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010260"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010260"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00c27f48-eb78-5631-b4a9-decba69197f2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010260_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010270",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00c27f48-eb78-5631-b4a9-decba69197f2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010270_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_rhel_8-stig.rhel_8.file_permissions-1",
       "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
       "props": [
@@ -256,7 +1708,7 @@
       ],
       "links": [
        {
-        "href": "#b80f3a37-5bde-5d59-81e2-282fbfafdca0",
+        "href": "#00c27f48-eb78-5631-b4a9-decba69197f2",
         "rel": "implementation"
        }
       ],
@@ -294,6 +1746,303 @@
     ],
     "controls": [
      {
+      "id": "stig_rhel_8-RHEL-08-040100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0a1d23b-eb30-573c-93b4-21b28c6706d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040110",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0a1d23b-eb30-573c-93b4-21b28c6706d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040110_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040120",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040120"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040120"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0a1d23b-eb30-573c-93b4-21b28c6706d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040120_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040130",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0a1d23b-eb30-573c-93b4-21b28c6706d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040130_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040140",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0a1d23b-eb30-573c-93b4-21b28c6706d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040140_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040150",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0a1d23b-eb30-573c-93b4-21b28c6706d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040150_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040155",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040155"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040155"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0a1d23b-eb30-573c-93b4-21b28c6706d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040155_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040157",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040157"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040157"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0a1d23b-eb30-573c-93b4-21b28c6706d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040157_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040158",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040158"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040158"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0a1d23b-eb30-573c-93b4-21b28c6706d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040158_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_rhel_8-stig.rhel_8.network-1",
       "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
       "props": [
@@ -313,7 +2062,7 @@
       ],
       "links": [
        {
-        "href": "#1b5ff515-b211-5a61-9d2e-f7fc108465a7",
+        "href": "#f0a1d23b-eb30-573c-93b4-21b28c6706d8",
         "rel": "implementation"
        }
       ],
@@ -351,6 +2100,336 @@
     ],
     "controls": [
      {
+      "id": "stig_rhel_8-RHEL-08-040000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040040",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040040_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040050",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040050_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040060",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040060_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040070",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040070_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040080",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040080_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040090",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040090_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_rhel_8-stig.rhel_8.services-1",
       "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
       "props": [
@@ -370,7 +2449,7 @@
       ],
       "links": [
        {
-        "href": "#accc4a02-dc26-5415-b4ba-39c18e1623d4",
+        "href": "#b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
         "rel": "implementation"
        }
       ],
@@ -408,6 +2487,336 @@
     ],
     "controls": [
      {
+      "id": "stig_rhel_8-RHEL-08-040160",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040160_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040170",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040170_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040180",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040180_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040190",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040190_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040210",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040210_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040220",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040220_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040230",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040230_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040240",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040240_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040250",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040250"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040250"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040250_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_rhel_8-stig.rhel_8.ssh_config-1",
       "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
       "props": [
@@ -427,7 +2836,7 @@
       ],
       "links": [
        {
-        "href": "#e723b840-1021-59f6-88ae-57fe8f4b0a8a",
+        "href": "#47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
         "rel": "implementation"
        }
       ],
@@ -484,7 +2893,7 @@
       ],
       "links": [
        {
-        "href": "#df4a0ead-67ad-511d-8156-7aa711eb46b9",
+        "href": "#34c949c8-3316-57e7-b6b8-d4054ee91868",
         "rel": "implementation"
        }
       ],
@@ -517,7 +2926,7 @@
       ],
       "links": [
        {
-        "href": "#df4a0ead-67ad-511d-8156-7aa711eb46b9",
+        "href": "#34c949c8-3316-57e7-b6b8-d4054ee91868",
         "rel": "implementation"
        }
       ],
@@ -550,7 +2959,7 @@
       ],
       "links": [
        {
-        "href": "#df4a0ead-67ad-511d-8156-7aa711eb46b9",
+        "href": "#34c949c8-3316-57e7-b6b8-d4054ee91868",
         "rel": "implementation"
        }
       ],
@@ -569,7 +2978,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "c91e97bc-20a2-5cc3-ad9d-88e79b0368f3",
+     "uuid": "6863c974-d113-54ed-8072-c1c58f370cbf",
      "title": "DISA STIG for RHEL 8 - Account and Authentication Module",
      "props": [
       {
@@ -580,13 +2989,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/rhel_8/account_auth.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/rhel_8/account_auth.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "01c2482e-65f6-563b-a48b-38630b4f7c13",
+     "uuid": "3d706c23-368a-55a5-aa68-a1e8415a7bbc",
      "title": "DISA STIG for RHEL 8 - Audit Logging Module",
      "props": [
       {
@@ -597,13 +3006,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/rhel_8/audit_logging.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/rhel_8/audit_logging.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "14e3788f-1851-59f1-888d-e08d375f9812",
+     "uuid": "e77cf486-bef9-585c-9fed-bbefcff1a7aa",
      "title": "DISA STIG for RHEL 8 - Configuration Management Module",
      "props": [
       {
@@ -614,13 +3023,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/rhel_8/configuration_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/rhel_8/configuration_management.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b80f3a37-5bde-5d59-81e2-282fbfafdca0",
+     "uuid": "00c27f48-eb78-5631-b4a9-decba69197f2",
      "title": "DISA STIG for RHEL 8 - File Permissions Module",
      "props": [
       {
@@ -631,13 +3040,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/rhel_8/file_permissions.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/rhel_8/file_permissions.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "1b5ff515-b211-5a61-9d2e-f7fc108465a7",
+     "uuid": "f0a1d23b-eb30-573c-93b4-21b28c6706d8",
      "title": "DISA STIG for RHEL 8 - Network Configuration Module",
      "props": [
       {
@@ -648,13 +3057,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/rhel_8/network.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/rhel_8/network.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "accc4a02-dc26-5415-b4ba-39c18e1623d4",
+     "uuid": "b06ff838-923d-5dd1-b98f-6ff1b8f880c8",
      "title": "DISA STIG for RHEL 8 - Services Module",
      "props": [
       {
@@ -665,13 +3074,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/rhel_8/services.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/rhel_8/services.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "e723b840-1021-59f6-88ae-57fe8f4b0a8a",
+     "uuid": "47a1ea80-70bc-5307-8cd6-5b3a55607cbf",
      "title": "DISA STIG for RHEL 8 - SSH Configuration Module",
      "props": [
       {
@@ -682,13 +3091,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/rhel_8/ssh_config.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/rhel_8/ssh_config.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "df4a0ead-67ad-511d-8156-7aa711eb46b9",
+     "uuid": "34c949c8-3316-57e7-b6b8-d4054ee91868",
      "title": "DISA STIG for RHEL 8 - Master Aggregator",
      "props": [
       {
@@ -699,7 +3108,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/rhel_8/stig_rhel8_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/rhel_8/stig_rhel8_complete.rego",
        "media-type": "text/plain"
       }
      ]

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "2d95f01a-7a42-5b0b-aacf-344886210d4e",
+  "uuid": "1005d9ee-998d-521f-b52c-d66c973f8e66",
   "metadata": {
-   "title": "Rego Policy Libraries — stig_apache_2_4_unix (DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide — Master Aggregator)",
+   "title": "Rego Policy Libraries — stig_apache_2_4_unix (DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,360 @@
    ]
   },
   "groups": [
+   {
+    "id": "stig_apache_2_4_unix-core",
+    "class": "rego-module",
+    "title": "DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.apache_2_4_unix.core"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/apache_2_4_unix/core.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_apache_2_4_unix-AS24-U1-000030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AS24-U1-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AS24-U1-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.apache_2_4_unix.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51032e20-f6dc-5cc7-8a88-bba1b97416a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_apache_2_4_unix-AS24-U1-000030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_apache_2_4_unix-AS24-U1-000180",
+      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AS24-U1-000180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AS24-U1-000180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.apache_2_4_unix.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51032e20-f6dc-5cc7-8a88-bba1b97416a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_apache_2_4_unix-AS24-U1-000180_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_apache_2_4_unix-AS24-U1-000230",
+      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AS24-U1-000230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AS24-U1-000230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.apache_2_4_unix.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51032e20-f6dc-5cc7-8a88-bba1b97416a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_apache_2_4_unix-AS24-U1-000230_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_apache_2_4_unix-AS24-U1-000270",
+      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AS24-U1-000270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AS24-U1-000270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.apache_2_4_unix.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51032e20-f6dc-5cc7-8a88-bba1b97416a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_apache_2_4_unix-AS24-U1-000270_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_apache_2_4_unix-AS24-U1-000310",
+      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AS24-U1-000310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AS24-U1-000310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.apache_2_4_unix.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51032e20-f6dc-5cc7-8a88-bba1b97416a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_apache_2_4_unix-AS24-U1-000310_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_apache_2_4_unix-AS24-U1-000440",
+      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AS24-U1-000440"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AS24-U1-000440"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.apache_2_4_unix.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51032e20-f6dc-5cc7-8a88-bba1b97416a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_apache_2_4_unix-AS24-U1-000440_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_apache_2_4_unix-AS24-U1-000520",
+      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AS24-U1-000520"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AS24-U1-000520"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.apache_2_4_unix.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51032e20-f6dc-5cc7-8a88-bba1b97416a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_apache_2_4_unix-AS24-U1-000520_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_apache_2_4_unix-AS24-U1-000650",
+      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AS24-U1-000650"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AS24-U1-000650"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.apache_2_4_unix.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51032e20-f6dc-5cc7-8a88-bba1b97416a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_apache_2_4_unix-AS24-U1-000650_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_apache_2_4_unix-AS24-U1-000940",
+      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AS24-U1-000940"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AS24-U1-000940"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.apache_2_4_unix.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51032e20-f6dc-5cc7-8a88-bba1b97416a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_apache_2_4_unix-AS24-U1-000940_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_apache_2_4_unix-AS24-U1-000960",
+      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AS24-U1-000960"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AS24-U1-000960"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.apache_2_4_unix.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51032e20-f6dc-5cc7-8a88-bba1b97416a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_apache_2_4_unix-AS24-U1-000960_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "stig_apache_2_4_unix-stig_apache_2_4_unix_complete",
     "class": "rego-module",
@@ -85,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#598a652a-0631-50e6-ac20-9eb0696a5d97",
+        "href": "#41215cd0-eca0-5113-acd9-c293f37b4abd",
         "rel": "implementation"
        }
       ],
@@ -118,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#598a652a-0631-50e6-ac20-9eb0696a5d97",
+        "href": "#41215cd0-eca0-5113-acd9-c293f37b4abd",
         "rel": "implementation"
        }
       ],
@@ -137,7 +491,24 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "598a652a-0631-50e6-ac20-9eb0696a5d97",
+     "uuid": "51032e20-f6dc-5cc7-8a88-bba1b97416a2",
+     "title": "DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.apache_2_4_unix.core"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/apache_2_4_unix/core.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "41215cd0-eca0-5113-acd9-c293f37b4abd",
      "title": "DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -148,7 +519,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/apache_2_4_unix/stig_apache_2_4_unix_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/apache_2_4_unix/stig_apache_2_4_unix_complete.rego",
        "media-type": "text/plain"
       }
      ]

@@ -5,6 +5,14 @@
 #   framework: irs_1075
 #   source: irs
 #   domains: [us-federal, tax]
+#   coverage:
+#     checks: 8
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package irs_1075.restricting_access
 
 import rego.v1
@@ -44,3 +52,11 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": area_compliant,
 }
+#   coverage:
+#     checks: 8
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -1,0 +1,3294 @@
+{
+ "catalog": {
+  "uuid": "6b494af9-0354-5a03-a52b-e28184876d5e",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_nginx (Cis Nginx 1 20)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_nginx"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_nginx-cis_nginx_1_20",
+    "class": "rego-module",
+    "title": "Cis Nginx 1 20",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_nginx_1_20"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/nginx/cis_nginx_1_20.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_nginx-1.1.1",
+      "title": "Ensure NGINX is installed with minimal required modules",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure NGINX is installed with minimal required modules"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-1.1.2",
+      "title": "Ensure NGINX is compiled with security flags",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure NGINX is compiled with security flags"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-1.1.3",
+      "title": "Ensure NGINX version is up to date",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure NGINX version is up to date"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-1.2.1",
+      "title": "Ensure NGINX runs as a non-privileged user",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure NGINX runs as a non-privileged user"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-1.2.2",
+      "title": "Ensure NGINX service account has minimal privileges",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure NGINX service account has minimal privileges"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-1.3.1",
+      "title": "Ensure NGINX configuration files have appropriate ownership",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure NGINX configuration files have appropriate ownership"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-1.3.2",
+      "title": "Ensure NGINX configuration files have appropriate permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure NGINX configuration files have appropriate permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-1.3.3",
+      "title": "Ensure NGINX binary has appropriate ownership and permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure NGINX binary has appropriate ownership and permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-1.4.1",
+      "title": "Ensure NGINX process runs in a chroot environment",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure NGINX process runs in a chroot environment"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-1.4.2",
+      "title": "Ensure NGINX directories have appropriate permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure NGINX directories have appropriate permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-1.5.1",
+      "title": "Ensure unnecessary NGINX modules are disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure unnecessary NGINX modules are disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-1.5.2",
+      "title": "Ensure debug and test modules are removed in production",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-1.5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure debug and test modules are removed in production"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.1.1",
+      "title": "Ensure server_tokens directive is set to off",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure server_tokens directive is set to off"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.1.2",
+      "title": "Ensure server signature is not exposed in error pages",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure server signature is not exposed in error pages"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.1.3",
+      "title": "Ensure NGINX version information is not disclosed",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure NGINX version information is not disclosed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.2.1",
+      "title": "Ensure default NGINX configuration is removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure default NGINX configuration is removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.2.2",
+      "title": "Ensure default document root is changed",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure default document root is changed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.2.3",
+      "title": "Ensure default error pages are customized",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure default error pages are customized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.3.1",
+      "title": "Ensure worker_processes is set appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure worker_processes is set appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.3.2",
+      "title": "Ensure worker_connections is configured properly",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure worker_connections is configured properly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.3.3",
+      "title": "Ensure worker_rlimit_nofile is set appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure worker_rlimit_nofile is set appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.4.1",
+      "title": "Ensure client_max_body_size is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure client_max_body_size is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.4.2",
+      "title": "Ensure client_body_timeout is set",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure client_body_timeout is set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.4.3",
+      "title": "Ensure client_header_timeout is set",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure client_header_timeout is set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.4.4",
+      "title": "Ensure keepalive_timeout is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.4.4_stmt",
+        "name": "statement",
+        "prose": "Ensure keepalive_timeout is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.4.5",
+      "title": "Ensure send_timeout is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.4.5_stmt",
+        "name": "statement",
+        "prose": "Ensure send_timeout is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.5.1",
+      "title": "Ensure server_name is explicitly defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure server_name is explicitly defined"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.5.2",
+      "title": "Ensure listen directive is properly configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure listen directive is properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.5.3",
+      "title": "Ensure default server is properly configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.5.3_stmt",
+        "name": "statement",
+        "prose": "Ensure default server is properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.6.1",
+      "title": "Ensure HTTP methods are restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure HTTP methods are restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.6.2",
+      "title": "Ensure dangerous HTTP methods are disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.6.2_stmt",
+        "name": "statement",
+        "prose": "Ensure dangerous HTTP methods are disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-2.6.3",
+      "title": "Ensure HTTP trace method is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-2.6.3_stmt",
+        "name": "statement",
+        "prose": "Ensure HTTP trace method is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.1.1",
+      "title": "Ensure access logging is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure access logging is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.1.2",
+      "title": "Ensure error logging is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure error logging is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.1.3",
+      "title": "Ensure log files have appropriate permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure log files have appropriate permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.1.4",
+      "title": "Ensure log files are rotated regularly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure log files are rotated regularly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.2.1",
+      "title": "Ensure access logs capture sufficient information",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure access logs capture sufficient information"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.2.2",
+      "title": "Ensure error logs capture appropriate detail level",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure error logs capture appropriate detail level"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.2.3",
+      "title": "Ensure sensitive information is not logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure sensitive information is not logged"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.3.1",
+      "title": "Ensure log files are stored securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure log files are stored securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.3.2",
+      "title": "Ensure log files are backed up regularly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure log files are backed up regularly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.3.3",
+      "title": "Ensure log files are monitored for security events",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure log files are monitored for security events"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.4.1",
+      "title": "Ensure syslog integration is configured when required",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure syslog integration is configured when required"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-3.4.2",
+      "title": "Ensure remote logging is secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-3.4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure remote logging is secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.1.1",
+      "title": "Ensure SSL/TLS is enabled for all sensitive communications",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL/TLS is enabled for all sensitive communications"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.1.2",
+      "title": "Ensure strong SSL/TLS protocols are used",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure strong SSL/TLS protocols are used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.1.3",
+      "title": "Ensure weak SSL/TLS protocols are disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure weak SSL/TLS protocols are disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.2.1",
+      "title": "Ensure strong cipher suites are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure strong cipher suites are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.2.2",
+      "title": "Ensure weak cipher suites are disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure weak cipher suites are disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.2.3",
+      "title": "Ensure cipher order is server-preferred",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure cipher order is server-preferred"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.3.1",
+      "title": "Ensure SSL certificates are valid and trusted",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL certificates are valid and trusted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.3.2",
+      "title": "Ensure SSL certificates are not expired",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL certificates are not expired"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.3.3",
+      "title": "Ensure SSL certificate chain is complete",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL certificate chain is complete"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.3.4",
+      "title": "Ensure private keys are protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.3.4_stmt",
+        "name": "statement",
+        "prose": "Ensure private keys are protected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.4.1",
+      "title": "Ensure HSTS is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure HSTS is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.4.2",
+      "title": "Ensure SSL session caching is configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL session caching is configured securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.4.3",
+      "title": "Ensure SSL session timeout is appropriate",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL session timeout is appropriate"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.5.1",
+      "title": "Ensure OCSP stapling is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure OCSP stapling is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.5.2",
+      "title": "Ensure certificate transparency is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure certificate transparency is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.6.1",
+      "title": "Ensure HTTP is redirected to HTTPS",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure HTTP is redirected to HTTPS"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-4.6.2",
+      "title": "Ensure secure cookies are used",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-4.6.2_stmt",
+        "name": "statement",
+        "prose": "Ensure secure cookies are used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-5.1.1",
+      "title": "Ensure only required modules are loaded",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-5.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure only required modules are loaded"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-5.1.2",
+      "title": "Ensure dangerous modules are not loaded",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-5.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure dangerous modules are not loaded"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-5.2.1",
+      "title": "Ensure realip module is configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-5.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure realip module is configured securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-5.2.2",
+      "title": "Ensure geoip module restrictions are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-5.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure geoip module restrictions are in place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-5.3.1",
+      "title": "Ensure auth modules are configured properly",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-5.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure auth modules are configured properly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-5.3.2",
+      "title": "Ensure rate limiting modules are enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-5.3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure rate limiting modules are enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-5.3.3",
+      "title": "Ensure security headers module is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-5.3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure security headers module is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-5.4.1",
+      "title": "Ensure ModSecurity or similar WAF is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-5.4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure ModSecurity or similar WAF is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-5.4.2",
+      "title": "Ensure anti-DDoS modules are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-5.4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure anti-DDoS modules are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-5.5.1",
+      "title": "Ensure compression modules are configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-5.5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure compression modules are configured securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-5.5.2",
+      "title": "Ensure caching modules are configured appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-5.5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure caching modules are configured appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.1.1",
+      "title": "Ensure access controls are implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure access controls are implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.1.2",
+      "title": "Ensure IP-based access restrictions are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure IP-based access restrictions are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.1.3",
+      "title": "Ensure geographic access restrictions are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure geographic access restrictions are in place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.2.1",
+      "title": "Ensure authentication is required for administrative access",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure authentication is required for administrative access"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.2.2",
+      "title": "Ensure strong authentication mechanisms are used",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure strong authentication mechanisms are used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.2.3",
+      "title": "Ensure authentication bypass vulnerabilities are addressed",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure authentication bypass vulnerabilities are addressed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.3.1",
+      "title": "Ensure directory browsing is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure directory browsing is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.3.2",
+      "title": "Ensure file access permissions are restrictive",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure file access permissions are restrictive"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.3.3",
+      "title": "Ensure symbolic links are handled securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure symbolic links are handled securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.4.1",
+      "title": "Ensure request size limits are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure request size limits are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.4.2",
+      "title": "Ensure request rate limits are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure request rate limits are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.4.3",
+      "title": "Ensure connection limits are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure connection limits are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.5.1",
+      "title": "Ensure security headers are implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure security headers are implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.5.2",
+      "title": "Ensure CSP headers are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure CSP headers are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-6.5.3",
+      "title": "Ensure XSS protection headers are set",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-6.5.3_stmt",
+        "name": "statement",
+        "prose": "Ensure XSS protection headers are set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-7.1.1",
+      "title": "Ensure buffer sizes are configured appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-7.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure buffer sizes are configured appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-7.1.2",
+      "title": "Ensure timeout values are set securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-7.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure timeout values are set securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-7.1.3",
+      "title": "Ensure resource limits prevent DoS attacks",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-7.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure resource limits prevent DoS attacks"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-7.2.1",
+      "title": "Ensure connection pooling is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-7.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure connection pooling is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-7.2.2",
+      "title": "Ensure upstream server configurations are secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-7.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure upstream server configurations are secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-7.2.3",
+      "title": "Ensure load balancing is configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-7.2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure load balancing is configured securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-7.3.1",
+      "title": "Ensure caching is configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-7.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure caching is configured securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-7.3.2",
+      "title": "Ensure proxy caching headers are appropriate",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-7.3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure proxy caching headers are appropriate"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-7.4.1",
+      "title": "Ensure monitoring and health checks are enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-7.4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure monitoring and health checks are enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_nginx-7.4.2",
+      "title": "Ensure performance metrics are collected securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_nginx_1_20"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_nginx-7.4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure performance metrics are collected securely"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "c094e021-9506-5e3a-b65d-b0197a4bc3c7",
+     "title": "Cis Nginx 1 20",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_nginx_1_20"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/nginx/cis_nginx_1_20.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

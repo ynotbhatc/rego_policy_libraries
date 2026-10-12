@@ -5,6 +5,14 @@
 #   framework: cis_windows_server_2022_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_windows_server_2022
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Complete Validation
@@ -262,3 +270,11 @@ l2_compliant if {
 }
 
 default l2_compliant := false
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

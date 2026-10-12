@@ -15,6 +15,14 @@
 #   framework: ai
 #   source: aac
 #   domains: [ai]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package ai_governance.classification
 
 import rego.v1
@@ -200,3 +208,11 @@ classification_report := {
     "requires_justification": requires_justification,
     "requires_multi_approval": requires_multi_approval
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

@@ -15,6 +15,14 @@
 #   framework: stig_kubernetes
 #   source: disa
 #   domains: [kubernetes, container]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.kubernetes.main
 
 import data.stig.kubernetes
@@ -106,3 +114,11 @@ compliance_report := object.union(_upstream, {
 compliant := _compliant
 
 violations := _open_findings
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

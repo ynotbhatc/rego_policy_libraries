@@ -5,6 +5,17 @@
 #   framework: ncsc_caf
 #   source: uk-ncsc
 #   domains: [uk, critical-infrastructure]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     expected: 23
+#     found: 22
+#     scope: directory
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package ncsc_caf.main
 
 import rego.v1
@@ -184,3 +195,14 @@ compliance_report := {
     "not_achieved_cos":        _not_achieved,
     "partially_achieved_cos":  _partially_achieved,
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     expected: 23
+#     found: 22
+#     scope: directory
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

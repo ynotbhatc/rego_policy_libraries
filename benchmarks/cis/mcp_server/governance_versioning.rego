@@ -5,6 +5,14 @@
 #   framework: cis_mcp_server
 #   source: cis
 #   domains: [ai, mcp]
+#   coverage:
+#     checks: 5
+#     cited: 4
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_mcp_server.governance_versioning
 
 import rego.v1
@@ -45,3 +53,11 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": section_compliant,
 }
+#   coverage:
+#     checks: 5
+#     cited: 4
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

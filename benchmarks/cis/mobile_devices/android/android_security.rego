@@ -5,6 +5,14 @@
 #   framework: cis_mobile_devices
 #   source: cis
 #   domains: [mobile, android]
+#   coverage:
+#     checks: 30
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis.mobile.android
 
 import rego.v1
@@ -282,4 +290,12 @@ android_device_compliance := {
     "privacy_settings_configured": privacy_settings_configured,
     "biometric_auth_secure": biometric_auth_secure,
     "overall_compliant": android_device_compliant
+#   coverage:
+#     checks: 30
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

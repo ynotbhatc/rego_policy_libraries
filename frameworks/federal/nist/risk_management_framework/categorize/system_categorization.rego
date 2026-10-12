@@ -5,6 +5,14 @@
 #   framework: nist_risk_management_framework
 #   source: nist
 #   domains: [us-federal, security-controls]
+#   coverage:
+#     checks: 12
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package nist.rmf.categorize
 
 import rego.v1
@@ -244,4 +252,12 @@ rmf_categorization_compliance := {
     "external_dependencies_identified": external_dependencies_identified,
     "overall_compliant": rmf_categorization_compliant,
     "system_impact_level": input.system_categorization.overall_impact_level
+#   coverage:
+#     checks: 12
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

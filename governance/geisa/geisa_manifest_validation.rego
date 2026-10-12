@@ -5,6 +5,14 @@
 #   framework: geisa
 #   source: geisa
 #   domains: [ot, energy, smart-grid]
+#   coverage:
+#     checks: 59
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package governance.geisa.manifest_validation
 
 import rego.v1
@@ -639,3 +647,11 @@ validation_report := {
 	"app_version": _manifest["app-version"],
 	"manifest_version": _manifest["manifest-version"],
 }
+#   coverage:
+#     checks: 59
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

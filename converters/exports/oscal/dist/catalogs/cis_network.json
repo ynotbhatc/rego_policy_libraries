@@ -1,0 +1,1413 @@
+{
+ "catalog": {
+  "uuid": "9d8b115d-0947-5d8d-97e9-8ef4135cbfd1",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_network (CIS Cisco IOS Benchmark)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_network"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_network-cisco_security",
+    "class": "rego-module",
+    "title": "CIS Cisco IOS Benchmark",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.network.cisco"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/network/cisco/cisco_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_network-cis.network.cisco-1",
+      "title": "aaa authentication configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-1_stmt",
+        "name": "statement",
+        "prose": "aaa authentication configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-2",
+      "title": "aaa authorization configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-2_stmt",
+        "name": "statement",
+        "prose": "aaa authorization configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-3",
+      "title": "aaa new model configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-3_stmt",
+        "name": "statement",
+        "prose": "aaa new model configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-4",
+      "title": "banner exec configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-4_stmt",
+        "name": "statement",
+        "prose": "banner exec configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-5",
+      "title": "banner login configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-5_stmt",
+        "name": "statement",
+        "prose": "banner login configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-6",
+      "title": "banner motd configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-6_stmt",
+        "name": "statement",
+        "prose": "banner motd configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-7",
+      "title": "boot network not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-7_stmt",
+        "name": "statement",
+        "prose": "boot network not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-8",
+      "title": "cdp disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-8_stmt",
+        "name": "statement",
+        "prose": "cdp disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-9",
+      "title": "enable password not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-9_stmt",
+        "name": "statement",
+        "prose": "enable password not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-10",
+      "title": "enable secret configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-10_stmt",
+        "name": "statement",
+        "prose": "enable secret configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-11",
+      "title": "file privilege configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-11_stmt",
+        "name": "statement",
+        "prose": "file privilege configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-12",
+      "title": "ip directed broadcast disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-12_stmt",
+        "name": "statement",
+        "prose": "ip directed broadcast disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-13",
+      "title": "ip mask reply disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-13_stmt",
+        "name": "statement",
+        "prose": "ip mask reply disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-14",
+      "title": "ip proxy arp disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-14_stmt",
+        "name": "statement",
+        "prose": "ip proxy arp disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-15",
+      "title": "ip redirects disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-15_stmt",
+        "name": "statement",
+        "prose": "ip redirects disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-16",
+      "title": "ip source route disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-16_stmt",
+        "name": "statement",
+        "prose": "ip source route disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-17",
+      "title": "ip unreachables disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-17_stmt",
+        "name": "statement",
+        "prose": "ip unreachables disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-18",
+      "title": "lldp disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-18_stmt",
+        "name": "statement",
+        "prose": "lldp disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-19",
+      "title": "local users not privilege 15",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-19_stmt",
+        "name": "statement",
+        "prose": "local users not privilege 15"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-20",
+      "title": "local users secret configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-20_stmt",
+        "name": "statement",
+        "prose": "local users secret configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-21",
+      "title": "logging buffered configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-21_stmt",
+        "name": "statement",
+        "prose": "logging buffered configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-22",
+      "title": "logging console configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-22_stmt",
+        "name": "statement",
+        "prose": "logging console configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-23",
+      "title": "logging enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-23_stmt",
+        "name": "statement",
+        "prose": "logging enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-24",
+      "title": "logging host configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-24_stmt",
+        "name": "statement",
+        "prose": "logging host configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-25",
+      "title": "logging trap configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-25_stmt",
+        "name": "statement",
+        "prose": "logging trap configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-26",
+      "title": "ntp authenticate configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-26_stmt",
+        "name": "statement",
+        "prose": "ntp authenticate configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-27",
+      "title": "ntp authentication key configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-27_stmt",
+        "name": "statement",
+        "prose": "ntp authentication key configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-28",
+      "title": "ntp server configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-28_stmt",
+        "name": "statement",
+        "prose": "ntp server configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-29",
+      "title": "ntp trusted key configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-29_stmt",
+        "name": "statement",
+        "prose": "ntp trusted key configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-30",
+      "title": "service config disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-30_stmt",
+        "name": "statement",
+        "prose": "service config disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-31",
+      "title": "service finger disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-31_stmt",
+        "name": "statement",
+        "prose": "service finger disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-32",
+      "title": "service pad disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-32_stmt",
+        "name": "statement",
+        "prose": "service pad disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-33",
+      "title": "service password encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-33_stmt",
+        "name": "statement",
+        "prose": "service password encryption"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-34",
+      "title": "ssh auth retries configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-34_stmt",
+        "name": "statement",
+        "prose": "ssh auth retries configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-35",
+      "title": "ssh timeout configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#35"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#35"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-35_stmt",
+        "name": "statement",
+        "prose": "ssh timeout configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-36",
+      "title": "tcp small servers disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#36"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#36"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-36_stmt",
+        "name": "statement",
+        "prose": "tcp small servers disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-37",
+      "title": "udp small servers disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#37"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#37"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-37_stmt",
+        "name": "statement",
+        "prose": "udp small servers disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-38",
+      "title": "vty access list configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#38"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#38"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-38_stmt",
+        "name": "statement",
+        "prose": "vty access list configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-39",
+      "title": "vty exec timeout configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#39"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#39"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-39_stmt",
+        "name": "statement",
+        "prose": "vty exec timeout configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network-cis.network.cisco-40",
+      "title": "vty transport ssh only",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.network.cisco#40"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.network.cisco#40"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.network.cisco"
+       }
+      ],
+      "links": [
+       {
+        "href": "#67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network-cis.network.cisco-40_stmt",
+        "name": "statement",
+        "prose": "vty transport ssh only"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "67d91955-6bcb-5da2-b1af-4bb82a771a0e",
+     "title": "CIS Cisco IOS Benchmark",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.network.cisco"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/network/cisco/cisco_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

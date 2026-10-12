@@ -5,6 +5,14 @@
 #   framework: eu_ai_act
 #   source: eu
 #   domains: [ai, eu]
+#   coverage:
+#     checks: 5
+#     cited: 5
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package eu_ai_act.transparency
 
 import rego.v1
@@ -174,3 +182,11 @@ compliance_report := {
 		"Article 50.5 — Deployment transparency and EU database registration",
 	],
 }
+#   coverage:
+#     checks: 5
+#     cited: 5
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: nerc_cip
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
+#   coverage:
+#     checks: 16
+#     cited: 16
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: report
+#     as_of: v2.3.1
 package nerc_cip_main
 
 import rego.v1
@@ -525,3 +533,11 @@ report := {
 		"penalties": "Up to $1,000,000 per violation per day",
 	},
 }
+#   coverage:
+#     checks: 16
+#     cited: 16
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: report
+#     as_of: v2.3.0

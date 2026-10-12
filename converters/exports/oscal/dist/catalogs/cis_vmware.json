@@ -1,0 +1,3935 @@
+{
+ "catalog": {
+  "uuid": "8e0ab333-eb7b-555a-ac9a-62e460e77466",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_vmware (Cis Esxi 8)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_vmware"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_vmware-cis_esxi_8",
+    "class": "rego-module",
+    "title": "Cis Esxi 8",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_esxi_8"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/vmware/esxi/cis_esxi_8.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_vmware-1.1",
+      "title": "Ensure ESXi host is configured with appropriate time synchronization",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host is configured with appropriate time synchronization"
+       },
+       {
+        "id": "cis_vmware-1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server service account is configured correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.2",
+      "title": "Ensure ESXi host SSH service is configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host SSH service is configured securely"
+       },
+       {
+        "id": "cis_vmware-1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server logging is configured appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.3",
+      "title": "Ensure ESXi host firewall is configured appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host firewall is configured appropriately"
+       },
+       {
+        "id": "cis_vmware-1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server session timeout is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.4",
+      "title": "Ensure ESXi host certificate management is configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host certificate management is configured securely"
+       },
+       {
+        "id": "cis_vmware-1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server password policies are enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.5",
+      "title": "Ensure ESXi host password policies are enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host password policies are enforced"
+       },
+       {
+        "id": "cis_vmware-1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server SSL certificates are properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.6",
+      "title": "Ensure ESXi host account lockout policies are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host account lockout policies are configured"
+       },
+       {
+        "id": "cis_vmware-1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server network security is properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.7",
+      "title": "Ensure ESXi host session timeout is configured appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.7_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host session timeout is configured appropriately"
+       },
+       {
+        "id": "cis_vmware-1.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server backup and recovery procedures are in place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.8",
+      "title": "Ensure ESXi host console access is properly secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.8_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host console access is properly secured"
+       },
+       {
+        "id": "cis_vmware-1.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server database security is properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.9",
+      "title": "Ensure ESXi host SNMP configuration is secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.9_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host SNMP configuration is secure"
+       },
+       {
+        "id": "cis_vmware-1.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server access control is properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.10",
+      "title": "Ensure ESXi host syslog is configured appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.10_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host syslog is configured appropriately"
+       },
+       {
+        "id": "cis_vmware-1.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server audit logging is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.11",
+      "title": "Ensure ESXi host kernel modules are restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.11_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host kernel modules are restricted"
+       },
+       {
+        "id": "cis_vmware-1.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server management interfaces are secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.12",
+      "title": "Ensure ESXi host hypervisor scheduler is configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.12_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host hypervisor scheduler is configured securely"
+       },
+       {
+        "id": "cis_vmware-1.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server time synchronization is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.13",
+      "title": "Ensure ESXi host memory management is configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.13_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host memory management is configured securely"
+       },
+       {
+        "id": "cis_vmware-1.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server SNMP is configured securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.14",
+      "title": "Ensure ESXi host CPU resource management is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.14_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host CPU resource management is configured"
+       },
+       {
+        "id": "cis_vmware-1.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server performance monitoring is secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.15",
+      "title": "Ensure ESXi host power management is configured appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.15_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host power management is configured appropriately"
+       },
+       {
+        "id": "cis_vmware-1.15_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server update and patch management is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.16",
+      "title": "Ensure ESXi host hardware monitoring is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.16_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host hardware monitoring is configured"
+       },
+       {
+        "id": "cis_vmware-1.16_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server high availability is properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.17",
+      "title": "Ensure ESXi host update and patch management is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.17_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host update and patch management is configured"
+       },
+       {
+        "id": "cis_vmware-1.17_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server disaster recovery is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.18",
+      "title": "Ensure ESXi host backup and recovery procedures are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.18_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host backup and recovery procedures are in place"
+       },
+       {
+        "id": "cis_vmware-1.18_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server inventory management is secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.19",
+      "title": "Ensure ESXi host disaster recovery is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.19_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host disaster recovery is configured"
+       },
+       {
+        "id": "cis_vmware-1.19_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server API access is properly secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-1.20",
+      "title": "Ensure ESXi host compliance monitoring is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-1.20_stmt",
+        "name": "statement",
+        "prose": "Ensure ESXi host compliance monitoring is enabled"
+       },
+       {
+        "id": "cis_vmware-1.20_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vCenter Server licensing is properly managed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.1",
+      "title": "Ensure network redundancy is configured for critical traffic",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure network redundancy is configured for critical traffic"
+       },
+       {
+        "id": "cis_vmware-2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO password policy is configured securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.2",
+      "title": "Ensure network security policies are implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure network security policies are implemented"
+       },
+       {
+        "id": "cis_vmware-2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO lockout policy is configured appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.3",
+      "title": "Ensure VLAN configuration follows security best practices",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure VLAN configuration follows security best practices"
+       },
+       {
+        "id": "cis_vmware-2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO identity sources are configured securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.4",
+      "title": "Ensure virtual switch security policies are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.4_stmt",
+        "name": "statement",
+        "prose": "Ensure virtual switch security policies are configured"
+       },
+       {
+        "id": "cis_vmware-2.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO token policy is configured appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.5",
+      "title": "Ensure port group security policies are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.5_stmt",
+        "name": "statement",
+        "prose": "Ensure port group security policies are configured"
+       },
+       {
+        "id": "cis_vmware-2.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO certificate management is secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.6",
+      "title": "Ensure network I/O control is configured appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.6_stmt",
+        "name": "statement",
+        "prose": "Ensure network I/O control is configured appropriately"
+       },
+       {
+        "id": "cis_vmware-2.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO domain join operations are secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.7",
+      "title": "Ensure network traffic shaping is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.7_stmt",
+        "name": "statement",
+        "prose": "Ensure network traffic shaping is configured"
+       },
+       {
+        "id": "cis_vmware-2.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO service accounts have minimal privileges"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.8",
+      "title": "Ensure network security and monitoring is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.8_stmt",
+        "name": "statement",
+        "prose": "Ensure network security and monitoring is configured"
+       },
+       {
+        "id": "cis_vmware-2.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO audit logging is enabled and configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.9",
+      "title": "Ensure network access control is properly configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.9_stmt",
+        "name": "statement",
+        "prose": "Ensure network access control is properly configured"
+       },
+       {
+        "id": "cis_vmware-2.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO global permissions are reviewed and minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.10",
+      "title": "Ensure network encryption is enabled where appropriate",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.10_stmt",
+        "name": "statement",
+        "prose": "Ensure network encryption is enabled where appropriate"
+       },
+       {
+        "id": "cis_vmware-2.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO solution user certificates are managed properly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.11",
+      "title": "Ensure network segmentation is properly implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.11_stmt",
+        "name": "statement",
+        "prose": "Ensure network segmentation is properly implemented"
+       },
+       {
+        "id": "cis_vmware-2.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO IdP discovery is configured securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.12",
+      "title": "Ensure virtual networking security features are enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.12_stmt",
+        "name": "statement",
+        "prose": "Ensure virtual networking security features are enabled"
+       },
+       {
+        "id": "cis_vmware-2.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSO smart card authentication is configured properly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.13",
+      "title": "Ensure network intrusion detection is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.13_stmt",
+        "name": "statement",
+        "prose": "Ensure network intrusion detection is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-2.14",
+      "title": "Ensure network performance monitoring is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-2.14_stmt",
+        "name": "statement",
+        "prose": "Ensure network performance monitoring is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-3.1",
+      "title": "Ensure storage access control is properly configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure storage access control is properly configured"
+       },
+       {
+        "id": "cis_vmware-3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vSphere Client session timeout is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-3.2",
+      "title": "Ensure storage encryption is enabled where appropriate",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure storage encryption is enabled where appropriate"
+       },
+       {
+        "id": "cis_vmware-3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vSphere Client SSL/TLS configuration is secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-3.3",
+      "title": "Ensure storage multipathing is configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure storage multipathing is configured securely"
+       },
+       {
+        "id": "cis_vmware-3.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vSphere Client access logging is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-3.4",
+      "title": "Ensure storage performance monitoring is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-3.4_stmt",
+        "name": "statement",
+        "prose": "Ensure storage performance monitoring is configured"
+       },
+       {
+        "id": "cis_vmware-3.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vSphere Client plugin security is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-3.5",
+      "title": "Ensure storage backup and recovery procedures are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-3.5_stmt",
+        "name": "statement",
+        "prose": "Ensure storage backup and recovery procedures are in place"
+       },
+       {
+        "id": "cis_vmware-3.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vSphere Client content security policy is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-3.6",
+      "title": "Ensure storage array integration is secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-3.6_stmt",
+        "name": "statement",
+        "prose": "Ensure storage array integration is secure"
+       },
+       {
+        "id": "cis_vmware-3.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vSphere Client HTTP security headers are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-3.7",
+      "title": "Ensure storage I/O control is configured appropriately",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-3.7_stmt",
+        "name": "statement",
+        "prose": "Ensure storage I/O control is configured appropriately"
+       },
+       {
+        "id": "cis_vmware-3.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vSphere Client authentication mechanisms are secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-3.8",
+      "title": "Ensure storage security policies are implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-3.8_stmt",
+        "name": "statement",
+        "prose": "Ensure storage security policies are implemented"
+       },
+       {
+        "id": "cis_vmware-3.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure vSphere Client cookie security is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-3.9",
+      "title": "Ensure storage audit logging is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-3.9_stmt",
+        "name": "statement",
+        "prose": "Ensure storage audit logging is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-3.10",
+      "title": "Ensure storage compliance monitoring is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-3.10_stmt",
+        "name": "statement",
+        "prose": "Ensure storage compliance monitoring is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.1",
+      "title": "Ensure VM configuration security is enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure VM configuration security is enforced"
+       },
+       {
+        "id": "cis_vmware-4.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Inventory Service logging is configured appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.2",
+      "title": "Ensure VM resource allocation is properly controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure VM resource allocation is properly controlled"
+       },
+       {
+        "id": "cis_vmware-4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Inventory Service access controls are properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.3",
+      "title": "Ensure VM security policies are implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure VM security policies are implemented"
+       },
+       {
+        "id": "cis_vmware-4.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Inventory Service SSL/TLS configuration is secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.4",
+      "title": "Ensure VM network security is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.4_stmt",
+        "name": "statement",
+        "prose": "Ensure VM network security is configured"
+       },
+       {
+        "id": "cis_vmware-4.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Inventory Service database connections are secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.5",
+      "title": "Ensure VM storage security is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.5_stmt",
+        "name": "statement",
+        "prose": "Ensure VM storage security is configured"
+       },
+       {
+        "id": "cis_vmware-4.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Inventory Service performance monitoring is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.6",
+      "title": "Ensure VM access control is properly configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.6_stmt",
+        "name": "statement",
+        "prose": "Ensure VM access control is properly configured"
+       },
+       {
+        "id": "cis_vmware-4.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Inventory Service backup procedures are in place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.7",
+      "title": "Ensure VM monitoring and logging is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.7_stmt",
+        "name": "statement",
+        "prose": "Ensure VM monitoring and logging is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.8",
+      "title": "Ensure VM backup and recovery procedures are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.8_stmt",
+        "name": "statement",
+        "prose": "Ensure VM backup and recovery procedures are in place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.9",
+      "title": "Ensure VM compliance monitoring is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.9_stmt",
+        "name": "statement",
+        "prose": "Ensure VM compliance monitoring is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.10",
+      "title": "Ensure VM security scanning is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.10_stmt",
+        "name": "statement",
+        "prose": "Ensure VM security scanning is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.11",
+      "title": "Ensure VM vulnerability management is implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.11_stmt",
+        "name": "statement",
+        "prose": "Ensure VM vulnerability management is implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.12",
+      "title": "Ensure VM patch management is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.12_stmt",
+        "name": "statement",
+        "prose": "Ensure VM patch management is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.13",
+      "title": "Ensure VM antivirus and anti-malware protection is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.13_stmt",
+        "name": "statement",
+        "prose": "Ensure VM antivirus and anti-malware protection is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-4.14",
+      "title": "Ensure VM data loss prevention is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-4.14_stmt",
+        "name": "statement",
+        "prose": "Ensure VM data loss prevention is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-5.1",
+      "title": "Ensure role-based access control is implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure role-based access control is implemented"
+       },
+       {
+        "id": "cis_vmware-5.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Lookup Service SSL/TLS configuration is secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-5.2",
+      "title": "Ensure user account management is properly configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure user account management is properly configured"
+       },
+       {
+        "id": "cis_vmware-5.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Lookup Service logging is configured appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-5.3",
+      "title": "Ensure service account management is secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-5.3_stmt",
+        "name": "statement",
+        "prose": "Ensure service account management is secure"
+       },
+       {
+        "id": "cis_vmware-5.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Lookup Service registration security is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-5.4",
+      "title": "Ensure privileged access management is implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-5.4_stmt",
+        "name": "statement",
+        "prose": "Ensure privileged access management is implemented"
+       },
+       {
+        "id": "cis_vmware-5.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Lookup Service access controls are properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-5.5",
+      "title": "Ensure authentication mechanisms are secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-5.5_stmt",
+        "name": "statement",
+        "prose": "Ensure authentication mechanisms are secure"
+       },
+       {
+        "id": "cis_vmware-5.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Lookup Service endpoint security is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-5.6",
+      "title": "Ensure authorization policies are properly configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-5.6_stmt",
+        "name": "statement",
+        "prose": "Ensure authorization policies are properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-5.7",
+      "title": "Ensure access review procedures are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-5.7_stmt",
+        "name": "statement",
+        "prose": "Ensure access review procedures are in place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-5.8",
+      "title": "Ensure access provisioning and deprovisioning is automated",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-5.8_stmt",
+        "name": "statement",
+        "prose": "Ensure access provisioning and deprovisioning is automated"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-5.9",
+      "title": "Ensure access monitoring and alerting is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-5.9_stmt",
+        "name": "statement",
+        "prose": "Ensure access monitoring and alerting is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-5.10",
+      "title": "Ensure emergency access procedures are documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-5.10_stmt",
+        "name": "statement",
+        "prose": "Ensure emergency access procedures are documented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-6.1",
+      "title": "Ensure comprehensive audit logging is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure comprehensive audit logging is enabled"
+       },
+       {
+        "id": "cis_vmware-6.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure PostgreSQL authentication is configured securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-6.2",
+      "title": "Ensure log forwarding is configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-6.2_stmt",
+        "name": "statement",
+        "prose": "Ensure log forwarding is configured securely"
+       },
+       {
+        "id": "cis_vmware-6.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure PostgreSQL logging is configured appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-6.3",
+      "title": "Ensure log retention policies are implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-6.3_stmt",
+        "name": "statement",
+        "prose": "Ensure log retention policies are implemented"
+       },
+       {
+        "id": "cis_vmware-6.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure PostgreSQL connection security is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-6.4",
+      "title": "Ensure log monitoring and alerting is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-6.4_stmt",
+        "name": "statement",
+        "prose": "Ensure log monitoring and alerting is configured"
+       },
+       {
+        "id": "cis_vmware-6.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure PostgreSQL access controls are properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-6.5",
+      "title": "Ensure log integrity protection is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-6.5_stmt",
+        "name": "statement",
+        "prose": "Ensure log integrity protection is enabled"
+       },
+       {
+        "id": "cis_vmware-6.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure PostgreSQL SSL/TLS configuration is secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-6.6",
+      "title": "Ensure security event correlation is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-6.6_stmt",
+        "name": "statement",
+        "prose": "Ensure security event correlation is configured"
+       },
+       {
+        "id": "cis_vmware-6.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure PostgreSQL backup and recovery procedures are in place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-6.7",
+      "title": "Ensure incident response procedures are documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-6.7_stmt",
+        "name": "statement",
+        "prose": "Ensure incident response procedures are documented"
+       },
+       {
+        "id": "cis_vmware-6.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure PostgreSQL performance monitoring is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-6.8",
+      "title": "Ensure forensic analysis capabilities are available",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-6.8_stmt",
+        "name": "statement",
+        "prose": "Ensure forensic analysis capabilities are available"
+       },
+       {
+        "id": "cis_vmware-6.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure PostgreSQL audit logging is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-6.9",
+      "title": "Ensure compliance reporting is automated",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-6.9_stmt",
+        "name": "statement",
+        "prose": "Ensure compliance reporting is automated"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-6.10",
+      "title": "Ensure audit trail review procedures are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-6.10_stmt",
+        "name": "statement",
+        "prose": "Ensure audit trail review procedures are in place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-7.1",
+      "title": "Ensure system hardening standards are applied",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-7.1_stmt",
+        "name": "statement",
+        "prose": "Ensure system hardening standards are applied"
+       },
+       {
+        "id": "cis_vmware-7.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Photon OS firewall is configured appropriately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-7.2",
+      "title": "Ensure security patches are applied timely",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-7.2_stmt",
+        "name": "statement",
+        "prose": "Ensure security patches are applied timely"
+       },
+       {
+        "id": "cis_vmware-7.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Photon OS system logging is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-7.3",
+      "title": "Ensure vulnerability scanning is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-7.3_stmt",
+        "name": "statement",
+        "prose": "Ensure vulnerability scanning is configured"
+       },
+       {
+        "id": "cis_vmware-7.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Photon OS access controls are properly configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-7.4",
+      "title": "Ensure penetration testing is performed regularly",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-7.4_stmt",
+        "name": "statement",
+        "prose": "Ensure penetration testing is performed regularly"
+       },
+       {
+        "id": "cis_vmware-7.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Photon OS network security is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-7.5",
+      "title": "Ensure security baseline compliance is monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-7.5_stmt",
+        "name": "statement",
+        "prose": "Ensure security baseline compliance is monitored"
+       },
+       {
+        "id": "cis_vmware-7.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Photon OS time synchronization is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-7.6",
+      "title": "Ensure configuration drift detection is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-7.6_stmt",
+        "name": "statement",
+        "prose": "Ensure configuration drift detection is enabled"
+       },
+       {
+        "id": "cis_vmware-7.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Photon OS package management is secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-7.7",
+      "title": "Ensure security automation is implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-7.7_stmt",
+        "name": "statement",
+        "prose": "Ensure security automation is implemented"
+       },
+       {
+        "id": "cis_vmware-7.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Photon OS user account security is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-7.8",
+      "title": "Ensure threat intelligence integration is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-7.8_stmt",
+        "name": "statement",
+        "prose": "Ensure threat intelligence integration is configured"
+       },
+       {
+        "id": "cis_vmware-7.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Photon OS audit logging is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-7.9",
+      "title": "Ensure security metrics and KPIs are tracked",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-7.9_stmt",
+        "name": "statement",
+        "prose": "Ensure security metrics and KPIs are tracked"
+       },
+       {
+        "id": "cis_vmware-7.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Photon OS kernel security parameters are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-7.10",
+      "title": "Ensure continuous security improvement processes are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-7.10_stmt",
+        "name": "statement",
+        "prose": "Ensure continuous security improvement processes are in place"
+       },
+       {
+        "id": "cis_vmware-7.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Photon OS filesystem security is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-8.1",
+      "title": "Ensure compliance framework alignment is documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-8.1_stmt",
+        "name": "statement",
+        "prose": "Ensure compliance framework alignment is documented"
+       },
+       {
+        "id": "cis_vmware-8.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Performance Charts service logging is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-8.2",
+      "title": "Ensure regulatory compliance monitoring is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-8.2_stmt",
+        "name": "statement",
+        "prose": "Ensure regulatory compliance monitoring is configured"
+       },
+       {
+        "id": "cis_vmware-8.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Performance Charts service SSL/TLS is configured securely"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-8.3",
+      "title": "Ensure compliance reporting is automated",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-8.3_stmt",
+        "name": "statement",
+        "prose": "Ensure compliance reporting is automated"
+       },
+       {
+        "id": "cis_vmware-8.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Performance Charts service access controls are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-8.4",
+      "title": "Ensure compliance audit trails are maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-8.4_stmt",
+        "name": "statement",
+        "prose": "Ensure compliance audit trails are maintained"
+       },
+       {
+        "id": "cis_vmware-8.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Performance Charts service database security is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-8.5",
+      "title": "Ensure compliance exception management is implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-8.5_stmt",
+        "name": "statement",
+        "prose": "Ensure compliance exception management is implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-8.6",
+      "title": "Ensure compliance training and awareness programs are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-8.6_stmt",
+        "name": "statement",
+        "prose": "Ensure compliance training and awareness programs are in place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-8.7",
+      "title": "Ensure compliance risk assessment is performed regularly",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-8.7_stmt",
+        "name": "statement",
+        "prose": "Ensure compliance risk assessment is performed regularly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_vmware-8.8",
+      "title": "Ensure compliance governance processes are documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_esxi_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7135a13e-261c-56ed-87b2-6f58206c1402",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_vmware-8.8_stmt",
+        "name": "statement",
+        "prose": "Ensure compliance governance processes are documented"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "7135a13e-261c-56ed-87b2-6f58206c1402",
+     "title": "Cis Esxi 8",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_esxi_8"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/vmware/esxi/cis_esxi_8.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "67f78c8f-b26d-57bc-8cd5-98c7fbe55d38",
+     "title": "Cis Vcenter 8",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_vcenter_8"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/vmware/vcenter/cis_vcenter_8.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

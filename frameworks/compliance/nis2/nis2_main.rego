@@ -5,6 +5,17 @@
 #   framework: nis2
 #   source: eu
 #   domains: [eu, critical-infrastructure]
+#   coverage:
+#     checks: 14
+#     cited: 14
+#     expected: 34
+#     found: 14
+#     scope: module
+#     density: sparse
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nis2.main
 
 import rego.v1
@@ -278,3 +289,14 @@ compliance_report := {
         "art_23_reporting":           [v | some v in violations; contains(v, "Art.23")],
     },
 }
+#   coverage:
+#     checks: 14
+#     cited: 14
+#     expected: 34
+#     found: 14
+#     scope: module
+#     density: sparse
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

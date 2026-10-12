@@ -5,6 +5,14 @@
 #   framework: stig_rhel_9
 #   source: disa
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 19
+#     cited: 18
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.rhel_9.account_auth
 
 # DISA STIG for RHEL 9 - Account and Authentication Module
@@ -456,3 +464,11 @@ compliance_report := {
 	"findings": findings,
 	"compliant": compliant,
 }
+#   coverage:
+#     checks: 19
+#     cited: 18
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

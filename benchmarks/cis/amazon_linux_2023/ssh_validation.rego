@@ -5,6 +5,14 @@
 #   framework: cis_amazon_linux_2023
 #   source: cis
 #   domains: [linux, amazon-linux]
+#   coverage:
+#     checks: 26
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_amazon_linux_2023.ssh
 
 # CIS Amazon Linux 2023 Section 5.2.x - SSH Server Configuration
@@ -327,3 +335,11 @@ report := {
 	"controls_checked": 21,
 	"section": "5.2 SSH Server Configuration",
 }
+#   coverage:
+#     checks: 26
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

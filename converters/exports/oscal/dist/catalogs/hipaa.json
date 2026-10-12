@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "cf585612-7ab7-5a79-b854-2e7397824f22",
+  "uuid": "493cecf5-7f7d-5fff-8f67-409361d3a64c",
   "metadata": {
    "title": "Rego Policy Libraries — hipaa (HIPAA Security Rule — 45 CFR 164.312(a))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,259 @@
     ],
     "controls": [
      {
+      "id": "hipaa-HIPAA-164.312-a-2-i",
+      "title": "User account '%v' is a shared account. Each user must have a unique identifier.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(a)(2)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(a)(2)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-i_stmt",
+        "name": "statement",
+        "prose": "User account '%v' is a shared account. Each user must have a unique identifier."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-i_obj.1",
+        "name": "assessment-objective",
+        "prose": "User account found with no username — unique identification required."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-i_obj.2",
+        "name": "assessment-objective",
+        "prose": "Generic/shared accounts with potential ePHI access detected: %v. Disable or restrict these accounts."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-HIPAA-164.312-a-2-ii",
+      "title": "No documented emergency access procedure found. An emergency access procedure for ePHI must be documented and implemented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(a)(2)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(a)(2)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-ii_stmt",
+        "name": "statement",
+        "prose": "No documented emergency access procedure found. An emergency access procedure for ePHI must be documented and implemented."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-ii_obj.1",
+        "name": "assessment-objective",
+        "prose": "Emergency access procedure has not been tested. Procedures must be regularly tested to ensure operability."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-ii_obj.2",
+        "name": "assessment-objective",
+        "prose": "Emergency access accounts have not been reviewed in %v days (maximum: 90 days)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-HIPAA-164.312-a-2-iii",
+      "title": "Automatic logoff is not enabled. Sessions must terminate after inactivity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(a)(2)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(a)(2)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-iii_stmt",
+        "name": "statement",
+        "prose": "Automatic logoff is not enabled. Sessions must terminate after inactivity."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-iii_obj.1",
+        "name": "assessment-objective",
+        "prose": "Automatic logoff timeout is %v minutes. Recommended maximum is 15 minutes for systems with ePHI access."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-iii_obj.2",
+        "name": "assessment-objective",
+        "prose": "Screen lock is not enabled. Unattended workstations accessing ePHI must lock automatically."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-HIPAA-164.312-a-2-iv",
+      "title": "System '%v' stores ePHI but data-at-rest encryption is not enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(a)(2)(iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(a)(2)(iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-iv_stmt",
+        "name": "statement",
+        "prose": "System '%v' stores ePHI but data-at-rest encryption is not enabled."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-iv_obj.1",
+        "name": "assessment-objective",
+        "prose": "System '%v' uses deprecated encryption algorithm '%v'. Use AES-256 or equivalent."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-iv_obj.2",
+        "name": "assessment-objective",
+        "prose": "No documented encryption key management policy. Key management procedures must be documented."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-iv_obj.3",
+        "name": "assessment-objective",
+        "prose": "Encryption keys have not been rotated in %v days. Annual rotation is recommended."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-HIPAA-164.312-a-1",
+      "title": "Role-based access control not implemented. Access to ePHI must be based on job function.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-a-1_stmt",
+        "name": "statement",
+        "prose": "Role-based access control not implemented. Access to ePHI must be based on job function."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "User '%v' has ePHI access with no documented business justification."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-1_obj.2",
+        "name": "assessment-objective",
+        "prose": "User '%v' ePHI access has not been reviewed in %v days (maximum: 90 days)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-HIPAA-164.514-d",
+      "title": "User '%v' has full ePHI access. Minimum necessary access principle requires limiting access to only what is needed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.514(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.514(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.514-d_stmt",
+        "name": "statement",
+        "prose": "User '%v' has full ePHI access. Minimum necessary access principle requires limiting access to only what is needed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "hipaa-hipaa.access_control-1",
       "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body.",
       "props": [
@@ -85,7 +338,7 @@
       ],
       "links": [
        {
-        "href": "#a4261c22-f167-56dd-8a78-6fa106191272",
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
         "rel": "implementation"
        }
       ],
@@ -118,7 +371,7 @@
       ],
       "links": [
        {
-        "href": "#a4261c22-f167-56dd-8a78-6fa106191272",
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
         "rel": "implementation"
        }
       ],
@@ -151,7 +404,7 @@
       ],
       "links": [
        {
-        "href": "#a4261c22-f167-56dd-8a78-6fa106191272",
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
         "rel": "implementation"
        }
       ],
@@ -184,7 +437,7 @@
       ],
       "links": [
        {
-        "href": "#a4261c22-f167-56dd-8a78-6fa106191272",
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
         "rel": "implementation"
        }
       ],
@@ -217,7 +470,7 @@
       ],
       "links": [
        {
-        "href": "#a4261c22-f167-56dd-8a78-6fa106191272",
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
         "rel": "implementation"
        }
       ],
@@ -250,7 +503,7 @@
       ],
       "links": [
        {
-        "href": "#a4261c22-f167-56dd-8a78-6fa106191272",
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
         "rel": "implementation"
        }
       ],
@@ -283,7 +536,7 @@
       ],
       "links": [
        {
-        "href": "#a4261c22-f167-56dd-8a78-6fa106191272",
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
         "rel": "implementation"
        }
       ],
@@ -292,6 +545,138 @@
         "id": "hipaa-HIPAA-164.312-a_stmt",
         "name": "statement",
         "prose": "no ePHI systems in scope (input.phi_systems is empty) — cannot certify Access Control. Declare the ePHI systems to be evaluated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.access_control-7",
+      "title": "automatic logoff",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.access_control#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.access_control#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.access_control-7_stmt",
+        "name": "statement",
+        "prose": "automatic logoff"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.access_control-8",
+      "title": "emergency access",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.access_control#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.access_control#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.access_control-8_stmt",
+        "name": "statement",
+        "prose": "emergency access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.access_control-9",
+      "title": "encryption decryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.access_control#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.access_control#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.access_control-9_stmt",
+        "name": "statement",
+        "prose": "encryption decryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.access_control-10",
+      "title": "unique user id",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.access_control#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.access_control#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd13b153-d88b-5e1f-8995-746f83ab9e84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.access_control-10_stmt",
+        "name": "statement",
+        "prose": "unique user id"
        }
       ],
       "class": "compliance"
@@ -321,6 +706,109 @@
     ],
     "controls": [
      {
+      "id": "hipaa-HIPAA-164.312-b",
+      "title": "Audit logging is not enabled on ePHI system '%v'. All ePHI systems must record activity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.audit_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b6713999-e9f4-5180-8655-1f092e82cdf7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-b_stmt",
+        "name": "statement",
+        "prose": "Audit logging is not enabled on ePHI system '%v'. All ePHI systems must record activity."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.1",
+        "name": "assessment-objective",
+        "prose": "ePHI system '%v' does not audit event type '%v'."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.2",
+        "name": "assessment-objective",
+        "prose": "Audit logs do not capture user identity. Logs must identify who performed each action."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.3",
+        "name": "assessment-objective",
+        "prose": "Audit logs do not include timestamps. All log entries must be timestamped."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.4",
+        "name": "assessment-objective",
+        "prose": "Audit logs do not capture source IP address. Network source must be recorded for ePHI access."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.5",
+        "name": "assessment-objective",
+        "prose": "Audit logs do not capture action type (read/write/delete). Action type must be recorded."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.6",
+        "name": "assessment-objective",
+        "prose": "Audit log retention is %v days. HIPAA requires minimum 6 years (2190 days) for audit documentation."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.7",
+        "name": "assessment-objective",
+        "prose": "Audit logs are not backed up offsite. Log integrity requires backup to prevent tampering or loss."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.8",
+        "name": "assessment-objective",
+        "prose": "Audit logs are not tamper-evident. Logs must be protected from modification or deletion."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.9",
+        "name": "assessment-objective",
+        "prose": "Audit logs are not centralized. Distributed logs increase the risk of incomplete collection and tampering."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.10",
+        "name": "assessment-objective",
+        "prose": "Audit logs are reviewed every %v days. Logs for ePHI systems should be reviewed at least weekly."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.11",
+        "name": "assessment-objective",
+        "prose": "No automated alerting on audit log anomalies. Suspicious ePHI access should trigger immediate alerts."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.12",
+        "name": "assessment-objective",
+        "prose": "No alerts configured for unauthorized ePHI access attempts. Failed access attempts must be monitored."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.13",
+        "name": "assessment-objective",
+        "prose": "No monitoring for after-hours ePHI access. Unusual access times are a key indicator of unauthorized activity."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.14",
+        "name": "assessment-objective",
+        "prose": "no ePHI systems in scope (input.phi_systems is empty) — cannot certify Audit Controls. Declare the ePHI systems to be evaluated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "hipaa-hipaa.audit_controls-1",
       "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_audit_controls.rego (package hipaa.audit_controls); see the rule body.",
       "props": [
@@ -340,7 +828,7 @@
       ],
       "links": [
        {
-        "href": "#764af6e9-a504-540c-8213-36b379386a0d",
+        "href": "#b6713999-e9f4-5180-8655-1f092e82cdf7",
         "rel": "implementation"
        }
       ],
@@ -373,7 +861,7 @@
       ],
       "links": [
        {
-        "href": "#764af6e9-a504-540c-8213-36b379386a0d",
+        "href": "#b6713999-e9f4-5180-8655-1f092e82cdf7",
         "rel": "implementation"
        }
       ],
@@ -406,7 +894,7 @@
       ],
       "links": [
        {
-        "href": "#764af6e9-a504-540c-8213-36b379386a0d",
+        "href": "#b6713999-e9f4-5180-8655-1f092e82cdf7",
         "rel": "implementation"
        }
       ],
@@ -439,7 +927,7 @@
       ],
       "links": [
        {
-        "href": "#764af6e9-a504-540c-8213-36b379386a0d",
+        "href": "#b6713999-e9f4-5180-8655-1f092e82cdf7",
         "rel": "implementation"
        }
       ],
@@ -472,7 +960,7 @@
       ],
       "links": [
        {
-        "href": "#764af6e9-a504-540c-8213-36b379386a0d",
+        "href": "#b6713999-e9f4-5180-8655-1f092e82cdf7",
         "rel": "implementation"
        }
       ],
@@ -505,7 +993,7 @@
       ],
       "links": [
        {
-        "href": "#764af6e9-a504-540c-8213-36b379386a0d",
+        "href": "#b6713999-e9f4-5180-8655-1f092e82cdf7",
         "rel": "implementation"
        }
       ],
@@ -514,39 +1002,6 @@
         "id": "hipaa-hipaa.audit_controls-6_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_audit_controls.rego (package hipaa.audit_controls); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "hipaa-HIPAA-164.312-b",
-      "title": "no ePHI systems in scope (input.phi_systems is empty) — cannot certify Audit Controls. Declare the ePHI systems to be evaluated.",
-      "props": [
-       {
-        "name": "label",
-        "value": "HIPAA 164.312(b)"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "HIPAA 164.312(b)"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "hipaa.audit_controls"
-       }
-      ],
-      "links": [
-       {
-        "href": "#764af6e9-a504-540c-8213-36b379386a0d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "hipaa-HIPAA-164.312-b_stmt",
-        "name": "statement",
-        "prose": "no ePHI systems in scope (input.phi_systems is empty) — cannot certify Audit Controls. Declare the ePHI systems to be evaluated."
        }
       ],
       "class": "compliance"
@@ -576,6 +1031,114 @@
     ],
     "controls": [
      {
+      "id": "hipaa-HIPAA-164.312-d",
+      "title": "Multi-factor authentication is not enabled for ePHI access. MFA is required for all ePHI system access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85f5a6fb-f859-523b-aea7-cc7b514df995",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-d_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication is not enabled for ePHI access. MFA is required for all ePHI system access."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.1",
+        "name": "assessment-objective",
+        "prose": "MFA is not required for remote ePHI access. Remote access must always require MFA."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.2",
+        "name": "assessment-objective",
+        "prose": "MFA is not required for privileged accounts. All privileged ePHI system accounts must use MFA."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.3",
+        "name": "assessment-objective",
+        "prose": "SMS-only MFA is configured. SMS is susceptible to SIM swapping. Offer TOTP or hardware key as alternatives."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.4",
+        "name": "assessment-objective",
+        "prose": "Minimum password length is %v characters. HIPAA guidance recommends minimum 12 characters for ePHI systems."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.5",
+        "name": "assessment-objective",
+        "prose": "Password complexity is not required. Passwords for ePHI access must meet complexity requirements."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.6",
+        "name": "assessment-objective",
+        "prose": "Password maximum age is %v days. Passwords for ePHI access should be changed at least every 90 days."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.7",
+        "name": "assessment-objective",
+        "prose": "Password history enforces only %v previous passwords. Enforce at least 12 to prevent password reuse."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.8",
+        "name": "assessment-objective",
+        "prose": "Account lockout occurs after %v failed attempts. Maximum 5 failed attempts recommended for ePHI systems."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.9",
+        "name": "assessment-objective",
+        "prose": "Account lockout is not enabled. Accounts must lock after repeated failed authentication attempts."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.10",
+        "name": "assessment-objective",
+        "prose": "User '%v' is using a default password. Default passwords must be changed before ePHI system access."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.11",
+        "name": "assessment-objective",
+        "prose": "User '%v' has a non-expiring password and ePHI access. Password expiration must be enforced for all ePHI users."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.12",
+        "name": "assessment-objective",
+        "prose": "Privileged account '%v' is not enrolled in MFA. All privileged accounts must use MFA."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.13",
+        "name": "assessment-objective",
+        "prose": "Re-authentication is not required for sensitive ePHI operations (delete, export). Require re-auth for high-risk actions."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.14",
+        "name": "assessment-objective",
+        "prose": "Unlimited concurrent sessions are permitted. Limit concurrent sessions for ePHI access to detect credential sharing."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.15",
+        "name": "assessment-objective",
+        "prose": "Service account '%v' with ePHI access uses password authentication. Service accounts should use certificate-based authentication."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "hipaa-hipaa.authentication-1",
       "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body.",
       "props": [
@@ -595,7 +1158,7 @@
       ],
       "links": [
        {
-        "href": "#acef6587-9127-56a1-9f99-e91ebbb16cde",
+        "href": "#85f5a6fb-f859-523b-aea7-cc7b514df995",
         "rel": "implementation"
        }
       ],
@@ -628,7 +1191,7 @@
       ],
       "links": [
        {
-        "href": "#acef6587-9127-56a1-9f99-e91ebbb16cde",
+        "href": "#85f5a6fb-f859-523b-aea7-cc7b514df995",
         "rel": "implementation"
        }
       ],
@@ -661,7 +1224,7 @@
       ],
       "links": [
        {
-        "href": "#acef6587-9127-56a1-9f99-e91ebbb16cde",
+        "href": "#85f5a6fb-f859-523b-aea7-cc7b514df995",
         "rel": "implementation"
        }
       ],
@@ -694,7 +1257,7 @@
       ],
       "links": [
        {
-        "href": "#acef6587-9127-56a1-9f99-e91ebbb16cde",
+        "href": "#85f5a6fb-f859-523b-aea7-cc7b514df995",
         "rel": "implementation"
        }
       ],
@@ -727,7 +1290,7 @@
       ],
       "links": [
        {
-        "href": "#acef6587-9127-56a1-9f99-e91ebbb16cde",
+        "href": "#85f5a6fb-f859-523b-aea7-cc7b514df995",
         "rel": "implementation"
        }
       ],
@@ -765,6 +1328,171 @@
     ],
     "controls": [
      {
+      "id": "hipaa-hipaa.hitech-1",
+      "title": "breach log",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.hitech#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.hitech#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.hitech"
+       }
+      ],
+      "links": [
+       {
+        "href": "#910bd2e9-b7b5-5305-a136-0a0ce44f0ded",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.hitech-1_stmt",
+        "name": "statement",
+        "prose": "breach log"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.hitech-2",
+      "title": "hhs notification",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.hitech#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.hitech#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.hitech"
+       }
+      ],
+      "links": [
+       {
+        "href": "#910bd2e9-b7b5-5305-a136-0a0ce44f0ded",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.hitech-2_stmt",
+        "name": "statement",
+        "prose": "hhs notification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.hitech-3",
+      "title": "individual notification",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.hitech#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.hitech#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.hitech"
+       }
+      ],
+      "links": [
+       {
+        "href": "#910bd2e9-b7b5-5305-a136-0a0ce44f0ded",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.hitech-3_stmt",
+        "name": "statement",
+        "prose": "individual notification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.hitech-4",
+      "title": "media notification",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.hitech#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.hitech#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.hitech"
+       }
+      ],
+      "links": [
+       {
+        "href": "#910bd2e9-b7b5-5305-a136-0a0ce44f0ded",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.hitech-4_stmt",
+        "name": "statement",
+        "prose": "media notification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.hitech-5",
+      "title": "risk assessment",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.hitech#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.hitech#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.hitech"
+       }
+      ],
+      "links": [
+       {
+        "href": "#910bd2e9-b7b5-5305-a136-0a0ce44f0ded",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.hitech-5_stmt",
+        "name": "statement",
+        "prose": "risk assessment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "hipaa-breach_notification",
       "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_hitech.rego (package hipaa.hitech); see the rule body.",
       "props": [
@@ -784,7 +1512,7 @@
       ],
       "links": [
        {
-        "href": "#d3a4732b-85b3-5c83-9f23-cec98830f15b",
+        "href": "#910bd2e9-b7b5-5305-a136-0a0ce44f0ded",
         "rel": "implementation"
        }
       ],
@@ -817,7 +1545,7 @@
       ],
       "links": [
        {
-        "href": "#d3a4732b-85b3-5c83-9f23-cec98830f15b",
+        "href": "#910bd2e9-b7b5-5305-a136-0a0ce44f0ded",
         "rel": "implementation"
        }
       ],
@@ -850,7 +1578,7 @@
       ],
       "links": [
        {
-        "href": "#d3a4732b-85b3-5c83-9f23-cec98830f15b",
+        "href": "#910bd2e9-b7b5-5305-a136-0a0ce44f0ded",
         "rel": "implementation"
        }
       ],
@@ -883,7 +1611,7 @@
       ],
       "links": [
        {
-        "href": "#d3a4732b-85b3-5c83-9f23-cec98830f15b",
+        "href": "#910bd2e9-b7b5-5305-a136-0a0ce44f0ded",
         "rel": "implementation"
        }
       ],
@@ -916,7 +1644,7 @@
       ],
       "links": [
        {
-        "href": "#d3a4732b-85b3-5c83-9f23-cec98830f15b",
+        "href": "#910bd2e9-b7b5-5305-a136-0a0ce44f0ded",
         "rel": "implementation"
        }
       ],
@@ -954,6 +1682,132 @@
     ],
     "controls": [
      {
+      "id": "hipaa-HIPAA-164.312-c-1",
+      "title": "System '%v' does not have integrity checking enabled for ePHI. File integrity monitoring is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(c)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(c)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aceb25ee-8812-5391-a8e4-7be93a2a7da3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_stmt",
+        "name": "statement",
+        "prose": "System '%v' does not have integrity checking enabled for ePHI. File integrity monitoring is required."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "System '%v' integrity checks run every %v hours. Daily or more frequent checks are required for ePHI."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.2",
+        "name": "assessment-objective",
+        "prose": "No change management process for ePHI systems. Changes must be controlled to prevent unauthorized alteration."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.3",
+        "name": "assessment-objective",
+        "prose": "Archived ePHI is not write-protected. Historical records must be protected from modification."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.4",
+        "name": "assessment-objective",
+        "prose": "Regular backups of ePHI are not configured. Backups are essential for recovery from corruption or destruction."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.5",
+        "name": "assessment-objective",
+        "prose": "ePHI is backed up every %v hours. Daily backups are the recommended minimum."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.6",
+        "name": "assessment-objective",
+        "prose": "ePHI backups are not stored offsite or in cloud. Backups must be protected from site-level disasters."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.7",
+        "name": "assessment-objective",
+        "prose": "ePHI backup restoration has not been tested. Backups must be verified to ensure recoverability."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.8",
+        "name": "assessment-objective",
+        "prose": "ePHI backup restore test is %v days old. Test restoration at least quarterly."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.9",
+        "name": "assessment-objective",
+        "prose": "No secure deletion policy for ePHI. Media containing ePHI must be securely destroyed when no longer needed."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.10",
+        "name": "assessment-objective",
+        "prose": "Media containing ePHI is being reused without sanitization. Media must be sanitized before reuse."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-HIPAA-164.312-c-2",
+      "title": "No cryptographic hashing or checksums used for ePHI. Hash-based integrity verification is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(c)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(c)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aceb25ee-8812-5391-a8e4-7be93a2a7da3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-c-2_stmt",
+        "name": "statement",
+        "prose": "No cryptographic hashing or checksums used for ePHI. Hash-based integrity verification is required."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Hash algorithm '%v' is cryptographically weak. Use SHA-256 or stronger for ePHI integrity verification."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-2_obj.2",
+        "name": "assessment-objective",
+        "prose": "ePHI exports do not use digital signatures. Signatures provide non-repudiation and integrity assurance."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "hipaa-hipaa.integrity-1",
       "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_integrity.rego (package hipaa.integrity); see the rule body.",
       "props": [
@@ -973,7 +1827,7 @@
       ],
       "links": [
        {
-        "href": "#771a6050-5350-5fc4-97ee-6c4e4892bc00",
+        "href": "#aceb25ee-8812-5391-a8e4-7be93a2a7da3",
         "rel": "implementation"
        }
       ],
@@ -1006,7 +1860,7 @@
       ],
       "links": [
        {
-        "href": "#771a6050-5350-5fc4-97ee-6c4e4892bc00",
+        "href": "#aceb25ee-8812-5391-a8e4-7be93a2a7da3",
         "rel": "implementation"
        }
       ],
@@ -1039,7 +1893,7 @@
       ],
       "links": [
        {
-        "href": "#771a6050-5350-5fc4-97ee-6c4e4892bc00",
+        "href": "#aceb25ee-8812-5391-a8e4-7be93a2a7da3",
         "rel": "implementation"
        }
       ],
@@ -1072,7 +1926,7 @@
       ],
       "links": [
        {
-        "href": "#771a6050-5350-5fc4-97ee-6c4e4892bc00",
+        "href": "#aceb25ee-8812-5391-a8e4-7be93a2a7da3",
         "rel": "implementation"
        }
       ],
@@ -1105,7 +1959,7 @@
       ],
       "links": [
        {
-        "href": "#771a6050-5350-5fc4-97ee-6c4e4892bc00",
+        "href": "#aceb25ee-8812-5391-a8e4-7be93a2a7da3",
         "rel": "implementation"
        }
       ],
@@ -1162,7 +2016,7 @@
       ],
       "links": [
        {
-        "href": "#8940910c-9b1d-55b5-8abf-64ace0376ff8",
+        "href": "#b658f6d7-c15f-53f1-b7c0-058890283f1d",
         "rel": "implementation"
        }
       ],
@@ -1195,7 +2049,7 @@
       ],
       "links": [
        {
-        "href": "#8940910c-9b1d-55b5-8abf-64ace0376ff8",
+        "href": "#b658f6d7-c15f-53f1-b7c0-058890283f1d",
         "rel": "implementation"
        }
       ],
@@ -1228,7 +2082,7 @@
       ],
       "links": [
        {
-        "href": "#8940910c-9b1d-55b5-8abf-64ace0376ff8",
+        "href": "#b658f6d7-c15f-53f1-b7c0-058890283f1d",
         "rel": "implementation"
        }
       ],
@@ -1261,7 +2115,7 @@
       ],
       "links": [
        {
-        "href": "#8940910c-9b1d-55b5-8abf-64ace0376ff8",
+        "href": "#b658f6d7-c15f-53f1-b7c0-058890283f1d",
         "rel": "implementation"
        }
       ],
@@ -1299,6 +2153,270 @@
     ],
     "controls": [
      {
+      "id": "hipaa-hipaa.privacy_rule-1",
+      "title": "access",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.privacy_rule#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.privacy_rule#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.privacy_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.privacy_rule-1_stmt",
+        "name": "statement",
+        "prose": "access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.privacy_rule-2",
+      "title": "amendment",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.privacy_rule#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.privacy_rule#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.privacy_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.privacy_rule-2_stmt",
+        "name": "statement",
+        "prose": "amendment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.privacy_rule-3",
+      "title": "confidential communications",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.privacy_rule#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.privacy_rule#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.privacy_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.privacy_rule-3_stmt",
+        "name": "statement",
+        "prose": "confidential communications"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.privacy_rule-4",
+      "title": "opt out",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.privacy_rule#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.privacy_rule#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.privacy_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.privacy_rule-4_stmt",
+        "name": "statement",
+        "prose": "opt out"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.privacy_rule-5",
+      "title": "restrictions",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.privacy_rule#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.privacy_rule#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.privacy_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.privacy_rule-5_stmt",
+        "name": "statement",
+        "prose": "restrictions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.privacy_rule-6",
+      "title": "authorization process",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.privacy_rule#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.privacy_rule#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.privacy_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.privacy_rule-6_stmt",
+        "name": "statement",
+        "prose": "authorization process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.privacy_rule-7",
+      "title": "prohibited disclosures",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.privacy_rule#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.privacy_rule#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.privacy_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.privacy_rule-7_stmt",
+        "name": "statement",
+        "prose": "prohibited disclosures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.privacy_rule-8",
+      "title": "tpo documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.privacy_rule#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.privacy_rule#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.privacy_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.privacy_rule-8_stmt",
+        "name": "statement",
+        "prose": "tpo documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "hipaa-governance",
       "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_privacy_rule.rego (package hipaa.privacy_rule); see the rule body.",
       "props": [
@@ -1318,7 +2436,7 @@
       ],
       "links": [
        {
-        "href": "#af6a3b38-7703-52ce-8a3a-0bfa8dcabdb2",
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
         "rel": "implementation"
        }
       ],
@@ -1351,7 +2469,7 @@
       ],
       "links": [
        {
-        "href": "#af6a3b38-7703-52ce-8a3a-0bfa8dcabdb2",
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
         "rel": "implementation"
        }
       ],
@@ -1384,7 +2502,7 @@
       ],
       "links": [
        {
-        "href": "#af6a3b38-7703-52ce-8a3a-0bfa8dcabdb2",
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
         "rel": "implementation"
        }
       ],
@@ -1417,7 +2535,7 @@
       ],
       "links": [
        {
-        "href": "#af6a3b38-7703-52ce-8a3a-0bfa8dcabdb2",
+        "href": "#aba5d94f-9475-5545-ac5f-c922e86e74e2",
         "rel": "implementation"
        }
       ],
@@ -1455,6 +2573,435 @@
     ],
     "controls": [
      {
+      "id": "hipaa-hipaa.security_rule-1",
+      "title": "assigned security responsibility",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-1_stmt",
+        "name": "statement",
+        "prose": "assigned security responsibility"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-2",
+      "title": "business associate contracts",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-2_stmt",
+        "name": "statement",
+        "prose": "business associate contracts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-3",
+      "title": "contingency plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-3_stmt",
+        "name": "statement",
+        "prose": "contingency plan"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-4",
+      "title": "information access management",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-4_stmt",
+        "name": "statement",
+        "prose": "information access management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-5",
+      "title": "periodic evaluation",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-5_stmt",
+        "name": "statement",
+        "prose": "periodic evaluation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-6",
+      "title": "security awareness training",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-6_stmt",
+        "name": "statement",
+        "prose": "security awareness training"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-7",
+      "title": "security incident procedures",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-7_stmt",
+        "name": "statement",
+        "prose": "security incident procedures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-8",
+      "title": "security management process",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-8_stmt",
+        "name": "statement",
+        "prose": "security management process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-9",
+      "title": "workforce security",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-9_stmt",
+        "name": "statement",
+        "prose": "workforce security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-10",
+      "title": "device media controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-10_stmt",
+        "name": "statement",
+        "prose": "device media controls"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-11",
+      "title": "facility access controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-11_stmt",
+        "name": "statement",
+        "prose": "facility access controls"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-12",
+      "title": "workstation security",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-12_stmt",
+        "name": "statement",
+        "prose": "workstation security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-13",
+      "title": "workstation use",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-13_stmt",
+        "name": "statement",
+        "prose": "workstation use"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "hipaa-privacy_controls",
       "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_security_rule.rego (package hipaa.security_rule); see the rule body.",
       "props": [
@@ -1474,7 +3021,7 @@
       ],
       "links": [
        {
-        "href": "#2b2e7b79-3150-54a5-bbf1-d9add5112b38",
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
         "rel": "implementation"
        }
       ],
@@ -1507,7 +3054,7 @@
       ],
       "links": [
        {
-        "href": "#2b2e7b79-3150-54a5-bbf1-d9add5112b38",
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
         "rel": "implementation"
        }
       ],
@@ -1540,7 +3087,7 @@
       ],
       "links": [
        {
-        "href": "#2b2e7b79-3150-54a5-bbf1-d9add5112b38",
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
         "rel": "implementation"
        }
       ],
@@ -1573,7 +3120,7 @@
       ],
       "links": [
        {
-        "href": "#2b2e7b79-3150-54a5-bbf1-d9add5112b38",
+        "href": "#e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
         "rel": "implementation"
        }
       ],
@@ -1611,6 +3158,165 @@
     ],
     "controls": [
      {
+      "id": "hipaa-HIPAA-164.312-e-1",
+      "title": "System '%v' transmits ePHI without encryption. All ePHI in transit must be protected.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(e)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(e)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.transmission_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd8ad502-519f-570c-8e5f-dfaa7b9e0d6e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-e-1_stmt",
+        "name": "statement",
+        "prose": "System '%v' transmits ePHI without encryption. All ePHI in transit must be protected."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "System '%v' uses deprecated protocol '%v' for ePHI transmission. Use TLS 1.2 or higher."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Network carrying ePHI is not segmented. ePHI traffic should be isolated from general network traffic."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-1_obj.3",
+        "name": "assessment-objective",
+        "prose": "Remote ePHI access is permitted without VPN. VPN or equivalent encrypted tunnel is required."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-1_obj.4",
+        "name": "assessment-objective",
+        "prose": "VPN protocol '%v' is insecure. Use IKEv2/IPsec, OpenVPN, or WireGuard."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-1_obj.5",
+        "name": "assessment-objective",
+        "prose": "VPN split tunneling is enabled. ePHI traffic must route entirely through the encrypted VPN tunnel."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-1_obj.6",
+        "name": "assessment-objective",
+        "prose": "Data Loss Prevention (DLP) is not enabled on email. DLP prevents accidental unencrypted ePHI transmission."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-HIPAA-164.312-e-2-ii",
+      "title": "Minimum TLS version is %v. TLS 1.2 is the minimum acceptable; TLS 1.3 is recommended.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(e)(2)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(e)(2)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.transmission_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd8ad502-519f-570c-8e5f-dfaa7b9e0d6e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-e-2-ii_stmt",
+        "name": "statement",
+        "prose": "Minimum TLS version is %v. TLS 1.2 is the minimum acceptable; TLS 1.3 is recommended."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-2-ii_obj.1",
+        "name": "assessment-objective",
+        "prose": "Weak cipher suite '%v' is enabled. Remove all weak ciphers from TLS configuration."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-2-ii_obj.2",
+        "name": "assessment-objective",
+        "prose": "TLS certificate expiry is not monitored. Expired certificates break encrypted ePHI transmission."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-2-ii_obj.3",
+        "name": "assessment-objective",
+        "prose": "TLS certificate expires in %v days. Renew immediately to prevent unencrypted ePHI exposure."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-2-ii_obj.4",
+        "name": "assessment-objective",
+        "prose": "APIs transmitting ePHI do not use mutual TLS (mTLS). mTLS provides stronger authentication for ePHI endpoints."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-2-ii_obj.5",
+        "name": "assessment-objective",
+        "prose": "ePHI is sent via email without encryption enforcement. Require S/MIME or PGP for all ePHI email."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-HIPAA-164.312-e-2-i",
+      "title": "Message authentication (MAC/HMAC) is not enabled for ePHI transmission. Transmission integrity cannot be verified.",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIPAA 164.312(e)(2)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIPAA 164.312(e)(2)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.transmission_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd8ad502-519f-570c-8e5f-dfaa7b9e0d6e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-HIPAA-164.312-e-2-i_stmt",
+        "name": "statement",
+        "prose": "Message authentication (MAC/HMAC) is not enabled for ePHI transmission. Transmission integrity cannot be verified."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-2-i_obj.1",
+        "name": "assessment-objective",
+        "prose": "API endpoint '%v' transmitting ePHI does not use request signing. Implement HMAC or digital signatures."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "hipaa-hipaa.transmission_security-1",
       "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body.",
       "props": [
@@ -1630,7 +3336,7 @@
       ],
       "links": [
        {
-        "href": "#a11bcee0-a5f8-5892-a0d0-9f364dc3860c",
+        "href": "#dd8ad502-519f-570c-8e5f-dfaa7b9e0d6e",
         "rel": "implementation"
        }
       ],
@@ -1663,7 +3369,7 @@
       ],
       "links": [
        {
-        "href": "#a11bcee0-a5f8-5892-a0d0-9f364dc3860c",
+        "href": "#dd8ad502-519f-570c-8e5f-dfaa7b9e0d6e",
         "rel": "implementation"
        }
       ],
@@ -1696,7 +3402,7 @@
       ],
       "links": [
        {
-        "href": "#a11bcee0-a5f8-5892-a0d0-9f364dc3860c",
+        "href": "#dd8ad502-519f-570c-8e5f-dfaa7b9e0d6e",
         "rel": "implementation"
        }
       ],
@@ -1729,7 +3435,7 @@
       ],
       "links": [
        {
-        "href": "#a11bcee0-a5f8-5892-a0d0-9f364dc3860c",
+        "href": "#dd8ad502-519f-570c-8e5f-dfaa7b9e0d6e",
         "rel": "implementation"
        }
       ],
@@ -1762,7 +3468,7 @@
       ],
       "links": [
        {
-        "href": "#a11bcee0-a5f8-5892-a0d0-9f364dc3860c",
+        "href": "#dd8ad502-519f-570c-8e5f-dfaa7b9e0d6e",
         "rel": "implementation"
        }
       ],
@@ -1795,7 +3501,7 @@
       ],
       "links": [
        {
-        "href": "#a11bcee0-a5f8-5892-a0d0-9f364dc3860c",
+        "href": "#dd8ad502-519f-570c-8e5f-dfaa7b9e0d6e",
         "rel": "implementation"
        }
       ],
@@ -1814,7 +3520,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "a4261c22-f167-56dd-8a78-6fa106191272",
+     "uuid": "dd13b153-d88b-5e1f-8995-746f83ab9e84",
      "title": "HIPAA Security Rule — 45 CFR 164.312(a)",
      "props": [
       {
@@ -1825,13 +3531,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/hipaa/hipaa_access_control.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/privacy/hipaa/hipaa_access_control.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "764af6e9-a504-540c-8213-36b379386a0d",
+     "uuid": "b6713999-e9f4-5180-8655-1f092e82cdf7",
      "title": "HIPAA Security Rule — 45 CFR 164.312(b)",
      "props": [
       {
@@ -1842,13 +3548,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/hipaa/hipaa_audit_controls.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/privacy/hipaa/hipaa_audit_controls.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "acef6587-9127-56a1-9f99-e91ebbb16cde",
+     "uuid": "85f5a6fb-f859-523b-aea7-cc7b514df995",
      "title": "HIPAA Security Rule — 45 CFR 164.312(d)",
      "props": [
       {
@@ -1859,13 +3565,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/hipaa/hipaa_authentication.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/privacy/hipaa/hipaa_authentication.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d3a4732b-85b3-5c83-9f23-cec98830f15b",
+     "uuid": "910bd2e9-b7b5-5305-a136-0a0ce44f0ded",
      "title": "HITECH Act (Health Information Technology for Economic and Clinical Health Act)",
      "props": [
       {
@@ -1876,13 +3582,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/hipaa/hipaa_hitech.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/privacy/hipaa/hipaa_hitech.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "771a6050-5350-5fc4-97ee-6c4e4892bc00",
+     "uuid": "aceb25ee-8812-5391-a8e4-7be93a2a7da3",
      "title": "HIPAA Security Rule — 45 CFR 164.312(c)",
      "props": [
       {
@@ -1893,13 +3599,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/hipaa/hipaa_integrity.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/privacy/hipaa/hipaa_integrity.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "8940910c-9b1d-55b5-8abf-64ace0376ff8",
+     "uuid": "b658f6d7-c15f-53f1-b7c0-058890283f1d",
      "title": "HIPAA Compliance Aggregator",
      "props": [
       {
@@ -1910,13 +3616,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/hipaa/hipaa_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/privacy/hipaa/hipaa_main.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "af6a3b38-7703-52ce-8a3a-0bfa8dcabdb2",
+     "uuid": "aba5d94f-9475-5545-ac5f-c922e86e74e2",
      "title": "HIPAA Privacy Rule (45 CFR Part 164, Subparts A and E)",
      "props": [
       {
@@ -1927,13 +3633,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/hipaa/hipaa_privacy_rule.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/privacy/hipaa/hipaa_privacy_rule.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "2b2e7b79-3150-54a5-bbf1-d9add5112b38",
+     "uuid": "e2ca73f2-2f83-5d53-9bf6-6df695cef2ce",
      "title": "Technical safeguards (§164.312) are evaluated by the data-activity modules —",
      "props": [
       {
@@ -1944,13 +3650,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/hipaa/hipaa_security_rule.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/privacy/hipaa/hipaa_security_rule.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a11bcee0-a5f8-5892-a0d0-9f364dc3860c",
+     "uuid": "dd8ad502-519f-570c-8e5f-dfaa7b9e0d6e",
      "title": "HIPAA Security Rule — 45 CFR 164.312(e)",
      "props": [
       {
@@ -1961,7 +3667,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/privacy/hipaa/hipaa_transmission_security.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/privacy/hipaa/hipaa_transmission_security.rego",
        "media-type": "text/plain"
       }
      ]

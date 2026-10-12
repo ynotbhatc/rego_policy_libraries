@@ -5,6 +5,17 @@
 #   framework: dora
 #   source: eu
 #   domains: [financial, eu]
+#   coverage:
+#     checks: 39
+#     cited: 16
+#     expected: 91
+#     found: 39
+#     scope: module
+#     density: sparse
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package dora.main
 
 import rego.v1
@@ -322,3 +333,14 @@ pillar5_violations contains v if {
 	some v in violations
 	contains(v, "DORA Art.45:")
 }
+#   coverage:
+#     checks: 39
+#     cited: 16
+#     expected: 91
+#     found: 39
+#     scope: module
+#     density: sparse
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

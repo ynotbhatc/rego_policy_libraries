@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "68a5cb68-a7ce-515b-9f3e-a150c5876186",
+  "uuid": "c0a1bdd1-512e-5c0d-b54a-d9df196b9c78",
   "metadata": {
    "title": "Rego Policy Libraries — apra_cps234 (APRA CPS 234 Information Security (Australia, July 2019))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,110 +66,6 @@
     ],
     "controls": [
      {
-      "id": "apra_cps234-CPS-234-para-16-22-28-34",
-      "title": "apra_cps234.third_party_managed_assets must be declared true or false — whether related parties or third parties manage information assets cannot be assumed",
-      "props": [
-       {
-        "name": "label",
-        "value": "CPS 234 para 16/22/28/34"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CPS 234 para 16/22/28/34"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-CPS-234-para-16-22-28-34_stmt",
-        "name": "statement",
-        "prose": "apra_cps234.third_party_managed_assets must be declared true or false — whether related parties or third parties manage information assets cannot be assumed"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-apra_cps234.main-1",
-      "title": "CPS 234 para %v (%v): %v — not attested",
-      "props": [
-       {
-        "name": "label",
-        "value": "apra_cps234.main#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "apra_cps234.main#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-apra_cps234.main-1_stmt",
-        "name": "statement",
-        "prose": "CPS 234 para %v (%v): %v — not attested"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "apra_cps234-CPS-234-Input-Contract",
-      "title": "attestation for unknown paragraph %v — requirements are paragraphs 13–36",
-      "props": [
-       {
-        "name": "label",
-        "value": "CPS 234 Input Contract"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CPS 234 Input Contract"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "apra_cps234.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "apra_cps234-CPS-234-Input-Contract_stmt",
-        "name": "statement",
-        "prose": "attestation for unknown paragraph %v — requirements are paragraphs 13–36"
-       },
-       {
-        "id": "apra_cps234-CPS-234-Input-Contract_obj.1",
-        "name": "assessment-objective",
-        "prose": "input.apra_cps234.controls must be an object of {\"<paragraph>\": true}"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "apra_cps234-13",
       "title": "The Board is ultimately responsible for information security and ensures it is maintained commensurate with the size and extent of threats, enabling continued sound operation",
       "props": [
@@ -189,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -222,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -255,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -288,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -321,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -354,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -387,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -420,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -453,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -486,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -519,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -552,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -585,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -618,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -651,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -684,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -717,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -750,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -783,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -816,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -849,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -882,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -915,7 +811,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -948,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
         "rel": "implementation"
        }
       ],
@@ -960,6 +856,110 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-CPS-234-para-16-22-28-34",
+      "title": "apra_cps234.third_party_managed_assets must be declared true or false — whether related parties or third parties manage information assets cannot be assumed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CPS 234 para 16/22/28/34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CPS 234 para 16/22/28/34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-CPS-234-para-16-22-28-34_stmt",
+        "name": "statement",
+        "prose": "apra_cps234.third_party_managed_assets must be declared true or false — whether related parties or third parties manage information assets cannot be assumed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-apra_cps234.main-1",
+      "title": "CPS 234 para %v (%v): %v — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "apra_cps234.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "apra_cps234.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-apra_cps234.main-1_stmt",
+        "name": "statement",
+        "prose": "CPS 234 para %v (%v): %v — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "apra_cps234-CPS-234-Input-Contract",
+      "title": "attestation for unknown paragraph %v — requirements are paragraphs 13–36",
+      "props": [
+       {
+        "name": "label",
+        "value": "CPS 234 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CPS 234 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "apra_cps234.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aa0afc82-ae14-598c-9839-a75b2dbc2e85",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "apra_cps234-CPS-234-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "attestation for unknown paragraph %v — requirements are paragraphs 13–36"
+       },
+       {
+        "id": "apra_cps234-CPS-234-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "input.apra_cps234.controls must be an object of {\"<paragraph>\": true}"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    }
@@ -967,7 +967,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "e025937a-1bd9-5e6c-ab9f-7923947ab3cb",
+     "uuid": "aa0afc82-ae14-598c-9839-a75b2dbc2e85",
      "title": "APRA CPS 234 Information Security (Australia, July 2019)",
      "props": [
       {
@@ -978,7 +978,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/financial/apra_cps234/cps234_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/apra_cps234/cps234_main.rego",
        "media-type": "text/plain"
       }
      ]

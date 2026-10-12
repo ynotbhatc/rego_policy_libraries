@@ -5,6 +5,14 @@
 #   framework: cis_os
 #   source: cis
 #   domains: [linux]
+#   coverage:
+#     checks: 4
+#     cited: 4
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_redhat_legacy
 
 import rego.v1
@@ -98,4 +106,12 @@ failed_controls contains control if {
 failed_controls contains control if {
     control := "os_support"
     not os_supported
+#   coverage:
+#     checks: 4
+#     cited: 4
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "32d7b44e-08df-52d6-abc2-a269c1710825",
+  "uuid": "26209f9d-1c1f-5b5d-87f9-15ee83627414",
   "metadata": {
    "title": "Rego Policy Libraries — cis_databases (CIS Oracle Database 19c Benchmark - Complete Validation)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#c16ec6eb-217c-5876-a7b1-6b7423b44751",
+        "href": "#96206aa8-74b0-5f0e-857e-19d556cf14ea",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#c16ec6eb-217c-5876-a7b1-6b7423b44751",
+        "href": "#96206aa8-74b0-5f0e-857e-19d556cf14ea",
         "rel": "implementation"
        }
       ],
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#c16ec6eb-217c-5876-a7b1-6b7423b44751",
+        "href": "#96206aa8-74b0-5f0e-857e-19d556cf14ea",
         "rel": "implementation"
        }
       ],
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#c16ec6eb-217c-5876-a7b1-6b7423b44751",
+        "href": "#96206aa8-74b0-5f0e-857e-19d556cf14ea",
         "rel": "implementation"
        }
       ],
@@ -222,6 +222,493 @@
     ],
     "controls": [
      {
+      "id": "cis_databases-CIS-2.2.1",
+      "title": "AUDIT_SYS_OPERATIONS is '%s' (should be 'TRUE' to audit SYS/SYSDBA operations)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.1_stmt",
+        "name": "statement",
+        "prose": "AUDIT_SYS_OPERATIONS is '%s' (should be 'TRUE' to audit SYS/SYSDBA operations)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.2",
+      "title": "AUDIT_TRAIL is '%s' (should be 'DB', 'XML', 'OS', 'DB,EXTENDED', or 'XML,EXTENDED')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.2_stmt",
+        "name": "statement",
+        "prose": "AUDIT_TRAIL is '%s' (should be 'DB', 'XML', 'OS', 'DB,EXTENDED', or 'XML,EXTENDED')"
+       },
+       {
+        "id": "cis_databases-CIS-2.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "AUDIT_TRAIL is 'NONE' (auditing is disabled - CRITICAL security issue)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.3",
+      "title": "GLOBAL_NAMES is '%s' (should be 'TRUE' to enforce global naming)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.3_stmt",
+        "name": "statement",
+        "prose": "GLOBAL_NAMES is '%s' (should be 'TRUE' to enforce global naming)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.4",
+      "title": "OS_ROLES is '%s' (should be 'FALSE' to prevent OS authentication)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.4_stmt",
+        "name": "statement",
+        "prose": "OS_ROLES is '%s' (should be 'FALSE' to prevent OS authentication)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.5",
+      "title": "REMOTE_LISTENER is set to '%s' (should be empty for security)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.5_stmt",
+        "name": "statement",
+        "prose": "REMOTE_LISTENER is set to '%s' (should be empty for security)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.6",
+      "title": "REMOTE_LOGIN_PASSWORDFILE is '%s' (should be 'NONE' or 'EXCLUSIVE')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.6_stmt",
+        "name": "statement",
+        "prose": "REMOTE_LOGIN_PASSWORDFILE is '%s' (should be 'NONE' or 'EXCLUSIVE')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.7",
+      "title": "REMOTE_OS_AUTHENT is '%s' (should be 'FALSE' - CRITICAL: allows remote OS authentication)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.7_stmt",
+        "name": "statement",
+        "prose": "REMOTE_OS_AUTHENT is '%s' (should be 'FALSE' - CRITICAL: allows remote OS authentication)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.8",
+      "title": "REMOTE_OS_ROLES is '%s' (should be 'FALSE' to prevent remote OS role management)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.8_stmt",
+        "name": "statement",
+        "prose": "REMOTE_OS_ROLES is '%s' (should be 'FALSE' to prevent remote OS role management)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.9",
+      "title": "SEC_CASE_SENSITIVE_LOGON is '%s' (should be 'TRUE' for case-sensitive passwords)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.9_stmt",
+        "name": "statement",
+        "prose": "SEC_CASE_SENSITIVE_LOGON is '%s' (should be 'TRUE' for case-sensitive passwords)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.10",
+      "title": "SEC_MAX_FAILED_LOGIN_ATTEMPTS is %s (should be 10 or less)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.10_stmt",
+        "name": "statement",
+        "prose": "SEC_MAX_FAILED_LOGIN_ATTEMPTS is %s (should be 10 or less)"
+       },
+       {
+        "id": "cis_databases-CIS-2.2.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "SEC_MAX_FAILED_LOGIN_ATTEMPTS is 0 (unlimited login attempts allowed)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.11",
+      "title": "SEC_RETURN_SERVER_RELEASE_BANNER is '%s' (should be 'FALSE' to hide version info)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.11_stmt",
+        "name": "statement",
+        "prose": "SEC_RETURN_SERVER_RELEASE_BANNER is '%s' (should be 'FALSE' to hide version info)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.12",
+      "title": "SQL92_SECURITY is '%s' (should be 'TRUE' for SQL92 compliance)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.12_stmt",
+        "name": "statement",
+        "prose": "SQL92_SECURITY is '%s' (should be 'TRUE' for SQL92 compliance)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2.13",
+      "title": "O7_DICTIONARY_ACCESSIBILITY is '%s' (should be 'FALSE' - CRITICAL: restricts SYS access)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2.13_stmt",
+        "name": "statement",
+        "prose": "O7_DICTIONARY_ACCESSIBILITY is '%s' (should be 'FALSE' - CRITICAL: restricts SYS access)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.2",
+      "title": "Unified Auditing is not enabled (recommended for Oracle 12c+)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2_stmt",
+        "name": "statement",
+        "prose": "Unified Auditing is not enabled (recommended for Oracle 12c+)"
+       },
+       {
+        "id": "cis_databases-CIS-2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "SEC_PROTOCOL_ERROR_FURTHER_ACTION is '%s' (should be 'DROP,3' or 'DELAY,3')"
+       },
+       {
+        "id": "cis_databases-CIS-2.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Network encryption is not enabled (sqlnet.ora SQLNET.ENCRYPTION_SERVER)"
+       },
+       {
+        "id": "cis_databases-CIS-2.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Network crypto checksumming is '%s' (should be 'REQUIRED' or 'REQUESTED')"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_databases-audit_configuration",
       "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego (package cis_oracle.database_parameters); see the rule body.",
       "props": [
@@ -241,7 +728,7 @@
       ],
       "links": [
        {
-        "href": "#5102947c-55be-53ca-87f4-93fddeb48024",
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
         "rel": "implementation"
        }
       ],
@@ -274,7 +761,7 @@
       ],
       "links": [
        {
-        "href": "#5102947c-55be-53ca-87f4-93fddeb48024",
+        "href": "#c11584f7-acfc-5282-8c67-2c07a9a7291f",
         "rel": "implementation"
        }
       ],
@@ -312,6 +799,84 @@
     ],
     "controls": [
      {
+      "id": "cis_databases-CIS-1.1",
+      "title": "Oracle version %s is not supported (end of support: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.installation_patches"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7aae98e4-f2f2-54c4-8219-dc064dc3707f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-1.1_stmt",
+        "name": "statement",
+        "prose": "Oracle version %s is not supported (end of support: %s)"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Oracle version %s is not a recommended version (use 19c, 21c, or 23c)"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Critical patch %s (released %s) is not installed - %s"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "Last patch was applied %d days ago (should be < 90 days)"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "%d critical security patches are missing"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.5",
+        "name": "assessment-objective",
+        "prose": "ORACLE_HOME permissions %s are too permissive (should be 755 or stricter)"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.6",
+        "name": "assessment-objective",
+        "prose": "ORACLE_HOME owner is '%s' (should be 'oracle')"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.7",
+        "name": "assessment-objective",
+        "prose": "ORACLE_HOME group is '%s' (should be 'dba' or 'oinstall')"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.8",
+        "name": "assessment-objective",
+        "prose": "Oracle inventory (oraInventory) does not exist or is not accessible"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.9",
+        "name": "assessment-objective",
+        "prose": "Oracle inventory permissions %s are too permissive"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_databases-oracle_version",
       "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/installation_patches.rego (package cis_oracle.installation_patches); see the rule body.",
       "props": [
@@ -331,7 +896,7 @@
       ],
       "links": [
        {
-        "href": "#671b6723-d3b7-5dda-a465-61cc9e9542e6",
+        "href": "#7aae98e4-f2f2-54c4-8219-dc064dc3707f",
         "rel": "implementation"
        }
       ],
@@ -364,7 +929,7 @@
       ],
       "links": [
        {
-        "href": "#671b6723-d3b7-5dda-a465-61cc9e9542e6",
+        "href": "#7aae98e4-f2f2-54c4-8219-dc064dc3707f",
         "rel": "implementation"
        }
       ],
@@ -402,6 +967,262 @@
     ],
     "controls": [
      {
+      "id": "cis_databases-CIS-2.1.1",
+      "title": "Listener '%s' has 'extproc' service enabled (CRITICAL: allows arbitrary code execution)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.listener_configuration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0d389389-704d-57e2-8b23-70be5c497940",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.1.1_stmt",
+        "name": "statement",
+        "prose": "Listener '%s' has 'extproc' service enabled (CRITICAL: allows arbitrary code execution)"
+       },
+       {
+        "id": "cis_databases-CIS-2.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "EXTPROC is present in listener.ora (should be removed)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.1.2",
+      "title": "Listener '%s' has ADMIN_RESTRICTIONS_%s=%s (should be 'ON')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.listener_configuration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0d389389-704d-57e2-8b23-70be5c497940",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.1.2_stmt",
+        "name": "statement",
+        "prose": "Listener '%s' has ADMIN_RESTRICTIONS_%s=%s (should be 'ON')"
+       },
+       {
+        "id": "cis_databases-CIS-2.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "ADMIN_RESTRICTIONS is not set to ON in listener.ora"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.1.3",
+      "title": "Listener '%s' does not have logging enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.listener_configuration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0d389389-704d-57e2-8b23-70be5c497940",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.1.3_stmt",
+        "name": "statement",
+        "prose": "Listener '%s' does not have logging enabled"
+       },
+       {
+        "id": "cis_databases-CIS-2.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Listener '%s' logging directory is not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.1.4",
+      "title": "Listener '%s' is using default port 1521 (security through obscurity)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.listener_configuration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0d389389-704d-57e2-8b23-70be5c497940",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.1.4_stmt",
+        "name": "statement",
+        "prose": "Listener '%s' is using default port 1521 (security through obscurity)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.1.5",
+      "title": "Listener '%s' is not password protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.listener_configuration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0d389389-704d-57e2-8b23-70be5c497940",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.1.5_stmt",
+        "name": "statement",
+        "prose": "Listener '%s' is not password protected"
+       },
+       {
+        "id": "cis_databases-CIS-2.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Listener '%s' is using insecure protocol '%s'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.1.6",
+      "title": "Listener '%s' does not have VALID_NODE_CHECKING enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.listener_configuration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0d389389-704d-57e2-8b23-70be5c497940",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.1.6_stmt",
+        "name": "statement",
+        "prose": "Listener '%s' does not have VALID_NODE_CHECKING enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-2.1",
+      "title": "listener.ora has insecure permissions %s (should be 640 or stricter)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.listener_configuration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0d389389-704d-57e2-8b23-70be5c497940",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.1_stmt",
+        "name": "statement",
+        "prose": "listener.ora has insecure permissions %s (should be 640 or stricter)"
+       },
+       {
+        "id": "cis_databases-CIS-2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "listener.ora owner is '%s' (should be 'oracle')"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_databases-listener_summary",
       "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/listener_configuration.rego (package cis_oracle.listener_configuration); see the rule body.",
       "props": [
@@ -421,7 +1242,7 @@
       ],
       "links": [
        {
-        "href": "#37232d92-f469-50cc-a166-993e6f976cc2",
+        "href": "#0d389389-704d-57e2-8b23-70be5c497940",
         "rel": "implementation"
        }
       ],
@@ -459,6 +1280,264 @@
     ],
     "controls": [
      {
+      "id": "cis_databases-CIS-3.1",
+      "title": "Default account '%s' is OPEN (should be LOCKED or DROPPED)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.user_account_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e4a4e93a-9d9c-5603-94af-be6de8d873a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-3.1_stmt",
+        "name": "statement",
+        "prose": "Default account '%s' is OPEN (should be LOCKED or DROPPED)"
+       },
+       {
+        "id": "cis_databases-CIS-3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Default account '%s' has never changed password (CRITICAL: using default password)"
+       },
+       {
+        "id": "cis_databases-CIS-3.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Default Oracle account '%s' is OPEN (should be LOCKED)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-3.2",
+      "title": "DEFAULT profile has PASSWORD_LIFE_TIME=UNLIMITED (passwords never expire)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.user_account_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e4a4e93a-9d9c-5603-94af-be6de8d873a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-3.2_stmt",
+        "name": "statement",
+        "prose": "DEFAULT profile has PASSWORD_LIFE_TIME=UNLIMITED (passwords never expire)"
+       },
+       {
+        "id": "cis_databases-CIS-3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Profile '%s' allows unlimited password reuse"
+       },
+       {
+        "id": "cis_databases-CIS-3.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Profile '%s' has PASSWORD_LIFE_TIME=%s days (should be 90 or less)"
+       },
+       {
+        "id": "cis_databases-CIS-3.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Profile '%s' has PASSWORD_GRACE_TIME=%s days (should be 5 or less)"
+       },
+       {
+        "id": "cis_databases-CIS-3.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "Profile '%s' has FAILED_LOGIN_ATTEMPTS=%s (should be 5 or less)"
+       },
+       {
+        "id": "cis_databases-CIS-3.2_obj.5",
+        "name": "assessment-objective",
+        "prose": "Profile '%s' has PASSWORD_LOCK_TIME=%s (should be 1 day or UNLIMITED)"
+       },
+       {
+        "id": "cis_databases-CIS-3.2_obj.6",
+        "name": "assessment-objective",
+        "prose": "Profile '%s' has no password complexity function (PASSWORD_VERIFY_FUNCTION=NULL)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-3.3",
+      "title": "Privileged account '%s' has old password (last changed: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.user_account_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e4a4e93a-9d9c-5603-94af-be6de8d873a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-3.3_stmt",
+        "name": "statement",
+        "prose": "Privileged account '%s' has old password (last changed: %s)"
+       },
+       {
+        "id": "cis_databases-CIS-3.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Account '%s' has DBA role granted directly (should use custom roles)"
+       },
+       {
+        "id": "cis_databases-CIS-3.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Account '%s' has SYSDBA using password authentication (should use OS or certificate auth)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-3.4",
+      "title": "Account '%s' has been locked for %d days (should be reviewed/dropped)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.user_account_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e4a4e93a-9d9c-5603-94af-be6de8d873a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-3.4_stmt",
+        "name": "statement",
+        "prose": "Account '%s' has been locked for %d days (should be reviewed/dropped)"
+       },
+       {
+        "id": "cis_databases-CIS-3.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Account '%s' has not logged in for %d days (should be locked)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-3.5",
+      "title": "ANONYMOUS account is OPEN (should be LOCKED - allows anonymous HTTP access)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.user_account_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e4a4e93a-9d9c-5603-94af-be6de8d873a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-3.5_stmt",
+        "name": "statement",
+        "prose": "ANONYMOUS account is OPEN (should be LOCKED - allows anonymous HTTP access)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_databases-CIS-3.6",
+      "title": "Dangerous privilege '%s' is granted to PUBLIC (should be revoked)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.user_account_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e4a4e93a-9d9c-5603-94af-be6de8d873a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-3.6_stmt",
+        "name": "statement",
+        "prose": "Dangerous privilege '%s' is granted to PUBLIC (should be revoked)"
+       },
+       {
+        "id": "cis_databases-CIS-3.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "CRITICAL: '%s' is granted to PUBLIC"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_databases-account_summary",
       "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego (package cis_oracle.user_account_management); see the rule body.",
       "props": [
@@ -478,7 +1557,7 @@
       ],
       "links": [
        {
-        "href": "#78b19316-8a7b-52c5-a581-1d42a367b04d",
+        "href": "#e4a4e93a-9d9c-5603-94af-be6de8d873a2",
         "rel": "implementation"
        }
       ],
@@ -511,7 +1590,7 @@
       ],
       "links": [
        {
-        "href": "#78b19316-8a7b-52c5-a581-1d42a367b04d",
+        "href": "#e4a4e93a-9d9c-5603-94af-be6de8d873a2",
         "rel": "implementation"
        }
       ],
@@ -530,7 +1609,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "c16ec6eb-217c-5876-a7b1-6b7423b44751",
+     "uuid": "96206aa8-74b0-5f0e-857e-19d556cf14ea",
      "title": "CIS Oracle Database 19c Benchmark - Complete Validation",
      "props": [
       {
@@ -541,13 +1620,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/databases/oracle_legacy/cis_oracle_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "5102947c-55be-53ca-87f4-93fddeb48024",
+     "uuid": "c11584f7-acfc-5282-8c67-2c07a9a7291f",
      "title": "CIS Oracle Database 19c Benchmark - Section 2.2",
      "props": [
       {
@@ -558,13 +1637,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "671b6723-d3b7-5dda-a465-61cc9e9542e6",
+     "uuid": "7aae98e4-f2f2-54c4-8219-dc064dc3707f",
      "title": "CIS Oracle Database 19c Benchmark - Section 1",
      "props": [
       {
@@ -575,13 +1654,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/databases/oracle_legacy/modules/installation_patches.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/databases/oracle_legacy/modules/installation_patches.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "37232d92-f469-50cc-a166-993e6f976cc2",
+     "uuid": "0d389389-704d-57e2-8b23-70be5c497940",
      "title": "CIS Oracle Database 19c Benchmark - Section 2.1",
      "props": [
       {
@@ -592,13 +1671,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/databases/oracle_legacy/modules/listener_configuration.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/databases/oracle_legacy/modules/listener_configuration.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "78b19316-8a7b-52c5-a581-1d42a367b04d",
+     "uuid": "e4a4e93a-9d9c-5603-94af-be6de8d873a2",
      "title": "CIS Oracle Database 19c Benchmark - Section 3",
      "props": [
       {
@@ -609,7 +1688,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego",
        "media-type": "text/plain"
       }
      ]

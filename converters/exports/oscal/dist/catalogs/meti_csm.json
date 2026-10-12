@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "cdd2f788-b9b6-5896-b07e-04628c6065f4",
+  "uuid": "a96c74ac-0ffb-57ab-8564-734e14be7df1",
   "metadata": {
    "title": "Rego Policy Libraries — meti_csm (METI Cybersecurity Management Guidelines Ver. 3.0 (Japan) — Appendix A check sheets)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,77 +66,6 @@
     ],
     "controls": [
      {
-      "id": "meti_csm-meti_csm.main-1",
-      "title": "METI CSM %v (%v): %v — not attested",
-      "props": [
-       {
-        "name": "label",
-        "value": "meti_csm.main#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "meti_csm.main#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-meti_csm.main-1_stmt",
-        "name": "statement",
-        "prose": "METI CSM %v (%v): %v — not attested"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "meti_csm-METI-CSM-Input-Contract",
-      "title": "attestation for unknown item id %v — not an Appendix A check-sheet item",
-      "props": [
-       {
-        "name": "label",
-        "value": "METI CSM Input Contract"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "METI CSM Input Contract"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "meti_csm.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "meti_csm-METI-CSM-Input-Contract_stmt",
-        "name": "statement",
-        "prose": "attestation for unknown item id %v — not an Appendix A check-sheet item"
-       },
-       {
-        "id": "meti_csm-METI-CSM-Input-Contract_obj.1",
-        "name": "assessment-objective",
-        "prose": "input.meti_csm.items must be an object of {\"<item id>\": true}"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "meti_csm-D1-01",
       "title": "Management recognises cybersecurity risk as one of the management risks it is responsible for",
       "props": [
@@ -156,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -189,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -222,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -255,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -288,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -321,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -354,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -387,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -420,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -453,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -486,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -519,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -552,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -585,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -618,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -651,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -684,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -717,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -750,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -783,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -816,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -849,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -882,7 +811,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -915,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -948,7 +877,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -981,7 +910,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1014,7 +943,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1047,7 +976,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1080,7 +1009,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1113,7 +1042,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1146,7 +1075,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1179,7 +1108,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1212,7 +1141,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1245,7 +1174,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1278,7 +1207,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1311,7 +1240,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1344,7 +1273,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1377,7 +1306,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1410,7 +1339,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1443,7 +1372,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1476,7 +1405,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1509,7 +1438,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1542,7 +1471,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1575,7 +1504,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1608,7 +1537,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1641,7 +1570,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1674,7 +1603,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1707,7 +1636,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1740,7 +1669,7 @@
       ],
       "links": [
        {
-        "href": "#bff8203f-a990-52c0-a25c-40ad66c8d600",
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
         "rel": "implementation"
        }
       ],
@@ -1752,6 +1681,105 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "meti_csm-meti_csm.main-1",
+      "title": "METI CSM %v (%v): %v — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "meti_csm.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "meti_csm.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-meti_csm.main-1_stmt",
+        "name": "statement",
+        "prose": "METI CSM %v (%v): %v — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-meti_csm.main-2",
+      "title": "METI CSM Input Contract: attestation for unknown item id %v — not an Appendix A check-sheet item",
+      "props": [
+       {
+        "name": "label",
+        "value": "meti_csm.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "meti_csm.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-meti_csm.main-2_stmt",
+        "name": "statement",
+        "prose": "METI CSM Input Contract: attestation for unknown item id %v — not an Appendix A check-sheet item"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "meti_csm-meti_csm.main-3",
+      "title": "METI CSM Input Contract: input.meti_csm.items must be an object of {\"<item id>\": true}",
+      "props": [
+       {
+        "name": "label",
+        "value": "meti_csm.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "meti_csm.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "meti_csm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efe38950-d74f-5193-88a7-2f491cfd8b7e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "meti_csm-meti_csm.main-3_stmt",
+        "name": "statement",
+        "prose": "METI CSM Input Contract: input.meti_csm.items must be an object of {\"<item id>\": true}"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    }
@@ -1759,7 +1787,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "bff8203f-a990-52c0-a25c-40ad66c8d600",
+     "uuid": "efe38950-d74f-5193-88a7-2f491cfd8b7e",
      "title": "METI Cybersecurity Management Guidelines Ver. 3.0 (Japan) — Appendix A check sheets",
      "props": [
       {
@@ -1770,7 +1798,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/meti_csm/meti_csm_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regional/meti_csm/meti_csm_main.rego",
        "media-type": "text/plain"
       }
      ]

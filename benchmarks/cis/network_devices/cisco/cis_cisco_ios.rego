@@ -5,6 +5,14 @@
 #   framework: cis_network_devices
 #   source: cis
 #   domains: [network, cisco]
+#   coverage:
+#     checks: 3
+#     cited: 3
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_cisco_ios
 
 # CIS Cisco IOS Benchmark v4.1.0
@@ -364,4 +372,12 @@ detailed_findings := {
     "management_plane_violations": management_plane_violations,
     "control_plane_violations": control_plane_violations,
     "data_plane_violations": data_plane_violations
+#   coverage:
+#     checks: 3
+#     cited: 3
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

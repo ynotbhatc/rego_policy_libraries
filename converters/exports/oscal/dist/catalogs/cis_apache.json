@@ -1,0 +1,4779 @@
+{
+ "catalog": {
+  "uuid": "da24ecaa-ecd0-5792-b8ba-8b0f020ea148",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_apache (CIS Apache HTTP Server 2.4 Benchmark v2.3.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_apache"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_apache-cis_apache_2_4",
+    "class": "rego-module",
+    "title": "CIS Apache HTTP Server 2.4 Benchmark v2.3.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.apache_2_4"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/apache/cis_apache_2_4.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_apache-1.1",
+      "title": "Ensure Apache Is Installed From Source",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Apache Is Installed From Source"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-1.2",
+      "title": "Ensure the Apache Web Server Runs as a Non-Root User",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure the Apache Web Server Runs as a Non-Root User"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-1.3",
+      "title": "Ensure the Apache User Account Has an Invalid Shell",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure the Apache User Account Has an Invalid Shell"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-1.4",
+      "title": "Ensure the Apache User Account Is Locked",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure the Apache User Account Is Locked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-1.5",
+      "title": "Ensure Apache Directories and Files Are Owned by Root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Apache Directories and Files Are Owned by Root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-1.6",
+      "title": "Ensure the Apache User Account Has a Non-privileged Home Directory",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure the Apache User Account Has a Non-privileged Home Directory"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-1.7",
+      "title": "Ensure the Core Dump Directory Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.7_stmt",
+        "name": "statement",
+        "prose": "Ensure the Core Dump Directory Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-1.8",
+      "title": "Ensure the Pid File Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.8_stmt",
+        "name": "statement",
+        "prose": "Ensure the Pid File Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-1.9",
+      "title": "Ensure the ScoreBoard File Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.9_stmt",
+        "name": "statement",
+        "prose": "Ensure the ScoreBoard File Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-1.10",
+      "title": "Ensure Group Write Access for the Apache Directories and Files Is Properly Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Group Write Access for the Apache Directories and Files Is Properly Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-1.11",
+      "title": "Ensure Group Write Access for the Document Root Directories and Files Is Properly Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.11_stmt",
+        "name": "statement",
+        "prose": "Ensure Group Write Access for the Document Root Directories and Files Is Properly Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-1.12",
+      "title": "Ensure the HTTP Request Methods Are Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-1.12_stmt",
+        "name": "statement",
+        "prose": "Ensure the HTTP Request Methods Are Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.1",
+      "title": "Ensure Only Necessary Authentication and Authorization Modules Are Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Only Necessary Authentication and Authorization Modules Are Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.2",
+      "title": "Ensure the Log Config Module Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure the Log Config Module Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.3",
+      "title": "Ensure the WebDAV Modules Are Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure the WebDAV Modules Are Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.4",
+      "title": "Ensure the Status Module Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.4_stmt",
+        "name": "statement",
+        "prose": "Ensure the Status Module Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.5",
+      "title": "Ensure the Autoindex Module Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.5_stmt",
+        "name": "statement",
+        "prose": "Ensure the Autoindex Module Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.6",
+      "title": "Ensure the Proxy Modules Are Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.6_stmt",
+        "name": "statement",
+        "prose": "Ensure the Proxy Modules Are Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.7",
+      "title": "Ensure the User Directories Module Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.7_stmt",
+        "name": "statement",
+        "prose": "Ensure the User Directories Module Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.8",
+      "title": "Ensure the Info Module Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.8_stmt",
+        "name": "statement",
+        "prose": "Ensure the Info Module Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.9",
+      "title": "Ensure the Rewrite Module Is Enabled Only If Necessary",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.9_stmt",
+        "name": "statement",
+        "prose": "Ensure the Rewrite Module Is Enabled Only If Necessary"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.10",
+      "title": "Ensure the CGI Modules Are Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.10_stmt",
+        "name": "statement",
+        "prose": "Ensure the CGI Modules Are Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.11",
+      "title": "Ensure the Include Module Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.11_stmt",
+        "name": "statement",
+        "prose": "Ensure the Include Module Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.12",
+      "title": "Ensure the HTTP TRACE Method Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.12_stmt",
+        "name": "statement",
+        "prose": "Ensure the HTTP TRACE Method Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.13",
+      "title": "Ensure the Negotiation Module Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.13_stmt",
+        "name": "statement",
+        "prose": "Ensure the Negotiation Module Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.14",
+      "title": "Ensure the MIME Magic Module Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.14_stmt",
+        "name": "statement",
+        "prose": "Ensure the MIME Magic Module Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.15",
+      "title": "Ensure the Expires Module Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.15_stmt",
+        "name": "statement",
+        "prose": "Ensure the Expires Module Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.16",
+      "title": "Ensure the Headers Module Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.16_stmt",
+        "name": "statement",
+        "prose": "Ensure the Headers Module Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.17",
+      "title": "Ensure the SSL Module Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.17_stmt",
+        "name": "statement",
+        "prose": "Ensure the SSL Module Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-2.18",
+      "title": "Ensure Only Required Modules Are Loaded",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-2.18_stmt",
+        "name": "statement",
+        "prose": "Ensure Only Required Modules Are Loaded"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.1",
+      "title": "Ensure the Apache Web Server Runs as a Non-privileged User",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure the Apache Web Server Runs as a Non-privileged User"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.2",
+      "title": "Ensure the Apache User Account Has a Non-privileged Home Directory",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure the Apache User Account Has a Non-privileged Home Directory"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.3",
+      "title": "Ensure the Apache User Account Has an Invalid Shell",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure the Apache User Account Has an Invalid Shell"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.4",
+      "title": "Ensure Apache Directories and Files Are Owned by Root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Apache Directories and Files Are Owned by Root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.5",
+      "title": "Ensure Group Ownership of Apache Directories and Files",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Group Ownership of Apache Directories and Files"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.6",
+      "title": "Ensure Other Write Access on Apache Directories and Files Is Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Other Write Access on Apache Directories and Files Is Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.7",
+      "title": "Ensure the Core Dump Directory Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.7_stmt",
+        "name": "statement",
+        "prose": "Ensure the Core Dump Directory Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.8",
+      "title": "Ensure the Lock File Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.8_stmt",
+        "name": "statement",
+        "prose": "Ensure the Lock File Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.9",
+      "title": "Ensure the Pid File Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.9_stmt",
+        "name": "statement",
+        "prose": "Ensure the Pid File Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.10",
+      "title": "Ensure the ScoreBoard File Is Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.10_stmt",
+        "name": "statement",
+        "prose": "Ensure the ScoreBoard File Is Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.11",
+      "title": "Ensure Group Write Access for the Apache Directories and Files Is Properly Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.11_stmt",
+        "name": "statement",
+        "prose": "Ensure Group Write Access for the Apache Directories and Files Is Properly Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.12",
+      "title": "Ensure Group Write Access for the Document Root Directories and Files Is Properly Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.12_stmt",
+        "name": "statement",
+        "prose": "Ensure Group Write Access for the Document Root Directories and Files Is Properly Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.13",
+      "title": "Ensure Access to OS Root Directory Is Denied by Default",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.13_stmt",
+        "name": "statement",
+        "prose": "Ensure Access to OS Root Directory Is Denied by Default"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.14",
+      "title": "Ensure Appropriate Directory Permissions on Document Root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.14_stmt",
+        "name": "statement",
+        "prose": "Ensure Appropriate Directory Permissions on Document Root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.15",
+      "title": "Ensure Operations on Files Are Limited to Serving",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.15_stmt",
+        "name": "statement",
+        "prose": "Ensure Operations on Files Are Limited to Serving"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.16",
+      "title": "Ensure Default Web Content Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.16_stmt",
+        "name": "statement",
+        "prose": "Ensure Default Web Content Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.17",
+      "title": "Ensure Access to .ht* Files Is Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.17_stmt",
+        "name": "statement",
+        "prose": "Ensure Access to .ht* Files Is Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.18",
+      "title": "Ensure Directory Browsing Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.18_stmt",
+        "name": "statement",
+        "prose": "Ensure Directory Browsing Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.19",
+      "title": "Ensure Options for Files Are Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.19_stmt",
+        "name": "statement",
+        "prose": "Ensure Options for Files Are Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.20",
+      "title": "Ensure Access to Inappropriate File Extensions Is Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.20_stmt",
+        "name": "statement",
+        "prose": "Ensure Access to Inappropriate File Extensions Is Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.21",
+      "title": "Ensure Default CGI Content printenv Script Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.21_stmt",
+        "name": "statement",
+        "prose": "Ensure Default CGI Content printenv Script Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.22",
+      "title": "Ensure Default CGI Content test-cgi Script Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.22_stmt",
+        "name": "statement",
+        "prose": "Ensure Default CGI Content test-cgi Script Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.23",
+      "title": "Ensure Default CGI Content handlers Script Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.23_stmt",
+        "name": "statement",
+        "prose": "Ensure Default CGI Content handlers Script Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-3.24",
+      "title": "Ensure the Test PHP Script Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-3.24_stmt",
+        "name": "statement",
+        "prose": "Ensure the Test PHP Script Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.1",
+      "title": "Ensure Access to OS Root Directory Is Denied by Default",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Access to OS Root Directory Is Denied by Default"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.2",
+      "title": "Ensure Appropriate Directory Permissions on Document Root",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Appropriate Directory Permissions on Document Root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.3",
+      "title": "Ensure OverRide Is Disabled for Document Root",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure OverRide Is Disabled for Document Root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.4",
+      "title": "Ensure Default HTML Content Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Default HTML Content Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.5",
+      "title": "Ensure the Default CGI Content Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.5_stmt",
+        "name": "statement",
+        "prose": "Ensure the Default CGI Content Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.6",
+      "title": "Ensure Access to .ht* Files Is Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Access to .ht* Files Is Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.7",
+      "title": "Ensure HTTP Request Methods Are Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.7_stmt",
+        "name": "statement",
+        "prose": "Ensure HTTP Request Methods Are Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.8",
+      "title": "Ensure the HTTP TRACE Method Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.8_stmt",
+        "name": "statement",
+        "prose": "Ensure the HTTP TRACE Method Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.9",
+      "title": "Ensure Old Backup and Include Files Are Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.9_stmt",
+        "name": "statement",
+        "prose": "Ensure Old Backup and Include Files Are Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.10",
+      "title": "Ensure Access to Inappropriate File Extensions Is Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Access to Inappropriate File Extensions Is Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.11",
+      "title": "Ensure IP-based Access Control Is Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.11_stmt",
+        "name": "statement",
+        "prose": "Ensure IP-based Access Control Is Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.12",
+      "title": "Ensure mod_authz_core Is Used for Authorization",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.12_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_authz_core Is Used for Authorization"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.13",
+      "title": "Ensure the Require Directive Is Used",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.13_stmt",
+        "name": "statement",
+        "prose": "Ensure the Require Directive Is Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.14",
+      "title": "Ensure Require all denied Is Set for Sensitive Directories",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.14_stmt",
+        "name": "statement",
+        "prose": "Ensure Require all denied Is Set for Sensitive Directories"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.15",
+      "title": "Ensure Options for Files Are Restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.15_stmt",
+        "name": "statement",
+        "prose": "Ensure Options for Files Are Restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.16",
+      "title": "Ensure Directory Browsing Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.16_stmt",
+        "name": "statement",
+        "prose": "Ensure Directory Browsing Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.17",
+      "title": "Ensure Server Side Includes Are Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.17_stmt",
+        "name": "statement",
+        "prose": "Ensure Server Side Includes Are Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.18",
+      "title": "Ensure CGI Execution Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.18_stmt",
+        "name": "statement",
+        "prose": "Ensure CGI Execution Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.19",
+      "title": "Ensure FollowSymLinks Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.19_stmt",
+        "name": "statement",
+        "prose": "Ensure FollowSymLinks Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.20",
+      "title": "Ensure Access Control Lists Are Implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.20_stmt",
+        "name": "statement",
+        "prose": "Ensure Access Control Lists Are Implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.21",
+      "title": "Ensure Authentication Is Required for Administrative Areas",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.21_stmt",
+        "name": "statement",
+        "prose": "Ensure Authentication Is Required for Administrative Areas"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.22",
+      "title": "Ensure Strong Password Policy Is Enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.22_stmt",
+        "name": "statement",
+        "prose": "Ensure Strong Password Policy Is Enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.23",
+      "title": "Ensure Session Management Is Secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.23_stmt",
+        "name": "statement",
+        "prose": "Ensure Session Management Is Secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.24",
+      "title": "Ensure Error Pages Don't Reveal Sensitive Information",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.24_stmt",
+        "name": "statement",
+        "prose": "Ensure Error Pages Don't Reveal Sensitive Information"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.25",
+      "title": "Ensure File Upload Restrictions Are in Place",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.25_stmt",
+        "name": "statement",
+        "prose": "Ensure File Upload Restrictions Are in Place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.26",
+      "title": "Ensure Request Size Limits Are Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.26_stmt",
+        "name": "statement",
+        "prose": "Ensure Request Size Limits Are Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.27",
+      "title": "Ensure Timeout Values Are Properly Set",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.27_stmt",
+        "name": "statement",
+        "prose": "Ensure Timeout Values Are Properly Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-4.28",
+      "title": "Ensure Access Logs Capture Required Information",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-4.28_stmt",
+        "name": "statement",
+        "prose": "Ensure Access Logs Capture Required Information"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.1",
+      "title": "Ensure mod_setenvif Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_setenvif Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.2",
+      "title": "Ensure mod_headers Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_headers Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.3",
+      "title": "Ensure Security Related Headers Are Added",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.3_stmt",
+        "name": "statement",
+        "prose": "Ensure Security Related Headers Are Added"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.4",
+      "title": "Ensure Server Tokens Directive Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Server Tokens Directive Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.5",
+      "title": "Ensure Server Signature Directive Is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Server Signature Directive Is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.6",
+      "title": "Ensure All Default Apache Content Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.6_stmt",
+        "name": "statement",
+        "prose": "Ensure All Default Apache Content Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.7",
+      "title": "Ensure the Default Welcome Page Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.7_stmt",
+        "name": "statement",
+        "prose": "Ensure the Default Welcome Page Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.8",
+      "title": "Ensure Default Error Pages Do Not Reference the Server",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.8_stmt",
+        "name": "statement",
+        "prose": "Ensure Default Error Pages Do Not Reference the Server"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.9",
+      "title": "Ensure Default CGI Content printenv Script Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.9_stmt",
+        "name": "statement",
+        "prose": "Ensure Default CGI Content printenv Script Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.10",
+      "title": "Ensure Default CGI Content test-cgi Script Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Default CGI Content test-cgi Script Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.11",
+      "title": "Ensure Test PHP Script Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.11_stmt",
+        "name": "statement",
+        "prose": "Ensure Test PHP Script Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.12",
+      "title": "Ensure the HTTP TRACE Method Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.12_stmt",
+        "name": "statement",
+        "prose": "Ensure the HTTP TRACE Method Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.13",
+      "title": "Ensure mod_include Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.13_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_include Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.14",
+      "title": "Ensure mod_cgi Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.14_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_cgi Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.15",
+      "title": "Ensure mod_cgid Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.15_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_cgid Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.16",
+      "title": "Ensure mod_negotiation Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.16_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_negotiation Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.17",
+      "title": "Ensure mod_autoindex Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.17_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_autoindex Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.18",
+      "title": "Ensure mod_status Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.18_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_status Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.19",
+      "title": "Ensure mod_info Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.19_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_info Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.20",
+      "title": "Ensure mod_userdir Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.20_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_userdir Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.21",
+      "title": "Ensure mod_rewrite Logging Is Enabled If Used",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.21_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_rewrite Logging Is Enabled If Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-5.22",
+      "title": "Ensure Unnecessary File Extensions Are Blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-5.22_stmt",
+        "name": "statement",
+        "prose": "Ensure Unnecessary File Extensions Are Blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.1",
+      "title": "Ensure mod_ssl Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_ssl Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.2",
+      "title": "Ensure a Valid Trusted Certificate Is Installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.2_stmt",
+        "name": "statement",
+        "prose": "Ensure a Valid Trusted Certificate Is Installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.3",
+      "title": "Ensure the Server's Private Key Is Protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.3_stmt",
+        "name": "statement",
+        "prose": "Ensure the Server's Private Key Is Protected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.4",
+      "title": "Ensure Insecure SSL Renegotiation Is Not Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Insecure SSL Renegotiation Is Not Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.5",
+      "title": "Ensure Weak SSL/TLS Ciphers Are Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Weak SSL/TLS Ciphers Are Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.6",
+      "title": "Ensure Insecure SSL/TLS Protocols Are Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Insecure SSL/TLS Protocols Are Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.7",
+      "title": "Ensure SSL Compression Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.7_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL Compression Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.8",
+      "title": "Ensure Medium Strength SSL/TLS Ciphers Are Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.8_stmt",
+        "name": "statement",
+        "prose": "Ensure Medium Strength SSL/TLS Ciphers Are Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.9",
+      "title": "Ensure All Web Content Is Accessed via HTTPS",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.9_stmt",
+        "name": "statement",
+        "prose": "Ensure All Web Content Is Accessed via HTTPS"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.10",
+      "title": "Ensure OCSP Stapling Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.10_stmt",
+        "name": "statement",
+        "prose": "Ensure OCSP Stapling Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.11",
+      "title": "Ensure HTTP Strict Transport Security Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.11_stmt",
+        "name": "statement",
+        "prose": "Ensure HTTP Strict Transport Security Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.12",
+      "title": "Ensure Only Cipher Suites That Provide Authentication Are Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.12_stmt",
+        "name": "statement",
+        "prose": "Ensure Only Cipher Suites That Provide Authentication Are Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.13",
+      "title": "Ensure Only Cipher Suites That Provide Encryption Are Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.13_stmt",
+        "name": "statement",
+        "prose": "Ensure Only Cipher Suites That Provide Encryption Are Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.14",
+      "title": "Ensure HTTP Public Key Pinning Is Considered",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.14_stmt",
+        "name": "statement",
+        "prose": "Ensure HTTP Public Key Pinning Is Considered"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.15",
+      "title": "Ensure the TLS 1.3 Protocol Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.15_stmt",
+        "name": "statement",
+        "prose": "Ensure the TLS 1.3 Protocol Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-6.16",
+      "title": "Ensure SSL Session Configuration Is Secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-6.16_stmt",
+        "name": "statement",
+        "prose": "Ensure SSL Session Configuration Is Secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.1",
+      "title": "Ensure ServerTokens Is Set to 'Prod' or 'ProductOnly'",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.1_stmt",
+        "name": "statement",
+        "prose": "Ensure ServerTokens Is Set to 'Prod' or 'ProductOnly'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.2",
+      "title": "Ensure ServerSignature Is Not Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.2_stmt",
+        "name": "statement",
+        "prose": "Ensure ServerSignature Is Not Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.3",
+      "title": "Ensure All Default Apache Content Is Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.3_stmt",
+        "name": "statement",
+        "prose": "Ensure All Default Apache Content Is Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.4",
+      "title": "Ensure ETag Response Header Fields Do Not Include Inodes",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.4_stmt",
+        "name": "statement",
+        "prose": "Ensure ETag Response Header Fields Do Not Include Inodes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.5",
+      "title": "Ensure the Banner Is Modified",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.5_stmt",
+        "name": "statement",
+        "prose": "Ensure the Banner Is Modified"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.6",
+      "title": "Ensure Error Response Pages Do Not Disclose Information",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Error Response Pages Do Not Disclose Information"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.7",
+      "title": "Ensure Debug Information Is Not Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.7_stmt",
+        "name": "statement",
+        "prose": "Ensure Debug Information Is Not Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.8",
+      "title": "Ensure Application Specific Headers Are Removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.8_stmt",
+        "name": "statement",
+        "prose": "Ensure Application Specific Headers Are Removed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.9",
+      "title": "Ensure HTTP Response Headers Don't Expose Apache Version",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.9_stmt",
+        "name": "statement",
+        "prose": "Ensure HTTP Response Headers Don't Expose Apache Version"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.10",
+      "title": "Ensure Request Debugging Is Disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Request Debugging Is Disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.11",
+      "title": "Ensure Directory Listing Headers Are Suppressed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.11_stmt",
+        "name": "statement",
+        "prose": "Ensure Directory Listing Headers Are Suppressed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.12",
+      "title": "Ensure Server Status Information Is Not Accessible",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.12_stmt",
+        "name": "statement",
+        "prose": "Ensure Server Status Information Is Not Accessible"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.13",
+      "title": "Ensure Server Information Is Not Accessible",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.13_stmt",
+        "name": "statement",
+        "prose": "Ensure Server Information Is Not Accessible"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-7.14",
+      "title": "Ensure Filesystem Information Is Not Disclosed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-7.14_stmt",
+        "name": "statement",
+        "prose": "Ensure Filesystem Information Is Not Disclosed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-8.1",
+      "title": "Ensure mod_log_config Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-8.1_stmt",
+        "name": "statement",
+        "prose": "Ensure mod_log_config Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-8.2",
+      "title": "Ensure a Logging Policy Exists",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-8.2_stmt",
+        "name": "statement",
+        "prose": "Ensure a Logging Policy Exists"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-8.3",
+      "title": "Ensure the Error Log Filename and Location Are Configured Correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-8.3_stmt",
+        "name": "statement",
+        "prose": "Ensure the Error Log Filename and Location Are Configured Correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-8.4",
+      "title": "Ensure the Access Log Filename and Location Are Configured Correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-8.4_stmt",
+        "name": "statement",
+        "prose": "Ensure the Access Log Filename and Location Are Configured Correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-8.5",
+      "title": "Ensure Appropriate Log Level Is Set",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-8.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Appropriate Log Level Is Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-8.6",
+      "title": "Ensure Log Storage and Rotation Policy Is in Place",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-8.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Log Storage and Rotation Policy Is in Place"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-8.7",
+      "title": "Ensure Log Files Are Properly Secured",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-8.7_stmt",
+        "name": "statement",
+        "prose": "Ensure Log Files Are Properly Secured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_apache-8.8",
+      "title": "Ensure Non-Printable ASCII Characters Are Escaped in Logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.apache_2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_apache-8.8_stmt",
+        "name": "statement",
+        "prose": "Ensure Non-Printable ASCII Characters Are Escaped in Logs"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "a425fe56-0ddf-58b4-96fd-d44e3cb34e88",
+     "title": "CIS Apache HTTP Server 2.4 Benchmark v2.3.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.apache_2_4"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/apache/cis_apache_2_4.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

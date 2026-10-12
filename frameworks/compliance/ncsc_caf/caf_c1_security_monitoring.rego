@@ -5,6 +5,14 @@
 #   framework: ncsc_caf
 #   source: uk-ncsc
 #   domains: [uk, critical-infrastructure]
+#   coverage:
+#     checks: 5
+#     cited: 0
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package ncsc_caf.c1_security_monitoring
 
 import rego.v1
@@ -416,3 +424,11 @@ compliance_report := {
         "C1.f": co_c1f_details,
     },
 }
+#   coverage:
+#     checks: 5
+#     cited: 0
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

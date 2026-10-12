@@ -1,0 +1,1149 @@
+{
+ "catalog": {
+  "uuid": "efbd8262-7712-553e-8d3e-746ee5a667c3",
+  "metadata": {
+   "title": "Rego Policy Libraries — pss_kubernetes (Kubernetes Pod Security Standards (PSS))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "pss_kubernetes"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "pss_kubernetes-pss_validation",
+    "class": "rego-module",
+    "title": "Kubernetes Pod Security Standards (PSS)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "k8s_pss.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/pss/kubernetes/pss_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pss_kubernetes-k8s_pss.main-1",
+      "title": "PSS baseline (fail-closed): no pod manifest supplied at input.pod — nothing was evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-1_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (fail-closed): no pod manifest supplied at input.pod — nothing was evaluated"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-2",
+      "title": "PSS baseline (host-process): pod securityContext sets windowsOptions.hostProcess=true",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-2_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (host-process): pod securityContext sets windowsOptions.hostProcess=true"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-3",
+      "title": "PSS baseline (host-process): container %q sets windowsOptions.hostProcess=true",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-3_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (host-process): container %q sets windowsOptions.hostProcess=true"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-4",
+      "title": "PSS baseline (host-namespaces): spec.hostNetwork=true shares the host network namespace",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-4_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (host-namespaces): spec.hostNetwork=true shares the host network namespace"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-5",
+      "title": "PSS baseline (host-namespaces): spec.hostPID=true shares the host PID namespace",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-5_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (host-namespaces): spec.hostPID=true shares the host PID namespace"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-6",
+      "title": "PSS baseline (host-namespaces): spec.hostIPC=true shares the host IPC namespace",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-6_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (host-namespaces): spec.hostIPC=true shares the host IPC namespace"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-7",
+      "title": "PSS baseline (privileged): container %q runs privileged",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-7_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (privileged): container %q runs privileged"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-8",
+      "title": "PSS baseline (capabilities): container %q adds capability %q beyond the baseline allow-list",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-8_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (capabilities): container %q adds capability %q beyond the baseline allow-list"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-9",
+      "title": "PSS baseline (hostpath): volume %q mounts a hostPath",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-9_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (hostpath): volume %q mounts a hostPath"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-10",
+      "title": "PSS baseline (host-ports): container %q binds hostPort %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-10_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (host-ports): container %q binds hostPort %v"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-11",
+      "title": "PSS baseline (host-probes): container %q %s targets host %q",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-11_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (host-probes): container %q %s targets host %q"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-12",
+      "title": "PSS baseline (host-probes): container %q %s tcpSocket targets host %q",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-12_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (host-probes): container %q %s tcpSocket targets host %q"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-13",
+      "title": "PSS baseline (host-probes): container %q lifecycle %s targets host %q",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-13_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (host-probes): container %q lifecycle %s targets host %q"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-14",
+      "title": "PSS baseline (host-probes): container %q lifecycle %s tcpSocket targets host %q",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-14_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (host-probes): container %q lifecycle %s tcpSocket targets host %q"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-15",
+      "title": "PSS baseline (apparmor): pod appArmorProfile.type %q is not RuntimeDefault or Localhost",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-15_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (apparmor): pod appArmorProfile.type %q is not RuntimeDefault or Localhost"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-16",
+      "title": "PSS baseline (apparmor): container %q appArmorProfile.type %q is not RuntimeDefault or Localhost",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-16_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (apparmor): container %q appArmorProfile.type %q is not RuntimeDefault or Localhost"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-17",
+      "title": "PSS baseline (selinux): pod seLinuxOptions.type %q is outside the allowed set",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-17_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (selinux): pod seLinuxOptions.type %q is outside the allowed set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-18",
+      "title": "PSS baseline (selinux): container %q seLinuxOptions.type %q is outside the allowed set",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-18_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (selinux): container %q seLinuxOptions.type %q is outside the allowed set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-19",
+      "title": "PSS baseline (selinux): pod seLinuxOptions.%s must be unset",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-19_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (selinux): pod seLinuxOptions.%s must be unset"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-20",
+      "title": "PSS baseline (selinux): container %q seLinuxOptions.%s must be unset",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-20_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (selinux): container %q seLinuxOptions.%s must be unset"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-21",
+      "title": "PSS baseline (proc-mount): container %q sets procMount=%q (only Default is allowed)",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-21_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (proc-mount): container %q sets procMount=%q (only Default is allowed)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-22",
+      "title": "PSS baseline (seccomp): pod seccompProfile.type=Unconfined is not allowed",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-22_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (seccomp): pod seccompProfile.type=Unconfined is not allowed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-23",
+      "title": "PSS baseline (seccomp): container %q sets seccompProfile.type=Unconfined",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-23_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (seccomp): container %q sets seccompProfile.type=Unconfined"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-24",
+      "title": "PSS baseline (sysctls): sysctl %q is outside the safe set",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-24_stmt",
+        "name": "statement",
+        "prose": "PSS baseline (sysctls): sysctl %q is outside the safe set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-25",
+      "title": "PSS restricted (volume-types): volume %q uses disallowed type %q",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-25_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (volume-types): volume %q uses disallowed type %q"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-26",
+      "title": "PSS restricted (privilege-escalation): container %q must explicitly set allowPrivilegeEscalation=false",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-26_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (privilege-escalation): container %q must explicitly set allowPrivilegeEscalation=false"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-27",
+      "title": "PSS restricted (run-as-nonroot): container %q does not run as non-root (set runAsNonRoot=true at pod or container level)",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-27_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (run-as-nonroot): container %q does not run as non-root (set runAsNonRoot=true at pod or container level)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-28",
+      "title": "PSS restricted (run-as-user): pod securityContext.runAsUser=0 (root) is not allowed",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-28_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (run-as-user): pod securityContext.runAsUser=0 (root) is not allowed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-29",
+      "title": "PSS restricted (run-as-user): container %q sets runAsUser=0 (root)",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-29_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (run-as-user): container %q sets runAsUser=0 (root)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-30",
+      "title": "PSS restricted (seccomp): container %q has no explicit RuntimeDefault/Localhost seccomp profile",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-30_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (seccomp): container %q has no explicit RuntimeDefault/Localhost seccomp profile"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-31",
+      "title": "PSS restricted (capabilities): container %q must drop ALL capabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-31_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (capabilities): container %q must drop ALL capabilities"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-32",
+      "title": "PSS restricted (capabilities): container %q adds capability %q (only NET_BIND_SERVICE may be added back)",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#601eb94a-4053-5a5f-a967-6dfd676ed123",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-32_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (capabilities): container %q adds capability %q (only NET_BIND_SERVICE may be added back)"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "601eb94a-4053-5a5f-a967-6dfd676ed123",
+     "title": "Kubernetes Pod Security Standards (PSS)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "k8s_pss.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/pss/kubernetes/pss_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

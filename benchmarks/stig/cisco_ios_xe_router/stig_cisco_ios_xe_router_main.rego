@@ -9,6 +9,14 @@
 #   framework: stig_cisco_ios_xe_router
 #   source: disa
 #   domains: [network, cisco]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.cisco_ios_xe_router.main
 
 import data.stig.cisco_ios_xe_router
@@ -67,3 +75,11 @@ compliance_report := object.union(_upstream, {
 compliant := _compliant
 
 violations := _open_findings
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

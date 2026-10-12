@@ -5,6 +5,14 @@
 #   framework: cis_rocky_linux_8
 #   source: cis
 #   domains: [linux, rocky]
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_rocky_linux_8.selinux
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 1.6: Mandatory Access Controls (SELinux)
@@ -128,3 +136,11 @@ report := {
 	"section": "1.6 Mandatory Access Controls",
 	"benchmark": "CIS Rocky Linux 8 v3.0.0",
 }
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

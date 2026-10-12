@@ -5,6 +5,14 @@
 #   framework: cis_network_devices
 #   source: cis
 #   domains: [network, arista]
+#   coverage:
+#     checks: 4
+#     cited: 4
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_arista_eos
 
 # CIS Arista EOS Benchmark v1.2.0
@@ -213,4 +221,12 @@ detailed_findings := {
     "control_plane_violations": control_plane_violations,
     "data_plane_violations": data_plane_violations,
     "logging_violations": logging_violations
+#   coverage:
+#     checks: 4
+#     cited: 4
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

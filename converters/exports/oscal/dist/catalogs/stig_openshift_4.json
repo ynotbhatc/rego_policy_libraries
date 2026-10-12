@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "13a44402-397c-5ad2-b742-14996516e7b7",
+  "uuid": "0ba92184-6bbc-5b8b-b2b5-2fd6e32c1ea5",
   "metadata": {
-   "title": "Rego Policy Libraries — stig_openshift_4 (V2R6 | Release: 6 Benchmark Date: 01 Jul 2026)",
+   "title": "Rego Policy Libraries — stig_openshift_4 (DISA STIG — Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,492 @@
    ]
   },
   "groups": [
+   {
+    "id": "stig_openshift_4-core",
+    "class": "rego-module",
+    "title": "DISA STIG — Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.openshift_4.core"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/openshift_4/core.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_openshift_4-CNTR-OS-000010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000090",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000090_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000170",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000170_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000320",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000320_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000460",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000460"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000460"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000460_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000510",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000510"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000510"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000510_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000560",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000560"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000560"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000560_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000660",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000660"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000660"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000660_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000720",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000720"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000720"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000720_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000860",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000860"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000860"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000860_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000930",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000930"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000930"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000930_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-001010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-001010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-001010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01d77296-4b53-59cb-80ae-0b94a647aba7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-001010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "stig_openshift_4-stig_openshift_4_complete",
     "class": "rego-module",
@@ -85,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#143cfbcd-142f-59b4-bc83-9ba681bae8ff",
+        "href": "#fd588cd0-5979-585d-a762-b3d99314108f",
         "rel": "implementation"
        }
       ],
@@ -118,7 +604,7 @@
       ],
       "links": [
        {
-        "href": "#143cfbcd-142f-59b4-bc83-9ba681bae8ff",
+        "href": "#fd588cd0-5979-585d-a762-b3d99314108f",
         "rel": "implementation"
        }
       ],
@@ -137,7 +623,24 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "143cfbcd-142f-59b4-bc83-9ba681bae8ff",
+     "uuid": "01d77296-4b53-59cb-80ae-0b94a647aba7",
+     "title": "DISA STIG — Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.openshift_4.core"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/openshift_4/core.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "fd588cd0-5979-585d-a762-b3d99314108f",
      "title": "V2R6 | Release: 6 Benchmark Date: 01 Jul 2026",
      "props": [
       {
@@ -148,7 +651,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/openshift_4/stig_openshift_4_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/openshift_4/stig_openshift_4_complete.rego",
        "media-type": "text/plain"
       }
      ]

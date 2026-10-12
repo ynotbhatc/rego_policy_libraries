@@ -5,6 +5,14 @@
 #   framework: cis_amazon_linux_2023
 #   source: cis
 #   domains: [linux, amazon-linux]
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_amazon_linux_2023.boot_security
 
 import rego.v1
@@ -157,3 +165,11 @@ violations contains msg if {
 compliant if {
     count(violations) == 0
 }
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

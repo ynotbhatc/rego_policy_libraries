@@ -5,6 +5,14 @@
 #   framework: sox
 #   source: us-federal
 #   domains: [financial, public-company]
+#   coverage:
+#     checks: 29
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package sox.application_controls
 
 import rego.v1
@@ -573,4 +581,12 @@ get_financial_application_findings := findings if {
         not check.check
         finding := check.message
     ]
+#   coverage:
+#     checks: 29
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

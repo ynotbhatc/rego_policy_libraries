@@ -5,6 +5,14 @@
 #   framework: cis_amazon_linux_2023
 #   source: cis
 #   domains: [linux, amazon-linux]
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_amazon_linux_2023.filesystem
 
 # CIS Amazon Linux 2023 Section 1.1.x - Filesystem Configuration
@@ -223,3 +231,11 @@ report := {
 	"collection_timestamp": input.collection_timestamp,
 }
 
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

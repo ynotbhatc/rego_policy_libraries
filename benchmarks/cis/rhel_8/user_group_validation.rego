@@ -5,6 +5,14 @@
 #   framework: cis_rhel_8
 #   source: cis
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 17
+#     cited: 17
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_rhel8.user_group
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 6.2: User and Group Settings
@@ -171,3 +179,11 @@ report := {
 	"section": "6.2 User and Group Settings",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
+#   coverage:
+#     checks: 17
+#     cited: 17
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

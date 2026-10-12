@@ -5,6 +5,14 @@
 #   framework: cis_ubuntu_22_04
 #   source: cis
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_ubuntu_22_04.boot_security
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 1.3-1.5: Boot Security and Process Hardening
@@ -118,3 +126,11 @@ report := {
 	"section": "1.3-1.5 Boot Security and Process Hardening",
 	"benchmark": "CIS Ubuntu 22.04 v3.0.0",
 }
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

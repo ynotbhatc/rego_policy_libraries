@@ -5,6 +5,14 @@
 #   framework: nist_sp_800_53
 #   source: nist
 #   domains: [us-federal, security-controls]
+#   coverage:
+#     checks: 17
+#     cited: 17
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nist.sp800_53.system_communications
 
 import rego.v1
@@ -109,3 +117,11 @@ compliance_report := {
     "violation_count": count(violation),
     "compliant": compliant,
 }
+#   coverage:
+#     checks: 17
+#     cited: 17
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

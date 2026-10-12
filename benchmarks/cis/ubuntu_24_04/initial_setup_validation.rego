@@ -5,6 +5,14 @@
 #   framework: cis_ubuntu_24_04
 #   source: cis
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 20
+#     cited: 20
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_ubuntu_24_04.initial_setup
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Sections 1.2, 1.7, 1.8: Initial System Setup
@@ -183,3 +191,11 @@ report := {
 	"section": "1.2-1.8 Initial System Setup",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }
+#   coverage:
+#     checks: 20
+#     cited: 20
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

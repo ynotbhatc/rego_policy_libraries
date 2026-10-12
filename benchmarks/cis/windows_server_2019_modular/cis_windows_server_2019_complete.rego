@@ -5,6 +5,14 @@
 #   framework: cis_windows_server_2019_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_windows_server_2019
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Complete Validation
@@ -192,3 +200,11 @@ generate_recommendations := [recommendation |
 		"remediation": sprintf("Review and implement CIS Windows Server 2022 control: %s", [violation]),
 	}
 ]
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

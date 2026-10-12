@@ -5,6 +5,14 @@
 #   framework: ccpa
 #   source: us-state
 #   domains: [privacy, us-state]
+#   coverage:
+#     checks: 50
+#     cited: 46
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package ccpa.cybersecurity_audits
 
 import rego.v1
@@ -240,3 +248,11 @@ compliance_report := {
 	"violation_count": count(violations),
 	"violations": violations,
 }
+#   coverage:
+#     checks: 50
+#     cited: 46
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

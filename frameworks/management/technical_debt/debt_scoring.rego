@@ -5,6 +5,14 @@
 #   framework: technical_debt
 #   source: aac
 #   domains: [technical-debt]
+#   coverage:
+#     checks: 173
+#     cited: 173
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package technical_debt.scoring
 
 import rego.v1
@@ -1024,3 +1032,11 @@ debt_report := report if {
         "items":                [item | some item in debt_items]
     }
 }
+#   coverage:
+#     checks: 173
+#     cited: 173
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

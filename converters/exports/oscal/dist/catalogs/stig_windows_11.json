@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "d2b48e9b-ab12-5cd4-b37f-a438625e72d9",
+  "uuid": "a7636625-5bde-51a9-a2ee-b5ef27623227",
   "metadata": {
-   "title": "Rego Policy Libraries — stig_windows_11 (DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide — Master Aggregator)",
+   "title": "Rego Policy Libraries — stig_windows_11 (DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,3444 @@
    ]
   },
   "groups": [
+   {
+    "id": "stig_windows_11-registry_cc",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_11.registry_cc"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_11/registry_cc.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_11-WN11-CC-000005",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000005"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000005"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000005_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000010",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000010_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000025",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000025_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000035",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000035"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000035"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000035_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000038",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000038"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000038"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000038_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000040",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000040_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000044",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000044"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000044"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000044_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000050",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000050_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000060",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000060_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000066",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000066"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000066"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000066_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000068",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000068"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000068"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000068_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000070",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000070_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000075",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000075"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000075"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000075_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000080",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000080_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000090",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000090_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000105",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000105"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000105"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000105_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000110",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000110_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000120",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000120"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000120"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000120_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000130",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000130_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000145",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000145"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000145"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000145_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000150",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000150_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000155",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000155"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000155"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000155_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000165",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000165"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000165"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000165_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000170",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000170_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000175",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000175"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000175"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000175_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000180",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000180_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000185",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000185"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000185"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000185_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000190",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000190_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000204",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000204"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000204"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000204_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000210",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000210_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000220",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000220_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000255",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000255"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000255"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000255_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000270",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000270_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000275",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000275"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000275"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000275_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000280",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000280"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000280"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000280_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000285",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000285"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000285"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000285_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000290",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000290"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000290"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000290_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000295",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000295"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000295"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000295_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000310",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000310_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000315",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000315"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000315"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000315_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000325",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000325"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000325"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000325_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000326",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000326"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000326"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000326_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000327",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000327"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000327"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000327_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000330",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000330_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000335",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000335"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000335"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000335_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000345",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000345"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000345"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000345_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000350",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000350"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000350"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000350_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000355",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000355"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000355"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000355_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000360",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000360_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000390",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000390"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000390"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92725b09-8042-5eda-8994-93f356e0dd90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000390_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_windows_11-registry_other",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_11.registry_other"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_11/registry_other.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_11-WN11-00-000032",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-00-000032"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-00-000032"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-00-000032_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-00-000126",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-00-000126"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-00-000126"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-00-000126_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-00-000150",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-00-000150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-00-000150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-00-000150_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-00-000165",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-00-000165"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-00-000165"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-00-000165_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-00-000170",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-00-000170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-00-000170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-00-000170_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-00-000210",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-00-000210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-00-000210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-00-000210_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-AU-000500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-AU-000500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-AU-000500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-AU-000500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-AU-000505",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-AU-000505"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-AU-000505"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-AU-000505_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-AU-000510",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-AU-000510"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-AU-000510"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-AU-000510_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-EP-000310",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-EP-000310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-EP-000310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-EP-000310_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-UC-000015",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-UC-000015"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-UC-000015"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-UC-000015_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-UC-000020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-UC-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-UC-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f77d1f6-4c99-5504-a939-029ae1116193",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-UC-000020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_windows_11-registry_so",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_11.registry_so"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_11/registry_so.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_11-WN11-SO-000015",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000015"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000015"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000015_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000030",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000030_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000035",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000035"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000035"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000035_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000040",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000040_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000045",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000045"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000045"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000045_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000050",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000050_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000055",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000055"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000055"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000055_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000060",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000060_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000070",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000070_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000075",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000075"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000075"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000075_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000080",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000080_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000085",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000085"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000085"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000085_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000095",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000095"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000095"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000095_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000110",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000110_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000120",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000120"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000120"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000120_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000145",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000145"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000145"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000145_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000150",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000150_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000160",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000160_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000165",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000165"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000165"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000165_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000167",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000167"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000167"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000167_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000180",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000180_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000185",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000185"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000185"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000185_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000190",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000190_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000195",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000195"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000195"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000195_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000205",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000205"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000205"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000205_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000210",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000210_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000215",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000215"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000215"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000215_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000220",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000220_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000240",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000240_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000245",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000245"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000245"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000245_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000255",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000255"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000255"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000255_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000260",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000260"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000260"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000260_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000265",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000265"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000265"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000265_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000270",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000270_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000275",
+      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000275"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000275"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dda1d89b-eef1-53fc-8190-9208a9d6def0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000275_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "stig_windows_11-stig_windows_11_complete",
     "class": "rego-module",
@@ -85,7 +3523,7 @@
       ],
       "links": [
        {
-        "href": "#1a11a132-0cef-5e18-a0a5-ef106ee4173e",
+        "href": "#dc38dbc4-bd78-5cef-9215-ae410c1ba3c5",
         "rel": "implementation"
        }
       ],
@@ -118,7 +3556,7 @@
       ],
       "links": [
        {
-        "href": "#1a11a132-0cef-5e18-a0a5-ef106ee4173e",
+        "href": "#dc38dbc4-bd78-5cef-9215-ae410c1ba3c5",
         "rel": "implementation"
        }
       ],
@@ -137,7 +3575,58 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "1a11a132-0cef-5e18-a0a5-ef106ee4173e",
+     "uuid": "92725b09-8042-5eda-8994-93f356e0dd90",
+     "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_11.registry_cc"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/windows_11/registry_cc.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "5f77d1f6-4c99-5504-a939-029ae1116193",
+     "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_11.registry_other"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/windows_11/registry_other.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "dda1d89b-eef1-53fc-8190-9208a9d6def0",
+     "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_11.registry_so"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/windows_11/registry_so.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "dc38dbc4-bd78-5cef-9215-ae410c1ba3c5",
      "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -148,7 +3637,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/stig/windows_11/stig_windows_11_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/stig/windows_11/stig_windows_11_complete.rego",
        "media-type": "text/plain"
       }
      ]

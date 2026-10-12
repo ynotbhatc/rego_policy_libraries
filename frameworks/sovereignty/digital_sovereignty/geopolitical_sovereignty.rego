@@ -5,6 +5,14 @@
 #   framework: digital_sovereignty
 #   source: aac
 #   domains: [sovereignty, data-residency]
+#   coverage:
+#     checks: 11
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package digital_sovereignty.geopolitical_sovereignty
 
 import rego.v1
@@ -236,3 +244,11 @@ report := {
 default geopolitical_risk_register_current := false
 default regulatory_change_monitoring_active := false
 default supply_chain_geopolitical_assessed := false
+#   coverage:
+#     checks: 11
+#     cited: 2
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: enforcement_kubernetes
 #   source: aac
 #   domains: [kubernetes]
+#   coverage:
+#     checks: 14
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package sentinel.kubernetes
 
 import rego.v1
@@ -350,3 +358,11 @@ result := {
     "kind":             input.kind,
     "namespace":        input.manifest.metadata.namespace,
 }
+#   coverage:
+#     checks: 14
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "068c827e-8f3c-5560-9f35-32ee05f34070",
+  "uuid": "50fe5668-2d98-505d-af0a-fbdfaa8d9634",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_cloud (CIS Google Cloud Platform Foundation Benchmark v4.0.0)",
+   "title": "Rego Policy Libraries — cis_cloud (CIS Amazon Web Services Foundations Benchmark)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,1308 @@
    ]
   },
   "groups": [
+   {
+    "id": "cis_cloud-iam",
+    "class": "rego-module",
+    "title": "CIS Amazon Web Services Foundations Benchmark",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.aws.iam"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/cloud/aws/01_identity_access_management/iam.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_cloud-cis.aws.iam-1",
+      "title": "access keys rotated",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-1_stmt",
+        "name": "statement",
+        "prose": "access keys rotated"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-2",
+      "title": "iam policies not attached to users",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-2_stmt",
+        "name": "statement",
+        "prose": "iam policies not attached to users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-3",
+      "title": "mfa enabled for console users",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-3_stmt",
+        "name": "statement",
+        "prose": "mfa enabled for console users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-4",
+      "title": "no root access keys",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-4_stmt",
+        "name": "statement",
+        "prose": "no root access keys"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-5",
+      "title": "old credentials disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-5_stmt",
+        "name": "statement",
+        "prose": "old credentials disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-6",
+      "title": "password policy lowercase",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-6_stmt",
+        "name": "statement",
+        "prose": "password policy lowercase"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-7",
+      "title": "password policy max age",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-7_stmt",
+        "name": "statement",
+        "prose": "password policy max age"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-8",
+      "title": "password policy min length",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-8_stmt",
+        "name": "statement",
+        "prose": "password policy min length"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-9",
+      "title": "password policy numbers",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-9_stmt",
+        "name": "statement",
+        "prose": "password policy numbers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-10",
+      "title": "password policy prevents reuse",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-10_stmt",
+        "name": "statement",
+        "prose": "password policy prevents reuse"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-11",
+      "title": "password policy symbols",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-11_stmt",
+        "name": "statement",
+        "prose": "password policy symbols"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-12",
+      "title": "password policy uppercase",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-12_stmt",
+        "name": "statement",
+        "prose": "password policy uppercase"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-13",
+      "title": "root hardware mfa enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-13_stmt",
+        "name": "statement",
+        "prose": "root hardware mfa enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.aws.iam-14",
+      "title": "root mfa enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.aws.iam#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.aws.iam#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.aws.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6478a20c-c604-5079-b3f1-a59a269ae935",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.aws.iam-14_stmt",
+        "name": "statement",
+        "prose": "root mfa enabled"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_cloud-azure_iam",
+    "class": "rego-module",
+    "title": "CIS Microsoft Azure Foundations Benchmark",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.azure.iam"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/cloud/azure/01_identity_access_management/azure_iam.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_cloud-cis.azure.iam-1",
+      "title": "guest permissions limited",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-1_stmt",
+        "name": "statement",
+        "prose": "guest permissions limited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-2",
+      "title": "guests cannot invite",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-2_stmt",
+        "name": "statement",
+        "prose": "guests cannot invite"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-3",
+      "title": "guests limited object access",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-3_stmt",
+        "name": "statement",
+        "prose": "guests limited object access"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-4",
+      "title": "max devices per user",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-4_stmt",
+        "name": "statement",
+        "prose": "max devices per user"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-5",
+      "title": "members cannot invite",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-5_stmt",
+        "name": "statement",
+        "prose": "members cannot invite"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-6",
+      "title": "mfa enabled non privileged users",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-6_stmt",
+        "name": "statement",
+        "prose": "mfa enabled non privileged users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-7",
+      "title": "mfa enabled privileged users",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-7_stmt",
+        "name": "statement",
+        "prose": "mfa enabled privileged users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-8",
+      "title": "mfa remember disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-8_stmt",
+        "name": "statement",
+        "prose": "mfa remember disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-9",
+      "title": "mfa required join devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-9_stmt",
+        "name": "statement",
+        "prose": "mfa required join devices"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-10",
+      "title": "no custom subscription owner roles",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-10_stmt",
+        "name": "statement",
+        "prose": "no custom subscription owner roles"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-11",
+      "title": "no guest users",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-11_stmt",
+        "name": "statement",
+        "prose": "no guest users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-12",
+      "title": "notify admins password resets",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-12_stmt",
+        "name": "statement",
+        "prose": "notify admins password resets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-13",
+      "title": "notify password resets",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-13_stmt",
+        "name": "statement",
+        "prose": "notify password resets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-14",
+      "title": "password reset methods",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-14_stmt",
+        "name": "statement",
+        "prose": "password reset methods"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-15",
+      "title": "reconfirm auth info days",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-15_stmt",
+        "name": "statement",
+        "prose": "reconfirm auth info days"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-16",
+      "title": "restrict admin portal access",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-16_stmt",
+        "name": "statement",
+        "prose": "restrict admin portal access"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-17",
+      "title": "subscription leaving restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-17_stmt",
+        "name": "statement",
+        "prose": "subscription leaving restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-18",
+      "title": "subscription owners not elevated",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-18_stmt",
+        "name": "statement",
+        "prose": "subscription owners not elevated"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-19",
+      "title": "user consent disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-19_stmt",
+        "name": "statement",
+        "prose": "user consent disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-20",
+      "title": "users add gallery apps disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-20_stmt",
+        "name": "statement",
+        "prose": "users add gallery apps disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-21",
+      "title": "users cannot create office365 groups",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-21_stmt",
+        "name": "statement",
+        "prose": "users cannot create office365 groups"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-22",
+      "title": "users cannot create security groups",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-22_stmt",
+        "name": "statement",
+        "prose": "users cannot create security groups"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-23",
+      "title": "users cannot create tenants",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-23_stmt",
+        "name": "statement",
+        "prose": "users cannot create tenants"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_cloud-cis.azure.iam-24",
+      "title": "users register apps disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.azure.iam#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.azure.iam#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.azure.iam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_cloud-cis.azure.iam-24_stmt",
+        "name": "statement",
+        "prose": "users register apps disabled"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "cis_cloud-cis_gcp_main",
     "class": "rego-module",
@@ -85,7 +1387,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -118,7 +1420,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -151,7 +1453,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -184,7 +1486,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -217,7 +1519,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -250,7 +1552,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -283,7 +1585,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -316,7 +1618,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -349,7 +1651,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -382,7 +1684,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -415,7 +1717,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -448,7 +1750,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -481,7 +1783,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -514,7 +1816,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -547,7 +1849,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -580,7 +1882,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -613,7 +1915,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -646,7 +1948,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -679,7 +1981,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -712,7 +2014,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -745,7 +2047,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -778,7 +2080,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -811,7 +2113,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -844,7 +2146,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -877,7 +2179,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -910,7 +2212,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -943,7 +2245,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -976,7 +2278,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1009,7 +2311,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1042,7 +2344,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1075,7 +2377,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1108,7 +2410,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1141,7 +2443,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1174,7 +2476,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1207,7 +2509,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1240,7 +2542,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1273,7 +2575,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1306,7 +2608,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1339,7 +2641,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1372,7 +2674,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1405,7 +2707,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1438,7 +2740,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1471,7 +2773,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1504,7 +2806,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1537,7 +2839,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1570,7 +2872,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1603,7 +2905,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1636,7 +2938,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1669,7 +2971,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1702,7 +3004,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1735,7 +3037,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1768,7 +3070,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1801,7 +3103,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1834,7 +3136,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1867,7 +3169,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1900,7 +3202,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1933,7 +3235,7 @@
       ],
       "links": [
        {
-        "href": "#79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+        "href": "#0712dccc-11b3-55f7-ad53-560d1ef2be34",
         "rel": "implementation"
        }
       ],
@@ -1952,7 +3254,41 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "79ad2ea8-2c44-5d13-a380-ba7ee9e4a79a",
+     "uuid": "6478a20c-c604-5079-b3f1-a59a269ae935",
+     "title": "CIS Amazon Web Services Foundations Benchmark",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.aws.iam"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/cloud/aws/01_identity_access_management/iam.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "578b991f-23f1-505c-93c2-eed5fcd1cdb8",
+     "title": "CIS Microsoft Azure Foundations Benchmark",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.azure.iam"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/cloud/azure/01_identity_access_management/azure_iam.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "0712dccc-11b3-55f7-ad53-560d1ef2be34",
      "title": "CIS Google Cloud Platform Foundation Benchmark v4.0.0",
      "props": [
       {
@@ -1963,7 +3299,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/cloud/gcp/cis_gcp_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/cloud/gcp/cis_gcp_main.rego",
        "media-type": "text/plain"
       }
      ]

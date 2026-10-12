@@ -5,6 +5,14 @@
 #   framework: stig_sles_15
 #   source: disa
 #   domains: [linux, sles]
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.sles_15
 
 # DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide — Master Aggregator
@@ -54,3 +62,11 @@ compliance_report := {
 	"failed_controls": count(open_findings),
 	"compliant": fully_compliant,
 }
+#   coverage:
+#     checks: 2
+#     cited: 2
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

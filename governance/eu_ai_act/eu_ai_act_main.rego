@@ -5,6 +5,17 @@
 #   framework: eu_ai_act
 #   source: eu
 #   domains: [ai, eu]
+#   coverage:
+#     checks: 5
+#     cited: 0
+#     expected: 5
+#     found: 5
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package eu_ai_act.main
 
 import rego.v1
@@ -263,3 +274,14 @@ compliance_report := {
 		},
 	},
 }
+#   coverage:
+#     checks: 5
+#     cited: 0
+#     expected: 5
+#     found: 5
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

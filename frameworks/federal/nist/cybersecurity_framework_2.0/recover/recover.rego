@@ -5,6 +5,14 @@
 #   framework: nist_cybersecurity_framework_2_0
 #   source: nist
 #   domains: [us-federal, security-controls]
+#   coverage:
+#     checks: 6
+#     cited: 6
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package nist.csf.recover
 
 import rego.v1
@@ -57,3 +65,11 @@ compliance_report := {
     "violation_count": count(violation),
     "compliant": compliant,
 }
+#   coverage:
+#     checks: 6
+#     cited: 6
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

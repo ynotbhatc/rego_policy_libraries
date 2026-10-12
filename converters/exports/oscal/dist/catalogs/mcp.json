@@ -1,0 +1,225 @@
+{
+ "catalog": {
+  "uuid": "c2a1258c-dfde-5084-bc87-1b79db8a7348",
+  "metadata": {
+   "title": "Rego Policy Libraries — mcp (MCP Governance Policy)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "mcp"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "mcp-mcp_governance",
+    "class": "rego-module",
+    "title": "MCP Governance Policy",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ai_governance.mcp"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/mcp/mcp_governance.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "mcp-ai_governance.mcp-1",
+      "title": "allow",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance.mcp#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance.mcp#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance.mcp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ecad6d2-191c-556b-9c61-2e56c55c44d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "mcp-ai_governance.mcp-1_stmt",
+        "name": "statement",
+        "prose": "allow"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "mcp-ai_governance.mcp-2",
+      "title": "decision",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance.mcp#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance.mcp#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance.mcp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ecad6d2-191c-556b-9c61-2e56c55c44d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "mcp-ai_governance.mcp-2_stmt",
+        "name": "statement",
+        "prose": "decision"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "mcp-ai_governance.mcp-3",
+      "title": "reason",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance.mcp#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance.mcp#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance.mcp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ecad6d2-191c-556b-9c61-2e56c55c44d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "mcp-ai_governance.mcp-3_stmt",
+        "name": "statement",
+        "prose": "reason"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "mcp-ai_governance.mcp-4",
+      "title": "risk level",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance.mcp#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance.mcp#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance.mcp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ecad6d2-191c-556b-9c61-2e56c55c44d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "mcp-ai_governance.mcp-4_stmt",
+        "name": "statement",
+        "prose": "risk level"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "1ecad6d2-191c-556b-9c61-2e56c55c44d6",
+     "title": "MCP Governance Policy",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ai_governance.mcp"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/governance/mcp/mcp_governance.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

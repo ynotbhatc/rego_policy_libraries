@@ -99,6 +99,17 @@
 #   framework: cis_aks
 #   source: cis
 #   domains: [kubernetes, cloud, azure]
+#   coverage:
+#     checks: 56
+#     cited: 56
+#     expected: 56
+#     found: 56
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_aks.main
 
 import rego.v1
@@ -432,3 +443,14 @@ compliance_report := {
 	"violation_count": count(violations),
 	"section_summary": section_summary,
 }
+#   coverage:
+#     checks: 56
+#     cited: 56
+#     expected: 56
+#     found: 56
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

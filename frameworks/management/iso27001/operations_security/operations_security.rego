@@ -5,6 +5,14 @@
 #   framework: iso27001
 #   source: iso
 #   domains: [isms]
+#   coverage:
+#     checks: 15
+#     cited: 3
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package iso27001.operations_security
 
 import rego.v1
@@ -337,3 +345,11 @@ compliance_details := {
 	"audit_considerations": audit_controls,
 	"overall_compliant": compliant,
 }
+#   coverage:
+#     checks: 15
+#     cited: 3
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

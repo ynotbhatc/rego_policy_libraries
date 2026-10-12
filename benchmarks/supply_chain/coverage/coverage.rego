@@ -15,6 +15,14 @@
 #   framework: supply_chain_coverage
 #   source: aac
 #   domains: [supply-chain]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package supply_chain.coverage
 
 import rego.v1
@@ -59,3 +67,11 @@ report := {
 	"coverage_score": score,
 	"evaluation_depth": evaluation_depth,
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

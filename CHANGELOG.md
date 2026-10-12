@@ -8,6 +8,37 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.3.1] - 2026-10-12
+
+### Changed — the count reads every policy shape: 11,645 control-level checks
+
+2.3.0 fixed *how* the counter read a line; this release fixes *what* it looks for. The 2.3.0 rule saw only
+violation sets named `violations`/`deny` and top-level control tables, so 233 real modules counted as zero:
+every STIG core module (`findings := [finding_r_<id>, ...]`), the PostgreSQL / MySQL / Oracle / Windows 11
+benchmarks (`<section>_violations := [v | arrays := [["1.1: ..." | not check], ...]]`), the sectioned CIS host
+modules (`config_violations contains "CIS 4.1.1: ..." if`), the SOC 2 and CAF modules (check maps
+`findings := {"mfa_for_privileged_access": mfa_for_privileged_access, ...}`), the CMMC practice tables and the
+Sentinel gates (`violation_df_003 contains msg if`). `scripts/rego_ast.py` now reads all six shapes from OPA's AST
+and counts, per module, every distinct control id it evaluates plus each check that carries no id. Report
+plumbing (`compliance_summary`, `total_controls`, section aggregates) is excluded by name.
+
+| | 2.2.0 | 2.3.0 | 2.3.1 |
+|---|---|---|---|
+| control-level checks | 7,867 (regex, over- and under-counted) | 7,560 (AST, one shape) | **11,645 (AST, every shape)** |
+| modules counted as zero | 233 | 233 | 55 (42 orchestrators, 13 pure-boolean modules) |
+
+### Added — coverage stamped into every module's METADATA
+
+`make coverage` (`scripts/coverage_stamp.py`) scans every module and writes `custom.coverage` into its
+`# METADATA` block: checks, cited ids, the total the module itself declares, density (`full` / `partial` /
+`sparse` against a declared total; `sized` / `sparse` / `stub` by size; `orchestrator`; `unrecognised`),
+whether a test file exists, the entrypoint, and the library version of the scan. `make check-coverage` (in CI)
+fails when a stamp is stale, so density and gaps are validated on every change instead of rediscovered.
+`docs/COVERAGE_SCAN.md` is the human report: distribution, per-family totals, modules below their own declared
+total (the provable missing controls), sparse modules without a declared total, unrecognised shapes, untested
+modules.
+
+
 ## [2.3.0] - 2026-10-12
 
 ### Changed — the control-level count is now exact, and lower

@@ -5,6 +5,14 @@
 #   framework: cis_rhel_9
 #   source: cis
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 11
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_rhel9.logging
 
 # CIS RHEL 9 Section 4.2.x - Logging Configuration
@@ -243,3 +251,11 @@ report := {
 	"collection_timestamp": input.collection_timestamp,
 }
 
+#   coverage:
+#     checks: 11
+#     cited: 11
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: stig_ubuntu_20_04
 #   source: disa
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package stig.ubuntu_20_04
 
 # DISA STIG for Ubuntu 20.04 LTS - Simplified Complete Assessment
@@ -120,3 +128,11 @@ stig_assessment := {
 }
 
 compliance_status := "Compliant" if compliant else := "Non-Compliant"
+#   coverage:
+#     checks: 7
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

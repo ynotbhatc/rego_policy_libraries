@@ -5,6 +5,14 @@
 #   framework: iec_62443
 #   source: iec
 #   domains: [ot, industrial]
+#   coverage:
+#     checks: 8
+#     cited: 3
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package iec_62443.fr4
 
 import rego.v1
@@ -192,3 +200,11 @@ compliance_report := {
     "compliant":                compliant,
     "violations":               violations,
 }
+#   coverage:
+#     checks: 8
+#     cited: 3
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -31,6 +31,14 @@
 #   framework: iso_42005
 #   source: iso
 #   domains: [ai]
+#   coverage:
+#     checks: 22
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package iso_42005.main
 
 import rego.v1
@@ -183,3 +191,11 @@ compliance_report := {
 	"violation_count": count(violations),
 	"compliant": compliant,
 }
+#   coverage:
+#     checks: 22
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

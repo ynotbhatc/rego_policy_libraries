@@ -1,0 +1,524 @@
+{
+ "catalog": {
+  "uuid": "741f1547-84dc-595e-9cf5-a0c2f4f23997",
+  "metadata": {
+   "title": "Rego Policy Libraries — enforcement_dockerfile (Sentinel Policy Enforcement — Dockerfile Validation)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "enforcement_dockerfile"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "enforcement_dockerfile-sentinel_dockerfile",
+    "class": "rego-module",
+    "title": "Sentinel Policy Enforcement — Dockerfile Validation",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "sentinel.dockerfile"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/dockerfile/sentinel_dockerfile.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-001",
+      "title": "Base image '%v' is not in the approved base image list. Use an approved, hardened base image.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-001"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-001"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-001_stmt",
+        "name": "statement",
+        "prose": "Base image '%v' is not in the approved base image list. Use an approved, hardened base image."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-002",
+      "title": "No USER instruction found. Containers must run as a non-root user. Add 'USER nonroot' or a specific UID.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-002"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-002"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-002_stmt",
+        "name": "statement",
+        "prose": "No USER instruction found. Containers must run as a non-root user. Add 'USER nonroot' or a specific UID."
+       },
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-002_obj.1",
+        "name": "assessment-objective",
+        "prose": "USER is set to '%v'. Containers must not run as root. Use a non-root user or UID > 0."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-003",
+      "title": "RUN instruction may contain a hardcoded secret (keyword: '%v'). Use build secrets (--secret) or runtime environment variables.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-003"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-003"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-003_stmt",
+        "name": "statement",
+        "prose": "RUN instruction may contain a hardcoded secret (keyword: '%v'). Use build secrets (--secret) or runtime environment variables."
+       },
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-003_obj.1",
+        "name": "assessment-objective",
+        "prose": "ENV instruction may contain a hardcoded secret (keyword: '%v'). Do not bake secrets into image layers."
+       },
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-003_obj.2",
+        "name": "assessment-objective",
+        "prose": "ARG instruction '%v' may expose a secret as a build argument. ARG values appear in image history. Use BuildKit secrets instead."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-004",
+      "title": "ADD instruction fetches from URL '%v'. Use COPY for local files. Use RUN curl/wget if you need to fetch from a URL, and verify with checksums.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-004"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-004"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-004_stmt",
+        "name": "statement",
+        "prose": "ADD instruction fetches from URL '%v'. Use COPY for local files. Use RUN curl/wget if you need to fetch from a URL, and verify with checksums."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-005",
+      "title": "apt-get install without version pinning detected. Pin package versions to ensure reproducible builds (e.g., 'apt-get install nginx=1.24.*').",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-005"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-005"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-005_stmt",
+        "name": "statement",
+        "prose": "apt-get install without version pinning detected. Pin package versions to ensure reproducible builds (e.g., 'apt-get install nginx=1.24.*')."
+       },
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-005_obj.1",
+        "name": "assessment-objective",
+        "prose": "pip install without version pinning detected. Use 'pip install package==version' or a requirements.txt with pinned versions."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-006",
+      "title": "RUN instruction sets SUID/SGID bits (pattern: '%v'). Do not set setuid/setgid bits in container images.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-006"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-006"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-006_stmt",
+        "name": "statement",
+        "prose": "RUN instruction sets SUID/SGID bits (pattern: '%v'). Do not set setuid/setgid bits in container images."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-007",
+      "title": "No HEALTHCHECK instruction defined. A HEALTHCHECK enables Docker and orchestrators to detect unhealthy containers.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-007"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-007"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-007_stmt",
+        "name": "statement",
+        "prose": "No HEALTHCHECK instruction defined. A HEALTHCHECK enables Docker and orchestrators to detect unhealthy containers."
+       },
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-007_obj.1",
+        "name": "assessment-objective",
+        "prose": "HEALTHCHECK is explicitly set to NONE. A health check must be defined for production containers."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-009",
+      "title": "ENV variable '%v' appears to be a hardcoded secret. ENV values are stored in image metadata and accessible to all container users.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-009"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-009"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-009_stmt",
+        "name": "statement",
+        "prose": "ENV variable '%v' appears to be a hardcoded secret. ENV values are stored in image metadata and accessible to all container users."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-010",
+      "title": "EXPOSE declares privileged port %v (< 1024). Use ports >= 1024 and configure port mapping at runtime.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-010_stmt",
+        "name": "statement",
+        "prose": "EXPOSE declares privileged port %v (< 1024). Use ports >= 1024 and configure port mapping at runtime."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-011",
+      "title": "Base image '%v' uses ':latest' tag. Pin to a specific version tag or digest for reproducible builds.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-011"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-011"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-011_stmt",
+        "name": "statement",
+        "prose": "Base image '%v' uses ':latest' tag. Pin to a specific version tag or digest for reproducible builds."
+       },
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-011_obj.1",
+        "name": "assessment-objective",
+        "prose": "Base image '%v' has no version tag. Specify an explicit tag or SHA256 digest."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-012",
+      "title": "apt-get install without cache cleanup. Add '&& rm -rf /var/lib/apt/lists/*' to reduce image size and attack surface.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-012"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-012"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-012_stmt",
+        "name": "statement",
+        "prose": "apt-get install without cache cleanup. Add '&& rm -rf /var/lib/apt/lists/*' to reduce image size and attack surface."
+       },
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-012_obj.1",
+        "name": "assessment-objective",
+        "prose": "yum/dnf install without cache cleanup. Add '&& yum clean all' or '&& dnf clean all' after package installation."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_dockerfile-SENTINEL-DF-013",
+      "title": "Unsafe pipe-to-shell install detected in RUN instruction. Never pipe curl/wget output directly to a shell. Download, verify checksum, then execute.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-DF-013"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-DF-013"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.dockerfile"
+       }
+      ],
+      "links": [
+       {
+        "href": "#223711ab-3b04-5588-946d-e62d463e0d90",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_dockerfile-SENTINEL-DF-013_stmt",
+        "name": "statement",
+        "prose": "Unsafe pipe-to-shell install detected in RUN instruction. Never pipe curl/wget output directly to a shell. Download, verify checksum, then execute."
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "223711ab-3b04-5588-946d-e62d463e0d90",
+     "title": "Sentinel Policy Enforcement — Dockerfile Validation",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "sentinel.dockerfile"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/enforcement/dockerfile/sentinel_dockerfile.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

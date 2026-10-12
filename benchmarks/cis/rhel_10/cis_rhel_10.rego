@@ -5,6 +5,14 @@
 #   framework: cis_rhel_10
 #   source: cis
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 8
+#     cited: 8
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis.rhel_10
 
 # CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft)
@@ -709,4 +717,12 @@ detailed_findings := {
     "system_maintenance_violations": system_maintenance_violations,
     "container_security_violations": container_security_violations,
     "systemd_security_violations": systemd_security_violations
+#   coverage:
+#     checks: 8
+#     cited: 8
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0
 }

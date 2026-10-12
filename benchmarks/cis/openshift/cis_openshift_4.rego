@@ -5,6 +5,14 @@
 #   framework: cis_openshift
 #   source: cis
 #   domains: [kubernetes, openshift, container]
+#   coverage:
+#     checks: 156
+#     cited: 156
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_openshift_4
 
 import rego.v1
@@ -935,4 +943,12 @@ findings := [
         "violations": violations,
         "remediation": "Review and implement the recommended OpenShift security configurations including proper file permissions and ownership, secure etcd configuration, hardened control plane settings, secure worker node configuration, appropriate Kubernetes policies, network security controls, strong authentication and authorization mechanisms, comprehensive logging, and secure secrets management"
     }
+#   coverage:
+#     checks: 156
+#     cited: 156
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 ]

@@ -5,6 +5,14 @@
 #   framework: cis_os
 #   source: cis
 #   domains: [linux]
+#   coverage:
+#     checks: 15
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis.network
 
 import rego.v1
@@ -128,4 +136,12 @@ network_compliance := {
     "ipv6_icmp_redirects_disabled": ipv6_icmp_redirects_disabled,
     "ipv6_router_advertisements_disabled": ipv6_router_advertisements_disabled,
     "overall_compliant": network_compliant
+#   coverage:
+#     checks: 15
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

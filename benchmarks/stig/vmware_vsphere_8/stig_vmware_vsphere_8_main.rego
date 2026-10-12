@@ -9,6 +9,14 @@
 #   framework: stig_vmware_vsphere_8
 #   source: disa
 #   domains: [virtualization, vmware]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.vmware_vsphere_8.main
 
 import data.stig.vmware_vsphere_8
@@ -67,3 +75,11 @@ compliance_report := object.union(_upstream, {
 compliant := _compliant
 
 violations := _open_findings
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

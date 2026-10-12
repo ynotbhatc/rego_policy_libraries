@@ -5,6 +5,14 @@
 #   framework: cis_controls_v8
 #   source: cis
 #   domains: [security-controls]
+#   coverage:
+#     checks: 8
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_controls_v8.c15
 
 import rego.v1
@@ -42,3 +50,11 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": control_compliant,
 }
+#   coverage:
+#     checks: 8
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

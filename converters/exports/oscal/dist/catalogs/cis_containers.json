@@ -1,0 +1,1322 @@
+{
+ "catalog": {
+  "uuid": "40fb0ff7-e9ea-5f64-aab0-76089f277e1b",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_containers (CIS Docker Benchmark)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_containers"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_containers-host_config",
+    "class": "rego-module",
+    "title": "CIS Docker Benchmark",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.docker.host"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/containers/01_host_configuration/host_config.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_containers-cis.docker.host-1",
+      "title": "containerd auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-1_stmt",
+        "name": "statement",
+        "prose": "containerd auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-2",
+      "title": "daemon json auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-2_stmt",
+        "name": "statement",
+        "prose": "daemon json auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-3",
+      "title": "default docker auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-3_stmt",
+        "name": "statement",
+        "prose": "default docker auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-4",
+      "title": "docker binary auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-4_stmt",
+        "name": "statement",
+        "prose": "docker binary auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-5",
+      "title": "docker daemon auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-5_stmt",
+        "name": "statement",
+        "prose": "docker daemon auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-6",
+      "title": "docker etc auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-6_stmt",
+        "name": "statement",
+        "prose": "docker etc auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-7",
+      "title": "docker files auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-7_stmt",
+        "name": "statement",
+        "prose": "docker files auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-8",
+      "title": "docker lib auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-8_stmt",
+        "name": "statement",
+        "prose": "docker lib auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-9",
+      "title": "docker service auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-9_stmt",
+        "name": "statement",
+        "prose": "docker service auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-10",
+      "title": "docker socket auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-10_stmt",
+        "name": "statement",
+        "prose": "docker socket auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-11",
+      "title": "runc auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-11_stmt",
+        "name": "statement",
+        "prose": "runc auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-12",
+      "title": "separate partition for containers",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-12_stmt",
+        "name": "statement",
+        "prose": "separate partition for containers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-13",
+      "title": "sysconfig docker auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-13_stmt",
+        "name": "statement",
+        "prose": "sysconfig docker auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.docker.host-14",
+      "title": "trusted docker users",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.docker.host#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.docker.host#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.docker.host"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86879395-697b-5658-95d5-e5aa7c6969e5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.docker.host-14_stmt",
+        "name": "statement",
+        "prose": "trusted docker users"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_containers-master_node",
+    "class": "rego-module",
+    "title": "CIS Kubernetes Benchmark",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.kubernetes.master"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/containers/kubernetes/01_master_node_security/master_node.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_containers-cis.kubernetes.master-1",
+      "title": "admission control always pull images",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-1_stmt",
+        "name": "statement",
+        "prose": "admission control always pull images"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-2",
+      "title": "admission control event rate limit",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-2_stmt",
+        "name": "statement",
+        "prose": "admission control event rate limit"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-3",
+      "title": "admission control namespace lifecycle",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-3_stmt",
+        "name": "statement",
+        "prose": "admission control namespace lifecycle"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-4",
+      "title": "admission control not always admit",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-4_stmt",
+        "name": "statement",
+        "prose": "admission control not always admit"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-5",
+      "title": "admission control security context deny",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-5_stmt",
+        "name": "statement",
+        "prose": "admission control security context deny"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-6",
+      "title": "anonymous auth disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-6_stmt",
+        "name": "statement",
+        "prose": "anonymous auth disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-7",
+      "title": "api server pod file ownership",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-7_stmt",
+        "name": "statement",
+        "prose": "api server pod file ownership"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-8",
+      "title": "api server pod file permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-8_stmt",
+        "name": "statement",
+        "prose": "api server pod file permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-9",
+      "title": "authorization mode includes node",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-9_stmt",
+        "name": "statement",
+        "prose": "authorization mode includes node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-10",
+      "title": "authorization mode includes rbac",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-10_stmt",
+        "name": "statement",
+        "prose": "authorization mode includes rbac"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-11",
+      "title": "authorization mode not always allow",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-11_stmt",
+        "name": "statement",
+        "prose": "authorization mode not always allow"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-12",
+      "title": "basic auth file not set",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-12_stmt",
+        "name": "statement",
+        "prose": "basic auth file not set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-13",
+      "title": "controller manager pod file ownership",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-13_stmt",
+        "name": "statement",
+        "prose": "controller manager pod file ownership"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-14",
+      "title": "controller manager pod file permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-14_stmt",
+        "name": "statement",
+        "prose": "controller manager pod file permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-15",
+      "title": "etcd pod file ownership",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-15_stmt",
+        "name": "statement",
+        "prose": "etcd pod file ownership"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-16",
+      "title": "etcd pod file permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-16_stmt",
+        "name": "statement",
+        "prose": "etcd pod file permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-17",
+      "title": "kubelet certificate authority set",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-17_stmt",
+        "name": "statement",
+        "prose": "kubelet certificate authority set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-18",
+      "title": "kubelet client cert configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-18_stmt",
+        "name": "statement",
+        "prose": "kubelet client cert configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-19",
+      "title": "kubelet https enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-19_stmt",
+        "name": "statement",
+        "prose": "kubelet https enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-20",
+      "title": "scheduler pod file ownership",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-20_stmt",
+        "name": "statement",
+        "prose": "scheduler pod file ownership"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-21",
+      "title": "scheduler pod file permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-21_stmt",
+        "name": "statement",
+        "prose": "scheduler pod file permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_containers-cis.kubernetes.master-22",
+      "title": "token auth file not set",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.kubernetes.master#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.kubernetes.master#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.kubernetes.master"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_containers-cis.kubernetes.master-22_stmt",
+        "name": "statement",
+        "prose": "token auth file not set"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "86879395-697b-5658-95d5-e5aa7c6969e5",
+     "title": "CIS Docker Benchmark",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.docker.host"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/containers/01_host_configuration/host_config.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "4ddb23aa-4441-5bf3-b40f-0979ab0f71d1",
+     "title": "CIS Kubernetes Benchmark",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.kubernetes.master"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/containers/kubernetes/01_master_node_security/master_node.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

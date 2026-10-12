@@ -5,6 +5,14 @@
 #   framework: hipaa
 #   source: hhs
 #   domains: [privacy, healthcare]
+#   coverage:
+#     checks: 7
+#     cited: 1
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package hipaa.audit_controls
 
 import rego.v1
@@ -190,3 +198,11 @@ compliance_report := {
         "audit_review":     count(violation_audit_review) == 0,
     },
 }
+#   coverage:
+#     checks: 7
+#     cited: 1
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

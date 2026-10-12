@@ -1,0 +1,2967 @@
+{
+ "catalog": {
+  "uuid": "c3bd35be-adbb-55a2-8521-c8f8745eda06",
+  "metadata": {
+   "title": "Rego Policy Libraries — sox (SOX Application Controls for Financial Systems)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "sox"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "sox-financial_application_controls",
+    "class": "rego-module",
+    "title": "SOX Application Controls for Financial Systems",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "sox.application_controls"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/sox/application_controls/financial_application_controls.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "sox-sox.application_controls-1",
+      "title": "Input validation controls need comprehensive implementation",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-1_stmt",
+        "name": "statement",
+        "prose": "Input validation controls need comprehensive implementation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-2",
+      "title": "Data entry controls require enhancement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-2_stmt",
+        "name": "statement",
+        "prose": "Data entry controls require enhancement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-3",
+      "title": "Authorization controls need proper implementation",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-3_stmt",
+        "name": "statement",
+        "prose": "Authorization controls need proper implementation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-4",
+      "title": "Input completeness verification is inadequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-4_stmt",
+        "name": "statement",
+        "prose": "Input completeness verification is inadequate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-5",
+      "title": "Calculation controls reliability needs improvement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-5_stmt",
+        "name": "statement",
+        "prose": "Calculation controls reliability needs improvement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-6",
+      "title": "Sequence controls maintenance is inadequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-6_stmt",
+        "name": "statement",
+        "prose": "Sequence controls maintenance is inadequate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-7",
+      "title": "Processing completeness assurance is insufficient",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-7_stmt",
+        "name": "statement",
+        "prose": "Processing completeness assurance is insufficient"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-8",
+      "title": "Exception processing controls need strengthening",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-8_stmt",
+        "name": "statement",
+        "prose": "Exception processing controls need strengthening"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-9",
+      "title": "Output distribution controls need enhancement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-9_stmt",
+        "name": "statement",
+        "prose": "Output distribution controls need enhancement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-10",
+      "title": "Output completeness verification is inadequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-10_stmt",
+        "name": "statement",
+        "prose": "Output completeness verification is inadequate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-11",
+      "title": "Output accuracy validation needs improvement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-11_stmt",
+        "name": "statement",
+        "prose": "Output accuracy validation needs improvement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-12",
+      "title": "Output authorization requirements are insufficient",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-12_stmt",
+        "name": "statement",
+        "prose": "Output authorization requirements are insufficient"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-13",
+      "title": "Database integrity controls need activation",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-13_stmt",
+        "name": "statement",
+        "prose": "Database integrity controls need activation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-14",
+      "title": "Data transmission integrity protection is inadequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-14_stmt",
+        "name": "statement",
+        "prose": "Data transmission integrity protection is inadequate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-15",
+      "title": "Data storage integrity verification needs improvement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-15_stmt",
+        "name": "statement",
+        "prose": "Data storage integrity verification needs improvement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-16",
+      "title": "Referential integrity enforcement is insufficient",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-16_stmt",
+        "name": "statement",
+        "prose": "Referential integrity enforcement is insufficient"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-17",
+      "title": "Error detection capabilities need comprehensive implementation",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-17_stmt",
+        "name": "statement",
+        "prose": "Error detection capabilities need comprehensive implementation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-18",
+      "title": "Error reporting detail level is inadequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-18_stmt",
+        "name": "statement",
+        "prose": "Error reporting detail level is inadequate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-19",
+      "title": "Error correction controls need strengthening",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-19_stmt",
+        "name": "statement",
+        "prose": "Error correction controls need strengthening"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-20",
+      "title": "Proactive error prevention measures are insufficient",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-20_stmt",
+        "name": "statement",
+        "prose": "Proactive error prevention measures are insufficient"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-21",
+      "title": "Comprehensive audit trail implementation is needed",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-21_stmt",
+        "name": "statement",
+        "prose": "Comprehensive audit trail implementation is needed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-22",
+      "title": "Transaction traceability maintenance is inadequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-22_stmt",
+        "name": "statement",
+        "prose": "Transaction traceability maintenance is inadequate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-23",
+      "title": "Log integrity protection needs enhancement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-23_stmt",
+        "name": "statement",
+        "prose": "Log integrity protection needs enhancement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-24",
+      "title": "Log retention compliance is insufficient",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-24_stmt",
+        "name": "statement",
+        "prose": "Log retention compliance is insufficient"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-25",
+      "title": "General ledger controls need improvement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-25_stmt",
+        "name": "statement",
+        "prose": "General ledger controls need improvement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-26",
+      "title": "Accounts payable controls require strengthening",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-26_stmt",
+        "name": "statement",
+        "prose": "Accounts payable controls require strengthening"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-27",
+      "title": "Accounts receivable controls need completion",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-27_stmt",
+        "name": "statement",
+        "prose": "Accounts receivable controls need completion"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-28",
+      "title": "Payroll controls need comprehensive implementation",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-28_stmt",
+        "name": "statement",
+        "prose": "Payroll controls need comprehensive implementation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.application_controls-29",
+      "title": "Treasury controls security needs enhancement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.application_controls#29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.application_controls#29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.application_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03e7f889-db46-532d-bccf-57163503498c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.application_controls-29_stmt",
+        "name": "statement",
+        "prose": "Treasury controls security needs enhancement"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "sox-it_general_controls",
+    "class": "rego-module",
+    "title": "SOX IT General Controls (ITGC)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "sox.itgc"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/sox/itgc/it_general_controls.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "sox-sox.itgc-1",
+      "title": "Logical access controls require strengthening",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-1_stmt",
+        "name": "statement",
+        "prose": "Logical access controls require strengthening"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-2",
+      "title": "Privileged access management needs improvement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-2_stmt",
+        "name": "statement",
+        "prose": "Privileged access management needs improvement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-3",
+      "title": "Access review processes are not current",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-3_stmt",
+        "name": "statement",
+        "prose": "Access review processes are not current"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-4",
+      "title": "Segregation of duties enforcement is inadequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-4_stmt",
+        "name": "statement",
+        "prose": "Segregation of duties enforcement is inadequate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-5",
+      "title": "Change approval process needs enhancement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-5_stmt",
+        "name": "statement",
+        "prose": "Change approval process needs enhancement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-6",
+      "title": "Change testing procedures are incomplete",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-6_stmt",
+        "name": "statement",
+        "prose": "Change testing procedures are incomplete"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-7",
+      "title": "Emergency change controls are insufficient",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-7_stmt",
+        "name": "statement",
+        "prose": "Emergency change controls are insufficient"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-8",
+      "title": "Change documentation is incomplete",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-8_stmt",
+        "name": "statement",
+        "prose": "Change documentation is incomplete"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-9",
+      "title": "System monitoring capabilities need improvement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-9_stmt",
+        "name": "statement",
+        "prose": "System monitoring capabilities need improvement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-10",
+      "title": "Incident management process requires strengthening",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-10_stmt",
+        "name": "statement",
+        "prose": "Incident management process requires strengthening"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-11",
+      "title": "Capacity management practices are inadequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-11_stmt",
+        "name": "statement",
+        "prose": "Capacity management practices are inadequate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-12",
+      "title": "Performance monitoring is not continuous",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-12_stmt",
+        "name": "statement",
+        "prose": "Performance monitoring is not continuous"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-13",
+      "title": "SDLC process definition is incomplete",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-13_stmt",
+        "name": "statement",
+        "prose": "SDLC process definition is incomplete"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-14",
+      "title": "Security requirements integration is insufficient",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-14_stmt",
+        "name": "statement",
+        "prose": "Security requirements integration is insufficient"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-15",
+      "title": "Code review process is not mandatory",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-15_stmt",
+        "name": "statement",
+        "prose": "Code review process is not mandatory"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-16",
+      "title": "Deployment process controls are inadequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-16_stmt",
+        "name": "statement",
+        "prose": "Deployment process controls are inadequate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-17",
+      "title": "Physical security controls need improvement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-17_stmt",
+        "name": "statement",
+        "prose": "Physical security controls need improvement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-18",
+      "title": "Environmental controls are not effective",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-18_stmt",
+        "name": "statement",
+        "prose": "Environmental controls are not effective"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-19",
+      "title": "Power systems redundancy is insufficient",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-19_stmt",
+        "name": "statement",
+        "prose": "Power systems redundancy is insufficient"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-20",
+      "title": "Network infrastructure security requires enhancement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-20_stmt",
+        "name": "statement",
+        "prose": "Network infrastructure security requires enhancement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-21",
+      "title": "Backup procedures are not comprehensive",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-21_stmt",
+        "name": "statement",
+        "prose": "Backup procedures are not comprehensive"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-22",
+      "title": "Recovery procedures testing is inadequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-22_stmt",
+        "name": "statement",
+        "prose": "Recovery procedures testing is inadequate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-23",
+      "title": "Disaster recovery planning is incomplete",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-23_stmt",
+        "name": "statement",
+        "prose": "Disaster recovery planning is incomplete"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-24",
+      "title": "Business continuity assurance is insufficient",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-24_stmt",
+        "name": "statement",
+        "prose": "Business continuity assurance is insufficient"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-25",
+      "title": "Financial system access controls need strengthening",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-25_stmt",
+        "name": "statement",
+        "prose": "Financial system access controls need strengthening"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-26",
+      "title": "Financial data integrity controls are inadequate",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-26_stmt",
+        "name": "statement",
+        "prose": "Financial data integrity controls are inadequate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-27",
+      "title": "Financial processing controls are not effective",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-27_stmt",
+        "name": "statement",
+        "prose": "Financial processing controls are not effective"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-sox.itgc-28",
+      "title": "Financial reporting system security needs improvement",
+      "props": [
+       {
+        "name": "label",
+        "value": "sox.itgc#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sox.itgc#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.itgc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4ada07b-dd87-5470-9004-32b2ca573130",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-sox.itgc-28_stmt",
+        "name": "statement",
+        "prose": "Financial reporting system security needs improvement"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "sox-sox_main",
+    "class": "rego-module",
+    "title": "SOX (Sarbanes-Oxley Act) Compliance Framework",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "sox.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/sox/sox_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "sox-CEO-Certification",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CEO Certification"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CEO Certification"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-CEO-Certification_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-CEO-Certification_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-CFO-Certification",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CFO Certification"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CFO Certification"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-CFO-Certification_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-CFO-Certification_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Disclosure-Controls",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Disclosure Controls"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Disclosure Controls"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Disclosure-Controls_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Disclosure-Controls_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Material-Weaknesses",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Material Weaknesses"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Material Weaknesses"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Material-Weaknesses_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Material-Weaknesses_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Management-Assessment",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Management Assessment"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Management Assessment"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Management-Assessment_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Management-Assessment_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Control-Design",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Control Design"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Control Design"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Control-Design_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Control-Design_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Control-Operation",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Control Operation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Control Operation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Control-Operation_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Control-Operation_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Auditor-Attestation",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Auditor Attestation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Auditor Attestation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Auditor-Attestation_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Auditor-Attestation_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Timely-Disclosure",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Timely Disclosure"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Timely Disclosure"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Timely-Disclosure_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Timely-Disclosure_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Automated-Process",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Automated Process"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Automated Process"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Automated-Process_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Automated-Process_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Quarterly-Review",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Quarterly Review"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Quarterly Review"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Quarterly-Review_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Quarterly-Review_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Access-Controls",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Access Controls"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Access Controls"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Access-Controls_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Access-Controls_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Change-Management",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Change Management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Change Management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Change-Management_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Change-Management_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Computer-Operations",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Computer Operations"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Computer Operations"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Computer-Operations_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-Computer-Operations_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-System-Development",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "System Development"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "System Development"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#2c093ee4-de3d-5417-85e5-b1eb983faa10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-System-Development_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       },
+       {
+        "id": "sox-System-Development_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_simplified.rego (package sox.simplified); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Input-Validation",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Input Validation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Input Validation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Input-Validation_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Processing-Controls",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Processing Controls"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Processing Controls"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Processing-Controls_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Output-Controls",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Output Controls"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Output Controls"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Output-Controls_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Data-Integrity",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Data Integrity"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Data Integrity"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Data-Integrity_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Assessment-Framework",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Assessment Framework"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Assessment Framework"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Assessment-Framework_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Testing-Procedures",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Testing Procedures"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Testing Procedures"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Testing-Procedures_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Deficiency-Remediation",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Deficiency Remediation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Deficiency Remediation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Deficiency-Remediation_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sox-Continuous-Monitoring",
+      "title": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Continuous Monitoring"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Continuous Monitoring"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sox.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23a1cc89-9493-58ea-817a-055d066912f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sox-Continuous-Monitoring_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/sox/sox_main.rego (package sox.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "03e7f889-db46-532d-bccf-57163503498c",
+     "title": "SOX Application Controls for Financial Systems",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "sox.application_controls"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/sox/application_controls/financial_application_controls.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f4ada07b-dd87-5470-9004-32b2ca573130",
+     "title": "SOX IT General Controls (ITGC)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "sox.itgc"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/sox/itgc/it_general_controls.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "23a1cc89-9493-58ea-817a-055d066912f1",
+     "title": "SOX (Sarbanes-Oxley Act) Compliance Framework",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "sox.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/sox/sox_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "2c093ee4-de3d-5417-85e5-b1eb983faa10",
+     "title": "Simplified SOX (Sarbanes-Oxley Act) Compliance Framework",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "sox.simplified"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/financial/sox/sox_simplified.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -5,6 +5,14 @@
 #   framework: stig_apache_2_4_unix
 #   source: disa
 #   domains: [web-server]
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package stig.apache_2_4_unix.core
 
 # DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide
@@ -193,3 +201,11 @@ findings := [
 default compliant := false
 
 compliant if count([f | some f in findings; f.status == "Open"]) == 0
+#   coverage:
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: iso27001
 #   source: iso
 #   domains: [isms]
+#   coverage:
+#     checks: 11
+#     cited: 6
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package iso27001
 
 import rego.v1
@@ -110,4 +118,12 @@ iso27001_compliance_report := {
         "compliant": system_acquisition_maintenance.compliant,
         "details": system_acquisition_maintenance.compliance_details
     }
+#   coverage:
+#     checks: 11
+#     cited: 6
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0
 }

@@ -5,6 +5,14 @@
 #   framework: nerc_cip
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
+#   coverage:
+#     checks: 17
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package nerc_cip.cip_003
 
 import rego.v1
@@ -242,3 +250,11 @@ report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+#   coverage:
+#     checks: 17
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

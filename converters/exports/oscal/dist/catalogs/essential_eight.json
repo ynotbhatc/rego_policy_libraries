@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "7254b66d-b445-56c4-a21a-3c8dfb6b0678",
+  "uuid": "10b93e74-762c-5a2c-b486-17f4e17d9a3c",
   "metadata": {
    "title": "Rego Policy Libraries — essential_eight (ACSC Essential Eight Maturity Model (Nov 2023) — Application Control)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,39 +66,6 @@
     ],
     "controls": [
      {
-      "id": "essential_eight-essential_eight.application_control-1",
-      "title": "Essential Eight [Application Control] %s (ML%d): %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "essential_eight.application_control#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "essential_eight.application_control#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "essential_eight.application_control"
-       }
-      ],
-      "links": [
-       {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "essential_eight-essential_eight.application_control-1_stmt",
-        "name": "statement",
-        "prose": "Essential Eight [Application Control] %s (ML%d): %s — not met"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "essential_eight-AC-ML1-1",
       "title": "Application control is implemented on workstations",
       "props": [
@@ -118,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
         "rel": "implementation"
        }
       ],
@@ -151,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
         "rel": "implementation"
        }
       ],
@@ -184,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
         "rel": "implementation"
        }
       ],
@@ -217,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
         "rel": "implementation"
        }
       ],
@@ -250,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
         "rel": "implementation"
        }
       ],
@@ -283,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
         "rel": "implementation"
        }
       ],
@@ -316,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
         "rel": "implementation"
        }
       ],
@@ -349,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
         "rel": "implementation"
        }
       ],
@@ -382,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
         "rel": "implementation"
        }
       ],
@@ -415,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
         "rel": "implementation"
        }
       ],
@@ -448,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#ff2703e9-37b7-5779-835e-58e274b09600",
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
         "rel": "implementation"
        }
       ],
@@ -457,6 +424,39 @@
         "id": "essential_eight-AC-ML3-5_stmt",
         "name": "statement",
         "prose": "Event logs are monitored for signs of compromise and actioned when detected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.application_control-1",
+      "title": "Essential Eight [Application Control] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.application_control#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.application_control#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac89430f-64bd-5ada-89d8-d457f2f1afcf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.application_control-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Application Control] %s (ML%d): %s — not met"
        }
       ],
       "class": "compliance"
@@ -486,39 +486,6 @@
     ],
     "controls": [
      {
-      "id": "essential_eight-essential_eight.multi_factor_authentication-1",
-      "title": "Essential Eight [Multi-Factor Authentication] %s (ML%d): %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "essential_eight.multi_factor_authentication#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "essential_eight.multi_factor_authentication#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "essential_eight.multi_factor_authentication"
-       }
-      ],
-      "links": [
-       {
-        "href": "#abe66b9a-a204-574c-912a-7a7d7e46a78e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "essential_eight-essential_eight.multi_factor_authentication-1_stmt",
-        "name": "statement",
-        "prose": "Essential Eight [Multi-Factor Authentication] %s (ML%d): %s — not met"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "essential_eight-MFA-ML1-1",
       "title": "Multi-factor authentication is used to authenticate users to their organisation's internet-facing services",
       "props": [
@@ -538,7 +505,7 @@
       ],
       "links": [
        {
-        "href": "#abe66b9a-a204-574c-912a-7a7d7e46a78e",
+        "href": "#ce50d7f0-83d3-56e4-8482-6e8f60c38347",
         "rel": "implementation"
        }
       ],
@@ -571,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#abe66b9a-a204-574c-912a-7a7d7e46a78e",
+        "href": "#ce50d7f0-83d3-56e4-8482-6e8f60c38347",
         "rel": "implementation"
        }
       ],
@@ -604,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#abe66b9a-a204-574c-912a-7a7d7e46a78e",
+        "href": "#ce50d7f0-83d3-56e4-8482-6e8f60c38347",
         "rel": "implementation"
        }
       ],
@@ -637,7 +604,7 @@
       ],
       "links": [
        {
-        "href": "#abe66b9a-a204-574c-912a-7a7d7e46a78e",
+        "href": "#ce50d7f0-83d3-56e4-8482-6e8f60c38347",
         "rel": "implementation"
        }
       ],
@@ -670,7 +637,7 @@
       ],
       "links": [
        {
-        "href": "#abe66b9a-a204-574c-912a-7a7d7e46a78e",
+        "href": "#ce50d7f0-83d3-56e4-8482-6e8f60c38347",
         "rel": "implementation"
        }
       ],
@@ -703,7 +670,7 @@
       ],
       "links": [
        {
-        "href": "#abe66b9a-a204-574c-912a-7a7d7e46a78e",
+        "href": "#ce50d7f0-83d3-56e4-8482-6e8f60c38347",
         "rel": "implementation"
        }
       ],
@@ -736,7 +703,7 @@
       ],
       "links": [
        {
-        "href": "#abe66b9a-a204-574c-912a-7a7d7e46a78e",
+        "href": "#ce50d7f0-83d3-56e4-8482-6e8f60c38347",
         "rel": "implementation"
        }
       ],
@@ -769,7 +736,7 @@
       ],
       "links": [
        {
-        "href": "#abe66b9a-a204-574c-912a-7a7d7e46a78e",
+        "href": "#ce50d7f0-83d3-56e4-8482-6e8f60c38347",
         "rel": "implementation"
        }
       ],
@@ -802,7 +769,7 @@
       ],
       "links": [
        {
-        "href": "#abe66b9a-a204-574c-912a-7a7d7e46a78e",
+        "href": "#ce50d7f0-83d3-56e4-8482-6e8f60c38347",
         "rel": "implementation"
        }
       ],
@@ -835,7 +802,7 @@
       ],
       "links": [
        {
-        "href": "#abe66b9a-a204-574c-912a-7a7d7e46a78e",
+        "href": "#ce50d7f0-83d3-56e4-8482-6e8f60c38347",
         "rel": "implementation"
        }
       ],
@@ -844,6 +811,39 @@
         "id": "essential_eight-MFA-ML3-3_stmt",
         "name": "statement",
         "prose": "Multi-factor authentication event logs are protected from unauthorised modification and deletion, and monitored for signs of compromise"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.multi_factor_authentication-1",
+      "title": "Essential Eight [Multi-Factor Authentication] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.multi_factor_authentication#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.multi_factor_authentication#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ce50d7f0-83d3-56e4-8482-6e8f60c38347",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.multi_factor_authentication-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Multi-Factor Authentication] %s (ML%d): %s — not met"
        }
       ],
       "class": "compliance"
@@ -873,39 +873,6 @@
     ],
     "controls": [
      {
-      "id": "essential_eight-essential_eight.office_macros-1",
-      "title": "Essential Eight [Configure Microsoft Office Macro Settings] %s (ML%d): %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "essential_eight.office_macros#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "essential_eight.office_macros#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "essential_eight.office_macros"
-       }
-      ],
-      "links": [
-       {
-        "href": "#91dc01ef-7fcf-5c7c-956a-e456025514ae",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "essential_eight-essential_eight.office_macros-1_stmt",
-        "name": "statement",
-        "prose": "Essential Eight [Configure Microsoft Office Macro Settings] %s (ML%d): %s — not met"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "essential_eight-OM-ML1-1",
       "title": "Microsoft Office macros are disabled for users that do not have a demonstrated business requirement",
       "props": [
@@ -925,7 +892,7 @@
       ],
       "links": [
        {
-        "href": "#91dc01ef-7fcf-5c7c-956a-e456025514ae",
+        "href": "#ddc45542-024e-5a6c-abda-a617174c3be9",
         "rel": "implementation"
        }
       ],
@@ -958,7 +925,7 @@
       ],
       "links": [
        {
-        "href": "#91dc01ef-7fcf-5c7c-956a-e456025514ae",
+        "href": "#ddc45542-024e-5a6c-abda-a617174c3be9",
         "rel": "implementation"
        }
       ],
@@ -991,7 +958,7 @@
       ],
       "links": [
        {
-        "href": "#91dc01ef-7fcf-5c7c-956a-e456025514ae",
+        "href": "#ddc45542-024e-5a6c-abda-a617174c3be9",
         "rel": "implementation"
        }
       ],
@@ -1024,7 +991,7 @@
       ],
       "links": [
        {
-        "href": "#91dc01ef-7fcf-5c7c-956a-e456025514ae",
+        "href": "#ddc45542-024e-5a6c-abda-a617174c3be9",
         "rel": "implementation"
        }
       ],
@@ -1057,7 +1024,7 @@
       ],
       "links": [
        {
-        "href": "#91dc01ef-7fcf-5c7c-956a-e456025514ae",
+        "href": "#ddc45542-024e-5a6c-abda-a617174c3be9",
         "rel": "implementation"
        }
       ],
@@ -1090,7 +1057,7 @@
       ],
       "links": [
        {
-        "href": "#91dc01ef-7fcf-5c7c-956a-e456025514ae",
+        "href": "#ddc45542-024e-5a6c-abda-a617174c3be9",
         "rel": "implementation"
        }
       ],
@@ -1123,7 +1090,7 @@
       ],
       "links": [
        {
-        "href": "#91dc01ef-7fcf-5c7c-956a-e456025514ae",
+        "href": "#ddc45542-024e-5a6c-abda-a617174c3be9",
         "rel": "implementation"
        }
       ],
@@ -1156,7 +1123,7 @@
       ],
       "links": [
        {
-        "href": "#91dc01ef-7fcf-5c7c-956a-e456025514ae",
+        "href": "#ddc45542-024e-5a6c-abda-a617174c3be9",
         "rel": "implementation"
        }
       ],
@@ -1189,7 +1156,7 @@
       ],
       "links": [
        {
-        "href": "#91dc01ef-7fcf-5c7c-956a-e456025514ae",
+        "href": "#ddc45542-024e-5a6c-abda-a617174c3be9",
         "rel": "implementation"
        }
       ],
@@ -1222,7 +1189,7 @@
       ],
       "links": [
        {
-        "href": "#91dc01ef-7fcf-5c7c-956a-e456025514ae",
+        "href": "#ddc45542-024e-5a6c-abda-a617174c3be9",
         "rel": "implementation"
        }
       ],
@@ -1231,6 +1198,39 @@
         "id": "essential_eight-OM-ML3-4_stmt",
         "name": "statement",
         "prose": "Microsoft Office macros digitally signed by signatures other than V3 signatures cannot be enabled via the Message Bar or Backstage View"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.office_macros-1",
+      "title": "Essential Eight [Configure Microsoft Office Macro Settings] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.office_macros#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.office_macros#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ddc45542-024e-5a6c-abda-a617174c3be9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.office_macros-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Configure Microsoft Office Macro Settings] %s (ML%d): %s — not met"
        }
       ],
       "class": "compliance"
@@ -1260,39 +1260,6 @@
     ],
     "controls": [
      {
-      "id": "essential_eight-essential_eight.patch_applications-1",
-      "title": "Essential Eight [Patch Applications] %s (ML%d): %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "essential_eight.patch_applications#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "essential_eight.patch_applications#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "essential_eight.patch_applications"
-       }
-      ],
-      "links": [
-       {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "essential_eight-essential_eight.patch_applications-1_stmt",
-        "name": "statement",
-        "prose": "Essential Eight [Patch Applications] %s (ML%d): %s — not met"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "essential_eight-PA-ML1-1",
       "title": "An automated asset discovery method is used at least fortnightly to support vulnerability scanning",
       "props": [
@@ -1312,7 +1279,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1345,7 +1312,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1378,7 +1345,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1411,7 +1378,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1444,7 +1411,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1477,7 +1444,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1510,7 +1477,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1543,7 +1510,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1576,7 +1543,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1609,7 +1576,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1642,7 +1609,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1675,7 +1642,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1708,7 +1675,7 @@
       ],
       "links": [
        {
-        "href": "#188d6a1b-d23a-584c-9296-550a96c6f80b",
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
         "rel": "implementation"
        }
       ],
@@ -1717,6 +1684,39 @@
         "id": "essential_eight-PA-ML3-3_stmt",
         "name": "statement",
         "prose": "Patches for other applications are applied within 48 hours if an exploit exists, otherwise within 1 month"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.patch_applications-1",
+      "title": "Essential Eight [Patch Applications] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.patch_applications#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.patch_applications#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#89d6aa7d-a27e-56d0-973f-07e6ade9652d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.patch_applications-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Patch Applications] %s (ML%d): %s — not met"
        }
       ],
       "class": "compliance"
@@ -1746,39 +1746,6 @@
     ],
     "controls": [
      {
-      "id": "essential_eight-essential_eight.patch_operating_systems-1",
-      "title": "Essential Eight [Patch Operating Systems] %s (ML%d): %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "essential_eight.patch_operating_systems#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "essential_eight.patch_operating_systems#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "essential_eight.patch_operating_systems"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "essential_eight-essential_eight.patch_operating_systems-1_stmt",
-        "name": "statement",
-        "prose": "Essential Eight [Patch Operating Systems] %s (ML%d): %s — not met"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "essential_eight-POS-ML1-1",
       "title": "An automated method of asset discovery is used at least fortnightly to support detection of assets for subsequent vulnerability scanning activities",
       "props": [
@@ -1798,7 +1765,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -1831,7 +1798,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -1864,7 +1831,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -1897,7 +1864,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -1930,7 +1897,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -1963,7 +1930,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -1996,7 +1963,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -2029,7 +1996,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -2062,7 +2029,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -2095,7 +2062,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -2128,7 +2095,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -2161,7 +2128,7 @@
       ],
       "links": [
        {
-        "href": "#a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
         "rel": "implementation"
        }
       ],
@@ -2170,6 +2137,39 @@
         "id": "essential_eight-POS-ML3-3_stmt",
         "name": "statement",
         "prose": "The latest release, or the previous release, of operating systems are used"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.patch_operating_systems-1",
+      "title": "Essential Eight [Patch Operating Systems] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.patch_operating_systems#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.patch_operating_systems#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9793d145-3dac-5d6d-9139-33f2c4405ff5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.patch_operating_systems-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Patch Operating Systems] %s (ML%d): %s — not met"
        }
       ],
       "class": "compliance"
@@ -2199,39 +2199,6 @@
     ],
     "controls": [
      {
-      "id": "essential_eight-essential_eight.regular_backups-1",
-      "title": "Essential Eight [Regular Backups] %s (ML%d): %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "essential_eight.regular_backups#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "essential_eight.regular_backups#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "essential_eight.regular_backups"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4ea1b25-24e3-5af1-8e1e-d4f4327994cb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "essential_eight-essential_eight.regular_backups-1_stmt",
-        "name": "statement",
-        "prose": "Essential Eight [Regular Backups] %s (ML%d): %s — not met"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "essential_eight-RB-ML1-1",
       "title": "Backups of data, applications and settings are performed and retained with a frequency and retention timeframe in accordance with business criticality and business continuity requirements",
       "props": [
@@ -2251,7 +2218,7 @@
       ],
       "links": [
        {
-        "href": "#d4ea1b25-24e3-5af1-8e1e-d4f4327994cb",
+        "href": "#cf5897d2-8f9a-5069-94f8-dfdb9d9adb08",
         "rel": "implementation"
        }
       ],
@@ -2284,7 +2251,7 @@
       ],
       "links": [
        {
-        "href": "#d4ea1b25-24e3-5af1-8e1e-d4f4327994cb",
+        "href": "#cf5897d2-8f9a-5069-94f8-dfdb9d9adb08",
         "rel": "implementation"
        }
       ],
@@ -2317,7 +2284,7 @@
       ],
       "links": [
        {
-        "href": "#d4ea1b25-24e3-5af1-8e1e-d4f4327994cb",
+        "href": "#cf5897d2-8f9a-5069-94f8-dfdb9d9adb08",
         "rel": "implementation"
        }
       ],
@@ -2350,7 +2317,7 @@
       ],
       "links": [
        {
-        "href": "#d4ea1b25-24e3-5af1-8e1e-d4f4327994cb",
+        "href": "#cf5897d2-8f9a-5069-94f8-dfdb9d9adb08",
         "rel": "implementation"
        }
       ],
@@ -2383,7 +2350,7 @@
       ],
       "links": [
        {
-        "href": "#d4ea1b25-24e3-5af1-8e1e-d4f4327994cb",
+        "href": "#cf5897d2-8f9a-5069-94f8-dfdb9d9adb08",
         "rel": "implementation"
        }
       ],
@@ -2416,7 +2383,7 @@
       ],
       "links": [
        {
-        "href": "#d4ea1b25-24e3-5af1-8e1e-d4f4327994cb",
+        "href": "#cf5897d2-8f9a-5069-94f8-dfdb9d9adb08",
         "rel": "implementation"
        }
       ],
@@ -2449,7 +2416,7 @@
       ],
       "links": [
        {
-        "href": "#d4ea1b25-24e3-5af1-8e1e-d4f4327994cb",
+        "href": "#cf5897d2-8f9a-5069-94f8-dfdb9d9adb08",
         "rel": "implementation"
        }
       ],
@@ -2482,7 +2449,7 @@
       ],
       "links": [
        {
-        "href": "#d4ea1b25-24e3-5af1-8e1e-d4f4327994cb",
+        "href": "#cf5897d2-8f9a-5069-94f8-dfdb9d9adb08",
         "rel": "implementation"
        }
       ],
@@ -2491,6 +2458,39 @@
         "id": "essential_eight-RB-ML3-2_stmt",
         "name": "statement",
         "prose": "Privileged accounts (excluding backup administrators) are prevented from modifying and deleting backups during their retention period"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.regular_backups-1",
+      "title": "Essential Eight [Regular Backups] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.regular_backups#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.regular_backups#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.regular_backups"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cf5897d2-8f9a-5069-94f8-dfdb9d9adb08",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.regular_backups-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Regular Backups] %s (ML%d): %s — not met"
        }
       ],
       "class": "compliance"
@@ -2520,39 +2520,6 @@
     ],
     "controls": [
      {
-      "id": "essential_eight-essential_eight.restrict_admin_privileges-1",
-      "title": "Essential Eight [Restrict Administrative Privileges] %s (ML%d): %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "essential_eight.restrict_admin_privileges#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "essential_eight.restrict_admin_privileges#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "essential_eight.restrict_admin_privileges"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "essential_eight-essential_eight.restrict_admin_privileges-1_stmt",
-        "name": "statement",
-        "prose": "Essential Eight [Restrict Administrative Privileges] %s (ML%d): %s — not met"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "essential_eight-RAP-ML1-1",
       "title": "Requests for privileged access to systems and applications are validated when first requested",
       "props": [
@@ -2572,7 +2539,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2605,7 +2572,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2638,7 +2605,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2671,7 +2638,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2704,7 +2671,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2737,7 +2704,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2770,7 +2737,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2803,7 +2770,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2836,7 +2803,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2869,7 +2836,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2902,7 +2869,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2935,7 +2902,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -2968,7 +2935,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -3001,7 +2968,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -3034,7 +3001,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -3067,7 +3034,7 @@
       ],
       "links": [
        {
-        "href": "#a10da609-3c34-5a04-99bf-be292683246a",
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
         "rel": "implementation"
        }
       ],
@@ -3076,6 +3043,39 @@
         "id": "essential_eight-RAP-ML3-4_stmt",
         "name": "statement",
         "prose": "Privileged access event logs are protected from unauthorised modification and deletion, monitored for signs of compromise, and actioned when detected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.restrict_admin_privileges-1",
+      "title": "Essential Eight [Restrict Administrative Privileges] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.restrict_admin_privileges#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.restrict_admin_privileges#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9602e86c-4674-50d9-94bd-549224f43437",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.restrict_admin_privileges-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Restrict Administrative Privileges] %s (ML%d): %s — not met"
        }
       ],
       "class": "compliance"
@@ -3105,39 +3105,6 @@
     ],
     "controls": [
      {
-      "id": "essential_eight-essential_eight.user_application_hardening-1",
-      "title": "Essential Eight [User Application Hardening] %s (ML%d): %s — not met",
-      "props": [
-       {
-        "name": "label",
-        "value": "essential_eight.user_application_hardening#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "essential_eight.user_application_hardening#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "essential_eight.user_application_hardening"
-       }
-      ],
-      "links": [
-       {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "essential_eight-essential_eight.user_application_hardening-1_stmt",
-        "name": "statement",
-        "prose": "Essential Eight [User Application Hardening] %s (ML%d): %s — not met"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "essential_eight-UAH-ML1-1",
       "title": "Web browsers do not process Java from the internet",
       "props": [
@@ -3157,7 +3124,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3190,7 +3157,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3223,7 +3190,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3256,7 +3223,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3289,7 +3256,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3322,7 +3289,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3355,7 +3322,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3388,7 +3355,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3421,7 +3388,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3454,7 +3421,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3487,7 +3454,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3520,7 +3487,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3553,7 +3520,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3586,7 +3553,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3619,7 +3586,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3652,7 +3619,7 @@
       ],
       "links": [
        {
-        "href": "#e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
         "rel": "implementation"
        }
       ],
@@ -3664,6 +3631,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.user_application_hardening-1",
+      "title": "Essential Eight [User Application Hardening] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.user_application_hardening#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.user_application_hardening#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f5e6a202-71b4-54aa-83f7-4d39a2445be7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.user_application_hardening-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [User Application Hardening] %s (ML%d): %s — not met"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    }
@@ -3671,7 +3671,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "ff2703e9-37b7-5779-835e-58e274b09600",
+     "uuid": "ac89430f-64bd-5ada-89d8-d457f2f1afcf",
      "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Application Control",
      "props": [
       {
@@ -3682,13 +3682,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/essential_eight/application_control.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regional/essential_eight/application_control.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "abe66b9a-a204-574c-912a-7a7d7e46a78e",
+     "uuid": "ce50d7f0-83d3-56e4-8482-6e8f60c38347",
      "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Multi-Factor Authentication",
      "props": [
       {
@@ -3699,13 +3699,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/essential_eight/multi_factor_authentication.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regional/essential_eight/multi_factor_authentication.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "91dc01ef-7fcf-5c7c-956a-e456025514ae",
+     "uuid": "ddc45542-024e-5a6c-abda-a617174c3be9",
      "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Configure Microsoft Office Macro Settings",
      "props": [
       {
@@ -3716,13 +3716,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/essential_eight/office_macros.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regional/essential_eight/office_macros.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "188d6a1b-d23a-584c-9296-550a96c6f80b",
+     "uuid": "89d6aa7d-a27e-56d0-973f-07e6ade9652d",
      "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Patch Applications",
      "props": [
       {
@@ -3733,13 +3733,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/essential_eight/patch_applications.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regional/essential_eight/patch_applications.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a41b8f08-4fca-56ce-bff4-f1e851ca91a4",
+     "uuid": "9793d145-3dac-5d6d-9139-33f2c4405ff5",
      "title": "ACSC Essential Eight Maturity Model (November 2023) — Patch Operating Systems",
      "props": [
       {
@@ -3750,13 +3750,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/essential_eight/patch_operating_systems.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regional/essential_eight/patch_operating_systems.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d4ea1b25-24e3-5af1-8e1e-d4f4327994cb",
+     "uuid": "cf5897d2-8f9a-5069-94f8-dfdb9d9adb08",
      "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Regular Backups",
      "props": [
       {
@@ -3767,13 +3767,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/essential_eight/regular_backups.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regional/essential_eight/regular_backups.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a10da609-3c34-5a04-99bf-be292683246a",
+     "uuid": "9602e86c-4674-50d9-94bd-549224f43437",
      "title": "ACSC Essential Eight Maturity Model (November 2023) — Restrict Administrative Privileges",
      "props": [
       {
@@ -3784,13 +3784,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/essential_eight/restrict_admin_privileges.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regional/essential_eight/restrict_admin_privileges.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "e9ceb345-e4f9-5f6b-8a77-e9516395d35a",
+     "uuid": "f5e6a202-71b4-54aa-83f7-4d39a2445be7",
      "title": "ACSC Essential Eight Maturity Model (Nov 2023) — User Application Hardening",
      "props": [
       {
@@ -3801,7 +3801,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/regional/essential_eight/user_application_hardening.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/regional/essential_eight/user_application_hardening.rego",
        "media-type": "text/plain"
       }
      ]

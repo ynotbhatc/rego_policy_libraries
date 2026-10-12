@@ -1,0 +1,1024 @@
+{
+ "catalog": {
+  "uuid": "fae1f091-3fc8-561b-9832-fa0359733c1b",
+  "metadata": {
+   "title": "Rego Policy Libraries — ncsc_caf (NCSC Cyber Assessment Framework 4.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "ncsc_caf"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "ncsc_caf-caf_b2_identity_access",
+    "class": "rego-module",
+    "title": "NCSC Cyber Assessment Framework 4.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ncsc_caf.b2_identity_access"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/compliance/ncsc_caf/caf_b2_identity_access.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ncsc_caf-ncsc_caf.b2_identity_access-1",
+      "title": "B2.a",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b2_identity_access#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b2_identity_access#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b2_identity_access"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9f91d5d-e73f-5cb2-8e58-ecf0945b8bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b2_identity_access-1_stmt",
+        "name": "statement",
+        "prose": "B2.a"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.b2_identity_access-2",
+      "title": "B2.b",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b2_identity_access#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b2_identity_access#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b2_identity_access"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9f91d5d-e73f-5cb2-8e58-ecf0945b8bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b2_identity_access-2_stmt",
+        "name": "statement",
+        "prose": "B2.b"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.b2_identity_access-3",
+      "title": "B2.c",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b2_identity_access#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b2_identity_access#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b2_identity_access"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9f91d5d-e73f-5cb2-8e58-ecf0945b8bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b2_identity_access-3_stmt",
+        "name": "statement",
+        "prose": "B2.c"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.b2_identity_access-4",
+      "title": "B2.d",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b2_identity_access#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b2_identity_access#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b2_identity_access"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9f91d5d-e73f-5cb2-8e58-ecf0945b8bbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b2_identity_access-4_stmt",
+        "name": "statement",
+        "prose": "B2.d"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "ncsc_caf-caf_b3_data_security",
+    "class": "rego-module",
+    "title": "NCSC Cyber Assessment Framework 4.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ncsc_caf.b3_data_security"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/compliance/ncsc_caf/caf_b3_data_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ncsc_caf-ncsc_caf.b3_data_security-1",
+      "title": "B3.b",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b3_data_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b3_data_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b3_data_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#11fd756f-1b26-5906-8f3f-b5d6dbfd8bed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b3_data_security-1_stmt",
+        "name": "statement",
+        "prose": "B3.b"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.b3_data_security-2",
+      "title": "B3.c",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b3_data_security#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b3_data_security#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b3_data_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#11fd756f-1b26-5906-8f3f-b5d6dbfd8bed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b3_data_security-2_stmt",
+        "name": "statement",
+        "prose": "B3.c"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.b3_data_security-3",
+      "title": "B3.d",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b3_data_security#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b3_data_security#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b3_data_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#11fd756f-1b26-5906-8f3f-b5d6dbfd8bed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b3_data_security-3_stmt",
+        "name": "statement",
+        "prose": "B3.d"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "ncsc_caf-caf_b4_system_security",
+    "class": "rego-module",
+    "title": "NCSC Cyber Assessment Framework 4.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ncsc_caf.b4_system_security"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/compliance/ncsc_caf/caf_b4_system_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ncsc_caf-ncsc_caf.b4_system_security-1",
+      "title": "B4.a",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b4_system_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b4_system_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b4_system_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62926925-9d1a-52dc-8754-8ead18b1423e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b4_system_security-1_stmt",
+        "name": "statement",
+        "prose": "B4.a"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.b4_system_security-2",
+      "title": "B4.b",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b4_system_security#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b4_system_security#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b4_system_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62926925-9d1a-52dc-8754-8ead18b1423e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b4_system_security-2_stmt",
+        "name": "statement",
+        "prose": "B4.b"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.b4_system_security-3",
+      "title": "B4.c",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b4_system_security#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b4_system_security#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b4_system_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62926925-9d1a-52dc-8754-8ead18b1423e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b4_system_security-3_stmt",
+        "name": "statement",
+        "prose": "B4.c"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.b4_system_security-4",
+      "title": "B4.d",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b4_system_security#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b4_system_security#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b4_system_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62926925-9d1a-52dc-8754-8ead18b1423e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b4_system_security-4_stmt",
+        "name": "statement",
+        "prose": "B4.d"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "ncsc_caf-caf_b5_resilience",
+    "class": "rego-module",
+    "title": "NCSC Cyber Assessment Framework 4.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ncsc_caf.b5_resilience"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/compliance/ncsc_caf/caf_b5_resilience.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ncsc_caf-ncsc_caf.b5_resilience-1",
+      "title": "B5.a",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b5_resilience#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b5_resilience#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b5_resilience"
+       }
+      ],
+      "links": [
+       {
+        "href": "#97d30500-f497-51be-9549-6107fcb99771",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b5_resilience-1_stmt",
+        "name": "statement",
+        "prose": "B5.a"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.b5_resilience-2",
+      "title": "B5.b",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b5_resilience#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b5_resilience#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b5_resilience"
+       }
+      ],
+      "links": [
+       {
+        "href": "#97d30500-f497-51be-9549-6107fcb99771",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b5_resilience-2_stmt",
+        "name": "statement",
+        "prose": "B5.b"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.b5_resilience-3",
+      "title": "B5.c",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.b5_resilience#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.b5_resilience#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.b5_resilience"
+       }
+      ],
+      "links": [
+       {
+        "href": "#97d30500-f497-51be-9549-6107fcb99771",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.b5_resilience-3_stmt",
+        "name": "statement",
+        "prose": "B5.c"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "ncsc_caf-caf_c1_security_monitoring",
+    "class": "rego-module",
+    "title": "NCSC Cyber Assessment Framework 4.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ncsc_caf.c1_security_monitoring"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/compliance/ncsc_caf/caf_c1_security_monitoring.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ncsc_caf-ncsc_caf.c1_security_monitoring-1",
+      "title": "C1.a",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.c1_security_monitoring#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.c1_security_monitoring#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.c1_security_monitoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9504eabe-5464-5c53-85bb-d0ff9bea40e8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.c1_security_monitoring-1_stmt",
+        "name": "statement",
+        "prose": "C1.a"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.c1_security_monitoring-2",
+      "title": "C1.b",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.c1_security_monitoring#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.c1_security_monitoring#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.c1_security_monitoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9504eabe-5464-5c53-85bb-d0ff9bea40e8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.c1_security_monitoring-2_stmt",
+        "name": "statement",
+        "prose": "C1.b"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.c1_security_monitoring-3",
+      "title": "C1.c",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.c1_security_monitoring#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.c1_security_monitoring#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.c1_security_monitoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9504eabe-5464-5c53-85bb-d0ff9bea40e8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.c1_security_monitoring-3_stmt",
+        "name": "statement",
+        "prose": "C1.c"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.c1_security_monitoring-4",
+      "title": "C1.d",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.c1_security_monitoring#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.c1_security_monitoring#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.c1_security_monitoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9504eabe-5464-5c53-85bb-d0ff9bea40e8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.c1_security_monitoring-4_stmt",
+        "name": "statement",
+        "prose": "C1.d"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.c1_security_monitoring-5",
+      "title": "C1.f",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.c1_security_monitoring#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.c1_security_monitoring#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.c1_security_monitoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9504eabe-5464-5c53-85bb-d0ff9bea40e8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.c1_security_monitoring-5_stmt",
+        "name": "statement",
+        "prose": "C1.f"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "ncsc_caf-caf_d1_response_recovery",
+    "class": "rego-module",
+    "title": "NCSC Cyber Assessment Framework 4.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ncsc_caf.d1_response_recovery"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/compliance/ncsc_caf/caf_d1_response_recovery.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ncsc_caf-ncsc_caf.d1_response_recovery-1",
+      "title": "D1.a",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.d1_response_recovery#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.d1_response_recovery#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.d1_response_recovery"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29b9b6d4-4923-5643-9fdc-8a69d16ce04a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.d1_response_recovery-1_stmt",
+        "name": "statement",
+        "prose": "D1.a"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.d1_response_recovery-2",
+      "title": "D1.b",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.d1_response_recovery#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.d1_response_recovery#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.d1_response_recovery"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29b9b6d4-4923-5643-9fdc-8a69d16ce04a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.d1_response_recovery-2_stmt",
+        "name": "statement",
+        "prose": "D1.b"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ncsc_caf-ncsc_caf.d1_response_recovery-3",
+      "title": "D1.c",
+      "props": [
+       {
+        "name": "label",
+        "value": "ncsc_caf.d1_response_recovery#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ncsc_caf.d1_response_recovery#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ncsc_caf.d1_response_recovery"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29b9b6d4-4923-5643-9fdc-8a69d16ce04a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ncsc_caf-ncsc_caf.d1_response_recovery-3_stmt",
+        "name": "statement",
+        "prose": "D1.c"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "d9f91d5d-e73f-5cb2-8e58-ecf0945b8bbc",
+     "title": "NCSC Cyber Assessment Framework 4.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ncsc_caf.b2_identity_access"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/compliance/ncsc_caf/caf_b2_identity_access.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "11fd756f-1b26-5906-8f3f-b5d6dbfd8bed",
+     "title": "NCSC Cyber Assessment Framework 4.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ncsc_caf.b3_data_security"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/compliance/ncsc_caf/caf_b3_data_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "62926925-9d1a-52dc-8754-8ead18b1423e",
+     "title": "NCSC Cyber Assessment Framework 4.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ncsc_caf.b4_system_security"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/compliance/ncsc_caf/caf_b4_system_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "97d30500-f497-51be-9549-6107fcb99771",
+     "title": "NCSC Cyber Assessment Framework 4.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ncsc_caf.b5_resilience"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/compliance/ncsc_caf/caf_b5_resilience.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "9504eabe-5464-5c53-85bb-d0ff9bea40e8",
+     "title": "NCSC Cyber Assessment Framework 4.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ncsc_caf.c1_security_monitoring"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/compliance/ncsc_caf/caf_c1_security_monitoring.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "29b9b6d4-4923-5643-9fdc-8a69d16ce04a",
+     "title": "NCSC Cyber Assessment Framework 4.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ncsc_caf.d1_response_recovery"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/compliance/ncsc_caf/caf_d1_response_recovery.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

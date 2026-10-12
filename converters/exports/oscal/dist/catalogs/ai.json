@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "85d99761-deee-5453-a391-6247192e6a81",
+  "uuid": "1d8d19b8-c392-559d-9274-6859a83e73da",
   "metadata": {
    "title": "Rego Policy Libraries — ai (AI Governance - Master Policy)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -66,6 +66,270 @@
     ],
     "controls": [
      {
+      "id": "ai-ai_governance-1",
+      "title": "AI system not authorized for this action",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f19e8b9a-04cd-5143-a417-bfcf714496f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-ai_governance-1_stmt",
+        "name": "statement",
+        "prose": "AI system not authorized for this action"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-ai_governance-2",
+      "title": "Context validation failed",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f19e8b9a-04cd-5143-a417-bfcf714496f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-ai_governance-2_stmt",
+        "name": "statement",
+        "prose": "Context validation failed"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-ai_governance-3",
+      "title": "Operation is blocked in current context",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f19e8b9a-04cd-5143-a417-bfcf714496f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-ai_governance-3_stmt",
+        "name": "statement",
+        "prose": "Operation is blocked in current context"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-ai_governance-4",
+      "title": "Justification required but not provided",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f19e8b9a-04cd-5143-a417-bfcf714496f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-ai_governance-4_stmt",
+        "name": "statement",
+        "prose": "Justification required but not provided"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-ai_governance-5",
+      "title": "AI system is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f19e8b9a-04cd-5143-a417-bfcf714496f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-ai_governance-5_stmt",
+        "name": "statement",
+        "prose": "AI system is disabled"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-ai_governance-6",
+      "title": "Emergency access window expired or never granted",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f19e8b9a-04cd-5143-a417-bfcf714496f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-ai_governance-6_stmt",
+        "name": "statement",
+        "prose": "Emergency access window expired or never granted"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-ai_governance-7",
+      "title": "Approval expired or not yet valid (timestamp outside its window)",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f19e8b9a-04cd-5143-a417-bfcf714496f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-ai_governance-7_stmt",
+        "name": "statement",
+        "prose": "Approval expired or not yet valid (timestamp outside its window)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-ai_governance-8",
+      "title": "Crown-jewel action (%v) requires dual-control approval (>=2 approvers) and justification",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_governance#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_governance#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f19e8b9a-04cd-5143-a417-bfcf714496f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-ai_governance-8_stmt",
+        "name": "statement",
+        "prose": "Crown-jewel action (%v) requires dual-control approval (>=2 approvers) and justification"
+       }
+      ],
+      "class": "governance"
+     },
+     {
       "id": "ai-ai_system",
       "title": "Implemented by a Rego rule in governance/ai/ai_governance_complete.rego (package ai_governance); see the rule body.",
       "props": [
@@ -85,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#392da3c7-5c60-59bc-9dd0-f9f1aec3176c",
+        "href": "#f19e8b9a-04cd-5143-a417-bfcf714496f1",
         "rel": "implementation"
        }
       ],
@@ -118,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#392da3c7-5c60-59bc-9dd0-f9f1aec3176c",
+        "href": "#f19e8b9a-04cd-5143-a417-bfcf714496f1",
         "rel": "implementation"
        }
       ],
@@ -175,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#52ded260-cdbe-5c47-9e1f-57623ec4730b",
+        "href": "#8cd0a711-e62f-515e-a099-6b2add3abf9a",
         "rel": "implementation"
        }
       ],
@@ -208,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#52ded260-cdbe-5c47-9e1f-57623ec4730b",
+        "href": "#8cd0a711-e62f-515e-a099-6b2add3abf9a",
         "rel": "implementation"
        }
       ],
@@ -241,7 +505,7 @@
       ],
       "links": [
        {
-        "href": "#52ded260-cdbe-5c47-9e1f-57623ec4730b",
+        "href": "#8cd0a711-e62f-515e-a099-6b2add3abf9a",
         "rel": "implementation"
        }
       ],
@@ -274,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#52ded260-cdbe-5c47-9e1f-57623ec4730b",
+        "href": "#8cd0a711-e62f-515e-a099-6b2add3abf9a",
         "rel": "implementation"
        }
       ],
@@ -307,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#52ded260-cdbe-5c47-9e1f-57623ec4730b",
+        "href": "#8cd0a711-e62f-515e-a099-6b2add3abf9a",
         "rel": "implementation"
        }
       ],
@@ -326,7 +590,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "392da3c7-5c60-59bc-9dd0-f9f1aec3176c",
+     "uuid": "f19e8b9a-04cd-5143-a417-bfcf714496f1",
      "title": "AI Governance - Master Policy",
      "props": [
       {
@@ -337,13 +601,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/governance/ai/ai_governance_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/governance/ai/ai_governance_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "52ded260-cdbe-5c47-9e1f-57623ec4730b",
+     "uuid": "8cd0a711-e62f-515e-a099-6b2add3abf9a",
      "title": "AI Governance - Authorization Policy",
      "props": [
       {
@@ -354,7 +618,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/governance/ai/authorization.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/governance/ai/authorization.rego",
        "media-type": "text/plain"
       }
      ]

@@ -11,6 +11,14 @@
 #   framework: soc2
 #   source: aicpa
 #   domains: [assurance]
+#   coverage:
+#     checks: 1
+#     cited: 1
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package soc2
 
 import rego.v1
@@ -42,3 +50,11 @@ soc2_assessment := {
 		"privacy": main.privacy_compliant,
 	},
 }
+#   coverage:
+#     checks: 1
+#     cited: 1
+#     density: stub
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

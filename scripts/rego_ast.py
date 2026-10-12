@@ -142,3 +142,163 @@ def first_message(rule):
                 if fmt["type"] == "string":
                     return fmt["value"]
     return None
+
+
+# ---------------------------------------------------------------------------------------------
+# v3: every shape the library uses to express a check, normalised to (control id | None, text, shape)
+# ---------------------------------------------------------------------------------------------
+SET_SUFFIXES = ("_violations", "_findings", "_deny", "_failures")
+ID_KEYS = ("stig_id", "control_id", "id", "control", "practice", "requirement", "rule_id", "recommendation")
+TEXT_KEYS = ("text", "title", "desc", "description", "name", "req", "requirement_text", "summary")
+CHECKMAP_SKIP = {"compliant", "violations", "achievement", "status", "summary", "report", "total", "score", "level",
+                 "findings", "passed", "failed", "percentage", "compliance_percentage", "details", "input", "data"}
+# report plumbing never counts as a check, whatever object it sits in
+CHECKMAP_SKIP_RE = re.compile(r"(summary|total|section|count|percentage|status|result|_violations$|_findings$|assessed|"
+                              r"cluster_name|requirements_met|modules$|partitions$|evaluated|compliant|timestamp|version|"
+                              r"benchmark|framework|standard|domain|name$|title|description|severity|remediation|recommendation|"
+                              r"^(gaps|not_covered|satisfied|approved|requires_approval|affected_|achieved|maturity|.*_list$|.*_score$))", re.I)
+CITE = re.compile(r"^([A-Za-z0-9§][A-Za-z0-9 §.\-()/_]{0,58}?)\s*:\s+(.+)$")
+
+
+def split_citation(msg):
+    """'CIS 1.3.1: AIDE is not installed' -> ('CIS 1.3.1', 'AIDE is not installed'); a prefix must hold a digit
+    (control ids do; 'Note: ...' does not). Returns (None, msg) when there is no citation."""
+    m = CITE.match(msg or "")
+    if m and re.search(r"\d", m.group(1)):
+        return m.group(1).strip(), m.group(2).strip()
+    m = LEAD_NUM.match(msg or "")   # "1.1.1 Ensure NGINX is installed ..." (no colon)
+    if m:
+        return m.group(1), m.group(2).strip()
+    return None, (msg or "").strip()
+
+
+def _text_of(obj_term):
+    fields = {k["value"]: v for k, v in obj_term["value"] if k["type"] == "string"}
+    for k in TEXT_KEYS:
+        v = fields.get(k)
+        if v and v["type"] == "string":
+            return v["value"]
+    return ""
+
+
+LEAD_NUM = re.compile(r"^(\d+(?:\.\d+)+)\s+(.+)$")
+
+
+def _msg_of(obj_term):
+    fields = {k["value"]: v for k, v in obj_term["value"] if k["type"] == "string"}
+    for k in ("msg", "message", "finding", "violation"):
+        v = fields.get(k)
+        if v and v["type"] == "string":
+            return v["value"]
+    return None
+
+
+def _id_of(obj_term):
+    fields = {k["value"]: v for k, v in obj_term["value"] if k["type"] == "string"}
+    for k in ID_KEYS:
+        v = fields.get(k)
+        if v and v["type"] == "string" and v["value"].strip():
+            return v["value"].strip()
+    return None
+
+
+def _walk_terms(term, out, top_report=False):
+    """collect check items from array literals and check maps anywhere in a term tree (head values and body
+    expressions). top_report: this object is a report literal itself, so its own keys are plumbing, not checks."""
+    if not isinstance(term, dict):
+        return
+    t = term.get("type")
+    if t == "array":
+        for el in term["value"]:
+            if el["type"] == "object":
+                cid = _id_of(el)
+                if cid:
+                    out.append((cid, _text_of(el), "array-object"))
+                else:
+                    msg = _msg_of(el)
+                    if msg:
+                        mid, text = split_citation(msg)
+                        out.append((mid, text, "array-object"))
+            elif el["type"] == "arraycomprehension":
+                head = el["value"].get("term", {})
+                if head.get("type") == "string":
+                    cid, text = split_citation(head["value"])
+                    out.append((cid, text or head["value"], "array-comprehension"))
+            elif el["type"] == "string":
+                cid, text = split_citation(el["value"])
+                if cid:
+                    out.append((cid, text, "array-string"))
+        for el in term["value"]:
+            _walk_terms(el, out)
+    elif t in ("arraycomprehension", "setcomprehension", "objectcomprehension"):
+        for expr in term["value"].get("body", []):
+            for x in (expr.get("terms") if isinstance(expr.get("terms"), list) else [expr.get("terms")]):
+                _walk_terms(x, out)
+    elif t == "call":
+        for x in term["value"][1:]:
+            _walk_terms(x, out)
+    elif t == "object":
+        # a bare rule name is a "var" term in OPA's AST; a dotted one is a one-element "ref"
+        refs = [(k["value"], v) for k, v in term["value"] if k["type"] == "string" and k["value"] not in CHECKMAP_SKIP
+                and not CHECKMAP_SKIP_RE.search(k["value"]) and not top_report
+                and (v["type"] == "var" or (v["type"] == "ref" and len(v["value"]) == 1 and v["value"][0]["type"] == "var"))
+                and not str(v.get("value", "")).startswith("_")]
+        if len(refs) >= 3:
+            for k, v in refs:
+                out.append((None, k.replace("_", " "), "check-map:" + k))
+        for k, v in term["value"]:
+            _walk_terms(v, out)
+
+
+def items(ast):
+    """Every check a module expresses, as (control id or None, text, shape). The published rule (v3):
+      set-rule         a multi-value rule named violations/violation/deny/warn/findings/finding or ending in
+                       _violations/_findings/_deny/_failures: one item, id from the message citation if any
+      table-row        a leaf object row of a top-level table, or a string row of a check table (not scaffolding)
+      finding-rule     a value rule named finding_* whose value is an object with an id key (STIG modules)
+      array-*          inside any array literal (head or body): an object with an id key, a single-element
+                       comprehension whose string carries a citation, or a cited string literal
+    Items are later de-duplicated per file by control id: a control evaluated by several rules is one check;
+    only set-rules without a citation count individually."""
+    out = []
+    for r in ast.get("rules", []):
+        h = r["head"]; name = rule_name(r) or ""
+        if "key" in h and (name in BODY_NAMES or name.endswith(SET_SUFFIXES) or name.startswith(("violation_", "violations_", "deny_"))):
+            msg = first_message(r)
+            cid, text = split_citation(msg) if msg else (None, "")
+            out.append((cid, text or (msg or ""), "set-rule"))
+            continue
+        if "value" in h and h["value"]["type"] == "object" and "key" not in h and not r.get("default"):
+            if name.startswith("finding_"):
+                cid = _id_of(h["value"])
+                if cid:
+                    out.append((cid, _text_of(h["value"]), "finding-rule"))
+                continue
+            _walk_terms(h["value"], out, top_report=bool(name and (EXCLUDE.match(name) or SCAFFOLD.match(name))))
+            if name and not EXCLUDE.match(name):
+                for k, v in [(k["value"], v) for k, v in h["value"]["value"] if k["type"] == "string"]:
+                    if not ID_KEY.match(k):
+                        continue
+                    if v["type"] == "object" and v["value"]:
+                        for lk, lv in leaf_rows(k, v):
+                            out.append((lk, _text_of(lv), "table-row"))
+                    elif v["type"] == "string" and INCLUDE.search(name) and not SCAFFOLD.match(name):
+                        cid, text = split_citation(v["value"])
+                        out.append((cid or k, text, "table-row"))
+            continue
+        # arrays in head values and bodies (STIG findings lists, CMMC practices, comprehension-of-arrays modules)
+        if "value" in h:
+            _walk_terms(h["value"], out)
+        for expr in r.get("body", []):
+            terms = expr.get("terms")
+            for x in (terms if isinstance(terms, list) else [terms]):
+                _walk_terms(x, out)
+    return out
+
+
+def checks(ast):
+    """(count, cited_ids, uncited) under the v3 rule: distinct control ids + uncited set-rules"""
+    its = items(ast)
+    ids = {cid for cid, _, _ in its if cid}
+    uncited = sum(1 for cid, _, shape in its if not cid and (shape in ("set-rule", "array-comprehension", "array-object") or shape.startswith("check-map:")))
+    return len(ids) + uncited, ids, uncited

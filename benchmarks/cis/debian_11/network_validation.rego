@@ -5,6 +5,14 @@
 #   framework: cis_debian_11
 #   source: cis
 #   domains: [linux, debian]
+#   coverage:
+#     checks: 16
+#     cited: 16
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_debian_11.network
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Sections 3.1/3.2/3.3: Network Configuration
@@ -186,3 +194,11 @@ report := {
 	"section": "3.1-3.3 Network Configuration",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",
 }
+#   coverage:
+#     checks: 16
+#     cited: 16
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

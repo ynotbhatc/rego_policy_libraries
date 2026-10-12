@@ -5,6 +5,14 @@
 #   framework: corporate
 #   source: aac
 #   domains: [corporate]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package corporate.environment.controls
 
 import rego.v1
@@ -565,4 +573,12 @@ environment_control_metadata := {
     "enforcement_level": "mandatory",
     "review_frequency": "semi_annual",
     "exception_approval_required": true
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

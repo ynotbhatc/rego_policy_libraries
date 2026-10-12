@@ -5,6 +5,14 @@
 #   framework: tsa_pipeline
 #   source: tsa
 #   domains: [ot, pipeline]
+#   coverage:
+#     checks: 11
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package tsa_pipeline.sd02_records
 
 import rego.v1
@@ -184,3 +192,11 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+#   coverage:
+#     checks: 11
+#     cited: 10
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

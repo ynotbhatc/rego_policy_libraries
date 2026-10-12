@@ -9,6 +9,14 @@
 #   framework: stig_apache_2_4_unix
 #   source: disa
 #   domains: [web-server]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.apache_2_4_unix.main
 
 import data.stig.apache_2_4_unix
@@ -67,3 +75,11 @@ compliance_report := object.union(_upstream, {
 compliant := _compliant
 
 violations := _open_findings
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

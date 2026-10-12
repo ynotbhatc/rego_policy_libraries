@@ -5,6 +5,14 @@
 #   framework: stig_ms_sql_2016
 #   source: disa
 #   domains: [database, mssql]
+#   coverage:
+#     checks: 13
+#     cited: 13
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package stig.ms_sql_2016.core
 
 # DISA STIG — MS SQL Server 2016 Instance Security Technical Implementation Guide
@@ -244,3 +252,11 @@ findings := [
 default compliant := false
 
 compliant if count([f | some f in findings; f.status == "Open"]) == 0
+#   coverage:
+#     checks: 13
+#     cited: 13
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

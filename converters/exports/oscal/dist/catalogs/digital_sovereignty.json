@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "cda4a0fe-34a3-50ef-8ebf-f11a2ba93b55",
+  "uuid": "0b411061-3e97-59a3-a450-44f701de786f",
   "metadata": {
    "title": "Rego Policy Libraries — digital_sovereignty (Digital Sovereignty — AI/ML Sovereignty)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        }
       ],
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        }
       ],
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        }
       ],
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        }
       ],
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        }
       ],
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        }
       ],
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        }
       ],
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        }
       ],
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        }
       ],
@@ -391,6 +391,336 @@
         "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-10_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/ai_sovereignty.rego (package digital_sovereignty.ai_sovereignty); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-11",
+      "title": "AI-001 no regulated data to foreign ai",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.ai_sovereignty#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.ai_sovereignty#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.ai_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-11_stmt",
+        "name": "statement",
+        "prose": "AI-001 no regulated data to foreign ai"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-12",
+      "title": "AI-002 training opt out",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.ai_sovereignty#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.ai_sovereignty#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.ai_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-12_stmt",
+        "name": "statement",
+        "prose": "AI-002 training opt out"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-13",
+      "title": "AI-003 inference in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.ai_sovereignty#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.ai_sovereignty#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.ai_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-13_stmt",
+        "name": "statement",
+        "prose": "AI-003 inference in jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-14",
+      "title": "AI-004 training data in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.ai_sovereignty#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.ai_sovereignty#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.ai_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-14_stmt",
+        "name": "statement",
+        "prose": "AI-004 training data in jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-15",
+      "title": "AI-005 no foreign govt models",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.ai_sovereignty#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.ai_sovereignty#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.ai_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-15_stmt",
+        "name": "statement",
+        "prose": "AI-005 no foreign govt models"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-16",
+      "title": "AI-006 foreign models audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.ai_sovereignty#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.ai_sovereignty#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.ai_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-16_stmt",
+        "name": "statement",
+        "prose": "AI-006 foreign models audited"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-17",
+      "title": "AI-007 governance policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.ai_sovereignty#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.ai_sovereignty#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.ai_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-17_stmt",
+        "name": "statement",
+        "prose": "AI-007 governance policy"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-18",
+      "title": "AI-008 shadow ai controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.ai_sovereignty#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.ai_sovereignty#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.ai_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-18_stmt",
+        "name": "statement",
+        "prose": "AI-008 shadow ai controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-19",
+      "title": "AI-009 bias audit conducted",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.ai_sovereignty#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.ai_sovereignty#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.ai_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-19_stmt",
+        "name": "statement",
+        "prose": "AI-009 bias audit conducted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-20",
+      "title": "AI-010 fairness controls implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.ai_sovereignty#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.ai_sovereignty#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.ai_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.ai_sovereignty-20_stmt",
+        "name": "statement",
+        "prose": "AI-010 fairness controls implemented"
        }
       ],
       "class": "compliance"
@@ -415,47 +745,47 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        },
        {
-        "href": "#fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
         "rel": "implementation"
        },
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        },
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        },
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        },
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        },
        {
-        "href": "#f20b4263-4bce-5168-a3fb-60e8bfbdaf1b",
+        "href": "#0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
         "rel": "implementation"
        },
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        },
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        },
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        },
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -538,7 +868,7 @@
       ],
       "links": [
        {
-        "href": "#1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+        "href": "#e761d912-4d22-5f5b-87bd-b1456c088727",
         "rel": "implementation"
        }
       ],
@@ -595,7 +925,7 @@
       ],
       "links": [
        {
-        "href": "#fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
         "rel": "implementation"
        }
       ],
@@ -628,7 +958,7 @@
       ],
       "links": [
        {
-        "href": "#fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
         "rel": "implementation"
        }
       ],
@@ -661,7 +991,7 @@
       ],
       "links": [
        {
-        "href": "#fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
         "rel": "implementation"
        }
       ],
@@ -694,7 +1024,7 @@
       ],
       "links": [
        {
-        "href": "#fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
         "rel": "implementation"
        }
       ],
@@ -727,7 +1057,7 @@
       ],
       "links": [
        {
-        "href": "#fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
         "rel": "implementation"
        }
       ],
@@ -760,7 +1090,7 @@
       ],
       "links": [
        {
-        "href": "#fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
         "rel": "implementation"
        }
       ],
@@ -793,7 +1123,7 @@
       ],
       "links": [
        {
-        "href": "#fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
         "rel": "implementation"
        }
       ],
@@ -826,7 +1156,7 @@
       ],
       "links": [
        {
-        "href": "#fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
         "rel": "implementation"
        }
       ],
@@ -859,7 +1189,7 @@
       ],
       "links": [
        {
-        "href": "#fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
         "rel": "implementation"
        }
       ],
@@ -892,7 +1222,7 @@
       ],
       "links": [
        {
-        "href": "#fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
         "rel": "implementation"
        }
       ],
@@ -901,6 +1231,336 @@
         "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-10_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/breach_notification_sovereignty.rego (package digital_sovereignty.breach_notification_sovereignty); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-11",
+      "title": "BN-001 notification timeline",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.breach_notification_sovereignty#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.breach_notification_sovereignty#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.breach_notification_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-11_stmt",
+        "name": "statement",
+        "prose": "BN-001 notification timeline"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-12",
+      "title": "BN-002 early warning timeline",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.breach_notification_sovereignty#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.breach_notification_sovereignty#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.breach_notification_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-12_stmt",
+        "name": "statement",
+        "prose": "BN-002 early warning timeline"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-13",
+      "title": "BN-003 procedure documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.breach_notification_sovereignty#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.breach_notification_sovereignty#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.breach_notification_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-13_stmt",
+        "name": "statement",
+        "prose": "BN-003 procedure documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-14",
+      "title": "BN-004 supervisory authority jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.breach_notification_sovereignty#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.breach_notification_sovereignty#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.breach_notification_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-14_stmt",
+        "name": "statement",
+        "prose": "BN-004 supervisory authority jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-15",
+      "title": "BN-005 notification channel sovereign",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.breach_notification_sovereignty#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.breach_notification_sovereignty#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.breach_notification_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-15_stmt",
+        "name": "statement",
+        "prose": "BN-005 notification channel sovereign"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-16",
+      "title": "BN-006 processor notification procedure",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.breach_notification_sovereignty#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.breach_notification_sovereignty#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.breach_notification_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-16_stmt",
+        "name": "statement",
+        "prose": "BN-006 processor notification procedure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-17",
+      "title": "BN-007 breach register",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.breach_notification_sovereignty#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.breach_notification_sovereignty#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.breach_notification_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-17_stmt",
+        "name": "statement",
+        "prose": "BN-007 breach register"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-18",
+      "title": "BN-008 forensic evidence jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.breach_notification_sovereignty#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.breach_notification_sovereignty#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.breach_notification_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-18_stmt",
+        "name": "statement",
+        "prose": "BN-008 forensic evidence jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-19",
+      "title": "BN-009 breach comms encrypted",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.breach_notification_sovereignty#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.breach_notification_sovereignty#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.breach_notification_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-19_stmt",
+        "name": "statement",
+        "prose": "BN-009 breach comms encrypted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-20",
+      "title": "BN-010 foreign le controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.breach_notification_sovereignty#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.breach_notification_sovereignty#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.breach_notification_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81474480-51d7-5d6e-9a03-162f1a3686fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.breach_notification_sovereignty-20_stmt",
+        "name": "statement",
+        "prose": "BN-010 foreign le controlled"
        }
       ],
       "class": "compliance"
@@ -949,7 +1609,7 @@
       ],
       "links": [
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        }
       ],
@@ -982,7 +1642,7 @@
       ],
       "links": [
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        }
       ],
@@ -1015,7 +1675,7 @@
       ],
       "links": [
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        }
       ],
@@ -1048,7 +1708,7 @@
       ],
       "links": [
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        }
       ],
@@ -1081,7 +1741,7 @@
       ],
       "links": [
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        }
       ],
@@ -1114,7 +1774,7 @@
       ],
       "links": [
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        }
       ],
@@ -1147,7 +1807,7 @@
       ],
       "links": [
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        }
       ],
@@ -1180,7 +1840,7 @@
       ],
       "links": [
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        }
       ],
@@ -1213,7 +1873,7 @@
       ],
       "links": [
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        }
       ],
@@ -1246,7 +1906,7 @@
       ],
       "links": [
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        }
       ],
@@ -1279,7 +1939,7 @@
       ],
       "links": [
        {
-        "href": "#8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
         "rel": "implementation"
        }
       ],
@@ -1288,6 +1948,336 @@
         "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-11_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/cryptographic_sovereignty.rego (package digital_sovereignty.cryptographic_sovereignty); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-12",
+      "title": "CS-001 customer managed keys",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cryptographic_sovereignty#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cryptographic_sovereignty#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cryptographic_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-12_stmt",
+        "name": "statement",
+        "prose": "CS-001 customer managed keys"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-13",
+      "title": "CS-002 sovereign data hyok",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cryptographic_sovereignty#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cryptographic_sovereignty#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cryptographic_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-13_stmt",
+        "name": "statement",
+        "prose": "CS-002 sovereign data hyok"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-14",
+      "title": "CS-003 no unencrypted regulated",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cryptographic_sovereignty#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cryptographic_sovereignty#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cryptographic_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-14_stmt",
+        "name": "statement",
+        "prose": "CS-003 no unencrypted regulated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-15",
+      "title": "CS-004 keys in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cryptographic_sovereignty#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cryptographic_sovereignty#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cryptographic_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-15_stmt",
+        "name": "statement",
+        "prose": "CS-004 keys in jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-16",
+      "title": "CS-005 hsm deployed",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cryptographic_sovereignty#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cryptographic_sovereignty#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cryptographic_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-16_stmt",
+        "name": "statement",
+        "prose": "CS-005 hsm deployed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-17",
+      "title": "CS-006 no hsm backdoor",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cryptographic_sovereignty#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cryptographic_sovereignty#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cryptographic_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-17_stmt",
+        "name": "statement",
+        "prose": "CS-006 no hsm backdoor"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-18",
+      "title": "CS-007 key rotation policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cryptographic_sovereignty#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cryptographic_sovereignty#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cryptographic_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-18_stmt",
+        "name": "statement",
+        "prose": "CS-007 key rotation policy"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-19",
+      "title": "CS-008 no foreign key escrow",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cryptographic_sovereignty#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cryptographic_sovereignty#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cryptographic_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-19_stmt",
+        "name": "statement",
+        "prose": "CS-008 no foreign key escrow"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-20",
+      "title": "CS-009 no prohibited algorithms",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cryptographic_sovereignty#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cryptographic_sovereignty#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cryptographic_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-20_stmt",
+        "name": "statement",
+        "prose": "CS-009 no prohibited algorithms"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-21",
+      "title": "CS-011 dual control",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cryptographic_sovereignty#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cryptographic_sovereignty#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cryptographic_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cryptographic_sovereignty-21_stmt",
+        "name": "statement",
+        "prose": "CS-011 dual control"
        }
       ],
       "class": "compliance"
@@ -1336,7 +2326,7 @@
       ],
       "links": [
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        }
       ],
@@ -1369,7 +2359,7 @@
       ],
       "links": [
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        }
       ],
@@ -1402,7 +2392,7 @@
       ],
       "links": [
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        }
       ],
@@ -1435,7 +2425,7 @@
       ],
       "links": [
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        }
       ],
@@ -1468,7 +2458,7 @@
       ],
       "links": [
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        }
       ],
@@ -1501,7 +2491,7 @@
       ],
       "links": [
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        }
       ],
@@ -1534,7 +2524,7 @@
       ],
       "links": [
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        }
       ],
@@ -1567,7 +2557,7 @@
       ],
       "links": [
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        }
       ],
@@ -1600,7 +2590,7 @@
       ],
       "links": [
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        }
       ],
@@ -1633,7 +2623,7 @@
       ],
       "links": [
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        }
       ],
@@ -1666,7 +2656,7 @@
       ],
       "links": [
        {
-        "href": "#1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
         "rel": "implementation"
        }
       ],
@@ -1675,6 +2665,369 @@
         "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-11_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/cyber_resilience_sovereignty.rego (package digital_sovereignty.cyber_resilience_sovereignty); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-12",
+      "title": "CR-001 redundancy tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-12_stmt",
+        "name": "statement",
+        "prose": "CR-001 redundancy tested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-13",
+      "title": "CR-002 recovery meets objectives",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-13_stmt",
+        "name": "statement",
+        "prose": "CR-002 recovery meets objectives"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-14",
+      "title": "CR-003 backup immutable sovereign",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-14_stmt",
+        "name": "statement",
+        "prose": "CR-003 backup immutable sovereign"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-15",
+      "title": "CR-004 adversarial testing current",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-15_stmt",
+        "name": "statement",
+        "prose": "CR-004 adversarial testing current"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-16",
+      "title": "CR-005 ir plan tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-16_stmt",
+        "name": "statement",
+        "prose": "CR-005 ir plan tested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-17",
+      "title": "CR-006 nation state scenario",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-17_stmt",
+        "name": "statement",
+        "prose": "CR-006 nation state scenario"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-18",
+      "title": "CR-007 threat intelligence active",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-18_stmt",
+        "name": "statement",
+        "prose": "CR-007 threat intelligence active"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-19",
+      "title": "CR-008 supply chain resilience",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-19_stmt",
+        "name": "statement",
+        "prose": "CR-008 supply chain resilience"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-20",
+      "title": "CR-009 mttr within threshold",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-20_stmt",
+        "name": "statement",
+        "prose": "CR-009 mttr within threshold"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-21",
+      "title": "CR-010 board oversight current",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-21_stmt",
+        "name": "statement",
+        "prose": "CR-010 board oversight current"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-22",
+      "title": "CR-011 staff training current",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.cyber_resilience_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40be5643-4434-5953-b187-c57fcf29a5d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.cyber_resilience_sovereignty-22_stmt",
+        "name": "statement",
+        "prose": "CR-011 staff training current"
        }
       ],
       "class": "compliance"
@@ -1723,7 +3076,7 @@
       ],
       "links": [
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        }
       ],
@@ -1756,7 +3109,7 @@
       ],
       "links": [
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        }
       ],
@@ -1789,7 +3142,7 @@
       ],
       "links": [
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        }
       ],
@@ -1822,7 +3175,7 @@
       ],
       "links": [
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        }
       ],
@@ -1855,7 +3208,7 @@
       ],
       "links": [
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        }
       ],
@@ -1888,7 +3241,7 @@
       ],
       "links": [
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        }
       ],
@@ -1921,7 +3274,7 @@
       ],
       "links": [
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        }
       ],
@@ -1954,7 +3307,7 @@
       ],
       "links": [
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        }
       ],
@@ -1987,7 +3340,7 @@
       ],
       "links": [
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        }
       ],
@@ -2020,7 +3373,7 @@
       ],
       "links": [
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        }
       ],
@@ -2029,6 +3382,336 @@
         "id": "digital_sovereignty-digital_sovereignty.data_residency-10_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/data_residency.rego (package digital_sovereignty.data_residency); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.data_residency-11",
+      "title": "DR-001 regulated data in approved regions",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.data_residency#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.data_residency#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.data_residency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.data_residency-11_stmt",
+        "name": "statement",
+        "prose": "DR-001 regulated data in approved regions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.data_residency-12",
+      "title": "DR-002 sovereign data not in public cloud",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.data_residency#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.data_residency#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.data_residency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.data_residency-12_stmt",
+        "name": "statement",
+        "prose": "DR-002 sovereign data not in public cloud"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.data_residency-13",
+      "title": "DR-003 backups in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.data_residency#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.data_residency#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.data_residency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.data_residency-13_stmt",
+        "name": "statement",
+        "prose": "DR-003 backups in jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.data_residency-14",
+      "title": "DR-004 dr in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.data_residency#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.data_residency#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.data_residency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.data_residency-14_stmt",
+        "name": "statement",
+        "prose": "DR-004 dr in jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.data_residency-15",
+      "title": "DR-005 metadata in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.data_residency#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.data_residency#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.data_residency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.data_residency-15_stmt",
+        "name": "statement",
+        "prose": "DR-005 metadata in jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.data_residency-16",
+      "title": "DR-006 telemetry in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.data_residency#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.data_residency#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.data_residency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.data_residency-16_stmt",
+        "name": "statement",
+        "prose": "DR-006 telemetry in jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.data_residency-17",
+      "title": "DR-007 no vendor log access",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.data_residency#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.data_residency#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.data_residency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.data_residency-17_stmt",
+        "name": "statement",
+        "prose": "DR-007 no vendor log access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.data_residency-18",
+      "title": "DR-008 cross border transfers controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.data_residency#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.data_residency#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.data_residency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.data_residency-18_stmt",
+        "name": "statement",
+        "prose": "DR-008 cross border transfers controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.data_residency-19",
+      "title": "DR-009 no regulated data to unapproved",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.data_residency#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.data_residency#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.data_residency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.data_residency-19_stmt",
+        "name": "statement",
+        "prose": "DR-009 no regulated data to unapproved"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.data_residency-20",
+      "title": "DR-010 data flow inventory",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.data_residency#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.data_residency#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.data_residency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.data_residency-20_stmt",
+        "name": "statement",
+        "prose": "DR-010 data flow inventory"
        }
       ],
       "class": "compliance"
@@ -2053,7 +3736,7 @@
       ],
       "links": [
        {
-        "href": "#57a9ef83-47f5-5710-8f80-663134ebc3ff",
+        "href": "#4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
         "rel": "implementation"
        }
       ],
@@ -2110,7 +3793,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2143,7 +3826,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2176,7 +3859,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2209,7 +3892,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2242,7 +3925,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2275,7 +3958,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2308,7 +3991,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2341,7 +4024,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2374,7 +4057,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2407,7 +4090,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2440,7 +4123,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2473,7 +4156,7 @@
       ],
       "links": [
        {
-        "href": "#13d43562-a412-57ba-8af0-13b4cae624a8",
+        "href": "#a83338bd-cc6c-5412-9e60-0f5dde710431",
         "rel": "implementation"
        }
       ],
@@ -2530,7 +4213,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2563,7 +4246,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2596,7 +4279,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2629,7 +4312,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2662,7 +4345,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2695,7 +4378,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2728,7 +4411,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2761,7 +4444,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2794,7 +4477,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2827,7 +4510,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2860,7 +4543,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2893,7 +4576,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2926,7 +4609,7 @@
       ],
       "links": [
        {
-        "href": "#50097328-0175-5671-bfeb-bc8b4a29ace3",
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
         "rel": "implementation"
        }
       ],
@@ -2935,6 +4618,369 @@
         "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-13_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/dora_sovereignty.rego (package digital_sovereignty.dora_sovereignty); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-14",
+      "title": "DORA-002 ict asset register",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.dora_sovereignty#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.dora_sovereignty#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.dora_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-14_stmt",
+        "name": "statement",
+        "prose": "DORA-002 ict asset register"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-15",
+      "title": "DORA-003 rto rpo defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.dora_sovereignty#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.dora_sovereignty#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.dora_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-15_stmt",
+        "name": "statement",
+        "prose": "DORA-003 rto rpo defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-16",
+      "title": "DORA-004 business continuity tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.dora_sovereignty#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.dora_sovereignty#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.dora_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-16_stmt",
+        "name": "statement",
+        "prose": "DORA-004 business continuity tested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-17",
+      "title": "DORA-005 incident classification",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.dora_sovereignty#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.dora_sovereignty#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.dora_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-17_stmt",
+        "name": "statement",
+        "prose": "DORA-005 incident classification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-18",
+      "title": "DORA-006 initial notification 4h",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.dora_sovereignty#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.dora_sovereignty#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.dora_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-18_stmt",
+        "name": "statement",
+        "prose": "DORA-006 initial notification 4h"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-19",
+      "title": "DORA-007 intermediate report 72h",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.dora_sovereignty#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.dora_sovereignty#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.dora_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-19_stmt",
+        "name": "statement",
+        "prose": "DORA-007 intermediate report 72h"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-20",
+      "title": "DORA-008 resilience testing annual",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.dora_sovereignty#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.dora_sovereignty#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.dora_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-20_stmt",
+        "name": "statement",
+        "prose": "DORA-008 resilience testing annual"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-21",
+      "title": "DORA-010 critical ict register",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.dora_sovereignty#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.dora_sovereignty#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.dora_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-21_stmt",
+        "name": "statement",
+        "prose": "DORA-010 critical ict register"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-22",
+      "title": "DORA-011 exit strategies",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.dora_sovereignty#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.dora_sovereignty#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.dora_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-22_stmt",
+        "name": "statement",
+        "prose": "DORA-011 exit strategies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-23",
+      "title": "DORA-012 contractual requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.dora_sovereignty#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.dora_sovereignty#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.dora_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-23_stmt",
+        "name": "statement",
+        "prose": "DORA-012 contractual requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-24",
+      "title": "DORA-013 concentration risk",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.dora_sovereignty#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.dora_sovereignty#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.dora_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c77a6b8-3b6c-5182-a176-1130ba6bc171",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.dora_sovereignty-24_stmt",
+        "name": "statement",
+        "prose": "DORA-013 concentration risk"
        }
       ],
       "class": "compliance"
@@ -2983,7 +5029,7 @@
       ],
       "links": [
        {
-        "href": "#f20b4263-4bce-5168-a3fb-60e8bfbdaf1b",
+        "href": "#0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
         "rel": "implementation"
        }
       ],
@@ -3016,7 +5062,7 @@
       ],
       "links": [
        {
-        "href": "#f20b4263-4bce-5168-a3fb-60e8bfbdaf1b",
+        "href": "#0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
         "rel": "implementation"
        }
       ],
@@ -3049,7 +5095,7 @@
       ],
       "links": [
        {
-        "href": "#f20b4263-4bce-5168-a3fb-60e8bfbdaf1b",
+        "href": "#0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
         "rel": "implementation"
        }
       ],
@@ -3082,7 +5128,7 @@
       ],
       "links": [
        {
-        "href": "#f20b4263-4bce-5168-a3fb-60e8bfbdaf1b",
+        "href": "#0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
         "rel": "implementation"
        }
       ],
@@ -3115,7 +5161,7 @@
       ],
       "links": [
        {
-        "href": "#f20b4263-4bce-5168-a3fb-60e8bfbdaf1b",
+        "href": "#0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
         "rel": "implementation"
        }
       ],
@@ -3148,7 +5194,7 @@
       ],
       "links": [
        {
-        "href": "#f20b4263-4bce-5168-a3fb-60e8bfbdaf1b",
+        "href": "#0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
         "rel": "implementation"
        }
       ],
@@ -3157,6 +5203,105 @@
         "id": "digital_sovereignty-digital_sovereignty.geopolitical_sovereignty-6_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/geopolitical_sovereignty.rego (package digital_sovereignty.geopolitical_sovereignty); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.geopolitical_sovereignty-7",
+      "title": "GT-001 risk register current",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.geopolitical_sovereignty#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.geopolitical_sovereignty#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.geopolitical_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.geopolitical_sovereignty-7_stmt",
+        "name": "statement",
+        "prose": "GT-001 risk register current"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.geopolitical_sovereignty-8",
+      "title": "GT-002 event triggers documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.geopolitical_sovereignty#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.geopolitical_sovereignty#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.geopolitical_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.geopolitical_sovereignty-8_stmt",
+        "name": "statement",
+        "prose": "GT-002 event triggers documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.geopolitical_sovereignty-9",
+      "title": "GT-005 regulatory monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.geopolitical_sovereignty#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.geopolitical_sovereignty#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.geopolitical_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.geopolitical_sovereignty-9_stmt",
+        "name": "statement",
+        "prose": "GT-005 regulatory monitoring"
        }
       ],
       "class": "compliance"
@@ -3181,7 +5326,7 @@
       ],
       "links": [
        {
-        "href": "#f20b4263-4bce-5168-a3fb-60e8bfbdaf1b",
+        "href": "#0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
         "rel": "implementation"
        }
       ],
@@ -3238,7 +5383,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3271,7 +5416,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3304,7 +5449,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3337,7 +5482,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3370,7 +5515,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3403,7 +5548,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3436,7 +5581,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3469,7 +5614,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3502,7 +5647,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3535,7 +5680,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3568,7 +5713,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3601,7 +5746,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3634,7 +5779,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3667,7 +5812,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3676,6 +5821,402 @@
         "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-14_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego (package digital_sovereignty.infrastructure_sovereignty); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-15",
+      "title": "IS-001 cloud act risk mitigated",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-15_stmt",
+        "name": "statement",
+        "prose": "IS-001 cloud act risk mitigated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-16",
+      "title": "IS-002 sovereign workloads protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-16_stmt",
+        "name": "statement",
+        "prose": "IS-002 sovereign workloads protected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-17",
+      "title": "IS-003 provider concentration",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-17_stmt",
+        "name": "statement",
+        "prose": "IS-003 provider concentration"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-18",
+      "title": "IS-004 foreign concentration",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-18_stmt",
+        "name": "statement",
+        "prose": "IS-004 foreign concentration"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-19",
+      "title": "IS-005 hardware supply chain",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-19_stmt",
+        "name": "statement",
+        "prose": "IS-005 hardware supply chain"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-20",
+      "title": "IS-006 no hardware backdoors",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-20_stmt",
+        "name": "statement",
+        "prose": "IS-006 no hardware backdoors"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-21",
+      "title": "IS-007 sovereign infra",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-21_stmt",
+        "name": "statement",
+        "prose": "IS-007 sovereign infra"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-22",
+      "title": "IS-008 dns sovereignty",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-22_stmt",
+        "name": "statement",
+        "prose": "IS-008 dns sovereignty"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-23",
+      "title": "IS-009 exit strategy",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-23_stmt",
+        "name": "statement",
+        "prose": "IS-009 exit strategy"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-24",
+      "title": "IS-010 data portability",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-24_stmt",
+        "name": "statement",
+        "prose": "IS-010 data portability"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-25",
+      "title": "IS-011 cloud act response",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-25_stmt",
+        "name": "statement",
+        "prose": "IS-011 cloud act response"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-26",
+      "title": "IS-012 fisa 702 response",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-26_stmt",
+        "name": "statement",
+        "prose": "IS-012 fisa 702 response"
        }
       ],
       "class": "compliance"
@@ -3700,7 +6241,7 @@
       ],
       "links": [
        {
-        "href": "#37cf56f8-427e-583f-8347-72ad4552c62a",
+        "href": "#f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
         "rel": "implementation"
        }
       ],
@@ -3757,7 +6298,7 @@
       ],
       "links": [
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        }
       ],
@@ -3790,7 +6331,7 @@
       ],
       "links": [
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        }
       ],
@@ -3823,7 +6364,7 @@
       ],
       "links": [
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        }
       ],
@@ -3856,7 +6397,7 @@
       ],
       "links": [
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        }
       ],
@@ -3889,7 +6430,7 @@
       ],
       "links": [
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        }
       ],
@@ -3922,7 +6463,7 @@
       ],
       "links": [
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        }
       ],
@@ -3955,7 +6496,7 @@
       ],
       "links": [
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        }
       ],
@@ -3988,7 +6529,7 @@
       ],
       "links": [
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        }
       ],
@@ -4021,7 +6562,7 @@
       ],
       "links": [
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        }
       ],
@@ -4054,7 +6595,7 @@
       ],
       "links": [
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        }
       ],
@@ -4087,7 +6628,7 @@
       ],
       "links": [
        {
-        "href": "#b028acbf-5ab1-58c9-8040-e7734617a08e",
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
         "rel": "implementation"
        }
       ],
@@ -4096,6 +6637,369 @@
         "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-11_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/network_sovereignty.rego (package digital_sovereignty.network_sovereignty); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-12",
+      "title": "NS-001 dns org controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.network_sovereignty#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.network_sovereignty#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.network_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-12_stmt",
+        "name": "statement",
+        "prose": "NS-001 dns org controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-13",
+      "title": "NS-002 dns in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.network_sovereignty#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.network_sovereignty#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.network_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-13_stmt",
+        "name": "statement",
+        "prose": "NS-002 dns in jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-14",
+      "title": "NS-003 dnssec enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.network_sovereignty#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.network_sovereignty#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.network_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-14_stmt",
+        "name": "statement",
+        "prose": "NS-003 dnssec enabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-15",
+      "title": "NS-004 public dns blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.network_sovereignty#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.network_sovereignty#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.network_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-15_stmt",
+        "name": "statement",
+        "prose": "NS-004 public dns blocked"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-16",
+      "title": "NS-005 rpki deployed",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.network_sovereignty#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.network_sovereignty#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.network_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-16_stmt",
+        "name": "statement",
+        "prose": "NS-005 rpki deployed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-17",
+      "title": "NS-006 sensitive traffic protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.network_sovereignty#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.network_sovereignty#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.network_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-17_stmt",
+        "name": "statement",
+        "prose": "NS-006 sensitive traffic protected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-18",
+      "title": "NS-007 egress controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.network_sovereignty#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.network_sovereignty#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.network_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-18_stmt",
+        "name": "statement",
+        "prose": "NS-007 egress controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-19",
+      "title": "NS-008 egress in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.network_sovereignty#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.network_sovereignty#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.network_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-19_stmt",
+        "name": "statement",
+        "prose": "NS-008 egress in jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-20",
+      "title": "NS-009 netflow monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.network_sovereignty#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.network_sovereignty#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.network_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-20_stmt",
+        "name": "statement",
+        "prose": "NS-009 netflow monitoring"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-21",
+      "title": "NS-010 foreign destination alerting",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.network_sovereignty#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.network_sovereignty#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.network_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-21_stmt",
+        "name": "statement",
+        "prose": "NS-010 foreign destination alerting"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-22",
+      "title": "NS-011 segments in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.network_sovereignty#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.network_sovereignty#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.network_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#048b9c62-4c12-58d4-ab11-d834a25b2d91",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.network_sovereignty-22_stmt",
+        "name": "statement",
+        "prose": "NS-011 segments in jurisdiction"
        }
       ],
       "class": "compliance"
@@ -4144,7 +7048,7 @@
       ],
       "links": [
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        }
       ],
@@ -4177,7 +7081,7 @@
       ],
       "links": [
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        }
       ],
@@ -4210,7 +7114,7 @@
       ],
       "links": [
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        }
       ],
@@ -4243,7 +7147,7 @@
       ],
       "links": [
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        }
       ],
@@ -4276,7 +7180,7 @@
       ],
       "links": [
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        }
       ],
@@ -4309,7 +7213,7 @@
       ],
       "links": [
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        }
       ],
@@ -4342,7 +7246,7 @@
       ],
       "links": [
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        }
       ],
@@ -4375,7 +7279,7 @@
       ],
       "links": [
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        }
       ],
@@ -4408,7 +7312,7 @@
       ],
       "links": [
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        }
       ],
@@ -4441,7 +7345,7 @@
       ],
       "links": [
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        }
       ],
@@ -4450,6 +7354,336 @@
         "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-10_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego (package digital_sovereignty.operational_sovereignty); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-11",
+      "title": "OS-001 privileged personnel vetted",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.operational_sovereignty#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.operational_sovereignty#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.operational_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-11_stmt",
+        "name": "statement",
+        "prose": "OS-001 privileged personnel vetted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-12",
+      "title": "OS-002 privileged personnel in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.operational_sovereignty#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.operational_sovereignty#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.operational_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-12_stmt",
+        "name": "statement",
+        "prose": "OS-002 privileged personnel in jurisdiction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-13",
+      "title": "OS-003 no foreign connected access",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.operational_sovereignty#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.operational_sovereignty#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.operational_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-13_stmt",
+        "name": "statement",
+        "prose": "OS-003 no foreign connected access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-14",
+      "title": "OS-004 vendor access monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.operational_sovereignty#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.operational_sovereignty#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.operational_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-14_stmt",
+        "name": "statement",
+        "prose": "OS-004 vendor access monitored"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-15",
+      "title": "OS-005 vendor access approval",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.operational_sovereignty#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.operational_sovereignty#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.operational_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-15_stmt",
+        "name": "statement",
+        "prose": "OS-005 vendor access approval"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-16",
+      "title": "OS-006 right to refuse foreign access",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.operational_sovereignty#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.operational_sovereignty#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.operational_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-16_stmt",
+        "name": "statement",
+        "prose": "OS-006 right to refuse foreign access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-17",
+      "title": "OS-007 pam deployed",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.operational_sovereignty#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.operational_sovereignty#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.operational_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-17_stmt",
+        "name": "statement",
+        "prose": "OS-007 pam deployed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-18",
+      "title": "OS-008 foreign access request policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.operational_sovereignty#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.operational_sovereignty#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.operational_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-18_stmt",
+        "name": "statement",
+        "prose": "OS-008 foreign access request policy"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-19",
+      "title": "OS-009 remote ops controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.operational_sovereignty#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.operational_sovereignty#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.operational_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-19_stmt",
+        "name": "statement",
+        "prose": "OS-009 remote ops controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-20",
+      "title": "OS-010 privileged access review",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.operational_sovereignty#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.operational_sovereignty#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.operational_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-20_stmt",
+        "name": "statement",
+        "prose": "OS-010 privileged access review"
        }
       ],
       "class": "compliance"
@@ -4474,7 +7708,7 @@
       ],
       "links": [
        {
-        "href": "#3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+        "href": "#538ebc3a-3303-5fd8-94cd-4e20f805f173",
         "rel": "implementation"
        }
       ],
@@ -4531,7 +7765,7 @@
       ],
       "links": [
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -4564,7 +7798,7 @@
       ],
       "links": [
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -4597,7 +7831,7 @@
       ],
       "links": [
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -4630,7 +7864,7 @@
       ],
       "links": [
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -4663,7 +7897,7 @@
       ],
       "links": [
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -4696,7 +7930,7 @@
       ],
       "links": [
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -4729,7 +7963,7 @@
       ],
       "links": [
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -4762,7 +7996,7 @@
       ],
       "links": [
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -4795,7 +8029,7 @@
       ],
       "links": [
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -4828,7 +8062,7 @@
       ],
       "links": [
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -4837,6 +8071,336 @@
         "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-10_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego (package digital_sovereignty.software_sovereignty); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-11",
+      "title": "SS-001 sbom maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-11_stmt",
+        "name": "statement",
+        "prose": "SS-001 sbom maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-12",
+      "title": "SS-002 sbom current",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-12_stmt",
+        "name": "statement",
+        "prose": "SS-002 sbom current"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-13",
+      "title": "SS-003 sbom coverage",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-13_stmt",
+        "name": "statement",
+        "prose": "SS-003 sbom coverage"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-14",
+      "title": "SS-004 provenance acceptable",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-14_stmt",
+        "name": "statement",
+        "prose": "SS-004 provenance acceptable"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-15",
+      "title": "SS-005 no uncontrolled updates",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-15_stmt",
+        "name": "statement",
+        "prose": "SS-005 no uncontrolled updates"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-16",
+      "title": "SS-006 telemetry controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-16_stmt",
+        "name": "statement",
+        "prose": "SS-006 telemetry controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-17",
+      "title": "SS-007 artifacts signed",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-17_stmt",
+        "name": "statement",
+        "prose": "SS-007 artifacts signed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-18",
+      "title": "SS-008 private registry",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-18_stmt",
+        "name": "statement",
+        "prose": "SS-008 private registry"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-19",
+      "title": "SS-009 vuln scanning",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-19_stmt",
+        "name": "statement",
+        "prose": "SS-009 vuln scanning"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-20",
+      "title": "SS-010 repos in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-20_stmt",
+        "name": "statement",
+        "prose": "SS-010 repos in jurisdiction"
        }
       ],
       "class": "compliance"
@@ -4861,7 +8425,7 @@
       ],
       "links": [
        {
-        "href": "#dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+        "href": "#8b271459-b753-5333-876c-72264a90ad04",
         "rel": "implementation"
        }
       ],
@@ -4880,7 +8444,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "1f0e61f1-f99b-5860-9f75-9d0f2151d458",
+     "uuid": "e761d912-4d22-5f5b-87bd-b1456c088727",
      "title": "Digital Sovereignty — AI/ML Sovereignty",
      "props": [
       {
@@ -4891,13 +8455,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/ai_sovereignty.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/ai_sovereignty.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "fb1ca9bd-845a-543f-ab09-1297a3b7b2b9",
+     "uuid": "81474480-51d7-5d6e-9a03-162f1a3686fb",
      "title": "Digital Sovereignty — Breach Notification Sovereignty",
      "props": [
       {
@@ -4908,13 +8472,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/breach_notification_sovereignty.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/breach_notification_sovereignty.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "8b82a0a4-a545-5a98-a53b-e0ec912197c1",
+     "uuid": "4aa339fa-8807-5ce6-ae8f-6f8c007646d0",
      "title": "Digital Sovereignty — Cryptographic Sovereignty",
      "props": [
       {
@@ -4925,13 +8489,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/cryptographic_sovereignty.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/cryptographic_sovereignty.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "1bdf6e6a-ae14-5930-8e8d-d293a734d31a",
+     "uuid": "40be5643-4434-5953-b187-c57fcf29a5d6",
      "title": "Digital Sovereignty — Cyber Resilience",
      "props": [
       {
@@ -4942,13 +8506,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/cyber_resilience_sovereignty.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/cyber_resilience_sovereignty.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "57a9ef83-47f5-5710-8f80-663134ebc3ff",
+     "uuid": "4fffd000-ac43-55e4-a4a9-0f1b19dd7288",
      "title": "Digital Sovereignty — Data Residency",
      "props": [
       {
@@ -4959,13 +8523,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/data_residency.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/data_residency.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "13d43562-a412-57ba-8af0-13b4cae624a8",
+     "uuid": "a83338bd-cc6c-5412-9e60-0f5dde710431",
      "title": "Digital Sovereignty — Aggregator",
      "props": [
       {
@@ -4976,13 +8540,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/digital_sovereignty_main.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/digital_sovereignty_main.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "50097328-0175-5671-bfeb-bc8b4a29ace3",
+     "uuid": "1c77a6b8-3b6c-5182-a176-1130ba6bc171",
      "title": "Digital Sovereignty — DORA (Digital Operational Resilience Act)",
      "props": [
       {
@@ -4993,13 +8557,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/dora_sovereignty.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/dora_sovereignty.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "f20b4263-4bce-5168-a3fb-60e8bfbdaf1b",
+     "uuid": "0ff320f8-a721-5f39-8c83-efa2d2bac3a0",
      "title": "Digital Sovereignty — Geopolitical Event Triggers",
      "props": [
       {
@@ -5010,13 +8574,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/geopolitical_sovereignty.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/geopolitical_sovereignty.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "37cf56f8-427e-583f-8347-72ad4552c62a",
+     "uuid": "f4a76d1f-c653-51f4-af2f-33c186fa3ef4",
      "title": "Digital Sovereignty — Infrastructure Sovereignty",
      "props": [
       {
@@ -5027,13 +8591,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b028acbf-5ab1-58c9-8040-e7734617a08e",
+     "uuid": "048b9c62-4c12-58d4-ab11-d834a25b2d91",
      "title": "Digital Sovereignty — Network Sovereignty",
      "props": [
       {
@@ -5044,13 +8608,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/network_sovereignty.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/network_sovereignty.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "3ebf5b16-4c03-5f26-ba86-cc138f82e6cd",
+     "uuid": "538ebc3a-3303-5fd8-94cd-4e20f805f173",
      "title": "Digital Sovereignty — Operational Sovereignty",
      "props": [
       {
@@ -5061,13 +8625,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "dcc3d312-a588-5eb4-8c48-cf87e3849b41",
+     "uuid": "8b271459-b753-5333-876c-72264a90ad04",
      "title": "Digital Sovereignty — Software Sovereignty",
      "props": [
       {
@@ -5078,7 +8642,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego",
        "media-type": "text/plain"
       }
      ]

@@ -5,6 +5,14 @@
 #   framework: corporate
 #   source: aac
 #   domains: [corporate]
+#   coverage:
+#     checks: 3
+#     cited: 3
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package corporate.password
 
 import rego.v1
@@ -346,4 +354,12 @@ policy_metadata := {
 # in any real deployment (real password history stores bcrypt/argon2/sha512-crypt
 # hashes; the fake would never match). Removed. The reuse check now expects the
 # caller to pre-hash `input.password.value` using the same algorithm as the
+#   coverage:
+#     checks: 3
+#     cited: 3
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 # password history and pass it in as `input.password.value_hash`.

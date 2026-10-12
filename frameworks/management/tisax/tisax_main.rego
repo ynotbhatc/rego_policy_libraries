@@ -5,6 +5,17 @@
 #   framework: tisax
 #   source: enx
 #   domains: [automotive]
+#   coverage:
+#     checks: 50
+#     cited: 50
+#     expected: 51
+#     found: 50
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package tisax.main
 
 import rego.v1
@@ -365,3 +376,14 @@ compliance_report := {
         "prototype_protection":     [v | some v in violations; contains(v, "TISAX PD")],
     },
 }
+#   coverage:
+#     checks: 50
+#     cited: 50
+#     expected: 51
+#     found: 50
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

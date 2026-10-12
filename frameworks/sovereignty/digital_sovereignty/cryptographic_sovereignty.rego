@@ -5,6 +5,14 @@
 #   framework: digital_sovereignty
 #   source: aac
 #   domains: [sovereignty, data-residency]
+#   coverage:
+#     checks: 22
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package digital_sovereignty.cryptographic_sovereignty
 
 import rego.v1
@@ -411,3 +419,11 @@ default dual_control_enforced := false
 default hsm_deployed := false
 default key_rotation_policy := false
 default no_hsm_vendor_backdoor := false
+#   coverage:
+#     checks: 22
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

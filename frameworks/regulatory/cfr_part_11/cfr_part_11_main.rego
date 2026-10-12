@@ -5,6 +5,17 @@
 #   framework: cfr_part_11
 #   source: fda
 #   domains: [life-sciences, us-federal]
+#   coverage:
+#     checks: 30
+#     cited: 30
+#     expected: 43
+#     found: 30
+#     scope: module
+#     density: partial
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cfr_part_11.main
 
 import rego.v1
@@ -307,3 +318,14 @@ compliance_report := {
         "s11_300_id_codes":         [v | some v in violations; contains(v, "11.300")],
     },
 }
+#   coverage:
+#     checks: 30
+#     cited: 30
+#     expected: 43
+#     found: 30
+#     scope: module
+#     density: partial
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

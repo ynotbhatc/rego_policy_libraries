@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "11a33956-f045-50ca-a481-fa9796b2e5a8",
+  "uuid": "489c8f3e-38e8-5e8e-8e9b-a9ccaabd9653",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_amazon_linux_2023 (CIS Sections 1.3, 1.4, 1.5: Boot Security, Filesystem Integrity, Process Hardening)",
+   "title": "Rego Policy Libraries — cis_amazon_linux_2023 (CIS Amazon Linux 2023 Section 4.1.x - Configure System Accounting (auditd))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -43,6 +43,540 @@
    ]
   },
   "groups": [
+   {
+    "id": "cis_amazon_linux_2023-auditd_validation",
+    "class": "rego-module",
+    "title": "CIS Amazon Linux 2023 Section 4.1.x - Configure System Accounting (auditd)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_amazon_linux_2023.auditd"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/amazon_linux_2023/auditd_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.1.1.1",
+      "title": "audit package not installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.1.1_stmt",
+        "name": "statement",
+        "prose": "audit package not installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.1.1.2",
+      "title": "auditd service not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.1.2_stmt",
+        "name": "statement",
+        "prose": "auditd service not enabled"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "auditd service not running"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.1.1.3",
+      "title": "audit=1 not set in bootloader configuration",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.1.3_stmt",
+        "name": "statement",
+        "prose": "audit=1 not set in bootloader configuration"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.1.1.4",
+      "title": "audit_backlog_limit not sufficient (should be 8192 or higher)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.1.4_stmt",
+        "name": "statement",
+        "prose": "audit_backlog_limit not sufficient (should be 8192 or higher)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.1.2.1",
+      "title": "max_log_file not configured in auditd.conf",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.2.1_stmt",
+        "name": "statement",
+        "prose": "max_log_file not configured in auditd.conf"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.1.2.2",
+      "title": "max_log_file_action set to delete (logs will be deleted)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.2.2_stmt",
+        "name": "statement",
+        "prose": "max_log_file_action set to delete (logs will be deleted)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "max_log_file_action set to ignore (no action on full logs)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.1.2.3",
+      "title": "space_left_action not appropriate (should be email, exec, single, or halt)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.2.3_stmt",
+        "name": "statement",
+        "prose": "space_left_action not appropriate (should be email, exec, single, or halt)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "admin_space_left_action not appropriate"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.auditd#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.auditd#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.1.3.21",
+      "title": "Audit configuration not set to immutable (missing '-e 2')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.3.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.3.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.3.21_stmt",
+        "name": "statement",
+        "prose": "Audit configuration not set to immutable (missing '-e 2')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.auditd#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.auditd#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.auditd#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.auditd#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.auditd#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.auditd#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.auditd#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.auditd#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.auditd#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.auditd#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-7",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.auditd#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.auditd#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#10b913a9-32e3-57c1-ab59-224f2008db09",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
    {
     "id": "cis_amazon_linux_2023-boot_security_validation",
     "class": "rego-module",
@@ -85,7 +619,7 @@
       ],
       "links": [
        {
-        "href": "#68d82e9c-3e36-5a86-84fe-15fd81aead5d",
+        "href": "#8dc6c311-2c97-545c-988c-c80a4a938c0e",
         "rel": "implementation"
        }
       ],
@@ -118,7 +652,7 @@
       ],
       "links": [
        {
-        "href": "#68d82e9c-3e36-5a86-84fe-15fd81aead5d",
+        "href": "#8dc6c311-2c97-545c-988c-c80a4a938c0e",
         "rel": "implementation"
        }
       ],
@@ -156,7 +690,7 @@
       ],
       "links": [
        {
-        "href": "#68d82e9c-3e36-5a86-84fe-15fd81aead5d",
+        "href": "#8dc6c311-2c97-545c-988c-c80a4a938c0e",
         "rel": "implementation"
        }
       ],
@@ -194,7 +728,7 @@
       ],
       "links": [
        {
-        "href": "#68d82e9c-3e36-5a86-84fe-15fd81aead5d",
+        "href": "#8dc6c311-2c97-545c-988c-c80a4a938c0e",
         "rel": "implementation"
        }
       ],
@@ -237,7 +771,7 @@
       ],
       "links": [
        {
-        "href": "#68d82e9c-3e36-5a86-84fe-15fd81aead5d",
+        "href": "#8dc6c311-2c97-545c-988c-c80a4a938c0e",
         "rel": "implementation"
        }
       ],
@@ -270,7 +804,7 @@
       ],
       "links": [
        {
-        "href": "#68d82e9c-3e36-5a86-84fe-15fd81aead5d",
+        "href": "#8dc6c311-2c97-545c-988c-c80a4a938c0e",
         "rel": "implementation"
        }
       ],
@@ -318,7 +852,7 @@
       ],
       "links": [
        {
-        "href": "#68d82e9c-3e36-5a86-84fe-15fd81aead5d",
+        "href": "#8dc6c311-2c97-545c-988c-c80a4a938c0e",
         "rel": "implementation"
        }
       ],
@@ -356,7 +890,7 @@
       ],
       "links": [
        {
-        "href": "#68d82e9c-3e36-5a86-84fe-15fd81aead5d",
+        "href": "#8dc6c311-2c97-545c-988c-c80a4a938c0e",
         "rel": "implementation"
        }
       ],
@@ -389,7 +923,7 @@
       ],
       "links": [
        {
-        "href": "#68d82e9c-3e36-5a86-84fe-15fd81aead5d",
+        "href": "#8dc6c311-2c97-545c-988c-c80a4a938c0e",
         "rel": "implementation"
        }
       ],
@@ -427,7 +961,7 @@
       ],
       "links": [
        {
-        "href": "#68d82e9c-3e36-5a86-84fe-15fd81aead5d",
+        "href": "#8dc6c311-2c97-545c-988c-c80a4a938c0e",
         "rel": "implementation"
        }
       ],
@@ -494,7 +1028,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -527,7 +1061,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -560,7 +1094,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -593,7 +1127,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -626,7 +1160,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -659,7 +1193,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -692,7 +1226,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -725,7 +1259,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -758,7 +1292,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -791,7 +1325,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -824,7 +1358,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -857,7 +1391,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -890,7 +1424,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -923,7 +1457,7 @@
       ],
       "links": [
        {
-        "href": "#724dff43-9b7f-5066-8629-3cdc273dab43",
+        "href": "#ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
         "rel": "implementation"
        }
       ],
@@ -980,7 +1514,7 @@
       ],
       "links": [
        {
-        "href": "#1ca06217-1ce2-5da0-ab5f-95fc9300f291",
+        "href": "#9114fb3e-7837-5b8f-89d2-6278b7f01dbd",
         "rel": "implementation"
        }
       ],
@@ -1013,7 +1547,7 @@
       ],
       "links": [
        {
-        "href": "#1ca06217-1ce2-5da0-ab5f-95fc9300f291",
+        "href": "#9114fb3e-7837-5b8f-89d2-6278b7f01dbd",
         "rel": "implementation"
        }
       ],
@@ -1046,7 +1580,7 @@
       ],
       "links": [
        {
-        "href": "#1ca06217-1ce2-5da0-ab5f-95fc9300f291",
+        "href": "#9114fb3e-7837-5b8f-89d2-6278b7f01dbd",
         "rel": "implementation"
        }
       ],
@@ -1079,7 +1613,7 @@
       ],
       "links": [
        {
-        "href": "#1ca06217-1ce2-5da0-ab5f-95fc9300f291",
+        "href": "#9114fb3e-7837-5b8f-89d2-6278b7f01dbd",
         "rel": "implementation"
        }
       ],
@@ -1112,7 +1646,7 @@
       ],
       "links": [
        {
-        "href": "#1ca06217-1ce2-5da0-ab5f-95fc9300f291",
+        "href": "#9114fb3e-7837-5b8f-89d2-6278b7f01dbd",
         "rel": "implementation"
        }
       ],
@@ -1145,7 +1679,7 @@
       ],
       "links": [
        {
-        "href": "#1ca06217-1ce2-5da0-ab5f-95fc9300f291",
+        "href": "#9114fb3e-7837-5b8f-89d2-6278b7f01dbd",
         "rel": "implementation"
        }
       ],
@@ -1202,7 +1736,7 @@
       ],
       "links": [
        {
-        "href": "#eb43b8d7-7ebd-5754-9de2-e8b025ca618b",
+        "href": "#b89ce96b-e0f8-5039-a84f-3e198d092a1b",
         "rel": "implementation"
        }
       ],
@@ -1240,7 +1774,7 @@
       ],
       "links": [
        {
-        "href": "#eb43b8d7-7ebd-5754-9de2-e8b025ca618b",
+        "href": "#b89ce96b-e0f8-5039-a84f-3e198d092a1b",
         "rel": "implementation"
        }
       ],
@@ -1283,7 +1817,7 @@
       ],
       "links": [
        {
-        "href": "#eb43b8d7-7ebd-5754-9de2-e8b025ca618b",
+        "href": "#b89ce96b-e0f8-5039-a84f-3e198d092a1b",
         "rel": "implementation"
        }
       ],
@@ -1321,7 +1855,7 @@
       ],
       "links": [
        {
-        "href": "#eb43b8d7-7ebd-5754-9de2-e8b025ca618b",
+        "href": "#b89ce96b-e0f8-5039-a84f-3e198d092a1b",
         "rel": "implementation"
        }
       ],
@@ -1359,7 +1893,7 @@
       ],
       "links": [
        {
-        "href": "#eb43b8d7-7ebd-5754-9de2-e8b025ca618b",
+        "href": "#b89ce96b-e0f8-5039-a84f-3e198d092a1b",
         "rel": "implementation"
        }
       ],
@@ -1397,7 +1931,7 @@
       ],
       "links": [
        {
-        "href": "#eb43b8d7-7ebd-5754-9de2-e8b025ca618b",
+        "href": "#b89ce96b-e0f8-5039-a84f-3e198d092a1b",
         "rel": "implementation"
        }
       ],
@@ -1435,7 +1969,7 @@
       ],
       "links": [
        {
-        "href": "#eb43b8d7-7ebd-5754-9de2-e8b025ca618b",
+        "href": "#b89ce96b-e0f8-5039-a84f-3e198d092a1b",
         "rel": "implementation"
        }
       ],
@@ -1473,7 +2007,7 @@
       ],
       "links": [
        {
-        "href": "#eb43b8d7-7ebd-5754-9de2-e8b025ca618b",
+        "href": "#b89ce96b-e0f8-5039-a84f-3e198d092a1b",
         "rel": "implementation"
        }
       ],
@@ -1516,7 +2050,7 @@
       ],
       "links": [
        {
-        "href": "#eb43b8d7-7ebd-5754-9de2-e8b025ca618b",
+        "href": "#b89ce96b-e0f8-5039-a84f-3e198d092a1b",
         "rel": "implementation"
        }
       ],
@@ -1535,6 +2069,777 @@
         "id": "cis_amazon_linux_2023-CIS-5.1.9_obj.2",
         "name": "assessment-objective",
         "prose": "/etc/at.allow has mode %s, should be 0600"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_amazon_linux_2023-file_permissions_validation",
+    "class": "rego-module",
+    "title": "CIS Amazon Linux 2023 Section 6.1.x - System File Permissions",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_amazon_linux_2023.file_permissions"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/amazon_linux_2023/file_permissions_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_amazon_linux_2023-CIS-6.1.x",
+      "title": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.x_stmt",
+        "name": "statement",
+        "prose": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-6.1.6",
+      "title": "/etc/shadow has insecure permissions (mode: %s, expected: 0000/0400/0600)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.6_stmt",
+        "name": "statement",
+        "prose": "/etc/shadow has insecure permissions (mode: %s, expected: 0000/0400/0600)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-6.1.8",
+      "title": "/etc/gshadow has insecure permissions (mode: %s, expected: 0000/0400/0600)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.8_stmt",
+        "name": "statement",
+        "prose": "/etc/gshadow has insecure permissions (mode: %s, expected: 0000/0400/0600)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-6.1.2",
+      "title": "/etc/passwd has incorrect permissions (mode: %s, expected: 0644)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.2_stmt",
+        "name": "statement",
+        "prose": "/etc/passwd has incorrect permissions (mode: %s, expected: 0644)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-6.1.4",
+      "title": "/etc/group has incorrect permissions (mode: %s, expected: 0644)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.4_stmt",
+        "name": "statement",
+        "prose": "/etc/group has incorrect permissions (mode: %s, expected: 0644)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-6.1.10",
+      "title": "World-writable file found: %s (mode: %s, owner: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.10_stmt",
+        "name": "statement",
+        "prose": "World-writable file found: %s (mode: %s, owner: %s)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "%d world-writable files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-6.1.11",
+      "title": "Unowned file found: %s (UID: %d, mode: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.11_stmt",
+        "name": "statement",
+        "prose": "Unowned file found: %s (UID: %d, mode: %s)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "%d unowned files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-6.1.12",
+      "title": "Ungrouped file found: %s (GID: %d, mode: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.12_stmt",
+        "name": "statement",
+        "prose": "Ungrouped file found: %s (GID: %d, mode: %s)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "%d ungrouped files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-6.1.13",
+      "title": "Unknown SUID binary requires review: %s (mode: %s, owner: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.13_stmt",
+        "name": "statement",
+        "prose": "Unknown SUID binary requires review: %s (mode: %s, owner: %s)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Excessive unknown SUID binaries found (%d unknown out of %d total)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-6.1.14",
+      "title": "Excessive SGID binaries found (%d files)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-6.1.14_stmt",
+        "name": "statement",
+        "prose": "Excessive SGID binaries found (%d files)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.file_permissions-1",
+      "title": "SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.file_permissions#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.file_permissions#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.file_permissions-1_stmt",
+        "name": "statement",
+        "prose": "SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.file_permissions-2",
+      "title": "SSH Private Keys: One or more SSH host keys have insecure permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.file_permissions#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.file_permissions#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#72eba4e2-760d-5e9c-a548-5efa843e927d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.file_permissions-2_stmt",
+        "name": "statement",
+        "prose": "SSH Private Keys: One or more SSH host keys have insecure permissions"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_amazon_linux_2023-filesystem_validation",
+    "class": "rego-module",
+    "title": "CIS Amazon Linux 2023 Section 1.1.x - Filesystem Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_amazon_linux_2023.filesystem"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/amazon_linux_2023/filesystem_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_amazon_linux_2023-CIS-1.1.1.x",
+      "title": "Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.1.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.1.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83eeafe5-36de-5dce-bcc6-8fef7fa97218",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.1.x_stmt",
+        "name": "statement",
+        "prose": "Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-1.1.2.x",
+      "title": "Required partition '%s' is not a separate partition",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.2.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.2.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83eeafe5-36de-5dce-bcc6-8fef7fa97218",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.2.x_stmt",
+        "name": "statement",
+        "prose": "Required partition '%s' is not a separate partition"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.2.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "Partition '%s' is missing required mount options: %v"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-1.1.2.1.2",
+      "title": "/tmp partition does not have 'nodev' option set",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83eeafe5-36de-5dce-bcc6-8fef7fa97218",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.2.1.2_stmt",
+        "name": "statement",
+        "prose": "/tmp partition does not have 'nodev' option set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-1.1.2.1.4",
+      "title": "/tmp partition does not have 'nosuid' option set",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.2.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.2.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83eeafe5-36de-5dce-bcc6-8fef7fa97218",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.2.1.4_stmt",
+        "name": "statement",
+        "prose": "/tmp partition does not have 'nosuid' option set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-1.1.2.1.3",
+      "title": "/tmp partition does not have 'noexec' option set",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.2.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.2.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83eeafe5-36de-5dce-bcc6-8fef7fa97218",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.2.1.3_stmt",
+        "name": "statement",
+        "prose": "/tmp partition does not have 'noexec' option set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-1.1.2.2.2",
+      "title": "/dev/shm does not have 'nodev' option set",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83eeafe5-36de-5dce-bcc6-8fef7fa97218",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.2.2.2_stmt",
+        "name": "statement",
+        "prose": "/dev/shm does not have 'nodev' option set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-1.1.2.2.4",
+      "title": "/dev/shm does not have 'nosuid' option set",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.2.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.2.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83eeafe5-36de-5dce-bcc6-8fef7fa97218",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.2.2.4_stmt",
+        "name": "statement",
+        "prose": "/dev/shm does not have 'nosuid' option set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-1.1.2.2.3",
+      "title": "/dev/shm does not have 'noexec' option set",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.2.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.2.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83eeafe5-36de-5dce-bcc6-8fef7fa97218",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.2.2.3_stmt",
+        "name": "statement",
+        "prose": "/dev/shm does not have 'noexec' option set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-1.1.22",
+      "title": "Directory '%s' is world-writable without sticky bit (mode: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83eeafe5-36de-5dce-bcc6-8fef7fa97218",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.22_stmt",
+        "name": "statement",
+        "prose": "Directory '%s' is world-writable without sticky bit (mode: %s)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.22_obj.1",
+        "name": "assessment-objective",
+        "prose": "World-writable directory without sticky bit found: %s"
        }
       ],
       "class": "security"
@@ -1583,7 +2888,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -1616,7 +2921,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -1654,7 +2959,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -1687,7 +2992,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -1730,7 +3035,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -1773,7 +3078,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -1816,7 +3121,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -1849,7 +3154,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -1882,7 +3187,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -1915,7 +3220,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -1948,7 +3253,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -1981,7 +3286,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -2014,7 +3319,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -2052,7 +3357,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -2085,7 +3390,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -2123,7 +3428,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -2156,7 +3461,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -2189,7 +3494,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -2222,7 +3527,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -2255,7 +3560,7 @@
       ],
       "links": [
        {
-        "href": "#218d2e8c-c389-5603-8ae0-057500de5338",
+        "href": "#fa3bc273-e691-56fa-b93b-2faf657e1b6b",
         "rel": "implementation"
        }
       ],
@@ -2269,6 +3574,919 @@
         "id": "cis_amazon_linux_2023-CIS-1.9_obj.1",
         "name": "assessment-objective",
         "prose": "System-wide crypto policy is not configured"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_amazon_linux_2023-logging_validation",
+    "class": "rego-module",
+    "title": "CIS Amazon Linux 2023 Section 4.2.x - Logging Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_amazon_linux_2023.logging"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/amazon_linux_2023/logging_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.2.1.1",
+      "title": "rsyslog is not installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c24e1723-d729-5ce0-81f8-df33b34ea74a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.1.1_stmt",
+        "name": "statement",
+        "prose": "rsyslog is not installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.2.1.2",
+      "title": "rsyslog service is not active",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c24e1723-d729-5ce0-81f8-df33b34ea74a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.1.2_stmt",
+        "name": "statement",
+        "prose": "rsyslog service is not active"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "rsyslog service is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.2.1.3",
+      "title": "journald is not configured to forward to rsyslog (ForwardToSyslog: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c24e1723-d729-5ce0-81f8-df33b34ea74a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.1.3_stmt",
+        "name": "statement",
+        "prose": "journald is not configured to forward to rsyslog (ForwardToSyslog: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.2.1.4",
+      "title": "rsyslog $FileCreateMode is not secure (current: %s, expected: 0640 or 0600)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c24e1723-d729-5ce0-81f8-df33b34ea74a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.1.4_stmt",
+        "name": "statement",
+        "prose": "rsyslog $FileCreateMode is not secure (current: %s, expected: 0640 or 0600)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.2.1.5",
+      "title": "No rsyslog logging rules configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c24e1723-d729-5ce0-81f8-df33b34ea74a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.1.5_stmt",
+        "name": "statement",
+        "prose": "No rsyslog logging rules configured"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Insufficient rsyslog logging rules configured (%d rules, expected at least 4)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.2.1.6",
+      "title": "rsyslog is not configured to send logs to remote host",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c24e1723-d729-5ce0-81f8-df33b34ea74a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.1.6_stmt",
+        "name": "statement",
+        "prose": "rsyslog is not configured to send logs to remote host"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.2.2.1",
+      "title": "journald compression is not enabled (Compress: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c24e1723-d729-5ce0-81f8-df33b34ea74a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.2.1_stmt",
+        "name": "statement",
+        "prose": "journald compression is not enabled (Compress: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.2.2.2",
+      "title": "journald is not configured for persistent storage (Storage: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c24e1723-d729-5ce0-81f8-df33b34ea74a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.2.2_stmt",
+        "name": "statement",
+        "prose": "journald is not configured for persistent storage (Storage: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.2.2.3",
+      "title": "systemd-journald service is not active",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c24e1723-d729-5ce0-81f8-df33b34ea74a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.2.3_stmt",
+        "name": "statement",
+        "prose": "systemd-journald service is not active"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.2.3",
+      "title": "Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c24e1723-d729-5ce0-81f8-df33b34ea74a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.3_stmt",
+        "name": "statement",
+        "prose": "Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Log file '%s' has excessive permissions (mode: %s, issue: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-4.2.x",
+      "title": "logrotate is not installed (logs may fill disk)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c24e1723-d729-5ce0-81f8-df33b34ea74a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.2.x_stmt",
+        "name": "statement",
+        "prose": "logrotate is not installed (logs may fill disk)"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_amazon_linux_2023-network_validation",
+    "class": "rego-module",
+    "title": "CIS Amazon Linux 2023 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_amazon_linux_2023.network"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/amazon_linux_2023/network_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.x",
+      "title": "Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.x_stmt",
+        "name": "statement",
+        "prose": "Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.2.8",
+      "title": "TCP SYN cookies not enabled (vulnerable to SYN flood attacks)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.2.8_stmt",
+        "name": "statement",
+        "prose": "TCP SYN cookies not enabled (vulnerable to SYN flood attacks)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.2.7",
+      "title": "Reverse path filtering not enabled (vulnerable to IP spoofing)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.2.7_stmt",
+        "name": "statement",
+        "prose": "Reverse path filtering not enabled (vulnerable to IP spoofing)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.2.4",
+      "title": "Martian packet logging not enabled (won't detect spoofing attempts)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.2.4_stmt",
+        "name": "statement",
+        "prose": "Martian packet logging not enabled (won't detect spoofing attempts)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.2.5",
+      "title": "Broadcast ICMP not ignored (vulnerable to Smurf attacks)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.2.5_stmt",
+        "name": "statement",
+        "prose": "Broadcast ICMP not ignored (vulnerable to Smurf attacks)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.1.1",
+      "title": "IPv4 forwarding is enabled (value: %v, expected: 0)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.1.1_stmt",
+        "name": "statement",
+        "prose": "IPv4 forwarding is enabled (value: %v, expected: 0)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "IPv6 forwarding is enabled (value: %v, expected: 0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.1.2",
+      "title": "Sending ICMP redirects is enabled (man-in-the-middle risk)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.1.2_stmt",
+        "name": "statement",
+        "prose": "Sending ICMP redirects is enabled (man-in-the-middle risk)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Sending ICMP redirects is enabled (default interface)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.2.1",
+      "title": "Source routed packets accepted on %s (firewall bypass risk)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.2.1_stmt",
+        "name": "statement",
+        "prose": "Source routed packets accepted on %s (firewall bypass risk)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "IPv6 source routed packets accepted on %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.2.2",
+      "title": "ICMP redirects accepted on %s (man-in-the-middle risk)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.2.2_stmt",
+        "name": "statement",
+        "prose": "ICMP redirects accepted on %s (man-in-the-middle risk)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.2.3",
+      "title": "Secure ICMP redirects accepted on %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.2.3_stmt",
+        "name": "statement",
+        "prose": "Secure ICMP redirects accepted on %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.3.1",
+      "title": "IPv6 is enabled but should be disabled (status: %s, addresses: %d)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.3.1_stmt",
+        "name": "statement",
+        "prose": "IPv6 is enabled but should be disabled (status: %s, addresses: %d)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.2.9",
+      "title": "IPv6 router advertisements accepted on %s (rogue router risk)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.2.9_stmt",
+        "name": "statement",
+        "prose": "IPv6 router advertisements accepted on %s (rogue router risk)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.3.2",
+      "title": "Wireless interface detected on server: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.3.2_stmt",
+        "name": "statement",
+        "prose": "Wireless interface detected on server: %s"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "%d wireless interfaces found on server (should have 0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-3.5.x",
+      "title": "No active firewall detected (type: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.5.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.5.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16481970-b46b-5782-814c-cd1386c129fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.5.x_stmt",
+        "name": "statement",
+        "prose": "No active firewall detected (type: %s)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-3.5.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "Using legacy iptables instead of firewalld or nftables"
        }
       ],
       "class": "security"
@@ -2317,7 +4535,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2350,7 +4568,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2388,7 +4606,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2426,7 +4644,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2469,7 +4687,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2507,7 +4725,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2540,7 +4758,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2573,7 +4791,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2606,7 +4824,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2639,7 +4857,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2677,7 +4895,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2710,7 +4928,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2743,7 +4961,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2776,7 +4994,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2814,7 +5032,7 @@
       ],
       "links": [
        {
-        "href": "#4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+        "href": "#9480dacc-a2f0-5025-819f-bec17cf9628c",
         "rel": "implementation"
        }
       ],
@@ -2881,7 +5099,7 @@
       ],
       "links": [
        {
-        "href": "#60e511e4-8425-520c-a3fa-4d113bdf8791",
+        "href": "#eadcbacd-79b3-5ca4-a912-1472379f9345",
         "rel": "implementation"
        }
       ],
@@ -2914,7 +5132,7 @@
       ],
       "links": [
        {
-        "href": "#60e511e4-8425-520c-a3fa-4d113bdf8791",
+        "href": "#eadcbacd-79b3-5ca4-a912-1472379f9345",
         "rel": "implementation"
        }
       ],
@@ -2952,7 +5170,7 @@
       ],
       "links": [
        {
-        "href": "#60e511e4-8425-520c-a3fa-4d113bdf8791",
+        "href": "#eadcbacd-79b3-5ca4-a912-1472379f9345",
         "rel": "implementation"
        }
       ],
@@ -2990,7 +5208,7 @@
       ],
       "links": [
        {
-        "href": "#60e511e4-8425-520c-a3fa-4d113bdf8791",
+        "href": "#eadcbacd-79b3-5ca4-a912-1472379f9345",
         "rel": "implementation"
        }
       ],
@@ -3028,7 +5246,7 @@
       ],
       "links": [
        {
-        "href": "#60e511e4-8425-520c-a3fa-4d113bdf8791",
+        "href": "#eadcbacd-79b3-5ca4-a912-1472379f9345",
         "rel": "implementation"
        }
       ],
@@ -3061,7 +5279,7 @@
       ],
       "links": [
        {
-        "href": "#60e511e4-8425-520c-a3fa-4d113bdf8791",
+        "href": "#eadcbacd-79b3-5ca4-a912-1472379f9345",
         "rel": "implementation"
        }
       ],
@@ -3094,7 +5312,7 @@
       ],
       "links": [
        {
-        "href": "#60e511e4-8425-520c-a3fa-4d113bdf8791",
+        "href": "#eadcbacd-79b3-5ca4-a912-1472379f9345",
         "rel": "implementation"
        }
       ],
@@ -3127,7 +5345,7 @@
       ],
       "links": [
        {
-        "href": "#60e511e4-8425-520c-a3fa-4d113bdf8791",
+        "href": "#eadcbacd-79b3-5ca4-a912-1472379f9345",
         "rel": "implementation"
        }
       ],
@@ -3160,7 +5378,7 @@
       ],
       "links": [
        {
-        "href": "#60e511e4-8425-520c-a3fa-4d113bdf8791",
+        "href": "#eadcbacd-79b3-5ca4-a912-1472379f9345",
         "rel": "implementation"
        }
       ],
@@ -3174,6 +5392,1406 @@
         "id": "cis_amazon_linux_2023-CIS-1.6_obj.1",
         "name": "assessment-objective",
         "prose": "High number of SELinux denials (%d) - review /var/log/audit/audit.log"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_amazon_linux_2023-service_validation",
+    "class": "rego-module",
+    "title": "CIS Amazon Linux 2023 Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x - Service Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_amazon_linux_2023.services"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/amazon_linux_2023/service_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_amazon_linux_2023-CIS-1.1.23",
+      "title": "autofs service is active (should be disabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.23_stmt",
+        "name": "statement",
+        "prose": "autofs service is active (should be disabled)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.23_obj.1",
+        "name": "assessment-objective",
+        "prose": "autofs service is enabled (should be disabled)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-1.1.23_obj.2",
+        "name": "assessment-objective",
+        "prose": "autofs is not compliant (should be disabled/masked)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.1.1",
+      "title": "No time synchronization service is active",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.1.1_stmt",
+        "name": "statement",
+        "prose": "No time synchronization service is active"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Time synchronization not properly configured (active services: %d)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Multiple time synchronization services active (should only have one): %v"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.1.1.1",
+      "title": "chronyd is selected but not active",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.1.1.1_stmt",
+        "name": "statement",
+        "prose": "chronyd is selected but not active"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.1.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "chronyd is selected but not enabled"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.1.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "chronyd has no time sources configured (servers: %d, pools: %d)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.2.x",
+      "title": "Unnecessary service '%s' is active (risk: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.2.x_stmt",
+        "name": "statement",
+        "prose": "Unnecessary service '%s' is active (risk: %s)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.2.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unnecessary service '%s' is enabled (risk: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.2.14",
+      "title": "telnet server is active (CRITICAL: uses cleartext authentication)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.2.14_stmt",
+        "name": "statement",
+        "prose": "telnet server is active (CRITICAL: uses cleartext authentication)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.3.1",
+      "title": "rsh server is active (CRITICAL: uses cleartext authentication)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.3.1_stmt",
+        "name": "statement",
+        "prose": "rsh server is active (CRITICAL: uses cleartext authentication)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.2.11",
+      "title": "FTP server is active (WARNING: may use cleartext authentication)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.2.11_stmt",
+        "name": "statement",
+        "prose": "FTP server is active (WARNING: may use cleartext authentication)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.2.2",
+      "title": "Avahi server is active (WARNING: broadcasts system information)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.2.2_stmt",
+        "name": "statement",
+        "prose": "Avahi server is active (WARNING: broadcasts system information)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.2.12",
+      "title": "Web server package installed: %s (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.2.12_stmt",
+        "name": "statement",
+        "prose": "Web server package installed: %s (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.3.x",
+      "title": "Unnecessary client package installed: %s (%s, severity: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.3.x_stmt",
+        "name": "statement",
+        "prose": "Unnecessary client package installed: %s (%s, severity: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.3.4",
+      "title": "telnet client is installed (CRITICAL: cleartext protocol)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.3.4_stmt",
+        "name": "statement",
+        "prose": "telnet client is installed (CRITICAL: cleartext protocol)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.3.2",
+      "title": "rsh client is installed (CRITICAL: cleartext protocol)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.3.2_stmt",
+        "name": "statement",
+        "prose": "rsh client is installed (CRITICAL: cleartext protocol)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-2.2.1",
+      "title": "X Window System package installed on server: %s (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7269a7e5-40a2-597a-8af5-a899770e2016",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-2.2.1_stmt",
+        "name": "statement",
+        "prose": "X Window System package installed on server: %s (%s)"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_amazon_linux_2023-ssh_validation",
+    "class": "rego-module",
+    "title": "CIS Amazon Linux 2023 Section 5.2.x - SSH Server Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_amazon_linux_2023.ssh"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/amazon_linux_2023/ssh_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.1",
+      "title": "/etc/ssh/sshd_config permissions not 0600",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.1_stmt",
+        "name": "statement",
+        "prose": "/etc/ssh/sshd_config permissions not 0600"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/ssh/sshd_config not owned by root"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/ssh/sshd_config group not root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.4",
+      "title": "SSH LogLevel not set to appropriate value (should be INFO or VERBOSE)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.4_stmt",
+        "name": "statement",
+        "prose": "SSH LogLevel not set to appropriate value (should be INFO or VERBOSE)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH LogLevel not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.5",
+      "title": "SSH X11Forwarding is enabled (should be 'no')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.5_stmt",
+        "name": "statement",
+        "prose": "SSH X11Forwarding is enabled (should be 'no')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.6",
+      "title": "SSH MaxAuthTries not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.6_stmt",
+        "name": "statement",
+        "prose": "SSH MaxAuthTries not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.7",
+      "title": "SSH IgnoreRhosts not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.7_stmt",
+        "name": "statement",
+        "prose": "SSH IgnoreRhosts not enabled"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH IgnoreRhosts not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.8",
+      "title": "SSH HostbasedAuthentication is enabled (should be 'no')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.8_stmt",
+        "name": "statement",
+        "prose": "SSH HostbasedAuthentication is enabled (should be 'no')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.9",
+      "title": "SSH PermitRootLogin not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.9_stmt",
+        "name": "statement",
+        "prose": "SSH PermitRootLogin not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.10",
+      "title": "SSH PermitEmptyPasswords is enabled (should be 'no')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.10_stmt",
+        "name": "statement",
+        "prose": "SSH PermitEmptyPasswords is enabled (should be 'no')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.11",
+      "title": "SSH PermitUserEnvironment is enabled (should be 'no')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.11_stmt",
+        "name": "statement",
+        "prose": "SSH PermitUserEnvironment is enabled (should be 'no')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-7",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-8",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-9",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.15",
+      "title": "SSH ClientAliveInterval not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.15_stmt",
+        "name": "statement",
+        "prose": "SSH ClientAliveInterval not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-10",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-11",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.17",
+      "title": "SSH Banner not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.17_stmt",
+        "name": "statement",
+        "prose": "SSH Banner not configured"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.17_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH Banner set to 'none'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.18",
+      "title": "SSH UsePAM not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.18_stmt",
+        "name": "statement",
+        "prose": "SSH UsePAM not configured"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.18_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH UsePAM not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.19",
+      "title": "SSH AllowTcpForwarding is enabled (should be 'no')",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.19_stmt",
+        "name": "statement",
+        "prose": "SSH AllowTcpForwarding is enabled (should be 'no')"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-CIS-5.2.20",
+      "title": "SSH MaxStartups not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.20_stmt",
+        "name": "statement",
+        "prose": "SSH MaxStartups not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-12",
+      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_amazon_linux_2023.ssh#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_amazon_linux_2023.ssh#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_amazon_linux_2023.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#827bd971-52e8-573c-a0bd-a83bdc804965",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
        }
       ],
       "class": "security"
@@ -3222,7 +6840,7 @@
       ],
       "links": [
        {
-        "href": "#fd0188d6-ce1c-52e6-972c-534292e48ed9",
+        "href": "#deac126a-1cdf-5692-9a7d-418d1179241f",
         "rel": "implementation"
        }
       ],
@@ -3255,7 +6873,7 @@
       ],
       "links": [
        {
-        "href": "#fd0188d6-ce1c-52e6-972c-534292e48ed9",
+        "href": "#deac126a-1cdf-5692-9a7d-418d1179241f",
         "rel": "implementation"
        }
       ],
@@ -3288,7 +6906,7 @@
       ],
       "links": [
        {
-        "href": "#fd0188d6-ce1c-52e6-972c-534292e48ed9",
+        "href": "#deac126a-1cdf-5692-9a7d-418d1179241f",
         "rel": "implementation"
        }
       ],
@@ -3326,7 +6944,7 @@
       ],
       "links": [
        {
-        "href": "#fd0188d6-ce1c-52e6-972c-534292e48ed9",
+        "href": "#deac126a-1cdf-5692-9a7d-418d1179241f",
         "rel": "implementation"
        }
       ],
@@ -3359,7 +6977,7 @@
       ],
       "links": [
        {
-        "href": "#fd0188d6-ce1c-52e6-972c-534292e48ed9",
+        "href": "#deac126a-1cdf-5692-9a7d-418d1179241f",
         "rel": "implementation"
        }
       ],
@@ -3392,7 +7010,7 @@
       ],
       "links": [
        {
-        "href": "#fd0188d6-ce1c-52e6-972c-534292e48ed9",
+        "href": "#deac126a-1cdf-5692-9a7d-418d1179241f",
         "rel": "implementation"
        }
       ],
@@ -3430,7 +7048,7 @@
       ],
       "links": [
        {
-        "href": "#fd0188d6-ce1c-52e6-972c-534292e48ed9",
+        "href": "#deac126a-1cdf-5692-9a7d-418d1179241f",
         "rel": "implementation"
        }
       ],
@@ -3468,7 +7086,7 @@
       ],
       "links": [
        {
-        "href": "#fd0188d6-ce1c-52e6-972c-534292e48ed9",
+        "href": "#deac126a-1cdf-5692-9a7d-418d1179241f",
         "rel": "implementation"
        }
       ],
@@ -3540,7 +7158,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3573,7 +7191,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3606,7 +7224,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3639,7 +7257,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3672,7 +7290,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3705,7 +7323,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3738,7 +7356,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3771,7 +7389,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3829,7 +7447,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3862,7 +7480,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3895,7 +7513,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3928,7 +7546,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3961,7 +7579,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -3994,7 +7612,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -4027,7 +7645,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -4060,7 +7678,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -4093,7 +7711,7 @@
       ],
       "links": [
        {
-        "href": "#b374618f-5b94-5f41-a64e-89a5d114ef7c",
+        "href": "#79fd7aeb-979e-5946-ae42-6a5b55c4f969",
         "rel": "implementation"
        }
       ],
@@ -4122,7 +7740,24 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "68d82e9c-3e36-5a86-84fe-15fd81aead5d",
+     "uuid": "10b913a9-32e3-57c1-ab59-224f2008db09",
+     "title": "CIS Amazon Linux 2023 Section 4.1.x - Configure System Accounting (auditd)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_amazon_linux_2023.auditd"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/auditd_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8dc6c311-2c97-545c-988c-c80a4a938c0e",
      "title": "CIS Sections 1.3, 1.4, 1.5: Boot Security, Filesystem Integrity, Process Hardening",
      "props": [
       {
@@ -4133,13 +7768,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/amazon_linux_2023/boot_security_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/boot_security_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "724dff43-9b7f-5066-8629-3cdc273dab43",
+     "uuid": "ff4b6ce3-1e1f-551b-b3d3-7b297b17e62b",
      "title": "CIS Amazon Linux 2023 Benchmark v2.0.0 - Complete Validation",
      "props": [
       {
@@ -4150,13 +7785,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/amazon_linux_2023/cis_al20239_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/cis_al20239_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "1ca06217-1ce2-5da0-ab5f-95fc9300f291",
+     "uuid": "9114fb3e-7837-5b8f-89d2-6278b7f01dbd",
      "title": "CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0",
      "props": [
       {
@@ -4167,13 +7802,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/amazon_linux_2023/cis_amazon_linux_2023.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/cis_amazon_linux_2023.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "eb43b8d7-7ebd-5754-9de2-e8b025ca618b",
+     "uuid": "b89ce96b-e0f8-5039-a84f-3e198d092a1b",
      "title": "CIS Section 5.1: Configure time-based job schedulers",
      "props": [
       {
@@ -4184,13 +7819,47 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/amazon_linux_2023/cron_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/cron_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "218d2e8c-c389-5603-8ae0-057500de5338",
+     "uuid": "72eba4e2-760d-5e9c-a548-5efa843e927d",
+     "title": "CIS Amazon Linux 2023 Section 6.1.x - System File Permissions",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_amazon_linux_2023.file_permissions"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/file_permissions_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "83eeafe5-36de-5dce-bcc6-8fef7fa97218",
+     "title": "CIS Amazon Linux 2023 Section 1.1.x - Filesystem Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_amazon_linux_2023.filesystem"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/filesystem_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "fa3bc273-e691-56fa-b93b-2faf657e1b6b",
      "title": "CIS Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup",
      "props": [
       {
@@ -4201,13 +7870,47 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/amazon_linux_2023/initial_setup_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/initial_setup_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "4761b675-0d5f-5d4f-ac74-19ff9a5fc9b1",
+     "uuid": "c24e1723-d729-5ce0-81f8-df33b34ea74a",
+     "title": "CIS Amazon Linux 2023 Section 4.2.x - Logging Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_amazon_linux_2023.logging"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/logging_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "16481970-b46b-5782-814c-cd1386c129fb",
+     "title": "CIS Amazon Linux 2023 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_amazon_linux_2023.network"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/network_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "9480dacc-a2f0-5025-819f-bec17cf9628c",
      "title": "CIS Section 5.4: Configure PAM",
      "props": [
       {
@@ -4218,13 +7921,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/amazon_linux_2023/pam_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/pam_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "60e511e4-8425-520c-a3fa-4d113bdf8791",
+     "uuid": "eadcbacd-79b3-5ca4-a912-1472379f9345",
      "title": "CIS Section 1.6: Mandatory Access Controls (SELinux)",
      "props": [
       {
@@ -4235,13 +7938,47 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/amazon_linux_2023/selinux_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/selinux_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "fd0188d6-ce1c-52e6-972c-534292e48ed9",
+     "uuid": "7269a7e5-40a2-597a-8af5-a899770e2016",
+     "title": "CIS Amazon Linux 2023 Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x - Service Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_amazon_linux_2023.services"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/service_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "827bd971-52e8-573c-a0bd-a83bdc804965",
+     "title": "CIS Amazon Linux 2023 Section 5.2.x - SSH Server Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_amazon_linux_2023.ssh"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/ssh_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "deac126a-1cdf-5692-9a7d-418d1179241f",
      "title": "CIS Section 5.3: Configure privilege escalation (sudo)",
      "props": [
       {
@@ -4252,13 +7989,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/amazon_linux_2023/sudo_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/sudo_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b374618f-5b94-5f41-a64e-89a5d114ef7c",
+     "uuid": "79fd7aeb-979e-5946-ae42-6a5b55c4f969",
      "title": "CIS Section 6.2: User and Group Settings",
      "props": [
       {
@@ -4269,7 +8006,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/benchmarks/cis/amazon_linux_2023/user_group_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/amazon_linux_2023/user_group_validation.rego",
        "media-type": "text/plain"
       }
      ]

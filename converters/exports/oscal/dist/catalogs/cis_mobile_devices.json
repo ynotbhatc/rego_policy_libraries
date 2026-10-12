@@ -1,0 +1,1916 @@
+{
+ "catalog": {
+  "uuid": "4cec6ed6-9705-5cc9-84b2-00d00d20d565",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_mobile_devices (CIS Google Android Benchmark)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_mobile_devices"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_mobile_devices-android_security",
+    "class": "rego-module",
+    "title": "CIS Google Android Benchmark",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.mobile.android"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mobile_devices/android/android_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-1",
+      "title": "adb over network disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-1_stmt",
+        "name": "statement",
+        "prose": "adb over network disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-2",
+      "title": "app permissions reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-2_stmt",
+        "name": "statement",
+        "prose": "app permissions reviewed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-3",
+      "title": "app verification enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-3_stmt",
+        "name": "statement",
+        "prose": "app verification enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-4",
+      "title": "auto lock timeout",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-4_stmt",
+        "name": "statement",
+        "prose": "auto lock timeout"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-5",
+      "title": "automatic updates enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-5_stmt",
+        "name": "statement",
+        "prose": "automatic updates enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-6",
+      "title": "backup encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-6_stmt",
+        "name": "statement",
+        "prose": "backup encryption"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-7",
+      "title": "biometric auth secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-7_stmt",
+        "name": "statement",
+        "prose": "biometric auth secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-8",
+      "title": "bluetooth secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-8_stmt",
+        "name": "statement",
+        "prose": "bluetooth secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-9",
+      "title": "developer options disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-9_stmt",
+        "name": "statement",
+        "prose": "developer options disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-10",
+      "title": "device admin controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-10_stmt",
+        "name": "statement",
+        "prose": "device admin controlled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-11",
+      "title": "device encryption enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-11_stmt",
+        "name": "statement",
+        "prose": "device encryption enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-12",
+      "title": "location services configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-12_stmt",
+        "name": "statement",
+        "prose": "location services configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-13",
+      "title": "max failed password attempts",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-13_stmt",
+        "name": "statement",
+        "prose": "max failed password attempts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-14",
+      "title": "mock locations disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-14_stmt",
+        "name": "statement",
+        "prose": "mock locations disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-15",
+      "title": "nfc configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-15_stmt",
+        "name": "statement",
+        "prose": "nfc configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-16",
+      "title": "organizational compliance",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-16_stmt",
+        "name": "statement",
+        "prose": "organizational compliance"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-17",
+      "title": "password complexity",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-17_stmt",
+        "name": "statement",
+        "prose": "password complexity"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-18",
+      "title": "password expiration",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-18_stmt",
+        "name": "statement",
+        "prose": "password expiration"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-19",
+      "title": "password history",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-19_stmt",
+        "name": "statement",
+        "prose": "password history"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-20",
+      "title": "password min length",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-20_stmt",
+        "name": "statement",
+        "prose": "password min length"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-21",
+      "title": "play protect enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-21_stmt",
+        "name": "statement",
+        "prose": "play protect enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-22",
+      "title": "privacy settings configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-22_stmt",
+        "name": "statement",
+        "prose": "privacy settings configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-23",
+      "title": "remote wipe enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-23_stmt",
+        "name": "statement",
+        "prose": "remote wipe enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-24",
+      "title": "safe browsing enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-24_stmt",
+        "name": "statement",
+        "prose": "safe browsing enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-25",
+      "title": "screen lock enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-25_stmt",
+        "name": "statement",
+        "prose": "screen lock enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-26",
+      "title": "sd card encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-26_stmt",
+        "name": "statement",
+        "prose": "sd card encryption"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-27",
+      "title": "unknown sources disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-27_stmt",
+        "name": "statement",
+        "prose": "unknown sources disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-28",
+      "title": "unknown sources logging",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-28_stmt",
+        "name": "statement",
+        "prose": "unknown sources logging"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-29",
+      "title": "usb debugging disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-29_stmt",
+        "name": "statement",
+        "prose": "usb debugging disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.android-30",
+      "title": "wifi secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.android#30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.android#30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.android"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f383611-9c6d-5212-a3c6-77a721a892dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.android-30_stmt",
+        "name": "statement",
+        "prose": "wifi secure"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_mobile_devices-ios_security",
+    "class": "rego-module",
+    "title": "CIS Apple iOS Benchmark",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.mobile.ios"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mobile_devices/ios/ios_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-1",
+      "title": "advertising tracking disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-1_stmt",
+        "name": "statement",
+        "prose": "advertising tracking disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-2",
+      "title": "airdrop disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-2_stmt",
+        "name": "statement",
+        "prose": "airdrop disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-3",
+      "title": "app installation restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-3_stmt",
+        "name": "statement",
+        "prose": "app installation restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-4",
+      "title": "auto lock enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-4_stmt",
+        "name": "statement",
+        "prose": "auto lock enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-5",
+      "title": "device supervised",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-5_stmt",
+        "name": "statement",
+        "prose": "device supervised"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-6",
+      "title": "diagnostic data disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-6_stmt",
+        "name": "statement",
+        "prose": "diagnostic data disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-7",
+      "title": "encrypted backups enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-7_stmt",
+        "name": "statement",
+        "prose": "encrypted backups enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-8",
+      "title": "icloud backup disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-8_stmt",
+        "name": "statement",
+        "prose": "icloud backup disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-9",
+      "title": "icloud drive disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-9_stmt",
+        "name": "statement",
+        "prose": "icloud drive disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-10",
+      "title": "icloud keychain disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-10_stmt",
+        "name": "statement",
+        "prose": "icloud keychain disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-11",
+      "title": "location services configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-11_stmt",
+        "name": "statement",
+        "prose": "location services configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-12",
+      "title": "max failed attempts",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-12_stmt",
+        "name": "statement",
+        "prose": "max failed attempts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-13",
+      "title": "mdm removal restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-13_stmt",
+        "name": "statement",
+        "prose": "mdm removal restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-14",
+      "title": "notification previews disabled when locked",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-14_stmt",
+        "name": "statement",
+        "prose": "notification previews disabled when locked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-15",
+      "title": "passcode alphanumeric",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-15_stmt",
+        "name": "statement",
+        "prose": "passcode alphanumeric"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-16",
+      "title": "passcode complex characters",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-16_stmt",
+        "name": "statement",
+        "prose": "passcode complex characters"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-17",
+      "title": "passcode enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-17_stmt",
+        "name": "statement",
+        "prose": "passcode enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-18",
+      "title": "passcode history",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-18_stmt",
+        "name": "statement",
+        "prose": "passcode history"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-19",
+      "title": "passcode max age",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-19_stmt",
+        "name": "statement",
+        "prose": "passcode max age"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-20",
+      "title": "passcode min length",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-20_stmt",
+        "name": "statement",
+        "prose": "passcode min length"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-21",
+      "title": "safari secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-21_stmt",
+        "name": "statement",
+        "prose": "safari secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-22",
+      "title": "siri disabled when locked",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-22_stmt",
+        "name": "statement",
+        "prose": "siri disabled when locked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-23",
+      "title": "spotlight suggestions disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-23_stmt",
+        "name": "statement",
+        "prose": "spotlight suggestions disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-cis.mobile.ios-24",
+      "title": "untrusted tls blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mobile.ios#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mobile.ios#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9b530f93-494b-5b42-9a04-45bd77cdab8d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-cis.mobile.ios-24_stmt",
+        "name": "statement",
+        "prose": "untrusted tls blocked"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "1f383611-9c6d-5212-a3c6-77a721a892dd",
+     "title": "CIS Google Android Benchmark",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.mobile.android"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/mobile_devices/android/android_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "9b530f93-494b-5b42-9a04-45bd77cdab8d",
+     "title": "CIS Apple iOS Benchmark",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.mobile.ios"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/benchmarks/cis/mobile_devices/ios/ios_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

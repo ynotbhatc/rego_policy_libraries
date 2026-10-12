@@ -5,6 +5,14 @@
 #   framework: cra
 #   source: eu
 #   domains: [eu, product-security]
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cra.crypto_evidence
 
 import data.iso27001.cryptography as iso_crypto
@@ -159,3 +167,11 @@ compliance_report := {
 		"iso_a10_compliant": iso_27001_crypto_compliant,
 	},
 }
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

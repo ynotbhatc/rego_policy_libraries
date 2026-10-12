@@ -5,6 +5,14 @@
 #   framework: cis_kubernetes
 #   source: cis
 #   domains: [kubernetes, container]
+#   coverage:
+#     checks: 5
+#     cited: 5
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_kubernetes
 
 # CIS Kubernetes Benchmark v2.0.0
@@ -238,4 +246,12 @@ detailed_findings := {
     "control_plane_config_violations": control_plane_config_violations,
     "worker_nodes_violations": worker_nodes_violations,
     "policies_violations": policies_violations
+#   coverage:
+#     checks: 5
+#     cited: 5
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

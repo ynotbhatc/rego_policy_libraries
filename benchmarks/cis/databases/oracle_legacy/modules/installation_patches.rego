@@ -5,6 +5,14 @@
 #   framework: cis_databases
 #   source: cis
 #   domains: [database, oracle]
+#   coverage:
+#     checks: 3
+#     cited: 3
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_oracle.installation_patches
 
 # CIS Oracle Database 19c Benchmark - Section 1
@@ -147,3 +155,11 @@ risk_level := "critical" if {
 } else := "medium" if {
 	count(input.critical_patches.missing_patches) > 0
 } else := "low"
+#   coverage:
+#     checks: 3
+#     cited: 3
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

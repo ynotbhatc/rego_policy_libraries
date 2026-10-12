@@ -77,6 +77,14 @@
 #   framework: pqc
 #   source: nist
 #   domains: [us-federal, cryptography]
+#   coverage:
+#     checks: 11
+#     cited: 5
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package pqc.main
 
 import rego.v1
@@ -352,3 +360,11 @@ compliance_report := {
 	"violation_count": count(violations),
 	"compliant": compliant,
 }
+#   coverage:
+#     checks: 11
+#     cited: 5
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: cis_ubuntu_22_04
 #   source: cis
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 8
+#     cited: 8
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_ubuntu_22_04.sudo
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 5.3: Configure Sudo
@@ -92,3 +100,11 @@ report := {
 	"section": "5.3 Configure Sudo",
 	"benchmark": "CIS Ubuntu 22.04 v3.0.0",
 }
+#   coverage:
+#     checks: 8
+#     cited: 8
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

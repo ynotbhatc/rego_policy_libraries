@@ -5,6 +5,14 @@
 #   framework: cyber_essentials
 #   source: uk-ncsc
 #   domains: [uk]
+#   coverage:
+#     checks: 8
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cyber_essentials.user_access_control
 
 import rego.v1
@@ -43,3 +51,11 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": theme_compliant,
 }
+#   coverage:
+#     checks: 8
+#     cited: 7
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

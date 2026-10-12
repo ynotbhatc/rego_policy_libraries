@@ -5,6 +5,14 @@
 #   framework: stig_rhel_8
 #   source: disa
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 10
+#     cited: 9
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.rhel_8.network
 
 # DISA STIG for RHEL 8 - Network Configuration Module
@@ -200,3 +208,11 @@ compliance_report := {
 	"findings": findings,
 	"compliant": compliant,
 }
+#   coverage:
+#     checks: 10
+#     cited: 9
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

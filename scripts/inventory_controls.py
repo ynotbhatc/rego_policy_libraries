@@ -18,12 +18,11 @@ from __future__ import annotations
 import json, re, sys, pathlib
 from collections import OrderedDict
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from rego_ast import parse_tree, tables, bodies, leaf_rows, first_message, package, INCLUDE, EXCLUDE, SCAFFOLD, ID_KEY
+from rego_ast import parse_tree, items, package, split_citation as _split
 
 ROOT_DEFAULT = pathlib.Path(__file__).resolve().parent.parent
 META_RE = re.compile(r"^#\s*(title|class|framework|source|domains):\s*(.+?)\s*$", re.M)
 ID_PREFIX = re.compile(r"^([A-Za-z][A-Za-z0-9 §.\-()/_]{1,58}?)\s*:\s+(.+)$")
-TEXT_KEYS = ("text", "req", "title", "description", "name")
 
 
 def _meta(src):
@@ -49,20 +48,6 @@ def _title(meta_title, src, pkg):
     return pkg.replace("_", " ").replace(".", " / ")
 
 
-def _split(msg):
-    m = ID_PREFIX.match(msg)
-    if m:
-        return m.group(1).strip(), m.group(2).strip()
-    return None, msg.strip()
-
-
-def _obj_text(obj_term):
-    fields = {k["value"]: v for k, v in obj_term["value"] if k["type"] == "string"}
-    for k in TEXT_KEYS:
-        v = fields.get(k)
-        if v and v["type"] == "string":
-            return v["value"]
-    return ""
 
 
 def inventory(root=ROOT_DEFAULT):
@@ -74,25 +59,11 @@ def inventory(root=ROOT_DEFAULT):
         meta = _meta(src)
         controls = OrderedDict()
         synth = 0
-        for name, rule in bodies(ast):
-            msg = first_message(rule)
-            cid, text = _split(msg) if msg else (None, "")
+        for cid, text, shape in items(ast):
             if not cid:
-                synth += 1; cid = f"{pkg}#{synth}"
-            controls.setdefault(cid, {"id": cid, "texts": []})["texts"].append(text)
-        for name, rows in tables(ast):
-            if not name or EXCLUDE.match(name):
-                continue
-            for k, v in rows:
-                if not ID_KEY.match(k):
-                    continue
-                if v["type"] == "object" and v["value"]:
-                    for lk, lv in leaf_rows(k, v):
-                        controls.setdefault(lk, {"id": lk, "texts": []})["texts"].append(_obj_text(lv))
-                elif v["type"] == "string" and INCLUDE.search(name) and not SCAFFOLD.match(name):
-                    pid, text = _split(v["value"])
-                    cid = pid or k
-                    controls.setdefault(cid, {"id": cid, "texts": []})["texts"].append(text)
+                synth += 1
+                cid = f"{pkg}#{synth}"
+            controls.setdefault(cid, {"id": cid, "texts": [], "shape": shape.split(":")[0]})["texts"].append(text)
         if controls:
             out.append({"file": rel, "package": pkg, "title": _title(meta.get("title", ""), src, pkg),
                         "class": meta.get("class", ""), "framework": meta.get("framework", ""), "source": meta.get("source", ""),

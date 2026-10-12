@@ -5,6 +5,14 @@
 #   framework: cis_rhel_8
 #   source: cis
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 14
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_rhel8
 
 # CIS RHEL 8 Benchmark v4.0.0 - Complete Validation
@@ -260,3 +268,11 @@ l2_executive_summary := {
 	"l2_violations": count(l2_violations_active),
 	"l2_compliant":  l2_compliant,
 }
+#   coverage:
+#     checks: 14
+#     cited: 14
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: none
+#     as_of: v2.3.0

@@ -8,6 +8,14 @@
 #   framework: soc2
 #   source: aicpa
 #   domains: [assurance]
+#   coverage:
+#     checks: 16
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package soc2.availability.system_availability
 
 import rego.v1
@@ -255,4 +263,12 @@ availability_findings := findings if {
         "performance_thresholds_defined": performance_thresholds_defined,
         "overall_score": availability_score
     }
+#   coverage:
+#     checks: 16
+#     cited: 0
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

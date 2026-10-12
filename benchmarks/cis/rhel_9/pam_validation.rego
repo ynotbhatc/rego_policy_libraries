@@ -5,6 +5,14 @@
 #   framework: cis_rhel_9
 #   source: cis
 #   domains: [linux, rhel]
+#   coverage:
+#     checks: 15
+#     cited: 15
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_rhel9.pam
 
 import rego.v1
@@ -212,3 +220,11 @@ violations contains msg if {
 compliant if {
     count(violations) == 0
 }
+#   coverage:
+#     checks: 15
+#     cited: 15
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: hipaa
 #   source: hhs
 #   domains: [privacy, healthcare]
+#   coverage:
+#     checks: 17
+#     cited: 7
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package hipaa.access_control
 
 import rego.v1
@@ -262,3 +270,11 @@ compliance_report := {
         "encryption_decryption": control_a2iv_compliant,
     },
 }
+#   coverage:
+#     checks: 17
+#     cited: 7
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

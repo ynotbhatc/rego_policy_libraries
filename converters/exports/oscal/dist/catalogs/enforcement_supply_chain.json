@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "4eb498c6-9ffa-5875-81f9-aa36d8daa17a",
+  "uuid": "5f2e9c5a-5fd1-5216-a0ba-d10b16502287",
   "metadata": {
    "title": "Rego Policy Libraries — enforcement_supply_chain (enforcement_supply_chain)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.0",
+   "version": "2.3.1",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -61,16 +61,16 @@
     ],
     "controls": [
      {
-      "id": "enforcement_supply_chain-SLSA",
-      "title": "Build provenance attestation is missing",
+      "id": "enforcement_supply_chain-supply_chain.slsa-1",
+      "title": "SLSA: Build provenance attestation is missing",
       "props": [
        {
         "name": "label",
-        "value": "SLSA"
+        "value": "supply_chain.slsa#1"
        },
        {
         "name": "alt-identifier",
-        "value": "SLSA"
+        "value": "supply_chain.slsa#1"
        },
        {
         "name": "rego-package",
@@ -80,15 +80,15 @@
       ],
       "links": [
        {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "enforcement_supply_chain-SLSA_stmt",
+        "id": "enforcement_supply_chain-supply_chain.slsa-1_stmt",
         "name": "statement",
-        "prose": "Build provenance attestation is missing"
+        "prose": "SLSA: Build provenance attestation is missing"
        }
       ]
      },
@@ -112,7 +112,7 @@
       ],
       "links": [
        {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
         "rel": "implementation"
        }
       ],
@@ -125,16 +125,16 @@
       ]
      },
      {
-      "id": "enforcement_supply_chain-supply_chain.slsa-1",
+      "id": "enforcement_supply_chain-supply_chain.slsa-2",
       "title": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "supply_chain.slsa#1"
+        "value": "supply_chain.slsa#2"
        },
        {
         "name": "alt-identifier",
-        "value": "supply_chain.slsa#1"
+        "value": "supply_chain.slsa#2"
        },
        {
         "name": "rego-package",
@@ -144,13 +144,13 @@
       ],
       "links": [
        {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "enforcement_supply_chain-supply_chain.slsa-1_stmt",
+        "id": "enforcement_supply_chain-supply_chain.slsa-2_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body."
        }
@@ -176,7 +176,7 @@
       ],
       "links": [
        {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
         "rel": "implementation"
        }
       ],
@@ -213,7 +213,7 @@
       ],
       "links": [
        {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
         "rel": "implementation"
        }
       ],
@@ -231,144 +231,8 @@
       ]
      },
      {
-      "id": "enforcement_supply_chain-Signing",
-      "title": "Artifact is not signed (Cosign/Sigstore signature missing)",
-      "props": [
-       {
-        "name": "label",
-        "value": "Signing"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "Signing"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "supply_chain.slsa"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "enforcement_supply_chain-Signing_stmt",
-        "name": "statement",
-        "prose": "Artifact is not signed (Cosign/Sigstore signature missing)"
-       },
-       {
-        "id": "enforcement_supply_chain-Signing_obj.1",
-        "name": "assessment-objective",
-        "prose": "Artifact signature verification failed"
-       },
-       {
-        "id": "enforcement_supply_chain-Signing_obj.2",
-        "name": "assessment-objective",
-        "prose": "Signing identity not from an approved OIDC provider"
-       }
-      ]
-     },
-     {
-      "id": "enforcement_supply_chain-SBOM",
-      "title": "No SBOM attached to artifact (SPDX or CycloneDX required)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SBOM"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SBOM"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "supply_chain.slsa"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "enforcement_supply_chain-SBOM_stmt",
-        "name": "statement",
-        "prose": "No SBOM attached to artifact (SPDX or CycloneDX required)"
-       },
-       {
-        "id": "enforcement_supply_chain-SBOM_obj.1",
-        "name": "assessment-objective",
-        "prose": "SBOM format not recognized (expected SPDX-2.x or CycloneDX-1.x)"
-       },
-       {
-        "id": "enforcement_supply_chain-SBOM_obj.2",
-        "name": "assessment-objective",
-        "prose": "SBOM contains no components (empty bill of materials)"
-       },
-       {
-        "id": "enforcement_supply_chain-SBOM_obj.3",
-        "name": "assessment-objective",
-        "prose": "SBOM missing required field 'document_namespace'"
-       },
-       {
-        "id": "enforcement_supply_chain-SBOM_obj.4",
-        "name": "assessment-objective",
-        "prose": "SBOM missing required field 'creation_timestamp'"
-       },
-       {
-        "id": "enforcement_supply_chain-SBOM_obj.5",
-        "name": "assessment-objective",
-        "prose": "SBOM components are missing PURL (Package URL) identifiers"
-       },
-       {
-        "id": "enforcement_supply_chain-SBOM_obj.6",
-        "name": "assessment-objective",
-        "prose": "SBOM components missing license declarations"
-       }
-      ]
-     },
-     {
-      "id": "enforcement_supply_chain-supply_chain.slsa-2",
-      "title": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "supply_chain.slsa#2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "supply_chain.slsa#2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "supply_chain.slsa"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "enforcement_supply_chain-supply_chain.slsa-2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body."
-       }
-      ]
-     },
-     {
       "id": "enforcement_supply_chain-supply_chain.slsa-3",
-      "title": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body.",
+      "title": "Signing: Artifact is not signed (Cosign/Sigstore signature missing)",
       "props": [
        {
         "name": "label",
@@ -386,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
         "rel": "implementation"
        }
       ],
@@ -394,13 +258,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-3_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body."
+        "prose": "Signing: Artifact is not signed (Cosign/Sigstore signature missing)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-4",
-      "title": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body.",
+      "title": "Signing: Artifact signature verification failed",
       "props": [
        {
         "name": "label",
@@ -418,7 +282,7 @@
       ],
       "links": [
        {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
         "rel": "implementation"
        }
       ],
@@ -426,13 +290,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-4_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body."
+        "prose": "Signing: Artifact signature verification failed"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-5",
-      "title": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body.",
+      "title": "Signing: Signing identity not from an approved OIDC provider",
       "props": [
        {
         "name": "label",
@@ -450,7 +314,7 @@
       ],
       "links": [
        {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
         "rel": "implementation"
        }
       ],
@@ -458,13 +322,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-5_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body."
+        "prose": "Signing: Signing identity not from an approved OIDC provider"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-6",
-      "title": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body.",
+      "title": "SBOM: No SBOM attached to artifact (SPDX or CycloneDX required)",
       "props": [
        {
         "name": "label",
@@ -482,7 +346,7 @@
       ],
       "links": [
        {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
         "rel": "implementation"
        }
       ],
@@ -490,21 +354,21 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-6_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body."
+        "prose": "SBOM: No SBOM attached to artifact (SPDX or CycloneDX required)"
        }
       ]
      },
      {
-      "id": "enforcement_supply_chain-Provenance",
-      "title": "Build source URI does not match expected repository",
+      "id": "enforcement_supply_chain-supply_chain.slsa-7",
+      "title": "SBOM: SBOM format not recognized (expected SPDX-2.x or CycloneDX-1.x)",
       "props": [
        {
         "name": "label",
-        "value": "Provenance"
+        "value": "supply_chain.slsa#7"
        },
        {
         "name": "alt-identifier",
-        "value": "Provenance"
+        "value": "supply_chain.slsa#7"
        },
        {
         "name": "rego-package",
@@ -514,30 +378,463 @@
       ],
       "links": [
        {
-        "href": "#d6ff7696-be9a-5194-a0ec-479e61589ed6",
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "enforcement_supply_chain-Provenance_stmt",
+        "id": "enforcement_supply_chain-supply_chain.slsa-7_stmt",
         "name": "statement",
-        "prose": "Build source URI does not match expected repository"
+        "prose": "SBOM: SBOM format not recognized (expected SPDX-2.x or CycloneDX-1.x)"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-8",
+      "title": "SBOM: SBOM contains no components (empty bill of materials)",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#8"
        },
        {
-        "id": "enforcement_supply_chain-Provenance_obj.1",
-        "name": "assessment-objective",
-        "prose": "Build triggered from unprotected ref (branch builds not allowed for releases)"
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#8"
        },
        {
-        "id": "enforcement_supply_chain-Provenance_obj.2",
-        "name": "assessment-objective",
-        "prose": "Provenance predicate type not SLSA v1.0"
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-8_stmt",
+        "name": "statement",
+        "prose": "SBOM: SBOM contains no components (empty bill of materials)"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-9",
+      "title": "SBOM: SBOM missing required field 'document_namespace'",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#9"
        },
        {
-        "id": "enforcement_supply_chain-Provenance_obj.3",
-        "name": "assessment-objective",
-        "prose": "Builder identity not in approved builder registry"
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-9_stmt",
+        "name": "statement",
+        "prose": "SBOM: SBOM missing required field 'document_namespace'"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-10",
+      "title": "SBOM: SBOM missing required field 'creation_timestamp'",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-10_stmt",
+        "name": "statement",
+        "prose": "SBOM: SBOM missing required field 'creation_timestamp'"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-11",
+      "title": "SBOM: SBOM components are missing PURL (Package URL) identifiers",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-11_stmt",
+        "name": "statement",
+        "prose": "SBOM: SBOM components are missing PURL (Package URL) identifiers"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-12",
+      "title": "SBOM: SBOM components missing license declarations",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-12_stmt",
+        "name": "statement",
+        "prose": "SBOM: SBOM components missing license declarations"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-13",
+      "title": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body."
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-14",
+      "title": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-14_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body."
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-15",
+      "title": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-15_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body."
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-16",
+      "title": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-16_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body."
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-17",
+      "title": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-17_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/supply_chain/slsa_governance.rego (package supply_chain.slsa); see the rule body."
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-18",
+      "title": "Provenance: Build source URI does not match expected repository",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-18_stmt",
+        "name": "statement",
+        "prose": "Provenance: Build source URI does not match expected repository"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-19",
+      "title": "Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-19_stmt",
+        "name": "statement",
+        "prose": "Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-20",
+      "title": "Provenance: Provenance predicate type not SLSA v1.0",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-20_stmt",
+        "name": "statement",
+        "prose": "Provenance: Provenance predicate type not SLSA v1.0"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-21",
+      "title": "Provenance: Builder identity not in approved builder registry",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#db622897-7660-5c39-8709-f6717b499468",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-21_stmt",
+        "name": "statement",
+        "prose": "Provenance: Builder identity not in approved builder registry"
        }
       ]
      }
@@ -547,7 +844,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "d6ff7696-be9a-5194-a0ec-479e61589ed6",
+     "uuid": "db622897-7660-5c39-8709-f6717b499468",
      "title": "Software Supply Chain Security — SLSA Framework Governance",
      "props": [
       {
@@ -558,7 +855,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.0/enforcement/supply_chain/slsa_governance.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.1/enforcement/supply_chain/slsa_governance.rego",
        "media-type": "text/plain"
       }
      ]

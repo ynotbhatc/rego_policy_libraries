@@ -5,6 +5,14 @@
 #   framework: cis_mcp_server
 #   source: cis
 #   domains: [ai, mcp]
+#   coverage:
+#     checks: 3
+#     cited: 2
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_mcp_server.resource_limits_caching
 
 import rego.v1
@@ -43,3 +51,11 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": section_compliant,
 }
+#   coverage:
+#     checks: 3
+#     cited: 2
+#     density: sparse
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

@@ -5,6 +5,14 @@
 #   framework: cis_ubuntu_20_04
 #   source: cis
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 22
+#     cited: 22
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package cis_ubuntu_20_04.ssh
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 5.2: Configure SSH Server
@@ -220,3 +228,11 @@ report := {
 	"section": "5.2 Configure SSH Server",
 	"benchmark": "CIS Ubuntu 20.04 v3.0.0",
 }
+#   coverage:
+#     checks: 22
+#     cited: 22
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

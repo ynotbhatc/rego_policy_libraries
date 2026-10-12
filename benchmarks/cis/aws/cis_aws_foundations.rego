@@ -5,6 +5,14 @@
 #   framework: cis_aws
 #   source: cis
 #   domains: [cloud, aws]
+#   coverage:
+#     checks: 5
+#     cited: 5
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.1
 package cis_aws
 
 # CIS Amazon Web Services Foundations Benchmark v7.0.0
@@ -302,4 +310,12 @@ detailed_findings := {
     "logging_violations": logging_violations,
     "monitoring_violations": monitoring_violations,
     "networking_violations": networking_violations
+#   coverage:
+#     checks: 5
+#     cited: 5
+#     density: sparse
+#     basis: size
+#     tested: false
+#     entrypoint: none
+#     as_of: v2.3.0
 }

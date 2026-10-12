@@ -5,6 +5,14 @@
 #   framework: cis_aws
 #   source: cis
 #   domains: [cloud, aws]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package cis_aws.main
 
 # Bridge: expose cis_aws under the /v1/data/<framework>/main/compliance_report
@@ -97,3 +105,11 @@ compliance_report := {
 	"violations": _violations,
 	"section_results": _summary,
 }
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0

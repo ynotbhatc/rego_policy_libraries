@@ -5,6 +5,14 @@
 #   framework: digital_sovereignty
 #   source: aac
 #   domains: [sovereignty, data-residency]
+#   coverage:
+#     checks: 23
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.1
 package digital_sovereignty.cyber_resilience_sovereignty
 
 import rego.v1
@@ -356,3 +364,11 @@ default redundancy_adequate := false
 default staff_training_current := false
 default supply_chain_resilience_current := false
 default threat_intelligence_active := false
+#   coverage:
+#     checks: 23
+#     cited: 1
+#     density: sized
+#     basis: size
+#     tested: false
+#     entrypoint: report
+#     as_of: v2.3.0

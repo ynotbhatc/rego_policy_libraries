@@ -9,6 +9,14 @@
 #   framework: stig_ubuntu_22_04
 #   source: disa
 #   domains: [linux, ubuntu]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.1
 package stig.ubuntu_22_04.main
 
 import data.stig.ubuntu_22_04
@@ -67,3 +75,11 @@ compliance_report := object.union(_upstream, {
 compliant := _compliant
 
 violations := _open_findings
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     as_of: v2.3.0
