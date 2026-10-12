@@ -1,4 +1,4 @@
-name: Converters — build and attach to the release
+name: "Converters — build and attach to the release"
 
 # Tier 0 packaging outputs are release assets. On every v* tag: build the wasm
 # bundles with an OPA that has the wasm engine, run the round-trip test for real,
@@ -14,24 +14,24 @@ permissions:
 
 jobs:
   wasm:
-    name: WASM bundles
+    name: "WASM bundles"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - name: Install OPA (non-static: includes the wasm engine)
+      - name: "Install OPA (non-static: includes the wasm engine)"
         env:
           OPA_VERSION: "v1.10.0"
         run: |
           curl -sL -o opa "https://github.com/open-policy-agent/opa/releases/download/${OPA_VERSION}/opa_linux_amd64"
           chmod +x opa && sudo mv opa /usr/local/bin/opa && opa version
-      - name: Build
+      - name: "Build"
         run: make wasm
-      - name: Round-trip test (must not skip here)
+      - name: "Round-trip test (must not skip here)"
         run: |
           out="$(bash converters/packaging/wasm/test/roundtrip.sh)"; echo "$out"
           echo "$out" | grep -q '^SKIP' && { echo "::error::wasm engine missing in CI"; exit 1; }
           echo "$out" | grep -q '^FAIL' && exit 1 || true
-      - name: Attach to the release
+      - name: "Attach to the release"
         if: startsWith(github.ref, 'refs/tags/')
         env:
           GH_TOKEN: ${{ github.token }}

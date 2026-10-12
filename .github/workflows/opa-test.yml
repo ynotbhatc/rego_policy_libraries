@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - '.github/workflows/converters.yml'
       - 'docs/ci-examples/**'
       - 'converters/**'
       - 'scripts/count_controls.py'
@@ -17,6 +18,7 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - '.github/workflows/converters.yml'
       - 'docs/ci-examples/**'
       - 'converters/**'
       - 'scripts/count_controls.py'
@@ -56,6 +58,9 @@ jobs:
 
       - name: Count control-level checks (scripts/count_controls.py must run clean)
         run: python3 scripts/count_controls.py --check-readme
+
+      - name: Validate workflow YAML (a bad workflow file registers silently and never runs)
+        run: python3 -c "import glob,yaml; [yaml.safe_load(open(f)) for f in glob.glob('.github/workflows/*.yml')]; print('workflows parse')"
 
       - name: Integration examples (docs/INTEGRATIONS.md must stay true — empty facts must fail closed)
         run: |
