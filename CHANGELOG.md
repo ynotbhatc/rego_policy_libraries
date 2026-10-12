@@ -9,6 +9,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- **Bank Negara Malaysia — Risk Management in Technology (RMiT), 25 September 2026** —
+  `frameworks/financial/bnm_rmit/`, `bnm_rmit.main`, written from BNM/RH/PD 028-98 as published: one control
+  per mandatory **S paragraph of Part B §§8–15 (99 standards)** — governance, technology risk management,
+  technology operations, cybersecurity management, digital services, technology audits, external party
+  assurance, awareness. Cloud, third-party, NCII and digital-services paragraphs are gated by flags that must
+  be declared true or false. The report carries the 2027 dated obligations and the 4-hour / 120-minute
+  availability targets. 11 tests. Vocabulary gains source `bnm` and domain `malaysia`.
 - **HKMA Supervisory Policy Manual TM-G-1 General Principles for Technology Risk Management + TM-C-1
   Supervisory Approach on Cyber Risk Management (Hong Kong)** — `frameworks/financial/hkma_trm/`,
   `hkma_trm.main`, written from the HKMA texts: one control per TM-G-1 paragraph that sets an expectation
