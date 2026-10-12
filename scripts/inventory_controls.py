@@ -120,10 +120,22 @@ def inventory(root=ROOT_DEFAULT):
                     cid = pid or ms.group(1)
                     controls.setdefault(cid, {"id": cid, "texts": []})["texts"].append(text)
         if controls:
-            fw = meta.get("framework") or "_".join(rel.split("/")[:2]).replace("-", "_")  # enforcement/aap -> enforcement_aap
             out.append({"file": rel, "package": pkg.group(1), "title": _title(meta.get("title", ""), src, pkg.group(1)),
-                        "class": meta.get("class", ""), "framework": fw, "source": meta.get("source", ""),
+                        "class": meta.get("class", ""), "framework": meta.get("framework", ""), "source": meta.get("source", ""),
                         "domains": meta.get("domains", []), "controls": list(controls.values())})
+    # OPA allows one package-scoped METADATA block per package, so a second file of the same package
+    # (mas_trm_controls_a.rego beside mas_trm_main.rego) carries none: inherit from the sibling that has it.
+    by_pkg = {}
+    for e in out:
+        if e["framework"]:
+            by_pkg.setdefault(e["package"], e)
+    for e in out:
+        if not e["framework"]:
+            sib = by_pkg.get(e["package"])
+            if sib:
+                e.update({k: sib[k] for k in ("class", "framework", "source", "domains")})
+            else:
+                e["framework"] = "_".join(e["file"].split("/")[:2]).replace("-", "_")  # enforcement/aap -> enforcement_aap
     return out
 
 
